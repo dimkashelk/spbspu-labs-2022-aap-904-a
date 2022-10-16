@@ -1,6 +1,7 @@
 #include <iostream>
 
-int main() {
+int main()
+{
   std::cout << "turkin.nikolai\n";
   return 0;
 }

@@ -9,9 +9,10 @@ struct Counter
         count++;
       }
     }
-    int count = 0;
+    int count;
 };
 
 int main()
 {
+
 }

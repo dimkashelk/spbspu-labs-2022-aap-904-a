@@ -1,5 +1,5 @@
 #include <iostream>
 int main()
 {
-  std::cout << "tsareve.yana\n";
+  std::cout << "tsareva.yana\n";
 }

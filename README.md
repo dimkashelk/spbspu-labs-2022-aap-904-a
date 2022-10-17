@@ -131,3 +131,17 @@ Boost
 корню библиотеки.
 
 > Путь не должен содержать пробельные символы.
+Accepted Labs
+=============
+
+| Name                  | I1 | S0 |
+|-----------------------|----|----|
+| Aristarkhov Rostislav |    | ✓  |
+| Gulkov Mikhail        |    | ✓  |
+| Kasilov Vasiliy       |    | ✓  |
+| Muhortov Victor       |    | ✓  |
+| Odintsov Kirill       |    | ✓  |
+| Romanovich Artem      |    | ✓  |
+| Shelkovnikov Dmitrii  |    | ✓  |
+| Tsareva Yana          |    | ✓  |
+| __Total__             |   0|   8|

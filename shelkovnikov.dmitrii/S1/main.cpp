@@ -1,7 +1,9 @@
 #include <iostream>
-
 struct Counter
 {
+    Counter(int i) : count(i)
+    {
+    }
     void operator()(int previous, int current, int next)
     {
       if (previous < current and current < next)
@@ -11,7 +13,6 @@ struct Counter
     }
     int count;
 };
-
 int main()
 {
 

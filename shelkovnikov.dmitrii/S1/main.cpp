@@ -1,4 +1,5 @@
 #include <iostream>
+
 struct Counter
 {
     Counter(int i) : count(i)
@@ -13,6 +14,7 @@ struct Counter
     }
     int count;
 };
+
 int main()
 {
   Counter counter(0);
@@ -21,7 +23,7 @@ int main()
   int next = 0;
   std::cin >> next;
   previous = current = next;
-  do
+  while (next && std::cin)
   {
     if (std::cin)
     {
@@ -30,7 +32,7 @@ int main()
     previous = current;
     current = next;
     std::cin >> next;
-  } while (next && std::cin);
+  }
   if (!std::cin)
   {
     std::cout << "Error... =(";

@@ -15,5 +15,27 @@ struct Counter
 };
 int main()
 {
-
+  Counter counter(0);
+  int previous = 0;
+  int current = 0;
+  int next = 0;
+  std::cin >> next;
+  previous = current = next;
+  do
+  {
+    if (std::cin)
+    {
+      counter(previous, current, next);
+    }
+    previous = current;
+    current = next;
+    std::cin >> next;
+  } while (next && std::cin);
+  if (!std::cin)
+  {
+    std::cout << "Error... =(";
+    return -1;
+  }
+  std::cout << counter.count << std::endl;
+  return 0;
 }

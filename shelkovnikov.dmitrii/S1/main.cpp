@@ -32,15 +32,23 @@ int main()
   int next = 0;
   std::cin >> next;
   previous = current = next;
-  while (next && std::cin)
+  try
   {
-    if (std::cin)
+    while (next && std::cin)
     {
-      counter(previous, current, next);
+      if (std::cin)
+      {
+        counter(previous, current, next);
+      }
+      previous = current;
+      current = next;
+      std::cin >> next;
     }
-    previous = current;
-    current = next;
-    std::cin >> next;
+  }
+  catch (std::overflow_error e)
+  {
+    std::cout << e.what();
+    return -1;
   }
   if (!std::cin)
   {

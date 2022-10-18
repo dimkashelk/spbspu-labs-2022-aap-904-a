@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 struct Counter
 {
@@ -9,10 +10,18 @@ struct Counter
     {
       if (previous < current and current < next)
       {
-        count++;
+        if (count == max_int)
+        {
+          throw std::overflow_error("Too much numbers....");
+        }
+        else
+        {
+          count++;
+        }
       }
     }
     int count;
+    const int max_int = std::numeric_limits< int >::max();
 };
 
 int main()

@@ -45,7 +45,7 @@ int main()
       std::cin >> next;
     }
   }
-  catch (std::overflow_error e)
+  catch (std::overflow_error &e)
   {
     std::cout << e.what();
     return -1;

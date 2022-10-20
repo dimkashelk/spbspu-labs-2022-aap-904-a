@@ -3,9 +3,6 @@
 
 class Counter
 {
-private:
-    int count;
-    const int max_int = std::numeric_limits< int >::max();
 public:
     Counter(int i) :
       count(i)
@@ -28,6 +25,9 @@ public:
     {
       return count;
     }
+private:
+    int count;
+    const int max_int = std::numeric_limits< int >::max();
 };
 
 int main()

@@ -1,8 +1,12 @@
 #include <iostream>
 #include <limits>
 
-struct Counter
+class Counter
 {
+private:
+    int count;
+    const int max_int = std::numeric_limits< int >::max();
+public:
     Counter(int i) : count(i)
     {
     }
@@ -13,15 +17,16 @@ struct Counter
         if (count == max_int)
         {
           throw std::overflow_error("Too much numbers....");
-        }
-        else
+        } else
         {
           count++;
         }
       }
     }
-    int count;
-    const int max_int = std::numeric_limits< int >::max();
+    int get_count()
+    {
+      return count;
+    }
 };
 
 int main()

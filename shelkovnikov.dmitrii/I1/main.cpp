@@ -13,6 +13,7 @@ public:
     {}
     void operator()(int next)
     {
+      constexpr int max_int = std::numeric_limits< int >::max();
       if (previous < current && current < next)
       {
         if (count == max_int)
@@ -35,7 +36,6 @@ private:
     int count = 0;
     int previous = 0;
     int current = 0;
-    const int max_int = std::numeric_limits< int >::max();
 };
 
 int main()

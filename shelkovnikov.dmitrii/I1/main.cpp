@@ -4,8 +4,8 @@
 class Counter
 {
 public:
-    Counter(int i):
-      count(i)
+    Counter():
+      count(0)
     {}
     void operator()(int previous, int current, int next)
     {
@@ -25,13 +25,13 @@ public:
       return count;
     }
 private:
-    int count;
+    int count = 0;
     const int max_int = std::numeric_limits< int >::max();
 };
 
 int main()
 {
-  Counter counter(0);
+  Counter counter;
   int previous = 0;
   int current = 0;
   int next = 0;

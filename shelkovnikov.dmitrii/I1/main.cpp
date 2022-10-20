@@ -7,7 +7,8 @@ private:
     int count;
     const int max_int = std::numeric_limits< int >::max();
 public:
-    Counter(int i) : count(i)
+    Counter(int i) :
+      count(i)
     {
     }
     void operator()(int previous, int current, int next)
@@ -60,6 +61,6 @@ int main()
     std::cout << "Error... =(";
     return -1;
   }
-  std::cout << counter.count << std::endl;
+  std::cout << counter.get_count() << std::endl;
   return 0;
 }

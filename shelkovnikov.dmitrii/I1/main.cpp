@@ -4,10 +4,9 @@
 class Counter
 {
 public:
-    Counter(int i) :
+    Counter(int i):
       count(i)
-    {
-    }
+    {}
     void operator()(int previous, int current, int next)
     {
       if (previous < current && current < next)

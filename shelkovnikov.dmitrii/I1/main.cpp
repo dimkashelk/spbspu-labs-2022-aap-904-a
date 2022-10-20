@@ -4,7 +4,12 @@
 class Counter
 {
 public:
-    Counter():
+    Counter() :
+      count(0)
+    {}
+    Counter(int prev, int cur) :
+      previous(prev),
+      current(cur),
       count(0)
     {}
     void operator()(int previous, int current, int next)
@@ -26,6 +31,8 @@ public:
     }
 private:
     int count = 0;
+    int previous = 0;
+    int current = 0;
     const int max_int = std::numeric_limits< int >::max();
 };
 

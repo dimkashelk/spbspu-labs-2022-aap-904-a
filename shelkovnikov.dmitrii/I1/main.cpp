@@ -6,21 +6,21 @@ int main()
   int next = 0;
   std::cin >> next;
   Counter counter(next, next);
-  try
+  while (next && std::cin)
   {
-    while (next && std::cin)
+    if (std::cin)
     {
-      if (std::cin)
+      try
       {
         counter(next);
       }
-      std::cin >> next;
+      catch (std::overflow_error &e)
+      {
+        std::cout << e.what();
+        return 2;
+      }
     }
-  }
-  catch (std::overflow_error &e)
-  {
-    std::cout << e.what();
-    return 2;
+    std::cin >> next;
   }
   if (!std::cin)
   {

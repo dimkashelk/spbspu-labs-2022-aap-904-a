@@ -57,12 +57,12 @@ int main()
   catch (std::overflow_error &e)
   {
     std::cout << e.what();
-    return -1;
+    return 2;
   }
   if (!std::cin)
   {
     std::cout << "Error... =(";
-    return -1;
+    return 1;
   }
   std::cout << counter.get_count() << std::endl;
   return 0;

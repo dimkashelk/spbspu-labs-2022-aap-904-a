@@ -1,43 +1,6 @@
 #include <iostream>
 #include <limits>
 
-class Counter
-{
-public:
-    Counter()
-    {}
-    Counter(int prev, int cur) :
-      previous(prev),
-      current(cur),
-      count(0)
-    {}
-    void operator()(int next)
-    {
-      constexpr int max_int = std::numeric_limits< int >::max();
-      if (previous < current && current < next)
-      {
-        if (count == max_int)
-        {
-          throw std::overflow_error("Too much numbers....");
-        }
-        else
-        {
-          count++;
-        }
-        previous = current;
-        current = next;
-      }
-    }
-    int get_count()
-    {
-      return count;
-    }
-private:
-    int count = 0;
-    int previous = 0;
-    int current = 0;
-};
-
 int main()
 {
   int next = 0;

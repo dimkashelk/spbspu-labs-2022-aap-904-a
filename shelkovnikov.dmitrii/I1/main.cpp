@@ -4,8 +4,7 @@
 class Counter
 {
 public:
-    Counter() :
-      count(0)
+    Counter()
     {}
     Counter(int prev, int cur) :
       previous(prev),

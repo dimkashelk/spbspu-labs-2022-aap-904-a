@@ -12,17 +12,20 @@ public:
       current(cur),
       count(0)
     {}
-    void operator()(int previous, int current, int next)
+    void operator()(int next)
     {
       if (previous < current && current < next)
       {
         if (count == max_int)
         {
           throw std::overflow_error("Too much numbers....");
-        } else
+        }
+        else
         {
           count++;
         }
+        previous = current;
+        current = next;
       }
     }
     int get_count()
@@ -38,22 +41,17 @@ private:
 
 int main()
 {
-  Counter counter;
-  int previous = 0;
-  int current = 0;
   int next = 0;
   std::cin >> next;
-  previous = current = next;
+  Counter counter(next, next);
   try
   {
     while (next && std::cin)
     {
       if (std::cin)
       {
-        counter(previous, current, next);
+        counter(next);
       }
-      previous = current;
-      current = next;
       std::cin >> next;
     }
   }

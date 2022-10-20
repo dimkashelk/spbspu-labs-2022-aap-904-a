@@ -8,7 +8,7 @@ struct Counter
     }
     void operator()(int previous, int current, int next)
     {
-      if (previous < current and current < next)
+      if (previous < current && current < next)
       {
         if (count == max_int)
         {

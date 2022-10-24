@@ -1,5 +1,5 @@
-#include <iostream>
 #include "counter.h"
+#include <iostream>
 int main()
 {
   int next = 0;

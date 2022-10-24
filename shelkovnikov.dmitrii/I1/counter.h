@@ -10,7 +10,7 @@ public:
     void operator()(int next);
     int get_count();
 private:
-    int count = 0;
+    unsigned int count = 0;
     int previous = 0;
     int current = 0;
 };

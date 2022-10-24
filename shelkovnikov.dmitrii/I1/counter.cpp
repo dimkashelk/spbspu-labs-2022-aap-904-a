@@ -12,7 +12,7 @@ int Counter::get_count()
 }
 void Counter::operator()(int next)
 {
-  constexpr int max_int = std::numeric_limits< int >::max();
+  constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
   if (previous < current && current < next)
   {
     if (count == max_int)

@@ -5,8 +5,7 @@ Counter::Counter():
   previous(0),
   current(0)
 {}
-Counter::Counter(int prev,
-    int cur):
+Counter::Counter(int prev, int cur):
   count(0),
   previous(prev),
   current(cur)

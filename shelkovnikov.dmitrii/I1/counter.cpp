@@ -9,7 +9,7 @@ Counter::Counter(int prev, int cur) :
   previous(prev),
   current(cur)
 {}
-int Counter::get_count()
+int Counter::get_count() const
 {
   return count;
 }

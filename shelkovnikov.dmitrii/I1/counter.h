@@ -7,7 +7,7 @@ public:
     Counter();
     Counter(int prev, int cur);
     void operator()(int next);
-    int get_count();
+    int get_count() const;
 private:
     unsigned int count;
     int previous;

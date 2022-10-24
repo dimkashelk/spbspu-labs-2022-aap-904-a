@@ -1,6 +1,5 @@
 #include <iostream>
 #include "counter.h"
-
 Counter::Counter()
 {}
 Counter::Counter(int prev, int cur) :

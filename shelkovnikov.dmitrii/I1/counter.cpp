@@ -1,4 +1,5 @@
 #include "counter.h"
+#include <stdexcept>
 Counter::Counter():
   count(0),
   previous(0),

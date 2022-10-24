@@ -1,17 +1,12 @@
 #include "compute.h"
 
-int turkin::max(int a, int b)
+int turkin::isSame(int last, int current, int amount)
 {
-  return (a > b) ? a : b;
+  return (current == last && current != 0) ? ++amount : 0;
 }
 
-int turkin::condition(int current)
+int turkin::CompareNums::operator()(int last, int current, int amount)
 {
-  return (current != 0) ? 1 : 0;
-}
-
-int turkin::condition(int last, int current, int amount)
-{
-  return (current == last && current != 0) ? ++amount : 1;
+  return turkin::isSame(last, current, amount);
 }
 

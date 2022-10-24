@@ -1,6 +1,5 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_COUNTER_H
 #define SPBSPU_LABS_2022_AAP_904_A_COUNTER_H
-#include <limits>
 class Counter
 {
 public:

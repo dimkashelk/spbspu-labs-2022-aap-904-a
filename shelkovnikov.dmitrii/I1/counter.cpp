@@ -1,5 +1,6 @@
 #include "counter.h"
 #include <stdexcept>
+#include <limits>
 Counter::Counter():
   count(0),
   previous(0),

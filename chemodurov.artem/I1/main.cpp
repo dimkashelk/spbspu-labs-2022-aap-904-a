@@ -11,8 +11,8 @@ int main()
     std::cin >> curr_value;
     try
     {
-      min_cnt(curr_value, std::cin);
-      max_even_cnt(curr_value, std::cin);
+      min_cnt(curr_value);
+      max_even_cnt(curr_value);
     }
     catch (const std::overflow_error & e)
     {
@@ -25,7 +25,7 @@ int main()
       return 1;
     }
   }
-  while(std::cin && curr_value);
+  while (std::cin && curr_value);
 
   std::cout << min_cnt.min_count << " " << max_even_cnt.max_even_count << "\n";
   return 0;

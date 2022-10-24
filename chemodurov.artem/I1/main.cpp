@@ -9,6 +9,11 @@ int main()
   do
   {
     std::cin >> curr_value;
+    if (!std::cin)
+    {
+      std::cerr << "You didn`t enter an integer number\n";
+      return 1;
+    }
     try
     {
       min_cnt(curr_value);
@@ -17,11 +22,6 @@ int main()
     catch (const std::overflow_error & e)
     {
       std::cout << e.what() << "\n";
-      return 1;
-    }
-    if (!std::cin)
-    {
-      std::cerr << "You didn`t enter an integer number\n";
       return 1;
     }
   }

@@ -1,7 +1,11 @@
 #include "counter.h"
-Counter::Counter()
+Counter::Counter() :
+  count(0),
+  previous(prev),
+  current(cur)
 {}
 Counter::Counter(int prev, int cur) :
+  count(0),
   previous(prev),
   current(cur)
 {}

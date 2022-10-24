@@ -9,9 +9,9 @@ public:
     void operator()(int next);
     int get_count();
 private:
-    unsigned int count = 0;
-    int previous = 0;
-    int current = 0;
+    unsigned int count;
+    int previous;
+    int current;
 };
 
 #endif //SPBSPU_LABS_2022_AAP_904_A_COUNTER_H

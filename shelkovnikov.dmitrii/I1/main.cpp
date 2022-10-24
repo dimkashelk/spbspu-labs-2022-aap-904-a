@@ -13,7 +13,7 @@ int main()
       {
         counter(next);
       }
-      catch (std::overflow_error &e)
+      catch (const std::overflow_error &e)
       {
         std::cout << e.what();
         return 2;

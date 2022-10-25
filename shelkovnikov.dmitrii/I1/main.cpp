@@ -1,10 +1,10 @@
-#include "counter.h"
+#include "counterelementslargerneighbors.h"
 #include <iostream>
 int main()
 {
   int next = 0;
   std::cin >> next;
-  Counter countElementsLargerNeighbors(next, next);
+  CounterElementsLargerNeighbors countElementsLargerNeighbors(next, next);
   while (next && std::cin)
   {
     if (std::cin)

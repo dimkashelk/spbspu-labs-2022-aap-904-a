@@ -1,4 +1,4 @@
-#include "counter.h"
+#include "counterelementslargerneighbors.h"
 #include <stdexcept>
 #include <limits>
 CounterElementsLargerNeighbors::CounterElementsLargerNeighbors():

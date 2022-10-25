@@ -1,10 +1,12 @@
 #include "counterelementslargerneighbors.h"
+#include "counteraftermaximum.h"
 #include <iostream>
 int main()
 {
   int next = 0;
   std::cin >> next;
   CounterElementsLargerNeighbors countElementsLargerNeighbors(next, next);
+  CounterAfterMaximum counterAfterMaximum(next);
   while (next && std::cin)
   {
     if (std::cin)
@@ -12,6 +14,7 @@ int main()
       try
       {
         countElementsLargerNeighbors(next);
+        counterAfterMaximum(next);
       }
       catch (const std::overflow_error &e)
       {
@@ -27,5 +30,6 @@ int main()
     return 1;
   }
   std::cout << countElementsLargerNeighbors.get_count() << std::endl;
+  std::cout << counterAfterMaximum.get_count() << std::endl;
   return 0;
 }

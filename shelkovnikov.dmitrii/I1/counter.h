@@ -1,10 +1,10 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_COUNTER_H
 #define SPBSPU_LABS_2022_AAP_904_A_COUNTER_H
-class Counter
+class CounterElementsLargerNeighbors
 {
 public:
-  Counter();
-  Counter(int prev, int cur);
+  CounterElementsLargerNeighbors();
+  CounterElementsLargerNeighbors(int prev, int cur);
   void operator()(int next);
   unsigned int get_count() const;
 private:
@@ -12,5 +12,4 @@ private:
   int previous;
   int current;
 };
-
 #endif //SPBSPU_LABS_2022_AAP_904_A_COUNTER_H

@@ -1,21 +1,21 @@
 #include "counter.h"
 #include <stdexcept>
 #include <limits>
-Counter::Counter():
+CounterElementsLargerNeighbors::CounterElementsLargerNeighbors():
   count(0),
   previous(0),
   current(0)
 {}
-Counter::Counter(int prev, int cur):
+CounterElementsLargerNeighbors::CounterElementsLargerNeighbors(int prev, int cur):
   count(0),
   previous(prev),
   current(cur)
 {}
-unsigned int Counter::get_count() const
+unsigned int CounterElementsLargerNeighbors::get_count() const
 {
   return count;
 }
-void Counter::operator()(int next)
+void CounterElementsLargerNeighbors::operator()(int next)
 {
   constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
   if (previous < current && current < next)

@@ -4,14 +4,14 @@ int main()
 {
   int next = 0;
   std::cin >> next;
-  Counter counter(next, next);
+  Counter countElementsLargerNeighbors(next, next);
   while (next && std::cin)
   {
     if (std::cin)
     {
       try
       {
-        counter(next);
+        countElementsLargerNeighbors(next);
       }
       catch (const std::overflow_error &e)
       {
@@ -26,6 +26,6 @@ int main()
     std::cout << "Error... =(";
     return 1;
   }
-  std::cout << counter.get_count() << std::endl;
+  std::cout << countElementsLargerNeighbors.get_count() << std::endl;
   return 0;
 }

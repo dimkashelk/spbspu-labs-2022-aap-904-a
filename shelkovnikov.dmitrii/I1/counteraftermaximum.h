@@ -1,12 +1,13 @@
-//
-// Created by notebook on 25.10.2022.
-//
-
-#ifndef SPBSPU_LABS_2022_AAP_904_A_COUNTERAFTERMAXIMUM_H
-#define SPBSPU_LABS_2022_AAP_904_A_COUNTERAFTERMAXIMUM_H
-
+#ifndef UNTITLED1_COUNTERAFTERMAXIMUM_H
+#define UNTITLED1_COUNTERAFTERMAXIMUM_H
 class CounterAfterMaximum
 {
+public:
+    CounterAfterMaximum(int number);
+    void operator()(int next);
+    unsigned int get_count() const;
+private:
+    unsigned int count;
+    int maximum;
 };
-
-#endif //SPBSPU_LABS_2022_AAP_904_A_COUNTERAFTERMAXIMUM_H
+#endif //UNTITLED1_COUNTERAFTERMAXIMUM_H

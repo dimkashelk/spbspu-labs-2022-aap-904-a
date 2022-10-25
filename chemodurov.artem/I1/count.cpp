@@ -1,5 +1,6 @@
 #include "count.h"
 #include <limits>
+#include <stdexcept>
 
 void MinCounter::operator()(int curr_value)
 {

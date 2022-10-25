@@ -11,7 +11,7 @@ Counter::Counter(int prev, int cur):
   previous(prev),
   current(cur)
 {}
-int Counter::get_count() const
+unsigned int Counter::get_count() const
 {
   return count;
 }

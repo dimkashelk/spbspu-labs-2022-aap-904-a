@@ -1,4 +1,5 @@
 #include "count.h"
+#include <iostream>
 
 int main()
 {

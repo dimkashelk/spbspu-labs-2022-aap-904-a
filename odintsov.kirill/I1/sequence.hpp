@@ -9,6 +9,12 @@ namespace odintsov {
     int largestVal;
     unsigned int n;
   };
+  struct DescendingCounter {
+    void operator()(int v);
+    int lastVal;
+    bool lastValDescending;
+    unsigned int n;
+  };
 }
 
 #endif

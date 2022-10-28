@@ -1,6 +1,4 @@
 #include "sequence.hpp"
-#include <iostream>
-#include <limits>
 
 void odintsov::LargestCounter::operator()(int v) {
   if (v > largestVal) {

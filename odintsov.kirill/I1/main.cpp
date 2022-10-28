@@ -26,6 +26,6 @@ int main()
       return 1;
     }
   } while (v != 0 && std::cin);
-  std::cout << countLargest.n << ' '
-            << countDescending.n << '\n';
+  std::cout << "Largest value count: " << countLargest.n
+            << "\nDescending(both sides) value count: " << countDescending.n << '\n';
 }

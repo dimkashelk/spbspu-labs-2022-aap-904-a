@@ -1,6 +1,22 @@
+#include <iostream>
+#include <limits>
 #include "sequence.hpp"
 
 int main()
 {
-  return 0;
+  const int minInt = std::numeric_limits< int >::min();
+  odintsov::LargestCounter countLargest {minInt, 0};
+  int v = 0;
+  do {
+    std::cin >> v;
+    if (!std::cin) {
+      std::cout << "Input error\n";
+      return 1;
+    }
+    if (v == 0) {
+      break;
+    }
+    countLargest(v);
+  } while (v != 0 && std::cin);
+  std::cout << countLargest.n << '\n';
 }

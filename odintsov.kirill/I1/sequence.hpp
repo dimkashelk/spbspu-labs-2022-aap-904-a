@@ -2,6 +2,7 @@
 #define SEQUENCE_HPP
 
 namespace odintsov {
+  void incrementSafely(unsigned int&);
   struct LargestCounter {
     void operator()(int v);
     int largestVal;

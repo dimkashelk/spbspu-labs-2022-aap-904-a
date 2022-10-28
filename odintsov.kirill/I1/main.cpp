@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <stdexcept>
 #include "sequence.hpp"
 
 int main()
@@ -17,8 +18,13 @@ int main()
     if (v == 0) {
       break;
     }
-    countLargest(v);
-    countDescending(v);
+    try {
+      countLargest(v);
+      countDescending(v);
+    } catch (std::overflow_error& e) {
+      std::cout << e.what() << '\n';
+      return 1;
+    }
   } while (v != 0 && std::cin);
   std::cout << countLargest.n << ' '
             << countDescending.n << '\n';

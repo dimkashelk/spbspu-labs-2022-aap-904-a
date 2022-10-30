@@ -1,5 +1,6 @@
 #ifndef MAXSAME_HPP
 #define MAXSAME_HPP
+
 struct MaxSameCounter
 {
   void operator()(int curr_value);

@@ -1,10 +1,12 @@
 #include <iostream>
 #include "secondmax.hpp"
 #include "maxsame.hpp"
+
 int main() {
   SecondMax sec_max{0};
   MaxSameCounter max_same_cnt{0};
   int curr_value = 0;
+
   do
   {
     std::cin >> curr_value;
@@ -26,6 +28,7 @@ int main() {
     }
   }
   while (curr_value && std::cin);
+
   std::cout << sec_max.second_max << " " << max_same_cnt.max_same_count << "\n";
   return 0;
 }

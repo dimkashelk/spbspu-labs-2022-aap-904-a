@@ -26,9 +26,8 @@ int main() {
       std::cout << e.what() << "\n";
       return 1;
     }
-  } 
+  }
   while (curr_value && std::cin);
-
   std::cout << sec_max.second_max << " " << max_same_cnt.max_same_count << "\n";
   return 0;
 }

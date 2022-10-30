@@ -1,12 +1,10 @@
 #include <iostream>
 #include "secondmax.hpp"
 #include "maxsame.hpp"
-
 int main() {
   SecondMax sec_max{0};
   MaxSameCounter max_same_cnt{0};
   int curr_value = 0;
-
   do
   {
     std::cin >> curr_value;
@@ -22,7 +20,7 @@ int main() {
     }
     catch (const std::overflow_error & e)
     {
-      std::cout << "Error happened: ";
+      std::cout << "Error happened:\n";
       std::cout << e.what() << "\n";
       return 1;
     }

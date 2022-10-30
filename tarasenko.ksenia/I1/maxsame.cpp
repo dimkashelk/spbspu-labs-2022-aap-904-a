@@ -1,7 +1,6 @@
 #include "maxsame.hpp"
 #include <limits>
 #include <stdexcept>
-
 void MaxSameCounter::operator()(int curr_value)
 {
   const unsigned int max_unsigned_int = std::numeric_limits<unsigned int>::max();

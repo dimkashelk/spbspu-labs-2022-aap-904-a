@@ -1,5 +1,4 @@
 #include "secondmax.hpp"
-
 void SecondMax::operator()(int curr_value)
 {
   if (curr_value >= first_max)

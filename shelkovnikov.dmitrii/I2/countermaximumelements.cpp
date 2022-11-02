@@ -1,6 +1,5 @@
 #include "countermaximumelements.h"
 CounterMaximumElements::CounterMaximumElements(int *arr, int count):
-  max_count(0),
   length(count),
   arr(arr)
 {}

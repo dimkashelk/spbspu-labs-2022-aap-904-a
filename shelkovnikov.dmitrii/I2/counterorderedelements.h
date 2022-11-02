@@ -3,9 +3,8 @@
 class CounterOrderedElements
 {
 public:
-  CounterMaximumElements(int *arr, int count);
-  unsigned int get_maximum_count() const;
-  int get_maximum() const;
+  CounterOrderedElements(int *arr, int count);
+  unsigned int get_count() const;
 private:
   int length;
   int *arr;

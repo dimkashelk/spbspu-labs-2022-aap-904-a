@@ -33,11 +33,6 @@ int main(int argc, char *argv[])
     }
     in >> arr[i];
   }
-  if (!in.eof())
-  {
-    std::cout << "Too much numbers in file";
-    return 1;
-  }
   CounterMaximumElements counterMaximumElements(arr, n);
   CounterOrderedElements counterOrderedElements(arr, n);
   std::cout << counterMaximumElements.get_maximum_count() << std::endl;

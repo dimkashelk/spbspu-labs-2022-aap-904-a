@@ -7,6 +7,11 @@ int main(int argc, char *argv[])
     std::cout << "Too much parameters";
     return -1;
   }
+  if (argc == 1)
+  {
+    std::cout << "No file name....";
+    return -1;
+  }
   int n;
   std::cin >> n;
   std::ifstream in;

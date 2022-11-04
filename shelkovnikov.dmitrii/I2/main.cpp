@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
   {
     std::cout << counterMaximumElements.get_maximum_count() << std::endl;
     std::cout << counterOrderedElements.get_count() << std::endl;
-  } catch (const std::overflow_error &e)
+  }
+  catch (const std::overflow_error &e)
   {
     std::cout << e.what();
     return 2;

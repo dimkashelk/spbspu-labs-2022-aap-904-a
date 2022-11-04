@@ -1,3 +1,5 @@
+#include "countermaximumelements.h"
+#include "counterorderedelements.h"
 #include <iostream>
 #include <fstream>
 int main(int argc, char *argv[])
@@ -36,9 +38,9 @@ int main(int argc, char *argv[])
     std::cout << "Too much numbers in file";
     return 1;
   }
-  for (int i = 0; i < n; i++)
-  {
-    std::cout << arr[i] << " ";
-  }
+  CounterMaximumElements counterMaximumElements(arr, n);
+  CounterOrderedElements counterOrderedElements(arr, n);
+  std::cout << counterMaximumElements.get_maximum_count() << std::endl;
+  std::cout << counterOrderedElements.get_count() << std::endl;
   return 0;
 }

@@ -2,11 +2,23 @@
 #define COMPUTE_H
 namespace turkin
 {
-  struct CompareNums
+  struct LengthOfSequence
   {
-    int operator()(int last, int current, int amount);
+    void updateAmount(int last, int current);
+    int isSame(int last, int current);
+    int getMaxAmount();
+
+    int currentAmount = 0;
+    int maxAmount = 0;
+    int count = 0;
   };
-  int isSame(int last, int current, int amount);
+
+  struct PreMaximum
+  {
+    void updatePreMaximum(int current);
+    int getPreMaximum();
+    int allMax = 0;
+    int beforeMax = 0;
+  };
 }
 #endif
-

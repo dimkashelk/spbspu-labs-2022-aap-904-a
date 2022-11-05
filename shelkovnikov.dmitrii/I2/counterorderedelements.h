@@ -5,6 +5,7 @@ class CounterOrderedElements
 public:
   CounterOrderedElements(int *arr, int count);
   unsigned int get_count() const;
+  ~CounterOrderedElements();
 private:
   int length;
   int *arr;

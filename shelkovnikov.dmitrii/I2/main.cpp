@@ -45,5 +45,6 @@ int main(int argc, char *argv[])
     std::cout << e.what();
     return 2;
   }
+  delete[] arr;
   return 0;
 }

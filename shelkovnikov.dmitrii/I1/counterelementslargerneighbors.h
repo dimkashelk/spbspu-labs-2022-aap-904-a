@@ -3,7 +3,6 @@
 class CounterElementsLargerNeighbors
 {
 public:
-  CounterElementsLargerNeighbors();
   CounterElementsLargerNeighbors(int prev, int cur);
   void operator()(int next);
   unsigned int get_count() const;

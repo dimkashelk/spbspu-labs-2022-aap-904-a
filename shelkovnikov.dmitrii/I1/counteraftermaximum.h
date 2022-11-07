@@ -1,5 +1,5 @@
-#ifndef UNTITLED1_COUNTERAFTERMAXIMUM_H
-#define UNTITLED1_COUNTERAFTERMAXIMUM_H
+#ifndef SPBSPU_LABS_2022_AAP_904_A_COUNTERAFTERMAXIMUM_H
+#define SPBSPU_LABS_2022_AAP_904_A_COUNTERAFTERMAXIMUM_H
 class CounterAfterMaximum
 {
 public:
@@ -10,4 +10,4 @@ private:
     unsigned int count;
     int maximum;
 };
-#endif //UNTITLED1_COUNTERAFTERMAXIMUM_H
+#endif

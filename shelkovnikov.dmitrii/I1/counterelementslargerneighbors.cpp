@@ -1,11 +1,6 @@
 #include "counterelementslargerneighbors.h"
 #include <stdexcept>
 #include <limits>
-CounterElementsLargerNeighbors::CounterElementsLargerNeighbors():
-  count(0),
-  previous(0),
-  current(0)
-{}
 CounterElementsLargerNeighbors::CounterElementsLargerNeighbors(int cur):
   count(0),
   previous(cur),

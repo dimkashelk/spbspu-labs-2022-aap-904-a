@@ -4,22 +4,28 @@
 int main()
 {
   int current = 1;
-  int last = 0;
   turkin::LengthOfSequence len;
   turkin::PreMaximum max;
 
   while (current && std::cin)
   {
     std::cin >> current;
-    len.updateAmount(last, current);
-    max.updatePreMaximum(current);
-    last = current;
+    try
+    {
+      len(current);
+      max(current);
+    }
+    catch (std::overflow_error & error)
+    {
+      std::cout << error.what() << std::endl;
+      return 2;
+    }
   }
 
   if (!std::cin)
   {
     std::cout << "incorrect data\n";
-    return 0;
+    return 1;
   }
   std::cout << "MaxAmount: " << len.getMaxAmount() << "\tBeforeMax: " << max.getPreMaximum() << std::endl;
   return 0;

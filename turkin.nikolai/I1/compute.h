@@ -3,20 +3,23 @@
 namespace turkin
 {
   struct LengthOfSequence
-  {
-    void updateAmount(int last, int current);
-    int isSame(int last, int current);
-    int getMaxAmount();
+    {
+    void operator()(int current);
+    unsigned int isSame(int current);
+    unsigned int getMaxAmount();
+    bool checkLimit(unsigned int num);
 
-    int currentAmount = 0;
-    int maxAmount = 0;
-    int count = 0;
+    int last = 0;
+    unsigned int currentAmount = 0;
+    unsigned int maxAmount = 0;
+    unsigned int count = 0;
   };
 
   struct PreMaximum
-  {
-    void updatePreMaximum(int current);
+    {
+    void operator()(int current);
     int getPreMaximum();
+
     int allMax = 0;
     int beforeMax = 0;
   };

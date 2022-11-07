@@ -6,9 +6,9 @@ CounterElementsLargerNeighbors::CounterElementsLargerNeighbors():
   previous(0),
   current(0)
 {}
-CounterElementsLargerNeighbors::CounterElementsLargerNeighbors(int prev, int cur):
+CounterElementsLargerNeighbors::CounterElementsLargerNeighbors(int cur):
   count(0),
-  previous(prev),
+  previous(cur),
   current(cur)
 {}
 unsigned int CounterElementsLargerNeighbors::get_count() const

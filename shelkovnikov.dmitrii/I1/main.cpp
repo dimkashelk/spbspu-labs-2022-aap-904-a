@@ -5,7 +5,7 @@ int main()
 {
   int next = 0;
   std::cin >> next;
-  CounterElementsLargerNeighbors countElementsLargerNeighbors(next, next);
+  CounterElementsLargerNeighbors countElementsLargerNeighbors(next);
   CounterAfterMaximum counterAfterMaximum(next);
   while (next && std::cin)
   {

@@ -12,4 +12,4 @@ private:
   int previous;
   int current;
 };
-#endif //SPBSPU_LABS_2022_AAP_904_A_COUNTER_H
+#endif

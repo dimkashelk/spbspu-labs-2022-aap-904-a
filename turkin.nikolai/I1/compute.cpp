@@ -1,5 +1,4 @@
 #include "compute.h"
-#include <iostream>
 #include <limits>
 
 unsigned int turkin::LengthOfSequence::isSame(int current)
@@ -26,7 +25,7 @@ void turkin::LengthOfSequence::operator()(int current)
 
 bool turkin::LengthOfSequence::checkLimit(unsigned int num)
 {
-  return (num == std::numeric_limits<unsigned int>::max());
+  return (num == std::numeric_limits< unsigned int >::max());
 }
 
 int turkin::PreMaximum::getPreMaximum()

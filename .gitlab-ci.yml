@@ -1,4 +1,4 @@
-image: 'volgarenok/cxx-test:0.0.22'
+image: 'volgarenok/cxx-test:0.0.23'
 stages:
   - sanity
   - build

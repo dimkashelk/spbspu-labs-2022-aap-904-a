@@ -1,5 +1,6 @@
 #include "compute.h"
-#include <iostream>
+#include <algorithm>
+#include <stdexcept>
 #include <limits>
 
 unsigned int turkin::LengthOfSequence::isSame(int current)

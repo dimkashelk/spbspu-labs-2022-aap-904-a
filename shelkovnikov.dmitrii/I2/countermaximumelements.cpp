@@ -14,7 +14,7 @@ unsigned int CounterMaximumElements::get_maximum_count() const
   {
     if (maximum == arr[i])
     {
-      if (count + 1 == max_int)
+      if (count == max_int)
       {
         throw std::overflow_error("Too much numbers....");
       }

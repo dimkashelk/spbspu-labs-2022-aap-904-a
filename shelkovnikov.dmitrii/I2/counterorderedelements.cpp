@@ -13,7 +13,7 @@ unsigned int CounterOrderedElements::get_count() const
   {
     if (arr[i] < arr[i + 1])
     {
-      if (count + 1 == max_int)
+      if (count == max_int)
       {
         throw std::overflow_error("Too much numbers....");
       }

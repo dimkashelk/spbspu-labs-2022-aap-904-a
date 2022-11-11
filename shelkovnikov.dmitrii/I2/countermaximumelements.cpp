@@ -7,7 +7,7 @@ CounterMaximumElements::CounterMaximumElements(int *arr, int count):
 {}
 unsigned int CounterMaximumElements::get_maximum_count() const
 {
-  int count = 0;
+  unsigned int count = 0;
   const int maximum = get_maximum();
   constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
   for (int i = 0; i < length; i++)

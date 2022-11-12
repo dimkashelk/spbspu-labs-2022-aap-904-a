@@ -23,10 +23,6 @@ unsigned int CounterMaximumElements::get_maximum_count()
   }
   return count;
 }
-CounterMaximumElements::~CounterMaximumElements()
-{
-  delete arr;
-}
 int CounterMaximumElements::get_maximum()
 {
   int maximum = arr[0];

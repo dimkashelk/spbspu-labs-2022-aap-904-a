@@ -2,8 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-
-int main(int argc, char * argv[]) 
+int main(int argc, char * argv[])
 {
   if (argc != 2)
   {

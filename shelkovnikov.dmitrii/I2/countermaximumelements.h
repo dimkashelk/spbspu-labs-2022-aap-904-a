@@ -4,7 +4,7 @@ class CounterMaximumElements
 {
 public:
   CounterMaximumElements(int *arr, int count);
-  unsigned int get_maximum_count() const;
+  unsigned int get_maximum_count();
   ~CounterMaximumElements();
 private:
   int length;

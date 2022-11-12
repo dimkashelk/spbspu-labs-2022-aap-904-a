@@ -9,6 +9,6 @@ public:
 private:
   int length;
   int *arr;
-  int get_maximum() const;
+  int get_maximum();
 };
-#endif //SPBSPU_LABS_2022_AAP_904_A_COUNTERMAXIMUMELEMENTS_H
+#endif

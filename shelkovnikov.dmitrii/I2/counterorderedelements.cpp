@@ -2,9 +2,14 @@
 #include <limits>
 #include <stdexcept>
 CounterOrderedElements::CounterOrderedElements(int *arr, int length):
-  length(length),
-  arr(arr)
-{}
+  length(length)
+{
+  this->arr = new int[length];
+  for (int i = 0; i < length; i++)
+  {
+    this->arr[i] = arr[i];
+  }
+}
 unsigned int CounterOrderedElements::get_count() const
 {
   unsigned int count = 0;
@@ -23,4 +28,6 @@ unsigned int CounterOrderedElements::get_count() const
   return count;
 }
 CounterOrderedElements::~CounterOrderedElements()
-{}
+{
+  delete[] arr;
+}

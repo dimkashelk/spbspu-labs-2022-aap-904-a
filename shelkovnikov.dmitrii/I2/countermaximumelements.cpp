@@ -2,14 +2,19 @@
 #include <limits>
 #include <stdexcept>
 CounterMaximumElements::CounterMaximumElements(int *arr, int count):
-  length(count),
-  arr(arr)
-{}
+  length(count)
+{
+  this->arr = new int[count];
+  for (int i = 0; i < count; i++)
+  {
+    this->arr[i] = arr[i];
+  }
+}
 unsigned int CounterMaximumElements::get_maximum_count()
 {
   unsigned int count = 0;
   int maximum = get_maximum();
-  constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
+  constexpr unsigned int max_int = std::numeric_limits<unsigned int>::max();
   for (int i = 0; i < length; i++)
   {
     if (maximum == arr[i])
@@ -36,4 +41,6 @@ int CounterMaximumElements::get_maximum()
   return maximum;
 }
 CounterMaximumElements::~CounterMaximumElements()
-{}
+{
+  delete[] arr;
+}

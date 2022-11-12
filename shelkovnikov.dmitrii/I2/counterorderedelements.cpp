@@ -24,5 +24,5 @@ unsigned int CounterOrderedElements::get_count() const
 }
 CounterOrderedElements::~CounterOrderedElements()
 {
-  delete[] arr;
+  delete arr;
 }

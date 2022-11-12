@@ -131,3 +131,23 @@ Boost
 корню библиотеки.
 
 > Путь не должен содержать пробельные символы.
+Accepted Labs
+=============
+
+| Name                  | I1 | I2 | I3 | I4 | I5 | S0 |
+|-----------------------|----|----|----|----|----|----|
+| Aristarkhov Rostislav |    |    |    |    |    | ✓  |
+| Chemodurov Artem      |    |    |    |    |    | ✓  |
+| Chulkov Leontii       |    |    |    |    |    | ✓  |
+| Fesenko Ivan          |    |    |    |    |    | ✓  |
+| Gulkov Mikhail        |    |    |    |    |    | ✓  |
+| Kasilov Vasiliy       |    |    |    |    |    | ✓  |
+| Muhortov Victor       |    |    |    |    |    | ✓  |
+| Odintsov Kirill       |    |    |    |    |    | ✓  |
+| Romanchuk Alexey      |    |    |    |    |    | ✓  |
+| Romanovich Artem      |    |    |    |    |    | ✓  |
+| Shelkovnikov Dmitrii  |    |    |    |    |    | ✓  |
+| Tarasenko Ksenia      |    |    |    |    |    | ✓  |
+| Tsareva Yana          |    |    |    |    |    | ✓  |
+| Turkin Nikolai        |    |    |    |    |    | ✓  |
+| __Total__             |   0|   0|   0|   0|   0|  14|

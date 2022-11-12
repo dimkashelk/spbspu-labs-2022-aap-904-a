@@ -35,7 +35,3 @@ unsigned int CounterMaximumElements::get_maximum_count()
   }
   return count;
 }
-CounterMaximumElements::~CounterMaximumElements()
-{
-  delete[] arr;
-}

@@ -12,11 +12,12 @@ int main(int argc, char * argv[])
   if (argv[1] == std::string("-const"))
   {
     int data[10] = {4, 3, 2, 1, 5, 2, 1, 9, 9, 9};
+    std::cout << data;//just use data
     //work
   }
   if (argv[1] == std::string("-dynamic"))
   {
-    int capacity = 0;
+    size_t capacity = 0;
     std::cin >> capacity;
     if (!std::cin)
     {

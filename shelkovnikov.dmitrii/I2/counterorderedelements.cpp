@@ -22,3 +22,7 @@ unsigned int CounterOrderedElements::get_count() const
   }
   return count;
 }
+CounterOrderedElements::~CounterOrderedElements()
+{
+  delete arr;
+}

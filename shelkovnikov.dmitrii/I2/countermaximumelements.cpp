@@ -5,18 +5,6 @@ CounterMaximumElements::CounterMaximumElements(int *arr, int count):
   length(count),
   arr(arr)
 {}
-int CounterMaximumElements::get_maximum()
-{
-  int maximum = arr[0];
-  for (int i = 0; i < length; i++)
-  {
-    if (maximum < arr[i])
-    {
-      maximum = arr[i];
-    }
-  }
-  return maximum;
-}
 unsigned int CounterMaximumElements::get_maximum_count()
 {
   unsigned int count = 0;
@@ -34,4 +22,20 @@ unsigned int CounterMaximumElements::get_maximum_count()
     }
   }
   return count;
+}
+CounterMaximumElements::~CounterMaximumElements()
+{
+  delete arr;
+}
+int CounterMaximumElements::get_maximum()
+{
+  int maximum = arr[0];
+  for (int i = 0; i < length; i++)
+  {
+    if (maximum < arr[i])
+    {
+      maximum = arr[i];
+    }
+  }
+  return maximum;
 }

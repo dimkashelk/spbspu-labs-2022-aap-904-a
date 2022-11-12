@@ -25,7 +25,7 @@ unsigned int CounterMaximumElements::get_maximum_count()
 }
 CounterMaximumElements::~CounterMaximumElements()
 {
-  delete[] arr;
+  delete arr;
 }
 int CounterMaximumElements::get_maximum()
 {

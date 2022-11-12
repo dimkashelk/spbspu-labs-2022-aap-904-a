@@ -35,3 +35,5 @@ int CounterMaximumElements::get_maximum()
   }
   return maximum;
 }
+CounterMaximumElements::~CounterMaximumElements()
+{}

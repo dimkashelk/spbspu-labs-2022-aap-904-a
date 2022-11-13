@@ -17,9 +17,9 @@ int main(int argc, char ** argv)
   unsigned int a_cnt_div = chemodurov::countDivisible(a_ptr, a_size, divider);
   std::cout << a_cnt_dec << " " << a_cnt_div << "\n";
 
-  int n = 0;
+  size_t n = 0;
   std::cin >> n;
-  if (!std::cin || n < 0)
+  if (!std::cin)
   {
     std::cerr << "Error...\n";
     return 1;

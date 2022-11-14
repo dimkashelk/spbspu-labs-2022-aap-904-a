@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
   {
     if (dynamicArray->size + 1 > dynamicArray->capacity)
     {
-      try 
+      try
       {
         dynamicArray->capacity = dynamicArray->capacity + 10;
         dynamicArray->data = turkin::extend(dynamicArray->data, dynamicArray->size, dynamicArray->capacity + 10);

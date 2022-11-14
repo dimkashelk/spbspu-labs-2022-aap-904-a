@@ -5,10 +5,10 @@ class CounterMaximumElements
 public:
   CounterMaximumElements(int *arr, int count);
   unsigned int get_maximum_count();
+  int get_maximum();
   ~CounterMaximumElements();
 private:
   int length;
   int* arr;
-  int get_maximum();
 };
 #endif

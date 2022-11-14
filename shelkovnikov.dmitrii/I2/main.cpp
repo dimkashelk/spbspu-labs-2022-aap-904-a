@@ -34,24 +34,20 @@ int main(int argc, char *argv[])
     std::cout << e.what();
     return 2;
   }
+  srand(time(0));
   int n;
   std::cin >> n;
   int *arr = new int[n];
   for (int i = 0; i < n; i++)
   {
-    if (in.eof())
-    {
-      std::cout << "There are fewer numbers in file";
-      return 1;
-    }
-    in >> arr[i];
+    arr[i] = rand();
   }
-  CounterMaximumElements counterMaximumElements(arr, n);
-  CounterOrderedElements counterOrderedElements(arr, n);
+  CounterMaximumElements counterMaximumElements2(arr, n);
+  CounterOrderedElements counterOrderedElements2(arr, n);
   try
   {
-    std::cout << counterMaximumElements.get_maximum_count() << std::endl;
-    std::cout << counterOrderedElements.get_count() << std::endl;
+    std::cout << counterMaximumElements2.get_maximum_count() << std::endl;
+    std::cout << counterOrderedElements2.get_count() << std::endl;
   }
   catch (const std::overflow_error &e)
   {

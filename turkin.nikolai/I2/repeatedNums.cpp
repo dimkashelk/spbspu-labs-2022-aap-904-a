@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <stdexcept>
 
-bool turkin::RepeatedNums::operator()(const int * array, size_t size, int begin, int end)
+bool turkin::RepeatedNums::operator()(const int * array, size_t size, size_t begin, size_t end)
 {
   if (begin < 0 || end >= size)
   {

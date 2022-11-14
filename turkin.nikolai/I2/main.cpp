@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
   if (!std::cin)
   {
     std::cerr << "incorrect input\n";
+    delete dynamicArray;
+    delete fileArray;
     return 2;
   }
   for (size_t i = 0; i < dynamicSize; i++)
@@ -40,6 +42,8 @@ int main(int argc, char *argv[])
       catch (std::invalid_argument & error)
       {
         std::cout << error.what();
+        delete dynamicArray;
+        delete fileArray;
         return 5;
       }
     }
@@ -62,6 +66,8 @@ int main(int argc, char *argv[])
   catch (std::invalid_argument & error)
   {
     std::cout << error.what() << "\t" << "<empty file>";
+    delete dynamicArray;
+    delete fileArray;
     return 6;
   }
   for (size_t i = 0; i < fileSize; i++)
@@ -76,6 +82,8 @@ int main(int argc, char *argv[])
       catch (std::invalid_argument & error)
       {
         std::cout << error.what();
+        delete dynamicArray;
+        delete fileArray;
         return 5;
       }
     }

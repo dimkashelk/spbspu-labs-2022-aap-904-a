@@ -14,8 +14,6 @@ int main(int argc, char *argv[])
     std::cout << "No file name....";
     return 1;
   }
-  int n;
-  std::cin >> n;
   std::ifstream in;
   in.open(argv[1]);
   if (!in.is_open())
@@ -23,6 +21,8 @@ int main(int argc, char *argv[])
     std::cout << "Error while opening file";
     return 1;
   }
+  int n;
+  std::cin >> n;
   int *arr = new int[n];
   for (int i = 0; i < n; i++)
   {

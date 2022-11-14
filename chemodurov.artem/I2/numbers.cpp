@@ -42,6 +42,5 @@ int * chemodurov::extendDynArray(const int * arr, size_t size, size_t new_size)
   {
     new_arr[i] = arr[i];
   }
-  delete [] arr;
   return new_arr;
 }

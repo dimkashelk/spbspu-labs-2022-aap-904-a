@@ -54,8 +54,16 @@ int main(int argc, char *argv[])
     std::cerr << "cannot open file\n";
     return 3;
   }
-  getline(input, line);
-  fileSize = std::stoi(line);
+  try
+  {
+    getline(input, line);
+    fileSize = std::stoi(line);
+  }
+  catch (std::invalid_argument & error)
+  {
+    std::cout << error.what() << "\t" << "<empty file>";
+    return 6;
+  }
   for (size_t i = 0; i < fileSize; i++)
   {
     if (fileArray->size + 1 > fileArray->capacity)
@@ -86,15 +94,15 @@ int main(int argc, char *argv[])
     bool constRepeated = repeatedNums(constArray,
                                         constSize,
                                         0,
-                                        constSize - 1);
+                                        constSize);
     bool dynamicRepeated = repeatedNums(dynamicArray->data,
                                           dynamicArray->size,
                                           0,
-                                          dynamicArray->size - 1);
+                                          dynamicArray->size);
     bool fileRepeated = repeatedNums(fileArray->data,
                                        fileArray->size,
                                        0,
-                                       fileArray->size - 1);
+                                       fileArray->size);
     std::cout << constSequence << "\t" << dynamicSequence << "\t" << fileSequence << "\n";
     std::cout << constRepeated << "\t" << dynamicRepeated << "\t" << fileRepeated << "\n";
   }

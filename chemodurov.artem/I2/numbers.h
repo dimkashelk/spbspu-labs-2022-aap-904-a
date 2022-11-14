@@ -21,7 +21,7 @@ namespace chemodurov
     size_t size;
     size_t capacity;
   };
-  int * extendDynArray(const int * arr, size_t size, size_t newcapacity);
+  int * extendDynArray(const int * arr, size_t size, size_t new_size);
   unsigned int countMaxDecreasing(int * arr, size_t size);
   unsigned int countDivisible(int * arr, size_t size, int divider);
 }

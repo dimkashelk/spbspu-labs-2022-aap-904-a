@@ -1,5 +1,4 @@
 #include "numbers.h"
-#include <stdexcept>
 
 unsigned int chemodurov::countMaxDecreasing(int * arr, size_t size)
 {
@@ -36,16 +35,13 @@ unsigned int chemodurov::countDivisible(int * arr, size_t size, int divider)
   return divisible_cnt;
 }
 
-int * chemodurov::extendDynArray(const int * arr, size_t size, size_t newcapacity)
+int * chemodurov::extendDynArray(const int * arr, size_t size, size_t new_size)
 {
-  if (size > newcapacity)
-  {
-    throw std::invalid_argument("capacity < size");
-  }
-  int * newarray = new int[newcapacity];
+  int * new_arr = new int[new_size];
   for (size_t i = 0; i < size; ++i)
   {
-    newarray[i] = arr[i];
+    new_arr[i] = arr[i];
   }
-  return newarray;
+  delete [] arr;
+  return new_arr;
 }

@@ -4,7 +4,6 @@
 int main()
 {
   int value = 0;
-  int k = 0;
   MaxSameValue max_same_value{0};
   MaxGrowingSequence max_growing_sequence{0};
   do

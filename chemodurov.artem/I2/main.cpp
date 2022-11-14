@@ -45,12 +45,12 @@ int main(int argc, char ** argv)
     if (input.eof())
     {
       ++i;
+      delete [] arr;
     }
   }
   unsigned int arr_cnt_dec = chemodurov::countMaxDecreasing(arr, arr_size);
   unsigned int arr_cnt_div = chemodurov::countDivisible(arr, arr_size, divider);
   std::cout << arr_cnt_dec << " " << arr_cnt_div << "\n";
-  delete [] arr;
   size_t n = 0;
   std::cin >> n;
   if (!std::cin)

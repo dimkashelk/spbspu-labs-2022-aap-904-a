@@ -35,6 +35,7 @@ int main(int argc, char ** argv)
     {
       new_arr_size = ceil(sqrt(2) * arr_size);
       int * new_arr = chemodurov::extendDynArray(arr, arr_size, new_arr_size);
+      delete [] arr;
       arr = new_arr;
       new_arr = nullptr;
       arr_size = new_arr_size;

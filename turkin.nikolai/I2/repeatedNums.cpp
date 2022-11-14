@@ -4,7 +4,7 @@
 
 bool turkin::RepeatedNums::operator()(const int * array, size_t size, size_t begin, size_t end)
 {
-  if (begin < 0 || end >= size)
+  if (end >= size)
   {
     throw std::invalid_argument("invalid range");
   }

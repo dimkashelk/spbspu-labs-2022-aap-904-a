@@ -62,7 +62,6 @@ int main(int argc, char *argv[])
     if (!in)
     {
       std::cout << "Error... =(";
-      delete[] arr2;
       return 1;
     }
     int* arr3 = new int[size];
@@ -72,7 +71,6 @@ int main(int argc, char *argv[])
       if (!in)
       {
         std::cout << "Error... =(";
-        delete[] arr2;
         delete[] arr3;
         return 1;
       }
@@ -87,10 +85,10 @@ int main(int argc, char *argv[])
     catch (const std::overflow_error &e)
     {
       std::cout << e.what();
-      delete[] arr2;
       delete[] arr3;
       return 2;
     }
+    delete[] arr3;
   }
   return 0;
 }

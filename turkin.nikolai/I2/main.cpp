@@ -62,36 +62,30 @@ int main(int argc, char *argv[])
   {
     getline(input, line);
     fileSize = std::stoi(line);
+    for (size_t i = 0; i < fileSize; i++)
+    {
+      if (fileArray->size + 1 > fileArray->capacity)
+      {
+        try
+        {
+          fileArray->capacity = fileArray->capacity + 10;
+          fileArray->data = turkin::extend(fileArray->data, fileArray->size, fileArray->capacity + 10);
+        }
+        catch (std::invalid_argument & error)
+        {
+          std::cout << error.what();
+          delete dynamicArray;
+          delete fileArray;
+          return 5;
+        }
+      }
+      getline(input, line);
+      fileArray->size++;
+      fileArray->data[i] = std::stoi(line);
+    }
   }
   catch (std::invalid_argument & error)
-  {
-    std::cout << error.what() << "\t" << "<empty file>";
-    delete dynamicArray;
-    delete fileArray;
-    return 6;
-  }
-  for (size_t i = 0; i < fileSize; i++)
-  {
-    if (fileArray->size + 1 > fileArray->capacity)
-    {
-      try
-      {
-        fileArray->capacity = fileArray->capacity + 10;
-        fileArray->data = turkin::extend(fileArray->data, fileArray->size, fileArray->capacity + 10);
-      }
-      catch (std::invalid_argument & error)
-      {
-        std::cout << error.what();
-        delete dynamicArray;
-        delete fileArray;
-        return 5;
-      }
-    }
-    getline(input, line);
-    fileArray->size++;
-    fileArray->data[i] = std::stoi(line);
-  }
-
+  {}
   turkin::DownSequence downSequence;
   turkin::RepeatedNums repeatedNums;
   size_t constSequence = downSequence(constArray, constSize);

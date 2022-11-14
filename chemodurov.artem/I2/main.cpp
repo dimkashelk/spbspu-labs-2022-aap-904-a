@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
     delete [] arr;
   }
 
-  int n = 0;
+  size_t n = 0;
   std::cin >> n;
   if (!std::cin)
   {

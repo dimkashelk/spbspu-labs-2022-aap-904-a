@@ -8,7 +8,7 @@ void MaxSameValue::operator()(int value)
     number_of_same_value += 1;
   }
   else
-  {			
+  {
     max_number_of_same_value = std::max(number_of_same_value, max_number_of_same_value);
     number_of_same_value = 1;
   }

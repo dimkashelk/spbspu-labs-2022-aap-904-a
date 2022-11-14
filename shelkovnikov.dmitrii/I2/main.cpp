@@ -21,6 +21,19 @@ int main(int argc, char *argv[])
     std::cout << "Error while opening file";
     return 1;
   }
+  int arr1[] = {1, 2, 3, 4, 5, 6, 7};
+  CounterMaximumElements counterMaximumElements1(arr1, 7);
+  CounterOrderedElements counterOrderedElements1(arr1, 7);
+  try
+  {
+    std::cout << counterMaximumElements1.get_maximum_count() << std::endl;
+    std::cout << counterOrderedElements1.get_count() << std::endl;
+  }
+  catch (const std::overflow_error &e)
+  {
+    std::cout << e.what();
+    return 2;
+  }
   int n;
   std::cin >> n;
   int *arr = new int[n];

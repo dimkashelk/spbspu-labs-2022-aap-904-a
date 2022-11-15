@@ -3,7 +3,7 @@ struct Localminimals
 {
   void operator()(int previous, std::istream& in)
   {
-	if (in)
+    if (in)
 	{
 	  if ((current < previous) && (current < next))
 	  {
@@ -11,7 +11,7 @@ struct Localminimals
 	  }
 	  next = current;
 	  current = previous;
-	}
+    }
   }
   int countlocalmin;
   int current;
@@ -23,7 +23,7 @@ struct Minsrmax
   void operator()(int previous, std::istream& in)
   {
     if (in)
-	{
+    {
 	  i++;
 	  if ((i>2) && (current < previous) && (current > next))
 	  {
@@ -31,7 +31,7 @@ struct Minsrmax
 	  }
 	  next = current;
 	  current = previous;
-	}
+    }
   }
   int i = 0;
   int countminsrmax;
@@ -46,9 +46,9 @@ int main()
   Minsrmax count2{0};
   do
   {
-	std::cin >> previous;
-	count1(previous, std::cin);
-	count2(previous, std::cin);
+    std::cin >> previous;
+    count1(previous, std::cin);
+    count2(previous, std::cin);
   } 
   while (previous && std::cin);
   if (!std::cin)

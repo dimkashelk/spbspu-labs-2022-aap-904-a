@@ -17,7 +17,6 @@ struct Localminimals
   int current;
   int next;
 };
-
 struct Minsrmax
 {
   void operator()(int previous, std::istream& in)
@@ -38,7 +37,6 @@ struct Minsrmax
   int current;
   int next;
 };
-
 int main()
 {
   int previous;

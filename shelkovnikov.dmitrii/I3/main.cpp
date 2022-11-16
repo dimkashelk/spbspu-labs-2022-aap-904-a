@@ -82,14 +82,32 @@ char* get_other_symbols(char *destination, const char *source, int *res_size)
 }
 int main()
 {
-  int size = 5;
-  char* str = {'d', ' ', ' ', ' ', 'a', ' '};
-  char* res = new char[size];
-  remove_extra_spaces(res, str, &size);
-  std::cout << size;
-  for (int i = 0; i < size; i++)
+  StringBuilder stringBuilder;
+  char dop;
+  dop = static_cast<char>(getchar());
+  while (dop)
   {
-    std::cout << res[i];
+    stringBuilder.add_char(dop);
+    dop = static_cast<char>(getchar());
   }
+  stringBuilder.add_char('\0');
+  char* str = stringBuilder.get_string();
+  int size = stringBuilder.get_size();
+  char *res1 = new char[size];
+  int size1;
+  remove_extra_spaces(res1, str, &size1);
+  for (int i = 0; i < size1; i++)
+  {
+    std::cout << res1[i];
+  }
+  delete[] res1;
+  char *res2 = new char[26];
+  int size2;
+  remove_extra_spaces(res2, str, &size2);
+  for (int i = 0; i < 26; i++)
+  {
+    std::cout << res2[i];
+  }
+  delete[] res2;
   return 0;
 }

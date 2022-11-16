@@ -18,39 +18,41 @@ int main(int argc, char ** argv)
     std::cerr << argv[1] << " Error while reading\n";
     return 2;
   }
-  size_t arr_size = 5;
-  size_t new_arr_size = 5;
-  int * arr = new int[arr_size];
-  int * new_arr = nullptr;
-  for (size_t i = 0; i < arr_size; ++i)
+  size_t arr_size = 0;
+  input >> arr_size;
+  if (!input)
   {
-    int x = 0;
-    input >> x;
-    if (!input)
-    {
-      std::cerr << argv[1] << " Error while reading\n";
-      return 2;
-    }
-    arr[i] = x;
-    if (i == arr_size - 1)
-    {
-      new_arr_size = ceil(sqrt(2) * arr_size);
-      new_arr = chemodurov::extendDynArray(arr, arr_size, new_arr_size);
-      delete [] arr;
-      arr = new_arr;
-      new_arr = nullptr;
-      arr_size = new_arr_size;
-    }
-    input >> std::ws;
-    if (input.eof())
-    {
-      ++i;
-      delete [] arr;
-    }
+    std::cerr << argv[1] << " Error while reading\n";
+    return 2;
   }
-  unsigned int arr_cnt_dec = chemodurov::countMaxDecreasing(arr, arr_size);
-  unsigned int arr_cnt_div = chemodurov::countDivisible(arr, arr_size, divider);
-  std::cout << arr_cnt_dec << " " << arr_cnt_div << "\n";
+  if (!arr_size)
+  {
+    std::cout << "0 0\n";
+  }
+  else
+  {
+    int * arr = new int[arr_size];
+    while (!input.eof())
+    {
+      for (size_t i = 0; i < arr_size; ++i)
+      {
+        int x = 0;
+        input >> x;
+        if (!input)
+        {
+          std::cerr << argv[1] << " Error while reading\n";
+          delete [] arr;
+          return 2;
+        }
+        arr[i] = x;
+      }
+      input >> std::ws;
+    }
+    delete [] arr;
+    unsigned int arr_cnt_dec = chemodurov::countMaxDecreasing(arr, arr_size);
+    unsigned int arr_cnt_div = chemodurov::countDivisible(arr, arr_size, divider);
+    std::cout << arr_cnt_dec << " " << arr_cnt_div << "\n";
+  }
   size_t n = 0;
   std::cin >> n;
   if (!std::cin)

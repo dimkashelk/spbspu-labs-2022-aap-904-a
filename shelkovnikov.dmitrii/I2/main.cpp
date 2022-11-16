@@ -62,6 +62,7 @@ int main(int argc, char *argv[])
     if (!in)
     {
       std::cout << "Error... =(";
+      in.close();
       return 1;
     }
     int* arr3 = new int[size];
@@ -72,6 +73,7 @@ int main(int argc, char *argv[])
       {
         std::cout << "Error... =(";
         delete[] arr3;
+        in.close();
         return 1;
       }
     }

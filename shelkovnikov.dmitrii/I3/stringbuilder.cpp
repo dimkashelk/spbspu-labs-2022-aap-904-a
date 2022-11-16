@@ -26,6 +26,14 @@ char StringBuilder::get_char(int i)
 {
   return str[i];
 }
+void StringBuilder::remove_char(int ind)
+{
+  for (int i = ind; i < size - 1; i++)
+  {
+    str[i] = str[i + 1];
+  }
+  size--;
+}
 void StringBuilder::extend(int new_capacity)
 {
   char *new_str = new char[new_capacity];

@@ -8,6 +8,7 @@ public:
   size_t get_size();
   char* get_string();
   char get_char(int i);
+  void remove_char(int ind);
 private:
   void extend(int new_capacity);
   size_t size;

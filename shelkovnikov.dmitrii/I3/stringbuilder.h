@@ -7,6 +7,7 @@ public:
   void add_char(char);
   size_t get_size();
   char* get_string();
+  char get_char(int i);
 private:
   void extend(int new_capacity);
   size_t size;

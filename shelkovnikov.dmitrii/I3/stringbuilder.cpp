@@ -22,6 +22,10 @@ char* StringBuilder::get_string()
 {
   return str;
 }
+char StringBuilder::get_char(int i)
+{
+  return str[i];
+}
 void StringBuilder::extend(int new_capacity)
 {
   char *new_str = new char[new_capacity];

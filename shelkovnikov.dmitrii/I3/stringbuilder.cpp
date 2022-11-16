@@ -41,8 +41,8 @@ void StringBuilder::extend(int new_capacity)
   {
     new_str[i] = str[i];
   }
+  delete[] str;
   str = new_str;
-  delete[] new_str;
 }
 StringBuilder::~StringBuilder()
 {

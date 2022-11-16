@@ -2,7 +2,7 @@
 #define I1_SEQUENCE_H
 
 struct Counter {
-  void operator()(int currentValue);
+  void operator()(unsigned int currentValue);
 
   unsigned int count;
   unsigned int countMax;
@@ -11,7 +11,7 @@ struct Counter {
 };
 
 struct LocalMax {
-  void operator()(int currentValue);
+  void operator()(unsigned int currentValue);
 
   unsigned int previousValue;
   unsigned int beforePreviousValue;

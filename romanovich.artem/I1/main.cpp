@@ -6,7 +6,7 @@ int main() {
   Counter counter{1, 1, 0};
   LocalMax localMax{0, 0, 0};
 
-  int currentValue = 0;
+  unsigned int currentValue = 0;
   do {
     std::cin >> currentValue;
 

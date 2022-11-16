@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <limits>
 
-void Counter::operator()(int currentValue)
+void Counter::operator()(unsigned int currentValue)
 {
   const unsigned int maxUnsignedInt = std::numeric_limits<unsigned int>::max();
 
@@ -23,7 +23,7 @@ void Counter::operator()(int currentValue)
   previousValue = currentValue;
 }
 
-void LocalMax::operator()(int currentValue)
+void LocalMax::operator()(unsigned int currentValue)
 {
   const unsigned int maxUnsignedInt = std::numeric_limits<unsigned int>::max();
 

@@ -4,19 +4,19 @@
 struct Counter {
   void operator()(int currentValue);
 
-  unsigned long long count;
-  unsigned long long countMax;
+  unsigned int count;
+  unsigned int countMax;
 
-  unsigned long long previousValue;
+  unsigned int previousValue;
 };
 
 struct LocalMax {
   void operator()(int currentValue);
 
-  unsigned long long previousValue;
-  unsigned long long beforePreviousValue;
+  unsigned int previousValue;
+  unsigned int beforePreviousValue;
 
-  unsigned long long count;
+  unsigned int count;
 };
 
 #endif

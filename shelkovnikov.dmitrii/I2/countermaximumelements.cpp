@@ -30,7 +30,7 @@ unsigned int CounterMaximumElements::get_maximum_count()
 }
 int CounterMaximumElements::get_maximum()
 {
-  int maximum = arr[0];
+  int maximum = std::numeric_limits<int>::min();
   for (int i = 0; i < length; i++)
   {
     if (maximum < arr[i])

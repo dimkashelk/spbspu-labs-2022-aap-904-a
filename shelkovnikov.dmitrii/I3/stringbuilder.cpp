@@ -24,3 +24,11 @@ void StringBuilder::extend(int new_capacity)
   str = new_str;
   delete[] new_str;
 }
+size_t StringBuilder::getSize()
+{
+  return size;
+}
+char* StringBuilder::getString()
+{
+  return str;
+}

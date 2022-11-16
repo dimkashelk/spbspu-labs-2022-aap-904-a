@@ -5,6 +5,8 @@ class StringBuilder
 public:
   StringBuilder();
   void addChar(char);
+  size_t getSize();
+  char* getString();
 private:
   void extend(int new_capacity);
   size_t size;

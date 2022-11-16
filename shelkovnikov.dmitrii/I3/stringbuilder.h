@@ -4,6 +4,7 @@ class StringBuilder
 {
 public:
   StringBuilder();
+  ~StringBuilder();
   void add_char(char);
   size_t get_size();
   char* get_string();

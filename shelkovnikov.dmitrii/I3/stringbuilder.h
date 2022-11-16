@@ -6,8 +6,9 @@ public:
   StringBuilder();
   void addChar(char);
 private:
-  char *str;
+  void extend(int new_capacity);
   size_t size;
   size_t capacity;
+  char *str;
 };
 #endif

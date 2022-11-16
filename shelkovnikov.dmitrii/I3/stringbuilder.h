@@ -4,9 +4,9 @@ class StringBuilder
 {
 public:
   StringBuilder();
-  void addChar(char);
-  size_t getSize();
-  char* getString();
+  void add_char(char);
+  size_t get_size();
+  char* get_string();
 private:
   void extend(int new_capacity);
   size_t size;

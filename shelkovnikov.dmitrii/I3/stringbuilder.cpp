@@ -4,7 +4,7 @@ StringBuilder::StringBuilder():
   capacity(8),
   str(new char[capacity])
 {}
-void StringBuilder::addChar(char new_char)
+void StringBuilder::add_char(char new_char)
 {
   if (size == capacity)
   {
@@ -13,6 +13,14 @@ void StringBuilder::addChar(char new_char)
   }
   str[size] = new_char;
   size++;
+}
+size_t StringBuilder::get_size()
+{
+  return size;
+}
+char* StringBuilder::get_string()
+{
+  return str;
 }
 void StringBuilder::extend(int new_capacity)
 {
@@ -23,12 +31,4 @@ void StringBuilder::extend(int new_capacity)
   }
   str = new_str;
   delete[] new_str;
-}
-size_t StringBuilder::getSize()
-{
-  return size;
-}
-char* StringBuilder::getString()
-{
-  return str;
 }

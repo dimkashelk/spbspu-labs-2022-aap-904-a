@@ -55,42 +55,42 @@ int main(int argc, char *argv[])
     std::cout << "Error while opening file";
     return 1;
   }
-  while (!in.eof())
-  {
-    int size;
-    in >> size;
-    if (!in)
-    {
-      std::cout << "Error... =(";
-      in.close();
-      return 1;
-    }
-    int* arr3 = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-      in >> arr3[i];
-      if (!in)
-      {
-        std::cout << "Error... =(";
-        delete[] arr3;
-        in.close();
-        return 1;
-      }
-    }
-    CounterMaximumElements counterMaximumElements3(arr3, size);
-    CounterOrderedElements counterOrderedElements3(arr3, size);
-    try
-    {
-      std::cout << counterMaximumElements3.get_maximum_count() << std::endl;
-      std::cout << counterOrderedElements3.get_count() << std::endl;
-    }
-    catch (const std::overflow_error &e)
-    {
-      std::cout << e.what();
-      delete[] arr3;
-      return 2;
-    }
-    delete[] arr3;
-  }
+//  while (!in.eof())
+//  {
+//    int size;
+//    in >> size;
+//    if (!in)
+//    {
+//      std::cout << "Error... =(";
+//      in.close();
+//      return 1;
+//    }
+//    int* arr3 = new int[size];
+//    for (int i = 0; i < size; i++)
+//    {
+//      in >> arr3[i];
+//      if (!in)
+//      {
+//        std::cout << "Error... =(";
+//        delete[] arr3;
+//        in.close();
+//        return 1;
+//      }
+//    }
+//    CounterMaximumElements counterMaximumElements3(arr3, size);
+//    CounterOrderedElements counterOrderedElements3(arr3, size);
+//    try
+//    {
+//      std::cout << counterMaximumElements3.get_maximum_count() << std::endl;
+//      std::cout << counterOrderedElements3.get_count() << std::endl;
+//    }
+//    catch (const std::overflow_error &e)
+//    {
+//      std::cout << e.what();
+//      delete[] arr3;
+//      return 2;
+//    }
+//    delete[] arr3;
+//  }
   return 0;
 }

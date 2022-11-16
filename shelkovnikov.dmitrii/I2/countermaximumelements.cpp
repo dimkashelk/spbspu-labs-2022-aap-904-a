@@ -2,9 +2,9 @@
 #include <limits>
 #include <stdexcept>
 CounterMaximumElements::CounterMaximumElements(int *arr, int count):
-  length(count)
+  length(count),
+  arr(new int[count])
 {
-  this->arr = new int[count];
   for (int i = 0; i < count; i++)
   {
     this->arr[i] = arr[i];
@@ -30,7 +30,7 @@ unsigned int CounterMaximumElements::get_maximum_count()
 }
 int CounterMaximumElements::get_maximum()
 {
-  int maximum = this->arr[0];
+  int maximum = arr[0];
   for (int i = 0; i < length; i++)
   {
     if (maximum < arr[i])

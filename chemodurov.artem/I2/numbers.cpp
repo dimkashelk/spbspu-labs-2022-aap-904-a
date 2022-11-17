@@ -34,13 +34,3 @@ unsigned int chemodurov::countDivisible(int * arr, size_t size, int divider)
   }
   return divisible_cnt;
 }
-
-int * chemodurov::extendDynArray(const int * arr, size_t size, size_t new_size)
-{
-  int * new_arr = new int[new_size];
-  for (size_t i = 0; i < size; ++i)
-  {
-    new_arr[i] = arr[i];
-  }
-  return new_arr;
-}

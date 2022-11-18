@@ -19,6 +19,36 @@ unsigned int count_ordered_elements(int *arr, size_t size)
   }
   return count;
 }
+int get_maximum(int *arr, size_t size)
+{
+  int maximum = std::numeric_limits<int>::min();
+  for (int i = 0; i < length; i++)
+  {
+    if (maximum < arr[i])
+    {
+      maximum = arr[i];
+    }
+  }
+  return maximum;
+}
+unsigned int count_maximum_elements(int *arr, size_t size)
+{
+  unsigned int count = 0;
+  int maximum = get_maximum(arr, size);
+  constexpr unsigned int max_int = std::numeric_limits<unsigned int>::max();
+  for (int i = 0; i < length; i++)
+  {
+    if (maximum == arr[i])
+    {
+      if (count == max_int)
+      {
+        throw std::overflow_error("Too much numbers....");
+      }
+      count++;
+    }
+  }
+  return count;
+}
 int main(int argc, char *argv[])
 {
   if (argc > 2)

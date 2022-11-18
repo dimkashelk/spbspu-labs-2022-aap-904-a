@@ -6,7 +6,7 @@ unsigned int count_ordered_elements(int *arr, size_t size)
 {
   unsigned int count = 0;
   constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
-  for (int i = 0; i < length - 1; i++)
+  for (int i = 0; i < size - 1; i++)
   {
     if (arr[i] < arr[i + 1])
     {
@@ -22,7 +22,7 @@ unsigned int count_ordered_elements(int *arr, size_t size)
 int get_maximum(int *arr, size_t size)
 {
   int maximum = std::numeric_limits< int >::min();
-  for (int i = 0; i < length; i++)
+  for (int i = 0; i < size; i++)
   {
     if (maximum < arr[i])
     {
@@ -36,7 +36,7 @@ unsigned int count_maximum_elements(int *arr, size_t size)
   unsigned int count = 0;
   int maximum = get_maximum(arr, size);
   constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
-  for (int i = 0; i < length; i++)
+  for (int i = 0; i < size; i++)
   {
     if (maximum == arr[i])
     {

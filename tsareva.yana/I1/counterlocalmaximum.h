@@ -3,7 +3,7 @@
 class CounterLocalMaximum
 {
 public:
-  CounterLocalMaximum(int start);
+  explicit CounterLocalMaximum(int start);
   void operator()(int number);
   unsigned int get_count() const;
 private:

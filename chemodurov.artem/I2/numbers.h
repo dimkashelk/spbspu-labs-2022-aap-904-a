@@ -1,6 +1,6 @@
 #ifndef NUMBERS_H
-#define NUMBER_S
-#include <stddef.h>
+#define NUMBERS_H
+#include <cstddef>
 
 namespace chemodurov
 {

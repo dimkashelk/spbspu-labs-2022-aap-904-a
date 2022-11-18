@@ -9,8 +9,5 @@ struct MaxGrowingSequence
   unsigned int max_number_of_growing_sequence = 0;
 };
 
-<<<<<<< HEAD
 #endif
-=======
-#endif
->>>>>>> eaa5445ff98c54bac744d381fe2b8d81df193b6f
+

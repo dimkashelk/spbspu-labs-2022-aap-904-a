@@ -21,7 +21,7 @@ unsigned int count_ordered_elements(int *arr, size_t size)
 }
 int get_maximum(int *arr, size_t size)
 {
-  int maximum = std::numeric_limits<int>::min();
+  int maximum = std::numeric_limits< int >::min();
   for (int i = 0; i < length; i++)
   {
     if (maximum < arr[i])
@@ -35,7 +35,7 @@ unsigned int count_maximum_elements(int *arr, size_t size)
 {
   unsigned int count = 0;
   int maximum = get_maximum(arr, size);
-  constexpr unsigned int max_int = std::numeric_limits<unsigned int>::max();
+  constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
   for (int i = 0; i < length; i++)
   {
     if (maximum == arr[i])
@@ -62,31 +62,28 @@ int main(int argc, char *argv[])
     return 1;
   }
   int arr1[] = {1, 2, 3, 4, 5, 6, 7};
-  CounterMaximumElements counterMaximumElements1(arr1, 7);
-  CounterOrderedElements counterOrderedElements1(arr1, 7);
   try
   {
-    std::cout << counterMaximumElements1.get_maximum_count() << std::endl;
-    std::cout << counterOrderedElements1.get_count() << std::endl;
+    std::cout << count_maximum_elements(arr1, 7)
+              << count_ordered_elements(arr1, 7) << std::endl;
   }
   catch (const std::overflow_error &e)
   {
     std::cout << e.what();
     return 2;
   }
-  int n;
+  int n = 0;
   std::cin >> n;
   int *arr2 = new int[n];
+  srand(time(NULL));
   for (int i = 0; i < n; i++)
   {
     arr2[i] = rand();
   }
-  CounterMaximumElements counterMaximumElements2(arr2, n);
-  CounterOrderedElements counterOrderedElements2(arr2, n);
   try
   {
-    std::cout << counterMaximumElements2.get_maximum_count() << std::endl;
-    std::cout << counterOrderedElements2.get_count() << std::endl;
+    std::cout << count_maximum_elements(arr2, n)
+              << count_ordered_elements(arr2, n) << std::endl;
   }
   catch (const std::overflow_error &e)
   {
@@ -104,12 +101,11 @@ int main(int argc, char *argv[])
   }
   while (!in.eof())
   {
-    int size;
+    int size = 0;
     in >> size;
     if (!in)
     {
       std::cout << "Error... =(";
-      in.close();
       return 1;
     }
     int *arr3 = new int[size];
@@ -120,16 +116,13 @@ int main(int argc, char *argv[])
       {
         std::cout << "Error... =(";
         delete[] arr3;
-        in.close();
         return 1;
       }
     }
-    CounterMaximumElements counterMaximumElements3(arr3, size);
-    CounterOrderedElements counterOrderedElements3(arr3, size);
     try
     {
-      std::cout << counterMaximumElements3.get_maximum_count() << std::endl;
-      std::cout << counterOrderedElements3.get_count() << std::endl;
+      std::cout << count_maximum_elements(arr3, size)
+                << count_ordered_elements(arr3, size) << std::endl;
     }
     catch (const std::overflow_error &e)
     {

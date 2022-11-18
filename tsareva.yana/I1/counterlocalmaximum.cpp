@@ -8,7 +8,7 @@ CounterLocalMaximum::CounterLocalMaximum(int start):
 {}
 void CounterLocalMaximum::operator()(int number)
 {
-  constexpr unsigned int maxUInt = std::numeric_limits<unsigned int>::max();
+  constexpr unsigned int maxUInt = std::numeric_limits< unsigned int >::max();
   if (first < second && second < number)
   {
     if (count == maxUInt)

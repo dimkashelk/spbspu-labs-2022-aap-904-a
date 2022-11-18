@@ -22,12 +22,12 @@ int main()
     }
     catch(const std::overflow_error & e)
     {
-      std::cout << "Error: << "\n";
+      std::cout << "Error: \n";
       std::cout << e.what() << "\n";
       return 1;
     }
+  }
   while (std::cin && value);
-
   std::cout << "Max number of same value " << max_same_value.max_number_of_same_value << "\n";
   std::cout << "Max number of growing sequence " << max_growing_sequence.max_number_of_growing_sequence << "\n";
   return 0;

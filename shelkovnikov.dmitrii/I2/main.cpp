@@ -1,5 +1,3 @@
-#include "countermaximumelements.h"
-#include "counterorderedelements.h"
 #include <iostream>
 #include <fstream>
 unsigned int count_ordered_elements(int *arr, size_t size)

@@ -9,6 +9,10 @@ CounterSumPrev::CounterSumPrev(int start):
 void CounterSumPrev::operator()(int next)
 {
   constexpr unsigned int maxUInt = std::numeric_limits<unsigned int>::max();
+  if (maxUInt - prev1 < prev2)
+  {
+    throw std::overflow_error("Too big numbers");
+  }
   if (next == prev1 + prev2)
   {
     if (count == maxUInt)

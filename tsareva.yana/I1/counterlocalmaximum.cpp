@@ -1,7 +1,7 @@
 #include "counterlocalmaximum.h"
 #include <limits>
 #include <stdexcept>
-CounterLocalMaximum::CounterLocalMaximum(int start) :
+CounterLocalMaximum::CounterLocalMaximum(int start):
   first(start),
   second(start),
   count(0)

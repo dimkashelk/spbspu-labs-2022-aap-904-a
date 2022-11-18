@@ -4,7 +4,7 @@
 
 void Counter::operator()(unsigned int currentValue)
 {
-  const unsigned int maxUnsignedInt = std::numeric_limits<unsigned int>::max();
+  const unsigned int maxUnsignedInt = std::numeric_limits< unsigned int >::max();
 
   if (previousValue == currentValue && currentValue != 0) {
     count += 1;
@@ -25,7 +25,7 @@ void Counter::operator()(unsigned int currentValue)
 
 void LocalMax::operator()(unsigned int currentValue)
 {
-  const unsigned int maxUnsignedInt = std::numeric_limits<unsigned int>::max();
+  const unsigned int maxUnsignedInt = std::numeric_limits< unsigned int >::max();
 
   if (currentValue != 0 && previousValue != 0 && beforePreviousValue != 0) {
     if (count == maxUnsignedInt) {

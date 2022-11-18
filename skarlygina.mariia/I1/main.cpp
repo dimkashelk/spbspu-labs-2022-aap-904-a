@@ -1,5 +1,5 @@
-#include "supplement_same.h"
-#include "supplement_growing.h"
+#include "supplement_same_value.h"
+#include "supplement_growing_sequence.h"
 #include <iostream>
 
 int main()

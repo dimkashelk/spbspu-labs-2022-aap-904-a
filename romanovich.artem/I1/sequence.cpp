@@ -7,10 +7,10 @@ void Counter::operator()(unsigned int currentValue)
   const unsigned int maxUnsignedInt = std::numeric_limits< unsigned int >::max();
 
   if (previousValue == currentValue && currentValue != 0) {
-    count += 1;
     if (count == maxUnsignedInt) {
       throw std::overflow_error("Sequence too long. Error occurred.");
     }
+    count += 1;
 
   } else {
     count = 1;

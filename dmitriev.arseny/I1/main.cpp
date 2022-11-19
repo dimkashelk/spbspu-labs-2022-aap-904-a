@@ -1,23 +1,19 @@
 #include <iostream>
 #include "header.h"
-
 int main()
 {
   int p2 = 0, p1 = 0;
   int k = 0;
   int max_Mono = 0;
   int max_DelBezOst = 0;
-  
   do
   {
     p1 = p2;
     std::cin >> p2;
-
   if (!std::cin)
   {
       std::cout << "Inp error" << std::endl;
   }
-
   if (p2 == 0)
     {
       break;
@@ -31,8 +27,7 @@ int main()
   {
     std::cout << e.what() << "\n" << std::endl;
     return 1;
-                                                            }
-
+  }
   } while (std::cin and p2);
 
 

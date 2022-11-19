@@ -1,4 +1,4 @@
-#include "CounterMoreThanPrevious.h"
+#include "countermorethanprevious.h"
 #include <limits>
 #include <stdexcept>
 CounterMoreThanPrevious::CounterMoreThanPrevious(int start):

@@ -20,13 +20,18 @@ size_t StringBuilder::get_size()
 }
 char* StringBuilder::get_string()
 {
-  return str;
+  char *dop = new char[size];
+  for (size_t i = 0; i < size; i++)
+  {
+    dop[i] = str[i];
+  }
+  return dop;
 }
-char StringBuilder::get_char(int i)
+char StringBuilder::get_char(size_t i)
 {
   return str[i];
 }
-void StringBuilder::remove_char(int ind)
+void StringBuilder::remove_char(size_t ind)
 {
   for (int i = ind; i < size - 1; i++)
   {

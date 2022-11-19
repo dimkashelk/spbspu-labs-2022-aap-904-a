@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
   int arr1[] = {1, 2, 3, 4, 5, 6, 7};
   try
   {
-    std::cout << count_maximum_elements(arr1, 7)
-              << count_ordered_elements(arr1, 7) << std::endl;
+    std::cout << count_maximum_elements(arr1, 7) << std::endl;
+    std::cout << count_ordered_elements(arr1, 7) << std::endl;
   }
   catch (const std::overflow_error &e)
   {
@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
   }
   try
   {
-    std::cout << count_maximum_elements(arr2, n)
-              << count_ordered_elements(arr2, n) << std::endl;
+    std::cout << count_maximum_elements(arr2, n) << std::endl;
+    std::cout << count_ordered_elements(arr2, n) << std::endl;
   }
   catch (const std::overflow_error &e)
   {
@@ -76,8 +76,8 @@ int main(int argc, char *argv[])
     }
     try
     {
-      std::cout << count_maximum_elements(arr3, size)
-                << count_ordered_elements(arr3, size) << std::endl;
+      std::cout << count_maximum_elements(arr3, size) << std::endl;
+      std::cout << count_ordered_elements(arr3, size) << std::endl;
     }
     catch (const std::overflow_error &e)
     {

@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
+#include <cstddefs>
 int main(int argc, char *argv[])
 {
   if (argc > 2)
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
     std::cout << e.what();
     return 2;
   }
-  int n = 0;
+  size_t n = 0;
   std::cin >> n;
   int *arr2 = new int[n];
   std::srand(time(nullptr));
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
   }
   while (!in.eof())
   {
-    int size = 0;
+    size_t size = 0;
     in >> size;
     if (!in)
     {

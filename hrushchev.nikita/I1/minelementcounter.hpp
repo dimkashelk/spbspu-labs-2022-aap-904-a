@@ -4,8 +4,9 @@
 struct MinElementCounter
 {
   void operator()(int cur_value);
-  unsigned int count_min = 0;
+
   int min_value = 0;
+  unsigned int count_min = 0;
 };
 #endif
 

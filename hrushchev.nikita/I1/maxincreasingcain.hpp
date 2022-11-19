@@ -9,3 +9,4 @@ struct MaxIncreasingCain
   unsigned int max_len_cain = 0;
 };
 #endif
+

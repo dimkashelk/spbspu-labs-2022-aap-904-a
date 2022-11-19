@@ -6,7 +6,6 @@ void MaxIncreasingCain::operator()(int cur_value)
 {
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
-
   if (cur_value && pre_value)
   {
     if (cur_len_cain == max_unsigned_int)
@@ -37,3 +36,4 @@ void MaxIncreasingCain::operator()(int cur_value)
     pre_value = cur_value;
   }
 }
+

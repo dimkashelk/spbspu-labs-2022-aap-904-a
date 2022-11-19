@@ -27,3 +27,4 @@ void MinElementCounter::operator()(int cur_value)
     count_min = 1;
   }
 }
+

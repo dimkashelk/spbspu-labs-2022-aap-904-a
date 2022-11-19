@@ -8,3 +8,4 @@ struct MinElementCounter
   int min_value = 0;
 };
 #endif
+

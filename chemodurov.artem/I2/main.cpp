@@ -70,8 +70,8 @@ int main(int argc, char ** argv)
     int * dyn_arr = new int[n];
     for (size_t i = 0; i < n; ++i)
     {
-      srand(time(0));
-      dyn_arr[i] = rand();
+      std::srand(std::time(0));
+      dyn_arr[i] = std::rand();
     }
     unsigned int dyn_a_cnt_dec = chemodurov::countMaxDecreasing(dyn_arr, n);
     unsigned int dyn_a_cnt_div = chemodurov::countDivisible(dyn_arr, n, client::divider);

@@ -1,9 +1,9 @@
-#include "countorderedelements.h"
-#include "countmaximumelements.h"
 #include <stdexcept>
 #include <iostream>
-#include <fstream>
 #include <cstddef>
+#include <fstream>
+#include "countorderedelements.h"
+#include "countmaximumelements.h"
 int main(int argc, char *argv[])
 {
   if (argc > 2)

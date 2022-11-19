@@ -3,10 +3,10 @@
 
 struct MaxSameValue
 {
-  void operator()(int value);
   int value_before = 0;
   unsigned int number_of_same_value = 0;
   unsigned int max_number_of_same_value = 0;
+  void operator()(int value);
 };
 
 #endif

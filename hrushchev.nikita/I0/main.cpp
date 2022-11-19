@@ -27,7 +27,7 @@ int main()
       return 1;
     }
   } 
-while (cur_value && std::cin);
+  while (cur_value && std::cin);
 
   std::cout << min_elem_ctr.count_min << " " << max_inc_cain.max_len_cain << "\n";
   return 0;

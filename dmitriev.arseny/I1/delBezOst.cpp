@@ -12,5 +12,4 @@ void max_DelBezOst_foo(int& max_DelBezOst, const int p1, const int  p2)
     }
     max_DelBezOst++;
   }
-
 }

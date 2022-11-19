@@ -1,6 +1,6 @@
+#include <iostream>
 #include "countermorethanprevious.h"
 #include "maxlendescendingfragment.h"
-#include <iostream>
 int main()
 {
   int next = 0;

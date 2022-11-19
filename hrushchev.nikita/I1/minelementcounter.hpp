@@ -9,4 +9,3 @@ struct MinElementCounter
   unsigned int count_min = 0;
 };
 #endif
-

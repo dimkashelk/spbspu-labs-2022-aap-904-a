@@ -1,3 +1,5 @@
+#include <limits>
+#include <stdexcept>
 int get_maximum(int *arr, size_t size)
 {
   int maximum = std::numeric_limits< int >::min();

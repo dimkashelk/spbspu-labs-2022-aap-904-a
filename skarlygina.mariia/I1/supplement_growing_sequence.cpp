@@ -4,8 +4,8 @@
 
 void MaxGrowingSequence::operator()(int value)
 {
-  const unsigned int max_unsigned_value = std::numeric_limits<unsigned int>::max();
-  if(max_number_of_growing_sequence == max_unsigned_value)
+  const unsigned int max_unsigned_value = std::numeric_limits< unsigned int >::max();
+  if (max_number_of_growing_sequence == max_unsigned_value)
   {
     throw std::overflow_error("Overflow value");
   }

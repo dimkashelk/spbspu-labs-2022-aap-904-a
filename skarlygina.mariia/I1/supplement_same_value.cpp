@@ -4,8 +4,8 @@
 
 void MaxSameValue::operator()(int value)
 {
-  const unsigned int max_unsigned_value = std::numeric_limits<unsigned int>::max();
-  if(max_number_of_same_value == max_unsigned_value)
+  const unsigned int max_unsigned_value = std::numeric_limits< unsigned int >::max();
+  if (max_number_of_same_value == max_unsigned_value)
   {
     throw std::overflow_error("Overflow value");
   }

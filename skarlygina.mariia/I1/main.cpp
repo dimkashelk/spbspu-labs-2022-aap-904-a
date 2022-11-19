@@ -1,6 +1,6 @@
+#include <iostream>
 #include "supplement_same_value.h"
 #include "supplement_growing_sequence.h"
-#include <iostream>
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
       max_same_value(value);
       max_growing_sequence(value);
     }
-    catch(const std::overflow_error & e)
+    catch (const std::overflow_error & e)
     {
       std::cout << "Error: \n";
       std::cout << e.what() << "\n";

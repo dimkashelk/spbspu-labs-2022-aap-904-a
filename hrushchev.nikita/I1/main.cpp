@@ -29,6 +29,6 @@ int main()
   }
   while (cur_value && std::cin);
 
-  std::cout << min_elem_ctr.count_min << " " << max_inc_seqn.max_len_cain << "\n";
+  std::cout << min_elem_ctr.count_min << " " << max_inc_seqn.max_len_seqn << "\n";
   return 0;
 }

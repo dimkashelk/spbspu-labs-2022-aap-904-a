@@ -4,8 +4,10 @@
 struct MaxSeqLen
 {
   void operator()(int value);
-  unsigned int upseqcounter = 0;
-  unsigned int maxupseqcount = 0;
-  int prevalue = 0;
+
+  unsigned int upseqcounter;
+  unsigned int maxupseqcount;
+  int prevalue;
 };
 #endif
+

@@ -4,7 +4,9 @@
 struct MinCount
 {
   void operator()(int value);
-  int minvaluecounter = 0;
-  int minvalue = 0;
+
+  unsigned int minvaluecounter;
+  int minvalue;
 };
 #endif
+

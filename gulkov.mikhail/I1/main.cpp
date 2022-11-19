@@ -4,37 +4,34 @@
 
 int main()
 {
-
-  MaxSeqLen seq_len{0};
-  MinCount min_cnt{0};
+  MaxSeqLen seq_len{0, 0, 0};
+  MinCount min_cnt{0, 0};
   int value = 0;
-
   do
   {
-   std::cin >> value;
-   if (std::cin)
-   {
-    try
+    std::cin >> value;
+    if (std::cin)
     {
-     seq_len(value);
-     min_cnt(value);
+      try
+      {
+        seq_len(value);
+        min_cnt(value);
+      }
+      catch (const std::overflow_error& e)
+      {
+        std::cout << "Error happened:\n";
+        std::cout << e.what() << "\n";
+        return 1;
+      }
     }
-    catch (const std::overflow_error& e)
+    else
     {
-     std::cout << "Error happened:\n";
-     std::cout << e.what() << "\n";
-     return 1;
+      std::cerr << "Your input is not an integer\n";
+      return 1;
     }
-   }
-   else
-   {
-    std::cerr << "Your input is not an integer\n";
-    return 1;
-   }
   }
   while (value && std::cin);
 
   std::cout << "Minimum numbers count: " << min_cnt.minvaluecounter << ". The minimum at: " << min_cnt.minvalue;
-  std::cout << "\nMax increasing sequence with " << seq_len.maxupseqcount << " numbers\n";
-  return 0;
+  std::cout << "\nMax up sequence with " << seq_len.maxupseqcount << " numbers\n";
 }

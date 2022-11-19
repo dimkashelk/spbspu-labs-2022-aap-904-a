@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
   std::cin >> n;
   int *arr2 = new int[n];
   std::srand(time(nullptr));
-  for (int i = 0; i < n; i++)
+  for (size_t i = 0; i < n; i++)
   {
     arr2[i] = std::rand();
   }
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
       return 1;
     }
     int *arr3 = new int[size];
-    for (int i = 0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
       in >> arr3[i];
       if (!in)

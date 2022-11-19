@@ -1,32 +1,23 @@
 #include "countmaximumelements.h"
-#include <limits>
-#include <stdexcept>
-int get_maximum(int *arr, size_t size)
-{
-  int maximum = std::numeric_limits< int >::min();
-  for (size_t i = 0; i < size; i++)
-  {
-    if (maximum < arr[i])
-    {
-      maximum = arr[i];
-    }
-  }
-  return maximum;
-}
+#include <cstddefs>
 unsigned int count_maximum_elements(int *arr, size_t size)
 {
-  unsigned int count = 0;
-  int maximum = get_maximum(arr, size);
-  constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
+  if (size == 0)
+  {
+    return 0;
+  }
+  size_t count = 0;
+  int maximum = arr[0];
   for (size_t i = 0; i < size; i++)
   {
     if (maximum == arr[i])
     {
-      if (count == max_int)
-      {
-        throw std::overflow_error("Too much numbers....");
-      }
       count++;
+    }
+    else if (arr[i] > maximum)
+    {
+      maximum = arr[i];
+      count = 1;
     }
   }
   return count;

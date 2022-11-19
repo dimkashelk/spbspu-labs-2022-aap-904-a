@@ -8,7 +8,7 @@ MaxLenDescendingFragment::MaxLenDescendingFragment(int start):
 {}
 void MaxLenDescendingFragment::operator()(int next)
 {
-  constexpr unsigned int maxint = std::numeric_limits<unsigned int>::max();
+  constexpr unsigned int maxint = std::numeric_limits< unsigned int >::max();
   if (next < prev)
   {
     if (curr_length == maxint)

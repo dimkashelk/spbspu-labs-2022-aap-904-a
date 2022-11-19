@@ -26,9 +26,9 @@ int main()
   }
   if (!std::cin)
   {
-    std::cout << "bruh...";
+    std::cout << "bruh..." << "\n";
     return 1;
   }
-  std::cout << counterMoreThanPrevious.get_count() << std::endl;
-  std::cout << maxLenDescendingFragment.get_length() << std::endl;
+  std::cout << counterMoreThanPrevious.get_count() << "\n";
+  std::cout << maxLenDescendingFragment.get_length() << "\n";
 }

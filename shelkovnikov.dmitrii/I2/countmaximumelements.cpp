@@ -1,5 +1,4 @@
 #include "countmaximumelements.h"
-#include <cstddef>
 size_t count_maximum_elements(int *arr, size_t size)
 {
   if (size == 0)

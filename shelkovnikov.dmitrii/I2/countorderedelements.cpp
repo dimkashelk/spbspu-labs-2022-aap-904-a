@@ -1,5 +1,4 @@
 #include "countorderedelements.h"
-#include <cstddef>
 size_t count_ordered_elements(int *arr, size_t size)
 {
   size_t count = 0;

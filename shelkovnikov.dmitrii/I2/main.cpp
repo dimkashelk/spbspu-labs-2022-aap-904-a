@@ -46,8 +46,7 @@ int main(int argc, char *argv[])
     return 2;
   }
   delete[] arr2;
-  std::ifstream in;
-  in.open(argv[1]);
+  std::ifstream in(argv[1]);
   if (!in.is_open())
   {
     std::cout << "Error while opening file";

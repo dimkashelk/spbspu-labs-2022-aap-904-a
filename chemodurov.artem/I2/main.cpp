@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <ctime>
 
 namespace client
 {
@@ -54,8 +53,8 @@ int main(int argc, char ** argv)
       input >> std::ws;
     }
     delete [] arr;
-    unsigned int arr_cnt_dec = chemodurov::countMaxDecreasing(arr, arr_size);
-    unsigned int arr_cnt_div = chemodurov::countDivisible(arr, arr_size, client::divider);
+    unsigned long int arr_cnt_dec = chemodurov::countMaxDecreasing(arr, arr_size);
+    unsigned long int arr_cnt_div = chemodurov::countDivisible(arr, arr_size, client::divider);
     std::cout << arr_cnt_dec << " " << arr_cnt_div << "\n";
   }
   size_t n = 0;
@@ -68,13 +67,14 @@ int main(int argc, char ** argv)
   if (n > 0)
   {
     int * dyn_arr = new int[n];
+    const unsigned int srand_arg = 5;
+    std::srand(srand_arg);
     for (size_t i = 0; i < n; ++i)
     {
-      std::srand(std::time(0));
       dyn_arr[i] = std::rand();
     }
-    unsigned int dyn_a_cnt_dec = chemodurov::countMaxDecreasing(dyn_arr, n);
-    unsigned int dyn_a_cnt_div = chemodurov::countDivisible(dyn_arr, n, client::divider);
+    unsigned long int dyn_a_cnt_dec = chemodurov::countMaxDecreasing(dyn_arr, n);
+    unsigned long int dyn_a_cnt_div = chemodurov::countDivisible(dyn_arr, n, client::divider);
     delete [] dyn_arr;
     std::cout << dyn_a_cnt_dec << " " << dyn_a_cnt_div << "\n";
   }
@@ -85,8 +85,8 @@ int main(int argc, char ** argv)
 
   int a[10] = {3, 2, 1, 7, 5, 4, 2, 9, 8, 4};
   size_t a_size = 10;
-  unsigned int a_cnt_dec = chemodurov::countMaxDecreasing(a, a_size);
-  unsigned int a_cnt_div = chemodurov::countDivisible(a, a_size, client::divider);
+  unsigned long int a_cnt_dec = chemodurov::countMaxDecreasing(a, a_size);
+  unsigned long int a_cnt_div = chemodurov::countDivisible(a, a_size, client::divider);
   std::cout << a_cnt_dec << " " << a_cnt_div << "\n";
   return 0;
 }

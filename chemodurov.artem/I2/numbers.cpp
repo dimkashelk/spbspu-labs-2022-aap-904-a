@@ -1,9 +1,9 @@
 #include "numbers.h"
 
-unsigned int chemodurov::countMaxDecreasing(int * arr, size_t size)
+unsigned long int chemodurov::countMaxDecreasing(int * arr, size_t size)
 {
-  unsigned int dec_cnt = 1;
-  unsigned int max_dec_cnt = 1;
+  unsigned long int dec_cnt = 1;
+  unsigned long int max_dec_cnt = 1;
   for (size_t i = 0; i < size - 1; ++i)
   {
     if (arr[i] > arr[i + 1])
@@ -22,9 +22,9 @@ unsigned int chemodurov::countMaxDecreasing(int * arr, size_t size)
   return max_dec_cnt;
 }
 
-unsigned int chemodurov::countDivisible(int * arr, size_t size, int divider)
+unsigned long int chemodurov::countDivisible(int * arr, size_t size, int divider)
 {
-  unsigned int divisible_cnt = 0;
+  unsigned long int divisible_cnt = 0;
   for (size_t i = 0; i < size; ++i)
   {
     if (arr[i] % divider == 0)

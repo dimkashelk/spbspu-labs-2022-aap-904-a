@@ -4,7 +4,7 @@
 
 namespace chemodurov
 {
-  unsigned int countMaxDecreasing(int * arr, size_t size);
-  unsigned int countDivisible(int * arr, size_t size, int divider);
+  unsigned long int countMaxDecreasing(int * arr, size_t size);
+  unsigned long int countDivisible(int * arr, size_t size, int divider);
 }
 #endif

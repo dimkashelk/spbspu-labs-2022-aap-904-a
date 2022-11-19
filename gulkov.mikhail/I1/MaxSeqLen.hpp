@@ -10,4 +10,3 @@ struct MaxSeqLen
   int prevalue;
 };
 #endif
-

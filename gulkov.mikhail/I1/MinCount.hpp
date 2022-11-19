@@ -9,4 +9,3 @@ struct MinCount
   int minvalue;
 };
 #endif
-

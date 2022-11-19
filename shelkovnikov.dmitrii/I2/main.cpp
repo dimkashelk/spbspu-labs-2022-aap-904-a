@@ -1,5 +1,5 @@
-#include "countorderedelements.cpp"
-#include "countmaximumelements.cpp"
+#include "countorderedelements.h"
+#include "countmaximumelements.h"
 #include <stdexcept>
 #include <iostream>
 #include <fstream>

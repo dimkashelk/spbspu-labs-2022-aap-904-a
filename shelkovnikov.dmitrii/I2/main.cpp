@@ -75,8 +75,8 @@ int main(int argc, char *argv[])
     }
     try
     {
-      std::cout << count_maximum_elements(arr3, size) << std::endl;
-      std::cout << count_ordered_elements(arr3, size) << std::endl;
+      std::cout << count_maximum_elements(arr3, size) << "\n";
+      std::cout << count_ordered_elements(arr3, size) << "\n";
     }
     catch (const std::overflow_error &e)
     {

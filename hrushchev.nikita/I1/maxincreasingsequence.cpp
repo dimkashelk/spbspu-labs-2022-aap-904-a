@@ -1,4 +1,4 @@
-#include "maxincreasingseqeunce.hpp"
+#include "maxincreasingsequence.hpp"
 #include <limits>
 #include <stdexcept>
 

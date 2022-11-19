@@ -33,5 +33,4 @@ int main()
 
   std::cout << min_elem_ctr.count_min << " " << max_inc_seqn.max_len_seqn << "\n";
   return 0;
-
 }

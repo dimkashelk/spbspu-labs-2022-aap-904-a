@@ -1,4 +1,5 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_GETOTHERSYMBOLS_H
 #define SPBSPU_LABS_2022_AAP_904_A_GETOTHERSYMBOLS_H
-char *get_other_symbols(char *destination, const char *source, int *res_size);
+#include <cstddef>
+char *get_other_symbols(char *destination, const char *source, size_t *res_size);
 #endif

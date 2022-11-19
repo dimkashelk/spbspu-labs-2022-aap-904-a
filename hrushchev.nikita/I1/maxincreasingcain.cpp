@@ -36,4 +36,3 @@ void MaxIncreasingCain::operator()(int cur_value)
     pre_value = cur_value;
   }
 }
-

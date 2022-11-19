@@ -1,3 +1,4 @@
+#include "countorderedelements.h"
 #include <limits>
 #include <stdexcept>
 unsigned int count_ordered_elements(int *arr, size_t size)

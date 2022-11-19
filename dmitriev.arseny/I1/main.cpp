@@ -3,9 +3,9 @@
 int main()
 {
   int p2 = 0, p1 = 0;
-  int k = 0;
-  int max_Mono = 0;
-  int max_DelBezOst = 0;
+  unsigned int k = 0;
+  unsigned int max_Mono = 0;
+  unsigned int max_DelBezOst = 0;
   do
   {
     p1 = p2;

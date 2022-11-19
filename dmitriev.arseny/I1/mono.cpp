@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits>
 
-void max_Mono_foo(int& max_Mono, int& k, const int p1, const int p2)
+void max_Mono_foo(unsigned int& max_Mono, unsigned int& k, const int p1, const int p2)
 {
   if (p1 != 0 and p2 > p1)
     {

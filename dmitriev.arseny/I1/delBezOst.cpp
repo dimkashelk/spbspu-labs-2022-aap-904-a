@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits>
 
-void max_DelBezOst_foo(int& max_DelBezOst, const int p1, const int  p2)
+void max_DelBezOst_foo(unsigned int& max_DelBezOst, const int p1, const int  p2)
 {
 
   if (p1 != 0 and p2 % p1 == 0)

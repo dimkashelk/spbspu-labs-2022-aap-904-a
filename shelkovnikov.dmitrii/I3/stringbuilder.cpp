@@ -20,11 +20,12 @@ size_t StringBuilder::get_size()
 }
 char* StringBuilder::get_string()
 {
-  char *dop = new char[size];
+  char *dop = new char[size + 1];
   for (size_t i = 0; i < size; i++)
   {
     dop[i] = str[i];
   }
+  dop[size] = '\0';
   return dop;
 }
 char StringBuilder::get_char(size_t i)

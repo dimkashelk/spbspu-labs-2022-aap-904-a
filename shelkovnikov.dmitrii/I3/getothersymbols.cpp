@@ -3,11 +3,11 @@
 char *get_other_symbols(char *destination, const char *source, size_t *res_size)
 {
   int alphabet[26];
-  for (int i = 0; i < 26; i++)
+  for (size_t i = 0; i < 26; i++)
   {
     alphabet[i] = 0;
   }
-  for (int i = 0; source[i]; i++)
+  for (size_t i = 0; source[i]; i++)
   {
     if (source[i] >= 'a' && source[i] <= 'z')
     {
@@ -18,9 +18,9 @@ char *get_other_symbols(char *destination, const char *source, size_t *res_size)
       alphabet[static_cast<int>(source[i]) - static_cast<int>('A')]++;
     }
   }
-  int j = 0;
+  size_t j = 0;
   StringBuilder stringBuilder;
-  for (int i = 0; i < 26; i++)
+  for (size_t i = 0; i < 26; i++)
   {
     if (!alphabet[i])
     {
@@ -30,7 +30,7 @@ char *get_other_symbols(char *destination, const char *source, size_t *res_size)
   }
   size_t new_size = stringBuilder.get_size();
   char *dop = stringBuilder.get_string();
-  for (int i = 0; i < new_size; i++)
+  for (size_t i = 0; i < new_size; i++)
   {
     destination[i] = dop[i];
   }

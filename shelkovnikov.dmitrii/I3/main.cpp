@@ -18,18 +18,18 @@ int main()
   char *str = stringBuilder.get_string();
   size_t size = stringBuilder.get_size();
   char *res1 = new char[size];
-  int size1;
+  size_t size1;
   remove_extra_spaces(res1, str, &size1);
-  for (int i = 0; i < size1; i++)
+  for (size_t i = 0; i < size1; i++)
   {
     std::cout << res1[i];
   }
   std::cout << '\n';
   delete[] res1;
   char *res2 = new char[26];
-  int size2;
+  size_t size2;
   get_other_symbols(res2, str, &size2);
-  for (int i = 0; i < 26; i++)
+  for (size_t i = 0; res2[i]; i++)
   {
     std::cout << res2[i];
   }

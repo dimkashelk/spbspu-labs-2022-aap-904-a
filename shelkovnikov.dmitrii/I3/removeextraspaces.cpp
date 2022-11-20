@@ -3,12 +3,12 @@
 char *remove_extra_spaces(char *destination, const char *source, int *res_size)
 {
   StringBuilder stringBuilder;
-  int j = 0;
+  size_t j = 0;
   while (source[j] == ' ')
   {
     j++;
   }
-  int i = 0;
+  size_t i = 0;
   while (source[j])
   {
     if (source[j] == ' ')
@@ -27,7 +27,7 @@ char *remove_extra_spaces(char *destination, const char *source, int *res_size)
     i++;
     j++;
   }
-  int new_size = stringBuilder.get_size();
+  size_t new_size = stringBuilder.get_size();
   while (stringBuilder.get_char(new_size - 1) == ' ')
   {
     stringBuilder.remove_char(new_size - 1);

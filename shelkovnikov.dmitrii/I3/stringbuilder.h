@@ -6,7 +6,7 @@ class StringBuilder
 public:
   StringBuilder();
   ~StringBuilder();
-  void add_char(char);
+  void add_char(char new_char);
   size_t get_size();
   char* get_string();
   char get_char(size_t i);

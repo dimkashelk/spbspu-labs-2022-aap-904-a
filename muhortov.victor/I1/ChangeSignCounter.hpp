@@ -4,7 +4,6 @@
 struct CountSignChanges
 {
   void operator()(int x, int y);
-
   unsigned int ChangeSignCounter;
 };
 #endif

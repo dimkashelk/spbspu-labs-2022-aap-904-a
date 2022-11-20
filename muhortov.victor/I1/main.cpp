@@ -10,7 +10,7 @@ int main()
   for (;;)
   {
     std::cin >> x;
-    if (std::cin.fail()) 
+    if (std::cin.fail())
     {
       std::cout << "Illegal character";
       break;

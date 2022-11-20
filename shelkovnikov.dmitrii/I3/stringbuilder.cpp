@@ -1,14 +1,14 @@
 #include "stringbuilder.h"
 StringBuilder::StringBuilder():
   size(0),
-  capacity(8),
+  capacity(10),
   str(new char[capacity])
 {}
 void StringBuilder::add_char(char new_char)
 {
-  if (size == capacity)
+  if (size == capacity - 1)
   {
-    capacity *= 2;
+    capacity += 10;
     extend(capacity);
   }
   str[size] = new_char;
@@ -43,7 +43,7 @@ void StringBuilder::remove_char(size_t ind)
 void StringBuilder::extend(int new_capacity)
 {
   char *new_str = new char[new_capacity];
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
   {
     new_str[i] = str[i];
   }

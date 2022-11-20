@@ -33,9 +33,10 @@ char *remove_extra_spaces(char *destination, const char *source, int *res_size)
     stringBuilder.remove_char(new_size - 1);
     new_size--;
   }
+  stringBuilder.add_char('\0');
   *res_size = stringBuilder.get_size();
   char *dop = stringBuilder.get_string();
-  for (int k = 0; k < stringBuilder.get_size(); k++)
+  for (size_t k = 0; dop[k]; k++)
   {
     destination[k] = dop[k];
   }

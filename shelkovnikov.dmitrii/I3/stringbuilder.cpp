@@ -33,7 +33,7 @@ char StringBuilder::get_char(size_t i)
 }
 void StringBuilder::remove_char(size_t ind)
 {
-  for (int i = ind; i < size - 1; i++)
+  for (size_t i = ind; i < size - 1; i++)
   {
     str[i] = str[i + 1];
   }

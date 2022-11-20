@@ -4,9 +4,9 @@
 
 void MinCount::operator()(int value)
 {
-  const int min_int = std::numeric_limits< int >::max();
+  const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
-  if (minvaluecounter == min_int)
+  if (minvaluecounter == max_unsigned_int)
   {
     throw std::overflow_error("Overflow!");
   }

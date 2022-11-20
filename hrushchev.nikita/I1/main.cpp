@@ -1,8 +1,6 @@
 #include <iostream>
 #include "minelementcounter.hpp"
 #include "maxincreasingsequence.hpp"
-#include "minelementcounter.cpp"
-#include "maxincreasingsequence.cpp"
 
 int main()
 {

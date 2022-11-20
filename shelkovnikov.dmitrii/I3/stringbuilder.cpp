@@ -6,7 +6,7 @@ StringBuilder::StringBuilder():
 {}
 void StringBuilder::add_char(char new_char)
 {
-  if (size == capacity - 1)
+  if (size == capacity)
   {
     capacity += 10;
     extend(capacity);
@@ -20,12 +20,11 @@ size_t StringBuilder::get_size()
 }
 char* StringBuilder::get_string()
 {
-  char *dop = new char[size + 1];
+  char *dop = new char[size];
   for (size_t i = 0; i < size; i++)
   {
     dop[i] = str[i];
   }
-  dop[size] = '\0';
   return dop;
 }
 char StringBuilder::get_char(size_t i)

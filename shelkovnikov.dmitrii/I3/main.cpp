@@ -20,7 +20,7 @@ int main()
   char *res1 = new char[size];
   size_t size1;
   remove_extra_spaces(res1, str, &size1);
-  for (size_t i = 0; i < size1; i++)
+  for (size_t i = 0; i < res1[i]; i++)
   {
     std::cout << res1[i];
   }

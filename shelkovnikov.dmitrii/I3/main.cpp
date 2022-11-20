@@ -1,5 +1,5 @@
-#include "stringbuilder.h"
 #include <iostream>
+#include "stringbuilder.h"
 #include "removeextraspaces.h"
 #include "getothersymbols.h"
 int main()
@@ -18,7 +18,7 @@ int main()
   char *str = stringBuilder.get_string();
   size_t size = stringBuilder.get_size();
   char *res1 = new char[size];
-  size_t size1;
+  size_t size1 = 0;
   remove_extra_spaces(res1, str, &size1);
   for (size_t i = 0; res1[i]; i++)
   {

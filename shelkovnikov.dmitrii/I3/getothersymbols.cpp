@@ -28,9 +28,9 @@ char *get_other_symbols(char *destination, const char *source, size_t *res_size)
       j++;
     }
   }
-  size_t new_size = stringBuilder.get_size();
+  stringBuilder.add_char('\0');
   char *dop = stringBuilder.get_string();
-  for (size_t i = 0; i < new_size; i++)
+  for (size_t i = 0; dop[i]; i++)
   {
     destination[i] = dop[i];
   }

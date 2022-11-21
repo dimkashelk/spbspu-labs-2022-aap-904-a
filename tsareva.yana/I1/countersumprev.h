@@ -3,7 +3,7 @@
 class CounterSumPrev
 {
 public:
-  CounterSumPrev(int start);
+  explicit CounterSumPrev(int start);
   void operator()(int next);
   unsigned int get_count() const;
 private:

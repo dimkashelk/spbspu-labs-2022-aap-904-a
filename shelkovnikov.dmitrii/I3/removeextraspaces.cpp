@@ -1,45 +1,41 @@
 #include "removeextraspaces.h"
 #include "stringbuilder.h"
-char *remove_extra_spaces(char *destination, const char *source, size_t *res_size)
+#include <stdexcept>
+char *remove_extra_spaces(char *destination, const char *source, size_t source_size)
 {
-  StringBuilder stringBuilder;
-  size_t j = 0;
-  while (source[j] == ' ')
+  char * str = new char[source_size];
+  size_t size = 0;
+  size_t d = 0;
+  while (source[d] == ' ')
   {
-    j++;
+    d++;
   }
-  size_t i = 0;
-  while (source[j])
+  while (source[d])
   {
-    if (source[j] == ' ')
+    if (source[d] == ' ')
     {
-      while (source[j] == ' ')
+      while (source[d] == ' ')
       {
-        j++;
+        d++;
       }
-      stringBuilder.add_char(' ');
-      j--;
+      str[size] = ' ';
+      size++;
     }
     else
     {
-      stringBuilder.add_char(source[j]);
+      str[size] = source[d];
     }
-    i++;
-    j++;
+    d++;
   }
-  size_t new_size = stringBuilder.get_size();
-  while (stringBuilder.get_char(new_size - 1) == ' ')
+  while (str[size - 1] == ' ')
   {
-    stringBuilder.remove_char(new_size - 1);
-    new_size--;
+    size--;
   }
-  stringBuilder.add_char('\0');
-  *res_size = stringBuilder.get_size();
-  char *dop = stringBuilder.get_string();
+  str[size] = '\0';
   for (size_t k = 0; dop[k]; k++)
   {
-    destination[k] = dop[k];
+    destination[k] = str[k];
   }
-  delete[] dop;
+  delete[] str;
   return destination;
 }

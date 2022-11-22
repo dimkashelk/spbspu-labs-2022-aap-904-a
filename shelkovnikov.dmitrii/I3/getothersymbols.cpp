@@ -1,5 +1,5 @@
 #include "getothersymbols.h"
-char *get_other_symbols(char *destination, char *source)
+char *get_other_symbols(char *destination, const char *source)
 {
   int alphabet[26];
   for (size_t i = 0; i < 26; i++)

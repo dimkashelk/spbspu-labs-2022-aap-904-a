@@ -16,7 +16,7 @@ void transformArray(int* arr, size_t size) {
         --i;
       }
     }
-    for (int i = 0; i < n; i++){
+    for (size_t i = 0; i < n; i++){
       std::cout << arr[i] << " ";
     }
   }

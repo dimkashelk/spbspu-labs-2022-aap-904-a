@@ -10,6 +10,11 @@ int main()
   do
   {
     std::cin >> dop;
+    if (!std::cin)
+    {
+      std::cout << "Error while input\n";
+      return 1;
+    }
     stringBuilder.add_char(dop);
   }
   while (std::cin && stringBuilder.get_char(stringBuilder.get_size() - 1) != '\n');

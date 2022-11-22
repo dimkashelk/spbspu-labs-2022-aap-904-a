@@ -45,6 +45,11 @@ int main()
     std::cin >> str[size];
   }
   while (std::cin && str[size++] != '\n');
+  if (!std::cin && !size)
+  {
+    std::cout << "Error while input";
+    return 2;
+  }
   str[size - 1] = '\0';
   try
   {

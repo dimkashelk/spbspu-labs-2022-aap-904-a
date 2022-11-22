@@ -1,5 +1,5 @@
 #include "getothersymbols.h"
-char *get_other_symbols(char *destination, char *source, size_t source_size)
+char *get_other_symbols(char *destination, char *source)
 {
   int alphabet[26];
   for (size_t i = 0; i < 26; i++)
@@ -23,7 +23,7 @@ char *get_other_symbols(char *destination, char *source, size_t source_size)
   {
     if (!alphabet[i])
     {
-      str[j] = static_cast<char>(static_cast< size_t >('a') + i));
+      str[j] = static_cast<char>(static_cast< size_t >('a') + i);
       j++;
     }
   }

@@ -30,7 +30,7 @@ char *remove_extra_spaces(char *destination, const char *source, size_t source_s
     size--;
   }
   str[size] = '\0';
-  for (size_t k = 0; dop[k]; k++)
+  for (size_t k = 0; k < size; k++)
   {
     destination[k] = str[k];
   }

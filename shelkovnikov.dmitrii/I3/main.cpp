@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 #include "removeextraspaces.h"
 #include "getothersymbols.h"
 int main()
@@ -48,27 +49,29 @@ int main()
   try
   {
     char *res1 = new char[size];
+    remove_extra_spaces(res1, str, size);
+    std::cout << res1 << '\n';
+    delete[] res1;
   }
   catch (const std::bad_alloc &e)
   {
     std::cout << e.what();
+    delete[] str;
     return 2;
   }
-  size_t size1 = 0;
-  remove_extra_spaces(res1, str, size);
-  std::cout << res1 << '\n';
-  delete[] res1;
   try
   {
     char *res2 = new char[27];
+    get_other_symbols(res2, str);
+    std::cout << res2 << '\n';
+    delete[] res2;
   }
   catch (const std::bad_alloc &e)
   {
     std::cout << e.what();
+    delete[] str;
     return 2;
   }
-  get_other_symbols(res2, str, size);
-  std::cout << res2 << '\n';
-  delete[] res2;
+  delete[] str;
   return 0;
 }

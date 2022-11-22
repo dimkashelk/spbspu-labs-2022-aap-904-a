@@ -58,9 +58,16 @@ void StringBuilder::remove_char(size_t ind)
   }
   size--;
 }
-void StringBuilder::extend(int new_capacity)
+void StringBuilder::extend(size_t new_capacity)
 {
-  char *new_str = new char[new_capacity];
+  try
+  {
+    char *new_str = new char[new_capacity];
+  }
+  catch (const std::bad_alloc &e)
+  {
+    throw std::bad_alloc("Cannot get new memory");
+  }
   for (size_t i = 0; i < size; i++)
   {
     new_str[i] = str[i];

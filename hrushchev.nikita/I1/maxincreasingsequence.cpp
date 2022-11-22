@@ -8,13 +8,13 @@ void MaxIncreasingSequence::operator()(int cur_value)
 
   if (cur_value && pre_value)
   {
-    if (cur_len_seqn == max_unsigned_int)
+    if (cur_value > pre_value)
     {
-      throw std::overflow_error("Overflow!");
-    }
-    else if (cur_value > pre_value)
-    {
-      if (cur_len_seqn == 0)
+      if (cur_len_seqn == max_unsigned_int)
+      {
+        throw std::overflow_error("Overflow!");
+      }
+      else if (cur_len_seqn == 0)
       {
         cur_len_seqn = 1;
       }
@@ -24,12 +24,10 @@ void MaxIncreasingSequence::operator()(int cur_value)
     {
       cur_len_seqn = 1;
     }
-
     if (cur_len_seqn > max_len_seqn)
     {
       max_len_seqn = cur_len_seqn;
     }
-
   }
   else if (cur_value)
   {

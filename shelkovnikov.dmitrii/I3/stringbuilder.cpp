@@ -40,7 +40,7 @@ char* StringBuilder::get_string()
 }
 char StringBuilder::get_char(size_t i)
 {
-  if (i > size)
+  if (i >= size)
   {
     throw std::runtime_error("Going beyond the line");
   }
@@ -48,6 +48,10 @@ char StringBuilder::get_char(size_t i)
 }
 void StringBuilder::remove_char(size_t ind)
 {
+  if (ind >= size)
+  {
+    throw std::runtime_error("Going beyond the line");
+  }
   for (size_t i = ind; i < size - 1; i++)
   {
     str[i] = str[i + 1];

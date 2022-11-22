@@ -1,30 +1,22 @@
 #include "sequences.h"
-#include <limits>
-#include <stdexcept>
 
-void operator()(int previous, std::istream& in)
+void operator()(int previous)
 {
-  if (in)
+  if ((current < previous) && (current < next))
   {
-    if ((current < previous) && (current < next))
-    {
-      countlocalmin++;
-    }
-    next = current;
-    current = previous;
+    countlocalmin++;
   }
+  next = current;
+  current = previous;
 }
 
-void operator()(int previous, std::istream& in)
+void operator()(int previous)
 {
-  if (in)
+  countofsequenceelements++;
+  if ((countofsequenceelements >2) && (current < previous) && (current > next))
   {
-    countofsequenceelements++;
-    if ((countofsequenceelements >2) && (current < previous) && (current > next))
-    {
-      countminsrmax++;
-    }
-    next = current;
-    current = previous;
+    countminsrmax++;
   }
+  next = current;
+  current = previous;
 }

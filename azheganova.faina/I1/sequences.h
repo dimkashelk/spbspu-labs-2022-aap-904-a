@@ -6,7 +6,7 @@ struct Localminimals
   int countlocalmin = 0;
   int current = 0;
   int next = 0;
-  void operator()(int previous, std::istream& in)
+  void operator()(int previous)
 };
 
 struct Minsrmax
@@ -15,6 +15,6 @@ struct Minsrmax
   int countminsrmax = 0;
   int current = 0;
   int next = 0;
-  void operator()(int previous, std::istream& in)
+  void operator()(int previous)
 };
 #endif

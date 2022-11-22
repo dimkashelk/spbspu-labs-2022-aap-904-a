@@ -9,8 +9,8 @@ int main()
   do
   {
     std::cin >> previous;
-    count1(previous, std::cin);
-    count2(previous, std::cin);
+    count1(previous);
+    count2(previous);
   }
   while (previous && std::cin);
   if (!std::cin)

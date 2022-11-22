@@ -1,4 +1,6 @@
 #include "stringbuilder.h"
+#include <limits>
+#include <stdexcept>
 StringBuilder::StringBuilder():
   size(0),
   capacity(10),
@@ -6,8 +8,17 @@ StringBuilder::StringBuilder():
 {}
 void StringBuilder::add_char(char new_char)
 {
+  constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
   if (size == capacity)
   {
+    if (capacity == max_size_t)
+    {
+      throw std::overflow_error("Too much numbers");
+    }
+    if (max_size_t - 10 <= capacity)
+    {
+      capacity = max_size_t;
+    }
     capacity += 10;
     extend(capacity);
   }

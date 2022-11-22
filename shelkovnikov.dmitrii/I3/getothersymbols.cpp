@@ -1,5 +1,4 @@
 #include "getothersymbols.h"
-#include "stringbuilder.h"
 char *get_other_symbols(char *destination, char *source, size_t source_size)
 {
   int alphabet[26];

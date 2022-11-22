@@ -1,6 +1,4 @@
 #include "removeextraspaces.h"
-#include "stringbuilder.h"
-#include <stdexcept>
 char *remove_extra_spaces(char *destination, const char *source, size_t source_size)
 {
   char * str = new char[source_size];

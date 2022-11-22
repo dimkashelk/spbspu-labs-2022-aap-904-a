@@ -1,6 +1,6 @@
 #include "numbers.h"
 
-size_t chemodurov::countMaxDecreasing(const int * arr, const size_t size)
+size_t chemodurov::countMaxDecreasing(const int * const arr, const size_t size)
 {
   size_t dec_cnt = 1;
   size_t max_dec_cnt = 1;
@@ -22,7 +22,7 @@ size_t chemodurov::countMaxDecreasing(const int * arr, const size_t size)
   return max_dec_cnt;
 }
 
-size_t chemodurov::countDivisible(const int * arr, const size_t size, const int divider)
+size_t chemodurov::countDivisible(const int * const arr, const size_t size, const int divider)
 {
   size_t divisible_cnt = 0;
   for (size_t i = 0; i < size; ++i)

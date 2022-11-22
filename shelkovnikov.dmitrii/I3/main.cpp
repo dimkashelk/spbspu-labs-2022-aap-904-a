@@ -48,6 +48,7 @@ int main()
   if (!std::cin && !size)
   {
     std::cout << "Error while input";
+    delete[] str;
     return 2;
   }
   str[size - 1] = '\0';

@@ -38,7 +38,15 @@ int main()
   }
   char *str = stringBuilder.get_string();
   size_t size = stringBuilder.get_size();
-  char *res1 = new char[size];
+  try
+  {
+    char *res1 = new char[size];
+  }
+  catch (const std::bad_alloc &e)
+  {
+    std::cout << e.what();
+    return 2;
+  }
   size_t size1 = 0;
   remove_extra_spaces(res1, str, &size1);
   for (size_t i = 0; res1[i]; i++)
@@ -47,8 +55,16 @@ int main()
   }
   std::cout << '\n';
   delete[] res1;
-  char *res2 = new char[26];
-  size_t size2;
+  try
+  {
+    char *res2 = new char[26];
+  }
+  catch (const std::bad_alloc &e)
+  {
+    std::cout << e.what();
+    return 2;
+  }
+  size_t size2 = 0;
   get_other_symbols(res2, str, &size2);
   for (size_t i = 0; res2[i]; i++)
   {

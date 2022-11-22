@@ -40,6 +40,10 @@ char* StringBuilder::get_string()
 }
 char StringBuilder::get_char(size_t i)
 {
+  if (i > size)
+  {
+    throw std::runtime_error("Going beyond the line");
+  }
   return str[i];
 }
 void StringBuilder::remove_char(size_t ind)

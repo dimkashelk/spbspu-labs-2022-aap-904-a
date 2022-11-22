@@ -1,6 +1,6 @@
 #include "sequences.h"
 
-void operator()(int previous)
+void Localminimals::operator()(int previous)
 {
   if ((current < previous) && (current < next))
   {
@@ -10,7 +10,7 @@ void operator()(int previous)
   current = previous;
 }
 
-void operator()(int previous)
+void Minsrmax::operator()(int previous)
 {
   countofsequenceelements++;
   if ((countofsequenceelements >2) && (current < previous) && (current > next))

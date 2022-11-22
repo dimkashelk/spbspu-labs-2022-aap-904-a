@@ -15,11 +15,27 @@ int main()
       std::cout << "Error while input\n";
       return 1;
     }
-    stringBuilder.add_char(dop);
+    try
+    {
+      stringBuilder.add_char(dop);
+    }
+    catch (const std::overflow_error &e)
+    {
+      std::cout << e.what();
+      return 2;
+    }
   }
   while (std::cin && stringBuilder.get_char(stringBuilder.get_size() - 1) != '\n');
   stringBuilder.remove_char(stringBuilder.get_size() - 1);
-  stringBuilder.add_char('\0');
+  try
+  {
+    stringBuilder.add_char('\0');
+  }
+  catch (const std::overflow_error &e)
+  {
+    std::cout << e.what();
+    return 2;
+  }
   char *str = stringBuilder.get_string();
   size_t size = stringBuilder.get_size();
   char *res1 = new char[size];

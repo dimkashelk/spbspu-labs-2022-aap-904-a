@@ -6,10 +6,6 @@ void MinCount::operator()(int value)
 {
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
-  if (minvaluecounter == max_unsigned_int)
-  {
-    throw std::overflow_error("Overflow!");
-  }
   if (minvalue == 0)
   {
     minvalue = value;
@@ -21,6 +17,13 @@ void MinCount::operator()(int value)
   }
   if (value == minvalue)
   {
-    minvaluecounter++;
+    if (minvaluecounter == max_unsigned_int)
+    {
+      throw std::overflow_error("Overflow!");
+    }
+    else
+    {
+      minvaluecounter++;
+    }
   }
 }

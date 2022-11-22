@@ -3,10 +3,10 @@
 
 struct MaxSeqLen
 {
-  void operator()(int value);
-
   unsigned int upseqcounter;
   unsigned int maxupseqcount;
   int prevalue;
+
+  void operator()(int value);
 };
 #endif

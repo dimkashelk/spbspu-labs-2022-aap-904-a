@@ -6,13 +6,16 @@ void MaxSeqLen::operator()(int value)
 {
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
-  if (upseqcounter == max_unsigned_int)
-  {
-    throw std::overflow_error("Overflow!");
-  }
   if (value != 0 && value > prevalue)
   {
-    upseqcounter++;
+    if (upseqcounter == max_unsigned_int)
+    {
+      throw std::overflow_error("Overflow!");
+    }
+    else
+    {
+      upseqcounter++;
+    }
   }
   else if (value != 0 && value < prevalue)
   {

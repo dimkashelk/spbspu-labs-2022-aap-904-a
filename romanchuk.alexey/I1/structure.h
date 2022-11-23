@@ -9,9 +9,9 @@ struct values
 };
 struct localValuesMax
 {
-  int predVL = 0;
-  int predPredVL = 0;
-  int nValueL = 0;
+	int p_value = 0;
+	int pp_value = 0;
+  int count = 0;
   void operator()(int currentValue);
 };
 #endif

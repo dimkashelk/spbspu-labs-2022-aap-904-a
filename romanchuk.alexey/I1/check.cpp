@@ -22,12 +22,17 @@ void values::operator()(int value)
 }
 void localValuesMax::operator()(int value)
 {
-  const int maxLocalVal = std::numeric_limits< int >::max();
-  if (nValueL == maxLocalVal)
+  constexpr int maxLocalVal = std::numeric_limits< int >::max();
+  if (value == maxLocalVal)
   {
   std::cout << "overflow";
   }
-  nValueL += (predVL > value && predVL > predPredVL);
-  predPredVL = predVL;
-  predVL = value;
+
+  if (pp_value && value) {
+  if (p_value > pp_value && p_value > value) {
+  count++;
+  }
+  }
+  pp_value = p_value;
+  p_value = value;
 }

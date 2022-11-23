@@ -4,7 +4,7 @@
 
 void values::operator()(int value)
 {
-    const int maxValue = std::numeric_limits<int>::max();
+    const int maxValue = std::numeric_limits< int >::max();
     if (maxNum == maxValue)
     {
         std::cout << "overflow";
@@ -22,12 +22,12 @@ void values::operator()(int value)
 }
 void localValuesMax::operator()(int value)
 {
-    const int maxLocalVal = std::numeric_limits<int>::max();
+    const int maxLocalVal = std::numeric_limits< int >::max();
     if (nValueL == maxLocalVal)
     {
         std::cout << "overflow";
     }
-nValueL += (predVL > value && predVL > predPredVL);
-predPredVL = predVL;
-predVL = value;
+    nValueL += (predVL > value && predVL > predPredVL);
+    predPredVL = predVL;
+    predVL = value;
 }

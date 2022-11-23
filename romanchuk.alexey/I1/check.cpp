@@ -4,8 +4,8 @@
 
 void values::operator()(int value)
 {
-    const int max_unsigned_value = std::numeric_limits< unsigned int >::max();
-    if (maxNum == max_unsigned_value)
+    const int maxValue = std::numeric_limits<int>::max();
+    if (maxNum == maxValue)
     {
         std::cout << "overflow";
     }
@@ -19,4 +19,15 @@ void values::operator()(int value)
         nValue = 1;
     }
     predV = value;
+}
+void localValuesMax::operator()(int value)
+{
+    const int maxLocalVal = std::numeric_limits<int>::max();
+    if (nValueL == maxLocalVal)
+    {
+        std::cout << "overflow";
+    }
+nValueL += (predVL > value && predVL > predPredVL);
+predPredVL = predVL;
+predVL = value;
 }

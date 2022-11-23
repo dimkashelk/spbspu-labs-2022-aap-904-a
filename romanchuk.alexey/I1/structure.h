@@ -7,4 +7,11 @@ struct values
 	int maxNum = 0;
 	void operator()(int value);
 };
+struct localValuesMax
+{
+	int predVL = 0;
+	int predPredVL = 0;
+	int nValueL = 0;
+	void operator()(int currentValue);
+};
 #endif

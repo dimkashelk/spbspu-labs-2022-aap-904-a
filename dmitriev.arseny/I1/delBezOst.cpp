@@ -1,5 +1,5 @@
-#include <iostream>
 #include <limits>
+#include <stdexcept>
 
 void max_DelBezOst_foo(unsigned int& max_DelBezOst, const int p1, const int  p2)
 {

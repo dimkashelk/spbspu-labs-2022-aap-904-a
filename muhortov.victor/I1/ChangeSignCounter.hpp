@@ -1,4 +1,4 @@
-#ifndef	CHANGESIGNCOUNTER_HPP
+#ifndef CHANGESIGNCOUNTER_HPP
 #define CHANGESIGNCOUNTER_HPP
 
 struct CountSignChanges

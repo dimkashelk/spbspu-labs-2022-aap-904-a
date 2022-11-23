@@ -1,4 +1,4 @@
-#ifndef	PIFTRIO_HPP
+#ifndef PIFTRIO_HPP
 #define PIFTRIO_HPP
 
 struct FindPifTrio

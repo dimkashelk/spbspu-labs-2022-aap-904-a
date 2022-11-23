@@ -22,5 +22,5 @@ int main()
   //std::cout << "local max value: " << lMV.count << "\n";
   std::cout << maxVal.maxNum << std::endl;
   std::cout << lMV.count << std::endl;
-  return 1;
+  return 0;
 }

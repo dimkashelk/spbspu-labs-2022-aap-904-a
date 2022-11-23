@@ -1,6 +1,6 @@
-#include "downSequence.h"
 #include <cstddef>
 #include <algorithm>
+#include "downSequence.h"
 
 size_t turkin::getDownSequence(const Array & array)
 {

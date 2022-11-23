@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
     return 2;
   }
   turkin::Array dynamicArray(dynamicSize);
+  std::srand(time(nullptr));
   for (size_t i = 0; i < dynamicSize; i++)
   {
     dynamicArray.size++;

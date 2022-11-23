@@ -1,7 +1,7 @@
 #ifndef REPETEDNUMS_H
 #define REPETEDNUMS_H
-#include "dynamicArray.h"
 #include <cstddef>
+#include "dynamicArray.h"
 namespace turkin
 {
   bool getRepeatedNums(const Array & array, size_t begin, size_t end);

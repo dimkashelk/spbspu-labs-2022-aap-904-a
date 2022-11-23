@@ -1,7 +1,7 @@
 #ifndef DOWNSEQUENCE_H
 #define DOWNSEQUENCE_H
-#include "dynamicArray.h"
 #include <cstddef>
+#include "dynamicArray.h"
 namespace turkin
 {
   size_t getDownSequence(const Array & array);

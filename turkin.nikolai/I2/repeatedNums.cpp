@@ -1,6 +1,6 @@
-#include "repeatedNums.h"
 #include <cstddef>
 #include <stdexcept>
+#include "repeatedNums.h"
 
 bool turkin::getRepeatedNums(const Array & array, size_t begin, size_t end)
 {

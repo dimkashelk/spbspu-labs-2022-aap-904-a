@@ -25,4 +25,3 @@ void СountElAfterMaxEl::operator()(int el)
         }
     }
 }
-

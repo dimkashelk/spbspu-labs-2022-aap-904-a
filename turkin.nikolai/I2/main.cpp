@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
   try
   {
     bool constRepeated = turkin::getRepeatedNums(constArray, constSize, 0, constSize);
-    bool dynamicRepeated = turkin::getRepeatedNums(dynamicArray, 0,dynamicArray.size);
+    bool dynamicRepeated = turkin::getRepeatedNums(dynamicArray, 0, dynamicArray.size);
     bool fileRepeated = turkin::getRepeatedNums(fileArray, 0, fileArray.size);
     std::cout << constSequence << "\t" << dynamicSequence << "\t" << fileSequence << "\n";
     std::cout << constRepeated << "\t" << dynamicRepeated << "\t" << fileRepeated << "\n";

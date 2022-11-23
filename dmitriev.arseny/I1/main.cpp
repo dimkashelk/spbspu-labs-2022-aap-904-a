@@ -1,6 +1,6 @@
 #include <iostream>
-#include "DivNoRemainderFoo.hpp"
-#include "MaxMonoFoo.hpp"
+#include "DivNoRemainderFoo.h"
+#include "MaxMonoFoo.h"
 
 int main()
 {

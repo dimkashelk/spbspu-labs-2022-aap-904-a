@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
     std::cout << constSequence << "\t" << dynamicSequence << "\t" << fileSequence << "\n";
     std::cout << constRepeated << "\t" << dynamicRepeated << "\t" << fileRepeated << "\n";
   }
-  catch (std::invalid_argument const & error)
+  catch (const std::invalid_argument & error)
   {
     std::cerr << error.what() << "\n";
     return 5;

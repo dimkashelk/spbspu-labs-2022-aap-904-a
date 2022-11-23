@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 {
   if (argc != 2)
   {
-    std::cerr << "invalid amount of arguments" << std::endl;
+    std::cerr << "invalid amount of arguments\n";
     return 1;
   }
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
   std::cin >> dynamicSize;
   if (!std::cin)
   {
-    std::cerr << "incorrect input" << std::endl;
+    std::cerr << "incorrect input\n";
     return 2;
   }
   turkin::Array dynamicArray(dynamicSize);
@@ -35,15 +35,15 @@ int main(int argc, char *argv[])
   size_t fileSize = 0;
   if (!input.is_open())
   {
-    std::cerr << "cannot open file" << std::endl;
+    std::cerr << "cannot open file\n";
     return 3;
   }
-  if (input.peek() == EOF)
+  input >> fileSize;
+  if (!input)
   {
-    std::cerr << "empty file" << std::endl;
+    std::cerr << "empty file\n";
     return 4;
   }
-  input >> fileSize;
   turkin::Array fileArray(fileSize);
   for (size_t i = 0; i < fileSize; i++)
   {
@@ -58,12 +58,12 @@ int main(int argc, char *argv[])
     bool constRepeated = turkin::getRepeatedNums(constArray, constSize, 0, constSize);
     bool dynamicRepeated = turkin::getRepeatedNums(dynamicArray, 0,dynamicArray.size);
     bool fileRepeated = turkin::getRepeatedNums(fileArray, 0, fileArray.size);
-    std::cout << constSequence << "\t" << dynamicSequence << "\t" << fileSequence << std::endl;
-    std::cout << constRepeated << "\t" << dynamicRepeated << "\t" << fileRepeated << std::endl;
+    std::cout << constSequence << "\t" << dynamicSequence << "\t" << fileSequence << "\n";
+    std::cout << constRepeated << "\t" << dynamicRepeated << "\t" << fileRepeated << "\n";
   }
   catch (std::invalid_argument const & error)
   {
-    std::cerr << error.what() << std::endl;
+    std::cerr << error.what() << "\n";
     return 5;
   }
   return 0;

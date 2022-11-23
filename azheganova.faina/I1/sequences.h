@@ -3,18 +3,18 @@
 
 struct Localminimals
 {
-  int countlocalmin = 0;
+  unsigned int countlocalmin = 0;
   int current = 0;
   int next = 0;
-  void operator()(const int previous);
+  void operator()(int previous);
 };
 
 struct Minsrmax
 {
-  int countofsequenceelements = 0;
-  int countminsrmax = 0;
+  unsigned int countofsequenceelements = 0;
+  unsigned int countminsrmax = 0;
   int current = 0;
   int next = 0;
-  void operator()(const int previous);
+  void operator()(int previous);
 };
 #endif

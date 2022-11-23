@@ -18,7 +18,9 @@ int main()
     lMV(value);
   }
   while (std::cin && value);
-  std::cout << "max value: " << maxVal.maxNum << "\n";
-  std::cout << "local max value: " << lMV.count << "\n";
+  //std::cout << "max value: " << maxVal.maxNum << "\n";
+  //std::cout << "local max value: " << lMV.count << "\n";
+  std::cout << maxVal.maxNum << std::endl;
+  std::cout << lMV.count << std::endl;
   return 1;
 }

@@ -1,13 +1,13 @@
 #include <iostream>
-#include "structure.h"
 #include <limits>
+#include "structure.h"
 
 void values::operator()(int value)
 {
     const int max_unsigned_value = std::numeric_limits< unsigned int >::max();
     if (maxNum == max_unsigned_value)
     {
-        std::cout <<"overflow";
+        std::cout << "overflow";
     }
     else if (value == predV)
     {

@@ -27,7 +27,7 @@ void localValuesMax::operator()(int value)
   {
     std::cout << "overflow";
   }
-  if (pp_value && value) 
+  if (pp_value && value)
   {
     if (p_value > pp_value && p_value > value)
     {

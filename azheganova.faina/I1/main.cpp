@@ -26,7 +26,6 @@ int main()
     }
   }
   while (previous && std::cin);
-  
   std::cout << count1.countlocalmin << '\n';
   std::cout << count2.countminsrmax << '\n';
   return 0;

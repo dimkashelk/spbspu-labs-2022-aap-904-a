@@ -1,15 +1,11 @@
-#include "sequences.h"
 #include <iostream>
-#include <limits>
+#include "sequences.h"
 
 int main()
 {
-  int current_value;
-  int max = std::numeric_limits<int>::lowest();
-  int min = std::numeric_limits<int>::max();
-
-  MaxCounter max_counter{max, 0};
-  MinCounter min_counter{min, 0};
+  int current_value = 1;
+  MaxCounter max_counter = MaxCounter();
+  MinCounter min_counter = MinCounter();
 
   while (std::cin >> current_value && current_value)
   {
@@ -21,7 +17,7 @@ int main()
     catch (const std::overflow_error &e)
     {
       std::cout << "Error:" << e.what() << "\n";
-      return 1;
+      return 2;
     }
   }
 

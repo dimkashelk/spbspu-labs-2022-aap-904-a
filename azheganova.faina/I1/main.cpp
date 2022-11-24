@@ -1,5 +1,5 @@
-﻿#include "sequences.h"
-#include <iostream>
+﻿#include <iostream>
+#include "sequences.h"
 
 int main()
 {

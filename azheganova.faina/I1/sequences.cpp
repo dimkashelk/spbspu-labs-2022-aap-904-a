@@ -9,7 +9,7 @@ void Localminimals::operator()(int previous)
   {
     if (countlocalmin == max_unsigned_int)
     {
-        throw std::overflow_error("Overflow...");
+      throw std::overflow_error("Overflow...");
     }
     countlocalmin++;
   }

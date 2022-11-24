@@ -1,6 +1,14 @@
-#ifndef DIVNOREMAINDERFOO_H
-#define DIVNOREMAINDERFOO_H
+#ifndef DIVNOREMAINDER_H
+#define DIVNOREMAINDER_H
 
-void defDivNoRemainder(unsigned int& divNoRemainder, int p1, int  p2);
+class DivNoRemainder
+{
+public:
+
+  unsigned int quantity = 0;
+
+  void operator ()(int p1, int p2);
+
+};
 
 #endif

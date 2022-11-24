@@ -1,6 +1,18 @@
-#ifndef MAXMONOFOO_H
-#define MAXMONOFOO_H
+#ifndef MAXMONO_H
+#define MAXMONO_H
 
-void defMaxMono(unsigned int& maxMono, unsigned int& k, int p1, int p2);
+class MaxMono
+{
+public:
+
+  unsigned int quantity = 0;
+
+  void operator ()(int p1, int p2);
+
+private:
+
+  unsigned int k = 0;
+
+};
 
 #endif

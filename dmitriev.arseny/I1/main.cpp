@@ -1,13 +1,13 @@
-#include <iostream>
 #include "DivNoRemainderFoo.h"
 #include "MaxMonoFoo.h"
+#include <iostream>
 
 int main()
 {
     int p2 = 0, p1 = 0;
-    unsigned int k = 0;
-    unsigned int maxMono = 0;
-    unsigned int divNoRemainder = 0;
+    MaxMono maxMono;
+    DivNoRemainder divNoRemainder;
+
     do
     {
         p1 = p2;
@@ -23,8 +23,8 @@ int main()
         }
         try
         {
-            defMaxMono(maxMono, k, p1, p2);
-            defDivNoRemainder(divNoRemainder, p1, p2);
+          maxMono(p1, p2);
+          divNoRemainder(p1, p2);
         }
         catch (const std::overflow_error& e)
         {
@@ -32,10 +32,12 @@ int main()
             std::cout << e.what() << "\n";
             return 1;
         }
-    } while (std::cin && p2);
+    }
+    while (std::cin && p2);
 
-    std::cout << "max mono increace - " << maxMono << "\n";
-    std::cout << "without remainder divisible by the preceding - " << divNoRemainder << "\n";
+    std::cout << "max mono increace - " << maxMono.quantity << "\n";
+    std::cout << "without remainder divisible by the preceding - " 
+              << divNoRemainder.quantity << "\n";
 
     return 0;
 }

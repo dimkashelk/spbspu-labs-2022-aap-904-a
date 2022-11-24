@@ -3,10 +3,9 @@
 #include <stdexcept>
 
 Localminimals::Localminimals(int number):
-  count(0),
-  next(number),
-  current(number)
+  count(0)
 {}
+
 unsigned int Localminimals::generalcount() const
 {
   return count;
@@ -31,9 +30,7 @@ void Localminimals::operator()(int previous)
 }
 
 Minsrmax::Minsrmax(int number):
-  count(0),
-  next(number),
-  current(number)
+  count(0)
 {}
 unsigned int Minsrmax::generalcount() const
 {

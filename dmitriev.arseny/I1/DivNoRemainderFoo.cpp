@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <limits>
 
-void DivNoRemainder::operator()(const int p1, const int p2)
+void DivNoRemainder::operator ()(const int p1, const int p2)
 {
   if (p1 != 0 && p2 % p1 == 0)
   {

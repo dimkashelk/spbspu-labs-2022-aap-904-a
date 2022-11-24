@@ -2,10 +2,10 @@
 #include <limits>
 #include <stdexcept>
 
-Localminimals::Localminimals(int min):
+Localminimals::Localminimals(int number):
   count(0),
-  next(min),
-  current(min)
+  next(number),
+  current(number)
 {}
 unsigned int Localminimals::generalcount() const
 {
@@ -21,16 +21,19 @@ void Localminimals::operator()(int previous)
     {
       throw std::overflow_error("Overflow...");
     }
-    count++;
+    else
+    {
+      count++;
+    }
   }
   next = current;
   current = previous;
 }
 
-Minsrmax::Minsrmax(int sr):
+Minsrmax::Minsrmax(int number):
   count(0),
-  next(sr),
-  current(sr)
+  next(number),
+  current(number)
 {}
 unsigned int Minsrmax::generalcount() const
 {
@@ -47,7 +50,10 @@ void Minsrmax::operator()(int previous)
     {
       throw std::overflow_error("Overflow...");
     }
-    count++;
+    else
+    {
+      count++;
+    }
   }
   next = current;
   current = previous;

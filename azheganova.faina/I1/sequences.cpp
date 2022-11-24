@@ -2,7 +2,7 @@
 #include <limits>
 #include <stdexcept>
 
-Localminimals::Localminimals(int number):
+Localminimals::Localminimals(int previous):
   count(0)
 {}
 
@@ -29,7 +29,7 @@ void Localminimals::operator()(int previous)
   current = previous;
 }
 
-Minsrmax::Minsrmax(int number):
+Minsrmax::Minsrmax(int previous):
   count(0)
 {}
 unsigned int Minsrmax::generalcount() const

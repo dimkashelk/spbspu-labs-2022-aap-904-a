@@ -4,7 +4,7 @@
 class Localminimals
 {
   public:
-    explicit Localminimals(int number);
+    explicit Localminimals(int previous);
     void operator()(int previous);
     unsigned int generalcount() const;
   private:
@@ -16,7 +16,7 @@ class Localminimals
 class Minsrmax
 {
   public:
-    explicit Minsrmax(int number);
+    explicit Minsrmax(int previous);
     void operator()(int previous);
     unsigned int generalcount() const;
   private:

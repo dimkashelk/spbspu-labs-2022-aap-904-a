@@ -21,8 +21,8 @@ int main()
     }
     catch (const std::overflow_error & e)
     {
-        std::cout << e.what() << "\n";
-        return 2;
+      std::cout << e.what() << "\n";
+      return 2;
     }
   }
   while (previous && std::cin);

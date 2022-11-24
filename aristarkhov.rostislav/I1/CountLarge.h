@@ -4,7 +4,7 @@
 struct CountLarg
 {
   int larg_val;
-  unsigned int count_amount;
+  unsigned count_amount;
 
   void operator()(int curr_val);
 };

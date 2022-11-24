@@ -6,7 +6,7 @@ void LenEvenCounter::operator()(int curr_val)
 {
   if (curr_val % 2 == 0)
   {
-    if (count_even == std::numeric_limits<int>::max())
+    if (count_even == std::numeric_limits< unsigned >::max())
     {
       throw std::overflow_error("Overflow");
     }

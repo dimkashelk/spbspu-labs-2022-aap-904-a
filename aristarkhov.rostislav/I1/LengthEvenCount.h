@@ -3,8 +3,8 @@
 
 struct LenEvenCounter
 {
-  int count_even;
-  unsigned int count_len_even;
+  unsigned count_even;
+  unsigned count_len_even;
 
   void operator()(int curr_val);
 };

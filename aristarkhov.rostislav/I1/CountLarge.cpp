@@ -13,7 +13,7 @@ void CountLarg::operator()(int curr_val)
   {
   count_amount++;
   }
-  if (count_amount == std::numeric_limits< int >::max())
+  if (count_amount == std::numeric_limits< unsigned >::max())
   {
     throw std::overflow_error("Overflow");
   }

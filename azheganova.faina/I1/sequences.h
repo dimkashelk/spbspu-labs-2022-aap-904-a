@@ -1,20 +1,28 @@
 #ifndef SEQUENCES_H
 #define SEQUENCES_H
 
-struct Localminimals
+class Localminimals
 {
-  unsigned int countlocalmin = 0;
-  int current = 0;
-  int next = 0;
-  void operator()(int previous);
+  public:
+    Localminimals(int previous);
+    void operator()(int previous);
+    unsigned int generalcount() const;
+  private:
+    unsigned int count = 0;
+    int current = 0;
+    int next = 0;
 };
 
-struct Minsrmax
+class Minsrmax
 {
-  unsigned int countofsequenceelements = 0;
-  unsigned int countminsrmax = 0;
-  int current = 0;
-  int next = 0;
-  void operator()(int previous);
+  public:
+    Minsrmax(int previous);
+    void operator()(int previous);
+    unsigned int generalcount() const;
+  private:
+    unsigned int countofsequenceelements = 0;
+    unsigned int count = 0;
+    int current = 0;
+    int next = 0;
 };
 #endif

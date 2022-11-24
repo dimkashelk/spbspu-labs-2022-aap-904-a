@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "sequence1.h"
 #include "elementsaftermax.h"
-int main() 
+int main()
 {
   constexpr unsigned int min_int = std::numeric_limits< int >::min();
   ElementsAfterMax{0,min_int};

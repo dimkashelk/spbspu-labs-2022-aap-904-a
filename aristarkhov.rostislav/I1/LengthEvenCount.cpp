@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits>
 
-void  LenEvenCounter::operator()(int curr_val)
+void LenEvenCounter::operator()(int curr_val)
 {
   if (curr_val % 2 == 0)
   {

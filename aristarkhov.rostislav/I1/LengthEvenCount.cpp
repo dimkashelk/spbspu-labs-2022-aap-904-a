@@ -2,9 +2,9 @@
 #include <iostream>
 #include <limits>
 
-void  LenEvenCounter::operator()(int curr_value)
+void  LenEvenCounter::operator()(int curr_val)
 {
-  if (curr_value % 2 == 0)
+  if (curr_val % 2 == 0)
   {
     if (count_even == std::numeric_limits<int>::max())
     {

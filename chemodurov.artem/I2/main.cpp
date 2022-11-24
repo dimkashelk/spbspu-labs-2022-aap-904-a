@@ -1,7 +1,7 @@
-#include "numbers.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include "numbers.h"
 
 namespace client
 {

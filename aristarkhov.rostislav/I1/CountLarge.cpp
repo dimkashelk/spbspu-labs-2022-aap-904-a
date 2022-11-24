@@ -11,9 +11,9 @@ void CountLarg::operator()(int curr_val)
 	}
 	else if (curr_val == larg_val)
 	{
-		count_amount++;
+    count_amount++;
 	}
-	if (count_amount == std::numeric_limits<int>::max())
+	if (count_amount == std::numeric_limits< int >::max())
 	{
 		throw std::overflow_error("Overflow");
 	}

@@ -2,10 +2,10 @@
 #include <limits>
 #include <stdexcept>
 
-Localminimals::Localminimals(int previous):
+Localminimals::Localminimals(int min):
   count(0),
-  next(previous),
-  current(previous)
+  next(min),
+  current(min)
 {}
 unsigned int Localminimals::generalcount() const
 {
@@ -27,10 +27,10 @@ void Localminimals::operator()(int previous)
   current = previous;
 }
 
-Minsrmax::Minsrmax(int previous):
+Minsrmax::Minsrmax(int sr):
   count(0),
-  next(previous),
-  current(previous)
+  next(sr),
+  current(sr)
 {}
 unsigned int Minsrmax::generalcount() const
 {

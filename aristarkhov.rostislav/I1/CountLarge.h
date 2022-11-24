@@ -1,5 +1,5 @@
-#ifndef COUNT_LARG_H
-#define COUNT_LARG_H
+#ifndef COUNTLARG_H
+#define COUNTLARG_H
 
 struct CountLarg
 {

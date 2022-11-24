@@ -1,5 +1,5 @@
-#ifndef LEN_EVEN_COUNT_H
-#define LEN_EVEN_COUNT_H
+#ifndef LENGTHEVENCOUNT_H
+#define LENGTHEVENCOUNT_H
 
 struct LenEvenCounter
 {

@@ -1,5 +1,5 @@
-#include "CountLarg.h"
-#include "LenEvenCount.h"
+#include "CountLarge.h"
+#include "LengthEvenCount.h"
 #include <iostream>
 #include <limits>
 
@@ -33,6 +33,6 @@ int main()
     }
   } while (curr_val != 0 && std::cin);
 
-  std::cout << "amount of elements: " << count_larg.count_amount << '\n'
+  std::cout << "amount of elements: " << count_larg.count_amount << '\n';
   std::cout << "length even elements: " << len_even_count.count_len_even << "\n";
 }

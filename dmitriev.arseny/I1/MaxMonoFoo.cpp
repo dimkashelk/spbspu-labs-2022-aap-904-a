@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <limits>
 
-void MaxMono::operator ()(const int p1, const int p2)
+void MaxMono::operator()(const int p1, const int p2)
 {
   if (p1 != 0 && p2 > p1)
   {

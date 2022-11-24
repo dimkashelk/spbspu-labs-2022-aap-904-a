@@ -8,9 +8,9 @@ class Localminimals
     void operator()(int previous);
     unsigned int generalcount() const;
   private:
-    unsigned int count = 0;
-    int current = 0;
-    int next = 0;
+    unsigned int count;
+    int current;
+    int next;
 };
 
 class Minsrmax
@@ -20,9 +20,9 @@ class Minsrmax
     void operator()(int previous);
     unsigned int generalcount() const;
   private:
-    unsigned int countofsequenceelements = 0;
-    unsigned int count = 0;
-    int current = 0;
-    int next = 0;
+    unsigned int countofsequenceelements;
+    unsigned int count;
+    int current;
+    int next;
 };
 #endif

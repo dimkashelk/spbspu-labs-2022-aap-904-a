@@ -2,6 +2,11 @@
 #include <limits>
 #include <stdexcept>
 
+Localminimals::Localminimals()
+{
+  
+}
+
 void Localminimals::operator()(int previous)
 {
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
@@ -18,6 +23,11 @@ void Localminimals::operator()(int previous)
   }
   next = current;
   current = previous;
+}
+
+Minsrmax::Minsrmax()
+{
+  
 }
 
 void Minsrmax::operator()(int previous)

@@ -4,7 +4,6 @@
 
 Localminimals::Localminimals()
 {
-  
 }
 
 void Localminimals::operator()(int previous)
@@ -27,7 +26,6 @@ void Localminimals::operator()(int previous)
 
 Minsrmax::Minsrmax()
 {
-  
 }
 
 void Minsrmax::operator()(int previous)

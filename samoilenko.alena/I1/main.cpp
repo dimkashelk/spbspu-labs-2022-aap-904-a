@@ -1,6 +1,7 @@
 #include "LenghthSame.h"
-#include <iostream>
 #include "LenghthDecr.h"
+#include <iostream>
+
 int main() {
     int maxLenghthSame = 0;
     int lenghthSame = 1;

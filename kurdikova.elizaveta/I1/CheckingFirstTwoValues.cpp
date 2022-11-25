@@ -1,4 +1,4 @@
-#include "Lab1.h"
+#include "CheckingFirstTwoValues.h"
 
 bool checkingFirstTwoValues(int prev, int current){
   if (prev > current && prev != 0) {

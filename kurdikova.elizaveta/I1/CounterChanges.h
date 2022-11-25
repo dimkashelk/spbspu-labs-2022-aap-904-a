@@ -3,5 +3,4 @@
 
 #include <iostream>
 int counterChanges(int, int);
-bool checkingFirstTwoValues(int, int);
-#endif //UNTITLED_LAB1_H
+#endif

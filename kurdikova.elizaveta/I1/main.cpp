@@ -1,4 +1,5 @@
-#include "Lab1.h"
+#include "CheckingFirstTwoValues.h"
+#include "CounterChanges.h"
 #include <iostream>
 
 int main() {

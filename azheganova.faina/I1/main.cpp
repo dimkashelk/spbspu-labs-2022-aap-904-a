@@ -4,8 +4,8 @@
 int main()
 {
   int previous = 0;
-  Localminimals count1{0};
-  Minsrmax count2{0};
+  Localminimals count1;
+  Minsrmax count2;
   do
   {
     std::cin >> previous;

@@ -9,7 +9,7 @@ struct Znach
 {
   int min;
   unsigned int counter;
-  
+
   void operator()(int value);
 };
 

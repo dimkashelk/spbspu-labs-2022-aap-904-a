@@ -4,8 +4,8 @@
 
 int main()
 {
-  Znach zn;
-  Family fa;
+  Znach zn{0};
+  Family fa{0};
   int value = 0;
 
   do

@@ -3,20 +3,22 @@
 
 struct Localminimals
 {
-  Localminimals();
-  unsigned int countlocalmin = 0;
-  int current = 0;
-  int next = 0;
+  Localminimals(int prev);
+  unsigned int count;
+  int current;
+  int next;
   void operator()(int previous);
+  unsigned int totalcount() const;
 };
 
 struct Minsrmax
 {
-  Minsrmax();
-  unsigned int countofsequenceelements = 0;
-  unsigned int countminsrmax = 0;
-  int current = 0;
-  int next = 0;
+  Minsrmax(int prev);
+  unsigned int countofsequenceelements;
+  unsigned int count;
+  int current;
+  int next;
   void operator()(int previous);
+  unsigned int totalcount() const;
 };
 #endif

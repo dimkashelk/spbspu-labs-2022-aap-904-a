@@ -4,8 +4,8 @@
 int main()
 {
   int previous = 0;
-  Localminimals count1;
-  Minsrmax count2;
+  Localminimals Localminimals(previous);
+  Minsrmax Minsrmax(previous);
   do
   {
     std::cin >> previous;
@@ -16,8 +16,8 @@ int main()
     }
     try
     {
-      count1(previous);
-      count2(previous);
+      Localminimals(previous);
+      Minsrmax(previous);
     }
     catch (const std::overflow_error & e)
     {
@@ -26,7 +26,7 @@ int main()
     }
   }
   while (previous && std::cin);
-  std::cout << count1.countlocalmin << '\n';
-  std::cout << count2.countminsrmax << '\n';
+  std::cout << Localminimals.totalcount() << '\n';
+  std::cout << Minsrmax.totalcount() << '\n';
   return 0;
 }

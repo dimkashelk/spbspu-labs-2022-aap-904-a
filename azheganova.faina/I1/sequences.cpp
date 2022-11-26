@@ -28,6 +28,7 @@ void Localminimals::operator()(int previous)
 
 Minsrmax::Minsrmax():
   countminsrmax(0),
+  countofsequenceelements(0),
   current(0),
   next(0)
 {}

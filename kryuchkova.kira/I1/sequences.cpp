@@ -2,50 +2,48 @@
 #include <limits>
 #include <stdexcept>
 
-MaxCounter::MaxCounter()
-{
-  this->max = std::numeric_limits< int >::lowest();
-  this->count_max = 0;
-}
+MaxCounter::MaxCounter():
+  max(std::numeric_limits< int >::lowest()),
+  count_max(0)
+{}
 
-void MaxCounter::operator()(int current_value)
+void MaxCounter::operator()(const int current_value)
 {
-  if (current_value > this->max)
-  {
-    this->max = current_value;
-    this->count_max = 1;
-  }
-  else if (current_value == this->max)
-  {
-    this->count_max++;
-  }
-
-  if (this->count_max == std::numeric_limits< int >::max())
+  if (count_max == std::numeric_limits< int >::max())
   {
     throw std::overflow_error("Overflow!");
   }
+
+  if (current_value > max)
+  {
+    max = current_value;
+    count_max = 1;
+  }
+  else if (current_value == max)
+  {
+    count_max++;
+  }
 }
 
-MinCounter::MinCounter()
-{
-  this->min = std::numeric_limits< int >::max();
-  this->count_min = 0;
-}
+MinCounter::MinCounter():
+  min(std::numeric_limits< int >::max()),
+  count_min(0)
+{}
 
-void MinCounter::operator()(int current_value)
+void MinCounter::operator()(const int current_value)
 {
-  if (current_value < this->min && current_value != 0)
-  {
-    this->min = current_value;
-    this->count_min = 1;
-  }
-  else if (current_value == this->min)
-  {
-    this->count_min++;
-  }
-
-  if (this->count_min == std::numeric_limits< int >::max())
+  if (count_min == std::numeric_limits< int >::max())
   {
     throw std::overflow_error("Overflow!");
+  }
+
+  if (current_value < min && current_value != 0)
+  {
+    min = current_value;
+    count_min = 1;
+  }
+  else if (current_value == min)
+  {
+    count_min++;
   }
 }

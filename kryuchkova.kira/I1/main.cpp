@@ -4,8 +4,8 @@
 int main()
 {
   int current_value = 1;
-  MaxCounter max_counter = MaxCounter();
-  MinCounter min_counter = MinCounter();
+  MaxCounter max_counter;
+  MinCounter min_counter;
 
   while (std::cin >> current_value && current_value)
   {

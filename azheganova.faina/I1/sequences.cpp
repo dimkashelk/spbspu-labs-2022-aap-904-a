@@ -2,47 +2,35 @@
 #include <limits>
 #include <stdexcept>
 
-Localminimals::Localminimals(int prev):
-  count(0),
-  current(prev),
-  next(prev)
+Localminimals::Localminimals():
+  countlocalmin(0),
+  current(0),
+  next(0)
 {}
-
-unsigned int Localminimals::totalcount() const
-{
-  return count;
-}
-
 
 void Localminimals::operator()(int previous)
 {
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
   if ((current < previous) && (current < next))
   {
-    if (count == max_unsigned_int)
+    if (countlocalmin == max_unsigned_int)
     {
       throw std::overflow_error("Overflow...");
     }
     else
     {
-      count++;
+      countlocalmin++;
     }
   }
   next = current;
   current = previous;
 }
 
-Minsrmax::Minsrmax(int prev):
-  countofsequenceelements(0),
-  count(0),
-  current(prev),
-  next(prev)
+Minsrmax::Minsrmax():
+  countminsrmax(0),
+  current(0),
+  next(0)
 {}
-
-unsigned int Minsrmax::totalcount() const
-{
-  return count;
-}
 
 void Minsrmax::operator()(int previous)
 {
@@ -50,13 +38,13 @@ void Minsrmax::operator()(int previous)
   countofsequenceelements++;
   if ((countofsequenceelements >2) && (current < previous) && (current > next))
   {
-    if (count == max_unsigned_int)
+    if (countminsrmax == max_unsigned_int)
     {
       throw std::overflow_error("Overflow...");
     }
     else
     {
-      count++;
+      countminsrmax++;
     }
   }
   next = current;

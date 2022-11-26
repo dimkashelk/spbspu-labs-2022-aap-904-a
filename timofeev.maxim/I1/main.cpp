@@ -23,5 +23,5 @@ int main()
   }
   while (value && std::cin);
   std::cout << "Amount of number equal to minimum :" << zn.counter << "\n";
-  std::cout << "Amount of number more than prev and less than next :" << fa.counter1 << "\n";
+  std::cout << "Amount of number more than prev and less than next :" << fa.counter1;
 }

@@ -1,0 +1,83 @@
+#include <exception>
+#include <iostream>
+#include <cstddef>
+#include <fstream>
+#include "arithmetic_mean_of_array.h"
+#include "shifted_array.h"
+
+int main (int argc, char* argv[])
+{
+  int static_array[] = { 5, 4, 3, 4, -6, 2, -1 };
+  countArithmeticMean(static_array, 7);
+  makeShiftedArray(static_array, 7);
+  std::cout << std::endl;
+
+  size_t dynamic_array_size = 0;
+  std::cin >> dynamic_array_size;
+  if (!std::cin)
+  {
+    std::cout << "Something went wrong \n";
+    return 1;
+  }
+  int* dynamic_array = new int[dynamic_array_size];
+  for (size_t i = 0; i < dynamic_array_size; i++)
+  {
+    dynamic_array[i] = std::rand();
+  }
+  countArithmeticMean(dynamic_array, dynamic_array_size);
+  makeShiftedArray(dynamic_array, dynamic_array_size);
+  delete[] dynamic_array;
+  std::cout << std::endl;
+
+  if (argc == 1)
+  {
+    std::cout << "File is not correct";
+    return 1;
+  }
+  if (argc > 2)
+  {
+    std::cout << "Parameters are not correct";
+    return 1;
+  }
+
+  std::ifstream input(argv[1]);
+  if (!input.is_open())
+  {
+    std::cout << "Error while opening file";
+    return 1;
+  }
+  while (!input.eof())
+  {
+    size_t reading_array_size = 0;
+    input >> reading_array_size;
+    if (!input)
+    {
+      std::cout << "Error";
+      return 1;
+    }
+    int* reading_array = new int[reading_array_size];
+    for (size_t i = 0; i < reading_array_size; i++)
+    {
+      input >> reading_array[i];
+      if (!input)
+      {
+        std::cout << "Error";
+        delete[] reading_array;
+        return 1;
+      }
+    }
+    try
+    {
+      countArithmeticMean(reading_array, reading_array_size);
+      makeShiftedArray(reading_array, reading_array_size);
+    }
+    catch (const std::overflow_error& e)
+    {
+      std::cout << e.what();
+      delete[] reading_array;
+      return 2;
+    }
+    delete[] reading_array;
+  }
+  return 0;
+}

@@ -9,19 +9,18 @@ int main(int argc, char *argv[]) {
     std::cerr << "Incorrect data entered\n";
     return 2;
   }
-  int arr1[] = { 4,6,7,-2,0,5,-1 };
-  transformArray(arr1, 7);
-  std::cout << std::endl;
+  int arr1[] = {4, 6, 7, -2, 0, 5, -1};
+  sortArrayNegativeNonNegative(arr1, 7);
   int start_interval = 1;
   int end_interval = 9;
-  int max_interval = start_interval - 1;
   try {
-    max_interval = searchMaxInterval(arr1, 7, start_interval, end_interval);
+    int max_interval = searchMaxInterval(arr1, 7, start_interval, end_interval);
     if (max_interval != start_interval - 1) {
       std::cout << max_interval << std::endl;
+    } else {
+      std::cout << "There is no suitable maximum\n";
     }
-  }
-  catch(const std::invalid_argument &e) {
+  } catch (const std::invalid_argument &e) {
     std::cout << "Error:\n ";
     std::cout << e.what();
     return 1;
@@ -33,18 +32,19 @@ int main(int argc, char *argv[]) {
    return 1;
   }
   int* arr2 = new int[size_arr2];
+  std::srand(time(nullptr));
   for (size_t i = 0; i < size_arr2; i++) {
     arr2[i] = std::rand();
   }
-  transformArray(arr2, size_arr2);
-  std::cout << std::endl;
+  sortArrayNegativeNonNegative(arr2, size_arr2);
   try {
-    max_interval = searchMaxInterval(arr2, size_arr2, start_interval, end_interval);
+    int max_interval = searchMaxInterval(arr2, size_arr2, start_interval, end_interval);
     if (max_interval != start_interval - 1) {
       std::cout << max_interval << std::endl;
+    } else {
+      std::cout << "There is no suitable maximum\n";
     }
-
-  }catch (const std::invalid_argument &e) {
+  } catch (const std::invalid_argument &e) {
     std::cout << "Error:\n ";
     std::cout << e.what();
     delete[] arr2;
@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
   delete[] arr2;
   std::ifstream input(argv[1]);
   if (!input.is_open()) {
-    std::cout << "Error while opening file";
+    std::cout << "Error while opening file\n";
     return 1;
   }
   size_t size_arr3 = 0;
@@ -73,14 +73,15 @@ int main(int argc, char *argv[]) {
           return 1;
         }
       }
-      transformArray(arr3, size_arr3);
-      std::cout << std::endl;
+      sortArrayNegativeNonNegative(arr3, size_arr3);
       try {
-        max_interval = searchMaxInterval(arr3, size_arr3, start_interval, end_interval);
+        int max_interval = searchMaxInterval(arr3, size_arr3, start_interval, end_interval);
         if (max_interval != start_interval - 1) {
-           std::cout << max_interval << std::endl;
+          std::cout << max_interval << std::endl;
+        } else {
+          std::cout << "There is no suitable maximum\n";
         }
-      }catch (const std::invalid_argument& e) {
+      } catch (const std::invalid_argument &e) {
         std::cout << "Error:\n ";
         std::cout << e.what();
         delete[] arr3;

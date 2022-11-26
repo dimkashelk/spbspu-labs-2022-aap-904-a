@@ -1,7 +1,6 @@
 #include "searchmaxinterval.hpp"
 #include <stdexcept>
 #include <cstddef>
-#include <iostream>
 
 int searchMaxInterval(const int* arr, size_t size, int start_interval, int end_interval) {
   if (start_interval >= end_interval) {
@@ -13,9 +12,6 @@ int searchMaxInterval(const int* arr, size_t size, int start_interval, int end_i
       if ((arr[i] > max_interval) && (start_interval <= arr[i]) && (arr[i] <= end_interval)) {
         max_interval = arr[i];
       }
-    }
-    if (max_interval == start_interval - 1) {
-      std::cout << "there is no suitable maximum\n";
     }
   }
   return max_interval;

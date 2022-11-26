@@ -1,9 +1,7 @@
 #include "transformarray.hpp"
-#include <iostream>
 
-void transformArray(int* arr, size_t size) {
+void sortArrayNegativeNonNegative(int* arr, size_t size) {
   if (size != 0) {
-    size_t n = size;
     int temp;
     for (size_t i = 0; i < size; i++) {
       if (arr[i] >= 0) {
@@ -15,9 +13,6 @@ void transformArray(int* arr, size_t size) {
         --size;
         --i;
       }
-    }
-    for (size_t i = 0; i < n; i++){
-      std::cout << arr[i] << " ";
     }
   }
 }

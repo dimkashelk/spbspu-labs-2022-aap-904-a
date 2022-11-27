@@ -1,8 +1,8 @@
 #ifndef CREDENTIALS_HPP
 #define CREDENTIALS_HPP
 #include <iosfwd>
-namespace muhammet
+namespace ekelik
 {
-  std::ostrem &  outCredentials(std::ostrem &);
+  std::ostrem &  outCredentials(std::ostrem & out);
 }
 #endif

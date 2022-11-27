@@ -4,6 +4,6 @@ struct CounterElAfterMax
 {
   int maxchislo = 0;
   int count = 0;
-  void operator()(int curr);
+  void operator()(unsigned int curr);
 };
 #endif

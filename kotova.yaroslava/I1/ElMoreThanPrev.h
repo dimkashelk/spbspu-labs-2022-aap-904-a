@@ -4,6 +4,6 @@ struct ElMoreThanPrev
 {
   int prev;
   int count = 0;
-  void operator()(int curr);
+  void operator()(unsigned int curr);
 };
 #endif

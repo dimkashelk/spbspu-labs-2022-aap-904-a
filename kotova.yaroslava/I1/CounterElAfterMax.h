@@ -3,7 +3,7 @@
 struct CounterElAfterMax
 {
   int maxchislo = 0;
-  int count = 0;
-  void operator()(unsigned int curr);
+  int unsigned count = 0;
+  void operator()(int curr);
 };
 #endif

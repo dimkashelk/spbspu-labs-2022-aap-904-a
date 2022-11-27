@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
+#include "count_columns_with_ascending_elements.h"
+#include "count_lines_with_unique_elements.h"
 int main(int argc, char *argv[])
 {
   if (argc > 4)
@@ -20,25 +22,31 @@ int main(int argc, char *argv[])
   in >> n >> m;
   if (argv[1] == 1)
   {
-    int arr[n][m];
+    int arr[n * m];
     for (size_t i = 0; i < n; i++)
     {
       for (size_t j = 0; j < m; j++)
       {
-        in >> arr[i][j];
+        in >> arr[n * i + j];
       }
     }
+    std::cout << count_columns_with_ascending_elements(arr, n, m) << "\n";
+    std::cout << count_lines_with_unique_elements(arr, n, m) << "\n";
   }
   else
   {
-    int **arr = new int*[n];
-    for (size_t i = 0; i < n; i++)
+    try
     {
-      arr[i] = new int[m];
-      for (int j = 0; j < m; j++)
+      int *arr = new int[n * m];
+      for (size_t i = 0; i < n; i++)
       {
-        in >> arr[i][j];
+        for (int j = 0; j < m; j++)
+        {
+          in >> arr[i * n + j];
+        }
       }
+      std::cout << count_columns_with_ascending_elements(arr, n, m) << "\n";
+      std::cout << count_lines_with_unique_elements(arr, n, m) << "\n";
     }
   }
   return 0;

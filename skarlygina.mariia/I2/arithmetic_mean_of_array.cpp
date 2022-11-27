@@ -3,10 +3,9 @@
 
 void countArithmeticMean (const int *array, const size_t N)
 {
-  unsigned int count = 0;
   int sum = 0;
   double arithmetic_mean = 0.0;
-  for (int i = 0; i < N; i++)
+  for (size_t i = 0; i < N; i++)
   {
     sum += array[i];
   }

@@ -3,7 +3,7 @@
 
 struct MaxSeqRow
 {
-  void operator()(int value, int previous_value);
+  void operator()(int value);
 
   int func_value;
   int func_previous_value;

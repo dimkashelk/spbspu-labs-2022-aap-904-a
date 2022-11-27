@@ -53,7 +53,7 @@ int main()
              }
         }
   }
-  cout<<"Amount of numbers that are smaller than the previous one but bigger than the last one: "<<sum<<endl;
-  cout<<"The smallest number (Excluding first and last number): "<<small<<endl;
+  cout<<"Amount of numbers that are smaller than the previous one but bigger than the last one: "<<sum<<endl
+      <<"The smallest number (Excluding first and last number): "<<small<<endl;
   return 0;
 }

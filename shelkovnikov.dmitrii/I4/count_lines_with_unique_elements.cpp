@@ -1,5 +1,5 @@
 #include "count_lines_with_unique_elements.h"
-size_t count_lines_with_unique_elements(const int *arr, const size_t n, const size_t m)
+size_t count_lines_with_unique_elements(int *arr, const size_t n, const size_t m)
 {
   size_t count = 0;
   for (size_t i = 0; i < n; i++)
@@ -9,7 +9,7 @@ size_t count_lines_with_unique_elements(const int *arr, const size_t n, const si
     {
       for (size_t k = j + 1; k < m; k++)
       {
-        if (arr[i][j] == a[i][k])
+        if (arr[i * n + j] == a[i * n + k])
         {
           fl = false;
           break;

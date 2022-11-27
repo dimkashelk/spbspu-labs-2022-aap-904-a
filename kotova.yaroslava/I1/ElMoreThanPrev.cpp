@@ -12,6 +12,6 @@ void ElMoreThanPrev::operator()(int curr)
       throw std::overflow_error("Overflow.");
     }
     count++;
-    prev = curr;
   }
+  prev = curr;
 }

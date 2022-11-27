@@ -16,8 +16,8 @@ int main()
      std::cin >> value;
      try
      {
-       max_sr(value, previous_val);
-       cnt_dev(value, previous_val);
+       max_sr(value);
+       cnt_dev(value);
      }
      catch (const std::overflow_error& e)
      {

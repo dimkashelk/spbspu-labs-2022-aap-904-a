@@ -2,8 +2,6 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-#include "count_columns_with_ascending_elements.h"
-#include "count_lines_with_unique_elements.h"
 int main(int argc, char *argv[])
 {
   if (argc > 4)
@@ -45,8 +43,9 @@ int main(int argc, char *argv[])
           in >> arr[i * n + j];
         }
       }
-      std::cout << count_columns_with_ascending_elements(arr, n, m) << "\n";
-      std::cout << count_lines_with_unique_elements(arr, n, m) << "\n";
+      std::ofstream out(argv[3]);
+      out << count_columns_with_ascending_elements(arr, n, m) << "\n";
+      out << count_lines_with_unique_elements(arr, n, m) << "\n";
       delete[] arr;
     }
     catch (const std::bad_alloc &e)
@@ -54,7 +53,6 @@ int main(int argc, char *argv[])
       std::cout << "Error";
       return 2;
     }
-
   }
   return 0;
 }

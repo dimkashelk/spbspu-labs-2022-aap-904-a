@@ -1,5 +1,5 @@
 #include "count_columns_with_ascending_elements.h"
-size_t count_columns_with_ascending_elements(int *arr, size_t n, size_t m)
+size_t count_columns_with_ascending_elements(const int *arr, size_t n, size_t m)
 {
   size_t count = 0;
   for (size_t j = 0; j < m; j++)

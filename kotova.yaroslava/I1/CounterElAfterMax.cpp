@@ -8,11 +8,11 @@ void CounterElAfterMax::operator()(int curr)
   if (curr < maxchislo)
   {
     if (count >= max_int)
-	{
+    {
       throw std::overflow_error("Overflow.");
     }
     else
-	{
+    {
       count++;
     }
   }

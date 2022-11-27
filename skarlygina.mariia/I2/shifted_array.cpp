@@ -12,6 +12,6 @@ void makeShiftedArray (const int* array, const size_t N)
       array_flag[i] = array[i - 1];
       std::cout << array_flag[i] << " ";
     }
+    delete[] array_flag;
   }
-  delete[] array_flag;
 }

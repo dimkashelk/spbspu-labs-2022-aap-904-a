@@ -4,11 +4,11 @@
 #include <limits>
 
 int main() {
-  int countMin = 0;
+  unsigned int countMin = 0;
   int checking = 0;
   int value = 0;
   int prevV = 0;
-  int countChanges = 0;
+  unsigned int countChanges = 0;
 
   do {
     std::cin >> value;

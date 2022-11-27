@@ -2,9 +2,9 @@
 #include <iostream>
 #include <limits>
 
-void counterMin (int &countMin, int prev, int curr, int &checking) {
+void counterMin (unsigned int &countMin, int prev, int curr, int &checking) {
   if (checking && prev < curr && curr != 0) {
-    if (countMin == std::numeric_limits<int>::max())
+    if (countMin == std::numeric_limits<unsigned int>::max())
     {
       throw std::overflow_error("Overflow");
     }

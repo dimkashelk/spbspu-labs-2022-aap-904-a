@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
   size_t m = 0;
   std::ifstream in(argv[2]);
   in >> n >> m;
-  if (argv[1] == 1)
+  if (*argv[1] == '1')
   {
     int arr[n * m];
     for (size_t i = 0; i < n; i++)
@@ -47,7 +47,14 @@ int main(int argc, char *argv[])
       }
       std::cout << count_columns_with_ascending_elements(arr, n, m) << "\n";
       std::cout << count_lines_with_unique_elements(arr, n, m) << "\n";
+      delete[] arr;
     }
+    catch (const std::bad_alloc &e)
+    {
+      std::cout << "Error";
+      return 2;
+    }
+
   }
   return 0;
 }

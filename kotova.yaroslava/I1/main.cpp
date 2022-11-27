@@ -4,7 +4,6 @@
 #include <limits>
 #include <stdexcept>
 
-<<<<<<< HEAD
 int main()
 {
   int curr = 0;
@@ -35,30 +34,3 @@ int main()
   std::cout << el_more_th_prev.count - 1 << '\n';
   std::cout << cnt_el_af_max.count<< '\n';
 }
-=======
-int main() {
-	int curr = 0;
-	ElMoreThanPrev el_more_th_prev{ curr };
-	CounterElAfterMax cnt_el_af_max{ curr };
-	do {
-		std::cin >> curr;
-		if (std::cin) {
-			try {
-				el_more_th_prev(curr);
-				cnt_el_af_max(curr);
-
-			}
-			catch (const std::overflow_error& e) {
-				std::cout << e.what();
-				return 2;
-			}
-		}
-	} while (curr && std::cin);
-	if (!std::cin) {
-		std::cout << "Error.";
-		return 1;
-	}
-	std::cout << el_more_th_prev.count - 1 << '\n';
-	std::cout << cnt_el_af_max.count<< '\n';
-}
->>>>>>> kotova.yaroslava/I1

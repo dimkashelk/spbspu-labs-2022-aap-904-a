@@ -9,24 +9,22 @@ int main()
   MaxSeqRow max_sr{1};
   CntDevPrev cnt_dev{0};
   int value = 0;
-  int previous_val = 0;
 
   do
   {
      std::cin >> value;
      try
      {
-       max_sr(value, previous_val);
-       cnt_dev(value, previous_val);
+       max_sr(value);
+       cnt_dev(value);
      }
      catch (const std::overflow_error& e)
      {
        std::cout << e.what() << "\n";
        return 1;
      }
-        previous_val = value;
 
-   } 
+   }
    while (value && std::cin);
    {
      if (!std::cin)

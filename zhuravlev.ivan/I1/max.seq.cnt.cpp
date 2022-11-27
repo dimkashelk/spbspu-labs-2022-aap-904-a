@@ -5,6 +5,8 @@
 void MaxSeqRow::operator()(int value)
 {
     const unsigned int maximum_of_unsigned_int = std::numeric_limits < unsigned int >::max();
+    func_previous_value = func_value;
+    func_value = vlaue;
     if (func_value && func_previous_value)
     {
         if (max_seq_row == maximum_of_unsigned_int)
@@ -24,6 +26,4 @@ void MaxSeqRow::operator()(int value)
             }
         }
     }
-    func_value = value;
-    func_previous_value = func_value;
 }

@@ -2,7 +2,7 @@
 #include <limits>
 #include <stdexcept>
 
-void CntDevPrev::operator()(int value, int previous_value)
+int CntDevPrev::operator()(int value, int previous_value)
 {
   const unsigned int maximum_of_unsigned_int = std::numeric_limits < unsigned int >::max();
   devisor_func_previous_value = previous_value;

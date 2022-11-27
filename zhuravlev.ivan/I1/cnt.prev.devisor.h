@@ -1,4 +1,4 @@
-#ifndef CNT_PREV_DEVISOR_H
+ #ifndef CNT_PREV_DEVISOR_H
 #define CNT_PREV_DEVISOR_H
 
 struct CntDevPrev

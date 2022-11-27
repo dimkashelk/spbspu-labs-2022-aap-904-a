@@ -11,10 +11,10 @@ void CountLarg::operator()(int curr_val)
   }
   else if (curr_val == larg_val)
   {
-  count_amount++;
-  }
-  if (count_amount == std::numeric_limits< unsigned >::max())
-  {
-    throw std::overflow_error("Overflow");
+    count_amount++;
+    if (count_amount == std::numeric_limits< unsigned >::max())
+    {
+      throw std::overflow_error("Overflow");
+    }
   }
 }

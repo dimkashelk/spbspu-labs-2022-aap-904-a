@@ -31,7 +31,7 @@ int main()
       std::cout << e.what() << '\n';
       return 1;
     }
-  } while (curr_val != 0 && std::cin);
+  } while (curr_val && std::cin);
 
   std::cout << "amount of elements: " << count_larg.count_amount << '\n';
   std::cout << "length even elements: " << len_even_count.count_len_even << "\n";

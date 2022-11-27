@@ -28,8 +28,9 @@ int main(int argc, char *argv[])
         in >> arr[n * i + j];
       }
     }
-    std::cout << count_columns_with_ascending_elements(arr, n, m) << "\n";
-    std::cout << count_lines_with_unique_elements(arr, n, m) << "\n";
+    std::ofstream out(argv[3]);
+    out << count_columns_with_ascending_elements(arr, n, m) << "\n";
+    out << count_lines_with_unique_elements(arr, n, m) << "\n";
   }
   else
   {

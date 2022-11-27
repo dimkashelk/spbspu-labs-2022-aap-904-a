@@ -26,7 +26,7 @@ int main()
      }
         previous_val = value;
 
-   } 
+   }
    while (value && std::cin);
    {
      if (!std::cin)

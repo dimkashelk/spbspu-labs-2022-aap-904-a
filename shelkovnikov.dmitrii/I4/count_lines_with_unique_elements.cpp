@@ -9,7 +9,7 @@ size_t count_lines_with_unique_elements(int *arr, const size_t n, const size_t m
     {
       for (size_t k = j + 1; k < m; k++)
       {
-        if (arr[i * n + j] == a[i * n + k])
+        if (arr[i * n + j] == arr[i * n + k])
         {
           fl = false;
           break;

@@ -2,16 +2,21 @@
 #include <stdexcept>
 #include <limits>
 
-void FindPifTrio::operator()(int x, int y, int z)
+void FindPifTrio::operator()(int x)
 {
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
-  if (PifCounter == max_unsigned_int)
-  {
-    throw std::overflow_error("Overflow");
-  }
   if (x > 0 && y > 0 && z > 0 && z * z + y * y == x * x)
   {
-    PifCounter += 1;
+    if (PifCounter < max_unsigned_int)
+    {
+      PifCounter += 1;
+    }
+    else
+    {
+      throw std::overflow_error("Overflow");
+    }
   }
+  z = y;
+  y = x;
 }

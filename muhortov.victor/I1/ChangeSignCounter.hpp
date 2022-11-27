@@ -3,7 +3,8 @@
 
 struct CountSignChanges
 {
-  void operator()(int x, int y);
+  void operator()(int x);
   unsigned int ChangeSignCounter;
+  int y;
 };
 #endif

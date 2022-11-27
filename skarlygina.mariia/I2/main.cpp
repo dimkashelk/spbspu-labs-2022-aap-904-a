@@ -19,15 +19,22 @@ int main (int argc, char* argv[])
     std::cout << "Something went wrong \n";
     return 1;
   }
-  int* dynamic_array = new int[dynamic_array_size];
-  for (size_t i = 0; i < dynamic_array_size; i++)
+  if (dynamic_array_size > 0)
   {
-    dynamic_array[i] = std::rand();
+    int* dynamic_array = new int[dynamic_array_size];
+    for (size_t i = 0; i < dynamic_array_size; i++)
+    {
+      dynamic_array[i] = std::rand();
+    }
+    countArithmeticMean(dynamic_array, dynamic_array_size);
+    makeShiftedArray(dynamic_array, dynamic_array_size);
+    delete[] dynamic_array;
+    std::cout << std::endl;
   }
-  countArithmeticMean(dynamic_array, dynamic_array_size);
-  makeShiftedArray(dynamic_array, dynamic_array_size);
-  delete[] dynamic_array;
-  std::cout << std::endl;
+  else
+  {
+    std::cout << "The number of element couldn't be zero";
+  }
 
   if (argc == 1)
   {

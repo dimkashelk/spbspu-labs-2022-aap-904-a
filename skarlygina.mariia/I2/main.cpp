@@ -7,7 +7,7 @@
 
 int main (int argc, char* argv[])
 {
-  int static_array[] = { 5, 4, 3, 4, -6, 2, -1 };
+  int static_array[] = {5, 4, 3, 4, -6, 2, -1};
   countArithmeticMean(static_array, 7);
   makeShiftedArray(static_array, 7);
   std::cout << std::endl;

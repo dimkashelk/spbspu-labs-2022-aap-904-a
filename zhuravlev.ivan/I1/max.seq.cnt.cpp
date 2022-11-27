@@ -2,7 +2,7 @@
 #include <limits>
 #include <stdexcept>
 
-void MaxSeqRow::operator()(int value, int previous_value)
+void MaxSeqRow::operator()(int value)
 {
   const unsigned int maximum_of_unsigned_int = std::numeric_limits < unsigned int >::max();
   func_value = value;

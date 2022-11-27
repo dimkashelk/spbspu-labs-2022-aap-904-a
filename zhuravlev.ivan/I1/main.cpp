@@ -22,7 +22,7 @@ int main()
        std::cout << e.what() << "\n";
        return 1;
      }
-        previous_val = value;
+      previous_val = value;
 
    } 
    while (value && std::cin);

@@ -7,8 +7,8 @@
 int main()
 {
   int curr = 0;
-  ElMoreThanPrev el_more_th_prev;
-  CounterElAfterMax cnt_el_af_max;
+  ElMoreThanPrev el_more_th_prev{0};
+  CounterElAfterMax cnt_el_af_max{0};
   do
   {
     std::cin >> curr;

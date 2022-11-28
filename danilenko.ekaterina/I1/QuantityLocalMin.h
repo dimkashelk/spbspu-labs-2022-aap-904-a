@@ -5,7 +5,11 @@ class QuantityLocalMin
 {
 public:
   unsigned int local_min = 0;
-  void operator()(const int current_val, const int prev_val, const int before_prev_val);
+  void operator()(const int current_val);
+
+private:
+  int prev_val = 0;
+  int before_prev_val = 0;
 };
 
 #endif

@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <limits>
 
-void QuantityLocalMin::operator()(const int current_val, const int prev_val, const int before_prev_val)
+void QuantityLocalMin::operator()(const int current_val)
 {
   if (before_prev_val != 0 && prev_val != 0)
   {
@@ -14,8 +14,10 @@ void QuantityLocalMin::operator()(const int current_val, const int prev_val, con
         {
           throw std::overflow_error("Too many values");
         }
-        local_min = local_min + 1;
+        local_min++;
       }
     }
   }
+  before_prev_val = prev_val;
+  prev_val = current_val;
 }

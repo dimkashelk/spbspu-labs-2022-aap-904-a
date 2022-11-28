@@ -2,17 +2,18 @@
 #include <stdexcept>
 #include <limits>
 
-void QuantitySignChange::operator()(const int current_val, const int prev_val)
+void QuantitySignChange::operator()(const int current_val)
 {
   if (prev_val != 0)
   {
-    if (current_val * prev_val < 0)
+    if (prev_val < 0 && current_val > 0 || prev_val > 0 && current_val < 0)
     {
       if (sign_change == std::numeric_limits< unsigned int >::max())
       {
         throw std::overflow_error("Too many values");
       }
-      sign_change = sign_change + 1;
+      sign_change++;
     }
   }
+  prev_val = current_val;
 }

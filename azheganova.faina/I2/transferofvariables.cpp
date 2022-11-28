@@ -14,7 +14,7 @@ size_t transferofvariables(int* arr, const size_t size)
     arr[newi] = arr[i];
     newi--;
   }
-  for (int newi = 0; newi < size; newi++)
+  for (size_t newi = 0; newi < size; newi++)
   {
     std::cout << arr[newi]<< ' ';
   }

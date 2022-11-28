@@ -35,8 +35,7 @@ int main()
   while (std::cin && current);
 
   std::cout << "max mono increace - " << maxMono.quantity << "\n";
-  std::cout << "without remainder divisible by the preceding - " 
-            << divNoRemainder.quantity << "\n";
+  std::cout << "without remainder divisible by the preceding - " << divNoRemainder.quantity << "\n";
 
   return 0;
 }

@@ -1,7 +1,6 @@
 #include "ChangeSignCounter.hpp"
 #include <stdexcept>
 #include <limits>
-#include <cmath>
 
 void CountSignChanges::operator()(int x)
 {
@@ -9,7 +8,7 @@ void CountSignChanges::operator()(int x)
 
   if (y && x != 0)
   {
-    if (x / abs(x) != y / abs(y))
+    if (x / std::abs(x) != y / std::abs(y))
     {
       if (ChangeSignCounter < max_unsigned_int)
       {

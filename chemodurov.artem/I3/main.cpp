@@ -34,6 +34,7 @@ int main()
   if (c_string[0] == '\n' || c_string[0] == '\0')
   {
     std::cerr << "Empty string\n";
+    delete [] c_string;
     return 1;
   }
   c_string[size - 1] = '\0';

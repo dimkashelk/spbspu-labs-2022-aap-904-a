@@ -5,7 +5,7 @@ struct CounterEvenElements
   void operator()(int next);
   unsigned int count;
   unsigned int maxcount;
-  unsigned int prev;
+  int prev;
 };
 #endif
 

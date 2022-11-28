@@ -31,7 +31,7 @@ int main()
   }
   while (std::cin && c_string[size++] != '\n');
 
-  if (c_string[0] == '\n')
+  if (c_string[0] == '\n' || c_string[0] == '\0')
   {
     std::cerr << "Empty string\n";
     return 1;

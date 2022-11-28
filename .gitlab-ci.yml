@@ -9,6 +9,7 @@ before_script:
 
 author:
   stage: sanity
+  needs: []
   script:
     - '"$TEST_DIR"/validate-student.sh'
   rules:
@@ -20,6 +21,7 @@ author:
       
 branch:
   stage: sanity
+  needs: []
   script:
     - '"$TEST_DIR"/validate-branch.sh'
   rules:
@@ -31,6 +33,7 @@ branch:
 
 content:
   stage: sanity
+  needs: []
   script:
     - '"$TEST_DIR"/validate-files.sh'
   rules:
@@ -42,6 +45,7 @@ content:
 
 build:
   stage: build
+  needs: []
   script:
     - '"$TEST_DIR"/build.sh'
   rules:

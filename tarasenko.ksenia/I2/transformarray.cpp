@@ -1,6 +1,7 @@
 #include "transformarray.hpp"
 
-void sortArrayNegativeNonNegative(int* arr, size_t size) {
+int* partitionNegative(int* arr, size_t size) {
+  size_t n = size / 2;
   if (size != 0) {
     int temp;
     for (size_t i = 0; i < size; i++) {
@@ -15,4 +16,5 @@ void sortArrayNegativeNonNegative(int* arr, size_t size) {
       }
     }
   }
+  return arr + n;
 }

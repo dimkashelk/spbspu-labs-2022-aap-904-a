@@ -1,8 +1,8 @@
-#include "transformarray.hpp"
-#include "searchmaxinterval.hpp"
 #include <iostream>
 #include <cstddef>
 #include <fstream>
+#include "transformarray.hpp"
+#include "searchmaxinterval.hpp"
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     return 2;
   }
   int arr1[] = {4, 6, 7, -2, 0, 5, -1};
-  sortArrayNegativeNonNegative(arr1, 7);
+  int* ptr1 = partitionNegative(arr1, 7);
   int start_interval = 1;
   int end_interval = 9;
   try {
@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
   for (size_t i = 0; i < size_arr2; i++) {
     arr2[i] = std::rand();
   }
-  sortArrayNegativeNonNegative(arr2, size_arr2);
+  int* ptr2 = partitionNegative(arr2, size_arr2);
   try {
     int max_interval = searchMaxInterval(arr2, size_arr2, start_interval, end_interval);
     if (max_interval != start_interval - 1) {
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
           return 1;
         }
       }
-      sortArrayNegativeNonNegative(arr3, size_arr3);
+      int* ptr3 = partitionNegative(arr3, size_arr3);
       try {
         int max_interval = searchMaxInterval(arr3, size_arr3, start_interval, end_interval);
         if (max_interval != start_interval - 1) {

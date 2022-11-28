@@ -1,7 +1,6 @@
 #include "LengthMax.h"
-#include <iostream>
 
-void LengthMax::operator()(int value, int predV)
+void LengthMax::operator()(int value)
 {
   if (predV > value)
   {
@@ -15,4 +14,5 @@ void LengthMax::operator()(int value, int predV)
   {
     count = 1;
   }
+  predV=value;
 }

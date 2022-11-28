@@ -3,12 +3,10 @@
 
 struct CountAfterMax
 {
-    int count_after_max = 0;
-    int max_value = 0;
+  int count_after_max = 0;
+  int max_value = 0;
 
-    void operator()(int value);
+  void operator()(int value);
 };
 
 #endif
-
-

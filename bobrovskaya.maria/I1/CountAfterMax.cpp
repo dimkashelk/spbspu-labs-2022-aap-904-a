@@ -1,5 +1,4 @@
 #include "CountAfterMax.h"
-#include <iostream>
 
 void CountAfterMax::operator()(int value)
 {

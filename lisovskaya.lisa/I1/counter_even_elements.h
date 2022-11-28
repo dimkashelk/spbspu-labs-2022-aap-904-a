@@ -6,6 +6,6 @@ struct CounterEvenElements
   unsigned int count;
   unsigned int maxcount;
   unsigned int prev;
-}
+};
 #endif
 

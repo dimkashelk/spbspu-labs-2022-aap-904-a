@@ -22,4 +22,3 @@ void CounterEvenElements::operator()(int next)
   }
   prev = next;
 }
-

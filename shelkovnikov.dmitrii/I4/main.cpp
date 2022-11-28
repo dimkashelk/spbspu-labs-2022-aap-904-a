@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
+#include "count_lines_with_unique_elements.h"
+#include "minimum_sums_of_diagonals.h"
 int main(int argc, char *argv[])
 {
   if (argc > 4)
@@ -29,8 +31,8 @@ int main(int argc, char *argv[])
       }
     }
     std::ofstream out(argv[3]);
-    out << count_columns_with_ascending_elements(arr, n, m) << "\n";
     out << count_lines_with_unique_elements(arr, n, m) << "\n";
+    out << minimum_sums_of_diagonals(arr, n, m) << "\n";
   }
   else
   {
@@ -45,8 +47,8 @@ int main(int argc, char *argv[])
         }
       }
       std::ofstream out(argv[3]);
-      out << count_columns_with_ascending_elements(arr, n, m) << "\n";
       out << count_lines_with_unique_elements(arr, n, m) << "\n";
+      out << minimum_sums_of_diagonals(arr, n, m) << "\n";
       delete[] arr;
     }
     catch (const std::bad_alloc &e)

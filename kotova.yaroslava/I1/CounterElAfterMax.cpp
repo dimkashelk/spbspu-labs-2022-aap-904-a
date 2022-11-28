@@ -19,6 +19,5 @@ void CounterElAfterMax::operator()(int curr)
   else
   {
     maxval = curr;
-    count = 0;
   }
 }

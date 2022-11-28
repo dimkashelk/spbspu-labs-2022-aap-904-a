@@ -6,7 +6,7 @@ void QuantitySignChange::operator()(const int current_val)
 {
   if (prev_val != 0)
   {
-    if (prev_val < 0 && current_val > 0 || prev_val > 0 && current_val < 0)
+    if ((prev_val < 0 && current_val > 0) || (prev_val > 0 && current_val < 0))
     {
       if (sign_change == std::numeric_limits< unsigned int >::max())
       {

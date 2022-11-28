@@ -4,7 +4,7 @@
 struct FindPifTrio
 {
   unsigned int PifCounter;
-  int y, z;\
+  int y, z;
 
   void operator()(int x);
 };

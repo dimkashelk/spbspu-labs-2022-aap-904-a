@@ -1,14 +1,13 @@
 #include "sequences.h"
-#include <iostream>
 #include <limits>
+#include <stdexcept>
 
 void values::operator()(int value)
 {
   constexpr int maxValue = std::numeric_limits< int >::max();
   if (maxNum == maxValue)
   {
-    std::cout << "overflow";
-    return;
+    throw std::overflow_error("overflow");
   }
   else if (value == predV)
   {
@@ -26,8 +25,7 @@ void localValuesMax::operator()(int value)
   constexpr int maxLocalVal = std::numeric_limits< int >::max();
   if (value == maxLocalVal)
   {
-    std::cout << "overflow";
-    return;
+    throw std::overflow_error("overflow");
   }
   if (pp_value && value)
   {

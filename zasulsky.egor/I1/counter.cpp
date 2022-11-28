@@ -11,7 +11,7 @@ void zasulsky::SecondLargestFinder::operator()(int val)
     return;
   }
   if (val > largestVal) {
-    const unsigned minInt = std::numeric_limits< int >::min();
+    const int minInt = std::numeric_limits< int >::min();
     if (largestVal != minInt) {
       secondLargestVal = largestVal;
     }

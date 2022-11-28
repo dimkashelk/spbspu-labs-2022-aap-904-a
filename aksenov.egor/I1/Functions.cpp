@@ -4,9 +4,9 @@ bool notZero(int numb)
 {
   return numb != 0;
 };
-bool isMore(int dad, int son)
+bool isMore(int prev, int val)
 {
-  return dad < son;
+  return prev < val;
 };
 void out(int count, int sum, int compare_count, int min_count)
 {

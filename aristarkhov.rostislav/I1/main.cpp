@@ -32,7 +32,7 @@ int main()
       std::cout << e.what() << '\n';
       return 1;
     }
-  } 
+  }
   while (curr_val && std::cin);
 
   std::cout << "amount of elements: " << count_largest.count_amount << '\n';

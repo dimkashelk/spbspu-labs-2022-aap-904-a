@@ -1,14 +1,14 @@
+#include <iostream>
 #include "ElMoreThanPrev.h"
 #include "CounterElAfterMax.h"
-#include <iostream>
 #include <limits>
 #include <stdexcept>
 
 int main()
 {
   int curr = 0;
-  ElMoreThanPrev el_more_th_prev{0};
-  CounterElAfterMax cnt_el_af_max{0};
+  ElMoreThanPrev el_more_th_prev;
+  CounterElAfterMax cnt_el_af_max;
   do
   {
     std::cin >> curr;
@@ -25,7 +25,8 @@ int main()
         return 2;
       }
     }
-  } while (curr && std::cin);
+  }
+  while (curr && std::cin);
   if (!std::cin)
   {
     std::cout << "Error.";

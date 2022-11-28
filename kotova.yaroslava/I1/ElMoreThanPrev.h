@@ -2,7 +2,7 @@
 #define ELMORETHANPREV_H
 struct ElMoreThanPrev
 {
-  int prev;
+  int prev = 0;
   int count = 0;
   void operator()(int curr);
 };

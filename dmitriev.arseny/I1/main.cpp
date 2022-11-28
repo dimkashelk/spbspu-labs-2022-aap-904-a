@@ -31,10 +31,12 @@ int main()
       std::cout << e.what() << "\n";
       return 1;
     }
-  } while (std::cin && current);
+  }
+  while (std::cin && current);
 
   std::cout << "max mono increace - " << maxMono.quantity << "\n";
-  std::cout << "without remainder divisible by the preceding - " << divNoRemainder.quantity << "\n";
+  std::cout << "without remainder divisible by the preceding - " 
+            << divNoRemainder.quantity << "\n";
 
   return 0;
 }

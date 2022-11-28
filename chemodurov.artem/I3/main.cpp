@@ -24,6 +24,7 @@ int main()
       }
       catch (const std::bad_alloc & e)
       {
+        std::cerr << e.what() << "\n";
         delete [] c_string;
         return 1;
       }
@@ -40,15 +41,40 @@ int main()
   }
   c_string[size - 1] = '\0';
 
+  char * other_string = nullptr;
   size_t other_size = 5;
-  char * other_string = new char[other_size];
+  try
+  {
+    other_string = new char[other_size];
+  }
+  catch (const std::bad_alloc & e)
+  {
+    std::cerr << e.what() << "\n";
+    delete [] c_string;
+    return 1;
+  }
   for (size_t i = 0; i < other_size - 1; ++i)
   {
     other_string[i] = '2';
   }
   other_string[other_size] = '\0';
-  char * another_string = chemodurov::addNumbersToFirst(c_string, other_string);
+
+  char * another_string = nullptr;
+  try
+  {
+    another_string = new char[size + other_size];
+  }
+  catch (const std::bad_alloc & e)
+  {
+    std::cerr << e.what() << "\n";
+    delete [] c_string;
+    delete [] other_string;
+    return 1;
+  }
+  another_string = chemodurov::addNumbersToFirst(another_string, c_string, other_string);
   std::cout << another_string << "\n";
+  delete [] other_string;
+  delete [] another_string;
 
   bool is_rep_num = chemodurov::isRepeatingNumbers(c_string);
   if (is_rep_num)
@@ -60,10 +86,19 @@ int main()
     std::cout << "String not contains repeating numbers\n";
   }
 
-  char * yet_another_string = chemodurov::deleteVowels(c_string);
+  char * yet_another_string = nullptr;
+  try
+  {
+    yet_another_string = new char[size];
+  }
+  catch (const std::bad_alloc & e)
+  {
+    std::cerr << e.what() << "\n";
+    delete [] c_string;
+    return 1;
+  }
+  yet_another_string = chemodurov::deleteVowels(yet_another_string, c_string);
   std::cout << yet_another_string << "\n";
   delete [] c_string;
-  delete [] other_string;
-  delete [] another_string;
   delete [] yet_another_string;
 }

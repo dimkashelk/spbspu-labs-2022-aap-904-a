@@ -27,7 +27,6 @@ int main()
     std::cout << "Not a number";
     return 1;
   }
-  
   int* dynamicarray = new int[n];
   for (size_t i = 0; i < n; i++)
   {

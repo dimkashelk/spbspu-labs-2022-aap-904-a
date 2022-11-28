@@ -43,6 +43,7 @@ content:
 
 build:
   stage: build
+  needs: []
   script:
     - '"$TEST_DIR"/build.sh'
   rules:

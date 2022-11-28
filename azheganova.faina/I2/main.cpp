@@ -12,7 +12,7 @@ int main()
   try
   {
     std::cout << shiftarrayleft(staticarray, 10) << '\n';
-    std::cout << transferofvariables(staticarray, 10) << '\n';		
+    std::cout << transferofvariables(staticarray, 10) << '\n';
   }
   catch (const std::overflow_error& e)
   {
@@ -22,7 +22,7 @@ int main()
   size_t n = 0;
   std::cout << "Dynamic array size:\n";
   std::cin >> n;
-  if (!std::cin) 
+  if (!std::cin)
   {
     std::cout << "Not a number";
     return 1;

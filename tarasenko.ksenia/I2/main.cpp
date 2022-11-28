@@ -39,9 +39,9 @@ int main(int argc, char *argv[]) {
     arr2[i] = std::rand();
   }
   if (size_arr2){
-   int* ptr2 = nullptr;
-   ptr2 = partitionNegative(arr2, size_arr2);
-   std::cout << *ptr2 << "\n";
+    int* ptr2 = nullptr;
+    ptr2 = partitionNegative(arr2, size_arr2);
+    std::cout << *ptr2 << "\n";
   }
   try {
     int max_interval = searchMaxInterval(arr2, size_arr2, start_interval, end_interval);

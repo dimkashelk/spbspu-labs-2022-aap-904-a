@@ -1,5 +1,5 @@
 #include <iostream>
-#include "structure.h"
+#include "sequences.h"
 
 int main()
 {
@@ -12,15 +12,13 @@ int main()
     if (!std::cin)
     {
       std::cout << "need number\n";
-      return -1;
+      return 1;
     }
     maxVal(value);
     lMV(value);
   }
   while (std::cin && value);
-  //std::cout << "max value: " << maxVal.maxNum << "\n";
-  //std::cout << "local max value: " << lMV.count << "\n";
-  std::cout << maxVal.maxNum << std::endl;
-  std::cout << lMV.count << std::endl;
+  std::cout << "max value: " << maxVal.maxNum << "\n";
+  std::cout << "local max value: " << lMV.count << "\n";
   return 0;
 }

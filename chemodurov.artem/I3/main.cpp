@@ -5,6 +5,7 @@ int main()
 {
   size_t capacity = 20;
   char * c_string = new char[capacity];
+  c_string[0] = '\0';
   size_t size = 0;
 
   std::cin >> std::noskipws;

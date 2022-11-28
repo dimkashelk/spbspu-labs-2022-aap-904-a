@@ -1,6 +1,6 @@
+#include "sequences.h"
 #include <iostream>
 #include <limits>
-#include "structure.h"
 
 void values::operator()(int value)
 {
@@ -8,6 +8,7 @@ void values::operator()(int value)
   if (maxNum == maxValue)
   {
     std::cout << "overflow";
+    return;
   }
   else if (value == predV)
   {
@@ -26,6 +27,7 @@ void localValuesMax::operator()(int value)
   if (value == maxLocalVal)
   {
     std::cout << "overflow";
+    return;
   }
   if (pp_value && value)
   {

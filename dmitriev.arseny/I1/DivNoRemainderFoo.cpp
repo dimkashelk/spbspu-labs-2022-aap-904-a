@@ -2,9 +2,9 @@
 #include <stdexcept>
 #include <limits>
 
-void DivNoRemainder::operator()(const int p1, const int p2)
+void DivNoRemainder::operator()(const int current)
 {
-  if (p1 != 0 && p2 % p1 == 0)
+  if (previous != 0 && current % previous == 0)
   {
     if (quantity == std::numeric_limits< unsigned int >::max())
     {
@@ -12,4 +12,5 @@ void DivNoRemainder::operator()(const int p1, const int p2)
     }
     quantity++;
   }
+  previous = current;
 }

@@ -2,9 +2,9 @@
 #include <stdexcept>
 #include <limits>
 
-void MaxMono::operator()(const int p1, const int p2)
+void MaxMono::operator()(const int current)
 {
-  if (p1 != 0 && p2 > p1)
+  if (previous != 0 && current > previous)
   {
     if (k == std::numeric_limits< unsigned int >::max())
     {
@@ -24,4 +24,5 @@ void MaxMono::operator()(const int p1, const int p2)
     }
     k = 0;
   }
+  previous = current;
 }

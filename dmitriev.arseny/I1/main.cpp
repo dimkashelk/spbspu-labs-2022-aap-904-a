@@ -4,27 +4,26 @@
 
 int main()
 {
-  int p2 = 0, p1 = 0;
+  int current = 0;
   MaxMono maxMono;
   DivNoRemainder divNoRemainder;
 
   do
   {
-    p1 = p2;
-    std::cin >> p2;
+    std::cin >> current;
     if (!std::cin)
     {
       std::cout << "Inp error" << "\n";
       return 1;
     }
-    if (p2 == 0)
+    if (current == 0)
     {
       break;
     }
     try
     {
-      maxMono(p1, p2);
-      divNoRemainder(p1, p2);
+      maxMono(current);
+      divNoRemainder(current);
     }
     catch (const std::overflow_error& e)
     {
@@ -32,7 +31,7 @@ int main()
       std::cout << e.what() << "\n";
       return 1;
     }
-  } while (std::cin && p2);
+  } while (std::cin && current);
 
   std::cout << "max mono increace - " << maxMono.quantity << "\n";
   std::cout << "without remainder divisible by the preceding - " << divNoRemainder.quantity << "\n";

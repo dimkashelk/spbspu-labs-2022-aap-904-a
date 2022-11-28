@@ -27,7 +27,7 @@ int main()
     return 1;
   }
 
-  if (max_counter.count_max == 0 && min_counter.count_min==0)
+  if (max_counter.count_max == 0 && min_counter.count_min == 0)
   {
     std::cout << "Empty sequence." << '\n';
     return 1;

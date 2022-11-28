@@ -9,7 +9,7 @@ MaxCounter::MaxCounter():
 
 void MaxCounter::operator()(const int current_value)
 {
-  if (count_max == std::numeric_limits< int >::max())
+  if (count_max == std::numeric_limits< unsigned int >::max() && current_value == max)
   {
     throw std::overflow_error("Overflow!");
   }
@@ -32,7 +32,7 @@ MinCounter::MinCounter():
 
 void MinCounter::operator()(const int current_value)
 {
-  if (count_min == std::numeric_limits< int >::max())
+  if (count_min == std::numeric_limits< unsigned int >::max() && current_value == min)
   {
     throw std::overflow_error("Overflow!");
   }

@@ -19,6 +19,22 @@ author:
     - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
       
+build:
+  stage: build
+  needs: []
+  script:
+    - '"$TEST_DIR"/build.sh'
+  rules:
+    - if: $CI_MERGE_REQUEST_IID
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+  artifacts:
+    paths:
+      - out
+    expire_in: 1 year
+
 branch:
   stage: sanity
   needs: []
@@ -42,22 +58,6 @@ content:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
-
-build:
-  stage: build
-  needs: []
-  script:
-    - '"$TEST_DIR"/build.sh'
-  rules:
-    - if: $CI_MERGE_REQUEST_IID
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - if: '$CI_PIPELINE_SOURCE == "push"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-  artifacts:
-    paths:
-      - out
-    expire_in: 1 year
 
 acceptance:
   stage: test

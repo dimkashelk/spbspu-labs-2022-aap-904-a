@@ -4,8 +4,7 @@
 #include<string>
 #include "arrays.h"
 
-const std::string INPUT_FILE = "input.txt";
-int main()
+int main(int argc, char *argv[])
 {
   int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   try
@@ -48,7 +47,7 @@ int main()
     return 2;
   }
   delete[] dynamicarray;
-  std::ifstream file(INPUT_FILE);
+  std::ifstream file(argv[1]);
   if (!file.is_open())
   {
     std::cout << "file open error";

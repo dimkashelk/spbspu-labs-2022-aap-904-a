@@ -17,7 +17,7 @@ int main()
       std::cout << "Incorrect input" << "\n";
       return 1;
     }
-           
+  
     try
     {
       SignChange(current_val);

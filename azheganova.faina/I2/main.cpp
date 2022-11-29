@@ -4,7 +4,7 @@
 #include<string>
 #include "arrays.h"
 
-int main(int argc, char *argv[])
+int main(char *argv[])
 {
   int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   try

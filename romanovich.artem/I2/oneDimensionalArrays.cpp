@@ -2,7 +2,7 @@
 #include <limits>
 #include <iostream>
 #include <algorithm>
-#include "onedimensionalarrays.h"
+#include "oneDimensionalArrays.h"
 size_t countNegativeRightFromMax(const int *array, const size_t size)
 {
   size_t countNegativeRightFromMax = 0;

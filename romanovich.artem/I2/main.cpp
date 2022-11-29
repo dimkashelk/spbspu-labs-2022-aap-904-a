@@ -10,7 +10,7 @@ int main(int argc, char **argv)
   const size_t arrayConstSize = 10;
   int arrayConst[arrayConstSize] = {1, -1, 3, 4, 5, 4, -1, -1, 2, 1};
   size_t countNrfmConst = countNegativeRightFromMax(arrayConst, arrayConstSize);
-  size_t countRirConst = countRepetitiveInRange(arrayConst, beginIndex, endIndex);
+  size_t countRirConst = countRepetitiveInRange(arrayConst, arrayConstSize, beginIndex, endIndex);
   std::cout << countNrfmConst << std::endl;
   std::cout << countRirConst << std::endl;
   //Dynamic array
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     arrayDynamic.data[i] = std::rand() % 10 - 5;
   }
   size_t countNrfmDynamic = countNegativeRightFromMax(arrayDynamic.data, arrayDynamicSize);
-  size_t countRirDynamic = countRepetitiveInRange(arrayDynamic.data, beginIndex, endIndex);
+  size_t countRirDynamic = countRepetitiveInRange(arrayDynamic.data, arrayDynamicSize, beginIndex, endIndex);
   std::cout << countNrfmDynamic << std::endl;
   std::cout << countRirDynamic << std::endl;
   //File array
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     }
   }
   size_t countNrfmFile = countNegativeRightFromMax(arrayFile, arrayFileSize);
-  size_t countRirFile = countRepetitiveInRange(arrayFile, beginIndex, endIndex);
+  size_t countRirFile = countRepetitiveInRange(arrayFile, arrayFileSize, beginIndex, endIndex);
   std::cout << countNrfmFile << std::endl;
   std::cout << countRirFile << std::endl;
 }

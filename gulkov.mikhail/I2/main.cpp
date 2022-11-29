@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-  std::srand(time(0));
+  std::srand(time(nullptr));
 
   if (argc > 2)
   {
@@ -27,9 +27,9 @@ int main(int argc, char* argv[])
   {
     sort_increasing(array1, 7);
     print_array(array1, 7);
-    std::cout << "Has duplicate elements at least: "
-              << has_repeating_numbers(array1, 7, array1_index_m, array1_index_n)
-              << " time" << std::endl;
+    std::cout << "Has duplicate elements at least: ";
+    std::cout << has_repeating_numbers(array1, 7, array1_index_m, array1_index_n);
+    std::cout << " time" << std::endl;
   }
   catch (const std::invalid_argument& e)
   {
@@ -59,9 +59,9 @@ int main(int argc, char* argv[])
     {
       sort_increasing(array2, input);
       print_array(array2, input);
-      std::cout << "Has duplicate elements at least: "
-                << has_repeating_numbers(array2, input, array2_index_m, array2_index_n)
-                << " time" << std::endl;
+      std::cout << "Has duplicate elements at least: ";
+      std::cout << has_repeating_numbers(array2, input, array2_index_m, array2_index_n);
+      std::cout << " time" << std::endl;
     }
     catch (const std::invalid_argument& e)
     {
@@ -109,9 +109,9 @@ int main(int argc, char* argv[])
       {
         sort_increasing(array3, array3_size);
         print_array(array3, array3_size);
-        std::cout << "Has duplicate elements at least: "
-                  << has_repeating_numbers(array3, array3_size, array3_index_m, array3_index_n)
-                  << " time" << std::endl;
+        std::cout << "Has duplicate elements at least: ";
+        std::cout << has_repeating_numbers(array3, array3_size, array3_index_m, array3_index_n);
+        std::cout << " time" << std::endl;
       }
       catch (const std::invalid_argument& e)
       {

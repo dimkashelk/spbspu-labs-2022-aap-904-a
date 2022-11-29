@@ -2,7 +2,7 @@
 #include <cstddef>
 #include "CheckRepeat.hpp"
 
-bool has_repeating_numbers(int* arr, size_t size, unsigned int index_m, unsigned int index_n)
+bool has_repeating_numbers(const int* arr, size_t size, unsigned int index_m, unsigned int index_n)
 {
   bool has_repeating = false;
   size_t max_of_index = std::max(index_m, index_n);
@@ -13,7 +13,7 @@ bool has_repeating_numbers(int* arr, size_t size, unsigned int index_m, unsigned
   }
   if (index_n < index_m)
   {
-    int temp = index_m;
+    unsigned int temp = index_m;
     index_m = index_n;
     index_n = temp;
   }

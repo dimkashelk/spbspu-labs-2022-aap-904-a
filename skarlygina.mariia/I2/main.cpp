@@ -9,7 +9,12 @@ int main (int argc, char* argv[])
 {
   int static_array[] = {5, 4, 3, 4, -6, 2, -1};
   std::cout << countArithmeticMean(static_array, 7) << " ";
-  makeShiftedArray(static_array, 7);
+  int* static_array_ptr = nullptr;
+  static_array_ptr = makeShiftedArray(static_array, 7);
+  for (size_t i = 0; i < 7; i++)
+  {
+    std::cout << static_array_ptr[i] << " ";
+  }
   std::cout << "\n";
 
   size_t dynamic_array_size = 0;
@@ -27,7 +32,12 @@ int main (int argc, char* argv[])
       dynamic_array[i] = std::rand();
     }
     std::cout << countArithmeticMean(dynamic_array, dynamic_array_size) << " ";
-    makeShiftedArray(dynamic_array, dynamic_array_size);
+    int* dynamic_array_ptr = nullptr;
+    dynamic_array_ptr = makeShiftedArray(dynamic_array, dynamic_array_size);
+    for (size_t i = 0; i < dynamic_array_size; i++)
+    {
+      std::cout << dynamic_array_ptr[i] << " ";
+    }
     delete[] dynamic_array;
     std::cout << "\n";
   }
@@ -76,7 +86,12 @@ int main (int argc, char* argv[])
     try
     {
       std::cout << countArithmeticMean(reading_array, reading_array_size) << " ";
-      makeShiftedArray(reading_array, reading_array_size);
+      int* reading_array_ptr = nullptr;
+      reading_array_ptr = makeShiftedArray(reading_array, reading_array_size);
+      for (size_t i = 0; i < reading_array_size)
+      {
+        std::cout << reading_array_ptr[i] << " ";
+      }
     }
     catch (const std::overflow_error& e)
     {

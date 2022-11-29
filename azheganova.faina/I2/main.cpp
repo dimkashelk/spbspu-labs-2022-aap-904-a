@@ -47,14 +47,23 @@ int main(int argc, char *argv[])
   }
   delete[] dynamicarray;
   std::ifstream file(argv[1]);
+  size_t size = 0;
   if (!file)
   {
     std::cerr << argv[1] << "file open error";
     return 2;
   }
-  size_t size = 0;
   file >> size;
   int* arrInput = new int[size];
+  for (size_t i=0; i < size; i++)
+  {
+    file >> arrInput[i];
+    if (!file)
+    {
+      std::cerr << "file reading error";
+      return 2;
+    }
+  }
   shiftarrayleft(arrInput, size);
   for (size_t i = 0; i < size; i++)
   {

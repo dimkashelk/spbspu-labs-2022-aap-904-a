@@ -1,26 +1,28 @@
-#include <iostream>
 #include "amountofavr.hpp"
+#include <iostream>
+#include <stdexcept>
 
-void Family::operator()(int value)
+
+const unsigned int MaxForOver2 = std::numeric_limits< unsigned int >::max();
+
+
+void Average::operator()(int value)
 {
-  dite = value;
-  //std::cout << "Введёное число" << dite << "\n";
-  if (papa > ded && dite > papa)
+  curval = value;
+  if (avg > bef && curval > avg)
   {
-    if (counter1 >= MaxDlyIskl2)
+    if (counter1 >= MaxForOver2)
     {
-      std::cout << "OverFlow \n";
+      throw std::overflow_error("Overflow!");
     }
     else
     {
     counter1++;
-    //std::cout << "кол-во сейчас " << counter1 << "\n";
     }
   }
   else
   {
-    ded = papa;
-    //std::cout << "Дед " << ded << "\n";
-    papa = dite;
+    bef = avg;
+    avg = curval;
   }
 }

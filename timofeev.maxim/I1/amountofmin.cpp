@@ -1,7 +1,13 @@
-#include <iostream>
 #include "amountofmin.hpp"
+#include <stdexcept>
+#include <limits>
 
-void Znach::operator()(int value)
+
+const unsigned int MaxForOver = std::numeric_limits< unsigned int >::max();
+
+
+void MinValue::operator()(int value)
+
 {
   if (min == 0)
   {
@@ -14,16 +20,13 @@ void Znach::operator()(int value)
   }
   if (min == value )
   {
-    if (counter == MaxDlyIskl)
+    if (counter == MaxForOver)
     {
-      //std::cout << counter;
-      //std::cout << MaxDlyIskl;
-      std::cout << "OverFlow \n";
+      throw std::overflow_error("Overflow");
     }
     else
     {
        counter++;
-      // std::cout << counter;
     }
   }
 }

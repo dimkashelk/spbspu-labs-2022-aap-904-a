@@ -2,13 +2,12 @@
 #define AMOUNTIFAVR_HPP
 #include <limits>
 
-const unsigned int MaxDlyIskl2 = std::numeric_limits< unsigned int >::max();
 
-struct Family
+struct Average
 {
-  int dite = 0;
-  int papa = 0;
-  int ded = 0;
+  int curval = 0;
+  int avg = 0;
+  int bef = 0;
   unsigned int counter1 = 0;
 
   void operator()(int value);

@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     std::cout << "Error";
     return 1;
   }
-  if (!strcmp(argv[1], '1'))
+  if (!strcmp(argv[1], "1"))
   {
     int arr[n * m];
     for (size_t i = 0; i < n; i++)
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     out << count_lines_with_unique_elements(arr, n, m) << "\n";
     out << minimum_sums_of_diagonals(arr, n, m) << "\n";
   }
-  else if (!strcmp(argv[1], '2'))
+  else if (!strcmp(argv[1], "2"))
   {
     try
     {

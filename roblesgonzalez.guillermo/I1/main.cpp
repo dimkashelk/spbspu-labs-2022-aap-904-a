@@ -32,6 +32,7 @@ int main()
    if(counter == 0)
     {
      counter++;
+     continue;
     }
    else
      {

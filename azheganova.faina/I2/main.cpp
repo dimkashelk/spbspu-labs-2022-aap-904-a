@@ -9,27 +9,17 @@ int main(int argc, char *argv[])
   if (argc != 2)
   {
     std::cerr << "Not correct amolunt of CML args\n";
-    return 1;
   }
   int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  try
+  shiftarrayleft(staticarray, 10);
+  for (size_t i = 0; i < 10; i++)
   {
-    shiftarrayleft(staticarray, 10);
-    for (size_t i = 0; i < 10; i++)
-    {
-      std::cout << staticarray[i] << " ";
-    }
-    transferofvariables(staticarray, 10);
-    for (size_t newi = 0; newi < 10; newi++)
-    {
-      std::cout << staticarray[newi] << ' ';
-    }
+    std::cout << staticarray[i] << " ";
   }
-  catch (const std::overflow_error& e)
+  transferofvariables(staticarray, 10);
+  for (size_t newi = 0; newi < 10; newi++)
   {
-    std::cerr << "Error";
-    std::cout << e.what() << "\n";
-    return 2;
+    std::cout << staticarray[newi] << ' ';
   }
   size_t n = 0;
   std::cout << "Dynamic array size:\n";
@@ -45,25 +35,15 @@ int main(int argc, char *argv[])
   {
     dynamicarray[i] = std::rand();
   }
-  try
+  shiftarrayleft(dynamicarray, n);
+  for (size_t i = 0; i < n; i++)
   {
-    shiftarrayleft(dynamicarray, n);
-    for (size_t i = 0; i < n; i++)
-    {
-      std::cout << dynamicarray[i] << " ";
-    }
-    transferofvariables(dynamicarray, n);
-    for (size_t newi = 0; newi < n; newi++)
-    {
-      std::cout << dynamicarray[newi] << ' ';
-    }
+    std::cout << dynamicarray[i] << " ";
   }
-  catch (const std::overflow_error& e)
+  transferofvariables(dynamicarray, n);
+  for (size_t newi = 0; newi < n; newi++)
   {
-    std::cerr << "Error";
-    std::cout << e.what() << "\n";
-    delete[] dynamicarray;
-    return 2;
+    std::cout << dynamicarray[newi] << ' ';
   }
   delete[] dynamicarray;
   std::ifstream file(argv[1]);
@@ -75,25 +55,15 @@ int main(int argc, char *argv[])
   size_t size = 0;
   file >> size;
   int* arrInput = new int[size];
-  try
+  shiftarrayleft(arrInput, size);
+  for (size_t i = 0; i < size; i++)
   {
-    shiftarrayleft(arrInput, size);
-    for (size_t i = 0; i < size; i++)
-    {
-      std::cout << arrInput[i] << " ";
-    }
-    transferofvariables(arrInput, size);
-    for (size_t newi = 0; newi < size; newi++)
-    {
-      std::cout << arrInput[newi] << ' ';
-    }
+    std::cout << arrInput[i] << " ";
   }
-  catch (const std::overflow_error& e)
+  transferofvariables(arrInput, size);
+  for (size_t newi = 0; newi < size; newi++)
   {
-    std::cerr << "Error";
-    std::cout << e.what() << "\n";
-    delete[] arrInput;
-    return 2;
+    std::cout << arrInput[newi] << ' ';
   }
   delete[] arrInput;
   return 0;

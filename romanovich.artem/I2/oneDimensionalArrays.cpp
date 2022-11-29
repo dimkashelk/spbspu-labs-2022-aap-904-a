@@ -30,7 +30,11 @@ size_t countNegativeRightFromMax(const int *array, const size_t size)
 }
 size_t countRepetitiveInRange(const int *array, const size_t size, const size_t beginIndex, const size_t endIndex)
 {
-  if (not(beginIndex >= endIndex || endIndex > size || beginIndex > size))
+  if (beginIndex >= endIndex || endIndex > size || beginIndex > size)
+  {
+    return 0;
+  }
+  else
   {
     bool containsDuplicates = false;
     for (size_t i = beginIndex; i <= endIndex; i++)

@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
       int *arr = new int[n * m];
       for (size_t i = 0; i < n; i++)
       {
-        for (int j = 0; j < m; j++)
+        for (size_t j = 0; j < m; j++)
         {
           in >> arr[i * n + j];
         }

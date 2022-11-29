@@ -6,7 +6,6 @@ size_t minimum_sums_of_diagonals(const int *arr, size_t n, size_t m)
   if (n > m)
   {
     size = n;
-
   }
   else
   {

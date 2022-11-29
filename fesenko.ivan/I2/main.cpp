@@ -37,12 +37,16 @@ int main()
   delete [] dyn_arr;
   size_t file_arr_size = 0;
   std::ifstream in("file.txt");
+  if (!in.is_open()) {
+    std::cerr << "Can not open the file\n";
+    return 2;
+  }
   in >> file_arr_size;
   if (!in) {
     std::cerr << "Can not read from file\n";
     return 2;
   }
-  if (dyn_arr_size <= 0) {
+  if (file_arr_size <= 0) {
     std::cerr << "Wrong array size\n";
     return 2;
   }

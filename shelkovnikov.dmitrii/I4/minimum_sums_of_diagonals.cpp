@@ -1,6 +1,10 @@
 #include "minimum_sums_of_diagonals.h"
-size_t minimum_sums_of_diagonals(const int *arr, size_t n, size_t m)
+int minimum_sums_of_diagonals(const int *arr, size_t n, size_t m)
 {
+  if (n <= 0 || m <= 0)
+  {
+    return 0;
+  }
   int minimum = arr[m - 1];
   size_t size = 0;
   if (n > m)

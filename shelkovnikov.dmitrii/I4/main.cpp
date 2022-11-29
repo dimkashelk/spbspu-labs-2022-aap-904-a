@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     out << count_lines_with_unique_elements(arr, n, m) << "\n";
     out << minimum_sums_of_diagonals(arr, n, m) << "\n";
   }
-  else
+  else if (*argv[1] == '2')
   {
     try
     {
@@ -56,6 +56,11 @@ int main(int argc, char *argv[])
       std::cout << "Error";
       return 2;
     }
+  }
+  else
+  {
+    std::cout << "No such parameter";
+    return 1;
   }
   return 0;
 }

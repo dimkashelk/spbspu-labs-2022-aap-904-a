@@ -15,6 +15,6 @@ void CountLargest::operator()(int curr_val)
   }
   if (count_amount == std::numeric_limits< unsigned >::max())
   {
-    throw std::overflow_error("Overflow");
+    throw std::overflow_error("Overflow"); //попытка исправить
   }
 }

@@ -18,6 +18,6 @@ char *get_other_symbols(char *destination, const char *source)
       k++;
     }
   }
-  destination[k] = '\0'
+  destination[k] = '\0';
   return destination;
 }

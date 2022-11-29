@@ -14,3 +14,8 @@ void DivNoRemainder::operator()(const int current)
   }
   previous = current;
 }
+
+unsigned int DivNoRemainder::getRezult() const
+{
+  return quantity;
+}

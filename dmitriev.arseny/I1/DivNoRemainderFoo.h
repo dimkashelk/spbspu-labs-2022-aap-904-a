@@ -3,12 +3,12 @@
 
 struct DivNoRemainder
 {
-public:
-  unsigned int quantity = 0;
+  unsigned int getRezult() const;
 
   void operator()(int current);
 private:
   int previous = 0;
+  unsigned int quantity = 0;
 };
 
 #endif

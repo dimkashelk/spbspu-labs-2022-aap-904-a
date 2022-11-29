@@ -3,13 +3,13 @@
 
 struct MaxMono
 {
-public:
-  unsigned int quantity = 0;
+  unsigned int getRezult() const;
 
   void operator()(int current);
 private:
   unsigned int k = 0;
   int previous = 0;
+  unsigned int quantity = 0;
 };
 
 #endif

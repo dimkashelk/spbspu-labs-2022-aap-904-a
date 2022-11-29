@@ -26,3 +26,8 @@ void MaxMono::operator()(const int current)
   }
   previous = current;
 }
+
+unsigned int MaxMono::getRezult() const
+{
+  return quantity;
+}

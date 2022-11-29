@@ -4,7 +4,7 @@
 
 void CntDevPrev::operator()(int value)
 {
-  const unsigned int maximum_of_unsigned_int = std::numeric_limits < unsigned int >::max();
+  const unsigned int maximum_of_unsigned_int = std::numeric_limits< unsigned int >::max();
   devisor_func_previous_value = devisor_func_value;
   devisor_func_value = value;
   if (devisor_func_previous_value && devisor_func_value)

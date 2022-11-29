@@ -33,7 +33,7 @@ int main (int argc, char* argv[])
   }
   else
   {
-    std::cout << "The number of element couldn't be zero\n";
+    std::cout << "The number of element couldn't be zero \n";
   }
 
   if (argc == 1)

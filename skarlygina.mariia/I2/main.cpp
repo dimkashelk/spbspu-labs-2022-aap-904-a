@@ -8,9 +8,9 @@
 int main (int argc, char* argv[])
 {
   int static_array[] = {5, 4, 3, 4, -6, 2, -1};
-  countArithmeticMean(static_array, 7);
+  std::cout << countArithmeticMean(static_array, 7) << " ";
   makeShiftedArray(static_array, 7);
-  std::cout << std::endl;
+  std::cout << "\n";
 
   size_t dynamic_array_size = 0;
   std::cin >> dynamic_array_size;
@@ -26,10 +26,10 @@ int main (int argc, char* argv[])
     {
       dynamic_array[i] = std::rand();
     }
-    countArithmeticMean(dynamic_array, dynamic_array_size);
+    std::cout << countArithmeticMean(dynamic_array, dynamic_array_size) << " ";
     makeShiftedArray(dynamic_array, dynamic_array_size);
     delete[] dynamic_array;
-    std::cout << std::endl;
+    std::cout << "\n";
   }
   else
   {
@@ -75,7 +75,7 @@ int main (int argc, char* argv[])
     }
     try
     {
-      countArithmeticMean(reading_array, reading_array_size);
+      std::cout << countArithmeticMean(reading_array, reading_array_size) << " ";
       makeShiftedArray(reading_array, reading_array_size);
     }
     catch (const std::overflow_error& e)

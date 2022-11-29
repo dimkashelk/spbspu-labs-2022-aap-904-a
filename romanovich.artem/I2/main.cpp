@@ -43,7 +43,6 @@ int main(int argc, char **argv)
     std::cout << "Too much parameters." << std::endl;
     return 2;
   }
-  size_t arrayFileSize = 0;
   std::string fileName = argv[1];
   std::fstream fileInput(fileName);
   if (!fileInput.is_open())
@@ -51,15 +50,16 @@ int main(int argc, char **argv)
     std::cerr << "Error while opening file " << argv[1] << std::endl;
     return 2;
   }
-  fileInput >> arrayFileSize;
-  if (!fileInput)
-  {
-    std::cerr << "Error while reading file " << argv[1] << std::endl;
-    return 2;
-  }
-  int *arrayFile = new int[arrayFileSize];
   while (!fileInput.eof())
   {
+    size_t arrayFileSize = 0;
+    fileInput >> arrayFileSize;
+    if (!fileInput)
+    {
+      std::cerr << "Error while reading file " << argv[1] << std::endl;
+      return 2;
+    }
+    int *arrayFile = new int[arrayFileSize];
     for (size_t i = 0; i < arrayFileSize; i++)
     {
       fileInput >> arrayFile[i];
@@ -70,9 +70,10 @@ int main(int argc, char **argv)
         return 2;
       }
     }
+    size_t countNrfmFile = countNegativeRightFromMax(arrayFile, arrayFileSize);
+    size_t countRirFile = countRepetitiveInRange(arrayFile, arrayFileSize, beginIndex, endIndex);
+    std::cout << countNrfmFile << std::endl;
+    std::cout << countRirFile << std::endl;
+    delete[] arrayFile;
   }
-  size_t countNrfmFile = countNegativeRightFromMax(arrayFile, arrayFileSize);
-  size_t countRirFile = countRepetitiveInRange(arrayFile, arrayFileSize, beginIndex, endIndex);
-  std::cout << countNrfmFile << std::endl;
-  std::cout << countRirFile << std::endl;
 }

@@ -1,6 +1,6 @@
-#include "QuantityLocalMin.h"
 #include <stdexcept>
 #include <limits>
+#include "QuantityLocalMin.h"
 
 void QuantityLocalMin::operator()(const int current_val)
 {

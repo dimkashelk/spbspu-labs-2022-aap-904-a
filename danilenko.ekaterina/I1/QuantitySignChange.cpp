@@ -1,6 +1,6 @@
-#include "QuantitySignChange.h"
 #include <stdexcept>
 #include <limits>
+#include "QuantitySignChange.h"
 
 void QuantitySignChange::operator()(const int current_val)
 {

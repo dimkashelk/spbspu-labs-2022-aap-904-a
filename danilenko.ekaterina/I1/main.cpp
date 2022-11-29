@@ -1,7 +1,7 @@
-﻿#include "QuantityLocalMin.h"
-#include "QuantitySignChange.h"
-#include <iostream>
+﻿#include <iostream>
 #include <limits>
+#include "QuantityLocalMin.h"
+#include "QuantitySignChange.h"
 
 int main()
 {

@@ -1,7 +1,7 @@
 #include <iostream>
-#include <exception>
-#include<fstream>
-#include<string>
+#include <stdexcept>
+#include <fstream>
+#include <cstddef>
 #include "arrays.h"
 
 int main(int argc, char *argv[])
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   }
   catch (const std::overflow_error& e)
   {
-    std::cout << "Error";
+    std::cerr << "Error";
     std::cout << e.what() << "\n";
     return 2;
   }
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     }
     catch (const std::overflow_error& e)
     {
-      std::cout << "Error";
+      std::cerr << "Error";
       std::cout << e.what() << "\n";
       delete[] dynamicarray;
       return 2;
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
   }
   catch (const std::overflow_error& e)
   {
-    std::cout << "Error";
+    std::cerr << "Error";
     std::cout << e.what() << "\n";
     delete[] arrInput;
     return 2;

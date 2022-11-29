@@ -32,7 +32,8 @@ size_t countRepetitiveInRange(const int *array, const size_t size, const size_t 
 {
   if (beginIndex >= endIndex || endIndex > size || beginIndex > size)
   {
-    return 0;
+    std::sout << "Error." << std::endl;
+    return 2;
   }
   else
   {

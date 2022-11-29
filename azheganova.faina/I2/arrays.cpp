@@ -29,8 +29,8 @@ size_t shiftarrayleft(int* arr, const size_t size)
 
 size_t transferofvariables(int* arr, const size_t size)
 {
-  int begin;
-  int end;
+  int begin = 0;
+  int end = 0;
   int l = size;
   std::cin >> end;
   std::cin >> begin;

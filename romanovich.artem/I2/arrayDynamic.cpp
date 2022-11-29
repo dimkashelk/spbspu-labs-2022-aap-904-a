@@ -6,4 +6,6 @@ ArrayDynamic::ArrayDynamic(size_t size) :
 {
 }
 ArrayDynamic::~ArrayDynamic()
-= default;
+{
+  delete [] data;
+}

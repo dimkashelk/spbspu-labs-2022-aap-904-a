@@ -28,7 +28,7 @@ void transferofvariables(int* arr, const size_t size)
   size_t begin = 5;
   size_t end = 3;
   std::size_t newi = l - 1;
-  for (int i = begin; i >= end; i--)
+  for (size_t i = begin; i >= end; i--)
   {
     arr[newi] = arr[i];
     newi--;

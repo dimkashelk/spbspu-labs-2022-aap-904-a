@@ -1,6 +1,6 @@
-#ifndef SEQUENCES_H
-#define SEQUENCES_H
-struct values
+#ifndef VALUES_H
+#define VALUES_H
+struct valuesRowCounter
 {
   int predV = 0;
   int nValue = 0;

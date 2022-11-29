@@ -1,8 +1,8 @@
-#include "sequences.h"
+#include "values.h"
 #include <limits>
 #include <stdexcept>
 
-void values::operator()(int value)
+void valuesRowCounter::operator()(int value)
 {
   constexpr int maxValue = std::numeric_limits< int >::max();
   if (maxNum == maxValue)

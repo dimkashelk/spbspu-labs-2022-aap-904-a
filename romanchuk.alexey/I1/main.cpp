@@ -1,10 +1,10 @@
 #include <iostream>
-#include "sequences.h"
+#include "values.h"
 
 int main()
 {
   int value = 0;
-  values maxVal{ 0 };
+  valuesRowCounter maxVal{ 0 };
   localValuesMax lMV{ 0 };
   do
   {

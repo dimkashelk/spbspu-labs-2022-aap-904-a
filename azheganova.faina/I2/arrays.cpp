@@ -24,7 +24,6 @@ size_t shiftarrayleft(int* arr, const size_t size)
   {
     std::cout << arr[i] << " ";
   }
-  return 0;
 }
 
 size_t transferofvariables(int* arr, const size_t size)
@@ -44,5 +43,4 @@ size_t transferofvariables(int* arr, const size_t size)
   {
     std::cout << arr[newi]<< ' ';
   }
-  return 0;
 }

@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
   if (argc != 2)
   {
     std::cerr << "Not correct amolunt of CML args\n";
-    return 2;
+    return 1;
   }
   int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   try

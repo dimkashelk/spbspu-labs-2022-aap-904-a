@@ -6,7 +6,7 @@ int main()
 {
   FindPifTrio pif_trio{0, 0, 0};
   CountSignChanges sign_changes{0, 0};
-  int x;
+  int x = 0;
   do
   {
     std::cin >> x;

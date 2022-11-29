@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
           if (!in)
           {
             std::cout << "Error";
+            delete[] arr;
             return 1;
           }
         }

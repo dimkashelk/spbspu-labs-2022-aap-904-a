@@ -1,5 +1,5 @@
 #include <iostream>
-#include "shiftarrayleft.h"
+#include "arrays.h"
 
 size_t shiftarrayleft(int* arr, const size_t size)
 {
@@ -23,6 +23,26 @@ size_t shiftarrayleft(int* arr, const size_t size)
   for (size_t i = 0; i < size; i++)
   {
     std::cout << arr[i] << " ";
+  }
+  return 0;
+}
+
+size_t transferofvariables(int* arr, const size_t size)
+{
+  int begin;
+  int end;
+  int l = size;
+  std::cin >> end;
+  std::cin >> begin;
+  std::size_t newi = l - 1;
+  for (int i = begin; i >= end; i--)
+  {
+    arr[newi] = arr[i];
+    newi--;
+  }
+  for (size_t newi = 0; newi < size; newi++)
+  {
+    std::cout << arr[newi]<< ' ';
   }
   return 0;
 }

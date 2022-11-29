@@ -2,8 +2,7 @@
 #include <exception>
 #include<fstream>
 #include<string>
-#include "transferofvariables.h"
-#include "shiftarrayleft.h"
+#include "arrays.h"
 
 const std::string INPUT_FILE = "input.txt";
 int main()

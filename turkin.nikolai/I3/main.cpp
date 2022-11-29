@@ -3,9 +3,10 @@
 #include "cString.h"
 #include "methods.h"
 
-int main() {
+int main()
+{
   size_t basicCapacity = 10;
-  turkin::Array string = turkin::Array(basicCapacity);
+  turkin::Array string(basicCapacity);
   std::cin >> std::noskipws;
   while (std::cin && string.data[string.size - 1] != '\n')
   {

@@ -14,7 +14,7 @@ namespace turkin
   size_t size;
   size_t capacity;
 
-  bool extend(size_t cap);
+  bool extend();
   bool push(std::istream & cin);
   bool push(char symbol);
   };

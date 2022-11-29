@@ -29,7 +29,7 @@ int main()
       std::cout << e.what() << "\n";
       return 1;
     }
-  } 
+  }
   while (std::cin && current_val != 0);
 
   std::cout << "Number of local min: " << LocalMin.local_min << "\n";

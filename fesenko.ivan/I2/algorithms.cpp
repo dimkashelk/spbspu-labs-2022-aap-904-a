@@ -1,7 +1,7 @@
 #include "algorithms.h"
 #include <iostream>
 
-size_t negativeAfterMax(const int *array, size_t size) 
+size_t negativeAfterMax(const int *array, size_t size)
 {
   int max = array[0], maxi = 0;
   for (size_t i = 1; i < size; i++) {
@@ -19,7 +19,7 @@ size_t negativeAfterMax(const int *array, size_t size)
   return count;
 }
 
-void movingElements(int *array, size_t size) 
+void movingElements(int *array, size_t size)
 {
   size_t m = 2, n = 4;
   if (size <= n) {

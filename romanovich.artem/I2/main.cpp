@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include "time.h"
 #include "oneDimensionalArrays.h"
 #include "arrayDynamic.h"
 int main(int argc, char **argv)

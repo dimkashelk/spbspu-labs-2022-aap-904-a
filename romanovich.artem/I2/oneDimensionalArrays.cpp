@@ -14,18 +14,18 @@ size_t countNegativeRightFromMax(const int *array, const size_t size)
     std::cout << array[i] << " ";
   }
   std::cout << std::endl;
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
   {
     if (array[i] > maxEl)
     {
       std::cout << "maxEl: " << maxEl << " maxElIndex: " << maxElIndex << std::endl;
       maxEl = array[i];
-      maxElIndex = i;
+      maxElIndex = static_cast<int>(i);
     }
   }
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
   {
-    if (i > maxElIndex)
+    if (static_cast<int>(i) > maxElIndex)
     {
       if (array[i] < 0)
       {

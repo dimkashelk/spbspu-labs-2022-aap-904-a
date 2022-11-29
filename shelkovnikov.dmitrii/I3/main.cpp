@@ -67,10 +67,9 @@ int main()
   }
   try
   {
-    char *res2 = new char[27];
+    char res2[27];
     get_other_symbols(res2, str);
     std::cout << res2 << '\n';
-    delete[] res2;
   }
   catch (const std::bad_alloc &e)
   {

@@ -1,4 +1,4 @@
-#include "arrayDynamic.h"
+#include "arraydynamic.h"
 #include <stdexcept>
 ArrayDynamic::ArrayDynamic(size_t size) :
   data(new int[size]),

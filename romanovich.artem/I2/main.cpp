@@ -1,8 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <time.h>
-#include "oneDimensionalArrays.h"
-#include "arrayDynamic.h"
+#include "onedimensionalarrays.h"
+#include "arraydynamic.h"
 int main(int argc, char **argv)
 {
   //Const array

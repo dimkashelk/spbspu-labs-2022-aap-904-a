@@ -4,25 +4,25 @@
 
 void CountElAfterMaxEl::operator()(int el)
 {
-    const unsigned int maxInt = std::numeric_limits< unsigned >::max();
-    if (!el)
+  const unsigned int maxInt = std::numeric_limits< unsigned >::max();
+  if (!el)
+  {
+    return;
+  }
+  if (el < max)
+  {
+    if (count == maxInt)
     {
-        return;
-    }
-    if (el < max)
-    {
-        if (count == maxInt)
-        {
-            throw std::overflow_error("Overflow\n");
-        }
-        else
-        {
-            count++;
-        }
+      throw std::overflow_error("Overflow\n");
     }
     else
     {
-        max = el;
-        count = 0;
+      count++;
     }
+  }
+  else
+  {
+    max = el;
+    count = 0;
+  }
 }

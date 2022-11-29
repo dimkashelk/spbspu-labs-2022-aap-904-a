@@ -3,8 +3,8 @@
 
 struct CountElAfterMaxEl
 {
-    int max;
-    unsigned count;
-    void operator()(int el);
+  int max;
+  unsigned count;
+  void operator()(int el);
 };
 #endif

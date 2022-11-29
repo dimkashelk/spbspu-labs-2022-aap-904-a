@@ -55,7 +55,7 @@ int main()
   try
   {
     char *res1 = new char[size];
-    remove_extra_spaces(res1, str, size);
+    remove_extra_spaces(res1, str);
     std::cout << res1 << '\n';
     delete[] res1;
   }

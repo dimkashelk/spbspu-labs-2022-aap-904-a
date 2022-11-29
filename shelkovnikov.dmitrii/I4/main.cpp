@@ -33,6 +33,11 @@ int main(int argc, char *argv[])
       for (size_t j = 0; j < m; j++)
       {
         in >> arr[n * i + j];
+        if (!in)
+        {
+          std::cout << "Error";
+          return 1;
+        }
       }
     }
     std::ofstream out(argv[3]);
@@ -49,6 +54,11 @@ int main(int argc, char *argv[])
         for (size_t j = 0; j < m; j++)
         {
           in >> arr[i * n + j];
+          if (!in)
+          {
+            std::cout << "Error";
+            return 1;
+          }
         }
       }
       std::ofstream out(argv[3]);

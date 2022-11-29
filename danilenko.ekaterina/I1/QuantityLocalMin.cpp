@@ -2,7 +2,7 @@
 #include <limits>
 #include "QuantityLocalMin.h"
 
-void QuantityLocalMin::operator()(const int current_val)
+void QuantityLocalMin::operator()(int current_val)
 {
   if (before_prev_val != 0 && prev_val != 0)
   {

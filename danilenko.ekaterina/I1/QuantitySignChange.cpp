@@ -2,7 +2,7 @@
 #include <limits>
 #include "QuantitySignChange.h"
 
-void QuantitySignChange::operator()(const int current_val)
+void QuantitySignChange::operator()(int current_val)
 {
   if (prev_val != 0)
   {

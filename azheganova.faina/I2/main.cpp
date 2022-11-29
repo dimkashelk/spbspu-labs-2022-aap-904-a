@@ -31,6 +31,7 @@ int main(int argc, char *argv[])
     return 1;
   }
   int* dynamicarray = new int[n];
+  srand(time(0));
   for (size_t i = 0; i < n; i++)
   {
     dynamicarray[i] = std::rand();
@@ -53,9 +54,9 @@ int main(int argc, char *argv[])
   }
   delete[] dynamicarray;
   std::ifstream file(argv[1]);
-  if (!file.is_open())
+  if (!file)
   {
-    std::cout << "file open error";
+    std::cerr << argv[1] << "file open error";
     return 1;
   }
   size_t size = 0;

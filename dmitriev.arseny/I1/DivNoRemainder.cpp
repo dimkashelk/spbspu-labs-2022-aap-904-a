@@ -1,4 +1,4 @@
-#include "DivNoRemainderFoo.h"
+#include "DivNoRemainder.h"
 #include <stdexcept>
 #include <limits>
 

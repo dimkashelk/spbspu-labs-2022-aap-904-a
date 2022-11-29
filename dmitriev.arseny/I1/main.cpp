@@ -1,5 +1,5 @@
-#include "DivNoRemainderFoo.h"
-#include "MaxMonoFoo.h"
+#include "DivNoRemainder.h"
+#include "MaxMono.h"
 #include <iostream>
 
 int main()

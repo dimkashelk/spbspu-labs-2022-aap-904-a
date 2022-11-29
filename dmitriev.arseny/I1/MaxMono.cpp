@@ -1,4 +1,4 @@
-#include "MaxMonoFoo.h"
+#include "MaxMono.h"
 #include <stdexcept>
 #include <limits>
 

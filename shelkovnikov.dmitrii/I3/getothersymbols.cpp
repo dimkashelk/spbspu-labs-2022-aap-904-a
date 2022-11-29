@@ -1,37 +1,22 @@
 #include "getothersymbols.h"
 char *get_other_symbols(char *destination, const char *source)
 {
-  int alphabet[26];
-  for (size_t i = 0; i < 26; i++)
+  size_t k = 0;
+  for (char i = 'a', j = 'A'; i <= 'z'; i++, j++)
   {
-    alphabet[i] = 0;
-  }
-  for (size_t i = 0; source[i]; i++)
-  {
-    if (source[i] >= 'a' && source[i] <= 'z')
+    bool fl = true;
+    for (size_t d = 0; source[d]; d++)
     {
-      alphabet[static_cast<int>(source[i]) - static_cast<int>('a')]++;
+      if (source[d] == i || source[d] == j)
+      {
+        fl = false;
+      }
     }
-    else if (source[i] >= 'A' && source[i] <= 'Z')
+    if (fl)
     {
-      alphabet[static_cast<int>(source[i]) - static_cast<int>('A')]++;
-    }
-  }
-  size_t j = 0;
-  char *str = new char[27];
-  for (size_t i = 0; i < 26; i++)
-  {
-    if (!alphabet[i])
-    {
-      str[j] = static_cast<char>(static_cast< size_t >('a') + i);
-      j++;
+      destination[k] = i;
+      k++;
     }
   }
-  str[j] = '\0';
-  for (size_t i = 0; i < j; i++)
-  {
-    destination[i] = str[i];
-  }
-  delete[] str;
   return destination;
 }

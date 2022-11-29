@@ -134,29 +134,20 @@ Boost
 Accepted Labs
 =============
 
-| Name                  | S0 | I1 | I2 | I3 | I4 | I5 |
+| Name                  | I1 | I2 | I3 | I4 | I5 | S0 |
 |-----------------------|----|----|----|----|----|----|
-| Aristarkhov Rostislav | ✓  |    |    |    |    |    |
-| Azheganova Faina      | ✓  |    |    |    |    |    |
-| Chemodurov Artem      | ✓  |    |    |    |    |    |
-| Chulkov Leontii       | ✓  |    |    |    |    |    |
-| Danilenko Ekaterina   | ✓  |    |    |    |    |    |
-| Dmitriev Arseny       | ✓  |    |    |    |    |    |
-| Fesenko Ivan          | ✓  |    |    |    |    |    |
-| Gulkov Mikhail        | ✓  |    |    |    |    |    |
-| Kasilov Vasiliy       | ✓  |    |    |    |    |    |
-| Kozyrin Semen         | ✓  |    |    |    |    |    |
-| Kryuchkova Kira       | ✓  |    |    |    |    |    |
-| Kurdikova Elizaveta   | ✓  |    |    |    |    |    |
-| Muhortov Victor       | ✓  |    |    |    |    |    |
-| Odintsov Kirill       | ✓  |    |    |    |    |    |
-| Romanchuk Alexey      | ✓  |    |    |    |    |    |
-| Romanovich Artem      | ✓  |    |    |    |    |    |
-| Shelkovnikov Dmitrii  | ✓  |    |    |    |    |    |
-| Skarlygina Mariia     | ✓  |    |    |    |    |    |
-| Suslov Dmitriy        | ✓  |    |    |    |    |    |
-| Tarasenko Ksenia      | ✓  |    |    |    |    |    |
-| Tsareva Yana          | ✓  |    |    |    |    |    |
-| Turkin Nikolai        | ✓  |    |    |    |    |    |
-| Zhuravlev Ivan        | ✓  |    |    |    |    |    |
-| __Total__             |  23|   0|   0|   0|   0|   0|
+| Aristarkhov Rostislav |    |    |    |    |    | ✓  |
+| Chemodurov Artem      |    |    |    |    |    | ✓  |
+| Chulkov Leontii       |    |    |    |    |    | ✓  |
+| Fesenko Ivan          |    |    |    |    |    | ✓  |
+| Gulkov Mikhail        |    |    |    |    |    | ✓  |
+| Kasilov Vasiliy       |    |    |    |    |    | ✓  |
+| Muhortov Victor       |    |    |    |    |    | ✓  |
+| Odintsov Kirill       |    |    |    |    |    | ✓  |
+| Romanchuk Alexey      |    |    |    |    |    | ✓  |
+| Romanovich Artem      |    |    |    |    |    | ✓  |
+| Shelkovnikov Dmitrii  |    |    |    |    |    | ✓  |
+| Tarasenko Ksenia      |    |    |    |    |    | ✓  |
+| Tsareva Yana          |    |    |    |    |    | ✓  |
+| Turkin Nikolai        |    |    |    |    |    | ✓  |
+| __Total__             |   0|   0|   0|   0|   0|  14|

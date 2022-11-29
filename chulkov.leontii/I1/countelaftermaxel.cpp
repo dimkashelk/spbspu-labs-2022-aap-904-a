@@ -2,26 +2,27 @@
 #include <stdexcept>
 #include <limits>
 
-void СountElAfterMaxEl::operator()(int el)
+void CountElAfterMaxEl::operator()(int el)
 {
     const unsigned int maxInt = std::numeric_limits< unsigned >::max();
-    if (el)
+    if (!el)
     {
-        if (el < max)
+        return;
+    }
+    if (el < max)
+    {
+        if (count == maxInt)
         {
-            if (count == maxInt)
-            {
-                throw std::overflow_error("Overflow\n");
-            }
-            else
-            {
-                count++;
-            }
+            throw std::overflow_error("Overflow\n");
         }
         else
         {
-            max = el;
-            count = 0;
+            count++;
         }
+    }
+    else
+    {
+        max = el;
+        count = 0;
     }
 }

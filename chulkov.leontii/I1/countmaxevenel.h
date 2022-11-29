@@ -3,8 +3,8 @@
 
 struct CountMaxEvenEl
 {
-    void operator()(int el);
     unsigned maxEvenCount;
     unsigned evenCount;
+    void operator()(int el);
 };
 #endif

@@ -1,10 +1,10 @@
 #ifndef COUNTELAFTERMAXEL_H
 #define COUNTELAFTERMAXEL_H
 
-struct СountElAfterMaxEl
+struct CountElAfterMaxEl
 {
-    void operator()(int el);
-    unsigned count;
     int max;
+    unsigned count;
+    void operator()(int el);
 };
 #endif

@@ -30,9 +30,6 @@ size_t countNegativeRightFromMax(const int *array, const size_t size)
 }
 size_t countRepetitiveInRange(const int *array, const size_t size, const size_t beginIndex, const size_t endIndex)
 {
-  if (size < 0){
-    std::cerr << "Error." << std::endl;
-  }
   if (beginIndex >= endIndex || endIndex > size || beginIndex > size)
   {
     std::cerr << "Incorrect indexes." << std::endl;

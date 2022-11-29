@@ -25,14 +25,14 @@ bool turkin::Array::extend(size_t cap)
     newData[i] = data[i];
   }
   data = newData;
+  delete [] newData;
   return true;
 }
 
 bool turkin::Array::push(std::istream & cin)
 {
-  char symbol;
-  cin >> symbol;
-  return push(symbol);
+  cin >> buffer;
+  return push(buffer);
 }
 
 bool turkin::Array::push(char symbol)

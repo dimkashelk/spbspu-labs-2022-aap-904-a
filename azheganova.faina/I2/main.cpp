@@ -31,37 +31,30 @@ int main(int argc, char *argv[])
     std::cout << "Not a number";
     return 1;
   }
-  if (n>=0)
+  int* dynamicarray = new int[n];
+  srand(time(0));
+  for (size_t i = 0; i < n; i++)
   {
-    int* dynamicarray = new int[n];
-    srand(time(0));
+    dynamicarray[i] = std::rand();
+  }
+  try
+  {
     for (size_t i = 0; i < n; i++)
     {
-      dynamicarray[i] = std::rand();
+      std::cout << dynamicarray[i] << " ";
     }
-    try
-    {
-      for (size_t i = 0; i < n; i++)
-      {
-        std::cout << dynamicarray[i] << " ";
-      }
-      std::cout << '\n';
-      std::cout << shiftarrayleft(dynamicarray, n) << '\n';
-      std::cout << transferofvariables(dynamicarray, n) << '\n';
-    }
-    catch (const std::overflow_error& e)
-    {
-      std::cerr << "Error";
-      std::cout << e.what() << "\n";
-      delete[] dynamicarray;
-      return 2;
-    }
-    delete[] dynamicarray;
+    std::cout << '\n';
+    std::cout << shiftarrayleft(dynamicarray, n) << '\n';
+    std::cout << transferofvariables(dynamicarray, n) << '\n';
   }
-  else
+  catch (const std::overflow_error& e)
   {
-    std::cerr << "incorrect value";
+    std::cerr << "Error";
+    std::cout << e.what() << "\n";
+    delete[] dynamicarray;
+    return 2;
   }
+  delete[] dynamicarray;
   std::ifstream file(argv[1]);
   if (!file)
   {

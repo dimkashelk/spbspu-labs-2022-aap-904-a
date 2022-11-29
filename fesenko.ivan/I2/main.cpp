@@ -3,8 +3,11 @@
 #include <cstdlib>
 #include "algorithms.h"
 
-int main()
+int main(int argc, char *argv[])
 {
+  if (argc != 2) {
+    std::cerr << "Error\n";
+  }
   const size_t arr_size = 7;
   int arr[arr_size] = {1, 9, 3, -2, -3, 2, 6};
   std::cout << negativeAfterMax(arr, arr_size) << "\n";
@@ -36,7 +39,7 @@ int main()
   std::cout << "\n";
   delete [] dyn_arr;
   size_t file_arr_size = 0;
-  std::ifstream in("file.txt");
+  std::ifstream in(argv[1]);
   if (!in.is_open()) {
     std::cerr << "Can not open the file\n";
     return 2;

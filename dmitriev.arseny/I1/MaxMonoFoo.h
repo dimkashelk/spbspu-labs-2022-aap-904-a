@@ -3,7 +3,7 @@
 
 struct MaxMono
 {
-  unsigned int getRezult() const;
+  unsigned int getResult() const;
 
   void operator()(int current);
 private:

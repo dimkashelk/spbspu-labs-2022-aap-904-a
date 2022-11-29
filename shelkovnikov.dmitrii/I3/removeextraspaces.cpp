@@ -1,6 +1,6 @@
 #include "removeextraspaces.h"
 #include <cctype>
-char *remove_extra_spaces(char *destination, const char *source, size_t source_size)
+char *remove_extra_spaces(char *destination, const char *source)
 {
   size_t size = 0;
   size_t d = 0;

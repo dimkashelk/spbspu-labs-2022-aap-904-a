@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
   if (!std::cin)
   {
     std::cout << "Not a number";
-    return 1;
+    return 3;
   }
   int* dynamicarray = new int[n];
   srand(time(0));
@@ -52,14 +52,14 @@ int main(int argc, char *argv[])
     std::cerr << "Error";
     std::cout << e.what() << "\n";
     delete[] dynamicarray;
-    return 2;
+    return 4;
   }
   delete[] dynamicarray;
   std::ifstream file(argv[1]);
   if (!file)
   {
     std::cerr << argv[1] << "file open error";
-    return 1;
+    return 5;
   }
   size_t size = 0;
   file >> size;
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
     std::cerr << "Error";
     std::cout << e.what() << "\n";
     delete[] arrInput;
-    return 2;
+    return 6;
   }
   delete[] arrInput;
   return 0;

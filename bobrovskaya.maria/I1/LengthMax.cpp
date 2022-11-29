@@ -14,5 +14,5 @@ void LengthMax::operator()(int value)
   {
     count = 1;
   }
-  predV=value;
+  predV = value;
 }

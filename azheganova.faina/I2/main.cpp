@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     std::cout << "Not a number";
     return 1;
   }
-  if (n>0)
+  if (n>=0)
   {
     int* dynamicarray = new int[n];
     srand(time(0));

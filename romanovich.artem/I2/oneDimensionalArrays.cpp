@@ -33,7 +33,6 @@ size_t countRepetitiveInRange(const int *array, const size_t size, const size_t 
   bool containsDuplicates = false;
   if (not(beginIndex >= endIndex || endIndex > size || beginIndex > size))
   {
-    bool containsDuplicates = false;
     for (size_t i = beginIndex; i <= endIndex; i++)
     {
       for (size_t j = i + 1; j <= endIndex; j++)

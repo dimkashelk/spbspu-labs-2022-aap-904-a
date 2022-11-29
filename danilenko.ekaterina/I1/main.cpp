@@ -1,5 +1,5 @@
-﻿#include <iostream>
-#include <limits>
+﻿#include <limits>
+#include <iostream>
 #include "QuantityLocalMin.h"
 #include "QuantitySignChange.h"
 
@@ -15,13 +15,9 @@ int main()
     if (!std::cin)
     {
       std::cout << "Incorrect input" << "\n";
-      break;
+      return 1;
     }
-    if (current_val == 0)
-    {
-      break;
-    }
-
+           
     try
     {
       SignChange(current_val);
@@ -33,7 +29,8 @@ int main()
       std::cout << e.what() << "\n";
       return 1;
     }
-  } while (std::cin && current_val);
+  } 
+  while (std::cin && current_val != 0);
 
   std::cout << "Number of local min: " << LocalMin.local_min << "\n";
   std::cout << "Number of sign changed: " << SignChange.sign_change << "\n";

@@ -1,4 +1,4 @@
-#include "QuantityLocalMin.h"
+#include "QuantityLocal_Min.h"
 #include <stdexcept>
 #include <limits>
 

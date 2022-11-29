@@ -23,7 +23,7 @@ void movingElements(int *array, size_t size)
 {
   size_t m = 2, n = 4;
   if (size <= n) {
-    std::cerr << "Not ehough array size\n";
+    std::cout << "Not ehough array size\n";
   } else {
     size_t mov_el_size = n - m + 1;
     int* moving_elements = new int[mov_el_size];

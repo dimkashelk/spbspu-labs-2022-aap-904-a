@@ -88,7 +88,7 @@ int main (int argc, char* argv[])
       std::cout << countArithmeticMean(reading_array, reading_array_size) << " ";
       int* reading_array_ptr = nullptr;
       reading_array_ptr = makeShiftedArray(reading_array, reading_array_size);
-      for (size_t i = 0; i < reading_array_size)
+      for (size_t i = 0; i < reading_array_size; i++)
       {
         std::cout << reading_array_ptr[i] << " ";
       }

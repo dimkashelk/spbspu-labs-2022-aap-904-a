@@ -134,20 +134,47 @@ Boost
 Accepted Labs
 =============
 
-| Name                  | I1 | I2 | I3 | I4 | I5 | S0 |
-|-----------------------|----|----|----|----|----|----|
-| Aristarkhov Rostislav |    |    |    |    |    | ✓  |
-| Chemodurov Artem      |    |    |    |    |    | ✓  |
-| Chulkov Leontii       |    |    |    |    |    | ✓  |
-| Fesenko Ivan          |    |    |    |    |    | ✓  |
-| Gulkov Mikhail        |    |    |    |    |    | ✓  |
-| Kasilov Vasiliy       |    |    |    |    |    | ✓  |
-| Muhortov Victor       |    |    |    |    |    | ✓  |
-| Odintsov Kirill       |    |    |    |    |    | ✓  |
-| Romanchuk Alexey      |    |    |    |    |    | ✓  |
-| Romanovich Artem      |    |    |    |    |    | ✓  |
-| Shelkovnikov Dmitrii  |    |    |    |    |    | ✓  |
-| Tarasenko Ksenia      |    |    |    |    |    | ✓  |
-| Tsareva Yana          |    |    |    |    |    | ✓  |
-| Turkin Nikolai        |    |    |    |    |    | ✓  |
-| __Total__             |   0|   0|   0|   0|   0|  14|
+| Name                      | S0 | I1 | I2 | I3 | I4 | I5 |
+|---------------------------|----|----|----|----|----|----|
+| Aksenov Egor              | ✓  |    |    |    |    |    |
+| Aristarkhov Rostislav     | ✓  | ✓  |    |    |    |    |
+| Averich Vladimir          | ✓  |    |    |    |    |    |
+| Azheganova Faina          | ✓  | ✓  |    |    |    |    |
+| Bobrovskaya Maria         | ✓  |    |    |    |    |    |
+| Chemodurov Artem          | ✓  | ✓  | ✓  |    |    |    |
+| Chervontsev Alexey        | ✓  |    |    |    |    |    |
+| Chulkov Leontii           | ✓  |    |    |    |    |    |
+| Danilenko Ekaterina       | ✓  |    |    |    |    |    |
+| Dmitriev Arseny           | ✓  | ✓  |    |    |    |    |
+| Fesenko Ivan              | ✓  | ✓  |    |    |    |    |
+| Garzonnavarrete Alexander | ✓  |    |    |    |    |    |
+| Grishin Vadim             | ✓  |    |    |    |    |    |
+| Gulkov Mikhail            | ✓  | ✓  | ✓  |    |    |    |
+| Hrushchev Nikita          | ✓  | ✓  |    |    |    |    |
+| Kasilov Vasiliy           | ✓  |    |    |    |    |    |
+| Kotova Yaroslava          | ✓  |    |    |    |    |    |
+| Kozyrin Semen             | ✓  |    |    |    |    |    |
+| Kryuchkova Kira           | ✓  | ✓  |    |    |    |    |
+| Kurdikova Elizaveta       | ✓  |    |    |    |    |    |
+| Lihanov Ilya              | ✓  |    |    |    |    |    |
+| Lisovskaya Lisa           | ✓  |    |    |    |    |    |
+| Mashkin Andrew            | ✓  |    |    |    |    |    |
+| Muhortov Victor           | ✓  |    |    |    |    |    |
+| Novikov Gordei            | ✓  |    |    |    |    |    |
+| Odintsov Kirill           | ✓  | ✓  |    |    |    |    |
+| Roblesgonzalez Guillermo  | ✓  |    |    |    |    |    |
+| Romanchuk Alexey          | ✓  |    |    |    |    |    |
+| Romanovich Artem          | ✓  | ✓  |    |    |    |    |
+| Samoilenko Alena          | ✓  |    |    |    |    |    |
+| Shelkovnikov Dmitrii      | ✓  | ✓  | ✓  |    |    |    |
+| Skarlygina Mariia         | ✓  | ✓  |    |    |    |    |
+| Suslov Dmitriy            | ✓  | ✓  |    |    |    |    |
+| Tarasenko Ksenia          | ✓  | ✓  | ✓  |    |    |    |
+| Tellez Aron               | ✓  |    |    |    |    |    |
+| Timofeev Maxim            | ✓  |    |    |    |    |    |
+| Tsareva Yana              | ✓  | ✓  | ✓  |    |    |    |
+| Turkin Nikolai            | ✓  | ✓  | ✓  |    |    |    |
+| Yergatov Adil             | ✓  |    |    |    |    |    |
+| Zasulsky Egor             | ✓  |    |    |    |    |    |
+| Zhuravlev Ivan            | ✓  |    |    |    |    |    |
+| __Total__                 |  41|  16|   6|   0|   0|   0|

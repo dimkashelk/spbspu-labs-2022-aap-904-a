@@ -19,10 +19,6 @@ int main()
     std::cerr << "Error while reading\n";
     return 2;
   }
-  if (dyn_arr_size < 0) {
-    std::cerr << "Wrong array size\n";
-    return 2;
-  }
   srand(time(0));
   int *dyn_arr = new int [dyn_arr_size];
   for (size_t i = 0; i < dyn_arr_size; i++) {
@@ -48,10 +44,6 @@ int main()
   in >> file_arr_size;
   if (!in) {
     std::cerr << "Can not read from file\n";
-    return 2;
-  }
-  if (file_arr_size < 0) {
-    std::cerr << "Wrong array size\n";
     return 2;
   }
   int *file_arr = new int[file_arr_size];

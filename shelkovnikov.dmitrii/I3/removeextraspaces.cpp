@@ -25,7 +25,7 @@ char *remove_extra_spaces(char *destination, const char *source, size_t source_s
     }
     d++;
   }
-  while (std::isspace(str[size - 1]))
+  while (std::isspace(destination[size - 1]))
   {
     size--;
   }

@@ -1,4 +1,4 @@
-#include "cnt.prev.devisor.h"
+#include "cnt_prev_devisor.h"
 #include <limits>
 #include <stdexcept>
 

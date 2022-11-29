@@ -4,9 +4,9 @@
 struct CntDevPrev
 {
   void operator()(int value);
-
+  
+  unsigned int cnt_devisor_counter;
   int devisor_func_value;
   int devisor_func_previous_value;
-  unsigned int cnt_devisor_counter;
 };
 #endif

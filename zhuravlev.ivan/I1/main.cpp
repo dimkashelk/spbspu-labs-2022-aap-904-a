@@ -1,6 +1,6 @@
+#include "max_seq_cnt.h"
+#include "cnt_prev_devisor.h"
 #include <iostream>
-#include "max.seq.cnt.h"
-#include "cnt.prev.devisor.h"
 #include <stdexcept>
 #include <limits>
 
@@ -12,18 +12,18 @@ int main()
 
   do
   {
-     std::cin >> value;
-     try
-     {
-       max_sr(value);
-       cnt_dev(value);
-     }
-     catch (const std::overflow_error& e)
-     {
-       std::cout << e.what() << "\n";
-       return 1;
-     }
-
+    std::cin >> value;
+    try
+    {
+      max_sr(value);
+      cnt_dev(value);
+    }
+    catch (const std::overflow_error& e)
+    {
+      std::cout << e.what() << "\n";
+      return 1;
+    }
+    
    }
    while (value && std::cin);
    {

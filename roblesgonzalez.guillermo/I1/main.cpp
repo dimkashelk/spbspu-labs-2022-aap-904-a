@@ -5,7 +5,7 @@ int main()
   int n;
   int numberafter = 0;
   int currentnumber = 0;
-  int numberbefore;
+  int numberbefore = 0;
   int sum = 0;
   int small = std::numeric_limits<int>::max();
   int possiblesmallest = std::numeric_limits<int>::max();

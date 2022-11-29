@@ -12,8 +12,8 @@ int main()
   do {
     std::cin >> val;
     if (!std::cin) {
-        std::cout << "Input error\n";
-        return 1;
+      std::cout << "Input error\n";
+      return 1;
     }
     try {
       countFibonacci(val);
@@ -26,6 +26,6 @@ int main()
       return 3;
     }
   } while (std::cin && val != 0);
-  std::cout << "Second largest value " << findSecondLargest.secondLargestVal << '\n'
-            << "Fibonacci number count " << countFibonacci.count << '\n';
+  std::cout << "Second largest value " << findSecondLargest.secondLargestVal << '\n';
+  std::cout << "Fibonacci number count " << countFibonacci.count << '\n';
 }

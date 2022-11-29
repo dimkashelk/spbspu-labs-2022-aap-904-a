@@ -1,39 +1,34 @@
 #include "removeextraspaces.h"
+#include <cctype>
 char *remove_extra_spaces(char *destination, const char *source, size_t source_size)
 {
-  char * str = new char[source_size];
   size_t size = 0;
   size_t d = 0;
-  while (source[d] == ' ')
+  while (std::isspace(source[d]))
   {
     d++;
   }
   while (source[d])
   {
-    if (source[d] == ' ')
+    if (std::isspace(source[d]))
     {
-      while (source[d] == ' ')
+      while (std::isspace(source[d]))
       {
         d++;
       }
-      str[size] = ' ';
+      destination[size] = ' ';
       size++;
     }
     else
     {
-      str[size] = source[d];
+      destination[size] = source[d];
     }
     d++;
   }
-  while (str[size - 1] == ' ')
+  while (std::isspace(str[size - 1]))
   {
     size--;
   }
-  str[size] = '\0';
-  for (size_t k = 0; k < size; k++)
-  {
-    destination[k] = str[k];
-  }
-  delete[] str;
+  destination[size] = '\0';
   return destination;
 }

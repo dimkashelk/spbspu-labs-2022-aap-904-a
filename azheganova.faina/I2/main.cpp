@@ -14,8 +14,16 @@ int main(int argc, char *argv[])
   int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   try
   {
-    std::cout << shiftarrayleft(staticarray, 10) << '\n';
-    std::cout << transferofvariables(staticarray, 10) << '\n';
+    shiftarrayleft(staticarray, 10);
+    for (size_t i = 0; i < 10; i++)
+    {
+      std::cout << staticarray[i] << " ";
+    }
+    transferofvariables(staticarray, 10);
+    for (size_t newi = 0; newi < 10; newi++)
+    {
+      std::cout << staticarray[newi] << ' ';
+    }
   }
   catch (const std::overflow_error& e)
   {
@@ -29,7 +37,7 @@ int main(int argc, char *argv[])
   if (!std::cin)
   {
     std::cout << "Not a number";
-    return 3;
+    return 2;
   }
   int* dynamicarray = new int[n];
   srand(time(0));
@@ -44,37 +52,53 @@ int main(int argc, char *argv[])
       std::cout << dynamicarray[i] << " ";
     }
     std::cout << '\n';
-    std::cout << shiftarrayleft(dynamicarray, n) << '\n';
-    std::cout << transferofvariables(dynamicarray, n) << '\n';
+    shiftarrayleft(dynamicarray, n);
+    for (size_t i = 0; i < n; i++)
+    {
+      std::cout << dynamicarray[i] << " ";
+    }
+    transferofvariables(dynamicarray, n);
+    for (size_t newi = 0; newi < n; newi++)
+    {
+      std::cout << dynamicarray[newi] << ' ';
+    }
   }
   catch (const std::overflow_error& e)
   {
     std::cerr << "Error";
     std::cout << e.what() << "\n";
     delete[] dynamicarray;
-    return 4;
+    return 2;
   }
   delete[] dynamicarray;
   std::ifstream file(argv[1]);
   if (!file)
   {
     std::cerr << argv[1] << "file open error";
-    return 5;
+    return 2;
   }
   size_t size = 0;
   file >> size;
   int* arrInput = new int[size];
   try
   {
-    std::cout << shiftarrayleft(arrInput, size) << "\n";
-    std::cout << transferofvariables(arrInput, size) << "\n";
+    shiftarrayleft(arrInput, size);
+    for (size_t i = 0; i < size; i++)
+    {
+      std::cout << arrInput[i] << " ";
+    }
+    transferofvariables(arrInput, size);
+    for (size_t newi = 0; newi < size; newi++)
+    {
+        std::cout << arrInput[newi] << ' ';
+    }
   }
   catch (const std::overflow_error& e)
   {
     std::cerr << "Error";
     std::cout << e.what() << "\n";
     delete[] arrInput;
-    return 6;
+    return 2;
   }
   delete[] arrInput;
   return 0;

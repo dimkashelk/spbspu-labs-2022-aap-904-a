@@ -5,43 +5,40 @@ void Lab_I1::operator()()
 {
   while (true)
   {
-    std::cout << "Enter number\n";
-	std::cin >> n;
-	if (!std::cin) 
-    {
-      std::cout << "INPUT ERROR: a number must be entered";
-      break;
-    }
-
-    if (n == 0) 
-    {
+   std::cout << "Enter number\n";
+   std::cin >> n;
+   if (!std::cin)
+   {
+     std::cout << "INPUT ERROR: a number must be entered";
+     break;
+   }
+   if (n == 0)
+   {
       conclusion();
       break;
-    }
-
-    else
-    {
-      if (max_n < n)
-      {
-        max_n = n;
-        count_after_max = 0;
-      }
-      else
-        count_after_max++;
-
-      if (old_n == 0)
-        old_n = n;
-      else if (cur_n == 0)
-        cur_n = n;
-      else
-      {
-        new_n = n;
-        if (cur_n < old_n && cur_n > new_n)
-          count++;
-        old_n = cur_n;
-        cur_n = new_n;
-      }
-    }
+   }
+   else
+   {
+     if (max_n < n)
+     {
+       max_n = n;
+       count_after_max = 0;
+     }
+     else
+       count_after_max++;
+     if (old_n == 0)
+       old_n = n;
+     else if (cur_n == 0)
+       cur_n = n;
+     else
+     {
+       new_n = n;
+       if (cur_n < old_n && cur_n > new_n)
+         count++;
+       old_n = cur_n;
+       cur_n = new_n;
+     }
+   }
   }
 }
 

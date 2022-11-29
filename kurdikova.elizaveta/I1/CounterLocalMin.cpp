@@ -1,10 +1,10 @@
-#include "CounterLocalMin.h"
-#include <iostream>
 #include <limits>
+#include <stdexcept>
+#include "CounterLocalMin.h"
 
 void counterMin (unsigned int &countMin, int prev, int curr, int &checking) {
   if (checking && prev < curr && curr != 0) {
-    if (countMin == std::numeric_limits<unsigned int>::max())
+    if (countMin == std::numeric_limits< unsigned int >::max())
     {
       throw std::overflow_error("Overflow");
     }

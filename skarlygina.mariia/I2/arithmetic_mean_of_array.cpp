@@ -8,6 +8,6 @@ double countArithmeticMean (const int *array, size_t size)
   {
     sum += array[i];
   }
-  arithmetic_mean = static_cast< double >(sum) / N;
+  arithmetic_mean = static_cast< double >(sum) / size;
   return arithmetic_mean;
 }

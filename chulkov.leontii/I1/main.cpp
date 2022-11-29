@@ -9,7 +9,8 @@ int main()
   int el = 0;
   CountElAfterMaxEl countElAfterMaxEl {minInt, 0};
   CountMaxEvenEl countMaxEvenEl {0,0};
-  do {
+  do
+  {
     std::cin >> el;
     if (std::cin)
     {
@@ -24,7 +25,8 @@ int main()
         return 1;
       }
     }
-  } while (el && std::cin);
+  }
+  while (el && std::cin);
   if (!std::cin)
   {
     std::cout << "Error";

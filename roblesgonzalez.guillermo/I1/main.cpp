@@ -1,59 +1,59 @@
 #include <iostream>
-using namespace std;
+#include <limits>
 int main()
 {
-  int actual = 0;
-  int nafter = 0;
-  int nbefore;
   int n;
+  int numberafter = 0;
+  int currentnumber = 0;
+  int numberbefore;
   int sum = 0;
-  int small = 10000000;
-  int possiblesmall = 10000000;
-  int contador = 0;
+  int small = std::numeric_limits<int>::max();
+  int possiblesmallest = std::numeric_limits<int>::max();
+  int counter = 0;
 
-  while(cin>>n && n != 0)
+  while(n != 0)
   {
-    nbefore = actual;
-    actual = nafter;
-    nafter = n;
+   std::cin>>n;
+   numberbefore = currentnumber;
+   currentnumber = numberafter;
+   numberafter = n;
 
-    if(nafter == 0)
+   if(numberafter == 0)
+   {
+    continue;
+   }
+   else
     {
-      continue;
+     if((currentnumber < numberbefore) && (currentnumber > numberafter))
+     {
+      sum++;
+     }
     }
-      else
+   if(counter == 0)
+    {
+     counter++;
+    }
+   else
+     {
+      if(n < possiblesmallest)
       {
-        if ((actual < nbefore) && (actual > nafter))
-        {
-         sum++;
-        }
+       if(possiblesmallest == std::numeric_limits<int>::max())
+       {
+        possiblesmallest = n;
+       }
+      else
+       {
+        small = possiblesmallest;
+        possiblesmallest = n;
+       }
       }
-        if(contador == 0)
-        {
-         contador++;
-         continue;
-        }
-        else
-        {
-           if(n < possiblesmall)
-           {
-             if(possiblesmall == 10000000)
-             {
-               possiblesmall = n;
-             }
-             else
-             {
-                small = possiblesmall;
-                possiblesmall = n;
-             }
-           }
-             else
-             {
-                small = possiblesmall;
-             }
-        }
-  }
-  cout<<"Amount of numbers that are smaller than the previous one but bigger than the last one: "<<sum<<endl
-      <<"The smallest number (Excluding first and last number): "<<small<<endl;
+      else
+       {
+        small = possiblesmallest;
+       }
+     }
+   }
+  std::cout<<"Amount of numbers that are smaller than the previous one but bigger than the last one: "<<sum<<std::endl
+           <<"The smallest number (Excluding first and last number): "<< small<<std::endl;
   return 0;
 }

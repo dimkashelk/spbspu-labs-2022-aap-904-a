@@ -18,10 +18,12 @@ char *remove_extra_spaces(char *destination, const char *source)
       }
       destination[size] = ' ';
       size++;
+      d--;
     }
     else
     {
       destination[size] = source[d];
+      size++;
     }
     d++;
   }

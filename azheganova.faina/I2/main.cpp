@@ -47,11 +47,6 @@ int main(int argc, char *argv[])
   }
   try
   {
-    for (size_t i = 0; i < n; i++)
-    {
-      std::cout << dynamicarray[i] << " ";
-    }
-    std::cout << '\n';
     shiftarrayleft(dynamicarray, n);
     for (size_t i = 0; i < n; i++)
     {
@@ -90,7 +85,7 @@ int main(int argc, char *argv[])
     transferofvariables(arrInput, size);
     for (size_t newi = 0; newi < size; newi++)
     {
-        std::cout << arrInput[newi] << ' ';
+      std::cout << arrInput[newi] << ' ';
     }
   }
   catch (const std::overflow_error& e)

@@ -2,21 +2,21 @@
 using namespace std;
 int main()
 {
-  int actual = 0;
-  int posterior = 0;
-  int anterior ;
   int n;
-  int suma = 0;
-  bool sign ;
-  int first = 1;
+  int before = 0;
+  int actual = 0;
+  int after;
+  int first = 1 ;
+  bool sign;
   int counter = 0;
+  int sum = 0;
   cout<<"Enter the numbers you want, and to finish enter the sequence, enter a 0:"<<endl
       <<"The program will count the sign changes and find sets of Pythagorean numbers in the sequence (z^2=x^2+y^2)"<<endl;
   while(cin >> n && n != 0)
   {
-    anterior = actual;
-    actual = posterior;
-    posterior = n;
+    before = actual;
+    actual = after;
+    after = n;
     if(first == 1)
     {
       if(n > 0)
@@ -37,19 +37,19 @@ int main()
         counter++;
       }
     }
- if(anterior == 0 && actual == 0)
+ if(before == 0 && actual == 0)
     {
       continue;
     }
     else
     {
-      if(anterior * anterior == actual * actual + posterior * posterior)
+      if(before * before == actual * actual + after * after)
       {
-        suma++;
+        sum++;
       }
     }
   }
-  cout<<"Pythagorean numbers found: "<<suma<<endl
+  cout<<"Pythagorean numbers found: "<<sum<<endl
       <<"Change of signs: "<<counter<<endl;
   return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "arrays.h"
 
-size_t shiftarrayleft(int* arr, const size_t size)
+void shiftarrayleft(int* arr, size_t size)
 {
   int shiftamount = 0;
   int howmuchshiftnow = 0;
@@ -20,14 +20,9 @@ size_t shiftarrayleft(int* arr, const size_t size)
     arr[size - 1] = position1;
     arr[size] = position2;
   }
-  for (size_t i = 0; i < size; i++)
-  {
-    std::cout << arr[i] << " ";
-  }
-  return 1;
 }
 
-size_t transferofvariables(int* arr, const size_t size)
+void transferofvariables(int* arr, size_t size)
 {
   int begin = 0;
   int end = 0;
@@ -40,9 +35,13 @@ size_t transferofvariables(int* arr, const size_t size)
     arr[newi] = arr[i];
     newi--;
   }
-  for (size_t newi = 0; newi < size; newi++)
+}
+
+void printArray(int arr[], const std::size_t size)
+{
+  for (std::size_t i = 0; i < size; ++i)
   {
-    std::cout << arr[newi]<< ' ';
+    std::cout << arr[i] << " ";
   }
-  return 1;
+  std::cout << '\n';
 }

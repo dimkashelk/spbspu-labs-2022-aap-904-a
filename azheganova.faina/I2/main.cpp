@@ -15,10 +15,12 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << shiftarrayleft(staticarray, 10) << '\n';
+    printArray(staticarray,10) << '\n';
     std::cout << transferofvariables(staticarray, 10) << '\n';
   }
   catch (const std::overflow_error& e)
   {
+    std::cout << "Error";
     std::cout << e.what() << "\n";
     return 2;
   }
@@ -46,10 +48,12 @@ int main(int argc, char *argv[])
       }
       std::cout << '\n';
       std::cout << shiftarrayleft(dynamicarray, n) << '\n';
+      printArray(dynamicarray, n) << '\n';
       std::cout << transferofvariables(dynamicarray, n) << '\n';
     }
     catch (const std::overflow_error& e)
     {
+      std::cout << "Error";
       std::cout << e.what() << "\n";
       delete[] dynamicarray;
       return 2;
@@ -72,10 +76,12 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << shiftarrayleft(arrInput, size) << "\n";
+    printArray(arrInput, size) << '\n';
     std::cout << transferofvariables(arrInput, size) << "\n";
   }
   catch (const std::overflow_error& e)
   {
+    std::cout << "Error";
     std::cout << e.what() << "\n";
     delete[] arrInput;
     return 2;

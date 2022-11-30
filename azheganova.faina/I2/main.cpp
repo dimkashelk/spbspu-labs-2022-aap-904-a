@@ -43,24 +43,31 @@ int main(int argc, char *argv[])
   {
     dynamicarray[i] = std::rand();
   }
-  try
+  if (n = 0)
   {
-    shiftarrayleft(dynamicarray, n);
-    for (size_t i = 0; i < n; i++)
-    {
-      std::cout << dynamicarray[i] << " ";
-    }
-    transferofvariables(dynamicarray, n);
-    for (size_t newi = 0; newi < n; newi++)
-    {
-      std::cout << dynamicarray[newi] << ' ';
-    }
+    return dynamicarray[0];
   }
-  catch(const std::exception& e)
+  else
   {
-    std::cout << e.what();
-    delete[] dynamicarray;
-    return 2;
+    try
+    {
+      shiftarrayleft(dynamicarray, n);
+      for (size_t i = 0; i < n; i++)
+      {
+        std::cout << dynamicarray[i] << " ";
+      }
+      transferofvariables(dynamicarray, n);
+      for (size_t newi = 0; newi < n; newi++)
+      {
+        std::cout << dynamicarray[newi] << ' ';
+      }
+    }
+    catch(const std::exception& e)
+    {
+      std::cout << e.what();
+      delete[] dynamicarray;
+      return 2;
+    }
   }
   delete[] dynamicarray;
   size_t size = 0;
@@ -89,7 +96,7 @@ int main(int argc, char *argv[])
   }
   if (size == 0)
   {
-    return 0;
+    return arrInput[0];
   }
   else
   {

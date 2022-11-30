@@ -29,3 +29,7 @@ bool mantissa(char *number)
   }
   return res;
 }
+bool is_digit(char number)
+{
+  return number >= '0' && number <= '9';
+}

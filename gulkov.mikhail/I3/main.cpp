@@ -5,10 +5,10 @@
 
 int main()
 {
-  size_t size_one = 0;
-  size_t size_two = 0;
-  size_t capacity_one = 10;
-  size_t capacity_two = 10;
+  unsigned int size_one = 0;
+  unsigned int size_two = 0;
+  unsigned int capacity_one = 10;
+  unsigned int capacity_two = 10;
 
   char *cstring_one = new char[capacity_one];
   char *cstring_two = new char[capacity_two];
@@ -50,8 +50,8 @@ int main()
 
   //5
 
-  size_t size_unique = 0;
-  size_t capacity_unique = 5;
+  unsigned int size_unique = 0;
+  unsigned int capacity_unique = 5;
   char *arr_unique = new char[capacity_unique];
 
   try

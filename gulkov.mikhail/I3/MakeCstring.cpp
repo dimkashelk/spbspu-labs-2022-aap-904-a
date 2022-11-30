@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <istream>
 
-char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &input)
+char *make_cstring(char *cstring, unsigned int &size, unsigned int &capacity, std::istream &input)
 {
   input >> std::noskipws;
 

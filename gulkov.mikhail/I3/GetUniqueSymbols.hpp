@@ -3,7 +3,8 @@
 
 #include <cstddef>
 
-char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_unique, const char *cstring_one,
-                         size_t size_one, const char *cstring_two, size_t size_two);
+char *
+get_unique_symbols(char *arr_unique, unsigned int size_unique, unsigned int capacity_unique, const char *cstring_one,
+                   unsigned int size_one, const char *cstring_two, unsigned int size_two);
 
 #endif

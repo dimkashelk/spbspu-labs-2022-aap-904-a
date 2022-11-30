@@ -3,7 +3,8 @@
 
 #include <cstddef>
 
-void sum_strings(char *arr_sum, size_t arr_sum_len, const char *cstring_one, size_t size_one, const char *cstring_two,
-                 size_t size_two);
+void sum_strings(char *arr_sum, unsigned int arr_sum_len, const char *cstring_one, unsigned int size_one,
+                 const char *cstring_two,
+                 unsigned int size_two);
 
 #endif

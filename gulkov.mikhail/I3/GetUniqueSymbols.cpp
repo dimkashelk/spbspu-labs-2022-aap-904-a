@@ -4,22 +4,23 @@
 #include <limits>
 #include "ResizeCstring.hpp"
 
-char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_unique, const char *cstring_one,
-                         size_t size_one, const char *cstring_two, size_t size_two)
+char *
+get_unique_symbols(char *arr_unique, unsigned int size_unique, unsigned int capacity_unique, const char *cstring_one,
+                   unsigned int size_one, const char *cstring_two, unsigned int size_two)
 {
-  const size_t max_size_t = std::numeric_limits<size_t>::max();
+  const unsigned int max_unsigned_int = std::numeric_limits<unsigned int>::max();
 
   bool is_common = false;
 
-  for (size_t i = 0; i < size_one - 1; i++)
+  for (unsigned int i = 0; i < size_one - 1; i++)
   {
-    for (size_t j = 0; j < size_two - 1; j++)
+    for (unsigned int j = 0; j < size_two - 1; j++)
     {
       if (cstring_one[i] == cstring_two[j])
       {
         is_common = true;
       }
-      if (j == max_size_t)
+      if (j == max_unsigned_int)
       {
         throw std::runtime_error("Overflow!");
       }
@@ -36,7 +37,7 @@ char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_u
       }
       arr_unique[size_unique] = cstring_one[i];
 
-      if (size_unique == max_size_t)
+      if (size_unique == max_unsigned_int)
       {
         throw std::runtime_error("Overflow!");
       }
@@ -46,21 +47,21 @@ char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_u
 
     is_common = false;
 
-    if (i == max_size_t)
+    if (i == max_unsigned_int)
     {
       throw std::runtime_error("Overflow!");
     }
   }
 
-  for (size_t i = 0; i < size_two - 1; i++)
+  for (unsigned int i = 0; i < size_two - 1; i++)
   {
-    for (size_t j = 0; j < size_one - 1; j++)
+    for (unsigned int j = 0; j < size_one - 1; j++)
     {
       if (cstring_two[i] == cstring_one[j])
       {
         is_common = true;
       }
-      if (j == max_size_t)
+      if (j == max_unsigned_int)
       {
         throw std::runtime_error("Overflow!");
       }
@@ -77,7 +78,7 @@ char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_u
       }
       arr_unique[size_unique] = cstring_two[i];
 
-      if (size_unique == max_size_t)
+      if (size_unique == max_unsigned_int)
       {
         throw std::runtime_error("Overflow!");
       }
@@ -87,7 +88,7 @@ char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_u
 
     is_common = false;
 
-    if (i == max_size_t)
+    if (i == max_unsigned_int)
     {
       throw std::runtime_error("Overflow!");
     }

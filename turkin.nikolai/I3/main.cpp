@@ -19,7 +19,7 @@ int main()
     }
   }
   while (std::cin && string.data[string.size - 1] != '\n');
-  if (!std::cin)
+  if (!std::cin && !string.size)
   {
     std::cerr << "incorrect input\n";
     return 1;

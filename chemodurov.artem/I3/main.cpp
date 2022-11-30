@@ -28,6 +28,12 @@ int main()
         delete [] c_string;
         return 1;
       }
+      catch (const std::invalid_argument & e)
+      {
+        std::cerr << e.what() << "\n";
+        delete [] c_string;
+        return 1;
+      }
     }
     std::cin >> c_string[size];
   }
@@ -83,7 +89,7 @@ int main()
   }
   else
   {
-    std::cout << "String not contains repeating numbers\n";
+    std::cout << "String does not contain repeating numbers\n";
   }
 
   char * yet_another_string = nullptr;

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
   {
     std::cout << "Not correct amolunt of CML args\n";
   }
-  int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  int staticarray[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   try
   {
     shiftarrayleft(staticarray, 10);
@@ -64,7 +64,8 @@ int main(int argc, char *argv[])
   }
   delete[] dynamicarray;
   size_t size = 0;
-  std::ifstream file(argv[1]);
+  std::string name = argv[1];
+  std::fstream file(name);
   if (!file.is_open())
   {
     std::cout << "file open error";

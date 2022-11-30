@@ -3,16 +3,19 @@
 
 namespace zasulsky {
   struct SecondLargestFinder {
-    void operator()(int val);
     int secondLargestVal;
     int largestVal;
+    SecondLargestFinder();
+    void operator()(int val);
   };
   struct FibonacciCounter {
-    void operator()(int val);
     unsigned count;
     int lastVal;
     int curVal;
+    FibonacciCounter();
+    void operator()(int val);
   };
 }
 
 #endif
+

@@ -3,9 +3,13 @@ bool sign(char number);
 bool mantissa(char *number);
 bool order(char *number);
 bool is_digit(char digit);
-bool is_real_number(char *number)
+bool is_real_number(char *number, size_t size)
 {
-  return sign(number[0]) && mantissa(number) && order(number);
+  if (size == 0)
+  {
+    return false;
+  }
+  return sign(number[0]) && mantissa(number + 1) && order(number);
 }
 bool sign(char number)
 {

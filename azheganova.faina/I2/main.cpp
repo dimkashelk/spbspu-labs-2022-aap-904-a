@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     std::cout << "Not correct amolunt of CML args\n";
   }
   int staticarray[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-  try 
+  try
   {
     shiftarrayleft(staticarray, 10);
     for (size_t i = 0; i < 10; i++)
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
       return 2;
     }
   }
-  try 
+  try
   {
     shiftarrayleft(arrInput, size);
     for (size_t i = 0; i < size; i++)

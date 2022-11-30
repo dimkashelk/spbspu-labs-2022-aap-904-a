@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 
   size_t size = 0;
   filestream >> size;
-  
+
   if (!filestream)
   {
     std::cerr << "Invalid input." << '\n';

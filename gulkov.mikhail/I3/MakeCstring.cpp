@@ -5,7 +5,7 @@
 
 char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &input)
 {
-
+  char test = '\n';
   input >> std::noskipws;
 
   do
@@ -31,7 +31,7 @@ char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &
 
     input >> cstring[size];
 
-    if (cstring[0] == '\n')
+    if (cstring[0] == test)
     {
       throw std::runtime_error("Empty string not allowed");
     }

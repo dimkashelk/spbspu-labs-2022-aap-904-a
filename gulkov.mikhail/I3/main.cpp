@@ -17,7 +17,6 @@ int main()
   {
     cstring_one = make_cstring(cstring_one, size_one, capacity_one, std::cin);
     cstring_two = make_cstring(cstring_two, size_two, capacity_two, std::cin);
-
   }
   catch (const std::runtime_error &e)
   {

@@ -2,7 +2,7 @@
 
 turkin::Array turkin::deleteNumbers(const turkin::Array & string)
 {
-  turkin::Array result = turkin::Array(string.size);
+  turkin::Array result(string.size + 1);
   for (size_t i = 0; i < string.size; i++)
   {
     if (!turkin::isNumber(string.data[i]))
@@ -10,6 +10,7 @@ turkin::Array turkin::deleteNumbers(const turkin::Array & string)
       result.push(string.data[i]);
     }
   }
+  result.push('\0');
   return result;
 }
 
@@ -37,7 +38,7 @@ bool turkin::isRepeat(const turkin::Array & string)
 bool turkin::isNumber(char symbol)
 {
   size_t amount = 0;
-  for (char number = '0'; number < '9'; number++)
+  for (char number = '0'; number <= '9'; number++)
   {
     if (symbol == number)
     {

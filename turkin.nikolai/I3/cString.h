@@ -9,7 +9,7 @@ namespace turkin
   explicit Array(size_t cap);
   ~Array();
 
-  char buffer = '\0';
+  char * extendBuffer = nullptr;
   char * data;
   size_t size;
   size_t capacity;

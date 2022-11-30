@@ -17,8 +17,8 @@ int main(int argc, char *argv[])
     std::cout << "Pls check parameters";
     return 1;
   }
-  size_t n = 1;
-  size_t m = 1;
+  size_t n = 100;
+  size_t m = 100;
   std::ifstream in(argv[2]);
   if (!strcmp(argv[1], "1"))
   {

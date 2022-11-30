@@ -33,3 +33,20 @@ bool is_digit(char number)
 {
   return number >= '0' && number <= '9';
 }
+bool order(char *number)
+{
+  bool res = true;
+  bool contains_E = false;
+  for (size_t i = 0; number[i]; i++)
+  {
+    if (number[i] == 'E')
+    {
+      contains_E = true;
+    }
+    if (contains_E)
+    {
+
+    }
+  }
+  return res;
+}

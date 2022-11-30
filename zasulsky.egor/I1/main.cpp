@@ -15,7 +15,7 @@ int main()
     }
     try {
       countFibonacci(val);
-      indSecondLargest(val);
+      findSecondLargest(val);
     } catch (const std::overflow_error& e) {
       std::cout << e.what() << '\n';
       return 2;

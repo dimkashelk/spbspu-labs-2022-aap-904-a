@@ -5,6 +5,7 @@
 
 char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &input)
 {
+
   input >> std::noskipws;
 
   do
@@ -27,7 +28,14 @@ char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &
         throw std::runtime_error("Error while creating cstring(array)!");
       }
     }
+    
     input >> cstring[size];
+
+    if (cstring[0] == '\n')
+    {
+      throw std::runtime_error("Empty string not allowed");
+    }
+
   } while (input && cstring[size++] != '\n');
 
   cstring[size - 1] = '\0';

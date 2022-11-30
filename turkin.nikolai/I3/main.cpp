@@ -6,22 +6,24 @@
 int main()
 {
   const size_t basicCapacity = 10;
+  char buffer;
   turkin::Array string(basicCapacity);
   std::cin >> std::noskipws;
   do
   {
-    if (!string.push(std::cin))
+    std::cin >> buffer;
+    if (!string.push(buffer))
     {
       std::cerr << "out of size\n";
       return 1;
     }
-    if (!std::cin)
-    {
-      std::cerr << "incorrect input\n";
-      return 1;
-    }
   }
-  while (string.data[string.size - 1] != '\n');
+  while (std::cin && string.data[string.size - 1] != '\n');
+  if (!std::cin)
+  {
+    std::cerr << "incorrect input\n";
+    return 1;
+  }
   if (string.size == 1)
   {
     std::cerr << "null string\n";

@@ -2,7 +2,7 @@
 
 turkin::Array turkin::deleteNumbers(const turkin::Array & string)
 {
-  turkin::Array result(string.size + 1);
+  turkin::Array result(string.size);
   for (size_t i = 0; i < string.size; i++)
   {
     if (!turkin::isNumber(string.data[i]))

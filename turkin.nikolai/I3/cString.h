@@ -9,15 +9,15 @@ namespace turkin
   explicit Array(size_t cap);
   ~Array();
 
-  const size_t extendSize = 10;
-  char * extendBuffer = nullptr;
+  bool push(char symbol);
   char * data;
   size_t size;
   size_t capacity;
 
-  bool extend();
-  bool push(std::istream & cin);
-  bool push(char symbol);
+  private:
+    const size_t extendSize = 10;
+    char * extendBuffer = nullptr;
+    bool extend();
   };
 }
 #endif

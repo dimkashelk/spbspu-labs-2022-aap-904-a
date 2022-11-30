@@ -32,13 +32,6 @@ bool turkin::Array::extend()
   return true;
 }
 
-bool turkin::Array::push(std::istream & cin)
-{
-  char buffer;
-  cin >> buffer;
-  return push(buffer);
-}
-
 bool turkin::Array::push(char symbol)
 {
   if (size >= capacity)

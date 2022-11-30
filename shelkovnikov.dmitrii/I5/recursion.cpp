@@ -53,6 +53,15 @@ bool mantissa(char *number, size_t start, size_t end)
   size_t index_of_point = index_point(number, start, end);
   return is_unsigned_integer(number, start, index_of_point) && is_unsigned_integer(number, index_of_point + 1, end);
 }
+bool order(char *number, size_t start, size_t end)
+{
+  if (start >= end - 1)
+  {
+    return false;
+  }
+  return number[start] == 'E' && (is_sign(number[start + 1]) && is_unsigned_integer(number, start + 2, end)
+    || is_unsigned_integer(number, start + 1, end))
+}
 bool is_real_number(char *number, size_t size)
 {
 }

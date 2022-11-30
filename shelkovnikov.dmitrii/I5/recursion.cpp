@@ -1,37 +1,33 @@
 #include "recursion.h"
 bool sign(char number);
-bool mantissa(char *number);
+bool mantissa(char *number, size_t ind);
 bool order(char *number);
 bool is_digit(char digit);
-size_t index_E(char *number);
+size_t index_E(char *number, size_t ind);
+size_t index_point(char *number, size_t ind);
+bool unsigned_integer(char *number, size_t ind);
 bool is_real_number(char *number, size_t size)
 {
   if (size == 0)
   {
     return false;
   }
-  return sign(number[0]) && mantissa(number + 1) && order(number);
+  size_t ind = index_E(number, 0);
+  if (ind == size)
+  {
+    return false;
+  }
+  return sign(number[0]) && mantissa(number, ind) && order(number);
 }
 bool sign(char number)
 {
   return number[0] == '+' || number[0] == '-';
 }
-bool mantissa(char *number)
+bool mantissa(char *number, size_t ind)
 {
   bool res = true;
   size_t count_point = 0;
-  for (size_t i = 1; number[i] && number[i] != 'E'; i++)
-  {
-    if (!is_digit(number[i]) && number[i] != '.' && count_point < 2)
-    {
-      res = false;
-      break;
-    }
-    else if (number[i] == '.')
-    {
-      count_point++;
-    }
-  }
+  size_t index_point = index_point(number, 0);
   return res;
 }
 bool is_digit(char number)
@@ -65,5 +61,17 @@ size_t index_E(char *number, size_t ind)
   {
     return ind;
   }
-  return index_E(number, ind++);
+  return index_E(number, ++ind);
+}
+size_t index_point(char *number, size_t ind)
+{
+  if (!number[ind])
+  {
+    return ind + 1;
+  }
+  if (number[ind] == '.')
+  {
+    return ind;
+  }
+  return index_point(number, ++ind);
 }

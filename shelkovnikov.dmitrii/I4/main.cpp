@@ -17,15 +17,9 @@ int main(int argc, char *argv[])
     std::cout << "Pls check parameters";
     return 1;
   }
-  size_t n = 0;
-  size_t m = 0;
+  size_t n = 3;
+  size_t m = 3;
   std::ifstream in(argv[2]);
-  in >> n >> m;
-  if (!in)
-  {
-    std::cout << "Error";
-    return 1;
-  }
   if (!strcmp(argv[1], "1"))
   {
     int arr[n * m];
@@ -47,6 +41,7 @@ int main(int argc, char *argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
+    in >> n >> m;
     try
     {
       int *arr = new int[n * m];

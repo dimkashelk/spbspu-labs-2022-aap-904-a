@@ -31,11 +31,13 @@ int main()
 
   //12
 
-  size_t arr_sum_len = (size_one - 1) + (size_two - 1) + 1;
-  char *arr_sum = new char[arr_sum_len];
+  size_t target_length = (size_one - 1) + (size_two - 1) + 1;
+  size_t size_sum = 0;
+  size_t capacity_sum = 10;
+  char *arr_sum = new char[capacity_sum];
   try
   {
-    sum_strings(arr_sum, arr_sum_len, cstring_one, size_one, cstring_two, size_two);
+    sum_strings(arr_sum, size_sum, capacity_sum, target_length, cstring_one, size_one, cstring_two, size_two);
   }
   catch (const std::overflow_error &e)
   {

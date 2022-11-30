@@ -30,8 +30,18 @@ int main()
   }
 
   //12
+  size_t arr_sum_len;
 
-  size_t arr_sum_len = (size_one - 1) + (size_two - 1) + 1;
+  if ((size_one - 1) + (size_two - 1) + 1 > 0)
+  {
+    arr_sum_len = (size_one - 1) + (size_two - 1) + 1;
+  }
+  else
+  {
+    std::cout << "Can not create array";
+    return 3;
+  }
+
   char *arr_sum = new char[arr_sum_len];
   try
   {

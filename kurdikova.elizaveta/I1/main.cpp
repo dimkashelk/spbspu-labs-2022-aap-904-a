@@ -15,8 +15,7 @@ int main() {
     try {
       counterMin(countMin, prevV, value, checking);
       counterSignChanges(countSignChanges, prevV, value);
-    }
-    catch (const std::overflow_error& e) {
+    } catch (const std::overflow_error& e) {
       std::cout << e.what() << '\n';
       return 1;
     }

@@ -1,6 +1,8 @@
 #include "change_chars.h"
 #include "generate_new_line.h"
 #include <iostream>
+#include <cstddef>
+#include <limits>
 int main()
 {
   size_t capacity_1 = 10;
@@ -124,5 +126,7 @@ int main()
     delete[] str_2;
     return 2;
   }
-  delete[] str;
+  delete[] str_1;
+  delete[] str_2;
+  return 0;
 }

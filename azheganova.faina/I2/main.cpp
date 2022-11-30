@@ -87,24 +87,31 @@ int main(int argc, char *argv[])
       return 2;
     }
   }
-  try
+  if (size = 0)
   {
-    shiftarrayleft(arrInput, size);
-    for (size_t i = 0; i < size; i++)
-    {
-      std::cout << arrInput[i] << " ";
-    }
-    transferofvariables(arrInput, size);
-    for (size_t newi = 0; newi < size; newi++)
-    {
-      std::cout << arrInput[newi] << ' ';
-    }
+    return 0;
   }
-  catch (const std::overflow_error &e)
+  else
   {
-    std::cout << e.what();
-    delete[] arrInput;
-    return 2;
+    try
+    {
+      shiftarrayleft(arrInput, size);
+      for (size_t i = 0; i < size; i++)
+      {
+        std::cout << arrInput[i] << " ";
+      }
+      transferofvariables(arrInput, size);
+      for (size_t newi = 0; newi < size; newi++)
+      {
+        std::cout << arrInput[newi] << ' ';
+      }
+    }
+    catch (const std::overflow_error &e)
+    {
+      std::cout << e.what();
+      delete[] arrInput;
+      return 2;
+    }
   }
   delete[] arrInput;
   return 0;

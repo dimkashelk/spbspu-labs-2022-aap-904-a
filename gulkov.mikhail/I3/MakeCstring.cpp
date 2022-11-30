@@ -28,7 +28,7 @@ char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &
         throw std::runtime_error("Error while creating cstring(array)!");
       }
     }
-    
+
     input >> cstring[size];
 
     if (cstring[0] == '\n')

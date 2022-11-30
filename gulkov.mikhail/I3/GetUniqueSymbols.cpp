@@ -40,7 +40,7 @@ char *get_unique_symbols(char *arr_unique, size_t size_unique, size_t capacity_u
       {
         throw std::runtime_error("Overflow!");
       }
-      
+
       size_unique++;
     }
 

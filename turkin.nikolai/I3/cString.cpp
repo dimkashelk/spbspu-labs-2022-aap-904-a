@@ -12,7 +12,6 @@ turkin::Array::Array(size_t cap)
 turkin::Array::~Array()
 {
   delete [] data;
-  delete [] extendBuffer;
 }
 
 bool turkin::Array::extend()
@@ -49,7 +48,6 @@ bool turkin::Array::push(char symbol)
       return false;
     }
   }
-  data[size] = symbol;
-  size++;
+  data[size++] = symbol;
   return true;
 }

@@ -5,10 +5,10 @@
 
 int main()
 {
-  size_t basicCapacity = 10;
+  const size_t basicCapacity = 10;
   turkin::Array string(basicCapacity);
   std::cin >> std::noskipws;
-  while (std::cin && string.data[string.size - 1] != '\n')
+  do
   {
     if (!string.push(std::cin))
     {
@@ -16,6 +16,7 @@ int main()
       return 1;
     }
   }
+  while (std::cin && string.data[string.size - 1] != '\n');
   if (!std::cin)
   {
     std::cerr << "incorrect input\n";

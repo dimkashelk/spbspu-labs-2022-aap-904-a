@@ -5,7 +5,7 @@ bool order(char *number);
 bool is_digit(char digit);
 size_t index_E(char *number, size_t ind);
 size_t index_point(char *number, size_t ind);
-bool unsigned_integer(char *number, size_t ind);
+bool unsigned_integer(char *number, size_t start, size_t ind);
 bool is_real_number(char *number, size_t size)
 {
   if (size == 0)
@@ -74,4 +74,12 @@ size_t index_point(char *number, size_t ind)
     return ind;
   }
   return index_point(number, ++ind);
+}
+bool unsigned_integer(char *number, size_t start, size_t ind)
+{
+  if (start == ind)
+  {
+    return true;
+  }
+  return is_digit(number[start]) && unsigned_integer(number, start + 1, ind);
 }

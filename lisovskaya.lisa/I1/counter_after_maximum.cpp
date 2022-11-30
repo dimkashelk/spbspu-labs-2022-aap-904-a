@@ -3,7 +3,7 @@
 #include <stdexcept>
 void CounterAfterMaximum::operator()(int next)
 {
-  unsigned int max_int = std::numeric_limits< unsigned int >::max();
+  constexpr unsigned int max_int = std::numeric_limits< unsigned int >::max();
   if (next < max)
   {
     if (count == max_int)

@@ -1,6 +1,6 @@
+#include <iostream>
 #include "counter_even_elements.h"
 #include "counter_after_maximum.h"
-#include <iostream>
 int main()
 {
   int n = 0;

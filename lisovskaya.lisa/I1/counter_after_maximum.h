@@ -2,8 +2,8 @@
 #define SPBSPU_LABS_2022_AAP_904_A_COUNTER_AFTER_MAXIMUM_H
 struct CounterAfterMaximum
 {
-  void operator()(int next);
   unsigned int count;
   int max;
+  void operator()(int next);
 };
 #endif

@@ -62,6 +62,24 @@ bool order(char *number, size_t start, size_t end)
   return number[start] == 'E' && (is_sign(number[start + 1]) && is_unsigned_integer(number, start + 2, end)
     || is_unsigned_integer(number, start + 1, end))
 }
+size_t index_E(char *number, size_t start, size_t end)
+{
+  if (start == end)
+  {
+    return start;
+  }
+  if (number[start] == 'E')
+  {
+    return start;
+  }
+  return index_E(number, ++start, end);
+}
 bool is_real_number(char *number, size_t size)
 {
+  size_t index_of_E = index_E(number, 0, size);
+  if (index_of_E == size)
+  {
+    return false;
+  }
+  return is_sign(number[0]) && mantissa(number, 1, index_of_E) && order(number, index_of_E, size);
 }

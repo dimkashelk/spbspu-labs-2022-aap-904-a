@@ -31,7 +31,7 @@ int main()
 
   //12
 
-  unsigned int arr_sum_len = (size_one - 1) + (size_two - 1) + 1;
+  size_t arr_sum_len = (size_one - 1) + (size_two - 1) + 1;
   char *arr_sum = new char[arr_sum_len];
   try
   {

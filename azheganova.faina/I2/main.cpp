@@ -46,9 +46,9 @@ int main(int argc, char *argv[])
     std::cout << dynamicarray[newi] << ' ';
   }
   delete[] dynamicarray;
-  std::ifstream file(argv[1]);
   size_t size = 0;
-  if (!file)
+  std::ifstream file(argv[1]);
+  if (!file.is_open())
   {
     std::cerr << argv[1] << "file open error";
     return 2;

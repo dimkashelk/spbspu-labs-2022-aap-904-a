@@ -15,13 +15,13 @@ int main()
       std::cerr << "out of size\n";
       return 1;
     }
+    if (!std::cin)
+    {
+      std::cerr << "incorrect input\n";
+      return 1;
+    }
   }
-  while (std::cin && string.data[string.size - 1] != '\n');
-  if (!std::cin)
-  {
-    std::cerr << "incorrect input\n";
-    return 1;
-  }
+  while (string.data[string.size - 1] != '\n');
   if (string.size == 1)
   {
     std::cerr << "null string\n";

@@ -37,7 +37,9 @@ int main()
   char *arr_sum = new char[capacity_sum];
   try
   {
-    sum_strings(arr_sum, size_sum, capacity_sum, target_length, cstring_one, size_one, cstring_two, size_two);
+    arr_sum = sum_strings(arr_sum, size_sum, capacity_sum, target_length, cstring_one, size_one, cstring_two, size_two);
+    arr_sum[target_length - 1] = '\0';
+
   }
   catch (const std::overflow_error &e)
   {

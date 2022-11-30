@@ -4,9 +4,9 @@
 #include <limits>
 #include "ResizeCstring.hpp"
 
-void sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t target_length, const char *cstring_one,
-                 size_t size_one, const char *cstring_two,
-                 size_t size_two)
+char *sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t target_length, const char *cstring_one,
+                  size_t size_one, const char *cstring_two,
+                  size_t size_two)
 {
 
   const size_t max_size_t = std::numeric_limits<size_t>::max();
@@ -17,6 +17,7 @@ void sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t tar
     {
       arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
       arr_sum[i] = cstring_one[j];
+      size_sum++;
       if (j >= size_two - 1)
       {
         if (j == max_size_t)
@@ -30,6 +31,7 @@ void sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t tar
     {
       arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
       arr_sum[i] = cstring_two[j];
+      size_sum++;
       if (j == max_size_t)
       {
         throw std::overflow_error("Overflow!");
@@ -42,6 +44,6 @@ void sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t tar
     }
   }
 
-  arr_sum[target_length - 1] = '\0';
+  return arr_sum;
 
 }

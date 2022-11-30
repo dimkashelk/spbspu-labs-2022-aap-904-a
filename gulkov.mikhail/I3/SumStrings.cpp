@@ -3,21 +3,20 @@
 #include <stdexcept>
 #include <limits>
 
-void sum_strings(char *arr_sum, unsigned int arr_sum_len, const char *cstring_one, unsigned int size_one,
-                 const char *cstring_two,
-                 unsigned int size_two)
+void sum_strings(char *arr_sum, size_t arr_sum_len, const char *cstring_one, size_t size_one, const char *cstring_two,
+                 size_t size_two)
 {
 
-  const unsigned int max_unsigned_int = std::numeric_limits<unsigned int>::max();
+  const size_t max_size_t = std::numeric_limits<size_t>::max();
 
-  for (unsigned int i = 0, j = 0; i < arr_sum_len; i++)
+  for (size_t i = 0, j = 0; i < arr_sum_len; i++)
   {
     if ((i % 2 == 0 && j < size_one - 1) || (j >= size_two - 1))
     {
       arr_sum[i] = cstring_one[j];
       if (j >= size_two - 1)
       {
-        if (j == max_unsigned_int)
+        if (j == max_size_t)
         {
           throw std::overflow_error("Overflow!");
         }
@@ -27,13 +26,13 @@ void sum_strings(char *arr_sum, unsigned int arr_sum_len, const char *cstring_on
     else if ((i % 2 != 0 && j < size_two - 1) || (j >= size_one - 1))
     {
       arr_sum[i] = cstring_two[j];
-      if (j == max_unsigned_int)
+      if (j == max_size_t)
       {
         throw std::overflow_error("Overflow!");
       }
       j++;
     }
-    if (i == max_unsigned_int)
+    if (i == max_size_t)
     {
       throw std::overflow_error("Overflow!");
     }

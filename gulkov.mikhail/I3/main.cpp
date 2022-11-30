@@ -5,10 +5,10 @@
 
 int main()
 {
-  unsigned int size_one = 0;
-  unsigned int size_two = 0;
-  unsigned int capacity_one = 10;
-  unsigned int capacity_two = 10;
+  size_t size_one = 0;
+  size_t size_two = 0;
+  size_t capacity_one = 10;
+  size_t capacity_two = 10;
 
   char *cstring_one = new char[capacity_one];
   char *cstring_two = new char[capacity_two];
@@ -16,15 +16,9 @@ int main()
   try
   {
     cstring_one = make_cstring(cstring_one, size_one, capacity_one, std::cin);
-    if (cstring_one[0] == '\n')
-    {
-      std::cout << "Error, empty string";
-      return 5;
-    }
-    cstring_two = make_cstring(cstring_two, size_two, capacity_two, std::cin);
     cstring_one[capacity_one - 1] = '\0';
+    cstring_two = make_cstring(cstring_two, size_two, capacity_two, std::cin);
     cstring_two[capacity_two - 1] = '\0';
-
   }
   catch (const std::runtime_error &e)
   {
@@ -56,8 +50,8 @@ int main()
 
   //5
 
-  unsigned int size_unique = 0;
-  unsigned int capacity_unique = 5;
+  size_t size_unique = 0;
+  size_t capacity_unique = 5;
   char *arr_unique = new char[capacity_unique];
 
   try

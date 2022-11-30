@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <stdexcept>
 
-char *check_and_resize(char *arr, unsigned int &size, unsigned int &capacity)
+char *check_and_resize(char *arr, size_t &size, size_t &capacity)
 {
   if (size == capacity)
   {

@@ -7,8 +7,8 @@ int main()
   int currentnumber = 0;
   int numberbefore = 0;
   int sum = 0;
-  int small = std::numeric_limits<int>::max();
-  int possiblesmallest = std::numeric_limits<int>::max();
+  double small = std::numeric_limits<double>::infinity();
+  double possiblesmallest = std::numeric_limits<double>::infinity();
   int counter = 0;
 
   while(n != 0)
@@ -38,7 +38,7 @@ int main()
      {
       if(n < possiblesmallest)
       {
-       if(possiblesmallest == std::numeric_limits<int>::max())
+       if(possiblesmallest == std::numeric_limits<double>::infinity())
        {
         possiblesmallest = n;
        }

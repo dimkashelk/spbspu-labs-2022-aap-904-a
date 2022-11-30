@@ -18,4 +18,3 @@ namespace zasulsky {
 }
 
 #endif
-

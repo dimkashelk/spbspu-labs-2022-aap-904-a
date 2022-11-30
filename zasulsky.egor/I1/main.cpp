@@ -1,6 +1,6 @@
-#include <iostream> 
-#include <stdexcept> 
-#include "counter.hpp" 
+#include <iostream>
+#include <stdexcept>
+#include "counter.hpp"
 
 int main()
 {

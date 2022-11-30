@@ -3,6 +3,7 @@ bool sign(char number);
 bool mantissa(char *number);
 bool order(char *number);
 bool is_digit(char digit);
+size_t index_E(char *number);
 bool is_real_number(char *number, size_t size)
 {
   if (size == 0)
@@ -53,4 +54,16 @@ bool order(char *number)
     }
   }
   return res;
+}
+size_t index_E(char *number, size_t ind)
+{
+  if (!number[ind])
+  {
+    return ind + 1;
+  }
+  if (number[ind] == 'E')
+  {
+    return ind;
+  }
+  return index_E(number, ind++);
 }

@@ -1,7 +1,5 @@
 #ifndef AMOUNTOFAVR_HPP
 #define AMOUNTIFAVR_HPP
-#include <limits>
-
 
 struct Average
 {

@@ -1,7 +1,5 @@
 #ifndef AMOUNTOFMIN_HPP
 #define AMOUNTOFMIN_HPP
-#include <limits>
-
 
 struct MinValue
 {
@@ -10,7 +8,6 @@ struct MinValue
 
   void operator()(int value);
 };
-
 
 #endif
 

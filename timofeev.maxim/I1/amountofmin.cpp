@@ -2,12 +2,9 @@
 #include <stdexcept>
 #include <limits>
 
-
 const unsigned int MaxForOver = std::numeric_limits< unsigned int >::max();
 
-
 void MinValue::operator()(int value)
-
 {
   if (min == 0)
   {
@@ -26,7 +23,7 @@ void MinValue::operator()(int value)
     }
     else
     {
-       counter++;
+      counter++;
     }
   }
 }

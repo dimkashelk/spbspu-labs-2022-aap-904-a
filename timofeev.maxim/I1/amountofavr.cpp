@@ -1,10 +1,8 @@
 #include "amountofavr.hpp"
-#include <iostream>
 #include <stdexcept>
-
+#include <limits>
 
 const unsigned int MaxForOver2 = std::numeric_limits< unsigned int >::max();
-
 
 void Average::operator()(int value)
 {

@@ -2,13 +2,11 @@
 #include "amountofavr.hpp"
 #include "amountofmin.hpp"
 
-
 int main()
 {
   MinValue mv{0};
   Average av{0};
   int value = 0;
-
   do
   {
     std::cin >> value;

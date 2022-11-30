@@ -1,5 +1,4 @@
 #include "cString.h"
-#include <stdexcept>
 #include <limits>
 
 turkin::Array::Array(size_t cap)

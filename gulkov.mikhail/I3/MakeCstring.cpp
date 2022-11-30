@@ -32,7 +32,5 @@ char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &
 
   } while (input && cstring[size++] != '\n');
 
-  cstring[size - 1] = '\0';
-
   return cstring;
 }

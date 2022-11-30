@@ -17,16 +17,17 @@ turkin::Array::~Array()
 
 bool turkin::Array::extend()
 {
-  if (capacity + 10 == std::numeric_limits< size_t >::max())
+  if (capacity + extendSize == std::numeric_limits< size_t >::max())
   {
     return false;
   }
-  extendBuffer = new char[capacity + 10];
-  capacity = capacity + 10;
+  capacity += extendSize;
+  extendBuffer = new char[capacity];
   for (size_t i = 0; i < size; i++)
   {
     extendBuffer[i] = data[i];
   }
+  delete [] data;
   data = extendBuffer;
   extendBuffer = nullptr;
   return true;

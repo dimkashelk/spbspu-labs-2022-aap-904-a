@@ -9,6 +9,7 @@ namespace turkin
   explicit Array(size_t cap);
   ~Array();
 
+  const size_t extendSize = 10;
   char * extendBuffer = nullptr;
   char * data;
   size_t size;

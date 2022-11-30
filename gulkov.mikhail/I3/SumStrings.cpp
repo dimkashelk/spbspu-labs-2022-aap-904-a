@@ -2,17 +2,20 @@
 #include <cstddef>
 #include <stdexcept>
 #include <limits>
+#include "ResizeCstring.hpp"
 
-void sum_strings(char *arr_sum, size_t arr_sum_len, const char *cstring_one, size_t size_one, const char *cstring_two,
+void sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t target_length, const char *cstring_one,
+                 size_t size_one, const char *cstring_two,
                  size_t size_two)
 {
 
   const size_t max_size_t = std::numeric_limits<size_t>::max();
 
-  for (size_t i = 0, j = 0; i < arr_sum_len; i++)
+  for (size_t i = 0, j = 0; i < target_length; i++)
   {
     if ((i % 2 == 0 && j < size_one - 1) || (j >= size_two - 1))
     {
+      arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
       arr_sum[i] = cstring_one[j];
       if (j >= size_two - 1)
       {
@@ -25,6 +28,7 @@ void sum_strings(char *arr_sum, size_t arr_sum_len, const char *cstring_one, siz
     }
     else if ((i % 2 != 0 && j < size_two - 1) || (j >= size_one - 1))
     {
+      arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
       arr_sum[i] = cstring_two[j];
       if (j == max_size_t)
       {
@@ -38,6 +42,6 @@ void sum_strings(char *arr_sum, size_t arr_sum_len, const char *cstring_one, siz
     }
   }
 
-  arr_sum[arr_sum_len - 1] = '\0';
+  arr_sum[target_length - 1] = '\0';
 
 }

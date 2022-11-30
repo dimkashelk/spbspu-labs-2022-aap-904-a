@@ -48,35 +48,33 @@ int main(int argc, char* argv[])
     }
 
 
-  std::ifstream file;
-  file.open(argv[1]);
-  if (!file.is_open())
+  std::string fileName = argv[1];
+  std::fstream fileInput(fileName);
+  if (!fileInput.is_open())
   {
     std::cerr << "File not open";
     return 1;
   }
   size_t size3 = 0;
-  file >> size3;
-  if (!file)
-  {
-    std::cerr << "Error while reading";
-    return 1;
-  }
+  fileInput >> size3;
   int* arr3 = new int[size3];
   for (size_t i = 0; i < size3; i++)
   {
-    file >> arr3[i];
-    if (!file)
+    if (!fileInput)
     {
       std::cerr << "Error while reading";
       delete[] arr3;
       return 1;
+    }
+    else
+    {
+      fileInput >> arr3[i];
     }
   }
   std::cout << get_count_max_element(arr3, size3);
   sort_by_even(arr3, size3);
   print_array(arr3, size3);
   std::cout << std::endl;
-  file.close();
+  fileInput.close();
   delete[] arr3;
 }

@@ -28,7 +28,6 @@ bool turkin::Array::extend()
   }
   delete [] data;
   data = extendBuffer;
-  extendBuffer = nullptr;
   return true;
 }
 
@@ -44,3 +43,4 @@ bool turkin::Array::push(char symbol)
   data[size++] = symbol;
   return true;
 }
+

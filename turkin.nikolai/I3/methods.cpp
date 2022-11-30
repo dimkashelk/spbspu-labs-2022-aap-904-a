@@ -51,3 +51,4 @@ bool turkin::isNumber(char symbol)
   }
   return false;
 }
+

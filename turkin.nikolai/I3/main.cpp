@@ -32,3 +32,4 @@ int main()
   std::cout << turkin::isRepeat(string) << '\t' << turkin::deleteNumbers(string).data << '\n';
   return 0;
 }
+

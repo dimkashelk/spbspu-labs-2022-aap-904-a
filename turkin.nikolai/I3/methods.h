@@ -8,3 +8,4 @@ namespace turkin
   bool isNumber(char symbol);
 }
 #endif
+

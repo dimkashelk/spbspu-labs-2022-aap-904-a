@@ -26,19 +26,26 @@ void transferofvariables(int* arr, const size_t size)
 {
   size_t begin = 3;
   size_t end = 5;
-  size_t newi = end - begin + 1;
-  int* newarr= new int[newi];
-  for (size_t i = begin; i <= end; i++)
+  if (size <= end)
   {
-    newarr[i - begin] = arr[i];
+    std::cout << "error";
   }
-  for (size_t i = end + 1; i < size; i++)
+  else
   {
-    arr[i - newi] = arr[i];
+    size_t newi = end - begin + 1;
+    int* newarr= new int[newi];
+    for (size_t i = begin; i <= end; i++)
+    {
+      newarr[i - begin] = arr[i];
+    }
+    for (size_t i = end + 1; i < size; i++)
+    {
+      arr[i - newi] = arr[i];
+    }
+    for (size_t i = size - newi; i < size; i++)
+    {
+      arr[i] = newarr[i - size + newi];
+    }
+    delete[] newarr;
   }
-  for (size_t i = size - newi; i < size; i++)
-  {
-    arr[i] = newarr[i - size + newi];
-  }
-  delete[] newarr;
 }

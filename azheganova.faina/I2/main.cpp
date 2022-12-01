@@ -4,7 +4,7 @@
 #include <cstddef>
 #include "arrays.h"
 
-int main(int argc, char ** argv)
+int main(int argc, char *argv[])
 {
   if (argc != 2)
   {
@@ -59,17 +59,17 @@ int main(int argc, char ** argv)
     return 2;
   }
   delete[] dynamicarray;
-  std::ifstream file(argv[1]);
-  if (!file.is_open())
+  std::ifstream input(argv[1]);
+  if (!input.is_open())
   {
     std::cout << "file open error";
     return 1;
   }
-  while (!file.eof())
+  while (!input.eof())
   {
     size_t size = 0;
-    file >> size;
-    if (!file)
+    input >> size;
+    if (!input)
     {
       std::cout << "file reading error";
       return 1;
@@ -77,8 +77,8 @@ int main(int argc, char ** argv)
     int* arrInput = new int[size];
     for (size_t i=0; i < size; i++)
     {
-      file >> arrInput[i];
-      if (!file)
+      input >> arrInput[i];
+      if (!input)
       {
         std::cout << "file reading error";
         delete[] arrInput;

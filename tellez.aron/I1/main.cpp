@@ -2,7 +2,7 @@
 int main()
 {
   int n;
-  int before = 0;
+  int before;
   int actual = 0;
   int after;
   int first = 1 ;
@@ -20,11 +20,11 @@ int main()
     {
       if(n > 0)
       {
-        sign = 1;
+        sign = true;
       }
       else
       {
-        sign = 0;
+        sign = false;
       }
         first = 0;
       }

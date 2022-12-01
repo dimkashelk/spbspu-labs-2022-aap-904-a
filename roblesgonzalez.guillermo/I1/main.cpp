@@ -54,6 +54,6 @@ int main()
      }
    }
   std::cout << "Amount of numbers that are smaller than the previous one but bigger:  "<<sum<<std::endl;
-  std::cout << "The smallest number (Excluding first and last):  "<< small<<std::endl;
+  std::cout << "The smallest number (Excluding first and last):  "<<smalln<<std::endl;
   return 0;
 }

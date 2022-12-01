@@ -10,16 +10,17 @@ int main(int argc, char *argv[])
   {
     std::cout << "Not correct amolunt of CML args\n";
   }
-  int staticarray[10] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  const size_t staticarray_size = 10;
+  int staticarray[staticarray_size] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   try
   {
-    shiftarrayleft(staticarray, 10);
-    for (size_t i = 0; i < 10; i++)
+    shiftarrayleft(staticarray, staticarray_size);
+    for (size_t i = 0; i < staticarray_size; i++)
     {
       std::cout << staticarray[i] << " ";
     }
-    transferofvariables(staticarray, 10);
-    for (size_t i = 0; i < 10; i++)
+    transferofvariables(staticarray, staticarray_size);
+    for (size_t i = 0; i < staticarray_size; i++)
     {
       std::cout << staticarray[i] << " ";
     }

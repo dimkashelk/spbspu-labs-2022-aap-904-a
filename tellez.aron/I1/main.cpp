@@ -52,4 +52,3 @@ int main()
             << "Change of signs: " << counter << std::endl;
   return 0;
 }
-

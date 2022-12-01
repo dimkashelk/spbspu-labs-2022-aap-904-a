@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 
   size_t size2 = 0;
   std::cin >> size2;
-  if (size2 < 1)
+  if (size2 - 1 < 1)
   {
     std::cerr << "incorrect input!" << std::endl;
     return 1;

@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
     return 1;
   }
 
+
   const size_t size1 = 10;
   int arr1 [size1] = {0, 2, 4, 5 ,6, 7 ,-10 ,8 , 9, 9};
   std::cout << get_count_max_element(arr1, size1) << std::endl;
@@ -30,7 +31,7 @@ int main(int argc, char* argv[])
   if (size2 < 1)
   {
     std::cerr << "incorrect input!" << std::endl;
-    return 0;
+    return 1;
   }
   else
   {
@@ -48,14 +49,8 @@ int main(int argc, char* argv[])
     }
 
 
-  std::string fileName = argv[1];
-  std::fstream fileInput(fileName);
-  if (!fileInput.is_open())
-  {
-    std::cerr << "File not open";
-    return 1;
-  }
   size_t size3 = 0;
+  std::ifstream fileInput(argv[1]);
   fileInput >> size3;
   int* arr3 = new int[size3];
   for (size_t i = 0; i < size3; i++)

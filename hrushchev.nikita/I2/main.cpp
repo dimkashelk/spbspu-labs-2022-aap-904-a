@@ -48,8 +48,7 @@ int main(int argc, char* argv[])
     }
 
 
-  std::string fileName = argv[1];
-  std::fstream fileInput(fileName);
+  std::ifstream fileInput(argv[1]);
   if (!fileInput.is_open())
   {
     std::cerr << "File not open";

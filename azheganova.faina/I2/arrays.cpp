@@ -26,7 +26,7 @@ void transferofvariables(int* arr, const size_t size)
 {
   size_t begin = 3;
   size_t end = 5;
-  size_t newi = 3;
+  size_t newi = end - begin + 1;
   int* newarr= new int[newi];
   for (size_t i = begin; i <= end; i++)
   {
@@ -40,4 +40,5 @@ void transferofvariables(int* arr, const size_t size)
   {
     arr[i] = newarr[i - size + newi];
   }
+  delete[] newarr;
 }

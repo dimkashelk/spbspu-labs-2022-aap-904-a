@@ -60,7 +60,7 @@ bool order(char *number, size_t start, size_t end)
   {
     return false;
   }
-  return number[start] == 'E' && (is_sign(number[start + 1]) && is_unsigned_integer(number, start + 2, end)
+  return number[start] == 'E' && ((is_sign(number[start + 1]) && is_unsigned_integer(number, start + 2, end))
     || is_unsigned_integer(number, start + 1, end));
 }
 size_t index_E(char *number, size_t start, size_t end)

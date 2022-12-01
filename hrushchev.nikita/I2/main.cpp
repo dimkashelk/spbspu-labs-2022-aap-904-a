@@ -61,27 +61,27 @@ int main(int argc, char* argv[])
     std::cerr << "File not open \n";
     return 1;
   }
-  input_file >> size3;
   if (!input_file)
   {
     std::cerr << "Error while reading \n";
     return 1;
   }
-  int* arr3 = new int[size3];
-  for (size_t i = 0; i < size3; i++)
-  {
-    input_file >> arr3[i];
-    if (!input_file) {
-      std::cerr << "Error while reading \n";
-      return 1;
-    }
-  }
+  input_file >> size3;
   if (size3 == 0)
   {
     std::cout << "Empty array \n";
   }
   else
   {
+    for (size_t i = 0; i < size3; i++)
+    {
+      input_file >> arr3[i];
+      if (!input_file)
+      {
+        std::cerr << "Error while reading \n";
+        return 1;
+      }
+    }
     std::cout << get_count_max_element(arr3, size3) << "\n";
     sort_by_even(arr3, size3);
     print_array(arr3, size3);

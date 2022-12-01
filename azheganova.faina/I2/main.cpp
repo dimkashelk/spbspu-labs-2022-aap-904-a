@@ -58,7 +58,6 @@ int main(int argc, char *argv[])
     return 2;
   }
   delete[] dynamicarray;
-  size_t size = 0;
   std::string name = argv[1];
   std::fstream file(name);
   if (!file.is_open())

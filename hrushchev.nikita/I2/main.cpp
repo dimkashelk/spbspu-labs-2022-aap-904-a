@@ -59,6 +59,7 @@ int main(int argc, char* argv[])
   if (size3 == 0)
   {
     std::cout << "Empty array!" << std::endl;
+    return 1;
   }
   else
   {

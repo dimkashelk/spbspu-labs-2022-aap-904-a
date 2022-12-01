@@ -37,7 +37,7 @@ int main()
      {
       if(n < possiblesmallest)
       {
-       if(possiblesmallest == std::numeric_limits<double>::infinity())
+       if(possiblesmallest == smalln)
        {
         possiblesmallest = n;
        }

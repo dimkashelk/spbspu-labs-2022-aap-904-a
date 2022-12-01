@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
       std::cout << staticarray[i] << " ";
     }
     transferofvariables(staticarray, 10);
-    for (size_t newi = 0; newi < 10; newi++)
+    for (size_t i = 0; i < 10; i++)
     {
-      std::cout << staticarray[newi] << ' ';
+      std::cout << staticarray[i] << " ";
     }
   }
   catch (const std::overflow_error &e)
@@ -46,9 +46,9 @@ int main(int argc, char *argv[])
       std::cout << dynamicarray[i] << " ";
     }
     transferofvariables(dynamicarray, n);
-    for (size_t newi = 0; newi < n; newi++)
+    for (size_t i = 0; i < n; i++)
     {
-      std::cout << dynamicarray[newi] << ' ';
+      std::cout << dynamicarray[i] << " ";
     }
   }
   catch(const std::exception &e)
@@ -93,9 +93,9 @@ int main(int argc, char *argv[])
         std::cout << arrInput[i] << " ";
       }
       transferofvariables(arrInput, size);
-      for (size_t newi = 0; newi < size; newi++)
+      for (size_t i = 0; i < size; i++)
       {
-        std::cout << arrInput[newi] << ' ';
+        std::cout << arrInput[i] << " ";
       }
     }
     catch (const std::overflow_error &e)

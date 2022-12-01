@@ -114,7 +114,7 @@ int main()
     change_chars(res2, str_1);
     std::cout << res2 << '\n';
     delete[] res2;
-    char* res2 = new char[size_2];
+    res2 = new char[size_2];
     change_chars(res2, str_2);
     std::cout << res2 << '\n';
     delete[] res2;

@@ -1,4 +1,5 @@
 #include "change_chars.h"
+#include <cstddef>
 char* change_chars(char* res, char* str)
 {
   for (size_t i = 0; str[i]; i++)

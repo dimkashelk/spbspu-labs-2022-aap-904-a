@@ -1,4 +1,5 @@
 #include "generate_new_line.h"
+#include <cstddef>
 char* generate_new_line(char* res, char* str1, char* str2)
 {
   size_t size = 0;

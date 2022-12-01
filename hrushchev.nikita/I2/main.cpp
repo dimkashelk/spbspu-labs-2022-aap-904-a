@@ -73,6 +73,7 @@ int main(int argc, char* argv[])
   }
   else
   {
+    int* arr3 = new int[size3];
     for (size_t i = 0; i < size3; i++)
     {
       input_file >> arr3[i];
@@ -85,7 +86,7 @@ int main(int argc, char* argv[])
     std::cout << get_count_max_element(arr3, size3) << "\n";
     sort_by_even(arr3, size3);
     print_array(arr3, size3);
+    std::cout << "\n";
+    delete[] arr3;
   }
-  std::cout << "\n";
-  delete[] arr3;
 }

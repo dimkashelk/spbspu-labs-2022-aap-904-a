@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
   if (size2 < 1)
   {
     std::cerr << "incorrect input!" << std::endl;
-    return 1;
+    return 0;
   }
   else
   {

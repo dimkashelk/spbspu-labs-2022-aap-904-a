@@ -6,9 +6,15 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc != 2)
+  if (argc > 2)
   {
-    std::cout << "Not correct amolunt of CML args\n";
+    std::cout << "Too much parameters";
+    return 1;
+  }
+  if (argc == 1)
+  {
+    std::cout << "No file name";
+    return 1;
   }
   const size_t staticarray_size = 10;
   int staticarray[staticarray_size] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -59,17 +65,17 @@ int main(int argc, char *argv[])
     return 2;
   }
   delete[] dynamicarray;
-  std::ifstream input(argv[1]);
-  if (!input.is_open())
+  std::ifstream file(argv[1]);
+  if (!file.is_open())
   {
     std::cout << "file open error";
     return 1;
   }
-  while (!input.eof())
+  while (!file.eof())
   {
     size_t size = 0;
-    input >> size;
-    if (!input)
+    file >> size;
+    if (!file)
     {
       std::cout << "file reading error";
       return 1;
@@ -77,8 +83,8 @@ int main(int argc, char *argv[])
     int* arrInput = new int[size];
     for (size_t i=0; i < size; i++)
     {
-      input >> arrInput[i];
-      if (!input)
+      file >> arrInput[i];
+      if (!file)
       {
         std::cout << "file reading error";
         delete[] arrInput;

@@ -56,17 +56,20 @@ int main(int argc, char* argv[])
 
   size_t size3 = 0;
   std::ifstream input_file(argv[1]);
-  if (!input_file.is_open()) {
+  if (!input_file.is_open())
+  {
     std::cerr << "File not open \n";
     return 1;
   }
   input_file >> size3;
-  if (!input_file) {
+  if (!input_file)
+  {
     std::cerr << "Error while reading \n";
     return 1;
   }
   int* arr3 = new int[size3];
-  for (size_t i = 0; i < size3; i++) {
+  for (size_t i = 0; i < size3; i++)
+  {
     input_file >> arr3[i];
     if (!input_file) {
       std::cerr << "Error while reading \n";

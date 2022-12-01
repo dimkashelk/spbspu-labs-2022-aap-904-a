@@ -32,13 +32,8 @@ int main(int argc, char *argv[])
   size_t n = 0;
   std::cout << "Dynamic array size:\n";
   std::cin >> n;
-  if (!std::cin)
-  {
-    std::cout << "Not a number";
-    return 2;
-  }
   int* dynamicarray = new int[n];
-  srand(time(0));
+  std::srand(time(0));
   for (size_t i = 0; i < n; i++)
   {
     dynamicarray[i] = std::rand();
@@ -56,7 +51,7 @@ int main(int argc, char *argv[])
       std::cout << dynamicarray[newi] << ' ';
     }
   }
-  catch(const std::exception& e)
+  catch(const std::exception &e)
   {
     std::cout << e.what();
     delete[] dynamicarray;
@@ -69,30 +64,28 @@ int main(int argc, char *argv[])
   if (!file.is_open())
   {
     std::cout << "file open error";
-    return 2;
+    return 1;
   }
-  file >> size;
-  if (!file)
+  while (!file.eof())
   {
-    std::cout << "file reading error";
-    return 2;
-  }
-  int* arrInput = new int[size];
-  for (size_t i=0; i < size; i++)
-  {
-    file >> arrInput[i];
+    size_t size = 0;
+    file >> size;
     if (!file)
     {
       std::cout << "file reading error";
-      return 2;
+      return 1;
     }
-  }
-  if (size == 0)
-  {
-    return arrInput[0];
-  }
-  else
-  {
+    int* arrInput = new int[size];
+    for (size_t i=0; i < size; i++)
+    {
+      file >> arrInput[i];
+      if (!file)
+      {
+        std::cout << "file reading error";
+        delete[] arrInput;
+        return 1;
+      }
+    }
     try
     {
       shiftarrayleft(arrInput, size);
@@ -112,7 +105,7 @@ int main(int argc, char *argv[])
       delete[] arrInput;
       return 2;
     }
+    delete[] arrInput;
   }
-  delete[] arrInput;
   return 0;
 }

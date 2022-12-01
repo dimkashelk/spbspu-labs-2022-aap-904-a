@@ -28,7 +28,11 @@ int main(int argc, char* argv[])
 
   size_t size2 = 0;
   std::cin >> size2;
-  if (size2 - 1 < 1)
+  if (size2 == 0)
+  {
+    std::cout << "Empty array" << std::endl;
+  }
+  else if (size2 < 1)
   {
     std::cerr << "incorrect input!" << std::endl;
     return 1;
@@ -46,30 +50,37 @@ int main(int argc, char* argv[])
     print_array(arr2, size2);
     std::cout << std::endl;
     delete[] arr2;
-    }
+  }
 
 
   size_t size3 = 0;
   std::ifstream fileInput(argv[1]);
   fileInput >> size3;
-  int* arr3 = new int[size3];
-  for (size_t i = 0; i < size3; i++)
+  if (size3 == 0)
   {
-    if (!fileInput)
-    {
-      std::cerr << "Error while reading";
-      delete[] arr3;
-      return 1;
-    }
-    else
-    {
-      fileInput >> arr3[i];
-    }
+    std::cout << "Empty array!" << std::endl;
   }
-  std::cout << get_count_max_element(arr3, size3);
-  sort_by_even(arr3, size3);
-  print_array(arr3, size3);
-  std::cout << std::endl;
-  fileInput.close();
-  delete[] arr3;
+  else
+  {
+    int* arr3 = new int[size3];
+    for (size_t i = 0; i < size3; i++)
+    {
+      if (!fileInput)
+      {
+        std::cerr << "Error while reading";
+        delete[] arr3;
+        return 1;
+      }
+      else
+      {
+        fileInput >> arr3[i];
+      }
+    }
+    std::cout << get_count_max_element(arr3, size3);
+    sort_by_even(arr3, size3);
+    print_array(arr3, size3);
+    std::cout << std::endl;
+    fileInput.close();
+    delete[] arr3;
+  }
 }

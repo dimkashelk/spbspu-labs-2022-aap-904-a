@@ -24,13 +24,20 @@ void shiftarrayleft(int* arr, const size_t size)
 
 void transferofvariables(int* arr, const size_t size)
 {
-  int l = size;
-  size_t begin = 5;
-  size_t end = 3;
-  std::size_t newi = l - 1;
-  for (size_t i = begin; i >= end; i--)
+  size_t begin = 3;
+  size_t end = 5;
+  size_t newi = 3;
+  int* newarr= new int[newi];
+  for (size_t i = begin; i <= end; i--)
   {
-    arr[newi] = arr[i];
-    newi--;
+    newarr[i - begin] = arr[i];;
+  }
+  for (size_t i = end + 1; i < size; i++) 
+  {
+    arr[i - newi] = arr[i];
+  }
+  for (size_t i = size - newi; i < size; i++) 
+  {
+    arr[i] = newarr[i - size + newi];
   }
 }

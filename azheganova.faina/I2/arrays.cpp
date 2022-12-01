@@ -28,7 +28,7 @@ void transferofvariables(int* arr, const size_t size)
   size_t end = 5;
   size_t newi = 3;
   int* newarr= new int[newi];
-  for (size_t i = begin; i <= end; i--)
+  for (size_t i = begin; i <= end; i++)
   {
     newarr[i - begin] = arr[i];
   }

@@ -49,15 +49,6 @@ int main(int argc, char* argv[])
     }
 
 
-<<<<<<< HEAD
-=======
-  std::ifstream fileInput(argv[1]);
-  if (!fileInput.is_open())
-  {
-    std::cerr << "File not open";
-    return 1;
-  }
->>>>>>> fd37768690c24aaaf9e84349f2363e996751432a
   size_t size3 = 0;
   std::ifstream fileInput(argv[1]);
   fileInput >> size3;

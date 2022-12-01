@@ -12,7 +12,7 @@ void CntDevPrev::operator()(int value)
     cnt_devisor_counter += ((devisor_func_value % devisor_func_previous_value == 0) ? 1 : 0);
   }
 
-  if (cnt_devisor_counter > maximum_of_unsigned_int)
+  if (cnt_devisor_counter == maximum_of_unsigned_int && devisor_func_value % devisor_func_previous_value == 0)
   {
     throw std::overflow_error("Not good");
   }

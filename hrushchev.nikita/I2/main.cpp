@@ -49,38 +49,39 @@ int main(int argc, char* argv[])
   }
   else
   {
-    std::cout << "Size < 0";
+    std::cout << "Size < 0" << std::endl;
   }
 
 
-  size_t file_arr_size = 0;
-  std::ifstream in(argv[1]);
-  if (!in.is_open()) {
-    std::cerr << "Can not open the file\n";
-    return 2;
+  size_t size3 = 0;
+  std::ifstream input_file(argv[1]);
+  if (!input_file.is_open()) {
+    std::cerr << "File not open" << std::endl;
+    return 1;
   }
-  in >> file_arr_size;
-  if (!in) {
-    std::cerr << "Can not read from file\n";
-    return 2;
+  input_file >> size3;
+  if (!input_file) {
+    std::cerr << "Error while reading" << std::endl;
+    return 1;
   }
-  int *file_arr = new int[file_arr_size];
-  for (size_t i = 0; i < file_arr_size; i++) {
-    in >> file_arr[i];
-    if (!in) {
-      std::cerr << "Error while reading\n";
-      return 2;
+  int* arr3 = new int[size3];
+  for (size_t i = 0; i < size3; i++) {
+    input_file >> arr3[i];
+    if (!input_file) {
+      std::cerr << "Error while reading" << std::endl;
+      return 1;
     }
   }
-  if (file_arr_size == 0) {
-    std::cout << "Array size must not be 0\n";
-  } else {
-    std::cout << get_count_max_element(file_arr, file_arr_size) << "\n";
+  if (size3 == 0)
+  {
+    std::cout << "Empty array" << std::endl;
   }
-  sort_by_even(file_arr, file_arr_size);
-  for (size_t i = 0; i < file_arr_size; i++) {
-    std::cout << file_arr[i] << " ";
+  else
+  {
+    std::cout << get_count_max_element(arr3, size3) << "\n";
+    sort_by_even(arr3, size3);
+    print_array(arr3, size3);
   }
-  std::cout << "\n";
-  delete[] file_arr;
+  std::cout << std::endl;
+  delete[] arr3;
 }

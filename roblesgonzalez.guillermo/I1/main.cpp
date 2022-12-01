@@ -10,13 +10,11 @@ int main()
   int smalln = std::numeric_limits<int>::max();
   int possiblesmallest = std::numeric_limits<int>::max();
   int counter = 0;
-  while(n != 0)
+  while(std::cin>>n && n != 0)
   {
-   std::cin>>n;
    nbefore = currentn;
    currentn = nafter;
    nafter = n;
-
    if(nafter == 0)
    {
     continue;

@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include <limits>
 
-void counterMin(unsigned int &countMin, int prev, int curr, int &checking) {
+void counterMin(unsigned int &countMin, int prev, int curr, int &checking)
+{
   if (checking && prev < curr && curr != 0) {
     if (countMin == std::numeric_limits< unsigned int >::max()) {
       throw std::overflow_error("Overflow");

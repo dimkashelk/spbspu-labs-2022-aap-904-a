@@ -2,7 +2,8 @@
 #include "CounterLocalMin.h"
 #include "CounterChanges.h"
 
-int main() {
+int main()
+{
   unsigned int countMin = 0;
   int checking = 0;
   int value = 0;

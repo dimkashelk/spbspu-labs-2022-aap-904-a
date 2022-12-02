@@ -1,6 +1,6 @@
 #include "shifted_array.h"
 
-int* makeShiftedArray (int* array, size_t size)
+int* makeShiftedArray(int* array, size_t size)
 {
   if (array && size)
   {

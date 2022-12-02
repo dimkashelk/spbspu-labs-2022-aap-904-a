@@ -1,6 +1,6 @@
 #include "arithmetic_mean_of_array.h"
 
-double countArithmeticMean (const int *array, size_t size)
+double countArithmeticMean(const int *array, size_t size)
 {
   int sum = 0;
   double arithmetic_mean = 0.0;

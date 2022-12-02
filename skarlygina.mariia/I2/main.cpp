@@ -5,7 +5,7 @@
 #include "arithmetic_mean_of_array.h"
 #include "shifted_array.h"
 
-int main (int argc, char* argv[])
+int main(int argc, char* argv[])
 {
   int static_array[] = {5, 4, 3, 4, -6, 2, -1};
   std::cout << countArithmeticMean(static_array, 7) << " ";

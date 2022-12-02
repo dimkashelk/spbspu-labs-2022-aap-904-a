@@ -1,5 +1,5 @@
-#include <cstddef>
 #include "SortIncreasing.hpp"
+#include <cstddef>
 
 void sort_increasing(int* arr, size_t size)
 {

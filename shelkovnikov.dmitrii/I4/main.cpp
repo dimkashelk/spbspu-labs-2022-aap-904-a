@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
   in >> n >> m;
   if (!strcmp(argv[1], "1"))
   {
-    int arr[100 * 100];
+    int arr[1000 * 1000];
     for (size_t i = 0; i < n; i++)
     {
       for (size_t j = 0; j < m; j++)

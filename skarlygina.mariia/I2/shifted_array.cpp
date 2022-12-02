@@ -1,5 +1,4 @@
 #include "shifted_array.h"
-#include <iostream>
 
 int* makeShiftedArray (int* array, size_t size)
 {

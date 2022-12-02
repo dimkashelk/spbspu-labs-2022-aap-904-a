@@ -20,11 +20,10 @@ int main(int argc, char* arr[])
   const int size1 = 5;
   int arr1[5] = { 4, 5, 1, 2, 6 };
   int shift1 = 2;
-  int count1 = 0;
   try
   {
     shiftArray(arr1, size1, shift1);
-    count1 = countOrderedTriples(arr1, size1);
+    int count1 = countOrderedTriples(arr1, size1);
   }
   catch (const std::invalid_argument& e)
   {
@@ -36,7 +35,6 @@ int main(int argc, char* arr[])
   int* arr2 = nullptr;
   int size2 = 0;
   int shift2 = 0;
-  int count2 = 0;
   std::cin >> size2 >> shift2;
   if (size2 >= 0 && shift2 >= 0)
   {
@@ -49,7 +47,7 @@ int main(int argc, char* arr[])
     try
     {
       shiftArray(arr2, size2, shift2);
-      count2 = countOrderedTriples(arr2, size2);
+      int count2 = countOrderedTriples(arr2, size2);
     }
     catch (const std::invalid_argument& e)
     {
@@ -72,7 +70,6 @@ int main(int argc, char* arr[])
     int* arr3;
     int size3 = 0;
     int shift3 = 0;
-    int count3 = 0;
     file >> size3;
     if (file)
     {
@@ -93,7 +90,7 @@ int main(int argc, char* arr[])
         try
         {
           shiftArray(arr3, size3, shift3);
-          count3 = countOrderedTriples(arr3, size3);
+          int count3 = countOrderedTriples(arr3, size3);
         }
         catch (const std::invalid_argument& e)
         {

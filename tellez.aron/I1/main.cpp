@@ -4,12 +4,12 @@ int main()
   int n;
   int before = 0;
   int actual = 0;
-  int after;
-  int first = 1 ;
+  int after = 0;
+  int first = 1;
   bool sign;
   int counter = 0;
   int sum = 0;
-  std::cout << "Enter the numbers you want, and to finish enter the sequence, enter a 0:" <<  std::endl
+  std::cout << "Enter the numbers you want, and to finish enter the sequence, enter a 0." <<  std::endl
             << "The program will count the sign changes and find sets of Pythagorean numbers in the sequence (z^2=x^2+y^2)" << std::endl;
   while(std::cin >> n && n != 0)
 

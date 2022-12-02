@@ -12,6 +12,7 @@ int main()
   std::cout << "Enter the numbers you want, and to finish enter the sequence, enter a 0:" <<  std::endl
             << "The program will count the sign changes and find sets of Pythagorean numbers in the sequence (z^2=x^2+y^2)" << std::endl;
   while(std::cin >> n && n != 0)
+
   {
     before = actual;
     actual = after;
@@ -26,8 +27,8 @@ int main()
       {
         sign = false;
       }
-        first = 0;
-      }
+      first = 0;
+    }
     else
     {
       if((n > 0) != sign)
@@ -42,7 +43,7 @@ int main()
     }
     else
     {
-      if(before * before == actual * actual + after * after || before * before + actual * actual == after * after)
+      if(before * before == actual * actual + after * after)
       {
         sum++;
       }

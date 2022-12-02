@@ -26,7 +26,7 @@ int main()
   while (value && std::cin);
 
   if (!std::cin) {
-   std::cout << "Error...\n";
+    std::cout << "Error...\n";
   }
   std::cout << "Number of local minimums: " << countMin << "\n";
   std::cout << "Number of sign changes: " << countSignChanges << "\n";

@@ -17,12 +17,13 @@ int main(int argc, char *argv[])
     std::cout << "Pls check parameters";
     return 1;
   }
-  size_t n = 100;
-  size_t m = 100;
+  size_t n = 0;
+  size_t m = 0;
   std::ifstream in(argv[2]);
+  in >> n >> m;
   if (!strcmp(argv[1], "1"))
   {
-    int arr[n * m];
+    int arr[100 * 100];
     for (size_t i = 0; i < n; i++)
     {
       for (size_t j = 0; j < m; j++)

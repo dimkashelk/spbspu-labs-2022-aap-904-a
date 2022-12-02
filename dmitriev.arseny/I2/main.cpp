@@ -23,7 +23,7 @@ int main(int argc, char* arr[])
   try
   {
     shiftArray(arr1, size1, shift1);
-    int count1 = countOrderedTriples(arr1, size1);
+    countOrderedTriples(arr1, size1);
   }
   catch (const std::invalid_argument& e)
   {
@@ -47,7 +47,7 @@ int main(int argc, char* arr[])
     try
     {
       shiftArray(arr2, size2, shift2);
-      int count2 = countOrderedTriples(arr2, size2);
+      countOrderedTriples(arr2, size2);
     }
     catch (const std::invalid_argument& e)
     {
@@ -90,7 +90,7 @@ int main(int argc, char* arr[])
         try
         {
           shiftArray(arr3, size3, shift3);
-          int count3 = countOrderedTriples(arr3, size3);
+          countOrderedTriples(arr3, size3);
         }
         catch (const std::invalid_argument& e)
         {

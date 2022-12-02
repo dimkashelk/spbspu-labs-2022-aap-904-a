@@ -2,7 +2,7 @@
 int main()
 {
   int n;
-  int before;
+  int before = 0;
   int actual = 0;
   int after;
   int first = 1 ;

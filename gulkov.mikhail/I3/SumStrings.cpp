@@ -15,8 +15,19 @@ char *sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t ta
   {
     if ((i % 2 == 0 && j < size_one - 1) || (j >= size_two - 1))
     {
-      arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
+      try
+      {
+        arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
+      }
+      catch (const std::runtime_error &e)
+      {
+        throw std::runtime_error(e.what());
+      }
       arr_sum[i] = cstring_one[j];
+      if (size_sum == max_size_t)
+      {
+        throw std::overflow_error("Overflow!");
+      }
       size_sum++;
       if (j >= size_two - 1)
       {
@@ -29,8 +40,19 @@ char *sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t ta
     }
     else if ((i % 2 != 0 && j < size_two - 1) || (j >= size_one - 1))
     {
-      arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
+      try
+      {
+        arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
+      }
+      catch (const std::runtime_error &e)
+      {
+        throw std::runtime_error(e.what());
+      }
       arr_sum[i] = cstring_two[j];
+      if (size_sum == max_size_t)
+      {
+        throw std::overflow_error("Overflow!");
+      }
       size_sum++;
       if (j == max_size_t)
       {

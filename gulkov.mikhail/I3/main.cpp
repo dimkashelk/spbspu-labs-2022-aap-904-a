@@ -19,12 +19,16 @@ int main()
     if (cstring_one[0] == '\n')
     {
       std::cout << "Error, empty string";
+      delete[] cstring_one;
+      delete[] cstring_two;
       return 3;
     }
     cstring_two = make_cstring(cstring_two, size_two, capacity_two, std::cin);
     if (cstring_two[0] == '\n')
     {
       std::cout << "Error, empty string";
+      delete[] cstring_one;
+      delete[] cstring_two;
       return 3;
     }
     cstring_one[capacity_one - 1] = '\0';

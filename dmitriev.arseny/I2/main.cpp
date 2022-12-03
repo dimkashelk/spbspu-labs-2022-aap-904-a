@@ -19,7 +19,7 @@ int main(int argc, char* arr[])
 
   const int size1 = 5;
   int arr1[5] = { 4, 5, 1, 2, 6 };
-  int shift1 = 2;
+  int shift1 = 0;
   try
   {
     shiftArray(arr1, size1, shift1);
@@ -35,7 +35,7 @@ int main(int argc, char* arr[])
   int* arr2 = nullptr;
   int size2 = 0;
   int shift2 = 0;
-  std::cin >> size2 >> shift2;
+  std::cin >> size2;
   if (size2 >= 0 && shift2 >= 0)
   {
     arr2 = new int[size2];
@@ -73,39 +73,30 @@ int main(int argc, char* arr[])
     file >> size3;
     if (file)
     {
-      file >> shift3;
-      if (file)
+      arr3 = new int[size3];
+      for (int i = 0; i < size3; i++)
       {
-        arr3 = new int[size3];
-        for (int i = 0; i < size3; i++)
+        file >> arr3[i];
+        if (!file)
         {
-          file >> arr3[i];
-          if (!file)
-          {
-            std::cout << "Error while reading file" << "\n";
-            delete[] arr3;
-            return 1;
-          }
-        }
-        try
-        {
-          shiftArray(arr3, size3, shift3);
-          countOrderedTriples(arr3, size3);
-        }
-        catch (const std::invalid_argument& e)
-        {
-          std::cout << "Error: ";
-          std::cout << e.what();
+          std::cout << "Error while reading file" << "\n";
           delete[] arr3;
           return 1;
         }
-        delete[] arr3;
       }
-      else
+      try
       {
-        std::cout << "Error while reading file" << "\n";
+        shiftArray(arr3, size3, shift3);
+        countOrderedTriples(arr3, size3);
+      }
+      catch (const std::invalid_argument& e)
+      {
+        std::cout << "Error: ";
+        std::cout << e.what();
+        delete[] arr3;
         return 1;
       }
+      delete[] arr3;
     }
     else
     {

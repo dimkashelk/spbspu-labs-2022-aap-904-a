@@ -37,7 +37,7 @@ int main()
     }
     std::cin >> c_string[size];
   }
-  while (std::cin && c_string[size++] != '\n');
+  while (c_string[size++] != '\n' && std::cin);
 
   if (c_string[0] == '\n' || c_string[0] == '\0')
   {
@@ -48,7 +48,7 @@ int main()
   c_string[size - 1] = '\0';
 
   char * other_string = nullptr;
-  size_t other_size = 5;
+  const size_t other_size = 5;
   try
   {
     other_string = new char[other_size];
@@ -63,7 +63,7 @@ int main()
   {
     other_string[i] = '2';
   }
-  other_string[other_size] = '\0';
+  other_string[other_size - 1] = '\0';
 
   char * another_string = nullptr;
   try

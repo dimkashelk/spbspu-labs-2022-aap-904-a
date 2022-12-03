@@ -2,16 +2,20 @@
 #include <cctype>
 #include <stdexcept>
 
-char * chemodurov::extendCString(char * c_str, size_t cap, size_t new_cap)
+char * chemodurov::extendCString(const char * c_str, size_t cap, size_t new_cap)
 {
   if (new_cap < cap)
   {
     throw std::invalid_argument("New capacity smaller than previous");
   }
   char * new_str = new char[new_cap];
-  for (auto i = c_str, j = new_str; i != c_str + cap; ++i, ++j)
   {
-    *j = *i;
+    auto j = new_str;
+    for (auto i = c_str; i != c_str + cap; ++i)
+    {
+      *j = *i;
+      ++j;
+    }
   }
   return new_str;
 }
@@ -46,23 +50,19 @@ bool chemodurov::isRepeatingNumbers(const char * c_str)
       {
         if (*i == *j)
         {
-          return 1;
+          return true;
         }
       }
     }
   }
-  return 0;
+  return false;
 }
 
 namespace chemodurov
 {
   bool isVowel(char c)
   {
-    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y')
-    {
-      return 1;
-    }
-    return 0;
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y');
   }
 }
 
@@ -75,6 +75,7 @@ char * chemodurov::deleteVowels(char * str_res, const char * c_str)
       *j = *i;
       ++j;
     }
+    *j = '\0';
   }
   for (auto i = str_res; *i != '\0'; ++i)
   {

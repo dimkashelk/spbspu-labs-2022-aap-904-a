@@ -20,11 +20,10 @@ int main(int argc, char* argv[])
   int highBound = 10000;
   try {
     std::cout << odintsov::findMax(staticArr, staticArrSize, lowBound, highBound) << '\n';
-    std::cout << odintsov::getAvgEvenIndices(staticArr, staticArrSize) << '\n';
   } catch(const std::logic_error& err) {
     std::cout << err.what() << '\n';
-    return 1;
   }
+  std::cout << odintsov::getAvgEvenIndices(staticArr, staticArrSize) << '\n';
   size_t dynArrSize = 0;
   std::cin >> dynArrSize;
   odintsov::Array* dynArr = new odintsov::Array(dynArrSize);
@@ -38,11 +37,10 @@ int main(int argc, char* argv[])
   }
   try {
     std::cout << odintsov::findMax(dynArr->data, dynArr->size, lowBound, highBound) << '\n';
-    std::cout << odintsov::getAvgEvenIndices(dynArr->data, dynArr->size) << '\n';
   } catch(const std::logic_error& err) {
     std::cout << err.what() << '\n';
-    return 2;
   }
+  std::cout << odintsov::getAvgEvenIndices(dynArr->data, dynArr->size) << '\n';
   delete dynArr;
   std::ifstream file(argv[1]);
   if (!file.is_open()) {
@@ -68,10 +66,9 @@ int main(int argc, char* argv[])
     }
     try {
       std::cout << odintsov::findMax(fileArr.data, fileArr.size, lowBound, highBound) << '\n';
-      std::cout << odintsov::getAvgEvenIndices(fileArr.data, fileArr.size) << '\n';
     } catch(const std::logic_error& err) {
       std::cout << err.what() << '\n';
-      return 3;
     }
+    std::cout << odintsov::getAvgEvenIndices(fileArr.data, fileArr.size) << '\n';
   }
 }

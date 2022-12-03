@@ -24,6 +24,9 @@ void odintsov::Array::append(int val)
 
 int odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
 {
+  if (size == 0) {
+    return 0;
+  }
   const int minInt = std::numeric_limits< int >::min();
   int max = minInt;
   for (size_t i = 0; i < size; i++) {

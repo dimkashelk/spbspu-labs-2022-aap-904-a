@@ -27,9 +27,9 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (!std::cin)
+  if (!std::cin && !size)
   {
-    std::cout << "Error";
+    std::cout << "Error\n";
     delete [] cstring;
     return 2;
   }

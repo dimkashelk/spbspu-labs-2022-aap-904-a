@@ -25,10 +25,6 @@ int main(int argc, char* arr[])
     shiftArray(arr1, size1, shift1);
     countOrderedTriples(arr1, size1);
     std::cout << "\n";
-    for (int i = 0; i < size1; i++)
-    {
-      std::cout << arr1[i] << "\t";
-    }
   }
   catch (const std::invalid_argument& e)
   {
@@ -53,11 +49,6 @@ int main(int argc, char* arr[])
     {
       shiftArray(arr2, size2, shift2);
       countOrderedTriples(arr2, size2);
-      std::cout << "\n";
-      for (int i = 0; i < size2; i++)
-      {
-        std::cout << arr2[i] << "\t";
-      }
     }
     catch (const std::invalid_argument& e)
     {
@@ -99,11 +90,6 @@ int main(int argc, char* arr[])
       {
         shiftArray(arr3, size3, shift3);
         countOrderedTriples(arr3, size3);
-        std::cout << "\n";
-        for (int i = 0; i < size3; i++)
-        {
-          std::cout << arr3[i] << "\t";
-        }
       }
       catch (const std::invalid_argument& e)
       {

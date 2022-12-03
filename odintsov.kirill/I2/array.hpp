@@ -12,6 +12,8 @@ namespace odintsov {
     Array(size_t cap);
 
     ~Array();
+
+    void append(int val);
   };
 
   int findMax(const int* arr, size_t size, int lowBound, int highBound);

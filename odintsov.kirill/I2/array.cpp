@@ -14,6 +14,14 @@ odintsov::Array::~Array()
   delete [] data;
 }
 
+void odintsov::Array::append(int val)
+{
+  if (size == cap) {
+    throw std::length_error("Error: cannot append to full array");
+  }
+  data[size++] = val;
+}
+
 int odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
 {
   const int minInt = std::numeric_limits< int >::min();
@@ -27,7 +35,7 @@ int odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
     }
   }
   if (max == minInt) {
-    throw std::logic_error("Max value could not be found in array");
+    throw std::logic_error("Error: max value could not be found in array");
   }
   return max;
 }

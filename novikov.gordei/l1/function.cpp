@@ -1,4 +1,4 @@
-#include "function.h"
+﻿#include "function.h"
 #include <cstdlib>
 #include <cstring>
 

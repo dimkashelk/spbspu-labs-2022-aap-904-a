@@ -1,4 +1,4 @@
-#ifndef FUNCTION_H
+﻿#ifndef FUNCTION_H
 #define FUNCTION_H
 
 bool isNumberValid(char* str, long &number);

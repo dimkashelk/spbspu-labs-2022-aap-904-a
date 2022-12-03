@@ -1,7 +1,6 @@
-#include "credentials.hpp"
-#include <iostream>
+include <iostream>
 
 int main()
 {
- potapova::outCredentials(std::cout) << "\n";
+  std::cout << "potapova.marina\n";
 }

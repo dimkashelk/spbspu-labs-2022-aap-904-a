@@ -12,11 +12,12 @@ char *remove_extra_spaces(char *destination, const char *source)
   {
     if (std::isspace(source[d]))
     {
+      char dop = source[d];
       while (std::isspace(source[d]))
       {
         d++;
       }
-      destination[size] = ' ';
+      destination[size] = dop;
       size++;
       d--;
     }

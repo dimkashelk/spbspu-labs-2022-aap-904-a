@@ -3,17 +3,19 @@
 
 #include <stddef.h>
 
-struct Array {
-  int* data;
-  size_t size;
-  size_t cap;
+namespace odintsov {
+  struct Array {
+    int* data;
+    size_t size;
+    size_t cap;
 
-  Array(size_t cap);
+    Array(size_t cap);
 
-  ~Array();
-};
+    ~Array();
+  };
 
-int findMax(const int* arr, size_t size, int lowBound, int highBound);
-float getAvgEvenIndices(const int* arr, size_t size);
+  int findMax(const int* arr, size_t size, int lowBound, int highBound);
+  float getAvgEvenIndices(const int* arr, size_t size);
+}
 
 #endif

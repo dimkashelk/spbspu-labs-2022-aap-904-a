@@ -3,18 +3,18 @@
 #include <limits>
 #include <stddef.h>
 
-Array::Array(size_t cap):
+odintsov::Array::Array(size_t cap):
   data(new int[cap]),
   size(0),
   cap(cap)
 {}
 
-Array::~Array()
+odintsov::Array::~Array()
 {
   delete [] data;
 }
 
-int findMax(const int* arr, size_t size, int lowBound, int highBound)
+int odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
 {
   const int minInt = std::numeric_limits< int >::min();
   int max = minInt;
@@ -32,7 +32,7 @@ int findMax(const int* arr, size_t size, int lowBound, int highBound)
   return max;
 }
 
-float getAvgEvenIndices(const int* arr, size_t size)
+float odintsov::getAvgEvenIndices(const int* arr, size_t size)
 {
   int avg = 0;
   int rem = 0;

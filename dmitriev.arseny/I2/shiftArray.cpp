@@ -3,7 +3,7 @@
 
 void shiftArray(int* array, const int size, const int shift)
 {
-  if (shift >= size)
+  if (shift > size)
   {
     throw::std::invalid_argument("incorrect shift");
   }

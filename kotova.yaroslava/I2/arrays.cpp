@@ -1,4 +1,4 @@
-#include <cstddef>
+#include <stdexcept>
 #include "arrays.h"
 
 size_t counterDivision(const int* array,const size_t size, unsigned int n)

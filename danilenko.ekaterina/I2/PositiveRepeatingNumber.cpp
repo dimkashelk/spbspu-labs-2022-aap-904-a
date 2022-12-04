@@ -1,5 +1,3 @@
-#include <stdexcept>
-#include <string>
 #include "PositiveRepeatingNumber.h"
 
 int PosRepeatingNum(const int *array, const size_t size)

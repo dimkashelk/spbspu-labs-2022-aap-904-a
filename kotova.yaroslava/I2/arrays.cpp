@@ -14,16 +14,10 @@ size_t counterDivision(const int* array,const size_t size, unsigned int n)
 }
 
 
-size_t checkRepeatEl(const int* array, const size_t size, unsigned int index_m, unsigned int index_n)
+size_t checkRepeatEl(const int* array, unsigned int index_m, unsigned int index_n)
 {
   size_t repeat_cnt = 1;
-  if (index_m > index_n)
-  {
-    int permt = index_m;
-    index_m = index_n;
-    index_n = index_m;
-  }
-  else
+  if (index_m == index_n)
   {
     repeat_cnt = 0;
   }

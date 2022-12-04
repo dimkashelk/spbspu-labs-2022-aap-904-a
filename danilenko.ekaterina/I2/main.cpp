@@ -13,11 +13,12 @@ int main(int argc, char* array[])
   }
 
   //1
+  const int size1 = 10;
   int array1[10] = {1, 9, 8, 4, 9, 9, 9, 4 ,3, 2};
   try
   {
-    std::cout << "Number of max elements: " << CountMaxElements(array1, 10) << "\n";
-    std::cout << "Positive repeating numbers: " << PosRepeatingNum(array1, 10) << "\n\n";
+    std::cout << "Number of max elements: " << CountMaxElements(array1, size1) << "\n";
+    std::cout << "Positive repeating numbers: " << PosRepeatingNum(array1, size1) << "\n\n";
   }
   catch (const std::overflow_error& e)
   {

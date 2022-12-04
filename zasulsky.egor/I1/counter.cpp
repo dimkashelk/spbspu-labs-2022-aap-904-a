@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <limits>
 
-zasulsky::SecondLargestFinder::SecondLargestFinder() :
+zasulsky::SecondLargestFinder::SecondLargestFinder():
   secondLargestVal(0),
   largestVal(std::numeric_limits< int >::min())
 {}

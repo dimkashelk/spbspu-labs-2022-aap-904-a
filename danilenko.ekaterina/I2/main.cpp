@@ -11,7 +11,8 @@ int main(int argc, char *array[])
     std::cerr << "Incorrect number of arguments";
     return 1;
   }
-  
+
+  //1
   size_t size1 = 10;
   int array1[10] = {1, 9, 8, 4, 9, 9, 9, 4 ,3, 2};
   try
@@ -25,7 +26,8 @@ int main(int argc, char *array[])
     std::cout << e.what();
     return 0;
   }
-  
+
+  //2
   size_t size2 = 0;
   int* array2 = 0;
   std::cin >> size2;
@@ -55,7 +57,8 @@ int main(int argc, char *array[])
   {
     std::cout << "Array is not possible" << "\n";
   }
-  
+
+  //3
   std::ifstream file;
   std::string name = array[1];
   file.open(name);

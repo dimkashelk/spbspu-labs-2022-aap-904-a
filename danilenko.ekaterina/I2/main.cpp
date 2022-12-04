@@ -53,11 +53,7 @@ int main(int argc, char *array[])
     }
     delete[] array2;
   }
-  else
-  {
-    std::cout << "Array is not possible" << "\n";
-  }
-
+  
   //3
   std::ifstream file;
   std::string name = array[1];

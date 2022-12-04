@@ -2,6 +2,6 @@
 #define POSITIVEREPEATINGNUMBER
 #include <cstddef>
 
-int PosRepeatingNum(const int* array, int size);
+int PosRepeatingNum(const int *array, int size);
 
 #endif

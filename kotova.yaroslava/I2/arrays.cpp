@@ -22,7 +22,6 @@ size_t checkRepeatEl(const int* array, size_t size, unsigned int index_m, unsign
   {
     throw std::invalid_argument("Errorrr...");
   }
-  
   if (index_m == index_n)
   {
     repeat_cnt = 0;

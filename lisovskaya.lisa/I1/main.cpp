@@ -14,7 +14,7 @@ int main()
       counter1(n);
       counter2(n);
     }
-    catch (std::overflow_error &e)
+    catch (const std::overflow_error &e)
     {
       std::cout << e.what();
       return 2;

@@ -26,4 +26,5 @@ void sort_numbers(int* arr, size_t size)
   {
     arr[i] = sorted_arr[i];
   }
+  delete[] sorted_arr;
 }

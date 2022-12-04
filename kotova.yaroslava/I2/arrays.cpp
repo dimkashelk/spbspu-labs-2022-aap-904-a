@@ -31,6 +31,6 @@ size_t checkRepeatEl(const int* array, unsigned int index_m, unsigned int index_
         break;
       }
     }
-    return repeat_cnt;
   }
+  return repeat_cnt;
 }

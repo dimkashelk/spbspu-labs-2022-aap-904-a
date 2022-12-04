@@ -3,25 +3,25 @@
 int main()
 {
   int n;
-  int nafter = 0;
-  int currentn = 0;
-  int nbefore = 0;
+  int numberafter = 0;
+  int currentnumber = 0;
+  int numberbefore = 0;
   int sum = 0;
   int smalln = std::numeric_limits<int>::max();
   int possiblesmallest = std::numeric_limits<int>::max();
   int counter = 0;
   while(std::cin>>n && n != 0)
   {
-   nbefore = currentn;
-   currentn = nafter;
-   nafter = n;
-   if(nafter == 0)
+   numberbefore = currentnumber;
+   currentnumber = numberafter;
+   numberafter = n;
+   if(numberafter == 0)
    {
     continue;
    }
    else
     {
-     if((currentn < nbefore) && (currentn > nafter))
+     if((currentnumber < numberbefore) && (currentnumber > numberafter))
      {
       sum++;
      }

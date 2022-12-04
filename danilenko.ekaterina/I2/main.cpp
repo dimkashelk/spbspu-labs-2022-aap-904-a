@@ -31,7 +31,7 @@ int main(int argc, char *array[])
   size_t size2 = 0;
   int* array2 = 0;
   std::cin >> size2;
-  if (size2 >= 0)
+  if (size2 > 0)
   {
     array2 = new int[size2];
     std::srand(time(nullptr));

@@ -4,7 +4,7 @@
 #include "MaxElements.h"
 #include "PositiveRepeatingNumber.h"
 
-int main(int argc, char *array[])
+int main(int argc, char* array[])
 {
   if (argc != 2)
   {

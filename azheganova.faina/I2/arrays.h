@@ -2,6 +2,6 @@
 #define ARRAYS_H
 #include <cstddef>
 
-void shiftarrayleft(int* arr, const size_t size);
-void transferofvariables(int* arr, const size_t size);
+void ShiftArrayLeft(int* arr, const size_t size, const int shift);
+void TransferVariables(int* arr, const size_t size);
 #endif

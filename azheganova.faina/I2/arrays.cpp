@@ -1,51 +1,33 @@
-#include <iostream>
 #include "arrays.h"
 
-void shiftarrayleft(int* arr, const size_t size)
+void ShiftArrayLeft(int* arr, const size_t size, const int shift)
 {
-  int shiftamount = 0;
   int howmuchshiftnow = 0;
-  std::cout << "Shift:\n";
-  std::cin >> shiftamount;
-  while (howmuchshiftnow++ < shiftamount)
+  while (howmuchshiftnow++ < shift)
   {
   int position1 = 0;
   int position2 = 0;
   position1 = arr[0];
-    position2 = arr[1];
-    for (size_t i = 0; i < size - 1; i++)
-    {
-      arr[i] = arr[i + 1];
-    }
-    arr[size - 1] = position1;
-    arr[size] = position2;
+  position2 = arr[1];
+  for (size_t i = 0; i < size - 1; i++)
+  {
+    arr[i] = arr[i + 1];
+  }
+  arr[size - 1] = position1;
+  arr[size] = position2;
   }
 }
 
-void transferofvariables(int* arr, const size_t size)
+void TransferVariables(int* arr, const size_t size)
 {
-  size_t begin = 3;
-  size_t end = 5;
-  if (size <= end)
+  std::size_t newi= size - 1 ;
+  size_t M = 3;
+  size_t N = 5;
+  for (int i = N; i >= M ; i--)
   {
-    std::cout << "error";
-  }
-  else
-  {
-    size_t newi = end - begin + 1;
-    int* newarr= new int[newi];
-    for (size_t i = begin; i <= end; i++)
-    {
-      newarr[i - begin] = arr[i];
-    }
-    for (size_t i = end + 1; i < size; i++)
-    {
-      arr[i - newi] = arr[i];
-    }
-    for (size_t i = size - newi; i < size; i++)
-    {
-      arr[i] = newarr[i - size + newi];
-    }
-    delete[] newarr;
+    int temp =arr[i];
+    arr[i] = arr[newi];
+    arr[newi]= temp ;
+    newi--;
   }
 }

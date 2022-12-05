@@ -18,14 +18,16 @@ int main(int argc, char *argv[])
   }
   const size_t staticarray_size = 10;
   int staticarray[staticarray_size] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  int shiftamount = 0;
+  std::cin >> shiftamount;
   try
   {
-    shiftarrayleft(staticarray, staticarray_size);
+    ShiftArrayLeft(staticarray, staticarray_size, shiftamount);
     for (size_t i = 0; i < staticarray_size; i++)
     {
       std::cout << staticarray[i] << " ";
     }
-    transferofvariables(staticarray, staticarray_size);
+    TransferVariables(staticarray, staticarray_size);
     for (size_t i = 0; i < staticarray_size; i++)
     {
       std::cout << staticarray[i] << " ";
@@ -45,24 +47,17 @@ int main(int argc, char *argv[])
   {
     dynamicarray[i] = std::rand();
   }
-  try
+  int shiftamountdyn = 0;
+  std::cin >> shiftamountdyn;
+  ShiftArrayLeft(dynamicarray, n, shiftamountdyn);
+  for (size_t i = 0; i < n; i++)
   {
-    shiftarrayleft(dynamicarray, n);
-    for (size_t i = 0; i < n; i++)
-    {
-      std::cout << dynamicarray[i] << " ";
-    }
-    transferofvariables(dynamicarray, n);
-    for (size_t i = 0; i < n; i++)
-    {
-      std::cout << dynamicarray[i] << " ";
-    }
+    std::cout << dynamicarray[i] << " ";
   }
-  catch(const std::exception &e)
+  TransferVariables(dynamicarray, n);
+  for (size_t i = 0; i < n; i++)
   {
-    std::cout << e.what();
-    delete[] dynamicarray;
-    return 2;
+    std::cout << dynamicarray[i] << " ";
   }
   delete[] dynamicarray;
   std::ifstream file(argv[1]);
@@ -81,7 +76,7 @@ int main(int argc, char *argv[])
       return 1;
     }
     int* arrInput = new int[size];
-    for (size_t i=0; i < size; i++)
+    for (size_t i = 0; i < size; i++)
     {
       file >> arrInput[i];
       if (!file)
@@ -91,24 +86,17 @@ int main(int argc, char *argv[])
         return 1;
       }
     }
-    try
+    int shiftamountinput = 0;
+    std::cin >> shiftamountinput;
+    ShiftArrayLeft(arrInput, size, shiftamountinput);
+    for (size_t i = 0; i < size; i++)
     {
-      shiftarrayleft(arrInput, size);
-      for (size_t i = 0; i < size; i++)
-      {
-        std::cout << arrInput[i] << " ";
-      }
-      transferofvariables(arrInput, size);
-      for (size_t i = 0; i < size; i++)
-      {
-        std::cout << arrInput[i] << " ";
-      }
+      std::cout << arrInput[i] << " ";
     }
-    catch (const std::overflow_error &e)
+    TransferVariables(arrInput, size);
+    for (size_t i = 0; i < size; i++)
     {
-      std::cout << e.what();
-      delete[] arrInput;
-      return 2;
+      std::cout << arrInput[i] << " ";
     }
     delete[] arrInput;
   }

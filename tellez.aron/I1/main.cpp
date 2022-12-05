@@ -1,22 +1,22 @@
 #include <iostream>
 int main()
 {
-  int n;
-  int before = 0;
-  int actual = 0;
+  int n = 0;
   int after = 0;
+  int actual = 0;
+  int before = 0;
   int first = 1;
-  bool sign;
-  int counter = 0;
+  bool sign = 0;
+  int counter =0;
   int sum = 0;
-  std::cout << "Enter the numbers you want, and to finish enter the sequence, enter a 0." <<  std::endl
-            << "The program will count the sign changes and find sets of Pythagorean numbers in the sequence (z^2=x^2+y^2)" << std::endl;
-  while(std::cin >> n && n != 0)
-
+  std::cout << "Enter the numbers you want, and to finish enter the sequence, enter a 0. \n"
+            << "The program will count the sign changes and find sets of Pythagorean numbers in the sequence (z^2=x^2+y^2) \n";
+  do
   {
-    before = actual;
-    actual = after;
+    std::cin >> n;
     after = n;
+    actual = after;
+    before = actual;
     if(first == 1)
     {
       if(n > 0)
@@ -31,7 +31,7 @@ int main()
     }
     else
     {
-      if((n > 0) != sign)
+      if((n >= 0) != sign)
       {
         sign = !sign;
         counter++;
@@ -49,7 +49,8 @@ int main()
       }
     }
   }
-  std::cout << "Pythagorean numbers found: " << sum << std::endl
-            << "Change of signs: " << counter << std::endl;
+  while(std::cin  && n );
+  std::cout << "Pythagorean numbers found: " << sum
+            << "\nChange of signs: " << counter << "\n";
   return 0;
 }

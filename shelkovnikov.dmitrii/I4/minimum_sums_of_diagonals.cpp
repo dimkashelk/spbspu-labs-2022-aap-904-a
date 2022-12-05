@@ -1,7 +1,7 @@
 #include "minimum_sums_of_diagonals.h"
 #include <algorithm>
 #include <stdexcept>
-int minimum_sums_of_diagonals(const int *arr, size_t n, size_t m)
+int minimum_sums_of_diagonals(const int *arr, const size_t n, const size_t m)
 {
   size_t size = std::min(n, m);
   if (size == 0)

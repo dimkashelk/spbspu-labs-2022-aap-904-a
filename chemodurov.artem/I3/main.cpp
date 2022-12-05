@@ -31,7 +31,7 @@ int main()
     }
     std::cin >> c_string[size];
   }
-  while (c_string[size] != '\0' && c_string[size++] != '\n' && std::cin);
+  while (std::cin && c_string[size] != '\0' && c_string[size++] != '\n');
 
   if (c_string[0] == '\n' || c_string[0] == '\0')
   {

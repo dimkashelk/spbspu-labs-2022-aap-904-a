@@ -43,7 +43,14 @@ int main(int argc, char *argv[])
     }
     std::ofstream out(argv[3]);
     out << count_lines_with_unique_elements(arr, n, m) << "\n";
-    out << minimum_sums_of_diagonals(arr, n, m) << "\n";
+    try
+    {
+      out << minimum_sums_of_diagonals(arr, n, m) << "\n";
+    }
+    catch (const std::runtime_error &e)
+    {
+      out << e.what();
+    }
   }
   else if (!strcmp(argv[1], "2"))
   {
@@ -65,7 +72,14 @@ int main(int argc, char *argv[])
       }
       std::ofstream out(argv[3]);
       out << count_lines_with_unique_elements(arr, n, m) << "\n";
-      out << minimum_sums_of_diagonals(arr, n, m) << "\n";
+      try
+      {
+        out << minimum_sums_of_diagonals(arr, n, m) << "\n";
+      }
+      catch (const std::runtime_error &e)
+      {
+        out << e.what();
+      }
       delete[] arr;
     }
     catch (const std::bad_alloc &e)

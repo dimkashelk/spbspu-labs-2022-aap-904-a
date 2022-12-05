@@ -21,9 +21,14 @@ int main(int argc, char *argv[])
   size_t m = 0;
   std::ifstream in(argv[2]);
   in >> n >> m;
+  if (!in)
+  {
+    std::cout << "Error";
+    return 1;
+  }
   if (!strcmp(argv[1], "1"))
   {
-    int arr[1000 * 1000];
+    int arr[1000];
     for (size_t i = 0; i < n; i++)
     {
       for (size_t j = 0; j < m; j++)
@@ -43,6 +48,11 @@ int main(int argc, char *argv[])
   else if (!strcmp(argv[1], "2"))
   {
     in >> n >> m;
+    if (!in)
+    {
+      std::cout << "Error";
+      return 1;
+    }
     try
     {
       int *arr = new int[n * m];

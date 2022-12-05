@@ -23,7 +23,7 @@ void TransferVariables(int* arr, const size_t size)
   std::size_t newi= size - 1 ;
   size_t M = 3;
   size_t N = 5;
-  for (int i = N; i >= M ; i--)
+  for (size_t i = N; i >= M ; i--)
   {
     int temp =arr[i];
     arr[i] = arr[newi];

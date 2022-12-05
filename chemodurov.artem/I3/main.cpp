@@ -22,13 +22,7 @@ int main()
         new_string = nullptr;
         capacity = new_capacity;
       }
-      catch (const std::bad_alloc & e)
-      {
-        std::cerr << e.what() << "\n";
-        delete [] c_string;
-        return 1;
-      }
-      catch (const std::invalid_argument & e)
+      catch (const std::exception & e)
       {
         std::cerr << e.what() << "\n";
         delete [] c_string;

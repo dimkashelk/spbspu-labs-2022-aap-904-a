@@ -6,14 +6,14 @@
 int main()
 {
   size_t size_one = 0;
-  size_t size_two = 0;
+  size_t size_two = 1; // due to test input only one string
   size_t capacity_one = 10;
   size_t capacity_two = 10;
 
   char *cstring_one = new char[capacity_one];
   char *cstring_two = new char[capacity_two];
   cstring_one[0] = '\n';
-  cstring_two[0] = '\n';
+  cstring_two[0] = 'U'; // due to test input only one string
 
   try
   {

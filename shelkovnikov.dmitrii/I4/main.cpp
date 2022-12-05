@@ -50,8 +50,8 @@ int main(int argc, char *argv[])
     in >> n >> m;
     if (!in)
     {
-      std::cout << "Error";
-      return 1;
+      n = 0;
+      m = 0;
     }
     try
     {

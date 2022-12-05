@@ -5,12 +5,12 @@ size_t countNegativeRightFromMax(const int *array, size_t size)
   size_t countNegativeRightFromMax = 0;
   size_t maxElIndex = -1;
   int maxEl = array[0];
-  for (size_t i = 0; i < size; i++)
+  for (size_t j = 0; j < size; j++)
   {
-    if (array[i] > maxEl)
+    if (array[j] > maxEl)
     {
-      maxEl = array[i];
-      maxElIndex = i;
+      maxEl = array[j];
+      maxElIndex = j;
     }
   }
   for (size_t i = 0; i < size; i++)

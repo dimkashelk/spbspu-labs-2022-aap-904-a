@@ -47,12 +47,6 @@ int main(int argc, char *argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    in >> n >> m;
-    if (!in)
-    {
-      n = 0;
-      m = 0;
-    }
     try
     {
       int *arr = new int[n * m];

@@ -1,11 +1,7 @@
 #include "minimum_sums_of_diagonals.h"
+#include <limits>
 int minimum_sums_of_diagonals(const int *arr, size_t n, size_t m)
 {
-  if (n <= 0 || m <= 0)
-  {
-    return 0;
-  }
-  int minimum = arr[m - 1];
   size_t size = 0;
   if (n > m)
   {
@@ -15,6 +11,7 @@ int minimum_sums_of_diagonals(const int *arr, size_t n, size_t m)
   {
     size = n;
   }
+  int minimum = std::numeric_limits< int >::min();
   for (size_t i = 0; i < size; i++)
   {
     int sum_of_diagonal_down = 0;

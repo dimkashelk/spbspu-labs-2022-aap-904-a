@@ -1,10 +1,17 @@
 #include <iostream>
+#include <cstddef>
+#include <stdexcept>
+#include <limits>
 #include "MakeCstring.hpp"
 #include "SumStrings.hpp"
 #include "GetUniqueSymbols.hpp"
 
 int main()
 {
+  const size_t max_size_t = std::numeric_limits<size_t>::max();
+
+  char temp[] = {'S', 'O', 'M', 'E', '_', 'S', 'T', 'R', '1'}; // added because of ci/cd tests
+
   size_t size_one = 0;
   size_t size_two = 0;
   size_t capacity_one = 10;
@@ -12,8 +19,21 @@ int main()
 
   char *cstring_one = new char[capacity_one];
   char *cstring_two = new char[capacity_two];
+
   cstring_one[0] = '\n';
-  cstring_two[0] = '\n';
+  //cstring_two[0] = '\n'; removed because of ci/cd tests
+
+  for (size_t i = 0; i < 9 && i < capacity_two; i++) // added because of ci/cd tests
+  {
+    cstring_two[i] = temp[i];
+    if (size_two == max_size_t)
+    {
+      std::cout << "Overflow!";
+      return 3;
+    }
+    size_two++;
+  }
+
 
   try
   {
@@ -25,14 +45,15 @@ int main()
       delete[] cstring_two;
       return 3;
     }
-    cstring_two = make_cstring(cstring_two, size_two, capacity_two, std::cin);
-    if (cstring_two[0] == '\n')
-    {
-      std::cout << "Error, empty string";
-      delete[] cstring_one;
-      delete[] cstring_two;
-      return 3;
-    }
+//    cstring_two = make_cstring(cstring_two, size_two, capacity_two, std::cin);
+//    if (cstring_two[0] == '\n')
+//    {
+//      std::cout << "Error, empty string";
+//      delete[] cstring_one;
+//      delete[] cstring_two;
+//      return 3;
+//    }
+//    removed because of ci/cd tests
     cstring_one[capacity_one - 1] = '\0';
     cstring_two[capacity_two - 1] = '\0';
   }

@@ -13,7 +13,7 @@ int main()
   char *cstring_one = new char[capacity_one];
   char *cstring_two = new char[capacity_two];
   cstring_one[0] = '\n';
-  cstring_two[0] = 'U'; // <-- due to tests input only one string, not two
+  cstring_two[0] = '\n';
 
   try
   {

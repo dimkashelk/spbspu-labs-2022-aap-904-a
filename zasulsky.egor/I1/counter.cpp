@@ -26,7 +26,7 @@ void zasulsky::SecondLargestFinder::operator()(int val)
   }
 }
 
-zasulsky::FibonacciCounter::FibonacciCounter() :
+zasulsky::FibonacciCounter::FibonacciCounter():
   count(0),
   lastVal(0),
   curVal(0)
@@ -42,17 +42,17 @@ void zasulsky::FibonacciCounter::operator()(int val)
   }
   const int maxInt = std::numeric_limits< int >::max();
   if ((curVal > 0) && (lastVal > 0) && (maxInt - lastVal < curVal)) {
-    return;
+    throw std::overflow_error("Sum overflow");
   }
   const int minInt = std::numeric_limits< int >::min();
   if ((curVal < 0) && (lastVal < 0) && (minInt - lastVal > curVal)) {
-    return;
+    throw std::underflow_error("Sum underflow");
   }
   if ((val == lastVal + curVal) && (lastVal != 0)) {
     const unsigned maxUnsigned = std::numeric_limits< unsigned >::max();
-      if (count == maxUnsigned) {
-        throw std::overflow_error("Too many values in input stream");
-      }
+    if (count == maxUnsigned) {
+      throw std::overflow_error("Too many values in input stream");
+    }
     count++;
   }
   lastVal = curVal;

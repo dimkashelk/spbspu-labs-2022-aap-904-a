@@ -19,9 +19,12 @@ int main()
     } catch (const std::overflow_error& e) {
       std::cout << e.what() << '\n';
       return 2;
-    } catch (const std::logic_error& e) {
+    } catch (const std::underflow_error& e) {
       std::cout << e.what() << '\n';
       return 3;
+    } catch (const std::logic_error& e) {
+      std::cout << e.what() << '\n';
+      return 4;
     }
   } while (std::cin && val != 0);
   std::cout << "Second largest value " << findSecondLargest.secondLargestVal << '\n';

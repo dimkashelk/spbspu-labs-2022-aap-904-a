@@ -1,5 +1,6 @@
 #include "functions.h"
 #include <algorithm>
+#include <stdexcept>
 void move_elements(int *arr, size_t size, size_t m, size_t n)
 {
   if (size == 0)
@@ -13,6 +14,10 @@ void move_elements(int *arr, size_t size, size_t m, size_t n)
 }
 double arithmetic_mean_of_even_indices(int *arr, size_t size)
 {
+  if size == 0
+  {
+    throw std::runtime_error("Zero size")
+  }
   int sum = 0;
   for (size_t i = 0; i < size; i += 2)
   {

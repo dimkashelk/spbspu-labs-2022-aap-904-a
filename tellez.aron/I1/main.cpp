@@ -17,9 +17,9 @@ int main()
     after = n;
     actual = after;
     before = actual;
-    if(first == 1)
+    if (first == 1)
     {
-      if(n > 0)
+      if (n > 0)
       {
         sign = true;
       }
@@ -31,25 +31,25 @@ int main()
     }
     else
     {
-      if((n >= 0) != sign)
+      if ((n >= 0) != sign)
       {
         sign = !sign;
         counter++;
       }
     }
-    if(before == 0 && actual == 0)
+    if (before == 0 && actual == 0)
     {
       continue;
     }
     else
     {
-      if(before * before == actual * actual + after * after)
+      if (before * before == actual * actual + after * after)
       {
         sum++;
       }
     }
   }
-  while(std::cin  && n );
+  while (std::cin  && n );
   std::cout << "Pythagorean numbers found: " << sum
             << "\nChange of signs: " << counter << "\n";
   return 0;

@@ -73,9 +73,9 @@ int main(int argc, char * argv[])
   }
   else
   {
-    if (!(rows * cols))
+    if (rows * cols == 0)
     {
-      output >> "0\n";
+      output << "0\n";
       if (!output)
       {
         std::cerr << "Error while writing summ\n";

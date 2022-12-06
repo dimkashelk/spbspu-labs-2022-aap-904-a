@@ -35,7 +35,7 @@ int minimum_sums_of_diagonals(const int *arr, const size_t n, const size_t m)
   int minimum = arr[size - 1];
   for (size_t i = 0; i < size; i++)
   {
-    int sum_down = sum_of_diagonal_down(arr, size);
+    int sum_down = 0;
     for (size_t i = 0; i < size; i++)
     {
       for (size_t j = i; j < size; j++)
@@ -43,7 +43,7 @@ int minimum_sums_of_diagonals(const int *arr, const size_t n, const size_t m)
         sum_down += arr[j * size + (j - i)];
       }
     }
-    int sum_up = sum_of_diagonal_up(arr, size);
+    int sum_up = 0;
     for (size_t i = 0; i < size; i++)
     {
       for (size_t j = i; j < size; j++)

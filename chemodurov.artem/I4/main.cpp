@@ -73,6 +73,16 @@ int main(int argc, char * argv[])
   }
   else
   {
+    if (!(rows * cols))
+    {
+      output >> "0\n";
+      if (!output)
+      {
+        std::cerr << "Error while writing summ\n";
+        return 1;
+      }
+      return 0;
+    }
     int * arr = new int[rows*cols];
     for (size_t i = 0; i < size; ++i)
     {
@@ -80,6 +90,7 @@ int main(int argc, char * argv[])
       if (!input)
       {
         std::cerr << "Error while reading elements\n";
+        delete [] arr;
         return 1;
       }
     }
@@ -97,6 +108,11 @@ int main(int argc, char * argv[])
       return 1;
     }
     output << summ << "\n";
+    if (!output)
+    {
+      std::cerr << "Error while writing summ\n";
+      return 1;
+    }
     delete [] arr;
   }
   return 0;

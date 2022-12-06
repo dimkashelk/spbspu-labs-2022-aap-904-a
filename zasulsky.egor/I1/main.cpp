@@ -16,15 +16,9 @@ int main()
     try {
       countFibonacci(val);
       findSecondLargest(val);
-    } catch (const std::overflow_error& e) {
+    } catch (const std::exception& e) {
       std::cout << e.what() << '\n';
-      return 2;
-    } catch (const std::underflow_error& e) {
-      std::cout << e.what() << '\n';
-      return 3;
-    } catch (const std::logic_error& e) {
-      std::cout << e.what() << '\n';
-      return 4;
+      return 1;
     }
   } while (std::cin && val != 0);
   std::cout << "Second largest value " << findSecondLargest.secondLargestVal << '\n';

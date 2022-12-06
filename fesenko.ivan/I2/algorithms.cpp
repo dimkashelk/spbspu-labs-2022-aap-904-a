@@ -22,20 +22,14 @@ size_t negativeAfterMax(const int *array, size_t size)
 void movingElements(int *array, size_t size)
 {
   size_t m = 2, n = 4;
-  if (size <= n) {
-    std::cout << "Not ehough array size\n";
-  } else {
-    size_t mov_el_size = n - m + 1;
-    int* moving_elements = new int[mov_el_size];
+  if (size > n) { 
+    int movable_element = 0;
     for (size_t i = m; i <= n; i++) {
-      moving_elements[i - m] = array[i];
+      movable_element = array[m];
+      for (size_t j = m; j < size - 1; j++) {
+        array[j] = array[j + 1];
+      }
+      array[size - 1] = movable_element;
     }
-    for (size_t i = n + 1; i < size; i++) {
-      array[i - mov_el_size] = array[i];
-    }
-    for (size_t i = size - mov_el_size; i < size; i++) {
-      array[i] = moving_elements[i - size + mov_el_size];
-    }
-    delete[] moving_elements;
   }
 }

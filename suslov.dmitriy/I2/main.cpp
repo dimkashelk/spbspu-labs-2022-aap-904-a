@@ -30,12 +30,19 @@ int main(int argc, char *argv[])
     array_2[i] = std::rand();
   }
   move_elements(array_2, n, 0, 1);
-  for (size_t i = 0; i < 10; i++)
+  for (size_t i = 0; i < n; i++)
   {
     std::cout << array_2[i] << " ";
   }
   std::cout << "\n";
-  std::cout << arithmetic_mean_of_even_indices(array_2, 10) << "\n";
+  try
+  {
+    std::cout << arithmetic_mean_of_even_indices(array_2, n) << "\n";
+  }
+  catch (const std::runtime_error &e)
+  {
+    std::cout << e.what() << "\n";
+  }
   delete[] array_2;
   std::ifstream input(argv[1]);
   while (!input.eof())
@@ -64,7 +71,14 @@ int main(int argc, char *argv[])
       std::cout << array_3[i] << " ";
     }
     std::cout << "\n";
-    std::cout << arithmetic_mean_of_even_indices(array_3, size) << "\n";
+    try
+    {
+      std::cout << arithmetic_mean_of_even_indices(array_3, size) << "\n";
+    }
+    catch (const std::runtime_error &e)
+    {
+      std::cout << e.what() << "\n";
+    }
     delete[] array_3;
   }
   return 0;

@@ -1,5 +1,6 @@
 #include "arrays.h"
-size_t chemodurov:: countGrowingRows(int * arr, size_t rows, size_t cols)
+
+size_t chemodurov::countGrowingRows(int * arr, size_t rows, size_t cols)
 {
   size_t counter = 0;
   size_t number_of_item = 0;
@@ -20,4 +21,35 @@ size_t chemodurov:: countGrowingRows(int * arr, size_t rows, size_t cols)
     }
   }
   return counter;
+}
+
+unsigned long long chemodurov::countMinSummSecondaryDiagonal(int * arr, size_t rows, size_t cols)
+{
+  if (rows != cols)
+  {
+    throw std::invalid_argument("No diagonal in not square matrix\n");
+  }
+  unsigned long long summ = 0;
+  unsigned long long max_summ = 0;
+  size_t number_of_item = 0;
+  for (size_t i = 0; i < 2 * rows - 1; ++i)
+  {
+    for (size_t j = 0; j < rows; ++j)
+    {
+      for (size_t k = 0; k < cols; ++k)
+      {
+        number_of_item = j * cols + k;
+        if (j + k == i)
+        {
+          summ += arr[number_of_item];
+        }
+      }
+    }
+    if (summ < max_summ)
+    {
+      max_summ = summ;
+    }
+    summ = 0;
+  }
+  return max_summ;
 }

@@ -1,7 +1,7 @@
 #include "minimum_sums_of_diagonals.h"
 #include <algorithm>
 #include <stdexcept>
-int sum_of_diagonal_down(const int *arr, const size_t size)
+int sum_of_diagonal_down(const int *arr, const size_t size) const
 {
   int sum = 0;
   for (size_t i = 0; i < size; i++)
@@ -13,7 +13,7 @@ int sum_of_diagonal_down(const int *arr, const size_t size)
   }
   return sum;
 }
-int sum_of_diagonal_up(const int *arr, const size_t size)
+int sum_of_diagonal_up(const int *arr, const size_t size) const
 {
   int sum = 0;
   for (size_t i = 0; i < size; i++)
@@ -35,9 +35,9 @@ int minimum_sums_of_diagonals(const int *arr, const size_t n, const size_t m)
   int minimum = arr[size - 1];
   for (size_t i = 0; i < size; i++)
   {
-    int sum_down = sum_of_diagonal_down(arr, size);
-    int sum_up = sum_of_diagonal_up(arr, size);
-    int min_sum = std::min(sum_down, sum_up);
+    const int sum_down = sum_of_diagonal_down(arr, size);
+    const int sum_up = sum_of_diagonal_up(arr, size);
+    const int min_sum = std::min(sum_down, sum_up);
     minimum = std::min(minimum, min_sum);
   }
   return minimum;

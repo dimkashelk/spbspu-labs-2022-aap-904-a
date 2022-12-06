@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
   size_t beginIndex = 0, endIndex = 1; // M and N
-  //Const array
+  // Const array
   const size_t arrayConstSize = 10;
   int arrayConst[arrayConstSize] = {1, -1, 3, 4, 5, 4, -1, -1, 2, 1};
   size_t countNrfmConst = countNegativeRightFromMax(arrayConst, arrayConstSize);

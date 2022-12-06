@@ -37,7 +37,8 @@ int minimum_sums_of_diagonals(const int *arr, const size_t n, const size_t m)
   {
     int sum_down = sum_of_diagonal_down(arr, size);
     int sum_up = sum_of_diagonal_up(arr, size);
-    minimum = std::min(minimum, std::min(sum_down, sum_up));
+    int min_sum = std::min(sum_down, sum_up);
+    minimum = std::min(minimum, min_sum);
   }
   return minimum;
 }

@@ -35,24 +35,24 @@ int minimum_sums_of_diagonals(const int *arr, const size_t n, const size_t m)
   int minimum = arr[size - 1];
   for (size_t i = 0; i < size; i++)
   {
-    int sum_down = 0;
-    for (size_t i = 0; i < size; i++)
+    int sum_of_diagonal_down = 0;
+    int sum_of_diagonal_up = 0;
+    for (size_t j = i; j < size; j++)
     {
-      for (size_t j = i; j < size; j++)
-      {
-        sum_down += arr[j * size + (j - i)];
-      }
+      sum_of_diagonal_down += arr[j * size + (j - i)];
     }
-    int sum_up = 0;
-    for (size_t i = 0; i < size; i++)
+    for (size_t j = 0; j < size - i; j++)
     {
-      for (size_t j = i; j < size; j++)
-      {
-        sum_up += arr[(j + i) * size + j];
-      }
+      sum_of_diagonal_up += arr[(j + i) * size + j];
     }
-    const int min_sum = std::min(sum_down, sum_up);
-    minimum = std::min(minimum, min_sum);
+    if (minimum > sum_of_diagonal_up)
+    {
+      minimum = sum_of_diagonal_up;
+    }
+    if (minimum > sum_of_diagonal_down)
+    {
+      minimum = sum_of_diagonal_down;
+    }
   }
   return minimum;
 }

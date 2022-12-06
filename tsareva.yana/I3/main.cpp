@@ -49,56 +49,8 @@ int main()
     return 2;
   }
   str_1[size_1 - 1] = '\0';
-  // у меня должно быть 2 строки для входа, но в тестах только одна,
-  // поэтому я скопирую первую строку во вторую
-  char* str_2 = new char[size_1];
-  size_t size_2 = size_1;
-  for (size_t i = 0; i < size_1; i++)
-  {
-    str_2[i] = str_1[i];
-  }
-//  std::cin >> std::noskipws;
-//  do
-//  {
-//    if (size_2 == capacity_2)
-//    {
-//      if (capacity_2 == max_size_t)
-//      {
-//        std::cout << "Too much";
-//        return 1;
-//      }
-//      else
-//      {
-//        capacity_2 += 20;
-//      }
-//      try
-//      {
-//        char* newstr = new char[capacity_2];
-//        for (auto i = str_2, j = newstr; i != str_2 + size_2; ++i, ++j)
-//        {
-//          *j = *i;
-//        }
-//        delete [] str_2;
-//        str_2 = newstr;
-//      }
-//      catch (...)
-//      {
-//        delete[] str_1;
-//        delete[] str_2;
-//        return 1;
-//      }
-//    }
-//    std::cin >> str_2[size_2];
-//  }
-//  while (std::cin && str_2[size_2++] != '\n');
-//  if (!std::cin && !size_2)
-//  {
-//    std::cout << "error";
-//    delete[] str_1;
-//    delete[] str_2;
-//    return 2;
-//  }
-//  str_2[size_2 - 1] = '\0';
+  char str_2[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
+  size_t size_2 = 8;
   try
   {
     char *res1 = new char[size_1 + size_2];
@@ -110,7 +62,6 @@ int main()
   {
     std::cout << e.what();
     delete[] str_1;
-    delete[] str_2;
     return 2;
   }
   try
@@ -128,10 +79,8 @@ int main()
   {
     std::cout << e.what();
     delete[] str_1;
-    delete[] str_2;
     return 2;
   }
   delete[] str_1;
-  delete[] str_2;
   return 0;
 }

@@ -15,9 +15,9 @@ bool is_unique_line(const int *arr, const size_t size)
 {
   size_t count = 0;
   bool fl = true;
-  for (size_t j = 0; j < n && fl; j++)
+  for (size_t j = 0; j < size && fl; j++)
   {
-    if (count_contains_element(arr[j], arr[i * n], m) != 1)
+    if (count_contains_element(arr[j], arr, m) != 1)
     {
       fl = false;
     }

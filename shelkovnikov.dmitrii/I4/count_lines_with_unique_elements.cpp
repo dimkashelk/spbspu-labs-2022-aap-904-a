@@ -13,7 +13,6 @@ size_t count_contains_element(const int element, const int *arr, const size_t si
 }
 bool is_unique_line(const int *arr, const size_t size)
 {
-  size_t count = 0;
   bool fl = true;
   for (size_t j = 0; j < size && fl; j++)
   {

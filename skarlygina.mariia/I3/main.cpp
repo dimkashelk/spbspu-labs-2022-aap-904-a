@@ -29,8 +29,14 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
 
+  if (!std::cin && !size)
+  {
+    std::cout << "Error while reading the string \n";
+    delete [] cstring;
+    return 2;
+  }
+  cstring[size - 1] = '\0';
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     std::cout << "Error while reading the string \n";

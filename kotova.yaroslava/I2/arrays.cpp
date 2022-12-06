@@ -17,7 +17,7 @@ size_t counterDivision(const int* array, const size_t size, unsigned int n)
 
 size_t checkRepeatEl(const int* array, size_t size, unsigned int index_m, unsigned int index_n)
 {
-  size_t repeat_cnt = 1;
+  size_t repeat_cnt = 0;
   size_t max_of_index = std::max(index_m, index_n);
   if (max_of_index > size)
   {

@@ -33,7 +33,7 @@ int main()
 
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
-    std::cout << "Error while reading the string\n";
+    std::cout << "Error while reading the string \n";
     delete[] cstring;
     return 2;
   }
@@ -45,7 +45,7 @@ int main()
   try
   {
     string_source1 = new char[size_source1];
-    for (size_t i = 0; i < size_source1 - 1; i++) 
+    for (size_t i = 0; i < size_source1 - 1; i++)
     {
       string_source1[i] = '1';
     }

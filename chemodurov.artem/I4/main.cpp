@@ -45,7 +45,7 @@ int main(int argc, char * argv[])
     return 1;
   }
 
-  if (!std::strcmp(argv[1], 1))
+  if (!std::strcmp(argv[1], "1"))
   {
     constexpr size_t max_size = 1000;
     if (size > max_size)

@@ -4,6 +4,8 @@
 
 int main(int argc, char* argv[])
 {
+  const int divider = 3;
+
   if (argc != 2)
   {
     std::cerr << "File is wrong\n";
@@ -13,12 +15,10 @@ int main(int argc, char* argv[])
   int firstArray[] = { 1, 2, 6, 12, 12, 12, 9, -5, 4, 4 };
   unsigned int arr1_index_m = 1;
   unsigned int arr1_index_n = 6;
-  unsigned int divider_n = 0;
   try
   {
-    std::cin >> divider_n;
-    std::cout << "Divider: " << divider_n << std::endl;
-    std::cout << "The number of fully divisible: " << counterDivision(firstArray, 10, divider_n) << std::endl;
+    std::cout << "Divider: " << divider << std::endl;
+    std::cout << "The number of fully divisible: " << counterDivision(firstArray, 10, divider) << std::endl;
     std::cout << "The number of duplicate elements: " << checkRepeatEl(firstArray, 10, arr1_index_m, arr1_index_n) << std::endl;
   }
   catch (const std::invalid_argument& e)
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     {
       secondArray[i] = std::rand();
     }
-    size_t cnt_div_arr2 = counterDivision(secondArray, size_arr2, divider_n);
+    size_t cnt_div_arr2 = counterDivision(secondArray, size_arr2, divider);
     size_t cnt_check_rep_el = checkRepeatEl(secondArray, size_arr2, arr2_index_m, arr2_index_n);
     std::cout << cnt_div_arr2 << std::endl;
     std::cout << cnt_check_rep_el << std::endl;
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
       }
       try
       {
-        size_t cnt_div_arr3 = counterDivision(thirdArray, size_arr3, divider_n);
+        size_t cnt_div_arr3 = counterDivision(thirdArray, size_arr3, divider);
         size_t cnt_check_rep_el3 = checkRepeatEl(thirdArray, size_arr3, arr3_index_m, arr3_index_n);
         std::cout << cnt_div_arr3 << std::endl;
         std::cout << cnt_check_rep_el3 << std::endl;

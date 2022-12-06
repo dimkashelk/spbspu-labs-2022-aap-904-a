@@ -9,7 +9,7 @@ size_t countNegativeRightFromMax(const int *array, size_t size)
   {
     if (array[i] > maxEl)
     {
-      maxEl = array[j];
+      maxEl = array[i];
       maxElIndex = i;
     }
   }

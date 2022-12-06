@@ -49,8 +49,8 @@ int main()
     return 2;
   }
   str_1[size_1 - 1] = '\0';
-  char str_2[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
-  size_t size_2 = 8;
+  char str_2[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', '\0'};
+  size_t size_2 = 9;
   try
   {
     char *res1 = new char[size_1 + size_2];

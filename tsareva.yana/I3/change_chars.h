@@ -1,4 +1,5 @@
 #ifndef CHANGE_CHARS_H
 #define CHANGE_CHARS_H
-char* change_chars(char* res, char* str);
+#include <cstddef>
+char* change_chars(char* res, char* str, size_t str_size);
 #endif

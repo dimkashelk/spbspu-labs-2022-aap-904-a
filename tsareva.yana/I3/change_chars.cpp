@@ -1,8 +1,8 @@
 #include "change_chars.h"
 #include <cstddef>
-char* change_chars(char* res, char* str)
+char* change_chars(char* res, char* str, size_t str_size)
 {
-  for (size_t i = 0; str[i]; i++)
+  for (size_t i = 0; i < str_size; i++)
   {
     if (str[i] == 'A')
     {

@@ -11,7 +11,7 @@ int main(int argc, char * argv[])
     std::cerr << "Incorrect amount of command line args\n";
     return 2;
   }
-  if (std::strcmp(argv[1], "1") || std::strcmp(argv[1], "2"))
+  if (std::strcmp(argv[1], "1") && std::strcmp(argv[1], "2"))
   {
     std::cerr << "Incorrect variant of task\n";
     return 2;

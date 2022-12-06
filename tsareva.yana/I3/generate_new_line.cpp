@@ -37,5 +37,6 @@ char* generate_new_line(char* res, char* str1, char* str2)
       size++;
     }
   }
+  res[size] = '\0';
   return res;
 }

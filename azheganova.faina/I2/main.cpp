@@ -2,7 +2,8 @@
 #include <stdexcept>
 #include <fstream>
 #include <cstddef>
-#include "arrays.h"
+#include "movearrayleft.h"
+#include "transfervariables.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,23 +21,15 @@ int main(int argc, char *argv[])
   int staticarray[staticarray_size] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   int shiftamount = 0;
   std::cin >> shiftamount;
-  try
+  moveArrayLeft(staticarray, staticarray_size, shiftamount);
+  for (size_t i = 0; i < staticarray_size; i++)
   {
-    ShiftArrayLeft(staticarray, staticarray_size, shiftamount);
-    for (size_t i = 0; i < staticarray_size; i++)
-    {
-      std::cout << staticarray[i] << " ";
-    }
-    TransferVariables(staticarray, staticarray_size);
-    for (size_t i = 0; i < staticarray_size; i++)
-    {
-      std::cout << staticarray[i] << " ";
-    }
+    std::cout << staticarray[i] << " ";
   }
-  catch (const std::overflow_error &e)
+  transferVariables(staticarray, staticarray_size);
+  for (size_t i = 0; i < staticarray_size; i++)
   {
-    std::cout << e.what();
-    return 2;
+    std::cout << staticarray[i] << " ";
   }
   size_t n = 0;
   std::cout << "Dynamic array size:\n";
@@ -49,12 +42,12 @@ int main(int argc, char *argv[])
   }
   int shiftamountdyn = 0;
   std::cin >> shiftamountdyn;
-  ShiftArrayLeft(dynamicarray, n, shiftamountdyn);
+  moveArrayLeft(dynamicarray, n, shiftamountdyn);
   for (size_t i = 0; i < n; i++)
   {
     std::cout << dynamicarray[i] << " ";
   }
-  TransferVariables(dynamicarray, n);
+  transferVariables(dynamicarray, n);
   for (size_t i = 0; i < n; i++)
   {
     std::cout << dynamicarray[i] << " ";
@@ -88,12 +81,12 @@ int main(int argc, char *argv[])
     }
     int shiftamountinput = 0;
     std::cin >> shiftamountinput;
-    ShiftArrayLeft(arrInput, size, shiftamountinput);
+    moveArrayLeft(arrInput, size, shiftamountinput);
     for (size_t i = 0; i < size; i++)
     {
       std::cout << arrInput[i] << " ";
     }
-    TransferVariables(arrInput, size);
+    transferVariables(arrInput, size);
     for (size_t i = 0; i < size; i++)
     {
       std::cout << arrInput[i] << " ";

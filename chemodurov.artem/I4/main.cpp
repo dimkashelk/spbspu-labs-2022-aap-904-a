@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <cstring>
 #include "arrays.h"
 
 int main(int argc, char * argv[])
@@ -10,7 +11,7 @@ int main(int argc, char * argv[])
     std::cerr << "Incorrect amount of command line args\n";
     return 2;
   }
-  if (*argv[1] != 1 || *argv[1] != 2)
+  if (std::strcmp(argv[1], "1") || std::strcmp(argv[1], "2"))
   {
     std::cerr << "Incorrect variant of task\n";
     return 2;
@@ -44,7 +45,7 @@ int main(int argc, char * argv[])
     return 1;
   }
 
-  if (*argv[1] == 1)
+  if (!std::strcmp(argv[1], 1))
   {
     constexpr size_t max_size = 1000;
     if (size > max_size)
@@ -70,7 +71,7 @@ int main(int argc, char * argv[])
       return 1;
     }
   }
-  else if (*argv[1] == 2)
+  else
   {
     int * arr = new int[rows*cols];
     for (size_t i = 0; i < size; ++i)

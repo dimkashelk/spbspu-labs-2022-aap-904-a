@@ -16,7 +16,7 @@ double arithmetic_mean_of_even_indices(int *arr, size_t size)
 {
   if (size == 0)
   {
-    throw std::runtime_error("Zero size")
+    throw std::runtime_error("Zero size");
   }
   int sum = 0;
   for (size_t i = 0; i < size; i += 2)

@@ -49,10 +49,12 @@ int main()
     {
       string_source1[i] = '1';
     }
+
     destination1 = new char[size_source1 + size];
     destination2 = new char[size + size_source1];
     destination1 = addDecimalDigits(destination1, cstring, string_source1);
     destination2 = makeStringCommonSymbols(destination2, cstring, string_source1);
+
     if (destination1[0] != '\0')
     {
       std::cout << destination1 << "\n";

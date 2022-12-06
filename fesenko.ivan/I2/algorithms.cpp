@@ -22,7 +22,7 @@ size_t negativeAfterMax(const int *array, size_t size)
 void movingElements(int *array, size_t size)
 {
   size_t m = 2, n = 4;
-  if (size > n) { 
+  if (size > n) {
     int movable_element = 0;
     for (size_t i = m; i <= n; i++) {
       movable_element = array[m];

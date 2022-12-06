@@ -14,7 +14,7 @@ void move_elements(int *arr, size_t size, size_t m, size_t n)
 }
 double arithmetic_mean_of_even_indices(int *arr, size_t size)
 {
-  if size == 0
+  if (size == 0)
   {
     throw std::runtime_error("Zero size")
   }

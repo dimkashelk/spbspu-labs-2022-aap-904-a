@@ -1,0 +1,71 @@
+#include <iostream>
+#include <fstream>
+#include "functions.h"
+int main(int argc, char *argv[])
+{
+  if (argc == 1)
+  {
+    std::cout << "Check file name";
+    return 1;
+  }
+  if (argc > 2)
+  {
+    std::cout << "Check parameters";
+    return 1;
+  }
+  int array_1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  move_elements(array_1, 10, 1, 5);
+  for (size_t i = 0; i < 10; i++)
+  {
+    std::cout << array_1[i] << " ";
+  }
+  std::cout << "\n";
+  std::cout << arithmetic_mean_of_even_indices(array_1, 10) << "\n";
+  size_t n = 0;
+  std::cin >> n;
+  int *array_2 = new int[n];
+  std::srand(time(nullptr));
+  for (size_t i = 0; i < n; i++)
+  {
+    array_2[i] = std::rand();
+  }
+  move_elements(array_2, n, 0, 1);
+  for (size_t i = 0; i < 10; i++)
+  {
+    std::cout << array_2[i] << " ";
+  }
+  std::cout << "\n";
+  std::cout << arithmetic_mean_of_even_indices(array_2, 10) << "\n";
+  delete[] array_2;
+  std::ifstream input(argv[1]);
+  while (!input.eof())
+  {
+    size_t size = 0;
+    input >> size;
+    if (!input)
+    {
+      std::cout << "Another one error";
+      return 1;
+    }
+    int *array_3 = new int[size];
+    for (size_t i = 0; i < size; i++)
+    {
+      input >> array_3[i];
+      if (!input)
+      {
+        std::cout << "Another one error";
+        delete[] array_3;
+        return 1;
+      }
+    }
+    move_elements(array_3, size, 0, 1);
+    for (size_t i = 0; i < size; i++)
+    {
+      std::cout << array_3[i] << " ";
+    }
+    std::cout << "\n";
+    std::cout << arithmetic_mean_of_even_indices(array_3, size) << "\n";
+    delete[] array_3;
+  }
+  return 0;
+}

@@ -67,11 +67,7 @@ int main()
   try
   {
     char* res2 = new char[size_1];
-    change_chars(res2, str_1);
-    std::cout << res2 << '\n';
-    delete[] res2;
-    res2 = new char[size_2];
-    change_chars(res2, str_2);
+    change_chars(res2, str_1, size_1);
     std::cout << res2 << '\n';
     delete[] res2;
   }

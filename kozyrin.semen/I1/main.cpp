@@ -4,7 +4,7 @@
 
 int main() {
   dividendCounter DivCnt{0, 0};
-  equalToSumCounter EqCnt{0, {200, 144}};
+  equalToSumCounter EqCnt{0, {0, 0}};
   int value = 0;
   std::cin >> value;
 
@@ -22,11 +22,10 @@ int main() {
     std::cout << "Numbers that are a sum of two prevs count: " << EqCnt.cnt << '\n';
   }
 
-
-  catch(std::overflow_error & err) {
-    std::cout << "Error: " << err.what() << "\n";
+  catch (const std::overflow_error & err) {
+    std::cout << "Error: " << err.what() << '\n';
   }
-  catch(std::runtime_error & err) {
+  catch (const std::runtime_error & err) {
     std::cout << "Error: " << err.what() << '\n';
   }
 }

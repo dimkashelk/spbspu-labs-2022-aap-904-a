@@ -2,11 +2,24 @@
 #include <limits>
 #include <stdexcept>
 
-int overflow(unsigned int cnt) {
-  return cnt >= std::numeric_limits< int >::max() - 1;
+bool overflow(unsigned int cnt) {
+  return cnt > std::numeric_limits< unsigned int >::max() - 1;
 }
 
-int sum(int arr[]) {
+bool overflow(const int arr[]){
+  if (arr[0] < 0 && arr[1] < 0) {
+    return arr[0] < std::numeric_limits< int >::min() - arr[1];
+  }
+  if (arr[0] > 0 && arr[1] > 0) {
+    return arr[0] > std::numeric_limits< int >::min() - arr[1];
+  }
+  return true;
+}
+
+int sum(const int arr[]) {
+  if (overflow(arr)) {
+    throw std::overflow_error("Values are too big/small. Why..?");
+  }
   return arr[0] + arr[1];
 }
 

@@ -1,11 +1,10 @@
 #include "stringTransform.h"
 #include <cctype>
 
-char * turkin::deleteNumbers(char * destination, const char * source)
+char * turkin::deleteNumbers(char * destination, const char * source, size_t size)
 {
   size_t q = 0;
-
-  for (size_t i = 0; i < source[i]; i++)
+  for (size_t i = 0; i < size; i++)
   {
     if (!std::isdigit(source[i]))
     {

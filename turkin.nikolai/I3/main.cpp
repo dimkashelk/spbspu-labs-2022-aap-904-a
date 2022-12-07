@@ -35,6 +35,6 @@ int main()
     return 1;
   }
   turkin::String result(string.size + 1);
-  std::cout << turkin::isRepeat(string) << '\t' << turkin::deleteNumbers(result.data, string.data) << '\n';
+  std::cout << turkin::isRepeat(string) << '\t' << turkin::deleteNumbers(result.data, string.data, string.size) << '\n';
   return 0;
 }

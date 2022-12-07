@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main() 
+int main()
 {
   std::cout << "tobbo.kirill" << std::endl;
   return 0;

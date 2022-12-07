@@ -1,6 +1,5 @@
 #ifndef I2_ARRAYDYNAMIC_H
 #define I2_ARRAYDYNAMIC_H
-#include <stdexcept>
 struct ArrayDynamic
 {
   explicit ArrayDynamic(size_t capacity);

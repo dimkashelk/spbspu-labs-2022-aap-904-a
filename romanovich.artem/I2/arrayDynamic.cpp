@@ -1,6 +1,6 @@
 #include "arrayDynamic.h"
 #include <stdexcept>
-ArrayDynamic::ArrayDynamic(size_t capacity) :
+ArrayDynamic::ArrayDynamic(size_t capacity):
   data(new int[capacity]),
   size(0)
 {

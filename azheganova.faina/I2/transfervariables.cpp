@@ -1,6 +1,6 @@
 #include "transfervariables.h"
 
-void transferVariables(int* arr, const size_t size)
+void transferVariables(int *arr, const size_t size)
 {
   std::size_t newi= size - 1 ;
   size_t M = 3;

@@ -4,7 +4,7 @@
 
 void FindPifTrio::operator()(int x)
 {
-  const unsigned int max_unsigned_int = std::numeric_limits<unsigned int>::max();
+  const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
   if (x > 0 && y > 0 && z > 0 && z * z + y * y == x * x)
   {

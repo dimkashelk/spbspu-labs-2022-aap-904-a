@@ -4,6 +4,7 @@
 char * turkin::deleteNumbers(char * destination, const char * source)
 {
   size_t q = 0;
+
   for (size_t i = 0; i < source[i]; i++)
   {
     if (!std::isdigit(source[i]))

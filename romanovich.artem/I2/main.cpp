@@ -2,10 +2,11 @@
 #include <fstream>
 #include <ctime>
 #include "countelements.h"
+#include "arraydynamic.h"
 int main(int argc, char **argv)
 {
   size_t beginIndex = 0, endIndex = 1; // M and N
-  // Const array
+  //Const array
   const size_t arrayConstSize = 10;
   int arrayConst[arrayConstSize] = {1, -1, 3, 4, 5, 4, -1, -1, 2, 1};
   size_t countNrfmConst = countNegativeRightFromMax(arrayConst, arrayConstSize);
@@ -20,14 +21,15 @@ int main(int argc, char **argv)
     std::cerr << "Error while dynamic input.\n";
     return 2;
   }
-  int *arrayDynamic = new int[arrayDynamicSize];
+  ArrayDynamic arrayDynamic(arrayDynamicSize);
   std::srand(time(nullptr));
   for (size_t i = 0; i < arrayDynamicSize; i++)
   {
-    arrayDynamic[i] = std::rand() % 10 - 5;
+    arrayDynamic.size++;
+    arrayDynamic.data[i] = std::rand() % 10 - 5;
   }
-  size_t countNrfmDynamic = countNegativeRightFromMax(arrayDynamic, arrayDynamicSize);
-  size_t countRirDynamic = countRepetitiveInRange(arrayDynamic, arrayDynamicSize, beginIndex, endIndex);
+  size_t countNrfmDynamic = countNegativeRightFromMax(arrayDynamic.data, arrayDynamicSize);
+  size_t countRirDynamic = countRepetitiveInRange(arrayDynamic.data, arrayDynamicSize, beginIndex, endIndex);
   std::cout << countNrfmDynamic << "\n";
   std::cout << countRirDynamic << "\n";
   //File array

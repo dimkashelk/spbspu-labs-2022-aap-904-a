@@ -31,12 +31,12 @@ void Lab_I1::operator()(int n)
   }
 }
 
-int Lab_I1::get_count() 
+int Lab_I1::get_count()
 {
   return count;
 }
 
-int Lab_I1::get_count_after_max() 
+int Lab_I1::get_count_after_max()
 {
   return count_after_max;
 }

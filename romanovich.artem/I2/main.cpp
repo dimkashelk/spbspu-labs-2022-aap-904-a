@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "time.h"
-#include "oneDimensionalArrays.h"
+#include <ctime>
+#include "countelements.h"
 #include "arrayDynamic.h"
 int main(int argc, char **argv)
 {
@@ -11,14 +11,14 @@ int main(int argc, char **argv)
   int arrayConst[arrayConstSize] = {1, -1, 3, 4, 5, 4, -1, -1, 2, 1};
   size_t countNrfmConst = countNegativeRightFromMax(arrayConst, arrayConstSize);
   size_t countRirConst = countRepetitiveInRange(arrayConst, arrayConstSize, beginIndex, endIndex);
-  std::cout << countNrfmConst << std::endl;
-  std::cout << countRirConst << std::endl;
+  std::cout << countNrfmConst << "\n";
+  std::cout << countRirConst << "\n";
   //Dynamic array
   size_t arrayDynamicSize = 0;
   std::cin >> arrayDynamicSize;
   if (!std::cin)
   {
-    std::cerr << "Error while dynamic input." << std::endl;
+    std::cerr << "Error while dynamic input.\n";
     return 2;
   }
   ArrayDynamic arrayDynamic(arrayDynamicSize);
@@ -30,8 +30,8 @@ int main(int argc, char **argv)
   }
   size_t countNrfmDynamic = countNegativeRightFromMax(arrayDynamic.data, arrayDynamicSize);
   size_t countRirDynamic = countRepetitiveInRange(arrayDynamic.data, arrayDynamicSize, beginIndex, endIndex);
-  std::cout << countNrfmDynamic << std::endl;
-  std::cout << countRirDynamic << std::endl;
+  std::cout << countNrfmDynamic << "\n";
+  std::cout << countRirDynamic << "\n";
   //File array
   if (argc == 1)
   {
@@ -40,14 +40,14 @@ int main(int argc, char **argv)
   }
   if (argc > 2)
   {
-    std::cout << "Too much parameters." << std::endl;
+    std::cout << "Too much parameters.\n";
     return 2;
   }
   std::string fileName = argv[1];
   std::fstream fileInput(fileName);
   if (!fileInput.is_open())
   {
-    std::cerr << "Error while opening file " << argv[1] << std::endl;
+    std::cerr << "Error while opening file " << argv[1] << "\n";
     return 2;
   }
   while (!fileInput.eof())
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
     fileInput >> arrayFileSize;
     if (!fileInput)
     {
-      std::cerr << "Error while reading file " << argv[1] << std::endl;
+      std::cerr << "Error while reading file " << argv[1] << "\n";
       return 2;
     }
     int *arrayFile = new int[arrayFileSize];
@@ -65,15 +65,15 @@ int main(int argc, char **argv)
       fileInput >> arrayFile[i];
       if (!fileInput)
       {
-        std::cerr << "Error while reading file " << argv[1] << std::endl;
+        std::cerr << "Error while reading file " << argv[1] << "\n";
         delete[] arrayFile;
         return 2;
       }
     }
     size_t countNrfmFile = countNegativeRightFromMax(arrayFile, arrayFileSize);
     size_t countRirFile = countRepetitiveInRange(arrayFile, arrayFileSize, beginIndex, endIndex);
-    std::cout << countNrfmFile << std::endl;
-    std::cout << countRirFile << std::endl;
+    std::cout << countNrfmFile << "\n";
+    std::cout << countRirFile << "\n";
     delete[] arrayFile;
   }
 }

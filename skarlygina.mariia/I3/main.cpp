@@ -33,7 +33,7 @@ int main()
   if (!std::cin && !size)
   {
     std::cout << "Error while reading the string \n";
-    delete [] cstring;
+    delete[] cstring;
     return 2;
   }
   cstring[size - 1] = '\0';
@@ -48,6 +48,7 @@ int main()
   char* destination1 = nullptr;
   char* destination2 = nullptr;
   const size_t size_source1 = size;
+
   try
   {
     string_source1 = new char[size_source1];
@@ -55,32 +56,52 @@ int main()
     {
       string_source1[i] = '1';
     }
+    string_source1[size_source1 - 1] = '\0';
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cerr << e.what() << "\n";
+    delete[] string_source1;
+    delete[] cstring;
+    return 1;
+  }
 
+  try
+  {
     destination1 = new char[size_source1 + size];
-    destination2 = new char[size + size_source1];
     destination1 = addDecimalDigits(destination1, cstring, string_source1);
-    destination2 = makeStringCommonSymbols(destination2, cstring, string_source1);
-
     if (destination1[0] != '\0')
     {
       std::cout << destination1 << "\n";
     }
-    else std::cout << "First Function can not be written \n";
-
-    if (destination2[0] != '\0')
-    {
-      std::cout << destination2 << "\n";
-    }
-    else std::cout << "Second Function can not be written \n";
+    else std::cout << "Error while making first function \n";
   }
   catch (const std::bad_alloc& e)
   {
     std::cerr << e.what() << "\n";
     delete[] destination1;
-    delete[] string_source1;
     delete[] cstring;
     return 1;
   }
+
+  try
+  {
+    destination2 = new char[size_source1 + size];
+    destination2 = makeStringCommonSymbols(destination2, cstring, string_source1);
+    if (destination2[0] != '\0')
+    {
+      std::cout << destination2 << "\n";
+    }
+    else std::cout << "There are no common symbols \n";
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cerr << e.what() << "\n";
+    delete[] destination2;
+    delete[] cstring;
+    return 1;
+  }
+
   delete[] destination1;
   delete[] destination2;
   delete[] string_source1;

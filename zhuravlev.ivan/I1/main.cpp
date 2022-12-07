@@ -13,16 +13,16 @@ int main()
   do
   {
     std::cin >> value;
-  try
-  {
-    max_sr(value);
-    cnt_dev(value);
-  }
-  catch (const std::overflow_error& e)
-  {
-    std::cout << e.what() << "\n";
-    return 1;
-  }
+    try
+    {
+      max_sr(value);
+      cnt_dev(value);
+    }
+    catch (const std::overflow_error& e)
+    {
+      std::cout << e.what() << "\n";
+      return 1;
+    }
   }
   while (value && std::cin);
   {
@@ -31,27 +31,8 @@ int main()
       std::cout << "You've entered something wrong.....";
       return 2;
     }
-<<<<<<< HEAD
-    catch (const std::overflow_error& e)
-    {
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-  }
-   while (value && std::cin);
-   {
-     if (!std::cin)
-     {
-       std::cout << "You've entered something wrong.....";
-       return 2;
-     }
-     std::cout << "Maximum equal elements in the row: " << max_sr.max_seq_row << "\n";
-     std::cout << "Number of elements which have good devisor: " << cnt_dev.cnt_devisor_counter << "\n";
-     return 0;
-=======
     std::cout << "Maximum equal elements in the row: " << max_sr.max_seq_row << "\n";
     std::cout << "Number of elements which have good devisor: " << cnt_dev.cnt_devisor_counter << "\n";
     return 0;
->>>>>>> dac25ca8b7b55e625ffe94f9062a5dd1007b62ed
-   }
+  }
 }

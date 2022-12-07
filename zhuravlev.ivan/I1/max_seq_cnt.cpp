@@ -17,9 +17,5 @@ void MaxSeqRow::operator()(int value)
     {
       current_seq_row = 0;
     }
-    if (max_seq_row > maximum_of_unsigned_int - 1)
-    {
-      std::overflow_error("Error overflow");
-    }
   }
 }

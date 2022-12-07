@@ -60,5 +60,6 @@ int main()
   {
     std::cout << "It isn't a real number";
   }
+  delete[] str;
   return 0;
 }

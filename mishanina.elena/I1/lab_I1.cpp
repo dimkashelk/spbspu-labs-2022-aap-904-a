@@ -5,7 +5,7 @@ int main()
 {
   setlocale(LC_ALL, "ru");
   int n = 0;
-  Lab_I1 sequence(n);
+  Lab_I1 sequence;
   do {
    std::cout << "Enter number\n";
    std::cin >> n;

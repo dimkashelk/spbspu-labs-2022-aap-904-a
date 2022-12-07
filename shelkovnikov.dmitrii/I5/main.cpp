@@ -5,7 +5,7 @@
 int main()
 {
   size_t capacity = 10;
-  char * str = new char[capacity];
+  char *str = new char[capacity];
   size_t size = 0;
   std::cin >> std::noskipws;
   constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
@@ -28,7 +28,7 @@ int main()
       }
       try
       {
-        char * new_number = new char[capacity];
+        char *new_number = new char[capacity];
         for (auto i = str, j = new_number; i != str + size; ++i, ++j)
         {
           *j = *i;
@@ -52,6 +52,13 @@ int main()
     return 2;
   }
   str[size - 1] = '\0';
-  std::cout << is_real_number(str, size - 1);
+  if (is_real_number(str, size - 1))
+  {
+    std::cout << "It's a real number";
+  }
+  else
+  {
+    std::cout << "It isn't a real number";
+  }
   return 0;
 }

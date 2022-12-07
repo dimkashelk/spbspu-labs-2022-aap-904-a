@@ -4,17 +4,17 @@
 class Lab_I1
 {
 public:
-  Lab_I1(int n);
-  void operator()();
-  void conclusion();
+  void operator()(int n);
+  int get_count();
+  int get_count_after_max();
 private:
   int n = 0;
-  static int old_n;
-  static int cur_n;
-  static int new_n;
-  static int count;
-  static int max_n;
-  static int count_after_max;
+  int old_n = 0;
+  int cur_n = 0;
+  int new_n = 0;
+  int count = 0;
+  int max_n = 0;
+  int count_after_max = 0;
 };
 
 #endif // !SEQUENCE_INTERACTION_H

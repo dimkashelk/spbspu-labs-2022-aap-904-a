@@ -1,12 +1,13 @@
 #include "recursion.h"
 #include <cstddef>
+#include <cctype>
 bool is_sign(char number)
 {
   return number == '-' || number == '+';
 }
 bool is_digit(char number)
 {
-  return number >= '0' && number <= '9';
+  return std::isdigit(number);
 }
 bool is_unsigned_integer(char *number, size_t start, size_t end)
 {

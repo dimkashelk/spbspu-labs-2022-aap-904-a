@@ -1,5 +1,4 @@
 #include "algorithms.h"
-#include <iostream>
 
 size_t negativeAfterMax(const int *array, size_t size)
 {

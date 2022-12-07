@@ -4,7 +4,7 @@
 
 void CountSignChanges::operator()(int x)
 {
-  const unsigned int max_unsigned_int = std::numeric_limits<unsigned int>::max();
+  const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
 
   if (y && x != 0)
   {

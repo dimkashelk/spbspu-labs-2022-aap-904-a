@@ -20,13 +20,12 @@ int main()
       pif_trio(x);
       sign_changes(x);
     }
-    catch (const std::overflow_error& error)
+    catch (const std::overflow_error &error)
     {
       std::cout << "Error: " << error.what() << "\n";
       return 1;
     }
-  }
-  while (x != 0);
+  } while (x != 0);
   if (!std::cin.fail())
   {
     std::cout << "Count of Pythogorean triplets " << pif_trio.PifCounter << "\n";

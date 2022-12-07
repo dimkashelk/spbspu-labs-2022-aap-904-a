@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include "arrays.h"
 
-size_t counterDivision(const int* array, const size_t, const size int n)
+size_t counterDivision(const int* array, const size_t size, unsigned int n)
 {
   size_t cnt_div = 0;
   for (size_t i = 0; i < size; i++)

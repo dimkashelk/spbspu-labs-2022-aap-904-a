@@ -2,7 +2,7 @@
 #include <fstream>
 #include <ctime>
 #include "countelements.h"
-#include "arraydynamic.h"
+#include "arrayDynamic.h"
 int main(int argc, char **argv)
 {
   size_t beginIndex = 0, endIndex = 1; // M and N

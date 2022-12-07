@@ -49,38 +49,31 @@ int main(int argc, char *argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    try
+    int *arr = new int[n * m];
+    for (size_t i = 0; i < n; i++)
     {
-      int *arr = new int[n * m];
-      for (size_t i = 0; i < n; i++)
+      for (size_t j = 0; j < m; j++)
       {
-        for (size_t j = 0; j < m; j++)
+        in >> arr[i * n + j];
+        if (!in)
         {
-          in >> arr[i * n + j];
-          if (!in)
-          {
-            std::cout << "Error";
-            delete[] arr;
-            return 1;
-          }
+          std::cout << "Error";
+          delete[] arr;
+          return 1;
         }
       }
-      std::ofstream out(argv[3]);
-      out << count_lines_with_unique_elements(arr, n, m) << "\n";
-      try
-      {
-        out << minimum_sums_of_diagonals(arr, n, m) << "\n";
-      }
-      catch (const std::runtime_error &e)
-      {
-        std::cout << e.what();
-      }
-      delete[] arr;
     }
-    catch (const std::bad_alloc &e)
+    std::ofstream out(argv[3]);
+    out << count_lines_with_unique_elements(arr, n, m) << "\n";
+    try
     {
-      std::terminate();
+      out << minimum_sums_of_diagonals(arr, n, m) << "\n";
     }
+    catch (const std::runtime_error &e)
+    {
+      std::cout << e.what();
+    }
+    delete[] arr;
   }
   else
   {

@@ -2,6 +2,5 @@
 #define I2_COUNTELEMENTS_H
 #include <cstddef>
 size_t countNegativeRightFromMax(const int *array, size_t size);
-size_t
-countRepetitiveInRange(const int *array, size_t size, size_t beginIndex, size_t endIndex);
+size_t countRepetitiveInRange(const int *array, size_t size, size_t beginIndex, size_t endIndex);
 #endif

@@ -4,7 +4,7 @@
 #include "recursion.h"
 int main()
 {
-  size_t capacity = 10;
+  size_t capacity = 100;
   char *str = new char[capacity];
   size_t size = 0;
   std::cin >> std::noskipws;
@@ -33,12 +33,12 @@ int main()
         {
           *j = *i;
         }
-        delete [] str;
+        delete[] str;
         str = new_number;
       }
       catch (...)
       {
-        delete [] str;
+        delete[] str;
         return 1;
       }
     }

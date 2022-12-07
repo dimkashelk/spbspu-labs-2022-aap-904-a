@@ -14,17 +14,17 @@ int main()
   {
     std::cin >> value;
   try
-    {
-      max_sr(value);
-      cnt_dev(value);
-    }
-    catch (const std::overflow_error& e)
-    {
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-    
-   }
+  {
+    max_sr(value);
+    cnt_dev(value);
+  }
+  catch (const std::overflow_error& e)
+  {
+    std::cout << e.what() << "\n";
+    return 1;
+  }
+  
+  }
    while (value && std::cin);
    {
      if (!std::cin)

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include "oneDimensionalArrays.h"
-size_t countNegativeRightFromMax1(const int *array, const size_t size)
+size_t countNegativeRightFromMax(const int *array, const size_t size)
 {
   size_t countNegativeRightFromMax = 0;
   int maxElIndex = -1;
@@ -28,7 +28,7 @@ size_t countNegativeRightFromMax1(const int *array, const size_t size)
   }
   return countNegativeRightFromMax;
 }
-size_t countRepetitiveInRange1(const int *array, const size_t size, const size_t beginIndex, const size_t endIndex)
+size_t countRepetitiveInRange(const int *array, const size_t size, const size_t beginIndex, const size_t endIndex)
 {
   bool containsDuplicates = false;
   if (not(beginIndex >= endIndex || endIndex > size || beginIndex > size))

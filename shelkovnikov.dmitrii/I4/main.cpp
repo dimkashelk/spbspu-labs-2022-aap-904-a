@@ -7,7 +7,7 @@
 #include "minimum_sums_of_diagonals.h"
 int main(int argc, char *argv[])
 {
-  if (argc > 4 || argc != 4)
+  if (argc != 4)
   {
     std::cout << "Check parameters";
     return 1;

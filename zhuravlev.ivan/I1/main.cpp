@@ -1,8 +1,8 @@
-#include "max_seq_cnt.h"
-#include "cnt_prev_devisor.h"
 #include <iostream>
 #include <stdexcept>
 #include <limits>
+#include "max_seq_cnt.h"
+#include "cnt_prev_devisor.h"
 
 int main()
 {

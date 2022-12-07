@@ -9,7 +9,7 @@ void MaxSeqRow::operator()(int value)
   func_previous_value = func_value;
   if (func_value && func_previous_value)
   {
-    if (max_seq_row == maximum_of_unsigned_int && func_value == func_previous_value)
+    if (max_seq_row > maximum_of_unsigned_int - 1)
     {
       std::overflow_error("Error overflow");
     }

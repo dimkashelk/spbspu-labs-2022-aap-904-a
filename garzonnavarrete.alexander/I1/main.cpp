@@ -1,10 +1,10 @@
-#include "counters.h"
 #include <iostream>
+#include "counters.h"
 int main()
 {
-  CounterMoreNext counterMoreNext{0, 0};
-  CounterDecreasing counterDecreasing{0, 0, 0};
-  int n;
+  CounterMoreNext counterMoreNext;
+  CounterDecreasing counterDecreasing;
+  int n = 0;
   std::cin >> n;
   while (n && std::cin)
   {
@@ -15,14 +15,14 @@ int main()
     }
     catch (const std::overflow_error &e)
     {
-      std::cout << e.what() << std::endl;
+      std::cout << e.what() << \n;
       return 2;
     }
     std::cin >> n;
   }
   if (!std::cin)
   {
-    std::cout << "Error" << std::endl;
+    std::cout << "Error" << \n;
     return 1;
   }
   return 0;

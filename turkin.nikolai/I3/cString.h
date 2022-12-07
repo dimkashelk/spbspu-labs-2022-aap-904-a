@@ -1,22 +1,23 @@
-#ifndef DYNAMICARRAY_H
-#define DYNAMICARRAY_H
+#ifndef CSTRING_H
+#define CSTRING_H
 #include <cstddef>
 namespace turkin
 {
-  struct Array
+  struct String
   {
-  explicit Array(size_t cap);
-  ~Array();
+    explicit String(size_t cap);
+    ~String();
 
-  bool push(char symbol);
-  char * data;
-  size_t size;
-  size_t capacity;
+    char * data;
+    size_t size;
+    size_t capacity;
 
-  private:
-    const size_t extendSize = 10;
-    char * extendBuffer = nullptr;
-    bool extend();
+    void push(char symbol);
+
+    private:
+      const size_t extendSize = 10;
+      char * extendBuffer = nullptr;
+      void extend();
   };
 }
 #endif

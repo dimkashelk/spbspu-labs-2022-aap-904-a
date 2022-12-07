@@ -1,23 +1,23 @@
 #include "cString.h"
 #include <limits>
+#include <stdexcept>
 
-turkin::Array::Array(size_t cap)
-{
-  data = new char[cap];
-  size = 0;
-  capacity = cap;
-}
+turkin::String::String(size_t cap):
+  data(new char[cap]),
+  size(0),
+  capacity(cap)
+{}
 
-turkin::Array::~Array()
+turkin::String::~String()
 {
   delete [] data;
 }
 
-bool turkin::Array::extend()
+void turkin::String::extend()
 {
   if (capacity + extendSize == std::numeric_limits< size_t >::max())
   {
-    return false;
+    throw std::overflow_error("out of size\n");
   }
   capacity += extendSize;
   extendBuffer = new char[capacity];
@@ -27,19 +27,20 @@ bool turkin::Array::extend()
   }
   delete [] data;
   data = extendBuffer;
-  return true;
 }
 
-bool turkin::Array::push(char symbol)
+void turkin::String::push(char symbol)
 {
   if (size >= capacity)
   {
-    if (!extend())
+    try
     {
-      return false;
+      extend();
+    }
+    catch (...)
+    {
+      throw std::overflow_error("out of size\n");
     }
   }
   data[size++] = symbol;
-  return true;
 }
-

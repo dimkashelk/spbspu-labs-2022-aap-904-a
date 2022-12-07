@@ -1,20 +1,25 @@
 #include <iostream>
 #include <cstddef>
+#include <stdexcept>
 #include "cString.h"
-#include "methods.h"
+#include "stringTransform.h"
 
 int main()
 {
   const size_t basicCapacity = 10;
-  char buffer;
-  turkin::Array string(basicCapacity);
+  char buffer = ' ';
+  turkin::String string(basicCapacity);
   std::cin >> std::noskipws;
   do
   {
     std::cin >> buffer;
-    if (!string.push(buffer))
+    try
     {
-      std::cerr << "out of size\n";
+      string.push(buffer);
+    }
+    catch (std::overflow_error & error)
+    {
+      std::cerr << error.what();
       return 1;
     }
   }
@@ -29,7 +34,7 @@ int main()
     std::cerr << "null string\n";
     return 1;
   }
-  std::cout << turkin::isRepeat(string) << '\t' << turkin::deleteNumbers(string).data << '\n';
+  turkin::String result(string.size + 1);
+  std::cout << turkin::isRepeat(string) << '\t' << turkin::deleteNumbers(result.data, string.data) << '\n';
   return 0;
 }
-

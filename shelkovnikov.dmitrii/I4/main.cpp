@@ -79,8 +79,7 @@ int main(int argc, char *argv[])
     }
     catch (const std::bad_alloc &e)
     {
-      std::cout << "Error";
-      return 2;
+      std::terminate();
     }
   }
   else

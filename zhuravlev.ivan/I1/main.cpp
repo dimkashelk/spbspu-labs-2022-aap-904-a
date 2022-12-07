@@ -13,7 +13,7 @@ int main()
   do
   {
     std::cin >> value;
-    try
+  try
     {
       max_sr(value);
       cnt_dev(value);

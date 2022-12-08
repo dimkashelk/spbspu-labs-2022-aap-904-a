@@ -26,7 +26,9 @@ int main(int argc, char *argv[])
   {
     std::cout << staticarray[i] << " ";
   }
-  transferVariables(staticarray, staticarray_size);
+  size_t M = 3;
+  size_t N = 5;
+  transferVariables(staticarray, staticarray_size, M, N);
   for (size_t i = 0; i < staticarray_size; i++)
   {
     std::cout << staticarray[i] << " ";
@@ -47,7 +49,9 @@ int main(int argc, char *argv[])
   {
     std::cout << dynamicarray[i] << " ";
   }
-  transferVariables(dynamicarray, n);
+  size_t M = 3;
+  size_t N = 5;
+  transferVariables(dynamicarray, n, M, N);
   for (size_t i = 0; i < n; i++)
   {
     std::cout << dynamicarray[i] << " ";
@@ -86,7 +90,9 @@ int main(int argc, char *argv[])
     {
       std::cout << arrInput[i] << " ";
     }
-    transferVariables(arrInput, size);
+    size_t M = 3;
+    size_t N = 5;
+    transferVariables(arrInput, size, M, N);
     for (size_t i = 0; i < size; i++)
     {
       std::cout << arrInput[i] << " ";

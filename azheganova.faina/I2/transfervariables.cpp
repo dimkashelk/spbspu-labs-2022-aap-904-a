@@ -1,17 +1,15 @@
 #include "transfervariables.h"
 
-void transferVariables(int *arr, const size_t size)
+void transferVariables( int *arr, const size_t size, const size_t M, const size_t N)
 {
-  std::size_t newi= size - 1 ;
-  size_t M = 3;
-  size_t N = 5;
+  std::size_t newi = size - 1;
   if (size > N)
   {
     for (size_t i = N; i >= M ; i--)
     {
-      int temp =arr[i];
+      int temp = arr[i];
       arr[i] = arr[newi];
-      arr[newi]= temp ;
+      arr[newi] = temp;
       newi--;
     }
   }

@@ -2,5 +2,5 @@
 #define MOVEARRAYLEFT_H
 #include <cstddef>
 
-void moveArrayLeft(int *arr, const size_t size, const int shift);
+void moveArrayLeft( const int *arr, size_t size, int shift);
 #endif

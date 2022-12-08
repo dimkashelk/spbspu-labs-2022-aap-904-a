@@ -1,6 +1,6 @@
 #include "movearrayleft.h"
 
-void moveArrayLeft(int *arr, const size_t size, const int shift)
+void moveArrayLeft( int *arr, const size_t size, const int shift)
 {
   int howmuchshiftnow = 0;
   while (howmuchshiftnow++ < shift)

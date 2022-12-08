@@ -4,7 +4,7 @@
 
 bool overflow(int a, int b) {
   if (!b) {
-    return a > std::numeric_limits< unsigned int >::max() - 1;
+    return a > std::numeric_limits< int >::max() - 1;
   }
   if (a < 0 && b < 0) {
     return a < std::numeric_limits< int >::min() - b;

@@ -1,23 +1,22 @@
-#include "counters.h"
 #include <limits>
 #include <stdexcept>
+#include "counters.h"
 
-bool overflow(unsigned int cnt) {
-  return cnt > std::numeric_limits< unsigned int >::max() - 1;
-}
-
-bool overflow(const int arr[]){
-  if (arr[0] < 0 && arr[1] < 0) {
-    return arr[0] < std::numeric_limits< int >::min() - arr[1];
+bool overflow(int a, int b) {
+  if (!b) {
+    return a > std::numeric_limits< unsigned int >::max() - 1;
   }
-  if (arr[0] > 0 && arr[1] > 0) {
-    return arr[0] > std::numeric_limits< int >::min() - arr[1];
+  if (a < 0 && b < 0) {
+    return a < std::numeric_limits< int >::min() - b;
+  }
+  if (a > 0 && b > 0) {
+    return a > std::numeric_limits< int >::min() - b;
   }
   return true;
 }
 
 int sum(const int arr[]) {
-  if (overflow(arr)) {
+  if (overflow(arr[0], arr[1])) {
     throw std::overflow_error("Values are too big/small. Why..?");
   }
   return arr[0] + arr[1];
@@ -25,7 +24,7 @@ int sum(const int arr[]) {
 
 void dividendCounter::operator()(int num) {
   if (prev && (num % prev == 0)) {
-    if (overflow(cnt)) {
+    if (overflow(cnt, 0)) {
       throw std::overflow_error("Too many inputs! You're cringe...\n");
     }
     cnt++;
@@ -35,7 +34,7 @@ void dividendCounter::operator()(int num) {
 
 void equalToSumCounter::operator()(int num) {
   if (prev[0] && sum(prev) == num) {
-    if (overflow(cnt)) {
+    if (overflow(cnt, 0)) {
       throw std::overflow_error("Too many inputs! You're cringe...\n");
     }
     cnt++;

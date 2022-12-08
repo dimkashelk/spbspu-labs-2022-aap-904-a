@@ -1,6 +1,6 @@
 #include <iostream>
-#include "counters.h"
 #include <stdexcept>
+#include "counters.h"
 
 int main() {
   dividendCounter DivCnt{0, 0};
@@ -18,14 +18,13 @@ int main() {
     if (!std::cin) {
       throw std::runtime_error("Something happened to the input stream, sry(\n");
     }
-    std::cout << "Numbers that are dividends of prevs count: " << DivCnt.cnt << '\n';
-    std::cout << "Numbers that are a sum of two prevs count: " << EqCnt.cnt << '\n';
   }
 
-  catch (const std::overflow_error & err) {
+  catch (const std::exception & err) {
     std::cout << "Error: " << err.what() << '\n';
+    return 1;
   }
-  catch (const std::runtime_error & err) {
-    std::cout << "Error: " << err.what() << '\n';
-  }
+
+  std::cout << "Numbers that are dividends of prevs count: " << DivCnt.cnt << '\n';
+  std::cout << "Numbers that are a sum of two prevs count: " << EqCnt.cnt << '\n';
 }

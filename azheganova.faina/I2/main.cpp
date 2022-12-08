@@ -17,6 +17,8 @@ int main(int argc, char *argv[])
     std::cout << "No file name";
     return 1;
   }
+  size_t M = 3;
+  size_t N = 5;
   const size_t staticarray_size = 10;
   int staticarray[staticarray_size] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   int shiftamount = 0;
@@ -49,8 +51,6 @@ int main(int argc, char *argv[])
   {
     std::cout << dynamicarray[i] << " ";
   }
-  size_t M = 3;
-  size_t N = 5;
   transferVariables(dynamicarray, n, M, N);
   for (size_t i = 0; i < n; i++)
   {
@@ -90,8 +90,6 @@ int main(int argc, char *argv[])
     {
       std::cout << arrInput[i] << " ";
     }
-    size_t M = 3;
-    size_t N = 5;
     transferVariables(arrInput, size, M, N);
     for (size_t i = 0; i < size; i++)
     {

@@ -6,8 +6,8 @@ class Lab_I1
 public:
   Lab_I1();
   void operator()(int n);
-  const int get_count();
-  const int get_count_after_max();
+  int get_count() const;
+  int get_count_after_max() const;
 private:
   int n = 0;
   int old_n;

@@ -41,12 +41,12 @@ void Lab_I1::operator()(int n)
   }
 }
 
-const int Lab_I1::get_count()
+int Lab_I1::get_count() const
 {
   return count;
 }
 
-const int Lab_I1::get_count_after_max()
+int Lab_I1::get_count_after_max() const
 {
   return count_after_max;
 }

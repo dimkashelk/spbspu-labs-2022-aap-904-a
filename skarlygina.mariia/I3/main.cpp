@@ -52,6 +52,11 @@ int main()
   try
   {
     string_source1 = new char[size_source1];
+    for (size_t i = 0; i < size_source1 - 1; i++)
+    {
+      string_source1[i] = '1';
+    }
+    string_source1[size_source1 - 1] = '\0';
   }
   catch (const std::bad_alloc& e)
   {
@@ -60,15 +65,16 @@ int main()
     delete[] cstring;
     return 1;
   }
-  for (size_t i = 0; i < size_source1 - 1; i++)
-  {
-    string_source1[i] = '1';
-  }
-  string_source1[size_source1 - 1] = '\0';
 
   try
   {
     destination1 = new char[size_source1 + size];
+    destination1 = addDecimalDigits(destination1, cstring, string_source1);
+    if (destination1[0] != '\0')
+    {
+      std::cout << destination1 << "\n";
+    }
+    else std::cout << "Error while making first function \n";
   }
   catch (const std::bad_alloc& e)
   {
@@ -77,16 +83,16 @@ int main()
     delete[] cstring;
     return 1;
   }
-  destination1 = addDecimalDigits(destination1, cstring, string_source1);
-  if (destination1[0] != '\0')
-  {
-    std::cout << destination1 << "\n";
-  }
-  else std::cout << "Error while making first function \n";
 
   try
   {
     destination2 = new char[size_source1 + size];
+    destination2 = makeStringCommonSymbols(destination2, cstring, string_source1);
+    if (destination2[0] != '\0')
+    {
+      std::cout << destination2 << "\n";
+    }
+    else std::cout << "There are no common symbols \n";
   }
   catch (const std::bad_alloc& e)
   {
@@ -95,12 +101,6 @@ int main()
     delete[] cstring;
     return 1;
   }
-  destination2 = makeStringCommonSymbols(destination2, cstring, string_source1);
-  if (destination2[0] != '\0')
-  {
-    std::cout << destination2 << "\n";
-  }
-  else std::cout << "There are no common symbols \n";
 
   delete[] destination1;
   delete[] destination2;

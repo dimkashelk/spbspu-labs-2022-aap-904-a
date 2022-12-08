@@ -1,5 +1,15 @@
 #include "sequence_interaction.h"
 
+Lab_I1::Lab_I1()
+{
+  old_n = 0;
+  cur_n = 0;
+  new_n = 0;
+  count = 0;
+  max_n = 0;
+  count_after_max = 0;
+}
+
 void Lab_I1::operator()(int n)
 {
   if (max_n < n)
@@ -31,12 +41,12 @@ void Lab_I1::operator()(int n)
   }
 }
 
-int Lab_I1::get_count()
+const int Lab_I1::get_count()
 {
   return count;
 }
 
-int Lab_I1::get_count_after_max()
+const int Lab_I1::get_count_after_max()
 {
   return count_after_max;
 }

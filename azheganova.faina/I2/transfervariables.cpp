@@ -2,7 +2,7 @@
 
 void transferVariables(int *arr, const size_t size, const size_t M, const size_t N)
 {
-  std::size_t newi = size - 1;
+  size_t newi = size - 1;
   if (size > N)
   {
     for (size_t i = N; i >= M ; i--)

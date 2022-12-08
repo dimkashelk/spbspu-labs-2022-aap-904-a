@@ -28,8 +28,6 @@ int main(int argc, char *argv[])
   {
     std::cout << staticarray[i] << " ";
   }
-  size_t M = 3;
-  size_t N = 5;
   transferVariables(staticarray, staticarray_size, M, N);
   for (size_t i = 0; i < staticarray_size; i++)
   {

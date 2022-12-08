@@ -2,5 +2,5 @@
 #define TRANSFERVARIABLES_H
 #include <cstddef>
 
-void transferVariables( int *arr, const size_t size, const size_t M, const size_t N);
+void transferVariables(int *arr, size_t size, size_t M, size_t N);
 #endif

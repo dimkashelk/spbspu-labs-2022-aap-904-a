@@ -1,6 +1,6 @@
 #include "transfervariables.h"
 
-void transferVariables( int *arr, const size_t size, const size_t M, const size_t N)
+void transferVariables(int *arr, const size_t size, const size_t M, const size_t N)
 {
   std::size_t newi = size - 1;
   if (size > N)

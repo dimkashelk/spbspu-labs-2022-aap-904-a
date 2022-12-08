@@ -15,15 +15,15 @@ char * turkin::deleteNumbers(char * destination, const char * source, size_t siz
   return destination;
 }
 
-bool turkin::isRepeat(const turkin::String & string)
+bool turkin::isRepeat(const turkin::CharArray & array)
 {
-  size_t amount;
-  for (size_t i = 0; i < string.size; i++)
+  size_t amount = 0;
+  for (size_t i = 0; i < array.size; i++)
   {
     amount = 0;
-    for (size_t k = 0; k < string.size; k++)
+    for (size_t k = 0; k < array.size; k++)
     {
-      if (string.data[i] == string.data[k])
+      if (array.data[i] == array.data[k])
       {
         amount++;
       }

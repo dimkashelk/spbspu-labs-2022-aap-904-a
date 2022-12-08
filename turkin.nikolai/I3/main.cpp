@@ -1,40 +1,47 @@
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
-#include "cString.h"
+#include "charArray.h"
 #include "stringTransform.h"
 
 int main()
 {
   const size_t basicCapacity = 10;
-  char buffer = ' ';
-  turkin::String string(basicCapacity);
+  const size_t basicAddition = 10;
+  turkin::CharArray array(basicCapacity);
   std::cin >> std::noskipws;
   do
   {
-    std::cin >> buffer;
-    try
+    if (array.size < array.capacity)
     {
-      string.push(buffer);
+      std::cin >> array.data[array.size++];
     }
-    catch (std::overflow_error & error)
+    else
     {
-      std::cerr << error.what();
-      return 1;
+      try
+      {
+        turkin::extend(array, basicAddition);
+      }
+      catch (std::overflow_error & error)
+      {
+        std::cerr << error.what();
+        return 1;
+      }
     }
   }
-  while (std::cin && string.data[string.size - 1] != '\n');
-  if (!std::cin && !string.size)
+  while (std::cin && array.data[array.size - 1] != '\n');
+  if (!std::cin && !array.size)
   {
     std::cerr << "incorrect input\n";
     return 1;
   }
-  if (string.size == 1)
+  if (array.size == 1)
   {
     std::cerr << "null string\n";
     return 1;
   }
-  turkin::String result(string.size + 1);
-  std::cout << turkin::isRepeat(string) << '\t' << turkin::deleteNumbers(result.data, string.data, string.size) << '\n';
+  turkin::CharArray result(array.size + 1);
+  std::cout << turkin::isRepeat(array) << '\t' << turkin::deleteNumbers(result.data, array.data, array.size) << '\n';
   return 0;
 }
+

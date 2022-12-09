@@ -10,13 +10,7 @@ int main(int argc, char *argv[])
   }
   const size_t arr_size = 7;
   int arr[arr_size] = {1, 9, 3, -2, -3, 2, 6};
-  size_t m = 0, n = 0;
-  std::cin >> m >> n;
-  if (m > n) {
-    size_t t = m;
-    m = n;
-    n = t;
-  }
+  size_t m = 1, n = 4;
   std::cout << negativeAfterMax(arr, arr_size) << "\n";
   movingElements(arr, arr_size, m, n);
   for (size_t i = 0; i < arr_size; i++) {

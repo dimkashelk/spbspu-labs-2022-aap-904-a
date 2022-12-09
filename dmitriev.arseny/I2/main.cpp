@@ -53,7 +53,7 @@ int main(int argc, char* arr[])
     return 1;
   }
   delete[] arr2;
- 
+
   std::ifstream file;
   std::string name = arr[1];
   file.open(name);

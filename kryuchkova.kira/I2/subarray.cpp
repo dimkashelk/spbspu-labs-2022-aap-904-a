@@ -1,5 +1,6 @@
 #include "subarray.h"
 #include <cstddef>
+#include <stdexcept>
 
 unsigned int count_sequence_similar(const int *array, const unsigned int size)
 {
@@ -10,6 +11,10 @@ unsigned int count_sequence_similar(const int *array, const unsigned int size)
   {
     if (array[i - 1] == array[i])
     {
+      if (counter == std::numeric_limits< unsigned int >::max())
+      {
+        throw std::overflow_error("Overflow!");
+      }
       counter++;
       if (counter > max)
       {

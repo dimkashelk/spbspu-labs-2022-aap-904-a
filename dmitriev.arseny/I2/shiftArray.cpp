@@ -1,5 +1,6 @@
 #include "shiftArray.h"
 #include <stdexcept>
+#include <cstddef>
 
 void shiftArray(int* array, const size_t size, const size_t shift)
 {

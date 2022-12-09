@@ -1,4 +1,5 @@
 #include "countOrderedTriples.h"
+#include <cstddef>
 
 size_t countOrderedTriples(const int* const array, const size_t size)
 {

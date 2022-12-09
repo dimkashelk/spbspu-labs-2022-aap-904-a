@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 const char* ERROR_INVALID_INPUT = "Error:input must only contain integers.";
 

@@ -4,19 +4,18 @@
 
 void CntDevPrev::operator()(int value)
 {
-  const unsigned int maximum_of_unsigned_int = std::numeric_limits< unsigned int >::max();
-  devisor_func_previous_value = devisor_func_value;
-  devisor_func_value = value;
-  if (devisor_func_previous_value && devisor_func_value)
+  const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
+  dev_func_prev_val = dev_func_val;
+  dev_func_val = value;
+  if (dev_func_val && dev_func_prev_val)
   {
-    if (cnt_devisor_counter > maximum_of_unsigned_int - 1 && devisor_func_value %
-    devisor_func_previous_value == 0)
+    if (cnt_dev > max_unsigned_int - 1 && dev_func_val % dev_func_prev_val == 0)
     {
       throw std::overflow_error("Not good");
     }
     else
     {
-      cnt_devisor_counter += ((devisor_func_value % devisor_func_previous_value == 0) ? 1 : 0);
+      cnt_dev += ((dev_func_val % dev_func_prev_val == 0) ? 1 : 0);
     }
   }
 }

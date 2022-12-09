@@ -32,7 +32,7 @@ int main()
       return 2;
     }
     std::cout << "Maximum equal elements in the row: " << max_sr.max_seq_row << "\n";
-    std::cout << "Number of elements which have good devisor: " << cnt_dev.cnt_devisor_counter << "\n";
+    std::cout << "Number of elements which have good devisor: " << cnt_dev.cnt_dev << "\n";
     return 0;
   }
 }

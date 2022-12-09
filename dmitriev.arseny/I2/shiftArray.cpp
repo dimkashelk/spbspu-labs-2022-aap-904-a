@@ -2,12 +2,13 @@
 #include <stdexcept>
 #include <cstddef>
 
-void shiftArray(int* array, const size_t size, const size_t shift)
+void shiftArray(int* array, const size_t size, size_t shift)
 {
   if (int(shift) < 0)
   {
     throw::std::invalid_argument("incorrect shift");
   }
+  shift = shift % size;
   reverse(array, shift);
   reverse(array + shift, size - shift);
   reverse(array, size);

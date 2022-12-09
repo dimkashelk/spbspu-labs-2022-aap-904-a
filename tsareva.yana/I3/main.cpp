@@ -51,32 +51,14 @@ int main()
   str_1[size_1 - 1] = '\0';
   char str_2[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', '\0'};
   size_t size_2 = 9;
-  try
-  {
-    char *res1 = new char[size_1 + size_2];
-    generate_new_line(res1, str_1, str_2);
-    std::cout << res1 << '\n';
-    delete[] res1;
-  }
-  catch (const std::bad_alloc &e)
-  {
-    std::cout << e.what();
-    delete[] str_1;
-    return 2;
-  }
-  try
-  {
-    char* res2 = new char[size_1];
-    change_chars(res2, str_1, size_1);
-    std::cout << res2 << '\n';
-    delete[] res2;
-  }
-  catch (const std::bad_alloc &e)
-  {
-    std::cout << e.what();
-    delete[] str_1;
-    return 2;
-  }
+  char *res1 = new char[size_1 + size_2];
+  generate_new_line(res1, str_1, str_2);
+  std::cout << res1 << '\n';
+  delete[] res1;
+  char* res2 = new char[size_1];
+  change_chars(res2, str_1, size_1);
+  std::cout << res2 << '\n';
+  delete[] res2;
   delete[] str_1;
   return 0;
 }

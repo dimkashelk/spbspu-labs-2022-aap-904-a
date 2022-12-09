@@ -10,7 +10,7 @@ char* generate_new_line(char* res, char* str1, char* str2)
     {
       if (str1[i] == str2[j])
       {
-        fl = true;
+        fl = false;
         break;
       }
     }
@@ -27,7 +27,7 @@ char* generate_new_line(char* res, char* str1, char* str2)
     {
       if (str2[i] == str1[j])
       {
-        fl = true;
+        fl = false;
         break;
       }
     }

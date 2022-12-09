@@ -36,7 +36,7 @@ int main(int argc, char* arr[])
   }
   int* arr2 = new int[size2];
   std::srand(time(nullptr));
-  for (int i = 0; i < size2; i++)
+  for (size_t i = 0; i < size2; i++)
   {
     arr2[i] = rand();
   }
@@ -77,7 +77,7 @@ int main(int argc, char* arr[])
     return 1;
   }
   arr3 = new int[size3];
-  for (int i = 0; i < size3; i++)
+  for (size_t i = 0; i < size3; i++)
   {
     file >> arr3[i];
     if (!file)

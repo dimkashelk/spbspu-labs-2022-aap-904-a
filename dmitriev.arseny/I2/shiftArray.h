@@ -7,6 +7,4 @@ void shiftArray(int* array, size_t size, size_t shift);
 
 void reverse(int* ms, size_t rev);
 
-void swapEl(int& x, int& y);
-
 #endif

@@ -117,8 +117,8 @@ std::string shift_part_to_end(int* arr, size_t size, unsigned int m, unsigned in
 
   for (int i = 0; i < part_size; i++) {
     int tmp = arr[size - i - 1];
-    arr[size - i - 1] = arr[n - i -1];
-    arr[n - i -1] = tmp;
+    arr[size - i - 1] = arr[n - i - 1];
+    arr[n - i - 1] = tmp;
   }
 
   std::ostringstream os;

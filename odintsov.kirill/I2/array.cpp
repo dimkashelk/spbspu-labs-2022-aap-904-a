@@ -30,11 +30,11 @@ const int* odintsov::findMax(const int* arr, size_t size, int lowBound, int high
   const int* max = nullptr;
   for (size_t i = 0; i < size; i++) {
     if ((lowBound < arr[i]) && (arr[i] < highBound)) {
-      if ((max == nullptr) || (*max < arr[i])) {
-        max = &arr[i];
+      if ((max == nullptr) || (* max < arr[i])) {
+        max = & arr[i];
       }
-      if (*max == highBound - 1) {
-        break;
+      if (* max == highBound - 1) {
+        return max;
       }
     }
   }

@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
   int lowBound = -10000;
   int highBound = 10000;
   try {
-    std::cout << *odintsov::findMax(staticArr, staticArrSize, lowBound, highBound) << '\n';
+    std::cout << * odintsov::findMax(staticArr, staticArrSize, lowBound, highBound) << '\n';
   } catch (const std::logic_error& err) {
     std::cout << err.what() << '\n';
   }
@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
       return 2;
     }
     try {
-      std::cout << *odintsov::findMax(dynArr.data, dynArr.size, lowBound, highBound) << '\n';
+      std::cout << * odintsov::findMax(dynArr.data, dynArr.size, lowBound, highBound) << '\n';
     } catch (const std::logic_error& err) {
       std::cout << err.what() << '\n';
     }
@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
       fileArr.append(val);
     }
     try {
-      std::cout << *odintsov::findMax(fileArr.data, fileArr.size, lowBound, highBound) << '\n';
+      std::cout << * odintsov::findMax(fileArr.data, fileArr.size, lowBound, highBound) << '\n';
     } catch (const std::logic_error& err) {
       std::cout << err.what() << '\n';
     }

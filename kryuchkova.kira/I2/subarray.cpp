@@ -1,6 +1,7 @@
 #include "subarray.h"
 #include <cstddef>
 #include <stdexcept>
+#include <limits>
 
 unsigned int count_sequence_similar(const int *array, const unsigned int size)
 {

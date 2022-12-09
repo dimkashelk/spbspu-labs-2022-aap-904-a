@@ -1,6 +1,7 @@
 #include "descending_triple.h"
 #include <cstddef>
 #include <stdexcept>
+#include <limits>
 
 unsigned int count_descending_triple(const int *array, const unsigned int size)
 {

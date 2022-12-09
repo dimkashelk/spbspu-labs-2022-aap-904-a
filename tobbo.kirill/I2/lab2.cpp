@@ -12,7 +12,7 @@ void processDynamicArray();
 void processFileArray(char* filename);
 
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]) {
   if (argc != 2) {
     std::cerr << "Wrong number of parameters. Should be one" << std::endl;
     return (int)1;

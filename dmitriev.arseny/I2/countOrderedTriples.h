@@ -1,6 +1,6 @@
-#ifndef COUNTORDERDNRIPLES
-#define COUNTORDERDNRIPLES
+#ifndef COUNTORDERDNRIPLES_H
+#define COUNTORDERDNRIPLES_H
 
-int countOrderedTriples(const int* const array, int size);
+size_t countOrderedTriples(const int* array, size_t size);
 
 #endif

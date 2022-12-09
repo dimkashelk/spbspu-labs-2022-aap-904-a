@@ -1,9 +1,9 @@
 #include "countOrderedTriples.h"
 
-int countOrderedTriples(const int* const array, const int size)
+size_t countOrderedTriples(const int* const array, const size_t size)
 {
-  int count = 0;
-  for (int i = 2; i < size; i++)
+  size_t count = 0;
+  for (size_t i = 2; i < size; i++)
   {
     if (array[i] < array[i - 1])
     {

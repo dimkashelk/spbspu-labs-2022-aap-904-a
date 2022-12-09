@@ -24,9 +24,6 @@ void odintsov::Array::append(int val)
 
 const int* odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
 {
-  if (size == 0) {
-    return 0;
-  }
   const int* max = nullptr;
   for (size_t i = 0; i < size; i++) {
     if ((lowBound < arr[i]) && (arr[i] < highBound)) {

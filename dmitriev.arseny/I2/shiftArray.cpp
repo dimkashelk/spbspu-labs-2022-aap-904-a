@@ -17,6 +17,14 @@ void reverse(int* ms, size_t rev)
 {
   for (size_t i = 0, j = rev - 1; i < (rev + 1) / 2; i++, j--)
   {
-    std::swap(ms[i], ms[j]);
+    swapEl(ms[i], ms[j]);
   }
+}
+
+void swapEl(int& x, int& y)
+{
+  int z = 0;
+  z = x;
+  x = y;
+  y = z;
 }

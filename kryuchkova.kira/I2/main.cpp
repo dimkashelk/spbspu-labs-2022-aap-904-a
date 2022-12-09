@@ -6,14 +6,9 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc > 2)
+  if (argc != 2)
   {
-    std::cerr << "Too much parameters." << '\n';
-    return 1;
-  }
-  if (argc == 1)
-  {
-    std::cerr << "No file name." << '\n';
+    std::cerr << "Invalid number of arguments." << '\n';
     return 1;
   }
 

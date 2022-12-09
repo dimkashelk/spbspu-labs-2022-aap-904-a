@@ -53,9 +53,7 @@ int main(int argc, char* arr[])
     return 1;
   }
   delete[] arr2;
-  
  
-
   std::ifstream file;
   std::string name = arr[1];
   file.open(name);
@@ -102,7 +100,6 @@ int main(int argc, char* arr[])
     return 1;
   }
   delete[] arr3;
-
 
   return 0;
 }

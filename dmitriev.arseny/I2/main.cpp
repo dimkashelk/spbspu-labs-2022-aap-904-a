@@ -30,10 +30,6 @@ int main(int argc, char* arr[])
   size_t size2 = 0;
   size_t shift2 = 0;
   std::cin >> size2;
-  if (size2 < 0)
-  {
-    std::cout << "No arr is possible" << "\n";
-  }
   int* arr2 = new int[size2];
   std::srand(time(nullptr));
   for (size_t i = 0; i < size2; i++)
@@ -69,11 +65,6 @@ int main(int argc, char* arr[])
   if (!file)
   {
     std::cout << "Error while opening file" << "\n";
-    return 1;
-  }
-  if (shift3 < 0)
-  {
-    std::cout << "Error while reading file";
     return 1;
   }
   arr3 = new int[size3];

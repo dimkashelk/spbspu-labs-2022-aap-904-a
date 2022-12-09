@@ -2,7 +2,10 @@
 
 size_t negativeAfterMax(const int *array, size_t size)
 {
-  int max = array[0], maxi = 0;
+  int max = 0, maxi = 0;
+  if (size > 0) {
+    max = array[0];
+  }
   for (size_t i = 1; i < size; i++) {
     if (array[i] > max) {
       max = array[i];

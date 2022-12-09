@@ -15,14 +15,14 @@ int main()
     }
     catch (const std::overflow_error &e)
     {
-      std::cout << e.what() << \n;
+      std::cout << e.what() << '\n';
       return 2;
     }
     std::cin >> n;
   }
   if (!std::cin)
   {
-    std::cout << "Error" << \n;
+    std::cout << "Error" << '\n';
     return 1;
   }
   return 0;

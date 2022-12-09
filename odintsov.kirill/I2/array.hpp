@@ -1,7 +1,7 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-#include <stddef.h>
+#include <cstddef>
 
 namespace odintsov {
   struct Array {

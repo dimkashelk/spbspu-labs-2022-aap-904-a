@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
 #include "array.hpp"
 
 int main(int argc, char* argv[])

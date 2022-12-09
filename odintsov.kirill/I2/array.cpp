@@ -1,7 +1,7 @@
 #include "array.hpp"
 #include <stdexcept>
 #include <limits>
-#include <stddef.h>
+#include <cstddef>
 
 odintsov::Array::Array(size_t cap):
   data(new int[cap]),

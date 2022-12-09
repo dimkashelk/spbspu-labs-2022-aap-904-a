@@ -22,22 +22,23 @@ void odintsov::Array::append(int val)
   data[size++] = val;
 }
 
-int odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
+int* odintsov::findMax(const int* arr, size_t size, int lowBound, int highBound)
 {
   if (size == 0) {
     return 0;
   }
-  const int minInt = std::numeric_limits< int >::min();
-  int max = minInt;
+  int* max = nullptr;
   for (size_t i = 0; i < size; i++) {
-    if ((lowBound < arr[i]) && (arr[i] < highBound) && (arr[i] > minInt)) {
-      max = arr[i];
-      if (max == highBound - 1) {
+    if ((lowBound < arr[i]) && (arr[i] < highBound)) {
+      if ((max == nullptr) || (*max < arr[i])) {
+        max = &arr[i];
+      }
+      if (*max == highBound - 1) {
         break;
       }
     }
   }
-  if (max == minInt) {
+  if (max == nullptr) {
     throw std::logic_error("Error: max value could not be found in array");
   }
   return max;

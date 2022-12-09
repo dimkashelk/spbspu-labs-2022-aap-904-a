@@ -16,7 +16,7 @@ namespace odintsov {
     void append(int val);
   };
 
-  int* findMax(const int* arr, size_t size, int lowBound, int highBound);
+  const int* findMax(const int* arr, size_t size, int lowBound, int highBound);
   float getAvgEvenIndices(const int* arr, size_t size);
 }
 

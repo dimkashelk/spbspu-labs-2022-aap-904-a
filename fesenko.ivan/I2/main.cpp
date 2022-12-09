@@ -10,8 +10,15 @@ int main(int argc, char *argv[])
   }
   const size_t arr_size = 7;
   int arr[arr_size] = {1, 9, 3, -2, -3, 2, 6};
+  size_t m = 0, n = 0;
+  std::cin >> m >> n;
+  if (m > n) {
+    size_t t = m;
+    m = n;
+    n = t;
+  }
   std::cout << negativeAfterMax(arr, arr_size) << "\n";
-  movingElements(arr, arr_size);
+  movingElements(arr, arr_size, m, n);
   for (size_t i = 0; i < arr_size; i++) {
     std::cout << arr[i] << " ";
   }
@@ -32,7 +39,7 @@ int main(int argc, char *argv[])
   } else {
     std::cout << negativeAfterMax(dyn_arr, dyn_arr_size) << "\n";
   }
-  movingElements(dyn_arr, dyn_arr_size);
+  movingElements(dyn_arr, dyn_arr_size, m, n);
   for (size_t i = 0; i < dyn_arr_size; i++) {
     std::cout << dyn_arr[i] << " ";
   }
@@ -63,10 +70,10 @@ int main(int argc, char *argv[])
   } else {
     std::cout << negativeAfterMax(file_arr, file_arr_size) << "\n";
   }
-  movingElements(file_arr, file_arr_size);
+  movingElements(file_arr, file_arr_size, m, n);
   for (size_t i = 0; i < file_arr_size; i++) {
     std::cout << file_arr[i] << " ";
   }
   std::cout << "\n";
-  delete[] file_arr;
+  delete [] file_arr;
 }

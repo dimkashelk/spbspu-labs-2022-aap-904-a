@@ -6,7 +6,6 @@ int main()
   size_t capacity = 10;
   char * cstring = new char[capacity];
   size_t size = 0;
-
   std::cin >> std::noskipws;
   do
   {
@@ -35,5 +34,8 @@ int main()
   cstring[size - 1] = '\0';
 
   std::cout << cstring << "\n";
+  int resultlen = 0;
+  char* res1 = new char[size];
+  std::cout << count_different_letters( res1, cstring, resultlen) << std::endl;
   delete [] cstring;
 }

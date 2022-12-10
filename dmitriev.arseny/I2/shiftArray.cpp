@@ -8,10 +8,13 @@ void shiftArray(int* array, const size_t size, size_t shift)
   {
     throw::std::invalid_argument("incorrect shift");
   }
-  shift = shift % size;
-  reverse(array, shift);
-  reverse(array + shift, size - shift);
-  reverse(array, size);
+  if (size != 0)
+  {
+    shift = shift % size;
+    reverse(array, shift);
+    reverse(array + shift, size - shift);
+    reverse(array, size);
+  }
 }
 
 void reverse(int* ms, size_t rev)

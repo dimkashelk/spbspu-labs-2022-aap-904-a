@@ -1,5 +1,6 @@
 #include <cstring>
 #include <ifstream>
+#include <iosstream>
 #include "count_positive_columns.h"
 #include "count_diagonals_without_zeros.h"
 using namespace std;
@@ -71,7 +72,12 @@ int main(int argc, char* argv[])
 	}
 	else 
 	{
-		int* dynamic_array = new int[rows][columns];
+		int** dynamic_array = new int*[rows];
+		for (size_t i = 0; i < rows; i++)
+		{
+			dinamic_array[i] = new int[columns];
+		}
+
 		for (size_t i = 0; i < rows; i++)
 		{
 			for (size_t j = 0; j < columns; j++) 

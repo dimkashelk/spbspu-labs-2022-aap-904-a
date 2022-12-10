@@ -52,7 +52,7 @@ int main()
     return 2;
   }
   str[size - 1] = '\0';
-  if (is_real_number(str, size - 1))
+  if (is_real_number(str))
   {
     std::cout << "It's a real number";
   }

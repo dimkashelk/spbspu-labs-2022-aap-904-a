@@ -44,4 +44,3 @@ void CounterDecreasing::operator()(int next)
   }
   prev = next;
 }
-

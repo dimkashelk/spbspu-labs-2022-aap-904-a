@@ -16,4 +16,3 @@ struct CounterDecreasing
   void operator()(int next);
 };
 #endif
-

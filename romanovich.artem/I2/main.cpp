@@ -2,7 +2,7 @@
 #include <fstream>
 #include <ctime>
 #include "countelements.h"
-#include "arrayDynamic.h"
+#include "arraydynamic.h"
 int main(int argc, char **argv)
 {
   size_t beginIndex = 0, endIndex = 1;
@@ -23,11 +23,11 @@ int main(int argc, char **argv)
   std::srand(time(nullptr));
   for (size_t i = 0; i < arrayDynamicSize; i++)
   {
-    arrayDynamic.size++;
-    arrayDynamic.data[i] = std::rand() % 10 - 5;
+    arraydynamic.size++;
+    arraydynamic.data[i] = std::rand() % 10 - 5;
   }
-  size_t countNrfmDynamic = countNegativeRightFromMax(arrayDynamic.data, arrayDynamicSize);
-  bool countRirDynamic = countRepetitiveInRange(arrayDynamic.data, arrayDynamicSize, beginIndex, endIndex);
+  size_t countNrfmDynamic = countNegativeRightFromMax(arraydynamic.data, arrayDynamicSize);
+  bool countRirDynamic = countRepetitiveInRange(arraydynamic.data, arrayDynamicSize, beginIndex, endIndex);
   std::cout << countNrfmDynamic << "\n";
   std::cout << countRirDynamic << "\n";
   if (argc == 1)

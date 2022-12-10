@@ -22,5 +22,9 @@ double sinh(double x, double error, unsigned count)
     res += summand;
   }
   while (abs(summand) > error && count_summand < count);
+  if (count_summand > count)
+  {
+    throw std::out_of_range("The specified accuracy has not been reached");
+  }
   return res;
 }

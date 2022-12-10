@@ -5,15 +5,13 @@
 #include "arrayDynamic.h"
 int main(int argc, char **argv)
 {
-  size_t beginIndex = 0, endIndex = 1; // M and N
-  //Const array
+  size_t beginIndex = 0, endIndex = 1;
   const size_t arrayConstSize = 10;
   int arrayConst[arrayConstSize] = {1, -1, 3, 4, 5, 4, -1, -1, 2, 1};
   size_t countNrfmConst = countNegativeRightFromMax(arrayConst, arrayConstSize);
   bool countRirConst = countRepetitiveInRange(arrayConst, arrayConstSize, beginIndex, endIndex);
   std::cout << countNrfmConst << "\n";
   std::cout << countRirConst << "\n";
-  //Dynamic array
   size_t arrayDynamicSize = 0;
   std::cin >> arrayDynamicSize;
   if (!std::cin)
@@ -32,7 +30,6 @@ int main(int argc, char **argv)
   bool countRirDynamic = countRepetitiveInRange(arrayDynamic.data, arrayDynamicSize, beginIndex, endIndex);
   std::cout << countNrfmDynamic << "\n";
   std::cout << countRirDynamic << "\n";
-  //File array
   if (argc == 1)
   {
     std::cout << "No file provided.";

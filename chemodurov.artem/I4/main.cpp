@@ -73,7 +73,7 @@ int main(int argc, char * argv[])
   }
   else
   {
-    if (rows * cols == 0)
+    if ((rows * cols) == 0)
     {
       output << "0\n";
       if (!output)
@@ -83,7 +83,7 @@ int main(int argc, char * argv[])
       }
       return 0;
     }
-    int * arr = new int[rows*cols];
+    int * arr = new int[rows * cols];
     for (size_t i = 0; i < size; ++i)
     {
       input >> arr[i];
@@ -111,6 +111,7 @@ int main(int argc, char * argv[])
     if (!output)
     {
       std::cerr << "Error while writing summ\n";
+      delete [] arr;
       return 1;
     }
     delete [] arr;

@@ -1,22 +1,21 @@
 #include "arrays.h"
 #include <stdexcept>
 
-size_t chemodurov::countGrowingRows(int * arr, size_t rows, size_t cols)
+size_t chemodurov::countGrowingRows(const int * arr, size_t rows, size_t cols)
 {
   size_t counter = 0;
-  size_t number_of_item = 0;
   for (size_t i = 0; i < rows; ++i)
   {
     size_t counter_in_row = 0;
     for (size_t j = 0; j < cols - 1; ++j)
     {
-      number_of_item = i * cols + j;
+      size_t number_of_item = (i * cols) + j;
       if (arr[number_of_item] > arr[number_of_item + 1])
       {
         counter_in_row++;
       }
     }
-    if (counter_in_row == cols - 1)
+    if (counter_in_row == (cols - 1))
     {
       counter++;
     }
@@ -24,7 +23,7 @@ size_t chemodurov::countGrowingRows(int * arr, size_t rows, size_t cols)
   return counter;
 }
 
-unsigned long long chemodurov::calcMinSummSecondaryDiagonal(int * arr, size_t rows, size_t cols)
+unsigned long long chemodurov::calcMinSummSecondaryDiagonal(const int * arr, size_t rows, size_t cols)
 {
   if (rows != cols)
   {
@@ -32,17 +31,15 @@ unsigned long long chemodurov::calcMinSummSecondaryDiagonal(int * arr, size_t ro
   }
   unsigned long long summ = 0;
   unsigned long long max_summ = 0;
-  size_t number_of_item = 0;
-  for (size_t i = 0; i < 2 * rows - 1; ++i)
+  for (size_t i = 0; i < (2 * rows) - 1; ++i)
   {
     for (size_t j = 0; j < rows; ++j)
     {
       for (size_t k = 0; k < cols; ++k)
       {
-        number_of_item = j * cols + k;
-        if (j + k == i)
+        if ((j + k) == i)
         {
-          summ += arr[number_of_item];
+          summ += arr[(j * cols) + k];
         }
       }
     }

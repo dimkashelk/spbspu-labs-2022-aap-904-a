@@ -32,8 +32,13 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
+  if (!std::cin && !size)
+  {
+    std::cout << "error";
+    delete[] cstring;
+    return 1;
+  }
   cstring[size - 1] = '\0';
-
   std::cout << cstring << "\n";
   int resultlen = 0;
   char* res1 = new char[size];

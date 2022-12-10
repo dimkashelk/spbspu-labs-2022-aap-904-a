@@ -1,17 +1,17 @@
 #include "sequence_max.h"
 
-Lab_I1_T2::Lab_I1_T2():
- n(0),
- max_n(0),
+Seq_after_max::Seq_after_max():
+ num(0),
+ max_num(0),
  count_after_max(0)
 {}
 
-void Lab_I1_T2::operator()(int n)
+void Seq_after_max::operator()(int num)
 {
-  if (max_n < n)
+  if (max_num < num)
   {
     count_after_max = 0;
-    max_n = n;
+    max_num = num;
   }
   else
   {
@@ -19,7 +19,7 @@ void Lab_I1_T2::operator()(int n)
   }
 }
 
-int Lab_I1_T2::get_count_after_max() const
+int Seq_after_max::get_count_after_max() const
 {
   return count_after_max;
 }

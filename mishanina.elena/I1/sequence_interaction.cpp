@@ -1,36 +1,36 @@
 #include "sequence_interaction.h"
 
-Lab_I1::Lab_I1():
- n(0),
- old_n(0),
- cur_n(0),
- new_n(0),
- count(0)
+Suitable_seq::Suitable_seq():
+ num(0),
+ previous_num(0),
+ current_num(0),
+ next_num(0),
+ count_of_elements(0)
 {}
 
-void Lab_I1::operator()(int n)
+void Suitable_seq::operator()(int num)
 {
-  if (old_n == 0)
+  if (previous_num == 0)
   {
-    old_n = n;
+    previous_num = num;
   }
-  else if (cur_n == 0)
+  else if (current_num == 0)
   {
-    cur_n = n;
+    current_num = num;
   }
   else
   {
-    new_n = n;
-    if (cur_n < old_n && cur_n > new_n)
+    next_num = num;
+    if (current_num < previous_num && current_num > next_num)
     {
-      count++;
+      count_of_elements++;
     }
-    old_n = cur_n;
-    cur_n = new_n;
+    previous_num = current_num;
+    current_num = next_num;
   }
 }
 
-int Lab_I1::get_count() const
+int Suitable_seq::get_count_of_elements() const
 {
-  return count;
+  return count_of_elements;
 }

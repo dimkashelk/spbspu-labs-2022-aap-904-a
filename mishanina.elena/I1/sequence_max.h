@@ -1,15 +1,15 @@
 #ifndef SEQUENCE_MAX_H
 #define SEQUENCE_MAX_H
 
-class Lab_I1_T2
+class Seq_after_max
 {
 public:
-  Lab_I1_T2();
-  void operator()(int n);
+  Seq_after_max();
+  void operator()(int num);
   int get_count_after_max() const;
 private:
-  int n;
-  int max_n;
+  int num;
+  int max_num;
   int count_after_max;
 };
 

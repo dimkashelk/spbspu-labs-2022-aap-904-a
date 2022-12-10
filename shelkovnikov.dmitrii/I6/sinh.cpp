@@ -21,8 +21,8 @@ double sinh(double x, double error, unsigned count)
     summand = x / static_cast< double >(factorial);
     res += summand;
   }
-  while (abs(summand) > error && count_summand < count);
-  if (count_summand > count)
+  while (std::fabs(summand) > error && count_summand < count);
+  if (count_summand > count && abs(summand) > error)
   {
     throw std::out_of_range("The specified accuracy has not been reached");
   }

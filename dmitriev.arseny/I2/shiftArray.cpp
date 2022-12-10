@@ -4,10 +4,6 @@
 
 void shiftArray(int* array, const size_t size, size_t shift)
 {
-  if (int(shift) < 0)
-  {
-    throw::std::invalid_argument("incorrect shift");
-  }
   if (size != 0)
   {
     shift = shift % size;

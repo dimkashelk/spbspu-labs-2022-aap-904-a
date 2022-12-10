@@ -1,7 +1,7 @@
 #include "countOrderedTriples.h"
 #include <cstddef>
 
-size_t countOrderedTriples(const int* const array, const size_t size)
+size_t countOrderedTriples(const int* array, const size_t size)
 {
   size_t count = 0;
   for (size_t i = 2; i < size; i++)

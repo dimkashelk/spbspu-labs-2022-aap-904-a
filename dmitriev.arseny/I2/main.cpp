@@ -15,17 +15,8 @@ int main(int argc, char* arr[])
   int arr1[5] = { 4, 5, 1, 2, 6 };
   const size_t size1 = 5;
   size_t shift1 = 2;
-  try
-  {
-    shiftArray(arr1, size1, shift1);
-    countOrderedTriples(arr1, size1);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cout << "Error: ";
-    std::cout << e.what();
-    return 1;
-  }
+  shiftArray(arr1, size1, shift1);
+  countOrderedTriples(arr1, size1);
 
   size_t size2 = 0;
   size_t shift2 = 0;
@@ -36,18 +27,8 @@ int main(int argc, char* arr[])
   {
     arr2[i] = rand();
   }
-  try
-  {
-    shiftArray(arr2, size2, shift2);
-    countOrderedTriples(arr2, size2);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cout << "Error: ";
-    std::cout << e.what();
-    delete[] arr2;
-    return 1;
-  }
+  shiftArray(arr2, size2, shift2);
+  countOrderedTriples(arr2, size2);
   delete[] arr2;
 
   std::ifstream file;
@@ -78,18 +59,8 @@ int main(int argc, char* arr[])
       return 1;
     }
   }
-  try
-  {
-    shiftArray(arr3, size3, shift3);
-    countOrderedTriples(arr3, size3);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cout << "Error: ";
-    std::cout << e.what();
-    delete[] arr3;
-    return 1;
-  }
+  shiftArray(arr3, size3, shift3);
+  countOrderedTriples(arr3, size3);
   delete[] arr3;
 
   return 0;

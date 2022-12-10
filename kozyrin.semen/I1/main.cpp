@@ -15,10 +15,11 @@ int main() {
       std::cin >> value;
     }
     if (!std::cin) {
-      throw std::runtime_error("Something happened to the input stream, sry(\n");
+      std::cerr << "Error: something's up with the stream, sry...";
+      return 1;
     }
   }
-  catch (const std::exception & err) {
+  catch (const std::overflow_error & err) {
     std::cout << "Error: " << err.what() << '\n';
     return 1;
   }

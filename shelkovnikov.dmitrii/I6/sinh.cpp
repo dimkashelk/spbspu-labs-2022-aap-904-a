@@ -1,7 +1,12 @@
 #include "sinh.h"
 #include <cmath>
+#include <stdexcept>
 double sinh(double x, double error, unsigned count)
 {
+  if (x >= 1 || x <= -1)
+  {
+    throw std::out_of_range("X must be in (-1; 1)");
+  }
   double res = x;
   double summand = 0;
   unsigned count_summand = 1;

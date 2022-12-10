@@ -47,13 +47,14 @@ int main()
     res_str1 = deleteLatinLetters(res_str1, cstring);
     std::cout << res_str1 << "\n";
   }
-  catch (const std::bad_alloc & e)
+  catch (...)
   {
-    std::cerr << e.what() << "\n";
+    std::cout << "Error\n";
     delete [] res_str1;
     delete [] cstring;
     return 1;
   }
+  delete [] res_str1;
   size_t res_str2_size = size;
   char * res_str2 = new char[res_str2_size];
   char char1 = '1';
@@ -63,14 +64,13 @@ int main()
     res_str2 = replaceSetChar(res_str2, cstring, char1, char2);
     std::cout << res_str2 << "\n";
   }
-  catch (const std::bad_alloc & e)
+  catch (...)
   {
-    std::cerr << e.what() << "\n";
+    std::cout << "Error\n";
     delete [] res_str2;
     delete [] cstring;
     return 1;
   }
-  delete [] res_str1;
   delete [] res_str2;
   delete [] cstring;
 }

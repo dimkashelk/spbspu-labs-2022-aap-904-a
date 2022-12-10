@@ -22,8 +22,14 @@ void reverse(int* ms, size_t rev)
   int val = 0;
   for (size_t i = 0, j = rev - 1; i < (rev + 1) / 2; i++, j--)
   {
-    val = ms[i];
-    ms[i] = ms[j];
-    ms[j] = val;
+    swapEl(ms[i], ms[j]);
   }
+}
+
+void swapEl(int& x, int& y)
+{
+  int z = 0;
+  z = x;
+  x = y;
+  y = z;
 }

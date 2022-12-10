@@ -1,6 +1,6 @@
 #include "countdifferentletters.h"
 
-size_t count_different_letters(char* destination, const char* source, int len)
+size_t countDifferentLetters(char* destination, const char* source, int len)
 {
   size_t di = 0;
   destination[di] = '\0';

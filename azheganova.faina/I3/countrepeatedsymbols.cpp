@@ -1,6 +1,6 @@
 #include "countrepeatedsymbols.h"
 
-bool count_repeated_symbols(const char* source, size_t capacity)
+bool countRepeatedSymbols(const char* source, size_t capacity)
 {
   int countofrepeatedsymbol = 1;
   for (char i = 'a'; i <= 'z'; i++)

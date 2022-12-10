@@ -21,7 +21,16 @@ int main(int argc, char* arr[])
   size_t size2 = 0;
   size_t shift2 = 0;
   std::cin >> size2;
-  int* arr2 = new int[size2];
+  try
+  {
+    int* arr2 = new int[size2];
+  }
+  catch (std::bad_alloc &e)
+  {
+    std::cout << "Error: ";
+    std::cout << e.what();
+    return 1;
+  }
   std::srand(time(nullptr));
   for (size_t i = 0; i < size2; i++)
   {
@@ -48,7 +57,16 @@ int main(int argc, char* arr[])
     std::cout << "Error while opening file" << "\n";
     return 1;
   }
-  arr3 = new int[size3];
+  try
+  {
+    arr3 = new int[size3];
+  }
+  catch (std::bad_alloc& e)
+  {
+    std::cout << "Error: ";
+    std::cout << e.what();
+    return 1;
+  }
   for (size_t i = 0; i < size3; i++)
   {
     file >> arr3[i];

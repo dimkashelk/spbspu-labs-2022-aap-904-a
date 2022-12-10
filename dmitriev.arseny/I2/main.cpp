@@ -25,7 +25,7 @@ int main(int argc, char* arr[])
   {
     int* arr2 = new int[size2];
   }
-  catch (std::bad_alloc &e)
+  catch (const std::bad_alloc &e)
   {
     std::cout << "Error: ";
     std::cout << e.what();
@@ -61,7 +61,7 @@ int main(int argc, char* arr[])
   {
     arr3 = new int[size3];
   }
-  catch (std::bad_alloc& e)
+  catch (const std::bad_alloc& e)
   {
     std::cout << "Error: ";
     std::cout << e.what();

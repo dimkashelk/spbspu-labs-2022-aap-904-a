@@ -1,5 +1,6 @@
 #include<iostream>
 #include "countdifferentletters.h"
+#include "countrepeatedsymbols.h"
 
 int main()
 {
@@ -37,5 +38,6 @@ int main()
   int resultlen = 0;
   char* res1 = new char[size];
   std::cout << count_different_letters( res1, cstring, resultlen) << std::endl;
+  std::cout << count_repeated_symbols(cstring) << std::endl;
   delete [] cstring;
 }

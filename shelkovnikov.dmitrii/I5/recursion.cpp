@@ -10,7 +10,7 @@ bool is_digit(const char number)
 }
 bool is_unsigned_integer(const char *number)
 {
-  if (!number[0] || number[0] == '.' || number[0] == 'E')
+  if (!number[0])
   {
     return true;
   }

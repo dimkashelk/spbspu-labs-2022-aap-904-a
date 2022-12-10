@@ -15,4 +15,5 @@ double sinh(double x, double error, unsigned count)
     res += x / static_cast< double >(factorial);
   }
   while (abs(x) >= error && count_summand <= count);
+  return res;
 }

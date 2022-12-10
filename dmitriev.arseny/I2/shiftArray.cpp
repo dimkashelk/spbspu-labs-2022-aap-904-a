@@ -19,7 +19,6 @@ void shiftArray(int* array, const size_t size, size_t shift)
 
 void reverse(int* ms, size_t rev)
 {
-  int val = 0;
   for (size_t i = 0, j = rev - 1; i < (rev + 1) / 2; i++, j--)
   {
     swapEl(ms[i], ms[j]);

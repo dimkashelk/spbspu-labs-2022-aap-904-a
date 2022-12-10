@@ -14,12 +14,10 @@ int main() {
       EqCnt(value);
       std::cin >> value;
     }
-
     if (!std::cin) {
       throw std::runtime_error("Something happened to the input stream, sry(\n");
     }
   }
-
   catch (const std::exception & err) {
     std::cout << "Error: " << err.what() << '\n';
     return 1;

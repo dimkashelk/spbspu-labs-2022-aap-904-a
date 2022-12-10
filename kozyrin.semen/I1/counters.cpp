@@ -2,10 +2,11 @@
 #include <stdexcept>
 #include "counters.h"
 
+bool overflow(unsigned int a) {
+  return a >= std::numeric_limits< unsigned int >::max();
+}
+
 bool overflow(int a, int b) {
-  if (!b) {
-    return a > std::numeric_limits< int >::max() - 1;
-  }
   if (a < 0 && b < 0) {
     return a < std::numeric_limits< int >::min() - b;
   }
@@ -24,7 +25,7 @@ int sum(const int arr[]) {
 
 void dividendCounter::operator()(int num) {
   if (prev && (num % prev == 0)) {
-    if (overflow(cnt, 0)) {
+    if (overflow(cnt)) {
       throw std::overflow_error("Too many inputs! You're cringe...\n");
     }
     cnt++;
@@ -34,7 +35,7 @@ void dividendCounter::operator()(int num) {
 
 void equalToSumCounter::operator()(int num) {
   if (prev[0] && sum(prev) == num) {
-    if (overflow(cnt, 0)) {
+    if (overflow(cnt)) {
       throw std::overflow_error("Too many inputs! You're cringe...\n");
     }
     cnt++;

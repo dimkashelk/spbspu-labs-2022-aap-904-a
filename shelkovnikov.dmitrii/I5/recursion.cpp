@@ -18,14 +18,15 @@ bool is_unsigned_integer(const char *number)
 }
 bool order(const char *number, const bool contains_E)
 {
-  if (number[0] == 'E')
-  {
-    return order(number + 1, true);
-  }
   if (contains_E)
   {
     return (is_sign(number[0]) || is_digit(number[0])) && is_unsigned_integer(number + 1);
   }
+  if (number[0] == 'E')
+  {
+    return order(number + 1, true);
+  }
+  return order(number + 1, false);
 }
 bool mantissa(const char *number, const bool contains_point, const bool is_prev_point)
 {

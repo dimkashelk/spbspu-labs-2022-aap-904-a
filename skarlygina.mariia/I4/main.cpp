@@ -28,17 +28,11 @@ int main(int argc, char* argv[])
 
 	size_t rows = 0;
 	size_t columns = 0;
-	fin << rows << columns;
-	if (!fin)
+	fin >> rows >> columns;
+	if (!fin || rows*columns == 0)
 	{
 		cerr << "Incorrect arguments of the matrix\n";
 		return 1;
-	}
-	size_t size = rows * columns;
-	
-	if (argv[1]=='1')
-	{
-		//will create later :(
 	}
 
 	ofstream fout(argv[3], ios_base::out);
@@ -47,7 +41,65 @@ int main(int argc, char* argv[])
 		cerr << "Writing File could not be opened\n";
 		return 1;
 	}
-
-
+	
+	if (argv[1]=='1')
+	{
+		if(rows*columns>=1000)
+		{
+			cerr << "The matrix is bigger than the intended\n";
+			return 1;
+		}
+		int array[rows][columns];
+		for (size_t i = 0; i < rows; i++)
+		{
+			for (size_t j = 0; j < columns; j++) 
+			{
+				fin >> array[i][j];
+				if (!fin)
+				{
+					std::cerr << "Error while reading elements of matrix\n";
+					return 1;
+				}
+			}
+		}
+		fout << countPositiveColumns(array, rows, columns);
+		if (!fout)
+		{
+			cerr << "Error writing into file\n";
+			return 1;
+		}
+	}
+	else 
+	{
+		int* dynamic_array = new int[rows][columns];
+		for (size_t i = 0; i < rows; i++)
+		{
+			for (size_t j = 0; j < columns; j++) 
+			{
+				fin >> dynamic_array[i][j];
+				if (!fin)
+				{
+					cerr << "Error while reading elements of matrix\n";
+					for (size_t s = 0; s < rows; s++)
+					{
+						delete[] dynamic_array[s];
+					}
+					delete[] dynamic_array;
+					return 1;
+				}
+			}
+		}
+		fout << countDiagonalsWithoutZeros(dynamic_array, rows, columns);
+		if (!fout)
+		{
+			cerr << "Error writing into file\n";
+			return 1;
+		}
+		for (size_t s = 0; s < rows; s++)
+		{
+			delete[] dynamic_array[s];
+		}
+		delete[] dynamic_array;
+	}
 	return 0;
 }

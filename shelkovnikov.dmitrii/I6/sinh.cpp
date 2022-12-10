@@ -26,5 +26,9 @@ double sinh(double x, double error, unsigned count)
   {
     throw std::out_of_range("The specified accuracy has not been reached");
   }
+  if (count_summand < count && abs(summand) < error)
+  {
+    throw std::out_of_range("Fewer terms than required");
+  }
   return res;
 }

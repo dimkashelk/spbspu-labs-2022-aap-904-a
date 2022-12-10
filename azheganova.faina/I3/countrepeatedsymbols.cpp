@@ -16,6 +16,7 @@ bool count_repeated_symbols(const char* source, size_t capacity)
     {
       return true;
     }
-    return false;
+    countofrepeatedsymbol = 0;
   }
+  return false;
 }

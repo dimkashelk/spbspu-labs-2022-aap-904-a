@@ -18,14 +18,15 @@ int main(int argc, char* arr[])
   shiftArray(arr1, size1, shift1);
   countOrderedTriples(arr1, size1);
 
+  int* arr2;
   size_t size2 = 0;
   size_t shift2 = 0;
   std::cin >> size2;
   try
   {
-    int* arr2 = new int[size2];
+    arr2 = new int[size2];
   }
-  catch (const std::bad_alloc &e)
+  catch (std::bad_alloc &e)
   {
     std::cout << "Error: ";
     std::cout << e.what();
@@ -61,7 +62,7 @@ int main(int argc, char* arr[])
   {
     arr3 = new int[size3];
   }
-  catch (const std::bad_alloc& e)
+  catch (std::bad_alloc& e)
   {
     std::cout << "Error: ";
     std::cout << e.what();

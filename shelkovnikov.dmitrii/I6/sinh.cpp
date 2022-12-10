@@ -10,7 +10,7 @@ double sinh(double x, double error, unsigned count)
   {
     x *= x * x;
     factorial *= (counter + 1) * (counter + 2);
-    counter += 2;
+    counter += 3;
     count_summand++;
     res += x / static_cast< double >(factorial);
   }

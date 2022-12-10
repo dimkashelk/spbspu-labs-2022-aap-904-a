@@ -1,4 +1,5 @@
+#include "count_positive_columns.h"
 int main() 
 {
-  return 0;
+	return 0;
 }

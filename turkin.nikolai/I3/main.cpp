@@ -40,8 +40,10 @@ int main()
     std::cerr << "null string\n";
     return 1;
   }
-  turkin::CharArray result(array.size + 1);
-  std::cout << turkin::isRepeat(array) << '\t' << turkin::deleteNumbers(result.data, array.data, array.size) << '\n';
+  array.data[array.size] = '\0';
+
+  char * result = new char[array.size];
+  std::cout << turkin::isRepeat(array.data) << '\t' << turkin::deleteNumbers(result, array.data) << '\n';
+  delete [] result;
   return 0;
 }
-

@@ -1,37 +1,43 @@
 #include "stringTransform.h"
 #include <cctype>
 
-char * turkin::deleteNumbers(char * destination, const char * source, size_t size)
+char * turkin::deleteNumbers(char * destination, const char * source)
 {
+  size_t i = 0;
   size_t q = 0;
-  for (size_t i = 0; i < size; i++)
+  while (source[i] != '\0')
   {
     if (!std::isdigit(source[i]))
     {
       destination[q++] = source[i];
     }
+    i++;
   }
-  destination[q] = '\0';
   return destination;
 }
 
-bool turkin::isRepeat(const turkin::CharArray & array)
+bool turkin::isRepeat(const char * source)
 {
   size_t amount = 0;
-  for (size_t i = 0; i < array.size; i++)
+  size_t i = 0;
+  size_t q = 0;
+  while (source[i] != '\0')
   {
     amount = 0;
-    for (size_t k = 0; k < array.size; k++)
+    q = 0;
+    while (source [q] != '\0')
     {
-      if (array.data[i] == array.data[k])
+      if (source[i] == source[q] && i != q)
       {
         amount++;
       }
+      q++;
     }
     if (amount > 1)
     {
       return true;
     }
+    i++;
   }
   return false;
 }

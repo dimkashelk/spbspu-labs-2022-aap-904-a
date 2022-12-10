@@ -4,7 +4,7 @@
 #include "charArray.h"
 namespace turkin
 {
-  char * deleteNumbers(char * destination, const char * source, size_t size);
-  bool isRepeat(const turkin::CharArray & array);
+  char * deleteNumbers(char * destination, const char * source);
+  bool isRepeat(const char * source);
 }
 #endif

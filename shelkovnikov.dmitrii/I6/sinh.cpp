@@ -1,6 +1,7 @@
 #include "sinh.h"
 #include <cmath>
 #include <stdexcept>
+#include <iomanip>
 double sinh(double x, double error, unsigned count)
 {
   if (x >= 1 || x <= -1)
@@ -21,13 +22,30 @@ double sinh(double x, double error, unsigned count)
     count_summand++;
     summand = x / static_cast< double >(factorial);
   }
-  if (count_summand > count && abs(summand) > error)
+  if (count_summand >= count && abs(summand) > error)
   {
     throw std::out_of_range("The specified accuracy has not been reached");
   }
-  if (count_summand < count && abs(summand) < error)
-  {
-    throw std::out_of_range("Fewer terms than required");
-  }
   return res;
+}
+void print_row(std::ostream &out, double x, double error, unsigned k)
+{
+  out << std::fixed << std::setfill(' ') << std::setw(5) << std::setprecision(2);
+  out << x << ' ';
+  try
+  {
+    out << sinh(x, error, k);
+  }
+  catch (const std::out_of_range &e)
+  {
+    out << e.what();
+  }
+}
+void print_table(std::ostream &out, double left, double right, double step, double error, unsigned k)
+{
+  for (; left <= right; left += step)
+  {
+    print_row(out, left, error, k);
+    out << '\n';
+  }
 }

@@ -7,15 +7,12 @@ public:
   Lab_I1();
   void operator()(int n);
   int get_count() const;
-  int get_count_after_max() const;
 private:
-  int n = 0;
+  int n;
   int old_n;
   int cur_n;
   int new_n;
   int count;
-  int max_n;
-  int count_after_max;
 };
 
 #endif

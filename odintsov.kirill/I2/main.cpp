@@ -13,8 +13,8 @@ int main(int argc, char* argv[])
   std::srand(std::time(NULL));
   constexpr size_t staticArrSize = 8;
   constexpr int staticArr[staticArrSize] = {1, -234, -253, 12323, 2353, -2341, 42342, -12312};
-  int lowBound = -10000;
-  int highBound = 10000;
+  constexpr int lowBound = -10000;
+  constexpr int highBound = 10000;
   try {
     std::cout << * odintsov::findMax(staticArr, staticArrSize, lowBound, highBound) << '\n';
   } catch (const std::logic_error& err) {

@@ -26,6 +26,7 @@ char *get_unique_symbols
         throw std::overflow_error("Overflow!");
       }
     }
+
     if (!is_common)
     {
       arr_unique = check_and_resize(arr_unique, size_unique, capacity_unique);
@@ -40,7 +41,7 @@ char *get_unique_symbols
     }
 
     is_common = false;
-    
+
     if (i == max_unsigned_int)
     {
       throw std::overflow_error("Overflow!");

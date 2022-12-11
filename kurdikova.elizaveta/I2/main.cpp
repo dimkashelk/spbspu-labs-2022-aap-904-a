@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   int result17 = shiftArrayElements(array1, 10, shift);
   if (result17 != 0)
   {
-    std::cout << "Shift more or equal then size of array1. Error...\n";
+    std::cout << "Shift more or equal then size of array1.\n";
   } else {
     for (int i : array1) {
       std::cout << i << " ";
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     int result27 = shiftArrayElements(array2, arraySize2, shift);
     if (result27 != 0)
     {
-      std::cout << "Shift more or equal then size of array2. Error...\n";
+      std::cout << "Shift more or equal then size of array2.\n";
     } else {
       for (int i = 0; i < arraySize2; ++i) {
         std::cout << array2[i] << " ";
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
   int result37 = shiftArrayElements(array3, arraySize3, shift);
   if (result37 != 0)
   {
-    std::cout << "Shift more or equal then size of array3. Error...\n";
+    std::cout << "Shift more or equal then size of array3.\n";
   } else {
     for (int i = 0; i < arraySize3; ++i) {
       std::cout << array3[i] << " ";

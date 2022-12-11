@@ -11,26 +11,26 @@ size_t countNegativeRightFromMax(const int *array, size_t size)
   else
   {
     int maxEl = array[0];
-  }
-  for (size_t i = 0; i < size; i++)
-  {
-    if (array[i] > maxEl)
+    for (size_t i = 0; i < size; i++)
     {
-      maxEl = array[i];
-      maxElIndex = i;
-    }
-  }
-  for (size_t i = 0; i < size; i++)
-  {
-    if (i > maxElIndex)
-    {
-      if (array[i] < 0)
+      if (array[i] > maxEl)
       {
-        countNegativeRightFromMax++;
+        maxEl = array[i];
+        maxElIndex = i;
       }
     }
+    for (size_t i = 0; i < size; i++)
+    {
+      if (i > maxElIndex)
+      {
+        if (array[i] < 0)
+        {
+          countNegativeRightFromMax++;
+        }
+      }
+    }
+    return countNegativeRightFromMax;
   }
-  return countNegativeRightFromMax;
 }
 bool countRepetitiveInRange(const int *array, const size_t size, const size_t beginIndex, const size_t endIndex)
 {

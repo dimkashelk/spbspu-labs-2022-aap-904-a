@@ -23,7 +23,7 @@ int main(int argc, char **argv)
   std::srand(time(nullptr));
   for (size_t i = 0; i < arrayDynamicSize; i++)
   {
-    arrayDynamic.size++;
+    //arrayDynamic.size++;
     arrayDynamic.data[i] = std::rand() % 10 - 5;
   }
   size_t countNrfmDynamic = countNegativeRightFromMax(arrayDynamic.data, arrayDynamicSize);

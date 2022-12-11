@@ -1,78 +1,64 @@
 ﻿#include <iostream>
-#include "function.h"
-
-using std::cin;
-using std::cout;
+#include "checkPythagoreanTriples.h"
 
 int main()
 {
   int numbOfPythagoreanTriples = 0;
-  char buffer[250];
-  long x, y, z, max1, max2;
-  cin >> buffer;
-  if (!(isNumberValid(buffer, x)))
-  {
-    cout << "The first element of the sequence is not a integer number\n";
-    return 1;
-  }
-  if (x == 0)
-  {
-    cout << "The sequence is empty\n";
-    return 1;
-  }
-  max1 = x;
-  cin >> buffer;
-  if (!isNumberValid(buffer, y))
-  {
-    cout << "The second element of the sequence is not a integer number\n";
-    return 1;
-  }
-  if (y == 0)
-  {
-    cout << "The sequence contains less than 2 elements\n";
-    return 1;
-  }
-  if (y >= max1)
-  {
-    max2 = max1;
-    max1 = y;
-  }
-  else
-    max2 = y;
-  cin >> buffer;
-  if (!isNumberValid(buffer, z))
-  {
-    cout << "The third element of the sequence is not a integer number\n";
-    return 1;
-  }
-  if (z == 0)
-  {
-    cout << "The value of the second largest element is " << max2 << "\n";
-    cout << "The sequence contains less than 3 elements\n";
-    return 1;
-  }
-  while (z != 0)
-  {
-    if (z >= max1)
-    {
+  long x = 0, y = 0, z = 1, max1 = 0, max2 = 0;
+  int k = 0;
+
+  while (z != 0) {
+    std::cin >> z;
+    if (std::cin.fail()) {
+      std::cout << "The element of the sequence is not a integer number" << std::endl;
+      return 1;
+    }
+    k++;
+    if (k == 1) {
+      if (z == 0) {
+        std::cout << "The sequence is empty" << std::endl;
+        return 1;
+      }
+      x = z;
+      max1 = x;
+      continue;
+    }
+    if (k == 2) {
+      if (z == 0) {
+        std::cout << "The sequence contains less than 2 elements" << std::endl;
+        return 1;
+      }
+      y = z;
+      if (y >= max1) {
+        max2 = max1;
+        max1 = y;
+      }
+      else if (y >= max2) {
+        max2 = y;
+      }
+      continue;
+    }
+
+    if (z >= max1) {
       max2 = max1;
       max1 = z;
     }
-    else if (z >= max2)
-    {
+    else if (z >= max2) {
       max2 = z;
     }
+
     if (isPythagoreanTriples(x, y, z)) numbOfPythagoreanTriples++;
     x = y;
     y = z;
-    cin >> buffer;
-    if (!isNumberValid(buffer, z))
-    {
-      cout << "The one of element of the sequence is not a integer number\n";
-      return 1;
-    }
+
   }
-  cout << "The value of the second largest element is " << max2 << "\n";
-  cout << "The number of Pythagorean triples is " << numbOfPythagoreanTriples << "\n";
+  std::cout << "The value of the second largest element is " << max2 << std::endl;
+  if (k <= 3) {
+    std::cout << "The sequence contains less than 3 elements" << std::endl;
+  }
+  else {
+    std::cout << "The number of Pythagorean triples is " << numbOfPythagoreanTriples << std::endl;
+  }
+
   return 0;
 }

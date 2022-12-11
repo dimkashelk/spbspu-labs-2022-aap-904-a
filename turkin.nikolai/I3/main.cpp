@@ -20,9 +20,9 @@ int main()
     {
       try
       {
-        turkin::extend(array, basicAddition);
+        array.data = turkin::extend(array, basicAddition);
       }
-      catch (std::overflow_error & error)
+      catch (const std::overflow_error & error)
       {
         std::cerr << error.what();
         return 1;
@@ -42,8 +42,9 @@ int main()
   }
   array.data[array.size] = '\0';
 
-  char * result = new char[array.size];
-  std::cout << turkin::isRepeat(array.data) << '\t' << turkin::deleteNumbers(result, array.data) << '\n';
+  char * result = new char[array.size]();
+  turkin::deleteNumbers(result, array.data);
+  std::cout << turkin::isRepeat(array.data) << '\t' << result << '\n';
   delete [] result;
   return 0;
 }

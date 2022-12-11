@@ -13,18 +13,19 @@ turkin::CharArray::~CharArray()
   delete [] data;
 }
 
-void turkin::extend(turkin::CharArray & array, size_t addition)
+char * turkin::extend(turkin::CharArray & array, size_t addition)
 {
-  if (array.capacity + addition == std::numeric_limits< size_t >::max())
+  size_t capacity = array.capacity + addition;
+  if (capacity == std::numeric_limits< size_t >::max())
   {
     throw std::overflow_error("out of size\n");
   }
-  char * extendArray = new char[array.capacity + addition];
+  char * extendArray = new char[capacity]();
   for (size_t i = 0; i < array.size; i++)
   {
     extendArray[i] = array.data[i];
   }
+  array.capacity = capacity;
   delete [] array.data;
-  array.capacity = array.capacity + addition;
-  array.data = extendArray;
+  return extendArray;
 }

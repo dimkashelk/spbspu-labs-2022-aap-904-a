@@ -1,19 +1,21 @@
 #include "getcountmaxelement.hpp"
 
-int get_count_max_element(int* arr, size_t size)
+size_t get_count_max_element(const int* arr, const size_t size)
 {
-  int max_element = arr[0];
-  for (size_t i = 1; i < size; i++)
+  if (arr == nullptr || size == 0)
   {
-    {
-    if (arr[i] > max_element)
-      max_element = arr[i];
-    }
+    return 0;
   }
 
-  int count_max_element = 0;
-  for ( size_t i = 0; i < size; i++)
+  int max_element = arr[0];
+  size_t count_max_element = 1;
+  for (size_t i = 1; i < size; i++)
   {
+    if (arr[i] > max_element)
+    {
+      max_element = arr[i];
+      count_max_element = 1;
+    }
     if (arr[i] == max_element)
     {
       count_max_element++;

@@ -2,30 +2,21 @@
 #include <fstream>
 #include <cstddef>
 #include "getcountmaxelement.hpp"
-#include "sortbyeven.hpp"
-#include "printarray.hpp"
+#include "partitionbyeven.hpp"
 
 int main(int argc, char* argv[])
 {
-  if (argc == 1)
+  if (argc != 2)
   {
-    std::cerr << "No file \n";
+    std::cerr << "Incorrect argument \n";
     return 1;
   }
-  else if (argc > 2)
-  {
-    std::cerr << "Too many parameters \n";
-    return 1;
-  }
-
 
   const size_t size1 = 10;
-  int arr1 [size1] = {0, 2, 4, 5 ,6, 7 ,-10 ,8 , 9, 9};
+  int arr1 [size1] = {0, 2, 4, 9, 6, 2, -10, 8, 9, 1};
   std::cout << get_count_max_element(arr1, size1) << "\n";
-  sort_by_even(arr1, size1);
-  print_array(arr1, size1);
-  std::cout << std::endl;
-
+  int* border1 = partition_by_even(arr1, size1);
+  std::cout << *border1 << "\n";
 
   size_t size2 = 0;
   std::cin >> size2;
@@ -43,16 +34,14 @@ int main(int argc, char* argv[])
       arr2[i] = std::rand() % 10;
     }
     std::cout << get_count_max_element(arr2, size2) << "\n";
-    sort_by_even(arr2, size2);
-    print_array(arr2, size2);
+    int* border2 = partition_by_even(arr2, size2);
+    std::cout << *border2 << "\n";
     delete[] arr2;
-    std::cout << std::endl;
   }
   else
   {
     std::cout << "Size < 0 \n";
   }
-
 
   size_t size3 = 0;
   std::ifstream input_file(argv[1]);
@@ -74,6 +63,7 @@ int main(int argc, char* argv[])
     if (!input_file)
     {
       std::cerr << "Error while reading \n";
+      delete[] arr3;
       return 1;
     }
   }
@@ -84,9 +74,8 @@ int main(int argc, char* argv[])
   else
   {
     std::cout << get_count_max_element(arr3, size3) << "\n";
-    sort_by_even(arr3, size3);
-    print_array(arr3, size3);
+    int* border3 = partition_by_even(arr3, size3);
+    std::cout << *border3 << "\n";
   }
-  std::cout << "\n";
   delete[] arr3;
 }

@@ -2,6 +2,6 @@
 #define GETCOUNTMAXELEMENT_HPP
 #include <cstddef>
 
-int get_count_max_element(int* arr, const size_t size);
+size_t get_count_max_element(const int* arr, size_t size);
 
 #endif

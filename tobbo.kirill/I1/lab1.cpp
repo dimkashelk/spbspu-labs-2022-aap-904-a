@@ -29,8 +29,7 @@ int main() {
         first = second;
         second = third;
       }
-    }
-    while (third != 0);
+    } while (third != 0);
 
     if (countMax == 0)
       std::cout << "The sequence is empty." << std::endl;
@@ -40,7 +39,7 @@ int main() {
     }
   }
 
-  catch(const char *error) {
+  catch (const char* error) {
     std::cerr << std::endl << error << std::endl;
   }
 }

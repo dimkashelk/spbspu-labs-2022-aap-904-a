@@ -1,6 +1,7 @@
 #include <iostream>
-#include "countrepeatedsymbols.h"
+#include <cstddef>
 #include "countdifferentletters.h"
+#include "countrepeatedsymbols.h"
 
 int main()
 {

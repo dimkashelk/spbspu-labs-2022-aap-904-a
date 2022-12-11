@@ -2,5 +2,5 @@
 #define COUNTREPEATEDSYMBOLS_H
 #include <cstddef>
 
-bool countRepeatedSymbols(char* source, size_t capacity);
+bool countRepeatedSymbols(const char* source, size_t capacity);
 #endif

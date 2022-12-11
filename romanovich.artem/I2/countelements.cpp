@@ -1,11 +1,10 @@
 #include "countelements.h"
 #include <cstddef>
-#include <limits>
 size_t countNegativeRightFromMax(const int *array, size_t size)
 {
   size_t countNegativeRightFromMax = 0;
   size_t maxElIndex = 0;
-  int maxEl = -1 * std::numeric_limits< int >::max();
+  int maxEl = array[0];
   for (size_t i = 0; i < size; i++)
   {
     if (array[i] > maxEl)

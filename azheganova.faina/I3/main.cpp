@@ -46,4 +46,5 @@ int main()
   std::cout << countDifferentLetters(res1, cstring, resultlen) << std::endl;
   std::cout << countRepeatedSymbols(cstring) << std::endl;
   delete [] cstring;
+  delete [] res1;
 }

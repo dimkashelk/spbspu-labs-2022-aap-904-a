@@ -1,11 +1,11 @@
 #include "countrepeatedsymbols.h"
 
-bool countRepeatedSymbols(const char* source, size_t capacity)
+bool countRepeatedSymbols(const char* source)
 {
   int countofrepeatedsymbol = 1;
   for (char i = 'a'; i <= 'z'; i++)
   {
-    for (size_t sizestring = 0; sizestring < capacity; sizestring++)
+    for (size_t sizestring = 0; source[sizestring]; sizestring++)
     {
       if (i == source[sizestring])
       {

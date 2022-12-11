@@ -44,6 +44,6 @@ int main()
   int resultlen = 0;
   char* res1 = new char[size];
   std::cout << countDifferentLetters(res1, cstring, resultlen) << std::endl;
-  std::cout << countRepeatedSymbols(cstring, capacity) << std::endl;
+  std::cout << countRepeatedSymbols(cstring) << std::endl;
   delete [] cstring;
 }

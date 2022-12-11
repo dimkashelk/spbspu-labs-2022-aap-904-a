@@ -5,6 +5,7 @@ bool countRepeatedSymbols(const char* source, size_t capacity)
   int countofrepeatedsymbol = 1;
   for (char i = 'a'; i <= 'z'; i++)
   {
+    size_t sizestring = 0;
     for (size_t sizestring = 0; sizestring < capacity; sizestring++)
     {
       if (i == source[sizestring])

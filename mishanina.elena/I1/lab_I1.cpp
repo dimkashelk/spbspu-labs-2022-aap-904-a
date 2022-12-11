@@ -29,7 +29,8 @@ int main()
      }
     }
     while (num != 0);
-    std::cout << sequence1.get_count_of_elements() << " elements of this sequence are smaller than the previous element, but larger than the next one.\n";
+    std::cout << sequence1.get_count_of_elements()
+              << " elements of this sequence are smaller than the previous element, but larger than the next one.\n";
     std::cout << sequence2.get_count_after_max() << " elements of this sequence are placed after the maximum element.\n";
     return 0;
   }

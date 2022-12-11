@@ -1,5 +1,4 @@
 #include "MakeCstring.hpp"
-#include <stdexcept>
 #include <cstddef>
 #include <istream>
 
@@ -11,26 +10,20 @@ char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &
   {
     if (size == capacity)
     {
-      try
+      char *newstr = new char[capacity + 20];
+      for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
       {
-        char *newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete[] cstring;
-        cstring = newstr;
-        capacity += 20;
+        *j = *i;
       }
-      catch (const std::bad_alloc &e)
-      {
-        throw std::runtime_error("Error while creating cstring(array)!");
-      }
+      delete[] cstring;
+      cstring = newstr;
+      capacity += 20;
     }
 
     input >> cstring[size];
 
-  } while (input && cstring[size++] != '\n');
+  }
+  while (input && cstring[size++] != '\n');
 
   return cstring;
 }

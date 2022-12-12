@@ -94,12 +94,11 @@ int main(int argc, char * argv[])
         return 1;
       }
     }
-    unsigned long long summ = 0;
+    long long summ = 0;
     size_t rows_square = std::min(rows, cols);
-    size_t cols_square = std::min(rows, cols);
     try
     {
-      summ = chemodurov::calcMinSummSecondaryDiagonal(arr, rows_square, cols_square);
+      summ = chemodurov::calcMinSummSecondaryDiagonal(arr, rows_square, rows_square);
     }
     catch (const std::invalid_argument & e)
     {

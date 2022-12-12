@@ -23,14 +23,14 @@ size_t chemodurov::countGrowingRows(const int * arr, size_t rows, size_t cols)
   return counter;
 }
 
-unsigned long long chemodurov::calcMinSummSecondaryDiagonal(const int * arr, size_t rows, size_t cols)
+long long chemodurov::calcMinSummSecondaryDiagonal(const int * arr, size_t rows, size_t cols)
 {
   if (rows != cols)
   {
     throw std::invalid_argument("No diagonal in not square matrix\n");
   }
-  unsigned long long summ = 0;
-  unsigned long long max_summ = 0;
+  long long summ = 0;
+  long long max_summ = 0;
   for (size_t i = 0; i < (2 * rows) - 1; ++i)
   {
     for (size_t j = 0; j < rows; ++j)

@@ -2,7 +2,7 @@
 char* makeNewCapacityCString(char* cstring, size_t& capacity, size_t size)
 {
   char* newstring = new char[capacity + 20];
-  for (auto i = cstring, j = newstring; i != cstring + size; ++i, j++)
+  for (auto i = cstring, j = newstring; i != cstring + size; ++i, ++j)
   {
     *j = *i;
   }

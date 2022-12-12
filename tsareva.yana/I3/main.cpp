@@ -7,7 +7,7 @@
 int main()
 {
   size_t capacity_1 = 10;
-  size_t max_size_t = std::numeric_limits<size_t>::max();
+  size_t max_size_t = std::numeric_limits <size_t>::max();
   char* str_1 = new char[capacity_1];
   size_t size_1 = 0;
   std::cin >> std::noskipws;

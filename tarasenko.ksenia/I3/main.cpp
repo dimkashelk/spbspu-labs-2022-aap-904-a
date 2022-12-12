@@ -44,7 +44,7 @@ int main()
   char * res_str1 = nullptr;
   try
   {
-  	res_str1 = new char[res_str1_size];
+    res_str1 = new char[res_str1_size];
     res_str1 = deleteLatinLetters(res_str1, cstring);
     std::cout << res_str1 << "\n";
   }

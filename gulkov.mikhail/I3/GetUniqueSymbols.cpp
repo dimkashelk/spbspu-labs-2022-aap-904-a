@@ -4,12 +4,11 @@
 #include <limits>
 #include "ResizeCstring.hpp"
 
-char *get_unique_symbols
-  (char *arr_unique, size_t size_unique, size_t capacity_unique, const char *cstring_one,
-   const char *cstring_two)
+char *get_unique_symbols(char *arr_unique, const char *cstring_one, const char *cstring_two)
 {
   const size_t max_size_t = std::numeric_limits< size_t >::max();
   const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
+  size_t size_unique = 0;
 
   bool is_common = false;
 
@@ -29,7 +28,6 @@ char *get_unique_symbols
 
     if (!is_common)
     {
-      arr_unique = check_and_resize(arr_unique, size_unique, capacity_unique);
       arr_unique[size_unique] = cstring_one[i];
 
       if (size_unique == max_size_t)

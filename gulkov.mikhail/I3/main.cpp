@@ -28,13 +28,7 @@ int main()
 
   cstring_one[0] = '\n';
 
-  for (size_t i = 0; i < capacity_two - 1; i++)
-  {
-    cstring_two[i] = 'p';
-    size_two++;
-  }
-
-  cstring_two[capacity_two - 1] = '\0';
+  cstring_two[size_one] = '\0';
 
   try
   {
@@ -107,8 +101,7 @@ int main()
 
   //5
 
-  size_t size_unique = 0;
-  size_t capacity_unique = 5;
+  size_t capacity_unique = size_one + size_two;
   char *arr_unique = nullptr;
 
   try
@@ -128,7 +121,7 @@ int main()
 
   try
   {
-    arr_unique = get_unique_symbols(arr_unique, size_unique, capacity_unique, cstring_one, cstring_two);
+    arr_unique = get_unique_symbols(arr_unique, cstring_one, cstring_two);
   }
   catch (const std::overflow_error &e)
   {

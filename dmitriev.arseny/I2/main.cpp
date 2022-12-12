@@ -25,15 +25,13 @@ int main(int argc, char* arr[])
   std::srand(time(nullptr));
   for (size_t i = 0; i < size2; i++)
   {
-    arr2[i] = rand();
+    arr2[i] = std::rand();
   }
   shiftArray(arr2, size2, shift2);
   countOrderedTriples(arr2, size2);
   delete[] arr2;
 
-  std::ifstream file;
-  std::string name = arr[1];
-  file.open(name);
+  std::ifstream file(arr[1]);
   if (!file.is_open())
   {
     std::cout << "Error while opening file" << "\n";

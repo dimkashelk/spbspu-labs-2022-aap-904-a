@@ -30,13 +30,6 @@ int main()
   }
   while (std::cin && cstring[size++] != '\n');
 
-  if (!std::cin || !size)
-  {
-    std::cout << "Error while reading the string \n";
-    delete[] cstring;
-    return 2;
-  }
-  cstring[size - 1] = '\0';
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     std::cout << "Error while reading the string \n";
@@ -44,6 +37,7 @@ int main()
     return 2;
   }
 
+  cstring[size - 1] = '\0';
   char* destination = nullptr;
   char* string_source = nullptr;
   const size_t size_source = size;

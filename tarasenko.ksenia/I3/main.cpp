@@ -41,14 +41,16 @@ int main()
     return 2;
   }
   size_t res_str1_size = size;
-  char * res_str1 = new char[res_str1_size];
+  char * res_str1 = nullptr;
   try
   {
+  	res_str1 = new char[res_str1_size];
     res_str1 = deleteLatinLetters(res_str1, cstring);
     std::cout << res_str1 << "\n";
   }
-  catch (...)
+  catch (const std::bad_alloc & e)
   {
+  	std::cout << e.what() << "\n";
     std::cout << "Error\n";
     delete [] res_str1;
     delete [] cstring;
@@ -56,17 +58,18 @@ int main()
   }
   delete [] res_str1;
   size_t res_str2_size = size;
-  char * res_str2 = new char[res_str2_size];
+  char * res_str2 = nullptr;
   char char1 = '1';
   char char2 = '2';
   try
   {
+  	res_str2 = new char[res_str2_size];
     res_str2 = replaceSetChar(res_str2, cstring, char1, char2);
     std::cout << res_str2 << "\n";
   }
-  catch (...)
+  catch (const std::bad_alloc & e)
   {
-    std::cout << "Error\n";
+    std::cout << e.what() << "\n";
     delete [] res_str2;
     delete [] cstring;
     return 1;

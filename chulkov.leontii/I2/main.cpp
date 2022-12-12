@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
     return 1;
   }
   arr3 = new int[size3];
-  for (int i = 0; i < size3; i++)
+  for (size_t i = 0; i < size3; i++)
   {
     file >> arr3[i];
     if (!file)

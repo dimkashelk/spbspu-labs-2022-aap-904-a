@@ -41,9 +41,9 @@ int main(int argc, char * argv[]) {
       std::ofstream output(argv[3]);
       output << turkin::getNotZeroLines(constMatrix, mx, my) << " " << turkin::getSameSumLines(constMatrix, mx, my);
     }
-    catch (std::bad_alloc const & error)
+    catch (...)
     {
-      std::cerr << error.what() << "\n";
+      std::cerr << "memory error\n";
       return 1;
     }
   }
@@ -56,9 +56,9 @@ int main(int argc, char * argv[]) {
       std::ofstream output(argv[3]);
       output << turkin::getSaddlePoints(dynamicMatrix) << " " << turkin::getSumOfModules(dynamicMatrix) << "\n";
     }
-    catch (std::bad_alloc const & error)
+    catch (...)
     {
-      std::cerr << error.what() << "\n";
+      std::cerr << "memory error\n";
       return 1;
     }
   }

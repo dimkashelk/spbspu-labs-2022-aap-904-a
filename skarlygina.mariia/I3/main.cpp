@@ -9,7 +9,7 @@ int main()
   size_t capacity = 10;
   char* cstring = new char[capacity];
   size_t size = 0;
-  c_string[0] = '\0';
+  cstring[0] = '\0';
 
   std::cin >> std::noskipws;
   do

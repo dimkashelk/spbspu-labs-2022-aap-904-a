@@ -14,7 +14,7 @@ char* string_input(std::istream &in, char* destination, size_t capacity)
       {
         throw std::runtime_error("Too long string");
       }
-      if (max_size_t - 20 <= *capacity)
+      if (max_size_t - 20 <= capacity)
       {
         capacity = max_size_t;
       }

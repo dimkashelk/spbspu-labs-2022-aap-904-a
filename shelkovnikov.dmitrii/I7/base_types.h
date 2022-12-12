@@ -5,4 +5,11 @@ struct point_t
   int x;
   int y;
 };
+struct rectangle_t
+{
+  int x;
+  int y;
+  int width;
+  int height;
+};
 #endif

@@ -12,7 +12,7 @@ int main()
   }
   try
   {
-    print_table(std::cout, left, right, 0.1, 0.02, count);
+    print_table(std::cout, left, right, 0.1f, 0.02f, count);
   }
   catch (const std::out_of_range &e)
   {

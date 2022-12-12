@@ -12,7 +12,6 @@ int main()
   char** strings = new char*[capacity];
   while (std::cin)
   {
-    size_t str_capacity = 10;
     try
     {
       char* str = string_input(std::cin);

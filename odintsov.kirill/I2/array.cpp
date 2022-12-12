@@ -43,26 +43,13 @@ const int* odintsov::findMax(const int* arr, size_t size, int lowBound, int high
 
 float odintsov::getAvgEvenIndices(const int* arr, size_t size)
 {
-  int avg = 0;
-  int rem = 0;
+  float sum = 0.0f;
   size_t n = (size + 1) / 2;
   if (n == 0) {
-    return 0;
+    return 0.0f;
   }
-  const int maxInt = std::numeric_limits< int >::max();
-  const int minInt = std::numeric_limits< int >::min();
   for (size_t i = 0; i < size; i += 2) {
-    avg += arr[i] / n;
-    int newRem = arr[i] % n;
-    if ((newRem > 0) && (rem > 0) && (maxInt - newRem < rem)) {
-      avg++;
-      rem -= n;
-    }
-    if ((newRem < 0) && (rem < 0) && (minInt - newRem > rem)) {
-      avg--;
-      rem += n;
-    }
-    rem += newRem;
+    sum += 1.0f * arr[i];
   }
-  return avg + rem / static_cast< float >(n);
+  return sum / n;
 }

@@ -51,7 +51,6 @@ int main()
   catch (const std::bad_alloc & e)
   {
   	std::cout << e.what() << "\n";
-    std::cout << "Error\n";
     delete [] res_str1;
     delete [] cstring;
     return 1;

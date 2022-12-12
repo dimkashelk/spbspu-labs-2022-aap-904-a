@@ -55,21 +55,19 @@ int main(int argc, char **argv)
       std::cerr << "Error while reading file " << argv[1] << "\n";
       return 2;
     }
-    int *arrayFile = new int[arrayFileSize];
+    ArrayDynamic arrayFile(arrayFileSize);
     for (size_t i = 0; i < arrayFileSize; i++)
     {
-      fileInput >> arrayFile[i];
+      fileInput >> arrayFile.data[i];
       if (!fileInput)
       {
         std::cerr << "Error while reading file " << argv[1] << "\n";
-        delete[] arrayFile;
         return 2;
       }
     }
-    size_t countNrfmFile = countNegativeRightFromMax(arrayFile, arrayFileSize);
-    bool countRirFile = countRepetitiveInRange(arrayFile, arrayFileSize, beginIndex, endIndex);
+    size_t countNrfmFile = countNegativeRightFromMax(arrayFile.data, arrayFileSize);
+    bool countRirFile = countRepetitiveInRange(arrayFile.data, arrayFileSize, beginIndex, endIndex);
     std::cout << countNrfmFile << "\n";
     std::cout << countRirFile << "\n";
-    delete[] arrayFile;
   }
 }

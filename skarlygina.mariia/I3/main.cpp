@@ -30,7 +30,7 @@ int main()
   }
   while (std::cin && cstring[size++] != '\n');
 
-  if (!std::cin || !size)
+  if (!std::cin && !size)
   {
     std::cout << "Error while reading the string\n";
     delete [] cstring;

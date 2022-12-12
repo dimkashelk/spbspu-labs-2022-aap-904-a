@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <cstdlib>
+#include <exception>
 #include "matrix.h"
 #include "matrixOperations.h"
 
@@ -31,20 +32,35 @@ int main(int argc, char * argv[]) {
   }
   if (atoi(argv[1]) == 1)
   {
-    int constMatrix[1000];
-    for (size_t i = 0; i < mx * my; i++)
+    try
     {
-      input >> constMatrix[i];
+      int constMatrix[1000];
+      for (size_t i = 0; i < mx * my; i++) {
+        input >> constMatrix[i];
+      }
+      std::ofstream output(argv[3]);
+      output << turkin::getNotZeroLines(constMatrix, mx, my) << " " << turkin::getSameSumLines(constMatrix, mx, my);
     }
-    std::ofstream output(argv[3]);
-    output << turkin::getNotZeroLines(constMatrix, mx, my) << " " << turkin::getSameSumLines(constMatrix, mx, my);
+    catch (std::bad_alloc const & error)
+    {
+      std::cerr << error.what() << "\n";
+      return 1;
+    }
   }
   else
   {
-    turkin::Matrix dynamicMatrix(mx, my);
-    turkin::set(dynamicMatrix, input);
-    std::ofstream output(argv[3]);
-    output << turkin::getSaddlePoints(dynamicMatrix) << " " << turkin::getSumOfModules(dynamicMatrix) << "\n";
+    try
+    {
+      turkin::Matrix dynamicMatrix(mx, my);
+      turkin::set(dynamicMatrix, input);
+      std::ofstream output(argv[3]);
+      output << turkin::getSaddlePoints(dynamicMatrix) << " " << turkin::getSumOfModules(dynamicMatrix) << "\n";
+    }
+    catch (std::bad_alloc const & error)
+    {
+      std::cerr << error.what() << "\n";
+      return 1;
+    }
   }
   return 0;
 }

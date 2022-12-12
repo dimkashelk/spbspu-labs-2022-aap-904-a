@@ -22,6 +22,10 @@ bool order(const char *number)
 }
 bool mantissa_with_point(const char *number)
 {
+  if (number[0] == 'E')
+  {
+    return order(number + 1);
+  }
   if (number[0] == '.')
   {
     return false;
@@ -30,6 +34,10 @@ bool mantissa_with_point(const char *number)
 }
 bool mantissa(const char *number)
 {
+  if (number[0] == 'E')
+  {
+    return order(number + 1);
+  }
   if (number[0] == '.')
   {
     return mantissa_with_point(number + 1);

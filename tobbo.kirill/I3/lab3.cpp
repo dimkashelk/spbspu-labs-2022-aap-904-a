@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <limits>
 
+
 char* get_cstring(std::istream& stream)
 {
   size_t capacity = 10;

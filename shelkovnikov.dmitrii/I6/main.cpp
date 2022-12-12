@@ -10,5 +10,14 @@ int main()
     std::cout << "Error";
     return 1;
   }
-  print_table(std::cout, left, right, 0.1, 0.02, count);
+  try
+  {
+    print_table(std::cout, left, right, 0.1, 0.02, count);
+  }
+  catch (const std::out_of_range &e)
+  {
+    std::cout << e.what();
+    return 1;
+  }
+  return 0;
 }

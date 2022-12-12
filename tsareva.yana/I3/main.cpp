@@ -1,8 +1,9 @@
-#include "change_chars.h"
-#include "generate_new_line.h"
 #include <iostream>
 #include <cstddef>
 #include <limits>
+#include "change_chars.h"
+#include "generate_new_line.h"
+
 int main()
 {
   size_t capacity_1 = 10;

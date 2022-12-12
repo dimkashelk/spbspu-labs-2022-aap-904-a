@@ -60,7 +60,7 @@ int main()
   std::cout << std::boolalpha;
   for (size_t i = 0; i < size; i++)
   {
-    std::cout << is_real_number(strings[i]);
+    std::cout << is_real_number(strings[i]) << '\n';
   }
   free_memory(strings, size);
   return 0;

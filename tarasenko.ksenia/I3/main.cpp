@@ -62,7 +62,7 @@ int main()
   char char2 = '2';
   try
   {
-  	res_str2 = new char[res_str2_size];
+    res_str2 = new char[res_str2_size];
     res_str2 = replaceSetChar(res_str2, cstring, char1, char2);
     std::cout << res_str2 << "\n";
   }

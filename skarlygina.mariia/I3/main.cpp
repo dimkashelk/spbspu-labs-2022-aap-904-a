@@ -46,7 +46,7 @@ int main()
 
   char* destination = nullptr;
   char* string_source = nullptr;
-  constexpr size_t size_source = size;
+  const size_t size_source = size;
 
   try
   {
@@ -69,7 +69,7 @@ int main()
   {
     destination = new char[size_source + size];
     destination = addDecimalDigits(destination, cstring, string_source);
-    if (destination1[0] != '\0')
+    if (destination[0] != '\0')
     {
       std::cout << destination << "\n";
     }

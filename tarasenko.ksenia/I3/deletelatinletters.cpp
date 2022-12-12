@@ -1,3 +1,4 @@
+#include <cctype>
 #include "deletelatinletters.hpp"
 
 char * deleteLatinLetters(char * res_str1, const char * cstring)

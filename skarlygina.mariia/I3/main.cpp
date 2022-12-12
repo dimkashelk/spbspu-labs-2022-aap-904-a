@@ -30,6 +30,13 @@ int main()
   }
   while (std::cin && cstring[size++] != '\n');
 
+  if (!std::cin || !size)
+  {
+    std::cout << "Error while reading the string\n";
+    delete [] cstring;
+    return 2;
+  }
+  cstring[size - 1] = '\0';
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     std::cout << "Error while reading the string \n";
@@ -37,7 +44,6 @@ int main()
     return 2;
   }
 
-  cstring[size - 1] = '\0';
   char* destination = nullptr;
   char* string_source = nullptr;
   const size_t size_source = size;
@@ -68,6 +74,7 @@ int main()
       std::cout << destination << "\n";
     }
     else std::cout << "Error while making first function \n";
+    delete[] destination;
     destination = nullptr;
   }
   catch (const std::bad_alloc& e)
@@ -87,7 +94,6 @@ int main()
       std::cout << destination << "\n";
     }
     else std::cout << "There are no common symbols \n";
-    destination = nullptr;
   }
   catch (const std::bad_alloc& e)
   {

@@ -7,9 +7,8 @@ struct point_t
 };
 struct rectangle_t
 {
-  int x;
-  int y;
-  int width;
-  int height;
+  point_t point;
+  double width;
+  double height;
 };
 #endif

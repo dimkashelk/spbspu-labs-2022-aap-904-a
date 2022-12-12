@@ -10,7 +10,7 @@ int main()
   size_t size = 0;
   constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
   char** strings = new char*[capacity];
-  while (std::cin)
+  while (!std::cin.eof())
   {
     try
     {

@@ -50,7 +50,7 @@ int turkin::getSumOfLine(const int *matrix, size_t mx, size_t my, size_t line)
 size_t turkin::getSaddlePoints(const turkin::Matrix & matrix)
 {
   size_t amount = 0;
-  size_t element = 0;
+  int element = 0;
   for (size_t i = 0; i < matrix.mx; i++)
   {
     for (size_t q = 0; q < matrix.my; q++)

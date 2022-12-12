@@ -11,7 +11,7 @@ char* string_input(std::istream &in, char* destination, size_t *size, size_t *ca
     {
       if (*capacity == max_size_t)
       {
-        throw std::overflow_error("Too long string");
+        throw std::runtime_error("Too long string");
       }
       if (max_size_t - 20 <= *capacity)
       {
@@ -34,7 +34,7 @@ char* string_input(std::istream &in, char* destination, size_t *size, size_t *ca
       catch (...)
       {
         delete[] destination;
-        throw std::bad_alloc("Error while getting new memory");
+        throw std::runtime_error("Error while getting new memory");
       }
     }
     in >> destination[*size];

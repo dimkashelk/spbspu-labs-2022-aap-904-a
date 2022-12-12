@@ -13,6 +13,6 @@ namespace turkin
     size_t capacity;
   };
 
-  char * extend(turkin::CharArray & array, size_t addition);
+  void extend(turkin::CharArray & array, size_t addition);
 }
 #endif

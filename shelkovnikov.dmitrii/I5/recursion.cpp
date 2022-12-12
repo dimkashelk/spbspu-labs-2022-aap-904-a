@@ -19,7 +19,13 @@ bool is_unsigned_integer(const char *number)
 bool mantissa_with_point(const char *number)
 {}
 bool mantissa(const char *number)
-{}
+{
+  if (number[0] == '.')
+  {
+    return mantissa_with_point(number + 1);
+  }
+  return is_digit(number[0]) && mantissa(number + 1);
+}
 bool is_real_number(const char *number)
 {
   return is_sign(number[0]) && mantissa(number + 1);

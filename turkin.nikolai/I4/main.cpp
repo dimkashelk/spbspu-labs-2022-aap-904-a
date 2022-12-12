@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstddef>
 #include <cstdlib>
-#include <exception>
 #include "matrix.h"
 #include "matrixOperations.h"
 
@@ -32,35 +31,30 @@ int main(int argc, char * argv[]) {
   }
   if (atoi(argv[1]) == 1)
   {
-    try
+    int constMatrix[1000];
+    for (size_t i = 0; i < mx * my; i++)
     {
-      int constMatrix[1000];
-      for (size_t i = 0; i < mx * my; i++) {
-        input >> constMatrix[i];
+      input >> constMatrix[i];
+      if (!input)
+      {
+        std::cerr << "memory error\n";
+        return 1;
       }
-      std::ofstream output(argv[3]);
-      output << turkin::getNotZeroLines(constMatrix, mx, my) << " " << turkin::getSameSumLines(constMatrix, mx, my);
     }
-    catch (...)
-    {
-      std::cerr << "memory error\n";
-      return 1;
-    }
+    std::ofstream output(argv[3]);
+    output << turkin::getNotZeroLines(constMatrix, mx, my) << " " << turkin::getSameSumLines(constMatrix, mx, my);
   }
   else
   {
-    try
-    {
-      turkin::Matrix dynamicMatrix(mx, my);
-      turkin::set(dynamicMatrix, input);
-      std::ofstream output(argv[3]);
-      output << turkin::getSaddlePoints(dynamicMatrix) << " " << turkin::getSumOfModules(dynamicMatrix) << "\n";
-    }
-    catch (...)
+    turkin::Matrix dynamicMatrix(mx, my);
+    turkin::set(dynamicMatrix, input);
+    if (!input)
     {
       std::cerr << "memory error\n";
       return 1;
     }
+    std::ofstream output(argv[3]);
+    output << turkin::getSaddlePoints(dynamicMatrix) << " " << turkin::getSumOfModules(dynamicMatrix) << "\n";
   }
   return 0;
 }

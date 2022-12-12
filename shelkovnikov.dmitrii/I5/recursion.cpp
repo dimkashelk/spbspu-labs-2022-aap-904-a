@@ -16,6 +16,10 @@ bool is_unsigned_integer(const char *number)
   }
   return is_digit(number[0]) && is_unsigned_integer(number + 1);
 }
+bool order(const char *number)
+{
+  return (is_sign(number[0]) && is_unsigned_integer(number + 1)) || is_unsigned_integer(number);
+}
 bool mantissa_with_point(const char *number)
 {
   if (number[0] == '.')

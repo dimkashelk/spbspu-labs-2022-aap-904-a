@@ -4,32 +4,35 @@
 #include <limits>
 #include "ResizeCstring.hpp"
 
-char *sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t target_length, const char *cstring_one,
-                  size_t size_one, const char *cstring_two,
-                  size_t size_two)
+char *sum_strings(char *arr_sum, const char *cstring_one, const char *cstring_two)
 {
 
-  const size_t max_size_t = std::numeric_limits<size_t>::max();
+  size_t size_sum = 0;
+  const size_t max_size_t = std::numeric_limits< size_t >::max();
+  bool cstring_one_ended = false;
+  bool cstring_two_ended = false;
 
-  for (size_t i = 0, j = 0; i < target_length; i++)
+  for (size_t i = 0, j = 0; cstring_one[j] != '\0' || cstring_two[j] != '\0'; i++)
   {
-    if ((i % 2 == 0 && j < size_one - 1) || (j >= size_two - 1))
+
+    if (cstring_one[j] == '\0' && !cstring_one_ended)
     {
-      try
-      {
-        arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
-      }
-      catch (const std::runtime_error &e)
-      {
-        throw std::runtime_error(e.what());
-      }
+      cstring_one_ended = true;
+    }
+    if (cstring_one[j] == '\0' && !cstring_two_ended)
+    {
+      cstring_two_ended = true;
+    }
+
+    if ((i % 2 == 0 && !cstring_one_ended) || cstring_two_ended)
+    {
       arr_sum[i] = cstring_one[j];
       if (size_sum == max_size_t)
       {
         throw std::overflow_error("Overflow!");
       }
       size_sum++;
-      if (j >= size_two - 1)
+      if (cstring_two_ended)
       {
         if (j == max_size_t)
         {
@@ -38,16 +41,8 @@ char *sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t ta
         j++;
       }
     }
-    else if ((i % 2 != 0 && j < size_two - 1) || (j >= size_one - 1))
+    else if ((i % 2 != 0 && !cstring_two_ended) || cstring_one_ended)
     {
-      try
-      {
-        arr_sum = check_and_resize(arr_sum, size_sum, capacity_sum);
-      }
-      catch (const std::runtime_error &e)
-      {
-        throw std::runtime_error(e.what());
-      }
       arr_sum[i] = cstring_two[j];
       if (size_sum == max_size_t)
       {
@@ -65,6 +60,8 @@ char *sum_strings(char *arr_sum, size_t size_sum, size_t capacity_sum, size_t ta
       throw std::overflow_error("Overflow!");
     }
   }
+
+  arr_sum[size_sum] = '\0';
 
   return arr_sum;
 

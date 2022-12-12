@@ -53,9 +53,7 @@ int main()
 
   //12
 
-  size_t target_length = (size_one - 1) + (size_two - 1) + 1;
-  size_t size_sum = 0;
-  size_t capacity_sum = 10;
+  size_t capacity_sum = size_one + size_two + 100;
 
   char *arr_sum = nullptr;
 
@@ -74,8 +72,7 @@ int main()
 
   try
   {
-    arr_sum = sum_strings(arr_sum, size_sum, capacity_sum, target_length, cstring_one, size_one, cstring_two, size_two);
-    arr_sum[target_length - 1] = '\0';
+    arr_sum = sum_strings(arr_sum, cstring_one, cstring_two);
 
   }
   catch (const std::overflow_error &e)
@@ -101,7 +98,7 @@ int main()
 
   //5
 
-  size_t capacity_unique = size_one + size_two;
+  size_t capacity_unique = size_one + size_two + 100;
   char *arr_unique = nullptr;
 
   try

@@ -94,16 +94,53 @@ int main(int argc, char * argv[])
         return 1;
       }
     }
-    long long summ = 0;
     size_t rows_square = std::min(rows, cols);
+    int * square = nullptr;
+    if (cols == rows)
+    {
+      square = arr;
+      arr = nullptr;
+    }
+    else
+    {
+      try
+      {
+        square = new int[rows_square * rows_square];
+      }
+      catch (const std::bad_alloc & e)
+      {
+        std::cerr << e.what() << "\n";
+        delete [] arr;
+        return 1;
+      }
+    }
+    if (cols < rows)
+    {
+      for (size_t i = 0; i < (rows_square * rows_square); ++i)
+      {
+        square[i] = arr[i];
+      }
+    }
+    else if (cols > rows)
+    {
+      for (size_t i = 0; i < rows_square; ++i)
+      {
+        for (size_t j = 0; j < rows_square; ++j)
+        {
+          square[(i * rows_square) + j] = arr[(i * cols) + j];
+        }
+      }
+    }
+    long long summ = 0;
     try
     {
-      summ = chemodurov::calcMinSummSecondaryDiagonal(arr, rows_square, rows_square);
+      summ = chemodurov::calcMinSummSecondaryDiagonal(square, rows_square, rows_square);
     }
     catch (const std::invalid_argument & e)
     {
       std::cerr << e.what() << "\n";
       delete [] arr;
+      delete [] square;
       return 1;
     }
     output << summ << "\n";
@@ -111,9 +148,11 @@ int main(int argc, char * argv[])
     {
       std::cerr << "Error while writing summ\n";
       delete [] arr;
+      delete [] square;
       return 1;
     }
     delete [] arr;
+    delete [] square;
   }
   return 0;
 }

@@ -15,17 +15,11 @@ int main(int argc, char* argv[])
   int firstArray[] = { 1, 2, 6, 12, 12, 12, 9, -5, 4, 4 };
   unsigned int arr1_index_m = 1;
   unsigned int arr1_index_n = 6;
-  try
-  {
-    std::cout << "Divider: " << divider << std::endl;
-    std::cout << "The number of fully divisible: " << counterDivision(firstArray, 10, divider) << std::endl;
-    std::cout << "The number of duplicate elements: " << checkRepeatEl(firstArray, 10, arr1_index_m, arr1_index_n) << std::endl;
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cout << e.what();
-    return 2;
-  }
+
+  std::cout << "Divider: " << divider << std::endl;
+  std::cout << "The number of fully divisible: " << counterDivision(firstArray, 10, divider) << std::endl;
+  std::cout << "The number of duplicate elements: " << checkRepeatEl(firstArray, 10, arr1_index_m, arr1_index_n) << std::endl;
+
 //2
   size_t size_arr2 = 0;
   unsigned int arr2_index_m = 1;

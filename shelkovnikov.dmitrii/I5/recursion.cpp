@@ -17,7 +17,13 @@ bool is_unsigned_integer(const char *number)
   return is_digit(number[0]) && is_unsigned_integer(number + 1);
 }
 bool mantissa_with_point(const char *number)
-{}
+{
+  if (number[0] == '.')
+  {
+    return false;
+  }
+  return is_digit(number[0]) && mantissa_with_point(number + 1);
+}
 bool mantissa(const char *number)
 {
   if (number[0] == '.')

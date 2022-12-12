@@ -2,23 +2,37 @@
 
 int* partition_by_even(int* arr, const size_t size)
 {
-  for (size_t i = 0; i < size; i++)
+  size_t left = 0;
+  size_t right = size - 1;
+
+  while (left < right)
   {
-    for (size_t j = 0; j < size - 1; j++)
+    while (arr[left] % 2 == 0)
     {
-      if ((arr[j] % 2 == 1) && (arr[j + 1] % 2 == 0))
+      left++;
+      if (left == size - 1)
       {
-        std::swap(arr[j], arr[j + 1]);
+        return arr +left;
       }
     }
-  }
-
-  for (size_t i = 0; i < size; i++)
-  {
-    if (arr[i] % 2 == 1)
+    while (arr[right] % 2 != 0)
     {
-      return arr + i;
+      right--;
+      if (right == 0)
+      {
+        return arr + right;
+      }
+    }
+    if (arr[right] % 2 == 0 || arr[left] % 2 != 0)
+    {
+      std::swap(arr[left],arr[right]);
+      left++;
+      right--;
+    }
+    else
+    {
+      break;
     }
   }
-  return arr + size - 1;
+  return arr + left;
 }

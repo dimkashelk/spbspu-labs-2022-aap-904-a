@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
   }
   else
   {
-    std::cerr << "Size < 0 \n";
+    std::cout << "Size < 0 \n";
   }
 
   size_t size3 = 0;

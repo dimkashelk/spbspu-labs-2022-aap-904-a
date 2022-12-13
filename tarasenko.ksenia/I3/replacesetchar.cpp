@@ -5,14 +5,7 @@ char * replaceSetChar(char * res_str2, const char * cstring, const char ch1, con
   auto j = res_str2;
   for (auto i = cstring; *i != '\0'; i++)
   {
-    if (*i == ch1)
-    {
-      *j = ch2;
-    }
-    else
-    {
-      *j = *i;
-    }
+    *j = (*i == ch1) ? ch2 : *i;
     ++j;
   }
   *j = '\0';

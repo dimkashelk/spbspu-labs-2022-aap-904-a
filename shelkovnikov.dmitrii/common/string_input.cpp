@@ -50,7 +50,7 @@ char* string_input(std::istream &in, size_t &size)
     throw std::runtime_error("Error while input");
   }
   destination[str_size - 1] = '\0';
-  *size = str_size;
+  size = str_size;
   char *res = nullptr;
   try
   {

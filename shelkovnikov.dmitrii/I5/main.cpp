@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstddef>
 #include <limits>
-#include <string_input>
-#include <free_memory>
+#include <string_input.h>
+#include <free_memory.h>
 #include "recursion.h"
 int main()
 {

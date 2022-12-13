@@ -52,7 +52,7 @@ int main()
   str_1[size_1 - 1] = '\0';
   const char *str_2 = "abcdefgh";
   size_t size_2 = 9;
-  int *srt_2 = new int[size_2];
+  int *cry = new int[size_2];
   try
   {
     char *res1 = new char[size_1 + size_2];
@@ -82,6 +82,6 @@ int main()
     return 2;
   }
   delete[] str_1;
-  delete[] str_2;
+  delete[] cry;
   return 0;
 }

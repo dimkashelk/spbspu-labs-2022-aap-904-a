@@ -24,11 +24,6 @@ int main(int argc, char * argv[])
     std::cout << "Error while reading file\n";
     return 1;
   }
-  if ( m < 1 || n < 1)
-  {
-    std::cout << "Incorrect data entered\n";
-    return 1;
-  }
   std::ofstream out(argv[3]);
   if (!std::strcmp(argv[1], "1"))
   {
@@ -57,6 +52,15 @@ int main(int argc, char * argv[])
   else if (!std::strcmp(argv[1], "2"))
   {
     int * arr = new int[m * n];
+    for (size_t i = 0; i < m * n; i++)
+    {
+      in >> arr[i];
+      if (!in)
+      {
+        std::cout << "Error while reading file\n";
+        return 1;
+      }
+    }
     size_t row_number_elem = 3;
     size_t col_number_elem = 2;
     try

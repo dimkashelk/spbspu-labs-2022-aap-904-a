@@ -13,13 +13,13 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  if (argv[1] != '1' && argv[2] != '2')
+  if (strcmp(argv[1], "1") && strcmp(argv[1], "2"))
   {
     cerr << "First argument must be the number of function: 1 or 2\n";
     return 1;
   }
 
-  ofstream fin(argv[2], ios_base::in);
+  ifstream fin(argv[2]);
   if (!fin.is_open())
   {
     cerr << "Reading File could not be opened\n";
@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  if (argv[1] == '1')
+  if (!strcmp(argv[1], "1"))
   {
     if (rows * columns >= 1000)
     {
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
     int** dynamic_array = new int*[rows];
     for (size_t i = 0; i < rows; i++)
     {
-      dinamic_array[i] = new int[columns];
+      dynamic_array[i] = new int[columns];
     }
 
     for (size_t i = 0; i < rows; i++)

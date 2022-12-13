@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
   std::cin >> size2;
   if (!std::cin)
   {
-    std::cout << "Input error \n";
+    std::cerr << "Input error \n";
     return 1;
   }
   if (size2 > 0)

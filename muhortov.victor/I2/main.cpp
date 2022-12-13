@@ -37,8 +37,8 @@ int main (int argc, char* argv[])
   std::cin >> value;
   if (std::cin.fail() || value == 0)
   {
-    std::cerr << "Error with input" << '\n';
-    return 1;
+    std::cout << "Error with input" << '\n';
+    return 0;
   }
   else
   {
@@ -75,8 +75,8 @@ int main (int argc, char* argv[])
   file >> third_array_size;
   if (third_array_size == 0)
   {
-    std::cerr << "Empty array" << '\n';
-    return 1;
+    std::cout << "Empty array" << '\n';
+    return 0;
   }
   if (!file)
   {

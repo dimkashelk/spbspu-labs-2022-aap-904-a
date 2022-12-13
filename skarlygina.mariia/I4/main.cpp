@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    fout << countPositiveColumns(array, rows, columns);
+    fout << countPositiveColumns(&array[0], rows, columns);
     if (!fout)
     {
       cerr << "Error writing into file\n";
@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    fout << countDiagonalsWithoutZeros(dynamic_array, rows, columns);
+    fout << countDiagonalsWithoutZeros(&dynamic_array[0], rows, columns);
     if (!fout)
     {
       cerr << "Error writing into file\n";

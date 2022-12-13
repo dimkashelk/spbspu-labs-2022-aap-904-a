@@ -1,3 +1,4 @@
+#include "hasRepeatingElements.h"
 #include <iostream>
 #include <limits>
 int main()
@@ -43,6 +44,15 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  std::cout << cstring << "\n";
+  try
+  {
+    std::cout << std::boolalpha << hasRepeatingElements(cstring) << "\n";
+  }
+  catch (const std::bad_alloc & e)
+  {
+    std::cerr << e.what() << "\n";
+    delete [] cstring;
+    return 1;
+  }
   delete[] cstring;
 }

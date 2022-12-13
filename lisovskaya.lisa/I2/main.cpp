@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
   }
   if (argc > 2)
   {
-    std::cout << "far too much parametrs -_-"
+    std::cout << "far too much parametrs -_-";
     return 1;
   }
   int arr1[] = {2, 5, 3, 4, 6, 7, 1};
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
   }
   try
   {
-    std::cout << count_before_min(array2, n) << std::endl;
+    std::cout << counter_before_min(array2, n) << std::endl;
     std::cout << arith_mean(array2, n) << std::endl;
   }
   catch (const std::runtime_error &e)
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
   }
   try
   {
-    std::cout << count_before_min(array3, size) << "\n";
+    std::cout << counter_before_min(array3, size) << "\n";
     std::cout << arith_mean(array3, size) << "\n";
   }
   catch (const std::runtime_error &e)

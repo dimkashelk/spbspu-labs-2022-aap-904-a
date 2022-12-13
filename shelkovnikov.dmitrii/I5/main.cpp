@@ -15,7 +15,7 @@ int main()
     try
     {
       size_t str_size = 0;
-      char* str = string_input(std::cin, &str_size);
+      char* str = string_input(std::cin, str_size);
       strings[size++] = str;
       if (size == capacity)
       {

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <limits>
-#include <string_imput>
+#include <string_input>
 #include "removeextraspaces.h"
 #include "getothersymbols.h"
 int main()

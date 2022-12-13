@@ -1,17 +1,22 @@
 ﻿#include <iostream>
+#include "MaxLengthAfterMaxValue.h"
+#include "MaxLengthDescSeq.h"
 
 int main()
 {
   int value = 0;
-  int before_value = 0;
-  int count = 0;
-  int countaftermax = 0
+  int maxValue = std::numeric_limits<int>::min();
   std::cin >> value;
+  int predValue = value;
+  unsigned int count = 0;
+  unsigned int maxCount = 0;
+  unsigned int length = 1;
+  unsigned int maxlength = 1;
   do
   {
-    before_value = value;
+    maxLengthAfterMaxValue(value, maxValue, count, maxCount);
+    maxLengthDescSeq(value, predValue, length, maxlength);
     std::cin >> value;
-  }
-  while (value && std::cin)
-  return 0;
+  } while (value && std::cin);
+  std::cout << maxlength << "\n" << maxCount;
 }

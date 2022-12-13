@@ -37,7 +37,7 @@ int main()
     }
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
-  if (!std::cin && !array.size)
+  if (!std::cin && !size)
   {
     delete [] cstring;
     std::cerr << "Input incorrect.\n";

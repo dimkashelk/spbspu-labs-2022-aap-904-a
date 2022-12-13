@@ -6,7 +6,7 @@ bool findRepeatedSymbols(char* source)
   {
     for (size_t j = i + 1; source[j]; j++)
     {
-      if (source[i] = source[j])
+      if (source[i] == source[j])
       {
         return true;
       }

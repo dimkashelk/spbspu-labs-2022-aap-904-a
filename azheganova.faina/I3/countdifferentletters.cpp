@@ -3,11 +3,11 @@ size_t countDifferentLetters(char* source)
 {
   size_t count = 0;
   size_t lettercounter = 0;
-  for (char i = 'a', j = 'A'; i <= 'z', j <= 'Z'; i++, j++)
+  for (char i = 'a', j = 'A'; i <= 'z'; i++, j++)
   {
     for (size_t sizestring = 0; source[sizestring]; sizestring++)
     {
-      if ((i = source[sizestring]) || (j = source[sizestring]))
+      if ((i == source[sizestring]) || (j == source[sizestring]))
       {
         lettercounter++;
       }

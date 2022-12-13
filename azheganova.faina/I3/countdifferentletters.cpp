@@ -16,7 +16,6 @@ size_t countDifferentLetters(char* source)
     {
       count++;
     }
-    break;
     lettercounter = 0;
   }
   return count;

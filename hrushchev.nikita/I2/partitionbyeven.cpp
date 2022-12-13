@@ -2,30 +2,30 @@
 
 int* partition_by_even(int* arr, const size_t size)
 {
-  size_t left = 0;
-  size_t right = size - 1;
+  int* left = arr;
+  int* right = arr + size - 1;
 
   while (left < right)
   {
-    while (arr[left] % 2 == 0)
+    while (*left % 2 == 0)
     {
       left++;
-      if (left == size - 1)
+      if (left == arr + size - 1)
       {
-        return arr +left;
+        return left;
       }
     }
-    while (arr[right] % 2 != 0)
+    while (*right % 2 != 0)
     {
       right--;
-      if (right == 0)
+      if (right == arr)
       {
-        return arr + right;
+        return right;
       }
     }
-    if (arr[right] % 2 == 0 || arr[left] % 2 != 0)
+    if (*right % 2 == 0 || *left % 2 != 0)
     {
-      std::swap(arr[left],arr[right]);
+      std::swap(arr[left - arr],arr[right - arr]);
       left++;
       right--;
     }
@@ -34,5 +34,5 @@ int* partition_by_even(int* arr, const size_t size)
       break;
     }
   }
-  return arr + left;
+  return left;
 }

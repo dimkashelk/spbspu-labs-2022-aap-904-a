@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
   }
 
   constexpr size_t size1 = 10;
-  int arr1 [size1] = {1, 3, 24, 3, 0, 4, 3, 10 ,24, 12};
+  int arr1 [size1] = {1, 3, 24, 3, 0, 4, 3, 10 , 24, 12};
   std::cout << get_count_max_element(arr1, size1) << "\n";
   int* border1 = partition_by_even(arr1, size1);
   std::cout << *border1 << "\n";

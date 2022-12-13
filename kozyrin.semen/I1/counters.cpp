@@ -3,7 +3,7 @@
 #include "counters.h"
 
 bool overflow(unsigned int a) {
-  return a >= std::numeric_limits< unsigned int >::max();
+  return a = std::numeric_limits< unsigned int >::max();
 }
 
 bool overflow(int a, int b) {

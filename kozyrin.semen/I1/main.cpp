@@ -14,13 +14,13 @@ int main() {
       EqCnt(value);
       std::cin >> value;
     }
-    if (!std::cin) {
-      std::cerr << "Error: something's up with the stream, sry...";
-      return 1;
-    }
   }
   catch (const std::overflow_error & err) {
     std::cout << "Error: " << err.what() << '\n';
+    return 1;
+  }
+  if (!std::cin) {
+    std::cerr << "Error: something's up with the stream, sry...";
     return 1;
   }
 

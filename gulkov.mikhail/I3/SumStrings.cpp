@@ -12,7 +12,7 @@ char *sum_strings(char *arr_sum, const char *cstring_one, const char *cstring_tw
   bool cstring_one_ended = false;
   bool cstring_two_ended = false;
 
-  for (size_t i = 0, j = 0; cstring_one[j] != '\0' || cstring_two[j] != '\0'; i++)
+  for (size_t i = 0, j = 0; !cstring_one_ended || !cstring_two_ended; i++)
   {
 
     if (cstring_one[j] == '\0' && !cstring_one_ended)

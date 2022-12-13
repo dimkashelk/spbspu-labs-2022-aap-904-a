@@ -51,9 +51,10 @@ char* string_input(std::istream &in, size_t *size)
   }
   destination[str_size - 1] = '\0';
   *size = str_size;
+  char *res = nullptr;
   try
   {
-    char *res = new char[str_size];
+    res = new char[str_size];
     for (size_t i = 0; i < str_size; i++)
     {
       res[i] = destination[i];

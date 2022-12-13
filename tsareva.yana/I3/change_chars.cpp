@@ -4,8 +4,8 @@
 
 char* change_chars(char* res, char* str)
 {
-  char* i = res;
-  char* j = str;
+  char* i = str;
+  char* j = res;
   while (*i)
   {
     *j++ = std::tolower(*i++);

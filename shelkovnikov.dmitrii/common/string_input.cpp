@@ -64,7 +64,7 @@ char* string_input(std::istream &in, size_t &size)
   catch (const std::bad_alloc &e)
   {
     delete[] destination;
-    throw std::runtime_error("Error while getting new memory");
+    throw;
   }
   return res;
 }

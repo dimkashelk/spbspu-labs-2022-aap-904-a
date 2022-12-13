@@ -2,7 +2,6 @@
 #include <cstddef>
 #include <stdexcept>
 #include <limits>
-#include "ResizeCstring.hpp"
 
 char *sum_strings(char *arr_sum, const char *cstring_one, const char *cstring_two)
 {
@@ -19,7 +18,7 @@ char *sum_strings(char *arr_sum, const char *cstring_one, const char *cstring_tw
     {
       cstring_one_ended = true;
     }
-    if (cstring_one[j] == '\0' && !cstring_two_ended)
+    if (cstring_two[j] == '\0' && !cstring_two_ended)
     {
       cstring_two_ended = true;
     }

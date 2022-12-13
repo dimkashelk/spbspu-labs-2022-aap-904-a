@@ -1,34 +1,23 @@
 #include "countdifferentletters.h"
-
-size_t countDifferentLetters(char* destination, const char* source, int len)
+size_t countDifferentLetters(char* source)
 {
-  size_t di = 0;
-  destination[di] = '\0';
-  size_t si = 0;
-  int count = 0;
-  while (source[si] != '\0')
+  size_t count = 0;
+  size_t lettercounter = 0;
+  for (char i = 'a', j = 'A'; i <= 'z', j <= 'Z'; i++, j++)
   {
-    std::size_t si2 = si + 1;
-    while (source[si2] != '\0')
+    for (size_t sizestring = 0; source[sizestring]; sizestring++)
     {
-      if (source[si] == source[si2])
+      if ((i = source[sizestring]) || (j = source[sizestring]))
       {
-        count++;
+        lettercounter++;
       }
-      ++si2;
     }
-    if (count == 0)
+    if (lettercounter > 0)
     {
-      destination[di] = source[si];
-      ++di;
-      destination[di] = '\0';
+      count++;
     }
-    count = 0;
-    ++si;
+    break;
+    lettercounter = 0;
   }
-  while (destination[len] != '\0')
-  {
-    ++len;
-  }
-  return len;
+  return count;
 }

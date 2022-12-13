@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include "countdifferentletters.h"
-#include "countrepeatedsymbols.h"
+#include "findrepeatedsymbols.h"
 
 int main()
 {
@@ -41,10 +41,7 @@ int main()
   }
   cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
-  int resultlen = 0;
-  char* res1 = new char[size];
-  std::cout << countDifferentLetters(res1, cstring, resultlen) << std::endl;
-  std::cout << countRepeatedSymbols(cstring) << std::endl;
+  std::cout << countDifferentLetters(cstring) << '\n';
+  std::cout << findRepeatedSymbols(cstring) << '\n';
   delete [] cstring;
-  delete [] res1;
 }

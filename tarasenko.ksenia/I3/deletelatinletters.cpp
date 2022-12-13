@@ -1,5 +1,5 @@
-#include <cctype>
 #include "deletelatinletters.hpp"
+#include <cctype>
 
 char * deleteLatinLetters(char * res_str1, const char * cstring)
 {

@@ -1,9 +1,14 @@
-#include <cmath>
 #include "extendcstring.hpp"
+#include <cmath>
+#include <stdexcept>
 
 char * extendCString(char * cstring, size_t & capacity, size_t size)
 {
-  capacity = static_cast<size_t>(std::ceil(capacity * std::sqrt(2)));
+  capacity = static_cast< size_t >(std::ceil(capacity * std::sqrt(2)));
+  if (capacity < size)
+  {
+    throw std::invalid_argument("error");
+  }
   char * newstr = new char[capacity];
   for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
   {

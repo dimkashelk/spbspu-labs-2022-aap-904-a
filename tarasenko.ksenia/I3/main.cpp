@@ -17,7 +17,7 @@ int main()
       {
         cstring = extendCString(cstring, capacity, size);
       }
-      catch (const std::bad_alloc & e)
+      catch (const std::exception & e)
       {
         std::cerr << e.what() << "\n";
         delete [] cstring;

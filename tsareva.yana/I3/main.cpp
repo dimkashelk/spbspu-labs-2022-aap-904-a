@@ -57,7 +57,7 @@ int main()
   std::cout << res1 << '\n';
   delete[] res1;
   char* res2 = new char[size_1];
-  change_chars(res2, str_1, size_1);
+  change_chars(res2, str_1);
   std::cout << res2 << '\n';
   delete[] res2;
   delete[] str_1;

@@ -34,6 +34,11 @@ int main(int argc, char* argv[])
     cerr << "Incorrect arguments of the matrix\n";
     return 1;
   }
+  if (rows * columns >= 1000)
+  {
+    cerr << "The matrix is bigger than the intended\n";
+    return 1;
+  }
 
   ofstream fout(argv[3], ios_base::out);
   if (!fout.is_open())
@@ -44,11 +49,6 @@ int main(int argc, char* argv[])
 
   if (!strcmp(argv[1], "1"))
   {
-    if (rows * columns >= 1000)
-    {
-      cerr << "The matrix is bigger than the intended\n";
-      return 1;
-    }
     int array[rows][columns];
     for (size_t i = 0; i < rows; i++)
     {

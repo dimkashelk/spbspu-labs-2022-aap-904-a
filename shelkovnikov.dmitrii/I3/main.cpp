@@ -6,9 +6,10 @@
 int main()
 {
   char *str = nullptr;
+  size_t size = 0;
   try
   {
-    str = string_input(std::cin);
+    str = string_input(std::cin, &size);
   }
   catch (const std::runtime_error &e)
   {

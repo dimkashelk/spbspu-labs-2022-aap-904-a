@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include <limits>
 int main()
 {
@@ -6,7 +6,7 @@ int main()
   char *cstring = new char[capacity];
   size_t size = 0;
   std::cin >> std::noskipws;
-  size_t maxSize = std::numeric_limits<size_t>::max();
+  size_t maxSize = std::numeric_limits< size_t >::max();
   do
   {
     if (size == capacity)
@@ -36,6 +36,12 @@ int main()
     }
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
+  if (cstring[0] == '\n' || cstring[0] == '\0')
+  {
+    std::cerr << "No string provided." << "\n";
+    delete [] cstring;
+    return 1;
+  }
   cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
   delete[] cstring;

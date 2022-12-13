@@ -1,17 +1,16 @@
 #include "string_input.h"
 #include <limits>
 #include <stdexcept>
-#include <cstddef>
-char* string_input(std::istream &in)
+char* string_input(std::istream &in, size_t *size)
 {
   in >> std::noskipws;
   constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
-  size_t size = 0;
+  size_t str_size = 0;
   size_t capacity = 10;
   char* destination = new char[capacity];
   do
   {
-    if (size == capacity)
+    if (str_size == capacity)
     {
       if (capacity == max_size_t)
       {
@@ -29,7 +28,7 @@ char* string_input(std::istream &in)
       try
       {
         char *newstr = new char[capacity];
-        for (auto i = destination, j = newstr; i != destination + size; ++i, ++j)
+        for (auto i = destination, j = newstr; i != destination + str_size; ++i, ++j)
         {
           *j = *i;
         }
@@ -45,11 +44,12 @@ char* string_input(std::istream &in)
     in >> destination[size];
   }
   while (in && destination[size++] != '\n');
-  if (!in && !size)
+  if (!in && !str_size)
   {
     delete[] destination;
     throw std::runtime_error("Error while input");
   }
   destination[size - 1] = '\0';
+  *size = str_size;
   return destination;
 }

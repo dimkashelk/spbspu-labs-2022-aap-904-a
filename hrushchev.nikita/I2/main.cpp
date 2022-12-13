@@ -17,13 +17,12 @@ int main(int argc, char* argv[])
   std::cout << get_count_max_element(arr1, size1) << "\n";
   int* border1 = partition_by_even(arr1, size1);
   std::cout << *border1 << "\n";
-  print_array(arr1, 10, std::cout);
 
   size_t size2 = 0;
   std::cin >> size2;
   if (!std::cin)
   {
-    std::cout << "Input error \n";
+    std::cerr << "Input error \n";
     return 1;
   }
   if (size2 > 0)

@@ -1,6 +1,6 @@
 #include "generate_new_line.h"
 #include <cstddef>
-char* generate_new_line(char* res, char* str1, char* str2)
+char* generate_new_line(char* res, const char* str1, const char* str2)
 {
   size_t size = 0;
   for (size_t i = 0; str1[i]; i++)

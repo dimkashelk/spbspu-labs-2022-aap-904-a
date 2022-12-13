@@ -21,12 +21,12 @@ unsigned int countDiagonalsWithoutZeros(const int** array, size_t rows, size_t c
    size_t j_reverse = rows - j_fl - 1;
    while (i != j)
    {
-     if (a[i][j_fl] == '0')
+     if (array[i][j_fl] == '0')
      {
       flag = true;
       break;
      }
-     if (a[i_reverse][j_reverse] == '0')
+     if (array[i_reverse][j_reverse] == '0')
      {
       flag_reverse = true;
       break;

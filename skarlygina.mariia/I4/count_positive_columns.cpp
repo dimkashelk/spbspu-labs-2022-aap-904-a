@@ -3,7 +3,7 @@ size_t countPositiveColumns(const int** array, size_t rows, size_t columns)
 {
   size_t number_of_positive_columns = 0;
   size_t i = 0;
-  if (size && columns)
+  if (rows && columns)
   {
     while (i < columns)
     {

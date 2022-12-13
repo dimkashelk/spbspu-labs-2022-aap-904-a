@@ -70,13 +70,13 @@ int main (int argc, char* argv[])
     std::cerr << "Error with opening file" << '\n';
     return 1;
   }
-  if (file.peek() == EOF)
-  {
-    std::cerr << "Empty wile" << '\n';
-    return 1;
-  }
   size_t third_array_size = 0;
   file >> third_array_size;
+  if (third_array_size == 0)
+  {
+    std::cerr << "Empty array" << '\n';
+    return 1;
+  }
   if (!file)
   {
     std::cerr << "Error with reading file" << '\n';

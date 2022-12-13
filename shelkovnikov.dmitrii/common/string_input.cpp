@@ -1,7 +1,7 @@
 #include "string_input.h"
 #include <limits>
 #include <stdexcept>
-char* string_input(std::istream &in, size_t *size)
+char* string_input(std::istream &in, size_t &size)
 {
   in >> std::noskipws;
   constexpr size_t max_size_t = std::numeric_limits< size_t >::max();

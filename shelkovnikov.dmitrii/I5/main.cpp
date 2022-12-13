@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstddef>
 #include <limits>
+#include <string_input>
+#include <free_memory>
 #include "recursion.h"
-#include "../common/string_input.h"
-#include "../common/free_memory.h"
 int main()
 {
   size_t capacity = 10;

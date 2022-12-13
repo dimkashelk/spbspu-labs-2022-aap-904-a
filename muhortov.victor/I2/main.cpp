@@ -38,6 +38,7 @@ int main (int argc, char* argv[])
   if (std::cin.fail() || value == 0)
   {
     std::cerr << "Error with input" << '\n';
+    return 1;
   }
   else
   {

@@ -1,49 +1,29 @@
 #include "GetUniqueSymbols.hpp"
 #include <cstddef>
-#include <stdexcept>
-#include <limits>
-#include "ResizeCstring.hpp"
 
 char *get_unique_symbols(char *arr_unique, const char *cstring_one, const char *cstring_two)
 {
-  const size_t max_size_t = std::numeric_limits< size_t >::max();
-  const unsigned int max_unsigned_int = std::numeric_limits< unsigned int >::max();
   size_t size_unique = 0;
 
   bool is_common = false;
 
-  for (unsigned int i = 0; cstring_one[i] != '\0'; i++)
+  for (; *cstring_one; cstring_one++)
   {
-    for (unsigned int j = 0; cstring_two[j] != '\0'; j++)
+    for (; *cstring_two; cstring_two++)
     {
-      if (cstring_one[i] == cstring_two[j])
+      if (*cstring_one == *cstring_two)
       {
         is_common = true;
-      }
-      if (j == max_unsigned_int)
-      {
-        throw std::overflow_error("Overflow!");
       }
     }
 
     if (!is_common)
     {
-      arr_unique[size_unique] = cstring_one[i];
-
-      if (size_unique == max_size_t)
-      {
-        throw std::overflow_error("Overflow!");
-      }
-
+      arr_unique[size_unique] = *cstring_one;
       size_unique++;
     }
 
     is_common = false;
-
-    if (i == max_unsigned_int)
-    {
-      throw std::overflow_error("Overflow!");
-    }
   }
 
   arr_unique[size_unique] = '\0';

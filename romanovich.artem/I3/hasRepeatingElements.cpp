@@ -1,4 +1,5 @@
 #include "hasRepeatingElements.h"
+#include <cstddef>
 #include <cctype>
 bool hasRepeatingElements(const char *source)
 {

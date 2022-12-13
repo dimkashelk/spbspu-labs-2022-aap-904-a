@@ -41,15 +41,15 @@ char* string_input(std::istream &in, size_t *size)
         throw std::runtime_error("Error while getting new memory");
       }
     }
-    in >> destination[size];
+    in >> destination[str_size];
   }
-  while (in && destination[size++] != '\n');
+  while (in && destination[str_size++] != '\n');
   if (!in && !str_size)
   {
     delete[] destination;
     throw std::runtime_error("Error while input");
   }
-  destination[size - 1] = '\0';
+  destination[str_size - 1] = '\0';
   *size = str_size;
   try
   {

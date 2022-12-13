@@ -5,16 +5,16 @@
 #include "left.shift.mover.h"
 
 int main(int argc, char* argv[])
-{	
+{
   if (argc != 2)
   {
-	std::cerr << "Error: That's more than actually arguments count need in this programm" << std::endl;
-	return 1;
+    std::cerr << "Error: That's more than actually arguments count need in this programm" << std::endl;
+    return 1;
   }
   if (argc == 1)
   {
-	std::cerr << "Error: No file name" << std::endl;
-	return 1;
+    std::cerr << "Error: No file name" << std::endl;
+    return 1;
   }
   const size_t static_array_size = 11;
   int static_array[static_array_size] = { 5, 5, 5, 90, 23, 90, 3, 4, 5, 90, 11 };
@@ -49,13 +49,13 @@ int main(int argc, char* argv[])
   std::cout << "LeftShiftMover for Dynamic Array" << std::endl;
   for (size_t i = 0; i < dynamic_array_size; ++i)
   {
-	std::cout << dynamic_array[i] << "\t";
+    std::cout << dynamic_array[i] << "\t";
   }
   std::cout << "\n";
   int* pointer_dyn = LeftShiftMover(dynamic_array, dynamic_array_size, wanted_shift_dynamic_array);
   for (size_t i = 0; i < dynamic_array_size; ++i)
   {
-	std::cout << pointer_dyn[i] << "\t";
+    std::cout << pointer_dyn[i] << "\t";
   }
   std::cout << "\n";
   delete [] dynamic_array;

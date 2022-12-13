@@ -3,5 +3,3 @@
 #include <cstddef>
 size_t counter_before_min(const int *ar, size_t m);
 #endif
-
-

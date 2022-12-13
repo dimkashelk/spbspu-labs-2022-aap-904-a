@@ -60,6 +60,4 @@ int main(int argc, char *argv[])
   }
   delete[] array3;
   return 0;
-} 
-
-
+}

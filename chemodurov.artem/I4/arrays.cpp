@@ -11,11 +11,7 @@ bool isGrowingRow(const int * arr, size_t row, size_t cols)
       counter_in_row++;
     }
   }
-  if (counter_in_row == cols - 1)
-  {
-    return true;
-  }
-  return false;
+  return counter_in_row == cols - 1;
 }
 size_t chemodurov::countGrowingRows(const int * arr, size_t rows, size_t cols)
 {

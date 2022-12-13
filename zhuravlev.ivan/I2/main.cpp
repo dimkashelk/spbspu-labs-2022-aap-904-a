@@ -65,8 +65,8 @@ int main(int argc, char* argv[])
   std::ifstream file(argv[1]);
   if (file.fail())
   {
-	std::cerr << "Error with open file";
-	return 1;
+    std::cerr << "Error with open file";
+    return 1;
   }
   while (!file.eof())
   {

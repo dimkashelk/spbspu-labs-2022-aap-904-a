@@ -23,9 +23,9 @@ int* partition_by_even(int* arr, const size_t size)
         return right;
       }
     }
-    if (*right % 2 == 0 || *left % 2 != 0)
+    if ((*right % 2 == 0) || (*left % 2 != 0))
     {
-      std::swap(arr[left - arr],arr[right - arr]);
+      std::swap(arr[left - arr], arr[right - arr]);
       left++;
       right--;
     }

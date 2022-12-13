@@ -3,6 +3,6 @@
 #include <ostream>
 #include <cstddef>
 
-void print_array(const int* arr, size_t size, std::ostream& steamOut);
+void print_array(std::ostream& steamOut, const int* arr, size_t size);
 
 #endif

@@ -1,7 +1,7 @@
-#ifndef GITLAB_LABS_FINDCHAINOFNUMBERS_HPP
-#define GITLAB_LABS_FINDCHAINOFNUMBERS_HPP
+#ifndef FINDCHAINOFNUMBERS_HPP
+#define FINDCHAINOFNUMBERS_HPP
 #include <cstddef>
 
-int find_chain(int* arr, size_t size);
+int find_chain(const int* arr, size_t size);
 
 #endif

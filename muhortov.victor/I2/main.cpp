@@ -1,34 +1,30 @@
 #include <iostream>
 #include <fstream>
-#include "SortEvenOddNumbers.hpp"
+#include "Partition.hpp"
 #include "FindChainOfNumbers.hpp"
 #include "PrintArray.hpp"
 
-int main(int argc, char* argv[])
+int main (int argc, char* argv[])
 {
   std::srand(time(nullptr));
 
-  if (argc > 2)
+  if (argc == 1 || argc > 2)
   {
     std::cerr << "Too much parametres" << '\n';
     return 1;
   }
-  if (argc == 1)
-  {
-    std::cerr << "File name not found" << '\n';
-    return 1;
-  }
 
   //first task
-  int first_array[] = { -1,0,1,2,2,-3,7,5,-4,8 };
+
+  int first_array[] = { -1, 0, 1, 2, 2, -3, 7, 5, -4, 8 };
 
   try
   {
     std::cout << "Count of chain numbers: " << find_chain(first_array, 10) << '\n';
-    sort_numbers(first_array, 10);
-    print_array(first_array, 10, std::cout);
+    partition(first_array,10);
+    print_array(std::cout, first_array, 10);
   }
-  catch (const std::overflow_error& e)
+  catch (const std::invalid_argument& e)
   {
     std::cerr << "Error: " << e.what() << '\n';
     return 1;
@@ -39,7 +35,11 @@ int main(int argc, char* argv[])
   size_t value = 0;
 
   std::cin >> value;
-  if (value != 0)
+  if (std::cin.fail() || value == 0)
+  {
+    std::cerr << "Error with input" << '\n';
+  }
+  else
   {
     int* second_array = new int[value];
     for (size_t i = 0; i < value; i++)
@@ -49,11 +49,11 @@ int main(int argc, char* argv[])
     try
     {
       std::cout << "Count of chain numbers: " << find_chain(second_array, value) << '\n';
-      sort_numbers(second_array, value);
-      print_array(second_array, value, std::cout);
+      partition(second_array, value);
+      print_array(std::cout, second_array, value);
       std::cout << '\n';
     }
-    catch (const std::overflow_error& e)
+    catch (const std::invalid_argument& e)
     {
       std::cerr << "Error: " << e.what() << '\n';
       return 1;
@@ -96,10 +96,10 @@ int main(int argc, char* argv[])
       try
       {
         std::cout << "Count of chain numbers: " << find_chain(third_array, third_array_size) << '\n';
-        sort_numbers(third_array, third_array_size);
-        print_array(third_array, third_array_size, std::cout);
+        partition(third_array, third_array_size);
+        print_array(std::cout, third_array, third_array_size);
       }
-      catch (const std::overflow_error& e)
+      catch (const std::invalid_argument& e)
       {
         std::cerr << "Error: " << e.what() << '\n';
         delete[] third_array;
@@ -108,5 +108,4 @@ int main(int argc, char* argv[])
       delete[] third_array;
     }
   }
-
 }

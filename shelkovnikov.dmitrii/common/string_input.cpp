@@ -38,7 +38,7 @@ char* string_input(std::istream &in, size_t &size)
       catch (...)
       {
         delete[] destination;
-        throw std::runtime_error("Error while getting new memory");
+        throw;
       }
     }
     in >> destination[str_size];

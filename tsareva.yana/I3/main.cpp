@@ -50,7 +50,7 @@ int main()
     return 2;
   }
   str_1[size_1 - 1] = '\0';
-  char str_2[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', '\0'};
+  const char * str_2 = "abcdefgh\0";
   size_t size_2 = 9;
   char *res1 = new char[size_1 + size_2];
   generate_new_line(res1, str_1, str_2);

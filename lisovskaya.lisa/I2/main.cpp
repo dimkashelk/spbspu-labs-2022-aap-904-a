@@ -33,9 +33,7 @@ int main(int argc, char *argv[])
   }
   catch (const std::runtime_error &e)
   {
-    std::cout << e.what();
-    delete[] array2;
-    return 2;
+    std::cout << 0 << "\n" << 0;
   }
   delete[] array2;
   std::ifstream in(argv[1]);
@@ -53,9 +51,7 @@ int main(int argc, char *argv[])
   }
   catch (const std::runtime_error &e)
   {
-    std::cout << e.what();
-    delete[] array3;
-    return 2;
+    std::cout << 0 << "\n" << 0;
   }
   delete[] array3;
   return 0;

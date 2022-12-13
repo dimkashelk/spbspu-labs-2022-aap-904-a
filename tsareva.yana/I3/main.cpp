@@ -50,7 +50,7 @@ int main()
     return 2;
   }
   str_1[size_1 - 1] = '\0';
-  const char *str_2 = "abcdefgh\0";
+  const char *str_2 = "abcdefgh";
   size_t size_2 = 9;
   try
   {

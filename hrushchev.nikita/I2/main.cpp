@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
   }
   if (size2 > 0)
   {
-    srand(time(0));
+    std::srand(time(0));
     int* arr2 = new int[size2];
     for (size_t i = 0; i < size2; i++)
     {

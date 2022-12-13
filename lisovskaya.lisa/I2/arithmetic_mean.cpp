@@ -1,6 +1,6 @@
 #include "arithmetic_mean.h"
 #include <stdexcept>
-double arith_mean(const inst *ar, size_t m);
+double arith_mean(const int *ar, size_t m)
 {
   if (m == 0)
   {

@@ -1,6 +1,5 @@
-#include <stddef>
+#include <cstddef>
 #include <iostream>
-#include <cstdef>
 #include <fstream>
 #include "counter_before_min.h"
 #include "arithmetic_mean.h"

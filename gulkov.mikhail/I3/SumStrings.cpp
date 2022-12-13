@@ -14,13 +14,21 @@ char *sum_strings(char *arr_sum, const char *cstring_one, const char *cstring_tw
   for (size_t i = 0, j = 0; !cstring_one_ended || !cstring_two_ended; i++)
   {
 
-    if (cstring_one[j] == '\0' && !cstring_one_ended)
+    if (!cstring_one_ended)
     {
-      cstring_one_ended = true;
+      if (cstring_one[j] == '\0')
+      {
+        cstring_one_ended = true;
+      }
+
     }
-    if (cstring_two[j] == '\0' && !cstring_two_ended)
+    if (!cstring_two_ended)
     {
-      cstring_two_ended = true;
+      if (cstring_two[j] == '\0')
+      {
+        cstring_two_ended = true;
+      }
+
     }
 
     if ((i % 2 == 0 && !cstring_one_ended) || cstring_two_ended)

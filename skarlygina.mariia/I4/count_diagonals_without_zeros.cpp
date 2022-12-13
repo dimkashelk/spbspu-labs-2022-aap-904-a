@@ -2,14 +2,7 @@
 unsigned int countDiagonalsWithoutZeros(const int** array, size_t rows, size_t columns)
 {
   unsigned int count = 0;
-  if (rows < columns)
-  {
-   columns = rows;
-  }
-  else if (columns < rows)
-  {
-   rows = columns;
-  }
+  columns = (rows < columns) ? rows : (rows = (columns < rows) ? columns : rows, columns);
 
   for (size_t j = 0; j < columns; j++)
   {

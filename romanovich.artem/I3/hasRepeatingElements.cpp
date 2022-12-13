@@ -1,6 +1,5 @@
 #include "hasRepeatingElements.h"
 #include <cctype>
-#include <iostream>
 bool hasRepeatingElements(const char *source)
 {
   size_t index1 = 0;
@@ -10,7 +9,6 @@ bool hasRepeatingElements(const char *source)
   {
     while(source[index2] != '\0')
     {
-      //std::cout << source[index1] << " " << source[index2] <<" "<< (source[index1]==source[index2]) << "\n";
       if(source[index1]==source[index2])
       {
       return true;
@@ -19,6 +17,26 @@ bool hasRepeatingElements(const char *source)
     }
     index1 ++;
     index2 = index1+1;
+  }
+  return false;
+}
+bool hasRepeatingElements(const char *source1, const char *source2)
+{
+  size_t index1 = 0;
+  size_t index2 = 0;
+
+  while(source1[index1] != '\0')
+  {
+    while(source2[index2] != '\0')
+    {
+      if(source1[index1] == source2[index2])
+      {
+      return true;
+      }
+      index2 ++;
+    }
+    index1 ++;
+    index2 = 0;
   }
   return false;
 }

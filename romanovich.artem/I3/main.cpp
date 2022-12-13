@@ -54,5 +54,16 @@ int main()
     delete [] cstring;
     return 1;
   }
+  try
+  {
+    const char *stringCompare = "Why did a C++ programmer cross the street? What for? To pick up trash! HAHAHAHAHAHA!";
+    std::cout << std::boolalpha << hasRepeatingElements(cstring, stringCompare) << "\n";
+  }
+  catch (const std::bad_alloc & e)
+  {
+    std::cerr << e.what() << "\n";
+    delete [] cstring;
+    return 1;
+  }
   delete[] cstring;
 }

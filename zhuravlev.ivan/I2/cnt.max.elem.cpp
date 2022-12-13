@@ -11,9 +11,9 @@ size_t CounterMaxElement(const int *arr, const int size)
 	    max = arr[i];
 	  }
   }
-  for (int i = 0; i < size; ++i) 
+  for (int i = 0; i < size; ++i)
   {
-	  if (arr[i] == max) 
+	  if (arr[i] == max)
 	  {
 	    cnt_max++;
 	  }

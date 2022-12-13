@@ -51,5 +51,19 @@ char* string_input(std::istream &in, size_t *size)
   }
   destination[size - 1] = '\0';
   *size = str_size;
-  return destination;
+  try
+  {
+    char *res = new char[str_size];
+    for (size_t i = 0; i < str_size; i++)
+    {
+      res[i] = destination[i];
+    }
+    delete[] destination;
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] destination;
+    throw std::runtime_error("Error while getting new memory");
+  }
+  return res;
 }

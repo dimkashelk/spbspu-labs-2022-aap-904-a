@@ -67,7 +67,12 @@ int main (int argc, char* argv[])
 
   if (!file.is_open())
   {
-    std::cerr << "Error with opening file." << '\n';
+    std::cerr << "Error with opening file" << '\n';
+    return 1;
+  }
+  if (file.peek() == EOF)
+  {
+    std::cerr << "Empty wile" << '\n';
     return 1;
   }
   size_t third_array_size = 0;

@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
   size_t rows = 0;
   size_t columns = 0;
   fin >> rows >> columns;
-  if (!fin || rows*columns == 0)
+  if (!fin)
   {
     cerr << "Incorrect arguments of the matrix\n";
     return 1;
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
         if (!fin)
         {
           std::cerr << "Error while reading elements of matrix\n";
-          return 1;
+          return 2;
         }
       }
     }
@@ -76,6 +76,16 @@ int main(int argc, char* argv[])
   }
   else
   {
+    if ((rows * cols) == 0)
+    {
+      fout << "0\n";
+      if (!fout)
+      {
+        cerr << "Error while writing the result\n";
+        return 1;
+      }
+      return 0;
+    }
     int** dynamic_array = new int*[rows];
     for (size_t i = 0; i < rows; i++)
     {
@@ -95,7 +105,7 @@ int main(int argc, char* argv[])
             delete[] dynamic_array[s];
           }
           delete[] dynamic_array;
-          return 1;
+          return 2;
         }
       }
     }

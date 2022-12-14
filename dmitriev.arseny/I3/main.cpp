@@ -39,7 +39,7 @@ int main()
     cStr1[size1++] = inp;
   }
 
-  if ((inp == '\n') && (size1 == 0))
+  if (size1 == 0)
   {
     std::cerr << "Empty string" << '\n';
     delete[] cStr1;

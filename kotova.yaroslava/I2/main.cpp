@@ -11,11 +11,6 @@ int main(int argc, char* argv[])
     std::cerr << "File is wrong\n";
     return 2;
   }
-  if (argc == 1)
-  {
-    std::cerr << "Error: There is not file name..." << std::endl;
-    return 1;
-  }
 
 //1
   int firstArray[] = { 1, 2, 6, 12, 12, 12, 9, -5, 4, 4 };
@@ -31,10 +26,9 @@ int main(int argc, char* argv[])
   unsigned int arr2_index_m = 1;
   unsigned int arr2_index_n = 6;
   std::cin >> size_arr2;
-  if (!std::cin)
+  if (size_arr2 == 0)
   {
-    std::cerr << "Incorrect data\n";
-    return 1;
+    std::cout<< "Empty array" << std::endl;
   }
   else
   {

@@ -5,7 +5,7 @@
 int main()
 {
   size_t capacity = 10;
-  char * cstring = new char[capacity];
+  char *cstring = new char[capacity];
   size_t size = 0;
 
   std::cout << "Please input first string" << '\n';
@@ -37,11 +37,13 @@ int main()
   cstring[size - 1] = '\0';
   size--;
 
-  std::cout << "First string without extra spaces: '" << remove_extra_spaces(size, cstring) << "'\n";
+  char *destination = new char[size];
+  std::cout << "First string without extra spaces: '" << remove_extra_spaces(destination, cstring) << "'\n";
+  delete [] destination;
 
   std::cout <<"Please input second string: " << '\n';
   size_t capacity_second = 10;
-  char * cstring_second = new char[capacity_second];
+  char *cstring_second = new char[capacity_second];
   size_t size_second = 0;
 
   std::cin >> std::noskipws;
@@ -71,7 +73,9 @@ int main()
   while (std::cin && cstring_second[size_second++] != '\n');
   cstring_second[size_second - 1] = '\0';
 
-  std::cout << "First string without chars in second string: '" << delete_identical_chars(size, cstring, size_second, cstring_second) << "'\n";
+  char *destination_2 = new char[size];
+  std::cout << "First string without chars in second string: '" << delete_identical_chars(destination_2, cstring, cstring_second) << "'\n";
+  delete [] destination_2;
 
   delete [] cstring;
   delete [] cstring_second;

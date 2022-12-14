@@ -1,6 +1,7 @@
 #include "OrderMethod.h"
 #include <algorithm>
-unsigned int Sort_Array(int * arr, size_t size1)
+#include <iostream>
+int * Sort_Array(int * arr, size_t size1)
 {
   for (size_t k = 0; k < size1 - 1; k++)
   {
@@ -12,5 +13,10 @@ unsigned int Sort_Array(int * arr, size_t size1)
       }
     }
   }
-  return Sort_Array(arr, size1);
+  //for (size_t p = 0; p < size1; p++)
+  //{
+    //std::cout << arr[p] << " " ;
+  //}
+  return arr;
 }
+

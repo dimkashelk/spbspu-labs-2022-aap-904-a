@@ -5,7 +5,7 @@
 #include "decrease.h"
 #include "OrderMethod.h"
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
   int x;
   std::cin >> x;
@@ -13,11 +13,11 @@ int main(int argc, char **argv)
   {
     std::cout << "input error" << "\n";
   }
-  int ready_array[5] = {1,2,3,4,5};
+  int ready_array[5] = {5,4,3,2,1};
   try
   {
-    std::cout << "Length of Decrease: " << LengthOfDecreaseVal(ready_array, 5) << "\n";
-    std::cout << "Sorted array: " << Sort_Array(ready_array,5) << "\n";
+    std::cout << "Length of Decrease1: " << LengthOfDecreaseVal(ready_array, 5) << "\n";
+    std::cout << "Sorted array1: " << Sort_Array(ready_array,5) << "\n";
   }
   catch (std::overflow_error & e)
   {
@@ -26,21 +26,23 @@ int main(int argc, char **argv)
   }
 
   size_t line = x;
-  std::srand(time(nullptr));
+  std::srand(time(NULL));
   int * dyn_array = new int[line];
   size_t i;
   for (i = 0; i < line; i++)
   {
-    dyn_array[i] = std::rand() % 10;
+    dyn_array[i] = rand() % 10;
+    std::cout << dyn_array[i] << "\n";
   }
   try
   {
-    std::cout << "Length of Decrease: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
-    std::cout << "Sorted array: " << Sort_Array(dyn_array,line) << "\n";
+    std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
+    std::cout << "Sorted array2: " << Sort_Array(dyn_array,line) + 1 << "\n";
   }
   catch (std::overflow_error & e)
   {
     std::cout << e.what() << "\n";
+    delete [] dyn_array;
     return 1;
   }
   delete [] dyn_array;
@@ -73,12 +75,13 @@ int main(int argc, char **argv)
       }
       try
       {
-        std::cout << "Length of Decrease" << LengthOfDecreaseVal(File_Array, size) << "\n";
-        std::cout << "Sorted array: " << Sort_Array(File_Array, size) << "\n";
+        std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, size) << "\n";
+        std::cout << "Sorted array3: " << Sort_Array(File_Array, size) << "\n";
       }
       catch (std::overflow_error & e)
       {
         std::cout << e.what() << "\n";
+        delete [] File_Array;
         return 0;
       }
     }

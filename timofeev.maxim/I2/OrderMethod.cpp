@@ -1,16 +1,19 @@
-#include "OrderMrthod.h"
+#include "OrderMethod.h"
 #include <algorithm>
-void Sort_Array(const int * arr, size_t size)
+unsigned int Sort_Array(int * arr, size_t size1)
 {
-  for (int i =0; i < size - 1; i++)
+  for (size_t k = 0; k < size1 - 1; k++)
   {
-    for (int j = 0; j < size - i - 1, j++)
+    for (size_t j = 0; j < size1 - 1; j++)
     {
       if (arr[j] % 2 == 1 && arr[j+1] % 2 == 0)
       {
-        swap(arr[j],arr[j+1]);
+        std::swap(arr[j],arr[j+1]);
+        //int t = arr[j];
+        //arr[j] = arr[j+1];
+        //arr[j+1] = t;
       }
     }
   }
-  return Sort_Array;
+  return Sort_Array(arr, size1);
 }

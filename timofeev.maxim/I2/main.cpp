@@ -16,7 +16,7 @@ int main(int argc, char **argv)
   int ready_array[5] = {1,2,3,4,5};
   try
   {
-    std::cout << "Length of Decrease: " << LenghtOfDecreaseVal(ready_array, 5) << "\n";
+    std::cout << "Length of Decrease: " << LengthOfDecreaseVal(ready_array, 5) << "\n";
     std::cout << "Sorted array: " << Sort_Array(ready_array,5) << "\n";
   }
   catch (std::overflow_error & e)
@@ -25,25 +25,23 @@ int main(int argc, char **argv)
     return 0;
   }
 
-
-  //Потенциальная ошибка в месте с ссылкой и указателем
-  size_t line = *x;
+  size_t line = x;
   std::srand(time(nullptr));
   int * dyn_array = new int[line];
-  for (int i=0; i < line; i++)
+  size_t i;
+  for (i = 0; i < line; i++)
   {
     dyn_array[i] = std::rand() % 10;
   }
   try
   {
-    std::cout << "Length of Decrease: " << LenghtOfDecreaseVal(dyn_array, line) << "\n"
+    std::cout << "Length of Decrease: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
     std::cout << "Sorted array: " << Sort_Array(dyn_array,line) << "\n";
   }
   catch (std::overflow_error & e)
   {
     std::cout << e.what() << "\n";
     return 1;
-  }
   }
   delete [] dyn_array;
 
@@ -65,7 +63,7 @@ int main(int argc, char **argv)
     input >> size;
     if (!input)
     {
-      std::cout << "File error\n"
+      std::cout << "File error\n";
     }
     while (input.eof())
     {
@@ -75,7 +73,7 @@ int main(int argc, char **argv)
       }
       try
       {
-        std:: << "Length of Decrease" << LenghtOfDecreaseVal(File_Array, size) << "\n";
+        std::cout << "Length of Decrease" << LengthOfDecreaseVal(File_Array, size) << "\n";
         std::cout << "Sorted array: " << Sort_Array(File_Array, size) << "\n";
       }
       catch (std::overflow_error & e)
@@ -83,7 +81,7 @@ int main(int argc, char **argv)
         std::cout << e.what() << "\n";
         return 0;
       }
-      delete [] File_Array;
     }
+    delete [] File_Array;
   }
 }

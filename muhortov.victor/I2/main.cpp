@@ -71,17 +71,18 @@ int main (int argc, char* argv[])
     std::cerr << "Error with opening file" << '\n';
     return 1;
   }
+
   size_t third_array_size = 0;
   file >> third_array_size;
-  if (third_array_size == 0)
-  {
-    std::cout << "Empty array" << '\n';
-    return 0;
-  }
   if (!file)
   {
     std::cerr << "Error with reading file" << '\n';
     return 1;
+  }
+  if (third_array_size == 0)
+  {
+    std::cout << "Empty array" << '\n';
+    return 0;
   }
   else
   if (third_array_size)

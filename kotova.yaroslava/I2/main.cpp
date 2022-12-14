@@ -45,6 +45,11 @@ int main(int argc, char* argv[])
     delete[] secondArray;
   }
 //3
+  if (argc == 1)
+  {
+    std::cerr << "Error: There is not file name..." << std::endl;
+    return 1;
+  }
   unsigned int arr3_index_m = 1, arr3_index_n = 6;
   std::ifstream file_arr(argv[1]);
   if (!file_arr)

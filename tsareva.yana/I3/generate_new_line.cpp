@@ -26,22 +26,23 @@ char* generate_new_line(char* res, const char* str1, const char* str2)
     i++;
   }
 
-  for (size_t i = 0; str2[i]; i++)
+  while(*j)
   {
-    bool fl = true;
-    for (size_t j = 0; str1[j]; j++)
+    fl = true;
+    while (*i && fl)
     {
-      if (str2[i] == str1[j])
+      if (*j == *i)
       {
         fl = false;
-        break;
       }
+      i++;
     }
     if (fl)
     {
-      res[size] = str2[i];
+      res[size] = *j;
       size++;
     }
+    j++;
   }
   res[size] = '\0';
   return res;

@@ -1,5 +1,5 @@
 #include "count_diagonals_without_zeros.h"
-unsigned int countDiagonalsWithoutZeros(const int** array, size_t rows, size_t columns)
+unsigned int countDiagonalsWithoutZeros(int** array, size_t rows, size_t columns)
 {
   unsigned int count = 0;
   columns = (rows < columns) ? rows : (rows = (columns < rows) ? columns : rows, columns);

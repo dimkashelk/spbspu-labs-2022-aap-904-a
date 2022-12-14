@@ -2,23 +2,25 @@
 #include <stdexcept>
 #include "counters.h"
 
-int main() {
+int main()
+{
   dividendCounter DivCnt{0, 0};
   equalToSumCounter EqCnt{0, {0, 0}};
   int value = 0;
   std::cin >> value;
 
-  try {
-    while (value && std::cin) {
+  while (value && std::cin) {
+    try {
       DivCnt(value);
       EqCnt(value);
-      std::cin >> value;
     }
+    catch (const std::overflow_error &err) {
+      std::cout << "Error: " << err.what() << '\n';
+      return 1;
+    }
+    std::cin >> value;
   }
-  catch (const std::overflow_error & err) {
-    std::cout << "Error: " << err.what() << '\n';
-    return 1;
-  }
+
   if (!std::cin) {
     std::cerr << "Error: something's up with the stream, sry...";
     return 1;

@@ -27,7 +27,7 @@ int main(int argc, char* array[])
     std::srand(time(nullptr));
     for (size_t i = 0; i < size2; i++)
     {
-      array2[i] = rand()%10;
+      array2[i] = std::rand() % 10;
     }
     std::cout << "Number of max elements: " << CountMaxElements(array2, size2) << "\n";
     std::cout << "Positive repeating numbers: " << PositiveRepeatingNumber(array2, size2) << "\n\n";

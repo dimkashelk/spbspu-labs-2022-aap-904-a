@@ -20,11 +20,6 @@ int main(int argc, char *argv[])
   std::cout << arith_mean(arr1, 7) << std::endl;
   size_t n = 0;
   std::cin >> n;
-  if (n == 0)
-  {
-    std::cout << "errorrrrr :]";
-    return 1;
-  }
   int *array2 = new int[n];
   std::srand(time(nullptr));
   for (size_t i = 0; i < n; i++)

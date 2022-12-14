@@ -3,6 +3,7 @@
 #include <limits>
 #include "change_chars.h"
 #include "generate_new_line.h"
+#include "golden_ratio.h"
 
 int main()
 {
@@ -22,7 +23,7 @@ int main()
       }
       else
       {
-        capacity_1 += 20;
+        capacity_1 *= goldenRatio(capacity_1);
       }
       try
       {

@@ -1,5 +1,6 @@
 #include "delete_identical_chars.h"
 #include <cctype>
+#include <cstddef>
 
 char *delete_identical_chars(char *destination, const char *cstring_first, const char *cstring_second)
 {

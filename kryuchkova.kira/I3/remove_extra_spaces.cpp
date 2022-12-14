@@ -1,5 +1,6 @@
 #include "remove_extra_spaces.h"
 #include <cctype>
+#include <cstddef>
 
 char *remove_extra_spaces(char *destination, const char *cstring)
 {

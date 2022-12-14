@@ -1,5 +1,6 @@
 #include <iostream>
 #include "expandcstring.h"
+#include "deleteextraspaces.h"
 
 int main()
 {
@@ -21,12 +22,16 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (!std::cin || cstring[0] == '\n') {
+  if (cstring[0] == '\n') {
     std::cerr << "Error while reading\n";
     delete [] cstring;
     return 2;
   }
   cstring[size - 1] = '\0';
-  std::cout << "No errors" << "\n";
+  char *task1 = new char [size];
+  task1[0] = '\0';
+  deleteExtraSpaces(task1, cstring);
+  std::cout << task1 << "\n";
+  delete [] task1;
   delete [] cstring;
 }

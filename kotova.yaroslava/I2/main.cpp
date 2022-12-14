@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
       std::cout << cnt_div_arr2 << std::endl;
       std::cout << cnt_check_rep_el << std::endl;
     }
-    catch (const ( std::invalid_argument& e)
+    catch (const std::invalid_argument& e)
     {
       std::cout << e.what()
       delete[] secondArray;

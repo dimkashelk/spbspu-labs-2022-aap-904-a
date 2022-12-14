@@ -2,5 +2,5 @@
 #define COUNTDIFFERENTLETTERS_H
 #include <cstddef>
 
-size_t countDifferentLetters(char* source);
+size_t countDifferentLetters(const char* source);
 #endif

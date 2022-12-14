@@ -1,6 +1,6 @@
 #include "findrepeatedsymbols.h"
 
-bool findRepeatedSymbols(char* source)
+bool findRepeatedSymbols(const char* source)
 {
   for (size_t i = 0; source[i]; i++)
   {

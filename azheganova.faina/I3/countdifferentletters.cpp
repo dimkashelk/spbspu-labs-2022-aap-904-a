@@ -1,18 +1,18 @@
 #include "countdifferentletters.h"
-size_t countDifferentLetters(char* source)
+size_t countDifferentLetters(const char* source)
 {
   size_t count = 0;
   size_t lettercounter = 0;
-  for (char i = 'a', j = 'A'; i <= 'z'; i++, j++)
+  for (size_t i = 0; source[i]; i++)
   {
-    for (size_t sizestring = 0; source[sizestring]; sizestring++)
+    for (size_t j = i + 1; source[j]; j++)
     {
-      if ((i == source[sizestring]) || (j == source[sizestring]))
+      if (source[i] == source[j])
       {
         lettercounter++;
       }
     }
-    if (lettercounter > 0)
+    if (lettercounter == 0)
     {
       count++;
     }

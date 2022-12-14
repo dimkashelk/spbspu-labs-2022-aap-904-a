@@ -2,5 +2,5 @@
 #define FINDREPEATEDSYMBOLS_H
 #include <cstddef>
 
-bool findRepeatedSymbols(char* source);
+bool findRepeatedSymbols(const char* source);
 #endif

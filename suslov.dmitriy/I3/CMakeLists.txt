@@ -3,4 +3,4 @@ project(untitled4)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(untitled4 main.cpp 15var.cpp 15var.h 5var.cpp 5var.h)
+add_executable(untitled4 main.cpp fifteen_var.cpp fifteen_var.h five_var.cpp five_var.h)

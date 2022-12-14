@@ -1,7 +1,7 @@
 #include <iostream>
-#include "15var.h"
+#include "fifteen_var.h"
 #include <fstream>
-#include "5var.h"
+#include "five_var.h"
 int main()
 {
   //std::ifstream in;

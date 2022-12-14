@@ -1,6 +1,6 @@
 #include "PositiveRepeatingNumber.h"
 
-bool PosRepeatingNum(const int* array, const size_t size)
+bool PositiveRepeatingNumber(const int* array, const size_t size)
 {
   bool count = false;
   for (size_t i = 1; i < size; i++)

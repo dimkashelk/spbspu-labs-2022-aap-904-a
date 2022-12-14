@@ -1,14 +1,15 @@
 #include "PositiveRepeatingNumber.h"
 
-int PosRepeatingNum(const int* array, const int size)
+bool PosRepeatingNum(const int* array, const size_t size)
 {
-  int count = 0;
-  for (int i = 1; i < size; i++)
+  bool count = false;
+  for (size_t i = 1; i < size; i++)
   {
     if (array[i] == array[i - 1])
-    {
-      count++;
-    }
+     if (array[i] > 0)
+     {
+      count = true;
+     }
   }
   return count;
 }

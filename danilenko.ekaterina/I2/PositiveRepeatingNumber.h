@@ -1,7 +1,7 @@
-#ifndef POSITIVEREPEATINGNUMBER
-#define POSITIVEREPEATINGNUMBER
+#ifndef POSITIVEREPEATINGNUMBER_H
+#define POSITIVEREPEATINGNUMBER_H
 #include <cstddef>
 
-int PosRepeatingNum(const int* array, int size);
+bool PosRepeatingNum(const int* array, size_t size);
 
 #endif

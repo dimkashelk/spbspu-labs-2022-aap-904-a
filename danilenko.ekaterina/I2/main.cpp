@@ -13,44 +13,24 @@ int main(int argc, char* array[])
   }
 
   //1
-  const int size1 = 10;
-  int array1[10] = {1, 9, 8, 4, 9, 9, 9, 4 ,3, 2};
-  try
-  {
-    std::cout << "Number of max elements: " << CountMaxElements(array1, size1) << "\n";
-    std::cout << "Positive repeating numbers: " << PosRepeatingNum(array1, size1) << "\n\n";
-  }
-  catch (const std::overflow_error& e)
-  {
-    std::cout << "Error...";
-    std::cout << e.what();
-    return 0;
-  }
+  const size_t size1 = 10;
+  int array1[10] = {1, 1, 1, 1, 9, 9, 2, 4, 3, 2};
+  std::cout << "Number of max elements: " << CountMaxElements(array1, size1) << "\n";
+  std::cout << "Positive repeating numbers: " << PosRepeatingNum(array1, size1) << "\n\n";
 
   //2
-  int size2 = 0;
-  int* array2 = 0;
+  size_t size2 = 0;
   std::cin >> size2;
   if (size2 > 0)
   {
-    array2 = new int[size2];
+    int* array2 = new int[size2];
     std::srand(time(nullptr));
     for (int i = 0; i < size2; i++)
     {
       array2[i] = rand()%10;
     }
-    try
-    {
-      std::cout << "Number of max elements: " << CountMaxElements(array2, size2) << "\n";
-      std::cout << "Positive repeating numbers: " << PosRepeatingNum(array2, size2) << "\n\n";
-    }
-    catch (const std::overflow_error& e)
-    {
-      std::cout << "Error...";
-      std::cout << e.what();
-      delete[] array2;
-      return 1;
-    }
+    std::cout << "Number of max elements: " << CountMaxElements(array2, size2) << "\n";
+    std::cout << "Positive repeating numbers: " << PosRepeatingNum(array2, size2) << "\n\n";
     delete[] array2;
   }
 
@@ -61,7 +41,7 @@ int main(int argc, char* array[])
   if (file.is_open())
   {
     int* array3;
-    int size3 = 0;
+    size_t size3 = 0;
     file >> size3;
     if (file)
     {
@@ -78,18 +58,8 @@ int main(int argc, char* array[])
             return 1;
           }
         }
-        try
-        {
-          std::cout << "Number of max elements: " << CountMaxElements(array3, size3) << "\n";
-          std::cout << "Positive repeating numbers: " << PosRepeatingNum(array3, size3) << "\n\n";
-        }
-        catch (const std::overflow_error& e)
-        {
-          std::cout << "Error...";
-          std::cout << e.what();
-          delete[] array3;
-          return 1;
-        }
+        std::cout << "Number of max elements: " << CountMaxElements(array3, size3) << "\n";
+        std::cout << "Positive repeating numbers: " << PosRepeatingNum(array3, size3) << "\n\n";
         delete[] array3;
       }
     }

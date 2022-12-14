@@ -1,10 +1,11 @@
 #include "MaxElements.h"
 
-int CountMaxElements(const int* array, const int size)
+int CountMaxElements(const int* array, const size_t size)
 {
-  int count = 0;
-  int max_val = 0;
-  for (int i = 0; i < size; i++)
+  size_t count = 0;
+  int max_val = array[0];
+  for (size_t i = 0; i < size; i++)
+  {
     if (array[i] > max_val)
     {
       max_val = array[i];
@@ -14,5 +15,6 @@ int CountMaxElements(const int* array, const int size)
     {
       count++;
     }
+  }
   return count;
 }

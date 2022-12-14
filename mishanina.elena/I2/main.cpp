@@ -9,12 +9,22 @@ int main(int argc, char* argv[])
   if (argc > 2)
   {
     std::cerr << "ERROR: a lot of parameters\n";
-    return 2;
+    return 1;
+  }
+  if (argc == 1)
+  {
+    std::cerr << "ERROR: no file\n";
+    return 1;
   }
   //static array
   int n = 0;
   std::cout << "Enter number bu which elements will be divisible\n";
   std::cin >> n;
+  if (!std::cin)
+  {
+    std::cerr << "ERROR: invalid number entry\n";
+    return 1;
+  }
   int static_array[] = { 1,0,-2,6,-24,9,7 };
   std::cout << "positive_element_counter " << positive_element_counter(static_array, 7) << '\n';
   try

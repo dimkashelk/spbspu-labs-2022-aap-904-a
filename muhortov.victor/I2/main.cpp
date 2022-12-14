@@ -18,17 +18,9 @@ int main (int argc, char* argv[])
 
   int first_array[] = { -1, 0, 1, 2, 2, -3, 7, 5, -4, 8 };
 
-  try
-  {
-    std::cout << "Count of chain numbers: " << find_chain(first_array, 10) << '\n';
-    partition(first_array,10);
-    print_array(std::cout, first_array, 10);
-  }
-  catch (const std::invalid_argument& e)
-  {
-    std::cerr << "Error: " << e.what() << '\n';
-    return 1;
-  }
+  std::cout << "Count of chain numbers: " << find_chain(first_array, 10) << '\n';
+  partition(first_array,10);
+  print_array(std::cout, first_array, 10);
 
   //Second task
 
@@ -46,18 +38,10 @@ int main (int argc, char* argv[])
     {
       second_array[i] = std::rand();
     }
-    try
-    {
-      std::cout << "Count of chain numbers: " << find_chain(second_array, value) << '\n';
-      partition(second_array, value);
-      print_array(std::cout, second_array, value);
-      std::cout << '\n';
-    }
-    catch (const std::invalid_argument& e)
-    {
-      std::cerr << "Error: " << e.what() << '\n';
-      return 1;
-    }
+    std::cout << "Count of chain numbers: " << find_chain(second_array, value) << '\n';
+    partition(second_array, value);
+    print_array(std::cout, second_array, value);
+    std::cout << '\n';
     delete[] second_array;
   }
 
@@ -100,18 +84,9 @@ int main (int argc, char* argv[])
           return 1;
         }
       }
-      try
-      {
-        std::cout << "Count of chain numbers: " << find_chain(third_array, third_array_size) << '\n';
-        partition(third_array, third_array_size);
-        print_array(std::cout, third_array, third_array_size);
-      }
-      catch (const std::invalid_argument& e)
-      {
-        std::cerr << "Error: " << e.what() << '\n';
-        delete[] third_array;
-        return 1;
-      }
+      std::cout << "Count of chain numbers: " << find_chain(third_array, third_array_size) << '\n';
+      partition(third_array, third_array_size);
+      print_array(std::cout, third_array, third_array_size);
       delete[] third_array;
     }
   }

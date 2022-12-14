@@ -28,9 +28,13 @@ int main()
       try
       {
         char* newstr = new char[capacity_1];
-        for (auto i = str_1, j = newstr; i != str_1 + size_1; ++i, ++j)
+        auto *i = str_1;
+        auto *j = newstr;
+        while (i != str_1 + size_1)
         {
           *j = *i;
+          ++i;
+          ++j;
         }
         delete [] str_1;
         str_1 = newstr;

@@ -44,6 +44,11 @@ int main(int argc, char *argv[])
   std::ifstream in(argv[1]);
   size_t size = 0;
   in >> size;
+  if (!in)
+  {
+    std::cout << "empty file :(";
+    return 1;
+  }
   int *array3 = new int[size];
   for (size_t i = 0; i < size; i++)
   {
@@ -56,7 +61,7 @@ int main(int argc, char *argv[])
   }
   catch (const std::runtime_error &e)
   {
-    std::cout << 0 << "\n" << 0;
+    std::cout << e.what();
   }
   delete[] array3;
   return 0;

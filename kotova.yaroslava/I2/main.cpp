@@ -11,6 +11,11 @@ int main(int argc, char* argv[])
     std::cerr << "File is wrong\n";
     return 2;
   }
+  if (argc == 1)
+  {
+    std::cerr << "Error: There is not file name..." << std::endl;
+    return 1;
+  }
 
 //1
   int firstArray[] = { 1, 2, 6, 12, 12, 12, 9, -5, 4, 4 };

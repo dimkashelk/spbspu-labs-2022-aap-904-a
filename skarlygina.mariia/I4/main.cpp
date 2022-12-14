@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
   }
   else
   {
-    if ((rows * cols) == 0)
+    if (rows * columns == 0)
     {
       fout << "0\n";
       if (!fout)

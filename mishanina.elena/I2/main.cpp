@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <cstddef>
 #include "counter_of_elements_divisible_without_remainder.h"
 #include "positive_element_counter.h"
 

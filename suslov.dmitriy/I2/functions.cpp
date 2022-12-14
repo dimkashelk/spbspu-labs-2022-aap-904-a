@@ -7,9 +7,9 @@ void move_elements(int *arr, size_t size, size_t m, size_t n)
   {
     return;
   }
-  for (size_t i = n; i >= m; i--)
+  for (size_t i = m; i <= n; i++)
   {
-    std::swap(arr[i], arr[i + size - 2 - n]);
+    std::swap(arr[i], arr[size - (n - i + 1)]);
   }
 }
 double arithmetic_mean_of_even_indices(int *arr, size_t size)
@@ -18,10 +18,10 @@ double arithmetic_mean_of_even_indices(int *arr, size_t size)
   {
     throw std::runtime_error("Zero size");
   }
-  int sum = 0;
+  double sum = 0;
   for (size_t i = 0; i < size; i += 2)
   {
     sum += arr[i];
   }
-  return static_cast< double >(sum) / static_cast< double >(size / 2);
+  return sum / static_cast< double >(size / 2);
 }

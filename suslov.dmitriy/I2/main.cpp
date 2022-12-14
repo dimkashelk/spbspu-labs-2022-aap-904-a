@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
   }
   delete[] array_2;
   std::ifstream input(argv[1]);
+  int *array_3 = nullptr;
   while (!input.eof())
   {
     size_t size = 0;
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
       std::cout << "Another one error";
       return 1;
     }
-    int *array_3 = new int[size];
+    array_3 = new int[size];
     for (size_t i = 0; i < size; i++)
     {
       input >> array_3[i];

@@ -53,7 +53,6 @@ int main()
   str_1[size_1 - 1] = '\0';
   const char *str_2 = "abcdefgh";
   size_t size_2 = 9;
-  int *cry = new int[size_2];
   try
   {
     char *res1 = new char[size_1 + size_2];
@@ -65,7 +64,6 @@ int main()
   {
     std::cout << e.what();
     delete[] str_1;
-    delete[] str_2;
     return 2;
   }
   try
@@ -79,10 +77,8 @@ int main()
   {
     std::cout << e.what();
     delete[] str_1;
-    delete[] str_2;
     return 2;
   }
   delete[] str_1;
-  delete[] cry;
   return 0;
 }

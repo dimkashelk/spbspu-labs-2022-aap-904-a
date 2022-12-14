@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    fout << countPositiveColumns(reinterpret_cast< int* >(array), rows, columns);
+    fout << countPositiveColumns(reinterpret_cast< int** >(array), rows, columns);
     if (!fout)
     {
       cerr << "Error writing into file\n";

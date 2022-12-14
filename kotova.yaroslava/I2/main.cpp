@@ -11,6 +11,11 @@ int main(int argc, char* argv[])
     std::cerr << "File is wrong\n";
     return 2;
   }
+  if (argc == 1)
+  {
+    std::cerr << "Error: There is not file name..." << std::endl;
+    return 1;
+  }
 //1
   int firstArray[] = { 1, 2, 6, 12, 12, 12, 9, -5, 4, 4 };
   unsigned int arr1_index_m = 1;
@@ -45,11 +50,6 @@ int main(int argc, char* argv[])
     delete[] secondArray;
   }
 //3
-  if (argc == 1)
-  {
-    std::cerr << "Error: There is not file name..." << std::endl;
-    return 1;
-  }
   unsigned int arr3_index_m = 1, arr3_index_n = 6;
   std::ifstream file_arr(argv[1]);
   if (!file_arr)

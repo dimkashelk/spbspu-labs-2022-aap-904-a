@@ -1,5 +1,5 @@
 #include "count_positive_columns.h"
-size_t countPositiveColumns(int** array, size_t rows, size_t columns)
+size_t countPositiveColumns(int array[], size_t rows, size_t columns)
 {
   size_t number_of_positive_columns = 0;
   size_t i = 0;

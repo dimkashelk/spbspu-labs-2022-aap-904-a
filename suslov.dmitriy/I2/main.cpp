@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "functions.h"
+#include "move_elements.h"
+#include "arithmetic_mean_of_even_indices.h"
 int main(int argc, char *argv[])
 {
   if (argc == 1)

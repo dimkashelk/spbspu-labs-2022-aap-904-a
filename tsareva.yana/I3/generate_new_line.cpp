@@ -4,22 +4,26 @@
 char* generate_new_line(char* res, const char* str1, const char* str2)
 {
   size_t size = 0;
-  for (size_t i = 0; str1[i]; i++)
+  auto i = str1;
+  auto j = str2;
+  bool fl = true;
+  while(*i)
   {
-    bool fl = true;
-    for (size_t j = 0; str2[j]; j++)
+    fl = true;
+    while (*j && fl)
     {
-      if (str1[i] == str2[j])
+      if (*i == *j)
       {
         fl = false;
-        break;
       }
+      j++;
     }
     if (fl)
     {
-      res[size] = str1[i];
+      res[size] = *i;
       size++;
     }
+    i++;
   }
   for (size_t i = 0; str2[i]; i++)
   {

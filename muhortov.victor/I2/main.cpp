@@ -71,9 +71,9 @@ int main (int argc, char* argv[])
     std::cerr << "Error with opening file" << '\n';
     return 1;
   }
-  if (!file)
+  if (file.peek() == EOF)
   {
-    std::cerr << "Error with reading file" << '\n';
+    std::cerr << "Empty file" << '\n';
     return 1;
   }
 

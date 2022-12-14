@@ -25,6 +25,7 @@ char* generate_new_line(char* res, const char* str1, const char* str2)
     }
     i++;
   }
+
   for (size_t i = 0; str2[i]; i++)
   {
     bool fl = true;

@@ -25,7 +25,7 @@ int main(int argc, char* array[])
   {
     int* array2 = new int[size2];
     std::srand(time(nullptr));
-    for (int i = 0; i < size2; i++)
+    for (size_t i = 0; i < size2; i++)
     {
       array2[i] = rand()%10;
     }
@@ -48,7 +48,7 @@ int main(int argc, char* array[])
       if (size3 > 0)
       {
         array3 = new int[size3];
-        for (int i = 0; i < size3; i++)
+        for (size_t i = 0; i < size3; i++)
         {
           file >> array3[i];
           if (!file)

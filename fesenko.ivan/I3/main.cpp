@@ -23,7 +23,7 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (cstring[0] == "\0" || cstring[0] == '\n') {
+  if (cstring[0] == '\0' || cstring[0] == '\n') {
     std::cerr << "Error while reading\n";
     delete [] cstring;
     return 2;

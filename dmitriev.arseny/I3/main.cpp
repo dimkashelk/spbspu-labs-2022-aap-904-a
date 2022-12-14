@@ -25,7 +25,6 @@ int main()
           dupStr[i] = cStr1[i];
         }
         delete[] cStr1;
-        cStr1 = new char[capacity];
         cStr1 = dupStr;
         dupStr = nullptr;
       }

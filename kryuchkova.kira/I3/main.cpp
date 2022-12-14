@@ -1,5 +1,6 @@
 #include <iostream>
 #include "remove_extra_spaces.h"
+#include "delete_identical_chars.h"
 
 int main()
 {
@@ -7,6 +8,7 @@ int main()
   char * cstring = new char[capacity];
   size_t size = 0;
 
+  std::cout << "Please input first string" << '\n';
   std::cin >> std::noskipws;
   do
   {
@@ -16,7 +18,7 @@ int main()
       {
         char * newstr = new char[capacity + 20];
         for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        { 
+        {
           *j = *i;
         }
         delete [] cstring;
@@ -35,6 +37,42 @@ int main()
   cstring[size - 1] = '\0';
   size--;
 
-  std::cout << remove_extra_spaces(size, cstring);
+  std::cout << "First string without extra spaces: '" << remove_extra_spaces(size, cstring) << "'\n";
+
+  std::cout <<"Please input second string: " << '\n';
+  size_t capacity_second = 10;
+  char * cstring_second = new char[capacity_second];
+  size_t size_second = 0;
+
+  std::cin >> std::noskipws;
+  do
+  {
+    if (size_second == capacity_second)
+    {
+      try
+      {
+        char * newstr = new char[capacity_second + 20];
+        for (auto i = cstring_second, j = newstr; i != cstring_second + size_second; ++i, ++j)
+        {
+          *j = *i;
+        }
+        delete [] cstring_second;
+        cstring_second = newstr;
+        capacity_second += 20;
+      }
+      catch (...)
+      {
+        delete [] cstring_second;
+        return 1;
+      }
+    }
+    std::cin >> cstring_second[size_second];
+  }
+  while (std::cin && cstring_second[size_second++] != '\n');
+  cstring_second[size_second - 1] = '\0';
+
+  std::cout << "First string without chars in second string: '" << delete_identical_chars(size, cstring, size_second, cstring_second) << "'\n";
+
   delete [] cstring;
+  delete [] cstring_second;
 }

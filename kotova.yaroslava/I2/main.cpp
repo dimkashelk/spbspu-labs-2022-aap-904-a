@@ -39,10 +39,19 @@ int main(int argc, char* argv[])
     {
       secondArray[i] = std::rand();
     }
-    size_t cnt_div_arr2 = counterDivision(secondArray, size_arr2, divider);
-    size_t cnt_check_rep_el = checkRepeatEl(secondArray, size_arr2, arr2_index_m, arr2_index_n);
-    std::cout << cnt_div_arr2 << std::endl;
-    std::cout << cnt_check_rep_el << std::endl;
+    try
+    {
+      size_t cnt_div_arr2 = counterDivision(secondArray, size_arr2, divider);
+      size_t cnt_check_rep_el = checkRepeatEl(secondArray, size_arr2, arr2_index_m, arr2_index_n);
+      std::cout << cnt_div_arr2 << std::endl;
+      std::cout << cnt_check_rep_el << std::endl;
+    }
+    catch (const ( std::invalid_argument& e)
+    {
+      std::cout << e.what()
+      delete[] secondArray;
+      return 1;
+    }
     delete[] secondArray;
   }
 //3

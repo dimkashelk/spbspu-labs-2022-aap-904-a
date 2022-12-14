@@ -7,6 +7,7 @@ int main()
   size_t capacity = 10;
   char *cstring = new char[capacity];
   size_t size = 0;
+  cstring[0] = '\0';
   std::cin >> std::noskipws;
   do {
     if (size == capacity) {
@@ -22,7 +23,7 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (cstring[0] == '\n') {
+  if (cstring[0] == "\0" || cstring[0] == '\n') {
     std::cerr << "Error while reading\n";
     delete [] cstring;
     return 2;

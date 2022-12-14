@@ -9,9 +9,6 @@ unsigned int Sort_Array(int * arr, size_t size1)
       if (arr[j] % 2 == 1 && arr[j+1] % 2 == 0)
       {
         std::swap(arr[j],arr[j+1]);
-        //int t = arr[j];
-        //arr[j] = arr[j+1];
-        //arr[j+1] = t;
       }
     }
   }

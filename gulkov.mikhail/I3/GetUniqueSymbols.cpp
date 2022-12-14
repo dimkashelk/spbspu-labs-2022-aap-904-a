@@ -7,14 +7,15 @@ char *get_unique_symbols(char *arr_unique, const char *cstring_one, const char *
 
   bool is_common = false;
 
-  for (; *cstring_one; cstring_one++)
+  while (*cstring_one)
   {
-    for (; *cstring_two; cstring_two++)
+    while (*cstring_two)
     {
       if (*cstring_one == *cstring_two)
       {
         is_common = true;
       }
+      cstring_two++;
     }
 
     if (!is_common)
@@ -24,6 +25,7 @@ char *get_unique_symbols(char *arr_unique, const char *cstring_one, const char *
     }
 
     is_common = false;
+    cstring_one++;
   }
 
   arr_unique[size_unique] = '\0';

@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 
   if (argc != 2)
   {
-    std::cerr << "File is wrong\n";
+    std::cout << "File is wrong\n";
     return 2;
   }
 

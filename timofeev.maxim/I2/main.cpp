@@ -5,14 +5,8 @@
 #include "decrease.h"
 #include "OrderMethod.h"
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-  int x;
-  std::cin >> x;
-  if (!std::cin)
-  {
-    std::cout << "input error" << "\n";
-  }
   int ready_array[5] = {5,4,3,2,1};
   try
   {
@@ -26,13 +20,18 @@ int main(int argc, char *argv[])
     std::cout << e.what() << "\n";
     return 0;
   }
-  size_t line = x;
+  size_t line;
+  std::cin >> line;
+  if (!std::cin)
+  {
+    std::cout << "Input error" << "\n";
+  }
   std::srand(time(NULL));
   int * dyn_array = new int[line];
   size_t i;
   for (i = 0; i < line; i++)
   {
-    dyn_array[i] = rand() % 100 - 10;
+    dyn_array[i] = rand() % 100;
   }
   try
   {
@@ -45,47 +44,51 @@ int main(int argc, char *argv[])
   {
     std::cout << e.what() << "\n";
     delete [] dyn_array;
-    return 1;
+    return 2;
   }
   delete [] dyn_array;
+
+
   if (argc != 2)
   {
     std::cerr << "Not correct amount of CML args" << "\n";
     return 2;
   }
-  std::ifstream input(argv[1]);
-  if (!input)
+  size_t size = 0;
+  int * File_Array = new int[size];
+  std::string fname = argv[1];
+  std::ifstream input(fname);
+  if (!input.is_open())
   {
     std::cout << "File Error\n" ;
   }
-  else
+  while(!input.eof())
   {
-    size_t size = 0;
-    int * File_Array = new int[size];
     input >> size;
     if (!input)
     {
       std::cout << "File error\n";
     }
-    while (input.eof())
+    for (i = 0; i < size; ++i)
     {
-      for (i = 0; i < size; ++i)
+      input >> File_Array[i];
+      if (!input)
       {
-        input >> File_Array[i];
+        std::cout << "File error\n";
       }
-      try
-      {
-        std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, size) << "\n";
-        std::cout << "Sorted array3: " ;
-        Sort_Array(File_Array, size);
-        std::cout << "\n";
-      }
-      catch (std::overflow_error & e)
-      {
-        std::cout << e.what() << "\n";
-        delete [] File_Array;
-        return 0;
-      }
+    }
+    try
+    {
+      std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, size) << "\n";
+      std::cout << "Sorted array3: " ;
+      Sort_Array(File_Array, size);
+      std::cout << "\n";
+    }
+    catch (std::overflow_error & e)
+    {
+      std::cout << e.what() << "\n";
+      delete [] File_Array;
+      return 0;
     }
     delete [] File_Array;
   }

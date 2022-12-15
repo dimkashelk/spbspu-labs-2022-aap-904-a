@@ -4,9 +4,9 @@
 #include <sstream>
 #include "methods.h"
 
-void processStaticArray();
-void processDynamicArray();
-void processFileArray(char* filename);
+void process_static_array();
+void process_dynamic_array();
+void process_file_array(char* filename);
 
 int main(int argc, char* argv[])
 {
@@ -17,9 +17,9 @@ int main(int argc, char* argv[])
   }
   try
   {
-    processStaticArray();
-    processDynamicArray();
-    processFileArray(argv[1]);
+    process_static_array();
+    process_dynamic_array();
+    process_file_array(argv[1]);
   }
   catch (const std::exception& e)
   {
@@ -40,7 +40,7 @@ void print_array(std::string prefix, int* arr, size_t size)
   std::cout << os.str() << "\n";
 }
 
-void do_test(std::string prefix, int* arr, size_t size)
+void process_array(std::string prefix, int* arr, size_t size)
 {
   std::cout << prefix << "\n";
   int maximum;
@@ -55,14 +55,14 @@ void do_test(std::string prefix, int* arr, size_t size)
   std::cout << "-----------------\n";
 }
 
-void processStaticArray()
+void process_static_array()
 {
   int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 10, 10 };
 
-  do_test("Static array", arr, 10);
+  process_array("Static array", arr, 10);
 }
 
-void processDynamicArray()
+void process_dynamic_array()
 {
   size_t size = 0;
 
@@ -82,10 +82,10 @@ void processDynamicArray()
     arr[i] = rand() % 200 - 100;
   }
 
-  do_test("Dynamic array", arr, size);
+  process_array("Dynamic array", arr, size);
 }
 
-void processFileArray(char* filename)
+void process_file_array(char* filename)
 {
   std::ifstream input(filename);
   if (!input.is_open())
@@ -112,7 +112,7 @@ void processFileArray(char* filename)
         throw std::runtime_error("Error while reading file");
       }
     }
-    do_test("File array", arr, size);
+    process_array("File array", arr, size);
     delete[] arr;
   }
 }

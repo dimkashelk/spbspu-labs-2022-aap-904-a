@@ -49,8 +49,8 @@ int main()
       }
     }
   }
-  while (std::cin  && n );
-  std::cout << "Pythagorean numbers found: " << sum
-            << "\nChange of signs: " << counter << "\n";
+  while (std::cin  && n);
+  std::cout << "Pythagorean numbers found: " << sum;
+  std::cout << "\nChange of signs: " << counter << "\n";
   return 0;
 }

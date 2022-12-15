@@ -72,15 +72,13 @@ void process_static_array()
 void process_dynamic_array()
 {
   size_t size = 0;
-
   std::cout << "Enter array size:";
   std::cin >> size;
 
-  if (std::cin.fail() || std::cin.peek() != 10 || size < 0)
+  if (!std::cin || std::cin.fail() || std::cin.peek() != 10)
   {
-    throw std::invalid_argument("Array size must be integer greater or equal 0.");
+    throw std::invalid_argument("Array size must be unsigned integer");
   }
-
   const unsigned int srand_arg = 5;
   std::srand(srand_arg);
   int* arr = new int[size];

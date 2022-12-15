@@ -23,7 +23,7 @@ unsigned int LengthOfDecreaseVal(const int *arr, const size_t size)
         throw std::overflow_error("Overflow AntiSwag situation");
       }
     }
-    if (arr[i] < arr[i - 1])
+    if (arr[i] > arr[i - 1])
     {
       curleght = 0;
     }

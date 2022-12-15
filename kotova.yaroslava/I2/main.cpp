@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 
   if (size_arr2 == 0)
   {
-    std::cout<< "0\n";
+    std::cout<< "Empty array\n";
   }
   else
   {
@@ -52,6 +52,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] secondArray;
+    return 0;
   }
 //3
   unsigned int arr3_index_m = 1, arr3_index_n = 6;

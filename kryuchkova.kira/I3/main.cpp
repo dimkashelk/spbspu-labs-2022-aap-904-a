@@ -13,8 +13,9 @@ int main()
   {
     cstring_1 = input_string(cstring_1);
   }
-  catch(...)
+  catch(std::exception &e)
   {
+    std::cout << e.what();
     delete[] cstring_1;
     return 1;
   }
@@ -33,6 +34,7 @@ int main()
   catch(std::exception &e)
   {
     std::cout << e.what();
+    delete[] cstring_2;
     return 1;
   }
 

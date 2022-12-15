@@ -1,6 +1,6 @@
+#include "counters.h"
 #include <limits>
 #include <stdexcept>
-#include "counters.h"
 
 bool overflow(unsigned int a)
 {

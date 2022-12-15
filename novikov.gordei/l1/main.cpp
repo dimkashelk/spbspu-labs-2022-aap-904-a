@@ -27,7 +27,9 @@ int main()
       max2 = z;
     }
 
-    if (isPythagoreanTriples(x, y, z)) numbOfPythagoreanTriples++;
+    if (isPythagoreanTriples(x, y, z)) {
+      numbOfPythagoreanTriples++;
+    }
 
   }
 

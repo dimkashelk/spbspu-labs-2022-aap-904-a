@@ -25,6 +25,12 @@ int main(int argc, char **argv)
   if (!std::cin)
   {
     std::cout << "Input error" << "\n";
+    return 2;
+  }
+  if (line == 0)
+  {
+    std::cout << "Size == 0 i dont't like it" << "\n";
+    return 2;
   }
   std::srand(time(NULL));
   int * dyn_array = new int[line];
@@ -49,9 +55,14 @@ int main(int argc, char **argv)
   delete [] dyn_array;
 
 
-  if (argc != 2)
+  if (argc == 1)
   {
-    std::cerr << "Not correct amount of CML args" << "\n";
+    std::cerr << "No file" << "\n";
+    return 2;
+  }
+  if (argc > 2)
+  {
+    std::cerr << "More then 1 file" << "\n";
     return 2;
   }
   size_t size = 0;

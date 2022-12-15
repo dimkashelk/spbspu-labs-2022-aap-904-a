@@ -37,19 +37,13 @@ int main()
     }
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
-  if (!std::cin && !size)
-  {
-    delete [] cstring;
-    std::cerr << "Input incorrect.\n";
-    return 1;
-  }
+  cstring[size - 1] = '\0';
   if (cstring[0] == '\n' || cstring[0] == '\0')
   {
     delete [] cstring;
     std::cerr << "No string provided.\n";
     return 1;
   }
-  cstring[size - 1] = '\0';
   try
   {
     std::cout << std::boolalpha << hasRepeatingElements(cstring) << "\n";

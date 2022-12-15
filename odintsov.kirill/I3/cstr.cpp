@@ -1,6 +1,7 @@
 #include "cstr.hpp"
 #include <cstddef>
 #include <stdexcept>
+#include <cctype>
 
 odintsov::CString::CString(size_t cap):
   size(0),
@@ -41,7 +42,7 @@ void odintsov::CString::append(char c)
 void odintsov::removeLatin(const CString& cstr, CString& out)
 {
   for (size_t i = 0; i < cstr.size - 1; i++) {
-    if (((cstr.str[i] < 'A') || (cstr.str[i] > 'Z')) && ((cstr.str[i] < 'a') || (cstr.str[i] > 'z'))) {
+    if (!std::isalpha(cstr.str[i])) {
       out.append(cstr.str[i]);
     }
   }

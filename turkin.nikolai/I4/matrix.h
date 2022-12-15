@@ -6,7 +6,7 @@ namespace turkin
 {
   struct Matrix
   {
-    explicit Matrix(size_t mx, size_t my);
+    Matrix(size_t mx, size_t my);
     ~Matrix();
 
     int * data;

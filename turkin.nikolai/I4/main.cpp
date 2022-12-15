@@ -1,10 +1,12 @@
 #include <iostream>
 #include <cstddef>
 #include <cstdlib>
+#include <cstring>
 #include "matrix.h"
 #include "matrixOperations.h"
 
-int main(int argc, char * argv[]) {
+int main(int argc, char * argv[])
+{
   if (argc != 4)
   {
     std::cerr << "invalid amount of arguments\n";
@@ -29,7 +31,7 @@ int main(int argc, char * argv[]) {
     std::cerr << "out of range\n";
     return 1;
   }
-  if (atoi(argv[1]) == 1)
+  if (!std::strcmp(argv[1], "1"))
   {
     int constMatrix[1000];
     for (size_t i = 0; i < mx * my; i++)

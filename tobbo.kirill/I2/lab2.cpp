@@ -3,9 +3,7 @@
 #include <string>
 #include <sstream>
 #include <format>
-
-std::string count_of_maxes(const int* arr, size_t size);
-std::string shift_part_to_end(int* arr, size_t size, unsigned int m, unsigned int n);
+#include "methods.h"
 
 void processStaticArray();
 void processDynamicArray();
@@ -16,8 +14,8 @@ int main(int argc, char* argv[])
 {
   if (argc != 2)
   {
-    std::cerr << "Wrong number of parameters. Should be one\n";
-    return (int)1;
+    std::cerr << "Wrong number of parameters. Should be one";
+    return 1;
   }
   try
   {
@@ -33,117 +31,92 @@ int main(int argc, char* argv[])
   return 0;
 }
 
-void processStaticArray()
+void print_array(std::string prefix, int* arr, size_t size)
 {
-  int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-  std::cout << count_of_maxes(arr, 10) << "\n";
-  std::cout << shift_part_to_end(arr, 10, 0, 5) << "\n";
-}
-
-void processDynamicArray()
-{
-  int n = 0;
-
-  std::cout << "Enter array size:";
-  std::cin >> n;
-
-  if (std::cin.fail() || std::cin.peek() != 10 || n < 1)
-    throw "Array size must be integer greater than 0.";
-
-  srand((unsigned)time(NULL));
-
-  int* arr = new int[n];
-  int count = 0;
-
-  std::cout << "Array:";
-  for (int i = 0; i < n; ++i)
-  {
-    arr[i] = rand() % 200 - 100;
-    std::cout << " " << arr[i];
-  }
-  std::cout << std::endl;
-
-  std::cout << count_of_maxes(arr, n) << "\n";
-  std::cout << shift_part_to_end(arr, n, 0, 5) << "\n";
-}
-
-void processFileArray(char* filename)
-{
-  /*Process array  taken from file*/
-
-  std::ifstream input(filename);
-  if (!input.is_open())
-  {
-    throw "Error while opening file";
-  }
-  while (!input.eof())
-  {
-    size_t size = 0;
-    input >> size;
-    if (!input)
-    {
-      throw "Error while reading file";
-    }
-
-    int* arr_file = new int[size];
-    for (size_t i = 0; i < size; i++)
-    {
-      input >> arr_file[i];
-      if (!input)
-      {
-        delete[] arr_file;
-        throw "Error while reading file";
-      }
-    }
-
-    std::cout << count_of_maxes(arr_file, size) << "\n";
-    std::cout << shift_part_to_end(arr_file, size, 0, 5) << "\n";
-
-    delete[] arr_file;
-  }
-}
-
-std::string count_of_maxes(const int* arr, size_t size)
-{
-  int maximum = 0;
-  int countMaximum = INT_MIN;
-  for (int i = 0; i < size; i++)
-  {
-    if (arr[i] > maximum)
-    {
-      maximum = arr[i];
-      countMaximum = 1;
-    }
-    else {
-      if (arr[i] == maximum)
-      {
-        countMaximum++;
-      }
-    }
-  }
-  std::cout << maximum << "\n";
-  std::cout << countMaximum << "\n";
-  return "---------------";
-}
-
-std::string shift_part_to_end(int* arr, size_t size, unsigned int m, unsigned int n)
-{
-  int part_size = n - m;
-
-  for (int i = 0; i < part_size; i++)
-  {
-    int tmp = arr[size - i - 1];
-    arr[size - i - 1] = arr[n - i - 1];
-    arr[n - i - 1] = tmp;
-  }
-
+  std::cout << prefix;
   std::ostringstream os;
   for (int j = 0; j < size; j++)
   {
     os << arr[j] << " ";
   }
-  std::string str(os.str());
+  std::cout << os.str() << "\n";
+}
 
-  return str;
+void do_test(std::string prefix, int* arr, size_t size)
+{
+  std::cout << prefix << "\n";
+  int maximum;
+  size_t count_maximum;
+  count_of_maxes(arr, size, maximum, count_maximum);
+  std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
+
+  print_array("before: ", arr, size);
+  shift_part_to_end(arr, size, 0, 5);
+  print_array("after:  ", arr, size);
+
+  std::cout << "-----------------\n";
+}
+
+void processStaticArray()
+{
+  int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+  do_test("Static array", arr, std::size(arr));
+}
+
+void processDynamicArray()
+{
+  size_t size = 0;
+
+  std::cout << "Enter array size:";
+  std::cin >> size;
+
+  if (std::cin.fail() || std::cin.peek() != 10 || size < 1)
+  {
+    throw std::invalid_argument("Array size must be integer greater than 0.");
+  }
+
+  srand((unsigned)time(NULL));
+
+  int* arr = new int[size];
+  int count = 0;
+
+  for (size_t i = 0; i < size; ++i)
+  {
+    arr[i] = rand() % 200 - 100;
+  }
+
+  do_test("Dynamic array", arr, size);
+}
+
+void processFileArray(char* filename)
+{
+  std::ifstream input(filename);
+  if (!input.is_open())
+  {
+    throw std::runtime_error("Error while opening file");
+  }
+  size_t size = 0;
+  int* arr = NULL;
+  while (!input.eof())
+  {
+    input >> size;
+    if (!input)
+    {
+      throw std::runtime_error("Error while reading file");
+    }
+
+    arr = new int[size];
+    for (size_t i = 0; i < size; i++)
+    {
+      input >> arr[i];
+      if (!input)
+      {
+        delete[] arr;
+        throw std::runtime_error("Error while reading file");
+      }
+    }
+    do_test("File array", arr, size);
+    delete[] arr;
+  }
 }

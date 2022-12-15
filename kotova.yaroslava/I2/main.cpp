@@ -29,7 +29,7 @@ int main(int argc, char* argv[])
 
   if (size_arr2 == 0)
   {
-    std::cout<< "Empty array\n";
+    std::cout<< "0\n";
   }
   else
   {

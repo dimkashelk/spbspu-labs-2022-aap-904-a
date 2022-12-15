@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "countrows.h"
 int main(int argc, char **argv)
 {
   if (argc < 4)
@@ -55,14 +56,7 @@ int main(int argc, char **argv)
             return 2;
           }
         }
-        for (size_t i = 0; i < rows; i++)
-        {
-          for (size_t j = 0; j < columns; j++)
-          {
-          //std::cout << i << "-" << j << "-" << i*rows + j << " " << array[i*rows + j] << " ";
-          }
-          //std::cout << "\n";
-        }
+        size_t countDivEl = countDiverseElements(array, rows, columns);
       }
       else
       {

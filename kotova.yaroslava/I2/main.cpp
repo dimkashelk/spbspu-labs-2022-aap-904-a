@@ -26,11 +26,6 @@ int main(int argc, char* argv[])
   unsigned int arr2_index_m = 1;
   unsigned int arr2_index_n = 6;
   std::cin >> size_arr2;
-  if (!std::cin)
-  {
-    std::cerr << "Error...\n";
-    return 1;
-  }
 
   if (size_arr2 == 0)
   {

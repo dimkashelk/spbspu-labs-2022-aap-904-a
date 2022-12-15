@@ -57,6 +57,7 @@ int main(int argc, char **argv)
           }
         }
         size_t countDivEl = countDiverseElements(array, rows, columns);
+        std::cout << countDivEl << "\n";
       }
       else
       {

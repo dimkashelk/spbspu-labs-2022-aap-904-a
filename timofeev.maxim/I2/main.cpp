@@ -7,7 +7,7 @@
 
 int main(int argc, char **argv)
 {
-  int ready_array[5] = {5,4,3,2,1};
+  int ready_array[5] = {4,5,3,2,1};
   try
   {
     std::cout << "Length of Decrease1: " << LengthOfDecreaseVal(ready_array, 5) << "\n";
@@ -27,11 +27,6 @@ int main(int argc, char **argv)
     std::cout << "Input error" << "\n";
     return 2;
   }
-  if (line == 0)
-  {
-    std::cout << "Size == 0 i dont't like it" << "\n";
-    return 2;
-  }
   std::srand(time(NULL));
   int * dyn_array = new int[line];
   size_t i;
@@ -41,7 +36,7 @@ int main(int argc, char **argv)
   }
   try
   {
-    std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) + 1 << "\n";
+    std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
     std::cout << "Sorted array2: " ;
     Sort_Array(dyn_array,line);
     std::cout << "\n";
@@ -79,6 +74,7 @@ int main(int argc, char **argv)
     if (!input)
     {
       std::cout << "File error\n";
+      return 2;
     }
     for (i = 0; i < size; ++i)
     {
@@ -86,6 +82,7 @@ int main(int argc, char **argv)
       if (!input)
       {
         std::cout << "File error\n";
+        return 2;
       }
     }
     try

@@ -1,9 +1,9 @@
 #include "decrease.h"
 #include <limits>
 #include <stdexcept>
-unsigned int LengthOfDecreaseVal(const int *arr, const size_t size)
+unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
 {
-  unsigned int curleght = 0;
+  unsigned int curleght = 1;
   unsigned int maxleght = 0;
   if (size == 0)
   {

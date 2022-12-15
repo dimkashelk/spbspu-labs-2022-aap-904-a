@@ -15,7 +15,8 @@ int main(int argc, char *argv[])
   unsigned int cols = 0;
   unsigned int rows = 0;
   std::ifstream in(argv[2]);
-  in >> cols >> rows;
+  in >> cols;
+  in >> rows;
 
   if (!strcmp(argv[1], "1"))
   {
@@ -45,16 +46,16 @@ int main(int argc, char *argv[])
   }
   if (!strcmp(argv[1], "2"))
   {
-    int *arr = new int[cols * rows];
+    int *dyn_array = new int[cols * rows];
     for (unsigned int i = 0; i < cols; i++)
     {
       for (unsigned int j = 0; j < rows; j++)
       {
-        in >> arr[i * cols + j];
+        in >> dyn_array[i * cols + j];
         if (!in)
         {
           std::cout << "Error while reading file\n";
-          delete[] arr;
+          delete[] dyn_array;
           return 1;
         }
       }
@@ -62,17 +63,8 @@ int main(int argc, char *argv[])
     unsigned int index_row = 1;
     unsigned int index_col = 1;
 
-    arr = make_matrix_wave_increment(arr, rows, cols, index_row, index_col);
+    dyn_array = make_matrix_wave_increment(dyn_array, rows, cols, index_row, index_col);
 
-    for (unsigned int i = 0, str = 0; i < cols * rows; i++)
-    {
-      std::cout << arr[i] << " ";
-      str++;
-      if (str == 3)
-      {
-        std::cout << "\n";
-        str = 0;
-      }
-    }
+
   }
 }

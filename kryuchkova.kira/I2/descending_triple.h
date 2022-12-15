@@ -1,6 +1,7 @@
 #ifndef DESCENDING_TRIPLE_H
 #define DESCENDING_TRIPLE_H
+#include <cstddef>
 
-unsigned int count_descending_triple(const int *array, unsigned int size);
+size_t count_descending_triple(const int *array, size_t size);
 
 #endif

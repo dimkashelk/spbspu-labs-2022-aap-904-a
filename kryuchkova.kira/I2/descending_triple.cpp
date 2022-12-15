@@ -1,9 +1,8 @@
 #include "descending_triple.h"
-#include <cstddef>
 
-unsigned int count_descending_triple(const int *array, const unsigned int size)
+size_t count_descending_triple(const int *array, const size_t size)
 {
-  unsigned int counter = 0;
+  size_t counter = 0;
 
   for (size_t i = 2; i < size; i++)
   {

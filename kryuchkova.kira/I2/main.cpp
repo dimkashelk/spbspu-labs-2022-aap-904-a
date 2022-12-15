@@ -6,14 +6,9 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc > 2)
+  if (argc != 2)
   {
-    std::cerr << "Too much parameters." << '\n';
-    return 1;
-  }
-  if (argc == 1)
-  {
-    std::cerr << "No file name." << '\n';
+    std::cerr << "Invalid number of arguments." << '\n';
     return 1;
   }
 
@@ -21,16 +16,8 @@ int main(int argc, char *argv[])
 
   int first_array[] = {1, 2, 2, 2, 3, 2, 1, 3, 2, 1};
 
-  try
-  {
-    std::cout << count_sequence_similar(first_array, 10) << ' ';
-    std::cout << count_descending_triple(first_array, 10) << '\n';
-  }
-  catch(const std::overflow_error &e)
-  {
-    std::cerr << e.what() << '\n';
-    return 2;
-  }
+  std::cout << count_sequence_similar(first_array, 10) << ' ';
+  std::cout << count_descending_triple(first_array, 10) << '\n';
 
   //dynamic array with random values
 
@@ -52,24 +39,15 @@ int main(int argc, char *argv[])
       second_array[i] = std::rand();
     }
 
-    try
-    {
-      std::cout << count_sequence_similar(second_array, n) << ' ';
-      std::cout << count_descending_triple(second_array, n) << '\n';
-      delete [] second_array;
-    }
-    catch(const std::overflow_error &e)
-    {
-      std::cerr << e.what() << '\n';
-      delete [] second_array;
-      return 2;
-    }
+    std::cout << count_sequence_similar(second_array, n) << ' ';
+    std::cout << count_descending_triple(second_array, n) << '\n';
   }
   else
   {
     std::cout << "0 0" << '\n';
-    delete [] second_array;
   }
+
+  delete [] second_array;
 
   //array from file
 
@@ -92,6 +70,7 @@ int main(int argc, char *argv[])
   else if (size > 0)
   {
     int* third_array = new int[size];
+
     for (size_t i = 0; i < size; i++)
     {
       filestream >> third_array[i];
@@ -103,18 +82,8 @@ int main(int argc, char *argv[])
       }
     }
 
-    try
-    {
-      std::cout << count_sequence_similar(third_array, size) << ' ';
-      std::cout << count_descending_triple(third_array, size) << '\n';
-    }
-    catch(const std::overflow_error &e)
-    {
-      std::cerr << e.what() << '\n';
-      delete [] third_array;
-      return 2;
-    }
-
+    std::cout << count_sequence_similar(third_array, size) << ' ';
+    std::cout << count_descending_triple(third_array, size) << '\n';
     delete [] third_array;
   }
   else if (size == 0)

@@ -1,10 +1,9 @@
 #include "subarray.h"
-#include <cstddef>
 
-unsigned int count_sequence_similar(const int *array, const unsigned int size)
+size_t count_sequence_similar(const int *array, const size_t size)
 {
-  unsigned int max = 0;
-  unsigned int counter = 1;
+  size_t max = 0;
+  size_t counter = 1;
 
   for (size_t i = 1; i < size; i++)
   {

@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include "task6.h"
-#include "task7.h"
+#include <cstddef>
+#include "GetMaxCountSameNumbersSeq.h"
+#include "ShiftArrayElements.h"
 
 int main(int argc, char **argv)
 {
@@ -15,50 +16,53 @@ int main(int argc, char **argv)
   std::cin >> shift;
 
   // Static array
+  size_t arraySize1 = 10;
   int array1[10] = {5, 2, 2, 2, 7, 7, 6, 9, 5, 2};
   // Task 6
-  int result16 = getMaxCountSameNumbersSeq(array1, 10);
-  std:: cout << "Array1. Task 6 result: " << result16 << std::endl;
+  int maxCountSameNumbersNearby1 = getMaxCountSameNumbersSeq(array1, arraySize1);
+  std:: cout << "Array1. Count of same elements nearby: " << maxCountSameNumbersNearby1 << "\n";
   // Task 7
-  std:: cout << "Array1. Task 7 result: " << std::endl;
-  int result17 = shiftArrayElements(array1, 10, shift);
-  if (result17 != 0)
-  {
+  std:: cout << "Array1 with the specified shift: " << "\n";
+  bool shiftIsPossible1 = shiftArrayElements(array1, arraySize1, shift);
+  if (!shiftIsPossible1) {
     std::cout << "Shift more or equal then size of array1.\n";
   } else {
-    for (int i : array1) {
-      std::cout << i << " ";
+    for (size_t i = 0; i < arraySize1; ++i) {
+      std::cout << array1[i] << " ";
     }
     std::cout << "\n\n";
   }
 
   // Dynamic array
-  int arraySize2 = 0;
+  size_t arraySize2 = 0;
   int* array2 = nullptr;
-  std::cout << "Enter the array2 size: ";
+  std::cout << "Enter the array2 size:";
   std::cin >> arraySize2;
   if (arraySize2 > 0) {
     array2 = new int[arraySize2];
     std::srand(time(nullptr));
-    for (int i = 0; i < arraySize2; i++) {
+    for (size_t i = 0; i < arraySize2; i++) {
       array2[i] = rand() % 10;
     }
+
+    for (size_t i = 0; i < arraySize2; ++i) {
+      std::cout << array2[i] << " ";
+    }
+
     // Task 6
-    int result26 = getMaxCountSameNumbersSeq(array2, arraySize2);
-    std:: cout << "Array2. Task 6 result: " << result26 << std::endl;
+    int maxCountSameNumbersNearby2 = getMaxCountSameNumbersSeq(array2, arraySize2);
+    std:: cout << "Array2. Count of same elements nearby: " << maxCountSameNumbersNearby2 << "\n";
     // Task 7
-    std:: cout << "Array2. Task 7 result: " << std::endl;
-    int result27 = shiftArrayElements(array2, arraySize2, shift);
-    if (result27 != 0)
-    {
+    std:: cout << "Array2 with the specified shift: " << "\n";
+    bool shiftIsPossible2 = shiftArrayElements(array2, arraySize2, shift);
+    if (!shiftIsPossible2) {
       std::cout << "Shift more or equal then size of array2.\n";
     } else {
-      for (int i = 0; i < arraySize2; ++i) {
+      for (size_t i = 0; i < arraySize2; ++i) {
         std::cout << array2[i] << " ";
       }
       std::cout << "\n\n";
     }
-
     delete[] array2;
   }
 
@@ -68,7 +72,7 @@ int main(int argc, char **argv)
     std::cerr << "Invalid array size. File is empty!\n";
     return 2;
   }
-  int arraySize3 = 0;
+  size_t arraySize3 = 0;
   fileIn >> arraySize3;
   if (!fileIn) {
     std::cerr << "Invalid number of array elements. File is empty!\n";
@@ -81,7 +85,7 @@ int main(int argc, char **argv)
   int* array3 = new int[arraySize3];
   if (fileIn.is_open()) {
     while (!fileIn.eof()) {
-      for (int i = 0; i < arraySize3; i++) {
+      for (size_t i = 0; i < arraySize3; i++) {
         int item = 0;
         fileIn >> item;
         if (!fileIn) {
@@ -96,16 +100,15 @@ int main(int argc, char **argv)
   }
   fileIn.close();
   // Task 6
-  int result36 = getMaxCountSameNumbersSeq(array3, arraySize3);
-  std:: cout << "Array3. Task 6 result: " << result36 << std::endl;
+  int maxCountSameNumbersNearby3 = getMaxCountSameNumbersSeq(array3, arraySize3);
+  std:: cout << "Array3. Count of same elements nearby: " << maxCountSameNumbersNearby3 << "\n";
   // Task 7
-  std:: cout << "Array3. Task 7 result: " << std::endl;
-  int result37 = shiftArrayElements(array3, arraySize3, shift);
-  if (result37 != 0)
-  {
+  std:: cout << "Array3 with the specified shift: " << "\n";
+  bool shiftIsPossible3 = shiftArrayElements(array3, arraySize3, shift);
+  if (!shiftIsPossible3) {
     std::cout << "Shift more or equal then size of array3.\n";
   } else {
-    for (int i = 0; i < arraySize3; ++i) {
+    for (size_t i = 0; i < arraySize3; ++i) {
       std::cout << array3[i] << " ";
     }
     std::cout << "\n\n";

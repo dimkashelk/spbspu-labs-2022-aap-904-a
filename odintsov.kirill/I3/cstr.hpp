@@ -2,6 +2,7 @@
 #define CSTR_HPP
 
 #include <cstddef>
+#include <iostream>
 
 namespace odintsov {
   struct CString {
@@ -11,6 +12,8 @@ namespace odintsov {
 
     CString(size_t cap);
     ~CString();
+
+    void extend(size_t newCap);
   };
 }
 

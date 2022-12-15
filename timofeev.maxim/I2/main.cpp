@@ -60,36 +60,40 @@ int main(int argc, char **argv)
     std::cerr << "More then 1 file" << "\n";
     return 2;
   }
-  size_t size = 0;
-  int * File_Array = new int[size];
+  size_t fsize = 0;
+  int * File_Array = new int[fsize];
   std::string fname = argv[1];
   std::ifstream input(fname);
   if (!input.is_open())
   {
     std::cout << "File Error\n" ;
+    delete [] File_Array;
+    return 0;
   }
   while(!input.eof())
   {
-    input >> size;
+    input >> fsize;
     if (!input)
     {
       std::cout << "File error\n";
-      return 2;
+      delete [] File_Array;
+      return 0;
     }
-    for (i = 0; i < size; ++i)
+    for (i = 0; i < fsize; ++i)
     {
       input >> File_Array[i];
       if (!input)
       {
         std::cout << "File error\n";
-        return 2;
+        delete [] File_Array;
+        return 0;
       }
     }
     try
     {
-      std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, size) << "\n";
+      std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, fsize) << "\n";
       std::cout << "Sorted array3: " ;
-      Sort_Array(File_Array, size);
+      Sort_Array(File_Array, fsize);
       std::cout << "\n";
     }
     catch (std::overflow_error & e)

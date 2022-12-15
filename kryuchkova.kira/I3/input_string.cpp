@@ -22,13 +22,13 @@ char *input_string(char *cstring)
       {
         *j = *i;
       }
-      delete [] cstring;
+      delete[] cstring;
       cstring = newstr;
       capacity += 20;
       }
       catch (...)
       {
-        delete [] cstring;
+        delete[] cstring;
         throw;
       }
     }
@@ -39,7 +39,7 @@ char *input_string(char *cstring)
   if (cstring[0] == '\n')
   {
     std::cerr << "empty string";
-    delete [] cstring;
+    delete[] cstring;
     throw std::invalid_argument("empty string");
   }
   cstring[size - 1] = '\0';

@@ -9,7 +9,6 @@ void processStaticArray();
 void processDynamicArray();
 void processFileArray(char* filename);
 
-
 int main(int argc, char* argv[])
 {
   if (argc != 2)

@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <format>
 #include "methods.h"
 
 void processStaticArray();
@@ -34,7 +33,7 @@ void print_array(std::string prefix, int* arr, size_t size)
 {
   std::cout << prefix;
   std::ostringstream os;
-  for (int j = 0; j < size; j++)
+  for (size_t j = 0; j < size; j++)
   {
     os << arr[j] << " ";
   }

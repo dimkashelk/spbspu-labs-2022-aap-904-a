@@ -4,7 +4,7 @@
 
 int main()
 {
-  const size_t cap = 10;
+  constexpr size_t cap = 10;
   odintsov::CString cstr(cap);
   std::cin >> std::noskipws;
   try {
@@ -24,5 +24,9 @@ int main()
     std::cout << err.what() << '\n';
     return 1;
   }
-  std::cout << cstr.str << '\n';
+  {
+    odintsov::CString cstrNoLatin(cap);
+    odintsov::removeLatin(cstr, cstrNoLatin);
+    std::cout << cstrNoLatin.str << '\n';
+  }
 }

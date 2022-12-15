@@ -16,6 +16,8 @@ namespace odintsov {
     void extend(size_t newCap);
     void append(char c);
   };
+
+  void removeLatin(const CString& cstr, CString& out);
 }
 
 #endif

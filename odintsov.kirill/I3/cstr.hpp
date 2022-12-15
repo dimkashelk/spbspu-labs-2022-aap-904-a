@@ -14,6 +14,7 @@ namespace odintsov {
     ~CString();
 
     void extend(size_t newCap);
+    void append(char c);
   };
 }
 

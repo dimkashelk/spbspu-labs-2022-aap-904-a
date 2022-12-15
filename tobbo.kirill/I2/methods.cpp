@@ -29,7 +29,7 @@ void shift_part_to_end(int* arr, size_t size, unsigned int start_index, unsigned
   {
     throw std::invalid_argument("Wrong input indexes");
   }
-  int shift_size = end_index - start_index;
+  size_t shift_size = end_index - start_index;
   for (size_t i = 0; i < shift_size; i++)
   {
     int tmp = arr[size - i - 1];

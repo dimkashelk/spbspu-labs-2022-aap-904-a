@@ -57,9 +57,9 @@ void do_test(std::string prefix, int* arr, size_t size)
 
 void processStaticArray()
 {
-  int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+  int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 10, 10 };
 
-  do_test("Static array", arr, std::size(arr));
+  do_test("Static array", arr, 10);
 }
 
 void processDynamicArray()

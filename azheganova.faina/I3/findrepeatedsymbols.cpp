@@ -1,4 +1,5 @@
 #include "findrepeatedsymbols.h"
+#include <cstddef>
 
 bool findRepeatedSymbols(const char* source)
 {

@@ -1,4 +1,3 @@
-#include <cstddef>
 #include "GetMaxCountSameNumbersSeq.h"
 
 int getMaxCountSameNumbersSeq(const int* arr, size_t size)

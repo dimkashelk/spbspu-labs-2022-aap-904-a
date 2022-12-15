@@ -1,4 +1,3 @@
-#include <cstddef>
 #include "ShiftArrayElements.h"
 
 bool shiftArrayElements(int* arr, size_t size, size_t shift)

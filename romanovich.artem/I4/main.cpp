@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     std::cerr << "Too much parameters.\n";
     return 2;
   }
-  char* taskNumber = argv[1];
+  char *taskNumber = argv[1];
   std::string fileIn = argv[2];
   std::string fileOut = argv[3];
   std::fstream fileInput(fileIn);

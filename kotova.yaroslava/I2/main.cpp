@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 
   if (argc != 2)
   {
-    std::cout << "File is wrong\n";
+    std::cerr << "File is wrong\n";
     return 2;
   }
 
@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     {
       std::cout << e.what();
       delete[] secondArray;
-      return 1;
+      return 0;
     }
     delete[] secondArray;
   }

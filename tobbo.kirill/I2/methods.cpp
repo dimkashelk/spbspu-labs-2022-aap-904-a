@@ -1,6 +1,6 @@
-#include "methods.h"
 #include <limits>
 #include <stdexcept>
+#include "methods.h"
 
 void count_of_maxes(const int* arr, size_t size, int& maximum, size_t& count_maximum)
 {

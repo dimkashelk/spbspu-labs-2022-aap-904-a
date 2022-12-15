@@ -1,8 +1,8 @@
-#include <iostream>
-#include <cstddef>
-#include <limits>
-#include "change_chars.h"
-#include "generate_new_line.h"
+#include <iostream>            // CG пункт 47: Порядок включения заголовочных файлов
+#include <cstddef>             // 1) внутри файла реализации первым включается соответствующий ему заголовок
+#include <limits>              // 2) стандартные заголовки
+#include "change_chars.h"      // 3) заголовки использованных библиотек
+#include "generate_new_line.h" // 4) свои заголовки
 #include "golden_ratio.h"
 
 int main()

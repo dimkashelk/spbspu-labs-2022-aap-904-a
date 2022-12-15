@@ -17,7 +17,9 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << "Length of Decrease1: " << LengthOfDecreaseVal(ready_array, 5) << "\n";
-    std::cout << "Sorted array1: " << Sort_Array(ready_array,5) << "\n";
+    std::cout << "Sorted array1: " ;
+    Sort_Array(ready_array,5);
+    std::cout << "\n";
   }
   catch (std::overflow_error & e)
   {
@@ -31,13 +33,14 @@ int main(int argc, char *argv[])
   size_t i;
   for (i = 0; i < line; i++)
   {
-    dyn_array[i] = rand() % 10;
-    std::cout << dyn_array[i] << "\n";
+    dyn_array[i] = rand() % 100 - 10;
   }
   try
   {
-    std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
-    std::cout << "Sorted array2: " << Sort_Array(dyn_array,line) + 1 << "\n";
+    std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) + 1 << "\n";
+    std::cout << "Sorted array2: " ;
+    Sort_Array(dyn_array,line);
+    std::cout << "\n";
   }
   catch (std::overflow_error & e)
   {
@@ -76,7 +79,9 @@ int main(int argc, char *argv[])
       try
       {
         std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, size) << "\n";
-        std::cout << "Sorted array3: " << Sort_Array(File_Array, size) << "\n";
+        std::cout << "Sorted array3: " ;
+        Sort_Array(File_Array, size);
+        std::cout << "\n";
       }
       catch (std::overflow_error & e)
       {

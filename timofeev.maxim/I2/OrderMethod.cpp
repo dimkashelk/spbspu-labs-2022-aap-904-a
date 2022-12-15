@@ -13,10 +13,10 @@ int * Sort_Array(int * arr, size_t size1)
       }
     }
   }
-  //for (size_t p = 0; p < size1; p++)
-  //{
-    //std::cout << arr[p] << " " ;
-  //}
-  return arr;
+  for (size_t p = 0; p < size1; p++)
+  {
+    std::cout << arr[p] << " " ;
+  }
+  return 0;
 }
 

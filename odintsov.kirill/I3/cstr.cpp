@@ -5,3 +5,8 @@ odintsov::CString::CString(size_t cap):
   cap(cap),
   str(new char[cap])
 {}
+
+odintsov::CString::~CString()
+{
+  delete [] str;
+}

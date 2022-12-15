@@ -10,6 +10,7 @@ namespace odintsov {
     char* str;
 
     CString(size_t cap);
+    ~CString();
   };
 }
 

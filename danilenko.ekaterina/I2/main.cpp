@@ -40,14 +40,13 @@ int main(int argc, char* array[])
   file.open(name);
   if (file.is_open())
   {
-    int* array3;
     size_t size3 = 0;
     file >> size3;
     if (file)
     {
       if (size3 > 0)
       {
-        array3 = new int[size3];
+        int* array3 = new int[size3];
         for (size_t i = 0; i < size3; i++)
         {
           file >> array3[i];

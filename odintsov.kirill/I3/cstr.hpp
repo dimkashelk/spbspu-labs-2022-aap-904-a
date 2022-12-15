@@ -6,8 +6,10 @@
 namespace odintsov {
   struct CString {
     size_t size;
-    size_t capacity;
+    size_t cap;
     char* str;
+
+    CString(size_t cap);
   };
 }
 

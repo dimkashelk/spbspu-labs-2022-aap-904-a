@@ -1,5 +1,5 @@
-#ifndef RECURSION_H
-#define RECURSION_H
+#ifndef ISREALNUMBER_H
+#define ISREALNUMBER_H
 namespace chemodurov
 {
   bool isRealNumber(const char *);

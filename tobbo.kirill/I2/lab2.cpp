@@ -46,7 +46,14 @@ void process_array(std::string prefix, int* arr, size_t size)
   int maximum;
   size_t count_maximum;
   count_of_maxes(arr, size, maximum, count_maximum);
-  std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
+  if (count_maximum != 0)
+  {
+    std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
+  }
+  else
+  {
+    std::cout << "Array is empty\n";
+  }
 
   print_array("before: ", arr, size);
   shift_part_to_end(arr, size, 0, 5);
@@ -69,15 +76,15 @@ void process_dynamic_array()
   std::cout << "Enter array size:";
   std::cin >> size;
 
-  if (std::cin.fail() || std::cin.peek() != 10 || size < 1)
+  if (std::cin.fail() || std::cin.peek() != 10 || size < 0)
   {
-    throw std::invalid_argument("Array size must be integer greater than 0.");
+    throw std::invalid_argument("Array size must be integer greater or equal 0.");
   }
 
   const unsigned int srand_arg = 5;
   std::srand(srand_arg);
   int* arr = new int[size];
-  for (size_t i = 0; i < size; ++i)
+  for (size_t i = 0; i < size; i++)
   {
     arr[i] = rand() % 200 - 100;
   }

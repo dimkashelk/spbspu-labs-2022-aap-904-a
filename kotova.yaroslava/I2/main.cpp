@@ -52,7 +52,6 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] secondArray;
-    return 0;
   }
 //3
   unsigned int arr3_index_m = 1, arr3_index_n = 6;
@@ -60,12 +59,6 @@ int main(int argc, char* argv[])
   if (!file_arr)
   {
     std::cout << "file open with an error";
-    return 1;
-  }
-
-  if (!file_arr)
-  {
-    std::cout << "error while file reading\n";
     return 1;
   }
 
@@ -102,6 +95,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] thirdArray;
+
   }
   return 0;
 }

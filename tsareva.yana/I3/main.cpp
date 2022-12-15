@@ -1,8 +1,9 @@
 #include <iostream>            // CG пункт 47: Порядок включения заголовочных файлов
 #include <cstddef>             // 1) внутри файла реализации первым включается соответствующий ему заголовок
-#include <limits>              // 2) стандартные заголовки
-#include "change_chars.h"      // 3) заголовки использованных библиотек
-#include "generate_new_line.h" // 4) свои заголовки
+#include <cstring>             // 2) стандартные заголовки
+#include <limits>              // 3) заголовки использованных библиотек
+#include "change_chars.h"      // 4) свои заголовки
+#include "generate_new_line.h"
 #include "golden_ratio.h"
 
 int main()
@@ -56,7 +57,7 @@ int main()
   }
   str_1[size_1 - 1] = '\0';
   const char *str_2 = "abcdefgh";
-  size_t size_2 = 9;
+  size_t size_2 = strlen(str_2);
   try
   {
     char *res1 = new char[size_1 + size_2];

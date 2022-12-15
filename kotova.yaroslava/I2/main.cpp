@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] thirdArray;
-    return 0;
   }
+  return 0;
 }
 

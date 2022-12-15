@@ -74,11 +74,9 @@ void processDynamicArray()
     throw std::invalid_argument("Array size must be integer greater than 0.");
   }
 
-  srand((unsigned)time(NULL));
-
+  const unsigned int srand_arg = 5;
+  std::srand(srand_arg);
   int* arr = new int[size];
-  int count = 0;
-
   for (size_t i = 0; i < size; ++i)
   {
     arr[i] = rand() % 200 - 100;

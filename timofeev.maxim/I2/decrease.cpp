@@ -4,7 +4,7 @@
 unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
 {
   unsigned int curleght = 1;
-  unsigned int maxleght = 0;
+  unsigned int maxleght = 1;
   if (size == 0)
   {
     return 0 ;
@@ -13,7 +13,7 @@ unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
   {
     if (arr[i - 1] > arr[i])
     {
-      curleght ++;
+      curleght++;
       if (curleght > maxleght)
       {
         maxleght = curleght;
@@ -25,7 +25,7 @@ unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
     }
     if (arr[i] > arr[i - 1])
     {
-      curleght = 0;
+      curleght = 1;
     }
   }
   return maxleght;

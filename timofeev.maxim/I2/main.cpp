@@ -5,7 +5,7 @@
 #include "decrease.h"
 #include "OrderMethod.h"
 
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
   int ready_array[5] = {4,5,3,2,1};
   try

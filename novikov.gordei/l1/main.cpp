@@ -23,8 +23,7 @@ int main()
     if (z >= max1) {
       max2 = max1;
       max1 = z;
-    }
-    else if (z >= max2) {
+    } else if (z >= max2) {
       max2 = z;
     }
 

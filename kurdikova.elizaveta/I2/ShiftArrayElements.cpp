@@ -1,7 +1,7 @@
 #include <cstddef>
 #include "ShiftArrayElements.h"
 
-bool shiftArrayElements(int* arr, size_t size, int shift)
+bool shiftArrayElements(int* arr, size_t size, size_t shift)
 {
   if (shift >= size) {
     return false;

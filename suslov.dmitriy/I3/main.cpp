@@ -2,27 +2,32 @@
 #include "fifteen_var.h"
 #include <fstream>
 #include "five_var.h"
-int main()
+int main(int argc, char **argv)
 {
-  //std::ifstream in;
-  //std::ofstream out;
-  //in.open("in.txt");
-  //if (!in.is_open())
-  //{
-  //  std::cerr << "=(" << "\n";
-  //  return 1;
-  //}
-  //out.open("out.txt");
-  //if (!out.is_open())
-  //{
-  //  std::cerr << "=(" << "\n";
-  //  return 2;
-  //}
-  while (!std::cin.fail())
+  if(argc<3)
+  {
+    std::cerr<<"nooooooooooo"<<"\n";
+    return -1;
+  }
+  std::ifstream in_stream;
+  std::ofstream out_stream;
+  in_stream.open(argv[1]);
+  if (!in_stream.is_open())
+  {
+    std::cerr << "=(" << "\n";
+    return 1;
+  }
+  out_stream.open(argv[2]);
+  if (!out_stream.is_open())
+  {
+    std::cerr << "=(" << "\n";
+    return 2;
+  }
+  while (!in_stream.fail())
   {
     std::string string_first;
     std::string string_second;
-    std::cin >> string_first >> string_second;
+    in_stream >> string_first >> string_second;
     char *result1;
     try
     {
@@ -32,7 +37,7 @@ int main()
       std::cerr << "Fail" << "\n";
       return 3;
     }
-    std::cout << var_5_function(result1, string_first.c_str(), string_second.c_str()) << "\n";
+    out_stream << var_5_function(result1, string_first.c_str(), string_second.c_str()) << "\n";
     delete[] result1;
     char *result2;
     try
@@ -43,7 +48,7 @@ int main()
       std::cerr << "Fail" << "\n";
       return 3;
     }
-    std::cout << var_15_function(result2, string_first.c_str(), string_second.c_str()) << "\n";
+    out_stream << var_15_function(result2, string_first.c_str(), string_second.c_str()) << "\n";
     delete[] result2;
   }
   return 0;

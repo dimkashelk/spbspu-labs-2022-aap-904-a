@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     {
       std::cout << e.what();
       delete[] secondArray;
-      return 0;
+      return 1;
     }
     delete[] secondArray;
   }
@@ -97,6 +97,5 @@ int main(int argc, char* argv[])
     delete[] thirdArray;
 
   }
-  return 0;
 }
 

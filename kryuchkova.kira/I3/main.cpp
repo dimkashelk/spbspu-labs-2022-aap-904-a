@@ -1,8 +1,8 @@
 #include <iostream>
+#include <exception>
 #include "remove_extra_spaces.h"
 #include "delete_identical_chars.h"
 #include "input_string.h"
-#include <exception>
 
 int main()
 {
@@ -18,7 +18,7 @@ int main()
     delete [] cstring_1; 
     return 1;
   }
-  
+
   char *destination = new char[capacity];
   destination[0] = '\n';
   std::cout << "First string without extra spaces: '" << remove_extra_spaces(destination, cstring_1) << "'\n";

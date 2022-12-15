@@ -12,9 +12,11 @@ void processDynamicArray();
 void processFileArray(char* filename);
 
 
-int main(int argc, char* argv[]) {
-  if (argc != 2) {
-    std::cerr << "Wrong number of parameters. Should be one" << std::endl;
+int main(int argc, char* argv[])
+{
+  if (argc != 2)
+  {
+    std::cerr << "Wrong number of parameters. Should be one\n";
     return (int)1;
   }
   try
@@ -23,21 +25,24 @@ int main(int argc, char* argv[]) {
     processDynamicArray();
     processFileArray(argv[1]);
   }
-  catch (const std::exception& e) {
-    std::cerr << e.what() << std::endl;
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what();
     return 1;
   }
   return 0;
 }
 
-void processStaticArray() {
+void processStaticArray()
+{
   int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-  std::cout << count_of_maxes(arr, 10) << std::endl;
-  std::cout << shift_part_to_end(arr, 10, 0, 5) << std::endl;
+  std::cout << count_of_maxes(arr, 10) << "\n";
+  std::cout << shift_part_to_end(arr, 10, 0, 5) << "\n";
 }
 
-void processDynamicArray() {
+void processDynamicArray()
+{
   int n = 0;
 
   std::cout << "Enter array size:";
@@ -59,70 +64,83 @@ void processDynamicArray() {
   }
   std::cout << std::endl;
 
-  std::cout << count_of_maxes(arr, n) << std::endl;
-  std::cout << shift_part_to_end(arr, n, 0, 5) << std::endl;
+  std::cout << count_of_maxes(arr, n) << "\n";
+  std::cout << shift_part_to_end(arr, n, 0, 5) << "\n";
 }
 
-void processFileArray(char* filename) {
+void processFileArray(char* filename)
+{
   /*Process array  taken from file*/
 
   std::ifstream input(filename);
-  if (!input.is_open()) {
+  if (!input.is_open())
+  {
     throw "Error while opening file";
   }
-  while (!input.eof()) {
+  while (!input.eof())
+  {
     size_t size = 0;
     input >> size;
-    if (!input) {
+    if (!input)
+    {
       throw "Error while reading file";
     }
 
     int* arr_file = new int[size];
-    for (size_t i = 0; i < size; i++) {
+    for (size_t i = 0; i < size; i++)
+    {
       input >> arr_file[i];
-      if (!input) {
+      if (!input)
+      {
         delete[] arr_file;
         throw "Error while reading file";
       }
     }
 
-    std::cout << count_of_maxes(arr_file, size) << std::endl;
-    std::cout << shift_part_to_end(arr_file, size, 0, size / 2) << std::endl;
+    std::cout << count_of_maxes(arr_file, size) << "\n";
+    std::cout << shift_part_to_end(arr_file, size, 0, 5) << "\n";
 
     delete[] arr_file;
   }
 }
 
-std::string count_of_maxes(const int* arr, size_t size) {
+std::string count_of_maxes(const int* arr, size_t size)
+{
   int maximum = 0;
   int countMaximum = INT_MIN;
-  for (int i = 0; i < size; i++) {
-    if (arr[i] > maximum) {
+  for (int i = 0; i < size; i++)
+  {
+    if (arr[i] > maximum)
+    {
       maximum = arr[i];
       countMaximum = 1;
     }
     else {
-      if (arr[i] == maximum) {
+      if (arr[i] == maximum)
+      {
         countMaximum++;
       }
     }
   }
-  std::cout << maximum << std::endl;
-  std::cout << countMaximum << std::endl;
+  std::cout << maximum << "\n";
+  std::cout << countMaximum << "\n";
   return "---------------";
 }
 
-std::string shift_part_to_end(int* arr, size_t size, unsigned int m, unsigned int n) {
+std::string shift_part_to_end(int* arr, size_t size, unsigned int m, unsigned int n)
+{
   int part_size = n - m;
 
-  for (int i = 0; i < part_size; i++) {
+  for (int i = 0; i < part_size; i++)
+  {
     int tmp = arr[size - i - 1];
     arr[size - i - 1] = arr[n - i - 1];
     arr[n - i - 1] = tmp;
   }
 
   std::ostringstream os;
-  for (int j = 0; j < size; j++) {
+  for (int j = 0; j < size; j++)
+  {
     os << arr[j] << " ";
   }
   std::string str(os.str());

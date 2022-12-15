@@ -1,5 +1,4 @@
 #include "countrows.h"
-#include <iostream>
 size_t countDiverseElements(const int * array, size_t rows, size_t columns)
 {
   size_t count = 0;

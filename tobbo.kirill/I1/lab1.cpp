@@ -53,10 +53,13 @@ int main()
       std::cerr << e.what();
       return 1;
     }
-  } while (third != 0);
+  }
+  while (third != 0);
 
   if (countMax == 0)
+  {
     std::cout << "The sequence is empty.\n";
+  }
   else
   {
     std::cout << "Count of maximum values: " << countMax << " Max value: " << maxx << "\n";

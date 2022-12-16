@@ -14,14 +14,22 @@ char *input_string(char *cstring)
   {
     if (size == capacity)
     {
-      char *newstr = new char[capacity + 20];
-      for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+      try
       {
-        *j = *i;
+        char *newstr = new char[capacity + 20];
+        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+        {
+          *j = *i;
+        }
+        delete[] cstring;
+        cstring = newstr;
+        capacity += 20;
       }
-      delete[] cstring;
-      cstring = newstr;
-      capacity += 20;
+      catch (...)
+      {
+        delete[] cstring;
+        throw;
+      }
     }
     std::cin >> cstring[size];
 
@@ -29,6 +37,7 @@ char *input_string(char *cstring)
   while (std::cin && cstring[size++] != '\n');
   if (cstring[0] == '\n')
   {
+    delete[] cstring;
     throw std::invalid_argument("empty string");
   }
   cstring[size - 1] = '\0';

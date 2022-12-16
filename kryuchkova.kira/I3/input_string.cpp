@@ -14,8 +14,6 @@ char *input_string(char *cstring)
   {
     if (size == capacity)
     {
-      try
-      {
       char *newstr = new char[capacity + 20];
       for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
       {
@@ -24,12 +22,6 @@ char *input_string(char *cstring)
       delete[] cstring;
       cstring = newstr;
       capacity += 20;
-      }
-      catch (...)
-      {
-        delete[] cstring;
-        throw;
-      }
     }
     std::cin >> cstring[size];
 

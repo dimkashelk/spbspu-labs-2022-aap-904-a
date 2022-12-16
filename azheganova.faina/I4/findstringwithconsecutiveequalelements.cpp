@@ -1,6 +1,6 @@
 #include"findstringwithconsecutiveequalelements.h"
 
-size_t findStringWithConsecutiveEqualElements(int* arr, const size_t m, const size_t n)
+size_t findStringWithConsecutiveEqualElements(int* arr, const size_t m, size_t n)
 {
   size_t count = 0;
   size_t maxcount = 0;

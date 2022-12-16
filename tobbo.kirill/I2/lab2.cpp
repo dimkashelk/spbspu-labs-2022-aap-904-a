@@ -79,6 +79,7 @@ void process_dynamic_array(size_t size)
   }
 
   process_array("Dynamic array", arr, size);
+  delete[] arr;
 }
 
 void process_file_array(char* filename)

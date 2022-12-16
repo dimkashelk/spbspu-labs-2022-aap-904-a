@@ -12,12 +12,6 @@ int main()
   try
   {
     cstring_1 = input_string(cstring_1);
-    if (cstring_1[0] == '\n')
-    {
-      delete[] cstring_1;
-      std::cout << "empty string";
-      return 1;
-    }
   }
   catch(std::exception &e)
   {
@@ -36,13 +30,6 @@ int main()
   try
   {
     cstring_2 = input_string(cstring_2);
-    if (cstring_2[0] == '\n')
-    {
-      delete[] cstring_1;
-      delete[] cstring_2;
-      std::cout << "empty string";
-      return 1;
-    }
   }
   catch(std::exception &e)
   {

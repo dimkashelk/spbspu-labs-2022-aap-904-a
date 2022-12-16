@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
   }
   inputfile >> m;
   inputfile >> n;
+  size_t size = m * n;
   if (!inputfile)
   {
     std::cout << "error";
@@ -36,7 +37,7 @@ int main(int argc, char* argv[])
   if (!strcmp(argv[1], "1"))
   {
     int arr[1000];
-    if (( m * n ) > 1000)
+    if (size > 1000)
     {
       std::cout << "too much elements";
       return 1;
@@ -62,12 +63,12 @@ int main(int argc, char* argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    if (( m * n ) == 0)
+    if (size == 0)
     {
       outputfile << "0";
       return 0;
     }
-    int* arr = new int[ m * n ];
+    int* arr = new int[size];
     for (size_t i = 0; i < m; i++)
     {
       for (size_t j = 0; j < n; j++)

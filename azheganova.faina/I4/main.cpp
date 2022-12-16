@@ -19,42 +19,42 @@ int main(int argc, char* argv[])
   }
   size_t m = 0;
   size_t n = 0;
-  std::ifstream input(argv[2]);
-  if (!input.is_open())
+  std::ifstream inputfile(argv[2]);
+  if (!inputfile.is_open())
   {
     std::cout << "file open error";
     return 1;
   }
-  input >> m;
-  input >> n;
-  size_t size = m * n;
-  std::ofstream output(argv[3]);
-  if (!output.is_open())
-  {
-    std::cout << "file open error";
-    return 1;
-  }
+  inputfile >> m;
+  inputfile >> n;
   if (!strcmp(argv[1], "1"))
   {
     int arr[1000];
-    if (size > 1000)
+    if (( m * n ) > 1000)
     {
       std::cout << "too much elements";
       return 1;
     }
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < n; i++)
     {
-      input >> arr[i];
-      if (!input)
+      for (size_t j = 0; j < m; j++)
+      {
+        inputfile >> arr[n * i + j];
+        if (!inputfile.is_open())
         {
-          std::cout << "elements read error";
+          std::cout << "file open error";
           return 1;
         }
+      }
     }
-    std::ofstream output(argv[3]);
-    size_t countdifferentelements = countRowsWithDifferentElements(arr, m, n);
-    output << countdifferentelements << "\n";
-    if (!output)
+    std::ofstream outputfile(argv[3]);
+    if (!outputfile.is_open())
+    {
+      std::cout << "file open error";
+      return 1;
+    }
+    outputfile << countRowsWithDifferentElements(arr, m, n) << "\n";
+    if (!outputfile)
     {
       std::cout << "number write error";
       return 1;
@@ -62,28 +62,28 @@ int main(int argc, char* argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    if (size == 0)
-    {
-      output << "0";
-      return 0;
-    }
-    int* arr = new int[size];
+    int* arr = new int[ m * n ];
     for (size_t i = 0; i < n; i++)
     {
       for (size_t j = 0; j < m; j++)
       {
-        input >> arr[i * n + j];
-        if (!input)
+        inputfile >> arr[i * n + j];
+        if (!inputfile)
         {
-          std::cerr << "elements read error";
+          std::cout << "elements read error";
           delete[] arr;
           return 1;
         }
       }
     }
-    size_t linenumber = findStringWithConsecutiveEqualElements(arr, m, n);
-    output << linenumber << "\n";
-    if (!output)
+    std::ofstream outputfile(argv[3]);
+    if (!outputfile.is_open())
+    {
+      std::cout << "file open error";
+      return 1;
+    }
+    outputfile << findStringWithConsecutiveEqualElements(arr, m, n) << "\n";
+    if (!outputfile)
     {
       std::cout << "number write error";
       return 1;

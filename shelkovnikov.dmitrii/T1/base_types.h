@@ -7,9 +7,9 @@ struct point_t
 };
 struct rectangle_t
 {
-  rectangle_t(point_t point, double width, double height);
   point_t point;
   double width;
   double height;
+  rectangle_t(point_t point, double width, double height);
 };
 #endif

@@ -5,7 +5,7 @@
 #include "methods.h"
 
 void process_static_array();
-void process_dynamic_array();
+void process_dynamic_array(size_t size);
 void process_file_array(char* filename);
 
 int main(int argc, char* argv[])
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
   try
   {
     process_static_array();
-    process_dynamic_array();
+    process_dynamic_array(10);
     process_file_array(argv[1]);
   }
   catch (const std::exception& e)
@@ -68,18 +68,8 @@ void process_static_array()
   process_array("Static array", arr, 10);
 }
 
-void process_dynamic_array()
+void process_dynamic_array(size_t size)
 {
-  size_t size = 0;
-  std::cout << "Enter array size:";
-  std::cin >> size;
-
-  if (!std::cin)
-  {
-    //throw std::invalid_argument("Array size must be unsigned integer");
-    std::cout << "Error: array size must be unsigned integer";
-    return;
-  }
   const unsigned int srand_arg = 5;
   std::srand(srand_arg);
   int* arr = new int[size];

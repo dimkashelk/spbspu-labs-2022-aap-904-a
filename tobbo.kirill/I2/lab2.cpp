@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 {
   if (argc != 2)
   {
-    std::cerr << "Wrong number of parameters. Should be one";
+    std::cerr << "Wrong number of parameters. Should be 1";
     return 1;
   }
   try
@@ -42,18 +42,17 @@ void print_array(std::string prefix, int* arr, size_t size)
 
 void process_array(std::string prefix, int* arr, size_t size)
 {
-  std::cout << prefix << "\n";
+  std::cout << prefix << " with size " << size << "\n";
+  if (size == 0)
+  {
+    std::cout << "Array is empty... skipped\n";
+    return;
+  }
+
   int maximum;
   size_t count_maximum;
   count_of_maxes(arr, size, maximum, count_maximum);
-  if (count_maximum != 0)
-  {
-    std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
-  }
-  else
-  {
-    std::cout << "Array is empty\n";
-  }
+  std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
 
   print_array("before: ", arr, size);
   shift_part_to_end(arr, size, 0, 5);

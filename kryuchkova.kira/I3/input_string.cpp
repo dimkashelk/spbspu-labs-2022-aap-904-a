@@ -8,7 +8,6 @@ char *input_string(char *cstring)
   size_t capacity = 10;
   size_t size = 0;
 
-  std::cout << "Please input string" << '\n';
   std::cin >> std::noskipws;
 
   do

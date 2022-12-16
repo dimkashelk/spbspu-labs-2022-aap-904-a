@@ -22,7 +22,7 @@ int main()
 
   char *destination = new char[capacity];
   destination[0] = '\n';
-  std::cout << "First string without extra spaces: '" << remove_extra_spaces(destination, cstring_1) << "'\n";
+  std::cout << remove_extra_spaces(destination, cstring_1) << "\n";
   delete[] destination;
 
   char *cstring_2 = new char[capacity];
@@ -40,7 +40,7 @@ int main()
 
   char *destination_2 = new char[capacity];
   destination_2[0] = '\n';
-  std::cout << "First string without chars in second string: '" << delete_identical_chars(destination_2, cstring_1, cstring_2) << "'\n";
+  std::cout << delete_identical_chars(destination_2, cstring_1, cstring_2) << "\n";
   delete[] destination_2;
 
   delete[] cstring_1;

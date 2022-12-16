@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
     catch (const std::invalid_argument& e){
       std::cout << e.what();
       delete[] thirdArray;
-      return 1;
+      return 0;
       }
     delete[] thirdArray;
   }

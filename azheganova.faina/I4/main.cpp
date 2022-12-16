@@ -7,14 +7,9 @@
 
 int main(int argc, char* argv[])
 {
-  if (argc > 4)
+  if (argc != 4)
   {
-    std::cout << "Too much parameters";
-    return 1;
-  }
-  if (argc == 1)
-  {
-    std::cout << "No file name";
+    std::cout << "error";
     return 1;
   }
   size_t m = 0;

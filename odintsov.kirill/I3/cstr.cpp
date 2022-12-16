@@ -28,6 +28,7 @@ void odintsov::CString::extend(size_t newCap)
   }
   delete [] str;
   str = newStr;
+  cap = newCap;
 }
 
 void odintsov::CString::append(char c)

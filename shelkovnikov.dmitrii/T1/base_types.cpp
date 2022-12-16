@@ -8,6 +8,12 @@ point_t rectangle_t::getLeftDownPoint() const
 {
   return point_t(x - width / 2, y - height / 2);
 }
+vector_t &vector_t::operator*=(double k)
+{
+  x *= k;
+  y *= k;
+  return this;
+}
 double vector_t::getLength() const
 {
   return sqrt(x * x + y * y);

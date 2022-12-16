@@ -18,6 +18,7 @@ struct vector_t
 {
   double x;
   double y;
+  vector_t& operator*=(double k);
   double getLength() const;
 }
 #endif

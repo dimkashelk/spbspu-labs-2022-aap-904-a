@@ -26,9 +26,11 @@ int main()
   {
     destination = remove_extra_spaces(destination, cstring_1);
     std::cout << destination << "\n";
+    delete[] destination;
   }
   catch(const std::exception& e)
   {
+    delete[] destination;
     std::cerr << e.what() << '\n';
   }
 

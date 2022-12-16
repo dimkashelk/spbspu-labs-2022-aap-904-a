@@ -22,8 +22,15 @@ int main()
 
   char *destination = new char[capacity];
   destination[0] = '\n';
-  std::cout << remove_extra_spaces(destination, cstring_1) << "\n";
-  delete[] destination;
+  try
+  {
+    destination = remove_extra_spaces(destination, cstring_1);
+    std::cout << destination << "\n";
+  }
+  catch(const std::exception& e)
+  {
+    std::cerr << e.what() << '\n';
+  }
 
   char *cstring_2 = new char[capacity];
   cstring_2[0] = '\n';

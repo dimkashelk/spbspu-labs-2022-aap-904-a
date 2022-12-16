@@ -5,6 +5,9 @@ Rectangle::Rectangle(point_t point, double width, double height):
 Rectangle::Rectangle(rectangle_t rectangle):
   rectangle(rectangle)
 {}
+Rectangle::Rectangle(double x1, double y1, double x2, double y2):
+  rectangle(x1, y1, x2, y2);
+{}
 double Rectangle::getArea() const
 {
   return rectangle.width * rectangle.height;

@@ -6,6 +6,7 @@ class Rectangle: public Shape
 public:
   Rectangle(point_t point, double width, double height);
   Rectangle(rectangle_t rectangle);
+  Rectangle(double x1, double y1, double x2, double y2);
 private:
   rectangle_t rectangle;
 };

@@ -13,3 +13,7 @@ rectangle_t Rectangle::getFrameRect() const
 {
   return rectangle;
 }
+void Rectangle::move(point_t point) const
+{
+  rectangle.point = point;
+}

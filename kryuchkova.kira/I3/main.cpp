@@ -45,4 +45,5 @@ int main()
   delete[] cstring_1;
   delete[] cstring_2;
   delete[] destination_2;
+  return 0;
 }

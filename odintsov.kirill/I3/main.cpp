@@ -20,13 +20,18 @@ int main()
       }
       cstr.append(c);
     } while (std::cin && c != '\n');
+    {
+      odintsov::CString cstrNoLatin(cap);
+      odintsov::removeLatin(cstr, cstrNoLatin);
+      std::cout << cstrNoLatin.str << '\n';
+    }
+    {
+      odintsov::CString cstrNoVowels(cap);
+      odintsov::removeVowels(cstr, cstrNoVowels);
+      std::cout << cstrNoVowels.str << '\n';
+    }
   } catch (const std::invalid_argument& err) {
-    std::cout << err.what() << '\n';
+    std::cout << "Error: " << err.what() << '\n';
     return 1;
-  }
-  {
-    odintsov::CString cstrNoLatin(cap);
-    odintsov::removeLatin(cstr, cstrNoLatin);
-    std::cout << cstrNoLatin.str << '\n';
   }
 }

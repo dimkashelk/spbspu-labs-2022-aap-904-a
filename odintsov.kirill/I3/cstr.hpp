@@ -18,6 +18,7 @@ namespace odintsov {
   };
 
   void removeLatin(const CString& cstr, CString& out);
+  void removeVowels(const CString& cstr, CString& out);
 }
 
 #endif

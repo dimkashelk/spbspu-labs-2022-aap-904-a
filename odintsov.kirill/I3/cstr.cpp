@@ -47,3 +47,13 @@ void odintsov::removeLatin(const CString& cstr, CString& out)
     }
   }
 }
+
+void odintsov::removeVowels(const CString& cstr, CString& out)
+{
+  for (size_t i = 0; i < cstr.size - 1; i++) {
+    char c = static_cast<char>(std::toupper(cstr.str[i]));
+    if (c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U') {
+      out.append(cstr.str[i]);
+    }
+  }
+}

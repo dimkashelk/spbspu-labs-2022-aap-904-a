@@ -47,41 +47,39 @@ int main(int argc, char *argv[])
   delete[] array_2;
   std::ifstream input(argv[1]);
   int *array_3 = nullptr;
-  while (!input.eof())
+  size_t size = 0;
+  input >> size;
+  if (!input)
   {
-    size_t size = 0;
-    input >> size;
+    std::cout << "Another one error";
+    return 1;
+  }
+  array_3 = new int[size];
+  for (size_t i = 0; i < size; i++)
+  {
+    input >> array_3[i];
     if (!input)
     {
       std::cout << "Another one error";
+      delete[] array_3;
       return 1;
     }
-    array_3 = new int[size];
-    for (size_t i = 0; i < size; i++)
-    {
-      input >> array_3[i];
-      if (!input)
-      {
-        std::cout << "Another one error";
-        delete[] array_3;
-        return 1;
-      }
-    }
-    move_elements(array_3, size, 0, 1);
-    for (size_t i = 0; i < size; i++)
-    {
-      std::cout << array_3[i] << " ";
-    }
-    std::cout << "\n";
-    try
-    {
-      std::cout << arithmetic_mean_of_even_indices(array_3, size) << "\n";
-    }
-    catch (const std::runtime_error &e)
-    {
-      std::cout << e.what() << "\n";
-    }
-    delete[] array_3;
   }
+  move_elements(array_3, size, 0, 1);
+  for (size_t i = 0; i < size; i++)
+  {
+    std::cout << array_3[i] << " ";
+  }
+  std::cout << "\n";
+  try
+  {
+    std::cout << arithmetic_mean_of_even_indices(array_3, size) << "\n";
+  }
+  catch (const std::runtime_error &e)
+  {
+    std::cout << e.what() << "\n";
+  }
+  delete[] array_3;
+
   return 0;
 }

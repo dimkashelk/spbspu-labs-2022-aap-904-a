@@ -34,6 +34,7 @@ int main()
   catch(std::exception &e)
   {
     std::cout << e.what();
+    delete[] cstring_1;
     delete[] cstring_2;
     return 1;
   }

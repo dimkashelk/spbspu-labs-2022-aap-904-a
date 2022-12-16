@@ -9,3 +9,7 @@ double Rectangle::getArea() const
 {
   return rectangle.width * rectangle.height;
 }
+rectangle_t Rectangle::getFrameRect() const
+{
+  return rectangle;
+}

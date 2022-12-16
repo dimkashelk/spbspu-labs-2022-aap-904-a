@@ -1,6 +1,7 @@
 #include<iostream>
 #include <fstream>
 #include <cstddef>
+#include <cstring>
 #include"countrowswithdifferentelements.h"
 #include"findstringwithconsecutiveequalelements.h"
 

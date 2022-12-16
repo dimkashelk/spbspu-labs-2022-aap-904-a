@@ -12,4 +12,9 @@ struct rectangle_t
   double height;
   rectangle_t(point_t point, double width, double height);
 };
+struct vector_t(double x, double y)
+{
+  double x;
+  double y;
+}
 #endif

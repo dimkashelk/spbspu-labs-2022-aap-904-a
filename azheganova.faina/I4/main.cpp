@@ -22,6 +22,11 @@ int main(int argc, char* argv[])
   }
   inputfile >> m;
   inputfile >> n;
+  if (!inputfile.is_open())
+  {
+    std::cout << "file open error";
+    return 1;
+  }
   std::ofstream outputfile(argv[3]);
   if (!outputfile.is_open())
   {

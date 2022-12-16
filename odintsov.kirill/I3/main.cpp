@@ -11,15 +11,15 @@ int main()
     char c = '\0';
     do {
       std::cin >> c;
-      if (!std::cin) {
-        std::cout << "Error: Input error\n";
-        return 1;
-      }
       if (c == '\n' || c == '\0') {
         break;
       }
       cstr.append(c);
-    } while (std::cin && c != '\n' && c != '\0');
+    } while (std::cin);
+    if (cstr.size <= 1) {
+      std::cout << "Error: Empty string" << '\n';
+      return 1;
+    }
     {
       odintsov::CString cstrNoLatin(cap);
       odintsov::removeLatin(cstr, cstrNoLatin);

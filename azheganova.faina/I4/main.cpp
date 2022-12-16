@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstddef>
 #include"countrowswithdifferentelements.h"
+#include"findstringwithconsecutiveequalelements.h"
 
 int main(int argc, char* argv[])
 {
@@ -44,10 +45,10 @@ int main(int argc, char* argv[])
     {
       inputfile >> arr[i];
       if (!inputfile)
-      {
-        std::cerr << "elements read error";
-        return 1;
-      }
+        {
+          std::cerr << "elements read error";
+          return 1;
+        }
     }
     size_t countdifferentelements = countRowsWithDifferentElements(arr, m, n);
     outputfile << countdifferentelements << "\n";
@@ -57,4 +58,59 @@ int main(int argc, char* argv[])
       return 1;
     }
   }
+  else
+  {
+    if (size == 0)
+    {
+      outputfile << "0";
+      return 0;
+    }
+    int* arr = new int[size];
+    for (size_t i = 0; i < size; ++i)
+    {
+      inputfile >> arr[i];
+      if (!inputfile)
+      {
+        std::cerr << "elements read error";
+        delete[] arr;
+        return 1;
+      }
+    }
+    size_t squarematrixsize = std::min(m, n);
+    int* squarematrix = nullptr;
+    if (m == n)
+    {
+      squarematrix = arr;
+      arr = nullptr;
+    }
+    else
+    {
+      squarematrix = new int[squarematrixsize * squarematrixsize];
+    }
+    if (n < m)
+    {
+      for (size_t i = 0; i < (squarematrixsize * squarematrixsize); ++i)
+      {
+        squarematrix[i] = arr[i];
+      }
+    }
+    else if (n > m)
+    {
+      for (size_t i = 0; i < squarematrixsize; ++i)
+      {
+        for (size_t j = 0; j < squarematrixsize; ++j)
+        {
+          squarematrix[(i * squarematrixsize) + j] = arr[(i * n) + j];
+        }
+      }
+    }
+    size_t linenumber = findStringWithConsecutiveEqualElements(arr, m, n);
+    outputfile << linenumber << "\n";
+    if (!outputfile)
+    {
+      std::cout << "number write error";
+      return 1;
+    }
+  }
+  return 0;
 }

@@ -19,5 +19,5 @@ size_t countRowsWithDifferentElements(int* arr, const size_t m, const size_t n)
     }
     elementscounter = 0;
   }
-   return count;
+  return count;
 }

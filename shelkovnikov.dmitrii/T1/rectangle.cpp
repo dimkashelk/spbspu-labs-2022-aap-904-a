@@ -13,6 +13,11 @@ rectangle_t Rectangle::getFrameRect() const
 {
   return rectangle;
 }
+void Rectangle::move(double delta_x, double delta_y)
+{
+  rectangle.point.x += delta_x;
+  rectangle.point.y += delta_y;
+}
 void Rectangle::move(point_t point) const
 {
   rectangle.point = point;

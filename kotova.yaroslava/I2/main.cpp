@@ -2,7 +2,7 @@
 #include <fstream>
 #include "algorithimsarrays.h"
 
-int main(in argc, char* argv[]){
+int main(int argc, char* argv[]){
   const int divider = 3;
 
   if (argc != 2){

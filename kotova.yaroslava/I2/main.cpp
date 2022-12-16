@@ -65,9 +65,16 @@ int main(int argc, char* argv[]){
         return 1;
       }
     }
-    size_t cnt_div_arr3 = counterDivision(thirdArray, size_arr3, divider);
-    size_t cnt_check_rep_el3 =  checkRepeatEl(thirdArray, size_arr3, arr3_index_m, arr3_index_n);
-    std::cout << cnt_div_arr3 << " " << cnt_check_rep_el3 << " ";
+    try {
+      size_t cnt_div_arr3 = counterDivision(thirdArray, size_arr3, divider);
+      size_t cnt_check_rep_el3 =  checkRepeatEl(thirdArray, size_arr3, arr3_index_m, arr3_index_n);
+      std::cout << cnt_div_arr3 << " " << cnt_check_rep_el3 << " ";
+    }
+    catch (const std::invalid_argument& e){
+      std::cout << e.what();
+      delete[] thirdArray;
+      return 1;
+      }
     delete[] thirdArray;
   }
   return 0;

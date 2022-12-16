@@ -41,8 +41,7 @@ int main()
   char *destination_2 = new char[capacity];
   destination_2[0] = '\n';
   std::cout << delete_identical_chars(destination_2, cstring_1, cstring_2) << "\n";
-  delete[] destination_2;
-
   delete[] cstring_1;
   delete[] cstring_2;
+  delete[] destination_2;
 }

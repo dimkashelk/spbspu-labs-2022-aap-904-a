@@ -37,7 +37,6 @@ char *input_string(char *cstring)
   while (std::cin && cstring[size++] != '\n');
   if (cstring[0] == '\n')
   {
-    delete[] cstring;
     throw std::invalid_argument("empty string");
   }
   cstring[size - 1] = '\0';

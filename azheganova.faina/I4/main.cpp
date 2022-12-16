@@ -27,31 +27,29 @@ int main(int argc, char* argv[])
   }
   inputfile >> m;
   inputfile >> n;
+  size_t size = m * n;
+  std::ofstream outputfile(argv[3]);
+  if (!outputfile.is_open())
+  {
+    std::cout << "file open error";
+    return 1;
+  }
   if (!strcmp(argv[1], "1"))
   {
     int arr[1000];
-    if (( m * n ) > 1000)
+    if (size > 1000)
     {
       std::cout << "too much elements";
       return 1;
     }
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < size; ++i)
     {
-      for (size_t j = 0; j < m; j++)
-      {
-        inputfile >> arr[n * i + j];
-        if (!inputfile.is_open())
+      inputfile >> arr[i];
+      if (!inputfile)
         {
-          std::cout << "file open error";
+          std::cout << "elements read error";
           return 1;
         }
-      }
-    }
-    std::ofstream outputfile(argv[3]);
-    if (!outputfile.is_open())
-    {
-      std::cout << "file open error";
-      return 1;
     }
     outputfile << countRowsWithDifferentElements(arr, m, n) << "\n";
     if (!outputfile)
@@ -62,7 +60,12 @@ int main(int argc, char* argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    int* arr = new int[ m * n ];
+    if (size == 0)
+    {
+      outputfile << "0";
+      return 0;
+    }
+    int* arr = new int[size];
     for (size_t i = 0; i < n; i++)
     {
       for (size_t j = 0; j < m; j++)
@@ -75,12 +78,6 @@ int main(int argc, char* argv[])
           return 1;
         }
       }
-    }
-    std::ofstream outputfile(argv[3]);
-    if (!outputfile.is_open())
-    {
-      std::cout << "file open error";
-      return 1;
     }
     outputfile << findStringWithConsecutiveEqualElements(arr, m, n) << "\n";
     if (!outputfile)

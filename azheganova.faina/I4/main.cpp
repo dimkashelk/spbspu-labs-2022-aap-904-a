@@ -27,7 +27,6 @@ int main(int argc, char* argv[])
   }
   inputfile >> m;
   inputfile >> n;
-  size_t size = m * n;
   std::ofstream outputfile(argv[3]);
   if (!outputfile.is_open())
   {
@@ -37,19 +36,22 @@ int main(int argc, char* argv[])
   if (!strcmp(argv[1], "1"))
   {
     int arr[1000];
-    if (size > 1000)
+    if (( m * n ) > 1000)
     {
       std::cout << "too much elements";
       return 1;
     }
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < m; i++)
     {
-      inputfile >> arr[i];
-      if (!inputfile)
+      for (size_t j = 0; j < n; j++)
+      {
+        inputfile >> arr[m * i + j];
+        if (!inputfile)
         {
           std::cout << "elements read error";
           return 1;
         }
+      }
     }
     outputfile << countRowsWithDifferentElements(arr, m, n) << "\n";
     if (!outputfile)
@@ -60,17 +62,17 @@ int main(int argc, char* argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    if (size == 0)
+    if (( m * n ) == 0)
     {
       outputfile << "0";
       return 0;
     }
-    int* arr = new int[size];
-    for (size_t i = 0; i < n; i++)
+    int* arr = new int[ m * n ];
+    for (size_t i = 0; i < m; i++)
     {
-      for (size_t j = 0; j < m; j++)
+      for (size_t j = 0; j < n; j++)
       {
-        inputfile >> arr[i * n + j];
+        inputfile >> arr[i * m + j];
         if (!inputfile)
         {
           std::cout << "elements read error";
@@ -86,6 +88,11 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] arr;
+  }
+  else
+  {
+    std::cout << "errow";
+    return 1;
   }
   return 0;
 }

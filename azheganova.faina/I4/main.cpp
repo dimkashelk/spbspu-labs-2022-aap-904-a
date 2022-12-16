@@ -19,17 +19,17 @@ int main(int argc, char* argv[])
   }
   size_t m = 0;
   size_t n = 0;
-  std::ifstream inputfile(argv[2]);
-  if (!inputfile.is_open())
+  std::ifstream input(argv[2]);
+  if (!input.is_open())
   {
     std::cout << "file open error";
     return 1;
   }
-  inputfile >> m;
-  inputfile >> n;
+  input >> m;
+  input >> n;
   size_t size = m * n;
-  std::ofstream outputfile(argv[3]);
-  if (!outputfile.is_open())
+  std::ofstream output(argv[3]);
+  if (!output.is_open())
   {
     std::cout << "file open error";
     return 1;
@@ -44,17 +44,17 @@ int main(int argc, char* argv[])
     }
     for (size_t i = 0; i < size; ++i)
     {
-      inputfile >> arr[i];
-      if (!inputfile)
+      input >> arr[i];
+      if (!input)
         {
           std::cout << "elements read error";
           return 1;
         }
     }
-    std::ofstream outputfile(argv[3]);
+    std::ofstream output(argv[3]);
     size_t countdifferentelements = countRowsWithDifferentElements(arr, m, n);
-    outputfile << countdifferentelements << "\n";
-    if (!outputfile)
+    output << countdifferentelements << "\n";
+    if (!output)
     {
       std::cout << "number write error";
       return 1;
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
   {
     if (size == 0)
     {
-      outputfile << "0";
+      output << "0";
       return 0;
     }
     int* arr = new int[size];
@@ -72,8 +72,8 @@ int main(int argc, char* argv[])
     {
       for (size_t j = 0; j < m; j++)
       {
-        inputfile >> arr[i * n + j];
-        if (!inputfile)
+        input >> arr[i * n + j];
+        if (!input)
         {
           std::cerr << "elements read error";
           delete[] arr;
@@ -82,12 +82,13 @@ int main(int argc, char* argv[])
       }
     }
     size_t linenumber = findStringWithConsecutiveEqualElements(arr, m, n);
-    outputfile << linenumber << "\n";
-    if (!outputfile)
+    output << linenumber << "\n";
+    if (!output)
     {
       std::cout << "number write error";
       return 1;
     }
+    delete[] arr;
   }
   return 0;
 }

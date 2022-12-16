@@ -16,5 +16,6 @@ struct vector_t(double x, double y)
 {
   double x;
   double y;
+  double getLength() const;
 }
 #endif

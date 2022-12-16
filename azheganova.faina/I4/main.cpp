@@ -7,12 +7,16 @@
 
 int main(int argc, char* argv[])
 {
-  if (argc != 4)
+  if (argc > 4)
   {
-    std::cout << "error";
+    std::cout << "Too much parameters";
     return 1;
   }
-
+  if (argc == 1)
+  {
+    std::cout << "No file name";
+    return 1;
+  }
   size_t m = 0;
   size_t n = 0;
   std::ifstream inputfile(argv[2]);
@@ -43,10 +47,11 @@ int main(int argc, char* argv[])
       inputfile >> arr[i];
       if (!inputfile)
         {
-          std::cerr << "elements read error";
+          std::cout << "elements read error";
           return 1;
         }
     }
+    std::ofstream outputfile(argv[3]);
     size_t countdifferentelements = countRowsWithDifferentElements(arr, m, n);
     outputfile << countdifferentelements << "\n";
     if (!outputfile)
@@ -55,7 +60,7 @@ int main(int argc, char* argv[])
       return 1;
     }
   }
-  else
+  else if (!strcmp(argv[1], "2"))
   {
     if (size == 0)
     {
@@ -63,41 +68,16 @@ int main(int argc, char* argv[])
       return 0;
     }
     int* arr = new int[size];
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < n; i++)
     {
-      inputfile >> arr[i];
-      if (!inputfile)
+      for (size_t j = 0; j < m; j++)
       {
-        std::cerr << "elements read error";
-        delete[] arr;
-        return 1;
-      }
-    }
-    size_t squarematrixsize = std::min(m, n);
-    int* squarematrix = nullptr;
-    if (m == n)
-    {
-      squarematrix = arr;
-      arr = nullptr;
-    }
-    else
-    {
-      squarematrix = new int[squarematrixsize * squarematrixsize];
-    }
-    if (n < m)
-    {
-      for (size_t i = 0; i < (squarematrixsize * squarematrixsize); ++i)
-      {
-        squarematrix[i] = arr[i];
-      }
-    }
-    else if (n > m)
-    {
-      for (size_t i = 0; i < squarematrixsize; ++i)
-      {
-        for (size_t j = 0; j < squarematrixsize; ++j)
+        inputfile >> arr[i * n + j];
+        if (!inputfile)
         {
-          squarematrix[(i * squarematrixsize) + j] = arr[(i * n) + j];
+          std::cerr << "elements read error";
+          delete[] arr;
+          return 1;
         }
       }
     }

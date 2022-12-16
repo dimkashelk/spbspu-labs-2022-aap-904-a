@@ -12,8 +12,8 @@ int main(int argc, char* argv[])
 {
   if (argc != 2)
   {
-    std::cerr << "Wrong number of parameters. Should be 1";
-    return 1;
+    std::cout << "Wrong number of parameters. Should be 1";
+    return 0;
   }
   try
   {
@@ -23,8 +23,8 @@ int main(int argc, char* argv[])
   }
   catch (const std::exception& e)
   {
-    std::cerr << e.what();
-    return 1;
+    std::cout << e.what();
+    return 0;
   }
   return 0;
 }

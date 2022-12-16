@@ -101,9 +101,14 @@ void process_file_array(char* filename)
   while (!input.eof())
   {
     input >> size;
+    if (size == 0)
+    {
+      std::cout << "Array is empty... size=0\n";
+      break;
+    }
     if (!input)
     {
-      throw std::runtime_error("Error while reading file");
+      throw std::runtime_error("Error while reading file 1");
     }
 
     arr = new int[size];
@@ -113,7 +118,7 @@ void process_file_array(char* filename)
       if (!input)
       {
         delete[] arr;
-        throw std::runtime_error("Error while reading file");
+        throw std::runtime_error("Error while reading file 2");
       }
     }
     process_array("File array", arr, size);

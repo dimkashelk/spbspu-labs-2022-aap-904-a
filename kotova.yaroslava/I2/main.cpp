@@ -43,7 +43,7 @@ int main(int argc, char* argv[]){
   }
 //3
   size_t arr3_index_m = 1, arr3_index_n = 6;
-  std::ifstream file(argv[1]);
+  std::ifstream file_arr(argv[1]);
   if (!file_arr){
     std::cout << " file open with an error";
     return 1;

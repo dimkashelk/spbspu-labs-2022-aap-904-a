@@ -37,6 +37,7 @@ char *remove_extra_spaces(char *destination, const char *cstring)
           throw;
         }
       }
+      
       destination[k] = cstring[n];
       k++;
     }

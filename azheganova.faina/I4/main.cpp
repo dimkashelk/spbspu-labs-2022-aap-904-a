@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     std::cout << "file open error";
     return 1;
   }
-  if (!std::strcmp(argv[1], "1"))
+  if (!strcmp(argv[1], "1"))
   {
     int arr[1000];
     if (size > 1000)

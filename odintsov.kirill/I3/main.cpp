@@ -11,7 +11,7 @@ int main()
     char c = '\0';
     do {
       std::cin >> c;
-      if (!std::cin) {
+      if (!std::cin.good()) {
         std::cout << "Error: Input error\n";
         return 1;
       }
@@ -19,7 +19,7 @@ int main()
         break;
       }
       cstr.append(c);
-    } while (std::cin && c != '\n');
+    } while (std::cin.good() && c != '\n');
     {
       odintsov::CString cstrNoLatin(cap);
       odintsov::removeLatin(cstr, cstrNoLatin);

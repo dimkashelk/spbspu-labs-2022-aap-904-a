@@ -10,16 +10,14 @@ void process_file_array(char* filename);
 
 int main(int argc, char* argv[])
 {
-  if (argc != 2)
-  {
-    std::cout << "Wrong number of parameters. Should be 1";
-    return 0;
-  }
   try
   {
     process_static_array();
     process_dynamic_array(10);
-    process_file_array(argv[1]);
+    if (argc == 2)
+    {
+      process_file_array(argv[1]);
+    }
   }
   catch (const std::exception& e)
   {

@@ -8,6 +8,11 @@ point_t::point_t(const point_t &point):
   x(point.x),
   y(point.y)
 {}
+rectangle_t::rectangle_t(double x1, double y1, double x2, double y2):
+  point((x1 + x2) / 2, (y1 + y2) / 2),
+  width(x2 - x1),
+  height(y2 - y1)
+{}
 point_t rectangle_t::getLeftDownPoint() const
 {
   return point_t(x - width / 2, y - height / 2);

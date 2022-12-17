@@ -12,6 +12,11 @@ int main()
   try
   {
     cstring_1 = input_string(cstring_1);
+    if (cstring_1[0] == '\0')
+    {
+      std::cout << "empty string";
+      return 1;
+    }
   }
   catch(std::exception &e)
   {

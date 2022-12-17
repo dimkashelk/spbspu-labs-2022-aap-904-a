@@ -31,10 +31,8 @@ char *input_string(char *cstring, size_t &capacity)
       }
     }
     std::cin >> cstring[size];
-
   }
   while (std::cin && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
   capacity = size;
   return cstring;
 }

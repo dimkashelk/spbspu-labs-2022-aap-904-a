@@ -8,10 +8,10 @@ int main()
 {
   size_t capacity = 10;
   char *cstring_1 = new char[capacity];
-  cstring_1[0] = '\0';
   try
   {
     cstring_1 = input_string(cstring_1, capacity);
+    cstring_1[capacity - 1] = '\0';
     if (cstring_1[0] == '\0')
     {
       std::cout << "empty string";
@@ -43,6 +43,7 @@ int main()
   try
   {
     cstring_2 = input_string(cstring_2, capacity);
+    cstring_2[capacity - 1] = '\0';
   }
   catch(std::exception &e)
   {

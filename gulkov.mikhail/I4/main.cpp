@@ -18,13 +18,14 @@ int main(int argc, char *argv[])
   in >> cols;
   in >> rows;
 
+  if (!in)
+  {
+    std::cout << "Error while reading file\n";
+    return 1;
+  }
+
   if (!strcmp(argv[1], "1"))
   {
-    if (!in)
-    {
-      std::cout << "Error while reading file\n";
-      return 1;
-    }
 
     int array[1000];
 
@@ -41,33 +42,26 @@ int main(int argc, char *argv[])
       }
     }
 
-    std::cout << count_positive_cols(array, cols) << " positive cols in the matrix\n";
+    std::ofstream out(argv[3]);
+    out << count_positive_cols(array, cols) << " positive cols in the matrix\n";
+    if (!out)
+    {
+      std::cout << "Error while writing file\n";
+    }
 
   }
-  if (!strcmp(argv[1], "2"))
+  else if (!strcmp(argv[1], "2"))
   {
-<<<<<<< HEAD
     int *dyn_array = new int[cols * rows];
-=======
-    int *arr = new int[cols * rows];
->>>>>>> origin/gulkov.mikhail/I4
     for (unsigned int i = 0; i < cols; i++)
     {
       for (unsigned int j = 0; j < rows; j++)
       {
-<<<<<<< HEAD
         in >> dyn_array[i * cols + j];
         if (!in)
         {
           std::cout << "Error while reading file\n";
           delete[] dyn_array;
-=======
-        in >> arr[i * cols + j];
-        if (!in)
-        {
-          std::cout << "Error while reading file\n";
-          delete[] arr;
->>>>>>> origin/gulkov.mikhail/I4
           return 1;
         }
       }
@@ -75,23 +69,14 @@ int main(int argc, char *argv[])
     unsigned int index_row = 1;
     unsigned int index_col = 1;
 
-<<<<<<< HEAD
     dyn_array = make_matrix_wave_increment(dyn_array, rows, cols, index_row, index_col);
 
+    std::ofstream out(argv[3]);
 
-=======
-    arr = make_matrix_wave_increment(arr, rows, cols, index_row, index_col);
-
-    for (unsigned int i = 0, str = 0; i < cols * rows; i++)
+    for (unsigned int i = 0; i < cols * rows; i++)
     {
-      std::cout << arr[i] << " ";
-      str++;
-      if (str == 3)
-      {
-        std::cout << "\n";
-        str = 0;
-      }
+      out << dyn_array[i];
+      i == (cols * rows - 1) ? out << "" : out << ' ';
     }
->>>>>>> origin/gulkov.mikhail/I4
   }
 }

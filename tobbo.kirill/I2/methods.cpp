@@ -23,7 +23,7 @@ void count_of_maxes(const int* arr, size_t size, int& maximum, size_t& count_max
   }
 }
 
-void shift_part_to_end(int* arr, size_t size, unsigned int start_index, unsigned int end_index)
+void shift_part_to_end(int* arr, size_t size, size_t start_index, size_t end_index)
 {
   if (start_index > end_index || end_index > (size - 1))
   {

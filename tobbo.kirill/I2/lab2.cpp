@@ -5,24 +5,26 @@
 #include "methods.h"
 
 void process_static_array();
-void process_dynamic_array(size_t size);
+void process_dynamic_array();
 void process_file_array(char* filename);
 
 int main(int argc, char* argv[])
 {
+  if (argc != 2)
+  {
+    std::cerr << "Wrong number of parameters. Should be 1";
+    return 1;
+  }
   try
   {
     process_static_array();
-    process_dynamic_array(10);
-    if (argc == 2)
-    {
-      process_file_array(argv[1]);
-    }
+    process_dynamic_array();
+    process_file_array(argv[1]);
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what();
-    return 0;
+    std::cerr << e.what();
+    return 1;
   }
   return 0;
 }
@@ -53,7 +55,7 @@ void process_array(std::string prefix, int* arr, size_t size)
   std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
 
   print_array("before: ", arr, size);
-  shift_part_to_end(arr, size, 0, 5);
+  shift_part_to_end(arr, size, 0, (size_t)(size / 2));
   print_array("after:  ", arr, size);
 
   std::cout << "-----------------\n";
@@ -66,8 +68,16 @@ void process_static_array()
   process_array("Static array", arr, 10);
 }
 
-void process_dynamic_array(size_t size)
+void process_dynamic_array()
 {
+  size_t size = 0;
+  std::cout << "Enter array size:";
+  std::cin >> size;
+
+  if (!std::cin || std::cin.fail() || std::cin.peek() != 10)
+  {
+    throw std::invalid_argument("Array size must be unsigned integer");
+  }
   const unsigned int srand_arg = 5;
   std::srand(srand_arg);
   int* arr = new int[size];
@@ -77,7 +87,6 @@ void process_dynamic_array(size_t size)
   }
 
   process_array("Dynamic array", arr, size);
-  delete[] arr;
 }
 
 void process_file_array(char* filename)

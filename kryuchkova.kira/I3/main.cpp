@@ -12,7 +12,7 @@ int main()
   try
   {
     cstring_1 = input_string(cstring_1, capacity);
-    if (cstring_1[0] == '\0')
+    if (cstring_1[0] == '\n')
     {
       std::cout << "empty string";
       delete[] cstring_1;
@@ -39,7 +39,6 @@ int main()
     delete[] destination;
     delete[] cstring_1;
     return 1;
-    //std::cerr << e.what() << '\n';
   }
   size_t capacity_2 = 10;
   char *cstring_2 = new char[capacity_2];
@@ -64,18 +63,17 @@ int main()
   {
     destination_2 = delete_identical_chars(destination_2, cstring_1, cstring_2);
     std::cout << destination_2 << "\n";
-    //delete[] destination_2;
+    delete[] cstring_1;
+    delete[] cstring_2;
+    delete[] destination_2;
   }
   catch(const std::exception& e)
   {
-    delete[] destination_2;
-    delete[] cstring_2;
     delete[] cstring_1;
+    delete[] cstring_2;
+    delete[] destination_2;
     return 1;
-    //std::cerr << e.what() << '\n';
   }
-  delete[] cstring_1 ;
-  delete[] cstring_2;
-  delete[] destination_2;
+
   return 0;
 }

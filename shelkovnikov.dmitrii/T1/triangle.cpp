@@ -67,3 +67,20 @@ void Triangle::move(double delta_x, double delta_y)
   point3.x += delta_x;
   point3.y += delta_y;
 }
+void Triangle::scale(double k)
+{
+  double center_of_gravity_x = (point1.x + point2.x + point3.x) / 3;
+  double center_of_gravity_y = (point1.y + point2.y + point3.y) / 3;
+  vector_t direction1(point1.x - center_of_gravity_x, point1.y - center_of_gravity_y);
+  vector_t direction2(point2.x - center_of_gravity_x, point2.y - center_of_gravity_y);
+  vector_t direction3(point3.x - center_of_gravity_x, point3.y - center_of_gravity_y);
+  direction1 *= k;
+  direction2 *= k;
+  direction3 *= k;
+  point1.x = direction1.x + center_of_gravity_x
+  point1.y = direction1.y + center_of_gravity_y
+  point2.x = direction2.x + center_of_gravity_x
+  point2.y = direction2.y + center_of_gravity_y
+  point3.x = direction2.x + center_of_gravity_x
+  point3.y = direction2.y + center_of_gravity_y
+}

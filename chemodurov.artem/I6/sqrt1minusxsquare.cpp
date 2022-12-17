@@ -7,13 +7,24 @@ double Sqrt1MinusXSquare::operator()(double x, size_t max_members, double error)
   {
     throw std::runtime_error("Accuracy was not achieved");
   }
+  double res = 0.0d;
   if (!members)
   {
     current = 1;
+    res += current;
+    members++;
   }
-  double next = 0.0d;
-  
-  current = next;
-  members++;
-  return next;
+  do
+  {
+    if (members == max_members && current > error)
+    {
+      throw std::runtime_error("Accuracy was not achieved");
+    }
+    double next = current * x * x * (2 * members - 1) / (2 * members);
+    res += next;
+    current = next;
+    members++;
+  }
+  while (current <= error);
+  return res;
 }

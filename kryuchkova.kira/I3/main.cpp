@@ -12,7 +12,7 @@ int main()
   try
   {
     cstring_1 = input_string(cstring_1, capacity);
-    if (cstring_1[0] == '\n')
+    if (cstring_1[0] == '\0')
     {
       std::cout << "empty string";
       delete[] cstring_1;

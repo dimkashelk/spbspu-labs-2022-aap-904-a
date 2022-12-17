@@ -2,7 +2,7 @@
 #include <limits>
 #include "cstrfnc.h"
 
-void remove_latin_vowel_letters_(const char* str)
+void remove_latin_vowel_helper(const char* str)
 {
   size_t size = str_length(str);
   char* destination = new char[size + 1];
@@ -25,8 +25,8 @@ int main()
     bool res = is_intersected_strings(str1, str2);
     std::cout << "There is " << (res ? "" : "NO") << " intersect symbols\n";
 
-    remove_latin_vowel_letters_(str1);
-    remove_latin_vowel_letters_(str2);
+    remove_latin_vowel_helper(str1);
+    remove_latin_vowel_helper(str2);
   }
   catch (const std::exception& e)
   {

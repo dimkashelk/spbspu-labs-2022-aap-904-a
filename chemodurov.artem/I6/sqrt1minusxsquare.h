@@ -6,7 +6,7 @@ struct Sqrt1MinusXSquare
 {
   double operator()(size_t max_members, double error);
 
-  double next;
+  double current;
   size_t members;
 };
 

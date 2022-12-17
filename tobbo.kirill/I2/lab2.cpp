@@ -87,7 +87,7 @@ void process_dynamic_array()
   {
     throw std::invalid_argument("Array size must be unsigned integer");
   }
-  std::cout << "Received array size:" << size;
+  std::cout << "Received array size:" << size << "\n";
 
   const unsigned int srand_arg = 5;
   std::srand(srand_arg);
@@ -98,6 +98,7 @@ void process_dynamic_array()
   }
 
   process_array("Dynamic array", arr, size);
+  delete[] arr;
 }
 
 void process_file_array(char* filename)

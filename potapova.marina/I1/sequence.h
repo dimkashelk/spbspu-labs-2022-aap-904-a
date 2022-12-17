@@ -12,5 +12,4 @@ struct CounterSignChange {
   int predval;
   int count;
 };
-
 #endif

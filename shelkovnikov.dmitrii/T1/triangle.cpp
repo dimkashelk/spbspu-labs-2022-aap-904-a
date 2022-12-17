@@ -17,3 +17,16 @@ Triangle::Triangle(point_t p1, point_t p2, point_t p3):
 Triangle::Triangle(double x1, double y1, double x2, double y2, double x3, double y3):
   Triangle(point_t(x1, y1), point_t(x2, y2), point_t(x3, y3))
 {}
+double Triangle::getArea() const
+{
+  // the area of the triangle is half of the length of the vector product
+  // let 's make a matrix
+  //         |i  j  k|
+  // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;
+  //         |x2 y2 0|
+  vector_t a(point2.x - point1.x, point2.y - point1.y);
+  vector_t b(point3.x - point1.x, point3.y - point1.y);
+  double third_coord = a.x * b.y - a.y * b.x;
+  // |a * b| = |c| = sqrt(x * x + y * y + z * z), where x = 0, y = 0 => |c| = sqrt(z * z) = z
+  return third_coord / 2;
+}

@@ -106,21 +106,16 @@ void process_file_array(char* filename)
   std::ifstream input(filename);
   if (!input.is_open())
   {
-    throw std::runtime_error("Error while opening file");
+    throw std::runtime_error("File is not found");
   }
   size_t size = 0;
   int* arr = NULL;
   while (!input.eof())
   {
     input >> size;
-    if (size == 0)
-    {
-      std::cout << "Array is empty... size=0\n";
-      break;
-    }
     if (!input)
     {
-      throw std::runtime_error("Error while reading file 1");
+      throw std::runtime_error("Error while reading size of array");
     }
 
     arr = new int[size];
@@ -130,7 +125,7 @@ void process_file_array(char* filename)
       if (!input)
       {
         delete[] arr;
-        throw std::runtime_error("Error while reading file 2");
+        throw std::runtime_error("Error while reading array elements");
       }
     }
     process_array("File array", arr, size);

@@ -1,4 +1,5 @@
 #include "sqrt1minusxsquare.h"
+#include <stdexcept>
 
 double Sqrt1MinusXSquare::operator()(size_t max_members, double error)
 {

@@ -36,6 +36,7 @@ int main()
   catch(const std::exception& e)
   {
     delete[] destination;
+    delete[] cstring_1;
     std::cerr << e.what() << '\n';
   }
   capacity = 10;

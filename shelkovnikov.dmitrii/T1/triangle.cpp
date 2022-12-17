@@ -58,3 +58,12 @@ void Triangle::move(point_t point)
   point3.x += direction.x;
   point3.y += direction.y;
 }
+void Triangle::move(double delta_x, double delta_y)
+{
+  point1.x += delta_x;
+  point1.y += delta_y;
+  point2.x += delta_x;
+  point2.y += delta_y;
+  point3.x += delta_x;
+  point3.y += delta_y;
+}

@@ -46,3 +46,15 @@ rectangle_t Triangle::getFrameRect() const
   double y_max = std::max(point1.y, std::max(point2.y, point3.y));
   return rectangle_t(x_min, y_min, x_max, y_max);
 }
+void Triangle::move(point_t point)
+{
+  double center_of_gravity_x = (point1.x + point2.x + point3.x) / 3;
+  double center_of_gravity_y = (point1.y + point2.y + point3.y) / 3;
+  vector_t direction(point.x - center_of_gravity_x, point.y - center_of_gravity_y);
+  point1.x += direction.x;
+  point1.y += direction.y;
+  point2.x += direction.x;
+  point2.y += direction.y;
+  point3.x += direction.x;
+  point3.y += direction.y;
+}

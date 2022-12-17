@@ -1,3 +1,4 @@
+#include "sequence.h"
 #include <iostream>
 
 int main() {
@@ -7,6 +8,10 @@ int main() {
 
   do {
     std::cin >> currval;
+    if (!std::cin){
+      std::cout << "Error...\n";
+      return 1;
+    }
     pythcnt(currval);
     signchangecnt(currval);
   } while (std::cin && currval);

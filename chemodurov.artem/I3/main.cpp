@@ -8,7 +8,7 @@ int main()
   char * c_string = nullptr;
   try
   {
-    chemodurov::getCString(std::cin);
+    c_string = chemodurov::getCString(std::cin);
   }
   catch (const std::exception & e)
   {

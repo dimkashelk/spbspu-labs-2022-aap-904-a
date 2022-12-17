@@ -78,3 +78,15 @@ void Triangle::scale(double k)
   point3.x = direction2.x + center_of_gravity_x
   point3.y = direction2.y + center_of_gravity_y
 }
+bool Triangle::isRectangular()
+{
+  vector_t side_vector_1(point1, point2);
+  vector_t side_vector_2(point1, point3);
+  vector_t side_vector_3(point2, point3);
+  double side_1 = side_vector_1.getLength();
+  double side_2 = side_vector_2.getLength();
+  double side_3 = side_vector_3.getLength();
+  return std::pow(side_1, 2) == std::pow(side_2, 2) + std::pow(side_3, 2) ||
+    std::pow(side_2, 2) == std::pow(side_3, 2) + std::pow(side_1, 2) ||
+    std::pow(side_3, 2) == std::pow(side_1, 2) + std::pow(side_2, 2);
+}

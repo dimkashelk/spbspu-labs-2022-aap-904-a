@@ -6,9 +6,9 @@ Triangle::Triangle(point_t p1, point_t p2, point_t p3):
   point2(p2),
   point3(p3)
 {
-  double side1 = sqrt(pow((point1.x - point2.x), 2) + pow(point1.y - point2.y, 2));
-  double side2 = sqrt(pow((point1.x - point3.x), 2) + pow(point1.y - point3.y, 2));
-  double side3 = sqrt(pow((point3.x - point2.x), 2) + pow(point3.y - point2.y, 2));
+  double side1 = std::sqrt(pow((point1.x - point2.x), 2) + pow(point1.y - point2.y, 2));
+  double side2 = std::sqrt(pow((point1.x - point3.x), 2) + pow(point1.y - point3.y, 2));
+  double side3 = std::sqrt(pow((point3.x - point2.x), 2) + pow(point3.y - point2.y, 2));
   if (side1 >= side2 + side3 || side2 >= side1 + side3 || side3 >= side1 + side2)
   {
     throw std::logic_error("It's not a triangle");
@@ -27,6 +27,22 @@ double Triangle::getArea() const
   vector_t a(point2.x - point1.x, point2.y - point1.y);
   vector_t b(point3.x - point1.x, point3.y - point1.y);
   double third_coord = a.x * b.y - a.y * b.x;
-  // |a * b| = |c| = sqrt(x * x + y * y + z * z), where x = 0, y = 0 => |c| = sqrt(z * z) = z
+  // |a * b| = |c| = sqrt(x * x + y * y + z * z)
+  // where x = 0, y = 0 => |c| = sqrt(z * z) = z
   return third_coord / 2;
+}
+rectangle_t Triangle::getFrameRect() const
+{
+  //  _____
+  // |  o  |
+  // | / \ |
+  // |/   \|
+  // o_____o
+  // (x_min, y_min) - left down point of frame rect
+  // (x_max, y_max) - right up point of frame rect
+  double x_min = std::min(point1.x, std::min(point2.x, point3.x));
+  double y_min = std::min(point1.y, std::min(point2.y, point3.y));
+  double x_max = std::max(point1.x, std::max(point2.x, point3.x));
+  double y_max = std::max(point1.y, std::max(point2.y, point3.y));
+  return rectangle_t(x_min, y_min, x_max, y_max);
 }

@@ -46,7 +46,14 @@ int main()
   try
   {
     cstring_2 = input_string(cstring_2, capacity_2);
-    cstring_2[capacity_2 - 1] = '\0';
+    if (capacity_2 == 0)
+    {
+      cstring_2[capacity_2] = '\0';
+    }
+    else
+    {
+      cstring_2[capacity_2 - 1] = '\0';
+    }
   }
   catch(std::exception &e)
   {

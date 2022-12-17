@@ -22,6 +22,13 @@ point_t rectangle_t::getLeftDownPoint() const
 {
   return point_t(x - width / 2, y - height / 2);
 }
+vector_t::vector_t(double x, double y):
+  x(x),
+  y(y)
+{}
+vector_t::vector_t(point_t point_1, point_t point_2):
+  vector_t(point_1.x - point_2.x, point_1.y - point_2.y)
+{}
 vector_t& vector_t::operator*=(double k)
 {
   x *= k;

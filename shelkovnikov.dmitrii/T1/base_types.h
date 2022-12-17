@@ -20,6 +20,8 @@ struct vector_t
 {
   double x;
   double y;
+  vector_t(double x, double y);
+  vector_t(point_t point_1, point_t point_2);
   vector_t& operator*=(double k);
   double getLength() const;
 }

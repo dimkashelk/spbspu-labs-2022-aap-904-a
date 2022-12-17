@@ -55,7 +55,7 @@ void process_array(std::string prefix, int* arr, size_t size)
   std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
 
   print_array("before: ", arr, size);
-  shift_part_to_end(arr, size, 0, (size_t)(size / 2));
+  shift_part_to_end(arr, size, 0, std::ceil(size / 2));
   print_array("after:  ", arr, size);
 
   std::cout << "-----------------\n";

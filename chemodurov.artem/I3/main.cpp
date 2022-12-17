@@ -5,7 +5,16 @@
 
 int main()
 {
-  char * c_string = chemodurov::getCString(std::cin);
+  char * c_string = nullptr;
+  try
+  {
+    chemodurov::getCString(std::cin);
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
   size_t size = 0;
   for (auto i = c_string; *i != '\0'; ++i)
   {

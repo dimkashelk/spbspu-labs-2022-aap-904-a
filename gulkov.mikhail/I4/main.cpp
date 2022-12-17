@@ -46,16 +46,28 @@ int main(int argc, char *argv[])
   }
   if (!strcmp(argv[1], "2"))
   {
+<<<<<<< HEAD
     int *dyn_array = new int[cols * rows];
+=======
+    int *arr = new int[cols * rows];
+>>>>>>> origin/gulkov.mikhail/I4
     for (unsigned int i = 0; i < cols; i++)
     {
       for (unsigned int j = 0; j < rows; j++)
       {
+<<<<<<< HEAD
         in >> dyn_array[i * cols + j];
         if (!in)
         {
           std::cout << "Error while reading file\n";
           delete[] dyn_array;
+=======
+        in >> arr[i * cols + j];
+        if (!in)
+        {
+          std::cout << "Error while reading file\n";
+          delete[] arr;
+>>>>>>> origin/gulkov.mikhail/I4
           return 1;
         }
       }
@@ -63,8 +75,23 @@ int main(int argc, char *argv[])
     unsigned int index_row = 1;
     unsigned int index_col = 1;
 
+<<<<<<< HEAD
     dyn_array = make_matrix_wave_increment(dyn_array, rows, cols, index_row, index_col);
 
 
+=======
+    arr = make_matrix_wave_increment(arr, rows, cols, index_row, index_col);
+
+    for (unsigned int i = 0, str = 0; i < cols * rows; i++)
+    {
+      std::cout << arr[i] << " ";
+      str++;
+      if (str == 3)
+      {
+        std::cout << "\n";
+        str = 0;
+      }
+    }
+>>>>>>> origin/gulkov.mikhail/I4
   }
 }

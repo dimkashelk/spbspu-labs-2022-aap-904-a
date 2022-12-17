@@ -26,26 +26,28 @@ int main()
     delete[] cstring_1;
     return 1;
   }
-
   char *destination = new char[capacity];
-  try
-  {
-    destination = remove_extra_spaces(destination, cstring_1);
-    std::cout << destination << "\n";
-    delete[] destination;
-  }
-  catch(const std::exception& e)
-  {
-    delete[] destination;
-    delete[] cstring_1;
-    std::cerr << e.what() << '\n';
-  }
-  capacity = 10;
-  char *cstring_2 = new char[capacity];
+  //destination[0] = '\0';
+  // try
+  // {
+  destination = remove_extra_spaces(destination, cstring_1);
+  std::cout << destination << "\n";
+  delete[] destination;
+  // }
+  // catch(const std::exception& e)
+  // {
+  //   delete[] destination;
+  //   delete[] cstring_1;
+  //   return 1;
+  //   //std::cerr << e.what() << '\n';
+  // }
+  //return 1;
+  size_t capacity_2 = 10;
+  char *cstring_2 = new char[capacity_2];
   cstring_2[0] = '\0';
   try
   {
-    cstring_2 = input_string(cstring_2, capacity);
+    cstring_2 = input_string(cstring_2, capacity_2);
     cstring_2[capacity - 1] = '\0';
   }
   catch(std::exception &e)
@@ -58,8 +60,22 @@ int main()
   }
 
   char *destination_2 = new char[capacity];
-  std::cout << delete_identical_chars(destination_2, cstring_1, cstring_2) << "\n";
-  delete[] cstring_1;
+  destination_2[0] = '\0';
+  // try
+  // {
+  destination_2 = delete_identical_chars(destination_2, cstring_1, cstring_2);
+  std::cout << destination_2 << "\n";
+  //delete[] destination_2;
+  // }
+  // catch(const std::exception& e)
+  // {
+  //   delete[] destination_2;
+  //   delete[] cstring_2;
+  //   delete[] cstring_1;
+  //   return 1;
+  //   //std::cerr << e.what() << '\n';
+  // }
+  delete[] cstring_1 ;
   delete[] cstring_2;
   delete[] destination_2;
   return 0;

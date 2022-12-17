@@ -23,7 +23,7 @@ char *delete_identical_chars(char *destination, const char *cstring_first, const
 
     if (!identical_chars)
     {
-      destination[k]=cstring_first[i];
+      destination[k] = cstring_first[i];
       k++;
     }
 
@@ -31,7 +31,6 @@ char *delete_identical_chars(char *destination, const char *cstring_first, const
     j = 0;
     identical_chars = false;
   }
-
   destination[k] = '\0';
   return destination;
 }

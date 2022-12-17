@@ -2,7 +2,7 @@
 #include <limits>
 int main()
 {
-  int n;
+  int n = 0;
   int numberafter = 0;
   int currentnumber = 0;
   int numberbefore = 0;
@@ -50,7 +50,7 @@ int main()
         smalln = possiblesmallest;
        }
      }
-   }
+  }
   std::cout << "Amount of numbers that are smaller than the previous one but bigger:  "<<sum<<std::endl;
   std::cout << "The smallest number (Excluding first and last):  "<<smalln<<std::endl;
   return 0;

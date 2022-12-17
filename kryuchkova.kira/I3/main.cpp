@@ -41,7 +41,6 @@ int main()
     return 1;
     //std::cerr << e.what() << '\n';
   }
-  return 1;
   size_t capacity_2 = 10;
   char *cstring_2 = new char[capacity_2];
   cstring_2[0] = '\0';
@@ -65,7 +64,7 @@ int main()
   {
     destination_2 = delete_identical_chars(destination_2, cstring_1, cstring_2);
     std::cout << destination_2 << "\n";
-  delete[] destination_2;
+    //delete[] destination_2;
   }
   catch(const std::exception& e)
   {

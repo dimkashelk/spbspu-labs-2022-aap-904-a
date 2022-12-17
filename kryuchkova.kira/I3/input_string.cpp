@@ -3,9 +3,8 @@
 #include <cstddef>
 #include <stdexcept>
 
-char *input_string(char *cstring)
+char *input_string(char *cstring, size_t &capacity)
 {
-  size_t capacity = 10;
   size_t size = 0;
 
   std::cin >> std::noskipws;
@@ -36,5 +35,6 @@ char *input_string(char *cstring)
   }
   while (std::cin && cstring[size++] != '\n');
   cstring[size - 1] = '\0';
+  capacity = size;
   return cstring;
 }

@@ -11,6 +11,14 @@ void process_file_array(char* filename);
 
 int main(int argc, char* argv[])
 {
+  std::cout << "==============================================\n";
+  std::cout << "argc=" << argc << "\n";
+  for (int i = 0; i < argc; i++)
+  {
+    std::cout << "index=" << i << " value:" << argv[i] << "\n";
+  }
+  std::cout << "==============================================\n";
+
   if (argc != 2)
   {
     std::cerr << "Wrong number of parameters. Should be 1";
@@ -75,10 +83,12 @@ void process_dynamic_array()
   std::cout << "Enter array size:";
   std::cin >> size;
 
-  if (!std::cin || std::cin.fail() || std::cin.peek() != 10)
+  if (!std::cin)
   {
     throw std::invalid_argument("Array size must be unsigned integer");
   }
+  std::cout << "Received array size:" << size;
+
   const unsigned int srand_arg = 5;
   std::srand(srand_arg);
   int* arr = new int[size];

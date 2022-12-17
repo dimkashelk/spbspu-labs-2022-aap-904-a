@@ -14,3 +14,6 @@ Triangle::Triangle(point_t p1, point_t p2, point_t p3):
     throw std::logic_error("It's not a triangle");
   }
 }
+Triangle::Triangle(double x1, double y1, double x2, double y2, double x3, double y3):
+  Triangle(point_t(x1, y1), point_t(x2, y2), point_t(x3, y3))
+{}

@@ -23,9 +23,9 @@ void printRowInTable(std::ostream & out, double x, size_t max_members, double er
 
 void chemodurov::printTable(std::ostream & out, double left, double right, double step, size_t max_mem, double err)
 {
-  for (double i = left; i < right; i += step)
+  for (double i = left; i + step < right; i += step)
   {
-    if (i > left && i < right)
+    if (i >= left && i < right)
     {
       try
       {
@@ -40,5 +40,13 @@ void chemodurov::printTable(std::ostream & out, double left, double right, doubl
     {
       throw std::out_of_range("X is out of range");
     }
+  }
+  try
+  {
+    printRowInTable(out << "\n", right, max_mem, err);
+  }
+  catch (const std::runtime_error & e)
+  {
+    throw;
   }
 }

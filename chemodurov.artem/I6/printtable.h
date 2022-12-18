@@ -5,7 +5,7 @@
 
 namespace chemodurov
 {
-  void printTable(std::ostream & out, double left, double right, double step, double error, size_t max_members);
+  void printTable(std::ostream & out, double left, double right, double step, size_t max_members, double error);
 }
 
 #endif

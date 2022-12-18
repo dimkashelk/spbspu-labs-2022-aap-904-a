@@ -5,7 +5,7 @@ int *make_matrix_wave_increment(int *matrix, unsigned int cols, unsigned int row
 {
   if (index_row > rows || index_col > cols)
   {
-    throw std::invalid_argument("Error: first number indexes are out of bounds.");
+    throw std::invalid_argument("First number indexes are out of bounds.");
   }
 
   index_row--;

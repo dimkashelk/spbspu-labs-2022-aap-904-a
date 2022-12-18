@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
   if (!in)
   {
-    std::cerr << "Error while reading file\n";
+    std::cout << "Error while reading file\n";
     return 1;
   }
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
     if (rows * cols > 1000)
     {
-      std::cerr << "Error, too big matrix\n";
+      std::cout << "Error, too big matrix\n";
       return 1;
     }
 
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         in >> array[cols * i + j];
         if (!in)
         {
-          std::cerr << "Error while reading file\n";
+          std::cout << "Error while reading file\n";
           return 1;
         }
       }
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 
     if (!out)
     {
-      std::cerr << "Error while writing file\n";
+      std::cout << "Error while writing file\n";
     }
 
 
@@ -68,8 +68,8 @@ int main(int argc, char *argv[])
     }
     catch (const std::bad_alloc &e)
     {
-      std::cerr << "Error:\n";
-      std::cerr << e.what();
+      std::cout << "Error:\n";
+      std::cout << e.what();
       return 1;
     }
 
@@ -97,9 +97,9 @@ int main(int argc, char *argv[])
     catch (const std::invalid_argument &e)
     {
       delete[] dyn_array;
-      std::cerr << "Error:\n";
-      std::cerr << e.what();
-      return 1;
+      std::cout << "Error:\n";
+      std::cout << e.what();
+      return 0;
     }
 
     std::ofstream out(argv[3]);
@@ -112,11 +112,12 @@ int main(int argc, char *argv[])
         i == (cols * rows - 1) ? out << "" : out << ' ';
         if (!in)
         {
-          std::cerr << "Error while writing file\n";
+          std::cout << "Error while writing file\n";
           return 1;
         }
       }
     }
+    delete[] dyn_array;
 
   }
 }

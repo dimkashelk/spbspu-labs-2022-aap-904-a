@@ -14,7 +14,7 @@ int main()
     std::cerr << "Error, check parameters\n";
     return 1;
   }
-  const double error = 0.00001;
-  const double step = 0.05;
+//  const double error = 0.00001;
+//  const double step = 0.05;
   return 0;
 }

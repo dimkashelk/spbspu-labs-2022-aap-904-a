@@ -1,5 +1,7 @@
 #include <iostream>
+#include <stdexcept>
 #include "sqrt1minusxsquare.h"
+#include "printtable.h"
 
 int main()
 {
@@ -14,7 +16,16 @@ int main()
     std::cerr << "Error, check parameters\n";
     return 1;
   }
-//  const double error = 0.00001;
-//  const double step = 0.05;
+  const double error = 0.00001;
+  const double step = 0.05;
+  try
+  {
+    chemodurov::printTable(std::cout, left, right, step, max_members, error);
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
   return 0;
 }

@@ -29,7 +29,7 @@ void chemodurov::printTable(std::ostream & out, double left, double right, doubl
     {
       try
       {
-        printRowInTable(out, i, max_mem, err);
+        printRowInTable(out << "\n", i, max_mem, err);
       }
       catch (const std::runtime_error & e)
       {

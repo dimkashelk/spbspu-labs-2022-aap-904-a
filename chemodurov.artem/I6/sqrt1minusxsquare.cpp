@@ -26,5 +26,6 @@ double Sqrt1MinusXSquare::operator()(double x, size_t max_members, double error)
     members++;
   }
   while (current <= error);
+  members = 0;
   return res;
 }

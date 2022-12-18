@@ -49,4 +49,5 @@ void chemodurov::printTable(std::ostream & out, double left, double right, doubl
   {
     throw;
   }
+  out << "\n";
 }

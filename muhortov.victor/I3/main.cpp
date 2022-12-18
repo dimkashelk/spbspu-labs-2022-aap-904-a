@@ -2,5 +2,5 @@
 
 int main()
 {
-  std::cout << "Ochered`";
+  std::cout << "Ochered` ";
 }

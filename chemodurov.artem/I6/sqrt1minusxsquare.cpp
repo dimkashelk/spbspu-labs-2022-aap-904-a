@@ -7,7 +7,7 @@ double Sqrt1MinusXSquare::operator()(double x, size_t max_members, double error)
   {
     throw std::runtime_error("Accuracy was not achieved");
   }
-  double res = 0.0d;
+  double res = 0.0;
   if (!members)
   {
     current = 1;

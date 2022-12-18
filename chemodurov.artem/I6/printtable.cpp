@@ -6,7 +6,13 @@
 
 void printRowInTable(std::ostream & out, double x, size_t max_members, double error)
 {
-  if (x != 0.0)
+  if (std::abs(x) < 1e-9)
+  {
+    out << std::setw(10) << std::setprecision(4) << 0.0 << ' ';
+    out << std::setw(10) << std::setprecision(5) << 1 << ' ';
+    out << std::setw(10) << std::setprecision(5) << 1;
+  }
+  else
   {
     Sqrt1MinusXSquare sqrt1{0, 0};
     double sqrt_in_x = 0.0;
@@ -18,15 +24,9 @@ void printRowInTable(std::ostream & out, double x, size_t max_members, double er
     {
       throw;
     }
-    out << std::setw(5) << x << ' ';
+    out << std::setw(10) << std::setprecision(4) << x << ' ';
     out << std::setw(10) << std::setprecision(5) << sqrt_in_x << ' ';
     out << std::setw(10) << std::setprecision(5) << 1 / (std::sqrt(1 - x * x));
-  }
-  else
-  {
-    out << std::setw(5) << 0.0 << ' ';
-    out << std::setw(10) << std::setprecision(5) << 1 << ' ';
-    out << std::setw(10) << std::setprecision(5) << 1;
   }
 }
 

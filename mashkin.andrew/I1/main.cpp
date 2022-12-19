@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <limits>
-#include "maxLengthAfterMaxValue.h"
-#include "maxLengthDescSeq.h"
+#include "MaxLengthAfterMaxValue.h"
+#include "MaxLengthDescSeq.h"
 
 int main()
 {

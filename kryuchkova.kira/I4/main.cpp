@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <cstring>
 #include "unique_elements.h"
+#include "sum_elements_of_new_matrix.h"
 
 int main()
 {
@@ -20,10 +21,11 @@ int main()
   //   std::cout << "Error";
   //   return 1;
   // }
-  int matrix[20] = {5, 1, 2, 3, 4, 
-                    5, 1, 7, 8, 9,
-                    5, 11, 12, 3, 14,
-                    15, 16, 2, 18, 19};
-  std::cout << unique_elements(matrix, 4, 5) << '\n';
+  int matrix[20] = {0, 1, 2, 3,
+                    4, 5, 6, 7,
+                    8, 9, 10, 11,
+                    12, 13, 14, 15};
+  std::cout << unique_elements(matrix, 4, 4) << '\n';
+  std::cout << sum_elements_of_new_matrix(matrix, 4, 4) << '\n';
   
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstddef>
-#include <cstring>a
+#include <cstring>
 #include "matrixReadWrite.h"
 #include "matrixOperations.h"
 

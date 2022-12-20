@@ -4,7 +4,7 @@
 bool hasRepeatingElements(const char *source)
 {
   const char* p1 = source;
-  const char* p2 = source;
+  const char* p2 = source + 1;
 
   while (*p1 != '\0')
   {
@@ -37,7 +37,7 @@ bool hasRepeatingElements(const char *source1, const char *source2)
       p2++;
     }
     p1++;
-    p2 = 0;
+    p2 = source2;
   }
   return false;
 }

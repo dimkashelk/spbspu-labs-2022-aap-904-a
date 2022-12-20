@@ -21,3 +21,27 @@ size_t countDiverseElements(const int *array, size_t rows, size_t columns)
   }
   return count;
 }
+size_t countEqualSum(const int *array, size_t rows, size_t columns)
+{
+  size_t count = 0;
+  int arraySums[rows];
+  for (size_t i = 0; i < rows; i++)
+  {
+    arraySums[i] = 0;
+    for (size_t j = 0; j < columns; j++)
+    {
+      arraySums[i] += array[i * rows + j];
+    }
+  }
+  for (size_t i = 0; i < rows; i++)
+  {
+    for (size_t j = i + 1; j < rows; j++)
+    {
+      if (arraySums[i] == arraySums[j])
+      {
+        count++;
+      }
+    }
+  }
+  return count;
+}

@@ -43,13 +43,11 @@ int main(int argc, char **argv)
       }
       size_t arraySize = rows * columns;
       int array[arraySize];
-      //std::cout << rows << " " << columns << " " << arraySize << "\n";
       if (arraySize <= 1000)
       {
         for (size_t i = 0; i < arraySize; i++)
         {
           fileInput >> array[i];
-          //std::cout << array[i] << "\n";
           if (!fileInput)
           {
             std::cerr << "Error while reading file " << fileIn << ".\n";
@@ -57,7 +55,9 @@ int main(int argc, char **argv)
           }
         }
         size_t countDivEl = countDiverseElements(array, rows, columns);
+        size_t countEqSum = countEqualSum(array, rows, columns);
         std::cout << countDivEl << "\n";
+        std::cout << countEqSum << "\n";
       }
       else
       {

@@ -37,7 +37,7 @@ size_t turkin::getSameSumLines(const int * matrix, size_t mx, size_t my)
   return amount;
 }
 
-int turkin::getSumOfLine(const int *matrix, size_t mx, size_t my, size_t line)
+int turkin::getSumOfLine(const int * matrix, size_t mx, size_t my, size_t line)
 {
   int sum = 0;
   for (size_t q = 0; q < my; q++)
@@ -47,18 +47,17 @@ int turkin::getSumOfLine(const int *matrix, size_t mx, size_t my, size_t line)
   return sum;
 }
 
-size_t turkin::getSaddlePoints(const turkin::Matrix & matrix)
+size_t turkin::getSaddlePoints(int * matrix, size_t mx, size_t my)
 {
   size_t amount = 0;
-  int element = 0;
-  for (size_t i = 0; i < matrix.mx; i++)
+  for (size_t i = 0; i < mx; i++)
   {
-    for (size_t q = 0; q < matrix.my; q++)
+    for (size_t q = 0; q < my; q++)
     {
-      element = turkin::get(matrix, i, q);
-      int * row = turkin::getRow(matrix, i);
-      int * column = turkin::getColumn(matrix, q);
-      if (element == *std::min_element(row, row + matrix.my) && element == *std::max_element(column, column + matrix.mx))
+      int element = turkin::get(matrix, i, q);
+      int * row = turkin::getRow(matrix, my, i);
+      int * column = turkin::getColumn(matrix, mx, my, q);
+      if (element == *std::min_element(row, row + my) && element == *std::max_element(column, column + mx))
       {
         amount++;
       }
@@ -69,28 +68,29 @@ size_t turkin::getSaddlePoints(const turkin::Matrix & matrix)
   return amount;
 }
 
-size_t turkin::getSumOfModules(const turkin::Matrix & matrix)
+size_t turkin::getSumOfModules(int * matrix, size_t mx, size_t my)
 {
-  turkin::Matrix smoothedMatrix = turkin::getSmoothedMatrix(matrix);
+  int * smoothedMatrix = turkin::getSmoothedMatrix(matrix, mx, my);
   size_t sum = 0;
-  for (size_t i = 0; i < smoothedMatrix.mx; i++)
+  for (size_t i = 0; i < mx; i++)
   {
     for (size_t q = 0; q < i; q++)
     {
       sum = sum + std::abs(turkin::get(smoothedMatrix, i, q));
     }
   }
+  delete [] smoothedMatrix;
   return sum;
 }
 
-turkin::Matrix turkin::getSmoothedMatrix(const turkin::Matrix &matrix)
+int * turkin::getSmoothedMatrix(const int * matrix, size_t mx, size_t my)
 {
-  turkin::Matrix result(matrix.mx, matrix.my);
+  int * result = new int[mx * my];
   size_t amount = 0;
   int sum = 0;
-  for (size_t i = 0; i < matrix.mx; i++)
+  for (size_t i = 0; i < mx; i++)
   {
-    for (size_t q = 0; q < matrix.my; q++)
+    for (size_t q = 0; q < my; q++)
     {
       sum = 0;
       amount = 0;
@@ -98,7 +98,7 @@ turkin::Matrix turkin::getSmoothedMatrix(const turkin::Matrix &matrix)
       {
         for (size_t l = (q == 0) ? q : q - 1; l <= q + 1; l++)
         {
-          if ((k != i && l != q) && k < matrix.mx && l < matrix.my)
+          if ((k != i && l != q) && k < mx && l < my)
           {
             sum = sum + turkin::get(matrix, k, l);
             amount++;

@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cstddef>
-#include <cstdlib>
 #include <cstring>
-#include "matrix.h"
+#include "matrixReadWrite.h"
 #include "matrixOperations.h"
 
 int main(int argc, char * argv[])
@@ -48,15 +47,17 @@ int main(int argc, char * argv[])
   }
   else
   {
-    turkin::Matrix dynamicMatrix(mx, my);
-    turkin::set(dynamicMatrix, input);
+    int * dynamicMatrix = new int[mx * my];
+    turkin::set(dynamicMatrix, mx * my, input);
     if (!input)
     {
       std::cerr << "memory error\n";
+      delete [] dynamicMatrix;
       return 1;
     }
     std::ofstream output(argv[3]);
-    output << turkin::getSaddlePoints(dynamicMatrix) << " " << turkin::getSumOfModules(dynamicMatrix) << "\n";
+    output << turkin::getSaddlePoints(dynamicMatrix, mx, my) << " " << turkin::getSumOfModules(dynamicMatrix, mx, my) << "\n";
+    delete [] dynamicMatrix;
   }
   return 0;
 }

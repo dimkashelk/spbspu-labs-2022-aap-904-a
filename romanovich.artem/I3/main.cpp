@@ -36,7 +36,8 @@ int main()
       }
     }
     std::cin >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
+  }
+  while (std::cin && cstring[size++] != '\n');
   if (!std::cin && !size)
   {
     delete [] cstring;

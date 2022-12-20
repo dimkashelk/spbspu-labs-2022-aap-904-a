@@ -3,41 +3,41 @@
 #include <cctype>
 bool hasRepeatingElements(const char *source)
 {
-  size_t index1 = 0;
-  size_t index2 = 1;
+  const char* p1 = source;
+  const char* p2 = source;
 
-  while(source[index1] != '\0')
+  while (*p1 != '\0')
   {
-    while(source[index2] != '\0')
+    while (*p2 != '\0')
     {
-      if(source[index1]==source[index2])
+      if (*p1 == *p2)
       {
-      return true;
+        return true;
       }
-      index2 ++;
+      p2++;
     }
-    index1 ++;
-    index2 = index1+1;
+    p1++;
+    p2 = p1 + 1;
   }
   return false;
 }
 bool hasRepeatingElements(const char *source1, const char *source2)
 {
-  size_t index1 = 0;
-  size_t index2 = 0;
+  const char* p1 = source1;
+  const char* p2 = source2;
 
-  while(source1[index1] != '\0')
+  while (*p1 != '\0')
   {
-    while(source2[index2] != '\0')
+    while (*p2 != '\0')
     {
-      if(source1[index1] == source2[index2])
+      if (*p1 == *p2)
       {
-      return true;
+        return true;
       }
-      index2 ++;
+      p2++;
     }
-    index1 ++;
-    index2 = 0;
+    p1++;
+    p2 = 0;
   }
   return false;
 }

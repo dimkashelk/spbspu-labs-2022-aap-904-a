@@ -69,7 +69,8 @@ size_t turkin::getSaddlePoints(int * matrix, size_t mx, size_t my)
 
 size_t turkin::getSumOfModules(int * matrix, size_t mx, size_t my)
 {
-  int * smoothedMatrix = turkin::getSmoothedMatrix(matrix, mx, my);
+  int * smoothedMatrix = new int[mx * my];
+  turkin::getSmoothedMatrix(matrix, smoothedMatrix, mx, my);
   size_t sum = 0;
   for (size_t i = 0; i < mx; i++)
   {
@@ -82,9 +83,8 @@ size_t turkin::getSumOfModules(int * matrix, size_t mx, size_t my)
   return sum;
 }
 
-int * turkin::getSmoothedMatrix(const int * matrix, size_t mx, size_t my)
+void turkin::getSmoothedMatrix(const int * matrix, int * result, size_t mx, size_t my)
 {
-  int * result = new int[mx * my];
   size_t amount = 0;
   int sum = 0;
   for (size_t i = 0; i < mx; i++)
@@ -107,5 +107,4 @@ int * turkin::getSmoothedMatrix(const int * matrix, size_t mx, size_t my)
       turkin::set(result, i, q, sum / amount);
     }
   }
-  return result;
 }

@@ -56,11 +56,20 @@ int main(int argc, char * argv[])
       return 1;
     }
     std::ofstream output(argv[3]);
-    int * smoothedMatrix = new int[mx * my];
-    turkin::getSmoothedMatrix(dynamicMatrix, smoothedMatrix, mx, my);
-    output << turkin::getSaddlePoints(dynamicMatrix, mx, my) << " " << turkin::getSumOfModules(smoothedMatrix, mx) << "\n";
-    delete [] smoothedMatrix;
-    delete [] dynamicMatrix;
+    int * smoothedMatrix = nullptr;
+    try
+    {
+      smoothedMatrix = new int[mx * my];
+      turkin::getSmoothedMatrix(dynamicMatrix, smoothedMatrix, mx, my);
+      output << turkin::getSaddlePoints(dynamicMatrix, mx, my) << " " << turkin::getSumOfModules(smoothedMatrix, mx) << "\n";
+      delete [] smoothedMatrix;
+      delete [] dynamicMatrix;
+    }
+    catch (...)
+    {
+      delete [] smoothedMatrix;
+      delete [] dynamicMatrix;
+    }
   }
   return 0;
 }

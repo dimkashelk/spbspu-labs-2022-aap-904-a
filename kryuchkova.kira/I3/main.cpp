@@ -20,7 +20,7 @@ int main()
     }
     cstring_1[capacity - 1] = '\0';
   }
-  catch(std::exception &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring_1;
@@ -34,8 +34,9 @@ int main()
     std::cout << destination << "\n";
     delete[] destination;
   }
-  catch(const std::exception& e)
+  catch (const std::exception &e)
   {
+    std::cout << e.what();
     delete[] destination;
     delete[] cstring_1;
     return 1;
@@ -55,7 +56,7 @@ int main()
       cstring_2[capacity_2 - 1] = '\0';
     }
   }
-  catch(std::exception &e)
+  catch (std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring_1;
@@ -74,7 +75,7 @@ int main()
     delete[] cstring_2;
     delete[] destination_2;
   }
-  catch(const std::exception& e)
+  catch (const std::exception& e)
   {
     delete[] cstring_1;
     delete[] cstring_2;

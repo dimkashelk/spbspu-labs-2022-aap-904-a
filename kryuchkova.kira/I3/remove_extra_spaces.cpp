@@ -1,26 +1,24 @@
 #include "remove_extra_spaces.h"
 #include <cctype>
 #include <cstddef>
-#include <iostream>
 
 char *remove_extra_spaces(char *destination, const char *cstring)
 {
-  size_t n = 0;
   size_t k = 0;
 
-  while (std::isspace(cstring[n]))
+  while (std::isspace(*cstring))
   {
-    n++;
+    cstring++;
   }
 
-  while (cstring[n])
+  while (*cstring)
   {
-    if (!(std::isspace(cstring[n]) && cstring[n] == cstring[n - 1]))
+    if (!(std::isspace(*cstring) && std::isspace(*(cstring - 1))))
     {
-      destination[k] = cstring[n];
+      destination[k] = *cstring;
       k++;
     }
-    n++;
+    cstring++;
   }
   if (std::isspace(destination[k - 1]))
   {

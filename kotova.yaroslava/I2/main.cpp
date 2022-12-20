@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
   }
   else
   {
-    int* SecondArray = new int[size_arr2];
+    int* secondArray = new int[size_arr2];
     std::srand(time(0));
     for (size_t i = 0; i < size_arr2; i++)
     {

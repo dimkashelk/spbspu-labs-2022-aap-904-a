@@ -67,15 +67,17 @@ size_t countSuccessionEqualElements(const int *matrix, size_t matrixSize)
 int sumClose(const int *matrix, size_t row, size_t column, size_t matrixSize)
 {
   int sum_ = 0;
-  std::cout << matrix[row * matrixSize + column] << "\n";
-  for (int k = row-1; k <= row+1; ++k)
+  //std::cout << matrix[row * matrixSize + column] << "\n";
+  std::cout << "Row is: " << row << "\n";
+  for (int k = row-1; k <= row+1; k++)
   {
-    for (int l = column-1; l <= column+1; ++l)
+    std::cout << "I am in a loop! (" << k << ") ";
+    for (int l = column-1; l <= column+1; l++)
     {
-      if ((k*matrixSize+l >= 0) && (k*matrixSize+l <= matrixSize*matrixSize) && !(k==row && l==column))
+      if ((k*matrixSize+l >= 0) && (k*matrixSize+l <= matrixSize*matrixSize) /*&& !(k==row && l==column)*/ && (l < matrixSize) && (k < matrixSize))
       {
         sum_ += matrix[k * matrixSize + l];
-        std::cout << matrix[k * matrixSize + l] << " ";
+        //std::cout << matrix[k * matrixSize + l] << "(" << k << " " << l << ") ";
       }
     }
   }

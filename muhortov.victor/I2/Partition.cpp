@@ -1,60 +1,26 @@
 #include "Partition.hpp"
 #include <cstddef>
 
-int partition(int* arr, size_t size)
+int *partition(int* arr, size_t size)
 {
-  int num = 0;
-  size_t pos = 0;
-  size_t firstpos = 0;
-  size_t lastpos = size - 1;
-  while (firstpos < lastpos)
+  int temp = 0;
+  int *lastpos = arr + size - 1;
+  while (arr < lastpos)
   {
-    if (*(arr + firstpos) % 2 == 0)
+    if (*arr % 2 != 0)
     {
-      firstpos++;
-    }
-    else if (firstpos < lastpos)
-    {
-      pos = firstpos + 1;
-      while (pos <= lastpos)
+      for (int *i = lastpos; i > arr; i--)
       {
-        if (*(arr + pos) % 2 != 0)
+        if (*i % 2 == 0)
         {
-          pos++;
-        }
-        else
-        {
-          num = *(arr + pos);
-          *(arr + pos) = *(arr + firstpos);
-          *(arr + firstpos) = num;
-          firstpos++;
+          temp = *i;
+          *i = *arr;
+          *arr = temp;
           break;
         }
       }
     }
-    if (*(arr + lastpos) % 2 != 0)
-    {
-      lastpos--;
-    }
-    else if (firstpos < lastpos)
-    {
-      pos = lastpos - 1;
-      while (pos >= firstpos)
-      {
-        if (*(arr + pos) % 2 == 0)
-        {
-          pos--;
-        }
-        else
-        {
-          num = *(arr + pos);
-          *(arr + pos) = *(arr + lastpos);
-          *(arr + lastpos) = num;
-          lastpos--;
-          break;
-        }
-      }
-    }
+    arr++;
   }
-  return *(arr + lastpos);
+  return lastpos;
 }

@@ -16,7 +16,7 @@ int main (int argc, char* argv[])
 
   //first task
 
-  int first_array[] = { -1, 0, 1, 2, 2, -3, 7, 5, -4, 8 };
+  int first_array[] = { -1, 1, 0, 7, 5, -3, 2, 2, -4, 8 };
 
   std::cout << "Count of chain numbers: " << find_chain(first_array, 10) << '\n';
   partition(first_array,10);

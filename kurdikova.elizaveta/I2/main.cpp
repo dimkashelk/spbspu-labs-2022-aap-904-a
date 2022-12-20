@@ -19,19 +19,15 @@ int main(int argc, char **argv)
   size_t arraySize1 = 10;
   int array1[10] = {5, 2, 2, 2, 7, 7, 6, 9, 5, 2};
   // Task 6
-  int maxCountSameNumbersNearby1 = getMaxCountSameNumbersSeq(array1, arraySize1);
-  std:: cout << "Array1. Count of same elements nearby: " << maxCountSameNumbersNearby1 << "\n";
+  size_t maxCountSameNumbersNearby1 = getMaxCountSameNumbersSeq(array1, arraySize1);
+  std::cout << "Array1. Count of same elements nearby: " << maxCountSameNumbersNearby1 << "\n";
   // Task 7
-  std:: cout << "Array1 with the specified shift: " << "\n";
-  bool shiftIsPossible1 = shiftArrayElements(array1, arraySize1, shift);
-  if (!shiftIsPossible1) {
-    std::cout << "Shift more or equal then size of array1.\n";
-  } else {
-    for (size_t i = 0; i < arraySize1; ++i) {
-      std::cout << array1[i] << " ";
-    }
-    std::cout << "\n\n";
+  std::cout << "Array1 with the specified shift: " << "\n";
+  shiftArrayElements(array1, arraySize1, shift);
+  for (size_t i = 0; i < arraySize1; ++i) {
+    std::cout << array1[i] << " ";
   }
+  std::cout << "\n\n";
 
   // Dynamic array
   size_t arraySize2 = 0;
@@ -45,19 +41,15 @@ int main(int argc, char **argv)
       array2[i] = rand() % 10;
     }
     // Task 6
-    int maxCountSameNumbersNearby2 = getMaxCountSameNumbersSeq(array2, arraySize2);
-    std:: cout << "Array2. Count of same elements nearby: " << maxCountSameNumbersNearby2 << "\n";
+    size_t maxCountSameNumbersNearby2 = getMaxCountSameNumbersSeq(array2, arraySize2);
+    std::cout << "Array2. Count of same elements nearby: " << maxCountSameNumbersNearby2 << "\n";
     // Task 7
-    std:: cout << "Array2 with the specified shift: " << "\n";
-    bool shiftIsPossible2 = shiftArrayElements(array2, arraySize2, shift);
-    if (!shiftIsPossible2) {
-      std::cout << "Shift more or equal then size of array2.\n";
-    } else {
-      for (size_t i = 0; i < arraySize2; ++i) {
-        std::cout << array2[i] << " ";
-      }
-      std::cout << "\n\n";
+    std::cout << "Array2 with the specified shift: " << "\n";
+    shiftArrayElements(array2, arraySize2, shift);
+    for (size_t i = 0; i < arraySize2; ++i) {
+      std::cout << array2[i] << " ";
     }
+    std::cout << "\n\n";
     delete[] array2;
   }
 
@@ -95,18 +87,14 @@ int main(int argc, char **argv)
   }
   fileIn.close();
   // Task 6
-  int maxCountSameNumbersNearby3 = getMaxCountSameNumbersSeq(array3, arraySize3);
-  std:: cout << "Array3. Count of same elements nearby: " << maxCountSameNumbersNearby3 << "\n";
+  size_t maxCountSameNumbersNearby3 = getMaxCountSameNumbersSeq(array3, arraySize3);
+  std::cout << "Array3. Count of same elements nearby: " << maxCountSameNumbersNearby3 << "\n";
   // Task 7
-  std:: cout << "Array3 with the specified shift: " << "\n";
-  bool shiftIsPossible3 = shiftArrayElements(array3, arraySize3, shift);
-  if (!shiftIsPossible3) {
-    std::cout << "Shift more or equal then size of array3.\n";
-  } else {
-    for (size_t i = 0; i < arraySize3; ++i) {
-      std::cout << array3[i] << " ";
-    }
-    std::cout << "\n\n";
+  std::cout << "Array3 with the specified shift: " << "\n";
+  shiftArrayElements(array3, arraySize3, shift);
+  for (size_t i = 0; i < arraySize3; ++i) {
+    std::cout << array3[i] << " ";
   }
+  std::cout << "\n\n";
   delete[] array3;
 }

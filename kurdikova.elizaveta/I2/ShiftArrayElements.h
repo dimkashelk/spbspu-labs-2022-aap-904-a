@@ -2,6 +2,6 @@
 #define SHIFTARRAYELEMENTS_H
 #include <cstddef>
 
-bool shiftArrayElements(int* arr, size_t size, size_t shift);
+void shiftArrayElements(int* arr, size_t size, size_t shift);
 
 #endif

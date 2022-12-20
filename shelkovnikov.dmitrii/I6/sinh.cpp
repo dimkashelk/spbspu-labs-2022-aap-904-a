@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <iomanip>
-double sinh(double x, double error, unsigned count)
+double Sinh::operator()(double x, double error, unsigned int count)
 {
   if (x >= 1 || x <= -1)
   {
@@ -32,6 +32,7 @@ void print_row(std::ostream &out, double x, double error, unsigned k)
 {
   out << std::fixed << std::setfill(' ') << std::setw(5) << std::setprecision(2);
   out << x << ' ';
+  Sinh sinh;
   try
   {
     out << sinh(x, error, k);

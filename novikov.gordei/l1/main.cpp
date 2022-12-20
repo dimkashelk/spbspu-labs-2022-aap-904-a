@@ -5,9 +5,9 @@
 int main()
 {
   size_t numbOfPythagoreanTriples = 0;
-  long n = 1, x = 0, y = 0, z = 0,
-  max1 = std::numeric_limits< long >::min(),
-  max2 = std::numeric_limits< long >::min();
+  long n = 1, x = 0, y = 0, z = 0;
+  long max1 = std::numeric_limits::min();
+  long max2 = std::numeric_limits::min();
   size_t k = 0;
 
   while (n != 0) {

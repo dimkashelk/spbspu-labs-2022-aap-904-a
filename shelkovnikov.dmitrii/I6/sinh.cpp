@@ -43,6 +43,10 @@ void print_row(std::ostream &out, double x, double error, unsigned k)
 }
 void print_table(std::ostream &out, double left, double right, double step, double error, unsigned k)
 {
+  if (left > right)
+  {
+    throw std::out_of_range("Right more then left");
+  }
   for (; left <= right; left += step)
   {
     print_row(out, left, error, k);

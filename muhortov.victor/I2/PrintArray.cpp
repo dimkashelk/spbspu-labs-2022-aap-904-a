@@ -1,6 +1,4 @@
 #include "PrintArray.hpp"
-#include <ostream>
-#include <cstddef>
 
 void print_array(std::ostream& streamOut, const int* arr, size_t size)
 {

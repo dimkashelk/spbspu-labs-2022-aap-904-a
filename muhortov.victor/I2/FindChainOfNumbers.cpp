@@ -1,5 +1,4 @@
 #include "FindChainOfNumbers.hpp"
-#include <cstddef>
 
 int find_chain(const int* arr, size_t size)
 {

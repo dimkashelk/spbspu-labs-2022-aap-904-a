@@ -55,9 +55,12 @@ size_t turkin::getSaddlePoints(int * matrix, size_t mx, size_t my)
     for (size_t q = 0; q < my; q++)
     {
       int element = turkin::get(matrix, i, q);
-      if (element == *std::min_element(&matrix[i * i], &matrix[i * i] + my) && element == *std::max_element(&matrix[i * i + q], &matrix[i * i + q]))
+      if (element == *std::min_element(&matrix[i * i], &matrix[i * i] + my))
       {
-        amount++;
+        if (element == *std::max_element(&matrix[i * i + q], &matrix[i * i + q]))
+        {
+          amount++;
+        }
       }
     }
   }

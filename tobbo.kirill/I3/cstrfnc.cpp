@@ -88,4 +88,3 @@ char* remove_latin_vowel_letters(char* destination, const char* source)
   destination[dest_index] = '\0';
   return destination;
 }
-

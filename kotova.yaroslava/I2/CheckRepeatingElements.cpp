@@ -7,7 +7,7 @@ size_t checkRepeatEl(const int* array, size_t size, size_t index_m, size_t index
   size_t max_of_index = std::max(index_m, index_n);
   if (max_of_index > size)
   {
-    throw std::invalid_argument("Error");
+    throw std::invalid_argument("Error")
   }
   if (index_m == index_n)
   {
@@ -26,3 +26,4 @@ size_t checkRepeatEl(const int* array, size_t size, size_t index_m, size_t index
   }
   return repeat_cnt;
 }
+

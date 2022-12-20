@@ -8,11 +8,11 @@ int main(int argc, char* argv[])
   const int divider = 3;
   if (argc != 2)
   {
-    std::cout << "File is wrong\n";
+    std::cout << " File is wrong\n";
     return 2;
   }
 //1
-  int FirstArray[] = { 1, 2, 6, 12, 12, 12, 9, -5, 4, 4 };
+  int FirstArray[] = { 1, 2, 6, 12, 12, 12, 9, 3, 2, 2};
   size_t arr1_index_m = 1;
   size_t arr1_index_n = 6;
 
@@ -22,32 +22,32 @@ int main(int argc, char* argv[])
   size_t size_arr2 = 0;
   size_t arr2_index_m = 1, arr2_index_n = 6;
   std::cin >> size_arr2;
-    if (size_arr2 == 0)
+  if (size_arr2 == 0)
+  {
+    std::cout << "Empty array\n";
+  }
+  else
+  {
+    int* SecondArray = new int[size_arr2];
+    std::srand(time(0));
+    for (size_t i = 0; i < size_arr2; i++)
     {
-      std::cout << "Empty array\n";
+      secondArray[i] = std::rand();
     }
-    else
+    try
     {
-      int* secondArray = new int[size_arr2];
-      std::srand(time(0));
-      for (size_t i = 0; i < size_arr2; i++)
-      {
-        secondArray[i] = std::rand();
-      }
-      try
-      {
-        size_t cnt_div_arr2 = countDivision(secondArray, size_arr2, divider);
-        size_t cnt_check_rep_el = checkRepeatEl(secondArray, size_arr2, arr2_index_m, arr2_index_n);
-        std::cout << cnt_div_arr2 << " " << cnt_check_rep_el << " ";
-      }
-      catch (const std::invalid_argument& e)
-      {
-        std::cout << e.what();
-        delete[] secondArray;
-        return 1;
-      }
+      size_t cnt_div_arr2 = countDivision(secondArray, size_arr2, divider);
+      size_t cnt_check_rep_el = checkRepeatEl(secondArray, size_arr2, arr2_index_m, arr2_index_n);
+      std::cout << cnt_div_arr2 << " " << cnt_check_rep_el << " ";
+    }
+    catch (const std::invalid_argument& e)
+    {
+      std::cout << e.what();
       delete[] secondArray;
+      return 1;
     }
+    delete[] secondArray;
+  }
 //3
   size_t arr3_index_m = 1, arr3_index_n = 6;
   std::ifstream file_arr(argv[1]);
@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
       file_arr >> thirdArray[i];
       if (!file_arr)
       {
-        std::cout << "reading file with an error ";
+        std::cout << " reading file with an error ";
         delete[] thirdArray;
         return 1;
       }
@@ -92,3 +92,5 @@ int main(int argc, char* argv[])
   }
   return 0;
 }
+
+

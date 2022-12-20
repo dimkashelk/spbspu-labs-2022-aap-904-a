@@ -12,3 +12,4 @@ size_t countDivision(const int* array, const size_t size, unsigned int n)
   }
   return cnt_div;
 }
+

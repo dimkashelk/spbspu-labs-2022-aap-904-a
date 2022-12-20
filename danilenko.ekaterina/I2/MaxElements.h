@@ -2,6 +2,6 @@
 #define MAXELEMENTS_H
 #include <cstddef>
 
-int CountMaxElements(const int* array, size_t size);
+int count_max_elements(const int* array, size_t size);
 
 #endif

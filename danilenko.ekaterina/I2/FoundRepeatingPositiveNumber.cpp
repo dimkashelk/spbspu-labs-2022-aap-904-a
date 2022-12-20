@@ -1,6 +1,6 @@
 #include "FoundRepeatingPositiveNumber.h"
 
-bool FoundRepeatingPositiveNumber(const int* array, const size_t size)
+bool found_repeating_positive_number(const int* array, const size_t size)
 {
   for (size_t i = 1; i < size; i++)
   {

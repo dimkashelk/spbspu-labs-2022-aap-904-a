@@ -67,7 +67,7 @@ size_t turkin::getSaddlePoints(const int * matrix, size_t mx, size_t my)
   return amount;
 }
 
-size_t turkin::getSumOfModules(const int * matrix, size_t mx, size_t my)
+size_t turkin::getSumOfModules(const int * matrix, size_t mx)
 {
   size_t sum = 0;
   for (size_t i = 0; i < mx; i++)

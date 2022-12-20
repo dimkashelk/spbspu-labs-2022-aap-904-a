@@ -1,5 +1,6 @@
 #include <iostream>
 #include "sinh.h"
+
 int main()
 {
   double left = 0.0f, right = 0.0f;

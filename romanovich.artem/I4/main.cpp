@@ -56,7 +56,7 @@ int main(int argc, char **argv)
           fileInput >> array[i];
           if (!fileInput)
           {
-            std::cerr << "Error while reading file " << fileIn << ".\n";
+            std::cerr << "Error while reading file " << fileIn << "\n";
             return 2;
           }
         }

@@ -58,10 +58,14 @@ int main (int argc, char* argv[])
   size_t third_array_size = 0;
   file >> third_array_size;
 
+  if (!third_array_size)
+  {
+    std::cerr << "Empty file" << '\n';
+  }
   if (third_array_size == 0)
   {
     std::cout << "Empty array" << '\n';
-    return 1;
+    return 0;
   }
 
   if (third_array_size)

@@ -14,3 +14,7 @@ Regular::Regular(double x1, double y1, double x2, double y2, double x3, double y
   double angle_degrees = acos(side_1 / side_2) * 180.0 / std::PI;
   count = static_cast< size_t >(360 / angle_degrees);
 }
+double Regular::getArea() const
+{
+  return triangle.getArea() * count;
+}

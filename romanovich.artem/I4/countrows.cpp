@@ -51,7 +51,7 @@ size_t countSuccessionEqualElements(const int *matrix, size_t matrixN)
   size_t count = 0;
   for (size_t i = 0; i < matrixN; i++)
   {
-    for (size_t j = 0; j < matrixN; j++)
+    for (size_t j = 0; j < matrixN - 1; j++)
     {
       bool foundSuccessionEqual = false;
       if (matrix[i * matrixN + j] == matrix[i * matrixN + j + 1])

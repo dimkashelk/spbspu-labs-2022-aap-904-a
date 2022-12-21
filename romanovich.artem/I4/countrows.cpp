@@ -46,15 +46,15 @@ size_t countEqualSum(const int *array, size_t rows, size_t columns)
   }
   return count;
 }
-size_t countSuccessionEqualElements(const int *matrix, size_t matrixSize)
+size_t countSuccessionEqualElements(const int *matrix, size_t matrixN)
 {
   size_t count = 0;
-  for (size_t i = 0; i < matrixSize; i++)
+  for (size_t i = 0; i < matrixN; i++)
   {
-    for (size_t j = 0; j < matrixSize; j++)
+    for (size_t j = 0; j < matrixN; j++)
     {
       bool foundSuccessionEqual = false;
-      if (matrix[i * matrixSize + j] == matrix[i * matrixSize + j + 1])
+      if (matrix[i * matrixN + j] == matrix[i * matrixN + j + 1])
       {
         foundSuccessionEqual = true;
         break;
@@ -64,35 +64,44 @@ size_t countSuccessionEqualElements(const int *matrix, size_t matrixSize)
   }
   return count;
 }
-int sumClose(const int *matrix, size_t row, size_t column, size_t matrixSize)
+int sumClose(const int *matrix, int row, int column, int matrixN)
 {
   int sum_ = 0;
-  //std::cout << matrix[row * matrixSize + column] << "\n";
-  std::cout << "Row is: " << row << "\n";
+  int count = 0;
   for (int k = row-1; k <= row+1; k++)
   {
-    std::cout << "I am in a loop! (" << k << ") ";
     for (int l = column-1; l <= column+1; l++)
     {
-      if ((k*matrixSize+l >= 0) && (k*matrixSize+l <= matrixSize*matrixSize) /*&& !(k==row && l==column)*/ && (l < matrixSize) && (k < matrixSize))
+      if ((k*matrixN+l >= 0) && (k*matrixN+l <= matrixN*matrixN) && !(k==row && l==column) && 0 <= l && l < matrixN && 0 <= k && k < matrixN)
       {
-        sum_ += matrix[k * matrixSize + l];
-        //std::cout << matrix[k * matrixSize + l] << "(" << k << " " << l << ") ";
+        sum_ += matrix[k * matrixN + l];
+        count++;
       }
     }
   }
-  std::cout << "\n\n";
-  return sum_;
+  return sum_ / count;
 }
-const int smoothMatrix(const int *matrix, size_t matrixSize)
+int countUpperMainDiagonal(const int *matrix, size_t matrixN)
 {
-  int smoothedMatrix[matrixSize*matrixSize];
-  for (size_t i = 0; i < matrixSize; i++)
+  int sum_ = 0;
+  for (size_t i = 0; i < matrixN - 1; i++)
   {
-    for (size_t j = 0; j < matrixSize; j++)
+    for (size_t j = i + 1; j < matrixN; j++)
     {
-      smoothedMatrix[i * matrixSize + j] = sumClose(matrix, i, j, matrixSize);
+      int value = matrix[i * matrixN + j];
+      sum_ += value * ((value > 0) - (value < 0));
     }
   }
-  return *smoothedMatrix;
+  std::cout << "\n";
+  return sum_;
+}
+void smoothMatrix(const int *matrix, int *smoothedMatrix, size_t matrixN)
+{
+  for (size_t i = 0; i < matrixN; i++)
+  {
+    for (size_t j = 0; j < matrixN; j++)
+    {
+      smoothedMatrix[i * matrixN + j] = sumClose(matrix, i, j, matrixN);
+    }
+  }
 }

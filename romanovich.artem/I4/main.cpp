@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     if (!strcmp(taskNumber, "1"))
     {
       size_t arraySize = rows * columns;
-      int array[arraySize];
+      int array[1000];
       if (arraySize <= 1000)
       {
         for (size_t i = 0; i < arraySize; i++)
@@ -80,31 +80,34 @@ int main(int argc, char **argv)
     }
     if (!strcmp(taskNumber, "2"))
     {
-      size_t arraySize = rows * columns;
-      int *array = new int[arraySize];
-      for (size_t i = 0; i < arraySize; i++)
+      size_t matrixN = rows;
+      size_t matrixSize = matrixN*matrixN;
+      int *matrix = new int[matrixN*matrixN];
+      for (size_t i = 0; i < matrixSize; i++)
       {
-        fileInput >> array[i];
+        fileInput >> matrix[i];
         if (!fileInput)
         {
           std::cerr << "Error while reading file " << fileIn << ".\n";
-          delete[] array;
+          delete[] matrix;
           return 2;
         }
       }
-      size_t countDivEl = countDiverseElements(array, rows, columns);
-      size_t countEqSum = countEqualSum(array, rows, columns);
-      int sM = smoothMatrix(array, rows);
-      delete[] array;
-      //std::cout << countDivEl << "\n";
-      //std::cout << countEqSum << "\n";
+      int *smoothedMatrix = new int[matrixSize];
       try
       {
-        fileOutput << countDivEl << " " << countEqSum;
+        size_t countSuccEqEl = countSuccessionEqualElements(matrix, matrixN);
+        smoothMatrix(matrix, smoothedMatrix, matrixN);
+        size_t countUpMainDiag = countUpperMainDiagonal(smoothedMatrix, matrixN);
+        delete[] smoothedMatrix;
+        delete[] matrix;
+        fileOutput << countSuccEqEl << " " << countUpMainDiag;
       }
       catch (...)
       {
         std::cerr << "Error while writing result.\n";
+        delete[] smoothedMatrix;
+        delete[] matrix;
         return 2;
       }
     }

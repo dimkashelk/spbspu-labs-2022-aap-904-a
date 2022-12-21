@@ -61,6 +61,7 @@ int main (int argc, char* argv[])
   if (!third_array_size)
   {
     std::cerr << "Empty file" << '\n';
+    return 1;
   }
   if (third_array_size == 0)
   {

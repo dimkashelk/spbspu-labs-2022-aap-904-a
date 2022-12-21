@@ -43,6 +43,11 @@ int main(int argc, char **argv)
     std::cerr << "Error while reading columns.\n";
     return 2;
   }
+  if (rows == 0 || columns == 0)
+  {
+    std::cout << "Empty array.\n";
+    return 0;
+  }
   if (!strcmp(taskNumber, "1"))
   {
     size_t arraySize = rows * columns;

@@ -21,5 +21,5 @@ int *partition(int* arr, size_t size)
     }
     arr++;
   }
-  return lastpos;
+  return arr;
 }

@@ -61,7 +61,7 @@ int main (int argc, char* argv[])
   if (third_array_size == 0)
   {
     std::cout << "Empty array" << '\n';
-    return 0;
+    return 1;
   }
 
   if (third_array_size)

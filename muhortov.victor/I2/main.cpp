@@ -19,7 +19,7 @@ int main (int argc, char* argv[])
   int first_array[] = { -1, 1, 0, 7, 5, -3, 2, 2, -4, 8 };
 
   std::cout << "Count of chain numbers: " << find_chain(first_array, 10) << '\n';
-  partition(first_array,10);
+  partition(first_array, 10);
   print_array(std::cout, first_array, 10);
 
   //Second task
@@ -52,11 +52,6 @@ int main (int argc, char* argv[])
   if (!file.is_open())
   {
     std::cerr << "Error with opening file" << '\n';
-    return 1;
-  }
-  if (file.peek() == EOF)
-  {
-    std::cerr << "Empty file" << '\n';
     return 1;
   }
 

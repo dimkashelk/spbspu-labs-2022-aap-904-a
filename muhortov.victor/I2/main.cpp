@@ -55,7 +55,7 @@ int main (int argc, char* argv[])
     return 1;
   }
 
-  size_t third_array_size = 0;
+  size_t third_array_size;
   file >> third_array_size;
 
   if (!third_array_size)

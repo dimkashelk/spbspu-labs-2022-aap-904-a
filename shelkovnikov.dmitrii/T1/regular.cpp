@@ -49,3 +49,7 @@ rectangle_t Regular::getFrameRect() const
   }
   return rectangle_t(min_x, min_y, max_x, max_y);
 }
+void Regular::move(double delta_x, double delta_y)
+{
+  triangle.move(delta_x, delta_y);
+}

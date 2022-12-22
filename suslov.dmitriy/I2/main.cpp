@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "MoveElements.h"
-#include "ArithmeticMeanOfEvenIndices.h"
+#include "moveElements.h"
+#include "calculateArithmeticMean.h"
 int main(int argc, char *argv[])
 {
   if (argc == 1)
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     std::cout << array_1[i] << " ";
   }
   std::cout << "\n";
-  std::cout << arithmetic_mean_of_even_indices(array_1, 10) << "\n";
+  std::cout << calculate_arithmeticMean(array_1, 10) << "\n";
   size_t n = 0;
   std::cin >> n;
   int *array_2 = new int[n];
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
   std::cout << "\n";
   try
   {
-    std::cout << arithmetic_mean_of_even_indices(array_2, n) << "\n";
+    std::cout << calculate_arithmeticMean(array_2, n) << "\n";
   }
   catch (const std::runtime_error &e)
   {
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
   std::cout << "\n";
   try
   {
-    std::cout << arithmetic_mean_of_even_indices(array_3, size) << "\n";
+    std::cout << calculate_arithmeticMean(array_3, size) << "\n";
   }
   catch (const std::runtime_error &e)
   {

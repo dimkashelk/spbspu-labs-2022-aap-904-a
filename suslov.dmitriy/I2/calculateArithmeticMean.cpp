@@ -1,6 +1,6 @@
-#include "ArithmeticMeanOfEvenIndices.h"
+#include "calculateArithmeticMean.h"
 #include <stdexcept>
-double arithmetic_mean_of_even_indices(const int *arr, size_t size)
+double calculate_arithmeticMean(const int *arr, size_t size)
 {
   int c = 0;
   if (size == 0)

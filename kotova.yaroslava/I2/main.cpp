@@ -58,40 +58,37 @@ int main(int argc, char* argv[])
     std::cout << " file open with an error";
     return 1;
   }
-  while (!file_arr.eof())
+  size_t size_arr3 = 0;
+  file_arr >> size_arr3;
+  if (!file_arr)
   {
-    size_t size_arr3 = 0;
-    file_arr >> size_arr3;
+    std::cout << " reading file with an error ";
+    return 1;
+  }
+  int* thirdArray = new int[size_arr3];
+  for (size_t i = 0; i < size_arr3; i++)
+  {
+    file_arr >> thirdArray[i];
     if (!file_arr)
     {
       std::cout << " reading file with an error ";
+      delete[] thirdArray;
       return 1;
     }
-    int* thirdArray = new int[size_arr3];
-    for (size_t i = 0; i < size_arr3; i++)
-    {
-      file_arr >> thirdArray[i];
-      if (!file_arr)
-      {
-        std::cout << " reading file with an error ";
-        delete[] thirdArray;
-        return 1;
-      }
-    }
-    try
-    {
-      size_t cnt_div_arr3 = countDivision(thirdArray, size_arr3, divider);
-      size_t cnt_check_rep_el3 = checkRepeatEl(thirdArray, size_arr3, arr3_index_m, arr3_index_n);
-      std::cout << cnt_div_arr3 << " " << cnt_check_rep_el3 << " ";
-    }
-    catch (const std::invalid_argument& e)
-    {
-      std::cout << e.what();
-      delete[] thirdArray;
-      return 0;
-    }
-    delete[] thirdArray;
   }
+  try
+  {
+    size_t cnt_div_arr3 = countDivision(thirdArray, size_arr3, divider);
+    size_t cnt_check_rep_el3 = checkRepeatEl(thirdArray, size_arr3, arr3_index_m, arr3_index_n);
+    std::cout << cnt_div_arr3 << " " << cnt_check_rep_el3 << " ";
+  }
+  catch (const std::invalid_argument& e)
+  {
+    std::cout << e.what();
+    delete[] thirdArray;
+    return 0;
+  }
+  delete[] thirdArray;
   return 0;
 }
 

@@ -7,6 +7,11 @@ public:
   Rectangle(point_t point, double width, double height);
   Rectangle(rectangle_t rectangle);
   Rectangle(double x1, double y1, double x2, double y2);
+  double getArea() const override;
+  rectangle_t getFrameRect() const override;
+  void move(point_t point) override;
+  void move(double delta_x, double delta_y) override;
+  void scale(double k) override;
 private:
   rectangle_t rectangle;
 };

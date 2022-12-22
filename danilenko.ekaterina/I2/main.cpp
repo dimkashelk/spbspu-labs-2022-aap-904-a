@@ -15,8 +15,8 @@ int main(int argc, char* array[])
   //1
   const size_t size1 = 10;
   int array1[10] = {1, 1, 1, 1, 9, 9, 2, 4, 3, 2};
-  std::cout << "Number of max elements: " << count_max_elements(array1, size1) << "\n";
-  std::cout << "Positive repeating numbers: " << find_repeating_positive_number(array1, size1) << "\n\n";
+  std::cout << "Number of max elements: " << countMaxElements(array1, size1) << "\n";
+  std::cout << "Positive repeating numbers: " << findRepeatingPositiveNumber(array1, size1) << "\n\n";
 
   //2
   size_t size2 = 0;
@@ -29,8 +29,8 @@ int main(int argc, char* array[])
     {
       array2[i] = std::rand() % 10;
     }
-    std::cout << "Number of max elements: " << count_max_elements(array2, size2) << "\n";
-    std::cout << "Positive repeating numbers: " << find_repeating_positive_number(array2, size2) << "\n\n";
+    std::cout << "Number of max elements: " << countMaxElements(array2, size2) << "\n";
+    std::cout << "Positive repeating numbers: " << findRepeatingPositiveNumber(array2, size2) << "\n\n";
     delete[] array2;
   }
 
@@ -57,8 +57,8 @@ int main(int argc, char* array[])
             return 1;
           }
         }
-        std::cout << "Number of max elements: " << count_max_elements(array3, size3) << "\n";
-        std::cout << "Positive repeating numbers: " << find_repeating_positive_number(array3, size3) << "\n\n";
+        std::cout << "Number of max elements: " << countMaxElements(array3, size3) << "\n";
+        std::cout << "Positive repeating numbers: " << findRepeatingPositiveNumber(array3, size3) << "\n\n";
         delete[] array3;
       }
     }

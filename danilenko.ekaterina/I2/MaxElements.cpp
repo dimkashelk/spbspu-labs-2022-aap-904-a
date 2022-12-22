@@ -1,6 +1,6 @@
 #include "MaxElements.h"
 
-int count_max_elements(const int* array, const size_t size)
+int countMaxElements(const int* array, const size_t size)
 {
   size_t count = 0;
   int max_value = array[0];

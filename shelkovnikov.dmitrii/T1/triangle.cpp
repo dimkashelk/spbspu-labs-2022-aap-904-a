@@ -69,12 +69,12 @@ void Triangle::scale(double k)
   direction1 *= k;
   direction2 *= k;
   direction3 *= k;
-  point1.x = direction1.x + point_center_of_gravity.x
-  point1.y = direction1.y + point_center_of_gravity.y
-  point2.x = direction2.x + point_center_of_gravity.x
-  point2.y = direction2.y + point_center_of_gravity.y
-  point3.x = direction2.x + point_center_of_gravity.x
-  point3.y = direction2.y + point_center_of_gravity.y
+  point1.x = direction1.x + point_center_of_gravity.x;
+  point1.y = direction1.y + point_center_of_gravity.y;
+  point2.x = direction2.x + point_center_of_gravity.x;
+  point2.y = direction2.y + point_center_of_gravity.y;
+  point3.x = direction2.x + point_center_of_gravity.x;
+  point3.y = direction2.y + point_center_of_gravity.y;
 }
 bool Triangle::isRectangular()
 {
@@ -90,11 +90,7 @@ bool Triangle::isRectangular()
 }
 point_t *Triangle::getPoints()
 {
-  point_t *points = new point_t[3];
-  points[0] = point1;
-  points[1] = point2;
-  points[2] = point3;
-  return points;
+  return new point_t[3]{point1, point2, point3};
 }
 point_t Triangle::getCenterOfGravity()
 {

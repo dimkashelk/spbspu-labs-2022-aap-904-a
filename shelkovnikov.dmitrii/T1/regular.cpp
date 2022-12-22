@@ -62,3 +62,10 @@ void Regular::move(point_t point)
   triangle.move(point);
   triangle.move(delta_x, delta_y);
 }
+void Regular::scale(double k)
+{
+  point_t *old_points = triangle.getPoints();
+  triangle.scale(k);
+  point_t *new_points = triangle.getPoints();
+  triangle.move(old_points[0].x - new_points[0].x, old_points[0].y - new_points[0].y);
+}

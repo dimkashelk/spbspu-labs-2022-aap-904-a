@@ -11,14 +11,15 @@ int main(int argc, char* argv[])
     std::cout << " File is wrong\n";
     return 2;
   }
-//1
+
   int FirstArray[] = { 1, 2, 6, 12, 12, 12, 9, 3, 2, 2};
   size_t arr1_index_m = 1;
   size_t arr1_index_n = 6;
 
   std::cout << countDivision(FirstArray, 10, divider) << " ";
   std::cout << checkRepeatEl(FirstArray, 10, arr1_index_m, arr1_index_n) << " ";
-//2
+
+
   size_t size_arr2 = 0;
   size_t arr2_index_m = 1, arr2_index_n = 6;
   std::cin >> size_arr2;
@@ -48,7 +49,8 @@ int main(int argc, char* argv[])
     }
     delete[] secondArray;
   }
-//3
+
+
   size_t arr3_index_m = 1, arr3_index_n = 6;
   std::ifstream file_arr(argv[1]);
   if (!file_arr)

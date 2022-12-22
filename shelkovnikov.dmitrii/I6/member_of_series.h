@@ -3,7 +3,7 @@
 class MemberOfSeries
 {
 public:
-  MemberOfSeries(double x);
+  explicit MemberOfSeries(double x);
   double operator()();
 private:
   double x;

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "move_elements.h"
-#include "arithmetic_mean_of_even_indices.h"
+#include "MoveElements.h"
+#include "ArithmeticMeanOfEvenIndices.h"
 int main(int argc, char *argv[])
 {
   if (argc == 1)
@@ -46,7 +46,6 @@ int main(int argc, char *argv[])
   }
   delete[] array_2;
   std::ifstream input(argv[1]);
-  int *array_3 = nullptr;
   size_t size = 0;
   input >> size;
   if (!input)
@@ -54,6 +53,7 @@ int main(int argc, char *argv[])
     std::cout << "Another one error";
     return 1;
   }
+  int *array_3 = nullptr;
   array_3 = new int[size];
   for (size_t i = 0; i < size; i++)
   {
@@ -80,6 +80,5 @@ int main(int argc, char *argv[])
     std::cout << e.what() << "\n";
   }
   delete[] array_3;
-
   return 0;
 }

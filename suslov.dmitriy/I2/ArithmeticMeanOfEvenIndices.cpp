@@ -1,4 +1,4 @@
-#include "arithmetic_mean_of_even_indices.h"
+#include "ArithmeticMeanOfEvenIndices.h"
 #include <stdexcept>
 double arithmetic_mean_of_even_indices(const int *arr, size_t size)
 {

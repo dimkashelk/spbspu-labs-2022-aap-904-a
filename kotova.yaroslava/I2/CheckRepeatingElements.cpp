@@ -24,8 +24,8 @@ size_t checkRepeatEl(const int* array, size_t size, size_t index_m, size_t index
         }
       }
     }
-  return repeat_cnt;
   }
+  return repeat_cnt;
 }
 
 

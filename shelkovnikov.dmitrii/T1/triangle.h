@@ -12,8 +12,8 @@ public:
   void move(double delta_x, double delta_y) override;
   void scale(double k) override;
   bool isRectangular();
-  point_t* getPoints();
-  point_t getCenterOfGravity();
+  point_t* getPoints() const;
+  point_t getCenterOfGravity() const;
 private:
   point_t point1;
   point_t point2;

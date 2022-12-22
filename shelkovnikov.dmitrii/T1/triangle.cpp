@@ -88,11 +88,11 @@ bool Triangle::isRectangular()
     std::pow(side_2, 2) == std::pow(side_3, 2) + std::pow(side_1, 2) ||
     std::pow(side_3, 2) == std::pow(side_1, 2) + std::pow(side_2, 2);
 }
-point_t *Triangle::getPoints()
+point_t *Triangle::getPoints() const
 {
   return new point_t[3]{point1, point2, point3};
 }
-point_t Triangle::getCenterOfGravity()
+point_t Triangle::getCenterOfGravity() const
 {
   return point_t((point1.x + point2.x + point3.x) / 3, (point1.y + point2.y + point3.y) / 3);
 }

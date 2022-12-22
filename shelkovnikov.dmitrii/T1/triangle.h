@@ -7,6 +7,7 @@ public:
   Triangle(point_t point1, point_t point2, point_t point3);
   Triangle(double x1, double y1, double x2, double y2, double x3, double y3);
   bool isRectangular();
+  point_t* getPoints();
 private:
   point_t point1;
   point_t point2;

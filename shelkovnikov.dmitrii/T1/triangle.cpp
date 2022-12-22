@@ -90,3 +90,11 @@ bool Triangle::isRectangular()
     std::pow(side_2, 2) == std::pow(side_3, 2) + std::pow(side_1, 2) ||
     std::pow(side_3, 2) == std::pow(side_1, 2) + std::pow(side_2, 2);
 }
+point_t *Triangle::getPoints()
+{
+  point_t *points = new point_t[3];
+  points[0] = point1;
+  points[1] = point2;
+  points[2] = point3;
+  return points;
+}

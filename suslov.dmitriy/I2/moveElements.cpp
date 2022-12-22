@@ -1,6 +1,6 @@
 #include "moveElements.h"
 #include <algorithm>
-void move_elements(int *arr, size_t size, size_t m, size_t n)
+void moveElements(int *arr, size_t size, size_t m, size_t n)
 {
   if (size == 0)
   {

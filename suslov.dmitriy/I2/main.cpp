@@ -15,13 +15,13 @@ int main(int argc, char *argv[])
     return 1;
   }
   int array_1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-  move_elements(array_1, 10, 1, 5);
+  moveElements(array_1, 10, 1, 5);
   for (size_t i = 0; i < 10; i++)
   {
     std::cout << array_1[i] << " ";
   }
   std::cout << "\n";
-  std::cout << calculate_arithmeticMean(array_1, 10) << "\n";
+  std::cout << calculateArithmeticMean(array_1, 10) << "\n";
   size_t n = 0;
   std::cin >> n;
   int *array_2 = new int[n];
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
   {
     array_2[i] = std::rand();
   }
-  move_elements(array_2, n, 0, 1);
+  moveElements(array_2, n, 0, 1);
   for (size_t i = 0; i < n; i++)
   {
     std::cout << array_2[i] << " ";
@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
   std::cout << "\n";
   try
   {
-    std::cout << calculate_arithmeticMean(array_2, n) << "\n";
+    std::cout << calculateArithmeticMean(array_2, n) << "\n";
   }
   catch (const std::runtime_error &e)
   {
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
       return 1;
     }
   }
-  move_elements(array_3, size, 0, 1);
+  moveElements(array_3, size, 0, 1);
   for (size_t i = 0; i < size; i++)
   {
     std::cout << array_3[i] << " ";
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
   std::cout << "\n";
   try
   {
-    std::cout << calculate_arithmeticMean(array_3, size) << "\n";
+    std::cout << calculateArithmeticMean(array_3, size) << "\n";
   }
   catch (const std::runtime_error &e)
   {

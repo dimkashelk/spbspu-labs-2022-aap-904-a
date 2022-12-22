@@ -5,9 +5,10 @@ struct Sinh
 {
   Sinh(double x);
   double operator()();
+private:
   double x;
-  double error;
-  unsigned count;
+  unsigned long long factorial;
+  unsigned number;
 };
 void print_table(std::ostream &out, double left, double right, double step, double error, unsigned k);
 #endif

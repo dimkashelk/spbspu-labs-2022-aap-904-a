@@ -57,9 +57,8 @@ void Triangle::move(double delta_x, double delta_y)
 }
 void Triangle::move(point_t point)
 {
-  double center_of_gravity_x = (point1.x + point2.x + point3.x) / 3;
-  double center_of_gravity_y = (point1.y + point2.y + point3.y) / 3;
-  this->move(point.x - center_of_gravity_x, point.y - center_of_gravity_y);
+  point_t point_center_of_gravity = this->getCenterOfGravity();
+  this->move(point.x - point_center_of_gravity.x, point.y - point_center_of_gravity.y);
 }
 void Triangle::scale(double k)
 {

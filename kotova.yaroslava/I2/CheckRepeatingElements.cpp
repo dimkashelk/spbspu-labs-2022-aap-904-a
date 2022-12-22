@@ -11,13 +11,9 @@ size_t checkRepeatEl(const int* array, size_t size, size_t index_m, size_t index
       throw std::invalid_argument("Error");
     }
   }
-  if (index_m == index_n)
+  for (size_t i = index_m; i < index_n; i++)
   {
-    repeat_cnt = 0;
-  }
-  for (size_t i = index_m; i <= index_n; i++)
-  {
-    for (size_t j = index_m; j <= index_n-1; j++)
+    for (size_t j = index_m+1; j < index_n-1; j++)
     {
       if (array[i] == array[j] && i != j)
       {

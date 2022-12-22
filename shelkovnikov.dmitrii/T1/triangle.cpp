@@ -98,3 +98,7 @@ point_t *Triangle::getPoints()
   points[2] = point3;
   return points;
 }
+point_t Triangle::getCenterOfGravity()
+{
+  return point_t((point1.x + point2.x + point3.x) / 3, (point1.y + point2.y + point3.y) / 3);
+}

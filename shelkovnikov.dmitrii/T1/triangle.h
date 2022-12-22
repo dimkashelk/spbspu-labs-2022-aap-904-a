@@ -8,6 +8,7 @@ public:
   Triangle(double x1, double y1, double x2, double y2, double x3, double y3);
   bool isRectangular();
   point_t* getPoints();
+  point_t getCenterOfGravity();
 private:
   point_t point1;
   point_t point2;

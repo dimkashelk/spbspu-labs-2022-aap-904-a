@@ -6,6 +6,11 @@ class Triangle: public Shape
 public:
   Triangle(point_t point1, point_t point2, point_t point3);
   Triangle(double x1, double y1, double x2, double y2, double x3, double y3);
+  double getArea() const override;
+  rectangle_t getFrameRect() const override;
+  void move(point_t point) override;
+  void move(double delta_x, double delta_y) override;
+  void scale(double k) override;
   bool isRectangular();
   point_t* getPoints();
   point_t getCenterOfGravity();

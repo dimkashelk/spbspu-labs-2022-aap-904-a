@@ -2,26 +2,10 @@
 #include <cmath>
 #include <stdexcept>
 #include <iomanip>
-Sinh::Sinh(double x):
-  x(x),
-  factorial(1),
-  number(1)
+#include "member_of_series.h"
+double sinh(double x, double error, unsigned int k)
 {
-  if (x >= 1 || x <= -1)
-  {
-    throw std::out_of_range("X must be in (-1; 1)");
-  }
-}
-double Sinh::operator()()
-{
-  x *= x * x;
-  factorial *= (number + 1) * (number + 2);
-  number += 2;
-  return x / factorial;
-}
-double sinh(double x, double error, unsigned k)
-{
-  Sinh sinh(x);
+  MemberOfSeries memberOfSeries(x);
   double res = 0;
   double summand = x;
   unsigned count_summand = 1;
@@ -29,7 +13,7 @@ double sinh(double x, double error, unsigned k)
   {
     res += summand;
     count_summand++;
-    summand = sinh();
+    summand = memberOfSeries();
   }
   if (count_summand >= k && abs(summand) > error)
   {
@@ -37,18 +21,11 @@ double sinh(double x, double error, unsigned k)
   }
   return res;
 }
-void print_row(std::ostream &out, double x, double error, unsigned k)
+void print_row(std::ostream &out, double x, double error, unsigned int k)
 {
   out << std::fixed << std::setfill(' ') << std::setw(5) << std::setprecision(2);
   out << x << ' ';
-  try
-  {
-    out << sinh(x, error, k);
-  }
-  catch (const std::out_of_range &e)
-  {
-    out << e.what();
-  }
+  out << sinh(x, error, k);
 }
 void print_table(std::ostream &out, double left, double right, double step, double error, unsigned k)
 {

@@ -20,7 +20,7 @@ rectangle_t::rectangle_t(point_t point, double width, double height):
 {}
 point_t rectangle_t::getLeftDownPoint() const
 {
-  return point_t(x - width / 2, y - height / 2);
+  return point_t(point.x - width / 2, point.y - height / 2);
 }
 vector_t::vector_t(double x, double y):
   x(x),

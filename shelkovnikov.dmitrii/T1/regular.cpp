@@ -11,7 +11,7 @@ Regular::Regular(double x1, double y1, double x2, double y2, double x3, double y
   }
   double side_1 = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
   double side_2 = std::sqrt(std::pow(x3 - x1, 2) + std::pow(y3 - y1, 2));
-  double angle_degrees = acos(side_1 / side_2) * 180.0 / std::PI;
+  double angle_degrees = acos(side_1 / side_2) * 180.0 / M_PI;
   count = static_cast< size_t >(360 / angle_degrees);
 }
 double Regular::getArea() const
@@ -52,4 +52,8 @@ rectangle_t Regular::getFrameRect() const
 void Regular::move(double delta_x, double delta_y)
 {
   triangle.move(delta_x, delta_y);
+}
+void Regular::move(point_t point)
+{
+
 }

@@ -24,5 +24,5 @@ struct vector_t
   vector_t(point_t point_1, point_t point_2);
   vector_t& operator*=(double k);
   double getLength() const;
-}
+};
 #endif

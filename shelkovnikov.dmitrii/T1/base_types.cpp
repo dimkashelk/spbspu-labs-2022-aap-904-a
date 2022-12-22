@@ -33,7 +33,7 @@ vector_t& vector_t::operator*=(double k)
 {
   x *= k;
   y *= k;
-  return this;
+  return *this;
 }
 double vector_t::getLength() const
 {

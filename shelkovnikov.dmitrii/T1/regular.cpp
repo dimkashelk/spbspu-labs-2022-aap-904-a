@@ -18,3 +18,34 @@ double Regular::getArea() const
 {
   return triangle.getArea() * count;
 }
+rectangle_t Regular::getFrameRect() const
+{
+  // rotate point (px, py) around point (ox, oy) by angle theta
+  // p'x = cos(theta) * (px-ox) - sin(theta) * (py-oy) + ox
+  // p'y = sin(theta) * (px-ox) + cos(theta) * (py-oy) + oy
+  point_t *points = triangle.getPoints();
+  double o_x = points[0].x;
+  double o_y = points[0].y;
+  double p_x_1 = points[1].x;
+  double p_y_1 = points[1].y;
+  double p_x_2 = points[2].x;
+  double p_y_2 = points[2].y;
+  delete[] points;
+  double min_x = p_x_1;
+  double min_y = p_y_1;
+  double max_x = p_x_1;
+  double max_y = p_y_1;
+  double theta = 360.0f / count;
+  for (size_t i = 0; i < count; i++)
+  {
+    p_x_1 = std::cos(theta) * (p_x_1 - o_x) - std::sin(theta) * (p_y_1 - o_y) + o_x;
+    p_y_1 = std::sin(theta) * (p_x_1 - o_x) + std::cos(theta) * (p_y_1 - o_y) + o_y;
+    p_x_2 = std::cos(theta) * (p_x_2 - o_x) - std::sin(theta) * (p_y_2 - o_y) + o_x;
+    p_y_2 = std::sin(theta) * (p_x_2 - o_x) + std::cos(theta) * (p_y_2 - o_y) + o_y;
+    min_x = std::min(min_x, std::min(p_x_1, p_x_2));
+    min_y = std::min(min_x, std::min(p_y_1, p_y_2));
+    max_x = std::max(max_x, std::max(p_x_1, p_x_2));
+    max_y = std::max(max_x, std::max(p_y_1, p_y_2));
+  }
+  return rectangle_t(min_x, min_y, max_x, max_y);
+}

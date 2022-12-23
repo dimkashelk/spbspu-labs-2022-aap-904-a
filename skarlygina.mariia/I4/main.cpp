@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  if (strcmp(argv[1], "1") && strcmp(argv[1], "2"))
+  if (std::strcmp(argv[1], "1") && std::strcmp(argv[1], "2"))
   {
     std::cerr << "First argument must be the number of function: 1 or 2\n";
     return 1;
@@ -48,14 +48,14 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  if (!strcmp(argv[1], "1"))
+  if (!std::strcmp(argv[1], "1"))
   {
     int array[1000];
     for (size_t i = 0; i < rows; i++)
     {
       for (size_t j = 0; j < columns; j++)
       {
-        fin >> array[rows * i + j];
+        fin >> array[columns * i + j];
         if (!fin)
         {
           std::cerr << "Error while reading elements of matrix\n";
@@ -127,7 +127,6 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] dynamic_array;
-    //delete[] square_array;
   }
   return 0;
 }

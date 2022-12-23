@@ -31,12 +31,12 @@ int main(int argc, char* argv[])
   fin >> rows >> columns;
   if (!fin)
   {
-      std::cerr << "Incorrect arguments of the matrix\n";
+    std::cerr << "Incorrect arguments of the matrix\n";
     return 1;
   }
   if (rows * columns >= 1000)
   {
-      std::cerr << "The matrix is bigger than the intended\n";
+    std::cerr << "The matrix is bigger than the intended\n";
     return 1;
   }
 

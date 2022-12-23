@@ -1,5 +1,5 @@
 #include "make_square_matrix.h"
-int* makeSquareMatrix(const int* array, size_t& rows, size_t columns) 
+int* makeSquareMatrix(const int* array, size_t& rows, size_t columns)
 {
   size_t square_size = std::min(rows, columns);
   rows = square_size;

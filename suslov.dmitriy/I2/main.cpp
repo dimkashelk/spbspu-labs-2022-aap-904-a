@@ -53,8 +53,7 @@ int main(int argc, char *argv[])
     std::cout << "Another one error";
     return 1;
   }
-  int *array_3 = nullptr;
-  array_3 = new int[size];
+  int *array_3 = new int[size];
   for (size_t i = 0; i < size; i++)
   {
     input >> array_3[i];

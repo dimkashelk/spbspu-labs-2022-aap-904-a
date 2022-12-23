@@ -112,7 +112,7 @@ int main(int argc, char* argv[])
     }
     */
     fout << countDiagonalsWithoutZeros(dynamic_array, rows);
-    //delete[] square_array;
+    delete[] dynamic_array;
     if (!fout)
     {
       std::cerr << "Error writing into file\n";

@@ -45,13 +45,15 @@ bool odintsov::isVowel(char c)
   return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
 }
 
-void odintsov::removeLatin(const CString& cstr, CString& out)
+void odintsov::removeLatin(const char* cstr, char* out)
 {
-  for (size_t i = 0; i < cstr.size - 1; i++) {
-    if (!std::isalpha(cstr.str[i])) {
-      out.append(cstr.str[i]);
+  char* optr = out;
+  for (const char* cptr = cstr; *cptr != '\0'; cptr++) {
+    if (!std::isalpha(*cptr)) {
+       *(optr++) = *cptr;
     }
   }
+  *optr = '\0';
 }
 
 void odintsov::removeVowels(const CString& cstr, CString& out)

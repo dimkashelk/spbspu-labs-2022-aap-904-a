@@ -21,8 +21,8 @@ int main()
       return 1;
     }
     {
-      odintsov::CString cstrNoLatin(cap);
-      odintsov::removeLatin(cstr, cstrNoLatin);
+      odintsov::CString cstrNoLatin(cstr.size);
+      odintsov::removeLatin(cstr.str, cstrNoLatin.str);
       std::cout << cstrNoLatin.str << '\n';
     }
     {

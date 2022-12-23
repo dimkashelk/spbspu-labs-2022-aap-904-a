@@ -1,17 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "countrows.h"
+#include "countarrays.h"
 int main(int argc, char **argv)
 {
-  if (argc < 4)
+  if (argc < 4 || argc > 4)
   {
-    std::cerr << "Not enough parameters.\n";
-    return 2;
-  }
-  if (argc > 4)
-  {
-    std::cerr << "Too much parameters.\n";
+    std::cerr << "Not appropriate parameters number.\n";
     return 2;
   }
   char *taskNumber = argv[1];

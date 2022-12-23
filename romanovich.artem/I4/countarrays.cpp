@@ -1,5 +1,5 @@
-#include "countrows.h"
-#include <iostream>
+#include "countarrays.h"
+int sumClose(const int *matrix, int row, int column, int matrixN);
 size_t countDiverseElements(const int *array, size_t rows, size_t columns)
 {
   size_t count = 0;
@@ -72,9 +72,14 @@ int sumClose(const int *matrix, int row, int column, int matrixN)
   {
     for (int l = column-1; l <= column+1; l++)
     {
-      if ((k*matrixN+l >= 0) && (k*matrixN+l <= matrixN*matrixN) && !(k==row && l==column) && 0 <= l && l < matrixN && 0 <= k && k < matrixN)
+      int elemIndex = k*matrixN+l;
+      bool elemInMatrixRange = (elemIndex >= 0) && (elemIndex <= matrixN*matrixN);
+      bool elemNotCenterElem = !(k==row && l==column);
+      bool kInRowRange = (0 <= k && k < matrixN);
+      bool lInColumnRange = (0 <= l && l < matrixN);
+      if (elemInMatrixRange && elemNotCenterElem && lInColumnRange && kInRowRange)
       {
-        sum_ += matrix[k * matrixN + l];
+        sum_ += matrix[elemAddIndex];
         count++;
       }
     }
@@ -92,7 +97,6 @@ int countUpperMainDiagonal(const int *matrix, size_t matrixN)
       sum_ += value * ((value > 0) - (value < 0));
     }
   }
-  std::cout << "\n";
   return sum_;
 }
 void smoothMatrix(const int *matrix, int *smoothedMatrix, size_t matrixN)

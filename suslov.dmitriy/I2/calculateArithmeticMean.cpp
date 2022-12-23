@@ -2,7 +2,7 @@
 #include <stdexcept>
 double calculateArithmeticMean(const int *arr, size_t size)
 {
-  int c = 0;
+  size_t c = 0;
   if (size == 0)
   {
     throw std::runtime_error("Zero size");

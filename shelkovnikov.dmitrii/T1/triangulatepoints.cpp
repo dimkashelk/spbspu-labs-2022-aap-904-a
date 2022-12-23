@@ -5,7 +5,12 @@
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points(points),
   size(size)
-{}
+{
+  if (containsThreePointsOnLine())
+  {
+    throw std::logic_error("3 or more points on one line here.......");
+  }
+}
 Triangle **TriangulatePoints::operator()()
 {
   Triangle **triangles = new Triangle*[size];

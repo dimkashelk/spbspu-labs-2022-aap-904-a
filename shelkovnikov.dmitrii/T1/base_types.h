@@ -25,4 +25,11 @@ struct vector_t
   vector_t& operator*=(double k);
   double getLength() const;
 };
+struct line_t
+{
+  double A;
+  double B;
+  double C;
+  line_t(point_t point1, point_t point2);
+};
 #endif

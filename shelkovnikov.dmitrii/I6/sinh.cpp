@@ -35,7 +35,14 @@ void print_table(std::ostream &out, double left, double right, double step, doub
   }
   for (; left <= right; left += step)
   {
-    print_row(out, left, error, k);
+    try
+    {
+      print_row(out, left, error, k);
+    }
+    catch (const std::out_of_range &e)
+    {
+      out << e.what();
+    }
     out << '\n';
   }
 }

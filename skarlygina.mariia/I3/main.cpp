@@ -9,6 +9,7 @@ int main()
   size_t capacity = 10;
   char* cstring = new char[capacity];
   size_t size = 0;
+  cstring[0] = '\0';
 
   std::cin >> std::noskipws;
   do
@@ -30,80 +31,74 @@ int main()
   }
   while (std::cin && cstring[size++] != '\n');
 
-  if (!std::cin && !size)
-  {
-    std::cout << "Error while reading the string \n";
-    delete[] cstring;
-    return 2;
-  }
-  cstring[size - 1] = '\0';
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     std::cout << "Error while reading the string \n";
     delete[] cstring;
     return 2;
   }
+  cstring[size - 1] = '\0';
 
-  char* string_source1 = nullptr;
-  char* destination1 = nullptr;
-  char* destination2 = nullptr;
-  const size_t size_source1 = size;
+  char* destination = nullptr;
+  char* string_source = nullptr;
+  const size_t size_source = size;
 
   try
   {
-    string_source1 = new char[size_source1];
-    for (size_t i = 0; i < size_source1 - 1; i++)
+    string_source = new char[size_source];
+    for (size_t i = 0; i < size_source - 1; i++)
     {
-      string_source1[i] = '1';
+      string_source[i] = '1';
     }
-    string_source1[size_source1 - 1] = '\0';
+    string_source[size_source - 1] = '\0';
   }
   catch (const std::bad_alloc& e)
   {
     std::cerr << e.what() << "\n";
-    delete[] string_source1;
+    delete[] string_source;
     delete[] cstring;
     return 1;
   }
 
   try
   {
-    destination1 = new char[size_source1 + size];
-    destination1 = addDecimalDigits(destination1, cstring, string_source1);
-    if (destination1[0] != '\0')
+    destination = new char[size_source + size];
+    destination = addDecimalDigits(destination, cstring, string_source);
+    if (destination[0] != '\0')
     {
-      std::cout << destination1 << "\n";
+      std::cout << destination << "\n";
     }
     else std::cout << "Error while making first function \n";
+    delete[] destination;
+    destination = nullptr;
   }
   catch (const std::bad_alloc& e)
   {
     std::cerr << e.what() << "\n";
-    delete[] destination1;
+    delete[] destination;
     delete[] cstring;
     return 1;
   }
 
   try
   {
-    destination2 = new char[size_source1 + size];
-    destination2 = makeStringCommonSymbols(destination2, cstring, string_source1);
-    if (destination2[0] != '\0')
+    destination = new char[size_source + size];
+    destination = makeStringCommonSymbols(destination, cstring, string_source);
+    if (destination[0] != '\0')
     {
-      std::cout << destination2 << "\n";
+      std::cout << destination << "\n";
     }
     else std::cout << "There are no common symbols \n";
   }
   catch (const std::bad_alloc& e)
   {
     std::cerr << e.what() << "\n";
-    delete[] destination2;
+    delete[] destination;
     delete[] cstring;
     return 1;
   }
 
-  delete[] destination1;
-  delete[] destination2;
-  delete[] string_source1;
+  delete[] destination;
+  delete[] string_source;
   delete[] cstring;
 }

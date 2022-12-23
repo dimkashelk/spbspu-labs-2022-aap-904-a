@@ -7,18 +7,18 @@ char* createMassAllLettStrs(char* cStrAllLett, const char* cStr1, const char* cS
 {
   size_t elInResStr = 0;
 
-  for (int i = 0, moreThanOne = 0; cStr2[i]; i++, moreThanOne = 0)
+  for (size_t i = 0, moreThanOne = 0; cStr2[i]; i++, moreThanOne = 0)
   {
     if (std::isalpha(cStr2[i]))
     {
-      for (int j = i + 1; cStr2[j]; j++)
+      for (size_t j = i + 1; cStr2[j]; j++)
       {
         if (std::tolower(cStr2[i]) == std::tolower(cStr2[j]))
         {
           moreThanOne = 1;
         }
       }
-      for (int j = 0; cStr1[j]; j++)
+      for (size_t j = 0; cStr1[j]; j++)
       {
         if (std::tolower(cStr2[i]) == std::tolower(cStr1[j]))
         {
@@ -32,11 +32,11 @@ char* createMassAllLettStrs(char* cStrAllLett, const char* cStr1, const char* cS
     }
   }
 
-  for (int i = 0, moreThanOne = 0; cStr1[i]; i++, moreThanOne = 0)
+  for (size_t i = 0, moreThanOne = 0; cStr1[i]; i++, moreThanOne = 0)
   {
     if (std::isalpha(cStr1[i]))
     {
-      for (int j = i + 1; cStr1[j]; j++)
+      for (size_t j = i + 1; cStr1[j]; j++)
       {
         if (std::tolower(cStr1[i]) == std::tolower(cStr1[j]))
         {
@@ -50,9 +50,9 @@ char* createMassAllLettStrs(char* cStrAllLett, const char* cStr1, const char* cS
     }
   }
 
-  for (int i = 0; i < elInResStr; i++)
+  for (size_t i = 0; i < elInResStr; i++)
   {
-    for (int j = i + 1; j < elInResStr; j++)
+    for (size_t j = i + 1; j < elInResStr; j++)
     {
       if (cStrAllLett[i] > cStrAllLett[j])
       {

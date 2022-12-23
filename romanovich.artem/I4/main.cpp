@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     std::cerr << "Error while reading columns.\n";
     return 2;
   }
-  if (rows == 0 || columns == 0)
+  if ((rows == 0) || (columns == 0))
   {
     std::cout << "Empty array.\n";
     return 0;
@@ -47,40 +47,46 @@ int main(int argc, char **argv)
   {
     size_t arraySize = rows * columns;
     int array[1000];
-    if (arraySize <= 1000)
+    if (arraySize > 1000)
     {
-      for (size_t i = 0; i < arraySize; i++)
+      std::cerr << "Maximum possible array size exceeded.\n";
+      return 2;
+    }
+    for (size_t i = 0; i < arraySize; i++)
+    {
+      fileInput >> array[i];
+      if (!fileInput)
       {
-        fileInput >> array[i];
-        if (!fileInput)
-        {
-          std::cerr << "Error while reading file " << fileIn << "\n";
-          return 2;
-        }
-      }
-      size_t countDivEl = countDiverseElements(array, rows, columns);
-      size_t countEqSum = countEqualSum(array, rows, columns);
-      try
-      {
-        fileOutput << countDivEl << " " << countEqSum;
-      }
-      catch (...)
-      {
-        std::cerr << "Error while writing result.\n";
+        std::cerr << "Error while reading file " << fileIn << "\n";
         return 2;
       }
     }
-    else
+    size_t countDivEl = countDiverseElements(array, rows, columns);
+    size_t countEqSum = countEqualSum(array, rows, columns);
+    try
     {
-      std::cerr << "Maximum possible array size exceeded.\n";
+      fileOutput << countDivEl << " " << countEqSum;
+    }
+    catch (...)
+    {
+      std::cerr << "Error while writing result.\n";
       return 2;
     }
   }
   if (!strcmp(taskNumber, "2"))
   {
     size_t matrixN = rows;
-    size_t matrixSize = matrixN*matrixN;
-    int *matrix = new int[matrixN*matrixN];
+    size_t matrixSize = matrixN * matrixN;
+    int * matrix = nullptr;
+    try
+    {
+      matrix = new int[matrixN * matrixN];
+    }
+    catch (...)
+    {
+      std::cerr << "Error while creating matrix.\n";
+      return 2;
+    }
     for (size_t i = 0; i < matrixSize; i++)
     {
       fileInput >> matrix[i];
@@ -91,14 +97,22 @@ int main(int argc, char **argv)
         return 2;
       }
     }
-    int *smoothedMatrix = new int[matrixSize];
     try
     {
-      size_t countSuccEqEl = countSuccessionEqualElements(matrix, matrixN);
-      smoothMatrix(matrix, smoothedMatrix, matrixN);
-      size_t countUpMainDiag = countUpperMainDiagonal(smoothedMatrix, matrixN);
-      delete[] smoothedMatrix;
-      delete[] matrix;
+      smoothedMatrix = new int[matrixSize];
+    }
+    catch (...)
+    {
+      std::cerr << "Error while creating smoothed matrix.\n";
+      return 2;
+    }
+    size_t countSuccEqEl = countSuccessionEqualElements(matrix, matrixN);
+    smoothMatrix(matrix, smoothedMatrix, matrixN);
+    size_t countUpMainDiag = countUpperMainDiagonal(smoothedMatrix, matrixN);
+    delete[] smoothedMatrix;
+    delete[] matrix;
+    try
+    {
       fileOutput << countSuccEqEl << " " << countUpMainDiag;
     }
     catch (...)

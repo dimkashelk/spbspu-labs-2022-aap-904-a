@@ -1,6 +1,5 @@
 #include <iostream>
 #include <stdexcept>
-#include "sqrt1minusxsquare.h"
 #include "printtable.h"
 
 int main()

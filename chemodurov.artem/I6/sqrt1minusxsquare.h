@@ -2,12 +2,9 @@
 #define SQRT1MINUSXSQUARE_H
 #include <cstddef>
 
-struct Sqrt1MinusXSquare
+namespace chemodurov
 {
-  double operator()(double x, size_t max_members, double error);
-
-  double current;
-  size_t members;
-};
+  double sqrt1MinusXSquare(double x, size_t max_members, double error);
+}
 
 #endif

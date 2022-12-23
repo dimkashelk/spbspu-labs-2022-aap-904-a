@@ -40,6 +40,11 @@ void odintsov::CString::append(char c)
   str[size++] = '\0';
 }
 
+bool odintsov::isVowel(char c)
+{
+  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+}
+
 void odintsov::removeLatin(const CString& cstr, CString& out)
 {
   for (size_t i = 0; i < cstr.size - 1; i++) {
@@ -53,7 +58,7 @@ void odintsov::removeVowels(const CString& cstr, CString& out)
 {
   for (size_t i = 0; i < cstr.size - 1; i++) {
     char c = static_cast< char >(std::toupper(cstr.str[i]));
-    if (c != 'A' && c != 'E' && c != 'I' && c != 'O' && c != 'U') {
+    if (!isVowel(c)) {
       out.append(cstr.str[i]);
     }
   }

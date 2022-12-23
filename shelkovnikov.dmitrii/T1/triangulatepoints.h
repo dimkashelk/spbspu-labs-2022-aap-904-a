@@ -7,7 +7,7 @@ class TriangulatePoints
 {
 public:
   TriangulatePoints(point_t *points, size_t size);
-  Triangle** operator()();
+  Triangle** operator()(size_t &new_size);
 private:
   point_t *points;
   size_t size;

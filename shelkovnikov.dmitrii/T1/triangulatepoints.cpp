@@ -11,7 +11,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
     throw std::logic_error("3 or more points on one line here.......");
   }
 }
-Triangle **TriangulatePoints::operator()()
+Triangle **TriangulatePoints::operator()(size_t &new_size)
 {
   Triangle **triangles = new Triangle*[size];
   size_t index = 0;
@@ -59,6 +59,7 @@ Triangle **TriangulatePoints::operator()()
     new_triangles[i] = triangles[i];
   }
   delete[] triangles;
+  new_size = index;
   return new_triangles;
 }
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const

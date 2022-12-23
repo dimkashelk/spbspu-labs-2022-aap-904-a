@@ -139,42 +139,46 @@ Accepted Labs
 | Aksenov Egor              | ✓  |    |    |    |    |    |
 | Aristarkhov Rostislav     | ✓  | ✓  |    |    |    |    |
 | Averich Vladimir          | ✓  |    |    |    |    |    |
-| Azheganova Faina          | ✓  | ✓  |    |    |    |    |
-| Bobrovskaya Maria         | ✓  |    |    |    |    |    |
-| Chemodurov Artem          | ✓  | ✓  | ✓  |    |    |    |
+| Azheganova Faina          | ✓  | ✓  | ✓  | ✓  |    |    |
+| Bobrovskaya Maria         | ✓  | ✓  |    |    |    |    |
+| Chemodurov Artem          | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  |
 | Chervontsev Alexey        | ✓  |    |    |    |    |    |
-| Chulkov Leontii           | ✓  |    |    |    |    |    |
-| Danilenko Ekaterina       | ✓  |    |    |    |    |    |
-| Dmitriev Arseny           | ✓  | ✓  |    |    |    |    |
-| Fesenko Ivan              | ✓  | ✓  |    |    |    |    |
-| Garzonnavarrete Alexander | ✓  |    |    |    |    |    |
+| Chulkov Leontii           | ✓  | ✓  |    |    |    |    |
+| Danilenko Ekaterina       | ✓  | ✓  |    |    |    |    |
+| Dmitriev Arseny           | ✓  | ✓  | ✓  |    |    |    |
+| Fesenko Ivan              | ✓  | ✓  | ✓  |    |    |    |
+| Garzonnavarrete Alexander | ✓  | ✓  |    |    |    |    |
 | Grishin Vadim             | ✓  |    |    |    |    |    |
-| Gulkov Mikhail            | ✓  | ✓  | ✓  |    |    |    |
-| Hrushchev Nikita          | ✓  | ✓  |    |    |    |    |
+| Gulkov Mikhail            | ✓  | ✓  | ✓  | ✓  |    |    |
+| Hrushchev Nikita          | ✓  | ✓  | ✓  |    |    |    |
 | Kasilov Vasiliy           | ✓  |    |    |    |    |    |
-| Kotova Yaroslava          | ✓  |    |    |    |    |    |
-| Kozyrin Semen             | ✓  |    |    |    |    |    |
-| Kryuchkova Kira           | ✓  | ✓  |    |    |    |    |
-| Kurdikova Elizaveta       | ✓  |    |    |    |    |    |
+| Kotova Yaroslava          | ✓  | ✓  |    |    |    |    |
+| Kozyrin Semen             | ✓  | ✓  |    |    |    |    |
+| Kryuchkova Kira           | ✓  | ✓  | ✓  |    |    |    |
+| Kurdikova Elizaveta       | ✓  | ✓  |    |    |    |    |
 | Lihanov Ilya              | ✓  |    |    |    |    |    |
-| Lisovskaya Lisa           | ✓  |    |    |    |    |    |
+| Lisovskaya Lisa           | ✓  | ✓  |    |    |    |    |
 | Mashkin Andrew            | ✓  |    |    |    |    |    |
-| Muhortov Victor           | ✓  |    |    |    |    |    |
+| Mishanina Elena           | ✓  | ✓  |    |    |    |    |
+| Muhortov Victor           | ✓  | ✓  |    |    |    |    |
 | Novikov Gordei            | ✓  |    |    |    |    |    |
-| Odintsov Kirill           | ✓  | ✓  |    |    |    |    |
+| Odintsov Kirill           | ✓  | ✓  | ✓  |    |    |    |
+| Potapova Marina           | ✓  |    |    |    |    |    |
 | Roblesgonzalez Guillermo  | ✓  |    |    |    |    |    |
-| Romanchuk Alexey          | ✓  |    |    |    |    |    |
-| Romanovich Artem          | ✓  | ✓  |    |    |    |    |
-| Samoilenko Alena          | ✓  |    |    |    |    |    |
-| Shelkovnikov Dmitrii      | ✓  | ✓  | ✓  |    |    |    |
-| Skarlygina Mariia         | ✓  | ✓  |    |    |    |    |
+| Romanchuk Alexey          | ✓  | ✓  |    |    |    |    |
+| Romanovich Artem          | ✓  | ✓  | ✓  |    |    |    |
+| Samoilenko Alena          | ✓  | ✓  |    |    |    |    |
+| Shelkovnikov Dmitrii      | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  |
+| Skarlygina Mariia         | ✓  | ✓  | ✓  | ✓  |    |    |
+| Styopin Vladislav         | ✓  |    |    |    |    |    |
 | Suslov Dmitriy            | ✓  | ✓  |    |    |    |    |
-| Tarasenko Ksenia          | ✓  | ✓  | ✓  |    |    |    |
-| Tellez Aron               | ✓  |    |    |    |    |    |
-| Timofeev Maxim            | ✓  |    |    |    |    |    |
+| Tarasenko Ksenia          | ✓  | ✓  | ✓  | ✓  |    |    |
+| Tellez Aron               | ✓  | ✓  |    |    |    |    |
+| Timofeev Maxim            | ✓  | ✓  |    |    |    |    |
+| Tobbo Kirill              | ✓  | ✓  |    |    |    |    |
 | Tsareva Yana              | ✓  | ✓  | ✓  |    |    |    |
-| Turkin Nikolai            | ✓  | ✓  | ✓  |    |    |    |
+| Turkin Nikolai            | ✓  | ✓  | ✓  | ✓  |    |    |
 | Yergatov Adil             | ✓  |    |    |    |    |    |
-| Zasulsky Egor             | ✓  |    |    |    |    |    |
-| Zhuravlev Ivan            | ✓  |    |    |    |    |    |
-| __Total__                 |  41|  16|   6|   0|   0|   0|
+| Zasulsky Egor             | ✓  | ✓  |    |    |    |    |
+| Zhuravlev Ivan            | ✓  | ✓  |    |    |    |    |
+| __Total__                 |  45|  33|  14|   7|   2|   2|

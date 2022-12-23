@@ -102,7 +102,7 @@ int main(int argc, char* argv[])
       square_array = makeSquareMatrix(dynamic_array, rows, columns);
     }
     catch (const std::bad_alloc& e)
-    {       
+    {
       std::cerr << e.what() << "\n";
       delete[] dynamic_array;
       delete[] square_array;

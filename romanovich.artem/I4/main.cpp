@@ -4,7 +4,7 @@
 #include "countarrays.h"
 int main(int argc, char **argv)
 {
-  if (argc < 4 || argc > 4)
+  if (argc != 4)
   {
     std::cerr << "Not appropriate parameters number.\n";
     return 2;
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     std::cout << "Empty array.\n";
     return 0;
   }
-  if (!strcmp(taskNumber, "1"))
+  if (!std::strcmp(taskNumber, "1"))
   {
     size_t arraySize = rows * columns;
     int array[1000];
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
       return 2;
     }
   }
-  if (!strcmp(taskNumber, "2"))
+  if (!std::strcmp(taskNumber, "2"))
   {
     size_t matrixN = rows;
     size_t matrixSize = matrixN * matrixN;
@@ -112,16 +112,6 @@ int main(int argc, char **argv)
     size_t countUpMainDiag = countUpperMainDiagonal(smoothedMatrix, matrixN);
     delete[] smoothedMatrix;
     delete[] matrix;
-    try
-    {
-      fileOutput << countSuccEqEl << " " << countUpMainDiag;
-    }
-    catch (...)
-    {
-      std::cerr << "Error while writing result.\n";
-      delete[] smoothedMatrix;
-      delete[] matrix;
-      return 2;
-    }
+    fileOutput << countSuccEqEl << " " << countUpMainDiag;
   }
 }

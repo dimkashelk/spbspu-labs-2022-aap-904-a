@@ -1,12 +1,13 @@
 #include "printtable.h"
 #include <iomanip>
-#include <stdexcept>
 #include <cmath>
+#include <limits>
 #include "sqrt1minusxsquare.h"
 
 void printRowInTable(std::ostream & out, double x, size_t max_members, double error)
 {
-  if (std::abs(x) < 1e-9)
+  const double epsilon = std::numeric_limits< double >::epsilon();
+  if (std::abs(x) < epsilon)
   {
     out << std::setw(10) << std::setprecision(4) << 0.0 << ' ';
     out << std::setw(10) << std::setprecision(5) << 1 << ' ';

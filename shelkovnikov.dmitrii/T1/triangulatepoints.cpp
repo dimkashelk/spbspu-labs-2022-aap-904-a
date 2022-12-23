@@ -1,19 +1,13 @@
 #include "triangulatepoints.h"
 #include <stdexcept>
+#include <cmath>
+#include <limits>
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points(points),
   size(size)
 {}
 Triangle **TriangulatePoints::operator()()
 {
-  // Delaunay triangulation
-  //Triangulation algorithm:
-  //1. Take three vertices A1, A2, A3
-  //2. Check whether the vectors A1A3, A1A2 form the left triple of vectors (the vector product is positive).
-  //3. Check whether there are any of the remaining vertices of the polygon inside the triangle A1A2A3.
-  //4. If both conditions are met, then we build a triangle A1A2A3, and exclude vertex A2 from the polygon, without touching vertex A1, shift vertices A2 (A2 to A3), A3 (A3 to A4)
-  //5. If at least one condition is not met, we move on to the next three vertices.
-  //6. Repeat from step 1 until there are three vertices left.
   Triangle **triangles = new Triangle*[size];
   size_t index = 0;
   while (size > 3)
@@ -97,4 +91,24 @@ void TriangulatePoints::removePoint(size_t ind)
     points[i] = points[i + 1];
   }
   size--;
+}
+bool TriangulatePoints::containsThreePointsOnLine()
+{
+  constexpr double error = std::numeric_limits< double >::epsilon();
+  bool contains_three_points_on_line = false;
+  for (size_t i = 0; i < size - 2 && !contains_three_points_on_line; i++)
+  {
+    for (size_t j = i + 1; j < size - 1 && !contains_three_points_on_line; j++)
+    {
+      for (size_t k = j + 1; k < size && !contains_three_points_on_line; k++)
+      {
+        line_t line(points[j], points[i]);
+        if (fabs(line.A * points[k].x + line.B * points[k].y + line.C) <= error)
+        {
+          contains_three_points_on_line = true;
+        }
+      }
+    }
+  }
+  return contains_three_points_on_line;
 }

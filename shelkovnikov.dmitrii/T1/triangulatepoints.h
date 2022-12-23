@@ -14,5 +14,6 @@ private:
   double getMixedProduct(vector_t a, vector_t b) const;
   bool containsAnyPoint(const Triangle &triangle) const;
   void removePoint(size_t ind);
+  bool containsThreePointsOnLine();
 };
 #endif

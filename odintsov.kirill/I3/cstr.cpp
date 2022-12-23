@@ -42,6 +42,7 @@ void odintsov::CString::append(char c)
 
 bool odintsov::isVowel(char c)
 {
+  c = static_cast< char >(std::toupper(c));
   return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
 }
 
@@ -60,8 +61,7 @@ void odintsov::removeVowels(const char* cstr, char* out)
 {
   char* optr = out;
   for (const char* cptr = cstr; *cptr != '\0'; cptr++) {
-    char c = static_cast< char >(std::toupper(*cptr));
-    if (!isVowel(c)) {
+    if (!isVowel(*cptr)) {
       *(optr++) = *cptr;
     }
   }

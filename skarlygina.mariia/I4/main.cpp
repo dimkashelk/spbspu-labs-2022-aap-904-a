@@ -1,6 +1,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 #include "count_positive_columns.h"
 #include "count_diagonals_without_zeros.h"
 #include "make_square_matrix.h"
@@ -97,19 +98,27 @@ int main(int argc, char* argv[])
       }
     }
     int* square_array = nullptr;
-    try
+    size_t square_size = std::min(rows, columns);
+    if (columns == rows)
     {
-      square_array = makeSquareMatrix(dynamic_array, rows, columns);
+      square_array = dynamic_array;
     }
-    catch (const std::bad_alloc& e)
+    else
     {
-      std::cerr << e.what() << "\n";
-      delete[] dynamic_array;
-      delete[] square_array;
-      return 1;
-    }
-
-    fout << countDiagonalsWithoutZeros(square_array, rows);
+      try
+      {
+        square_array = new int[square_size * square_size];
+      }
+      catch (const std::bad_alloc& e)
+      {
+        std::cerr << e.what() << "\n";
+        delete[] dynamic_array;
+        delete[] square_array;
+        return 1;
+      }
+    }    
+    square_array = makeSquareMatrix(dynamic_array, rows, columns, square_array, square_size);
+    fout << countDiagonalsWithoutZeros(square_array, square_size);
     if (!fout)
     {
       std::cerr << "Error writing into file\n";
@@ -118,6 +127,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] dynamic_array;
+    //delete[] square_array;
   }
   return 0;
 }

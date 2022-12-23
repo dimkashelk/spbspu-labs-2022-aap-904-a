@@ -1,6 +1,8 @@
 #ifndef MAKEMATRIXWAVEINCREMENT_HPP
 #define MAKEMATRIXWAVEINCREMENT_HPP
 
-int *make_matrix_wave_increment(int *arr, unsigned int m, unsigned int n, unsigned int row_number_elem, unsigned int col_number_elem);
+#include <cstddef>
+
+int *makeMatrixWaveIncrement(int *arr, size_t m, size_t n, size_t row_number_elem, size_t col_number_elem);
 
 #endif

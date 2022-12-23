@@ -1,6 +1,8 @@
 #ifndef COUNTPOSITIVECOLS_HPP
 #define COUNTPOSITIVECOLS_HPP
 
-unsigned int count_positive_cols(int *array, unsigned int cols);
+#include <cstddef>
+
+unsigned int countPositiveCols(const int *array, size_t cols, size_t rows);
 
 #endif

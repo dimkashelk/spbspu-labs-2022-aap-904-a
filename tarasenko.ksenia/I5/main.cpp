@@ -42,4 +42,3 @@ int main()
   std::cout << std::boolalpha << isFloat(cstring) << '\n';
   delete [] cstring;
 }
-

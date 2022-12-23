@@ -3,26 +3,26 @@
 #include <iostream>
 #include "count_positive_columns.h"
 #include "count_diagonals_without_zeros.h"
-using namespace std;
+#include "make_square_matrix.h"
 
 int main(int argc, char* argv[])
 {
   if (argc != 4)
   {
-    cerr << "The arguments are wrong\n";
+    std::cerr << "The arguments are wrong\n";
     return 1;
   }
 
   if (strcmp(argv[1], "1") && strcmp(argv[1], "2"))
   {
-    cerr << "First argument must be the number of function: 1 or 2\n";
+    std::cerr << "First argument must be the number of function: 1 or 2\n";
     return 1;
   }
 
-  ifstream fin(argv[2]);
+  std::ifstream fin(argv[2]);
   if (!fin.is_open())
   {
-    cerr << "Reading File could not be opened\n";
+    std::cerr << "Reading File could not be opened\n";
     return 1;
   }
 
@@ -31,30 +31,30 @@ int main(int argc, char* argv[])
   fin >> rows >> columns;
   if (!fin)
   {
-    cerr << "Incorrect arguments of the matrix\n";
+      std::cerr << "Incorrect arguments of the matrix\n";
     return 1;
   }
   if (rows * columns >= 1000)
   {
-    cerr << "The matrix is bigger than the intended\n";
+      std::cerr << "The matrix is bigger than the intended\n";
     return 1;
   }
 
-  ofstream fout(argv[3], ios_base::out);
+  std::ofstream fout(argv[3]);
   if (!fout.is_open())
   {
-    cerr << "Writing File could not be opened\n";
+    std::cerr << "Writing File could not be opened\n";
     return 1;
   }
 
   if (!strcmp(argv[1], "1"))
   {
-    int array[rows][columns];
+    int array[1000];
     for (size_t i = 0; i < rows; i++)
     {
       for (size_t j = 0; j < columns; j++)
       {
-        fin >> array[i][j];
+        fin >> array[rows * i + j];
         if (!fin)
         {
           std::cerr << "Error while reading elements of matrix\n";
@@ -62,15 +62,10 @@ int main(int argc, char* argv[])
         }
       }
     }
-    int* array_ptr[rows];
-    for (size_t i = 0; i <  rows; i++)
-    {
-        array_ptr[i] = array[i];
-    }
-    fout << countPositiveColumns(array_ptr, rows, columns);
+    fout << countPositiveColumns(array, rows, columns);
     if (!fout)
     {
-      cerr << "Error writing into file\n";
+      std::cerr << "Error writing into file\n";
       return 1;
     }
   }
@@ -81,45 +76,47 @@ int main(int argc, char* argv[])
       fout << "0\n";
       if (!fout)
       {
-        cerr << "Error while writing the result\n";
+        std::cerr << "Error while writing the result\n";
         return 1;
       }
       return 0;
     }
-    int** dynamic_array = new int*[rows];
-    for (size_t i = 0; i < rows; i++)
-    {
-      dynamic_array[i] = new int[columns];
-    }
+    int* dynamic_array = new int[rows * columns];
 
     for (size_t i = 0; i < rows; i++)
     {
       for (size_t j = 0; j < columns; j++)
       {
-        fin >> dynamic_array[i][j];
+        fin >> dynamic_array[rows * i + j];
         if (!fin)
         {
-          cerr << "Error while reading elements of matrix\n";
-          for (size_t s = 0; s < rows; s++)
-          {
-            delete[] dynamic_array[s];
-          }
+          std::cerr << "Error while reading elements of matrix\n";
           delete[] dynamic_array;
           return 2;
         }
       }
     }
-    fout << countDiagonalsWithoutZeros(&dynamic_array[0], rows, columns);
-    if (!fout)
+    int* square_array = nullptr;
+    try
     {
-      cerr << "Error writing into file\n";
+      square_array = makeSquareMatrix(dynamic_array, rows, columns);
+      delete[] dynamic_array;
+    }
+    catch (const std::bad_alloc& e)
+    {
+      std::cerr << e.what() << "\n";
+      delete[] dynamic_array;
+      delete[] square_array;
       return 1;
     }
-    for (size_t s = 0; s < rows; s++)
+
+    fout << countDiagonalsWithoutZeros(square_array, rows);
+    delete[] square_array;
+    if (!fout)
     {
-      delete[] dynamic_array[s];
+      std::cerr << "Error writing into file\n";
+      return 1;
     }
-    delete[] dynamic_array;
   }
   return 0;
 }

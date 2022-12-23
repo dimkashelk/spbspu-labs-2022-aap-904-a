@@ -15,12 +15,12 @@ size_t countRowsWithDifferentElements(const int* arr, const size_t m, const size
           elementscounter++;
         }
       }
+      if (elementscounter == 0)
+      {
+        count++;
+      }
+      elementscounter = 0;
     }
-    if (elementscounter == 0)
-    {
-      count++;
-    }
-    elementscounter = 0;
   }
   return count;
 }

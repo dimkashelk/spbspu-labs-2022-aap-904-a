@@ -1,25 +1,28 @@
 #include "defCountDiffLett.h"
 #include <cstddef>
+#include <cctype>
 
 size_t defCountDiffLett(const char* cStr)
 {
-  bool letExist[26];
   size_t count = 0;
 
-  for (size_t i = 0; i < 26; i++)
+  for (int i = 0, moreThanOne = 0; cStr[i]; i++, moreThanOne = 0)
   {
-    letExist[i] = 0;
-  }
-  for (size_t i = 0; cStr[i] != '\0'; i++)
-  {
-    if (int(cStr[i]) >= 97 && int(cStr[i]) <= 122)
+    if (std::isalpha(cStr[i]))
     {
-      letExist[int(cStr[i]) - 97] = 1;
+      for (int j = i + 1; cStr[j]; j++)
+      {
+        if (cStr[i] == cStr[j])
+        {
+          moreThanOne = 1;
+        }
+      }
+      if (!moreThanOne)
+      {
+        count++;
+      }
     }
-  }
-  for (size_t i = 0; i < 26; i++)
-  {
-    count = count + letExist[i];
+
   }
 
   return count;

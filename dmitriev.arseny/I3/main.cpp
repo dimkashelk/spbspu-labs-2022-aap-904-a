@@ -8,7 +8,7 @@ int main()
   size_t capacity = 10;
   size_t size1 = 0;
   char* cStr1 = new char[capacity];
-  char inp;
+  char inp = '\0';
 
   std::cin >> std::noskipws;
 
@@ -47,14 +47,23 @@ int main()
 
   cStr1[size1] = '\0';
 
-  char* cStrAllLett = new char[27];
-  char cStr2[] = "az";
+  char* cStrAllLett = nullptr;
+  try
+  {
+    cStrAllLett = new char[27];
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cout << e.what() << '\n';
+    delete[] cStr1;
+    return 1;
+  }
 
+  char cStr2[] = "az";
   cStrAllLett = createMassAllLettStrs(cStrAllLett, cStr1, cStr2);
   std::cout << cStrAllLett << '\n';
 
   std::cout << defCountDiffLett(cStr1) << '\n';
-
   delete[] cStr1;
   delete[] cStrAllLett;
 

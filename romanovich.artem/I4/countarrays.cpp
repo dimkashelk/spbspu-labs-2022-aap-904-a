@@ -79,7 +79,7 @@ int sumClose(const int *matrix, int row, int column, int matrixN)
       bool lInColumnRange = (0 <= l && l < matrixN);
       if (elemInMatrixRange && elemNotCenterElem && lInColumnRange && kInRowRange)
       {
-        sum_ += matrix[elemAddIndex];
+        sum_ += matrix[elemIndex];
         count++;
       }
     }

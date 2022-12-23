@@ -80,7 +80,7 @@ int main(int argc, char ** argv)
       std::cout << "Matrix dimension determination is impossible.\n";
       return 0;
     }
-    size_t matrixN = rows; 
+    size_t matrixN = rows;
     size_t matrixSize = matrixN * matrixN;
     int * matrix = nullptr;
     try

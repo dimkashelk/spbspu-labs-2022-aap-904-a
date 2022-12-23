@@ -8,8 +8,10 @@ odintsov::CStringWrapper::CStringWrapper(size_t arrCap):
   arrCap(arrCap),
   str(new char[arrCap])
 {
-  str[0] = '\0';
-  arrSize = 1;
+  if (arrCap > 0) {
+    str[0] = '\0';
+    arrSize = 1;
+  }
 }
 
 odintsov::CStringWrapper::~CStringWrapper()

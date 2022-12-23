@@ -98,28 +98,11 @@ point_t Triangle::getCenterOfGravity() const
 }
 bool Triangle::containsPoint(point_t point) const
 {
-  // A * x + B * y + C = 0
-  // if two points in one area of line:
-  // (A * x1 + B * y1 + C) * (A * x2 + B * y2 + C) > 0 (1)
-  // where (x1, y1) and (x2, y2) - coords of points
-  // A = y2 - y1
-  // B = -(x2 - x1)
-  // C = (x2 - x1) * y1 - (y2 - y1) * x1 = -B * y1 - A * x1
-  // point in triangle if (1) work for all points of triangle and point, which we check
-  // point1 - point2 line
-  double A = point2.y - point1.y;
-  double B = -(point2.x - point1.x);
-  double C = -B * point1.y - A * point1.x;
-  bool one_side_with_point3 = ((A * point.x + B * point.y + C) * (A * point3.x + B * point3.y + C)) > 0;
-  // point1 - point3 line
-  A = point3.y - point1.y;
-  B = -(point3.x - point1.x);
-  C = -B * point1.y - A * point1.x;
-  bool one_side_with_point2 = ((A * point.x + B * point.y + C) * (A * point2.x + B * point2.y + C)) > 0;
-  // point2 - point3 line
-  A = point3.y - point2.y;
-  B = -(point3.x - point2.x);
-  C = -B * point2.y - A * point2.x;
-  bool one_side_with_point1 = ((A * point.x + B * point.y + C) * (A * point1.x + B * point1.y + C)) > 0;
+  line_t line1(point1, point2);
+  bool one_side_with_point3 = ((line1.A * point.x + line1.B * point.y + line1.C) * (line1.A * point3.x + line1.B * point3.y + line1.C)) > 0;
+  line_t line2(point1, point3);
+  bool one_side_with_point2 = ((line2.A * point.x + line2.B * point.y + line2.C) * (line2.A * point2.x + line2.B * point2.y + line2.C)) > 0;
+  line_t line3(point2, point3);
+  bool one_side_with_point1 = ((line3.A * point.x + line3.B * point.y + line3.C) * (line3.A * point1.x + line3.B * point1.y + line3.C)) > 0;
   return one_side_with_point1 && one_side_with_point2 && one_side_with_point3;
 }

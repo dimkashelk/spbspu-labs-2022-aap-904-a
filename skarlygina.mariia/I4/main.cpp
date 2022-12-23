@@ -96,7 +96,8 @@ int main(int argc, char* argv[])
         }
       }
     }
-    int* square_array = nullptr;
+    //int* square_array = nullptr;
+    /*
     try
     {
       square_array = makeSquareMatrix(dynamic_array, rows, columns);
@@ -109,9 +110,9 @@ int main(int argc, char* argv[])
       delete[] square_array;
       return 1;
     }
-
-    fout << countDiagonalsWithoutZeros(square_array, rows);
-    delete[] square_array;
+    */
+    fout << countDiagonalsWithoutZeros(dynamic_array, rows);
+    //delete[] square_array;
     if (!fout)
     {
       std::cerr << "Error writing into file\n";

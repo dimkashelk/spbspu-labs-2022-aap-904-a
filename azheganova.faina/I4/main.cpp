@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
       return 1;
     }
   }
-  else 
+  else
   {
     if (!strcmp(argv[1], "2"))
     {

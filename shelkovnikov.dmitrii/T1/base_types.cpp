@@ -26,8 +26,8 @@ vector_t::vector_t(double x, double y):
   x(x),
   y(y)
 {}
-vector_t::vector_t(point_t point_1, point_t point_2):
-  vector_t(point_1.x - point_2.x, point_1.y - point_2.y)
+vector_t::vector_t(point_t end, point_t start):
+  vector_t(end.x - start.x, end.y - start.y)
 {}
 vector_t& vector_t::operator*=(double k)
 {

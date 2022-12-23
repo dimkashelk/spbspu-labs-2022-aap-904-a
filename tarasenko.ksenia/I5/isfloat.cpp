@@ -50,6 +50,6 @@ bool continue_with_sign(const char * n)
 }
 bool isFloat(const char * n)
 {
-  return is_dot(*n) && continue_with_dot(n + 1);
+  return ((is_dot(*n) && continue_with_dot(n + 1)) || (is_sign(*n) && is_dot(*(n + 1)) && continue_with_dot(n + 2)));
 }
 

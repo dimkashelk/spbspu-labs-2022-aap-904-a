@@ -1,4 +1,4 @@
-#include "countarrays.h"
+#include "countsuitablerows.h"
 int sumClose(const int *matrix, int row, int column, int matrixN);
 size_t countDiverseElements(const int *array, size_t rows, size_t columns)
 {
@@ -17,7 +17,7 @@ size_t countDiverseElements(const int *array, size_t rows, size_t columns)
           break;
         }
       }
-      count += foundSimilar;
+      count += size_t(foundSimilar);
     }
   }
   return count;
@@ -59,7 +59,7 @@ size_t countSuccessionEqualElements(const int *matrix, size_t matrixN)
         foundSuccessionEqual = true;
         break;
       }
-      count += !foundSuccessionEqual;
+      count += size_t(!foundSuccessionEqual);
     }
   }
   return count;

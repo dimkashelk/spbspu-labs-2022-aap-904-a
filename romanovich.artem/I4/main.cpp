@@ -1,15 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "countarrays.h"
-int main(int argc, char **argv)
+#include "countsuitablerows.h"
+int main(int argc, char ** argv)
 {
   if (argc != 4)
   {
     std::cerr << "Not appropriate parameters number.\n";
     return 2;
   }
-  char *taskNumber = argv[1];
+  char * taskNumber = argv[1];
   std::string fileIn = argv[2];
   std::string fileOut = argv[3];
   std::fstream fileInput(fileIn);
@@ -75,12 +75,17 @@ int main(int argc, char **argv)
   }
   if (!std::strcmp(taskNumber, "2"))
   {
-    size_t matrixN = rows;
+    if (rows == columns)
+    {
+      std::cout << "Matrix dimension determination is impossible.\n";
+      return 0;
+    }
+    size_t matrixN = rows; 
     size_t matrixSize = matrixN * matrixN;
     int * matrix = nullptr;
     try
     {
-      matrix = new int[matrixN * matrixN];
+      matrix = new int[matrixSize];
     }
     catch (...)
     {
@@ -105,6 +110,7 @@ int main(int argc, char **argv)
     catch (...)
     {
       std::cerr << "Error while creating smoothed matrix.\n";
+      delete[] matrix;
       return 2;
     }
     size_t countSuccEqEl = countSuccessionEqualElements(matrix, matrixN);

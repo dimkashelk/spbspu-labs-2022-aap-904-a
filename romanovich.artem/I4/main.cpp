@@ -75,10 +75,10 @@ int main(int argc, char ** argv)
   }
   if (!std::strcmp(taskNumber, "2"))
   {
-    if (rows == columns)
+    if (rows != columns)
     {
-      std::cout << "Matrix dimension determination is impossible.\n";
-      return 0;
+      std::cerr << "Matrix dimension determination is impossible.\n";
+      return 2;
     }
     size_t matrixN = rows;
     size_t matrixSize = matrixN * matrixN;

@@ -13,5 +13,6 @@ private:
   size_t size;
   double get_mixed_product(vector_t a, vector_t b) const;
   bool containsAnyPoint(const Triangle &triangle) const;
+  void removePoint(size_t ind);
 };
 #endif

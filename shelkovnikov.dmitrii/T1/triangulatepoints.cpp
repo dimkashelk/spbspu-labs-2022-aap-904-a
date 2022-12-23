@@ -55,3 +55,15 @@ bool TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
   }
   return contains_any_point;
 }
+void TriangulatePoints::removePoint(size_t ind)
+{
+  if (size == 0)
+  {
+    return;
+  }
+  for (size_t i = ind; i < size - 1; i++)
+  {
+    points[i] = points[i + 1];
+  }
+  size--;
+}

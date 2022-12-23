@@ -15,10 +15,19 @@ Triangle *TriangulatePoints::operator()() const
   //6. Repeat from step 1 until there are three vertices left.
   for (size_t i = 0; i < size - 2; i++)
   {
-    for (size_t j = i + 1; j < size; j++)
+    for (size_t j = i + 1; j < size - 1; j++)
     {
       for (size_t k = j + 1; k < size; k++)
-      {}
+      {
+        if (get_mixed_product(vector_t(points[k], points[i]), vector_t(points[j], points[i])) > 0)
+        {
+          Triangle triangle(points[i], points[j], points[k]);
+          if (!containsAnyPoint(triangle))
+          {
+
+          }
+        }
+      }
     }
   }
 }
@@ -32,4 +41,17 @@ double TriangulatePoints::get_mixed_product(vector_t a, vector_t b) const
   // a * b * c = |x2 y2 0| = x1 * y2 * z3 - x2 * y1 * z3
   //             |0  0 z3|
   return a.x * b.y * third_coord - b.x * a.y * third_coord;
+}
+bool TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
+{
+  bool contains_any_point = false;
+  for (size_t r = 0; r < size; r++)
+  {
+    contains_any_point = triangle.containsPoint(points[r]);
+    if (contains_any_point)
+    {
+      break;
+    }
+  }
+  return contains_any_point;
 }

@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
       return 1;
     }
   }
-  else
+  else 
   {
     if (!strcmp(argv[1], "2"))
     {
@@ -92,40 +92,11 @@ int main(int argc, char* argv[])
       }
       delete[] arr;
     }
-  }
-  if (!strcmp(argv[1], "2"))
-  {
-    if (size == 0)
+    else 
     {
-      outputfile << "0";
-      return 0;
-    }
-    int* arr = new int[size];
-    for (size_t i = 0; i < m; i++)
-    {
-      for (size_t j = 0; j < n; j++)
-      {
-        inputfile >> arr[i * m + j];
-        if (!inputfile)
-        {
-          std::cout << "elements read error";
-          delete[] arr;
-          return 1;
-        }
-      }
-    }
-    outputfile << findRowsWithConsecutiveEqualElements(arr, m, n) << "\n";
-    if (!outputfile)
-    {
-      std::cout << "number write error";
+      std::cout << "errow";
       return 1;
     }
-    delete[] arr;
-  }
-  else
-  {
-    std::cout << "errow";
-    return 1;
   }
   return 0;
 }

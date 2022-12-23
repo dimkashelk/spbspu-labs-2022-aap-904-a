@@ -26,8 +26,8 @@ int main()
       std::cout << cstrNoLatin.str << '\n';
     }
     {
-      odintsov::CString cstrNoVowels(cap);
-      odintsov::removeVowels(cstr, cstrNoVowels);
+      odintsov::CString cstrNoVowels(cstr.size);
+      odintsov::removeVowels(cstr.str, cstrNoVowels.str);
       std::cout << cstrNoVowels.str << '\n';
     }
   } catch (const std::invalid_argument& err) {

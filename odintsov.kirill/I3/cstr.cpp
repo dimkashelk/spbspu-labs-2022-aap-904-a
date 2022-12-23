@@ -56,12 +56,14 @@ void odintsov::removeLatin(const char* cstr, char* out)
   *optr = '\0';
 }
 
-void odintsov::removeVowels(const CString& cstr, CString& out)
+void odintsov::removeVowels(const char* cstr, char* out)
 {
-  for (size_t i = 0; i < cstr.size - 1; i++) {
-    char c = static_cast< char >(std::toupper(cstr.str[i]));
+  char* optr = out;
+  for (const char* cptr = cstr; *cptr != '\0'; cptr++) {
+    char c = static_cast< char >(std::toupper(*cptr));
     if (!isVowel(c)) {
-      out.append(cstr.str[i]);
+      *(optr++) = *cptr;
     }
   }
+  *optr = '\0';
 }

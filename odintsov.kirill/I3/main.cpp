@@ -5,7 +5,7 @@
 int main()
 {
   constexpr size_t cap = 10;
-  odintsov::CString cstr(cap);
+  odintsov::CStringWrapper cstr(cap);
   std::cin >> std::noskipws;
   try {
     char c = '\0';
@@ -21,11 +21,11 @@ int main()
       return 1;
     }
     {
-      odintsov::CString cstrNoLatin(cstr.size);
+      odintsov::CStringWrapper cstrNoLatin(cstr.size);
       std::cout << odintsov::removeLatin(cstrNoLatin.str, cstr.str) << '\n';
     }
     {
-      odintsov::CString cstrNoVowels(cstr.size);
+      odintsov::CStringWrapper cstrNoVowels(cstr.size);
       std::cout << odintsov::removeVowels(cstrNoVowels.str, cstr.str) << '\n';
     }
   } catch (const std::invalid_argument& err) {

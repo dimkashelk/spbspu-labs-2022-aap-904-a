@@ -4,13 +4,13 @@
 #include <cstddef>
 
 namespace odintsov {
-  struct CString {
+  struct CStringWrapper {
     size_t size;
     size_t cap;
     char* str;
 
-    CString(size_t cap);
-    ~CString();
+    CStringWrapper(size_t cap);
+    ~CStringWrapper();
 
     void extend(size_t newCap);
     void append(char c);

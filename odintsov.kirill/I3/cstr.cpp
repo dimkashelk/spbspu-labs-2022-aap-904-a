@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <cctype>
 
-odintsov::CString::CString(size_t cap):
+odintsov::CStringWrapper::CStringWrapper(size_t cap):
   size(0),
   cap(cap),
   str(new char[cap])
@@ -12,12 +12,12 @@ odintsov::CString::CString(size_t cap):
   size = 1;
 }
 
-odintsov::CString::~CString()
+odintsov::CStringWrapper::~CStringWrapper()
 {
   delete [] str;
 }
 
-void odintsov::CString::extend(size_t newCap)
+void odintsov::CStringWrapper::extend(size_t newCap)
 {
   if (newCap <= cap) {
     throw std::invalid_argument("Bad capacity");
@@ -31,7 +31,7 @@ void odintsov::CString::extend(size_t newCap)
   cap = newCap;
 }
 
-void odintsov::CString::append(char c)
+void odintsov::CStringWrapper::append(char c)
 {
   if (size == cap) {
     extend(cap + 20);

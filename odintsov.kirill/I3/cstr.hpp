@@ -17,8 +17,8 @@ namespace odintsov {
   };
 
   bool isVowel(char c);
-  void removeLatin(const char* cstr, char* out);
-  void removeVowels(const char* cstr, char* out);
+  char* removeLatin(char* dest, const char* src);
+  char* removeVowels(char* dest, const char* src);
 }
 
 #endif

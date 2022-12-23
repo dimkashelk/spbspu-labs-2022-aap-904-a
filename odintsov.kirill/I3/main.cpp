@@ -22,13 +22,11 @@ int main()
     }
     {
       odintsov::CString cstrNoLatin(cstr.size);
-      odintsov::removeLatin(cstr.str, cstrNoLatin.str);
-      std::cout << cstrNoLatin.str << '\n';
+      std::cout << odintsov::removeLatin(cstrNoLatin.str, cstr.str) << '\n';
     }
     {
       odintsov::CString cstrNoVowels(cstr.size);
-      odintsov::removeVowels(cstr.str, cstrNoVowels.str);
-      std::cout << cstrNoVowels.str << '\n';
+      std::cout << odintsov::removeVowels(cstrNoVowels.str, cstr.str) << '\n';
     }
   } catch (const std::invalid_argument& err) {
     std::cout << "Error: " << err.what() << '\n';

@@ -46,24 +46,26 @@ bool odintsov::isVowel(char c)
   return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
 }
 
-void odintsov::removeLatin(const char* cstr, char* out)
+char* odintsov::removeLatin(char* dest, const char* src)
 {
-  char* optr = out;
-  for (const char* cptr = cstr; *cptr != '\0'; cptr++) {
+  char* dptr = dest;
+  for (const char* cptr = src; *cptr != '\0'; cptr++) {
     if (!std::isalpha(*cptr)) {
-       *(optr++) = *cptr;
+       *(dptr++) = *cptr;
     }
   }
-  *optr = '\0';
+  *dptr = '\0';
+  return dest;
 }
 
-void odintsov::removeVowels(const char* cstr, char* out)
+char* odintsov::removeVowels(char* dest, const char* src)
 {
-  char* optr = out;
-  for (const char* cptr = cstr; *cptr != '\0'; cptr++) {
+  char* dptr = dest;
+  for (const char* cptr = src; *cptr != '\0'; cptr++) {
     if (!isVowel(*cptr)) {
-      *(optr++) = *cptr;
+      *(dptr++) = *cptr;
     }
   }
-  *optr = '\0';
+  *dptr = '\0';
+  return dest;
 }

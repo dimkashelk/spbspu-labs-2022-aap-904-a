@@ -127,6 +127,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     delete[] dynamic_array;
+    delete[] square_array;
   }
   return 0;
 }

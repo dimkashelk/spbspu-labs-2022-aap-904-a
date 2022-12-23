@@ -4,8 +4,8 @@
 
 int main()
 {
-  constexpr size_t cap = 10;
-  odintsov::CStringWrapper cstr(cap);
+  constexpr size_t arrCap = 10;
+  odintsov::CStringWrapper cstr(arrCap);
   std::cin >> std::noskipws;
   try {
     char c = '\0';
@@ -16,16 +16,16 @@ int main()
       }
       cstr.append(c);
     } while (std::cin);
-    if (cstr.size <= 1) {
+    if (cstr.arrSize <= 1) {
       std::cout << "Error: Empty string" << '\n';
       return 1;
     }
     {
-      odintsov::CStringWrapper cstrNoLatin(cstr.size);
+      odintsov::CStringWrapper cstrNoLatin(cstr.arrSize);
       std::cout << odintsov::removeLatin(cstrNoLatin.str, cstr.str) << '\n';
     }
     {
-      odintsov::CStringWrapper cstrNoVowels(cstr.size);
+      odintsov::CStringWrapper cstrNoVowels(cstr.arrSize);
       std::cout << odintsov::removeVowels(cstrNoVowels.str, cstr.str) << '\n';
     }
   } catch (const std::invalid_argument& err) {

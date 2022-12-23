@@ -5,11 +5,11 @@
 
 namespace odintsov {
   struct CStringWrapper {
-    size_t size;
-    size_t cap;
+    size_t arrSize;
+    size_t arrCap;
     char* str;
 
-    CStringWrapper(size_t cap);
+    CStringWrapper(size_t arrCap);
     ~CStringWrapper();
 
     void extend(size_t newCap);

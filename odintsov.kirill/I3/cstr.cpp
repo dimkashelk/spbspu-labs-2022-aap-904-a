@@ -3,13 +3,13 @@
 #include <stdexcept>
 #include <cctype>
 
-odintsov::CStringWrapper::CStringWrapper(size_t cap):
-  size(0),
-  cap(cap),
-  str(new char[cap])
+odintsov::CStringWrapper::CStringWrapper(size_t arrCap):
+  arrSize(0),
+  arrCap(arrCap),
+  str(new char[arrCap])
 {
   str[0] = '\0';
-  size = 1;
+  arrSize = 1;
 }
 
 odintsov::CStringWrapper::~CStringWrapper()
@@ -19,25 +19,25 @@ odintsov::CStringWrapper::~CStringWrapper()
 
 void odintsov::CStringWrapper::extend(size_t newCap)
 {
-  if (newCap <= cap) {
+  if (newCap <= arrCap) {
     throw std::invalid_argument("Bad capacity");
   }
   char* newStr = new char[newCap];
-  for (size_t i = 0; i < size; i++) {
+  for (size_t i = 0; i < arrSize; i++) {
     newStr[i] = str[i];
   }
   delete [] str;
   str = newStr;
-  cap = newCap;
+  arrCap = newCap;
 }
 
 void odintsov::CStringWrapper::append(char c)
 {
-  if (size == cap) {
-    extend(cap + 20);
+  if (arrSize == arrCap) {
+    extend(arrCap + 20);
   }
-  str[size - 1] = c;
-  str[size++] = '\0';
+  str[arrSize - 1] = c;
+  str[arrSize++] = '\0';
 }
 
 bool odintsov::isVowel(char c)

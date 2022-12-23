@@ -6,6 +6,7 @@ char * writeCString(std::istream & input)
 {
   size_t capacity = 10;
   char * cstring = new char[capacity];
+  cstring[0] = '\0';
   size_t size = 0;
   input >> std::noskipws;
   do
@@ -30,11 +31,11 @@ char * writeCString(std::istream & input)
     delete [] cstring;
     throw std::runtime_error("Error");
   }
-  cstring[size - 1] = '\0';
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     delete [] cstring;
-    throw std::invalid_argument("Empty string\n");
+    throw std::invalid_argument("Empty string");
   }
+  cstring[size - 1] = '\0';
   return cstring;
 }

@@ -1,9 +1,9 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 #include "count_positive_columns.h"
 #include "count_diagonals_without_zeros.h"
-#include "make_square_matrix.h"
 
 int main(int argc, char* argv[])
 {
@@ -96,28 +96,55 @@ int main(int argc, char* argv[])
         }
       }
     }
-    //int* square_array = nullptr;
-    /*
-    try
+    size_t square_size = std::min(rows, columns);
+    int* square_array = nullptr;
+    if (columns == rows)
     {
-      square_array = makeSquareMatrix(dynamic_array, rows, columns);
-      delete[] dynamic_array;
+      square_array = dynamic_array;
+      dynamic_array = nullptr;
     }
-    catch (const std::bad_alloc& e)
+    else
     {
-      std::cerr << e.what() << "\n";
+      try
+      {
+        square_array = new int[square_size * square_size];
+      }
+      catch (const std::bad_alloc& e)
+      {
+        std::cerr << e.what() << "\n";
+        delete[] dynamic_array;
+        delete[] square_array;
+        return 1;
+      }
+    }
+    if (columns < rows)
+    {
+      for (size_t i = 0; i < (square_size * square_size); ++i)
+      {
+        square_array[i] = dynamic_array[i];
+      }
+    }
+    else if (columns > rows)
+    {
+      for (size_t i = 0; i < square_size; ++i)
+      {
+        for (size_t j = 0; j < square_size; ++j)
+        {
+          square_array[(i * square_size) + j] = dynamic_array[(i * columns) + j];
+        }
+      }
+    }
+
+    fout << countDiagonalsWithoutZeros(square_array, square_size);
+    if (!fout)
+    {
+      std::cerr << "Error writing into file\n";
       delete[] dynamic_array;
       delete[] square_array;
       return 1;
     }
-    */
-    fout << countDiagonalsWithoutZeros(dynamic_array, rows);
-    delete[] dynamic_array;
-    if (!fout)
-    {
-      std::cerr << "Error writing into file\n";
-      return 1;
-    }
   }
+  delete[] dynamic_array;
+  delete[] square_array;
   return 0;
 }

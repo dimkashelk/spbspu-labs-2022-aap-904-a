@@ -2,7 +2,6 @@
 #define CSTR_HPP
 
 #include <cstddef>
-#include <iostream>
 
 namespace odintsov {
   struct CString {

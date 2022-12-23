@@ -102,12 +102,14 @@ int main(int argc, char* argv[])
     if (columns == rows)
     {
       square_array = dynamic_array;
+      dynamic_array = nullptr;
     }
     else
     {
       try
       {
         square_array = new int[square_size * square_size];
+        dynamic_array = nullptr;
       }
       catch (const std::bad_alloc& e)
       {

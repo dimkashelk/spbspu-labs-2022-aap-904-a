@@ -1,9 +1,10 @@
 #include "triangulatepoints.h"
+#include <stdexcept>
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points(points),
   size(size)
 {}
-Triangle *TriangulatePoints::operator()() const
+Triangle **TriangulatePoints::operator()()
 {
   // Delaunay triangulation
   //Triangulation algorithm:
@@ -13,25 +14,55 @@ Triangle *TriangulatePoints::operator()() const
   //4. If both conditions are met, then we build a triangle A1A2A3, and exclude vertex A2 from the polygon, without touching vertex A1, shift vertices A2 (A2 to A3), A3 (A3 to A4)
   //5. If at least one condition is not met, we move on to the next three vertices.
   //6. Repeat from step 1 until there are three vertices left.
-  point_t *point1 = points;
-  size_t index1 = 0;
-  point_t *point2 = points + 1;
-  size_t index2 = 1;
-  point_t *point3 = points + 2;
-  size_t index3 = 2;
+  Triangle **triangles = new Triangle*[size];
+  size_t index = 0;
   while (size > 3)
   {
-    if (get_mixed_product(vector_t(*point3, *point1), vector_t(*point2, *point1)) > 0)
+    point_t *point = points;
+    size_t ind = 0;
+    while (point < points - 2)
     {
-      Triangle triangle(*point1, *point2, *point3);
-      if (!containsAnyPoint(triangle))
+      if (getMixedProduct(vector_t(*(point + 2), *point), vector_t(*(point + 1), *point)) > 0)
       {
-
+        try
+        {
+          Triangle *triangle = new Triangle(*point, *(point + 1), *(point + 2));
+          if (!containsAnyPoint(*triangle))
+          {
+            triangles[index] = triangle;
+            index++;
+            removePoint(ind + 1);
+          }
+          else
+          {
+            point += 3;
+            ind += 2;
+          }
+        }
+        catch (const std::logic_error &e)
+        {
+          point += 3;
+          ind += 2;
+        }
+      }
+      else
+      {
+        point += 3;
+        ind += 2;
       }
     }
   }
+  Triangle *triangle = new Triangle(*points, *(points + 1), *(points + 2));
+  triangles[index] = triangle;
+  Triangle **new_triangles = new Triangle*[index];
+  for (size_t i = 0; i < index; i++)
+  {
+    new_triangles[i] = triangles[i];
+  }
+  delete[] triangles;
+  return new_triangles;
 }
-double TriangulatePoints::get_mixed_product(vector_t a, vector_t b) const
+double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {
   //         |i  j  k|
   // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;

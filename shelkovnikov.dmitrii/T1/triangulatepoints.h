@@ -7,11 +7,11 @@ class TriangulatePoints
 {
 public:
   TriangulatePoints(point_t *points, size_t size);
-  Triangle* operator()() const;
+  Triangle** operator()();
 private:
   point_t *points;
   size_t size;
-  double get_mixed_product(vector_t a, vector_t b) const;
+  double getMixedProduct(vector_t a, vector_t b) const;
   bool containsAnyPoint(const Triangle &triangle) const;
   void removePoint(size_t ind);
 };

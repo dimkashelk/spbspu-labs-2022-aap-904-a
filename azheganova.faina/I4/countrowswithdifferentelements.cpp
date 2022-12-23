@@ -1,4 +1,4 @@
-#include"countrowswithdifferentelements.h"
+#include "countrowswithdifferentelements.h"
 
 size_t countRowsWithDifferentElements(const int* arr, const size_t m, const size_t n)
 {
@@ -10,7 +10,7 @@ size_t countRowsWithDifferentElements(const int* arr, const size_t m, const size
     {
       for (size_t h = 1; h < n; h++)
       {
-        if (arr[j] == arr[h])
+        if (arr[i * m + j] == arr[i * m + h])
         {
           elementscounter++;
         }

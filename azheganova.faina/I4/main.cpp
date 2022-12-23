@@ -1,9 +1,9 @@
-#include<iostream>
+#include <iostream>
 #include <fstream>
 #include <cstddef>
 #include <cstring>
-#include"countrowswithdifferentelements.h"
-#include"findrowswithconsecutiveequalelements.h"
+#include "countrowswithdifferentelements.h"
+#include "findrowswithconsecutiveequalelements.h"
 
 int main(int argc, char* argv[])
 {
@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     std::cout << "error";
     return 1;
   }
-  if (!strcmp(argv[1], "1"))
+  if (!strcmp(argv[1],"1"))
   {
     int arr[1000];
     if (size > 1000)
@@ -63,7 +63,7 @@ int main(int argc, char* argv[])
   }
   else
   {
-    if (!strcmp(argv[1], "2"))
+    if (!strcmp(argv[1],"2"))
     {
       if (size == 0)
       {

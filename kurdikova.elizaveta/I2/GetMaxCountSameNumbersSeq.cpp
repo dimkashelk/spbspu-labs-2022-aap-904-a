@@ -1,6 +1,6 @@
 #include "GetMaxCountSameNumbersSeq.h"
 
-int getMaxCountSameNumbersSeq(const int* arr, size_t size)
+size_t getMaxCountSameNumbersSeq(const int* arr, size_t size)
 {
   size_t maxCount = 1;
   size_t currentCount = 1;

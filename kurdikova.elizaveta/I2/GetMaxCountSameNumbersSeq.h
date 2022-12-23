@@ -2,6 +2,6 @@
 #define GETMAXCOUNTSAMENUMBERSSEQ_H
 #include <cstddef>
 
-int getMaxCountSameNumbersSeq(const int* arr, size_t size);
+size_t getMaxCountSameNumbersSeq(const int* arr, size_t size);
 
 #endif

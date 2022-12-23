@@ -19,8 +19,8 @@ int main()
       catch (const std::exception & e)
       {
         std::cerr << e.what() << "\n";
-	delete [] cstring;
-	return 1;
+        delete [] cstring;
+        return 1;
       }
     }
     std::cin >> cstring[size];

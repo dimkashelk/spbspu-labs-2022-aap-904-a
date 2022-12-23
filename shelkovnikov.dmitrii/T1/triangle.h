@@ -14,6 +14,7 @@ public:
   bool isRectangular();
   point_t* getPoints() const;
   point_t getCenterOfGravity() const;
+  bool containsPoint(point_t point) const;
 private:
   point_t point1;
   point_t point2;

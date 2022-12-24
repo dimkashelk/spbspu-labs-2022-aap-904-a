@@ -17,15 +17,14 @@ int main()
     return 1;
   }
   cstring1[capacity - 1] = '\0';
-  char* destination1 = new char [capacity];
+  char* destination1 = nullptr;
   destination1[0] = '\0';
   try
   {
     destination1 = deleteNumbers(cstring1, destination1);
     std::cout<< destination1 << " ";
-    delete[] destination1;
   }
-  catch(const std::exception& e)
+  catch(const std::bad_alloc& e)
   {
     std::cout << e.what();
     delete[] destination1;
@@ -35,15 +34,14 @@ int main()
   char* cstring2 = new char[capacity];
   cstring2 = formingCstring(cstring2, capacity, size);
   cstring2[capacity - 1] = '\0';
-  char* destination2 = new char [capacity];
+  char* destination2 = nullptr;
   destination2[0] = '\0';
   try
   {
     destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << " ";
-    delete[] destination2;
   }
-  catch(const std::exception& e)
+  catch(const std::bad_alloc& e)
   {
     std::cout << e.what();
     delete[] destination2;

@@ -1,7 +1,7 @@
 #include "RepLetters.h"
 #include <cctype>
 
-char* replacingLetters(const char* source, char* destination)
+size_t replacingLetters(const char* source, char* destination)
 {
   size_t k = 0;
   destination[k] = '\0';

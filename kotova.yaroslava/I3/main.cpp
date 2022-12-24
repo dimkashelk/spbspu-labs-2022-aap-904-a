@@ -28,7 +28,8 @@ int main()
   catch(const std::exception& e)
   {
     std::cout << e.what();
-    delete[] destination1, cstring1;
+    delete[] destination1;
+    delete[]  cstring1;
     return 1;
   }
   char* cstring2 = new char[capacity];
@@ -45,7 +46,7 @@ int main()
   catch(const std::exception& e)
   {
     std::cout << e.what();
-    delete[] destination2
+    delete[] destination2;
     delete[]  cstring2;
     return 1;
   }

@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <limits>
+#include "line_t.h"
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points(points),
   size(size)

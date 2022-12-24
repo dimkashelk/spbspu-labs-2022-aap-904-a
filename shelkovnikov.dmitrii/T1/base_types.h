@@ -16,11 +16,4 @@ struct rectangle_t
   rectangle_t(point_t point, double width, double height);
   point_t getLeftDownPoint() const;
 };
-struct line_t
-{
-  double A;
-  double B;
-  double C;
-  line_t(point_t point1, point_t point2);
-};
 #endif

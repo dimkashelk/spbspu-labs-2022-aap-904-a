@@ -2,6 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 #include "vector_t.h"
+#include "line_t.h"
 Triangle::Triangle(point_t p1, point_t p2, point_t p3):
   point1(p1),
   point2(p2),

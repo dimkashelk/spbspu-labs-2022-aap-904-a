@@ -9,9 +9,7 @@ void printRowInTable(std::ostream & out, double x, size_t max_members, double er
   const double epsilon = std::numeric_limits< double >::epsilon();
   if (std::abs(x) < epsilon)
   {
-    out << std::setw(10) << std::setprecision(4) << 0.0 << ' ';
-    out << std::setw(10) << std::setprecision(5) << 1 << ' ';
-    out << std::setw(10) << std::setprecision(5) << 1;
+    out << "       0.0          1          1";
   }
   else
   {

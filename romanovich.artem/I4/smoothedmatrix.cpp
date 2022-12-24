@@ -1,14 +1,22 @@
 #include "smoothedmatrix.h"
-int sumClose(const int *matrix, int row, int column, int matrixN);
-int sumClose(const int *matrix, int row, int column, int matrixN)
+int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN);
+int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN)
 {
   int sum_ = 0;
   int count = 0;
-  for (int k = row-1; k <= row+1; k++)
+  for (size_t k = row; k <= row+2; k++)
   {
-    for (int l = column-1; l <= column+1; l++)
+    if (k > 0)
     {
-      int elemIndex = k*matrixN+l;
+      k--;
+    }
+    for (size_t l = column; l <= column+2; l++)
+    {
+      if (l > 0)
+      {
+        l--;
+      }
+      size_t elemIndex = k*matrixN+l;
       bool elemInMatrixRange = (elemIndex >= 0) && (elemIndex <= matrixN*matrixN);
       bool elemNotCenterElem = !(k==row && l==column);
       bool kInRowRange = (0 <= k && k < matrixN);

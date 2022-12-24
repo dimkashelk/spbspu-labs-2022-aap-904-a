@@ -109,7 +109,6 @@ int main(int argc, char* argv[])
       try
       {
         square_array = new int[square_size * square_size];
-        dynamic_array = nullptr;
       }
       catch (const std::bad_alloc& e)
       {

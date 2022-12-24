@@ -1,6 +1,7 @@
 #include "MaxLengthAfterMaxValue.h"
+#include <cstddef>
 
-void maxLengthAfterMaxValue(const int & value, int & maxValue, unsigned int & count, unsigned int & maxCount)
+void maxLengthAfterMaxValue(int value, int& maxValue, size_t& count, size_t& maxCount)
 {
   if (value >= maxValue)
   {

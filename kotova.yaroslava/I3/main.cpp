@@ -9,7 +9,7 @@ int main()
   size_t capacity = 10;
   char* cstring1 = new char[capacity];
   size_t size = 0;
-  cstring1 = formingCstring(capacity, cstring1, size);
+  cstring1 = formingCstring(cstring1, capacity, size);
   if (cstring1[0] == '\0')
   {
     std::cout << "Empty string";
@@ -32,7 +32,7 @@ int main()
     return 1;
   }
   char* cstring2 = new char[capacity];
-  cstring2 = formingCstring(capacity, cstring2, size);
+  cstring2 = formingCstring(cstring2, capacity, size);
   cstring2[capacity - 1] = '\0';
   char* destination2 = new char [capacity];
   destination2[0] = '\0';
@@ -45,7 +45,8 @@ int main()
   catch(const std::exception& e)
   {
     std::cout << e.what();
-    delete[] destination2, cstring2;
+    delete[] destination2
+    delete[]  cstring2;
     return 1;
   }
   return 0;

@@ -1,10 +1,8 @@
 #include "FormingCstring.h"
 #include <iostream>
 #include <cstddef>
-char* formingCstring(char * cstring, size_t & capacity)
+char* formingCstring(char * cstring, size_t & capacity, size_t& size)
 {
-  size_t size = 0;
-
   std::cin >> std::noskipws;
   do
   {
@@ -24,7 +22,7 @@ char* formingCstring(char * cstring, size_t & capacity)
       catch (...)
       {
         delete [] cstring;
-        return 1;
+        throw;
       }
     }
     std::cin >> cstring[size];

@@ -6,14 +6,9 @@
 
 int main(int argc, char* argv[])
 {
-  if (argc != 2)
+  if (argc != 2 || argc = 1)
   {
-    std::cerr << "Error: That's more than actually arguments count need in this programm" << "\n";
-    return 1;
-  }
-  if (argc == 1)
-  {
-    std::cerr << "Error: No file name" << "\n";
+    std::cerr << "Error: You did something wrong with input" << "\n";
     return 1;
   }
   const size_t static_array_size = 11;
@@ -80,22 +75,22 @@ int main(int argc, char* argv[])
   {
     file >> inputArr[i];
     if (!file)
-  {
-    std::cerr << "Problem with data of file";
-    delete [] inputArr;
-    return 1;
-  }
+    {
+      std::cerr << "Problem with data of file";
+      delete [] inputArr;
+      return 1;
+    }
   }
   std::cout << "CounterMax Elements for File Array" << "\n";
   std::cout << counterMaxElement(inputArr,size_of_file)<< "\n";
   size_t wanted_shift_file = 0;
   std::cin >> wanted_shift_file;
- int* pointer_file_array = leftShiftMover(inputArr, size_of_file, wanted_shift_file);
- for (size_t i = 0; i < size_of_file; ++i)
- {
-   std::cout << pointer_file_array[i] << "\t";
- }
- std::cout << "\n";
- delete [] inputArr;
- return 0;
+  int* pointer_file_array = leftShiftMover(inputArr, size_of_file, wanted_shift_file);
+  for (size_t i = 0; i < size_of_file; ++i)
+  {
+    std::cout << pointer_file_array[i] << "\t";
+  }
+  std::cout << "\n";
+  delete [] inputArr;
+  return 0;
 }

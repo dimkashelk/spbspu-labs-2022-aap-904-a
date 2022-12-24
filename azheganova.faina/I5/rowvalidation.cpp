@@ -1,4 +1,5 @@
 #include "rowvalidation.h"
+#include <cctype>
 
 bool isSign(char c)
 {

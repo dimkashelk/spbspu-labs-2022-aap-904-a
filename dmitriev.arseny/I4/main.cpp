@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-#include "countLinesNoZero.h"
+#include "countColumnNoZero.h"
 #include "countMonoIncreaceLines.h"
 
 int main(int argc, char* argv[])
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    fileOut << countLinesNoZero(matrix1, line, column) << '\n';
+    fileOut << countColumnNoZero(matrix1, line, column) << '\n';
     fileOut << countMonoIncreaceLines(matrix1, line, column) << '\n';
   }
   else if (argv[1][0] == '2')
@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    fileOut << countLinesNoZero(matrix2, line, column) << '\n';
+    fileOut << countColumnNoZero(matrix2, line, column) << '\n';
     fileOut << countMonoIncreaceLines(matrix2, line, column) << '\n';
     delete[] matrix2;
   }

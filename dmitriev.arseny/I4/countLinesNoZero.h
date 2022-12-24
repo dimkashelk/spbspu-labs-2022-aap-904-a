@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-size_t countLinesNoZero(const int* matrix, size_t line, size_t column);
+size_t countColumnNoZero(const int* matrix, size_t line, size_t column);
 
 #endif

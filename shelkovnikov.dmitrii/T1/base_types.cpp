@@ -22,3 +22,7 @@ point_t rectangle_t::getLeftDownPoint() const
 {
   return point_t(point.x - width / 2, point.y - height / 2);
 }
+point_t rectangle_t::getRightUpPoint() const
+{
+  return point_t(point.x + width / 2, point.y + height / 2);
+}

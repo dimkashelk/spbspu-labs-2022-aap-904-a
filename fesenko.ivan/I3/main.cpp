@@ -38,10 +38,6 @@ int main()
   deleteExtraSpaces(task1, cstring);
   std::cout << task1 << "\n";
   delete [] task1;
-  if (checkCharactersSimilarity(cstring)) {
-    std::cout << "true\n";
-  } else {
-    std::cout << "false\n";
-  }
+  std::cout << std::boolalpha << checkCharactersSimilarity(cstring) << '\n';
   delete [] cstring;
 }

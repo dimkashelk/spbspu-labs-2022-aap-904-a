@@ -1,6 +1,6 @@
 #include "countrowswithdifferentelements.h"
 
-size_t countRowsWithDifferentElements(const int* arr, const size_t m, const size_t n)
+size_t countRowsWithDifferentElements( int* arr, size_t m, size_t n)
 {
   size_t count = 0;
   size_t elementscounter = 0;

@@ -5,7 +5,7 @@
 class Sqrt1MinusXSquare
 {
  public:
-  Sqrt1MinusXSquare(double x);
+  explicit Sqrt1MinusXSquare(double x);
   double operator()();
  private:
   double x_;

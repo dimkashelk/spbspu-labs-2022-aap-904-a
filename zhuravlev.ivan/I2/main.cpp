@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-  if ((argc != 2) || (argc = 1))
+  if (argc != 2)
   {
     std::cerr << "Error: You did something wrong with input" << "\n";
     return 1;

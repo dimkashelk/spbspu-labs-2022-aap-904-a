@@ -16,6 +16,8 @@ namespace odintsov {
     void append(char c);
   };
 
+  bool isLowerVowel(char c);
+  bool isUpperVowel(char c);
   bool isVowel(char c);
   char* removeLatin(char* dest, const char* src);
   char* removeVowels(char* dest, const char* src);

@@ -42,10 +42,19 @@ void odintsov::CStringWrapper::append(char c)
   str[arrSize++] = '\0';
 }
 
+bool odintsov::isLowerVowel(char c)
+{
+  return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
+bool odintsov::isUpperVowel(char c)
+{
+  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+}
+
 bool odintsov::isVowel(char c)
 {
-  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' ||
-          c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+  return (isLowerVowel(c) || isUpperVowel(c));
 }
 
 char* odintsov::removeLatin(char* dest, const char* src)

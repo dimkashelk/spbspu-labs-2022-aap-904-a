@@ -16,15 +16,6 @@ struct rectangle_t
   rectangle_t(point_t point, double width, double height);
   point_t getLeftDownPoint() const;
 };
-struct vector_t
-{
-  double x;
-  double y;
-  vector_t(double x, double y);
-  vector_t(point_t end, point_t start);
-  vector_t& operator*=(double k);
-  double getLength() const;
-};
 struct line_t
 {
   double A;

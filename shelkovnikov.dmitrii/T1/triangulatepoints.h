@@ -2,6 +2,7 @@
 #define SPBSPU_LABS_2022_AAP_904_A_TRIANGULATEPOINTS_H
 #include <cstddef>
 #include "base_types.h"
+#include "vector_t.h"
 #include "triangle.h"
 class TriangulatePoints
 {

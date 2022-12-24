@@ -22,23 +22,6 @@ point_t rectangle_t::getLeftDownPoint() const
 {
   return point_t(point.x - width / 2, point.y - height / 2);
 }
-vector_t::vector_t(double x, double y):
-  x(x),
-  y(y)
-{}
-vector_t::vector_t(point_t end, point_t start):
-  vector_t(end.x - start.x, end.y - start.y)
-{}
-vector_t& vector_t::operator*=(double k)
-{
-  x *= k;
-  y *= k;
-  return *this;
-}
-double vector_t::getLength() const
-{
-  return sqrt(x * x + y * y);
-}
 line_t::line_t(point_t point1, point_t point2):
   A(point2.y - point1.y),
   B(-(point2.x - point1.x)),

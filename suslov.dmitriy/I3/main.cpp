@@ -4,9 +4,14 @@
 #include "formNewStringVarFive.h"
 int main(int argc, char **argv)
 {
-  if (argc < 3)
+  if (argc < 2)
   {
     std::cout << "Zero exit code without error message in standard error and some output" << "\n";
+    return 0;
+  }
+  if (argc < 3)
+  {
+    std::cout << "Non-zero exit code with error message in standard error" << "\n";
     return 0;
   }
   std::ifstream in_stream;

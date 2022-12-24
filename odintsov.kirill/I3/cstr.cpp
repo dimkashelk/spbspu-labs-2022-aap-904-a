@@ -44,8 +44,8 @@ void odintsov::CStringWrapper::append(char c)
 
 bool odintsov::isVowel(char c)
 {
-  c = static_cast< char >(std::toupper(c));
-  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' ||
+          c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
 }
 
 char* odintsov::removeLatin(char* dest, const char* src)

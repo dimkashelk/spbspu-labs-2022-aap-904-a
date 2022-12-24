@@ -25,7 +25,7 @@ bool isLetterE(char c)
 }
 bool isBaseUnsignedInteger(const char *data)
 {
-  return isDigit(*data) && (isDigit(*data) && isBaseUnsignedInteger(data + 1) || isStringEnd(*(data + 1)));
+  return isDigit(*data) && ((isDigit(*data) && isBaseUnsignedInteger(data + 1)) || isStringEnd(*(data + 1)));
 }
 bool isBase(const char *data)
 {
@@ -34,7 +34,7 @@ bool isBase(const char *data)
 }
 bool isSignificandUnsignedInteger(const char *data)
 {
-  return isDigit(*data) && (isDigit(*data) && isSignificandUnsignedInteger(data + 1) || isBase(data + 1));
+  return isDigit(*data) && ((isDigit(*data) && isSignificandUnsignedInteger(data + 1)) || isBase(data + 1));
 }
 bool isSignificand(const char *data)
 {
@@ -42,7 +42,7 @@ bool isSignificand(const char *data)
 }
 bool isFloat(const char *data)
 {
-  return !isZero(*data) && (isSignificand(data)) || (isNumberSign(*data) && isSignificand(data + 1));
+  return !isZero(*data) && (isSignificand(data)) || ((isNumberSign(*data) && isSignificand(data + 1)));
 }
 int main()
 {

@@ -63,7 +63,7 @@ int main (int argc, char* argv[])
   size_t third_array_size;
   file >> third_array_size;
 
-  if (third_array_size)
+  if (!file)
   {
     std::cerr << "Empty file" << '\n';
     return 1;

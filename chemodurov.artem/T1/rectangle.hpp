@@ -3,14 +3,19 @@
 #include "base-types.hpp"
 #include "shape.hpp"
 
-class Rectangle: public Shape
+namespace chemodurov
 {
- public:
-  double getArea() const;
-  rectangle_t getFrameRect() const;
-  void move(point_t position);
-  void move(double dx, double dy);
-  void scale(double k);
-};
+  class Rectangle: public chemodurov::Shape
+  {
+   public:
+    double getArea() const;
+    chemodurov::rectangle_t getFrameRect() const;
+    void move(chemodurov::point_t position);
+    void move(double dx, double dy);
+    void scale(double k);
+   private:
+    
+  };
+}
 
 #endif

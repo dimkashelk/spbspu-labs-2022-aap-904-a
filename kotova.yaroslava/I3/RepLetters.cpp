@@ -4,9 +4,9 @@
 
 char* replacingLetters(const char* source, char* destination)
 {
-  char* k = 0;
+  size_t k = 0;
   destination[k] = '\0';
-  char* i = 0;
+  size_t i = 0;
   while (source[i] != '\0')
   {
     if (std::isalpha(source[i]))

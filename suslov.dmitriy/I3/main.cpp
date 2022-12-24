@@ -14,7 +14,7 @@ int main(int argc, char **argv)
   in_stream.open(argv[1]);
   if (in_stream.eof())
   {
-    cout << "Zero exit code without error message in standard error and some output" << "\n";
+    std::cout << "Zero exit code without error message in standard error and some output" << "\n";
     return 0;
   }
   in_stream.open(argv[1]);

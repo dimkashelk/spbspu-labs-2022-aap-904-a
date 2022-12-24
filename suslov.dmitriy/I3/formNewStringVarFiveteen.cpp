@@ -1,5 +1,5 @@
-#include "fifteen_var.h"
-char *var_15_function(char *destination, const char *source_1, const char *source_2)
+#include "formNewStringVarFiveteen.h"
+char *varFiveteenFunction(char *destination, const char *source_1, const char *source_2)
 {
   int c = 0;
   int i = 0;

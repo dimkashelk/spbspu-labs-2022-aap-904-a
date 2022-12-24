@@ -1,7 +1,7 @@
 #include <iostream>
-#include "fifteen_var.h"
+#include "formNewStringVarFiveteen.h"
 #include <fstream>
-#include "five_var.h"
+#include "formNewStringVarFive.h"
 int main(int argc, char **argv)
 {
   if(argc<3)
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
       std::cerr << "Fail" << "\n";
       return 3;
     }
-    out_stream << var_5_function(result1, string_first.c_str(), string_second.c_str()) << "\n";
+    out_stream << varFiveFunction(result1, string_first.c_str(), string_second.c_str()) << "\n";
     delete[] result1;
     char *result2;
     try
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
       std::cerr << "Fail" << "\n";
       return 3;
     }
-    out_stream << var_15_function(result2, string_first.c_str(), string_second.c_str()) << "\n";
+    out_stream << varFiveteenFunction(result2, string_first.c_str(), string_second.c_str()) << "\n";
     delete[] result2;
   }
   return 0;

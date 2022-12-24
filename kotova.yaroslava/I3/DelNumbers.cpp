@@ -1,7 +1,7 @@
 #include "DelNumbers.h"
 #include <cctype>
-
-size_t deleteNumbers(char* destination,const char* source)
+#include <cstddef>
+char* deleteNumbers(char* destination,const char* source)
 {
   size_t k = 0;
   destination[k] = '\0';

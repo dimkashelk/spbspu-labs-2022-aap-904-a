@@ -1,4 +1,4 @@
-#include "MaxLengthDescSeq.h"
+#include "maxLengthDescSeq.h"
 #include <cstddef>
 
 void maxLengthDescSeq(int value, int& predValue, size_t& length, size_t& maxLength)

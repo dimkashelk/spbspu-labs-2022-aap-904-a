@@ -1,8 +1,8 @@
 #include <iostream>
 #include <limits>
 #include <cstddef>
-#include "MaxLengthAfterMaxValue.h"
-#include "MaxLengthDescSeq.h"
+#include "maxLengthAfterMaxValue.h"
+#include "maxLengthDescSeq.h"
 
 int main()
 {

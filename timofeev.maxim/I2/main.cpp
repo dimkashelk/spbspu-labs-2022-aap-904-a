@@ -20,12 +20,17 @@ int main(int argc, char *argv[])
     std::cout << e.what() << "\n";
     return 0;
   }
+
   size_t line;
   std::cin >> line;
   if (!std::cin)
   {
     std::cout << "Input error" << "\n";
-    return 2;
+    return 0;
+  }
+  if (line == 0)
+  {
+    return 0;
   }
   std::srand(time(NULL));
   int * dyn_array = new int[line];
@@ -48,7 +53,6 @@ int main(int argc, char *argv[])
     return 2;
   }
   delete [] dyn_array;
-
 
   if (argc == 1)
   {

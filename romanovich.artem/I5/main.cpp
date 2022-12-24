@@ -42,7 +42,7 @@ bool isSignificand(const char *data)
 }
 bool isFloat(const char *data)
 {
-  return !isZero(*data) && (isSignificand(data)) || ((isNumberSign(*data) && isSignificand(data + 1)));
+  return (!isZero(*data) && (isSignificand(data))) || ((isNumberSign(*data) && isSignificand(data + 1)));
 }
 int main()
 {

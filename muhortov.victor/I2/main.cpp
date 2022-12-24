@@ -49,19 +49,24 @@ int main (int argc, char* argv[])
 
   std::ifstream file(argv[1]);
 
+  if (file.eof())
+  {
+    std::cerr << "Empty file" << '\n';
+    return 1;
+  }
   if (!file.is_open())
   {
     std::cerr << "Error with opening file" << '\n';
     return 1;
   }
 
-  size_t third_array_size = 0;
+  size_t third_array_size;
   file >> third_array_size;
 
-  if (file.eof())
+  if (third_array_size)
   {
-    std::cout << "Empty file" << '\n';
-    return 0;
+    std::cerr << "Empty file" << '\n';
+    return 1;
   }
   if (third_array_size == 0)
   {

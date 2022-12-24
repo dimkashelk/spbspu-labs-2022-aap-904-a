@@ -68,37 +68,34 @@ int main(int argc, char* argv[])
     std::cerr << "Error with open file";
     return 1;
   }
-  while (!file.eof())
+  size_t size_of_file = 0;
+  file >> size_of_file;
+  if (!file)
   {
-    size_t size_of_file = 0;
-    file >> size_of_file;
-    if (!file)
-    {
-      std::cerr << "Error with reading file";
-      return 1;
-    }
-    int* inputArr = new int[size_of_file];
-    for (size_t i = 0; i < size_of_file; ++i)
-    {
-      file >> inputArr[i];
-      if (!file)
-      {
-        std::cerr << "Problem with data of file";
-        delete [] inputArr;
-        return 1;
-      }
-    }
-    std::cout << "CounterMax Elements for File Array" << "\n";
-    std::cout << counterMaxElement(inputArr,size_of_file)<< "\n";
-    size_t wanted_shift_file = 0;
-    std::cin >> wanted_shift_file;
-    int* pointer_file_array = leftShiftMover(inputArr, size_of_file, wanted_shift_file);
-    for (size_t i = 0; i < size_of_file; ++i)
-    {
-      std::cout << pointer_file_array[i] << "\t";
-    }
-    std::cout << "\n";
-    delete [] inputArr;
+    std::cerr << "Error with reading file";
+    return 1;
   }
-  return 0;
+  int* inputArr = new int[size_of_file];
+  for (size_t i = 0; i < size_of_file; ++i)
+  {
+    file >> inputArr[i];
+    if (!file)
+  {
+    std::cerr << "Problem with data of file";
+    delete [] inputArr;
+    return 1;
+  }
+  }
+  std::cout << "CounterMax Elements for File Array" << "\n";
+  std::cout << counterMaxElement(inputArr,size_of_file)<< "\n";
+  size_t wanted_shift_file = 0;
+  std::cin >> wanted_shift_file;
+ int* pointer_file_array = leftShiftMover(inputArr, size_of_file, wanted_shift_file);
+ for (size_t i = 0; i < size_of_file; ++i)
+ {
+   std::cout << pointer_file_array[i] << "\t";
+ }
+ std::cout << "\n";
+ delete [] inputArr;
+ return 0;
 }

@@ -1,7 +1,7 @@
 #include "left_shift_mover.h"
 #include <cstddef>
 
-int* leftShiftMover(int *arr, const size_t size,const size_t wanted_shift)
+int* leftShiftMover(int *arr, const size_t size, const size_t wanted_shift)
 {
   size_t current_shifts = 0;
   while (current_shifts++ < wanted_shift)

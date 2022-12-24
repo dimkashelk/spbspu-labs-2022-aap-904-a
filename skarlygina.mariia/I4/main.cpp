@@ -117,8 +117,8 @@ int main(int argc, char* argv[])
         delete[] square_array;
         return 1;
       }
+      square_array = makeSquareMatrix(dynamic_array, rows, columns, square_array, square_size);
     }
-    square_array = makeSquareMatrix(dynamic_array, rows, columns, square_array, square_size);
     fout << countDiagonalsWithoutZeros(square_array, square_size);
     if (!fout)
     {

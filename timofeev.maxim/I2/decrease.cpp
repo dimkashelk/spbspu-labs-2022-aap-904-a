@@ -7,7 +7,7 @@ unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
   unsigned int maxleght = 1;
   if (size == 0)
   {
-    return 0 ;
+    return 2;
   }
   for (size_t i = 1; i < size; ++i)
   {

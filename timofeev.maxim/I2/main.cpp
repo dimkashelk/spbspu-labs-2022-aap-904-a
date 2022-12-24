@@ -28,11 +28,11 @@ int main(int argc, char *argv[])
     std::cout << "Input error" << "\n";
     return 2;
   }
-  if (line == 0)
-  {
-    std::cout << "Input 0 i don't like it" << "\n";
-    return 0;
-  }
+  //if (line == 0)
+  //{
+    //std::cout << "Input 0 i don't like it" << "\n";
+    //return 0;
+  //}
   std::srand(time(NULL));
   int * dyn_array = new int[line];
   size_t i;

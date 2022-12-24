@@ -1,6 +1,6 @@
 #include "PrintArray.hpp"
 
-void print_array(std::ostream& streamOut, const int* arr, size_t size)
+void printArray(std::ostream& streamOut, const int* arr, size_t size)
 {
   for (size_t i = 0; i < size - 1; i++)
   {

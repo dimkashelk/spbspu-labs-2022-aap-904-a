@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 
   std::cout << "Count of chain numbers: " << findChain(first_array, 10) << '\n';
   partition(first_array, 10);
-  print_array(std::cout, first_array, 10);
+  printArray(std::cout, first_array, 10);
   std::cout << '\n';
 
   //Second task
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
     }
     std::cout << "Count of chain numbers: " << findChain(second_array, value) << '\n';
     partition(second_array, value);
-    print_array(std::cout, second_array, value);
+    printArray(std::cout, second_array, value);
     std::cout << '\n';
     delete[] second_array;
   }
@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
       }
       std::cout << "Count of chain numbers: " << findChain(third_array, third_array_size) << '\n';
       partition(third_array, third_array_size);
-      print_array(std::cout, third_array, third_array_size);
+      printArray(std::cout, third_array, third_array_size);
       std::cout << '\n';
       delete[] third_array;
     }

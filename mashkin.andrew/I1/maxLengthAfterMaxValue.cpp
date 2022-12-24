@@ -1,4 +1,4 @@
-#include "maxLengthAfterMaxValue.h"
+#include "MaxLengthAfterMaxValue.h"
 #include <cstddef>
 
 void maxLengthAfterMaxValue(int value, int& maxValue, size_t& count, size_t& maxCount)

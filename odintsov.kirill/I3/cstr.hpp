@@ -9,7 +9,7 @@ namespace odintsov {
     size_t arrCap;
     char* str;
 
-    CStringWrapper(size_t arrCap);
+    explicit CStringWrapper(size_t arrCap);
     ~CStringWrapper();
 
     void extend(size_t newCap);

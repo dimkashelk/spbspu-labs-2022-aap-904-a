@@ -17,7 +17,7 @@ int main()
     return 1;
   }
   cstring1[capacity - 1] = '\0';
-  char* destination1 = new char [capacity];
+  char* destination1 = new char [cstring1];
   destination1[0] = '\0';
   try
   {
@@ -35,7 +35,7 @@ int main()
   char* cstring2 = new char[capacity];
   cstring2 = formingCstring(cstring2, capacity, size);
   cstring2[capacity - 1] = '\0';
-  char* destination2 = new char [capacity];
+  char* destination2 = new char [cstring2];
   destination2[0] = '\0';
   try
   {

@@ -102,13 +102,3 @@ int countUpperMainDiagonal(const int *matrix, size_t matrixN)
   }
   return sum_;
 }
-void smoothMatrix(const int *matrix, int *smoothedMatrix, size_t matrixN)
-{
-  for (size_t i = 0; i < matrixN; i++)
-  {
-    for (size_t j = 0; j < matrixN; j++)
-    {
-      smoothedMatrix[i * matrixN + j] = sumClose(matrix, i, j, matrixN);
-    }
-  }
-}

@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-unsigned int countPositiveCols(const int *array, size_t cols, size_t rows);
+size_t countPositiveCols(const int *array, size_t cols, size_t rows);
 
 #endif

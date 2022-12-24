@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     std::cout << "Error while reading file\n";
     return 1;
   }
-  if (!strcmp(argv[1], "1"))
+  if (!std::strcmp(argv[1], "1"))
   {
     int array[1000];
     if (rows * cols > 1000)
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
       std::cout << "Error while writing file\n";
     }
   }
-  else if (!strcmp(argv[1], "2"))
+  else if (!std::strcmp(argv[1], "2"))
   {
     int *dyn_array = nullptr;
     try

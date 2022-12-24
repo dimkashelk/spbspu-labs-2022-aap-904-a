@@ -4,10 +4,9 @@
 #include "formNewStringVarFive.h"
 int main(int argc, char **argv)
 {
-  if(argc<2)
+  if(argc<3)
   {
-    std::cerr<<"nooooooooooo"<<"\n";
-    return -1;
+    return 0;
   }
   std::ifstream in_stream;
   std::ofstream out_stream;

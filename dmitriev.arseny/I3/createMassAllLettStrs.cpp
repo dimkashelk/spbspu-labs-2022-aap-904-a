@@ -1,5 +1,5 @@
 #include "createMassAllLettStrs.h"
-#include <iostream>
+#include <stdexcept>
 #include <cstddef>
 #include <cctype>
 

@@ -6,5 +6,5 @@ void print_array(std::ostream& streamOut, const int* arr, size_t size)
   {
     streamOut << arr[i] << " ";
   }
-  streamOut << arr[size - 1] << '\n';
+  streamOut << arr[size - 1];
 }

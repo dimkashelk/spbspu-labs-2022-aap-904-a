@@ -2,7 +2,6 @@
 
 int *partition(int* arr, size_t size)
 {
-  int temp = 0;
   int *lastpos = arr + size - 1;
   while (arr < lastpos)
   {
@@ -12,9 +11,7 @@ int *partition(int* arr, size_t size)
       {
         if (*i % 2 == 0)
         {
-          temp = *i;
-          *i = *arr;
-          *arr = temp;
+          std::swap(*i, *arr);
           break;
         }
       }

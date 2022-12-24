@@ -18,7 +18,7 @@ int main()
   if (!inputInteger("Enter number of elements for shift: ", k)) {
     return 1;
   }
-  
+
   const int N = 10;
   int staticArray[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   cout << "Static array: ";
@@ -50,6 +50,5 @@ int main()
     processArray(dynamicArray, n, k);
     delete [] dynamicArray;
   }
-  
   return 0;
 }

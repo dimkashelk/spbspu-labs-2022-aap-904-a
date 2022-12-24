@@ -1,5 +1,6 @@
 #ifndef MAXLENGTHDESCSEQ_H
 #define MAXLENGTHDESCSEQ_H
+#include <cstddef>
 
-void maxLengthDescSeq(const int & value, int & predValue, unsigned int & length, unsigned int & maxLength);
-#endif // !MAXLENGTHDESCSEQ_H
+void maxLengthDescSeq(int value, int& predValue, size_t& length, size_t& maxLength);
+#endif

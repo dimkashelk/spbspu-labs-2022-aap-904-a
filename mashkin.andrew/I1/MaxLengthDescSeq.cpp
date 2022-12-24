@@ -1,6 +1,7 @@
-#include "MaxLengthDescSeq.h"
+#include "maxLengthDescSeq.h"
+#include <cstddef>
 
-void maxLengthDescSeq(const int & value, int & predValue, unsigned int & length, unsigned int & maxLength)
+void maxLengthDescSeq(int value, int& predValue, size_t& length, size_t& maxLength)
 {
   if (predValue > value)
   {

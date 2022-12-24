@@ -1,23 +1,34 @@
-﻿#include <iostream>
+#include <iostream>
 #include <limits>
-#include "MaxLengthAfterMaxValue.h"
-#include "MaxLengthDescSeq.h"
+#include <cstddef>
+#include "maxLengthAfterMaxValue.h"
+#include "maxLengthDescSeq.h"
 
 int main()
 {
   int value = 0;
-  int maxValue = std::numeric_limits<int>::min();
+  int maxValue = std::numeric_limits< int >::min();
   std::cin >> value;
+  if (!std::cin)
+  {
+    std::cout << "Inp error" << "\n";
+    return 1;
+  }
   int predValue = value;
-  unsigned int count = 0;
-  unsigned int maxCount = 0;
-  unsigned int length = 1;
-  unsigned int maxlength = 1;
+  size_t count = 0;
+  size_t maxCount = 0;
+  size_t length = 1;
+  size_t maxlength = 1;
   do
   {
     maxLengthAfterMaxValue(value, maxValue, count, maxCount);
     maxLengthDescSeq(value, predValue, length, maxlength);
     std::cin >> value;
   } while (value && std::cin);
+  if (!std::cin)
+  {
+    std::cout << "Inp error" << "\n";
+    return 1;
+  }
   std::cout << maxlength << "\n" << maxCount;
 }

@@ -18,7 +18,6 @@ int main()
   }
   cstring1[capacity - 1] = '\0';
   char* destination1 = nullptr;
-  destination1[0] = '\0';
   try
   {
     destination1 = deleteNumbers(cstring1, destination1);
@@ -35,7 +34,6 @@ int main()
   cstring2 = formingCstring(cstring2, capacity, size);
   cstring2[capacity - 1] = '\0';
   char* destination2 = nullptr;
-  destination2[0] = '\0';
   try
   {
     destination2 = replacingLetters(cstring2, destination2);

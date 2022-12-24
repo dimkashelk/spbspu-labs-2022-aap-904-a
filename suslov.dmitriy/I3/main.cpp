@@ -7,7 +7,7 @@ int main(int argc, char **argv)
   if (argc < 3)
   {
     std::cerr << "Zero exit code without error message in standard error and some output" << "\n";
-    return -1;
+    return 0;
   }
   std::ifstream in_stream;
   std::ofstream out_stream;

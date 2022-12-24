@@ -60,8 +60,8 @@ int main (int argc, char* argv[])
 
   if (file.eof())
   {
-    std::cerr << "Empty file" << '\n';
-    return 1;
+    std::cout << "Empty file" << '\n';
+    return 0;
   }
   if (third_array_size == 0)
   {

@@ -12,7 +12,7 @@ int main()
   cstring1 = formingCstring(capacity, cstring1, size);
   if (cstring1[0] == '\0')
   {
-    std::cout "Empty string";
+    std::cout << "Empty string";
     delete[] cstring1;
     return 1;
   }
@@ -31,9 +31,11 @@ int main()
     delete[] destination1, cstring1;
     return 1;
   }
-  char* cstring2 = new char[capacity]
+  char* cstring2 = new char[capacity];
   cstring2 = formingCstring(capacity, cstring2, size);
   cstring2[capacity - 1] = '\0';
+  char* destination2 = new char [capacity];
+  destination2[0] = '\0';
   try
   {
     destination2 = replacingLetters(cstring2, destination2);

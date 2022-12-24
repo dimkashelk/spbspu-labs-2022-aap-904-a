@@ -13,7 +13,10 @@ int main()
   do {
     if (size == capacity) {
       try {
-        cstring = expandCString(cstring, size, capacity);
+        char *newString = expandCString(cstring, size, capacity);
+        delete [] cstring;
+        cstring = newString;
+        newString = nullptr;
       }
       catch (const std::exception &e) {
         delete [] cstring;

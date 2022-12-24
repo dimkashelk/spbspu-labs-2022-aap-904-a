@@ -31,7 +31,7 @@ bool isUnsignedInteger(const char * data)
 }
 bool isOrder(const char * data)
 {
-  return isE(*data) && isSign(*(data + 1)) & isUnsignedInteger(data + 2);
+  return isE(*data) && isSign(*(data + 1)) && isUnsignedInteger(data + 2);
 }
 bool isMantisaFirstPart(const char * data)
 {
@@ -47,7 +47,7 @@ bool isMantisaThirdPart(const char * data)
 }
 bool isMantisa(const char * data)
 {
-  return isMantisaFirstPart(data) || isMantisaSecondPart(data + 1) || isMantisaThirdPart(data + 2);
+  return isMantisaFirstPart(data) || isMantisaSecondPart(data) || isMantisaThirdPart(data);
 }
 bool isRealNumber(const char * data)
 {

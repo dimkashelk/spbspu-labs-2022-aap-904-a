@@ -1,6 +1,5 @@
 #include "countsuitablerows.h"
-int sumClose(const int *matrix, int row, int column, int matrixN);
-size_t countDiverseElements(const int *array, size_t rows, size_t columns)
+size_t countDiverseElements(const int * array, const size_t rows, const size_t columns)
 {
   size_t count = 0;
   for (size_t i = 0; i < rows; i++)
@@ -22,7 +21,7 @@ size_t countDiverseElements(const int *array, size_t rows, size_t columns)
   }
   return count;
 }
-size_t countEqualSum(const int *array, size_t rows, size_t columns)
+size_t countEqualSum(const int * array, const size_t rows, const size_t columns)
 {
   size_t count = 0;
   int arraySums[rows];
@@ -46,15 +45,15 @@ size_t countEqualSum(const int *array, size_t rows, size_t columns)
   }
   return count;
 }
-size_t countSuccessionEqualElements(const int *matrix, size_t matrixN)
+size_t countSuccessionEqualElements(const int * matrix, const size_t matrixDim)
 {
   size_t count = 0;
-  for (size_t i = 0; i < matrixN; i++)
+  for (size_t i = 0; i < matrixDim; i++)
   {
     bool foundSuccessionEqual = false;
-    for (size_t j = 0; j < matrixN - 1; j++)
+    for (size_t j = 0; j < matrixDim - 1; j++)
     {
-      if (matrix[i * matrixN + j] == matrix[i * matrixN + j + 1])
+      if (matrix[i * matrixDim + j] == matrix[i * matrixDim + j + 1])
       {
         foundSuccessionEqual = true;
         break;

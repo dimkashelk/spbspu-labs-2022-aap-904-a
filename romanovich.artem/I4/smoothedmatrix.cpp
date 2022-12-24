@@ -1,6 +1,5 @@
 #include "smoothedmatrix.h"
-int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN);
-int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN)
+int sumClose(const int * matrix, const size_t row, const size_t column, const size_t matrixDim)
 {
   int sum_ = 0;
   int count = 0;
@@ -8,11 +7,11 @@ int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN)
   {
     for (size_t l = (column>0) ? column-1 : column; l <= column+1; l++)
     {
-      size_t elemIndex = k*matrixN+l;
-      bool elemInMatrixRange = (elemIndex <= matrixN*matrixN);
+      size_t elemIndex = k*matrixDim+l;
+      bool elemInMatrixRange = (elemIndex <= matrixDim*matrixDim);
       bool elemNotCenterElem = !(k==row && l==column);
-      bool kInRowRange = k < matrixN;
-      bool lInColumnRange = l < matrixN;
+      bool kInRowRange = k < matrixDim;
+      bool lInColumnRange = l < matrixDim;
       if (elemInMatrixRange && elemNotCenterElem && lInColumnRange && kInRowRange)
       {
         sum_ += matrix[elemIndex];
@@ -22,26 +21,26 @@ int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN)
   }
   return sum_ / count;
 }
-int countUpperMainDiagonal(const int *matrix, size_t matrixN)
+int countUpperMainDiagonal(const int * matrix, const size_t matrixDim)
 {
   int sum_ = 0;
-  for (size_t i = 0; i < matrixN - 1; i++)
+  for (size_t i = 0; i < matrixDim - 1; i++)
   {
-    for (size_t j = i + 1; j < matrixN; j++)
+    for (size_t j = i + 1; j < matrixDim; j++)
     {
-      int value = matrix[i * matrixN + j];
+      int value = matrix[i * matrixDim + j];
       sum_ += value * ((value > 0) - (value < 0));
     }
   }
   return sum_;
 }
-void smoothMatrix(const int *matrix, int *smoothedMatrix, size_t matrixN)
+void smoothMatrix(const int * matrix, int * smoothedMatrix, const size_t matrixDim)
 {
-  for (size_t i = 0; i < matrixN; i++)
+  for (size_t i = 0; i < matrixDim; i++)
   {
-    for (size_t j = 0; j < matrixN; j++)
+    for (size_t j = 0; j < matrixDim; j++)
     {
-      smoothedMatrix[i * matrixN + j] = sumClose(matrix, i, j, matrixN);
+      smoothedMatrix[i * matrixDim + j] = sumClose(matrix, i, j, matrixDim);
     }
   }
 }

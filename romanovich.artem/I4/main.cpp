@@ -81,8 +81,8 @@ int main(int argc, char ** argv)
       std::cerr << "Matrix dimension determination is impossible.\n";
       return 2;
     }
-    size_t matrixN = rows;
-    size_t matrixSize = matrixN * matrixN;
+    size_t matrixDim = rows;
+    size_t matrixSize = matrixDim * matrixDim;
     int * matrix = nullptr;
     try
     {
@@ -114,9 +114,9 @@ int main(int argc, char ** argv)
       delete[] matrix;
       return 2;
     }
-    size_t countSuccEqEl = countSuccessionEqualElements(matrix, matrixN);
-    smoothMatrix(matrix, smoothedMatrix, matrixN);
-    size_t countUpMainDiag = countUpperMainDiagonal(smoothedMatrix, matrixN);
+    size_t countSuccEqEl = countSuccessionEqualElements(matrix, matrixDim);
+    smoothMatrix(matrix, smoothedMatrix, matrixDim);
+    size_t countUpMainDiag = countUpperMainDiagonal(smoothedMatrix, matrixDim);
     delete[] smoothedMatrix;
     delete[] matrix;
     fileOutput << countSuccEqEl << " " << countUpMainDiag;

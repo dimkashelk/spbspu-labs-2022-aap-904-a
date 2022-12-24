@@ -4,7 +4,7 @@
 #include "formNewStringVarFive.h"
 int main(int argc, char **argv)
 {
-  if(argc<3)
+  if(argc<2)
   {
     std::cerr<<"nooooooooooo"<<"\n";
     return -1;

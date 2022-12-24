@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-#include "cnt.max.elem.h"
-#include "left.shift.mover.h"
+#include "cnt_max_elem.h"
+#include "left_shift_mover.h"
 
 int main(int argc, char* argv[])
 {

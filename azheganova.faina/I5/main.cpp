@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstddef>
 #include "rowvalidation.h"
 
 int main()
@@ -39,5 +40,6 @@ int main()
   }
   cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
+  std::cout << std::boolalpha << isRealNumber(cstring) << '\n';
   delete [] cstring;
 }

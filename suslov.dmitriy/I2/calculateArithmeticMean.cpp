@@ -2,7 +2,6 @@
 #include <stdexcept>
 double calculateArithmeticMean(const int *arr, size_t size)
 {
-  size_t c = 0;
   if (size == 0)
   {
     throw std::runtime_error("Zero size");
@@ -11,7 +10,6 @@ double calculateArithmeticMean(const int *arr, size_t size)
   for (size_t i = 0; i < size; i += 2)
   {
     sum += arr[i];
-    c++;
   }
   return sum / ((size + 1) / 2);
 }

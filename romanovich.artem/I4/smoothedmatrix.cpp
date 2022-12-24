@@ -3,13 +3,13 @@ int sumClose(const int * matrix, const size_t row, const size_t column, const si
 {
   int sum_ = 0;
   int count = 0;
-  for (size_t k = (row>0) ? row-1 : row; k <= row+1; k++)
+  for (size_t k = (row > 0) ? row - 1 : row; k <= row + 1; k++)
   {
-    for (size_t l = (column>0) ? column-1 : column; l <= column+1; l++)
+    for (size_t l = (column > 0) ? column - 1 : column; l <= column + 1; l++)
     {
-      size_t elemIndex = k*matrixDim+l;
-      bool elemInMatrixRange = (elemIndex <= matrixDim*matrixDim);
-      bool elemNotCenterElem = !(k==row && l==column);
+      size_t elemIndex = k * matrixDim + l;
+      bool elemInMatrixRange = (elemIndex <= matrixDim * matrixDim);
+      bool elemNotCenterElem = !(k == row && l == column);
       bool kInRowRange = k < matrixDim;
       bool lInColumnRange = l < matrixDim;
       if (elemInMatrixRange && elemNotCenterElem && lInColumnRange && kInRowRange)

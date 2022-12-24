@@ -86,7 +86,7 @@ int main(int argc, char ** argv)
     int * matrix = nullptr;
     try
     {
-      matrix = new int[matrixSize];
+      matrix = new int[ matrixSize ];
     }
     catch (...)
     {
@@ -106,7 +106,7 @@ int main(int argc, char ** argv)
     int * smoothedMatrix = nullptr;
     try
     {
-      smoothedMatrix = new int[matrixSize];
+      smoothedMatrix = new int[ matrixSize ];
     }
     catch (...)
     {

@@ -8,13 +8,12 @@ char* deleteNumbers(char* destination,const char* source)
   size_t i = 0;
   while (source[i] != '\0')
   {
-    if (std::isdigit(source[i]))
+    if (!std::isdigit(source[i]))
     {
       destination[k] = source[i];
       ++k;
     }
     i++;
   }
-  destination[k]= '\0';
   return destination;
 }

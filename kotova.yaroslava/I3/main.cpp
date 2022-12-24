@@ -2,47 +2,49 @@
 #include <cctype>
 #include "DelNumbers.h"
 #include "RepLetters.h"
+#include "FormingCstring.h"
 
 int main()
 {
   size_t capacity = 10;
-  char* cstring = new char[capacity];
+  char * cstring1 = new char[capacity];
   size_t size = 0;
-  char* newstr = new char[capacity + 20];
-  std::cin >> std::noskipws;
-  do
+  cstring1 = formingCstring(capacity, cstring1, size);
+  if (cstring1[0] == '\0')
   {
-    if (size == capacity)
-    {
-      try
-      {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete[] cstring;
-        cstring = newstr;
-        capacity += 20;
-      }
-      catch (...)
-      {
-        delete[] cstring;
-        return 1;
-      }
-    }
-    std::cin >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
-  if (!std::cin && !size)
-  {
-    std::cout << "error";
-    delete[] cstring;
+    std::cout "Empty string";
+    delete[] cstring1;
     return 1;
   }
-  cstring[size - 1] = '\0';
-  cstring = newstr;
-  std::cout << cstring << "\n";
-  std::cout << replacingLetters(cstring, newstr) << " ";
-  std::cout << deleteNumbers(cstring, newstr) << " ";
-  delete[] cstring;
+  cstring1[capacity - 1] = '\0';
+  char* destination1 = new char [capacity];
+  destination1[0] = '\0';
+  try
+  {
+    destination1 = deleteNumbers(cstring1, destination1);
+    std::cout<< destination1 << " ";
+    delete[] destination1;
+  }
+  catch(const std::exception& e)
+  {
+    std::cout << e.what();
+    delete[] destination1, cstring1;
+    return 1;
+  }
+  char * cstring2 = new char[capacity]
+  cstring2 = formingCstring(capacity, cstring2, size);
+  cstring2[capacity - 1] = '\0';
+  try
+  {
+    destination2 = replacingLetters(cstring2, destination2)
+    std::cout << destination2 << " ";
+    delete[] destination2;
+  }
+  catch(const std::exception& e)
+  {
+    std::cout << e.what();
+    delete[] destination2, cstring2;
+    return 1;
+  }
+  return 0;
 }

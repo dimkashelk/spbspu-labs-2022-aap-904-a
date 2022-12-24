@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
+#include <cstring>
 #include "countColumnNoZero.h"
 #include "countMonoIncreaceLines.h"
 
@@ -30,9 +31,9 @@ int main(int argc, char* argv[])
 
   size_t line = 0, column = 0;
 
-  if (argv[1][0] == '1')
+  if (!std::strcmp(argv[1], "1"))
   {
-    int matrix1[100];
+    int matrix1[1000];
 
     fileInp >> line >> column;
     if (!fileInp)
@@ -67,7 +68,7 @@ int main(int argc, char* argv[])
     fileOut << countColumnNoZero(matrix1, line, column) << '\n';
     fileOut << countMonoIncreaceLines(matrix1, line, column) << '\n';
   }
-  else if (argv[1][0] == '2')
+  else if (!std::strcmp(argv[1], "2"))
   {
     fileInp >> line >> column;
     if (!fileInp)

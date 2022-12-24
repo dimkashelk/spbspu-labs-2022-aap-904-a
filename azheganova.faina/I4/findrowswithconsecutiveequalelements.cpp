@@ -1,6 +1,6 @@
 #include "findrowswithconsecutiveequalelements.h"
 
-size_t findRowsWithConsecutiveEqualElements( int* arr, size_t m, size_t n)
+size_t findRowsWithConsecutiveEqualElements(const int* arr, const size_t m, const size_t n)
 {
   size_t count = 0;
   size_t maxcount = 0;

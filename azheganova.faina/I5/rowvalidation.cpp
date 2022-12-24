@@ -12,3 +12,7 @@ bool isNonZero(char c)
 {
   return isDigit(c) && (c != '0');
 }
+bool isEnd(char c)
+{
+  return (c == '\0');
+}

@@ -9,7 +9,7 @@ bool isDigit(char c)
 {
   return std::isdigit(c);
 }
-bool isNonZero(char c)
+bool isNotZero(char c)
 {
   return isDigit(c) && (c != '0');
 }
@@ -25,25 +25,33 @@ bool isE(char c)
 {
   return (c == 'E');
 }
-bool isUnsignedInteger(const char * data)
+bool continueWithDigit(const char * data)
 {
-  return isDigit(*data) || (isDigit(*data) && isUnsignedInteger(data + 1));
+  return isDigit(*data) && (continueWithDigit(data + 1) || continueWithDot(data + 1));
+}
+bool continueWithDot(const char * data)
+{
+  return isDot(*data);
+}
+bool continueWithUnsignedInteger(const char * data)
+{
+  return continueWithDigit(data) || (continueWithDigit(data) && continueWithUnsignedInteger(data + 1));
 }
 bool isOrder(const char * data)
 {
-  return isE(*data) && isSign(*(data + 1)) && isUnsignedInteger(data + 2);
+  return isE(*data) && isSign(*(data + 1)) && continueWithUnsignedInteger(data + 2);
 }
 bool isMantisaFirstPart(const char * data)
 {
-  return isDot(*data) && isUnsignedInteger(data + 1);
+  return isDot(*data) && continueWithUnsignedInteger(data + 1);
 }
 bool isMantisaSecondPart(const char * data)
 {
-  return isUnsignedInteger(data) && isDot(*(data + 1)) && isUnsignedInteger(data + 2);
+  return continueWithUnsignedInteger(data) && isDot(*(data + 1)) && continueWithUnsignedInteger(data + 2);
 }
 bool isMantisaThirdPart(const char * data)
 {
-  return isUnsignedInteger(data);
+  return continueWithUnsignedInteger(data);
 }
 bool isMantisa(const char * data)
 {

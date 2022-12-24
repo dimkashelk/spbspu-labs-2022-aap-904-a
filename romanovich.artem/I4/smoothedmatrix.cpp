@@ -17,10 +17,10 @@ int sumClose(const int *matrix, size_t row, size_t column, size_t matrixN)
         l--;
       }
       size_t elemIndex = k*matrixN+l;
-      bool elemInMatrixRange = (elemIndex >= 0) && (elemIndex <= matrixN*matrixN);
+      bool elemInMatrixRange = (elemIndex <= matrixN*matrixN);
       bool elemNotCenterElem = !(k==row && l==column);
-      bool kInRowRange = (0 <= k && k < matrixN);
-      bool lInColumnRange = (0 <= l && l < matrixN);
+      bool kInRowRange = k < matrixN;
+      bool lInColumnRange = l < matrixN;
       if (elemInMatrixRange && elemNotCenterElem && lInColumnRange && kInRowRange)
       {
         sum_ += matrix[elemIndex];

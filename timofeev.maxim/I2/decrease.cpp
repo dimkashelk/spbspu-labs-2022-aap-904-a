@@ -9,7 +9,7 @@ unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
   {
     return 0 ;
   }
-  for (size_t i = 0; i < size; ++i)
+  for (size_t i = 1; i < size; ++i)
   {
     if (arr[i - 1] > arr[i])
     {

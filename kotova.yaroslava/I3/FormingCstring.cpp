@@ -1,4 +1,4 @@
-#include "FormingCstring"
+#include "FormingCstring.h"
 
 char* formingCstring(char * cstring, size_t & capacity)
 {

@@ -26,10 +26,11 @@ int main(int argc, char *argv[])
   if (!std::cin)
   {
     std::cout << "Input error" << "\n";
-    return 0;
+    return 2;
   }
   if (line == 0)
   {
+    std::cout << "Input 0 i don't like it" << "\n";
     return 0;
   }
   std::srand(time(NULL));

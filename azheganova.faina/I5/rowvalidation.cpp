@@ -49,11 +49,11 @@ bool continueWithMantisaPartTwo(const char * data)
 {
   return continueWithDigit(data) && isDot(*(data + 1)) && continueWithDigit(data + 2);
 }
-bool continueWithMantisa(const char * data)
+bool isMantisa(const char * data)
 {
   return continueWithMantisaPartOne(data) || continueWithMantisaPartTwo(data) || continueWithDigit(data);
 }
 bool isFloat(const char * data)
 {
-  return ((continueWithMantisa(data) && continueWithOrder(data + 1)) || (isSign(*data) && continueWithMantisa(data + 1) && continueWithOrder(data + 2)));
+  return ((isMantisa(data) && continueWithOrder(data + 1)) || (isSign(*data) && isMantisa(data + 1) && continueWithOrder(data + 2)));
 }

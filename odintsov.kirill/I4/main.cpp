@@ -1,7 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "threerepeats.hpp"
+#include "threeRepeats.hpp"
+#include "diagonalSum.hpp"
 
 int main(int argc, char* argv[])
 {

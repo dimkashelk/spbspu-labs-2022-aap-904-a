@@ -62,5 +62,11 @@ unsigned odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t 
 
 unsigned odintsov::getRowAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
 {
-  return 0;
+  unsigned rowsThreeRepeat = 0;
+  for (size_t i = 0; i < rows; i++) {
+    if (isThreeRepeatsInRow(arr, rows, cols, i)) {
+      rowsThreeRepeat++;
+    }
+  }
+  return rowsThreeRepeat;
 }

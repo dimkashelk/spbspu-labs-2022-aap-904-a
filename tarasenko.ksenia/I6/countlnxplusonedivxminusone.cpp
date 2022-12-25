@@ -1,19 +1,16 @@
+#include "countlnxplusonedivxminusone.hpp"
 #include <cmath>
-#include <stdexcept>
-#include "pow.hpp"
+#include "lnxplusonedivxminusone.hpp"
 
-double ln(double x, double absError, unsigned numberMax)
+double countLnXPlusOneDivXMinusOne(double x, double absError, unsigned numberMax)
 {
-  if (x <= 2 || x >= 3)
-  {
-    throw std::invalid_argument("x out the interval (2; 3)");
-  }
   double sum = 0;
   double member = 0;
   unsigned number = 1;
+  LnXPlusOneDivXMinusOne ln(x);
   do
   {
-    member = 2 / ((2 * number - 1) * pow(x, 2 * number - 1));
+    member = ln();
     sum += member;
     number++;
   }

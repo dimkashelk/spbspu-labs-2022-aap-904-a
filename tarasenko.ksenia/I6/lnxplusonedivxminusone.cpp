@@ -1,11 +1,11 @@
 #include "lnxplusonedivxminusone.hpp"
-#include <cmath>
+#include <stdexcept>
 #include "pow.hpp"
 
 LnXPlusOneDivXMinusOne::LnXPlusOneDivXMinusOne(double x):
-  x_(x);
-  member_(0.0);
-  number_(1.0);
+  x_(x),
+  member_(0.0),
+  number_(1.0)
   {
     if (x <= 2 || x >= 3)
     {

@@ -1,6 +1,5 @@
 #ifndef LNXPLUSONEDIVXMINUSONE_HPP
 #define LNXPLUSONEDIVXMINUSONE_HPP
-#include <cstddef>
 
 class LnXPlusOneDivXMinusOne
 {
@@ -10,7 +9,7 @@ class LnXPlusOneDivXMinusOne
   private:
    double x_;
    double member_;
-   size_t number_;
-}
+   unsigned number_;
+};
 
 #endif

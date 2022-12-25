@@ -7,7 +7,6 @@ int main()
   size_t capacity = 10;
   char * cstring = new char[capacity];
   size_t size = 0;
-  std::cin >> std::noskipws;
   do
   {
     if (size == capacity)
@@ -31,7 +30,7 @@ int main()
     }
     std::cin >> cstring[size];
   }
-  while (std::cin && cstring[size++] != '\n');
+  while (std::cin);
   if (!std::cin && !size)
   {
     std::cout << "error";
@@ -39,7 +38,6 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  std::cout << cstring << "\n";
   std::cout << std::boolalpha << isFloat(cstring) << '\n';
   delete [] cstring;
 }

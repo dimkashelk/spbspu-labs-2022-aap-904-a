@@ -5,16 +5,13 @@
 #include "line_t.h"
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points(points),
-  size(size)
+  size(size),
+  triangles(new Triangle*[size])
 {
   if (containsThreePointsOnLine())
   {
     throw std::logic_error("3 or more points on one line here.......");
   }
-}
-Triangle **TriangulatePoints::operator()(size_t &new_size)
-{
-  Triangle **triangles = new Triangle*[size];
   size_t index = 0;
   while (size > 3)
   {
@@ -60,8 +57,12 @@ Triangle **TriangulatePoints::operator()(size_t &new_size)
     new_triangles[i] = triangles[i];
   }
   delete[] triangles;
-  new_size = index;
-  return new_triangles;
+  triangles = new_triangles;
+}
+Triangle TriangulatePoints::operator()() const
+{
+  Triangle triangle = **triangles;
+  return triangle;
 }
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {

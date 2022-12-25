@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 
   // Static array
   size_t arraySize1 = 10;
-  int array1[10] = {5, 2, 2, 2, 7, 7, 6, 9, 5, 2};
+  int array1[10] = {6, 2, 2, 2, 7, 7, 6, 9, 5, 2};
   // Task 6
   size_t maxCountSameNumbersNearby1 = getMaxCountSameNumbersSeq(array1, arraySize1);
   std::cout << "Array1. Count of same elements nearby: " << maxCountSameNumbersNearby1 << "\n";
@@ -40,6 +40,14 @@ int main(int argc, char **argv)
     for (size_t i = 0; i < arraySize2; i++) {
       array2[i] = rand() % 10;
     }
+
+
+    for (size_t i = 0; i < arraySize2; ++i) {
+      std::cout << array2[i] << " ";
+    }
+
+
+
     // Task 6
     size_t maxCountSameNumbersNearby2 = getMaxCountSameNumbersSeq(array2, arraySize2);
     std::cout << "Array2. Count of same elements nearby: " << maxCountSameNumbersNearby2 << "\n";

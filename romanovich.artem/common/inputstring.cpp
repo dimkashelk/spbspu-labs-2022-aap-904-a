@@ -17,7 +17,7 @@ char *inputString(std::istream &inputStr)
         char *extendedcstring = extendString(cstring, size, capacity + 20);
         delete[] cstring;
         cstring = extendedcstring;
-        delete[] extendedcstring;
+        extendedcstring = nullptr;
         capacity += 20;
       }
       catch (...)

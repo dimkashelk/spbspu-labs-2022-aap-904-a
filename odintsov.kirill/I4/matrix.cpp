@@ -6,18 +6,22 @@ int odintsov::getMatrixVal(const int* arr, size_t rows, size_t, size_t x, size_t
   return arr[y * rows + x];
 }
 
+size_t odintsov::countValRepeatsInCol(int val, const int* arr, size_t rows, size_t cols, size_t col) {
+  size_t count = 0;
+  for (size_t i = 0; i < rows; i++) {
+    if (val == getMatrixVal(arr, rows, cols, col, i)) {
+      count++;
+    }
+  }
+  return count;
+}
+
 bool odintsov::isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, size_t col)
 {
   for (size_t i = 0; i < rows - 2; i++) {
     int val = getMatrixVal(arr, rows, cols, col, i);
-    unsigned count = 1;
-    for (size_t j = i + 1; j < rows; j++) {
-      if (val == getMatrixVal(arr, rows, cols, col, j)) {
-        count++;
-        if (count == 3) {
-          return true;
-        }
-      }
+    if (countValRepeatsInCol(val, arr, rows, cols, col) >= 3) {
+      return true;
     }
   }
   return false;

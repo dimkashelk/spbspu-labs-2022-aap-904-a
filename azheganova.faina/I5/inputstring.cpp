@@ -28,14 +28,17 @@ char * inputString(std::istream & input)
       catch (...)
       {
         delete [] cstring;
+        throw;
       }
     }
     input >> cstring[size];
   }
-  while (input && cstring[size++] != '\n');
+  while (input && cstring[size++] != '\0');
   if (!input && !size)
   {
-    delete[] cstring;
+    delete [] cstring;
+    throw;
   }
+  cstring[size - 1] = '\0';
   return cstring;
 }

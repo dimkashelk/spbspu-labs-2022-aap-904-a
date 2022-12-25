@@ -37,6 +37,5 @@ char * inputString(std::istream & input)
   {
     delete[] cstring;
   }
-  cstring[size - 1] = '\0';
   return cstring;
 }

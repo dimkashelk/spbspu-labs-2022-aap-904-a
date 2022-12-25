@@ -1,17 +1,18 @@
 #include "CountPositiveCols.hpp"
 
-unsigned int count_positive_cols(int *array, unsigned int cols)
+size_t countPositiveCols(const int *array, size_t cols, size_t rows)
 {
-
-  unsigned int positive_cols = 0;
-
-  for (unsigned int i = 0; i < cols; i++)
+  size_t positive_cols = 0;
+  for (size_t i = 0; i < cols; i++)
   {
-    if (array[i] > 0 && array[i + 3] > 0 && array[i + 6] > 0)
+    for (size_t j = 0; j < rows; j++)
     {
-      positive_cols++;
+      if (array[cols * i + j] > 0)
+      {
+        positive_cols++;
+        break;
+      }
     }
   }
-
   return positive_cols;
 }

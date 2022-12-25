@@ -8,25 +8,27 @@ int main(int argc, char *argv[])
 {
   if (argc != 4)
   {
-    std::cout << "Error, 4 arguments expected\n";
+    std::cerr << "Error, 4 arguments expected\n";
     return 1;
   }
-
-  unsigned int cols = 0;
-  unsigned int rows = 0;
+  size_t cols = 0;
+  size_t rows = 0;
   std::ifstream in(argv[2]);
-  in >> cols >> rows;
-
-  if (!strcmp(argv[1], "1"))
+  in >> cols;
+  in >> rows;
+  if (!in)
   {
-    if (!in)
+    std::cout << "Error while reading file\n";
+    return 1;
+  }
+  if (!std::strcmp(argv[1], "1"))
+  {
+    int array[1000];
+    if (rows * cols > 1000)
     {
-      std::cout << "Error while reading file\n";
+      std::cout << "Error, too big matrix\n";
       return 1;
     }
-
-    int array[1000];
-
     for (size_t i = 0; i < cols; i++)
     {
       for (size_t j = 0; j < rows; j++)
@@ -39,40 +41,66 @@ int main(int argc, char *argv[])
         }
       }
     }
-
-    std::cout << count_positive_cols(array, cols) << " positive cols in the matrix\n";
-
-  }
-  if (!strcmp(argv[1], "2"))
-  {
-    int *arr = new int[cols * rows];
-    for (unsigned int i = 0; i < cols; i++)
+    std::ofstream out(argv[3]);
+    out << countPositiveCols(array, cols, rows);
+    if (!out)
     {
-      for (unsigned int j = 0; j < rows; j++)
+      std::cout << "Error while writing file\n";
+    }
+  }
+  else if (!std::strcmp(argv[1], "2"))
+  {
+    int *dyn_array = nullptr;
+    try
+    {
+      dyn_array = new int[cols * rows];
+    }
+    catch (const std::bad_alloc &e)
+    {
+      std::cout << "Error:\n";
+      std::cout << e.what();
+      return 1;
+    }
+    for (size_t i = 0; i < cols; i++)
+    {
+      for (size_t j = 0; j < rows; j++)
       {
-        in >> arr[i * cols + j];
+        in >> dyn_array[i * cols + j];
         if (!in)
         {
           std::cout << "Error while reading file\n";
-          delete[] arr;
+          delete[] dyn_array;
           return 1;
         }
       }
     }
-    unsigned int index_row = 1;
-    unsigned int index_col = 1;
-
-    arr = make_matrix_wave_increment(arr, rows, cols, index_row, index_col);
-
-    for (unsigned int i = 0, str = 0; i < cols * rows; i++)
+    size_t index_row = 1;
+    size_t index_col = 1;
+    try
     {
-      std::cout << arr[i] << " ";
-      str++;
-      if (str == 3)
+      dyn_array = makeMatrixWaveIncrement(dyn_array, rows, cols, index_row, index_col);
+    }
+    catch (const std::invalid_argument &e)
+    {
+      delete[] dyn_array;
+      std::cout << "Error:\n";
+      std::cout << e.what();
+      return 0;
+    }
+    std::ofstream out(argv[3]);
+    for (size_t i = 0; i < cols; i++)
+    {
+      for (size_t j = 0; j < rows; j++)
       {
-        std::cout << "\n";
-        str = 0;
+        out << dyn_array[cols * i + j];
+        i == (cols * rows - 1) ? out << "" : out << ' ';
+        if (!in)
+        {
+          std::cout << "Error while writing file\n";
+          return 1;
+        }
       }
     }
+    delete[] dyn_array;
   }
 }

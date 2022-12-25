@@ -31,8 +31,9 @@ int main()
   catch (const std::bad_alloc &e)
   {
     std::cout << "Error:\n" << e.what();
+    delete[] cstring;
     return 1;
   }
-  std::cout << isExpression(cstring);
+  std::cout << std::boolalpha << isExpression(cstring);
   delete[] cstring;
 }

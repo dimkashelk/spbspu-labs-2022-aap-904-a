@@ -4,16 +4,16 @@
 #include <limits>
 #include "line_t.h"
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
-  points(points),
-  size(size),
-  triangles(new Triangle*[size])
+  points_(points),
+  size_(size),
+  triangles_(new Triangle*[size_])
 {
   if (containsThreePointsOnLine())
   {
-    throw std::logic_error("3 or more points on one line here.......");
+    throw std::logic_error("3 or more points_ on one line here.......");
   }
   size_t index = 0;
-  while (size > 3)
+  while (size_ > 3)
   {
     point_t *point = points;
     size_t ind = 0;
@@ -26,7 +26,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
           Triangle *triangle = new Triangle(*point, *(point + 1), *(point + 2));
           if (!containsAnyPoint(*triangle))
           {
-            triangles[index] = triangle;
+            triangles_[index] = triangle;
             index++;
             removePoint(ind + 1);
           }
@@ -50,24 +50,24 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
     }
   }
   Triangle *triangle = new Triangle(*points, *(points + 1), *(points + 2));
-  triangles[index] = triangle;
+  triangles_[index] = triangle;
   Triangle **new_triangles = new Triangle*[index];
   for (size_t i = 0; i < index; i++)
   {
-    new_triangles[i] = triangles[i];
+    new_triangles[i] = triangles_[i];
   }
-  delete[] triangles;
-  triangles = new_triangles;
-  size = index;
+  delete[] triangles_;
+  triangles_ = new_triangles;
+  size_ = index;
 }
 Triangle TriangulatePoints::operator()() const
 {
-  Triangle triangle = **triangles;
+  Triangle triangle = **triangles_;
   return triangle;
 }
 size_t TriangulatePoints::getSize() const
 {
-  return size;
+  return size_;
 }
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {
@@ -83,9 +83,9 @@ double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 bool TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
 {
   bool contains_any_point = false;
-  for (size_t r = 0; r < size; r++)
+  for (size_t r = 0; r < size_; r++)
   {
-    contains_any_point = triangle.containsPoint(points[r]);
+    contains_any_point = triangle.containsPoint(points_[r]);
     if (contains_any_point)
     {
       break;
@@ -95,28 +95,28 @@ bool TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
 }
 void TriangulatePoints::removePoint(size_t ind)
 {
-  if (size == 0)
+  if (size_ == 0)
   {
     return;
   }
-  for (size_t i = ind; i < size - 1; i++)
+  for (size_t i = ind; i < size_ - 1; i++)
   {
-    points[i] = points[i + 1];
+    points_[i] = points_[i + 1];
   }
-  size--;
+  size_--;
 }
 bool TriangulatePoints::containsThreePointsOnLine()
 {
   constexpr double error = std::numeric_limits< double >::epsilon();
   bool contains_three_points_on_line = false;
-  for (size_t i = 0; i < size - 2 && !contains_three_points_on_line; i++)
+  for (size_t i = 0; i < size_ - 2 && !contains_three_points_on_line; i++)
   {
-    for (size_t j = i + 1; j < size - 1 && !contains_three_points_on_line; j++)
+    for (size_t j = i + 1; j < size_ - 1 && !contains_three_points_on_line; j++)
     {
-      for (size_t k = j + 1; k < size && !contains_three_points_on_line; k++)
+      for (size_t k = j + 1; k < size_ && !contains_three_points_on_line; k++)
       {
-        line_t line(points[j], points[i]);
-        if (fabs(line.A * points[k].x + line.B * points[k].y + line.C) <= error)
+        line_t line(points_[j], points_[i]);
+        if (fabs(line.A * points_[k].x + line.B * points_[k].y + line.C) <= error)
         {
           contains_three_points_on_line = true;
         }

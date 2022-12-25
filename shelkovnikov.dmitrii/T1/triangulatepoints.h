@@ -11,9 +11,9 @@ public:
   Triangle operator()() const;
   size_t getSize() const;
 private:
-  point_t *points;
-  size_t size;
-  Triangle **triangles;
+  point_t *points_;
+  size_t size_;
+  Triangle **triangles_;
   double getMixedProduct(vector_t a, vector_t b) const;
   bool containsAnyPoint(const Triangle &triangle) const;
   void removePoint(size_t ind);

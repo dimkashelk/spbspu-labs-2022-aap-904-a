@@ -9,8 +9,8 @@ namespace odintsov {
   size_t countValRepeatsInRow(int val, const int* arr, size_t rows, size_t cols, size_t row);
   bool isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, size_t col);
   bool isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, size_t row);
-  size_t getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols);
-  size_t getRowAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols);
+  size_t countColsWithThreeRepeats(const int* arr, size_t rows, size_t cols);
+  size_t coutnRowsWithThreeRepeats(const int* arr, size_t rows, size_t cols);
 
 }
 

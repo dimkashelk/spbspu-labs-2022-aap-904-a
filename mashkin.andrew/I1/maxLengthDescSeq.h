@@ -2,5 +2,5 @@
 #define MAXLENGTHDESCSEQ_H
 #include <cstddef>
 
-void maxLengthDescSeq(int value, int& predValue, size_t& length, size_t& maxLength);
+void countMaxLengthDescSeq(int value, int& predValue, size_t& length, size_t& maxLength);
 #endif

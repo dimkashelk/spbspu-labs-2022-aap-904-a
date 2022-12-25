@@ -21,10 +21,11 @@ int main()
   size_t maxlength = 1;
   do
   {
-    maxLengthAfterMaxValue(value, maxValue, count, maxCount);
-    maxLengthDescSeq(value, predValue, length, maxlength);
+    countMaxLengthAfterMaxValue(value, maxValue, count, maxCount);
+    countMaxLengthDescSeq(value, predValue, length, maxlength);
     std::cin >> value;
-  } while (value && std::cin);
+  }
+  while (value && std::cin);
   if (!std::cin)
   {
     std::cout << "Inp error" << "\n";

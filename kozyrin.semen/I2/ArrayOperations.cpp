@@ -16,7 +16,7 @@ void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
     arr[i - offset] = arr[i];
   }
   j = 0;
-  for (size_t i = size - offset + 1; i <= size; i += 1) {
+  for (size_t i = size - offset + 1; i <= size; i++) {
     arr[i] = temp[j];
     j++;
   }

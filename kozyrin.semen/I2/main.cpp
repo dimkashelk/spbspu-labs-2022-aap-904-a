@@ -74,7 +74,8 @@ int main(int argc, char* argv[])
     delete[] arr3;
     fin >> size;
     if (!size) {
-      return 0;
+      std::cerr << "err";
+      return 1;
     }
   }
 }

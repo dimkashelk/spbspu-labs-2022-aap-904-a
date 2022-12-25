@@ -39,6 +39,13 @@ void Polygon::move(point_t point)
   vector_t direction(point, center);
   move(direction.x, direction.y);
 }
+void Polygon::move(double delta_x, double delta_y)
+{
+  for (size_t i = 0; i < count; i++)
+  {
+    triangles[i]->move(delta_x, delta_y);
+  }
+}
 point_t Polygon::getCenterOfGravity() const
 {
   double x_sum = 0;

@@ -2,7 +2,8 @@
 #include <charArray.h>
 #include "expressionProcessing.h"
 
-int main() {
+int main()
+{
   const size_t basicCapacity = 10;
   const size_t basicAddition = 10;
   turkin::CharArray array(basicCapacity);

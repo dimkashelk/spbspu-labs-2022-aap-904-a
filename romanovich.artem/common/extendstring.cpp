@@ -11,7 +11,5 @@ char *extendString(char *cstring, size_t size, size_t capacity)
   {
     *j = *i;
   }
-  delete[] cstring;
-  cstring = newstr;
-  return cstring;
+  return newstr;
 }

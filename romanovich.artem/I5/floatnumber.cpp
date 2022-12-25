@@ -30,8 +30,7 @@ bool isBaseUnsignedInteger(const char *data)
 }
 bool isBase(const char *data)
 {
-  return isLetterE(*data) &&
-         ((isNumberSign(*(data + 1)) && isBaseUnsignedInteger(data + 2)) || isBaseUnsignedInteger(data + 1));
+  return isLetterE(*data) && ((isNumberSign(*(data + 1)) && isBaseUnsignedInteger(data + 2)) || isBaseUnsignedInteger(data + 1));
 }
 bool isSignificandUnsignedInteger(const char *data)
 {

@@ -1,7 +1,7 @@
 #include "inputstring.h"
-#include "extendstring.h"
 #include <iostream>
 #include <stdexcept>
+#include <extendstring.h>
 char *inputString(std::istream &inputStr)
 {
   size_t capacity = 10;
@@ -14,7 +14,10 @@ char *inputString(std::istream &inputStr)
     {
       try
       {
-        cstring = extendString(cstring, size, capacity + 20);
+        char *extendedcstring = extendString(cstring, size, capacity + 20);
+        delete[] cstring;
+        cstring = extendedcstring;
+        delete[] extendedcstring;
         capacity += 20;
       }
       catch (...)

@@ -1,6 +1,6 @@
 #include <iostream>
-#include "extendstring.h"
-#include "inputstring.h"
+#include <extendstring.h>
+#include <inputstring.h>
 #include "floatnumber.h"
 int main()
 {

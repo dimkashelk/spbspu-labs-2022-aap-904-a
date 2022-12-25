@@ -1,6 +1,6 @@
 #include <cstddef>
 
-unsigned getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
+unsigned odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
 {
   unsigned colsThreeRepeat = 0;
   for (size_t i = 0; i < cols; i++) {
@@ -24,7 +24,7 @@ unsigned getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
   return colsThreeRepeat;
 }
 
-unsigned getRowAmtThreeRepeatVals(const int*, size_t, size_t)
+unsigned odintsov::getRowAmtThreeRepeatVals(const int*, size_t, size_t)
 {
   return 0;
 }

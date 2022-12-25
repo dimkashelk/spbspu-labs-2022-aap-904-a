@@ -7,10 +7,15 @@ int main()
   unsigned numberMax = 0;
   const double step = 0.2;
   const double absError = 0.00001;
-  std::cin >> numberMax >> leftBorder >> rightBorder;
+  std::cin >> leftBorder >> rightBorder >> numberMax;
   if (!std::cin)
   {
     std::cout << "Error\n";
+    return 1;
+  }
+  if (leftBorder >= rightBorder)
+  {
+    std::cout << "Error: the interval is set incorrectly\n";
     return 1;
   }
   try

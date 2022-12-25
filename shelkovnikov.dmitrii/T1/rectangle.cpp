@@ -30,3 +30,7 @@ void Rectangle::scale(double k)
   rectangle.width *= k;
   rectangle.height *= k;
 }
+Shape *Rectangle::clone() const
+{
+  return new Rectangle(rectangle);
+}

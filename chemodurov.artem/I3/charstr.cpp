@@ -2,6 +2,7 @@
 #include <cctype>
 #include <stdexcept>
 
+<<<<<<< HEAD
 char * chemodurov::extendCString(const char * c_str, size_t cap, size_t new_cap)
 {
   if (new_cap < cap)
@@ -20,6 +21,8 @@ char * chemodurov::extendCString(const char * c_str, size_t cap, size_t new_cap)
   return new_str;
 }
 
+=======
+>>>>>>> master
 char * chemodurov::addNumbersToFirst(char * str_res, const char * str_fst, const char * str_sec)
 {
   auto j = str_res;

@@ -1,5 +1,9 @@
 #include <iostream>
+<<<<<<< HEAD
 #include "extendcstring.hpp"
+=======
+#include <extendcstring.hpp>
+>>>>>>> master
 #include "deletelatinletters.hpp"
 #include "replacesetchar.hpp"
 

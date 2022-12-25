@@ -12,8 +12,13 @@ int main(int argc, char* argv[])
     return 1;
   }
 
+<<<<<<< HEAD
   const size_t size1 = 10;
   int arr1 [size1] = {0, 2, 4, 9, 6, 2, -10, 8, 9, 1};
+=======
+  constexpr size_t size1 = 10;
+  int arr1[size1] = {1, 3, 24, 3, 0, 4, 3, 10 , 24, 12};
+>>>>>>> master
   std::cout << get_count_max_element(arr1, size1) << "\n";
   int* border1 = partition_by_even(arr1, size1);
   std::cout << *border1 << "\n";
@@ -22,12 +27,12 @@ int main(int argc, char* argv[])
   std::cin >> size2;
   if (!std::cin)
   {
-    std::cout << "Input error \n";
+    std::cerr << "Input error \n";
     return 1;
   }
   if (size2 > 0)
   {
-    srand(time(0));
+    std::srand(time(0));
     int* arr2 = new int[size2];
     for (size_t i = 0; i < size2; i++)
     {

@@ -1,8 +1,14 @@
 #include <iostream>
+<<<<<<< HEAD
+=======
+#include <extendCString.h>
+#include <getCString.h>
+>>>>>>> master
 #include "charstr.h"
 
 int main()
 {
+<<<<<<< HEAD
   size_t capacity = 20;
   char * c_string = new char[capacity];
   c_string[0] = '\0';
@@ -41,6 +47,24 @@ int main()
   }
   c_string[size - 1] = '\0';
 
+=======
+  char * c_string = nullptr;
+  try
+  {
+    c_string = chemodurov::getCString(std::cin);
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
+  size_t size = 0;
+  for (auto i = c_string; *i != '\0'; ++i)
+  {
+    size++;
+  }
+  size++;
+>>>>>>> master
   char * other_string = nullptr;
   const size_t other_size = 5;
   try

@@ -63,6 +63,10 @@ void Polygon::scale(double k)
     triangles_[i]->scale(k);
   }
 }
+Shape *Polygon::clone() const
+{
+  return new Polygon(*this);
+}
 point_t Polygon::getCenterOfGravity() const
 {
   double x_sum = 0;

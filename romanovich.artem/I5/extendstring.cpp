@@ -2,7 +2,7 @@
 #include <stdexcept>
 char *extendString(char *cstring, size_t size, size_t capacity)
 {
-  if (size < capacity)
+  if (capacity < size)
   {
     throw std::invalid_argument("Expansion is impossible.");
   }

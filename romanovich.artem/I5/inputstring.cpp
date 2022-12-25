@@ -14,7 +14,8 @@ char *inputString(std::istream &inputStr)
     {
       try
       {
-        cstring = extendString(cstring, capacity, size + 10);
+        cstring = extendString(cstring, size, capacity + 20);
+        capacity += 20;
       }
       catch (...)
       {

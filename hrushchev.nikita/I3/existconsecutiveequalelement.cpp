@@ -1,7 +1,7 @@
 #include "existconsecutiveequalelement.hpp"
 #include <cstddef>
 
-bool exist_consecutive_equal_element(const char* source)
+bool existConsecutiveEqualElement(const char* source)
 {
   if ((source == nullptr) || (source[0] == '\0'))
   {

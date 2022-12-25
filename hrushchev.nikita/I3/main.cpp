@@ -72,7 +72,7 @@ int main()
     united_string = new char[size + rand_size];
     united_string = uniteString(united_string, c_string, rand_string);
     std::cout << united_string << '\n';
-    std::cout << exist_consecutive_equal_element(united_string) << "\n";
+    std::cout << existConsecutiveEqualElement(united_string) << "\n";
   }
   catch (const std::bad_alloc& e)
   {

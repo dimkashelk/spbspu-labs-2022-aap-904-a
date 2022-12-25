@@ -1,5 +1,6 @@
 #include "ArrayOperations.h"
 #include <iostream>
+#include <limits>
 
 void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
 {
@@ -8,11 +9,11 @@ void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
   int* temp = new int[size]{0};
 
   int j = 0;
-  for (size_t i = n - 1; i < m; i++) {
+  for (size_t i = n; i <= m; i++) {
     temp[j] = arr[i];
     j++;
   }
-  for (size_t i = m; i <= size; i++) {
+  for (size_t i = m + 1; i <= size; i++) {
     arr[i - offset] = arr[i];
   }
   j = 0;
@@ -22,4 +23,17 @@ void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
   }
 
   delete[] temp;
+}
+
+int maxEven(const int* arr, size_t size)
+{
+  int max = std::numeric_limits< int >::min();
+
+  for (size_t i = 1; i <= size; i += 2) {
+    if (arr[i] > max) {
+      max = arr[i];
+    }
+  }
+
+  return max;
 }

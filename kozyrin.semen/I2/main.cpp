@@ -15,8 +15,8 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  unsigned int n = 2;
-  unsigned int m = 4;
+  unsigned int n = 0;
+  unsigned int m = 1;
   size_t size = 0;
 
   std::ifstream fin(argv[1]);
@@ -28,7 +28,6 @@ int main(int argc, char* argv[])
     std::cout << "Error while reading the file...";
     return 1;
   }
-
   fin >> size;
   if (fin.eof()) {
     std::cerr << "Empty file";

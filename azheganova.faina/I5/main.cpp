@@ -40,6 +40,6 @@ int main()
   }
   cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
-  std::cout << std::boolalpha << isRealNumber(cstring) << '\n';
+  std::cout << std::boolalpha << isFloat(cstring) << '\n';
   delete [] cstring;
 }

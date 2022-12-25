@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
       fileOut.close();
       return 1;
     }
-    if (line * column > 100)
+    if (line * column > 1000)
     {
       std::cout << "too many val" << '\n';
       fileInp.close();

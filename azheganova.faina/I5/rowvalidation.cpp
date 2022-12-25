@@ -25,39 +25,33 @@ bool isE(char c)
 {
   return (c == 'E');
 }
-bool continueWithDigit(const char * data)
+bool continueWithNextDigit(const char * data)
 {
-  return isDigit(*data) && (continueWithDigit(data + 1) || continueWithDot(data + 1));
-}
-bool continueWithDot(const char * data)
-{
-  return isDot(*data);
+  return isDigit(*data) && (continueWithNextDigit(data + 1) || isEnd(*(data + 1)));
 }
 bool continueWithUnsignedInteger(const char * data)
 {
-  return continueWithDigit(data) || (continueWithDigit(data) && continueWithUnsignedInteger(data + 1));
+  return isDigit(*data) && (isDigit(*(data + 1)) || continueWithUnsignedInteger(data + 1));
 }
-bool isOrder(const char * data)
+bool continueWithOrder(const char * data)
 {
-  return isE(*data) && isSign(*(data + 1)) && continueWithUnsignedInteger(data + 2);
+  return isE(*data) && isSign(*(data + 1)) && continueWithNextDigit(data + 2);
 }
-bool isMantisaFirstPart(const char * data)
+bool continueWithDotAndUnsignedDigit(const char * data)
 {
-  return isDot(*data) && continueWithUnsignedInteger(data + 1);
+  return isDot(*data) && continueWithUnsignedInteger(data + 1 );
 }
-bool isMantisaSecondPart(const char * data)
+bool continueWithUnsignedDigitDotAndUnsignedDigit(const char * data)
 {
   return continueWithUnsignedInteger(data) && isDot(*(data + 1)) && continueWithUnsignedInteger(data + 2);
 }
-bool isMantisaThirdPart(const char * data)
-{
-  return continueWithUnsignedInteger(data);
-}
 bool isMantisa(const char * data)
 {
-  return isMantisaFirstPart(data) || isMantisaSecondPart(data) || isMantisaThirdPart(data);
+  return continueWithDotAndUnsignedDigit(data) || continueWithUnsignedDigitDotAndUnsignedDigit(data) || continueWithUnsignedInteger (data);
 }
-bool isRealNumber(const char * data)
+bool isFloat(const char * data)
 {
-  return (isMantisa(data) && isOrder(data + 1)) || (isSign(*data) && isMantisa(data + 1) && isOrder(data + 2));
+  return ((isMantisa(data) && continueWithOrder(data + 1)) || (isSign(*data) && isMantisa(data + 1) && continueWithOrder(data + 2)));
 }
+
+

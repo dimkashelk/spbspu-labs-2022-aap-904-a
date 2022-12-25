@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include "rowvalidation.h"
-#include "inputString.h"
+#include "inputstring.h"
 
 int main()
 {

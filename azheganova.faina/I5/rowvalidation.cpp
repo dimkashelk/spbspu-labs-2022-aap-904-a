@@ -29,23 +29,29 @@ bool continueWithNextDigit(const char * data)
 {
   return isDigit(*data) && (continueWithNextDigit(data + 1) || isEnd(*(data + 1)));
 }
+bool continueWithUnsignedInteger(const char * data)
+{
+  return isDigit(*data) && (isDigit(*(data + 1)) || continueWithUnsignedInteger(data + 1));
+}
 bool continueWithOrder(const char * data)
 {
   return isE(*data) && isSign(*(data + 1)) && continueWithNextDigit(data + 2);
 }
 bool continueWithDotAndUnsignedDigit(const char * data)
 {
-  return isDot(*data) && continueWithNextDigit(data + 1);
+  return isDot(*data) && continueWithUnsignedInteger(data + 1 );
 }
 bool continueWithUnsignedDigitDotAndUnsignedDigit(const char * data)
 {
-  return continueWithNextDigit(data) && isDot(*(data + 1)) && continueWithNextDigit(data + 2);
+  return continueWithUnsignedInteger(data) && isDot(*(data + 1)) && continueWithUnsignedInteger(data + 2);
 }
 bool isMantisa(const char * data)
 {
-  return continueWithDotAndUnsignedDigit(data) || continueWithUnsignedDigitDotAndUnsignedDigit(data) || continueWithNextDigit(data);
+  return continueWithDotAndUnsignedDigit(data) || continueWithUnsignedDigitDotAndUnsignedDigit(data) || continueWithUnsignedInteger (data);
 }
 bool isFloat(const char * data)
 {
   return ((isMantisa(data) && continueWithOrder(data + 1)) || (isSign(*data) && isMantisa(data + 1) && continueWithOrder(data + 2)));
 }
+
+

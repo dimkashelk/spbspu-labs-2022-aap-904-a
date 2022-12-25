@@ -35,7 +35,9 @@ rectangle_t Polygon::getFrameRect() const
 }
 void Polygon::move(point_t point)
 {
-
+  point_t center = getCenterOfGravity();
+  vector_t direction(point, center);
+  move(direction.x, direction.y);
 }
 point_t Polygon::getCenterOfGravity() const
 {

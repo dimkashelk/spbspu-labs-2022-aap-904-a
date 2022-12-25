@@ -5,31 +5,6 @@
 
 int main(int argc, char* argv[])
 {
-  unsigned int size = 7;
-  unsigned int n = 2;
-  unsigned int m = 4;
-
-  //Task 1
-  int arr1[] = { -5, 3, -8, 5, 5, -8, 9 };
-
-  //std::cout << "Max number on even position: " << maxEven(arr1, size) << '\n';
-  shiftByIndexes(arr1, size, n, m);
-  //printArray(arr1, size);
-
-  //Task 2
-  std::cin >> size;
-  if (!size) {
-    return 0;
-  }
-  int* arr2 = new int[size]{0};
-  randomizeArray(arr2, size);
-
-  //std::cout << "Max number on even position: " << maxEven(arr2, size) << '\n';
-  shiftByIndexes(arr2, size, n, m);
-  //printArray(arr2, size);
-
-  delete[] arr2;
-
   //Task 3
   if (argc > 2) {
     std::cerr << "Too many parameters";
@@ -40,12 +15,15 @@ int main(int argc, char* argv[])
     return 1;
   }
 
+  unsigned int n = 2;
+  unsigned int m = 4;
+  size_t size = 0;
+
   std::ifstream fin(argv[1]);
   if (!fin.is_open()) {
     std::cerr << "File could not be opened";
     return 1;
   }
-  size = 0;
   fin >> size;
   if (!size) {
     std::cerr << "Empty file";
@@ -74,8 +52,29 @@ int main(int argc, char* argv[])
     delete[] arr3;
     fin >> size;
     if (!size) {
-      std::cerr << "err";
-      return 1;
+      return 0;
     }
   }
+
+  size = 7;
+  //Task 1
+  int arr1[] = { -5, 3, -8, 5, 5, -8, 9 };
+
+  //std::cout << "Max number on even position: " << maxEven(arr1, size) << '\n';
+  shiftByIndexes(arr1, size, n, m);
+  //printArray(arr1, size);
+
+  //Task 2
+  std::cin >> size;
+  if (!size) {
+    return 0;
+  }
+  int* arr2 = new int[size]{0};
+  randomizeArray(arr2, size);
+
+  //std::cout << "Max number on even position: " << maxEven(arr2, size) << '\n';
+  shiftByIndexes(arr2, size, n, m);
+  //printArray(arr2, size);
+
+  delete[] arr2;
 }

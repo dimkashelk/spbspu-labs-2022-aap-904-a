@@ -25,7 +25,7 @@ char *inputString(std::istream &inputStr)
     inputStr >> cstring[size];
   }
   while (inputStr && cstring[size++] != '\n');
-  if (!inputStr && !size)
+  if (inputStr && !size)
   {
     delete[] cstring;
     throw std::invalid_argument("Input incorrect.");

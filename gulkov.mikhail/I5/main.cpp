@@ -16,7 +16,7 @@ int main()
     std::cout << "Error:\n" << e.what();
     return 1;
   }
-  cstring[cstring_size] = '\0';
+  cstring[cstring_size] = '\n';
   try
   {
     cstring = make_cstring(cstring, cstring_size, cstring_capacity, std::cin);

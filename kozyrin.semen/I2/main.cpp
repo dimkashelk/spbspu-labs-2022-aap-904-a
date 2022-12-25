@@ -24,16 +24,20 @@ int main(int argc, char* argv[])
     std::cerr << "File could not be opened";
     return 1;
   }
+  if (!fin) {
+    std::cout << "Error while reading the file...";
+    return 1;
+  }
+
   fin >> size;
-  if (!size) {
+  if (fin.eof()) {
     std::cerr << "Empty file";
     return 1;
   }
 
   while (!fin.eof()) {
-    if (!fin) {
-      std::cout << "Error while reading the file...";
-      return 1;
+    if (!size) {
+      return 0;
     }
     int *arr3 = new int[size]{0};
 
@@ -51,9 +55,6 @@ int main(int argc, char* argv[])
 
     delete[] arr3;
     fin >> size;
-    if (!size) {
-      return 0;
-    }
   }
 
   size = 7;

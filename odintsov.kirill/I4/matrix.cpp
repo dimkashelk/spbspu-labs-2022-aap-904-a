@@ -12,9 +12,11 @@ bool odintsov::isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, siz
     int val = getMatrixVal(arr, rows, cols, col, i);
     unsigned count = 1;
     for (size_t j = i + 1; j < rows; j++) {
-      count++;
-      if (count == 3) {
-        return true;
+      if (val == getMatrixVal(arr, rows, cols, col, j)) {
+        count++;
+        if (count == 3) {
+          return true;
+        }
       }
     }
   }

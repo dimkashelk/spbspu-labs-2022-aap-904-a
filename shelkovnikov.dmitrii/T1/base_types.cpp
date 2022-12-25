@@ -12,6 +12,7 @@ point_t &point_t::operator=(const point_t point)
 {
   x = point.x;
   y = point.y;
+  return *this;
 }
 rectangle_t::rectangle_t(double x1, double y1, double x2, double y2):
   point((x1 + x2) / 2, (y1 + y2) / 2),

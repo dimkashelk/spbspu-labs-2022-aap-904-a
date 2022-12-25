@@ -1,5 +1,5 @@
-#ifndef METHODS_H
-#define METHODS_H
+#ifndef LAB2_H
+#define LAB2_H
 #include <cstddef>
 
 void count_of_maxes(const int* arr, size_t size, int& maximum, size_t& count_maximum);

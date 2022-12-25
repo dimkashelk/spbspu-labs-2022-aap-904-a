@@ -23,27 +23,15 @@ bool isID(char c)
 
 bool isMultiplier(const char * array)
 {
-  if (isSign(*array) || isEnd(*array))
-  {
-    return true;
-  }
-  return (isDigit(*array) || isID(*array)) && isMultiplier(++array);
+  return (isSign(*array) || isEnd(*array)) || ((isDigit(*array) || isID(*array)) && isMultiplier(++array));
 }
 
 bool isTerm(const char * array)
 {
-  if (isSign(*array) || isEnd(*array))
-  {
-    return true;
-  }
-  return isMultiplier(array) && isTerm(++array);
+  return (isSign(*array) || isEnd(*array)) || (isMultiplier(array) && isTerm(++array));
 }
 
 bool turkin::isExpression(const char * array)
 {
-  if (isEnd(*array))
-  {
-    return true;
-  }
-  return isTerm(array) && isExpression(++array);
+  return isEnd(*array) || (isTerm(array) && isExpression(++array));
 }

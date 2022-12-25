@@ -9,6 +9,7 @@ namespace chemodurov
   {
    public:
     Rectangle(chemodurov::point_t left_down, chemodurov::point_t right_up);
+    ~Rectangle() = default;
     double getArea() const;
     chemodurov::rectangle_t getFrameRect() const;
     void move(chemodurov::point_t position);

@@ -6,7 +6,12 @@ Polygon::Polygon(point_t *points, size_t size):
   count_(0)
 {
   TriangulatePoints triangulatePoints(points, size);
-  triangles_ = triangulatePoints(count_);
+  count_ = triangulatePoints.getSize();
+  for (size_t i = 0; i < count_; i++)
+  {
+    Triangle triangle = triangulatePoints();
+    triangles_[i] = &triangle;
+  }
 }
 double Polygon::getArea() const
 {

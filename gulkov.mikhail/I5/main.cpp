@@ -30,7 +30,8 @@ int main()
   }
   catch (const std::bad_alloc &e)
   {
-    std::cout << "Error:\n" << e.what();
+    std::cout << "Error:\n";
+    std::cout << e.what();
     delete[] cstring;
     return 1;
   }

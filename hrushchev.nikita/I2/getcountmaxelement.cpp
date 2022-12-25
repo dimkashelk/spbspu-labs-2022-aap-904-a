@@ -8,11 +8,7 @@ size_t get_count_max_element(const int* arr, const size_t size)
   }
 
   int max_element = arr[0];
-<<<<<<< HEAD
-  size_t count_max_element = 0;
-=======
   size_t count_max_element = 1;
->>>>>>> master
   for (size_t i = 1; i < size; i++)
   {
     if (arr[i] > max_element)

@@ -1,11 +1,12 @@
 #include <iostream>
 #include "unitestring.hpp"
 #include "existconsecutiveequalelement.hpp"
+#include "generatealphabeticchar.hpp"
 
 int main()
 {
   size_t capacity = 10;
-  char* cstring = new char[capacity];
+  char* c_string = new char[capacity];
   size_t size = 0;
 
   std::cin >> std::noskipws;
@@ -15,68 +16,73 @@ int main()
     {
       try
       {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+        char* new_str = new char[capacity + 20];
+        for (auto i = c_string, j = new_str; i != c_string + size; ++i, ++j)
         {
           *j = *i;
         }
-        delete[] cstring;
-        cstring = newstr;
+        delete[] c_string;
+        c_string = new_str;
         capacity += 20;
       }
       catch (...)
       {
-        delete[] cstring;
+        delete[] c_string;
         return 1;
       }
     }
-    std::cin >> cstring[size];
+    std::cin >> c_string[size];
   }
-  while (std::cin && cstring[size++] != '\n');
+  while (std::cin && c_string[size++] != '\n');
 
-  if (size == 1)
+  if (size <= 1)
   {
-    std::cerr << "Empty string\n";
-    delete[] cstring;
+    std::cerr << "Empty input\n";
+    delete[] c_string;
     return 1;
   }
-  cstring[size - 1] = '\0';
-  std::cout << cstring << "\n";
+  c_string[size - 1] = '\0';
+  std::cout << c_string << "\n";
 
+  std::srand(time(0));
+  const size_t rand_size = 10 + std::rand() % 30;
   char* rand_string = nullptr;
-  char* new_string = nullptr;
+
   try
   {
-    std::srand(time(0));
-    const size_t rand_size = 10 + std::rand() % 30;
-    char* rand_string = new char[rand_size];
+    rand_string = new char[rand_size];
     for (size_t i = 0; i < rand_size; i++)
     {
-      rand_string[i] = static_cast< char >(64 + (std::rand() % 64));
+      rand_string[i] = generateAlphabeticChar();
     }
+    rand_string[rand_size - 1] = '\0';
     std::cout << rand_string << "\n";
-    std::cout << exist_consecutive_equal_element(rand_string) << "\n";
-    try
-    {
-      char* new_string = new char[size + rand_size];
-      new_string = unite_string(new_string, cstring, rand_string);
-      std::cout << new_string << "\n";
-    }
-    catch (const std::bad_alloc& e)
-    {
-      std::cout << e.what() << "\n";
-      delete[] cstring;
-      delete[] rand_string;
-      delete[] new_string;
-      return 1;
-    }
   }
   catch (const std::bad_alloc& e)
   {
-    std::cout << e.what() << "\n";\
-    delete[] cstring;
+    std::cerr << e.what() << "\n";\
+    delete[] c_string;
     delete[] rand_string;
-    delete[] new_string;
     return 1;
   }
+
+  char* united_string = nullptr;
+  try
+  {
+    united_string = new char[size + rand_size];
+    united_string = uniteString(united_string, c_string, rand_string);
+    std::cout << united_string << '\n';
+    std::cout << exist_consecutive_equal_element(united_string) << "\n";
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cerr << e.what() << "\n";
+    delete[] c_string;
+    delete[] rand_string;
+    delete[] united_string;
+  }
+
+  delete[] c_string;
+  delete[] rand_string;
+  delete[] united_string;
 }

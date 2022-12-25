@@ -18,6 +18,9 @@ int main(int argc, char* argv[])
 
   //Task 2
   std::cin >> size;
+  if (!size) {
+    return 0;
+  }
   int* arr2 = new int[size]{0};
   randomizeArray(arr2, size);
 

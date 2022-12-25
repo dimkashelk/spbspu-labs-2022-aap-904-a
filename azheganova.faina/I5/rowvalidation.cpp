@@ -25,21 +25,21 @@ bool continueWithNextDigit(const char * data)
 {
   return isDigit(*data) && (continueWithNextDigit(data + 1) || isEnd(*(data + 1)));
 }
-bool continueWithOrder(const char * data)
+bool finishedWithDigit(const char * data)
 {
-  return isE(*data) && (continueWithSign(data + 1) || continueWithNextDigit(data + 1));
-}
-bool continueWithSign(const char * data)
-{
-  return isSign(*data) && (continueWithSign(data + 1) || continueWithDigit(data + 1));
+  return isDigit(*data) && isEnd(*(data + 1));
 }
 bool continueWithDigit(const char * data)
 {
   return isDigit(*data) && (continueWithDigit(data + 1) || finishedWithDigit(data + 1));
 }
-bool finishedWithDigit(const char * data)
+bool continueWithSign(const char * data)
 {
-  return isDigit(*data) && isEnd(*(data + 1));
+  return isSign(*data) && (continueWithSign(data + 1) || continueWithDigit(data + 1));
+}
+bool continueWithOrder(const char * data)
+{
+  return isE(*data) && (continueWithSign(data + 1) || continueWithNextDigit(data + 1));
 }
 bool continueWithMantisaPartOne(const char * data)
 {

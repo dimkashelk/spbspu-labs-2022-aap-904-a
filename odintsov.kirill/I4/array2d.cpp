@@ -1,3 +1,4 @@
+#include "array2d.hpp"
 #include <cstddef>
 
 unsigned odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)

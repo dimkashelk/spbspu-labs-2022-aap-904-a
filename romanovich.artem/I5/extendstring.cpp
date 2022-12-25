@@ -1,6 +1,6 @@
 #include "extendstring.h"
 #include <stdexcept>
-char *extendString(char *cstring, size_t capacity, size_t size)
+char *extendString(char *cstring, size_t size, size_t capacity)
 {
   if (size < capacity)
   {

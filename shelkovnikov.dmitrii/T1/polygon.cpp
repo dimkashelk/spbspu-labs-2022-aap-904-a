@@ -33,3 +33,22 @@ rectangle_t Polygon::getFrameRect() const
   }
   return rectangle_t(x_min, y_min, x_max, y_max);
 }
+void Polygon::move(point_t point)
+{
+
+}
+point_t Polygon::getCenterOfGravity() const
+{
+  double x_sum = 0;
+  double y_sum = 0;
+  for (size_t i = 0; i < count; i++)
+  {
+    point_t *points = triangles[i]->getPoints();
+    for (size_t j = 0; j < 3; j++)
+    {
+      x_sum += points[j].x;
+      y_sum += points[j].y;
+    }
+  }
+  return point_t(x_sum / (count * 3), y_sum / (count * 3));
+}

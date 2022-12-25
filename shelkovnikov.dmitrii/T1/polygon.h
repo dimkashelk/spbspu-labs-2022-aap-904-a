@@ -11,6 +11,7 @@ public:
   void move(point_t point) override;
   void move(double delta_x, double delta_y) override;
   void scale(double k) override;
+  point_t getCenterOfGravity() const;
 private:
   Triangle **triangles;
   size_t count;

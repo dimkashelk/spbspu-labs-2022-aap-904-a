@@ -39,6 +39,6 @@ int main() {
   }
   array.data[--array.size] = '\0';
 
-  std::cout << std::boolalpha << turkin::isExpression(array, 0) << '\n';
+  std::cout << std::boolalpha << turkin::isExpression(array.data) << '\n';
   return 0;
 }

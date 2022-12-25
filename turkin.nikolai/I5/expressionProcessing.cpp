@@ -21,29 +21,29 @@ bool turkin::isID(char c)
   return c == 'a' || c == 'b' || c == 'c' || c == 'd' || c == 'e';
 }
 
-bool turkin::isMultiplier(const turkin::CharArray & array, size_t i)
+bool turkin::isMultiplier(const char * array)
 {
-  if (isSign(array.data[i]) || isEnd(array.data[i]))
+  if (isSign(*array) || isEnd(*array))
   {
     return true;
   }
-  return (isDigit(array.data[i]) || isID(array.data[i])) && isMultiplier(array, ++i);
+  return (isDigit(*array) || isID(*array)) && isMultiplier(++array);
 }
 
-bool turkin::isTerm(const turkin::CharArray & array, size_t i)
+bool turkin::isTerm(const char * array)
 {
-  if (isSign(array.data[i]) || isEnd(array.data[i]))
+  if (isSign(*array) || isEnd(*array))
   {
     return true;
   }
-  return isMultiplier(array, i) && isTerm(array, ++i);
+  return isMultiplier(array) && isTerm(++array);
 }
 
-bool turkin::isExpression(const turkin::CharArray & array, size_t i)
+bool turkin::isExpression(const char * array)
 {
-  if (isEnd(array.data[i]))
+  if (isEnd(*array))
   {
     return true;
   }
-  return isTerm(array, i) && isExpression(array, ++i);
+  return isTerm(array) && isExpression(++array);
 }

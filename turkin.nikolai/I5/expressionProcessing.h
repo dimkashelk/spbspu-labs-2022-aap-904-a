@@ -1,14 +1,14 @@
 #ifndef EXPRESSIONPROCESSING_H
 #define EXPRESSIONPROCESSING_H
-#include <charArray.h>
+#include <cstddef>
 namespace turkin
 {
   bool isEnd(char c);
   bool isSign(char c);
   bool isDigit(char c);
   bool isID(char c);
-  bool isMultiplier(const turkin::CharArray & array, size_t i);
-  bool isTerm(const turkin::CharArray & array, size_t i);
-  bool isExpression(const turkin::CharArray & array, size_t i);
+  bool isMultiplier(const char * array);
+  bool isTerm(const char * array);
+  bool isExpression(const char * array);
 }
 #endif

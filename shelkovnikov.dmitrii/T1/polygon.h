@@ -13,7 +13,7 @@ public:
   void scale(double k) override;
   point_t getCenterOfGravity() const;
 private:
-  Triangle **triangles;
-  size_t count;
+  Triangle **triangles_;
+  size_t count_;
 };
 #endif

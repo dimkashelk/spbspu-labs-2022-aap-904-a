@@ -1,5 +1,5 @@
-#ifndef T1_LINE_T_H
-#define T1_LINE_T_H
+#ifndef SPBSPU_LABS_2022_AAP_904_A_LINE_T_H
+#define SPBSPU_LABS_2022_AAP_904_A_LINE_T_H
 #include "base_types.h"
 struct line_t
 {

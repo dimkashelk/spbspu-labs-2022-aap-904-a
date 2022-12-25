@@ -1,5 +1,5 @@
-#ifndef T1_VECTORT_H
-#define T1_VECTORT_H
+#ifndef SPBSPU_LABS_2022_AAP_904_A_VECTOR_T_H
+#define SPBSPU_LABS_2022_AAP_904_A_VECTOR_T_H
 #include "base_types.h"
 struct vector_t
 {

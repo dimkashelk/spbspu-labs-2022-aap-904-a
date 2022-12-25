@@ -78,6 +78,11 @@ void Triangle::scale(double k)
   point3.x = direction2.x + point_center_of_gravity.x;
   point3.y = direction2.y + point_center_of_gravity.y;
 }
+Shape *Triangle::clone() const
+{
+  Triangle *copy = new Triangle(point1, point2, point3);
+  return copy;
+}
 bool Triangle::isRectangular()
 {
   vector_t side_vector_1(point1, point2);

@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
         }
       }
     }
+    delete [] dynArray;
   }
   else {
     std::cerr << "Invalid argument\n";

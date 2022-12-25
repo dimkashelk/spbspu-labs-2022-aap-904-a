@@ -53,5 +53,3 @@ bool isFloat(const char * data)
 {
   return ((isMantisa(data) && continueWithOrder(data + 1)) || (isSign(*data) && isMantisa(data + 1) && continueWithOrder(data + 2)));
 }
-
-

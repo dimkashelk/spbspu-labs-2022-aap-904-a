@@ -58,11 +58,16 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   }
   delete[] triangles;
   triangles = new_triangles;
+  size = index;
 }
 Triangle TriangulatePoints::operator()() const
 {
   Triangle triangle = **triangles;
   return triangle;
+}
+size_t TriangulatePoints::getSize() const
+{
+  return size;
 }
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {

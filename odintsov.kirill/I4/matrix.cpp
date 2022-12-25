@@ -42,7 +42,7 @@ bool odintsov::isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, siz
 {
   for (size_t i = 0; i < cols - 2; i++) {
     int val = getMatrixVal(arr, rows, cols, i, row);
-    if (countValRepeatsInRow(val, arr, rows, cols, row)) {
+    if (countValRepeatsInRow(val, arr, rows, cols, row) >= 3) {
       return true;
     }
   }

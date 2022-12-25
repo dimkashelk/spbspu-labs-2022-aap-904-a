@@ -32,7 +32,24 @@ unsigned odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t 
   return colsThreeRepeat;
 }
 
-unsigned odintsov::getRowAmtThreeRepeatVals(const int*, size_t, size_t)
+bool odintsov::isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, size_t row)
+{
+  for (size_t i = 0; i < cols - 2; i++) {
+    int val = getMatrixVal(arr, rows, cols, i, row);
+    unsigned count = 1;
+    for (size_t j = i + 1; j < cols; j++) {
+      if (val == getMatrixVal(arr, rows, cols, j, row)) {
+        count++;
+        if (count == 3) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+unsigned odintsov::getRowAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
 {
   return 0;
 }

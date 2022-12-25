@@ -9,7 +9,14 @@ void printArray(int* arr, size_t size)
   for (size_t i = 0; i < size; i++) {
     std::cout << arr[i] << ", ";
   }
-  std::cout << arr[size] << " }";
+  std::cout << arr[size] << " } \n";
+}
+
+void randomizeArray(int* arr, size_t size)
+{
+  for (size_t i = 0; i < size; i++) {
+    arr[i] = std::rand();
+  }
 }
 
 void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)

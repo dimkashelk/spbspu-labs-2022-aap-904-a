@@ -49,9 +49,9 @@ bool odintsov::isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, siz
   return false;
 }
 
-unsigned odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
+size_t odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
 {
-  unsigned colsThreeRepeat = 0;
+  size_t colsThreeRepeat = 0;
   for (size_t i = 0; i < cols; i++) {
     if (isThreeRepeatsInCol(arr, rows, cols, i)) {
       colsThreeRepeat++;
@@ -60,9 +60,9 @@ unsigned odintsov::getColAmtThreeRepeatVals(const int* arr, size_t rows, size_t 
   return colsThreeRepeat;
 }
 
-unsigned odintsov::getRowAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
+size_t odintsov::getRowAmtThreeRepeatVals(const int* arr, size_t rows, size_t cols)
 {
-  unsigned rowsThreeRepeat = 0;
+  size_t rowsThreeRepeat = 0;
   for (size_t i = 0; i < rows; i++) {
     if (isThreeRepeatsInRow(arr, rows, cols, i)) {
       rowsThreeRepeat++;

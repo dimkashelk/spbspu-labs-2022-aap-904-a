@@ -2,7 +2,7 @@
 #include "extendstring.h"
 #include <iostream>
 #include <stdexcept>
-char * inputString(std::istream & inputStr)
+char *inputString(std::istream & inputStr)
 {
   size_t capacity = 10;
   char *cstring = new char[capacity];
@@ -28,12 +28,12 @@ char * inputString(std::istream & inputStr)
   if (!inputStr && !size)
   {
     delete [] cstring;
-  	throw std::invalid_argument("Input incorrect.");
+    throw std::invalid_argument("Input incorrect.");
   }
   if (cstring[0] == '\n' || cstring[0] == '\0')
   {
-  	delete [] cstring;
-  	throw std::invalid_argument("No string provided.");
+    delete [] cstring;
+    throw std::invalid_argument("No string provided.");
   }
   cstring[size - 1] = '\0';
   return cstring;

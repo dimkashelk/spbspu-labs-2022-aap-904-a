@@ -4,7 +4,7 @@
 #include "floatnumber.h"
 int main()
 {
-  char * cstring = nullptr;
+  char *cstring = nullptr;
   try
   {
     cstring = inputString(std::cin);

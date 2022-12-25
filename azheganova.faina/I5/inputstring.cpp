@@ -8,6 +8,7 @@ char * inputString(std::istream & input)
   size_t capacity = 10;
   char * cstring = new char[capacity];
   size_t size = 0;
+  cstring[0] = '\0';
   input >> std::noskipws;
   do
   {
@@ -35,10 +36,6 @@ char * inputString(std::istream & input)
   if (!input && !size)
   {
     delete[] cstring;
-  }
-  if (cstring[0] == '\0')
-  {
-    delete [] cstring;
   }
   cstring[size - 1] = '\0';
   return cstring;

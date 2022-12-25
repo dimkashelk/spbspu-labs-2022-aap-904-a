@@ -39,7 +39,7 @@ bool continueWithOrder(const char * data)
 }
 bool continueWithDotAndUnsignedDigit(const char * data)
 {
-  return isDot(*data) && continueWithUnsignedInteger(data + 1 );
+  return isDot(*data) && continueWithUnsignedInteger(data + 1);
 }
 bool continueWithUnsignedDigitDotAndUnsignedDigit(const char * data)
 {

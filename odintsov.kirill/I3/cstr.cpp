@@ -62,7 +62,7 @@ char* odintsov::removeLatin(char* dest, const char* src)
   char* dptr = dest;
   for (const char* cptr = src; *cptr != '\0'; cptr++) {
     if (!std::isalpha(*cptr)) {
-       *(dptr++) = *cptr;
+      *(dptr++) = *cptr;
     }
   }
   *dptr = '\0';

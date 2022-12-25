@@ -5,7 +5,7 @@ void shiftArrayElements(int* arr, size_t size, size_t shift)
   int curr = arr[0];
   int next = 0;
   size_t num = 0;
-  int circle = 0;
+  size_t circle = 0;
   for (size_t i = 0; i < size; ++i) {
     next = arr[(num+shift)%size];
     arr[(num+shift)%size] = curr;

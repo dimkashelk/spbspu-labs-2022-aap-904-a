@@ -14,7 +14,7 @@ char *inputString(std::istream &inputStr)
     {
       try
       {
-        cstring = extendString(cstring, capacity, size);
+        cstring = extendString(cstring, capacity, size + 10);
       }
       catch (...)
       {
@@ -25,7 +25,7 @@ char *inputString(std::istream &inputStr)
     inputStr >> cstring[size];
   }
   while (inputStr && cstring[size++] != '\n');
-  if (inputStr && !size)
+  if (!inputStr && !size)
   {
     delete[] cstring;
     throw std::invalid_argument("Input incorrect.");

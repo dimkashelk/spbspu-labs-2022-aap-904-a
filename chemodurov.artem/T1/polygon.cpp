@@ -1,4 +1,7 @@
 #include "polygon.hpp"
+#include <cmath>
+#include <stdexcept>
+#include "is-repeating-points-in-array.hpp"
 
 namespace chemodurov
 {
@@ -45,7 +48,10 @@ chemodurov::Polygon::Polygon(const chemodurov::point_t * verts, size_t num_of_ve
  number_of_vertices_(num_of_verts),
  center_(chemodurov::findPolygonCenter(verts, num_of_verts))
 {
-  
+  if (num_of_verts < 3 || isRepeatingPointsInArray(verts, num_of_verts))
+  {
+    throw std::invalid_argument("Not correct vertices of polygon");
+  }
 }
 
 chemodurov::Polygon::~Polygon()
@@ -56,4 +62,34 @@ chemodurov::Polygon::~Polygon()
 double chemodurov::Polygon::getArea() const
 {
   return chemodurov::calcPolygonArea(vertices_, number_of_vertices_);
+}
+
+chemodurov::rectangle_t chemodurov::Polygon::getFrameRect() const
+{
+  double max_x = vertices_[0].x;
+  double min_x = max_x;
+  double max_y = vertices_[0].y;
+  double min_y = max_y;
+  for (size_t i = 0; i < number_of_vertices_; ++i)
+  {
+    if (vertices_[i].x > max_x)
+    {
+      max_x = vertices_[i].x;
+    }
+    if (vertices_[i].x < min_x)
+    {
+      min_x = vertices_[i].x;
+    }
+    if (vertices_[i].y > max_y)
+    {
+      max_y = vertices_[i].y;
+    }
+    if (vertices_[i].y < min_y)
+    {
+      min_y = vertices_[i].y;
+    }
+  }
+  chemodurov::point_t center{(max_x + min_x) / 2, (max_y + min_y) / 2};
+  chemodurov::rectangle_t temp{center, std::abs(max_x - min_x), std::abs(max_y - min_y)};
+  return temp;
 }

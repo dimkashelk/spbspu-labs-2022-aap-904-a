@@ -69,3 +69,7 @@ void Regular::scale(double k)
   point_t *new_points = triangle.getPoints();
   triangle.move(old_points[0].x - new_points[0].x, old_points[0].y - new_points[0].y);
 }
+Shape *Regular::clone() const
+{
+  return new Regular(*this);
+}

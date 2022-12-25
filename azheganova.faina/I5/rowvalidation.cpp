@@ -27,7 +27,7 @@ bool continueWithNextDigit(const char * data)
 }
 bool continueWithOrder(const char * data)
 {
-  return isE(*data) && continueWithSign(data + 1) && (continueWithDigit(data + 1) || finishedWithDigit(data + 1));
+  return isE(*data) && (continueWithSign(data + 1) || continueWithNextDigit(data + 1));
 }
 bool continueWithSign(const char * data)
 {

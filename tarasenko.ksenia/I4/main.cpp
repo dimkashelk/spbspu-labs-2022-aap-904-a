@@ -1,8 +1,8 @@
-#include "countrowswithnullelem.hpp"
-#include "makeincreasingwavearoundelem.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "countrowswithnullelem.hpp"
+#include "makeincreasingwavearoundelem.hpp"
 
 int main(int argc, char * argv[])
 {

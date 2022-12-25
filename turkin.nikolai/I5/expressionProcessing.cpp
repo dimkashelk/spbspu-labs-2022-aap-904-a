@@ -18,14 +18,7 @@ bool turkin::isDigit(char c)
 
 bool turkin::isID(char c)
 {
-  for (char i = 'a'; i <= 'e'; i++)
-  {
-    if (c == i)
-    {
-      return true;
-    }
-  }
-  return false;
+  return c == 'a' || c == 'b' || c == 'c' || c == 'd' || c == 'e';
 }
 
 bool turkin::isMultiplier(const turkin::CharArray & array, size_t i)

@@ -10,6 +10,7 @@ namespace chemodurov
     point_t operator+(const point_t & right) const;
     point_t operator-(const point_t & right) const;
     point_t operator*(double k) const;
+    bool operator==(const point_t & right) const;
   };
 
   struct rectangle_t

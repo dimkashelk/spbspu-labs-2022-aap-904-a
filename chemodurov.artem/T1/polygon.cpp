@@ -1,6 +1,4 @@
 #include "polygon.hpp"
-#include "find-polygon-center.hpp"
-#include "copy-array-of-points.hpp"
 
 namespace chemodurov
 {

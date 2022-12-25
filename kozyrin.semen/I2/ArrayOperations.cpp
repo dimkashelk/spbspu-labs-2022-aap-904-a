@@ -2,7 +2,7 @@
 #include <iostream>
 #include <limits>
 
-void printArray(int* arr, size_t size)
+void printArray(const int* arr, size_t size)
 {
   size--;
   std::cout << "Processed array: { ";
@@ -14,6 +14,7 @@ void printArray(int* arr, size_t size)
 
 void randomizeArray(int* arr, size_t size)
 {
+  std::srand(time(nullptr));
   for (size_t i = 0; i < size; i++) {
     arr[i] = std::rand();
   }

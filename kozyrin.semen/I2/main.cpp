@@ -1,23 +1,22 @@
 #include <iostream>
+#include <fstream>
+#include <limits>
 #include "ArrayOperations.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-  //Task 1
-  std::cout << "//Task 1 \n";
-
-  int arr1[] = { -5, 3, -8, 5, 5, -8, 9 };
   unsigned int size = 7;
   unsigned int n = 2;
   unsigned int m = 4;
+
+  //Task 1
+  int arr1[] = { -5, 3, -8, 5, 5, -8, 9 };
 
   std::cout << "Max number on even position: " << maxEven(arr1, size) << '\n';
   shiftByIndexes(arr1, size, n, m);
   printArray(arr1, size);
 
   //Task 2
-  std::cout << "\n//Task 2 \n";
-
   std::cin >> size;
   int* arr2 = new int[size]{0};
   randomizeArray(arr2, size);
@@ -27,4 +26,46 @@ int main()
   printArray(arr2, size);
 
   delete[] arr2;
+
+  //Task 3
+  if (argc > 2) {
+    std::cerr << "Too many parameters";
+    return 1;
+  }
+  if (argc == 1) {
+    std::cerr << "Missing filename";
+    return 1;
+  }
+
+  std::ifstream fin(argv[1]);
+  if (!fin.is_open()) {
+    std::cerr << "File could not be opened";
+    return 1;
+  }
+
+  while (!fin.eof()) {
+    if (!fin) {
+      std::cout << "Error while reading the file...";
+      return 1;
+    }
+    fin >> size;
+    if (!size) {
+      return 0;
+    }
+    int *arr3 = new int[size]{0};
+
+    for (size_t i = 0; i < size; i++) {
+      fin >> arr3[i];
+      if (arr3[i] < std::numeric_limits< int >::min() || arr3[i] > std::numeric_limits< int >::max()) {
+        std::cerr << "arr[" << i << "] is too big/small for integer \n";
+        delete[] arr3;
+        return 1;
+      }
+    }
+    std::cout << "Max number on even position: " << maxEven(arr3, size) << '\n';
+    shiftByIndexes(arr3, size, n, m);
+    printArray(arr3, size);
+
+    delete[] arr3;
+  }
 }

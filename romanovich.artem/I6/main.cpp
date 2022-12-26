@@ -3,6 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <stddef.h>
+#include "printtable.h"
 
 size_t myFactorial(size_t a)
 {
@@ -61,33 +62,8 @@ double mySinh(double x, double absError, size_t numberMax)
   throw std::invalid_argument("Invalid max summands number.");
 }
 
-void printTableRow(std::ostream & out, double x, double absError, size_t numberMax)
-{
-  out << std::setw(5) << x << " ";
-  out << std::setw(10) << std::setprecision(5) << mySinh(x, absError, numberMax) << " ";
-  out << std::setw(10) << std::setprecision(5) << sinh(x) << "\n";
-}
-
-void printTable(double left, double right, double step, double x, double absError, size_t numberMax)
-{
-  if (left > right)
-  {
-    double tmp = left;
-    left = right;
-    right = tmp;
-  }
-  for (double value=left; value <= right; value += step)
-  {
-    if (isSmaller(std::abs(value), step/10, 1e-6))
-    {
-      value = 0;
-    }
-    printTableRow(std::cout, value, absError, numberMax);
-  }
-}
-
 int main()
 {
   double test = 0.8;
-  printTable(-1, 1, 0.1, test, 1e-4, 10);
+  printTable(std::cout, -1, 1, 0.1, test, 1e-4, 10);
 }

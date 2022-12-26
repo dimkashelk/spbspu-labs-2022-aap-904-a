@@ -15,7 +15,7 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
         cnt++;
         tmp_string[cnt] = first_string[i];
       }
-  	}
+    }
   }
 
   char result_string[cnt]{};

@@ -30,7 +30,11 @@ Polygon::Polygon(Polygon &&polygon):
   triangles_(polygon.triangles_),
   count_(polygon.count_)
 {
-  polygon.triangles_ = nullptr;
+  for (size_t i = 0; i < polygon.count_; i++)
+  {
+    delete polygon.triangles_[i];
+  }
+  delete[] polygon.triangles_;
 }
 Polygon &Polygon::operator=(const Polygon &other)
 {
@@ -45,6 +49,15 @@ Polygon &Polygon::operator=(const Polygon &other)
   }
   count_ = other.count_;
   return *this;
+}
+Polygon &Polygon::operator=(Polygon &&tmp)
+{
+  operator=(tmp);
+  for (size_t i = 0; i < tmp.count_; i++)
+  {
+    delete tmp.triangles_[i];
+  }
+  delete[] tmp.triangles_;
 }
 double Polygon::getArea() const
 {

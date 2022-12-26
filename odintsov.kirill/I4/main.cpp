@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "drawMatrix.hpp"
 #include "threeRepeats.hpp"
 #include "diagonalSum.hpp"
 #include "fillMatrix.hpp"
@@ -52,5 +53,6 @@ int main(int argc, char* argv[])
     }
     std::cout << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
     odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
+    odintsov::drawMatrix(std::cout, arr, rows, cols) << '\n';
   }
 }

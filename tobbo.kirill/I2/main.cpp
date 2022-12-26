@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     {
       throw std::invalid_argument("Array size must be unsigned integer");
     }
-    
+
     std::srand(5);
     int* arr_dyn = new int[size];
     for (size_t i = 0; i < size; i++)

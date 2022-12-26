@@ -47,22 +47,22 @@ rectangle_t CompositeShape::getFrameRect() const
 }
 void CompositeShape::move(point_t point)
 {
-  point_t center = getCenterOfGravity();
+  point_t center = getCenter();
   vector_t direction(point, center);
   for (size_t i = 0; i < size_; i++)
   {
     shapes_[i]->move(direction.x, direction.y);
   }
 }
-point_t CompositeShape::getCenterOfGravity() const
+point_t CompositeShape::getCenter() const
 {
   double x_sum = 0.0;
   double y_sum = 0.0;
   for (size_t i = 0; i < size_; i++)
   {
-    point_t point = shapes_[i]->getCenterOfGravity();
-    x_sum += point.x;
-    y_sum += point.y;
+    rectangle_t rectangle = shapes_[i]->getFrameRect();
+    x_sum = rectangle.point.x;
+    y_sum = rectangle.point.y;
   }
   return point_t(x_sum / size_, y_sum / size_);
 }

@@ -9,12 +9,12 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
   for (size_t i = 0; i < size_first_string; ++i)
   {
     for (size_t j = 0; j < size_sec_string; ++j)
-	{
-	  if (first_string[i] == second_string[j])
-	  {
-	    cnt++;
-		tmp_string[cnt] = first_string[i];
-	  }
+    {
+      if (first_string[i] == second_string[j])
+      {
+        cnt++;
+        tmp_string[cnt] = first_string[i];
+      }
   	}
   }
 

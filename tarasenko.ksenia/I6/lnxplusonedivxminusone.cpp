@@ -2,10 +2,10 @@
 #include <stdexcept>
 
 LnXPlusOneDivXMinusOne::LnXPlusOneDivXMinusOne(double x):
- x_(x),
- x0_(x),
- member_(0.0),
- number_(1)
+  x_(x),
+  x0_(x),
+  member_(0.0),
+  number_(1)
 {
   if (x <= 2 || x >= 3)
   {

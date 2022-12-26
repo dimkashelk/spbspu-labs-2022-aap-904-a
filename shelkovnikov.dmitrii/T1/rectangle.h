@@ -18,6 +18,6 @@ public:
   void scale(double k) override;
   Shape* clone() const override;
 private:
-  rectangle_t rectangle;
+  rectangle_t rectangle_;
 };
 #endif

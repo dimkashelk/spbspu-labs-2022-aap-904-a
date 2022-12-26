@@ -7,6 +7,10 @@ class Regular: public Shape
 {
 public:
   Regular(double x1, double y1, double x2, double y2, double x3, double y3);
+  Regular(const Regular &regular);
+  Regular(Regular &&regular);
+  Regular& operator=(const Regular &other);
+  Regular& operator=(Regular &&tmp);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t point) override;

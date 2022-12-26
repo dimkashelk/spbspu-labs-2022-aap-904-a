@@ -7,8 +7,8 @@ class CompositeShape
 {
 public:
   CompositeShape(Shape **shapes, size_t size);
-  const double getArea() const;
-  const rectangle_t getFrameRect() const;
+  double getArea() const;
+  rectangle_t getFrameRect() const;
   void move(point_t point);
   void move(double delta_x, double delta_y);
   void scale(double k);

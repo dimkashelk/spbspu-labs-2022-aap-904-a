@@ -29,6 +29,18 @@ Triangle::Triangle(Triangle &&triangle):
   point2(triangle.point2),
   point3(triangle.point3)
 {}
+Triangle &Triangle::operator=(const Triangle &other)
+{
+  point1 = other.point1;
+  point2 = other.point2;
+  point3 = other.point3;
+}
+Triangle &Triangle::operator=(Triangle &&tmp)
+{
+  point1 = tmp.point1;
+  point2 = tmp.point2;
+  point3 = tmp.point3;
+}
 double Triangle::getArea() const
 {
   // the area of the triangle is half of the length of the vector product

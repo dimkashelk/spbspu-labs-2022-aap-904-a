@@ -40,7 +40,7 @@ rectangle_t Polygon::getFrameRect() const
 }
 void Polygon::move(point_t point)
 {
-  point_t center = getCenterOfGravity();
+  point_t center = getCenter();
   vector_t direction(point, center);
   move(direction.x, direction.y);
 }
@@ -53,7 +53,7 @@ void Polygon::move(double delta_x, double delta_y)
 }
 void Polygon::scale(double k)
 {
-  point_t center = getCenterOfGravity();
+  point_t center = getCenter();
   for (size_t i = 0; i < count_; i++)
   {
     point_t center_of_triangle = triangles_[i]->getCenter();
@@ -67,7 +67,7 @@ Shape *Polygon::clone() const
 {
   return new Polygon(*this);
 }
-point_t Polygon::getCenterOfGravity() const
+point_t Polygon::getCenter() const
 {
   double x_sum = 0;
   double y_sum = 0;

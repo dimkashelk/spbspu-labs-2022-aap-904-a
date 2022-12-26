@@ -40,16 +40,15 @@ int main(int argc, char* argv[])
     std::cout << "error while opening" << "\n";
     return 1;
   }
-  int *arr3;
   size_t size3 = 0;
   constexpr unsigned shift3 = 1;
   file >> size3;
+  int *arr3 = new int[size3];
   if (!file)
   {
     std::cout << "error wile reading" << "\n";
     return 1;
   }
-  arr3 = new int[size3];
   for (size_t i = 0; i < size3; i++)
   {
     file >> arr3[i];

@@ -92,6 +92,7 @@ int main()
   catch (const std::bad_alloc &e)
   {
     delete[] c_string;
+    delete[] repeat_symbols;
     delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
     return 1;
@@ -99,6 +100,7 @@ int main()
   catch (const std::overflow_error &e)
   {
     delete[] c_string;
+    delete[] repeat_symbols;
     delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
     return 3;

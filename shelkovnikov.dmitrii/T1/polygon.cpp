@@ -62,6 +62,7 @@ Polygon &Polygon::operator=(Polygon &&tmp)
     delete tmp.triangles_[i];
   }
   delete[] tmp.triangles_;
+  return *this;
 }
 double Polygon::getArea() const
 {

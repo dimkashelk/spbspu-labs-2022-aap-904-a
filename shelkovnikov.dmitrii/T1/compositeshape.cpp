@@ -62,6 +62,7 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&tmp)
     delete tmp.shapes_[i];
   }
   delete[] tmp.shapes_;
+  return *this;
 }
 Shape *CompositeShape::operator[](size_t id)
 {

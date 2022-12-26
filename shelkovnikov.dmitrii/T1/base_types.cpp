@@ -1,5 +1,9 @@
 #include "base_types.h"
 #include <cmath>
+point_t::point_t():
+  x(0.0),
+  y(0.0)
+{}
 point_t::point_t(double x, double y):
   x(x),
   y(y)

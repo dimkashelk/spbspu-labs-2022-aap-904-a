@@ -24,6 +24,25 @@ double myPow(double a, size_t power)
   return result;
 }
 
+bool isSmaller(double a, double b, double epsilon) {
+  double absA = std::abs(a);
+  double absB = std::abs(b);
+  double diff = std::abs(a - b);
+  double minDouble = std::numeric_limits< double >::min();
+  if (a < b)
+  {
+    return true;
+  } 
+  if (a == 0 || b == 0 || diff < minDouble)
+  {
+    return diff < (epsilon * minDouble);
+  }
+  else
+  {
+    return diff / (absA + absB) < epsilon;
+  }
+}
+
 double mySinh(double x, double absError, size_t numberMax)
 {
   double result = 0;
@@ -32,12 +51,12 @@ double mySinh(double x, double absError, size_t numberMax)
   {
     double nextSummand = myPow(x, 1 + 2 * numberSummand) / myFactorial(1 + 2 * numberSummand);
     numberSummand++;
-    if (nextSummand < absError) //корректное сравнение double
+    if (isSmaller(nextSummand, absError, 1e-6))
     {
       return result;
     }
     result += nextSummand;
-    std::cout << nextSummand << "\n";
+    std::cout << numberSummand << " " << nextSummand << "\n";
   }
   throw std::invalid_argument("Invalid max summands number.");
 }
@@ -46,6 +65,6 @@ double mySinh(double x, double absError, size_t numberMax)
 int main()
 {
   double test = 0.8;
-  std::cout << mySinh(test, 0.001, 100) << "\n";
+  std::cout << mySinh(test, 1e-20, 100000) << "\n";
   std::cout << sinh(test) << "\n";
 }

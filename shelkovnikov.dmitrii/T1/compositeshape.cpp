@@ -57,10 +57,7 @@ void CompositeShape::move(point_t point)
 {
   point_t center = getCenter();
   vector_t direction(point, center);
-  for (size_t i = 0; i < size_; i++)
-  {
-    shapes_[i]->move(direction.x, direction.y);
-  }
+  move(direction.x, direction.y);
 }
 void CompositeShape::move(double delta_x, double delta_y)
 {

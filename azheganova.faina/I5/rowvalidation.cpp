@@ -31,7 +31,7 @@ bool continueWithSign(const char * data)
 }
 bool isOrder(const char * data)
 {
-  return isE(*data) && continueWithSign(data + 1) && continueWithDigit(data + 2);
+  return isE(*data) && isSign(*(data + 1)) && continueWithDigit(data + 2);
 }
 bool continueWithDot(const char * data)
 {

@@ -122,3 +122,7 @@ bool CompositeShape::empty() const noexcept
 {
   return size_ == 0;
 }
+size_t CompositeShape::size() const noexcept
+{
+  return size_;
+}

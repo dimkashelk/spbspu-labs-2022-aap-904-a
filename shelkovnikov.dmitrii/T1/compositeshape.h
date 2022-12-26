@@ -22,6 +22,7 @@ public:
   Shape* at(size_t id);
   const Shape* at(size_t id) const;
   bool empty() const noexcept;
+  size_t size() const noexcept;
 private:
   Shape **shapes_;
   size_t size_;

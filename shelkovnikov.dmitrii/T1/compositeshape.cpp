@@ -36,3 +36,12 @@ rectangle_t CompositeShape::getFrameRect() const
   }
   return rectangle_t(x_min, y_min, x_max, y_max);
 }
+point_t CompositeShape::getCenterOfGravity() const
+{
+  double x_sum = 0.0;
+  double y_sum = 0.0;
+  for (size_t i = 0; i < size_; i++)
+  {
+    point_t
+  }
+}

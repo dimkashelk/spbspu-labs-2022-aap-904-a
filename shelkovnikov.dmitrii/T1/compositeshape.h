@@ -12,6 +12,7 @@ public:
   void move(point_t point);
   void move(double delta_x, double delta_y);
   void scale(double k);
+  point_t getCenterOfGravity() const;
 private:
   Shape **shapes_;
   size_t size_;

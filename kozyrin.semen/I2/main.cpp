@@ -28,11 +28,12 @@ int main(int argc, char* argv[])
     std::cout << "Error while reading the file...";
     return 1;
   }
-  fin >> size;
+  fin.peek();
   if (fin.eof()) {
     std::cerr << "Empty file";
     return 1;
   }
+  fin >> size;
 
   while (!fin.eof()) {
     if (!size) {

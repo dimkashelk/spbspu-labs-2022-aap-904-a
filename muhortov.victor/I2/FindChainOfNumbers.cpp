@@ -1,7 +1,6 @@
 #include "FindChainOfNumbers.hpp"
-#include <cstddef>
 
-int find_chain(const int* arr, size_t size)
+int findChain(const int* arr, size_t size)
 {
   size_t count = 0;
   for (size_t i = 0; i < size - 1; i++)

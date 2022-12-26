@@ -3,6 +3,6 @@
 #include <ostream>
 #include <cstddef>
 
-int partition(int* arr, size_t size);
+int *partition(int* arr, size_t size);
 
 #endif

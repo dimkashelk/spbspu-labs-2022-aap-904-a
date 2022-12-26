@@ -14,7 +14,7 @@ void shiftArray(int* arr, const size_t size, const unsigned shift)
   size_t trueShift = 0;
   if (size != 0)
   {
-    realShift = shift % size;
+    trueShift = shift % size;
     rev(arr, trueShift);
     rev(arr, size - trueShift);
     rev(arr, size);

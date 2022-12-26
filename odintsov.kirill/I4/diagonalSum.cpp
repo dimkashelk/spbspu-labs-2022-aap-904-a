@@ -1,5 +1,7 @@
 #include "diagonalSum.hpp"
 #include <cstddef>
+#include <limits>
+#include <stdexcept>
 
 int odintsov::getOffDiagonalSumByPoint(const int* const* arr, size_t rows, size_t cols, size_t row, size_t col)
 {
@@ -10,8 +12,15 @@ int odintsov::getOffDiagonalSumByPoint(const int* const* arr, size_t rows, size_
   col -= minDistToEdge;
   int sum = 0;
   do {
-    sum += arr[row--][col++];
-  } while (row != 0 && col != cols);
+    int newVal = arr[row--][col++];
+    if ((newVal > 0) && (sum > 0) && (sum > std::numeric_limits< int >::max() - newVal)) {
+      throw std::overflow_error("Sum overflow");
+    }
+    if ((newVal < 0) && (sum < 0) && (sum < std::numeric_limits< int >::min() - newVal)) {
+      throw std::underflow_error("Sum underflow");
+    }
+    sum += newVal;
+  } while (row != static_cast< size_t >(-1) && col != cols);
   return sum;
 }
 

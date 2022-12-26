@@ -21,8 +21,8 @@ public:
   point_t getCenter() const;
   bool containsPoint(point_t point) const;
 private:
-  point_t point1;
-  point_t point2;
-  point_t point3;
+  point_t point1_;
+  point_t point2_;
+  point_t point3_;
 };
 #endif

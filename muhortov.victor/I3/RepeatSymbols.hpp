@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-char *repeatSymbols(char *destination, char *cstring, size_t size);
+char *repeatSymbols(char *destination,char *cstring, size_t size);
 
 #endif //LABS_REPEATSYMBOLS_HPP

@@ -1,6 +1,6 @@
 #include "RepeatSymbols.hpp"
 
-char *repeatSymbols(char *destination, char *cstring, size_t size)
+char *repeatSymbols(char *destination,char *cstring, size_t size)
 {
   size_t repeat_size = 0;
   size_t start_checking = 1;

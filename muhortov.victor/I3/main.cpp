@@ -46,7 +46,7 @@ int main()
 
   try
   {
-    repeat_symbols = repeatSymbols(repeat_symbols, c_string, size);
+    repeatSymbols(repeat_symbols, c_string, size);
   }
   catch (const std::bad_alloc &e)
   {
@@ -70,7 +70,7 @@ int main()
 
   try
   {
-    vowel_symbols = vowel(vowel_symbols, c_string, size);
+    vowel(vowel_symbols, c_string, size);
   }
   catch (const std::bad_alloc &e)
   {

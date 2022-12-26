@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-char *vowel(char *destination, char *cstring, size_t size);
+char *vowel(char *destination,const char *cstring, size_t size);
 
 #endif //LABS_VOWEL_HPP

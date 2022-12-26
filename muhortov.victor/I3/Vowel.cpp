@@ -1,8 +1,8 @@
 #include "Vowel.hpp"
 
-char *vowel(char *destination, char *cstring, size_t size)
+char *vowel(char *destination,const char *cstring, size_t size)
 {
-  char vowel_symbols[] = "AaEeIiOoUuYy";
+  char latin_vowel_symbols[] = "AaEeIiOoUuYy";
   char symbol = ' ';
   int vowel_counter = 0;
   for (size_t i = 0; i < size; i++)
@@ -10,7 +10,7 @@ char *vowel(char *destination, char *cstring, size_t size)
     symbol = cstring[i];
     for (int j = 0; j < 12; j++)
     {
-      if (symbol == vowel_symbols[j])
+      if (symbol == latin_vowel_symbols[j])
       {
         destination[vowel_counter] = symbol;
         vowel_counter++;

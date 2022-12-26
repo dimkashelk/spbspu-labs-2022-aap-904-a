@@ -10,6 +10,14 @@ CompositeShape::CompositeShape(Shape **shapes, size_t size):
     shapes_[i] = shapes[i]->clone();
   }
 }
+CompositeShape::~CompositeShape()
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    delete shapes_[i];
+  }
+  delete[] shapes_;
+}
 double CompositeShape::getArea() const
 {
   double area = 0.0;

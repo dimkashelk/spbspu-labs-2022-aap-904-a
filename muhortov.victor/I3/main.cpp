@@ -74,4 +74,8 @@ int main()
   }
 
   std::cout << "Latin vowel symbols string:" << vowel_sympols << '\n';
+
+  delete[] c_string;
+  delete[] repeat_symbols;
+  delete[] vowel_sympols;
 }

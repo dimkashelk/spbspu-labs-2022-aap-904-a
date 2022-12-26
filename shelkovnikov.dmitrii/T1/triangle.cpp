@@ -34,12 +34,14 @@ Triangle &Triangle::operator=(const Triangle &other)
   point1 = other.point1;
   point2 = other.point2;
   point3 = other.point3;
+  return *this;
 }
 Triangle &Triangle::operator=(Triangle &&tmp)
 {
   point1 = tmp.point1;
   point2 = tmp.point2;
   point3 = tmp.point3;
+  return *this;
 }
 double Triangle::getArea() const
 {

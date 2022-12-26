@@ -18,6 +18,7 @@ public:
   void push_back(Shape *shp);
   void pop_back();
   Shape* at(size_t id);
+  const Shape* at(size_t id) const;
 private:
   Shape **shapes_;
   size_t size_;

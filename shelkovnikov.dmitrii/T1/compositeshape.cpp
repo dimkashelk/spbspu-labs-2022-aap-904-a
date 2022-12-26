@@ -106,3 +106,7 @@ Shape* CompositeShape::at(size_t id)
 {
   return shapes_[id];
 }
+const Shape* CompositeShape::at(size_t id) const
+{
+  return shapes_[id];
+}

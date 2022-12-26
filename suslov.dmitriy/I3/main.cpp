@@ -29,7 +29,8 @@ int main()
     }
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
+  if (size > 0)
+    cstring[size - 1] = '\0';
   if (size == 0 or size == 1)
   {
     std::cerr << "Empty input" << '\n';

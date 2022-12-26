@@ -2,8 +2,8 @@
 #include <fstream>
 #include <string>
 #include <cmath>
-#include "count_of_maxes.h"
-#include "shift_part_to_end.h"
+#include "countOfMaxes.h"
+#include "shiftPartToEnd.h"
 
 void printArray(std::ostream& out, std::string prefix, int* arr, size_t size);
 void processArray(std::string prefix, int* arr, size_t size);

@@ -1,5 +1,5 @@
 #include <limits>
-#include "count_of_maxes.h"
+#include "countOfMaxes.h"
 
 void countOfMaxes(const int* arr, size_t size, int& maximum, size_t& count_maximum)
 {

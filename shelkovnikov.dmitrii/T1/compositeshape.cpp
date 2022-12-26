@@ -56,13 +56,5 @@ void CompositeShape::move(point_t point)
 }
 point_t CompositeShape::getCenter() const
 {
-  double x_sum = 0.0;
-  double y_sum = 0.0;
-  for (size_t i = 0; i < size_; i++)
-  {
-    rectangle_t rectangle = shapes_[i]->getFrameRect();
-    x_sum = rectangle.point.x;
-    y_sum = rectangle.point.y;
-  }
-  return point_t(x_sum / size_, y_sum / size_);
+  return getFrameRect().point;
 }

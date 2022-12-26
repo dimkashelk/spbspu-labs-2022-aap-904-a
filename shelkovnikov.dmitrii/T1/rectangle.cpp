@@ -34,3 +34,7 @@ Shape *Rectangle::clone() const
 {
   return new Rectangle(rectangle);
 }
+point_t Rectangle::getCenterOfGravity() const
+{
+  return rectangle.point;
+}

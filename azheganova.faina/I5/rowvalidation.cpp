@@ -25,9 +25,9 @@ bool continueWithDigit(const char * data)
 {
   return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
 }
-bool continueWithSign(const char * data)
+bool continueWithD(const char * data)
 {
-  return isSign(*data) && (continueWithSign(data + 1) || continueWithDigit(data + 1));
+  return isDigit(*data) && (isDigit(*(data + 1)) || isDot(*(data + 1)));
 }
 bool isOrder(const char * data)
 {
@@ -37,7 +37,15 @@ bool continueWithDot(const char * data)
 {
   return isDigit(*data) && (isDot(*(data + 1)) || continueWithDot(data + 1));
 }
+bool isFloatPartOne(const char * data)
+{
+  return continueWithDot(data) && isOrder(data + 1);
+}
+bool isFloatPartTwo(const char * data)
+{
+  return isSign(*data) && continueWithD(data + 1) && isOrder(data + 2) && isEnd(*(data + 3));
+}
 bool isFloat(const char * data)
 {
-  return ((continueWithDot(data) && isOrder(data + 1)) || (isSign(*data) && continueWithDot(data + 1) && isOrder(data + 2)));
+  return isFloatPartOne(data) || isFloatPartTwo(data);
 }

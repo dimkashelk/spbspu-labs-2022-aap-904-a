@@ -88,7 +88,7 @@ int main()
     return 3;
   }
 
-  std::cout << "Latin vowel symbols string:" << vowel_symbols << '\n';
+  std::cout << "Latin vowel symbols string: " << vowel_symbols << '\n';
 
   delete[] c_string;
   delete[] repeat_symbols;

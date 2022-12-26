@@ -23,7 +23,7 @@ char *vowel(char *destination,const char *cstring, size_t size)
   {
     destination[0] = ' ';
   }
-  destination[vowel_counter + 1] = '\0';
+  destination[vowel_counter] = '\0';
 
   return destination;
 }

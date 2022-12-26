@@ -7,7 +7,7 @@ bool isSmaller(double a, double b, double epsilon) {
   if (a < b)
   {
     return true;
-  } 
+  }
   if (a == 0 || b == 0 || diff < minDouble)
   {
     return diff < (epsilon * minDouble);

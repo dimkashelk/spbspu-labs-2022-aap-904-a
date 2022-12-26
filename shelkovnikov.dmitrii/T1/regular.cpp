@@ -22,6 +22,11 @@ Regular::Regular(Regular &&regular):
   triangle(regular.triangle),
   count(regular.count)
 {}
+Regular &Regular::operator=(const Regular &other)
+{
+  triangle = other.triangle;
+  count = other.count;
+}
 double Regular::getArea() const
 {
   return triangle.getArea() * count;

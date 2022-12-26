@@ -10,6 +10,9 @@ int odintsov::getOffDiagonalSumByPoint(const int* const* arr, size_t rows, size_
       break;
     }
   }
+  if (col == 0) {
+    return sum;
+  }
   for (size_t r = row + 1, c = col - 1; r < rows; r++, c--) {
     sum += arr[r][c];
     if (c == 0) {

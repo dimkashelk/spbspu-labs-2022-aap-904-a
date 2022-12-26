@@ -1,6 +1,7 @@
 #include "ArrayOperations.h"
 #include <iostream>
 #include <limits>
+#include <exception>
 
 void printArray(const int* arr, size_t size)
 {
@@ -23,6 +24,12 @@ void randomizeArray(int* arr, size_t size)
 void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
 {
   size--;
+  if (m > size) {
+    throw std::runtime_error("index out of range");
+  }
+  if (m < n) {
+    throw std::runtime_error("left index cannot be greater than right");
+  }
   size_t offset = m - n + 1;
   int* temp = new int[size]{0};
 

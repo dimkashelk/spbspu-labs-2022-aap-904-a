@@ -1,7 +1,5 @@
 #include <iostream>
-#include "formNewStringVarFiveteen.h"
-#include <fstream>
-#include "formNewStringVarFive.h"
+
 int main()
 {
   size_t capacity = 10;

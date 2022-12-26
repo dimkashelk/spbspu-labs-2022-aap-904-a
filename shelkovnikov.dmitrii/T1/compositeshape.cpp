@@ -98,3 +98,7 @@ void CompositeShape::push_back(Shape *shp)
   shapes_[size_] = shp->clone();
   size_++;
 }
+void CompositeShape::pop_back()
+{
+  size_--;
+}

@@ -82,3 +82,19 @@ point_t CompositeShape::getCenter() const
 {
   return getFrameRect().point;
 }
+void CompositeShape::push_back(Shape *shp)
+{
+  if (size_ == capacity_)
+  {
+    capacity_ += 10;
+    Shape **new_shapes = new Shape*[capacity_];
+    for (size_t i = 0; i < size_; i++)
+    {
+      new_shapes[i] = shapes_[i];
+    }
+    delete[] shapes_;
+    shapes_ = new_shapes;
+  }
+  shapes_[size_] = shp->clone();
+  size_++;
+}

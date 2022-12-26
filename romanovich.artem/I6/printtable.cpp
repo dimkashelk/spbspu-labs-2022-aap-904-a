@@ -14,8 +14,8 @@ void printTableRow(std::ostream &out, double x, double absError, size_t numberMa
 void printTable(std::ostream &out, double left, double right, double step, double absError, size_t numberMax)
 {
   int incrementValue = 1;
-  int leftBorder = (int) (left / step);
-  int rightBorder = (int) (right / step);
+  int leftBorder = static_cast< int >(left / step);
+  int rightBorder = static_cast< int >(right / step);
   for (int i = leftBorder; i <= rightBorder; i += incrementValue)
   {
     double value = i * step;

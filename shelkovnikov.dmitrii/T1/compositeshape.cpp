@@ -1,11 +1,19 @@
 #include "compositeshape.h"
 #include <algorithm>
 #include "vector_t.h"
+CompositeShape::CompositeShape():
+  shapes_(nullptr),
+  size_(0),
+  capacity_(10)
+{
+  shapes_ = new Shape*[capacity_];
+}
 CompositeShape::CompositeShape(Shape **shapes, size_t size):
   shapes_(nullptr),
-  size_(size)
+  size_(size),
+  capacity_(size)
 {
-  shapes_ = new Shape*[size_];
+  shapes_ = new Shape*[capacity_];
   for (size_t i = 0; i < size_; i++)
   {
     shapes_[i] = shapes[i]->clone();

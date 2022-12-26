@@ -6,6 +6,7 @@
 class CompositeShape
 {
 public:
+  CompositeShape();
   CompositeShape(Shape **shapes, size_t size);
   ~CompositeShape();
   double getArea() const;
@@ -17,5 +18,6 @@ public:
 private:
   Shape **shapes_;
   size_t size_;
+  size_t capacity_;
 };
 #endif

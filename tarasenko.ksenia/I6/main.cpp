@@ -3,7 +3,8 @@
 
 int main()
 {
-  double rightBorder, leftBorder = 0.0;
+  double rightBorder = 0.0;
+  double leftBorder = 0.0;
   unsigned numberMax = 0;
   const double step = 0.2;
   const double absError = 0.00001;
@@ -26,12 +27,6 @@ int main()
   {
     std::cout << "Error: ";
     std::cout << e.what() << "\n";
-    return 1;
-  }
-  catch (const char * e)
-  {
-    std::cout << "Error: ";
-    std::cout << e << "\n";
     return 1;
   }
 }

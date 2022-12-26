@@ -1,7 +1,7 @@
 #include <stdexcept>
 #include "shift_part_to_end.h"
 
-void shift_part_to_end(int* arr, size_t size, size_t start_index, size_t end_index)
+void shiftPartToEnd(int* arr, size_t size, size_t start_index, size_t end_index)
 {
   if (start_index > end_index || end_index > (size - 1))
   {

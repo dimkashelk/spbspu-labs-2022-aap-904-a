@@ -5,8 +5,8 @@
 #include "count_of_maxes.h"
 #include "shift_part_to_end.h"
 
-void print_array(std::ostream& out, std::string prefix, int* arr, size_t size);
-void process_array(std::string prefix, int* arr, size_t size);
+void printArray(std::ostream& out, std::string prefix, int* arr, size_t size);
+void processArray(std::string prefix, int* arr, size_t size);
 
 int main(int argc, char* argv[])
 {
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
   {
     /*********************************************/
     int arr_st[] = { 1, 2, 3, 4, 5, 6, 7, 8, 10, 10 };
-    process_array("Static array", arr_st, 10);
+    processArray("Static array", arr_st, 10);
 
     /*********************************************/
     size_t size = 0;
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     {
       arr_dyn[i] = rand() % 200 - 100;
     }
-    process_array("Dynamic array", arr_dyn, size);
+    processArray("Dynamic array", arr_dyn, size);
     delete[] arr_dyn;
 
     /*********************************************/
@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
           throw std::runtime_error("Error while reading array elements");
         }
       }
-      process_array("File array", arr, size);
+      processArray("File array", arr, size);
       delete[] arr;
     }
   }
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
   return 0;
 }
 
-void print_array(std::ostream& out, std::string prefix, int* arr, size_t size)
+void printArray(std::ostream& out, std::string prefix, int* arr, size_t size)
 {
   out << prefix;
   for (size_t j = 0; j < size; j++)
@@ -88,7 +88,7 @@ void print_array(std::ostream& out, std::string prefix, int* arr, size_t size)
   out << "\n";
 }
 
-void process_array(std::string prefix, int* arr, size_t size)
+void processArray(std::string prefix, int* arr, size_t size)
 {
   std::cout << prefix << " with size " << size << "\n";
   if (size == 0)
@@ -99,10 +99,10 @@ void process_array(std::string prefix, int* arr, size_t size)
 
   int maximum = 0;
   size_t count_maximum = 0;
-  count_of_maxes(arr, size, maximum, count_maximum);
+  countOfMaxes(arr, size, maximum, count_maximum);
   std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
 
-  print_array(std::cout, "before: ", arr, size);
-  shift_part_to_end(arr, size, 0, static_cast< size_t >(std::ceil(size / 2)));
-  print_array(std::cout, "after:  ", arr, size);
+  printArray(std::cout, "before: ", arr, size);
+  shiftPartToEnd(arr, size, 0, static_cast< size_t >(std::ceil(size / 2)));
+  printArray(std::cout, "after:  ", arr, size);
 }

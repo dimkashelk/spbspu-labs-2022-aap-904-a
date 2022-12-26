@@ -1,7 +1,7 @@
 #include <limits>
 #include "count_of_maxes.h"
 
-void count_of_maxes(const int* arr, size_t size, int& maximum, size_t& count_maximum)
+void countOfMaxes(const int* arr, size_t size, int& maximum, size_t& count_maximum)
 {
   maximum = std::numeric_limits< int >::min();
   count_maximum = std::numeric_limits< size_t >::min();

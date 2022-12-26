@@ -13,7 +13,7 @@ namespace chemodurov
     ~Polygon();
     double getArea() const;
     chemodurov::rectangle_t getFrameRect() const;
-    void move(chemodurov::point_t position);
+    void move(const chemodurov::point_t & position);
     void move(double dx, double dy);
     void scale(double k);
    private:

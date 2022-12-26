@@ -1,5 +1,4 @@
 #include "polygon.hpp"
-#include <cmath>
 #include <stdexcept>
 #include "is-repeating-points-in-array.hpp"
 
@@ -90,6 +89,34 @@ chemodurov::rectangle_t chemodurov::Polygon::getFrameRect() const
     }
   }
   chemodurov::point_t center{(max_x + min_x) / 2, (max_y + min_y) / 2};
-  chemodurov::rectangle_t temp{center, std::abs(max_x - min_x), std::abs(max_y - min_y)};
+  chemodurov::rectangle_t temp{center, max_x - min_x, max_y - min_y};
   return temp;
+}
+
+void chemodurov::Polygon::move(const chemodurov::point_t & pos)
+{
+  const point_t delta = pos - center_;
+  center_ = center_ + delta;
+  for (size_t i = 0; i < number_of_vertices_; ++i)
+  {
+    vertices_[i] = vertices_[i] + delta;
+  }
+}
+
+void chemodurov::Polygon::move(double dx, double dy)
+{
+  const point_t delta{dx, dy};
+  center_ = center_ + delta;
+  for (size_t i = 0; i < number_of_vertices_; ++i)
+  {
+    vertices_[i] = vertices_[i] + delta;
+  }
+}
+
+void chemodurov::Polygon::scale(double k)
+{
+  for (size_t i = 0; i < number_of_vertices_; ++i)
+  {
+    vertices_[i] = (vertices_[i] - center_) * k + center_;
+  }
 }

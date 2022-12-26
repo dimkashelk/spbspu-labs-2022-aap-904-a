@@ -1,37 +1,55 @@
 #include "rectangle.hpp"
-#include <cmath>
-#include "base-types.hpp"
+#include <stdexcept>
 
-chemodurov::Rectangle::Rectangle(chemodurov::point_t left_down, chemodurov::point_t right_up):
- left_down_(left_down),
- right_up_(right_up),
- center_((right_up + left_down) * 0.5)
-{}
+namespace chemodurov
+{
+  chemodurov::point_t * makeArrayOfXPoints(const chemodurov::point_t & left_down, const chemodurov::point_t & right_up)
+  {
+    const size_t x = 4;
+    chemodurov::point_t * arr = new point_t[x];
+    arr[0] = left_down;
+    arr[1] = {left_down.x, right_up.y};
+    arr[2] = right_up;
+    arr[3] = {right_up.x, left_down.y};
+    return arr;
+  }
+}
+
+chemodurov::Rectangle::Rectangle(const chemodurov::point_t & left_down, const chemodurov::point_t & right_up):
+ p(makeArrayOfXPoints(left_down, right_up), 4ull)
+{
+  if (left_down.x == right_up.x || left_down.y == right_up.y)
+  {
+    throw std::invalid_argument("This is not a rectangle");
+  }
+}
+
+chemodurov::Rectangle::~Rectangle()
+{
+  p.~Polygon();
+}
 
 double chemodurov::Rectangle::getArea() const
 {
-  return std::abs((right_up_.x - left_down_.x) * (right_up_.y - left_down_.y));
+  return p.getArea();
 }
 
 chemodurov::rectangle_t chemodurov::Rectangle::getFrameRect() const
 {
-  chemodurov::rectangle_t temp{center_, std::abs(right_up_.x - left_down_.x), std::abs(right_up_.y - left_down_.y)};
-  return temp;
+  return p.getFrameRect();
 }
 
-void chemodurov::Rectangle::move(chemodurov::point_t pos)
+void chemodurov::Rectangle::move(const chemodurov::point_t & pos)
 {
-  center_ = pos;
+  p.move(pos);
 }
 
 void chemodurov::Rectangle::move(double dx, double dy)
 {
-  center_.x += dx;
-  center_.y += dy;
+  p.move(dx, dy);
 }
 
 void chemodurov::Rectangle::scale(double k)
 {
-  right_up_ = (right_up_ - center_) * k + center_;
-  left_down_ = (left_down_ - center_) * k + center_;
+  p.scale(k);
 }

@@ -34,7 +34,7 @@ int main()
   {
     std::cerr << "Empty input" << '\n';
     delete[] cstring;
-    return -1;
+    return 2;
   }
   std::cout << cstring << "\n";
   delete[] cstring;

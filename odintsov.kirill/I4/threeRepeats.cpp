@@ -27,22 +27,22 @@ bool odintsov::isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, siz
 
 size_t odintsov::countColsWithThreeRepeats(const int* arr, size_t rows, size_t cols)
 {
-  size_t colsThreeRepeat = 0;
+  size_t colCount = 0;
   for (size_t i = 0; i < cols; i++) {
     if (isThreeRepeatsInCol(arr, rows, cols, i)) {
-      colsThreeRepeat++;
+      colCount++;
     }
   }
-  return colsThreeRepeat;
+  return colCount;
 }
 
 size_t odintsov::countRowsWithThreeRepeats(const int* arr, size_t rows, size_t cols)
 {
-  size_t rowsThreeRepeat = 0;
+  size_t rowCount = 0;
   for (size_t i = 0; i < rows; i++) {
     if (isThreeRepeatsInRow(arr, rows, cols, i)) {
-      rowsThreeRepeat++;
+      rowCount++;
     }
   }
-  return rowsThreeRepeat;
+  return rowCount;
 }

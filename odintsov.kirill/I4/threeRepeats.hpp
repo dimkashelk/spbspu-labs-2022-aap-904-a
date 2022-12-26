@@ -4,7 +4,6 @@
 #include <cstddef>
 
 namespace odintsov {
-  int getMatrixVal(const int* arr, size_t rows, size_t cols, size_t x, size_t y);
   bool isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, size_t col);
   bool isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, size_t row);
   size_t countColsWithThreeRepeats(const int* arr, size_t rows, size_t cols);

@@ -8,6 +8,8 @@ class CompositeShape
 public:
   CompositeShape();
   CompositeShape(Shape **shapes, size_t size);
+  Shape* operator[](size_t id);
+  const Shape* operator[](size_t id) const;
   ~CompositeShape();
   double getArea() const;
   rectangle_t getFrameRect() const;

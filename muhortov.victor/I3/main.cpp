@@ -34,6 +34,18 @@ int main()
 
   try
   {
+    repeat_symbols = new char[capacity];
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] c_string;
+    std::cout << "Error:\n";
+    std::cout << e.what();
+    return 3;
+  }
+
+  try
+  {
     repeat_symbols = repeatSymbols(repeat_symbols, c_string, size);
   }
   catch (const std::bad_alloc &e)

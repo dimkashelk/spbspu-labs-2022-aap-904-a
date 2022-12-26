@@ -70,7 +70,7 @@ int main()
 
   try
   {
-    vowel_symbols = vowel(repeat_symbols, c_string, size);
+    vowel_symbols = vowel(vowel_symbols, c_string, size);
   }
   catch (const std::bad_alloc &e)
   {

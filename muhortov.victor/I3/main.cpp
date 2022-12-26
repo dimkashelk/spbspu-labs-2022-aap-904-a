@@ -31,7 +31,20 @@ int main()
 
   // task 6
 
-  char *repeat_symbols = new char[size];
+  char *repeat_symbols = nullptr;
+
+  try
+  {
+    repeat_symbols = new char[capacity];
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] c_string;
+    delete[] repeat_symbols;
+    std::cout << "Error:\n";
+    std::cout << e.what();
+    return 3;
+  }
 
   try
   {
@@ -55,37 +68,45 @@ int main()
   std::cout << "Repeat symbols string: " << repeat_symbols << '\n';
 
   // task 18
-  try
-  {
-    char *vowel_sympols = new char[size];
-  }
-  catch ()
-  {
 
-  }
+  char *vowel_symbols = nullptr;
 
   try
   {
-    vowel_sympols = vowel(repeat_symbols, c_string, size);
+    vowel_symbols = new char[capacity];
   }
   catch (const std::bad_alloc &e)
   {
     delete[] c_string;
-    delete[] vowel_sympols;
+    delete[] repeat_symbols;
+    delete[] vowel_symbols;
+    std::cout << "Error:\n";
+    std::cout << e.what();
+    return 3;
+  }
+
+  try
+  {
+    vowel_symbols = vowel(repeat_symbols, c_string, size);
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] c_string;
+    delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
     return 1;
   }
   catch (const std::overflow_error &e)
   {
     delete[] c_string;
-    delete[] vowel_sympols;
+    delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
     return 3;
   }
 
-  std::cout << "Latin vowel symbols string:" << vowel_sympols << '\n';
+  std::cout << "Latin vowel symbols string:" << vowel_symbols << '\n';
 
   delete[] c_string;
   delete[] repeat_symbols;
-  delete[] vowel_sympols;
+  delete[] vowel_symbols;
 }

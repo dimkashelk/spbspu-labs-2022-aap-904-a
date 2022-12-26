@@ -17,7 +17,6 @@ char *vowel(char *destination, char *cstring, size_t size)
         break;
       }
     }
-
   }
 
   if (vowel_counter == 0)

@@ -7,27 +7,6 @@ int odintsov::getMatrixVal(const int* arr, size_t rows, size_t, size_t x, size_t
   return arr[y * rows + x];
 }
 
-size_t odintsov::countValRepeatsInCol(int val, const int* arr, size_t rows, size_t cols, size_t col) {
-  size_t count = 0;
-  for (size_t i = 0; i < rows; i++) {
-    if (val == getMatrixVal(arr, rows, cols, col, i)) {
-      count++;
-    }
-  }
-  return count;
-}
-
-size_t odintsov::countValRepeatsInRow(int val, const int* arr, size_t rows, size_t cols, size_t row)
-{
-  size_t count = 0;
-  for (size_t i = 0; i < cols; i++) {
-    if (val == getMatrixVal(arr, rows, cols, i, row)) {
-      count++;
-    }
-  }
-  return count;
-}
-
 bool odintsov::isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, size_t col)
 {
   std::unordered_map< int, unsigned > vals;

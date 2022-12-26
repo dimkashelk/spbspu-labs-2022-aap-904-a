@@ -17,10 +17,12 @@ Rectangle::Rectangle(Rectangle &&rect):
 Rectangle &Rectangle::operator=(const Rectangle &other)
 {
   rectangle = other.rectangle;
+  return *this;
 }
 Rectangle &Rectangle::operator=(Rectangle &&tmp) noexcept
 {
   rectangle = tmp.rectangle;
+  return *this;
 }
 double Rectangle::getArea() const
 {

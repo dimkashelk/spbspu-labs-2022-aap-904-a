@@ -8,6 +8,10 @@ class CompositeShape
 public:
   CompositeShape();
   CompositeShape(Shape **shapes, size_t size);
+  CompositeShape(const CompositeShape &compositeShape);
+  CompositeShape(CompositeShape &&compositeShape);
+  CompositeShape& operator=(const CompositeShape &other);
+  CompositeShape& operator=(CompositeShape &&tmp);
   Shape* operator[](size_t id);
   const Shape* operator[](size_t id) const;
   ~CompositeShape();

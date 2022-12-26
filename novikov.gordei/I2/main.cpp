@@ -50,5 +50,6 @@ int main()
     processArray(dynamicArray, n, k);
     delete [] dynamicArray;
   }
+  
   return 0;
 }

@@ -1,56 +1,19 @@
 #include "hasRepeatingElements.h"
 #include <iostream>
-#include <limits>
+#include <extendstring.h>
+#include <inputstring.h>
 int main()
 {
-  size_t capacity = 10;
-  char *cstring = new char[capacity];
-  size_t size = 0;
-  std::cin >> std::noskipws;
-  size_t maxSize = std::numeric_limits< size_t >::max();
-  do
+  char *cstring = nullptr;
+  try
   {
-    if (size == capacity)
-    {
-      if (capacity == maxSize)
-      {
-        std::cout << "Too long string.\n";
-        return 1;
-      }
-
-      try
-      {
-        char *newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete[] cstring;
-        cstring = newstr;
-        capacity += 20;
-      }
-      catch (...)
-      {
-        delete[] cstring;
-        return 1;
-      }
-    }
-    std::cin >> cstring[size];
+    cstring = inputString(std::cin);
   }
-  while (std::cin && cstring[size++] != '\n');
-  if (!std::cin && !size)
+  catch (...)
   {
-    delete [] cstring;
-    std::cerr << "Input incorrect.\n";
-    return 1;
+    std::cerr << "Error occured.\n";
+    return 2;
   }
-  if (cstring[0] == '\n' || cstring[0] == '\0')
-  {
-    delete [] cstring;
-    std::cerr << "No string provided.\n";
-    return 1;
-  }
-  cstring[size - 1] = '\0';
   try
   {
     std::cout << std::boolalpha << hasRepeatingElements(cstring) << "\n";

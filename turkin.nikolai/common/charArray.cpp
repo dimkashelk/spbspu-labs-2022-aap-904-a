@@ -20,6 +20,7 @@ void turkin::extend(turkin::CharArray & array, size_t addition)
   {
     throw std::overflow_error("out of size");
   }
+
   char * extendArray = new char[capacity]();
   for (size_t i = 0; i < array.size; i++)
   {

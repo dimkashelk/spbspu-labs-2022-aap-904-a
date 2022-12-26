@@ -118,3 +118,7 @@ const Shape* CompositeShape::at(size_t id) const
 {
   return shapes_[id];
 }
+bool CompositeShape::empty() const noexcept
+{
+  return size_ == 0;
+}

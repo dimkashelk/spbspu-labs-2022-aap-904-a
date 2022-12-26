@@ -14,6 +14,10 @@ Rectangle::Rectangle(const Rectangle &rect):
 Rectangle::Rectangle(Rectangle &&rect):
   rectangle(rect.rectangle)
 {}
+Rectangle &Rectangle::operator=(const Rectangle &other)
+{
+  rectangle = other.rectangle;
+}
 double Rectangle::getArea() const
 {
   return rectangle.width * rectangle.height;

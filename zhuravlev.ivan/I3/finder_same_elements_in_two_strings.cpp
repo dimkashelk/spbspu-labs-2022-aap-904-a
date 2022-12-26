@@ -1,7 +1,7 @@
 #include <iostream>
 #include "finder_same_elements_in_two_strings.h"
 
-void finderSameElementsInTwoStrings(const char *first_string, char *second_string, size_t size_first_string, size_t size_second_string)
+void finderSameElementsInTwoStrings(const char *first_string, const char *second_string, size_t size_first_string, size_t size_second_string)
 {
   size_t final_size = size_first_string + size_second_string;
   char result_string[final_size];

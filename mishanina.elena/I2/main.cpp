@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
   int* dynamic_array = new int[dyn_array_size];
   if (dyn_array_size > 0)
   {
-    for (size_t i = 0;i < dyn_array_size;i++)
+    for (size_t i = 0; i < dyn_array_size; i++)
     {
      dynamic_array[i] = std::rand() % 100;
     }

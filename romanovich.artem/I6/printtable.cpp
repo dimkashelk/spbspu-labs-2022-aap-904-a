@@ -1,9 +1,10 @@
 #include "printtable.h"
-#include "comparedoubles.h"
 #include <iomanip>
 #include <cmath>
 #include <cstddef>
 #include <ostream>
+#include "comparedoubles.h"
+#include "sinh.h"
 void printTableRow(std::ostream & out, double x, double absError, size_t numberMax)
 {
   out << std::setw(5) << x << " ";

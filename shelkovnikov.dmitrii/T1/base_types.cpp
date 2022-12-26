@@ -32,3 +32,8 @@ point_t rectangle_t::getRightUpPoint() const
 {
   return point_t(point.x + width / 2, point.y + height / 2);
 }
+std::istream& operator>>(std::istream &in, point_t &point)
+{
+  in >> point.x >> point.y;
+  return in;
+}

@@ -1,5 +1,6 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_BASE_TYPES_H
 #define SPBSPU_LABS_2022_AAP_904_A_BASE_TYPES_H
+#include <istream>
 struct point_t
 {
   double x;
@@ -18,4 +19,5 @@ struct rectangle_t
   point_t getLeftDownPoint() const;
   point_t getRightUpPoint() const;
 };
+std::istream& operator>>(std::istream &in, point_t &point);
 #endif

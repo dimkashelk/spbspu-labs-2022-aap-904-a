@@ -3,8 +3,20 @@
 #include <stdexcept>
 #include <cstddef>
 #include "rectangle.h"
-void expand(Shape *shapes, size_t size, size_t new_capacity)
-{}
+void expand(Shape **shapes, size_t size, size_t new_capacity)
+{
+  if (new_capacity < size)
+  {
+    throw std::runtime_error("New capacity less size");
+  }
+  Shape **new_shapes = new Shape*[new_capacity];
+  for (size_t i = 0; i < size; i++)
+  {
+    new_shapes[i] = shapes[i];
+  }
+  delete[] shapes;
+  shapes = new_shapes;
+}
 Rectangle input_rectangle(std::istream &in)
 {
   double *coords = new double[4];
@@ -37,9 +49,11 @@ int main()
       {
         Rectangle rect = input_rectangle(in);
         shapes[size] = &rect;
+        size++;
         if (size == capacity)
         {
-
+          capacity += 10;
+          expand(shapes, size, capacity);
         }
       }
       catch (const std::runtime_error &e)

@@ -54,6 +54,15 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &other)
   }
   return *this;
 }
+CompositeShape &CompositeShape::operator=(CompositeShape &&tmp)
+{
+  operator=(tmp);
+  for (size_t i = 0; i < size_; i++)
+  {
+    delete tmp.shapes_[i];
+  }
+  delete[] tmp.shapes_;
+}
 Shape *CompositeShape::operator[](size_t id)
 {
   return shapes_[id];

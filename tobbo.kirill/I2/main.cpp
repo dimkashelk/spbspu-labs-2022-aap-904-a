@@ -1,4 +1,5 @@
-﻿#include <fstream>
+﻿#include <cmath>
+#include <fstream>
 #include <iostream>
 #include "countOfMaxes.h"
 #include "shiftPartToEnd.h"

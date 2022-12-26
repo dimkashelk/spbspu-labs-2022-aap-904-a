@@ -34,18 +34,6 @@ int main()
 
   try
   {
-    repeat_symbols = new char[capacity];
-  }
-  catch (const std::bad_alloc &e)
-  {
-    delete[] c_string;
-    std::cout << "Error:\n";
-    std::cout << e.what();
-    return 3;
-  }
-
-  try
-  {
     repeat_symbols = repeatSymbols(repeat_symbols, c_string, size);
   }
   catch (const std::bad_alloc &e)
@@ -67,19 +55,6 @@ int main()
   // task 18
 
   char *vowel_symbols = nullptr;
-
-  try
-  {
-    vowel_symbols = new char[capacity];
-  }
-  catch (const std::bad_alloc &e)
-  {
-    delete[] c_string;
-    delete[] repeat_symbols;
-    std::cout << "Error:\n";
-    std::cout << e.what();
-    return 3;
-  }
 
   try
   {

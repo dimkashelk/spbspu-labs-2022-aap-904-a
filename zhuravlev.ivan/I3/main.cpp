@@ -29,8 +29,8 @@ int main()
       }
       catch (std::bad_alloc &e)
       {
-	      delete [] cstring;
-	      std::cerr << e.what();
+        delete [] cstring;
+        std::cerr << e.what();
       }
     }
     std::cin >> cstring[size];

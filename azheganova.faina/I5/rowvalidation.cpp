@@ -21,10 +21,6 @@ bool isE(char c)
 {
   return (c == 'E');
 }
-bool continueWithNextDigit(const char * data)
-{
-  return isDigit(*data) && (continueWithNextDigit(data + 1) || isEnd(*(data + 1)));
-}
 bool finishedWithDigit(const char * data)
 {
   return isDigit(*data) && isEnd(*(data + 1));
@@ -39,7 +35,7 @@ bool continueWithSign(const char * data)
 }
 bool continueWithOrder(const char * data)
 {
-  return isE(*data) && (continueWithSign(data + 1) || continueWithNextDigit(data + 1));
+  return isE(*data) && (continueWithSign(data + 1) || continueWithDigit(data + 1));
 }
 bool continueWithMantisaPartOne(const char * data)
 {

@@ -21,8 +21,8 @@ double myPow(double a, size_t power)
   return result;
 }
 NextSinhEl::NextSinhEl(double x) :
-  x(x),
-  numberSummand(0)
+  numberSummand(0),
+  x(x)
 {
 }
 double NextSinhEl::operator()()

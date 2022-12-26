@@ -66,7 +66,7 @@ int main()
 
   // task 18
 
-  char *vowel_symbols = nullptr;
+  char *vowel_symbols = new char[12];
 
   try
   {

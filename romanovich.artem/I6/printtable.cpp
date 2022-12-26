@@ -15,9 +15,8 @@ void printTable(std::ostream & out, double left, double right, double step, doub
 {
   if (left > right)
   {
-    double tmp = left;
-    left = right;
-    right = tmp;
+    std::cerr << "Invalid interval.\n";
+    return 2;
   }
   for (double value = left; value <= right + step; value += step)
   {

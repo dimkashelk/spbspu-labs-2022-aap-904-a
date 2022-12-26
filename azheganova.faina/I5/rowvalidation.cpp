@@ -23,11 +23,11 @@ bool isE(char data)
 }
 bool continueWithDigit(const char * data)
 {
-  return isDigit(*data) && (isDigit(*(data + 1)) || isEnd(*(data + 1)));
+  return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
 }
 bool continueWithE(const char * data)
 {
-  return isDigit(*data) && (isDigit(*(data + 1)) || isE(*(data + 1)));
+  return isDigit(*data) && (continueWithE(data + 1) || isE(*(data + 1)));
 }
 bool continueWithSign(const char * data)
 {

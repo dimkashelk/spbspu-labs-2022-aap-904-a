@@ -18,6 +18,10 @@ Regular::Regular(const Regular &regular):
   triangle(regular.triangle),
   count(regular.count)
 {}
+Regular::Regular(Regular &&regular):
+  triangle(regular.triangle),
+  count(regular.count)
+{}
 double Regular::getArea() const
 {
   return triangle.getArea() * count;

@@ -11,7 +11,7 @@ void printTableRow(std::ostream & out, double x, double absError, size_t numberM
   out << std::setw(10) << std::setprecision(5) << mySinh(x, absError, numberMax) << " ";
   out << std::setw(10) << std::setprecision(5) << sinh(x) << "\n";
 }
-void printTable(std::ostream & out, double left, double right, double step, double x, double absError, size_t numberMax)
+void printTable(std::ostream & out, double left, double right, double step, double absError, size_t numberMax)
 {
   if (left > right)
   {
@@ -19,9 +19,9 @@ void printTable(std::ostream & out, double left, double right, double step, doub
     left = right;
     right = tmp;
   }
-  for (double value=left; value <= right; value += step)
+  for (double value = left; value <= right + step; value += step)
   {
-    if (isSmaller(std::abs(value), step/10, 1e-6))
+    if (isSmaller(std::abs(value), step / 10, 1e-6))
     {
       value = 0;
     }

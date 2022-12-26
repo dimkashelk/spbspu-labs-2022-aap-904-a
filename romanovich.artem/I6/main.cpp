@@ -1,9 +1,26 @@
 #include <iostream>
 #include "printtable.h"
 #include "sinh.h"
-#include "comparedoubles.h"
 int main()
 {
-  double test = 0.8;
-  printTable(std::cout, -1, 1, 0.1, test, 1e-4, 10);
+  double left = 0;
+  double right = 0;
+  size_t numberMax = 0;
+  double absError = 1e-6;
+  double step = 1e-2;
+  std::cin >> left >> right >> numberMax;
+  if (!std::cin)
+  {
+    std::cerr << "Error while input.\n";
+    return 2;
+  }
+  try
+  {
+    printTable(std::cout, left, right, step, absError, numberMax);
+  }
+  catch (...)
+  {
+    std::cerr << "Error while printing table.\n";
+    return 2;
+  }
 }

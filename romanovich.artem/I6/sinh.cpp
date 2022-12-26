@@ -1,9 +1,5 @@
 #include "sinh.h"
-#include <iostream>
-#include <iomanip>
-#include <cmath>
 #include <stdexcept>
-#include <stddef.h>
 #include "comparedoubles.h"
 size_t myFactorial(size_t a)
 {

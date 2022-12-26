@@ -1,4 +1,3 @@
-3
 #include "countDescendingThrees.hpp"
 #include <cstddef>
 #include <stdexcept>

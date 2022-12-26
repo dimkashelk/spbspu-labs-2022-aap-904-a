@@ -1,5 +1,6 @@
 #include "threeRepeats.hpp"
 #include <cstddef>
+#include <unordered_map>
 
 int odintsov::getMatrixVal(const int* arr, size_t rows, size_t, size_t x, size_t y)
 {
@@ -29,9 +30,9 @@ size_t odintsov::countValRepeatsInRow(int val, const int* arr, size_t rows, size
 
 bool odintsov::isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, size_t col)
 {
-  for (size_t i = 0; i < rows - 2; i++) {
-    int val = getMatrixVal(arr, rows, cols, col, i);
-    if (countValRepeatsInCol(val, arr, rows, cols, col) >= 3) {
+  std::unordered_map< int, unsigned > vals;
+  for (size_t i = 0; i < rows; i++) {
+    if (++(vals[getMatrixVal(arr, rows, cols, col, i)]) == 3) {
       return true;
     }
   }
@@ -40,9 +41,9 @@ bool odintsov::isThreeRepeatsInCol(const int* arr, size_t rows, size_t cols, siz
 
 bool odintsov::isThreeRepeatsInRow(const int* arr, size_t rows, size_t cols, size_t row)
 {
-  for (size_t i = 0; i < cols - 2; i++) {
-    int val = getMatrixVal(arr, rows, cols, i, row);
-    if (countValRepeatsInRow(val, arr, rows, cols, row) >= 3) {
+  std::unordered_map< int, unsigned > vals;
+  for (size_t i = 0; i < cols; i++) {
+    if (++(vals[getMatrixVal(arr, rows, cols, i, row)]) == 3) {
       return true;
     }
   }

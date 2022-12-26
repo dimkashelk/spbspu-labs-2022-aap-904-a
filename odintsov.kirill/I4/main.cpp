@@ -12,16 +12,21 @@ int main(int argc, char* argv[])
     std::cout << "Error: Invalid arguments\n";
     return 1;
   }
-  std::ifstream infile(argv[2]);
-  if (!infile.is_open()) {
-    std::cout << "Error: File could not be opened\n";
+  std::ifstream inFile(argv[2]);
+  if (!inFile.is_open()) {
+    std::cout << "Error: Input file could not be opened\n";
     return 1;
   }
   size_t rows = 0;
   size_t cols = 0;
-  infile >> rows >> cols;
-  if (!infile) {
+  inFile >> rows >> cols;
+  if (!inFile) {
     std::cout << "Error: File read error\n";
+    return 1;
+  }
+  std::ofstream outFile(argv[3]);
+  if (!outFile.is_open()) {
+    std::cout << "Error: Output file could not be opened\n";
     return 1;
   }
   if (std::strcmp(argv[1], "1") == 0) {
@@ -31,28 +36,29 @@ int main(int argc, char* argv[])
       return 1;
     }
     for (unsigned i = 0; i < rows * cols; i++) {
-      infile >> arr[i];
-      if (!infile) {
+      inFile >> arr[i];
+      if (!inFile) {
         std::cout << "Error: File read error\n";
         return 1;
       }
     }
-    std::cout << odintsov::countRowsWithThreeRepeats(arr, rows, cols) << '\n';
-    std::cout << odintsov::countColsWithThreeRepeats(arr, rows, cols) << '\n';
+    outFile << odintsov::countRowsWithThreeRepeats(arr, rows, cols) << ' ';
+    outFile << odintsov::countColsWithThreeRepeats(arr, rows, cols);
   } else if(std::strcmp(argv[1], "2") == 0) {
     int** arr = new int*[rows];
     for (size_t r = 0; r < rows; r++) {
       arr[r] = new int[cols];
       for (size_t c = 0; c < cols; c++) {
-        infile >> arr[r][c];
-        if (!infile) {
+        inFile >> arr[r][c];
+        if (!inFile) {
           std::cout << "Error: File read error\n";
           return 1;
         }
       }
     }
-    std::cout << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
+    outFile << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
     odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
-    odintsov::drawMatrix(std::cout, arr, rows, cols) << '\n';
+    outFile << rows << ' ' << cols << '\n';
+    odintsov::drawMatrix(outFile, arr, rows, cols);
   }
 }

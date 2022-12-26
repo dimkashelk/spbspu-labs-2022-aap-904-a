@@ -35,7 +35,7 @@ bool isOrder(const char * data)
 }
 bool continueWithDot(const char * data)
 {
-  return continueWithDigit(data) && (isDot(*(data + 1)) || continueWithDigit(data + 1));
+  return continueWithDigit(data) && (isDot(*(data + 1)) || continueWithDot(data + 1));
 }
 bool isFloat(const char * data)
 {

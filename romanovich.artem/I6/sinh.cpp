@@ -20,13 +20,29 @@ double myPow(double a, size_t power)
   }
   return result;
 }
-double mySinh(double x, double absError, size_t numberMax)
+NextSinhEl::NextSinhEl(double x):
+  x(x),
+  numberSummand(0),
+  factorial(1),
+  pow(1)
+{
+  if (std::abs(x) >= 1)
+  {
+    throw std::invalid_argument("Invalid x: not in the interval.");
+  }
+}
+double NextSinhEl::operator()()
+{
+  return x * myPow(x, 2 * numberSummand) / myFactorial(2 * numberSummand);
+}
+double countSinh(double x, double absError, size_t numberMax)
 {
   double result = 0;
   size_t numberSummand = 0;
   while (numberSummand <= numberMax)
   {
-    double nextSummand = myPow(x, 1 + 2 * numberSummand) / myFactorial(1 + 2 * numberSummand);
+    NextSinhEl nextSinhEl(x);
+    double nextSummand = nextSinhEl();
     numberSummand++;
     if (isSmaller(std::abs(nextSummand), absError, 1e-6))
     {

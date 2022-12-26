@@ -72,7 +72,7 @@ bool inputInteger(std::string msg, int &n)
 {
   std::cout << msg;
   std::cin >> n;
-  if (std::cin.fail() || n <= 0) {
+  if (std::cin.fail() || n < 0) {
     std::cout << "Number is not a positive integer\n";
     return false;
   }

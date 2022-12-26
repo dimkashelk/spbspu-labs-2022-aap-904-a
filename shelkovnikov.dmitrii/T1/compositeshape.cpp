@@ -42,6 +42,9 @@ point_t CompositeShape::getCenterOfGravity() const
   double y_sum = 0.0;
   for (size_t i = 0; i < size_; i++)
   {
-    point_t
+    point_t point = shapes_[i]->getCenterOfGravity();
+    x_sum += point.x;
+    y_sum += point.y;
   }
+  return point_t(x_sum / size_, y_sum / size_);
 }

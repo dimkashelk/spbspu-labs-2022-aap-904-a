@@ -13,7 +13,7 @@ Polygon::Polygon(point_t *points, size_t size):
     triangles_[i] = &triangle;
   }
 }
-Polygon::Polygon(const Polygon &polygon)
+Polygon::Polygon(const Polygon &polygon):
 {
   if (triangles_)
   {
@@ -25,6 +25,12 @@ Polygon::Polygon(const Polygon &polygon)
     triangles_[i] = dynamic_cast< Triangle* >(polygon.triangles_[i]->clone());
   }
   count_ = polygon.count_;
+}
+Polygon::Polygon(Polygon &&polygon):
+  triangles_(polygon.triangles_),
+  count_(polygon.count_)
+{
+  polygon.triangles_ = nullptr;
 }
 double Polygon::getArea() const
 {

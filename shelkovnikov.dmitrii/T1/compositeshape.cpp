@@ -7,8 +7,8 @@ CompositeShape::CompositeShape():
   shapes_(new Shape*[capacity_])
 {}
 CompositeShape::CompositeShape(Shape **shapes, size_t size):
-  size_(0),
-  capacity_(10),
+  size_(size),
+  capacity_(size_),
   shapes_(new Shape*[capacity_])
 {
   shapes_ = new Shape*[capacity_];

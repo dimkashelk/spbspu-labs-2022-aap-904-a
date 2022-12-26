@@ -27,22 +27,29 @@ double mySinh(double x, double absError, unsigned long numberMax)
 {
   double result = 0;
   size_t precision = 10;
+  size_t numberSummand = 0;
   for (size_t i = 0; i < precision; ++i)
   {
-    result += myPow(x, 1+2*i)/myFactorial(1+2*i);
-    std::cout << myPow(x, 1+2*i)/myFactorial(1+2*i) << "\n";
+    double nextSummand = myPow(x, 1 + 2 * i) / myFactorial(1 + 2 * i);
+    numberSummand++;
+    if (nextSummand < absError) //корректное сравнение double
+    {
+      return result;
+    }
+    if (numberSummand > numberMax)
+    {
+      //TODO: throw exception
+    }
+    result += nextSummand;
+    std::cout << nextSummand << "\n";
   }
   return result;
 }
 
 
-
-//корректное сравнение double
-
-
 int main()
 {
-  size_t test = 3;
+  double test = 0.8;
   std::cout << mySinh(test, 0, 0) << "\n";
   std::cout << sinh(test) << "\n";
 }

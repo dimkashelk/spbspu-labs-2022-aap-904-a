@@ -7,15 +7,10 @@
 
 int main(int argc, char* argv[])
 {
-  std::srand(std::time(0));
-  if (argc > 2)
+  std::srand(std::time(NULL));
+  if (argc != 2)
   {
-    std::cerr << "ERROR: a lot of parameters\n";
-    return 1;
-  }
-  if (argc == 1)
-  {
-    std::cerr << "ERROR: no file\n";
+    std::cerr << "ERROR: the number of arguments does not match the required\n";
     return 1;
   }
   //static array
@@ -27,7 +22,7 @@ int main(int argc, char* argv[])
     std::cerr << "ERROR: invalid number entry\n";
     return 1;
   }
-  int static_array[] = { 1,0,-2,6,-24,9,7 };
+  int static_array[] = { 1, 0, -2, 6, -24, 9, 7 };
   std::cout << "CountPositiveElementsBeforeMinElement ";
   std::cout << countPositiveElementsBeforeMinElement(static_array, 7) << '\n';
   try
@@ -95,15 +90,15 @@ int main(int argc, char* argv[])
     }
     std::cout << "CountPositiveElementsBeforeMinElement ";
     std::cout << countPositiveElementsBeforeMinElement(array_from_file, array_size_from_file) << '\n';
-  try
-  {
-    std::cout << "CountElementsDivisibleWithoutRemainder ";
-    std::cout << countElementsDivisibleWithoutRemainder(array_from_file, array_size_from_file, n) << '\n';
-  }
-  catch (const std::runtime_error& e)
-  {
+    try
+    {
+      std::cout << "CountElementsDivisibleWithoutRemainder ";
+      std::cout << countElementsDivisibleWithoutRemainder(array_from_file, array_size_from_file, n) << '\n';
+    }
+    catch (const std::runtime_error& e)
+    {
       std::cout << e.what() << '\n';
-  }
+    }
     delete [] array_from_file;
   }
   else if (array_size_from_file==0)

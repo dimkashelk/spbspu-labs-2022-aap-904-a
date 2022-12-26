@@ -11,7 +11,7 @@ size_t countElementsDivisibleWithoutRemainder(const int* array, size_t size, int
   {
     throw std::runtime_error("Attempted to divide by Zero\n");
   }
-  int counter = 0;
+  size_t counter = 0;
   for (size_t i = 0; i < size; i++)
   {
    if (array[i] % cur_num == 0)

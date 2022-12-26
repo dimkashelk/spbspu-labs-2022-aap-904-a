@@ -1,25 +1,25 @@
 #include "rowvalidation.h"
 #include <cctype>
 
-bool isSign(char c)
+bool isSign(char data)
 {
-  return (c == '+' || c == '-');
+  return (data == '+' || data == '-');
 }
-bool isDigit(char c)
+bool isDigit(char data)
 {
-  return std::isdigit(c);
+  return std::isdigit(data);
 }
-bool isEnd(char c)
+bool isEnd(char data)
 {
-  return (c == '\0');
+  return (data == '\0');
 }
-bool isDot(char c)
+bool isDot(char data)
 {
-  return (c == '.');
+  return (data == '.');
 }
-bool isE(char c)
+bool isE(char data)
 {
-  return (c == 'E');
+  return (data == 'E');
 }
 bool continueWithDigit(const char * data)
 {

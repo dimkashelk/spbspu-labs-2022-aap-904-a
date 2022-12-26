@@ -55,8 +55,14 @@ int main()
   std::cout << "Repeat symbols string: " << repeat_symbols << '\n';
 
   // task 18
+  try
+  {
+    char *vowel_sympols = new char[size];
+  }
+  catch ()
+  {
 
-  char *vowel_sympols = new char[size];
+  }
 
   try
   {

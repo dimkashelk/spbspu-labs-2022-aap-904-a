@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cmath>  
+#include <cmath>
+#include <stdexcept>
 #include <stddef.h>
 
 size_t myFactorial(size_t a)
@@ -23,33 +24,28 @@ double myPow(double a, size_t power)
   return result;
 }
 
-double mySinh(double x, double absError, unsigned long numberMax)
+double mySinh(double x, double absError, size_t numberMax)
 {
   double result = 0;
-  size_t precision = 10;
   size_t numberSummand = 0;
-  for (size_t i = 0; i < precision; ++i)
+  while (numberSummand <= numberMax)
   {
-    double nextSummand = myPow(x, 1 + 2 * i) / myFactorial(1 + 2 * i);
+    double nextSummand = myPow(x, 1 + 2 * numberSummand) / myFactorial(1 + 2 * numberSummand);
     numberSummand++;
     if (nextSummand < absError) //корректное сравнение double
     {
       return result;
     }
-    if (numberSummand > numberMax)
-    {
-      //TODO: throw exception
-    }
     result += nextSummand;
     std::cout << nextSummand << "\n";
   }
-  return result;
+  throw std::invalid_argument("Invalid max summands number.");
 }
 
 
 int main()
 {
   double test = 0.8;
-  std::cout << mySinh(test, 0, 0) << "\n";
+  std::cout << mySinh(test, 0.001, 100) << "\n";
   std::cout << sinh(test) << "\n";
 }

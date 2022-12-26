@@ -24,8 +24,8 @@ public:
   bool empty() const noexcept;
   size_t size() const noexcept;
 private:
-  Shape **shapes_;
   size_t size_;
   size_t capacity_;
+  Shape **shapes_;
 };
 #endif

@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-void shiftArray(int *array, int N, int k)
+void shiftArray(int* array, int N, int k)
 {
   for (int j = 0; j < k; j++) {
     int tmp = array[N - 1];
@@ -14,7 +14,7 @@ void shiftArray(int *array, int N, int k)
   }
 }
 
-int getPositiveAvg(const int *array, int N)
+int getPositiveAvg(const int* array, int N)
 {
   int cnt = 0;
   int sum = 0;
@@ -27,7 +27,7 @@ int getPositiveAvg(const int *array, int N)
   return cnt ? sum / cnt : 0;
 }
 
-void printArray(const int *array, int N)
+void printArray(const int* array, int N)
 {
   for (int i = 0; i < N; i++) {
     std::cout << array[i] << " ";
@@ -35,14 +35,14 @@ void printArray(const int *array, int N)
   std::cout << std::endl;
 }
 
-bool inputArray(std::string filename, int *&array, int &N)
+bool inputArray(std::string filename, int*& array, int& N)
 {
   std::ifstream file(filename);
   if (!file.is_open()) {
     return false;
   }
   file >> N;
-  if (file.fail() || N <= 0) {
+  if (file.fail() || N < 0) {
     file.close();
     return false;
   }
@@ -51,7 +51,7 @@ bool inputArray(std::string filename, int *&array, int &N)
     file >> array[i];
   }
   if (file.fail()) {
-    delete [] array;
+    delete[] array;
     file.close();
     return false;
   }
@@ -59,8 +59,12 @@ bool inputArray(std::string filename, int *&array, int &N)
   return true;
 }
 
-void processArray(int *array, int N, int k)
+void processArray(int* array, int N, int k)
 {
+  if (N == 0) {
+    std::cout << "Empty array\n";
+    return;
+  }
   printArray(array, N);
   std::cout << "After shift: ";
   shiftArray(array, N, k);
@@ -68,7 +72,7 @@ void processArray(int *array, int N, int k)
   std::cout << "Positive elements average: " << getPositiveAvg(array, N) << "\n";
 }
 
-bool inputInteger(std::string msg, int &n)
+bool inputInteger(std::string msg, int& n)
 {
   std::cout << msg;
   std::cin >> n;

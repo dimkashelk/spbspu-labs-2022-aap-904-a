@@ -2,20 +2,21 @@
 #include <stdexcept>
 #include <cstddef>
 
+void rev(int* arr, const size_t size)
+{
+  for (size_t i = 0, j = size - 1; i < (size + 1) / 2; i++, j--)
+  {
+    std::swap(arr[i], arr[j]);
+  }
+}
 void shiftArray(int* arr, const size_t size, const unsigned shift)
 {
-  if (size == 0)
+  size_t trueShift = 0;
+  if (size != 0)
   {
-    return;
+    realShift = shift % size;
+    rev(arr, trueShift);
+    rev(arr, size - trueShift);
+    rev(arr, size);
   }
-  int* arrDuplicate = new int[size];
-  for (size_t i = 0; i < size; i++)
-  {
-    arrDuplicate[(i + shift) % size] = arr[i];
-  }
-  for (size_t i = 0; i < size; i++)
-  {
-    arr[i] = arrDuplicate[i];
-  }
-  delete[] arrDuplicate;
 }

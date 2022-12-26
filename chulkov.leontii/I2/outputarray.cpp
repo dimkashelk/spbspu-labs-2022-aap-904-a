@@ -3,9 +3,9 @@
 
 std::ostream& outputArray(std::ostream& out, const int* arr, size_t size)
 {
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = 0; i < size - 1; i++)
   {
     out << arr[i] << '\t';
   }
-  return out;
+  return out << arr[size - 1];
 }

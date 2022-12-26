@@ -1,5 +1,6 @@
 #include "compositeshape.h"
 #include <algorithm>
+#include "vector_t.h"
 CompositeShape::CompositeShape(Shape **shapes, size_t size):
   shapes_(nullptr),
   size_(size)
@@ -43,6 +44,15 @@ rectangle_t CompositeShape::getFrameRect() const
     y_max = std::max(y_max, rectangle.getRightUpPoint().y);
   }
   return rectangle_t(x_min, y_min, x_max, y_max);
+}
+void CompositeShape::move(point_t point)
+{
+  point_t center = getCenterOfGravity();
+  vector_t direction(point, center);
+  for (size_t i = 0; i < size_; i++)
+  {
+    shapes_[i]->move(direction.x, direction.y);
+  }
 }
 point_t CompositeShape::getCenterOfGravity() const
 {

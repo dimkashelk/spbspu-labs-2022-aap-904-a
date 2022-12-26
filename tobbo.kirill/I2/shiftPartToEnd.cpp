@@ -1,5 +1,5 @@
-#include <stdexcept>
 #include "shiftPartToEnd.h"
+#include <stdexcept>
 
 void shiftPartToEnd(int* arr, size_t size, size_t start_index, size_t end_index)
 {

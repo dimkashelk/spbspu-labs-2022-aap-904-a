@@ -1,7 +1,5 @@
-﻿#include <iostream>
-#include <fstream>
-#include <string>
-#include <cmath>
+﻿#include <fstream>
+#include <iostream>
 #include "countOfMaxes.h"
 #include "shiftPartToEnd.h"
 
@@ -32,8 +30,7 @@ int main(int argc, char* argv[])
     }
     std::cout << "Received array size:" << size << "\n";
 
-    const unsigned int srand_arg = 5;
-    std::srand(srand_arg);
+    std::srand(5);
     int* arr_dyn = new int[size];
     for (size_t i = 0; i < size; i++)
     {
@@ -43,7 +40,6 @@ int main(int argc, char* argv[])
     delete[] arr_dyn;
 
     /*********************************************/
-    int* arr = nullptr;
     std::ifstream input(argv[1]);
     if (!input.is_open())
     {
@@ -56,7 +52,7 @@ int main(int argc, char* argv[])
       {
         throw std::runtime_error("Error while reading size of array");
       }
-      arr = new int[size];
+      int* arr = new int[size];
       for (size_t i = 0; i < size; i++)
       {
         input >> arr[i];

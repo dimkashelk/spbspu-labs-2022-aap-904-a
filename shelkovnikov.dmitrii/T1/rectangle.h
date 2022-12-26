@@ -7,6 +7,10 @@ public:
   Rectangle(point_t point, double width, double height);
   Rectangle(rectangle_t rectangle);
   Rectangle(double x1, double y1, double x2, double y2);
+  Rectangle(const Rectangle &rect);
+  // Rectangle(Rectangle &&rect);
+  // Rectangle& operator=(const Rectangle &other);
+  // Rectangle& operator=(Rectangle &&tmp);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t point) override;

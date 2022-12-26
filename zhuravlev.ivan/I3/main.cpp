@@ -49,4 +49,5 @@ int main()
   std::cout << "Resualt of function finderSameElementsInTwoStrings: " << "\n";
   finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
   delete [] cstring;
+  return 0;
 }

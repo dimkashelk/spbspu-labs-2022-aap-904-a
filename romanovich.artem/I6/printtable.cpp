@@ -13,11 +13,6 @@ void printTableRow(std::ostream & out, double x, double absError, size_t numberM
 }
 void printTable(std::ostream & out, double left, double right, double step, double absError, size_t numberMax)
 {
-  if (left > right)
-  {
-    std::cerr << "Invalid interval.\n";
-    return 2;
-  }
   for (double value = left; value <= right + step; value += step)
   {
     if (isSmaller(std::abs(value), step / 10, 1e-6))

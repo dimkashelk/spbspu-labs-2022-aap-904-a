@@ -14,6 +14,11 @@ int main()
     std::cerr << "Error while input.\n";
     return 2;
   }
+  if (left > right)
+  {
+    std::cerr << "Invalid interval.\n";
+    return 2;
+  }
   try
   {
     printTable(std::cout, left, right, step, absError, numberMax);

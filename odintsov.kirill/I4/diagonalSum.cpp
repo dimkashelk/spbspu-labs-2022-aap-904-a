@@ -3,22 +3,15 @@
 
 int odintsov::getOffDiagonalSumByPoint(const int* const* arr, size_t rows, size_t cols, size_t row, size_t col)
 {
+  size_t rowDistToEdge = rows - row - 1;
+  size_t colDistToEdge = col;
+  size_t minDistToEdge = rowDistToEdge < colDistToEdge ? rowDistToEdge : colDistToEdge;
+  row += minDistToEdge;
+  col -= minDistToEdge;
   int sum = 0;
-  for (size_t r = row, c = col; c < cols; r--, c++) {
-    sum += arr[r][c];
-    if (r == 0) {
-      break;
-    }
-  }
-  if (col == 0) {
-    return sum;
-  }
-  for (size_t r = row + 1, c = col - 1; r < rows; r++, c--) {
-    sum += arr[r][c];
-    if (c == 0) {
-      break;
-    }
-  }
+  do {
+    sum += arr[row--][col++];
+  } while (row != 0 && col != cols);
   return sum;
 }
 

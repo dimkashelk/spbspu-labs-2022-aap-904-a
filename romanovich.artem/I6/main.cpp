@@ -57,7 +57,6 @@ double mySinh(double x, double absError, size_t numberMax)
       return result;
     }
     result += nextSummand;
-    //std::cout << numberSummand << " " << nextSummand << "\n";
   }
   throw std::invalid_argument("Invalid max summands number.");
 }
@@ -71,6 +70,12 @@ void printTableRow(std::ostream & out, double x, double absError, size_t numberM
 
 void printTable(double left, double right, double step, double x, double absError, size_t numberMax)
 {
+  if (left > right)
+  {
+    double tmp = left;
+    left = right;
+    right = tmp;
+  }
   for (double value=left; value <= right; value += step)
   {
     if (isSmaller(std::abs(value), step/10, 1e-6))

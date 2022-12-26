@@ -1,6 +1,5 @@
 #include <iostream>
 #include "formNewStringVarFiveteen.h"
-#include <fstream>
 #include "formNewStringVarFive.h"
 int main()
 {
@@ -57,7 +56,6 @@ int main()
           *j = *i;
         }
         delete[] cstring2;
-        delete[] cstring;
         cstring2 = newstr;
         capacity2 += 20;
       }
@@ -74,12 +72,9 @@ int main()
   {
     cstring2[size2 - 1] = '\0';
   }
-  if (size2 == 0 or size2 == 1)
+  if (size2 == 0)
   {
-    std::cerr << "Empty input" << '\n';
-    delete[] cstring2;
-    delete[] cstring;
-    return 2;
+    cstring2[0] = '\0';
   }
   char *result1;
   try

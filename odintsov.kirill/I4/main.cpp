@@ -3,6 +3,7 @@
 #include <cstring>
 #include "threeRepeats.hpp"
 #include "diagonalSum.hpp"
+#include "fillMatrix.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -50,5 +51,6 @@ int main(int argc, char* argv[])
       }
     }
     std::cout << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
+    odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
   }
 }

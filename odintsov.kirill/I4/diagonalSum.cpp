@@ -31,5 +31,11 @@ int odintsov::getMinOffDiagonalSum(const int* const* arr, size_t rows, size_t co
       minSum = newSum;
     }
   }
+  for (size_t c = 1; c < cols; c++) {
+    int newSum = getOffDiagonalSumByPoint(arr, rows, cols, rows - 1, c);
+    if (newSum < minSum) {
+      minSum = newSum;
+    }
+  }
   return minSum;
 }

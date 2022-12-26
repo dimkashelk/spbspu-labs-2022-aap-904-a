@@ -47,5 +47,5 @@ bool continueWithD(const char * data)
 }
 bool isFloat(const char * data)
 {
-  return isSign(*data) && continueWithD(data + 1);
+  return (continueWithDot(data) && isOrder(data + 1)) || (isSign(*data) && continueWithD(data + 1));
 }

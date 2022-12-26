@@ -102,3 +102,7 @@ void CompositeShape::pop_back()
 {
   size_--;
 }
+Shape* CompositeShape::at(size_t id)
+{
+  return shapes_[id];
+}

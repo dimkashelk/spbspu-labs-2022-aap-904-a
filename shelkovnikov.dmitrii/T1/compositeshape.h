@@ -17,6 +17,7 @@ public:
   point_t getCenter() const;
   void push_back(Shape *shp);
   void pop_back();
+  Shape* at(size_t id);
 private:
   Shape **shapes_;
   size_t size_;

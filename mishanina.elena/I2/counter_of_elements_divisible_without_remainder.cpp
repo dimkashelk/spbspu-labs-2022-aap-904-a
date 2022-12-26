@@ -1,7 +1,7 @@
-#include <iostream>
 #include "counter_of_elements_divisible_without_remainder.h"
+#include <iostream>
 
-size_t counter_of_elements_divisible_without_remainder(const int* array, size_t size, int cur_num)
+size_t countElementsDivisibleWithoutRemainder(const int* array, size_t size, int cur_num)
 {
   if (size == 0)
   {
@@ -12,7 +12,7 @@ size_t counter_of_elements_divisible_without_remainder(const int* array, size_t 
     throw std::runtime_error("Attempted to divide by Zero\n");
   }
   int counter = 0;
-  for (size_t i = 0;i < size;i++)
+  for (size_t i = 0; i < size; i++)
   {
    if (array[i] % cur_num == 0)
    {

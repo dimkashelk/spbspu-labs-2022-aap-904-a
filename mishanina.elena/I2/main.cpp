@@ -1,11 +1,13 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <cstddef>
+#include <ctime>
 #include "counter_of_elements_divisible_without_remainder.h"
 #include "positive_element_counter.h"
 
 int main(int argc, char* argv[])
 {
+  std::srand(std::time(0));
   if (argc > 2)
   {
     std::cerr << "ERROR: a lot of parameters\n";
@@ -26,11 +28,12 @@ int main(int argc, char* argv[])
     return 1;
   }
   int static_array[] = { 1,0,-2,6,-24,9,7 };
-  std::cout << "positive_element_counter " << positive_element_counter(static_array, 7) << '\n';
+  std::cout << "CountPositiveElementsBeforeMinElement ";
+  std::cout << countPositiveElementsBeforeMinElement(static_array, 7) << '\n';
   try
   {
-    std::cout << "counter_of_elements_divisible_without_remainder "
-              << counter_of_elements_divisible_without_remainder(static_array, 7, n) << '\n';
+    std::cout << "CountElementsDivisibleWithoutRemainder ";
+    std::cout << countElementsDivisibleWithoutRemainder(static_array, 7, n) << '\n';
   }
   catch (const std::runtime_error& e)
   {
@@ -47,11 +50,12 @@ int main(int argc, char* argv[])
     {
      dynamic_array[i] = std::rand() % 100;
     }
-    std::cout << "positive_element_counter " << positive_element_counter(dynamic_array, dyn_array_size) << '\n';
+    std::cout << "CountPositiveElementsBeforeMinElement ";
+    std::cout << countPositiveElementsBeforeMinElement(dynamic_array, dyn_array_size) << '\n';
     try
     {
-      std::cout << "counter_of_elements_divisible_without_remainder "
-          << counter_of_elements_divisible_without_remainder(dynamic_array, dyn_array_size, n) << '\n';
+      std::cout << "CountElementsDivisibleWithoutRemainder ";
+      std::cout << countElementsDivisibleWithoutRemainder(dynamic_array, dyn_array_size, n) << '\n';
     }
     catch (const std::runtime_error& e)
     {
@@ -89,12 +93,12 @@ int main(int argc, char* argv[])
        return 1;
      }
     }
-    std::cout << "positive_element_counter "
-              << positive_element_counter(array_from_file, array_size_from_file) << '\n';
+    std::cout << "CountPositiveElementsBeforeMinElement ";
+    std::cout << countPositiveElementsBeforeMinElement(array_from_file, array_size_from_file) << '\n';
   try
   {
-    std::cout << "counter_of_elements_divisible_without_remainder "
-              << counter_of_elements_divisible_without_remainder(array_from_file, array_size_from_file, n) << '\n';
+    std::cout << "CountElementsDivisibleWithoutRemainder ";
+    std::cout << countElementsDivisibleWithoutRemainder(array_from_file, array_size_from_file, n) << '\n';
   }
   catch (const std::runtime_error& e)
   {

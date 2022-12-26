@@ -1,6 +1,6 @@
 #include "positive_element_counter.h"
 
-size_t positive_element_counter(const int* array, size_t size)
+size_t countPositiveElementsBeforeMinElement(const int* array, size_t size)
 {
   if (size == 0)
   {

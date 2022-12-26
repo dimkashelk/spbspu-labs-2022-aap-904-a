@@ -13,6 +13,19 @@ Polygon::Polygon(point_t *points, size_t size):
     triangles_[i] = &triangle;
   }
 }
+Polygon::Polygon(const Polygon &polygon)
+{
+  if (triangles_)
+  {
+    delete[] triangles_;
+  }
+  triangles_ = new Triangle*[polygon.count_];
+  for (size_t i = 0; i < count_; i++)
+  {
+    triangles_[i] = dynamic_cast< Triangle* >(polygon.triangles_[i]->clone());
+  }
+  count_ = polygon.count_;
+}
 double Polygon::getArea() const
 {
   double global_area = 0.0;

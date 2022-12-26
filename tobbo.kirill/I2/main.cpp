@@ -23,13 +23,11 @@ int main(int argc, char* argv[])
     size_t size = 0;
     std::cout << "Enter array size:";
     std::cin >> size;
-
     if (!std::cin)
     {
       throw std::invalid_argument("Array size must be unsigned integer");
     }
-    std::cout << "Received array size:" << size << "\n";
-
+    
     std::srand(5);
     int* arr_dyn = new int[size];
     for (size_t i = 0; i < size; i++)

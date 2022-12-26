@@ -13,7 +13,6 @@ namespace chemodurov
     }
     return temp;
   }
-
   double calcPolygonArea(const chemodurov::point_t * verts, size_t num_of_verts)
   {
     double area = 0.0;
@@ -24,7 +23,6 @@ namespace chemodurov
     area *= 0.5;
     return area;
   }
-
   chemodurov::point_t findPolygonCenter(const chemodurov::point_t * verts, size_t num_of_verts)
   {
     double area = calcPolygonArea(verts, num_of_verts);
@@ -52,17 +50,14 @@ chemodurov::Polygon::Polygon(const chemodurov::point_t * verts, size_t num_of_ve
     throw std::invalid_argument("Not correct vertices of polygon");
   }
 }
-
 chemodurov::Polygon::~Polygon()
 {
   delete [] vertices_;
 }
-
 double chemodurov::Polygon::getArea() const
 {
   return chemodurov::calcPolygonArea(vertices_, number_of_vertices_);
 }
-
 chemodurov::rectangle_t chemodurov::Polygon::getFrameRect() const
 {
   double max_x = vertices_[0].x;
@@ -92,7 +87,6 @@ chemodurov::rectangle_t chemodurov::Polygon::getFrameRect() const
   chemodurov::rectangle_t temp{center, max_x - min_x, max_y - min_y};
   return temp;
 }
-
 void chemodurov::Polygon::move(const chemodurov::point_t & pos)
 {
   const point_t delta = pos - center_;
@@ -102,7 +96,6 @@ void chemodurov::Polygon::move(const chemodurov::point_t & pos)
     vertices_[i] = vertices_[i] + delta;
   }
 }
-
 void chemodurov::Polygon::move(double dx, double dy)
 {
   const point_t delta{dx, dy};
@@ -112,7 +105,6 @@ void chemodurov::Polygon::move(double dx, double dy)
     vertices_[i] = vertices_[i] + delta;
   }
 }
-
 void chemodurov::Polygon::scale(double k)
 {
   for (size_t i = 0; i < number_of_vertices_; ++i)

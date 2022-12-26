@@ -23,32 +23,26 @@ chemodurov::Rectangle::Rectangle(const chemodurov::point_t & left_down, const ch
     throw std::invalid_argument("This is not a rectangle");
   }
 }
-
 chemodurov::Rectangle::~Rectangle()
 {
   p.~Polygon();
 }
-
 double chemodurov::Rectangle::getArea() const
 {
   return p.getArea();
 }
-
 chemodurov::rectangle_t chemodurov::Rectangle::getFrameRect() const
 {
   return p.getFrameRect();
 }
-
 void chemodurov::Rectangle::move(const chemodurov::point_t & pos)
 {
   p.move(pos);
 }
-
 void chemodurov::Rectangle::move(double dx, double dy)
 {
   p.move(dx, dy);
 }
-
 void chemodurov::Rectangle::scale(double k)
 {
   p.scale(k);

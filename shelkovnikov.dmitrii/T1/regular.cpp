@@ -26,11 +26,13 @@ Regular &Regular::operator=(const Regular &other)
 {
   triangle = other.triangle;
   count = other.count;
+  return *this;
 }
 Regular &Regular::operator=(Regular &&tmp)
 {
   triangle = tmp.triangle;
   count = tmp.count;
+  return *this;
 }
 double Regular::getArea() const
 {

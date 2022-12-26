@@ -40,6 +40,10 @@ Polygon &Polygon::operator=(const Polygon &other)
 {
   if (triangles_)
   {
+    for (size_t i = 0; i < count_; i++)
+    {
+      delete triangles_[i];
+    }
     delete[] triangles_;
   }
   triangles_ = new Triangle*[other.count_];

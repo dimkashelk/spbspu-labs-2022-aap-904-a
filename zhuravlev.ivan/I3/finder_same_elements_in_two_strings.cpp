@@ -18,12 +18,12 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
 		}
 	}
 
-	char result_string[cnt];
+	char result_string[cnt] = {};
 	for (int i = 0; i < cnt; ++i)
 	{
-		tmp_string[i] = result_string[i];
+		result_string[i] = tmp_string[i];
 	}
-	for (size_t i = 0; i <= final_size; ++i)
+	for (size_t i = 0; i <= cnt; ++i)
 	{
 		std::cout << result_string[i] << " ";
 	}

@@ -27,6 +27,17 @@ CompositeShape::CompositeShape(const CompositeShape &compositeShape):
     shapes_[i] = compositeShape.shapes_[i]->clone();
   }
 }
+CompositeShape::CompositeShape(CompositeShape &&compositeShape):
+  size_(compositeShape.size_),
+  capacity_(compositeShape.capacity_),
+  shapes_(new Shape*[capacity_])
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    shapes_[i] = compositeShape.shapes_[i];
+  }
+  delete[] compositeShape.shapes_;
+}
 Shape *CompositeShape::operator[](size_t id)
 {
   return shapes_[id];

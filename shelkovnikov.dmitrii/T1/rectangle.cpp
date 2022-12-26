@@ -18,6 +18,10 @@ Rectangle &Rectangle::operator=(const Rectangle &other)
 {
   rectangle = other.rectangle;
 }
+Rectangle &Rectangle::operator=(Rectangle &&tmp) noexcept
+{
+  rectangle = tmp.rectangle;
+}
 double Rectangle::getArea() const
 {
   return rectangle.width * rectangle.height;

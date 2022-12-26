@@ -19,6 +19,11 @@ Triangle::Triangle(point_t p1, point_t p2, point_t p3):
 Triangle::Triangle(double x1, double y1, double x2, double y2, double x3, double y3):
   Triangle(point_t(x1, y1), point_t(x2, y2), point_t(x3, y3))
 {}
+Triangle::Triangle(const Triangle &triangle):
+  point1(triangle.point1),
+  point2(triangle.point2),
+  point3(triangle.point3)
+{}
 double Triangle::getArea() const
 {
   // the area of the triangle is half of the length of the vector product

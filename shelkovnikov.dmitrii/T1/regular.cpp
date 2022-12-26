@@ -56,7 +56,7 @@ void Regular::move(double delta_x, double delta_y)
 void Regular::move(point_t point)
 {
   point_t *points = triangle.getPoints();
-  point_t center = triangle.getCenterOfGravity();
+  point_t center = triangle.getCenter();
   double delta_x = center.x - points[0].x;
   double delta_y = center.y - points[0].y;
   triangle.move(point);

@@ -59,12 +59,12 @@ void Triangle::move(double delta_x, double delta_y)
 }
 void Triangle::move(point_t point)
 {
-  point_t point_center_of_gravity = this->getCenterOfGravity();
+  point_t point_center_of_gravity = this->getCenter();
   this->move(point.x - point_center_of_gravity.x, point.y - point_center_of_gravity.y);
 }
 void Triangle::scale(double k)
 {
-  point_t point_center_of_gravity = this->getCenterOfGravity();
+  point_t point_center_of_gravity = this->getCenter();
   vector_t direction1(point1.x - point_center_of_gravity.x, point1.y - point_center_of_gravity.y);
   vector_t direction2(point2.x - point_center_of_gravity.x, point2.y - point_center_of_gravity.y);
   vector_t direction3(point3.x - point_center_of_gravity.x, point3.y - point_center_of_gravity.y);
@@ -99,7 +99,7 @@ point_t *Triangle::getPoints() const
 {
   return new point_t[3]{point1, point2, point3};
 }
-point_t Triangle::getCenterOfGravity() const
+point_t Triangle::getCenter() const
 {
   return point_t((point1.x + point2.x + point3.x) / 3, (point1.y + point2.y + point3.y) / 3);
 }

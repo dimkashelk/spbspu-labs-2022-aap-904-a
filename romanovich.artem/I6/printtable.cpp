@@ -13,8 +13,12 @@ void printTableRow(std::ostream &out, double x, double absError, size_t numberMa
 }
 void printTable(std::ostream &out, double left, double right, double step, double absError, size_t numberMax)
 {
-  for (double value = left; value <= right + step; value += step)
+  int incrementValue = 1;
+  int leftBorder = (int) (left / step);
+  int rightBorder = (int) (right / step);
+  for (int i = leftBorder; i <= rightBorder; i += incrementValue)
   {
+    double value = i * step;
     if (isSmaller(std::abs(value), step / 10, 1e-6))
     {
       value = 0;

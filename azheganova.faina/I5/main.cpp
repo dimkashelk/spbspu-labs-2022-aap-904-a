@@ -7,7 +7,6 @@ int main()
 {
   char *cstring = nullptr;
   cstring = inputString(std::cin);
-  std::cout << "\n";
   std::cout << std::boolalpha << isFloat(cstring) << '\n';
   delete [] cstring;
 }

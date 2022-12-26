@@ -73,8 +73,3 @@ Shape *Regular::clone() const
 {
   return new Regular(*this);
 }
-point_t Regular::getCenterOfGravity() const
-{
-  point_t *points = triangle.getPoints();
-  return points[0];
-}

@@ -10,7 +10,6 @@ public:
   virtual void move(double delta_x, double delta_y) = 0;
   virtual void scale(double k) = 0;
   virtual Shape* clone() const = 0;
-  virtual point_t getCenterOfGravity() const = 0;
   virtual ~Shape() = default;
 };
 #endif

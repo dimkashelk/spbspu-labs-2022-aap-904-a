@@ -13,7 +13,6 @@ public:
   void move(double delta_x, double delta_y) override;
   void scale(double k) override;
   Shape* clone() const override;
-  point_t getCenterOfGravity() const;
 private:
   rectangle_t rectangle;
 };

@@ -62,6 +62,13 @@ void CompositeShape::move(point_t point)
     shapes_[i]->move(direction.x, direction.y);
   }
 }
+void CompositeShape::move(double delta_x, double delta_y)
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    shapes_[i]->move(delta_x, delta_y);
+  }
+}
 point_t CompositeShape::getCenter() const
 {
   return getFrameRect().point;

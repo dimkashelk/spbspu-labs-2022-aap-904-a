@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[])
 {
-  std::srand(std::time(NULL));
+  std::srand(std::time(nullptr));
   if (argc != 2)
   {
     std::cerr << "ERROR: the number of arguments does not match the required\n";

@@ -7,8 +7,8 @@ public:
   Rectangle(point_t point, double width, double height);
   Rectangle(rectangle_t rectangle);
   Rectangle(double x1, double y1, double x2, double y2);
-  Rectangle(const Rectangle &rect);
-  Rectangle(Rectangle &&rect);
+  explicit Rectangle(const Rectangle &rect);
+  explicit Rectangle(Rectangle &&rect);
   Rectangle& operator=(const Rectangle &other);
   Rectangle& operator=(Rectangle &&tmp) noexcept;
   double getArea() const override;

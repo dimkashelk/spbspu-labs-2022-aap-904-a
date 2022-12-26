@@ -7,9 +7,9 @@ void finderThreeSameElements(const char *str, size_t size)
   int elem[256]{};
   for (int i = 0; i < 256; ++i)
   {
-    for (int j = 0; j < size; ++j)
+    for (size_t j = 0; j < size; ++j)
     {
-      if ((int)str[j] == i)
+      if (static_cast<int> (str[j]) == i)
       {
         cnt_elem++;
       }
@@ -34,7 +34,7 @@ void finderThreeSameElements(const char *str, size_t size)
     }
     for (int q = 0; q < max; ++q)
     {
-      std::cout << (char)ind << " ";
+      std::cout << static_cast<char> (ind) << " ";
     }
     max = 0;
     elem[ind] = 0;

@@ -1,7 +1,17 @@
-//sinh(x)
-double sinh(x)(double _, double _, undigned long _)
+double sinh(x)(double x, double absError, undigned long numberMax)
 {
-  double sum = 0;
+  double result = 0;
+}
+
+double factorial(size_t a)
+{
+  size_t result = 1;
+  while (a > 0)
+  {
+    result *= a;
+    a--;
+  }
+  return result;
 }
 
 

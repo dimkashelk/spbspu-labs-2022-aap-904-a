@@ -18,7 +18,7 @@ double countLnXPlusOneDivXMinusOne(double x, double absError, unsigned numberMax
   while (number <= numberMax && std::abs(member) > absError);
   if (number >= numberMax && std::abs(member) > absError)
   {
-    throw std::invalid_argument ("accuracy not achieved");
+    throw std::invalid_argument("accuracy not achieved");
   }
   return sum;
 }

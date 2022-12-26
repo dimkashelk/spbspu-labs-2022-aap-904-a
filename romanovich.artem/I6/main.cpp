@@ -1,7 +1,8 @@
-#include "iostream"
+#include <iostream>
+#include <cmath>  
 #include <stddef.h>
 
-size_t factorial(size_t a)
+size_t myFactorial(size_t a)
 {
   size_t result = 1;
   while (a > 0)
@@ -12,9 +13,9 @@ size_t factorial(size_t a)
   return result;
 }
 
-size_t pow(size_t a, size_t power)
+double myPow(double a, size_t power)
 {
-  size_t result = 1;
+  double result = 1;
   for (size_t i = 0; i < power; ++i)
   {
     result *= a;
@@ -22,13 +23,14 @@ size_t pow(size_t a, size_t power)
   return result;
 }
 
-double sinh(double x, double absError, unsigned long numberMax)
+double mySinh(double x, double absError, unsigned long numberMax)
 {
   double result = 0;
   size_t precision = 10;
   for (size_t i = 0; i < precision; ++i)
   {
-    result += pow(x, 1+2*i)/factorial(1+2*i);
+    result += myPow(x, 1+2*i)/myFactorial(1+2*i);
+    std::cout << myPow(x, 1+2*i)/myFactorial(1+2*i) << "\n";
   }
   return result;
 }
@@ -40,5 +42,7 @@ double sinh(double x, double absError, unsigned long numberMax)
 
 int main()
 {
-  std::cout << sinh(1, 0, 0) << "\n";
+  size_t test = 3;
+  std::cout << mySinh(test, 0, 0) << "\n";
+  std::cout << sinh(test) << "\n";
 }

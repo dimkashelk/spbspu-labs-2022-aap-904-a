@@ -5,13 +5,13 @@
 #include <ostream>
 #include "comparedoubles.h"
 #include "sinh.h"
-void printTableRow(std::ostream & out, double x, double absError, size_t numberMax)
+void printTableRow(std::ostream &out, double x, double absError, size_t numberMax)
 {
   out << std::setw(5) << x << " ";
   out << std::setw(10) << std::setprecision(5) << countSinh(x, absError, numberMax) << " ";
   out << std::setw(10) << std::setprecision(5) << sinh(x) << "\n";
 }
-void printTable(std::ostream & out, double left, double right, double step, double absError, size_t numberMax)
+void printTable(std::ostream &out, double left, double right, double step, double absError, size_t numberMax)
 {
   for (double value = left; value <= right + step; value += step)
   {

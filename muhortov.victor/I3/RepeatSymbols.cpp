@@ -1,4 +1,4 @@
-#include "RepeatSymbols.hpp."
+#include "RepeatSymbols.hpp"
 
 char *repeatSymbols(char *destination, char *cstring, size_t size)
 {

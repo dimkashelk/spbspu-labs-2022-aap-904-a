@@ -2,48 +2,48 @@
 #include <stdexcept>
 #include <cmath>
 Regular::Regular(double x1, double y1, double x2, double y2, double x3, double y3):
-  triangle(x1, y1, x2, y2, x3, y3),
-  count(0)
+  triangle_(x1, y1, x2, y2, x3, y3),
+  size_(0)
 {
-  if (!triangle.isRectangular())
+  if (!triangle_.isRectangular())
   {
     throw std::logic_error("Triangle isn't rectangular");
   }
   double side_1 = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
   double side_2 = std::sqrt(std::pow(x3 - x1, 2) + std::pow(y3 - y1, 2));
   double angle_degrees = acos(side_1 / side_2) * 180.0 / M_PI;
-  count = static_cast< size_t >(360 / angle_degrees);
+  size_ = static_cast< size_t >(360 / angle_degrees);
 }
 Regular::Regular(const Regular &regular):
-  triangle(regular.triangle),
-  count(regular.count)
+  triangle_(regular.triangle_),
+  size_(regular.size_)
 {}
 Regular::Regular(Regular &&regular):
-  triangle(regular.triangle),
-  count(regular.count)
+  triangle_(regular.triangle_),
+  size_(regular.size_)
 {}
 Regular &Regular::operator=(const Regular &other)
 {
-  triangle = other.triangle;
-  count = other.count;
+  triangle_ = other.triangle_;
+  size_ = other.size_;
   return *this;
 }
 Regular &Regular::operator=(Regular &&tmp)
 {
-  triangle = tmp.triangle;
-  count = tmp.count;
+  triangle_ = tmp.triangle_;
+  size_ = tmp.size_;
   return *this;
 }
 double Regular::getArea() const
 {
-  return triangle.getArea() * count;
+  return triangle_.getArea() * size_;
 }
 rectangle_t Regular::getFrameRect() const
 {
   // rotate point (px, py) around point (ox, oy) by angle theta
   // p'x = cos(theta) * (px-ox) - sin(theta) * (py-oy) + ox
   // p'y = sin(theta) * (px-ox) + cos(theta) * (py-oy) + oy
-  point_t *points = triangle.getPoints();
+  point_t *points = triangle_.getPoints();
   double o_x = points[0].x;
   double o_y = points[0].y;
   double p_x_1 = points[1].x;
@@ -55,8 +55,8 @@ rectangle_t Regular::getFrameRect() const
   double min_y = p_y_1;
   double max_x = p_x_1;
   double max_y = p_y_1;
-  double theta = 360.0f / count;
-  for (size_t i = 0; i < count; i++)
+  double theta = 360.0f / size_;
+  for (size_t i = 0; i < size_; i++)
   {
     p_x_1 = std::cos(theta) * (p_x_1 - o_x) - std::sin(theta) * (p_y_1 - o_y) + o_x;
     p_y_1 = std::sin(theta) * (p_x_1 - o_x) + std::cos(theta) * (p_y_1 - o_y) + o_y;
@@ -71,23 +71,23 @@ rectangle_t Regular::getFrameRect() const
 }
 void Regular::move(double delta_x, double delta_y)
 {
-  triangle.move(delta_x, delta_y);
+  triangle_.move(delta_x, delta_y);
 }
 void Regular::move(point_t point)
 {
-  point_t *points = triangle.getPoints();
-  point_t center = triangle.getCenter();
+  point_t *points = triangle_.getPoints();
+  point_t center = triangle_.getCenter();
   double delta_x = center.x - points[0].x;
   double delta_y = center.y - points[0].y;
-  triangle.move(point);
-  triangle.move(delta_x, delta_y);
+  triangle_.move(point);
+  triangle_.move(delta_x, delta_y);
 }
 void Regular::scale(double k)
 {
-  point_t *old_points = triangle.getPoints();
-  triangle.scale(k);
-  point_t *new_points = triangle.getPoints();
-  triangle.move(old_points[0].x - new_points[0].x, old_points[0].y - new_points[0].y);
+  point_t *old_points = triangle_.getPoints();
+  triangle_.scale(k);
+  point_t *new_points = triangle_.getPoints();
+  triangle_.move(old_points[0].x - new_points[0].x, old_points[0].y - new_points[0].y);
 }
 Shape *Regular::clone() const
 {

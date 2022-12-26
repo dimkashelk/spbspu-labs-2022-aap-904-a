@@ -13,7 +13,7 @@ Triangle::Triangle(point_t p1, point_t p2, point_t p3):
   double side3 = std::sqrt(pow((point3.x - point2.x), 2) + pow(point3.y - point2.y, 2));
   if (side1 >= side2 + side3 || side2 >= side1 + side3 || side3 >= side1 + side2)
   {
-    throw std::logic_error("It's not a triangle");
+    throw std::logic_error("It's not a triangle_");
   }
 }
 Triangle::Triangle(double x1, double y1, double x2, double y2, double x3, double y3):
@@ -45,7 +45,7 @@ Triangle &Triangle::operator=(Triangle &&tmp)
 }
 double Triangle::getArea() const
 {
-  // the area of the triangle is half of the length of the vector product
+  // the area of the triangle_ is half of the length of the vector product
   // let 's make a matrix
   //         |i  j  k|
   // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;

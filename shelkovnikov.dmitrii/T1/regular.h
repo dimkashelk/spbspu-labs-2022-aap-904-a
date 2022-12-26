@@ -18,7 +18,7 @@ public:
   void scale(double k) override;
   Shape* clone() const override;
 private:
-  Triangle triangle;
-  size_t count;
+  Triangle triangle_;
+  size_t size_;
 };
 #endif

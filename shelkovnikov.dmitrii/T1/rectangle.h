@@ -8,7 +8,7 @@ public:
   Rectangle(rectangle_t rectangle);
   Rectangle(double x1, double y1, double x2, double y2);
   Rectangle(const Rectangle &rect);
-  // Rectangle(Rectangle &&rect);
+  Rectangle(Rectangle &&rect);
   // Rectangle& operator=(const Rectangle &other);
   // Rectangle& operator=(Rectangle &&tmp);
   double getArea() const override;

@@ -11,6 +11,9 @@ Rectangle::Rectangle(double x1, double y1, double x2, double y2):
 Rectangle::Rectangle(const Rectangle &rect):
   rectangle(rect.rectangle)
 {}
+Rectangle::Rectangle(Rectangle &&rect):
+  rectangle(rect.rectangle)
+{}
 double Rectangle::getArea() const
 {
   return rectangle.width * rectangle.height;

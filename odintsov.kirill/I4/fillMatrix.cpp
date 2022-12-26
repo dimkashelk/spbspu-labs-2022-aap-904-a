@@ -1,3 +1,4 @@
+#include "fillMatrix.hpp"
 #include <cstddef>
 
 void odintsov::rippleFromPointFill(int* const* arr, size_t rows, size_t cols, size_t row, size_t col)

@@ -23,7 +23,7 @@ bool isE(char c)
 }
 bool continueWithDigit(const char * data)
 {
-  return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
+  return isDigit(*data) && (isDigit(*(data + 1)) || isEnd(*(data + 1)));
 }
 bool continueWithD(const char * data)
 {
@@ -43,7 +43,7 @@ bool isFloatPartOne(const char * data)
 }
 bool isFloatPartTwo(const char * data)
 {
-  return isSign(*data) && continueWithD(data + 1) && isOrder(data + 2) && isEnd(*(data + 3));
+  return isSign(*data) && continueWithD(data + 1) && isOrder(data + 2);
 }
 bool isFloat(const char * data)
 {

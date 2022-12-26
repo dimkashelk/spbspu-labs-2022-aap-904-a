@@ -27,7 +27,7 @@ bool continueWithDigit(const char * data)
 }
 bool continueWithD(const char * data)
 {
-  return isDigit(*data) && (isDigit(*(data + 1)) || isDot(*(data + 1)));
+  return isDigit(*data) && (continueWithD(data + 1) || isDot(*(data + 1)));
 }
 bool isOrder(const char * data)
 {

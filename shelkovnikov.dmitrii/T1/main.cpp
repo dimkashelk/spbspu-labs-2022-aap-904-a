@@ -102,6 +102,17 @@ int main()
     }
     else if (name == "SCALE")
     {
+      double sum_area = 0.0;
+      for (size_t i = 0; i < size; i++)
+      {
+        sum_area += shapes[i]->getArea();
+      }
+      std::cout << sum_area << " ";
+      for (size_t i = 0; i < size; i++)
+      {
+        rectangle_t rect = shapes[i]->getFrameRect();
+        std::cout << rect << " ";
+      }
       point_t point;
       in >> point;
       double k = 0.0;

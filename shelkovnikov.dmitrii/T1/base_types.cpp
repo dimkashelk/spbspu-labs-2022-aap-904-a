@@ -44,6 +44,7 @@ std::istream& operator>>(std::istream &in, point_t &point)
 std::ostream& operator<<(std::ostream &out, point_t &point)
 {
   out << point.x << " " << point.y;
+  return out;
 }
 std::ostream& operator<<(std::ostream &out, rectangle_t &rectangle)
 {

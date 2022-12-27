@@ -56,7 +56,7 @@ int main()
       cstring_2[capacity_2 - 1] = '\0';
     }
   }
-  catch (std::exception &e)
+  catch (const std::exception& e)
   {
     std::cout << e.what();
     delete[] cstring_1;

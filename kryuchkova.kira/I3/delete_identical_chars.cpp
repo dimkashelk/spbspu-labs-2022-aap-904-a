@@ -5,7 +5,7 @@
 char *delete_identical_chars(char *destination, const char *cstring_first, const char *cstring_second)
 {
   bool identical_chars = false;
-  size_t k = 0;
+  char *over_destination = destination;
   const char *start = cstring_second;
   while (*cstring_first)
   {
@@ -20,12 +20,12 @@ char *delete_identical_chars(char *destination, const char *cstring_first, const
     }
     if (!identical_chars)
     {
-      destination[k] = *cstring_first;
-      k++;
+      *over_destination = *cstring_first;
+      over_destination++;
     }
     identical_chars = false;
     cstring_first++;
   }
-  destination[k] = '\0';
+  *over_destination = '\0';
   return destination;
 }

@@ -4,7 +4,7 @@
 
 char *remove_extra_spaces(char *destination, const char *cstring)
 {
-  size_t k = 0;
+  char *over_destination = destination;
 
   while (std::isspace(*cstring))
   {
@@ -15,15 +15,15 @@ char *remove_extra_spaces(char *destination, const char *cstring)
   {
     if (!(std::isspace(*cstring) && std::isspace(*(cstring - 1))))
     {
-      destination[k] = *cstring;
-      k++;
+      *over_destination = *cstring;
+      over_destination++;
     }
     cstring++;
   }
-  if (std::isspace(destination[k - 1]))
+  if (std::isspace(*over_destination))
   {
-    k--;
+    over_destination--;
   }
-  destination[k] = '\0';
+  *over_destination = '\0';
   return destination;
 }

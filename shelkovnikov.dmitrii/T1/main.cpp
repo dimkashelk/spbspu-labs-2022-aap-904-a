@@ -63,9 +63,12 @@ int main()
     }
     else if (name == "MOVE")
     {
-      double x1 = 0.0;
-      double x2 = 0.0;
-      std::cin >> x1 >> x2;
+      point_t point;
+      std::cin >> point;
+      for (size_t i = 0; i < size; i++)
+      {
+        shapes[i]->move(point);
+      }
     }
   }
   return 0;

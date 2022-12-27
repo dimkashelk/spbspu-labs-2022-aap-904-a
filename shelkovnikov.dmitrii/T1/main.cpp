@@ -5,6 +5,7 @@
 #include "rectangle.h"
 #include "isotropic_scaling.h"
 #include "regular.h"
+#include "polygon.h"
 void expand(Shape **shapes, size_t size, size_t new_capacity)
 {
   if (new_capacity < size)
@@ -63,6 +64,25 @@ int main()
         contains_errors_with_shapes = true;
       }
     }
+    else if (name == "POLYGON")
+    {
+      try
+      {
+        Polygon polygon;
+        in >> polygon;
+        shapes[size] = &polygon;
+        size++;
+        if (size == capacity)
+        {
+          capacity += 10;
+          expand(shapes, size, capacity);
+        }
+      }
+      catch (const std::logic_error &e)
+      {
+        contains_errors_with_shapes = true;
+      }
+    }
     else if (name == "SCALE")
     {
       point_t point;
@@ -80,5 +100,6 @@ int main()
       }
     }
   }
-  return 0;
+}
+return 0;
 }

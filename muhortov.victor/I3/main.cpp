@@ -14,15 +14,17 @@ int main()
   std::cin >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size == capacity - 1)
     {
       try
       {
         char *newstr = new char[capacity + 10];
+        c_string[size + 1] = '\0';
         strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
         capacity += 10;
+        delete[] newstr;
       }
       catch (const std::bad_alloc &e)
       {

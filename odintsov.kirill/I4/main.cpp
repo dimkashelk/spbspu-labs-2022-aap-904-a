@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include <stdexcept>
-#include "drawMatrix.hpp"
+#include "MatrixWrapper.hpp"
 #include "threeRepeats.hpp"
 #include "diagonalSum.hpp"
 #include "fillMatrix.hpp"
@@ -50,44 +50,15 @@ int main(int argc, char* argv[])
       return 1;
     }
   } else if (std::strcmp(argv[1], "2") == 0) {
-    int** arr = new int*[rows];
-    for (size_t r = 0; r < rows; r++) {
-      try {
-        arr[r] = new int[cols];
-        for (size_t c = 0; c < cols; c++) {
-          inFile >> arr[r][c];
-          if (!inFile) {
-            throw std::runtime_error("File read error");
-          }
-        }
-      } catch (const std::exception& err) {
-        std::cout << "Error: " << err.what() << '\n';
-        for (size_t newR = 0; newR <= r; newR++) {
-          delete [] arr[newR];
-        }
-        delete [] arr;
-        return 1;
-      }
-    }
     try {
-      outFile << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
-    } catch (const std::runtime_error& err) {
+      odintsov::MatrixWrapper matrix(rows, cols);
+      matrix.readMatrix(inFile);
+      outFile << odintsov::getMinOffDiagonalSum(matrix.arr, rows, cols) << '\n';
+      odintsov::rippleFromPointFill(matrix.arr, rows, cols, 0, 0);
+      outFile << rows << ' ' << cols << '\n';
+      matrix.outputMatrix(outFile);
+    } catch (const std::exception& err) {
       std::cout << "Error: " << err.what() << '\n';
-      for (size_t r = 0; r < rows; r++) {
-        delete [] arr[r];
-      }
-      delete [] arr;
-      return 1;
-    }
-    odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
-    outFile << rows << ' ' << cols << '\n';
-    odintsov::drawMatrix(outFile, arr, rows, cols);
-    for (size_t r = 0; r < rows; r++) {
-      delete [] arr[r];
-    }
-    delete [] arr;
-    if (!outFile) {
-      std::cout << "Error: File write error\n";
       return 1;
     }
   }

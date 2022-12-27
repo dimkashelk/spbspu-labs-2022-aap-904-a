@@ -1,4 +1,5 @@
 #include "samePositiveElements.h"
+#include <cstddef>
 
 bool isThereTheSamePositiveElements(const int* arr, const size_t size, bool& ans)
 {

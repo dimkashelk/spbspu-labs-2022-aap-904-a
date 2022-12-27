@@ -74,5 +74,9 @@ int main(int argc, char* argv[])
       std::cout << "Error: File write error\n";
       return 1;
     }
+    for (size_t r = 0; r < rows; r++) {
+      delete [] arr[r];
+    }
+    delete [] arr;
   }
 }

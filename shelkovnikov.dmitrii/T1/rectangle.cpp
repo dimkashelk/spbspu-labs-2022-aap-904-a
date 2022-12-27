@@ -7,7 +7,12 @@ Rectangle::Rectangle(rectangle_t rectangle):
 {}
 Rectangle::Rectangle(double x1, double y1, double x2, double y2):
   rectangle_(x1, y1, x2, y2)
-{}
+{
+  if (!(x1 < x2 && y1 < y2))
+  {
+    throw std::logic_error("It isn't a rectangle");
+  }
+}
 Rectangle::Rectangle(const Rectangle &rect):
   rectangle_(rect.rectangle_)
 {}

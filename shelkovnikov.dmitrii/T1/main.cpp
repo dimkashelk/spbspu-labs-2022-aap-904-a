@@ -51,14 +51,21 @@ int main()
     in >> name;
     if (name == "RECTANGLE")
     {
-      Rectangle rect;
-      in >> rect;
-      shapes[size] = rect.clone();
-      size++;
-      if (size == capacity)
+      try
       {
-        capacity += 10;
-        expand(shapes, size, capacity);
+        Rectangle rect;
+        in >> rect;
+        shapes[size] = rect.clone();
+        size++;
+        if (size == capacity)
+        {
+          capacity += 10;
+          expand(shapes, size, capacity);
+        }
+      }
+      catch (const std::logic_error &e)
+      {
+        contains_errors_with_shapes = true;
       }
     }
     else if (name == "REGULAR")

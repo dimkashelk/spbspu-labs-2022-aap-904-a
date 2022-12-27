@@ -7,15 +7,16 @@
 
 int main()
 {
-  size_t capacity = 10;
+  size_t capacity1 = 10;
+  size_t capacity2 = 10;
   size_t size = 0;
 
-  char* cstring1 = new char[capacity];
+  char* cstring1 = new char[capacity1];
   cstring1[0] = '\0';
 
   try
   {
-    cstring1 = formingCstring(cstring1, capacity, size);
+    cstring1 = formingCstring(cstring1, capacity1, size);
     if (cstring1[0] == '\0')
     {
       std::cout << " Empty string ";
@@ -34,7 +35,7 @@ int main()
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[capacity];
+    destination1 = new char[capacity1];
   }
   catch(const std::exception &e)
   {
@@ -59,7 +60,7 @@ int main()
   char* destination2 = nullptr;
   try
   {
-    destination2 = new char[capacity];
+    destination2 = new char[capacity2];
   }
   catch(const std::exception &e)
   {
@@ -83,6 +84,5 @@ int main()
   }
   std::cout << destination2 << "\n";
   delete[] cstring1;
-  delete[] destination1;
   delete[] destination2;
 }

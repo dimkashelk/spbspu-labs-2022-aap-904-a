@@ -19,12 +19,10 @@ int main()
       try
       {
         char *newstr = new char[capacity + 10];
-        c_string[size] = '\0';
         strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
         capacity += 10;
-        delete[] newstr;
       }
       catch (const std::bad_alloc &e)
       {
@@ -44,8 +42,6 @@ int main()
   }
 
   c_string[size] = '\0';
-
-  std::cout << c_string;
 
   // task 6
 

@@ -21,4 +21,12 @@ private:
   Triangle triangle_;
   size_t size_;
 };
+std::istream& operator>>(std::istream &in, Regular &regular)
+{
+  Triangle triangle;
+  in >> triangle;
+  point_t *points = triangle.getPoints();
+  regular = *(new Regular(points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y));
+  return in;
+}
 #endif

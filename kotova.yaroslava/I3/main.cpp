@@ -10,13 +10,6 @@ int main()
   char* cstring1 = new char[capacity];
   size_t size = 0;
   cstring1 = formingCstring(cstring1, capacity, size);
-  if (cstring1[0] == '\0')
-  {
-    std::cout << "Empty string";
-    delete[] cstring1;
-    return 1;
-  }
-  cstring1[capacity - 1] = '\0';
   char* destination1 = nullptr;
   try
   {
@@ -44,6 +37,25 @@ int main()
     std::cout << e.what();
     delete[] destination2;
     delete[]  cstring2;
+    return 1;
+  }
+  try
+  {
+    if (cstring1[0] == '\0')
+    {
+      std::cout << "Empty string";
+      delete[] cstring1;
+      return 1;
+    }
+    cstring_1[capacity - 1] = '\0';
+  }
+  catch(invalid_argument &e)
+  {
+    std::cout << e.what();
+    delete[] cstring1;
+    delete[] cstring2;
+    delete[] destination1;
+    delete[] destination2;
     return 1;
   }
   return 0;

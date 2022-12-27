@@ -28,7 +28,7 @@ char * inputString(std::istream & input)
       catch (...)
       {
         delete [] cstring;
-        throw;
+        exit;
       }
     }
     input >> cstring[size];
@@ -37,7 +37,7 @@ char * inputString(std::istream & input)
   if (!input && !size)
   {
     delete [] cstring;
-    throw;
+    exit;
   }
   cstring[size] = '\0';
   return cstring;

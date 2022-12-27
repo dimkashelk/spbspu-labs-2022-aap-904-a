@@ -34,7 +34,7 @@ int main()
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[capacity1];
+    destination1 = new char[capacity1+10];
   }
   catch(const std::exception &e)
   {
@@ -60,7 +60,7 @@ int main()
   char* destination2 = nullptr;
   try
   {
-    destination2 = new char[capacity2];
+    destination2 = new char[capacity2+10];
   }
   catch(const std::exception &e)
   {

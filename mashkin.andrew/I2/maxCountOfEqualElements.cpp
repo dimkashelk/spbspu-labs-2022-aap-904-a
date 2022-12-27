@@ -9,13 +9,12 @@ size_t countMaxQuantityOfEqualElements(const int* arr, const size_t size)
   {
     if (arr[i] == arr[i + 1])
     {
-      count = count == 0 ? 1 : count;
       count++;
-      maxCount = maxCount < count ? count : maxCount;
+      maxCount = (maxCount < count ? count : maxCount);
     }
     else
     {
-      count = 0;
+      count = 1;
     }
   }
   return maxCount;

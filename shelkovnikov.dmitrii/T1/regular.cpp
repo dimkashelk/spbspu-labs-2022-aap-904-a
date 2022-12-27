@@ -1,6 +1,10 @@
 #include "regular.h"
 #include <stdexcept>
 #include <cmath>
+Regular::Regular():
+  triangle_(Triangle()),
+  size_(0)
+{}
 Regular::Regular(double x1, double y1, double x2, double y2, double x3, double y3):
   triangle_(x1, y1, x2, y2, x3, y3),
   size_(0)

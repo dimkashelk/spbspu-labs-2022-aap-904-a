@@ -25,12 +25,6 @@ int main()
         delete[] c_string;
         c_string = newstr;
         capacity += 10;
-        if (c_string[0] == '\n')
-        {
-          delete[] c_string;
-          std::cerr << "Error: empty string \n";
-          return 2;
-        }
       }
       catch (const std::bad_alloc &e)
       {
@@ -42,7 +36,14 @@ int main()
   }
   while (std::cin && c_string[size++] != '\n');
 
-  c_string[size - 1] = '\0';
+  if (c_string[0] == '\n')
+  {
+    delete[] c_string;
+    std::cerr << "Error: empty string \n";
+    return 2;
+  }
+
+  c_string[size] = '\0';
 
   // task 6
 

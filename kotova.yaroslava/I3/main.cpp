@@ -46,7 +46,7 @@ int main()
     return 1;
   }
   char* cstring2 = new char[capacity2];
-  cstring1[0] = '\0';
+  cstring2[0] = '\0';
   try
   {
     cstring2 = formingCstring(cstring2, capacity2, size);

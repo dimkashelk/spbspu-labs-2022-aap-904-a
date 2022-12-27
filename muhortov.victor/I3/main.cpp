@@ -1,5 +1,4 @@
 #include <iostream>
-#include "MakeString.hpp"
 #include "RepeatSymbols.hpp"
 #include "Vowel.hpp"
 int main()
@@ -11,22 +10,39 @@ int main()
 
   c_string[0] = '\n';
 
-  try
+  std::cin >> std::noskipws;
+  do
   {
-    c_string = makeString(c_string, size, capacity, std::cin);
-    if (c_string[0] == '\n')
+    if (size == capacity)
     {
-      delete[] c_string;
-      std::cerr << "Error: empty string \n";
-      return 2;
+      try
+      {
+        char *newstr = new char[capacity + 10];
+        for (auto i = c_string, j = newstr; i != c_string + size; ++i, ++j)
+        {
+          *j = *i;
+        }
+        delete[] c_string;
+        c_string = newstr;
+        capacity += 10;
+        if (c_string[0] == '\n')
+        {
+          delete[] c_string;
+          std::cerr << "Error: empty string \n";
+          return 2;
+        }
+      }
+      catch (const std::bad_alloc &e)
+      {
+        std::cerr << "Error: " << e.what();
+        return 1;
+      }
     }
-    c_string[size - 1] = '\0';
+    std::cin >> c_string[size];
   }
-  catch (const std::bad_alloc &e)
-  {
-    std::cerr << "Error: " << e.what();
-    return 1;
-  }
+  while (std::cin && c_string[size++] != '\n');
+
+  c_string[size - 1] = '\0';
 
   // task 6
 
@@ -46,7 +62,7 @@ int main()
 
   try
   {
-    repeatSymbols(repeat_symbols, c_string, size);
+    repeatSymbols(repeat_symbols, c_string);
   }
   catch (const std::bad_alloc &e)
   {
@@ -66,11 +82,12 @@ int main()
 
   // task 18
 
-  char *vowel_symbols = new char[12];
+  char *vowel_symbols = nullptr;
 
   try
   {
-    vowel(vowel_symbols, c_string, size);
+    vowel_symbols = new char[12];
+    findVowel(vowel_symbols, c_string);
   }
   catch (const std::bad_alloc &e)
   {

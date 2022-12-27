@@ -1,33 +1,31 @@
 #include "RepeatSymbols.hpp"
 
-char *repeatSymbols(char *destination,char *cstring, size_t size)
+char *repeatSymbols(char *destination, char *cstring)
 {
-  size_t repeat_size = 0;
-  size_t start_checking = 1;
   int repeat_counter = 0;
   char symbol = ' ';
 
-  for (size_t counter = 0; counter < size; counter++)
+  while (*cstring)
   {
-    symbol = cstring[counter];
-    for (size_t i = start_checking; i < size; i++)
+    symbol = *cstring;
+    for (char *i = cstring + 1; *i != '\0'; i++)
     {
-      if (symbol == cstring[i] && cstring[i] != ' ')
+      if (symbol == *i)
       {
         repeat_counter++;
-        cstring[i] = ' ';
+        *i = ' ';
       }
     }
-    if (repeat_counter > 0)
+    if (repeat_counter > 0 && symbol != ' ')
     {
-      destination[repeat_size] = symbol;
-      repeat_size++;
+      *destination = symbol;
+      destination++;
     }
     repeat_counter = 0;
-    start_checking ++;
+    cstring++;
   }
 
-  destination[repeat_size] = '\0';
+  *destination = '\0';
 
   return destination;
 }

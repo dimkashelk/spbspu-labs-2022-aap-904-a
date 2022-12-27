@@ -28,7 +28,7 @@ bool isEnd(char c)
 
 bool isDigitWithNoSign(const char* data)
 {
-  return (isDigit(*data) || (isDigit(*data) && (isDigitWithNoSign(data + 1) || isEnd(*(data + 1)))));
+  return (isDigit(*data) || (isDigit(*data) && isDigitWithNoSign(data + 1)));
 }
 
 bool isOrder(const char* data)
@@ -43,5 +43,5 @@ bool isMantissa(const char* data)
 
 bool isFloatDigit(const char* data)
 {
-  return (isSign(*data) && isMantissa(data + 1) && isOrder(data + 2));
+  return (isSign(*data) && isMantissa(data + 1) && isOrder(data + 2) && isEnd(*(data + 3)));
 }

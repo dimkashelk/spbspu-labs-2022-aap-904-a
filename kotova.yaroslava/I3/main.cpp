@@ -47,9 +47,9 @@ int main()
       delete[] cstring1;
       return 1;
     }
-    cstring_1[capacity - 1] = '\0';
+    cstring1[capacity - 1] = '\0';
   }
-  catch(invalid_argument &e)
+  catch(invalid_argument& e)
   {
     std::cout << e.what();
     delete[] cstring1;

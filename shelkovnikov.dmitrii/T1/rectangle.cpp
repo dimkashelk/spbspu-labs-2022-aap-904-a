@@ -1,6 +1,6 @@
 #include "rectangle.h"
-Rectangle::Rectangle(point_t point, double width, double height):
-  rectangle_(point, width, height)
+Rectangle::Rectangle():
+  rectangle_(0.0, 0.0, 0.0, 0.0)
 {}
 Rectangle::Rectangle(rectangle_t rectangle):
   rectangle_(rectangle)

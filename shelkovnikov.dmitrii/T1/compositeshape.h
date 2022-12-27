@@ -1,8 +1,12 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_COMPOSITE_SHAPE_H
 #define SPBSPU_LABS_2022_AAP_904_A_COMPOSITE_SHAPE_H
 #include <cstddef>
+#include <sstream>
 #include "base_types.h"
 #include "shape.h"
+#include "rectangle.h"
+#include "regular.h"
+#include "polygon.h"
 class CompositeShape
 {
 public:
@@ -32,4 +36,36 @@ private:
   size_t capacity_;
   Shape **shapes_;
 };
+std::istream& operator>>(std::istream &in, CompositeShape &compositeShape)
+{
+  std::string line = "";
+  std::string name = "";
+  compositeShape = CompositeShape();
+  do
+  {
+    std::getline(in, line);
+    std::istringstream stream(line);
+    stream >> name;
+    if (name == "RECTANGLE")
+    {
+      Rectangle rect;
+      stream >> rect;
+      compositeShape.push_back(&rect);
+    }
+    else if (name == "REGULAR")
+    {
+      Regular regular;
+      stream >> regular;
+      compositeShape.push_back(&regular);
+    }
+    else if (name == "POLYGON")
+    {
+      Polygon polygon;
+      stream >> polygon;
+      compositeShape.push_back(&polygon);
+    }
+  }
+  while (name != "COMPEXEND");
+  return in;
+}
 #endif

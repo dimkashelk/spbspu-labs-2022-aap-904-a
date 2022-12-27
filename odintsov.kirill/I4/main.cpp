@@ -52,17 +52,21 @@ int main(int argc, char* argv[])
   } else if (std::strcmp(argv[1], "2") == 0) {
     int** arr = new int*[rows];
     for (size_t r = 0; r < rows; r++) {
-      arr[r] = new int[cols];
-      for (size_t c = 0; c < cols; c++) {
-        inFile >> arr[r][c];
-        if (!inFile) {
-          std::cout << "Error: File read error\n";
-          for (size_t newR = 0; newR <= r; newR++) {
-            delete [] arr[newR];
+      try {
+        arr[r] = new int[cols];
+        for (size_t c = 0; c < cols; c++) {
+          inFile >> arr[r][c];
+          if (!inFile) {
+            throw std::runtime_error("File read error");
           }
-          delete [] arr;
-          return 1;
         }
+      } catch (const std::exception& err) {
+        std::cout << "Error: " << err.what() << '\n';
+        for (size_t newR = 0; newR <= r; newR++) {
+          delete [] arr[newR];
+        }
+        delete [] arr;
+        return 1;
       }
     }
     try {

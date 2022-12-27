@@ -46,7 +46,7 @@ int main()
   }
   try
   {
-    destination1 = deleteNumbers(destination1, string1);
+    destination1 = deleteNumbers(destination1, cstring1);
   }
   catch(const std::overflow_error &e)
   {

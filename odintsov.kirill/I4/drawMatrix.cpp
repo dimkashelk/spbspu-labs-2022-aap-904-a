@@ -12,6 +12,9 @@ std::ostream& odintsov::drawRow(std::ostream& out, const int* const* arr, size_t
 
 std::ostream& odintsov::drawMatrix(std::ostream& out, const int* const* arr, size_t rows, size_t cols)
 {
+  if (rows == 0 || cols == 0) {
+    return out;
+  }
   for (size_t r = 0; r < rows - 1; r++) {
     drawRow(out, arr, rows, cols, r) << '\n';
   }

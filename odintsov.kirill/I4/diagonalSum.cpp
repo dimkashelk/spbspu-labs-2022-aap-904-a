@@ -26,6 +26,9 @@ int odintsov::getOffDiagonalSumByPoint(const int* const* arr, size_t rows, size_
 
 int odintsov::getMinOffDiagonalSum(const int* const* arr, size_t rows, size_t cols)
 {
+  if (rows == 0 || cols == 0) {
+    return 0;
+  }
   int minSum = getOffDiagonalSumByPoint(arr, rows, cols, 0, 0);
   for (size_t r = 1; r < rows; r++) {
     int newSum = getOffDiagonalSumByPoint(arr, rows, cols, r, 0);

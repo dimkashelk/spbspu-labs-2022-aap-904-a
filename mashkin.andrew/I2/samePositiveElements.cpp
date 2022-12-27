@@ -3,7 +3,7 @@
 
 bool isThereTheSamePositiveElements(const int* arr, const size_t size, bool& ans)
 {
-  for (size_t i = 0; i < size - 1; ++i)
+  for (size_t i = 0; i + 1 < size; ++i)
   {
     if (arr[i] < 1)
     {

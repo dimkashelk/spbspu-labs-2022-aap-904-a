@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     std::cout << "Erorr!";
     return 1;
   }
-  const int constSize = 7;
+  const size_t constSize = 7;
   int constArr[constSize]{ 1, 2, 2, 2, 12, 5, 8 };
   size_t count = 0;
   size_t maxCount = 0;
@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
   std::cout << maxCount << "\n";
   std::cout << (ans ? ansTrue : ansFalse) << "\n";
 
-  int dinamicSize = 0;
+  size_t dinamicSize = 0;
   std::cin >> dinamicSize;
   int* dinamicArr = new int[dinamicSize];
   srand(time(NULL));
@@ -49,10 +49,15 @@ int main(int argc, char* argv[])
   file.open(argv[1]);
   if (!file.is_open())
   {
-    std::cout << "Error when you open file" << "\n";
+    std::cout << "Error when you open file\n";
     return 1;
   }
-  int fileSize = 0;
+  else if (file.peek() == EOF)
+  {
+    std::cout << "File empty\n";
+    return 1;
+  }
+  size_t fileSize = 0;
   file >> fileSize;
   int* fileArr = new int[fileSize];
   for (int i = 0; i < fileSize; i++)

@@ -25,7 +25,6 @@ char* makeNewCapacityCString(std::istream& input)
         }
         delete[] cstring;
         cstring = newstring;
-        newstring = nullptr;
         capacity += 20;
       }
       catch (const std::exception& e)
@@ -36,13 +35,13 @@ char* makeNewCapacityCString(std::istream& input)
     }
     input >> cstring[size];
   }
-  while (input && cstring[size++] != '\n');
+  while (input && cstring[size++] != '\0');
 
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     std::cout << "Error while reading the string \n";
     delete[] cstring;
   }
-  cstring[size - 1] = '\0';
+  cstring[size] = '\0';
   return cstring;
 }

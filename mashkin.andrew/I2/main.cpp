@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
   size_t fileSize = 0;
   file >> fileSize;
   int* fileArr = new int[fileSize];
-  for (int i = 0; i < fileSize; i++)
+  for (size_t i = 0; i < fileSize; i++)
   {
     file >> fileArr[i];
   }

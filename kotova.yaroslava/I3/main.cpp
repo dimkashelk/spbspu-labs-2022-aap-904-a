@@ -8,21 +8,21 @@ int main()
 {
   size_t capacity1 = 10;
   size_t capacity2 = 10;
-  size_t size = 0;
-
+  size_t size1 = 0;
+  size_t size2 = 0;
   char* cstring1 = new char[capacity1];
   cstring1[0] = '\0';
 
   try
   {
-    cstring1 = formingCstring(cstring1, capacity1, size);
+    cstring1 = formingCstring(cstring1, capacity1, size1);
     if (cstring1[0] == '\0')
     {
       std::cout << " Empty string ";
       delete[] cstring1;
       return 2;
     }
-    cstring1[size-1] = '\0';
+    cstring1[size1-1] = '\0';
   }
   catch (const std::exception &e)
   {
@@ -49,8 +49,8 @@ int main()
   cstring2[0] = '\0';
   try
   {
-    cstring2 = formingCstring(cstring2, capacity2, size);
-    cstring2[size-1] = '\0';
+    cstring2 = formingCstring(cstring2, capacity2, size2);
+    cstring2[size2-1] = '\0';
   }
   catch(const std::exception &e)
   {

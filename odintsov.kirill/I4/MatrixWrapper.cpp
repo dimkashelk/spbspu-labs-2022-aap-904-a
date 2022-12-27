@@ -50,6 +50,9 @@ std::istream& odintsov::MatrixWrapper::readMatrix(std::istream& in)
 
 std::ostream& odintsov::MatrixWrapper::outputRow(std::ostream& out, size_t row)
 {
+  if (rows == 0 || cols == 0) {
+    return out;
+  }
   for (size_t c = 0; c < cols - 1; c++) {
     out << arr[row][c] << ' ';
     if (!out) {
@@ -61,6 +64,9 @@ std::ostream& odintsov::MatrixWrapper::outputRow(std::ostream& out, size_t row)
 
 std::ostream& odintsov::MatrixWrapper::outputMatrix(std::ostream& out)
 {
+  if (rows == 0 || cols == 0) {
+    return out;
+  }
   for (size_t r = 0; r < rows - 1; r++) {
     outputRow(out, r) << '\n';
   }

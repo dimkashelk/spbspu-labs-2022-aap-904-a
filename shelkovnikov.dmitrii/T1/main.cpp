@@ -11,7 +11,7 @@ void expand(Shape **shapes, size_t size, size_t new_capacity)
   {
     throw std::runtime_error("New capacity less size");
   }
-  Shape **new_shapes = new Shape*[new_capacity];
+  Shape **new_shapes = new Shape *[new_capacity];
   for (size_t i = 0; i < size; i++)
   {
     new_shapes[i] = shapes[i];
@@ -26,7 +26,7 @@ int main()
   bool contains_errors_with_shapes = false;
   size_t size = 0;
   size_t capacity = 10;
-  Shape **shapes = new Shape*[capacity];
+  Shape **shapes = new Shape *[capacity];
   while (std::cin)
   {
     std::getline(std::cin, line);
@@ -34,21 +34,14 @@ int main()
     in >> name;
     if (name == "RECTANGLE")
     {
-      try
+      Rectangle rect;
+      in >> rect;
+      shapes[size] = &rect;
+      size++;
+      if (size == capacity)
       {
-        Rectangle rect;
-        in >> rect;
-        shapes[size] = &rect;
-        size++;
-        if (size == capacity)
-        {
-          capacity += 10;
-          expand(shapes, size, capacity);
-        }
-      }
-      catch (const std::runtime_error &e)
-      {
-        contains_errors_with_shapes = true;
+        capacity += 10;
+        expand(shapes, size, capacity);
       }
     }
     else if (name == "REGULAR")

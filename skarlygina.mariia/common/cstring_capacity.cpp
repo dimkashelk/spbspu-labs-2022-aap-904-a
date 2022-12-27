@@ -1,9 +1,9 @@
 #include "cstring_capacity.h"
-#include <iostream>
+#include <istream>
 #include <stdexcept>
 #include <cstddef>
 
-char* makeNewCapacityCString(std::cin& input)
+char* makeNewCapacityCString(std::istream& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];

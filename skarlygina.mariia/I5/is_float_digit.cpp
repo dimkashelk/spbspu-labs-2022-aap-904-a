@@ -8,7 +8,7 @@ bool isSign(char c)
 
 bool isDigit(char c)
 {
-  return std::is_digit(c);
+  return std::isdigit(c);
 }
 
 bool isE(char c)

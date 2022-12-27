@@ -21,6 +21,21 @@ void expand(Shape **shapes, size_t size, size_t new_capacity)
   delete[] shapes;
   shapes = new_shapes;
 }
+std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
+{
+  double sum_area = 0.0;
+  for (size_t i = 0; i < size; i++)
+  {
+    sum_area += shapes[i]->getArea();
+  }
+  out << sum_area << " ";
+  for (size_t i = 0; i < size; i++)
+  {
+    rectangle_t rect = shapes[i]->getFrameRect();
+    out << rect << " ";
+  }
+  return out;
+}
 int main()
 {
   std::string line = "";
@@ -102,17 +117,7 @@ int main()
     }
     else if (name == "SCALE")
     {
-      double sum_area = 0.0;
-      for (size_t i = 0; i < size; i++)
-      {
-        sum_area += shapes[i]->getArea();
-      }
-      std::cout << sum_area << " ";
-      for (size_t i = 0; i < size; i++)
-      {
-        rectangle_t rect = shapes[i]->getFrameRect();
-        std::cout << rect << " ";
-      }
+      output_shapes(std::cout, shapes, size) << "\n";
       point_t point;
       in >> point;
       double k = 0.0;
@@ -126,8 +131,8 @@ int main()
         contains_errors_with_shapes = false;
         std::cerr << "Contains errors in description of figures";
       }
+      output_shapes(std::cout, shapes, size) << "\n";
     }
   }
-}
-return 0;
+  return 0;
 }

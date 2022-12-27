@@ -34,11 +34,6 @@ char * inputString(std::istream & input)
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\0');
-  if (!input && !size)
-  {
-    delete [] cstring;
-    throw std::runtime_error("error");
-  }
   cstring[size] = '\0';
   return cstring;
 }

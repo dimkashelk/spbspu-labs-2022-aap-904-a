@@ -15,5 +15,6 @@ char* deleteNumbers(char* destination,const char* source)
     }
     i++;
   }
+  destination[k]='\0';
   return destination;
 }

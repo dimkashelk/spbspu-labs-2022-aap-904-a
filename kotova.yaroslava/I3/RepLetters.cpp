@@ -16,5 +16,6 @@ char* replacingLetters(const char* source, char* destination)
     }
     i++;
   }
+  destination[k]='\0';
   return destination;
 }

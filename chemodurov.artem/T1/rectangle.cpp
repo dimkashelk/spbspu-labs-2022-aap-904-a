@@ -6,7 +6,7 @@ namespace chemodurov
   chemodurov::point_t * makeArrayOfXPoints(const chemodurov::point_t & left_down, const chemodurov::point_t & right_up)
   {
     const size_t x = 4;
-    chemodurov::point_t * arr = new point_t[x];
+    chemodurov::point_t * arr = new chemodurov::point_t[x];
     arr[0] = left_down;
     arr[1] = {left_down.x, right_up.y};
     arr[2] = right_up;

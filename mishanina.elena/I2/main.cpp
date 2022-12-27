@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
   {
     for (size_t i = 0; i < dyn_array_size; i++)
     {
-     dynamic_array[i] = std::rand() % 100;
+      dynamic_array[i] = std::rand() % 100;
     }
     std::cout << "CountPositiveElementsBeforeMinElement ";
     std::cout << countPositiveElementsBeforeMinElement(dynamic_array, dyn_array_size) << '\n';
@@ -81,12 +81,12 @@ int main(int argc, char* argv[])
     int* array_from_file = new int[array_size_from_file];
     for (size_t i = 0;i < array_size_from_file;i++)
     {
-     input >> array_from_file[i];
-     if (!input)
-     {
-       std::cerr << "ERROR: reading file\n";
-       return 1;
-     }
+      input >> array_from_file[i];
+      if (!input)
+      {
+        std::cerr << "ERROR: reading file\n";
+        return 1;
+      }
     }
     std::cout << "CountPositiveElementsBeforeMinElement ";
     std::cout << countPositiveElementsBeforeMinElement(array_from_file, array_size_from_file) << '\n';

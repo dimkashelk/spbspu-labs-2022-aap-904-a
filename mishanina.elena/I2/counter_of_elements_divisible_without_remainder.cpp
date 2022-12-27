@@ -14,10 +14,10 @@ size_t countElementsDivisibleWithoutRemainder(const int* array, size_t size, int
   size_t counter = 0;
   for (size_t i = 0; i < size; i++)
   {
-   if (array[i] % cur_num == 0)
-   {
-     counter++;
-   }
+    if (array[i] % cur_num == 0)
+    {
+      counter++;
+    }
   }
   return counter;
 }

@@ -3,14 +3,14 @@
 #include <stdexcept>
 #include <cstddef>
 
-char* makeNewCapacityCString(std::cin& in)
+char* makeNewCapacityCString(std::cin& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
   size_t size = 0;
   cstring[0] = '\0';
 
-  in >> std::noskipws;
+  input >> std::noskipws;
   do
   {
     if (size == capacity)
@@ -34,9 +34,9 @@ char* makeNewCapacityCString(std::cin& in)
         return 1;
       }
     }
-    in >> cstring[size];
+    input >> cstring[size];
   }
-  while (in && cstring[size++] != '\n');
+  while (input && cstring[size++] != '\n');
 
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
@@ -44,6 +44,6 @@ char* makeNewCapacityCString(std::cin& in)
     delete[] cstring;
     return 2;
   }
-  cstring[size - 1] = '\0';
+  cstring[size] = '\0';
   return cstring;
 }

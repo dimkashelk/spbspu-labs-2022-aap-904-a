@@ -5,8 +5,8 @@
 
 int main()
 {
-  char* string = makeNewCapacityCString(std::cin);
-  std::cout << std::boolalpha << isFloat(cstring) << '\n';
-  delete[] cstring;
+  char* digit_string = makeNewCapacityCString(std::cin);
+  std::cout << std::boolalpha << isFloatDigit(digit_string) << '\n';
+  delete[] digit_string;
   return 0;
 }

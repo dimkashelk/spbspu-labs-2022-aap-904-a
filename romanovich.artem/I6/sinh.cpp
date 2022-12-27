@@ -8,7 +8,6 @@ NextSinhElMultiplier::NextSinhElMultiplier(double x):
 }
 double NextSinhElMultiplier::operator()()
 {
-  //return x * myPow(x, 2 * numberSummand) / static_cast< double >(myFactorial(2 * numberSummand));
   numberSummand++;
   if (numberSummand == 1)
   {
@@ -27,9 +26,7 @@ double countSinh(double x, double absError, size_t numberMax)
   double nextSummand = 1;
   while (numberSummand <= numberMax)
   {
-    //double nextSummand = nextSinhElMultiplier();
     nextSummand *= nextSinhElMultiplier();
-    //nextSinhElMultiplier.numberSummand++;
     numberSummand++;
     if (isSmaller(std::abs(nextSummand), absError, 1e-6))
     {

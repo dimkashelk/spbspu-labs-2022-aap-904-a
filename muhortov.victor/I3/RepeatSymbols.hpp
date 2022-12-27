@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-char *repeatSymbols(char *destination, char *cstring);
+char *repeatSymbols(char *destination, const char *cstring);
 
 #endif

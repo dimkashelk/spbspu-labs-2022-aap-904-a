@@ -1,27 +1,36 @@
 #include "RepeatSymbols.hpp"
 
-char *repeatSymbols(char *destination, char *cstring)
+char *repeatSymbols(char *destination, const char *cstring)
 {
-  int repeat_counter = 0;
+  char *startpos = destination;
+  bool repeat = false;
+  bool finded = false;
   char symbol = ' ';
 
   while (*cstring)
   {
     symbol = *cstring;
-    for (char *i = cstring + 1; *i != '\0'; i++)
+    for (const char *i = cstring + 1; *i != '\0'; i++)
     {
       if (symbol == *i)
       {
-        repeat_counter++;
-        *i = ' ';
+        repeat = true;
       }
     }
-    if (repeat_counter > 0 && symbol != ' ')
+    for (char *i = startpos; i < destination; i++)
+    {
+      if (symbol == *i)
+      {
+        finded = true;
+      }
+    }
+    if (repeat && !finded && symbol != ' ')
     {
       *destination = symbol;
       destination++;
     }
-    repeat_counter = 0;
+    repeat = false;
+    finded = false;
     cstring++;
   }
 

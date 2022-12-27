@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "RepeatSymbols.hpp"
 #include "Vowel.hpp"
 int main()
@@ -18,10 +19,7 @@ int main()
       try
       {
         char *newstr = new char[capacity + 10];
-        for (auto i = c_string, j = newstr; i != c_string + size; ++i, ++j)
-        {
-          *j = *i;
-        }
+        strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
         capacity += 10;
@@ -56,6 +54,7 @@ int main()
   catch (const std::bad_alloc &e)
   {
     delete[] c_string;
+    delete[] repeat_symbols;
     std::cout << "Error:\n";
     std::cout << e.what();
     return 3;
@@ -68,6 +67,7 @@ int main()
   catch (const std::bad_alloc &e)
   {
     delete[] c_string;
+    delete[] repeat_symbols;
     std::cerr << "Error: \n" << e.what();
     return 1;
   }
@@ -94,6 +94,7 @@ int main()
   {
     delete[] c_string;
     delete[] repeat_symbols;
+    delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
     return 1;
   }

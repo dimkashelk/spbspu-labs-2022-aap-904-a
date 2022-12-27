@@ -21,4 +21,5 @@ struct rectangle_t
   point_t getRightUpPoint() const;
 };
 std::istream& operator>>(std::istream &in, point_t &point);
+std::ostream& operator<<(std::ostream &out, point_t &point);
 #endif

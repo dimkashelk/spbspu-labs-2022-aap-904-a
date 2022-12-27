@@ -41,3 +41,7 @@ std::istream& operator>>(std::istream &in, point_t &point)
   in >> point.x >> point.y;
   return in;
 }
+std::ostream& operator<<(std::ostream &out, point_t &point)
+{
+  out << point.x << " " << point.y;
+}

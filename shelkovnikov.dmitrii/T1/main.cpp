@@ -134,5 +134,10 @@ int main()
       output_shapes(std::cout, shapes, size) << "\n";
     }
   }
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shapes[i];
+  }
+  delete[] shapes;
   return 0;
 }

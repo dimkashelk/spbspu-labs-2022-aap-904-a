@@ -85,4 +85,5 @@ int main()
   std::cout << destination2 << "\n";
   delete[] cstring1;
   delete[] destination2;
+  return 0;
 }

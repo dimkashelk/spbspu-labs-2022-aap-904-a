@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
     int* arr_dyn = new int[size];
     for (size_t i = 0; i < size; i++)
     {
-      arr_dyn[i] = rand() % 200 - 100;
+      arr_dyn[i] = std::rand() % 200 - 100;
     }
     processArray(std::cout, "Dynamic array", arr_dyn, size);
     delete[] arr_dyn;
@@ -72,7 +72,7 @@ void printArray(std::ostream& out, std::string prefix, int* arr, size_t size)
   for (size_t j = 0; j < size; j++)
   {
     out << arr[j];
-    if (j < size)
+    if ((j + 1) < size)
     {
       out << " ";
     }

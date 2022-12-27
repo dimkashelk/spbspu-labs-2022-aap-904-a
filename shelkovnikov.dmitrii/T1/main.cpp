@@ -17,19 +17,6 @@ void expand(Shape **shapes, size_t size, size_t new_capacity)
   delete[] shapes;
   shapes = new_shapes;
 }
-Rectangle input_rectangle(std::istream &in)
-{
-  double *coords = new double[4];
-  for (size_t i = 0; i < 4; i++)
-  {
-    in >> coords[i];
-    if (!in)
-    {
-      throw std::runtime_error("Not enough data to input");
-    }
-  }
-  return Rectangle(coords[0], coords[1], coords[2], coords[3]);
-}
 int main()
 {
   std::string line = "";
@@ -47,7 +34,8 @@ int main()
     {
       try
       {
-        Rectangle rect = input_rectangle(in);
+        Rectangle rect;
+        in >> rect;
         shapes[size] = &rect;
         size++;
         if (size == capacity)

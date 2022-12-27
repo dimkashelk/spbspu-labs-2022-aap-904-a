@@ -1,6 +1,6 @@
-#include "MakeCstring.hpp"
+#include "MakeCString.hpp"
 
-char *make_cstring(char *cstring, size_t &size, size_t &capacity, std::istream &input)
+char *makeCString(char *cstring, size_t &size, size_t &capacity, std::istream &input)
 {
   input >> std::noskipws;
 

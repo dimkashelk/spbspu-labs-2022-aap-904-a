@@ -6,6 +6,7 @@
 #include "isotropic_scaling.h"
 #include "regular.h"
 #include "polygon.h"
+#include "compositeshape.h"
 void expand(Shape **shapes, size_t size, size_t new_capacity)
 {
   if (new_capacity < size)
@@ -82,6 +83,22 @@ int main()
       {
         contains_errors_with_shapes = true;
       }
+    }
+    else if (name == "COMPLEX")
+    {
+      std::ostringstream data;
+      size_t count = 0;
+      in >> count;
+      data << count << '\n';
+      std::string line_of_data = "";
+      for (size_t i = 0; i < count; i++)
+      {
+        std::getline(std::cin, line_of_data);
+        data << line_of_data << '\n';
+      }
+      std::istringstream new_in(data.str());
+      CompositeShape compositeShape;
+      new_in >> compositeShape;
     }
     else if (name == "SCALE")
     {

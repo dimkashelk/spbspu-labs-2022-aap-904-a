@@ -6,6 +6,7 @@
 
 int main()
 {
+  size_t size = 0;
   size_t capacity1 = 10;
   size_t capacity2 = 10;
   char* cstring1 = new char[capacity1];
@@ -20,7 +21,7 @@ int main()
       delete[] cstring1;
       return 2;
     }
-    cstring1[size1-1] = '\0';
+    cstring1[size-1] = '\0';
   }
   catch (const std::exception &e)
   {
@@ -48,7 +49,7 @@ int main()
   try
   {
     cstring2 = formingCstring(cstring2, capacity2);
-    cstring2[size2-1] = '\0';
+    cstring2[size-1] = '\0';
   }
   catch(const std::exception &e)
   {

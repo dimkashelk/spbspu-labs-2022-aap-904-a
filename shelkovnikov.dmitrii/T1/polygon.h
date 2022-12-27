@@ -22,31 +22,5 @@ private:
   Triangle **triangles_;
   size_t count_;
 };
-std::istream& operator>>(std::istream &in, Polygon &polygon)
-{
-  size_t size = 0;
-  size_t capacity = 10;
-  point_t *points = new point_t[capacity];
-  do
-  {
-    point_t point;
-    in >> point;
-    points[size] = point;
-    size++;
-    if (size == capacity)
-    {
-      capacity += 10;
-      point_t *new_points = new point_t[capacity];
-      for (size_t i = 0; i < size; i++)
-      {
-        new_points[i] = points[i];
-      }
-      delete[] points;
-      points = new_points;
-    }
-  }
-  while (in);
-  polygon = Polygon(points, size);
-  return in;
-}
+std::istream& operator>>(std::istream &in, Polygon &polygon);
 #endif

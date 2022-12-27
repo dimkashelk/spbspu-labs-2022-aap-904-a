@@ -17,7 +17,7 @@ int main()
     destination1 = deleteNumbers(cstring1, destination1);
     std::cout<< destination1 << " ";
   }
-  catch(const std::bad_alloc& e)
+  catch(const std::overflow_error &e)
   {
     std::cout << e.what();
     delete[] destination1;
@@ -33,7 +33,7 @@ int main()
     destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << " ";
   }
-  catch(const std::bad_alloc& e)
+  catch(const std::overflow_error &e)
   {
     std::cout << e.what();
     delete[] destination2;

@@ -1,6 +1,5 @@
 #include <iostream>
-#include <cctype>
-#include <exception>
+#include <stdexcept>
 #include "DelNumbers.h"
 #include "RepLetters.h"
 #include "FormingCstring.h"
@@ -47,15 +46,16 @@ int main()
   try
   {
     destination1 = deleteNumbers(destination1, cstring1);
+    std::cout << destination1 << "\n";
   }
-  catch(const std::overflow_error &e)
+  catch(const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
     delete[] destination1;
     return 1;
   }
-  std::cout << destination1 << "\n";
+
 
   char* destination2 = nullptr;
   try
@@ -73,8 +73,9 @@ int main()
   try
   {
     destination2 = replacingLetters(cstring1, destination2);
+    std::cout << destination2 << "\n";
   }
-  catch (const std::overflow_error &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
@@ -82,7 +83,6 @@ int main()
     delete[] destination2;
     return 1;
   }
-  std::cout << destination2 << "\n";
   delete[] cstring1;
   delete[] destination2;
   return 0;

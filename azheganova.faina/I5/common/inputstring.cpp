@@ -1,7 +1,7 @@
-#include "inputstring.h"
 #include <stdexcept>
 #include <istream>
 #include <cstddef>
+#include "inputstring.h"
 
 char * inputString(std::istream & input)
 {

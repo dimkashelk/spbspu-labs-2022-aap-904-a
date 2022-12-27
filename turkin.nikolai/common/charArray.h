@@ -1,5 +1,6 @@
 #ifndef CHARARRAY_H
 #define CHARARRAY_H
+
 #include <cstddef>
 namespace turkin
 {
@@ -15,4 +16,5 @@ namespace turkin
 
   void extend(turkin::CharArray & array, size_t addition);
 }
+
 #endif

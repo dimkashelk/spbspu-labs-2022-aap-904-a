@@ -22,4 +22,5 @@ struct rectangle_t
 };
 std::istream& operator>>(std::istream &in, point_t &point);
 std::ostream& operator<<(std::ostream &out, point_t &point);
+std::ostream& operator<<(std::ostream &out, rectangle_t &rectangle);
 #endif

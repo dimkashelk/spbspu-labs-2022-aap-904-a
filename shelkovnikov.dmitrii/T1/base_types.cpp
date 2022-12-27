@@ -45,3 +45,10 @@ std::ostream& operator<<(std::ostream &out, point_t &point)
 {
   out << point.x << " " << point.y;
 }
+std::ostream& operator<<(std::ostream &out, rectangle_t &rectangle)
+{
+  point_t leftDown = rectangle.getLeftDownPoint();
+  point_t rightUp = rectangle.getRightUpPoint();
+  out << leftDown << " " << rightUp;
+  return out;
+}

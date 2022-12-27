@@ -1,6 +1,10 @@
 #include "polygon.h"
 #include <algorithm>
 #include "triangulatepoints.h"
+Polygon::Polygon():
+  triangles_(nullptr),
+  count_(0)
+{}
 Polygon::Polygon(point_t *points, size_t size):
   triangles_(nullptr),
   count_(0)

@@ -5,6 +5,7 @@
 class Polygon: public Shape
 {
 public:
+  Polygon();
   Polygon(point_t *points, size_t size);
   Polygon(const Polygon &polygon);
   Polygon(Polygon &&polygon);
@@ -21,4 +22,9 @@ private:
   Triangle **triangles_;
   size_t count_;
 };
+std::istream& operator>>(std::istream &in, Polygon &polygon)
+{
+
+  return in;
+}
 #endif

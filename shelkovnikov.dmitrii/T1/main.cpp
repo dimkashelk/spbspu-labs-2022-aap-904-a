@@ -31,11 +31,13 @@ std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
     sum_area += shapes[i]->getArea();
   }
   out << sum_area << " ";
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = 0; i < size - 1; i++)
   {
     rectangle_t rect = shapes[i]->getFrameRect();
     out << rect << " ";
   }
+  rectangle_t rect = shapes[size - 1]->getFrameRect();
+  out << rect;
   return out;
 }
 int main()
@@ -140,7 +142,7 @@ int main()
       {
         isotropic_scaling(shapes[i], point, k);
       }
-      output_shapes(std::cout, shapes, size) << " ";
+      output_shapes(std::cout, shapes, size) << "\n";
     }
   }
   for (size_t i = 0; i < size; i++)

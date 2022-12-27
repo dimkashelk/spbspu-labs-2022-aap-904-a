@@ -130,7 +130,6 @@ int main()
       {
         contains_errors_with_shapes = false;
         std::cerr << "Contains errors in description of figures";
-        continue;
       }
       output_shapes(std::cout, shapes, size) << "\n";
       point_t point;

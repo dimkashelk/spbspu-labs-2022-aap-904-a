@@ -2,6 +2,7 @@
 #include <sstream>
 #include <stdexcept>
 #include <cstddef>
+#include <iomanip>
 #include "rectangle.h"
 #include "isotropic_scaling.h"
 #include "regular.h"
@@ -23,6 +24,7 @@ void expand(Shape **shapes, size_t size, size_t new_capacity)
 }
 std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
 {
+  out << std::setprecision(1) << std::fixed;
   double sum_area = 0.0;
   for (size_t i = 0; i < size; i++)
   {
@@ -124,6 +126,12 @@ int main()
     }
     else if (name == "SCALE")
     {
+      if (contains_errors_with_shapes)
+      {
+        contains_errors_with_shapes = false;
+        std::cerr << "Contains errors in description of figures";
+        continue;
+      }
       output_shapes(std::cout, shapes, size) << "\n";
       point_t point;
       in >> point;
@@ -132,11 +140,6 @@ int main()
       for (size_t i = 0; i < size; i++)
       {
         isotropic_scaling(shapes[i], point, k);
-      }
-      if (contains_errors_with_shapes)
-      {
-        contains_errors_with_shapes = false;
-        std::cerr << "Contains errors in description of figures";
       }
       output_shapes(std::cout, shapes, size) << "\n";
     }

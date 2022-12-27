@@ -44,6 +44,10 @@ int main(int argc, char* argv[])
     }
     outFile << odintsov::countRowsWithThreeRepeats(arr, rows, cols) << ' ';
     outFile << odintsov::countColsWithThreeRepeats(arr, rows, cols);
+    if (!outFile) {
+      std::cout << "Error: File write error\n";
+      return 1;
+    }
   } else if(std::strcmp(argv[1], "2") == 0) {
     int** arr = new int*[rows];
     for (size_t r = 0; r < rows; r++) {
@@ -60,5 +64,9 @@ int main(int argc, char* argv[])
     odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
     outFile << rows << ' ' << cols << '\n';
     odintsov::drawMatrix(outFile, arr, rows, cols);
+    if (!outFile) {
+      std::cout << "Error: File write error\n";
+      return 1;
+    }
   }
 }

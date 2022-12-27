@@ -3,6 +3,11 @@
 #include <stdexcept>
 #include "vector_t.h"
 #include "line_t.h"
+Triangle::Triangle():
+  point1_(0.0, 0.0),
+  point2_(0.0, 0.0),
+  point3_(0.0, 0.0)
+{}
 Triangle::Triangle(point_t p1, point_t p2, point_t p3):
   point1_(p1),
   point2_(p2),

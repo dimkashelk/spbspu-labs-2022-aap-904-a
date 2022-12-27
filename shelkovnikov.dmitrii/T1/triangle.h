@@ -4,6 +4,7 @@
 class Triangle: public Shape
 {
 public:
+  Triangle();
   Triangle(point_t point1, point_t point2, point_t point3);
   Triangle(double x1, double y1, double x2, double y2, double x3, double y3);
   Triangle(const Triangle &triangle);
@@ -25,4 +26,14 @@ private:
   point_t point2_;
   point_t point3_;
 };
+std::istream& operator>>(std::istream &in, Triangle &triangle)
+{
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  in >> x1 >> y1 >> x2 >> y2;
+  rect = *(new Rectangle(x1, y1, x2, y2));
+  return in;
+}
 #endif

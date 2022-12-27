@@ -1,5 +1,6 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_RECTANGLE_H
 #define SPBSPU_LABS_2022_AAP_904_A_RECTANGLE_H
+#include <istream>
 #include "shape.h"
 class Rectangle: public Shape
 {
@@ -20,4 +21,14 @@ public:
 private:
   rectangle_t rectangle_;
 };
+std::istream& operator>>(std::istream &in, Rectangle &rect)
+{
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  in >> x1 >> y1 >> x2 >> y2;
+  rect = *(new Rectangle(x1, y1, x2, y2));
+  return in;
+}
 #endif

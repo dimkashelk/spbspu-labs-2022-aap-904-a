@@ -1,5 +1,5 @@
 #include "counter_of_elements_divisible_without_remainder.h"
-#include <iostream>
+#include <stdexcept>
 
 size_t countElementsDivisibleWithoutRemainder(const int* array, size_t size, int cur_num)
 {

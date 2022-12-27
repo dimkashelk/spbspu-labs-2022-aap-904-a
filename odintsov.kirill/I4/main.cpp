@@ -57,6 +57,10 @@ int main(int argc, char* argv[])
         inFile >> arr[r][c];
         if (!inFile) {
           std::cout << "Error: File read error\n";
+          for (size_t newR = 0; newR <= r; newR++) {
+            delete [] arr[newR];
+          }
+          delete [] arr;
           return 1;
         }
       }

@@ -1,8 +1,9 @@
 #include "FormingCstring.h"
 #include <iostream>
 #include <cstddef>
-char* formingCstring(char * cstring, size_t & capacity, size_t& size)
+char* formingCstring(char * cstring, size_t & capacity)
 {
+  size_t size = 0;
   std::cin >> std::noskipws;
   do
   {

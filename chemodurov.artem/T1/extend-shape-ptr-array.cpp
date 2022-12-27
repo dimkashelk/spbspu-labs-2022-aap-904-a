@@ -1,7 +1,7 @@
 #include "extend-shape-ptr-array.hpp"
 #include <stdexcept>
 
-chemodurov::Shape ** extendShapePtrArray(chemodurov::Shape ** shp, size_t cap, size_t new_cap)
+chemodurov::Shape ** chemodurov::extendShapePtrArray(chemodurov::Shape ** shp, size_t cap, size_t new_cap)
 {
   if (new_cap <= cap)
   {

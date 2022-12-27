@@ -5,6 +5,7 @@
 #include "iso-scale.hpp"
 #include "print-summ-area-and-frames.hpp"
 #include "extend-shape-ptr-array.hpp"
+#include "make-polygon-from-string.hpp"
 
 int main()
 {
@@ -45,65 +46,12 @@ int main()
       }
     }
     std::getline(std::cin, line);
+
     if (!line.compare(0, 7, "POLYGON"))
     {
-      size_t capacity = 5;
-      chemodurov::point_t * arr = nullptr;
       try
       {
-        arr = new chemodurov::point_t[capacity];
-      }
-      catch (...)
-      {
-        delete [] shp;
-        std::cerr << "Error...\n";
-        return 1;
-      }
-      size_t arr_size = 0;
-      std::string::size_type size = 7;
-      do
-      {
-        try
-        {
-          if (arr_size == capacity)
-          {
-            capacity += 5;
-            chemodurov::point_t * new_arr = new chemodurov::point_t[capacity];
-            for (size_t i = 0; i < arr_size; ++i)
-            {
-              new_arr[i] = arr[i];
-            }
-            delete [] arr;
-            arr = new_arr;
-          }
-          std::string::size_type size1 = size;
-          std::string::size_type size2;
-          double x = std::stod(line.substr(size1), &size2);
-          size2 += size1;
-          double y = std::stod(line.substr(size2), &size1);
-          size1 += size2;
-          chemodurov::point_t temp{x, y};
-          arr[arr_size++] = temp;
-          size = size1;
-        }
-        catch (...)
-        {
-          for (size_t i = 0; i < shp_cap; ++i)
-          {
-            delete shp[i];
-          }
-          delete [] shp;
-          delete [] arr;
-          std::cerr << "Error...\n";
-          return 1;
-        }
-      }
-      while (size < line.size());
-
-      try
-      {
-        shp[shp_size++] = new chemodurov::Polygon(arr, arr_size);
-        delete [] arr;
+        shp[shp_size++] = chemodurov::makePolygonFromString(line);
       }
       catch (...)
       {

@@ -1,10 +1,9 @@
 #include "sinh.h"
 #include <stdexcept>
 #include "comparedoubles.h"
-#include <iostream>///
-NextSinhElMultiplier::NextSinhElMultiplier(double x) :
-  numberSummand(0),
-  x(x)
+NextSinhElMultiplier::NextSinhElMultiplier(double x):
+  x(x),
+  numberSummand(0)
 {
 }
 double NextSinhElMultiplier::operator()()

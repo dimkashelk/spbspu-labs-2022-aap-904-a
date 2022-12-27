@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
   count = 0;
   maxCount = 0;
   ans = false;
-  for (int i = 0; i < dinamicSize; ++i)
+  for (size_t i = 0; i < dinamicSize; ++i)
   {
     dinamicArr[i] = std::rand();
   }

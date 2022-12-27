@@ -36,37 +36,5 @@ private:
   size_t capacity_;
   Shape **shapes_;
 };
-std::istream& operator>>(std::istream &in, CompositeShape &compositeShape)
-{
-  size_t count = 0;
-  in >> count;
-  std::string line = "";
-  std::string name = "";
-  compositeShape = CompositeShape();
-  for (size_t i = 0; i < count; i++)
-  {
-    std::getline(in, line);
-    std::istringstream stream(line);
-    stream >> name;
-    if (name == "RECTANGLE")
-    {
-      Rectangle rect;
-      stream >> rect;
-      compositeShape.push_back(&rect);
-    }
-    else if (name == "REGULAR")
-    {
-      Regular regular;
-      stream >> regular;
-      compositeShape.push_back(&regular);
-    }
-    else if (name == "POLYGON")
-    {
-      Polygon polygon;
-      stream >> polygon;
-      compositeShape.push_back(&polygon);
-    }
-  }
-  return in;
-}
+std::istream& operator>>(std::istream &in, CompositeShape &compositeShape);
 #endif

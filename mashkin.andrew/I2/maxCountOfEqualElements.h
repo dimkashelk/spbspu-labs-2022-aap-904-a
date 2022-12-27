@@ -2,5 +2,5 @@
 #define MAXCOUNTOFEQUALELEMENTS_H
 #include <cstddef>
 
-void countMaxQuantityOfEqualElements(const int* arr, const int size, size_t& count, size_t& maxCount);
+size_t countMaxQuantityOfEqualElements(const int* arr, const size_t size);
 #endif

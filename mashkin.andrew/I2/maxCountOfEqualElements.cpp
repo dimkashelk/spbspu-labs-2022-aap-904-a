@@ -1,9 +1,11 @@
 #include "maxCountOfEqualElements.h"
 #include <cstddef>
 
-void countMaxQuantityOfEqualElements(const int* arr, const int size, size_t& count, size_t& maxCount)
+size_t countMaxQuantityOfEqualElements(const int* arr, const size_t size)
 {
-  for (int i = 0; i < size - 1; ++i)
+  size_t count = 0;
+  size_t maxCount = 0;
+  for (size_t i = 0; i < size - 1; ++i)
   {
     if (arr[i] == arr[i + 1])
     {
@@ -16,4 +18,5 @@ void countMaxQuantityOfEqualElements(const int* arr, const int size, size_t& cou
       count = 0;
     }
   }
+  return maxCount;
 }

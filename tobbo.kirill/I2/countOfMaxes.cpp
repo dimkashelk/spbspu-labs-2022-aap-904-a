@@ -1,10 +1,10 @@
 #include "countOfMaxes.h"
 #include <limits>
 
-void countOfMaxes(const int* arr, size_t size, int& maximum, size_t& count_maximum)
+size_t countOfMaxes(const int* arr, size_t size)
 {
-  maximum = std::numeric_limits< int >::min();
-  count_maximum = std::numeric_limits< size_t >::min();
+  size_t count_maximum = 0;
+  int maximum = std::numeric_limits< int >::min();
   for (size_t i = 0; i < size; i++)
   {
     if (arr[i] > maximum)
@@ -20,4 +20,5 @@ void countOfMaxes(const int* arr, size_t size, int& maximum, size_t& count_maxim
       }
     }
   }
+  return count_maximum;
 }

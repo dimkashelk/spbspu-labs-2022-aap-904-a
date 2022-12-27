@@ -5,7 +5,7 @@
 #include "shiftPartToEnd.h"
 
 void printArray(std::ostream& out, std::string prefix, int* arr, size_t size);
-void processArray(std::string prefix, int* arr, size_t size);
+void processArray(std::ostream& out, std::string prefix, int* arr, size_t size);
 
 int main(int argc, char* argv[])
 {
@@ -16,11 +16,9 @@ int main(int argc, char* argv[])
   }
   try
   {
-    /*********************************************/
     int arr_st[] = { 1, 2, 3, 4, 5, 6, 7, 8, 10, 10 };
-    processArray("Static array", arr_st, 10);
+    processArray(std::cout, "Static array", arr_st, 10);
 
-    /*********************************************/
     size_t size = 0;
     std::cout << "Enter array size:";
     std::cin >> size;
@@ -35,35 +33,31 @@ int main(int argc, char* argv[])
     {
       arr_dyn[i] = rand() % 200 - 100;
     }
-    processArray("Dynamic array", arr_dyn, size);
+    processArray(std::cout, "Dynamic array", arr_dyn, size);
     delete[] arr_dyn;
 
-    /*********************************************/
     std::ifstream input(argv[1]);
     if (!input.is_open())
     {
       throw std::runtime_error("File is not found");
     }
-    while (!input.eof())
+    input >> size;
+    if (!input)
     {
-      input >> size;
+      throw std::runtime_error("Error while reading size of array");
+    }
+    int* arr = new int[size];
+    for (size_t i = 0; i < size; i++)
+    {
+      input >> arr[i];
       if (!input)
       {
-        throw std::runtime_error("Error while reading size of array");
+        delete[] arr;
+        throw std::runtime_error("Error while reading array elements");
       }
-      int* arr = new int[size];
-      for (size_t i = 0; i < size; i++)
-      {
-        input >> arr[i];
-        if (!input)
-        {
-          delete[] arr;
-          throw std::runtime_error("Error while reading array elements");
-        }
-      }
-      processArray("File array", arr, size);
-      delete[] arr;
     }
+    processArray(std::cout, "File array", arr, size);
+    delete[] arr;
   }
   catch (const std::exception& e)
   {
@@ -78,26 +72,29 @@ void printArray(std::ostream& out, std::string prefix, int* arr, size_t size)
   out << prefix;
   for (size_t j = 0; j < size; j++)
   {
-    out << arr[j] << " ";
+    out << arr[j];
+    if (j < size)
+    {
+      out << " ";
+    }
   }
-  out << "\n";
 }
 
-void processArray(std::string prefix, int* arr, size_t size)
+void processArray(std::ostream& out, std::string prefix, int* arr, size_t size)
 {
-  std::cout << prefix << " with size " << size << "\n";
+  out << prefix << " with size " << size << "\n";
   if (size == 0)
   {
-    std::cout << "Array is empty... skipped\n";
+    out << "Array is empty... skipped\n";
     return;
   }
 
-  int maximum = 0;
-  size_t count_maximum = 0;
-  countOfMaxes(arr, size, maximum, count_maximum);
-  std::cout << "Max value=" << maximum << " count of max: " << count_maximum << "\n";
+  size_t count_maximum = countOfMaxes(arr, size);
+  out << "Count of max: " << count_maximum << "\n";
 
-  printArray(std::cout, "before: ", arr, size);
+  printArray(out, "before: ", arr, size);
+  std::cout << "\n";
   shiftPartToEnd(arr, size, 0, static_cast< size_t >(std::ceil(size / 2)));
-  printArray(std::cout, "after:  ", arr, size);
+  printArray(out, "after:  ", arr, size);
+  std::cout << "\n";
 }

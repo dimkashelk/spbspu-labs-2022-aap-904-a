@@ -33,12 +33,12 @@ bool isDigitWithNoSign(const char* data)
 
 bool isOrder(const char* data)
 {
-  return (isE(*data) && isSign(*(data + 1)) && isDigitWithNoSign(data + 1));
+  return (isE(*data) && isSign(*(data + 1)) && isDigitWithNoSign(data + 2));
 }
 
 bool isMantissa(const char* data)
 {
-  return ((isDigitWithNoSign(data) && isDot(*(data + 1)) && isDigitWithNoSign(data + 1)) || (isDot(*data) && isDigitWithNoSign(data + 1)));
+  return ((isDigitWithNoSign(data) && isDot(*(data + 1)) && isDigitWithNoSign(data + 2)) || (isDot(*data) && isDigitWithNoSign(data + 1)));
 }
 
 bool isFloatDigit(const char* data)

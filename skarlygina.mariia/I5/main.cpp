@@ -13,7 +13,7 @@ int main()
   }
   catch (const std::exception& e)
   {
-    std::cerr << e.what() << "\n";
+    std::cerr << e.what() << '\n';
     return 1;
   }
   std::cout << std::boolalpha << isFloatDigit(digit_string) << '\n';

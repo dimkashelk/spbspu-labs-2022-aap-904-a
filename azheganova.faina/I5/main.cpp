@@ -5,7 +5,16 @@
 
 int main()
 {
-  char *cstring = inputString(std::cin);
+  char * cstring = nullptr;
+  try
+  {
+    cstring = inputString(std::cin);
+  }
+  catch (const std::exception & e)
+  {
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
   std::cout << std::boolalpha << isFloat(cstring) << '\n';
   delete [] cstring;
 }

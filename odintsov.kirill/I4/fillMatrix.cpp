@@ -8,7 +8,6 @@ void odintsov::rippleFromPointFill(int* const* arr, size_t rows, size_t cols, si
       size_t rowDist = row > r ? row - r : r - row;
       size_t colDist = col > c ? col - c : c - col;
       arr[r][c] = (colDist > rowDist ? colDist : rowDist) + 1;
-
     }
   }
 }

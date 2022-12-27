@@ -14,12 +14,12 @@ int main()
   std::cin >> std::noskipws;
   do
   {
-    if (size == capacity - 1)
+    if (size == capacity)
     {
       try
       {
         char *newstr = new char[capacity + 10];
-        c_string[size + 1] = '\0';
+        c_string[size] = '\0';
         strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
@@ -44,6 +44,8 @@ int main()
   }
 
   c_string[size] = '\0';
+
+  std::cout << c_string;
 
   // task 6
 

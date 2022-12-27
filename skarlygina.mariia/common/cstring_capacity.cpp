@@ -1,5 +1,6 @@
 #include "cstring_capacity.h"
 #include <istream>
+#include <iostream>
 #include <stdexcept>
 #include <cstddef>
 
@@ -31,7 +32,6 @@ char* makeNewCapacityCString(std::istream& input)
       {
         std::cerr << e.what() << "\n";
         delete[] cstring;
-        return 1;
       }
     }
     input >> cstring[size];
@@ -42,7 +42,6 @@ char* makeNewCapacityCString(std::istream& input)
   {
     std::cout << "Error while reading the string \n";
     delete[] cstring;
-    return 2;
   }
   cstring[size] = '\0';
   return cstring;

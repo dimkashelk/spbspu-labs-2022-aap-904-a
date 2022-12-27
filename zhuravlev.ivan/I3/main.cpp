@@ -12,12 +12,6 @@ int main()
   size_t size = 0;
 
   std::cin >> std::noskipws;
-
-  if (!std::cin)
-  {
-    std::cerr << "Error: Problems with input!" << "n";
-    return 1;
-  }
   do
   {
     if (size == capacity)

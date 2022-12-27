@@ -60,6 +60,11 @@ int main()
       {
         isotropic_scaling(shapes[i], point, k);
       }
+      if (contains_errors_with_shapes)
+      {
+        contains_errors_with_shapes = false;
+        std::cerr << "Contains errors in description of figures";
+      }
     }
   }
   return 0;

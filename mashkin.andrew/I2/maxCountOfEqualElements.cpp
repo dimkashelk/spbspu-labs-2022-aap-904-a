@@ -3,8 +3,8 @@
 
 size_t countMaxQuantityOfEqualElements(const int* arr, const size_t size)
 {
-  size_t count = 0;
-  size_t maxCount = 0;
+  size_t count = 1;
+  size_t maxCount = 1;
   for (size_t i = 0; i < size - 1; ++i)
   {
     if (arr[i] == arr[i + 1])

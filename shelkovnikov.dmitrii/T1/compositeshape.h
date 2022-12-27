@@ -38,10 +38,12 @@ private:
 };
 std::istream& operator>>(std::istream &in, CompositeShape &compositeShape)
 {
+  size_t count = 0;
+  in >> count;
   std::string line = "";
   std::string name = "";
   compositeShape = CompositeShape();
-  do
+  for (size_t i = 0; i < count; i++)
   {
     std::getline(in, line);
     std::istringstream stream(line);
@@ -65,7 +67,6 @@ std::istream& operator>>(std::istream &in, CompositeShape &compositeShape)
       compositeShape.push_back(&polygon);
     }
   }
-  while (name != "COMPEXEND");
   return in;
 }
 #endif

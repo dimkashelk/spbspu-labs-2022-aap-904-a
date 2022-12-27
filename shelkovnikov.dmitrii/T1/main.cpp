@@ -131,7 +131,7 @@ int main()
         contains_errors_with_shapes = false;
         std::cerr << "Contains errors in description of figures";
       }
-      output_shapes(std::cout, shapes, size) << "\n";
+      output_shapes(std::cout, shapes, size) << " \n";
       point_t point;
       in >> point;
       double k = 0.0;
@@ -140,7 +140,7 @@ int main()
       {
         isotropic_scaling(shapes[i], point, k);
       }
-      output_shapes(std::cout, shapes, size) << "\n";
+      output_shapes(std::cout, shapes, size) << " ";
     }
   }
   for (size_t i = 0; i < size; i++)

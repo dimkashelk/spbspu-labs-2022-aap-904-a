@@ -1,14 +1,14 @@
 #ifndef I6_SINH_H
 #define I6_SINH_H
 #include <cstddef>
-class NextSinhEl
+class NextSinhElMultiplier
 {
 public:
-  explicit NextSinhEl(double x);
+  explicit NextSinhElMultiplier(double x);
   double operator()();
-  size_t numberSummand;
 private:
   double x;
+  size_t numberSummand;
 };
 double countSinh(double x, double absError, size_t numberMax);
 #endif

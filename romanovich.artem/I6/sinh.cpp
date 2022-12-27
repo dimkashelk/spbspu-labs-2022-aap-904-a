@@ -1,42 +1,37 @@
 #include "sinh.h"
 #include <stdexcept>
 #include "comparedoubles.h"
-size_t myFactorial(size_t a)
-{
-  size_t result = 1;
-  while (a > 0)
-  {
-    result *= a;
-    a--;
-  }
-  return result;
-}
-double myPow(double a, size_t power)
-{
-  double result = 1;
-  for (size_t i = 0; i < power; ++i)
-  {
-    result *= a;
-  }
-  return result;
-}
-NextSinhEl::NextSinhEl(double x) :
+#include <iostream>///
+NextSinhElMultiplier::NextSinhElMultiplier(double x) :
   numberSummand(0),
   x(x)
 {
 }
-double NextSinhEl::operator()()
+double NextSinhElMultiplier::operator()()
 {
-  return x * myPow(x, 2 * numberSummand) / static_cast< double >(myFactorial(2 * numberSummand));
+  //return x * myPow(x, 2 * numberSummand) / static_cast< double >(myFactorial(2 * numberSummand));
+  numberSummand++;
+  if (numberSummand == 1)
+  {
+    return x;
+  }
+  else
+  {
+    return x * x * x / static_cast< double >((numberSummand) * (numberSummand + 1));
+  }
 }
 double countSinh(double x, double absError, size_t numberMax)
 {
   double result = 0;
-  NextSinhEl nextSinhEl(x);
-  while (nextSinhEl.numberSummand <= numberMax)
+  size_t numberSummand = 0;
+  NextSinhElMultiplier nextSinhElMultiplier(x);
+  double nextSummand = 1;
+  while (numberSummand <= numberMax)
   {
-    double nextSummand = nextSinhEl();
-    nextSinhEl.numberSummand++;
+    //double nextSummand = nextSinhElMultiplier();
+    nextSummand *= nextSinhElMultiplier();
+    //nextSinhElMultiplier.numberSummand++;
+    numberSummand++;
     if (isSmaller(std::abs(nextSummand), absError, 1e-6))
     {
       return result;

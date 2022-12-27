@@ -32,8 +32,10 @@ std::istream& operator>>(std::istream &in, Triangle &triangle)
   double y1 = 0.0;
   double x2 = 0.0;
   double y2 = 0.0;
-  in >> x1 >> y1 >> x2 >> y2;
-  rect = *(new Rectangle(x1, y1, x2, y2));
+  double x3 = 0.0;
+  double y3 = 0.0;
+  in >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+  triangle = Triangle(x1, y1, x2, y2, x3, y3);
   return in;
 }
 #endif

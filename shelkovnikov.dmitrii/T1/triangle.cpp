@@ -60,7 +60,7 @@ double Triangle::getArea() const
   double third_coord = a.x * b.y - a.y * b.x;
   // |a * b| = |c| = sqrt(x * x + y * y + z * z)
   // where x = 0, y = 0 => |c| = sqrt(z * z) = z
-  return third_coord / 2;
+  return std::fabs(third_coord) / 2;
 }
 rectangle_t Triangle::getFrameRect() const
 {
@@ -107,7 +107,7 @@ void Triangle::scale(double k)
   point3_.x = direction2.x + point_center_of_gravity.x;
   point3_.y = direction2.y + point_center_of_gravity.y;
 }
-Shape *Triangle::clone() const
+Shape* Triangle::clone() const
 {
   Triangle *copy = new Triangle(point1_, point2_, point3_);
   return copy;
@@ -117,14 +117,14 @@ bool Triangle::isRectangular()
   vector_t side_vector_1(point1_, point2_);
   vector_t side_vector_2(point1_, point3_);
   vector_t side_vector_3(point2_, point3_);
-  double side_1 = side_vector_1.getLength();
-  double side_2 = side_vector_2.getLength();
-  double side_3 = side_vector_3.getLength();
-  return std::pow(side_1, 2) == std::pow(side_2, 2) + std::pow(side_3, 2) ||
-    std::pow(side_2, 2) == std::pow(side_3, 2) + std::pow(side_1, 2) ||
-    std::pow(side_3, 2) == std::pow(side_1, 2) + std::pow(side_2, 2);
+  double square_1 = side_vector_1.x * side_vector_1.x + side_vector_1.y * side_vector_1.y;
+  double square_2 = side_vector_2.x * side_vector_2.x + side_vector_2.y * side_vector_2.y;
+  double square_3 = side_vector_3.x * side_vector_3.x + side_vector_3.y * side_vector_3.y;
+  return square_1  == square_2 + square_3 ||
+    square_2 == square_1 + square_3 ||
+    square_3 == square_1 + square_2;
 }
-point_t *Triangle::getPoints() const
+point_t* Triangle::getPoints() const
 {
   return new point_t[3]{point1_, point2_, point3_};
 }

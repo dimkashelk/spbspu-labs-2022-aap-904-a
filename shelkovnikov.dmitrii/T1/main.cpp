@@ -43,7 +43,7 @@ int main()
   bool contains_errors_with_shapes = false;
   size_t size = 0;
   size_t capacity = 10;
-  Shape **shapes = new Shape *[capacity];
+  Shape **shapes = new Shape*[capacity];
   while (std::cin)
   {
     std::getline(std::cin, line);
@@ -53,7 +53,7 @@ int main()
     {
       Rectangle rect;
       in >> rect;
-      shapes[size] = &rect;
+      shapes[size] = rect.clone();
       size++;
       if (size == capacity)
       {
@@ -67,7 +67,7 @@ int main()
       {
         Regular regular;
         in >> regular;
-        shapes[size] = &regular;
+        shapes[size] = regular.clone();
         size++;
         if (size == capacity)
         {
@@ -86,7 +86,7 @@ int main()
       {
         Polygon polygon;
         in >> polygon;
-        shapes[size] = &polygon;
+        shapes[size] = polygon.clone();
         size++;
         if (size == capacity)
         {

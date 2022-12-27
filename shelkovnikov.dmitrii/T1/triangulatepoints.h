@@ -8,6 +8,7 @@ class TriangulatePoints
 {
 public:
   TriangulatePoints(point_t *points, size_t size);
+  ~TriangulatePoints();
   Triangle operator()() const;
   size_t getSize() const;
 private:

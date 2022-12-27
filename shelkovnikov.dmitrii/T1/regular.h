@@ -3,7 +3,7 @@
 #include <cstddef>
 #include "shape.h"
 #include "triangle.h"
-class Regular: public Shape
+class Regular: virtual public Shape
 {
 public:
   Regular();

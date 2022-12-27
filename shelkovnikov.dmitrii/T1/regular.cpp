@@ -102,6 +102,15 @@ std::istream& operator>>(std::istream &in, Regular &regular)
   Triangle triangle;
   in >> triangle;
   point_t *points = triangle.getPoints();
-  regular = Regular(points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y);
+  try
+  {
+    regular = Regular(points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y);
+  }
+  catch (...)
+  {
+    delete[] points;
+    throw;
+  }
+  delete[] points;
   return in;
 }

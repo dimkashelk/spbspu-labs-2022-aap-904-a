@@ -11,10 +11,10 @@ Polygon::Polygon(point_t *points, size_t size):
 {
   TriangulatePoints triangulatePoints(points, size);
   count_ = triangulatePoints.getSize();
+  triangles_ = new Triangle*[count_];
   for (size_t i = 0; i < count_; i++)
   {
-    Triangle triangle = triangulatePoints();
-    triangles_[i] = &triangle;
+    triangles_[i] = new Triangle(triangulatePoints());
   }
 }
 Polygon::Polygon(const Polygon &polygon)
@@ -24,9 +24,9 @@ Polygon::Polygon(const Polygon &polygon)
     delete[] triangles_;
   }
   triangles_ = new Triangle*[polygon.count_];
-  for (size_t i = 0; i < count_; i++)
+  for (size_t i = 0; i < polygon.count_; i++)
   {
-    triangles_[i] = dynamic_cast< Triangle* >(polygon.triangles_[i]->clone());
+    triangles_[i] = new Triangle(*polygon.triangles_[i]);
   }
   count_ = polygon.count_;
 }
@@ -51,9 +51,9 @@ Polygon &Polygon::operator=(const Polygon &other)
     delete[] triangles_;
   }
   triangles_ = new Triangle*[other.count_];
-  for (size_t i = 0; i < count_; i++)
+  for (size_t i = 0; i < other.count_; i++)
   {
-    triangles_[i] = dynamic_cast< Triangle* >(other.triangles_[i]->clone());
+    triangles_[i] = new Triangle(*other.triangles_[i]);
   }
   count_ = other.count_;
   return *this;
@@ -61,11 +61,6 @@ Polygon &Polygon::operator=(const Polygon &other)
 Polygon &Polygon::operator=(Polygon &&tmp)
 {
   operator=(tmp);
-  for (size_t i = 0; i < tmp.count_; i++)
-  {
-    delete tmp.triangles_[i];
-  }
-  delete[] tmp.triangles_;
   return *this;
 }
 double Polygon::getArea() const
@@ -146,18 +141,21 @@ std::istream& operator>>(std::istream &in, Polygon &polygon)
   {
     point_t point;
     in >> point;
-    points[size] = point;
-    size++;
-    if (size == capacity)
+    if (in)
     {
-      capacity += 10;
-      point_t *new_points = new point_t[capacity];
-      for (size_t i = 0; i < size; i++)
+      points[size] = point;
+      size++;
+      if (size == capacity)
       {
-        new_points[i] = points[i];
+        capacity += 10;
+        point_t *new_points = new point_t[capacity];
+        for (size_t i = 0; i < size; i++)
+        {
+          new_points[i] = points[i];
+        }
+        delete[] points;
+        points = new_points;
       }
-      delete[] points;
-      points = new_points;
     }
   }
   while (in);

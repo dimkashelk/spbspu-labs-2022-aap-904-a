@@ -2,7 +2,7 @@
 #define SPBSPU_LABS_2022_AAP_904_A_POLYGON_H
 #include <cstddef>
 #include "triangle.h"
-class Polygon: public Shape
+class Polygon: virtual public Shape
 {
 public:
   Polygon();

@@ -10,6 +10,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
 {
   if (containsThreePointsOnLine())
   {
+    delete[] triangles_;
     throw std::logic_error("3 or more points_ on one line here.......");
   }
   size_t index = 0;
@@ -17,7 +18,8 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   {
     point_t *point = points;
     size_t ind = 0;
-    while (point < points - 2)
+    size_t last_number = 2;
+    while (last_number < size_)
     {
       if (getMixedProduct(vector_t(*(point + 2), *point), vector_t(*(point + 1), *point)) > 0)
       {
@@ -28,11 +30,13 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
           {
             triangles_[index] = triangle;
             index++;
+            last_number++;
             removePoint(ind + 1);
           }
           else
           {
             point += 3;
+            last_number += 3;
             ind += 2;
           }
         }
@@ -51,14 +55,12 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   }
   Triangle *triangle = new Triangle(*points, *(points + 1), *(points + 2));
   triangles_[index] = triangle;
-  Triangle **new_triangles = new Triangle*[index];
-  for (size_t i = 0; i < index; i++)
-  {
-    new_triangles[i] = triangles_[i];
-  }
-  delete[] triangles_;
-  triangles_ = new_triangles;
+  index++;
   size_ = index;
+}
+TriangulatePoints::~TriangulatePoints()
+{
+  delete[] points_;
 }
 Triangle TriangulatePoints::operator()() const
 {

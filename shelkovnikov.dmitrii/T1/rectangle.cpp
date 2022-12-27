@@ -57,6 +57,6 @@ std::istream& operator>>(std::istream &in, Rectangle &rect)
   double x2 = 0.0;
   double y2 = 0.0;
   in >> x1 >> y1 >> x2 >> y2;
-  rect = *(new Rectangle(x1, y1, x2, y2));
+  rect = Rectangle(x1, y1, x2, y2);
   return in;
 }

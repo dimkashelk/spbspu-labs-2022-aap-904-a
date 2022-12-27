@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <cstddef>
 #include "rectangle.h"
+#include "isotropic_scaling.h"
 void expand(Shape **shapes, size_t size, size_t new_capacity)
 {
   if (new_capacity < size)
@@ -49,13 +50,15 @@ int main()
         contains_errors_with_shapes = true;
       }
     }
-    else if (name == "MOVE")
+    else if (name == "SCALE")
     {
       point_t point;
       in >> point;
+      double k = 0.0;
+      in >> k;
       for (size_t i = 0; i < size; i++)
       {
-        shapes[i]->move(point);
+        isotropic_scaling(shapes[i], point, k);
       }
     }
   }

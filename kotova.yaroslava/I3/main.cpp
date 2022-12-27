@@ -6,7 +6,7 @@
 
 int main()
 {
-  size_t size = 0;
+  size_t size = 1;
   size_t capacity1 = 10;
   size_t capacity2 = 10;
   char* cstring1 = new char[capacity1];

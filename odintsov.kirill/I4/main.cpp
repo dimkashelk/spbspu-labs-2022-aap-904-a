@@ -65,18 +65,22 @@ int main(int argc, char* argv[])
       outFile << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
     } catch (const std::runtime_error& err) {
       std::cout << "Error: " << err.what() << '\n';
+      for (size_t r = 0; r < rows; r++) {
+        delete [] arr[r];
+      }
+      delete [] arr;
       return 1;
     }
     odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
     outFile << rows << ' ' << cols << '\n';
     odintsov::drawMatrix(outFile, arr, rows, cols);
-    if (!outFile) {
-      std::cout << "Error: File write error\n";
-      return 1;
-    }
     for (size_t r = 0; r < rows; r++) {
       delete [] arr[r];
     }
     delete [] arr;
+    if (!outFile) {
+      std::cout << "Error: File write error\n";
+      return 1;
+    }
   }
 }

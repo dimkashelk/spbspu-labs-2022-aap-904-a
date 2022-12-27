@@ -19,10 +19,6 @@ Polygon::Polygon(point_t *points, size_t size):
 }
 Polygon::Polygon(const Polygon &polygon)
 {
-  if (triangles_)
-  {
-    delete[] triangles_;
-  }
   triangles_ = new Triangle*[polygon.count_];
   for (size_t i = 0; i < polygon.count_; i++)
   {
@@ -39,6 +35,14 @@ Polygon::Polygon(Polygon &&polygon):
     delete polygon.triangles_[i];
   }
   delete[] polygon.triangles_;
+}
+Polygon::~Polygon() noexcept
+{
+  for (size_t i = 0; i < count_; i++)
+  {
+    delete triangles_[i];
+  }
+  delete[] triangles_;
 }
 Polygon &Polygon::operator=(const Polygon &other)
 {
@@ -113,7 +117,7 @@ void Polygon::scale(double k)
     triangles_[i]->scale(k);
   }
 }
-Shape *Polygon::clone() const
+Shape* Polygon::clone() const
 {
   return new Polygon(*this);
 }
@@ -129,6 +133,7 @@ point_t Polygon::getCenter() const
       x_sum += points[j].x;
       y_sum += points[j].y;
     }
+    delete[] points;
   }
   return point_t(x_sum / (count_ * 3), y_sum / (count_ * 3));
 }

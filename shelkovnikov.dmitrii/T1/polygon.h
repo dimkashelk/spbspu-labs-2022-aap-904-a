@@ -9,6 +9,7 @@ public:
   Polygon(point_t *points, size_t size);
   Polygon(const Polygon &polygon);
   Polygon(Polygon &&polygon);
+  ~Polygon();
   Polygon& operator=(const Polygon &other);
   Polygon& operator=(Polygon &&tmp);
   double getArea() const override;

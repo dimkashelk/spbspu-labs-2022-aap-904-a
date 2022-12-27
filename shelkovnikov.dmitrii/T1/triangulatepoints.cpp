@@ -60,6 +60,11 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
 }
 TriangulatePoints::~TriangulatePoints()
 {
+  for (size_t i = 0; i < size_; i++)
+  {
+    delete triangles_[i];
+  }
+  delete[] triangles_;
   delete[] points_;
 }
 Triangle TriangulatePoints::operator()() const

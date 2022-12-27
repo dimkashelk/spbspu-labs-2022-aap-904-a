@@ -85,6 +85,7 @@ void Regular::move(point_t point)
   double delta_y = center.y - points[0].y;
   triangle_.move(point);
   triangle_.move(delta_x, delta_y);
+  delete[] points;
 }
 void Regular::scale(double k)
 {
@@ -92,6 +93,8 @@ void Regular::scale(double k)
   triangle_.scale(k);
   point_t *new_points = triangle_.getPoints();
   triangle_.move(old_points[0].x - new_points[0].x, old_points[0].y - new_points[0].y);
+  delete[] old_points;
+  delete[] new_points;
 }
 Shape *Regular::clone() const
 {

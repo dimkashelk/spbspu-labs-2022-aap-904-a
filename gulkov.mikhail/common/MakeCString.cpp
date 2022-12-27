@@ -1,4 +1,4 @@
-#include "MakeCstring.hpp"
+#include "MakeCString.hpp"
 
 char *makeCString(char *cstring, size_t &size, size_t &capacity, std::istream &input)
 {

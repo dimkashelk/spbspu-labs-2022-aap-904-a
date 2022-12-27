@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
       std::cout << "Error: File write error\n";
       return 1;
     }
-  } else if(std::strcmp(argv[1], "2") == 0) {
+  } else if (std::strcmp(argv[1], "2") == 0) {
     int** arr = new int*[rows];
     for (size_t r = 0; r < rows; r++) {
       arr[r] = new int[cols];

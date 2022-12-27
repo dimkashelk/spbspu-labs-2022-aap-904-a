@@ -4,6 +4,7 @@
 #include "polygon.hpp"
 #include "iso-scale.hpp"
 #include "print-summ-area-and-frames.hpp"
+#include "extend-shape-ptr-array.hpp"
 
 int main()
 {
@@ -21,25 +22,27 @@ int main()
   {
     if (shp_size == shp_cap)
     {
-      shp_cap += 3;
-      chemodurov::Shape ** new_shp = new chemodurov::Shape*[shp_cap];
-      for (size_t i = 0; i < shp_cap; ++i)
+      try
       {
-        if (i < shp_size)
+        chemodurov::Shape ** new_shp = chemodurov::extendShapePtrArray(shp, shp_cap, shp_cap + 3);
+        shp_cap += 3;
+        for (size_t i = 0; i < shp_size; ++i)
         {
-          new_shp[i] = shp[i];
+          delete shp[i];
         }
-        else
-        {
-          new_shp[i] = nullptr;
-        }
+        delete [] shp;
+        shp = new_shp;
       }
-      for (size_t i = 0; i < shp_size; ++i)
+      catch (...)
       {
-        delete shp[i];
+        for (size_t i = 0; i < shp_size; ++i)
+        {
+          delete shp[i];
+        }
+        delete [] shp;
+        std::cerr << "Error...\n";
+        return 1;
       }
-      delete [] shp;
-      shp = new_shp;
     }
     std::getline(std::cin, line);
     if (!line.compare(0, 7, "POLYGON"))

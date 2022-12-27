@@ -4,6 +4,7 @@
 #include <cstddef>
 #include "rectangle.h"
 #include "isotropic_scaling.h"
+#include "regular.h"
 void expand(Shape **shapes, size_t size, size_t new_capacity)
 {
   if (new_capacity < size)
@@ -46,6 +47,25 @@ int main()
         }
       }
       catch (const std::runtime_error &e)
+      {
+        contains_errors_with_shapes = true;
+      }
+    }
+    else if (name == "REGULAR")
+    {
+      try
+      {
+        Regular regular;
+        in >> regular;
+        shapes[size] = &regular;
+        size++;
+        if (size == capacity)
+        {
+          capacity += 10;
+          expand(shapes, size, capacity);
+        }
+      }
+      catch (const std::logic_error &e)
       {
         contains_errors_with_shapes = true;
       }

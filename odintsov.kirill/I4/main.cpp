@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <stdexcept>
 #include "drawMatrix.hpp"
 #include "threeRepeats.hpp"
 #include "diagonalSum.hpp"
@@ -60,7 +61,12 @@ int main(int argc, char* argv[])
         }
       }
     }
-    outFile << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
+    try {
+      outFile << odintsov::getMinOffDiagonalSum(arr, rows, cols) << '\n';
+    } catch (const std::runtime_error& err) {
+      std::cout << "Error: " << err.what() << '\n';
+      return 1;
+    }
     odintsov::rippleFromPointFill(arr, rows, cols, 0, 0);
     outFile << rows << ' ' << cols << '\n';
     odintsov::drawMatrix(outFile, arr, rows, cols);

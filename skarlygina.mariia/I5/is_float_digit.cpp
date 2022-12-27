@@ -43,5 +43,5 @@ bool isMantissa(const char* data)
 
 bool isFloatDigit(const char* data)
 {
-  return (isSign(*data) && isMantissa(data) && isOrder(data + 1));
+  return (isSign(*data) && isMantissa(data + 1) && isOrder(data + 2));
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cctype>
+#include <stdexcept>
 #include "DelNumbers.h"
 #include "RepLetters.h"
 #include "FormingCstring.h"

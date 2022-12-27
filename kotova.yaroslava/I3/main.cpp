@@ -31,7 +31,7 @@ int main()
     return 1;
   }
 
-  destination1 = new char[capacity1];
+  char*  destination1 = new char[capacity1];
   destination1[0] = '\0';
   try
   {
@@ -60,7 +60,7 @@ int main()
     delete[] cstring2;
     return 1;
   }
-  destination2 = new char[capacity2];
+  char* destination2 = new char[capacity2];
   destination2[0] = '\0';
   try
   {

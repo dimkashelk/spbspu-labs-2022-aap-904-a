@@ -1,5 +1,5 @@
 #include <iostream>
-#include "MakeCstring.hpp"
+#include <makecstring.hpp>
 #include "IsExpression.hpp"
 
 int main()
@@ -19,7 +19,7 @@ int main()
   cstring[cstring_size] = '\n';
   try
   {
-    cstring = make_cstring(cstring, cstring_size, cstring_capacity, std::cin);
+    cstring = makeCString(cstring, cstring_size, cstring_capacity, std::cin);
     if (cstring[0] == '\n')
     {
       std::cout << "Error, empty string";

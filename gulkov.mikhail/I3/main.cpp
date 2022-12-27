@@ -1,5 +1,5 @@
 #include <iostream>
-#include "MakeCstring.hpp"
+#include <makecstring.hpp>
 #include "SumStrings.hpp"
 #include "GetUniqueSymbols.hpp"
 
@@ -32,7 +32,7 @@ int main()
 
   try
   {
-    cstring_one = make_cstring(cstring_one, size_one, capacity_one, std::cin);
+    cstring_one = makeCString(cstring_one, size_one, capacity_one, std::cin);
     if (cstring_one[0] == '\n')
     {
       std::cout << "Error, empty string";

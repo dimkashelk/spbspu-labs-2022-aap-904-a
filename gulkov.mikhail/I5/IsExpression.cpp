@@ -31,22 +31,22 @@ bool isSign(const char x)
   return x == '+' || x == '-' || x == '*' || x == '/';
 }
 
-bool isUnsigned(char *x)
+bool isUnsigned(const char *x)
 {
   return isDigit(*x) || (isDigit(*x) && isUnsigned(++x));
 }
 
-bool isMultiplier(char *x)
+bool isMultiplier(const char *x)
 {
   return isUnsigned(x) || isIdentificator(*x) || (isOpenBrace(*x) && isExpression(++x) && isCloseBrace(*x));
 }
 
-bool isTerm(char *x)
+bool isTerm(const char *x)
 {
   return isMultiplier(x) || (isMultiplier(x) && isSign(*x) && isTerm(++x));
 }
 
-bool isExpression(char *x)
+bool isExpression(const char *x)
 {
   return isEnd(*x) || (isTerm(x) && isSign(*(++x)) && isExpression(++x)) || isDigit(*x);
 }

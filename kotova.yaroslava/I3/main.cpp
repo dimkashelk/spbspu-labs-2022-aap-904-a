@@ -31,18 +31,8 @@ int main()
     return 1;
   }
 
-  char* destination1 = nullptr;
-  try
-  {
-    destination1 = new char[capacity1+10];
-  }
-  catch(const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
-    return 1;
-  }
+  destination1 = new char[capacity1];
+  destination1[0] = '\0';
   try
   {
     destination1 = deleteNumbers(destination1, cstring1);
@@ -55,35 +45,40 @@ int main()
     delete[] destination1;
     return 1;
   }
-
-
-  char* destination2 = nullptr;
+  char* cstring2 = new char[capacity2];
+  cstring1[0] = '\0';
   try
   {
-    destination2 = new char[capacity2+10];
+    cstring2 = formingCstring(cstring2, capacity2, size);
+    cstring2[size-1] = '\0';
   }
   catch(const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
     delete[] destination1;
-    delete[] destination2;
+    delete[] cstring2;
     return 1;
   }
+  destination2 = new char[capacity2];
+  destination2[0] = '\0';
   try
   {
-    destination2 = replacingLetters(cstring1, destination2);
+    destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << "\n";
   }
   catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
+    delete[] cstring2;
     delete[] destination1;
     delete[] destination2;
     return 1;
   }
   delete[] cstring1;
+  delete[] cstring2;
+  delete[] destination1;
   delete[] destination2;
   return 0;
 }

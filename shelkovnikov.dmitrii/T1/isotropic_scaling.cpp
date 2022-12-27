@@ -6,7 +6,7 @@ void isotropic_scaling(Shape *shape, point_t point, double k)
   shape->move(point);
   rectangle_t rectangle_2 = shape->getFrameRect();
   vector_t direction(rectangle_2.getLeftDownPoint(), rectangle_1.getLeftDownPoint());
-  direction *= k;
+  direction *= -k;
   shape->scale(k);
   shape->move(direction.x, direction.y);
 }

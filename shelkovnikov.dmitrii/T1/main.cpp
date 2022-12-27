@@ -39,7 +39,6 @@ std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
 int main()
 {
   std::string line = "";
-  std::string name = "";
   bool contains_errors_with_shapes = false;
   size_t size = 0;
   size_t capacity = 10;
@@ -48,6 +47,7 @@ int main()
   {
     std::getline(std::cin, line);
     std::istringstream in(line);
+    std::string name = "";
     in >> name;
     if (name == "RECTANGLE")
     {

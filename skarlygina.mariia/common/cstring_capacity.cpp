@@ -43,6 +43,6 @@ char* makeNewCapacityCString(std::istream& input)
     std::cout << "Error while reading the string \n";
     delete[] cstring;
   }
-  cstring[size] = '\0';
+  cstring[size - 1] = '\0';
   return cstring;
 }

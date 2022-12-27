@@ -3,7 +3,6 @@
 #include <inputstring.h>
 #include "rowvalidation.h"
 
-
 int main()
 {
   char *cstring = inputString(std::cin);

@@ -52,7 +52,7 @@ int main()
     else if (name == "MOVE")
     {
       point_t point;
-      std::cin >> point;
+      in >> point;
       for (size_t i = 0; i < size; i++)
       {
         shapes[i]->move(point);

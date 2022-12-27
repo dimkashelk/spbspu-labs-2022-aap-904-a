@@ -142,3 +142,15 @@ bool Triangle::containsPoint(point_t point) const
   bool one_side_with_point1 = ((line3.A * point.x + line3.B * point.y + line3.C) * (line3.A * point1_.x + line3.B * point1_.y + line3.C)) > 0;
   return one_side_with_point1 && one_side_with_point2 && one_side_with_point3;
 }
+std::istream& operator>>(std::istream &in, Triangle &triangle)
+{
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  double x3 = 0.0;
+  double y3 = 0.0;
+  in >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+  triangle = Triangle(x1, y1, x2, y2, x3, y3);
+  return in;
+}

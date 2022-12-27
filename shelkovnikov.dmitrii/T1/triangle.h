@@ -26,16 +26,5 @@ private:
   point_t point2_;
   point_t point3_;
 };
-std::istream& operator>>(std::istream &in, Triangle &triangle)
-{
-  double x1 = 0.0;
-  double y1 = 0.0;
-  double x2 = 0.0;
-  double y2 = 0.0;
-  double x3 = 0.0;
-  double y3 = 0.0;
-  in >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
-  triangle = Triangle(x1, y1, x2, y2, x3, y3);
-  return in;
-}
+std::istream& operator>>(std::istream &in, Triangle &triangle);
 #endif

@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
   size_t dinamicSize = 0;
   std::cin >> dinamicSize;
   int* dinamicArr = new int[dinamicSize];
-  srand(time(NULL));
+  srand(time(nullptr));
   for (size_t i = 0; i < dinamicSize; ++i)
   {
     dinamicArr[i] = std::rand();

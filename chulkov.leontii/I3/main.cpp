@@ -34,7 +34,14 @@ int main()
   }
   while (std::cin && cstring[size++] != '\n');
   const size_t size2 = 4;
-  cstring[size - 1] = '\0';
+  if (size == 0)
+  {
+    cstring[0] = '\0';
+  }
+  else
+  {
+    cstring[size - 1] = '\0';
+  }
   char newstr2[size2] = "azs";
   char* newstr3 = nullptr;
   const unsigned short alphabet = 26;

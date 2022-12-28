@@ -20,10 +20,11 @@ char *removeExtraSpaces(char *destination, const char *cstring)
     }
     cstring++;
   }
-  if (std::isspace(*over_destination))
+
+  if (std::isspace(*(cstring - 1)))
   {
     over_destination--;
-  }
+  } 
   *over_destination = '\0';
   return destination;
 }

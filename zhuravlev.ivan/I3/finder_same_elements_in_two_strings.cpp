@@ -4,8 +4,8 @@
 void finderSameElementsInTwoStrings(const char *first_string, const char *second_string, size_t size_first_string, size_t size_sec_string)
 {
   size_t final_size = size_first_string + size_sec_string;
-  char tmp_string[final_size];
-  int cnt = -1;
+  char *tmp_string = new char [final_size];
+  size_t cnt = 0;
   for (size_t i = 0; i < size_first_string; ++i)
   {
     for (size_t j = 0; j < size_sec_string; ++j)
@@ -17,16 +17,9 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
       }
     }
   }
-
-  char result_string[cnt]{};
-
-  for (int i = 0; i < cnt; ++i)
+  for (size_t k = 0; k < cnt; ++k)
   {
-    result_string[i] = tmp_string[i];
+    std::cout << tmp_string[k] << " "
   }
-
-  for (int i = 0; i <= cnt; ++i)
-  {
-    std::cout << result_string[i] << " ";
-  }
+  delete [] tmp_string;
 }

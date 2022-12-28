@@ -137,7 +137,7 @@ int main()
       {
         isotropic_scaling(shapes[i], point, k);
       }
-      output_shapes(std::cout, shapes, size);
+      output_shapes(std::cout, shapes, size) << "\n";
       if (contains_errors_with_shapes)
       {
         contains_errors_with_shapes = false;

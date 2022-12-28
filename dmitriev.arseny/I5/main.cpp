@@ -56,5 +56,7 @@ int main()
 
   cStr[size] = '\0';
 
+  std::cout << std::boolalpha << isExpr(cStr) << '\n';
+
   return 0;
 }

@@ -2,7 +2,7 @@
 #include <cctype>
 #include <cstddef>
 
-char *remove_extra_spaces(char *destination, const char *cstring)
+char *removeExtraSpaces(char *destination, const char *cstring)
 {
   char *over_destination = destination;
 

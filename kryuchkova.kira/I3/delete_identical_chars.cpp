@@ -2,7 +2,7 @@
 #include <cctype>
 #include <cstddef>
 
-char *delete_identical_chars(char *destination, const char *cstring_first, const char *cstring_second)
+char *deleteIdenticalChars(char *destination, const char *cstring_first, const char *cstring_second)
 {
   bool identical_chars = false;
   char *over_destination = destination;

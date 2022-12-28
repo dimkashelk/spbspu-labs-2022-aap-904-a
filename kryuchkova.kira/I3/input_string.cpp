@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <stdexcept>
 
-char *input_string(char *cstring, size_t &capacity)
+char *inputString(char *cstring, size_t &capacity)
 {
   size_t size = 0;
 

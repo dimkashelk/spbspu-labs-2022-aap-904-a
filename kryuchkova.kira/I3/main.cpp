@@ -11,7 +11,7 @@ int main()
   cstring_1[0] = '\0';
   try
   {
-    cstring_1 = input_string(cstring_1, capacity);
+    cstring_1 = inputString(cstring_1, capacity);
     if (cstring_1[0] == '\0')
     {
       std::cout << "empty string";
@@ -30,7 +30,7 @@ int main()
   destination[0] = '\0';
   try
   {
-    destination = remove_extra_spaces(destination, cstring_1);
+    destination = removeExtraSpaces(destination, cstring_1);
     std::cout << destination << "\n";
     delete[] destination;
   }
@@ -46,7 +46,7 @@ int main()
   cstring_2[0] = '\0';
   try
   {
-    cstring_2 = input_string(cstring_2, capacity_2);
+    cstring_2 = inputString(cstring_2, capacity_2);
     if (capacity_2 == 0)
     {
       cstring_2[capacity_2] = '\0';
@@ -69,7 +69,7 @@ int main()
   destination_2[0] = '\0';
   try
   {
-    destination_2 = delete_identical_chars(destination_2, cstring_1, cstring_2);
+    destination_2 = deleteIdenticalChars(destination_2, cstring_1, cstring_2);
     std::cout << destination_2 << "\n";
     delete[] cstring_1;
     delete[] cstring_2;

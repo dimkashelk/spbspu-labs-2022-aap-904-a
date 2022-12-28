@@ -2,6 +2,6 @@
 #define INPUT_STRING_H
 #include <cstddef>
 
-char *input_string(char *cstring, size_t &capacity);
+char *inputString(char *cstring, size_t &capacity);
 
 #endif

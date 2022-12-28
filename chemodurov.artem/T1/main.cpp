@@ -29,10 +29,6 @@ int main()
       try
       {
         chemodurov::Shape ** new_shp = chemodurov::extendShapePtrArray(shp, shp_cap, shp_cap + 3);
-        for (size_t i = 0; i < shp_cap; ++i)
-        {
-          delete shp[i];
-        }
         delete [] shp;
         shp_cap += 3;
         shp = new_shp;

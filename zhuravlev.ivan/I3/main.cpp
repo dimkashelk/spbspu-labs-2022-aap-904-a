@@ -48,6 +48,6 @@ int main()
     finderThreeSameElements(cstring, size);
     finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
     delete [] cstring;
-    return 0;
   }
+  return 0;
 }

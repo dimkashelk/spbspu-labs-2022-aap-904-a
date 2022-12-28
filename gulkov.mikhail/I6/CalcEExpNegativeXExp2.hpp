@@ -13,7 +13,9 @@ public:
 private:
   double x;
   double absError;
+  double result;
   unsigned int factorial_of;
+  unsigned int exp;
   size_t terms_count;
   size_t numberMax;
 };

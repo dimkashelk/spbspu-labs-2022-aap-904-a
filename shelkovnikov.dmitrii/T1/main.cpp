@@ -128,6 +128,7 @@ int main()
     }
     else if (name == "SCALE")
     {
+      std::cout << '\t';
       output_shapes(std::cout, shapes, size) << " \n";
       point_t point;
       in >> point;
@@ -137,6 +138,7 @@ int main()
       {
         isotropic_scaling(shapes[i], point, k);
       }
+      std::cout << '\t';
       output_shapes(std::cout, shapes, size) << "\n";
       if (contains_errors_with_shapes)
       {

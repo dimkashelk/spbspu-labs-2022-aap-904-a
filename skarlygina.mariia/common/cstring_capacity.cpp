@@ -17,7 +17,7 @@ char* makeNewCString(std::istream& input)
       try
       {
         char* newstring = new char[capacity + 20];
-        newstring = strcpy(newstring, cstring);
+        strcpy(newstring, cstring);
         delete[] cstring;
         cstring = newstring;
         newstring = nullptr;

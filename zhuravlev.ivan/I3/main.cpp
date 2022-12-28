@@ -13,7 +13,7 @@ int main()
 
   std::cin >> std::noskipws;
 
-  if (!std::cin)
+  if (size = 0)
   {
     std::cerr << "Error: Something wrong with input!" << "\n";
     return 1;
@@ -44,19 +44,11 @@ int main()
       std::cin >> cstring[size];
     }
     while (std::cin && cstring[size++] != '\n');
-    try
-    {
-      cstring[size - 1] = '\0';
-      finderThreeSameElements(cstring, size);
-      finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
-      delete [] cstring;
-    }
-    catch (std::exception &e)
-    {
-      std::cerr << e.what() << "\n";
-      delete [] cstring;
-      return 2;
-    }
+    
+    cstring[size - 1] = '\0';
+    finderThreeSameElements(cstring, size);
+    finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
+    delete [] cstring;
   }
   return 0;
 }

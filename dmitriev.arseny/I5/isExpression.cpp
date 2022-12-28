@@ -50,6 +50,11 @@ bool isUnsignedInteger(char* c)
   return isDigit(*c) || (isDigit(*c) && isUnsignedInteger(c + 1));
 }
 
+bool isMultiplier(char* c)
+{
+  return isUnsignedInteger(c) || isIdentifier(*c) || (isOpenBrace(*c) && isExpr(c + 1) && isCloseBrace(*c));
+}
+
 bool isExpr(char* c)
 {
   return

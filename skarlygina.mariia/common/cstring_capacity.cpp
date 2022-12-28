@@ -13,7 +13,7 @@ char* makeNewCString(std::istream& input)
   input >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size + 1 == capacity)
     {
       try
       {

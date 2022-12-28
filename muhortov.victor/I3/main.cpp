@@ -35,7 +35,6 @@ int main()
   }
   while (std::cin && c_string[size++] != '\n');
 
-  std::cout << c_string << '\n';
   if (c_string[0] == '\n')
   {
     delete[] c_string;

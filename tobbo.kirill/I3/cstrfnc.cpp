@@ -4,9 +4,10 @@
 
 char* getCString(std::istream& stream)
 {
+  size_t size = 0;
   size_t capacity = 10;
   char* str = new char[capacity];
-  size_t size = 0;
+  str[0] = '\0';
   stream >> std::noskipws;
   do
   {

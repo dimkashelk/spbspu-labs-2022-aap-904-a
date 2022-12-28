@@ -128,11 +128,6 @@ int main()
     }
     else if (name == "SCALE")
     {
-      if (contains_errors_with_shapes)
-      {
-        contains_errors_with_shapes = false;
-        std::cerr << "Contains errors in description of figures";
-      }
       output_shapes(std::cout, shapes, size) << " \n";
       point_t point;
       in >> point;
@@ -143,6 +138,11 @@ int main()
         isotropic_scaling(shapes[i], point, k);
       }
       output_shapes(std::cout, shapes, size);
+      if (contains_errors_with_shapes)
+      {
+        contains_errors_with_shapes = false;
+        std::cerr << "Contains errors in description of figures";
+      }
     }
   }
   for (size_t i = 0; i < size; i++)

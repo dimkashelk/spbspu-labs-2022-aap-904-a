@@ -19,7 +19,7 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
   }
   for (size_t k = 0; k < cnt; ++k)
   {
-    std::cout << tmp_string[k] << " "
+    std::cout << tmp_string[k] << " ";
   }
   delete [] tmp_string;
 }

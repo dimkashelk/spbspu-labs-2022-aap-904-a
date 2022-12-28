@@ -1,5 +1,6 @@
-#include<iostream>
+#include <iostream>
 #include <cstddef>
+#include <cstring>
 #include "findsamechar.h"
 #include "sortstringbyascii.h"
 
@@ -18,7 +19,7 @@ int main()
         char * newstr = new char[cap + 20];
         for (char* i = cstring, *j = newstr; i != cstring + size; ++i, ++j)
         {
-          *j = *i;
+          strcpy(j,i);
         }
         delete [] cstring;
         cstring = newstr;

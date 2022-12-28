@@ -2,25 +2,35 @@
 #include <cctype>
 #include <stdexcept>
 
-char* sortStringByAscii(char* newstr3, const char* cstring, const char* newstr2)
+void swapEl(size_t i, size_t elstr, char* newstr3)
+{
+  for (size_t j = i + 1; j < elstr; j++)
+  {
+    if (newstr3[i] > newstr3[j])
+    {
+      std::swap(newstr3[i], newstr3[j]);
+    }
+  }
+}
+char* sortStringByAscii(char* newstr3, char* cstring, char* newstr2)
 {
   size_t elstr = 0;
-  for (size_t i = 0; cstring[i]; i++)
+  for (char* i = cstring; *i; i++)
   {
     bool matching = false;
-    if (std::isalpha(cstring[i]))
+    if (std::isalpha(*i))
     {
-      for (size_t j = i + 1; cstring[j]; j++)
+      for (char*  j = i + 1; *j; j++)
       {
-        if ((std::toupper(cstring[i])) == std::toupper(cstring[j]))
+        if ((std::toupper(*i)) == std::toupper(*j))
         {
           matching = true;
           break;
         }
       }
-      for (size_t j = 0; newstr2[j]; j++)
+      for (char* j = newstr2 ; *j; j++)
       {
-        if ((std::toupper(cstring[i])) == std::toupper(newstr2[j]))
+        if ((std::toupper(*i)) == std::toupper(*j))
         {
           matching = true;
           break;
@@ -28,18 +38,18 @@ char* sortStringByAscii(char* newstr3, const char* cstring, const char* newstr2)
       }
       if (!matching)
       {
-        newstr3[elstr++] = std::toupper(cstring[i]);
+        newstr3[elstr++] = std::toupper(*i);
       }
     }
   }
-  for (size_t i = 0; newstr2[i]; i++)
+  for (char* i = newstr2; *i; i++)
   {
     bool matching = false;
-    if (std::isalpha(newstr2[i]))
+    if (std::isalpha(*i))
     {
-      for (size_t j = i + 1; newstr2[j]; j++)
+      for (char* j = i + 1; *j; j++)
       {
-        if ((std::toupper(newstr2[i])) == std::toupper(newstr2[j]))
+        if ((std::toupper(*i)) == std::toupper(*j))
         {
           matching = true;
           break;
@@ -47,19 +57,13 @@ char* sortStringByAscii(char* newstr3, const char* cstring, const char* newstr2)
       }
       if (!matching)
       {
-        newstr3[elstr++] = std::toupper(newstr2[i]);
+        newstr3[elstr++] = std::toupper(*i);
       }
     }
   }
   for (size_t i = 0; i < elstr; i++)
   {
-    for (size_t j = i + 1; j < elstr; j++)
-    {
-      if (newstr3[i] > newstr3[j])
-      {
-        std::swap(newstr3[i], newstr3[j]);
-      }
-    }
+    swapEl(i, elstr, newstr3);
   }
   newstr3[elstr] = '\0';
   return newstr3;

@@ -1,6 +1,7 @@
 #include "FormingCstring.h"
 #include <istream>
 #include <iostream>
+#include <cstring>
 #include <cstddef>
 char* formingCstring(std::istream & input)
 {

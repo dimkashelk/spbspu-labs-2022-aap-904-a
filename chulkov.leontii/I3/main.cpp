@@ -36,8 +36,8 @@ int main()
   const size_t size2 = 4;
   if (size == 0)
   {
-    cstring[0] = '\0';
     std::cerr << "Empty string\n";
+    return 1;
   }
   else
   {

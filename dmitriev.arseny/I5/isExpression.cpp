@@ -62,5 +62,5 @@ bool isTerm(char* c)
 
 bool isExpr(char* c)
 {
-  return
+  return isEnd(*c) || isTerm(c) || (isTerm(c) && isAdSi(*c) && isExpr(c + 1)) || (isTerm(c) && isSuSi(*c) && isExpr(c + 1));
 }

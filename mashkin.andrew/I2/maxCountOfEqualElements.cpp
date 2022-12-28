@@ -1,7 +1,7 @@
 #include "maxCountOfEqualElements.h"
 #include <cstddef>
 
-size_t countMaxQuantityOfEqualElements(const int* arr, const size_t size)
+size_t countMaxQuantityOfEqualElements(const int* arr, size_t size)
 {
   size_t count = 1;
   size_t maxCount = 1;

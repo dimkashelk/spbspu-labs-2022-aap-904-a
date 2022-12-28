@@ -2,5 +2,5 @@
 #define SAMEPOSITIVEELEMENTS_H
 #include <cstddef>
 
-bool isThereTheSamePositiveElements(const int* arr, const size_t size);
+bool isThereTheSamePositiveElements(const int* arr, size_t size);
 #endif

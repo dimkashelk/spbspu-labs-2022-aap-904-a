@@ -45,6 +45,11 @@ bool isIdentifier(const char val)
   return isLetter(val);
 }
 
+bool isUnsignedInteger(char* c)
+{
+  return isDigit(*c) || (isDigit(*c) && isUnsignedInteger(c + 1));
+}
+
 bool isExpr(char* c)
 {
   return

@@ -16,7 +16,8 @@ char* formingCstring(std::istream & input)
       try
       {
         char * newstr = new char[capacity + 20];
-        char* i,*j;
+        char* i = 0;
+        char* j = 0;
         strcpy(i, cstring);
         strcpy(j, newstr);
         while(i != cstring + size)

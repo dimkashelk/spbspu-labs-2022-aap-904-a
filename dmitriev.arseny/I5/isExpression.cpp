@@ -25,14 +25,9 @@ bool isMuSi(const char val)
   return (val == '*');
 }
 
-bool isAdSi(const char val)
+bool isSubtrOrAddSi(const char val)
 {
-  return (val == '+');
-}
-
-bool isSuSi(const char val)
-{
-  return (val == '-');
+  return (val == '+') || (val == '-');
 }
 
 bool isEnd(const char val)
@@ -45,22 +40,22 @@ bool isIdentifier(const char val)
   return isLetter(val);
 }
 
-bool isUnsignedInteger(char* c)
+bool isUnsignedInteger(const char* c)
 {
   return isDigit(*c) || (isDigit(*c) && isUnsignedInteger(c + 1));
 }
 
-bool isMultiplier(char* c)
+bool isMultiplier(const char* c)
 {
   return isUnsignedInteger(c) || isIdentifier(*c) || (isOpenBrace(*c) && isExpr(c + 1) && isCloseBrace(*c));
 }
 
-bool isTerm(char* c)
+bool isTerm(const char* c)
 {
   return isMultiplier(c) || (isMultiplier(c) && isMuSi(*c) && isTerm(c + 1));
 }
 
-bool isExpr(char* c)
+bool isExpr(const char* c)
 {
-  return isEnd(*c) || isTerm(c) || (isTerm(c) && isAdSi(*c) && isExpr(c + 1)) || (isTerm(c) && isSuSi(*c) && isExpr(c + 1));
+  return isEnd(*c) || isTerm(c) || (isTerm(c) && isSubtrOrAddSi(*c) && isExpr(c + 1));
 }

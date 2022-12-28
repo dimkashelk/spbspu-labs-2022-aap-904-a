@@ -1,7 +1,7 @@
 #include "cstrfnc.h"
 #include <cmath>
+#include <cstring>
 #include <stdexcept>
-#include <string>
 
 std::pair< char*, size_t > getCString(std::istream& stream)
 {
@@ -49,7 +49,7 @@ bool isIntersectedStrings(const char* str1, const char* str2)
 
 char* removeLatinVowelSymbols(char* destination, const char* source)
 {
-  const char vowels[] = "AaEeIiOoUu";
+  const char vowels[] = "AaEeIiOoUuYy";
   size_t vowels_size = sizeof(vowels);
   char* dst = destination;
   for (auto i = source; *i != '\0'; i++)

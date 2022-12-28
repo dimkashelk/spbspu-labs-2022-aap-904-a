@@ -20,8 +20,8 @@ private:
   size_t numberMax;
 };
 
-double countFraction(double x, double factorial_of, unsigned int exp);
+double countFraction(double x, unsigned int &factorial_of, unsigned int &exp);
 
-double countTerm(double terms_count, double x, double factorial_of, unsigned int exp);
+double countTerm(size_t terms_count, double x, unsigned int &factorial_of, unsigned int &exp);
 
 #endif

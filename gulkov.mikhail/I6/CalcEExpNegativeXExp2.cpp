@@ -1,17 +1,22 @@
 #include "CalcEExpNegativeXExp2.hpp"
 
 CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, double absError, size_t numberMax) : x(x), absError(absError), result(0),
-                                                                                            factorial_of(2), exp(0),
+                                                                                            factorial_of(2), exp(2),
                                                                                             terms_count(0), numberMax(numberMax)
 {}
 
 double CalcEExpNegativeXExp2::operator()()
 {
+  while (terms_count <= numberMax)
+  {
+    result +=
+      terms_count % 2 == 0 ? countTerm(terms_count, x, factorial_of, exp) : (-1 * countTerm(terms_count, x, factorial_of, exp));
+  }
 
   return result;
 }
 
-double countFraction(double x, unsigned int &factorial_of, unsigned int exp)
+double countFraction(double x, unsigned int &factorial_of, unsigned int &exp)
 {
   int factorial = 0;
   for (unsigned int i = 0; i < exp; ++i)
@@ -22,11 +27,12 @@ double countFraction(double x, unsigned int &factorial_of, unsigned int exp)
   {
     factorial *= i;
   }
+  exp += 2;
   ++factorial;
   return (x / factorial);
 }
 
-double countTerm(double terms_count, double x, unsigned int &factorial_of, unsigned int exp)
+double countTerm(size_t terms_count, double x, unsigned int &factorial_of, unsigned int &exp)
 {
   if (terms_count == 0)
   {

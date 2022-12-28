@@ -11,6 +11,7 @@ void extendArray(chemodurov::point_t * arr, size_t & cap, size_t arr_size)
   }
   delete [] arr;
   arr = new_arr;
+  new_arr = nullptr;
 }
 
 chemodurov::point_t readPointFromString(const std::string & data, std::string::size_type * size)
@@ -54,16 +55,6 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
 
 chemodurov::Shape * chemodurov::makePolygonFromPoints(chemodurov::point_t * arr, size_t arr_size)
 {
-  chemodurov::Shape * temp = nullptr;
-  try
-  {
-    temp = new chemodurov::Polygon(arr, arr_size);
-    delete [] arr;
-  }
-  catch (...)
-  {
-    delete [] arr;
-    throw;
-  }
+  chemodurov::Shape * temp = new chemodurov::Polygon(arr, arr_size);
   return temp;
 }

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "polygon.hpp"
+#include "square.hpp"
 #include "iso-scale.hpp"
 #include "print-summ-area-and-frames.hpp"
 #include "extend-shape-ptr-array.hpp"
@@ -49,16 +50,54 @@ int main()
     std::getline(std::cin, line);
     if (!line.compare(0, 7, "POLYGON"))
     {
+      chemodurov::point_t * arr = nullptr;
       try
       {
         size_t arr_size = 0;
-        chemodurov::point_t * arr = chemodurov::getArrayOfPoints(line, arr_size);
+        arr = chemodurov::getArrayOfPoints(line, arr_size);
         if (arr_size < 3 || chemodurov::isRepeatingPointsInArray(arr, arr_size))
+        {
+          std::cerr << "Error in description of shape\n";
+          delete [] arr;
+          continue;
+        }
+        shp[shp_size++] = chemodurov::makePolygonFromPoints(arr, arr_size);
+        delete [] arr;
+      }
+      catch (...)
+      {
+        for (size_t i = 0; i < shp_cap; ++i)
+        {
+          delete shp[i];
+        }
+        delete [] shp;
+        delete [] arr;
+        std::cerr << "Error...\n";
+        return 1;
+      }
+      continue;
+    }
+
+    if (!line.compare(0, 6, "SQUARE"))
+    {
+      try
+      {
+        std::string::size_type size1 = 6;
+        std::string::size_type size2;
+        double x = std::stod(line.substr(size1), &size2);
+        size2 += size1;
+        double y = std::stod(line.substr(size2), &size1);
+        size1 += size2;
+        chemodurov::point_t temp{x, y};
+        double length = std::stod(line.substr(size1));
+        if (length <= 0)
         {
           std::cerr << "Error in description of shape\n";
           continue;
         }
-        shp[shp_size++] = chemodurov::makePolygonFromPoints(arr, arr_size);
+        chemodurov::Shape * sq = new chemodurov::Square(temp, length);
+        shp[shp_size++] = sq;
+        sq = nullptr;
       }
       catch (...)
       {

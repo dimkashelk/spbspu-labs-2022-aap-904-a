@@ -26,22 +26,37 @@ bool isEnd(char c)
   return (c == '\0');
 }
 
-bool isDigitWithNoSign(const char* data)
+bool continueAfterSign(const char* data)
 {
-  return (isDigit(*data) || (isDigit(*data) && isDigitWithNoSign(data + 1)));
+  return isDigit(*data) && (continueAfterSign(data + 1) || isEnd(*(data + 1)));
 }
 
-bool isOrder(const char* data)
+bool continueWithSign(const char* data)
 {
-  return (isE(*data) && isSign(*(data + 1)) && isDigitWithNoSign(data + 2));
+  return isSign(*data) && continueAfterSign(data + 1);
 }
 
-bool isMantissa(const char* data)
+bool continueWithE(const char* data)
 {
-  return ((isDigitWithNoSign(data) && isDot(*(data + 1)) && isDigitWithNoSign(data + 2)) || (isDot(*data) && isDigitWithNoSign(data + 1)));
+  return isE(*data) && continueWithSign(data + 1);
+}
+
+bool continueWithDigitAfterDot(const char* data)
+{
+  return isDigit(*data) && (continueWithDigitAfterDot(data + 1) || continueWithE(data + 1));
+}
+
+bool continueWithDot(const char* data)
+{
+  return isDot(*data) && continueWithDigitAfterDot(data + 1);
+}
+
+bool continueWithDigit(const char* data)
+{
+  return isDigit(*data) && (continueWithDigit(data + 1) || continueWithDot(data + 1));
 }
 
 bool isFloatDigit(const char* data)
 {
-  return (isSign(*data) && isMantissa(data + 1) && isOrder(data + 2) && isEnd(*(data + 3)));
+  return (isSign(*data) && continueWithDigit(data + 1));
 }

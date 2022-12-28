@@ -16,6 +16,4 @@ namespace chemodurov
 
 chemodurov::Parallelogram::Parallelogram(const chemodurov::point_t & fst, const chemodurov::point_t & sec, const chemodurov::point_t trd)
  p(chemodurov::makeArray(fst, sec, trd), 4ull)
-{
-  
-}
+{}

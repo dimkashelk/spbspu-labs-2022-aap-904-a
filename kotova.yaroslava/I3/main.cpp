@@ -13,7 +13,7 @@ int main()
   cstring1[0] = '\0';
   try
   {
-    cstring1 = formingCstring(std::cin);
+    cstring1 = formingCstring(cstring1, capacity1, std::cin);
     if (cstring1[0] == '\0')
     {
       std::cout << " Empty string ";
@@ -30,7 +30,6 @@ int main()
   }
 
   char * destination1 = nullptr;
-  destination1[0] = '\0';
   try
   {
     destination1 = new char[capacity1];
@@ -68,7 +67,7 @@ int main()
   cstring2[0] = '\0';
   try
   {
-    cstring2 = formingCstring(std::cin);
+    cstring2 = formingCstring(cstring2, capacity2, std::cin);
     cstring2[size - 1] = '\0';
   }
   catch(const std::exception &e)

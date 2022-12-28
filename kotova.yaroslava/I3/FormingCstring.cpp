@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstring>
 #include <cstddef>
-char* formingCstring(std::istream & input)
+char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];

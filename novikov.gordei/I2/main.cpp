@@ -12,19 +12,19 @@ int main(int argc, const char* argv[])
 {
   using std::cout;
   using std::cin;
-  
+
   if (argc != 2) {
     std::cerr << "Exactly one argument needed\n";
     return 1;
   }
   srand(time(0));
-  
+
   size_t k = 2;
-  
+
   int staticArray[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
   cout << "Static array: ";
   processArray(staticArray, N, k);
-  
+
   cout << "Enter number of elements in dynamic array: ";
   size_t n;
   cin >> n;
@@ -38,7 +38,7 @@ int main(int argc, const char* argv[])
   }
   processArray(dynamicArray, n, k);
   delete [] dynamicArray;
-  
+
   std::ifstream file(argv[1]);
   if (!file.is_open()) {
     std::cerr << "Can't open the file\n";
@@ -52,6 +52,6 @@ int main(int argc, const char* argv[])
   }
   processArray(dynamicArray, n, k);
   delete [] dynamicArray;
-  
+
   return 0;
 }

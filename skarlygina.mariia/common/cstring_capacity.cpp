@@ -16,8 +16,8 @@ char* makeNewCString(std::istream& input)
     {
       try
       {
-        char* newstring = new char[capacity + 20];
-        strcpy(newstring, cstring);
+        auto newstring = std::make_unique< char[] >(std::strlen(cstring) + 1);
+        std::strcpy(newstring.get(), cstring);
         delete[] cstring;
         cstring = newstring;
         newstring = nullptr;

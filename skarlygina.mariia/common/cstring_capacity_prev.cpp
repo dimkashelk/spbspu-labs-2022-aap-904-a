@@ -7,6 +7,6 @@ char* makeNewCapacityCString(char* cstring, size_t& capacity)
   delete[] cstring;
   cstring = newstring;
   capacity += 20;
-  cstring[capacity] = '\0';
+  cstring[capacity - 1] = '\0';
   return cstring;
 }

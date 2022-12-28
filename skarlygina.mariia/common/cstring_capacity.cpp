@@ -16,7 +16,7 @@ char* makeNewCString(std::istream& input)
     {
       try
       {
-        cstring = makeNewCapacityCString(cstring, capacity, size);
+        cstring = makeNewCapacityCString(cstring, capacity);
       }
       catch (const std::exception& e)
       {

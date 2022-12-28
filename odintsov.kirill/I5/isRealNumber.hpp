@@ -6,7 +6,7 @@ namespace detail {
   const char* skipExponent(const char* string);
   const char* skipMantissa(const char* string);
   const char* skipSign(const char* string);
-  const char* skipRealNumber(const char* string); 
+  const char* skipRealNumber(const char* string);
 }
 
 namespace odintsov {

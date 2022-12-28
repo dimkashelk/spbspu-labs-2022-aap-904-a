@@ -27,7 +27,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   size_t index = 0;
   while (size_ > 3)
   {
-    point_t *point = points;
+    point_t *point = points_;
     size_t ind = 0;
     size_t last_number = 2;
     while (last_number < size_)
@@ -64,7 +64,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
       }
     }
   }
-  Triangle *triangle = new Triangle(*points, *(points + 1), *(points + 2));
+  Triangle *triangle = new Triangle(*points_, *(points_ + 1), *(points_ + 2));
   triangles_[index] = triangle;
   index++;
   size_ = index;

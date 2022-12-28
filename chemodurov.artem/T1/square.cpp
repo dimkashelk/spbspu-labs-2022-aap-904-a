@@ -16,7 +16,7 @@ namespace chemodurov
 }
 
 chemodurov::Square::Square(const chemodurov::point_t & left_down, double length):
- p(makeArrayOfXPoints(left_down, length), 4ull)
+ p(chemodurov::makeArrayOfXPoints(left_down, length), 4ull)
 {
   if (length <= 0)
   {

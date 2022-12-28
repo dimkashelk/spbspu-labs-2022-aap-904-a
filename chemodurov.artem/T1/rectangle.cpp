@@ -16,7 +16,7 @@ namespace chemodurov
 }
 
 chemodurov::Rectangle::Rectangle(const chemodurov::point_t & left_down, const chemodurov::point_t & right_up):
- p(makeArrayOfXPoints(left_down, right_up), 4ull)
+ p(chemodurov::makeArrayOfXPoints(left_down, right_up), 4ull)
 {
   if (left_down.x == right_up.x || left_down.y == right_up.y)
   {

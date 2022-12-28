@@ -14,7 +14,7 @@ int main()
   size_t shp_cap = 3;
   size_t shp_size = 0;
   chemodurov::Shape ** shp = new chemodurov::Shape*[shp_cap];
-  for (size_t i = 0; i < shp_size; ++i)
+  for (size_t i = 0; i < shp_cap; ++i)
   {
     shp[i] = nullptr;
   }
@@ -28,7 +28,7 @@ int main()
       {
         chemodurov::Shape ** new_shp = chemodurov::extendShapePtrArray(shp, shp_cap, shp_cap + 3);
         shp_cap += 3;
-        for (size_t i = 0; i < shp_size; ++i)
+        for (size_t i = 0; i < shp_cap; ++i)
         {
           delete shp[i];
         }
@@ -37,7 +37,7 @@ int main()
       }
       catch (...)
       {
-        for (size_t i = 0; i < shp_size; ++i)
+        for (size_t i = 0; i < shp_cap; ++i)
         {
           delete shp[i];
         }

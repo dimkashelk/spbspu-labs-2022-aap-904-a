@@ -4,14 +4,25 @@
 #include <limits>
 #include "line_t.h"
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
-  points_(points),
+  points_(new point_t[size]),
   size_(size),
   triangles_(new Triangle*[size_])
 {
+  for (size_t i = 0; i < size; i++)
+  {
+    points_[i] = points[i];
+  }
   if (containsThreePointsOnLine())
   {
     delete[] triangles_;
+    delete[] points_;
     throw std::logic_error("3 or more points_ on one line here.......");
+  }
+  if (size < 3)
+  {
+    delete[] triangles_;
+    delete[] points_;
+    throw std::logic_error("Need minimum 3 points");
   }
   size_t index = 0;
   while (size_ > 3)
@@ -60,6 +71,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
 }
 TriangulatePoints::~TriangulatePoints()
 {
+  triangles_ -= size_;
   for (size_t i = 0; i < size_; i++)
   {
     delete triangles_[i];
@@ -67,9 +79,10 @@ TriangulatePoints::~TriangulatePoints()
   delete[] triangles_;
   delete[] points_;
 }
-Triangle TriangulatePoints::operator()() const
+Triangle TriangulatePoints::operator()()
 {
   Triangle triangle = **triangles_;
+  triangles_++;
   return triangle;
 }
 size_t TriangulatePoints::getSize() const

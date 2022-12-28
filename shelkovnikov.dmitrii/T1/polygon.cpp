@@ -164,6 +164,15 @@ std::istream& operator>>(std::istream &in, Polygon &polygon)
     }
   }
   while (in);
-  polygon = Polygon(points, size);
+  try
+  {
+    polygon = Polygon(points, size);
+  }
+  catch (...)
+  {
+    delete[] points;
+    throw;
+  }
+  delete[] points;
   return in;
 }

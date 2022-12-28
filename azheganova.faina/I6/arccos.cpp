@@ -31,7 +31,6 @@ findMemberOfRow::findMemberOfRow(double x):
   {
     throw std::invalid_argument("error");
   }
-
 }
 
 double findMemberOfRow::operator()()

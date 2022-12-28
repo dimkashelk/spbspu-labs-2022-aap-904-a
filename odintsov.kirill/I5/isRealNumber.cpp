@@ -1,7 +1,7 @@
 #include "isRealNumber.hpp"
 #include <cctype>
 
-const char* odintsov::skipUnsigned(const char* string)
+const char* detail::skipUnsigned(const char* string)
 {
   if (!isdigit(*(string++))) {
     return nullptr;
@@ -9,7 +9,7 @@ const char* odintsov::skipUnsigned(const char* string)
   return isdigit(*string) ? skipUnsigned(string) : string;
 }
 
-const char* odintsov::skipExponent(const char* string)
+const char* detail::skipExponent(const char* string)
 {
   if (string == nullptr || *(string++) != 'E') {
     return nullptr;
@@ -17,7 +17,7 @@ const char* odintsov::skipExponent(const char* string)
   return skipUnsigned(skipSign(string));
 }
 
-const char* odintsov::skipMantissa(const char* string)
+const char* detail::skipMantissa(const char* string)
 {
   string = skipUnsigned(string);
   if (string == nullptr || *string != '.') {
@@ -26,7 +26,7 @@ const char* odintsov::skipMantissa(const char* string)
   return skipUnsigned(string + 1);
 }
 
-const char* odintsov::skipSign(const char* string)
+const char* detail::skipSign(const char* string)
 {
   if (*string == '+' || *string == '-') {
     return string + 1;
@@ -34,14 +34,14 @@ const char* odintsov::skipSign(const char* string)
   return string;
 }
 
-const char* odintsov::skipRealNumber(const char* string)
+const char* detail::skipRealNumber(const char* string)
 {
   return skipExponent(skipMantissa(skipSign(string)));
 }
 
 bool odintsov::isRealNumber(const char* string)
 {
-  string = skipRealNumber(string);
+  string = detail::skipRealNumber(string);
   if (string == nullptr) {
     return false;
   }

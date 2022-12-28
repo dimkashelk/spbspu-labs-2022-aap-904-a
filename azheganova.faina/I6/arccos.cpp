@@ -9,7 +9,7 @@ double countArccos(double x, double absError, unsigned maxnumber)
   double firstmember = 1.57;
   double member = 0;
   unsigned count = 0;
-  while (std::fabs(member) > absError && count < maxnumber)
+  while (member > absError && count < maxnumber)
   {
     member = findMemberOfRow();
     count++;

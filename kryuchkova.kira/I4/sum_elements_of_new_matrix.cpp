@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-double sum_elements_of_new_matrix(int *matrix, size_t rows, size_t columns)
+double sumElementsOfNewMatrix(int *matrix, size_t rows, size_t columns)
 {
   double sum_elements = 0;
   double element = 0;

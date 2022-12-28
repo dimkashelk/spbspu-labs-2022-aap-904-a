@@ -1,9 +1,9 @@
 #include "unique_elements.h"
 #include <iostream>
 
-size_t unique_elements(int *matrix, size_t rows, size_t columns)
+size_t countColumnsWithUniqueElements(int *matrix, size_t rows, size_t columns)
 {
-  size_t counter_rows = 0;
+  size_t counter_columns = 0;
   bool unique_flag = true;
   for (size_t i = 0; i < columns; i++)
   {
@@ -21,8 +21,8 @@ size_t unique_elements(int *matrix, size_t rows, size_t columns)
     }
     if (unique_flag == true)
     {
-      counter_rows++;
+      counter_columns++;
     }
   }
-  return counter_rows;
+  return counter_columns;
 }

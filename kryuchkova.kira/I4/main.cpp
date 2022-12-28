@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     std::ofstream out(argv[3]);
     try
     {
-      out << unique_elements(matrix, rows, columns) << "\n";
+      out << countColumnsWithUniqueElements(matrix, rows, columns) << "\n";
     }
     catch (const std::runtime_error &e)
     {
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     std::ofstream out(argv[3]);
     try
     {
-      out << sum_elements_of_new_matrix(matrix, rows, columns) << "\n";
+      out << sumElementsOfNewMatrix(matrix, rows, columns) << "\n";
     }
     catch (const std::runtime_error &e)
     {

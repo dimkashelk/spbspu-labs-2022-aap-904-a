@@ -1,6 +1,6 @@
 #include "subarray.h"
 
-size_t count_sequence_similar(const int *array, const size_t size)
+size_t countSequenceSimilar(const int *array, const size_t size)
 {
   size_t max = 0;
   size_t counter = 1;

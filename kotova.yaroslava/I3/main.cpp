@@ -110,5 +110,5 @@ int main()
   delete[] cstring2;
   delete[] destination1;
   delete[] destination2;
-  return 0;
+
 }

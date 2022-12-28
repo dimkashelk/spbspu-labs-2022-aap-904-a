@@ -1,20 +1,17 @@
 #include "DelNumbers.h"
 #include <cctype>
-#include <cstddef>
-char* deleteNumbers(char* destination,const char* source)
+char* deleteNumbers(char* destination, const char* source)
 {
-  size_t k = 0;
-  destination[k] = '\0';
-  size_t i = 0;
-  while (source[i] != '\0')
+  auto k = destination;
+  for (auto i = source; *i != '\0'; i++)
   {
-    if (!std::isdigit(source[i]))
+    if (!std::isdigit(*i))
     {
-      destination[k] = source[i];
+      *k = *i;
       ++k;
     }
     i++;
   }
-  destination[k]='\0';
+  *k = '\0';
   return destination;
 }

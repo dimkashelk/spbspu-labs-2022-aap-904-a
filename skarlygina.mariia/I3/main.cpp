@@ -18,7 +18,7 @@ int main()
     {
       try
       {
-        cstring = makeNewCapacityCString(cstring, capacity, size);
+        cstring = makeNewCapacityCString(cstring, capacity);
       }
       catch (const std::exception& e)
       {

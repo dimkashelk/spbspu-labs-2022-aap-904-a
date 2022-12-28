@@ -21,7 +21,7 @@ char* makeNewCString(std::istream& input)
       catch (const std::exception& e)
       {
         delete[] cstring;
-        std::cerr << e.what() << "\n";
+        throw;
       }
     }
     input >> cstring[size];
@@ -31,7 +31,7 @@ char* makeNewCString(std::istream& input)
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     delete[] cstring;
-    std::cout << "Error while reading the string \n";
+    throw std::invalid_argument("Error while reading the string");
   }
   cstring[size - 1] = '\0';
   return cstring;

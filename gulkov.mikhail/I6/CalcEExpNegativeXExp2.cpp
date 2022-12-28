@@ -11,6 +11,7 @@ double CalcEExpNegativeXExp2::operator()()
   {
     result +=
       terms_count % 2 == 0 ? countTerm(terms_count, x, factorial_of, exp) : (-1 * countTerm(terms_count, x, factorial_of, exp));
+    ++terms_count;
   }
 
   return result;
@@ -25,7 +26,7 @@ double countFraction(double x, unsigned int &factorial_of, unsigned int &exp)
   }
   for (unsigned int i = 0; i < factorial_of; ++i)
   {
-    factorial *= i;
+    factorial *= static_cast< int >(i);
   }
   exp += 2;
   ++factorial;

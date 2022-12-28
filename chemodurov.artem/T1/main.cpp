@@ -164,7 +164,7 @@ int main()
         y = std::stod(line.substr(size2), &size1);
         size1 += size2;
         chemodurov::point_t trd{x, y};
-        if (fst.y != sec.y && sec.y != trd.y)
+        if ((fst.y != sec.y && sec.y != trd.y) || fst == sec || sec == trd)
         {
           std::cerr << "Error in description of shape\n";
           continue;
@@ -212,7 +212,7 @@ int main()
   }
   while (std::cin);
 
-  if (!std::cin || !shp_size || !iso_scale_coeff)
+  if (!std::cin || !shp_size || iso_scale_coeff <= 0)
   {
     for (size_t i = 0; i < shp_cap; ++i)
     {

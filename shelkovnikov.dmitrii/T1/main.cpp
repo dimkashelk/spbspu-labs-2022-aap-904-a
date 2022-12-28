@@ -45,6 +45,7 @@ int main()
 {
   std::string line = "";
   bool contains_errors_with_shapes = false;
+  bool call_scale = false;
   size_t size = 0;
   size_t capacity = 10;
   Shape **shapes = new Shape*[capacity];
@@ -129,6 +130,7 @@ int main()
     }
     else if (name == "SCALE")
     {
+      call_scale = true;
       point_t point;
       in >> point;
       double k = 0.0;
@@ -141,6 +143,11 @@ int main()
         }
         delete[] shapes;
         std::cerr << "Negative Coeff Scale";
+        return 1;
+      }
+      if (size == 0)
+      {
+        std::cerr << "Nothing to scaling";
         return 1;
       }
       output_shapes(std::cout, shapes, size) << "\n";
@@ -161,5 +168,10 @@ int main()
     delete shapes[i];
   }
   delete[] shapes;
+  if (!call_scale)
+  {
+    std::cerr << "Not scaled shapes";
+    return 1;
+  }
   return 0;
 }

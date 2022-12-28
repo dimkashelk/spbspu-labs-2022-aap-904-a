@@ -16,5 +16,10 @@ int main()
     std::cout << "error";
     return 1;
   }
+  if (borderleft < -1 && borderright > 1)
+  {
+    std::cout << "error";
+    return 1;
+  }
   printTable(std::cout, borderleft, borderright, step, maxnumber, absError);
 }

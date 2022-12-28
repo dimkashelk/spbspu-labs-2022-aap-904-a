@@ -2,7 +2,6 @@
 #define CSTRINGWRAPPER_HPP
 
 #include <cstddef>
-#include <iostream>
 
 namespace odintsov {
   struct CStringWrapper {

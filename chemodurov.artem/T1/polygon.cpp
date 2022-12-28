@@ -1,5 +1,6 @@
 #include "polygon.hpp"
 #include <stdexcept>
+#include <cmath>
 #include "is-repeating-points-in-array.hpp"
 
 namespace chemodurov
@@ -31,7 +32,7 @@ namespace chemodurov
         area += verts[i].x * (verts[0].y - verts[i - 1].y);
       }
     }
-    area *= -0.5;
+    area = std::abs(0.5 * area);
     return area;
   }
   chemodurov::point_t findPolygonCenter(const chemodurov::point_t * verts, size_t num_of_verts)

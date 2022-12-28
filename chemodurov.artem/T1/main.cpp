@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
-#include <cstddef>
 #include "polygon.hpp"
 #include "iso-scale.hpp"
 #include "print-summ-area-and-frames.hpp"
 #include "extend-shape-ptr-array.hpp"
 #include "make-polygon-from-string.hpp"
+#include "is-repeating-points-in-array.hpp"
 
 int main()
 {
@@ -45,13 +45,20 @@ int main()
         return 1;
       }
     }
-    std::getline(std::cin, line);
 
+    std::getline(std::cin, line);
     if (!line.compare(0, 7, "POLYGON"))
     {
       try
       {
-        shp[shp_size++] = chemodurov::makePolygonFromString(line);
+        size_t arr_size = 0;
+        chemodurov::point_t * arr = chemodurov::getArrayOfPoints(line, arr_size);
+        if (arr_size < 3 || chemodurov::isRepeatingPointsInArray(arr, arr_size))
+        {
+          std::cerr << "Error in description of shape\n";
+          continue;
+        }
+        shp[shp_size++] = chemodurov::makePolygonFromPoints(arr, arr_size);
       }
       catch (...)
       {
@@ -89,17 +96,12 @@ int main()
         std::cerr << "Error...\n";
         return 1;
       }
-      if (!iso_scale_coeff)
-      {
-        std::cerr << "Error...\n";
-        return 1;
-      }
-      continue;
+      break;
     }
   }
-  while (std::cin && line.compare(0, 5, "SCALE"));
+  while (std::cin);
 
-  if (!std::cin || !shp_size)
+  if (!std::cin || !shp_size || !iso_scale_coeff)
   {
     for (size_t i = 0; i < shp_cap; ++i)
     {

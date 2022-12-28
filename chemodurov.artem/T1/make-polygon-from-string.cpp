@@ -3,8 +3,8 @@
 
 void extendArray(chemodurov::point_t * arr, size_t & cap, size_t arr_size)
 {
+  chemodurov::point_t * new_arr = new chemodurov::point_t[cap + 5];
   cap += 5;
-  chemodurov::point_t * new_arr = new chemodurov::point_t[cap];
   for (size_t i = 0; i < arr_size; ++i)
   {
     new_arr[i] = arr[i];
@@ -26,11 +26,11 @@ chemodurov::point_t readPointFromString(const std::string & data, std::string::s
   return temp;
 }
 
-chemodurov::Shape * chemodurov::makePolygonFromString(const std::string & data)
+chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, size_t & arr_size)
 {
   size_t capacity = 5;
   chemodurov::point_t * arr = new chemodurov::point_t[capacity];
-  size_t arr_size = 0;
+  arr_size = 0;
   std::string::size_type size = 7;
   do
   {
@@ -45,10 +45,15 @@ chemodurov::Shape * chemodurov::makePolygonFromString(const std::string & data)
     catch (...)
     {
       delete [] arr;
+      throw;
     }
   }
   while (size < data.size());
+  return arr;
+}
 
+chemodurov::Shape * chemodurov::makePolygonFromPoints(chemodurov::point_t * arr, size_t arr_size)
+{
   chemodurov::Shape * temp = nullptr;
   try
   {
@@ -58,6 +63,7 @@ chemodurov::Shape * chemodurov::makePolygonFromString(const std::string & data)
   catch (...)
   {
     delete [] arr;
+    throw;
   }
   return temp;
 }

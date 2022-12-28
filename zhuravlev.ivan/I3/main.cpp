@@ -44,7 +44,6 @@ int main()
       std::cin >> cstring[size];
     }
     while (std::cin && cstring[size++] != '\n');
-    cstring[size - 1] = '\0';
 
     finderThreeSameElements(cstring, size);
     finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);

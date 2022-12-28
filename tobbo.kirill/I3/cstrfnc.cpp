@@ -33,6 +33,8 @@ char* getCString(std::istream& stream)
   }
   str[size - 1] = '\0';
 
+  std::cout << "Received: '" << str << "'\n";
+
   return str;
 }
 

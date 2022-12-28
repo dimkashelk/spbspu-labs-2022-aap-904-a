@@ -2,6 +2,7 @@
 #include <exception>
 #include <iostream>
 #include <cstring>
+#include <memory>
 char* makeNewCString(std::istream& input)
 {
   size_t capacity = 10;
@@ -16,7 +17,7 @@ char* makeNewCString(std::istream& input)
     {
       try
       {
-        auto newstring = std::make_unique< char[] >(std::strlen(cstring) + 1);
+        auto newstring = std::make_unique< char[] >(capacity + 20);
         std::strcpy(newstring.get(), cstring);
         delete[] cstring;
         cstring = newstring;

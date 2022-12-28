@@ -37,6 +37,7 @@ int main()
   if (size == 0)
   {
     std::cerr << "Empty string\n";
+    delete [] cstring;
     return 1;
   }
   else

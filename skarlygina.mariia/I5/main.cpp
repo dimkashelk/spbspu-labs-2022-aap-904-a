@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <exception>
 #include <cstring_capacity.h>
+#include <cstring_capacity_prev.h>
 #include "is_float_digit.h"
 
 int main()
@@ -9,7 +10,7 @@ int main()
   char* digit_string = nullptr;
   try
   {
-    digit_string = makeNewCapacityCString(std::cin);
+    digit_string = makeNewCString(std::cin);
   }
   catch (const std::exception& e)
   {

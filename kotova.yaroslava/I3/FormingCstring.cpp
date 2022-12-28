@@ -5,8 +5,6 @@
 #include <cstddef>
 char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
 {
-  size_t capacity = 10;
-  char* cstring = new char[capacity];
   size_t size = 0;
   input >> std::noskipws;
   do

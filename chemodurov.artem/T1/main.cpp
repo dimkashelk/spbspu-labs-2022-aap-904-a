@@ -2,6 +2,8 @@
 #include <string>
 #include "polygon.hpp"
 #include "square.hpp"
+#include "rectangle.hpp"
+#include "parallelogram.hpp"
 #include "iso-scale.hpp"
 #include "print-summ-area-and-frames.hpp"
 #include "extend-shape-ptr-array.hpp"
@@ -96,6 +98,82 @@ int main()
           continue;
         }
         shp[shp_size++] = new chemodurov::Square(temp, length);
+      }
+      catch (...)
+      {
+        for (size_t i = 0; i < shp_cap; ++i)
+        {
+          delete shp[i];
+        }
+        delete [] shp;
+        std::cerr << "Error...\n";
+        return 1;
+      }
+      continue;
+    }
+
+    if (!line.compare(0, 9, "RECTANGLE"))
+    {
+      try
+      {
+        std::string::size_type size1 = 9;
+        std::string::size_type size2;
+        double x = std::stod(line.substr(size1), &size2);
+        size2 += size1;
+        double y = std::stod(line.substr(size2), &size1);
+        size1 += size2;
+        chemodurov::point_t left_down{x, y};
+        x = std::stod(line.substr(size1), &size2);
+        size2 += size1;
+        y = std::stod(line.substr(size2), &size1);
+        chemodurov::point_t right_up{x, y};
+        if (left_down.x >= right_up.x || left_down.y >= right_up.y)
+        {
+          std::cerr << "Error in description of shape\n";
+          continue;
+        }
+        shp[shp_size++] = new chemodurov::Rectangle(left_down, right_up);
+      }
+      catch (...)
+      {
+        for (size_t i = 0; i < shp_cap; ++i)
+        {
+          delete shp[i];
+        }
+        delete [] shp;
+        std::cerr << "Error...\n";
+        return 1;
+      }
+      continue;
+    }
+
+    if (!line.compare(0, 13, "PARALLELOGRAM"))
+    {
+      try
+      {
+        std::string::size_type size1 = 13;
+        std::string::size_type size2;
+        double x = std::stod(line.substr(size1), &size2);
+        size2 += size1;
+        double y = std::stod(line.substr(size2), &size1);
+        size1 += size2;
+        chemodurov::point_t fst{x, y};
+        x = std::stod(line.substr(size1), &size2);
+        size2 += size1;
+        y = std::stod(line.substr(size2), &size1);
+        size1 += size2;
+        chemodurov::point_t sec{x, y};
+        x = std::stod(line.substr(size1), &size2);
+        size2 += size1;
+        y = std::stod(line.substr(size2), &size1);
+        size1 += size2;
+        chemodurov::point_t trd{x, y};
+        if (fst.y != sec.y && sec.y != trd.y)
+        {
+          std::cerr << "Error in description of shape\n";
+          continue;
+        }
+        shp[shp_size++] = new chemodurov::Parallelogram(fst, sec, trd);
       }
       catch (...)
       {

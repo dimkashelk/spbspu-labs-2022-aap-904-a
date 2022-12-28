@@ -1,10 +1,10 @@
 #include "make-polygon-from-string.hpp"
 #include "polygon.hpp"
 
-chemodurov::point_t * extendArray(const chemodurov::point_t * arr, size_t & cap, size_t arr_size)
+chemodurov::point_t * extendArray(const chemodurov::point_t * arr, size_t cap, size_t arr_size)
 {
-  chemodurov::point_t * new_arr = new chemodurov::point_t[cap + 5];
   cap += 5;
+  chemodurov::point_t * new_arr = new chemodurov::point_t[cap];
   for (size_t i = 0; i < arr_size; ++i)
   {
     new_arr[i] = arr[i];
@@ -39,6 +39,7 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
       if (arr_size == capacity)
       {
         new_arr = extendArray(arr, capacity, arr_size);
+        capacity += 5;
         delete [] arr;
         arr = new_arr;
         new_arr = nullptr;

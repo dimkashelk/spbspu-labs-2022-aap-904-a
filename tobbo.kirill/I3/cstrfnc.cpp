@@ -28,7 +28,7 @@ char* getCString(std::istream& stream)
   if (str[0] == '\0' || str[0] == '\n')
   {
     delete[] str;
-    throw std::exception("Empty string is not allowed");
+    throw std::invalid_argument("Empty string is not allowed");
   }
   str[size - 1] = '\0';
 

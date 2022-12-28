@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <limits>
+#include <stdexcept>
 #include "cstrfnc.h"
 
 void remove_latin_vowel_helper(const char* str)

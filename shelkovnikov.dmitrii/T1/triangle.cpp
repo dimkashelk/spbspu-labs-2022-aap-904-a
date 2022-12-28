@@ -104,8 +104,8 @@ void Triangle::scale(double k)
   point1_.y = direction1.y + point_center_of_gravity.y;
   point2_.x = direction2.x + point_center_of_gravity.x;
   point2_.y = direction2.y + point_center_of_gravity.y;
-  point3_.x = direction2.x + point_center_of_gravity.x;
-  point3_.y = direction2.y + point_center_of_gravity.y;
+  point3_.x = direction3.x + point_center_of_gravity.x;
+  point3_.y = direction3.y + point_center_of_gravity.y;
 }
 Shape* Triangle::clone() const
 {

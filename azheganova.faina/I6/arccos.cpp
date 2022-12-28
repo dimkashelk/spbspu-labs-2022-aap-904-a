@@ -15,7 +15,7 @@ double countArccos(double x, double absError, unsigned maxnumber)
     count++;
     res += member;
   }
-  return firstmember - (x + ((x * x * x)/6) + res);
+  return res;
 }
 
 findMemberOfRow::findMemberOfRow(double x):
@@ -25,7 +25,8 @@ findMemberOfRow::findMemberOfRow(double x):
   numberindeminator(1),
   secondnumber(3),
   thirdnumber(1),
-  auxiliarynumber(1)
+  auxiliarynumber(1),
+  countofnumbers(0)
 {
   if (x < -1 || x > 1)
   {
@@ -35,12 +36,28 @@ findMemberOfRow::findMemberOfRow(double x):
 
 double findMemberOfRow::operator()()
 {
-  x *= x * x;
-  numberinnumerator = numberinnumerator * firstnumber;
-  firstnumber = firstnumber * (firstnumber + 2);
-  thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
-  numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
-  secondnumber += 2;
-  auxiliarynumber = 2 * (secondnumber + 2);
-  return numberinnumerator / numberindeminator;
+  if (countofnumbers == 0)
+  {
+    return 1,57;
+  }
+  if (countofnumbers == 1)
+  {
+    return -x;
+  }
+  if (countofnumbers == 2)
+  {
+    return (x * x * x)/6;
+  }
+  if (countofnumbers > 2)
+  {
+    x *= x * x;
+    numberinnumerator = numberinnumerator * firstnumber * x;
+    firstnumber = firstnumber * (firstnumber + 2);
+    thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
+    numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
+    secondnumber += 2;
+    auxiliarynumber = 2 * (secondnumber + 2);
+    return numberinnumerator / numberindeminator;
+  }
+  countofnumbers++;
 }

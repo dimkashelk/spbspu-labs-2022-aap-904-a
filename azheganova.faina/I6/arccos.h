@@ -3,16 +3,19 @@
 
 double countArccos(double x, double absError, unsigned maxnumber);
 
-struct findMemberOfRow
+class findMemberOfRow
 {
-  explicit findMemberOfRow(double x);
-  double operator()();
-  double x;
-  unsigned numberinnumerator;
-  unsigned firstnumber;
-  unsigned numberindeminator;
-  unsigned secondnumber;
-  unsigned thirdnumber;
-  unsigned auxiliarynumber;
+  public:
+    explicit findMemberOfRow(double x);
+    double operator()();
+  private:
+    double x;
+    unsigned numberinnumerator;
+    unsigned firstnumber;
+    unsigned numberindeminator;
+    unsigned secondnumber;
+    unsigned thirdnumber;
+    unsigned auxiliarynumber;
+    unsigned countofnumbers;
 };
 #endif

@@ -24,9 +24,7 @@ chemodurov::Square::Square(const chemodurov::point_t & left_down, double length)
   }
 }
 chemodurov::Square::~Square()
-{
-  p.~Polygon();
-}
+{}
 double chemodurov::Square::getArea() const
 {
   return p.getArea();

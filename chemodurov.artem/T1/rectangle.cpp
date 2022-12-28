@@ -24,9 +24,7 @@ chemodurov::Rectangle::Rectangle(const chemodurov::point_t & left_down, const ch
   }
 }
 chemodurov::Rectangle::~Rectangle()
-{
-  p.~Polygon();
-}
+{}
 double chemodurov::Rectangle::getArea() const
 {
   return p.getArea();

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstring>
 #include <memory>
-char* makeNewCString(std::istream& input)
+std::pair< size_t, char* > makeNewCString(std::istream& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
@@ -41,5 +41,5 @@ char* makeNewCString(std::istream& input)
     throw std::invalid_argument("Error while reading the string");
   }
   cstring[size - 1] = '\0';
-  return cstring;
+  return {size , cstring};
 }

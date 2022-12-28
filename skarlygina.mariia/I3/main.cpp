@@ -1,43 +1,14 @@
 #include <iostream>
 #include <exception>
-#include <cstring_capacity_prev.h>
+#include <cstring_capacity.h>
 #include "decimal_digits.h"
 #include "string_common_symbols.h"
 
 int main()
 {
-  size_t capacity = 10;
-  char* cstring = new char[capacity];
-  size_t size = 0;
-  cstring[0] = '\0';
-
-  std::cin >> std::noskipws;
-  do
-  {
-    if (size == capacity)
-    {
-      try
-      {
-        cstring = makeNewCapacityCString(cstring, capacity, size);
-      }
-      catch (const std::exception& e)
-      {
-        std::cerr << e.what() << "\n";
-        delete[] cstring;
-        return 1;
-      }
-    }
-    std::cin >> cstring[size];
-  }
-  while (std::cin && cstring[size++] != '\n');
-
-  if (cstring[0] == '\0' || cstring[0] == '\n')
-  {
-    std::cout << "Error while reading the string \n";
-    delete[] cstring;
-    return 2;
-  }
-  cstring[size - 1] = '\0';
+  std::pair< size_t, char* > result = makeNewCString(std::cin);
+  size_t size = result.first;
+  char* cstring = result.second;
 
   char* destination = nullptr;
   char* string_source = nullptr;

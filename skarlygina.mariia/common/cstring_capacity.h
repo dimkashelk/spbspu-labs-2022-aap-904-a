@@ -1,6 +1,6 @@
 #ifndef CSTRING_CAPACITY_H
 #define CSTRING_CAPACITY_H
-#include <cstddef>
+#include <utility>
 #include <iostream>
-char* makeNewCString(std::istream& input);
+std::pair< size_t, char* > makeNewCString(std::istream& input);
 #endif

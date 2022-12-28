@@ -9,7 +9,8 @@ int main()
   char* digit_string = nullptr;
   try
   {
-    digit_string = makeNewCString(std::cin);
+    std::pair< size_t, char* > result = makeNewCString(std::cin);
+    digit_string = result.second;
   }
   catch (const std::exception& e)
   {

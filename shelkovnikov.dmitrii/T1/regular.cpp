@@ -40,7 +40,7 @@ Regular &Regular::operator=(Regular &&tmp)
 }
 double Regular::getArea() const
 {
-  return triangle_.getArea() * size_;
+  return triangle_.getArea() * size_ / 2;
 }
 rectangle_t Regular::getFrameRect() const
 {

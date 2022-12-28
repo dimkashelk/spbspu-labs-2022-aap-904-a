@@ -80,6 +80,7 @@ int main()
 
     if (!line.compare(0, 6, "SQUARE"))
     {
+      chemodurov::Shape * sq = nullptr;
       try
       {
         std::string::size_type size1 = 6;
@@ -95,7 +96,7 @@ int main()
           std::cerr << "Error in description of shape\n";
           continue;
         }
-        chemodurov::Shape * sq = new chemodurov::Square(temp, length);
+        sq = new chemodurov::Square(temp, length);
         shp[shp_size++] = sq;
         sq = nullptr;
       }
@@ -106,6 +107,7 @@ int main()
           delete shp[i];
         }
         delete [] shp;
+        delete sq;
         std::cerr << "Error...\n";
         return 1;
       }

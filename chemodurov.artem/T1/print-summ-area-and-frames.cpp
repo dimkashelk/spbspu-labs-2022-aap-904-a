@@ -15,7 +15,16 @@ void chemodurov::printSummAreaAndFrames(std::ostream & out, chemodurov::Shape **
     throw std::invalid_argument("Invalid size of Shape array");
   }
   double summ_area = 0.0;
-  chemodurov::rectangle_t * frames = new chemodurov::rectangle_t[shp_size];
+  chemodurov::rectangle_t * frames = nullptr;
+  try
+  {
+    frames = new chemodurov::rectangle_t[shp_size];
+  }
+  catch (...)
+  {
+    delete [] frames;
+    throw;
+  }
   for (size_t i = 0; i < shp_size; ++i)
   {
     summ_area += (*shp[i]).getArea();

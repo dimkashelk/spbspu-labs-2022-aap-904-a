@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <stdexcept>
 
-double countArccos(double x, double absError, int maxnumber)
+double countArccos(double x, double absError, unsigned maxnumber)
 {
   findMemberOfRow findMemberOfRow(x);
   double res = 0.0;

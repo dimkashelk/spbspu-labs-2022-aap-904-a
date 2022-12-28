@@ -1,6 +1,8 @@
 #ifndef ARCCOS_H
 #define ARCCOS_H
 
+double countArccos(double x, double absError, unsigned maxnumber);
+
 struct findMemberOfRow
 {
   explicit findMemberOfRow(double x);

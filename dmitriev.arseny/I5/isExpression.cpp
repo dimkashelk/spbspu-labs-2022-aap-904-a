@@ -55,6 +55,11 @@ bool isMultiplier(char* c)
   return isUnsignedInteger(c) || isIdentifier(*c) || (isOpenBrace(*c) && isExpr(c + 1) && isCloseBrace(*c));
 }
 
+bool isTerm(char* c)
+{
+  return isMultiplier(c) || (isMultiplier(c) && isMuSi(*c) && isTerm(c + 1));
+}
+
 bool isExpr(char* c)
 {
   return

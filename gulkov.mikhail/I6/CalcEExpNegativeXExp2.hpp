@@ -13,7 +13,7 @@ public:
 private:
   double x;
   double absError;
-  size_t terms_number;
+  size_t terms_count;
   size_t numberMax;
 };
 

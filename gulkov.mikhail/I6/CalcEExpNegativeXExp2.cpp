@@ -1,12 +1,12 @@
 #include "CalcEExpNegativeXExp2.hpp"
 
 CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, double absError, size_t numberMax) : x(x), absError(absError),
-                                                                                            terms_number(0), numberMax(numberMax)
+                                                                                            terms_count(0), numberMax(numberMax)
 {}
 
 double CalcEExpNegativeXExp2::operator()()
 {
-  terms_number = 0;
+  terms_count = 0;
   double result = 0;
 
   return result;

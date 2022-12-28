@@ -4,9 +4,9 @@
 
 void remove_latin_vowel_helper(const char* str)
 {
-  size_t size = str_length(str);
+  size_t size = strLength(str);
   char* destination = new char[size + 1];
-  char* res = remove_latin_vowel_letters(destination, str);
+  char* res = removeLatinVowelSymbols(destination, str);
   std::cout << str << " => " << res << "\n";
   delete[] destination;
 }
@@ -14,15 +14,15 @@ void remove_latin_vowel_helper(const char* str)
 int main()
 {
   int rc = 0;
-  char* str1 = NULL, * str2 = NULL;
+  char* str1 = nullptr, * str2 = nullptr;
   try
   {
     std::cout << "Enter string#1: ";
-    str1 = get_cstring(std::cin);
+    str1 = getCString(std::cin);
     std::cout << "Enter string#2: ";
-    str2 = get_cstring(std::cin);
+    str2 = getCString(std::cin);
 
-    bool res = is_intersected_strings(str1, str2);
+    bool res = isIntersectedStrings(str1, str2);
     std::cout << "There is " << (res ? "" : "NO") << " intersect symbols\n";
 
     remove_latin_vowel_helper(str1);

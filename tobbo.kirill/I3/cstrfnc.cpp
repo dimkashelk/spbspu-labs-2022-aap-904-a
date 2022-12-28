@@ -1,6 +1,6 @@
 #include "cstrfnc.h"
 
-char* get_cstring(std::istream& stream)
+char* getCString(std::istream& stream)
 {
   size_t capacity = 10;
   char* str = new char[capacity];
@@ -10,7 +10,7 @@ char* get_cstring(std::istream& stream)
   {
     if (size == capacity)
     {
-      capacity = (size_t)(capacity * std::sqrt(2));
+      capacity = ( size_t )(capacity * std::sqrt(2));
       char* newstr = new char[capacity];
       for (auto i = str, j = newstr; i != str + size; ++i, ++j)
       {
@@ -33,7 +33,7 @@ char* get_cstring(std::istream& stream)
   return str;
 }
 
-size_t str_length(const char* str)
+size_t strLength(const char* str)
 {
   size_t size = 0;
   size_t i = 0;
@@ -44,7 +44,7 @@ size_t str_length(const char* str)
   return size;
 }
 
-bool is_intersected_strings(char* str1, char* str2)
+bool isIntersectedStrings(char* str1, char* str2)
 {
   size_t index1 = 0;
   while (str1[index1] != '\0')
@@ -63,11 +63,11 @@ bool is_intersected_strings(char* str1, char* str2)
   return false;
 }
 
-char* remove_latin_vowel_letters(char* destination, const char* source)
+char* removeLatinVowelSymbols(char* destination, const char* source)
 {
   const char vowels[] = "AaEeIiOoUu";
   size_t vowels_size = sizeof(vowels);
-  size_t size = str_length(source);
+  size_t size = strLength(source);
   size_t dest_index = 0;
   for (size_t i = 0; i < size; i++)
   {

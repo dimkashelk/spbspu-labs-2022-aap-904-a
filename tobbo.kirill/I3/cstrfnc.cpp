@@ -1,6 +1,7 @@
 #include "cstrfnc.h"
 #include <cmath>
 #include <stdexcept>
+#include <string>
 
 std::pair< char*, size_t > getCString(std::istream& stream)
 {
@@ -16,7 +17,7 @@ std::pair< char*, size_t > getCString(std::istream& stream)
       capacity = static_cast< size_t >(capacity * std::sqrt(2));
       char* newstr = new char[capacity + 1];
       str[size] = '\0';
-      std::strcpy(newstr, str);
+      strcpy(newstr, str);
       delete[] str;
       str = newstr;
     }

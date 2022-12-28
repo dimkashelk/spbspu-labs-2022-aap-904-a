@@ -3,48 +3,57 @@
 #include <stdexcept>
 #include "cstrfnc.h"
 
-void remove_latin_vowel_helper(const char* str)
+void removeLatinVowelHelper(std::pair< char*, size_t > src)
 {
-  size_t size = strLength(str);
-  char* destination = new char[size + 1];
-  char* res = removeLatinVowelSymbols(destination, str);
-  std::cout << str << " => " << res << "\n";
+  char* destination = nullptr;
+  try
+  {
+    destination = new char[src.second + 1];
+    char* res = removeLatinVowelSymbols(destination, src.first);
+    std::cout << src.first << " => " << res << "\n";
+  }
+  catch (const std::exception& e)
+  {
+    delete[] destination;
+    throw e;
+  }
   delete[] destination;
 }
 
 int main()
 {
   int rc = 0;
-  char* str1 = nullptr, * str2 = nullptr;
+  std::pair< char*, size_t > strPair1 = std::make_pair(nullptr, 0);
+  std::pair< char*, size_t > strPair2 = std::make_pair(nullptr, 0);
   try
   {
     std::cout << "Enter string#1: ";
-    str1 = getCString(std::cin);
+    strPair1 = getCString(std::cin);
     std::cout << "Enter string#2: ";
-    str2 = getCString(std::cin);
-    if (str1[0] == '\0' && str2[0] == '\0')
+    strPair2 = getCString(std::cin);
+    if (strPair1.second == 1 && strPair2.second == 1)
     {
       throw std::invalid_argument("Two empty strings are forbidden by test#1");
     }
 
-    bool res = isIntersectedStrings(str1, str2);
+    bool res = isIntersectedStrings(strPair1.first, strPair2.first);
     std::cout << "There is " << (res ? "" : "NO") << " intersect symbols\n";
 
-    remove_latin_vowel_helper(str1);
-    remove_latin_vowel_helper(str2);
+    removeLatinVowelHelper(strPair1);
+    removeLatinVowelHelper(strPair2);
   }
   catch (const std::exception& e)
   {
     std::cerr << e.what() << "\n";
     rc = 1;
   }
-  if (str1)
+  if (strPair1.first)
   {
-    delete[] str1;
+    delete[] strPair1.first;
   }
-  if (str2)
+  if (strPair2.first)
   {
-    delete[] str2;
+    delete[] strPair2.first;
   }
   return rc;
 }

@@ -2,11 +2,11 @@
 #include <cmath>
 #include <stdexcept>
 
-char* getCString(std::istream& stream)
+std::pair< char*, size_t > getCString(std::istream& stream)
 {
   size_t size = 0;
   size_t capacity = 10;
-  char* str = new char[capacity];
+  char* str = new char[capacity + 1];
   str[0] = '\0';
   stream >> std::noskipws;
   do
@@ -14,11 +14,9 @@ char* getCString(std::istream& stream)
     if (size == capacity)
     {
       capacity = static_cast< size_t >(capacity * std::sqrt(2));
-      char* newstr = new char[capacity];
-      for (auto i = str, j = newstr; i != str + size; ++i, ++j)
-      {
-        *j = *i;
-      }
+      char* newstr = new char[capacity + 1];
+      str[size] = '\0';
+      std::strcpy(newstr, str);
       delete[] str;
       str = newstr;
     }
@@ -26,35 +24,24 @@ char* getCString(std::istream& stream)
   }
   while (std::cin && str[size - 1] != '\n');
   str[size - 1] = '\0';
-  return str;
+  return std::make_pair(str, size);
 }
 
-size_t strLength(const char* str)
+bool isIntersectedStrings(const char* str1, const char* str2)
 {
-  size_t size = 0;
-  size_t i = 0;
-  while (str[i++] != '\0')
+  const char* s1 = str1;
+  while (*s1 != '\0')
   {
-    size++;
-  }
-  return size;
-}
-
-bool isIntersectedStrings(char* str1, char* str2)
-{
-  size_t index1 = 0;
-  while (str1[index1] != '\0')
-  {
-    size_t index2 = 0;
-    while (str2[index2] != '\0')
+    const char* s2 = str2;
+    while (*s2 != '\0')
     {
-      if (str1[index1] == str2[index2])
+      if (*s1 == *s2)
       {
         return true;
       }
-      index2++;
+      s2++;
     }
-    index1++;
+    s1++;
   }
   return false;
 }
@@ -63,14 +50,13 @@ char* removeLatinVowelSymbols(char* destination, const char* source)
 {
   const char vowels[] = "AaEeIiOoUu";
   size_t vowels_size = sizeof(vowels);
-  size_t size = strLength(source);
-  size_t dest_index = 0;
-  for (size_t i = 0; i < size; i++)
+  char* dst = destination;
+  for (auto i = source; *i != '\0'; i++)
   {
     bool found = false;
     for (size_t j = 0; j < vowels_size; j++)
     {
-      if (source[i] == vowels[j])
+      if (*i == vowels[j])
       {
         found = true;
         break;
@@ -78,9 +64,9 @@ char* removeLatinVowelSymbols(char* destination, const char* source)
     }
     if (!found)
     {
-      destination[dest_index++] = source[i];
+      *(dst++) = *i;
     }
   }
-  destination[dest_index] = '\0';
+  *dst = '\0';
   return destination;
 }

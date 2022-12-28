@@ -19,6 +19,7 @@ int main()
       try
       {
         char *newstr = new char[capacity + 10];
+        newstr[capacity + 10] = '0';
         strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;

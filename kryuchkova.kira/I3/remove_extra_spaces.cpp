@@ -24,7 +24,7 @@ char *removeExtraSpaces(char *destination, const char *cstring)
   if (std::isspace(*(cstring - 1)))
   {
     over_destination--;
-  } 
+  }
   *over_destination = '\0';
   return destination;
 }

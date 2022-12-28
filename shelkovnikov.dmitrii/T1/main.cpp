@@ -142,7 +142,7 @@ int main()
       {
         isotropic_scaling(shapes[i], point, k);
       }
-      output_shapes(std::cout, shapes, size) << "\n";
+      output_shapes(std::cout, shapes, size);
     }
   }
   for (size_t i = 0; i < size; i++)

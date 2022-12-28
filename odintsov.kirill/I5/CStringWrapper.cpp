@@ -1,4 +1,5 @@
 #include "CStringWrapper.hpp"
+#include <stdexcept>
 #include <cstddef>
 
 odintsov::CStringWrapper::CStringWrapper(size_t arrCap):

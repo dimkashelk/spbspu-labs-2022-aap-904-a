@@ -29,5 +29,4 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
   {
     std::cout << result_string[i] << " ";
   }
-  std::cout << '\0';
 }

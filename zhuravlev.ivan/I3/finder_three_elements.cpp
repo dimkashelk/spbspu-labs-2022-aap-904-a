@@ -39,6 +39,5 @@ void finderThreeSameElements(const char *str, size_t size)
     max = 0;
     elem[ind] = 0;
   }
-  std::cout << "/0";
   std::cout << "\n";
 }

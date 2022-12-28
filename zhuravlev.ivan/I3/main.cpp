@@ -44,10 +44,19 @@ int main()
       std::cin >> cstring[size];
     }
     while (std::cin && cstring[size++] != '\n');
-
-    finderThreeSameElements(cstring, size);
-    finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
-    delete [] cstring;
+    try
+    {
+      cstring[size - 1] = '\0';
+      finderThreeSameElements(cstring, size);
+      finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
+      delete [] cstring;
+    }
+    catch (std::exception &e)
+    {
+      std::cerr << e.what() << "\n";
+      delete [] cstring;
+      return 2;
+    }
   }
   return 0;
 }

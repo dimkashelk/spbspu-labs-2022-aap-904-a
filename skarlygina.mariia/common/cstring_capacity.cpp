@@ -1,10 +1,8 @@
 #include "cstring_capacity.h"
-#include <istream>
+#include <cstring_capacity_prev.h>
+#include <exception>
 #include <iostream>
-#include <stdexcept>
-#include <cstddef>
-
-char* makeNewCapacityCString(std::istream& input)
+char* makeNewCString(std::istream& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
@@ -18,30 +16,23 @@ char* makeNewCapacityCString(std::istream& input)
     {
       try
       {
-        char* newstring = new char[capacity + 20];
-        for (auto i = cstring, j = newstring; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete[] cstring;
-        cstring = newstring;
-        capacity += 20;
+        cstring = makeNewCapacityCString(cstring, capacity, size);
       }
       catch (const std::exception& e)
       {
-        std::cerr << e.what() << "\n";
         delete[] cstring;
+        std::cerr << e.what() << "\n";
       }
     }
     input >> cstring[size];
   }
-  while (input && cstring[size++] != '\0');
+  while (input && cstring[size++] != '\n');
 
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
-    std::cout << "Error while reading the string \n";
     delete[] cstring;
+    std::cout << "Error while reading the string \n";
   }
-  cstring[size] = '\0';
+  cstring[size - 1] = '\0';
   return cstring;
 }

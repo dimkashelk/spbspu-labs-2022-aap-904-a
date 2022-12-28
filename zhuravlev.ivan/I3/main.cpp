@@ -36,16 +36,18 @@ int main()
       std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (size = 0)
+  if (size == 0)
   {
     std::cerr << "Error: Something wrong with input!" << "\n";
     delete [] cstring;
     return 1;
   }
-  cstring[size - 1] = '\0';
-
-  finderThreeSameElements(cstring, size);
-  finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
-  delete [] cstring;
-  return 0;
+  else
+  {
+    cstring[size - 1] = '\0';
+    finderThreeSameElements(cstring, size);
+    finderSameElementsInTwoStrings(cstring, static_string, size, static_string_size);
+    delete [] cstring;
+    return 0;
+  }
 }

@@ -6,7 +6,6 @@ double countArccos(double x, double absError, unsigned maxnumber)
 {
   findMemberOfRow findMemberOfRow(x);
   double res = 0.0;
-  double firstmember = 1.57;
   double member = 0;
   unsigned count = 0;
   while (member > absError && count < maxnumber)
@@ -38,26 +37,26 @@ double findMemberOfRow::operator()()
 {
   if (countofnumbers == 0)
   {
-    return 1,57;
+    return 1.57;
+    exit;
   }
   if (countofnumbers == 1)
   {
     return -x;
+    exit;
   }
   if (countofnumbers == 2)
   {
     return (x * x * x)/6;
+    exit;
   }
-  if (countofnumbers > 2)
-  {
-    x *= x * x;
-    numberinnumerator = numberinnumerator * firstnumber * x;
-    firstnumber = firstnumber * (firstnumber + 2);
-    thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
-    numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
-    secondnumber += 2;
-    auxiliarynumber = 2 * (secondnumber + 2);
-    return numberinnumerator / numberindeminator;
-  }
+  x *= x * x;
+  numberinnumerator = numberinnumerator * firstnumber * x;
+  firstnumber = firstnumber * (firstnumber + 2);
+  thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
+  numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
+  secondnumber += 2;
+  auxiliarynumber = 2 * (secondnumber + 2);
   countofnumbers++;
+  return numberinnumerator / numberindeminator;
 }

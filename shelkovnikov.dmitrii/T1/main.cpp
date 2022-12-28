@@ -107,7 +107,7 @@ int main()
           expand(shapes, size, capacity);
         }
       }
-      catch (const std::logic_error &e)
+      catch (...)
       {
         contains_errors_with_shapes = true;
       }
@@ -147,6 +147,7 @@ int main()
       }
       if (size == 0)
       {
+        delete[] shapes;
         std::cerr << "Nothing to scaling";
         return 1;
       }

@@ -22,7 +22,7 @@ int main()
     }
     std::cout << (odintsov::isRealNumber(string.str) ? "true\n" : "false\n");
   } catch (const std::exception& err) {
-    std::cout << "Error: " <<err.what() << '\n';
+    std::cout << "Error: " << err.what() << '\n';
     return 1;
   }
 }

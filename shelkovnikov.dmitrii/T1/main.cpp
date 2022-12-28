@@ -22,15 +22,18 @@ void expand(Shape **shapes, size_t size, size_t new_capacity)
   delete[] shapes;
   shapes = new_shapes;
 }
-std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
+double getArea(Shape **shapes, size_t size)
 {
-  out << std::setprecision(1) << std::fixed;
   double sum_area = 0.0;
   for (size_t i = 0; i < size; i++)
   {
     sum_area += shapes[i]->getArea();
   }
-  out << sum_area;
+  return sum_area;
+}
+std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
+{
+  out << std::setprecision(1) << std::fixed << getArea(shapes, size);
   for (size_t i = 0; i < size; i++)
   {
     rectangle_t rect = shapes[i]->getFrameRect();

@@ -19,7 +19,7 @@ int main()
       try
       {
         char *newstr = new char[capacity + 10];
-        c_string[capacity] = '\0';
+        c_string[capacity - 1] = '\0';
         strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
@@ -35,6 +35,7 @@ int main()
   }
   while (std::cin && c_string[size++] != '\n');
 
+  std::cout << c_string << '\n';
   if (c_string[0] == '\n')
   {
     delete[] c_string;

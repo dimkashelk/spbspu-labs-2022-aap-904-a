@@ -13,7 +13,7 @@ int main()
 
   std::cin >> std::noskipws;
 
-  if (size = 0)
+  if (size == 0)
   {
     std::cerr << "Error: Something wrong with input!" << "\n";
     return 1;

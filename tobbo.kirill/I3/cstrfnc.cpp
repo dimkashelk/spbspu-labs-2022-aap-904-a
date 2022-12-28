@@ -1,4 +1,6 @@
 #include "cstrfnc.h"
+#include <cmath>
+#include <stdexcept>
 
 char* getCString(std::istream& stream)
 {
@@ -10,7 +12,7 @@ char* getCString(std::istream& stream)
   {
     if (size == capacity)
     {
-      capacity = ( size_t )(capacity * std::sqrt(2));
+      capacity = static_cast< size_t >(capacity * std::sqrt(2));
       char* newstr = new char[capacity];
       for (auto i = str, j = newstr; i != str + size; ++i, ++j)
       {

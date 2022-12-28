@@ -126,11 +126,21 @@ int main()
     }
     else if (name == "SCALE")
     {
-      output_shapes(std::cout, shapes, size) << "\n";
       point_t point;
       in >> point;
       double k = 0.0;
       in >> k;
+      if (k < 0)
+      {
+        for (size_t i = 0; i < size; i++)
+        {
+          delete shapes[i];
+        }
+        delete[] shapes;
+        std::cerr << "Negative Coeff Scale";
+        return 1;
+      }
+      output_shapes(std::cout, shapes, size) << "\n";
       for (size_t i = 0; i < size; i++)
       {
         isotropic_scaling(shapes[i], point, k);

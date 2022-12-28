@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <inputstring.h>
-#include "countdifferentletters.h"
-#include "findrepeatedsymbols.h"
+#include "rowvalidation.h"
 
 int main()
 {
@@ -16,8 +15,6 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-  std::cout << cstring << "\n";
-  std::cout << countDifferentLetters(cstring) << '\n';
-  std::cout << findRepeatedSymbols(cstring) << '\n';
+  std::cout << std::boolalpha << isFloat(cstring) << '\n';
   delete [] cstring;
 }

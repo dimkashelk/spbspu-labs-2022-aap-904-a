@@ -1,0 +1,41 @@
+#include "arccos.h"
+#include <iomanip>
+#include <stdexcept>
+
+double countArccos(double x, double absError, int maxnumber)
+{
+  findMemberOfRow findMemberOfRow(x);
+  double res = 0.0;
+  double firstmember = 1.57;
+  double member = 0;
+  unsigned count = 0;
+  while (std::fabs(member) > absError && count < maxnumber)
+  {
+    member = findMemberOfRow();
+    count++;
+    res += member;
+  }
+  return firstmember - (x + ((x * x * x)/6) + res);
+}
+
+findMemberOfRow::findMemberOfRow(double x):
+  x(x * x * x),
+  numberinnumerator(1),
+  firstnumber(3),
+  numberindeminator(1),
+  secondnumber(3),
+  thirdnumber(1),
+  auxiliarynumber(1)
+{}
+
+double findMemberOfRow::operator()()
+{
+  x *= x * x;
+  numberinnumerator = numberinnumerator * firstnumber;
+  firstnumber = firstnumber * (firstnumber + 2);
+  thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
+  numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
+  secondnumber += 2;
+  auxiliarynumber = 2 * (secondnumber + 2);
+  return numberinnumerator / numberindeminator;
+}

@@ -25,16 +25,7 @@ char* getCString(std::istream& stream)
     stream >> str[size++];
   }
   while (std::cin && str[size - 1] != '\n');
-
-  //if (str[0] == '\0' || str[0] == '\n')
-//  {
-  //  delete[] str;
-//    throw std::invalid_argument("Empty string is not allowed");
-//  }
   str[size - 1] = '\0';
-
-  std::cout << "Received: '" << str << "'\n";
-
   return str;
 }
 

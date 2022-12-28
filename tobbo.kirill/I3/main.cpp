@@ -22,6 +22,10 @@ int main()
     str1 = getCString(std::cin);
     std::cout << "Enter string#2: ";
     str2 = getCString(std::cin);
+    if (str1[0] == '\0' && str2[0] == '\0')
+    {
+      throw std::invalid_argument("Two empty strings are forbidden by test#1");
+    }
 
     bool res = isIntersectedStrings(str1, str2);
     std::cout << "There is " << (res ? "" : "NO") << " intersect symbols\n";

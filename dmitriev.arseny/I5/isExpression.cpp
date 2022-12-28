@@ -40,6 +40,11 @@ bool isEnd(const char val)
   return (val == '\0');
 }
 
+bool isIdentifier(const char val)
+{
+  return isLetter(val);
+}
+
 bool isExpr(char* c)
 {
   return

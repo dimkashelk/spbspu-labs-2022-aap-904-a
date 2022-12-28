@@ -38,25 +38,25 @@ double findMemberOfRow::operator()()
   if (countofnumbers == 0)
   {
     return 1.57;
-    exit;
   }
   if (countofnumbers == 1)
   {
     return -x;
-    exit;
   }
   if (countofnumbers == 2)
   {
     return (x * x * x)/6;
-    exit;
   }
-  x *= x * x;
-  numberinnumerator = numberinnumerator * firstnumber * x;
-  firstnumber = firstnumber * (firstnumber + 2);
-  thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
-  numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
-  secondnumber += 2;
-  auxiliarynumber = 2 * (secondnumber + 2);
+  if (countofnumbers > 2)
+  {
+    x *= x * x;
+    numberinnumerator = numberinnumerator * firstnumber * x;
+    firstnumber = firstnumber * (firstnumber + 2);
+    thirdnumber = (secondnumber + 1) * (secondnumber + 2) ;
+    numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
+    secondnumber += 2;
+    auxiliarynumber = 2 * (secondnumber + 2);
+    return numberinnumerator / numberindeminator;
+  }
   countofnumbers++;
-  return numberinnumerator / numberindeminator;
 }

@@ -1,6 +1,7 @@
 #include "polygon.h"
 #include <algorithm>
 #include "triangulatepoints.h"
+#include "isotropic_scaling.h"
 Polygon::Polygon():
   triangles_(nullptr),
   count_(0)
@@ -110,11 +111,7 @@ void Polygon::scale(double k)
   point_t center = getCenter();
   for (size_t i = 0; i < count_; i++)
   {
-    point_t center_of_triangle = triangles_[i]->getCenter();
-    vector_t direction(center_of_triangle, center);
-    direction *= k;
-    triangles_[i]->move(point_t(center.x + direction.x, center.y + direction.y));
-    triangles_[i]->scale(k);
+    isotropic_scaling(triangles_[i], center, k);
   }
 }
 Shape* Polygon::clone() const

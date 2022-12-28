@@ -6,7 +6,7 @@ bool chemodurov::isRepeatingPointsInArray(const chemodurov::point_t * arr, size_
   {
     for (size_t j = i + 1; j < arr_size; ++j)
     {
-      if (arr[i] == arr[j])
+      if (j < arr_size && arr[i] == arr[j])
       {
         return true;
       }

@@ -18,21 +18,12 @@ namespace chemodurov
   double calcPolygonArea(const chemodurov::point_t * verts, size_t num_of_verts)
   {
     double area = 0.0;
-    for (size_t i = 0; i < num_of_verts; ++i)
+    for (size_t i = 1; i < num_of_verts - 1; ++i)
     {
-      if (i == 0)
-      {
-        area += verts[i].x * (verts[i + 1].y - verts[num_of_verts - 1].y);
-      }
-      else if (i < num_of_verts - 1)
-      {
-        area += verts[i].x * (verts[i + 1].y - verts[i - 1].y);
-      }
-      else
-      {
-        area += verts[i].x * (verts[0].y - verts[i - 1].y);
-      }
+      area += verts[i].x * (verts[i + 1].y - verts[i - 1].y);
     }
+    area += verts[0].x * (verts[1].y - verts[num_of_verts - 1].y);
+    area += verts[num_of_verts - 1].x * (verts[0].y - verts[num_of_verts - 2].y);
     area = std::abs(0.5 * area);
     return area;
   }
@@ -45,6 +36,11 @@ namespace chemodurov
     {
       x_of_center += (verts[i].x + verts[i + 1].x) * (verts[i].x * verts[i + 1].y - verts[i + 1].x * verts[i].y);
       y_of_center += (verts[i].y + verts[i + 1].y) * (verts[i].x * verts[i + 1].y - verts[i + 1].x * verts[i].y);
+    }
+    {
+      size_t j = num_of_verts - 1;
+      x_of_center += (verts[j].x + verts[0].x) * (verts[j].x * verts[0].y - verts[0].x * verts[j].y);
+      y_of_center += (verts[j].y + verts[0].y) * (verts[j].x * verts[0].y - verts[0].x * verts[j].y);
     }
     x_of_center /= (6 * area);
     y_of_center /= (6 * area);

@@ -2,5 +2,5 @@
 #define I3_FINDER_SAME_ELEMENTS_IN_TWO_STRINGS_H
 #include <cstddef>
 
-void finderSameElementsInTwoStrings(char *first_str, char *second_str, size_t size_first_string, size_t size_second_string);
+void finderSameElementsInTwoStrings(const char *first_str, const char *second_str, size_t size_first_string, size_t size_second_string);
 #endif

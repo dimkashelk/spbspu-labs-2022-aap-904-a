@@ -26,7 +26,13 @@ findMemberOfRow::findMemberOfRow(double x):
   secondnumber(3),
   thirdnumber(1),
   auxiliarynumber(1)
-{}
+{
+  if (x < -1 || x > 1)
+  {
+    throw std::invalid_argument("error");
+  }
+
+}
 
 double findMemberOfRow::operator()()
 {

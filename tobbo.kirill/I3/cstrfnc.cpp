@@ -22,9 +22,9 @@ char* getCString(std::istream& stream)
       delete[] str;
       str = newstr;
     }
-    stream >> str[size];
+    stream >> str[size++];
   }
-  while (std::cin && str[size] != '\0' && str[size++] != '\n');
+  while (std::cin && str[size - 1] != '\n');
 
   //if (str[0] == '\0' || str[0] == '\n')
 //  {

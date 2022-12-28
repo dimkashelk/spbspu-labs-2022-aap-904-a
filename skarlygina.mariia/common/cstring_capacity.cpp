@@ -7,7 +7,6 @@ char* makeNewCString(std::istream& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
-  char* newstring = nullptr;
   size_t size = 0;
   cstring[0] = '\0';
 
@@ -18,8 +17,9 @@ char* makeNewCString(std::istream& input)
     {
       try
       {
-        newstring = new char[capacity + 20];
-        newstring = std::strcpy(newstring, cstring);
+        char* newstring = new char[capacity + 20];
+        cstring[capacity] = '\0';
+        std::strcpy(newstring, cstring);
         delete[] cstring;
         cstring = newstring;
         newstring = nullptr;
@@ -28,7 +28,6 @@ char* makeNewCString(std::istream& input)
       catch (const std::exception& e)
       {
         delete[] cstring;
-        delete[] newstring;
         throw;
       }
     }

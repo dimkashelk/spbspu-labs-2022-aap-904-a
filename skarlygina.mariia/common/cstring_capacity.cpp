@@ -1,7 +1,7 @@
 #include "cstring_capacity.h"
-#include <cstring_capacity_prev.h>
 #include <exception>
 #include <iostream>
+#include <cstring>
 char* makeNewCString(std::istream& input)
 {
   size_t capacity = 10;
@@ -16,7 +16,12 @@ char* makeNewCString(std::istream& input)
     {
       try
       {
-        cstring = makeNewCapacityCString(cstring, capacity, size);
+        char* newstring = new char[capacity + 20];
+        newstring = strcpy(newstring, cstring);
+        delete[] cstring;
+        cstring = newstring;
+        newstring = nullptr;
+        capacity += 20;
       }
       catch (const std::exception& e)
       {

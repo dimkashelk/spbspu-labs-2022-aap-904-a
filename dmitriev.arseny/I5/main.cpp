@@ -56,7 +56,7 @@ int main()
 
   cStr[size] = '\0';
 
-  std::cout << std::boolalpha << isExpr(cStr) << '\n';
+  std::cout << std::boolalpha << isMathExpr(cStr) << '\n';
 
   delete[] cStr;
 

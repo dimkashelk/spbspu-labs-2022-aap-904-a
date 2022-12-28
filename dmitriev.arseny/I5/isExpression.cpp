@@ -47,7 +47,7 @@ bool isUnsignedInteger(const char* c)
 
 bool isMultiplier(const char* c)
 {
-  return isUnsignedInteger(c) || isIdentifier(*c) || (isOpenBrace(*c) && isExpr(c + 1) && isCloseBrace(*c));
+  return isUnsignedInteger(c) || isIdentifier(*c) || (isOpenBrace(*c) && isMathExpr(c + 1) && isCloseBrace(*c));
 }
 
 bool isTerm(const char* c)
@@ -55,7 +55,7 @@ bool isTerm(const char* c)
   return isMultiplier(c) || (isMultiplier(c) && isMuSi(*c) && isTerm(c + 1));
 }
 
-bool isExpr(const char* c)
+bool isMathExpr(const char* c)
 {
-  return isEnd(*c) || isTerm(c) || (isTerm(c) && isSubtrOrAddSi(*c) && isExpr(c + 1));
+  return isEnd(*c) || isTerm(c) || (isTerm(c) && isSubtrOrAddSi(*c) && isMathExpr(c + 1));
 }

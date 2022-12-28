@@ -1,6 +1,8 @@
 #include "regular.h"
 #include <stdexcept>
 #include <cmath>
+#include "isotropic_scaling.h"
+#include "vector_t.h"
 Regular::Regular():
   triangle_(Triangle()),
   size_(0)
@@ -15,8 +17,14 @@ Regular::Regular(double x1, double y1, double x2, double y2, double x3, double y
   }
   double side_1 = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
   double side_2 = std::sqrt(std::pow(x3 - x1, 2) + std::pow(y3 - y1, 2));
-  double angle_degrees = acos(side_1 / side_2) * 180.0 / M_PI;
+  double hypotenuse = std::max(side_1, side_2);
+  double cathet = std::min(side_1, side_2);
+  double angle_degrees = std::round((acos(cathet / hypotenuse) * 180.0 / M_PI) * 1000) / 1000;
   size_ = static_cast< size_t >(360 / angle_degrees);
+  if (size_ * angle_degrees != 360)
+  {
+    throw std::logic_error("Cannot build regular figure");
+  }
 }
 Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),
@@ -40,7 +48,7 @@ Regular &Regular::operator=(Regular &&tmp)
 }
 double Regular::getArea() const
 {
-  return triangle_.getArea() * size_ / 2;
+  return triangle_.getArea() * size_;
 }
 rectangle_t Regular::getFrameRect() const
 {
@@ -55,11 +63,27 @@ rectangle_t Regular::getFrameRect() const
   double p_x_2 = points[2].x;
   double p_y_2 = points[2].y;
   delete[] points;
+  double side_1 = std::pow(o_x - p_x_1, 2) + std::pow(o_y - p_y_1, 2);
+  double side_2 = std::pow(o_x - p_x_2, 2) + std::pow(o_y - p_y_2, 2);
+  double hypotenuse = std::max(side_1, side_2);
+  vector_t direction(point_t(p_x_2, p_y_2), point_t(p_x_1, p_y_1));
+  if (hypotenuse == side_1)
+  {
+    direction *= 2;
+    p_x_2 = p_x_1 + direction.x;
+    p_y_2 = p_y_1 + direction.y;
+  }
+  else
+  {
+    direction *= -2;
+    p_x_1 = p_x_2 + direction.x;
+    p_y_1 = p_y_2 + direction.y;
+  }
   double min_x = p_x_1;
   double min_y = p_y_1;
   double max_x = p_x_1;
   double max_y = p_y_1;
-  double theta = 360.0f / size_;
+  double theta = 360.0 / size_ * 2 * M_PI / 180;
   for (size_t i = 0; i < size_; i++)
   {
     p_x_1 = std::cos(theta) * (p_x_1 - o_x) - std::sin(theta) * (p_y_1 - o_y) + o_x;
@@ -89,12 +113,10 @@ void Regular::move(point_t point)
 }
 void Regular::scale(double k)
 {
-  point_t *old_points = triangle_.getPoints();
-  triangle_.scale(k);
-  point_t *new_points = triangle_.getPoints();
-  triangle_.move(old_points[0].x - new_points[0].x, old_points[0].y - new_points[0].y);
-  delete[] old_points;
-  delete[] new_points;
+  point_t *points = triangle_.getPoints();
+  point_t point = points[0];
+  isotropic_scaling(&triangle_, point, k);
+  delete[] points;
 }
 Shape *Regular::clone() const
 {

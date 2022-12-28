@@ -35,19 +35,20 @@ findMemberOfRow::findMemberOfRow(double x):
 
 double findMemberOfRow::operator()()
 {
-  if (countofnumbers == 0)
+  countofnumbers++;
+  if (countofnumbers == 1)
   {
     return 1.57;
   }
-  if (countofnumbers == 1)
+  if (countofnumbers == 2)
   {
     return -x;
   }
-  if (countofnumbers == 2)
+  if (countofnumbers == 3)
   {
     return (x * x * x)/6;
   }
-  if (countofnumbers > 2)
+  if (countofnumbers > 3)
   {
     x *= x * x;
     numberinnumerator = numberinnumerator * firstnumber * x;
@@ -58,5 +59,4 @@ double findMemberOfRow::operator()()
     auxiliarynumber = 2 * (secondnumber + 2);
     return numberinnumerator / numberindeminator;
   }
-  countofnumbers++;
 }

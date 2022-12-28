@@ -1,6 +1,6 @@
-#include "samechar.h"
+#include "findsamechar.h"
 
-bool sameChar(const char* str, const char* newstr)
+bool findSameChar(const char* str, const char* newstr)
 {
   for (int i = 0; str[i]; i++)
   {

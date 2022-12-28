@@ -1,6 +1,6 @@
 #include<iostream>
 #include <cstddef>
-#include "samechar.h"
+#include "findsamechar.h"
 #include "sortstringbyascii.h"
 
 int main()
@@ -57,7 +57,7 @@ int main()
     delete [] cstring;
     return 1;
   }
-  std::cout << "Same symbols\t" << sameChar(cstring, newstr2) << '\n';
+  std::cout << "Same symbols\t" << findSameChar(cstring, newstr2) << '\n';
   std::cout << "celled string\t" << sortStringByAscii(newstr3, cstring, newstr2) << '\n';
   delete [] cstring;
   delete [] newstr3;

@@ -58,5 +58,7 @@ int main()
 
   std::cout << std::boolalpha << isExpr(cStr) << '\n';
 
+  delete[] cStr;
+
   return 0;
 }

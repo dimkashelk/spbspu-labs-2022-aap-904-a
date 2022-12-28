@@ -5,13 +5,14 @@
 
 namespace chemodurov
 {
-  chemodurov::point_t * copyArrayOfPoints(const chemodurov::point_t * arr, size_t arr_size)
+  chemodurov::point_t * moveArrayOfPoints(chemodurov::point_t * arr, size_t arr_size)
   {
     chemodurov::point_t * temp = new chemodurov::point_t[arr_size];
     for (size_t i = 0; i < arr_size; ++i)
     {
       temp[i] = arr[i];
     }
+    delete [] arr;
     return temp;
   }
   double calcPolygonArea(const chemodurov::point_t * verts, size_t num_of_verts)
@@ -52,8 +53,8 @@ namespace chemodurov
   }
 }
 
-chemodurov::Polygon::Polygon(const chemodurov::point_t * verts, size_t num_of_verts):
- vertices_(chemodurov::copyArrayOfPoints(verts, num_of_verts)),
+chemodurov::Polygon::Polygon(chemodurov::point_t * verts, size_t num_of_verts):
+ vertices_(chemodurov::moveArrayOfPoints(verts, num_of_verts)),
  number_of_vertices_(num_of_verts),
  center_(chemodurov::findPolygonCenter(verts, num_of_verts))
 {

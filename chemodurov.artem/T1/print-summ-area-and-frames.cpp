@@ -35,4 +35,5 @@ void chemodurov::printSummAreaAndFrames(std::ostream & out, chemodurov::Shape **
   {
     printLeftDownAndRightUp(out << ' ', frames[i]);
   }
+  delete [] frames;
 }

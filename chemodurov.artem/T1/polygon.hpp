@@ -9,7 +9,7 @@ namespace chemodurov
   class Polygon: public chemodurov::Shape
   {
    public:
-    Polygon(const chemodurov::point_t * vertices, size_t number_of_vertices);
+    Polygon(chemodurov::point_t * vertices, size_t number_of_vertices);
     ~Polygon();
     double getArea() const;
     chemodurov::rectangle_t getFrameRect() const;

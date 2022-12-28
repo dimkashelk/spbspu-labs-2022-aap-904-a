@@ -62,7 +62,7 @@ int main()
           continue;
         }
         shp[shp_size++] = chemodurov::makePolygonFromPoints(arr, arr_size);
-        delete [] arr;
+        arr = nullptr;
       }
       catch (...)
       {
@@ -80,7 +80,6 @@ int main()
 
     if (!line.compare(0, 6, "SQUARE"))
     {
-      chemodurov::Shape * sq = nullptr;
       try
       {
         std::string::size_type size1 = 6;
@@ -96,9 +95,7 @@ int main()
           std::cerr << "Error in description of shape\n";
           continue;
         }
-        sq = new chemodurov::Square(temp, length);
-        shp[shp_size++] = sq;
-        sq = nullptr;
+        shp[shp_size++] = new chemodurov::Square(temp, length);
       }
       catch (...)
       {
@@ -107,7 +104,6 @@ int main()
           delete shp[i];
         }
         delete [] shp;
-        delete sq;
         std::cerr << "Error...\n";
         return 1;
       }

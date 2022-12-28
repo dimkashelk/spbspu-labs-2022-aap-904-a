@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
   bool ans1 = isThereTheSamePositiveElements(constArr, constSize);
   std::cout << countMaxQuantityOfEqualElements(constArr, constSize) << "\n";
   std::cout << (ans1 ? ansTrue : ansFalse) << "\n";
-  
+
   size_t dinamicSize = 0;
   std::cin >> dinamicSize;
   int* dinamicArr = new int[dinamicSize];

@@ -16,9 +16,13 @@ int main()
       }
       string.append(c);
     } while (std::cin);
+    if (string.arrSize == 1) {
+      std::cout << "Error: Empty string\n";
+      return 1;
+    }
     std::cout << (odintsov::isRealNumber(string.str) ? "TRUE\n" : "FALSE\n");
   } catch (const std::exception& err) {
-    std::cout << err.what() << '\n';
+    std::cout << "Error: " <<err.what() << '\n';
     return 1;
   }
 }

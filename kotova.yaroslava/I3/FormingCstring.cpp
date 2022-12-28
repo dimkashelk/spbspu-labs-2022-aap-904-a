@@ -5,6 +5,7 @@
 #include <cstddef>
 char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
 {
+  char cstring[] =  "10";
   size_t size = 0;
   input >> std::noskipws;
   do
@@ -13,7 +14,7 @@ char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
     {
       try
       {
-        char * newstr = new char[capacity + 20];
+        char newstr[] = "30";
         char* i = 0;
         char* j = 0;
         strcpy(i, cstring);

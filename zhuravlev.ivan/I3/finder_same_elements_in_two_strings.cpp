@@ -24,10 +24,10 @@ void finderSameElementsInTwoStrings(const char *first_string, const char *second
   {
     result_string[i] = tmp_string[i];
   }
-  result_string[cnt - 1] = '\0';
 
   for (size_t i = 0; i <= cnt; ++i)
   {
     std::cout << result_string[i] << " ";
   }
+  std::cout << '\0';
 }

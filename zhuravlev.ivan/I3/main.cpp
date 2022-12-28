@@ -8,7 +8,7 @@ int main()
   size_t capacity = 10;
   char * cstring = new char[capacity];
   const size_t static_string_size = 10;
-  const char * static_string = "abcABC123456";
+  const char* static_string = "abcABC123456";
   size_t size = 0;
 
   std::cin >> std::noskipws;

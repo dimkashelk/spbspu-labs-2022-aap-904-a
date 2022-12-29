@@ -5,33 +5,14 @@
 
 int main()
 {
-  size_t capacity = 10;
-  size_t size = 0;
   char* cStr = nullptr;
   try
   {
-    cStr = new char[capacity];
+    cStr = createCStrFromInput(std::cin);
   }
-  catch (const std::bad_alloc& e)
+  catch (const std::exception& e)
   {
     std::cout << e.what() << '\n';
-    return 1;
-  }
-
-  try
-  {
-    cStr = createCStrFromInput(cStr, size, capacity, std::cin);
-    if (size == 0)
-    {
-      std::cerr << "Empty string" << '\n';
-      delete[] cStr;
-      return 1;
-    }
-  }
-  catch (const std::bad_alloc& e)
-  {
-    std::cout << e.what() << '\n';
-    delete[] cStr;
     return 1;
   }
 

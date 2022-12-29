@@ -49,7 +49,7 @@ int main()
   size_t size = 0;
   size_t capacity = 10;
   Shape **shapes = new Shape*[capacity];
-  while (!call_scale)
+  while (std::cin)
   {
     std::string name = "";
     std::cin >> name;
@@ -164,6 +164,7 @@ int main()
       {
         std::cin >> coord;
       }
+      std::cin.clear();
     }
   }
   for (size_t i = 0; i < size; i++)

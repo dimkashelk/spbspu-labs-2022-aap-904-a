@@ -51,7 +51,6 @@ int main()
   try
   {
     repeat_symbols = new char[capacity];
-    repeatSymbols(repeat_symbols, c_string);
   }
   catch (const std::bad_alloc &e)
   {
@@ -61,6 +60,7 @@ int main()
     std::cout << e.what();
     return 3;
   }
+  repeatSymbols(repeat_symbols, c_string);
 
   std::cout << "Repeat symbols string: " << repeat_symbols << '\n';
 

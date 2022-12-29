@@ -70,10 +70,14 @@ rectangle_t Regular::getFrameRect() const
   double theta = 360.0 / size_ * 2 * M_PI / 180;
   for (size_t i = 0; i < size_; i++)
   {
-    p_x_1 = std::cos(theta) * (p_x_1 - o_x) - std::sin(theta) * (p_y_1 - o_y) + o_x;
-    p_y_1 = std::sin(theta) * (p_x_1 - o_x) + std::cos(theta) * (p_y_1 - o_y) + o_y;
-    p_x_2 = std::cos(theta) * (p_x_2 - o_x) - std::sin(theta) * (p_y_2 - o_y) + o_x;
-    p_y_2 = std::sin(theta) * (p_x_2 - o_x) + std::cos(theta) * (p_y_2 - o_y) + o_y;
+    double new_p_x_1 = std::cos(theta) * (p_x_1 - o_x) - std::sin(theta) * (p_y_1 - o_y) + o_x;
+    double new_p_y_1 = std::sin(theta) * (p_x_1 - o_x) + std::cos(theta) * (p_y_1 - o_y) + o_y;
+    double new_p_x_2 = std::cos(theta) * (p_x_2 - o_x) - std::sin(theta) * (p_y_2 - o_y) + o_x;
+    double new_p_y_2 = std::sin(theta) * (p_x_2 - o_x) + std::cos(theta) * (p_y_2 - o_y) + o_y;
+    p_x_1 = new_p_x_1;
+    p_y_1 = new_p_y_1;
+    p_x_2 = new_p_x_2;
+    p_y_2 = new_p_y_2;
     min_x = std::min(min_x, std::min(p_x_1, p_x_2));
     min_y = std::min(min_y, std::min(p_y_1, p_y_2));
     max_x = std::max(max_x, std::max(p_x_1, p_x_2));

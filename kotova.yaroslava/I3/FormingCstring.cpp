@@ -1,6 +1,5 @@
 #include "FormingCstring.h"
 #include <istream>
-#include <iostream>
 #include <cstring>
 #include <cstddef>
 char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
@@ -14,8 +13,8 @@ char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
     {
       try
       {
-        cstring[capacity - 1] = '\0';
         char* newstr = new char[capacity + 20];
+        cstring[capacity - 1] = '\0';
         std::strcpy(newstr, cstring);
         delete [] cstring;
         cstring = newstr;

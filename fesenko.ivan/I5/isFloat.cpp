@@ -58,5 +58,5 @@ bool isMantissa(const char *x)
 
 bool isFloat(const char *x)
 {
-  return isMantissa(x);
+  return (isSign(*x) && isMantissa(x + 1)) || isMantissa(x);
 }

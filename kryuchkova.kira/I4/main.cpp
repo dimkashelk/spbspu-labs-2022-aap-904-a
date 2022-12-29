@@ -57,6 +57,7 @@ int main(int argc, char *argv[])
       if (!file)
       {
         std::cout << "Error";
+        delete[] matrix;
         return 1;
       }
     }

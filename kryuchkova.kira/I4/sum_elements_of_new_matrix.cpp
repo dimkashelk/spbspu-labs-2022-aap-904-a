@@ -1,8 +1,7 @@
 #include "sum_elements_of_new_matrix.h"
 #include <cmath>
-#include <iostream>
 
-double sumElementsOfNewMatrix(int *matrix, size_t rows, size_t columns)
+double sumElementsOfNewMatrix(const int *matrix, size_t rows, size_t columns)
 {
   double sum_elements = 0;
   double element = 0;

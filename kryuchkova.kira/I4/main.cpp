@@ -21,19 +21,16 @@ int main(int argc, char *argv[])
     std::cout << "Error";
     return 1;
   }
-  if (!strcmp(argv[1], "1"))
+  if (!std::strcmp(argv[1], "1"))
   {
     int matrix[1000];
-    for (size_t i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows * columns; i++)
     {
-      for (size_t j = 0; j < columns; j++)
+      file >> matrix[i];
+      if (!file)
       {
-        file >> matrix[rows * i + j];
-        if (!file)
-        {
-          std::cout << "Error";
-          return 1;
-        }
+        std::cout << "Error";
+        return 1;
       }
     }
     std::ofstream out(argv[3]);
@@ -46,7 +43,7 @@ int main(int argc, char *argv[])
       std::cout << e.what();
     }
   }
-  else if (!strcmp(argv[1], "2"))
+  else if (!std::strcmp(argv[1], "2"))
   {
     if (rows != columns)
     {
@@ -54,28 +51,17 @@ int main(int argc, char *argv[])
       return 1;
     }
     int *matrix = new int[rows * columns];
-    for (size_t i = 0; i < rows; i++)
+     for (size_t i = 0; i < rows * columns; i++)
     {
-      for (size_t j = 0; j < columns; j++)
+      file >> matrix[i];
+      if (!file)
       {
-        file >> matrix[i * rows + j];
-        if (!file)
-        {
-          std::cout << "Error";
-          delete[] matrix;
-          return 1;
-        }
+        std::cout << "Error";
+        return 1;
       }
     }
     std::ofstream out(argv[3]);
-    try
-    {
-      out << sumElementsOfNewMatrix(matrix, rows, columns) << "\n";
-    }
-    catch (const std::runtime_error &e)
-    {
-      std::cout << e.what();
-    }
+    out << sumElementsOfNewMatrix(matrix, rows, columns) << "\n";
     delete[] matrix;
   }
   else

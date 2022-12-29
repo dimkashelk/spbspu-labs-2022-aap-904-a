@@ -112,19 +112,15 @@ int main()
     }
     else if (name == "COMPLEX")
     {
-      std::ostringstream data;
-      size_t count = 0;
-      std::cin >> count;
-      data << count << '\n';
-      std::string line_of_data = "";
-      for (size_t i = 0; i < count; i++)
+      try
       {
-        std::getline(std::cin, line_of_data);
-        data << line_of_data << '\n';
+        CompositeShape compositeShape;
+        std::cin >> compositeShape;
       }
-      std::istringstream new_in(data.str());
-      CompositeShape compositeShape;
-      new_in >> compositeShape;
+      catch (const std::logic_error &e)
+      {
+        contains_errors_with_shapes = true;
+      }
     }
     else if (name == "SCALE")
     {

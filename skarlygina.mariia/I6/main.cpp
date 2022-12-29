@@ -1,15 +1,24 @@
 #include <iostream>
+#include <iomanip>
+#include <cmath>
 
 double sinx(double x, double error, unsigned max_members)
 {
   double summ = 0.0;
-  double next = 0.0;
-  unsigned members = 0;
+  double next = x;
+  unsigned members = 1;
+  long int factorial = 0;
+  const double numerator = -1.0 * x * x;
+
   do
   {
+    summ += next;
+    factorial = (2 * members * (1 + 2 * members));
+    next = next * numerator / factorial;
     members++;
-  } 
-  while (members != max_members || next > error);
+  }
+  while (fabs(next) > error || members != max_members);
+
   return summ;
 }
 
@@ -26,5 +35,6 @@ int main()
     std::cerr << "Error: false parameters";
     return 1;
   }
+  std::cout << sinx(left_border, error, members) << " " << sin(left_border);
   return 0;
 }

@@ -1,4 +1,5 @@
-#include "cStrFtomInput.h"
+#include "cStrFromInput.h"
+#include "string.h"
 
 char* createCStrFromInput(char* cStr, size_t& size, size_t& capacity, std::istream& inp)
 {
@@ -11,16 +12,16 @@ char* createCStrFromInput(char* cStr, size_t& size, size_t& capacity, std::istre
     {
       capacity = capacity + 10;
       char* dupStr = new char[capacity];
-      for (auto i = cStr, j = dupStr; i != cStr + size; ++i, ++j)
-      {
-        *j = *i;
-      }
+      cStr[size] = '\0';
+      dupStr = strcpy(dupStr, cStr);
       delete[] cStr;
       cStr = dupStr;
       dupStr = nullptr;
     }
     cStr[size++] = chInp;
   }
+
+  cStr[size] = '\0';
 
   return cStr;
 }

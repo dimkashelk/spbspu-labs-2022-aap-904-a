@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstddef>
-#include <cStrFtomInput.h>
+#include <cStrFromInput.h>
 #include "isExpression.h"
 
 int main()
@@ -27,7 +27,6 @@ int main()
       delete[] cStr;
       return 1;
     }
-    cStr[size] = '\0';
   }
   catch (const std::bad_alloc& e)
   {

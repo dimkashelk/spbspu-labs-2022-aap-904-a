@@ -18,6 +18,6 @@ int main()
     return 1;
   }
   std::cout << std::boolalpha << isFloatDigit(digit_string) << '\n';
-  delete digit_string;
+  delete[] digit_string;
   return 0;
 }

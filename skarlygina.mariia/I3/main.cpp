@@ -9,7 +9,7 @@ int main()
   std::pair< size_t, char* > result = makeNewCString(std::cin);
   size_t size = result.first;
   char* cstring = result.second;
-  delete[] result;
+  delete result;
 
   char* destination = nullptr;
   char* string_source = nullptr;

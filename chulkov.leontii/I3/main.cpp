@@ -6,21 +6,19 @@
 
 int main()
 {
-  size_t cap  = 10;
+  size_t cap = 10;
   char* cstring = new char[cap];
   size_t size = 0;
   std::cin >> std::noskipws;
   do
   {
-    if (size == cap)
+    if (size == cap - 1)
     {
       try
       {
+        cstring[cap - 1] = '\0';
         char * newstr = new char[cap + 20];
-        for (char* i = cstring, *j = newstr; i != cstring + size; ++i, ++j)
-        {
-          strcpy(j,i);
-        }
+        strcpy(newstr,cstring);
         delete [] cstring;
         cstring = newstr;
         cap += 20;

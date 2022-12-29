@@ -78,7 +78,7 @@ int main()
     delete[] repeat_symbols;
     delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
-    return 1;
+    return 3;
   }
   findVowel(vowel_symbols, c_string);
 

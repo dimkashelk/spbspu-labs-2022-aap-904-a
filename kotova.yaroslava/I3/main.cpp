@@ -34,7 +34,7 @@ int main()
   {
     destination1 = new char[capacity1];
   }
-  catch(const std::exception &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
@@ -45,7 +45,7 @@ int main()
     destination1 = deleteNumbers(destination1, cstring1);
     std::cout << destination1 << "\n";
   }
-  catch(const std::exception &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
@@ -57,7 +57,7 @@ int main()
   {
     cstring2 = new char[capacity2];
   }
-  catch(const std::exception &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
@@ -70,7 +70,7 @@ int main()
     cstring2 = formingCstring(cstring2, capacity2, std::cin);
     cstring2[size - 1] = '\0';
   }
-  catch(const std::exception &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
@@ -83,7 +83,7 @@ int main()
   {
     destination2 = new char[capacity2];
   }
-  catch(const std::exception &e)
+  catch (const std::exception &e)
   {
     std::cout << e.what();
     delete[] cstring1;
@@ -106,9 +106,5 @@ int main()
     delete[] destination2;
     return 1;
   }
-  delete[] cstring1;
-  delete[] cstring2;
-  delete[] destination1;
-  delete[] destination2;
-
+  return 0;
 }

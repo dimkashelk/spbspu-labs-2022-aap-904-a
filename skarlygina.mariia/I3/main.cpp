@@ -7,9 +7,11 @@
 int main()
 {
   std::pair< size_t, char* > result = makeNewCString(std::cin);
+  std::pair< size_t, char* >* result_ptr = new std::pair< size_t, char* >();
+  result_ptr = &result;
   size_t size = result.first;
   char* cstring = result.second;
-  delete *result;
+  delete result_ptr;
 
   char* destination = nullptr;
   char* string_source = nullptr;

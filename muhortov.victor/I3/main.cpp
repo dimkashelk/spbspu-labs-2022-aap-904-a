@@ -71,7 +71,6 @@ int main()
   try
   {
     vowel_symbols = new char[12];
-    findVowel(vowel_symbols, c_string);
   }
   catch (const std::bad_alloc &e)
   {
@@ -81,6 +80,7 @@ int main()
     std::cerr << "Error: \n" << e.what();
     return 1;
   }
+  findVowel(vowel_symbols, c_string);
 
   std::cout << "Latin vowel symbols string: " << vowel_symbols << '\n';
 

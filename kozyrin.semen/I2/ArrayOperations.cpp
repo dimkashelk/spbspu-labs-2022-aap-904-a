@@ -1,7 +1,6 @@
 #include "ArrayOperations.h"
 #include <iostream>
 #include <limits>
-#include <exception>
 
 void printArray(const int* arr, size_t size)
 {
@@ -54,15 +53,17 @@ void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
   }
 }
 
-int maxEven(const int* arr, size_t size)
+const int* maxEven(const int* arr, size_t size)
 {
   int max = std::numeric_limits< int >::min();
+  const int* max_elem = nullptr;
 
   for (size_t i = 1; i < size; i += 2) {
     if (arr[i] > max) {
       max = arr[i];
+      max_elem = arr + i;
     }
   }
 
-  return max;
+  return max_elem;
 }

@@ -97,6 +97,7 @@ int main()
       {
         Polygon polygon;
         std::cin >> polygon;
+        std::cin.clear();
         shapes[size] = polygon.clone();
         size++;
         if (size == capacity)

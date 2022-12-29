@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cstring>
 
-void read_array(int* arr, size_t rows, size_t cols, std::ifstream* in)
+void initArray(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
 {
   for (size_t i = 0; i < rows; i++)
   {
@@ -13,40 +13,63 @@ void read_array(int* arr, size_t rows, size_t cols, std::ifstream* in)
       *in >> arr[i * cols + j];
       if (!in)
       {
-        std::cout << "Error";
+        out << "Error";
         return;
       }
-      std::cout << "row: " << i << " col: " << j << " index= " << i * cols + j << " = " << arr[i * cols + j] << "\n";
+      out << "row: " << i << " col: " << j << " index= " << i * cols + j << " = " << arr[i * cols + j] << "\n";
     }
   }
 }
 
-void print_array(int* arr, size_t rows, size_t cols)
+void printArray(std::ostream& out, int* arr, size_t rows, size_t cols)
 {
-  for (size_t i = 0; i < rows; i++)
+  for (size_t row = 0; row < rows; row++)
   {
-    for (size_t j = 0; j < cols; j++)
+    for (size_t col = 0; col < cols; col++)
     {
-      std::cout << arr[i * cols + j];
-      if (j == (cols - 1))
+      std::cout << arr[row * cols + col];
+      if (col == (cols - 1))
       {
-        std::cout << "\n";
+         out << "\n";
       }
       else
       {
-        std::cout << " ";
+        out << " ";
       }
     }
   }
 }
 
-void do_test_3(int* arr, size_t rows, size_t cols, std::ifstream* in)
+size_t doTest03(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
 {
+  initArray(out, arr, rows, cols, in);
+  printArray(out, arr, rows, cols);
+  size_t count = 0;
+  for (size_t row = 0; row < rows; row++)
+  {
+    bool foundNegative = false;
+    for (size_t col = 0; col < cols; col++)
+    {
+      if (arr[row * cols + col] < 0)
+      {
+        foundNegative = true;
+        break;
+      }
+    }
+    if (!foundNegative)
+    {
+      count++;
+    }
+  }
+  return count;
 }
-void do_test_14(int* arr, size_t rows, size_t cols, std::ifstream* in)
+
+void doTest14(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
 {
-  read_array(arr, rows, cols, in);
-  print_array(arr, rows, cols);
+  /*14) Максимум среди сумм элементов диагоналей, параллельных главной диагонали матрицы.*/
+
+  initArray(out, arr, rows, cols, in);
+  printArray(out, arr, rows, cols);
 
   /*
   std::ofstream out(argv[3]);
@@ -75,19 +98,24 @@ int main(int argc, char* argv[])
   in >> rows >> cols;
   if (!in)
   {
-    std::cout << "Error";
+    std::cerr << "Error while rading from file\n";
     return 1;
   }
-
+  if (rows * cols > 1000)
+  {
+    std::cerr << "Too many rows or columns. Max is 1000 elements\n";
+    return 1;
+  }
   if (!strcmp(argv[1], "3"))
   {
     int arr[1000];
-    do_test_3((int*)&arr, rows, cols, &in);
+    size_t positiveRowsCount = doTest03(std::cout, ( int* )&arr, rows, cols, &in);
+    std::cout << "Found positive rows: " << positiveRowsCount << "\n";
   }
   else if (!strcmp(argv[1], "14"))
   {
     int* arr = new int[rows * cols];
-    do_test_14(arr, rows, cols, &in);
+    doTest14(std::cout, arr, rows, cols, &in);
     delete[] arr;
   }
   else

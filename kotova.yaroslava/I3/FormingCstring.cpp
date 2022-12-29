@@ -23,8 +23,8 @@ char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
         while(i != cstring + size)
         {
           *j = *i;
-          *i++;
-          *j++;
+          i++;
+          j++;
         }
         delete [] cstring;
         cstring = newstr;

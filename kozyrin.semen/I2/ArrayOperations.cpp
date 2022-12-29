@@ -2,14 +2,14 @@
 #include <iostream>
 #include <limits>
 
-void printArray(const int* arr, size_t size)
+void printArray(std::ostream& stream, const int* arr, size_t size)
 {
   size_t last_id = size - 1;
-  std::cout << "{ ";
+  stream << "{ ";
   for (size_t i = 0; i < last_id; i++) {
-    std::cout << arr[i] << ", ";
+    stream << arr[i] << ", ";
   }
-  std::cout << arr[last_id] << " }";
+  stream << arr[last_id] << " }";
 }
 
 void randomizeArray(int* arr, size_t size)

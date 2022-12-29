@@ -14,7 +14,7 @@ int output(int* arr, size_t size, size_t n, size_t m) {
     }
   }
   std::cout << "Processed array: ";
-  printArray(arr, size);
+  printArray(std::cout, arr, size);
   std::cout << '\n';
   return 0;
 }

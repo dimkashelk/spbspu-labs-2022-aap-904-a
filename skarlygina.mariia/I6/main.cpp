@@ -22,6 +22,14 @@ double sinx(double x, double error, unsigned max_members)
   return summ;
 }
 
+void printTableRow(std::ostream& out, double x, double error, unsigned members)
+{
+    out << std::setw(5) << x << ' ';
+    out << std::setw(10) << std::setprecision(5) << sinx(x, error, members) << ' ';
+    out << std::setw(10) << std::setprecision(5) << std::sin(x);
+}
+
+
 int main()
 {
   const double step = 0.05;
@@ -35,6 +43,6 @@ int main()
     std::cerr << "Error: false parameters";
     return 1;
   }
-  std::cout << sinx(left_border, error, members) << " " << sin(left_border);
+  printTableRow(std::cout, left_border, error, members);
   return 0;
 }

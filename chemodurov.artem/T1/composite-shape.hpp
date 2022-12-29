@@ -8,14 +8,18 @@ namespace chemodurov
   class CompositeShape
   {
    public:
+    CompositeShape();
     CompositeShape(chemodurov::Shape ** shape, size_t size, size_t capacity);
     ~CompositeShape();
     chemodurov::Shape * operator[](size_t id);
+    const chemodurov::Shape * operator[](size_t id) const;
     chemodurov::Shape * at(size_t id);
+    const chemodurov::Shape * at(size_t id) const;
+    void push_back(const chemodurov::Shape * shp);
     void push_back(chemodurov::Shape * shp);
     void pop_back();
-    bool empty();
-    size_t size();
+    bool empty() const;
+    size_t size() const;
     double getArea() const;
     chemodurov::rectangle_t getFrameRect() const;
     void move(const chemodurov::point_t & position);

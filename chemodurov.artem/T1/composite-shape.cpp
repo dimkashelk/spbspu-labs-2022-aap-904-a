@@ -1,6 +1,11 @@
 #include "composite-shape.hpp"
 #include "iso-scale.hpp"
 
+chemodurov::CompositeShape::CompositeShape():
+ shape_(new chemodurov::Shape*[1]),
+ size_(0),
+ capacity_(1)
+{}
 chemodurov::CompositeShape::CompositeShape(chemodurov::Shape ** shape, size_t size, size_t capacity):
  shape_(shape),
  size_(size),
@@ -85,4 +90,63 @@ void chemodurov::CompositeShape::scale(const chemodurov::point_t & position, dou
   {
     isoScale(shape_[i], position, k);
   }
+}
+chemodurov::Shape * chemodurov::CompositeShape::operator[](size_t id)
+{
+  return shape_[id];
+}
+const chemodurov::Shape * chemodurov::CompositeShape::operator[](size_t id) const
+{
+  return shape_[id];
+}
+chemodurov::Shape * chemodurov::CompositeShape::at(size_t id)
+{
+  return shape_[id];
+}
+const chemodurov::Shape * chemodurov::CompositeShape::at(size_t id) const
+{
+  return shape_[id];
+}
+bool chemodurov::CompositeShape::empty() const
+{
+  return size_ == 0;
+}
+size_t chemodurov::CompositeShape::size() const
+{
+  return size_;
+}
+void chemodurov::CompositeShape::push_back(const chemodurov::Shape * shp)
+{
+  if (capacity_ == size_)
+  {
+    chemodurov::Shape ** new_shape = new chemodurov::Shape * [capacity_ + 1];
+    ++capacity_;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      new_shape[i] = shape_[i];
+    }
+    delete[] shape_;
+    shape_ = new_shape;
+  }
+  *shape_[size_++] = *shp;
+}
+void chemodurov::CompositeShape::push_back(chemodurov::Shape * shp)
+{
+  if (capacity_ == size_)
+  {
+    chemodurov::Shape ** new_shape = new chemodurov::Shape * [capacity_ + 1];
+    ++capacity_;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      new_shape[i] = shape_[i];
+    }
+    delete[] shape_;
+    shape_ = new_shape;
+  }
+    shape_[size_++] = shp;
+}
+void chemodurov::CompositeShape::pop_back()
+{
+  delete shape_[size_];
+  shape_[size_--] = nullptr;
 }

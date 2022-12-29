@@ -49,7 +49,7 @@ int main()
   size_t size = 0;
   size_t capacity = 10;
   Shape **shapes = new Shape*[capacity];
-  while (std::cin)
+  while (!call_scale)
   {
     std::string name = "";
     std::cin >> name;
@@ -155,6 +155,14 @@ int main()
       {
         contains_errors_with_shapes = false;
         std::cerr << "Contains errors in description of figures";
+      }
+    }
+    else
+    {
+      double coord = 0.0;
+      while (std::cin)
+      {
+        std::cin >> coord;
       }
     }
   }

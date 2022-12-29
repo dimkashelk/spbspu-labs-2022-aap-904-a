@@ -20,7 +20,7 @@ int main()
       {
         char *newstr = new char[capacity + 10];
         c_string[capacity - 1] = '\0';
-        strcpy(newstr, c_string);
+        std::strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
         capacity += 10;
@@ -58,7 +58,7 @@ int main()
     delete[] repeat_symbols;
     std::cout << "Error:\n";
     std::cout << e.what();
-    return 3;
+    return 1;
   }
   repeatSymbols(repeat_symbols, c_string);
 
@@ -78,7 +78,7 @@ int main()
     delete[] repeat_symbols;
     delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
-    return 3;
+    return 1;
   }
   findVowel(vowel_symbols, c_string);
 

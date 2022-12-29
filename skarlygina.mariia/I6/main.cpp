@@ -1,6 +1,22 @@
 #include <iostream>
+
+double sinx(double x, double error, unsigned max_members)
+{
+  double summ = 0.0;
+  double next = 0.0;
+  unsigned members = 0;
+  do
+  {
+    members++;
+  } 
+  while (members != max_members || next > error);
+  return summ;
+}
+
 int main()
 {
+  const double step = 0.05;
+  const double error = 0.0001;
   double left_border = 0.0;
   double right_border = 0.0;
   unsigned members = 0;

@@ -15,7 +15,6 @@ int main()
         char *newString = expandCString(cstring, size, capacity);
         delete [] cstring;
         cstring = newString;
-        newString = nullptr;
       }
       catch (const std::exception &e) {
         delete [] cstring;

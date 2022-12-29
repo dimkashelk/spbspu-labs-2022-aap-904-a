@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <exception>
 #include <cstring_capacity.h>
+#include <extended_string.h>
 #include "is_float_digit.h"
 
 int main()

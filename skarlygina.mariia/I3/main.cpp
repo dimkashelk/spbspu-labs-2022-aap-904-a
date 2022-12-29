@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include <cstring_capacity.h>
+#include <extended_string.h>
 #include "decimal_digits.h"
 #include "string_common_symbols.h"
 
@@ -8,7 +9,7 @@ int main()
 {
   std::pair< size_t, char* > result = makeNewCString(std::cin);
   std::pair< size_t, char* >* result_ptr = new std::pair< size_t, char* >();
-  result_ptr = &result;
+  //result_ptr = &result;
   size_t size = result.first;
   char* cstring = result.second;
   delete result_ptr;

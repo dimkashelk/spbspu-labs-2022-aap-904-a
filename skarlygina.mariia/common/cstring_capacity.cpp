@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstring>
 #include <memory>
+#include <extended_string.h>
 std::pair< size_t, char* > makeNewCString(std::istream& input)
 {
   size_t capacity = 10;
@@ -17,13 +18,7 @@ std::pair< size_t, char* > makeNewCString(std::istream& input)
     {
       try
       {
-        char* newstring = new char[capacity + 20];
-        cstring[capacity - 1] = '\0';
-        std::strcpy(newstring, cstring);
-        delete[] cstring;
-        cstring = newstring;
-        newstring = nullptr;
-        capacity += 20;
+        cstring = makeExtendedString(cstring, capacity);
       }
       catch (const std::exception& e)
       {

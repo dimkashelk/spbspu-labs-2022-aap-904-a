@@ -53,6 +53,10 @@ int main()
   {
     std::string name = "";
     std::cin >> name;
+    if (!std::cin)
+    {
+      break;
+    }
     if (name == "RECTANGLE")
     {
       try

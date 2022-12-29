@@ -26,8 +26,8 @@ findMemberOfRow::findMemberOfRow(double x):
   thirdnumber(1),
   auxiliarynumber(1),
   countofnumbers(0),
-  currentmember(0),
-  countmembers(0)
+  countmembers(0),
+  currentmember(0)
 {
   if (x < -1 || x > 1)
   {

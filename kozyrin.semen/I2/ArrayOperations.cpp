@@ -5,12 +5,12 @@
 
 void printArray(const int* arr, size_t size)
 {
-  size--;
-  std::cout << "Processed array: { ";
-  for (size_t i = 0; i < size; i++) {
+  size_t last_id = size - 1;
+  std::cout << "{ ";
+  for (size_t i = 0; i < last_id; i++) {
     std::cout << arr[i] << ", ";
   }
-  std::cout << arr[size] << " } \n";
+  std::cout << arr[last_id] << " }";
 }
 
 void randomizeArray(int* arr, size_t size)
@@ -23,31 +23,35 @@ void randomizeArray(int* arr, size_t size)
 
 void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
 {
-  size--;
   if (m > size) {
     throw std::runtime_error("index out of range");
   }
   if (m < n) {
     throw std::runtime_error("left index cannot be greater than right");
   }
-  size_t offset = m - n + 1;
-  int* temp = new int[size]{0};
+  size_t offset = size - m;
+  size_t offset1 = m - n;
+  int curr = arr[n];
+  int temp = 0;
+  size_t i = n;
+  size_t j = 0;
 
-  int j = 0;
-  for (size_t i = n; i <= m; i++) {
-    temp[j] = arr[i];
-    j++;
-  }
-  for (size_t i = m + 1; i <= size; i++) {
-    arr[i - offset] = arr[i];
-  }
-  j = 0;
-  for (size_t i = size - offset + 1; i <= size; i++) {
-    arr[i] = temp[j];
-    j++;
-  }
+  while (true) {
+    if (i >= n && i < m) {
+      j = i + offset;
+    }
+    else {
+      j = i - offset1;
+    }
+    temp = arr[j];
+    arr[j] = curr;
+    curr = temp;
+    i = j;
 
-  delete[] temp;
+    if (i == n) {
+      break;
+    }
+  }
 }
 
 int maxEven(const int* arr, size_t size)

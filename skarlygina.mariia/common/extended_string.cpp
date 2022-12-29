@@ -8,7 +8,6 @@ char* makeExtendedString(char* cstring, size_t& capacity)
   std::strcpy(newstring, cstring);
   delete[] cstring;
   cstring = newstring;
-  newstring = nullptr;
   capacity += 20;
   return cstring;
 }

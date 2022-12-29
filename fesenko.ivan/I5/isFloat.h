@@ -3,4 +3,3 @@
 #include <cstddef>
 bool isFloat(const char *x);
 #endif
-

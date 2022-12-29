@@ -1,7 +1,7 @@
 #include "isFloat.h"
 #include <cctype>
 
-bool isFloat(const char * x)
+bool isFloat(const char *x)
 {
-  return true;
+  return *x == '\0';
 }

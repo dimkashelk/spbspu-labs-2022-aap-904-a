@@ -1,4 +1,4 @@
-﻿#include "arrays.h"
+﻿#include "arrayFunctions.h"
 #include <iostream>
 #include <fstream>
 #include <string>

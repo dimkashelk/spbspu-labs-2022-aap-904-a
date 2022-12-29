@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
-#include "arrays.h"
+#include "arrayFunctions.h"
 
 const size_t N = 10;
 const int randMin = -50;
@@ -17,7 +17,7 @@ int main(int argc, const char* argv[])
     std::cerr << "Exactly one argument needed\n";
     return 1;
   }
-  srand(time(0));
+  srand(time(nullptr));
 
   size_t k = 2;
 

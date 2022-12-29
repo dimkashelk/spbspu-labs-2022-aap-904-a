@@ -1,5 +1,5 @@
-﻿#ifndef ARRAYS_H
-#define ARRAYS_H
+﻿#ifndef ARRAY_FUNCTIONS_H
+#define ARRAY_FUNCTIONS_H
 
 #include <string>
 

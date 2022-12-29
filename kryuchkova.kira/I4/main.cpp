@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
       return 1;
     }
     int *matrix = new int[rows * columns];
-     for (size_t i = 0; i < rows * columns; i++)
+    for (size_t i = 0; i < rows * columns; i++)
     {
       file >> matrix[i];
       if (!file)

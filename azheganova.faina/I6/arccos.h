@@ -17,5 +17,7 @@ class findMemberOfRow
     unsigned thirdnumber;
     unsigned auxiliarynumber;
     unsigned countofnumbers;
+    unsigned countmembers;
+    unsigned currentmember;
 };
 #endif

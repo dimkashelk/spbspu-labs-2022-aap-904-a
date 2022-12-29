@@ -1,7 +1,7 @@
-#include "arccos.h"
 #include "printrow.h"
 #include <iomanip>
 #include <cmath>
+#include "arccos.h"
 
 void printRowInTable(std::ostream & out, double x, double absError, unsigned maxnumber)
 {

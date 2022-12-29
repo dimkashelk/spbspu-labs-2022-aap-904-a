@@ -25,7 +25,9 @@ findMemberOfRow::findMemberOfRow(double x):
   secondnumber(3),
   thirdnumber(1),
   auxiliarynumber(1),
-  countofnumbers(0)
+  countofnumbers(0),
+  currentmember(0),
+  countmembers(0)
 {
   if (x < -1 || x > 1)
   {
@@ -35,6 +37,18 @@ findMemberOfRow::findMemberOfRow(double x):
 
 double findMemberOfRow::operator()()
 {
+  if (countmembers == 0)
+  {
+    countmembers++;
+    currentmember = 1.57;
+    return currentmember;
+  }
+  if (countmembers == 1)
+  {
+    countmembers++;
+    currentmember = -x;
+    return currentmember;
+  }
   x *= x * x;
   numberinnumerator = numberinnumerator * firstnumber * x;
   firstnumber = firstnumber * (firstnumber + 2);

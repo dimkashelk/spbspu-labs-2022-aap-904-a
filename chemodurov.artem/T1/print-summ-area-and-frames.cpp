@@ -29,8 +29,8 @@ void chemodurov::printSummAreaAndFrames(std::ostream & out, chemodurov::Shape **
   }
   for (size_t i = 0; i < shp_size; ++i)
   {
-    summ_area += (*shp[i]).getArea();
-    frames[i] = (*shp[i]).getFrameRect();
+    summ_area += shp[i]->getArea();
+    frames[i] = shp[i]->getFrameRect();
   }
   out << std::fixed << std::setprecision(1) << summ_area;
   for (size_t i = 0; i < shp_size; ++i)

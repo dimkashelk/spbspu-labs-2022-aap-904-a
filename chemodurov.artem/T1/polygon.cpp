@@ -47,6 +47,7 @@ chemodurov::Polygon::Polygon(chemodurov::point_t * verts, size_t num_of_verts):
   if (num_of_verts < 3 || isRepeatingPointsInArray(verts, num_of_verts))
   {
     delete [] verts;
+    verts = nullptr;
     throw std::invalid_argument("Not correct vertices of polygon");
   }
 }

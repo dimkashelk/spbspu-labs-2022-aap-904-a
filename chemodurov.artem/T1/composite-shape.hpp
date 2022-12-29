@@ -21,6 +21,7 @@ namespace chemodurov
     void move(const chemodurov::point_t & position);
     void move(double dx, double dy);
     void scale(double k);
+    void scale(const chemodurov::point_t & position, double k);
    private:
     chemodurov::Shape ** shape_;
     size_t size_;

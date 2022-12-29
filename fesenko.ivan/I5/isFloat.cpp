@@ -11,7 +11,7 @@ bool isDigit(char x)
 }
 bool isNonZero(char x)
 {
-  return x != '0';
+  return isDigit(x) && x != '0';
 }
 bool isEnd(char x)
 {
@@ -28,8 +28,32 @@ bool isE(char x)
   return x == 'E';
 }
 
+bool finishesWithNonZero(const char *x)
+{
+  return isNonZero(*x);
+}
+
+bool continueInFloatWithDigit(const char *x)
+{
+  return isDigit(*x) && (continueInFloatWithDigit(x + 1) || finishesWithNonZero(x + 1));
+}
+
+bool continueWithDot(const char *x)
+{
+  return isDot(*x) && (continueInFloatWithDigit(x + 1) || finishesWithNonZero(x + 1));
+}
+
+bool continueWithDigit(const char *x)
+{
+  return isDigit(*x) && (continueWithDigit(x + 1) || continueWithDot(x + 1));
+}
+
+bool isSimpleFloat(const char *x)
+{
+  return isNonZero(*x) && (continueWithDigit(x + 1) || continueWithDot(x + 1));
+}
 
 bool isFloat(const char *x)
 {
-  return *x == '\0';
+  return isSimpleFloat(x);
 }

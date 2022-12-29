@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
 
   int first_array[] = {1, 2, 2, 2, 3, 2, 1, 3, 2, 1};
 
-  std::cout << count_sequence_similar(first_array, 10) << ' ';
-  std::cout << count_descending_triple(first_array, 10) << '\n';
+  std::cout << countSequenceSimilar(first_array, 10) << ' ';
+  std::cout << countDescendingTriple(first_array, 10) << '\n';
 
   //dynamic array with random values
 
@@ -39,8 +39,8 @@ int main(int argc, char *argv[])
       second_array[i] = std::rand();
     }
 
-    std::cout << count_sequence_similar(second_array, n) << ' ';
-    std::cout << count_descending_triple(second_array, n) << '\n';
+    std::cout << countSequenceSimilar(second_array, n) << ' ';
+    std::cout << countDescendingTriple(second_array, n) << '\n';
   }
   else
   {
@@ -82,8 +82,8 @@ int main(int argc, char *argv[])
       }
     }
 
-    std::cout << count_sequence_similar(third_array, size) << ' ';
-    std::cout << count_descending_triple(third_array, size) << '\n';
+    std::cout << countSequenceSimilar(third_array, size) << ' ';
+    std::cout << countDescendingTriple(third_array, size) << '\n';
     delete [] third_array;
   }
   else if (size == 0)

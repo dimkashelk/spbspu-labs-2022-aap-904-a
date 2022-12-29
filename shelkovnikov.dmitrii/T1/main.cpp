@@ -51,16 +51,14 @@ int main()
   Shape **shapes = new Shape*[capacity];
   while (std::cin)
   {
-    std::getline(std::cin, line);
-    std::istringstream in(line);
     std::string name = "";
-    in >> name;
+    std::cin >> name;
     if (name == "RECTANGLE")
     {
       try
       {
         Rectangle rect;
-        in >> rect;
+        std::cin >> rect;
         shapes[size] = rect.clone();
         size++;
         if (size == capacity)
@@ -79,7 +77,7 @@ int main()
       try
       {
         Regular regular;
-        in >> regular;
+        std::cin >> regular;
         shapes[size] = regular.clone();
         size++;
         if (size == capacity)
@@ -98,7 +96,7 @@ int main()
       try
       {
         Polygon polygon;
-        in >> polygon;
+        std::cin >> polygon;
         shapes[size] = polygon.clone();
         size++;
         if (size == capacity)
@@ -116,7 +114,7 @@ int main()
     {
       std::ostringstream data;
       size_t count = 0;
-      in >> count;
+      std::cin >> count;
       data << count << '\n';
       std::string line_of_data = "";
       for (size_t i = 0; i < count; i++)
@@ -132,9 +130,9 @@ int main()
     {
       call_scale = true;
       point_t point;
-      in >> point;
+      std::cin >> point;
       double k = 0.0;
-      in >> k;
+      std::cin >> k;
       if (k < 0)
       {
         for (size_t i = 0; i < size; i++)

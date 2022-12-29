@@ -38,6 +38,7 @@ int main()
   {
     std::cout << e.what();
     delete[] cstring1;
+    delete[] destination1;
     return 1;
   }
   try
@@ -62,6 +63,7 @@ int main()
     std::cout << e.what();
     delete[] cstring1;
     delete[] destination1;
+    delete[] cstring2;
     return 1;
   }
   cstring2[0] = '\0';
@@ -89,6 +91,7 @@ int main()
     delete[] cstring1;
     delete[] destination1;
     delete[] cstring2;
+    delete[] destination2;
     return 1;
   }
   destination2[0] = '\0';

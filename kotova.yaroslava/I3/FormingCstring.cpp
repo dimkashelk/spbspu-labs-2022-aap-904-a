@@ -1,4 +1,3 @@
-
 #include "FormingCstring.h"
 #include <istream>
 #include <iostream>

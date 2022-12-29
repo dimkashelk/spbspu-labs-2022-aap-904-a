@@ -17,7 +17,9 @@ char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
         char* newstr = new char[capacity + 20];
         newstr [capacity+19] = '\0';
         char* i = new char[capacity + 1];
+        i[capacity] = '\0';
         char * j = new char[capacity + 21];
+        j[capacity + 20] = '\0';
         strcpy(i, cstring);
         strcpy(j, newstr);
         while(i != cstring + size)

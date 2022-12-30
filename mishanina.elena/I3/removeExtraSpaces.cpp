@@ -32,7 +32,7 @@ char* removeExtraSpaces(char* destination, const char* cstring)
       numberOfSpaces++;
     }
 
-    if (strlen(cstring) != 0 && cstring[i] == cstring[i - 1] && cstring[i] == ' ' && numberOfSymbols2 != numberOfSymbols1)
+    if (i != 0 && cstring[i] == cstring[i - 1] && cstring[i] == ' ' && numberOfSymbols2 != numberOfSymbols1)
     {
       numberOfDeletedSpaces++;
       continue;

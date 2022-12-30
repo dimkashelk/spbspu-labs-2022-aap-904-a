@@ -3,22 +3,20 @@
 
 #include <cstddef>
 
-class CalcEExpNegativeXExp2
+class TaylorNextTerm
 {
 public:
-  explicit CalcEExpNegativeXExp2(double x, size_t number_max, double abs_error);
+  explicit TaylorNextTerm(double x);
   double operator()();
 
 private:
   double x;
-  double result;
-  double abs_error;
   unsigned int factorial_of;
   unsigned int exp;
   size_t terms_count;
-  size_t number_max;
-  static double countFraction(double x, unsigned int &factorial_of, unsigned int &exp);
-  static double countTerm(size_t terms_count, double x, unsigned int &factorial_of, unsigned int &exp);
 };
+
+double countFraction(double x, unsigned int &factorial_of, unsigned int &exp);
+double сalcEExpNegativeXExp2(double x, double abs_error, size_t number_max);
 
 #endif

@@ -19,7 +19,6 @@ int main()
   }
   for (double i = lhs; i < rhs; i += step)
   {
-    CalcEExpNegativeXExp2 taylor(i, number_max, error);
-    printTableRow(std::cout, i, taylor());
+    printTableRow(std::cout, i, сalcEExpNegativeXExp2(i, error, number_max));
   }
 }

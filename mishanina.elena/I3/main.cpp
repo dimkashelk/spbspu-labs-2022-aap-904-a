@@ -46,13 +46,14 @@ int main()
   try
   {
     cstring2 = inputString(cstring2, capacity2, std::cin);
-    if (capacity2 == 1)
+    if (capacity_2 == 0)
     {
-      std::cerr << "ERROR: empty string";
-      delete[] cstring2;
-      return 1;
+        cstring_2[capacity_2] = '\0';
     }
-    cstring2[capacity2 - 1] = '\0';
+    else
+    {
+        cstring_2[capacity_2 - 1] = '\0';
+    }
   }
   catch (const std::exception& e)
   {

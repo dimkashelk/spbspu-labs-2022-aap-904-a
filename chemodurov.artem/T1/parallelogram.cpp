@@ -3,10 +3,10 @@
 
 namespace chemodurov
 {
-  chemodurov::point_t * makeArray(const chemodurov::point_t & fst, const point_t & sec, const point_t & trd)
+  point_t * makeArray(const point_t & fst, const point_t & sec, const point_t & trd)
   {
     const size_t x = 4;
-    chemodurov::point_t * arr = new chemodurov::point_t[x];
+    point_t * arr = new point_t[x];
     arr[0] = fst;
     arr[1] = sec;
     arr[2] = trd;
@@ -15,8 +15,8 @@ namespace chemodurov
   }
 }
 
-chemodurov::Parallelogram::Parallelogram(const chemodurov::point_t & fst, const point_t & sec, const point_t & trd):
- p(chemodurov::makeArray(fst, sec, trd), 4ull)
+chemodurov::Parallelogram::Parallelogram(const point_t & fst, const point_t & sec, const point_t & trd):
+ p(makeArray(fst, sec, trd), 4ull)
 {
   if (fst.y != sec.y && sec.y != trd.y)
   {
@@ -33,7 +33,7 @@ chemodurov::rectangle_t chemodurov::Parallelogram::getFrameRect() const
 {
   return p.getFrameRect();
 }
-void chemodurov::Parallelogram::move(const chemodurov::point_t & pos)
+void chemodurov::Parallelogram::move(const point_t & pos)
 {
   p.move(pos);
 }

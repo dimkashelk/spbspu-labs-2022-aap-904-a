@@ -4,7 +4,7 @@
 
 namespace chemodurov
 {
-  void isoScale(chemodurov::Shape * s, const chemodurov::point_t & pos, double k);
+  void isoScale(Shape * s, const point_t & pos, double k);
 }
 
 #endif

@@ -1,39 +1,40 @@
 #include "make-polygon-from-string.hpp"
 #include "polygon.hpp"
 
-chemodurov::point_t * extendArray(const chemodurov::point_t * arr, size_t cap, size_t arr_size)
+namespace chemodurov
 {
-  cap += 5;
-  chemodurov::point_t * new_arr = new chemodurov::point_t[cap];
-  for (size_t i = 0; i < arr_size; ++i)
+  point_t * extendArray(const point_t * arr, size_t cap, size_t arr_size)
   {
-    new_arr[i] = arr[i];
+    cap += 5;
+    point_t * new_arr = new point_t[cap];
+    for (size_t i = 0; i < arr_size; ++i)
+    {
+      new_arr[i] = arr[i];
+    }
+    return new_arr;
   }
-  return new_arr;
+  point_t readPointFromString(const std::string & data, std::string::size_type * size)
+  {
+    std::string::size_type size1 = *size;
+    std::string::size_type size2 = 0;
+    double x = std::stod(data.substr(size1), &size2);
+    size2 += size1;
+    double y = std::stod(data.substr(size2), &size1);
+    size1 += size2;
+    *size = size1;
+    point_t temp{x, y};
+    return temp;
+  }
 }
-
-chemodurov::point_t readPointFromString(const std::string & data, std::string::size_type * size)
-{
-  std::string::size_type size1 = *size;
-  std::string::size_type size2;
-  double x = std::stod(data.substr(size1), &size2);
-  size2 += size1;
-  double y = std::stod(data.substr(size2), &size1);
-  size1 += size2;
-  *size = size1;
-  chemodurov::point_t temp{x, y};
-  return temp;
-}
-
 chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, size_t & arr_size)
 {
   size_t capacity = 5;
-  chemodurov::point_t * arr = new chemodurov::point_t[capacity];
+  point_t * arr = new point_t[capacity];
   arr_size = 0;
   std::string::size_type size = 7;
   do
   {
-    chemodurov::point_t * new_arr = nullptr;
+    point_t * new_arr = nullptr;
     try
     {
       if (arr_size == capacity)
@@ -57,8 +58,8 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
   return arr;
 }
 
-chemodurov::Shape * chemodurov::makePolygonFromPoints(chemodurov::point_t * arr, size_t arr_size)
+chemodurov::Shape * chemodurov::makePolygonFromPoints(point_t * arr, size_t arr_size)
 {
-  chemodurov::Shape * temp = new chemodurov::Polygon(arr, arr_size);
+  Shape * temp = new Polygon(arr, arr_size);
   return temp;
 }

@@ -5,7 +5,7 @@
 
 namespace chemodurov
 {
-  double calcPolygonArea(const chemodurov::point_t * verts, size_t num_of_verts)
+  double calcPolygonArea(const point_t * verts, size_t num_of_verts)
   {
     double area = 0.0;
     for (size_t i = 1; i < num_of_verts - 1; ++i)
@@ -17,7 +17,7 @@ namespace chemodurov
     area = std::abs(0.5 * area);
     return area;
   }
-  chemodurov::point_t findPolygonCenter(const chemodurov::point_t * verts, size_t num_of_verts)
+  point_t findPolygonCenter(const point_t * verts, size_t num_of_verts)
   {
     double area = calcPolygonArea(verts, num_of_verts);
     double x_of_center = 0.0;
@@ -34,15 +34,15 @@ namespace chemodurov
     }
     x_of_center /= (6 * area);
     y_of_center /= (6 * area);
-    chemodurov::point_t temp{x_of_center, y_of_center};
+    point_t temp{x_of_center, y_of_center};
     return temp;
   }
 }
 
-chemodurov::Polygon::Polygon(chemodurov::point_t * verts, size_t num_of_verts):
+chemodurov::Polygon::Polygon(point_t * verts, size_t num_of_verts):
  vertices_(verts),
  number_of_vertices_(num_of_verts),
- center_(chemodurov::findPolygonCenter(verts, num_of_verts))
+ center_(findPolygonCenter(verts, num_of_verts))
 {
   if (num_of_verts < 3 || isRepeatingPointsInArray(verts, num_of_verts))
   {
@@ -57,7 +57,7 @@ chemodurov::Polygon::~Polygon()
 }
 double chemodurov::Polygon::getArea() const
 {
-  return chemodurov::calcPolygonArea(vertices_, number_of_vertices_);
+  return calcPolygonArea(vertices_, number_of_vertices_);
 }
 chemodurov::rectangle_t chemodurov::Polygon::getFrameRect() const
 {
@@ -84,11 +84,11 @@ chemodurov::rectangle_t chemodurov::Polygon::getFrameRect() const
       min_y = vertices_[i].y;
     }
   }
-  chemodurov::point_t center{(max_x + min_x) / 2, (max_y + min_y) / 2};
-  chemodurov::rectangle_t temp{center, max_x - min_x, max_y - min_y};
+  point_t center{(max_x + min_x) / 2, (max_y + min_y) / 2};
+  rectangle_t temp{center, max_x - min_x, max_y - min_y};
   return temp;
 }
-void chemodurov::Polygon::move(const chemodurov::point_t & pos)
+void chemodurov::Polygon::move(const point_t & pos)
 {
   const point_t delta = pos - center_;
   center_ = center_ + delta;
@@ -115,15 +115,15 @@ void chemodurov::Polygon::scale(double k)
 }
 chemodurov::Shape * chemodurov::Polygon::clone() const
 {
-  chemodurov::point_t * temp = new chemodurov::point_t[number_of_vertices_];
+  point_t * temp = new point_t[number_of_vertices_];
   for (size_t i = 0; i < number_of_vertices_; ++i)
   {
     temp[i] = vertices_[i];
   }
-  chemodurov::Shape * cloned = nullptr;
+  Shape * cloned = nullptr;
   try
   {
-    cloned = new chemodurov::Polygon(temp, number_of_vertices_);
+    cloned = new Polygon(temp, number_of_vertices_);
   }
   catch (...)
   {

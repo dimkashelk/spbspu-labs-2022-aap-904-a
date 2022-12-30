@@ -5,8 +5,8 @@
 
 namespace chemodurov
 {
-  chemodurov::point_t * getArrayOfPoints(const std::string & data, size_t & arr_size);
-  chemodurov::Shape * makePolygonFromPoints(chemodurov::point_t * arr, size_t arr_size);
+  point_t * getArrayOfPoints(const std::string & data, size_t & arr_size);
+  Shape * makePolygonFromPoints(point_t * arr, size_t arr_size);
 }
 
 #endif

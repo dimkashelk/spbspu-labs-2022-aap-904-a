@@ -6,21 +6,21 @@
 
 namespace chemodurov
 {
-  class Polygon: public chemodurov::Shape
+  class Polygon: public Shape
   {
    public:
-    Polygon(chemodurov::point_t * vertices, size_t number_of_vertices);
+    Polygon(point_t * vertices, size_t number_of_vertices);
     ~Polygon();
     double getArea() const;
-    chemodurov::rectangle_t getFrameRect() const;
-    void move(const chemodurov::point_t & position);
+    rectangle_t getFrameRect() const;
+    void move(const point_t & position);
     void move(double dx, double dy);
     void scale(double k);
-    chemodurov::Shape * clone() const;
+    Shape * clone() const;
    private:
-    chemodurov::point_t * vertices_;
+    point_t * vertices_;
     size_t number_of_vertices_;
-    chemodurov::point_t center_;
+    point_t center_;
   };
 }
 

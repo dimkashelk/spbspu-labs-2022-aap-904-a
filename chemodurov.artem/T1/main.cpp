@@ -148,7 +148,7 @@ int main()
       try
       {
         std::string::size_type size1 = 13;
-        std::string::size_type size2;
+        std::string::size_type size2 = 0;
         double x = std::stod(line.substr(size1), &size2);
         size2 += size1;
         double y = std::stod(line.substr(size2), &size1);

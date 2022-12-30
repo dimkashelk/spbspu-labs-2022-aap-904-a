@@ -5,7 +5,7 @@
 
 namespace chemodurov
 {
-  chemodurov::Shape ** extendShapePtrArray(chemodurov::Shape ** shp, size_t capacity, size_t new_capacity);
+  Shape ** extendShapePtrArray(Shape ** shp, size_t capacity, size_t new_capacity);
 }
 
 #endif

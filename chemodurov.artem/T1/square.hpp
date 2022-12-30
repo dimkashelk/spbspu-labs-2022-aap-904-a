@@ -4,19 +4,19 @@
 
 namespace chemodurov
 {
-  class Square: public chemodurov::Shape
+  class Square: public Shape
   {
    public:
-    Square(const chemodurov::point_t & left_down, double length);
+    Square(const point_t & left_down, double length);
     ~Square();
     double getArea() const;
-    chemodurov::rectangle_t getFrameRect() const;
-    void move(const chemodurov::point_t & position);
+    rectangle_t getFrameRect() const;
+    void move(const point_t & position);
     void move(double dx, double dy);
     void scale(double k);
-    chemodurov::Shape * clone() const;
+    Shape * clone() const;
    private:
-    chemodurov::Polygon p;
+    Polygon p;
   };
 }
 

@@ -47,10 +47,19 @@ bool isIntersectedStrings(const char* str1, const char* str2)
   return false;
 }
 
+bool isLowerVowel(char c)
+{
+  return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y');
+}
+
+bool isUpperVowel(char c)
+{
+  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y');
+}
+
 bool isVowel(char c)
 {
-  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y' ||
-    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y');
+  return (isLowerVowel(c) || isUpperVowel(c));
 }
 
 char* removeLatinVowelSymbols(char* destination, const char* source)

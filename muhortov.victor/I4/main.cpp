@@ -51,8 +51,26 @@ int main(int argc, char *argv[])
   }
   else if (!std::strcmp(argv[1], "2"))
   {
-
+    int *arr = new int[cols * rows];
+    for (size_t i = 0; i < cols; i++)
+    {
+      for (size_t j = 0; j < rows; j++)
+      {
+        in >> arr[cols * i + j];
+        if (!in)
+        {
+          std::cerr << "Error: problems with reading file\n";
+          delete[] arr;
+          return 1;
+        }
+      }
+    }
+  }
+  else
+  {
+    std::cerr << "Error: no such parameter\n";
     return 1;
   }
+
   return 0;
 }

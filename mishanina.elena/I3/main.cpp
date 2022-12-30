@@ -11,9 +11,9 @@ int main()
   try
   {
     cstring1 = inputString(cstring1, capacity1, std::cin);
-    if (cstring1[0] == '\0')
+    if (capacity1 == 1)
     {
-      std::cout << "ERROR: empty string";
+      std::cerr << "ERROR: empty string";
       delete[] cstring1;
       return 1;
     }
@@ -21,7 +21,7 @@ int main()
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what();
+    std::cerr << e.what();
     delete[] cstring1;
     return 1;
   }
@@ -35,7 +35,7 @@ int main()
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what();
+    std::cerr << e.what();
     delete[] destination;
     delete[] cstring1;
     return 1;
@@ -46,18 +46,17 @@ int main()
   try
   {
     cstring2 = inputString(cstring2, capacity2, std::cin);
-    if (capacity2 == 0)
+    if (capacity2 == 1)
     {
-      cstring2[capacity2] = '\0';
+      std::cerr << "ERROR: empty string";
+      delete[] cstring2;
+      return 1;
     }
-    else
-    {
-      cstring2[capacity2 - 1] = '\0';
-    }
+    cstring2[capacity2 - 1] = '\0';
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what();
+    std::cerr << e.what();
     delete[] cstring1;
     delete[] cstring2;
     delete[] destination;
@@ -79,7 +78,7 @@ int main()
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what();
+    std::cerr << e.what();
     delete[] cstring1;
     delete[] cstring2;
     return 1;

@@ -61,6 +61,7 @@ int main()
     return 1;
   }
   char* destination2 = new char[capacity2];
+  destination2[0] = '\0';
   try
   {
     destination2 = replacingLetters(cstring2, destination2);

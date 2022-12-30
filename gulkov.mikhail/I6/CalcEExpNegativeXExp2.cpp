@@ -1,11 +1,14 @@
 #include "CalcEExpNegativeXExp2.hpp"
 #include <cmath>
 
-CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, size_t number_max, double abs_error) : x(x), result(0),
-                                                                                              abs_error(abs_error),
-                                                                                              factorial_of(2), exp(3),
-                                                                                              terms_count(0),
-                                                                                              number_max(number_max)
+CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, size_t number_max, double abs_error):
+  x(x),
+  result(0),
+  abs_error(abs_error),
+  factorial_of(2),
+  exp(3),
+  terms_count(0),
+  number_max(number_max)
 {}
 
 double CalcEExpNegativeXExp2::operator()()

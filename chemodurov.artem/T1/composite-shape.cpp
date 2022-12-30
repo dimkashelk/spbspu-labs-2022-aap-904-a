@@ -6,6 +6,27 @@ chemodurov::CompositeShape::CompositeShape():
  size_(0),
  capacity_(1)
 {}
+chemodurov::CompositeShape::CompositeShape(const CompositeShape & rhs):
+  CompositeShape(rhs.capacity_)
+{
+  for (size_t i = 0; i < rhs.size_; ++i)
+  {
+    this->shape_[i] = rhs.shape_[i];
+    this->size_++;
+  }
+}
+chemodurov::CompositeShape::CompositeShape(chemodurov::CompositeShape && rhs):
+ shape_(rhs.shape_),
+ size_(rhs.size_),
+ capacity_(rhs.capacity_)
+{
+  rhs.shape_ = nullptr;
+}
+chemodurov::CompositeShape::CompositeShape(size_t capacity):
+ shape_(new chemodurov::Shape*[capacity]),
+ size_(0),
+ capacity_(capacity)
+{}
 chemodurov::CompositeShape::CompositeShape(chemodurov::Shape ** shape, size_t size, size_t capacity):
  shape_(shape),
  size_(size),
@@ -18,6 +39,35 @@ chemodurov::CompositeShape::~CompositeShape()
     delete shape_[i];
   }
   delete [] shape_;
+}
+chemodurov::CompositeShape & chemodurov::CompositeShape::operator=(const chemodurov::CompositeShape & rhs)
+{
+  chemodurov::Shape ** new_data = new chemodurov::Shape*[rhs.capacity_];
+  size_t new_size = 0;
+  for (size_t i = 0; i < rhs.size_; ++i)
+  {
+    new_data[i] = rhs.shape_[i];
+    new_size++;
+    delete this->shape_[i];
+  }
+  delete [] this->shape_;
+  this->shape_ = new_data;
+  this->size_ = new_size;
+  this->capacity_ = rhs.capacity_;
+  return *this;
+}
+chemodurov::CompositeShape & chemodurov::CompositeShape::operator=(chemodurov::CompositeShape && rhs)
+{
+  for (size_t i = 0; i < this->size_; ++i)
+  {
+    delete this->shape_[i];
+  }
+  delete [] this->shape_;
+  this->shape_ = rhs.shape_;
+  rhs.shape_ = nullptr;
+  this->size_ = rhs.size_;
+  this->capacity_ = rhs.capacity_;
+  return *this;
 }
 double chemodurov::CompositeShape::getArea() const
 {
@@ -107,11 +157,11 @@ const chemodurov::Shape * chemodurov::CompositeShape::at(size_t id) const
 {
   return shape_[id];
 }
-bool chemodurov::CompositeShape::empty() const
+bool chemodurov::CompositeShape::empty() const noexcept
 {
   return size_ == 0;
 }
-size_t chemodurov::CompositeShape::size() const
+size_t chemodurov::CompositeShape::size() const noexcept
 {
   return size_;
 }

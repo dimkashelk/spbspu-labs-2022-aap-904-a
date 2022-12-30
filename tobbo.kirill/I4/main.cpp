@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cstring>
 
-void initArray(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
+void fillArray(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
 {
   for (size_t i = 0; i < rows; i++)
   {
@@ -30,7 +30,7 @@ void printArray(std::ostream& out, int* arr, size_t rows, size_t cols)
       std::cout << arr[row * cols + col];
       if (col == (cols - 1))
       {
-         out << "\n";
+        out << "\n";
       }
       else
       {
@@ -40,10 +40,8 @@ void printArray(std::ostream& out, int* arr, size_t rows, size_t cols)
   }
 }
 
-size_t doTest03(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
+size_t getPositiveRowsCount(int* arr, size_t rows, size_t cols)
 {
-  initArray(out, arr, rows, cols, in);
-  printArray(out, arr, rows, cols);
   size_t count = 0;
   for (size_t row = 0; row < rows; row++)
   {
@@ -64,32 +62,37 @@ size_t doTest03(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifst
   return count;
 }
 
-void doTest14(std::ostream& out, int* arr, size_t rows, size_t cols, std::ifstream* in)
+int getMaxSumDiag(int* arr, size_t size)
 {
-  /*14) Максимум среди сумм элементов диагоналей, параллельных главной диагонали матрицы.*/
-
-  initArray(out, arr, rows, cols, in);
-  printArray(out, arr, rows, cols);
-
-  /*
-  std::ofstream out(argv[3]);
-  out << count_lines_with_unique_elements(arr, n, m) << "\n";
-  try
+  size_t rows = size;
+  size_t cols = size;
+  int* sums = new int[2 * rows - 1] { 0 };
+  for (size_t row = 0; row < rows; row++)
   {
-    out << minimum_sums_of_diagonals(arr, n, m) << "\n";
+    for (size_t col = 0; col < cols; col++)
+    {
+      size_t diagNum = row + col;
+      sums[diagNum] += arr[row * cols + rows - 1 - col];
+    }
   }
-  catch (const std::runtime_error& e)
+  size_t maxDiag = 0;
+  for (size_t i = 1; i < rows * 2 - 1; i++)
   {
-    std::cout << e.what();
+    if (i + 1 != rows && sums[i] > sums[maxDiag])
+    {
+      maxDiag = i;
+    }
   }
-  */
+  int maxSum = sums[maxDiag];
+  delete[] sums;
+  return maxSum;
 }
 
 int main(int argc, char* argv[])
 {
   if (argc != 4)
   {
-    std::cout << "Wrong number of parameters\n";
+    std::cerr << "Wrong number of parameters\n";
     return 1;
   }
   size_t rows = 0;
@@ -109,21 +112,30 @@ int main(int argc, char* argv[])
   if (!strcmp(argv[1], "3"))
   {
     int arr[1000];
-    size_t positiveRowsCount = doTest03(std::cout, ( int* )&arr, rows, cols, &in);
-    std::cout << "Found positive rows: " << positiveRowsCount << "\n";
+    fillArray(std::cout, arr, rows, cols, &in);
+    printArray(std::cout, arr, rows, cols);
+    size_t positiveRowsCount = getPositiveRowsCount(( int* )&arr, rows, cols);
+    std::cout << "Found positive rows count: " << positiveRowsCount << "\n";
   }
   else if (!strcmp(argv[1], "14"))
   {
+    if (rows != cols)
+    {
+      std::cerr << "Square matrix is supported only\n";
+      return 1;
+    }
     int* arr = new int[rows * cols];
-    doTest14(std::cout, arr, rows, cols, &in);
+    fillArray(std::cout, arr, rows, cols, &in);
+    printArray(std::cout, arr, rows, cols);
+    int maxSumDiag = getMaxSumDiag(arr, rows);
+    std::cout << "Max sum in diagonals except main one: " << maxSumDiag << "\n";
     delete[] arr;
   }
   else
   {
-    std::cout << "Unexpected test number\n";
+    std::cerr << "Unexpected task number. #3, #14 are supported\n";
     return 1;
   }
-
 
   return 0;
 }

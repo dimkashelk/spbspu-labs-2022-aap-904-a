@@ -10,15 +10,9 @@ class findMemberOfRow
     double operator()();
   private:
     double x;
-    unsigned numberinnumerator;
-    unsigned firstnumber;
-    unsigned numberindeminator;
-    unsigned secondnumber;
-    unsigned thirdnumber;
-    unsigned auxiliarynumber;
-    unsigned countofnumbers;
+    unsigned factorialinnumerator;
+    unsigned number;
+    unsigned factorialindeminator;
     unsigned countmembers;
-    unsigned currentmember;
-    double pi;
 };
 #endif

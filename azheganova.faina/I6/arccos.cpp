@@ -19,16 +19,10 @@ double countArccos(double x, double absError, unsigned maxnumber)
 
 findMemberOfRow::findMemberOfRow(double x):
   x(x),
-  numberinnumerator(1),
-  firstnumber(1),
-  numberindeminator(3),
-  secondnumber(3),
-  thirdnumber(1),
-  auxiliarynumber(1),
-  countofnumbers(0),
-  countmembers(0),
-  currentmember(0),
-  pi(3.14)
+  factorialinnumerator(1),
+  number(1),
+  factorialindeminator(2),
+  countmembers(0)
 {
   if (x < -1 || x > 1)
   {
@@ -38,24 +32,25 @@ findMemberOfRow::findMemberOfRow(double x):
 
 double findMemberOfRow::operator()()
 {
+  double pi = 3.14;
   if (countmembers == 0)
   {
     countmembers++;
-    currentmember = pi / 2;
-    return currentmember;
+    return pi / 2;
   }
   if (countmembers == 1)
   {
     countmembers++;
-    currentmember = -x;
-    return currentmember;
+    return -x;
   }
-  x *= x * x;
-  numberinnumerator = numberinnumerator * firstnumber * x;
-  firstnumber = firstnumber * (firstnumber + 2);
-  numberindeminator = (numberindeminator * 2 * thirdnumber) / auxiliarynumber;
-  thirdnumber = (secondnumber + 1) * (secondnumber + 2);
-  secondnumber += 2;
-  auxiliarynumber = 2 * (secondnumber + 2);
-  return numberinnumerator / numberindeminator;
+  if (countmembers == 2)
+  {
+    countmembers++;
+    return (x * x * x) / 6;
+  }
+  factorialinnumerator *= number + 2;
+  number++;
+  factorialindeminator *= number + 2;
+  number++;
+  return (factorialinnumerator * pow(x, number + 4)) / factorialindeminator * (number + 2);
 }

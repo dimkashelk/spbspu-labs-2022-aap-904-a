@@ -13,6 +13,7 @@ namespace chemodurov
     virtual void move(const chemodurov::point_t & position) = 0;
     virtual void move(double dx, double dy) = 0;
     virtual void scale(double k) = 0;
+    virtual chemodurov::Shape * clone() const = 0;
   };
 }
 

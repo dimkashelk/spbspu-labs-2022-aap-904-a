@@ -14,6 +14,7 @@ namespace chemodurov
     void move(const chemodurov::point_t & pos);
     void move(double dx, double dy);
     void scale(double k);
+    chemodurov::Shape * clone() const;
    private:
     chemodurov::Polygon p;
   };

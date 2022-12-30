@@ -45,3 +45,7 @@ void chemodurov::Parallelogram::scale(double k)
 {
   p.scale(k);
 }
+chemodurov::Shape * chemodurov::Parallelogram::clone() const
+{
+  return p.clone();
+}

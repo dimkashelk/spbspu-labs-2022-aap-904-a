@@ -113,3 +113,23 @@ void chemodurov::Polygon::scale(double k)
     vertices_[i] = (vertices_[i] - center_) * k + center_;
   }
 }
+chemodurov::Shape * chemodurov::Polygon::clone() const
+{
+  chemodurov::point_t * temp = new chemodurov::point_t[number_of_vertices_];
+  for (size_t i = 0; i < number_of_vertices_; ++i)
+  {
+    temp[i] = vertices_[i];
+  }
+  chemodurov::Shape * cloned = nullptr;
+  try
+  {
+    cloned = new chemodurov::Polygon(temp, number_of_vertices_);
+  }
+  catch (...)
+  {
+    delete [] temp;
+    delete cloned;
+    throw;
+  }
+  return cloned;
+}

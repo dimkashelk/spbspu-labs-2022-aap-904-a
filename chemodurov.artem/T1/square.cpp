@@ -45,3 +45,7 @@ void chemodurov::Square::scale(double k)
 {
   p.scale(k);
 }
+chemodurov::Shape * chemodurov::Square::clone() const
+{
+  return p.clone();
+}

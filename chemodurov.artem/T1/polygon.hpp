@@ -16,6 +16,7 @@ namespace chemodurov
     void move(const chemodurov::point_t & position);
     void move(double dx, double dy);
     void scale(double k);
+    chemodurov::Shape * clone() const;
    private:
     chemodurov::point_t * vertices_;
     size_t number_of_vertices_;

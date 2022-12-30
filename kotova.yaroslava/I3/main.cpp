@@ -66,6 +66,7 @@ int main()
   {
     destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << "\n";
+    delete[] cstring2;
     delete[] destination2;
   }
   catch (const std::exception &e)

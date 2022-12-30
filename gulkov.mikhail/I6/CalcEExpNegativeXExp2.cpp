@@ -1,14 +1,20 @@
 #include "CalcEExpNegativeXExp2.hpp"
+#include <cmath>
 
-CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, size_t number_max) : x(x), result(0), factorial_of(2), exp(3),
-                                                                            terms_count(0), number_max(number_max)
+CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, size_t number_max, double abs_error) : x(x), result(0), factorial_of(2),
+                                                                                              exp(3), terms_count(0),
+                                                                                              number_max(number_max),
+                                                                                              abs_error(abs_error)
 {}
 
 double CalcEExpNegativeXExp2::operator()()
 {
-  while (terms_count < number_max)
+  double member = 0;
+  while (std::abs(member) > abs_error && terms_count < number_max)
   {
-    result += terms_count % 2 == 0 ? this->countTerm(terms_count, x, factorial_of, exp) : (-1 * this
+    result += member;
+
+    member = terms_count % 2 == 0 ? this->countTerm(terms_count, x, factorial_of, exp) : (-1 * this
       ->countTerm(terms_count, x, factorial_of, exp));
     terms_count++;
   }

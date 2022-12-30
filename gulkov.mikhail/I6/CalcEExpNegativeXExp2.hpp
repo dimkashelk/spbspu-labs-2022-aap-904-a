@@ -6,13 +6,14 @@
 class CalcEExpNegativeXExp2
 {
 public:
-  explicit CalcEExpNegativeXExp2(double x, size_t number_max);
+  explicit CalcEExpNegativeXExp2(double x, size_t number_max, double abs_error);
 
   double operator()();
 
 private:
   double x;
   double result;
+  double abs_error;
   unsigned int factorial_of;
   unsigned int exp;
   size_t terms_count;

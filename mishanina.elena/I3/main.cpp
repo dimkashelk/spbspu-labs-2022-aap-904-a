@@ -46,13 +46,13 @@ int main()
   try
   {
     cstring2 = inputString(cstring2, capacity2, std::cin);
-    if (capacity_2 == 0)
+    if (capacity2 == 0)
     {
-      cstring_2[capacity_2] = '\0';
+      cstring2[capacity2] = '\0';
     }
     else
     {
-      cstring_2[capacity_2 - 1] = '\0';
+      cstring2[capacity2 - 1] = '\0';
     }
   }
   catch (const std::exception& e)

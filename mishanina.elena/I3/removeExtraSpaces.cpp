@@ -7,7 +7,7 @@ char* removeExtraSpaces(char* destination, const char* cstring)
   int numberOfSpaces = 0;
   int numberOfDeletedSpaces = 0;
 
-  for (size_t i = 0, j = 0; i < strlen(cstring); i++)
+  for (size_t i = 0; i < strlen(cstring); i++)
   {
     if (cstring[i] != ' ')
     {

@@ -17,7 +17,7 @@ std::pair< char*, size_t > getCString(std::istream& stream)
       capacity = static_cast< size_t >(capacity * std::sqrt(2));
       char* newstr = new char[capacity + 1];
       str[size] = '\0';
-      strcpy(newstr, str);
+      std::strcpy(newstr, str);
       delete[] str;
       str = newstr;
     }
@@ -47,22 +47,18 @@ bool isIntersectedStrings(const char* str1, const char* str2)
   return false;
 }
 
+bool isVowel(char c)
+{
+  return (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y' ||
+    c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y');
+}
+
 char* removeLatinVowelSymbols(char* destination, const char* source)
 {
-  const char vowels[] = "AaEeIiOoUuYy";
-  size_t vowels_size = sizeof(vowels);
   char* dst = destination;
-  for (auto i = source; *i != '\0'; i++)
+  for (const char* i = source; *i != '\0'; i++)
   {
-    bool found = false;
-    for (size_t j = 0; j < vowels_size; j++)
-    {
-      if (*i == vowels[j])
-      {
-        found = true;
-        break;
-      }
-    }
+    bool found = isVowel(*i);
     if (!found)
     {
       *(dst++) = *i;

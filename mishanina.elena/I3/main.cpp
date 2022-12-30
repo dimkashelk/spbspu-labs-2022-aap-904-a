@@ -30,15 +30,15 @@ int main()
   try
   {
     destination = removeExtraSpaces(destination, cstring1);
-	std::cout << destination << "\n";
-	delete[] destination;
+    std::cout << destination << "\n";
+    delete[] destination;
   }
   catch (const std::exception& e)
   {
     std::cout << e.what();
-	delete[] destination;
-	delete[] cstring1;
-	return 1;
+    delete[] destination;
+    delete[] cstring1;
+    return 1;
   }
   size_t capacity2 = 10;
   char* cstring2 = new char[capacity2];
@@ -46,22 +46,22 @@ int main()
   try
   {
     cstring2 = inputString(cstring2, capacity2, std::cin);
-	if (capacity2 == 0)
-	{
+    if (capacity2 == 0)
+    {
       cstring2[capacity2] = '\0';
-	}
-	else
-	{
+    }
+    else
+    {
       cstring2[capacity2 - 1] = '\0';
-	}
+    }
   }
   catch (const std::exception& e)
   {
     std::cout << e.what();
-	delete[] cstring1;
-	delete[] cstring2;
-	delete[] destination;
-	return 1;
+    delete[] cstring1;
+    delete[] cstring2;
+    delete[] destination;
+    return 1;
   }
   try
   {

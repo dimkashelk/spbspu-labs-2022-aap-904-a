@@ -7,12 +7,18 @@
 
 int main()
 {
-  std::pair< size_t, char* > result = makeNewCString(std::cin);
-  std::pair< size_t, char* >* result_ptr = new std::pair< size_t, char* >();
-  //result_ptr = &result;
-  size_t size = result.first;
-  char* cstring = result.second;
-  delete result_ptr;
+  try
+  {
+    std::pair< size_t, char* > result = makeNewCString(std::cin);
+    size_t size = result.first;
+    char* cstring = result.second;
+  }
+  catch (const std::exception& e)
+  {
+    delete[] cstring;
+    std::cerr << "Error";
+    return 1; 
+  }
 
   char* destination = nullptr;
   char* string_source = nullptr;

@@ -37,4 +37,27 @@ int main()
 	delete[] cstring1;
 	return 1;
   }
+  size_t capacity2 = 10;
+  char* cstring2 = new char[capacity2];
+  cstring2[0] = '\0';
+  try
+  {
+    cstring2 = inputString(cstring2, capacity2, std::cin);
+	if (capacity2 == 0)
+	{
+	  cstring2[capacity2] = '\0';
+	}
+	else
+	{
+	  cstring2[capacity2 - 1] = '\0';
+	}
+  }
+  catch (const std::exception& e)
+  {
+    std::cout << e.what();
+	delete[] cstring1;
+	delete[] cstring2;
+	delete[] destination;
+	return 1;
+  }
 }

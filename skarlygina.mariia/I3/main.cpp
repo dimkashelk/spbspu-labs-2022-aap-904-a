@@ -13,7 +13,7 @@ int main()
   }
   catch (const std::exception& e)
   {
-    std::cerr « "Error";
+    std::cerr << "Error";
     return 1;
   }
   size_t size = result.first;

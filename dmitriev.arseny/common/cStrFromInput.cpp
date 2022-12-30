@@ -31,7 +31,6 @@ char* createCStrFromInput(std::istream& inp)
       dupStr = strcpy(dupStr, cStr);
       delete[] cStr;
       cStr = dupStr;
-      dupStr = nullptr;
     }
     cStr[size++] = chInp;
   }

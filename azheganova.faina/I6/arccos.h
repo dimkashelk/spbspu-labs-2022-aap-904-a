@@ -19,5 +19,6 @@ class findMemberOfRow
     unsigned countofnumbers;
     unsigned countmembers;
     unsigned currentmember;
+    unsigned pi;
 };
 #endif

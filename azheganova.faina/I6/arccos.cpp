@@ -1,7 +1,5 @@
 #include "arccos.h"
-#define _USE_MATH_DEFINES
 #include <iomanip>
-#include <cmath>
 #include <stdexcept>
 
 double countArccos(double x, double absError, unsigned maxnumber)
@@ -29,7 +27,8 @@ findMemberOfRow::findMemberOfRow(double x):
   auxiliarynumber(1),
   countofnumbers(0),
   countmembers(0),
-  currentmember(0)
+  currentmember(0),
+  pi(3.14)
 {
   if (x < -1 || x > 1)
   {
@@ -42,7 +41,7 @@ double findMemberOfRow::operator()()
   if (countmembers == 0)
   {
     countmembers++;
-    currentmember = M_PI/2;
+    currentmember = pi/2;
     return currentmember;
   }
   if (countmembers == 1)

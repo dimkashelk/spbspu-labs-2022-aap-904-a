@@ -1,5 +1,6 @@
 #include "arccos.h"
 #include <iomanip>
+#include <cmath>
 #include <stdexcept>
 
 double countArccos(double x, double absError, unsigned maxnumber)

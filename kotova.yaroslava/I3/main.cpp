@@ -73,6 +73,8 @@ int main()
   catch (const std::exception &e)
   {
     std::cout << e.what();
+    delete[] cstring1;
+    delete[] destination1;
     delete[] cstring2;
     delete[] destination2;
     return 1;

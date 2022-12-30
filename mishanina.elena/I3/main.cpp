@@ -22,4 +22,6 @@ int main()
     delete[] cstring1;
     return 1;
   }
+  char* destination = new char[capacity1];
+  destination[0] = '\0';
 }

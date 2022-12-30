@@ -18,7 +18,10 @@ std::pair< size_t, char* > makeNewCString(std::istream& input)
     {
       try
       {
-        cstring = makeExtendedString(cstring, capacity);
+        char* newstring = makeExtendedString(cstring, capacity);
+        delete[] cstring;
+        cstring = newstring;
+        newstring = nullptr;
       }
       catch (const std::exception& e)
       {

@@ -64,7 +64,7 @@ int main (int argc, char *argv[])
       in >> arr_3[i];
       if (!in)
       {
-        std::cout << "Error... =(";
+        std::cout << "Error..";
         delete[] arr_3;
         return 1;
       }

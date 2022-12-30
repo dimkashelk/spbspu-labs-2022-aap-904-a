@@ -34,14 +34,7 @@ int main(int argc, char *argv[])
       }
     }
     std::ofstream out(argv[3]);
-    try
-    {
-      out << countColumnsWithUniqueElements(matrix, rows, columns) << "\n";
-    }
-    catch (const std::runtime_error &e)
-    {
-      std::cout << e.what();
-    }
+    out << countColumnsWithUniqueElements(matrix, rows, columns) << "\n";
   }
   else if (!std::strcmp(argv[1], "2"))
   {

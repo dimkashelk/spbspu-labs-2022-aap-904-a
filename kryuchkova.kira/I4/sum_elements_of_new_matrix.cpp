@@ -9,7 +9,7 @@ double sumElementsOfNewMatrix(const int *matrix, size_t rows, size_t columns)
   {
     for (size_t j = 0; j < columns; j++)
     {
-      int neighbors = 0;
+      size_t neighbors = 0;
       int sum_nei = 0;
       if (j < i)
       {

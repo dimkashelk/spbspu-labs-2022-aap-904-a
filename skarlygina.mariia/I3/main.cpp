@@ -17,7 +17,7 @@ int main()
   {
     delete[] cstring;
     std::cerr << "Error";
-    return 1; 
+    return 1;
   }
 
   char* destination = nullptr;

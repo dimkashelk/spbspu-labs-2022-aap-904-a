@@ -29,22 +29,14 @@ int main()
     return 1;
   }
 
-  char * destination1 = nullptr;
-  try
-  {
-    destination1 = new char[capacity1];
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
-    return 1;
-  }
+  char * destination1 = new char[capacity1];
+  destination1[0] = '\0';
   try
   {
     destination1 = deleteNumbers(destination1, cstring1);
     std::cout << destination1 << "\n";
+    delete[] cstring1;
+    delete[] destination1;
   }
   catch (const std::exception &e)
   {
@@ -53,19 +45,7 @@ int main()
     delete[] destination1;
     return 1;
   }
-  char* cstring2 = nullptr;
-  try
-  {
-    cstring2 = new char[capacity2];
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
-    delete[] cstring2;
-    return 1;
-  }
+  char* cstring2 = new char[capacity2];
   cstring2[0] = '\0';
   try
   {
@@ -80,25 +60,13 @@ int main()
     delete[] cstring2;
     return 1;
   }
-  char* destination2 = nullptr;
-  try
-  {
-    destination2 = new char[capacity2];
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
-    delete[] cstring2;
-    delete[] destination2;
-    return 1;
-  }
-  destination2[0] = '\0';
+  char* destination2 = new char[capacity2];
   try
   {
     destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << "\n";
+    delete[] cstring2;
+    delete[] destination2;
   }
   catch (const std::exception &e)
   {

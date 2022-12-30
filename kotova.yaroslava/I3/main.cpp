@@ -35,7 +35,6 @@ int main()
   {
     destination1 = deleteNumbers(destination1, cstring1);
     std::cout << destination1 << "\n";
-    delete[] cstring1;
     delete[] destination1;
   }
   catch (const std::exception &e)
@@ -51,12 +50,11 @@ int main()
   {
     cstring2 = formingCstring(cstring2, capacity2, std::cin);
     cstring2[size - 1] = '\0';
+    delete[] cstring2;
   }
   catch (const std::exception &e)
   {
     std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
     delete[] cstring2;
     return 1;
   }
@@ -65,15 +63,12 @@ int main()
   {
     destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << "\n";
-    delete[] cstring2;
     delete[] destination2;
   }
   catch (const std::exception &e)
   {
     std::cout << e.what();
-    delete[] cstring1;
     delete[] cstring2;
-    delete[] destination1;
     delete[] destination2;
     return 1;
   }

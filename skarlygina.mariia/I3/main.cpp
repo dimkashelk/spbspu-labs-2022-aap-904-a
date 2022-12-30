@@ -7,8 +7,15 @@
 
 int main()
 {
-
-  std::pair< size_t, char* > result = makeNewCString(std::cin);
+  try
+  {
+    std::pair< size_t, char* > result = makeNewCString(std::cin);
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr « "Error";
+    return 1;
+  }
   size_t size = result.first;
   char* cstring = result.second;
 

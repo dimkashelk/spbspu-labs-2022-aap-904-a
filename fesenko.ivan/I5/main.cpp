@@ -1,7 +1,6 @@
 #include <iostream>
 #include <expandCString.h>
-#include "deleteextraspaces.h"
-#include "checkcharacterssimilarity.h"
+#include "isFloat.h"
 
 int main()
 {
@@ -16,7 +15,6 @@ int main()
         char *newString = expandCString(cstring, size, capacity);
         delete [] cstring;
         cstring = newString;
-        newString = nullptr;
       }
       catch (const std::exception &e) {
         delete [] cstring;
@@ -33,11 +31,6 @@ int main()
     return 2;
   }
   cstring[size - 1] = '\0';
-  char *task1 = new char [size];
-  task1[0] = '\0';
-  deleteExtraSpaces(task1, cstring);
-  std::cout << task1 << "\n";
-  delete [] task1;
-  std::cout << std::boolalpha << checkCharactersSimilarity(cstring) << '\n';
+  std::cout << std::boolalpha << isFloat(cstring) << "\n";
   delete [] cstring;
 }

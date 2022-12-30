@@ -1,4 +1,4 @@
-#include "expandcstring.h"
+#include "expandCString.h"
 
 char *expandCString(char *cstring, size_t size, size_t &capacity)
 {

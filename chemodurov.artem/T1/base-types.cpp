@@ -1,21 +1,21 @@
 #include "base-types.hpp"
 
-chemodurov::point_t chemodurov::point_t::operator+(const point_t & right) const
+chemodurov::point_t chemodurov::operator+(const point_t & left, const point_t & right)
 {
-  point_t temp{x + right.x, y + right.y};
+  point_t temp{left.x + right.x, left.y + right.y};
   return temp;
 }
-chemodurov::point_t chemodurov::point_t::operator*(double k) const
+chemodurov::point_t chemodurov::operator*(const point_t & left, double k)
 {
-  point_t temp{x * k, y * k};
+  point_t temp{left.x * k, left.y * k};
   return temp;
 }
-chemodurov::point_t chemodurov::point_t::operator-(const point_t & right) const
+chemodurov::point_t chemodurov::operator-(const point_t & left, const point_t & right)
 {
-  point_t temp{x - right.x, y - right.y};
+  point_t temp{left.x - right.x, left.y - right.y};
   return temp;
 }
-bool chemodurov::point_t::operator==(const point_t & right) const
+bool chemodurov::operator==(const point_t & left, const point_t & right)
 {
-  return (x == right.x && y == right.y);
+  return (left.x == right.x && left.y == right.y);
 }

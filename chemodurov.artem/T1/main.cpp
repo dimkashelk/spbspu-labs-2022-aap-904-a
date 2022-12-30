@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "polygon.hpp"
 #include "square.hpp"
 #include "rectangle.hpp"
 #include "parallelogram.hpp"
@@ -9,6 +8,7 @@
 #include "extend-shape-ptr-array.hpp"
 #include "make-polygon-from-string.hpp"
 #include "is-repeating-points-in-array.hpp"
+#include "check-command-in-string.hpp"
 
 int main()
 {
@@ -46,7 +46,7 @@ int main()
     }
 
     std::getline(std::cin, line);
-    if (!line.compare(0, 7, "POLYGON"))
+    if (chemodurov::checkCommand(line, "POLYGON"))
     {
       chemodurov::point_t * arr = nullptr;
       try
@@ -60,7 +60,7 @@ int main()
           continue;
         }
         shp[shp_size++] = chemodurov::makePolygonFromPoints(arr, arr_size);
-        arr = nullptr;
+        delete [] arr;
       }
       catch (...)
       {
@@ -76,15 +76,15 @@ int main()
       continue;
     }
 
-    if (!line.compare(0, 6, "SQUARE"))
+    if (chemodurov::checkCommand(line, "SQUARE"))
     {
       try
       {
         std::string::size_type size1 = 6;
-        std::string::size_type size2;
-        double x = std::stod(line.substr(size1), &size2);
+        std::string::size_type size2 = 0;
+        double x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        double y = std::stod(line.substr(size2), &size1);
+        double y = std::stod(line.substr(size2), std::addressof(size1));
         size1 += size2;
         chemodurov::point_t temp{x, y};
         double length = std::stod(line.substr(size1));
@@ -108,20 +108,20 @@ int main()
       continue;
     }
 
-    if (!line.compare(0, 9, "RECTANGLE"))
+    if (chemodurov::checkCommand(line, "RECTANGLE"))
     {
       try
       {
         std::string::size_type size1 = 9;
         std::string::size_type size2;
-        double x = std::stod(line.substr(size1), &size2);
+        double x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        double y = std::stod(line.substr(size2), &size1);
+        double y = std::stod(line.substr(size2), std::addressof(size1));
         size1 += size2;
         chemodurov::point_t left_down{x, y};
-        x = std::stod(line.substr(size1), &size2);
+        x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        y = std::stod(line.substr(size2), &size1);
+        y = std::stod(line.substr(size2), std::addressof(size1));
         chemodurov::point_t right_up{x, y};
         if (left_down.x >= right_up.x || left_down.y >= right_up.y)
         {
@@ -143,25 +143,25 @@ int main()
       continue;
     }
 
-    if (!line.compare(0, 13, "PARALLELOGRAM"))
+    if (chemodurov::checkCommand(line, "PARALLELOGRAM"))
     {
       try
       {
         std::string::size_type size1 = 13;
         std::string::size_type size2 = 0;
-        double x = std::stod(line.substr(size1), &size2);
+        double x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        double y = std::stod(line.substr(size2), &size1);
+        double y = std::stod(line.substr(size2), std::addressof(size1));
         size1 += size2;
         chemodurov::point_t fst{x, y};
-        x = std::stod(line.substr(size1), &size2);
+        x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        y = std::stod(line.substr(size2), &size1);
+        y = std::stod(line.substr(size2), std::addressof(size1));
         size1 += size2;
         chemodurov::point_t sec{x, y};
-        x = std::stod(line.substr(size1), &size2);
+        x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        y = std::stod(line.substr(size2), &size1);
+        y = std::stod(line.substr(size2), std::addressof(size1));
         size1 += size2;
         chemodurov::point_t trd{x, y};
         if ((fst.y != sec.y && sec.y != trd.y) || fst == sec || sec == trd)
@@ -184,15 +184,15 @@ int main()
       continue;
     }
 
-    if (!line.compare(0, 5, "SCALE"))
+    if (chemodurov::checkCommand(line, "SCALE"))
     {
       try
       {
         std::string::size_type size1 = 5;
         std::string::size_type size2 = 0;
-        double x = std::stod(line.substr(size1), &size2);
+        double x = std::stod(line.substr(size1), std::addressof(size2));
         size2 += size1;
-        double y = std::stod(line.substr(size2), &size1);
+        double y = std::stod(line.substr(size2), std::addressof(size1));
         size1 += size2;
         iso_scale_coeff = std::stod(line.substr(size1));
         iso_scale_center = {x, y};

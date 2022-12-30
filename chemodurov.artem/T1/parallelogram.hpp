@@ -17,6 +17,7 @@ namespace chemodurov
     Shape * clone() const;
    private:
     Polygon p;
+    Parallelogram(const Polygon & pol);
   };
 }
 

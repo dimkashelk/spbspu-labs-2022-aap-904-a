@@ -46,8 +46,6 @@ chemodurov::Polygon::Polygon(point_t * verts, size_t num_of_verts):
 {
   if (num_of_verts < 3 || isRepeatingPointsInArray(verts, num_of_verts))
   {
-    delete [] verts;
-    verts = nullptr;
     throw std::invalid_argument("Not correct vertices of polygon");
   }
 }
@@ -132,4 +130,8 @@ chemodurov::Shape * chemodurov::Polygon::clone() const
     throw;
   }
   return cloned;
+}
+chemodurov::Polygon::Polygon(const chemodurov::Polygon & p):
+ Polygon(new point_t[5], 5ull)
+{
 }

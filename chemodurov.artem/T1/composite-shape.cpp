@@ -193,7 +193,7 @@ void chemodurov::CompositeShape::push_back(Shape * shp)
     delete[] shape_;
     shape_ = new_shape;
   }
-    shape_[size_++] = shp;
+  shape_[size_++] = shp;
 }
 void chemodurov::CompositeShape::pop_back()
 {

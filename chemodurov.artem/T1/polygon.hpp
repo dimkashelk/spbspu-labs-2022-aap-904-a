@@ -10,6 +10,7 @@ namespace chemodurov
   {
    public:
     Polygon(point_t * vertices, size_t number_of_vertices);
+    Polygon(const Polygon & p);
     ~Polygon();
     double getArea() const;
     rectangle_t getFrameRect() const;

@@ -17,9 +17,9 @@ namespace chemodurov
   {
     std::string::size_type size1 = *size;
     std::string::size_type size2 = 0;
-    double x = std::stod(data.substr(size1), &size2);
+    double x = std::stod(data.substr(size1), std::addressof(size2));
     size2 += size1;
-    double y = std::stod(data.substr(size2), &size1);
+    double y = std::stod(data.substr(size2), std::addressof(size1));
     size1 += size2;
     *size = size1;
     point_t temp{x, y};
@@ -30,7 +30,6 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
 {
   size_t capacity = 5;
   point_t * arr = new point_t[capacity];
-  arr_size = 0;
   std::string::size_type size = 7;
   do
   {
@@ -45,7 +44,7 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
         arr = new_arr;
         new_arr = nullptr;
       }
-      arr[arr_size++] = readPointFromString(data, &size);
+      arr[arr_size++] = readPointFromString(data, std::addressof(size));
     }
     catch (...)
     {

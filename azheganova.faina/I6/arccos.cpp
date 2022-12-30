@@ -41,7 +41,7 @@ double findMemberOfRow::operator()()
   if (countmembers == 0)
   {
     countmembers++;
-    currentmember = pi/2;
+    currentmember = pi / 2;
     return currentmember;
   }
   if (countmembers == 1)

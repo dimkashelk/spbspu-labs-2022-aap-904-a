@@ -35,9 +35,7 @@ int main()
   {
     destination1 = deleteNumbers(destination1, cstring1);
     std::cout << destination1 << "\n";
-    delete[] cstring1;
-    delete[] destination1;
-  }
+   }
   catch (const std::exception &e)
   {
     std::cout << e.what();
@@ -66,9 +64,7 @@ int main()
   {
     destination2 = replacingLetters(cstring2, destination2);
     std::cout << destination2 << "\n";
-    delete[] cstring2;
-    delete[] destination2;
-  }
+   }
   catch (const std::exception &e)
   {
     std::cout << e.what();

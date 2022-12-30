@@ -23,3 +23,30 @@ double defineArcSin(double x, double absError, unsigned numberMax)
 
   throw std::logic_error("the required accuracy has not been achieved");
 }
+
+MemberOfRow::MemberOfRow(double x)
+{
+  this->x = x;
+  powX = x;
+
+  even = 1;
+  odd = 2;
+  factorialEven = 1;
+  factorialOdd = 1;
+}
+
+double MemberOfRow::operator()()
+{
+  powX = powX * x * x;
+  even = even + 2;
+  factorialOdd = factorialOdd * odd;
+
+  double member = 0;
+  member = (factorialEven * powX) / (double(factorialOdd) * even);
+
+
+  odd = odd + 2;
+  factorialEven = factorialEven * even;
+
+  return member;
+}

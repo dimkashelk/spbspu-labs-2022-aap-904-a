@@ -11,7 +11,8 @@ int main()
   try
   {
     cstring1 = inputString(cstring1, capacity1, std::cin);
-    if (capacity1 == 1)
+    //if (capacity1 == 1)
+    if (cstring_1[0] == '\0')
     {
       std::cerr << "ERROR: empty string";
       delete[] cstring1;
@@ -66,14 +67,14 @@ int main()
   try
   {
     bool result = hasItTheSameSimbols(cstring1, cstring2);
-    if (result)
+    /*if (result)
     {
-      std::cout << "Strings have the same simbols" << "\n";
+        std::cout << "Strings have the same simbols" << "\n";
     }
     else
     {
-      std::cout << "Strings don't have the same simbols" << "\n";
-    }
+        std::cout << "Strings don't have the same simbols" << "\n";
+    }*/
     delete[] cstring1;
     delete[] cstring2;
   }
@@ -83,6 +84,14 @@ int main()
     delete[] cstring1;
     delete[] cstring2;
     return 1;
+  }
+  if (result)
+  {
+      std::cout << "Strings have the same simbols" << "\n";
+  }
+  else
+  {
+      std::cout << "Strings don't have the same simbols" << "\n";
   }
   return 0;
 }

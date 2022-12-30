@@ -1,4 +1,7 @@
 ﻿#include <iostream>
+#include "inputString.h"
+#include "removeExtraSpaces.h"
+#include "hasItTheSameSimbols.h"
 
 int main()
 {

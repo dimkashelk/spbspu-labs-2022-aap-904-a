@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     int arr[1000];
     fillArray(std::cout, arr, rows, cols, &in);
     printArray(std::cout, arr, rows, cols);
-    size_t positiveRowsCount = getPositiveRowsCount(( int* )&arr, rows, cols);
+    size_t positiveRowsCount = getPositiveRowsCount(reinterpret_cast< int* >(&arr), rows, cols);
     std::cout << "Found positive rows count: " << positiveRowsCount << "\n";
   }
   else if (!strcmp(argv[1], "14"))

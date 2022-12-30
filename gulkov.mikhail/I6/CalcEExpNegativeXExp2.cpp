@@ -10,7 +10,7 @@ CalcEExpNegativeXExp2::CalcEExpNegativeXExp2(double x, size_t number_max, double
 double CalcEExpNegativeXExp2::operator()()
 {
   double member = 0;
-  while (std::abs(member) > abs_error && terms_count < number_max)
+  do
   {
     result += member;
 
@@ -18,6 +18,7 @@ double CalcEExpNegativeXExp2::operator()()
       ->countTerm(terms_count, x, factorial_of, exp));
     terms_count++;
   }
+  while (std::abs(member) > abs_error && terms_count < number_max);
 
   terms_count = 0;
   return result;

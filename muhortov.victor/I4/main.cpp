@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <fstream>
 #include <cstring>
+#include "CountMoreThanThree.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -22,10 +23,31 @@ int main(int argc, char *argv[])
     std::cerr << "Error: problems with reading file\n";
     return 1;
   }
+
+  // tasks 16 and 17
+
   if (!std::strcmp(argv[1], "1"))
   {
-
-    return 1;
+    int arr[1000];
+    if (cols * rows > 1000)
+    {
+      std::cout << "Error: too big matrix\n";
+      return 1;
+    }
+    for (size_t i = 0; i < cols; i++)
+    {
+      for (size_t j = 0; j < rows; j++)
+      {
+        in >> arr[cols * i + j];
+        if (!in)
+        {
+          std::cerr << "Error: problems with reading file\n";
+          return 1;
+        }
+      }
+    }
+    std::ofstream out(argv[3]);
+    out << findCountMoreThanThree(arr, cols, rows) << '\n';
   }
   else if (!std::strcmp(argv[1], "2"))
   {

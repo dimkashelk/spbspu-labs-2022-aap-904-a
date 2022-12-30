@@ -17,7 +17,7 @@ int main()
       try
       {
         cstring[cap - 1] = '\0';
-        char * newstr = new char[cap + 20];
+        char* newstr = new char[cap + 20];
         strcpy(newstr, cstring);
         delete [] cstring;
         cstring = newstr;

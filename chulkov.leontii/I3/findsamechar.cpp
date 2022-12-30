@@ -1,10 +1,10 @@
 #include "findsamechar.h"
 
-bool findSameChar(char* str, char* newstr)
+bool findSameChar(const char* str, const char* newstr)
 {
-  for (char* i = str; *i; i++)
+  for (const char* i = str; *i; i++)
   {
-    for (char* j = newstr; *j; j++)
+    for (const char* j = newstr; *j; j++)
     {
       if (*i == *j)
       {

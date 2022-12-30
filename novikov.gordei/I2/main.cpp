@@ -17,11 +17,11 @@ int main(int argc, const char* argv[])
     std::cerr << "Exactly one argument needed\n";
     return 1;
   }
-  srand(time(nullptr));
+  std::srand(time(nullptr));
 
   size_t k = 2;
 
-  int staticArray[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int staticArray[N] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   cout << "Static array: ";
   processArray(staticArray, N, k);
 
@@ -32,12 +32,12 @@ int main(int argc, const char* argv[])
     std::cerr << "Number is not a positive integer\n";
     return 1;
   }
-  int *dynamicArray = new int[n];
+  int* dynamicArray = new int[n];
   for (size_t i = 0; i < n; i++) {
-    dynamicArray[i] = rand() % (randMax - randMin + 1) + randMin;
+    dynamicArray[i] = std::rand() % (randMax - randMin + 1) + randMin;
   }
   processArray(dynamicArray, n, k);
-  delete [] dynamicArray;
+  delete[] dynamicArray;
 
   std::ifstream file(argv[1]);
   if (!file.is_open()) {
@@ -51,7 +51,7 @@ int main(int argc, const char* argv[])
     return 1;
   }
   processArray(dynamicArray, n, k);
-  delete [] dynamicArray;
+  delete[] dynamicArray;
 
   return 0;
 }

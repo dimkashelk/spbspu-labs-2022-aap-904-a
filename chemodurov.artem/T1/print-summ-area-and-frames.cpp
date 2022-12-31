@@ -13,7 +13,7 @@ namespace chemodurov
   }
 }
 
-void chemodurov::printSummAreaAndFrames(std::ostream & out, const Shape * const * shp, size_t shp_size)
+void chemodurov::printSummAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t shp_size)
 {
   if (!shp_size)
   {
@@ -22,11 +22,11 @@ void chemodurov::printSummAreaAndFrames(std::ostream & out, const Shape * const 
   double summ_area = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    summ_area += shp[i]->getArea();
+    summ_area += comp[i]->getArea();
   }
   out << std::fixed << std::setprecision(1) << summ_area;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    chemodurov::printLeftDownAndRightUp(out << ' ', shp[i]->getFrameRect());
+    chemodurov::printLeftDownAndRightUp(out << ' ', comp[i]->getFrameRect());
   }
 }

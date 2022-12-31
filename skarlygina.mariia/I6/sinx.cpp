@@ -16,7 +16,7 @@ double sinx(double x, double error, unsigned max_members)
     next = next * numerator / factorial;
     members++;
   }
-  while (fabs(next) > error || members != max_members);
+  while (std::fabs(next) > error || members != max_members);
 
   return summ;
 }

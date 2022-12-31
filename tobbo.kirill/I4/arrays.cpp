@@ -21,7 +21,7 @@ void fillArray(int* arr, size_t rows, size_t cols, std::ifstream* in)
   for (size_t i = 0; i < size; ++i)
   {
     *in >> arr[i];
-    if (!in)
+    if (in->fail())
     {
       throw std::runtime_error("Error while readaing from file");
     }

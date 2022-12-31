@@ -83,9 +83,15 @@ int main()
     {
       try
       {
-        Regular regular;
-        std::cin >> regular;
-        shapes[size] = regular.clone();
+        double x = 0.0;
+        double y = 0.0;
+        point_t point[3];
+        for (size_t i = 0; i < 3; i++)
+        {
+          std::cin >> x >> y;
+          point[i] = point_t(x, y);
+        }
+        shapes[size] = new Regular(point[0], point[1], point[2]);
         size++;
         if (size == capacity)
         {

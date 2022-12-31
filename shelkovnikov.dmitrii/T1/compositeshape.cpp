@@ -166,6 +166,7 @@ void CompositeShape::push_back(Shape *shp)
 }
 void CompositeShape::pop_back()
 {
+  delete shapes_[size_ - 1];
   size_--;
 }
 Shape* CompositeShape::at(size_t id)

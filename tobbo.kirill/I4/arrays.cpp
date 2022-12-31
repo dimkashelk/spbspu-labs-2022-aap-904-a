@@ -5,15 +5,25 @@
 
 void fillArray(int* arr, size_t rows, size_t cols, std::ifstream* in)
 {
-  for (size_t i = 0; i < rows; i++)
-  {
-    for (size_t j = 0; j < cols; j++)
+  /*  for (size_t i = 0; i < rows; i++)
     {
-      *in >> arr[i * cols + j];
-      if (!in)
+      for (size_t j = 0; j < cols; j++)
       {
-        throw std::runtime_error("Error while readaing from file");
+        *in >> arr[i * cols + j];
+        if (!in)
+        {
+          throw std::runtime_error("Error while readaing from file");
+        }
       }
+    }
+    */
+  size_t size = rows * cols;
+  for (size_t i = 0; i < size; ++i)
+  {
+    *in >> arr[i];
+    if (!in)
+    {
+      throw std::runtime_error("Error while readaing from file");
     }
   }
 }

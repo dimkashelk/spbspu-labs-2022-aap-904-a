@@ -108,15 +108,40 @@ int main()
     {
       try
       {
-        Polygon polygon;
-        std::cin >> polygon;
-        shapes[size] = polygon.clone();
+        size_t size = 0;
+        size_t capacity = 10;
+        point_t *points = new point_t[capacity];
+        do
+        {
+          double x = 0.0;
+          double y = 0.0;
+          std::cin >> x >> y;
+          if (std::cin)
+          {
+            points[size] = point_t(x, y);
+            size++;
+            if (size == capacity)
+            {
+              capacity += 10;
+              point_t *new_points = new point_t[capacity];
+              for (size_t i = 0; i < size; i++)
+              {
+                new_points[i] = points[i];
+              }
+              delete[] points;
+              points = new_points;
+            }
+          }
+        }
+        while (std::cin);
+        shapes[size] = new Polygon(points, size);
         size++;
         if (size == capacity)
         {
           capacity += 10;
           expand(shapes, size, capacity);
         }
+        delete[] points;
       }
       catch (...)
       {

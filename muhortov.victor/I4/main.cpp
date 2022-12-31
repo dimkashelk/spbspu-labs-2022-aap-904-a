@@ -4,7 +4,6 @@
 #include <fstream>
 #include <cstring>
 #include "CountMoreThanThree.hpp"
-#include "SmoothingMatrix.hpp"
 #include "SuminSmoothMatrix.hpp"
 
 int main(int argc, char *argv[])
@@ -54,6 +53,12 @@ int main(int argc, char *argv[])
   else if (!std::strcmp(argv[1], "2"))
   {
     int *arr = nullptr;
+    if (cols == 0 && rows == 0)
+    {
+      std::cout << "Empty dynamic array\n";
+      return 0;
+    }
+
     try
     {
       arr = new int[cols * rows];
@@ -64,7 +69,6 @@ int main(int argc, char *argv[])
       return 1;
     }
 
-    double *smooth_arr = new double[cols * rows];
     for (size_t i = 0; i < cols; i++)
     {
       for (size_t j = 0; j < rows; j++)
@@ -79,21 +83,19 @@ int main(int argc, char *argv[])
       }
     }
 
-    smoothingMatrix(arr, cols, rows, smooth_arr);
-
     std::ofstream out(argv[3]);
-    for (size_t i = 0; i < cols; i++)
+    try
     {
-      for (size_t j = 0 ; j < rows; j++)
-      {
-          out << smooth_arr[cols * i + j] << ' ';
-      }
-      out << '\n';
+      out << summingInSmoothMatrix(arr, cols, rows);
     }
-    out << summingInSmoothMatrix(arr, cols, rows);
+    catch (const std::invalid_argument &e)
+    {
+      std::cerr << "Error: " << e.what();
+      delete[] arr;
+      return 1;
+    }
 
     delete[] arr;
-    delete[] smooth_arr;
   }
   else
   {

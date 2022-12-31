@@ -14,9 +14,21 @@ int main(int argc, char* argv[])
     std::cerr << "Error while rading from file\n";
     return 1;
   }
+
   size_t rows = 0;
+  in >> rows;
+  if (!in)
+  {
+    std::cerr << "Error while reading rows\n";
+    return 1;
+  }
   size_t cols = 0;
-  in >> rows >> cols;
+  in >> cols;
+  if (!in)
+  {
+    std::cerr << "Error while reading columns\n";
+    return 1;
+  }
   if (rows * cols > 1000)
   {
     std::cerr << "Too many rows or columns. Max is 1000 elements\n";
@@ -28,9 +40,10 @@ int main(int argc, char* argv[])
     std::cerr << "Cannot open output file\n";
     return 1;
   }
+  std::cout << "Rows: " << rows << " Cols: " << cols << "============================\n";
   if (!strcmp(argv[1], "1"))
   {
-    int arr[1000]{0};
+    int arr[1000];
     try
     {
       fillArray(arr, rows, cols, &in);
@@ -40,7 +53,8 @@ int main(int argc, char* argv[])
       std::cerr << e.what() << "\n";
       return 1;
     }
-    printArray(output, arr, rows, cols);
+    std::cout << "Task: 1-----------------------\n";
+    printArray(std::cout, arr, rows, cols);
     size_t positiveRowsCount = getPositiveRowsCount(reinterpret_cast< int* >(&arr), rows, cols);
     output << "Found positive rows count: " << positiveRowsCount << "\n";
   }
@@ -62,6 +76,7 @@ int main(int argc, char* argv[])
       delete[] arr;
       return 1;
     }
+    std::cout << "Task: 2-----------------------\n";
     printArray(output, arr, rows, cols);
     int maxSumDiag = getMaxSumDiag(arr, rows);
     output << "Max sum in diagonals except main one: " << maxSumDiag << "\n";

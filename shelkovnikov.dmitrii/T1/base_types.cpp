@@ -32,7 +32,12 @@ rectangle_t::rectangle_t(point_t point, double width, double height):
   point(point),
   width(width),
   height(height)
-{}
+{
+  if (width <= 0 || height <= 0)
+  {
+    throw std::logic_error("It isn't rectangle");
+  }
+}
 point_t rectangle_t::getLeftDownPoint() const
 {
   return point_t(point.x - width / 2, point.y - height / 2);

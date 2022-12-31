@@ -18,25 +18,6 @@ void fillArray(int* arr, size_t rows, size_t cols, std::ifstream* in)
   }
 }
 
-void printArray(std::ostream& out, int* arr, size_t rows, size_t cols)
-{
-  for (size_t row = 0; row < rows; row++)
-  {
-    for (size_t col = 0; col < cols; col++)
-    {
-      out << arr[row * cols + col];
-      if (col == (cols - 1))
-      {
-        out << "\n";
-      }
-      else
-      {
-        out << " ";
-      }
-    }
-  }
-}
-
 size_t getPositiveRowsCount(int* arr, size_t rows, size_t cols)
 {
   size_t count = 0;

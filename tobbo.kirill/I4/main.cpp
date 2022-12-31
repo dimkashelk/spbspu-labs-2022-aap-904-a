@@ -34,7 +34,6 @@ int main(int argc, char* argv[])
     try
     {
       fillArray(arr, rows, cols, &in);
-      printArray(output, arr, rows, cols);
       size_t positiveRowsCount = getPositiveRowsCount(reinterpret_cast< int* >(&arr), rows, cols);
       output << "Found positive rows count: " << positiveRowsCount << "\n";
     }
@@ -55,7 +54,6 @@ int main(int argc, char* argv[])
     try
     {
       fillArray(arr, rows, cols, &in);
-      printArray(output, arr, rows, cols);
       int maxSumDiag = getMaxSumDiag(arr, rows);
       output << "Max sum in diagonals except main one: " << maxSumDiag << "\n";
       delete[] arr;

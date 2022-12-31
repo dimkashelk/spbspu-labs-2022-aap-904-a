@@ -108,9 +108,9 @@ int main()
     {
       try
       {
-        size_t size = 0;
-        size_t capacity = 10;
-        point_t *points = new point_t[capacity];
+        size_t s = 0;
+        size_t cap = 10;
+        point_t *points = new point_t[cap];
         do
         {
           double x = 0.0;
@@ -118,13 +118,13 @@ int main()
           std::cin >> x >> y;
           if (std::cin)
           {
-            points[size] = point_t(x, y);
-            size++;
-            if (size == capacity)
+            points[s] = point_t(x, y);
+            s++;
+            if (s == cap)
             {
-              capacity += 10;
-              point_t *new_points = new point_t[capacity];
-              for (size_t i = 0; i < size; i++)
+              cap += 10;
+              point_t *new_points = new point_t[cap];
+              for (size_t i = 0; i < s; i++)
               {
                 new_points[i] = points[i];
               }
@@ -134,11 +134,11 @@ int main()
           }
         }
         while (std::cin);
-        shapes[size] = new Polygon(points, size);
+        shapes[size] = new Polygon(points, s);
         size++;
         if (size == capacity)
         {
-          capacity += 10;
+          cap += 10;
           expand(shapes, size, capacity);
         }
         delete[] points;

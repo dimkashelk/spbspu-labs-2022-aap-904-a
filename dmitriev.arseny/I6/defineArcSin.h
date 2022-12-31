@@ -12,7 +12,7 @@ public:
 private:
   double x;
   double powX;
-  unsigned even;
+  unsigned number;
   unsigned odd;
   unsigned factorialEven;
   unsigned factorialOdd;

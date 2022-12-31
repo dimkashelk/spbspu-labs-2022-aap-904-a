@@ -1,5 +1,5 @@
-#include <stdexcept>
 #include "defineArcSin.h"
+#include <stdexcept>
 
 double defineArcSin(double x, double absError, unsigned numberMax)
 {
@@ -8,7 +8,7 @@ double defineArcSin(double x, double absError, unsigned numberMax)
     throw std::logic_error("x does not fall within the specified interval");
   }
   MemberOfRow defineNewMember(x);
-  double result = x;
+  double result = 0.0;
   double member = 0.0;
 
   for (unsigned n = 0; n < numberMax; n++)
@@ -29,23 +29,20 @@ MemberOfRow::MemberOfRow(double x)
   this->x = x;
   powX = x;
 
-  even = 1;
-  odd = 2;
+  number = 1;
   factorialEven = 1;
   factorialOdd = 1;
 }
 
 double MemberOfRow::operator()()
 {
-  powX = powX * x * x;
-  even = even + 2;
-  factorialOdd = factorialOdd * odd;
-
   double member = 0;
-  member = (factorialEven * powX) / (double(factorialOdd) * even);
+  member = (factorialEven * powX) / (factorialOdd * number);
 
-  odd = odd + 2;
-  factorialEven = factorialEven * even;
+  powX = powX * x * x;
+  factorialEven = factorialEven * number;
+  factorialOdd = factorialOdd * (number + 1);
+  number = number + 2;
 
   return member;
 }

@@ -1,6 +1,6 @@
+#include <iostream>
 #include "defineArcSin.h"
 #include "printTable.h"
-#include <iostream>
 
 int main()
 {

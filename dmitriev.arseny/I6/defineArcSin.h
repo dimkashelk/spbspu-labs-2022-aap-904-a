@@ -1,5 +1,5 @@
-#ifndef DEFINEARCSIN
-#define DEFINEARCSIN
+#ifndef DEFINEARCSIN_H
+#define DEFINEARCSIN_H
 
 double defineArcSin(double x, double absError, unsigned numberMax);
 

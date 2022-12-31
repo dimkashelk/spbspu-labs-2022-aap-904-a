@@ -4,7 +4,6 @@
 class Triangle: virtual public Shape
 {
 public:
-  Triangle();
   Triangle(point_t point1, point_t point2, point_t point3);
   Triangle(double x1, double y1, double x2, double y2, double x3, double y3);
   Triangle(const Triangle &triangle);
@@ -22,9 +21,6 @@ public:
   point_t getCenter() const;
   bool containsPoint(point_t point) const;
 private:
-  point_t point1_;
-  point_t point2_;
-  point_t point3_;
+  point_t points[3];
 };
-std::istream& operator>>(std::istream &in, Triangle &triangle);
 #endif

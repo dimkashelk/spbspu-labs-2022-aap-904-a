@@ -18,10 +18,10 @@ point_t &point_t::operator=(const point_t point)
   y = point.y;
   return *this;
 }
-rectangle_t::rectangle_t(double x1, double y1, double x2, double y2):
-  point((x1 + x2) / 2, (y1 + y2) / 2),
-  width(x2 - x1),
-  height(y2 - y1)
+rectangle_t::rectangle_t(point_t point_1, point_t point_2):
+  point((point_1.x + point_2.x) / 2, (point_1.y + point_2.y) / 2),
+  width(point_2.x - point_1.x),
+  height(point_2.y - point_1.y)
 {}
 rectangle_t::rectangle_t(point_t point, double width, double height):
   point(point),

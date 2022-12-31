@@ -30,5 +30,6 @@ char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
   }
   while (input && cstring[size++] != '\n');
   cstring[size] = '\0';
+  return cstring;
   return foo(size, input);
 }

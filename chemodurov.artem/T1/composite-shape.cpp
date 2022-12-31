@@ -17,6 +17,7 @@ chemodurov::CompositeShape::CompositeShape(CompositeShape && rhs):
  capacity_(rhs.capacity_)
 {
   rhs.shape_ = nullptr;
+  rhs.size_ = 0;
 }
 chemodurov::CompositeShape::CompositeShape(size_t capacity):
  shape_(new Shape*[capacity]),

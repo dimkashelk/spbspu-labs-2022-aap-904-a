@@ -1,45 +1,21 @@
 #include <iostream>
 #include <cstddef>
+#include <inputstring.h>
 #include "countdifferentletters.h"
 #include "findrepeatedsymbols.h"
 
 int main()
 {
-  size_t capacity = 10;
-  char * cstring = new char[capacity];
-  size_t size = 0;
-  std::cin >> std::noskipws;
-  do
+  char * cstring = nullptr;
+  try
   {
-    if (size == capacity)
-    {
-      try
-      {
-        char * newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete [] cstring;
-        cstring = newstr;
-        capacity += 20;
-      }
-      catch (...)
-      {
-        delete [] cstring;
-        return 1;
-      }
-    }
-    std::cin >> cstring[size];
+    cstring = inputString(std::cin);
   }
-  while (std::cin && cstring[size++] != '\n');
-  if (!std::cin && !size)
+  catch (const std::exception & e)
   {
-    std::cout << "error";
-    delete[] cstring;
+    std::cerr << e.what() << "\n";
     return 1;
   }
-  cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
   std::cout << countDifferentLetters(cstring) << '\n';
   std::cout << findRepeatedSymbols(cstring) << '\n';

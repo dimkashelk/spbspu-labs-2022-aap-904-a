@@ -1,6 +1,5 @@
 #include "arrays.h"
 
-
 int main(int argc, char* argv[])
 {
   if (argc != 4)
@@ -8,15 +7,15 @@ int main(int argc, char* argv[])
     std::cerr << "Wrong number of parameters\n";
     return 1;
   }
-  size_t rows = 0;
-  size_t cols = 0;
   std::ifstream in(argv[2]);
-  in >> rows >> cols;
   if (!in)
   {
     std::cerr << "Error while rading from file\n";
     return 1;
   }
+  size_t rows = 0;
+  size_t cols = 0;
+  in >> rows >> cols;
   if (rows * cols > 1000)
   {
     std::cerr << "Too many rows or columns. Max is 1000 elements\n";

@@ -4,8 +4,7 @@
 #include <limits>
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
-  size_(size),
-  triangles_(new Triangle*[size_])
+  size_(size)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -13,75 +12,61 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   }
   if (containsThreePointsOnLine())
   {
-    delete[] triangles_;
     delete[] points_;
     throw std::logic_error("3 or more points_ on one line here.......");
   }
   if (size < 3)
   {
-    delete[] triangles_;
     delete[] points_;
     throw std::logic_error("Need minimum 3 points");
   }
-  size_t index = 0;
+}
+TriangulatePoints::~TriangulatePoints()
+{
+  delete[] points_;
+}
+Triangle* TriangulatePoints::operator()()
+{
   while (size_ > 3)
   {
-    point_t *point = points_;
-    size_t ind = 0;
-    size_t last_number = 2;
-    while (last_number < size_)
+    first = 0;
+    second = 1;
+    third = 2;
+    while (third < size_)
     {
-      if (getMixedProduct(vector_t(*(point + 2), *point), vector_t(*(point + 1), *point)) > 0)
+      if (getMixedProduct(vector_t(points_[third], points_[first]), vector_t(points_[second], points_[first])) > 0)
       {
         try
         {
-          Triangle *triangle = new Triangle(*point, *(point + 1), *(point + 2));
+          Triangle *triangle = new Triangle(points_[first], points_[second], points_[third]);
           if (!containsAnyPoint(*triangle))
           {
-            triangles_[index] = triangle;
-            index++;
-            last_number++;
-            removePoint(ind + 1);
+            removePoint(second);
+            return triangle;
           }
           else
           {
-            point += 3;
-            last_number += 3;
-            ind += 2;
+            first += 3;
+            second += 3;
+            third += 3;
           }
         }
         catch (const std::logic_error &e)
         {
-          point += 3;
-          ind += 2;
+          first += 3;
+          second += 3;
+          third += 3;
         }
       }
       else
       {
-        point += 3;
-        ind += 2;
+        first += 3;
+        second += 3;
+        third += 3;
       }
     }
   }
-  Triangle *triangle = new Triangle(*points_, *(points_ + 1), *(points_ + 2));
-  triangles_[index] = triangle;
-  index++;
-  size_ = index;
-}
-TriangulatePoints::~TriangulatePoints()
-{
-  triangles_ -= size_;
-  for (size_t i = 0; i < size_; i++)
-  {
-    delete triangles_[i];
-  }
-  delete[] triangles_;
-  delete[] points_;
-}
-Triangle TriangulatePoints::operator()()
-{
-  Triangle triangle = **triangles_;
-  triangles_++;
+  Triangle *triangle = new Triangle(points_[0], points_[1], points_[2]);
   return triangle;
 }
 size_t TriangulatePoints::getSize() const

@@ -4,7 +4,11 @@
 #include <limits>
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
-  size_(size)
+  size_(size),
+  first_(0),
+  second_(0),
+  third_(0),
+  count_triangles_(0)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -29,40 +33,41 @@ Triangle TriangulatePoints::operator()()
 {
   while (size_ > 3)
   {
-    first = 0;
-    second = 1;
-    third = 2;
-    while (third < size_)
+    first_ = 0;
+    second_ = 1;
+    third_ = 2;
+    while (third_ < size_)
     {
-      if (getMixedProduct(vector_t(points_[third], points_[first]), vector_t(points_[second], points_[first])) > 0)
+      if (getMixedProduct(vector_t(points_[third_], points_[first_]), vector_t(points_[second_], points_[first_])) > 0)
       {
         try
         {
-          Triangle triangle = Triangle(points_[first], points_[second], points_[third]);
+          Triangle triangle = Triangle(points_[first_], points_[second_], points_[third_]);
           if (!containsAnyPoint(triangle))
           {
-            removePoint(second);
+            removePoint(second_);
+            count_triangles_++;
             return triangle;
           }
           else
           {
-            first += 3;
-            second += 3;
-            third += 3;
+            first_ += 3;
+            second_ += 3;
+            third_ += 3;
           }
         }
         catch (const std::logic_error &e)
         {
-          first += 3;
-          second += 3;
-          third += 3;
+          first_ += 3;
+          second_ += 3;
+          third_ += 3;
         }
       }
       else
       {
-        first += 3;
-        second += 3;
-        third += 3;
+        first_ += 3;
+        second_ += 3;
+        third_ += 3;
       }
     }
   }
@@ -71,7 +76,7 @@ Triangle TriangulatePoints::operator()()
 }
 size_t TriangulatePoints::getSize() const
 {
-  return size_;
+  return count_triangles_;
 }
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {

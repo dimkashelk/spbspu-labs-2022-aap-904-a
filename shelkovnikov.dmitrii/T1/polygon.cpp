@@ -4,7 +4,7 @@
 #include "isotropic_scaling.h"
 Polygon::Polygon(point_t *points, size_t size):
   triangles_(makeTriangles(points, size)),
-  count_(0)
+  count_(countTriangles())
 {}
 Polygon::Polygon(const Polygon &polygon)
 {

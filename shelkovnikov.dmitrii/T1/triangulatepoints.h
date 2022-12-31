@@ -14,9 +14,10 @@ public:
 private:
   point_t *points_;
   size_t size_;
-  size_t first;
-  size_t second;
-  size_t third;
+  size_t first_;
+  size_t second_;
+  size_t third_;
+  size_t count_triangles_;
   double getMixedProduct(vector_t a, vector_t b) const;
   bool containsAnyPoint(const Triangle &triangle) const;
   void removePoint(size_t ind);

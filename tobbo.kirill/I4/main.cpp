@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
   }
   if (!strcmp(argv[1], "1"))
   {
-    int arr[1000];
+    int arr[1000]{0};
     try
     {
       fillArray(arr, rows, cols, &in);

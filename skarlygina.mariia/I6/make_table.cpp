@@ -1,5 +1,6 @@
 #include "make_table.h"
 #include "sinx.h"
+#include <cmath>
 #include <iomanip>
 
 void printTableRow(std::ostream& out, double x, double error, unsigned members)

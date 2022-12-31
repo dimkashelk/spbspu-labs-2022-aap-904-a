@@ -6,14 +6,13 @@ double defineArcSin(double x, double absError, unsigned numberMax);
 class MemberOfRow
 {
 public:
-  MemberOfRow(double x);
+  explicit MemberOfRow(double x);
   double operator()();
 
 private:
   double x;
   double powX;
   unsigned number;
-  unsigned odd;
   unsigned factorialEven;
   unsigned factorialOdd;
 

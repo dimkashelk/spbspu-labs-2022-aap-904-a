@@ -47,21 +47,6 @@ int main()
   delete[] cstring1;
   delete[] destination1;
 
-  char* cstring2 = new char[capacity2];
-  cstring2[0] = '\0';
-  try
-  {
-    cstring2 = formingCstring(cstring2, capacity2, std::cin);
-    cstring2[size - 1] = '\0';
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
-    delete[] cstring2;
-    return 1;
-  }
   char* destination2 = nullptr;
   try
   {
@@ -70,17 +55,14 @@ int main()
   catch (const std::exception& e)
   {
     std::cout << e.what();
-    delete[] cstring1;
-    delete[] destination1;
-    delete[] cstring2;
     delete[] destination2;
     return 1;
   }
 
-  destination2 = replacingLetters(cstring2, destination2);
+  destination2 = replacingLetters(cstring1, destination2);
   std::cout << destination2 << "\n";
 
-  delete[] cstring2;
+  delete[] cstring1;
   delete[] destination2;
 
   return 0;

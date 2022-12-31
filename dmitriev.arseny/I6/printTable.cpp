@@ -22,6 +22,10 @@ void printRowInTable(std::ostream& out, double x, double absError, unsigned numb
 
 void printTable(std::ostream& out, double leftBorder, double rightBorder, double step, unsigned numberMax, double absError)
 {
+  if (leftBorder > rightBorder)
+  {
+    throw std::logic_error("incorrect borders");
+  }
   for (double x = leftBorder; x + step < rightBorder; x = x + step)
   {
     try

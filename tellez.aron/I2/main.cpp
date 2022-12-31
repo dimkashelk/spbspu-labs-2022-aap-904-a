@@ -55,7 +55,7 @@ int main (int argc, char *argv[])
     in >> size;
     if (!in)
     {
-      std::cout << "Error... =(";
+      std::cout << "Error..";
       return 1;
     }
     int *arr_3 = new int[size];
@@ -71,8 +71,8 @@ int main (int argc, char *argv[])
     }
     try
     {
-      std::cout << sum_index_elements(arr_3, size) << "\n";
-      std::cout << largest_dength_decreasing(arr_3, size) << "\n";
+      std::cout << sum_index_elements(arr_3, size) << std::endl;
+      std::cout << largest_dength_decreasing(arr_3, size) << std::endl;
     }
     catch (const std::overflow_error &e)
     {
@@ -84,4 +84,3 @@ int main (int argc, char *argv[])
   }
   return 0;
 }
-

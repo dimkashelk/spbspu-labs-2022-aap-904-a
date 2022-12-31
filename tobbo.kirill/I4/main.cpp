@@ -60,6 +60,16 @@ int main(int argc, char* argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
+    if ((rows * cols) == 0)
+    {
+      output << "0\n";
+      if (!output)
+      {
+        std::cerr << "Error while writing summ\n";
+        return 1;
+      }
+      return 0;
+    }
     if (rows != cols)
     {
       std::cerr << "Square matrix is supported only\n";

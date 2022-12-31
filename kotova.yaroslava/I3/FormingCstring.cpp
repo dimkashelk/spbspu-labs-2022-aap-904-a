@@ -4,7 +4,7 @@
 #include <cstddef>
 char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
 {
-  char * foo(size_t & size, std::istream & in);
+  char * foo(size_t & size, std::istream & input);
   cstring[capacity - 1] = '\0';
   size_t size = 0;
   input >> std::noskipws;
@@ -30,5 +30,5 @@ char* formingCstring(char* cstring, size_t& capacity, std::istream& input)
   }
   while (input && cstring[size++] != '\n');
   cstring[size] = '\0';
-  return foo(size, in);
+  return foo(size, input);
 }

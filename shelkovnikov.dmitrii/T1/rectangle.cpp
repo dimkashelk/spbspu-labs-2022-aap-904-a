@@ -1,7 +1,4 @@
 #include "rectangle.h"
-Rectangle::Rectangle():
-  rectangle_(0.0, 0.0, 0.0, 0.0)
-{}
 Rectangle::Rectangle(rectangle_t rectangle):
   rectangle_(rectangle)
 {}

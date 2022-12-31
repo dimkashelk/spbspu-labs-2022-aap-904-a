@@ -83,7 +83,7 @@ rectangle_t Regular::getFrameRect() const
     max_x = std::max(max_x, std::max(p_x_1, p_x_2));
     max_y = std::max(max_y, std::max(p_y_1, p_y_2));
   }
-  return rectangle_t(min_x, min_y, max_x, max_y);
+  return rectangle_t(point_t(min_x, min_y), point_t(max_x, max_y));
 }
 void Regular::move(double delta_x, double delta_y)
 {

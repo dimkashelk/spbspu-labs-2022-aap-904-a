@@ -91,7 +91,7 @@ rectangle_t Polygon::getFrameRect() const
     x_max = std::max(x_max, rectangle.getRightUpPoint().x);
     y_max = std::max(y_max, rectangle.getRightUpPoint().y);
   }
-  return rectangle_t(x_min, y_min, x_max, y_max);
+  return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }
 void Polygon::move(point_t point)
 {

@@ -75,7 +75,7 @@ rectangle_t Triangle::getFrameRect() const
   double y_min = std::min(point1_.y, std::min(point2_.y, point3_.y));
   double x_max = std::max(point1_.x, std::max(point2_.x, point3_.x));
   double y_max = std::max(point1_.y, std::max(point2_.y, point3_.y));
-  return rectangle_t(x_min, y_min, x_max, y_max);
+  return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }
 void Triangle::move(double delta_x, double delta_y)
 {

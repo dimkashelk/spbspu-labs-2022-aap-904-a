@@ -1,5 +1,6 @@
 #include "compositeshape.h"
 #include <algorithm>
+#include <limits>
 #include "vector_t.h"
 CompositeShape::CompositeShape():
   size_(0),
@@ -137,9 +138,21 @@ point_t CompositeShape::getCenter() const
 }
 void CompositeShape::push_back(Shape *shp)
 {
+  constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
   if (size_ == capacity_)
   {
-    capacity_ += 10;
+    if (max_size_t == capacity_)
+    {
+      throw std::overflow_error("Stack overflow");
+    }
+    if (max_size_t - 10 < capacity_)
+    {
+      capacity_ = max_size_t;
+    }
+    else
+    {
+      capacity_ += 10;
+    }
     Shape **new_shapes = new Shape*[capacity_];
     for (size_t i = 0; i < size_; i++)
     {

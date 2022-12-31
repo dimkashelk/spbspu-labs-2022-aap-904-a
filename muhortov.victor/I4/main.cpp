@@ -5,6 +5,7 @@
 #include <cstring>
 #include "CountMoreThanThree.hpp"
 #include "SmoothingMatrix.hpp"
+#include "SuminSmoothMatrix.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -73,33 +74,23 @@ int main(int argc, char *argv[])
         {
           std::cerr << "Error: problems with reading file\n";
           delete[] arr;
-          delete[] smooth_arr;
           return 1;
         }
       }
     }
 
-    try
-    {
-      smoothingMatrix(arr, cols, rows, smooth_arr);
-    }
-    catch (const std::invalid_argument &e)
-    {
-      std::cerr << "Error: " << e.what();
-      delete[] arr;
-      delete[] smooth_arr;
-      return 1;
-    }
+    smoothingMatrix(arr, cols, rows, smooth_arr);
 
     std::ofstream out(argv[3]);
     for (size_t i = 0; i < cols; i++)
     {
-      for (size_t j = 0; j < rows; j++)
+      for (size_t j = 0 ; j < rows; j++)
       {
-        out << smooth_arr[cols * i + j] << ' ';
+          out << smooth_arr[cols * i + j] << ' ';
       }
       out << '\n';
     }
+    out << summingInSmoothMatrix(arr, cols, rows);
 
     delete[] arr;
     delete[] smooth_arr;

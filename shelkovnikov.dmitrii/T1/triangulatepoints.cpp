@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <cmath>
 #include <limits>
-#include "line_t.h"
 TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
@@ -135,8 +134,10 @@ bool TriangulatePoints::containsThreePointsOnLine()
     {
       for (size_t k = j + 1; k < size_ && !contains_three_points_on_line; k++)
       {
-        line_t line(points_[j], points_[i]);
-        if (fabs(line.A * points_[k].x + line.B * points_[k].y + line.C) <= error)
+        double A = points_[i].y - points_[j].y;
+        double B = -(points_[i].x - points_[j].x);
+        double C = -B * points_[j].y - A * points_[j].x;
+        if (std::fabs(A * points_[k].x + B * points_[k].y + C) <= error)
         {
           contains_three_points_on_line = true;
         }

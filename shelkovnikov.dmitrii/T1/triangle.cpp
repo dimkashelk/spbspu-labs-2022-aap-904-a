@@ -88,7 +88,7 @@ void Triangle::move(point_t point)
 }
 void Triangle::scale(double k)
 {
-  point_t center_of_gravity = this->getCenter();
+  point_t center_of_gravity = getCenter();
   for (size_t i = 0; i < 3; i++)
   {
     points[i].x = k * (points[i].x - center_of_gravity.x) + center_of_gravity.x;

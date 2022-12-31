@@ -8,11 +8,9 @@ namespace chemodurov
   class CompositeShape
   {
    public:
-    CompositeShape();
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
     CompositeShape(size_t capacity);
-    CompositeShape(Shape ** shape, size_t size, size_t capacity);
     ~CompositeShape();
     CompositeShape & operator=(const CompositeShape & rhs);
     CompositeShape & operator=(CompositeShape && rhs);

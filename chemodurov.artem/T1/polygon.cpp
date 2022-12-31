@@ -106,6 +106,10 @@ void chemodurov::Polygon::move(double dx, double dy)
 }
 void chemodurov::Polygon::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Not correct coefficient of scale");
+  }
   for (size_t i = 0; i < number_of_vertices_; ++i)
   {
     vertices_[i] = (vertices_[i] - center_) * k + center_;

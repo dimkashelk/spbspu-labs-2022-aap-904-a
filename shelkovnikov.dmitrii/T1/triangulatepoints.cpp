@@ -25,7 +25,7 @@ TriangulatePoints::~TriangulatePoints()
 {
   delete[] points_;
 }
-Triangle* TriangulatePoints::operator()()
+Triangle TriangulatePoints::operator()()
 {
   while (size_ > 3)
   {
@@ -38,8 +38,8 @@ Triangle* TriangulatePoints::operator()()
       {
         try
         {
-          Triangle *triangle = new Triangle(points_[first], points_[second], points_[third]);
-          if (!containsAnyPoint(*triangle))
+          Triangle triangle = Triangle(points_[first], points_[second], points_[third]);
+          if (!containsAnyPoint(triangle))
           {
             removePoint(second);
             return triangle;
@@ -66,7 +66,7 @@ Triangle* TriangulatePoints::operator()()
       }
     }
   }
-  Triangle *triangle = new Triangle(points_[0], points_[1], points_[2]);
+  Triangle triangle = Triangle(points_[0], points_[1], points_[2]);
   return triangle;
 }
 size_t TriangulatePoints::getSize() const

@@ -20,8 +20,9 @@ public:
   Shape* clone() const override;
   point_t getCenter() const;
 private:
-  Triangle **triangles_;
+  Triangle *triangles_;
   size_t count_;
+
 };
 std::istream& operator>>(std::istream &in, Polygon &polygon);
 #endif

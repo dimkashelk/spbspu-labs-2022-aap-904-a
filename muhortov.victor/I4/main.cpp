@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstring>
 #include "CountMoreThanThree.hpp"
+#include "SmoothingMatrix.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -51,7 +52,18 @@ int main(int argc, char *argv[])
   }
   else if (!std::strcmp(argv[1], "2"))
   {
-    int *arr = new int[cols * rows];
+    int *arr = nullptr;
+    try
+    {
+      arr = new int[cols * rows];
+    }
+    catch (const std::bad_alloc &e)
+    {
+      std::cerr << "Error: " << e.what();
+      return 1;
+    }
+
+    double *smooth_arr = new double[cols * rows];
     for (size_t i = 0; i < cols; i++)
     {
       for (size_t j = 0; j < rows; j++)
@@ -61,10 +73,36 @@ int main(int argc, char *argv[])
         {
           std::cerr << "Error: problems with reading file\n";
           delete[] arr;
+          delete[] smooth_arr;
           return 1;
         }
       }
     }
+
+    try
+    {
+      smoothingMatrix(arr, cols, rows, smooth_arr);
+    }
+    catch (const std::invalid_argument &e)
+    {
+      std::cerr << "Error: " << e.what();
+      delete[] arr;
+      delete[] smooth_arr;
+      return 1;
+    }
+
+    std::ofstream out(argv[3]);
+    for (size_t i = 0; i < cols; i++)
+    {
+      for (size_t j = 0; j < rows; j++)
+      {
+        out << smooth_arr[cols * i + j] << ' ';
+      }
+      out << '\n';
+    }
+
+    delete[] arr;
+    delete[] smooth_arr;
   }
   else
   {

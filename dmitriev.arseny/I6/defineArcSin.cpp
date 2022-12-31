@@ -44,7 +44,6 @@ double MemberOfRow::operator()()
   double member = 0;
   member = (factorialEven * powX) / (double(factorialOdd) * even);
 
-
   odd = odd + 2;
   factorialEven = factorialEven * even;
 

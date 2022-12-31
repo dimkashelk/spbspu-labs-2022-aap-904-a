@@ -82,6 +82,7 @@ chemodurov::CompositeShape & chemodurov::CompositeShape::operator=(CompositeShap
   shape_ = rhs.shape_;
   rhs.shape_ = nullptr;
   size_ = rhs.size_;
+  rhs.size_ = 0;
   capacity_ = rhs.capacity_;
   return *this;
 }

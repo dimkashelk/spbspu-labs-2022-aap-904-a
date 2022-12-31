@@ -21,5 +21,4 @@ public:
 private:
   rectangle_t rectangle_;
 };
-std::istream& operator>>(std::istream &in, Rectangle &rect);
 #endif

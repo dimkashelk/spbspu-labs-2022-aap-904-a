@@ -7,7 +7,6 @@ struct point_t
   double y;
   point_t();
   point_t(double x, double y);
-  point_t(const point_t &point);
 };
 struct rectangle_t
 {

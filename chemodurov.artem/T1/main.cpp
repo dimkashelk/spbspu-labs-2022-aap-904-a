@@ -24,9 +24,9 @@ int main()
     if (chemodurov::checkCommand(line, "POLYGON"))
     {
       chemodurov::point_t * arr = nullptr;
+      size_t arr_size = 0;
       try
       {
-        size_t arr_size = 0;
         arr = chemodurov::getArrayOfPoints(line, arr_size);
         if (arr_size < 3 || chemodurov::isRepeatingPointsInArray(arr, arr_size))
         {
@@ -34,15 +34,14 @@ int main()
           delete[] arr;
           continue;
         }
-        shapes.push_back(chemodurov::makePolygonFromPoints(arr, arr_size));
-        delete[] arr;
       }
       catch (...)
       {
-        delete[] arr;
         std::cerr << "Error...\n";
+        delete[] arr;
         return 1;
       }
+      shapes.push_back(chemodurov::makePolygonFromPoints(arr, arr_size));
       continue;
     }
 

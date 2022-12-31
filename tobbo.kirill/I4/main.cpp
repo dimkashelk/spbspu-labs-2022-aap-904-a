@@ -40,7 +40,6 @@ int main(int argc, char* argv[])
     std::cerr << "Cannot open output file\n";
     return 1;
   }
-  std::cout << "Rows: " << rows << " Cols: " << cols << "============================\n";
   if (!strcmp(argv[1], "1"))
   {
     int arr[1000];
@@ -53,8 +52,7 @@ int main(int argc, char* argv[])
       std::cerr << e.what() << "\n";
       return 1;
     }
-    std::cout << "Task: 1-----------------------\n";
-    printArray(std::cout, arr, rows, cols);
+    printArray(output, arr, rows, cols);
     size_t positiveRowsCount = getPositiveRowsCount(reinterpret_cast< int* >(&arr), rows, cols);
     output << "Found positive rows count: " << positiveRowsCount << "\n";
   }
@@ -86,7 +84,6 @@ int main(int argc, char* argv[])
       delete[] arr;
       return 1;
     }
-    std::cout << "Task: 2-----------------------\n";
     printArray(output, arr, rows, cols);
     int maxSumDiag = getMaxSumDiag(arr, rows);
     output << "Max sum in diagonals except main one: " << maxSumDiag << "\n";

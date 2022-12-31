@@ -19,8 +19,8 @@ int main()
       try
       {
         char *newstr = new char[capacity + 10];
-        newstr[capacity + 9] = '\0';
-        strcpy(newstr, c_string);
+        c_string[capacity - 1] = '\0';
+        std::strcpy(newstr, c_string);
         delete[] c_string;
         c_string = newstr;
         capacity += 10;
@@ -55,29 +55,12 @@ int main()
   catch (const std::bad_alloc &e)
   {
     delete[] c_string;
+    delete[] repeat_symbols;
     std::cout << "Error:\n";
     std::cout << e.what();
-    return 3;
-  }
-
-  try
-  {
-    repeatSymbols(repeat_symbols, c_string);
-  }
-  catch (const std::bad_alloc &e)
-  {
-    delete[] c_string;
-    delete[] repeat_symbols;
-    std::cerr << "Error: \n" << e.what();
     return 1;
   }
-  catch (const std::overflow_error &e)
-  {
-    delete[] c_string;
-    delete[] repeat_symbols;
-    std::cerr << "Error: \n" << e.what();
-    return 3;
-  }
+  repeatSymbols(repeat_symbols, c_string);
 
   std::cout << "Repeat symbols string: " << repeat_symbols << '\n';
 
@@ -88,23 +71,16 @@ int main()
   try
   {
     vowel_symbols = new char[12];
-    findVowel(vowel_symbols, c_string);
   }
   catch (const std::bad_alloc &e)
   {
     delete[] c_string;
     delete[] repeat_symbols;
+    delete[] vowel_symbols;
     std::cerr << "Error: \n" << e.what();
     return 1;
   }
-  catch (const std::overflow_error &e)
-  {
-    delete[] c_string;
-    delete[] repeat_symbols;
-    delete[] vowel_symbols;
-    std::cerr << "Error: \n" << e.what();
-    return 3;
-  }
+  findVowel(vowel_symbols, c_string);
 
   std::cout << "Latin vowel symbols string: " << vowel_symbols << '\n';
 

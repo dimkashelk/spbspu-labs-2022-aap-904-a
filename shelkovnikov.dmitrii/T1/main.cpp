@@ -61,9 +61,12 @@ int main()
     {
       try
       {
-        Rectangle rect;
-        std::cin >> rect;
-        shapes[size] = rect.clone();
+        double x1 = 0.0;
+        double y1 = 0.0;
+        double x2 = 0.0;
+        double y2 = 0.0;
+        std::cin >> x1 >> y1 >> x2 >> y2;
+        shapes[size] = new Rectangle(point_t(x1, y1), point_t(x2, y2));
         size++;
         if (size == capacity)
         {

@@ -204,15 +204,9 @@ std::istream& operator>>(std::istream &in, CompositeShape &compositeShape)
     {}
     else if (name == "REGULAR")
     {
-      Regular regular;
-      stream >> regular;
-      compositeShape.push_back(&regular);
     }
     else if (name == "POLYGON")
     {
-      Polygon polygon;
-      stream >> polygon;
-      compositeShape.push_back(&polygon);
     }
   }
   return in;

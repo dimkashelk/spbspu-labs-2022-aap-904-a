@@ -4,9 +4,13 @@
 
 int main()
 {
-  unsigned numberMax = 0;
+  const double step = 0.001;
   const double absError = 0.000001;
-  double testX = 0.3;
+  double leftBorder = 0.0;
+  double rightBorder = 0.0;
+  unsigned numberMax = 0;
+
+  std::cin >> leftBorder >> rightBorder >> numberMax;
 
   if (!std::cin)
   {
@@ -16,14 +20,13 @@ int main()
 
   try
   {
-    std::cout << defineArcSin(testX, absError, numberMax) << '\n';
+    printTable(std::cout, leftBorder, rightBorder, step, numberMax, absError);
   }
   catch (const std::exception& e)
   {
     std::cout << e.what() << '\n';
     return 1;
   }
-
 
   return 0;
 }

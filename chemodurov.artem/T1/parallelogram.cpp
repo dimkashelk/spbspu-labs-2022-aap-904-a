@@ -22,8 +22,6 @@ chemodurov::Parallelogram::Parallelogram(const point_t & fst, const point_t & se
     throw std::invalid_argument("Not correct parameters");
   }
 }
-chemodurov::Parallelogram::~Parallelogram()
-{}
 double chemodurov::Parallelogram::getArea() const
 {
   return p.getArea();

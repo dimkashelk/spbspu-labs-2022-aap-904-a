@@ -23,8 +23,6 @@ chemodurov::Rectangle::Rectangle(const point_t & left_down, const point_t & righ
     throw std::invalid_argument("This is not a rectangle");
   }
 }
-chemodurov::Rectangle::~Rectangle()
-{}
 double chemodurov::Rectangle::getArea() const
 {
   return p.getArea();

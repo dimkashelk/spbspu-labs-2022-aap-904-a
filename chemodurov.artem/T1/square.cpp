@@ -23,8 +23,6 @@ chemodurov::Square::Square(const point_t & left_down, double length):
     throw std::invalid_argument("Not correct length of side of square");
   }
 }
-chemodurov::Square::~Square()
-{}
 double chemodurov::Square::getArea() const
 {
   return p.getArea();

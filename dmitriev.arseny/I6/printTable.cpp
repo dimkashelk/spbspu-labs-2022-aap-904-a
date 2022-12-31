@@ -18,7 +18,21 @@ void printTable(std::ostream& out, double leftBorder, double rightBorder, double
   }
   for (double x = leftBorder; x + step < rightBorder; x = x + step)
   {
+    try
+    {
       printRowInTable(out << "\n", x, absError, numberMax);
+    }
+    catch (const std::exception& e)
+    {
+      out << e.what() << '\n';
+    }
   }
+  try
+  {
     printRowInTable(out << "\n", rightBorder, absError, numberMax);
+  }
+  catch (const std::exception& e)
+  {
+    out << e.what() << '\n';
+  }
 }

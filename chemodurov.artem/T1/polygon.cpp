@@ -132,6 +132,15 @@ chemodurov::Shape * chemodurov::Polygon::clone() const
   return cloned;
 }
 chemodurov::Polygon::Polygon(const chemodurov::Polygon & p):
- Polygon(new point_t[5], 5ull)
+ Polygon(new point_t[p.number_of_vertices_], p.number_of_vertices_, p.center_)
 {
+  for (size_t i = 0; i < number_of_vertices_; ++i)
+  {
+    vertices_[i] = p.vertices_[i];
+  }
 }
+chemodurov::Polygon::Polygon(chemodurov::point_t * vertices, size_t number_of_vertices, chemodurov::point_t center):
+ vertices_(vertices),
+ number_of_vertices_(number_of_vertices),
+ center_(center)
+{}

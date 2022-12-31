@@ -22,6 +22,7 @@ namespace chemodurov
     point_t * vertices_;
     size_t number_of_vertices_;
     point_t center_;
+    Polygon(point_t * vertices, size_t number_of_vertices, point_t center);
   };
 }
 

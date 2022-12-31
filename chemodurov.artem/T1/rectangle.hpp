@@ -17,6 +17,7 @@ namespace chemodurov
     Shape * clone() const;
    private:
     Polygon p;
+    Rectangle(const Polygon & p);
   };
 }
 

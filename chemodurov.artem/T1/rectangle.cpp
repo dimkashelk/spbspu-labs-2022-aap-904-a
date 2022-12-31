@@ -47,5 +47,8 @@ void chemodurov::Rectangle::scale(double k)
 }
 chemodurov::Shape * chemodurov::Rectangle::clone() const
 {
-  return p.clone();
+  return new Rectangle(p);
 }
+chemodurov::Rectangle::Rectangle(const chemodurov::Polygon & p):
+ p(p)
+{}

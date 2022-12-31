@@ -1,5 +1,6 @@
 #include "printTable.h"
 #include "defineArcSin.h"
+#include <cmath>
 #include <iomanip>
 
 void printRowInTable(std::ostream& out, double x, double absError, unsigned numberMax)

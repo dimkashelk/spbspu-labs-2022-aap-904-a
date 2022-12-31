@@ -6,8 +6,7 @@
 class Regular: virtual public Shape
 {
 public:
-  Regular();
-  Regular(double x1, double y1, double x2, double y2, double x3, double y3);
+  Regular(point_t point_1, point_t point_2, point_t point_3);
   Regular(const Regular &regular);
   Regular(Regular &&regular);
   Regular& operator=(const Regular &other);
@@ -22,5 +21,4 @@ private:
   Triangle triangle_;
   size_t size_;
 };
-std::istream& operator>>(std::istream &in, Regular &regular);
 #endif

@@ -3,16 +3,16 @@
 #include <cmath>
 #include "isotropic_scaling.h"
 #include "vector_t.h"
-Regular::Regular(double x1, double y1, double x2, double y2, double x3, double y3):
-  triangle_(x1, y1, x2, y2, x3, y3),
+Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
+  triangle_(point_1, point_2, point_3),
   size_(0)
 {
   if (!triangle_.isRectangular())
   {
     throw std::logic_error("Triangle isn't rectangular");
   }
-  double side_1 = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
-  double side_2 = std::sqrt(std::pow(x3 - x1, 2) + std::pow(y3 - y1, 2));
+  double side_1 = std::sqrt(std::pow(point_2.x - point_1.x, 2) + std::pow(point_2.y - point_1.y, 2));
+  double side_2 = std::sqrt(std::pow(point_3.x - point_1.x, 2) + std::pow(point_3.y - point_1.y, 2));
   double hypotenuse = std::max(side_1, side_2);
   double cathet = std::min(side_1, side_2);
   double angle_degrees = std::round((acos(cathet / hypotenuse) * 180.0 / M_PI) * 1000) / 1000;
@@ -111,21 +111,4 @@ void Regular::scale(double k)
 Shape *Regular::clone() const
 {
   return new Regular(*this);
-}
-std::istream& operator>>(std::istream &in, Regular &regular)
-{
-  Triangle triangle;
-  in >> triangle;
-  point_t *points = triangle.getPoints();
-  try
-  {
-    regular = Regular(points[0].x, points[0].y, points[1].x, points[1].y, points[2].x, points[2].y);
-  }
-  catch (...)
-  {
-    delete[] points;
-    throw;
-  }
-  delete[] points;
-  return in;
 }

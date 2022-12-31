@@ -3,17 +3,9 @@
 #include "triangulatepoints.h"
 #include "isotropic_scaling.h"
 Polygon::Polygon(point_t *points, size_t size):
-  triangles_(nullptr),
+  triangles_(makeTriangles(points, size)),
   count_(0)
-{
-  TriangulatePoints triangulatePoints(points, size);
-  count_ = triangulatePoints.getSize();
-  triangles_ = new Triangle[count_];
-  for (size_t i = 0; i < count_; i++)
-  {
-    triangles_[i] = triangulatePoints();
-  }
-}
+{}
 Polygon::Polygon(const Polygon &polygon)
 {
   triangles_ = new Triangle[polygon.count_];
@@ -101,6 +93,17 @@ void Polygon::scale(double k)
 Shape* Polygon::clone() const
 {
   return new Polygon(*this);
+}
+Triangle *Polygon::makeTriangles(point_t *points, size_t size) const
+{
+  TriangulatePoints triangulatePoints(points, size);
+  size_t count = triangulatePoints.getSize();
+  Triangle *triangles = new Triangle[count];
+  for (size_t i = 0; i < count; i++)
+  {
+    triangles[i] = triangulatePoints();
+  }
+  return triangles;
 }
 point_t Polygon::getCenter() const
 {

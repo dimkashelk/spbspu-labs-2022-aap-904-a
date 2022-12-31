@@ -5,9 +5,7 @@
 class Polygon: virtual public Shape
 {
 public:
-  Polygon();
   Polygon(point_t *points, size_t size);
-  Polygon(const Polygon &polygon);
   Polygon(Polygon &&polygon);
   ~Polygon();
   Polygon& operator=(const Polygon &other);
@@ -18,11 +16,12 @@ public:
   void move(double delta_x, double delta_y) override;
   void scale(double k) override;
   Shape* clone() const override;
-  point_t getCenter() const;
 private:
   Triangle *triangles_;
   size_t count_;
-
+  Polygon(const Polygon &polygon);
+  Triangle* makeTriangles(point_t *points, size_t size) const;
+  point_t getCenter() const;
 };
 std::istream& operator>>(std::istream &in, Polygon &polygon);
 #endif

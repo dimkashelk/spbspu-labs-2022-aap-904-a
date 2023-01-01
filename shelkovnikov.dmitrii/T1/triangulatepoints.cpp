@@ -6,8 +6,8 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
   first_(0),
-  second_(0),
-  third_(0),
+  second_(1),
+  third_(2),
   count_triangles_(0)
 {
   for (size_t i = 0; i < size; i++)
@@ -31,11 +31,14 @@ TriangulatePoints::~TriangulatePoints()
 }
 Triangle TriangulatePoints::operator()()
 {
-  while (size_ > 3)
+  if (size_ > 3)
   {
-    first_ = 0;
-    second_ = 1;
-    third_ = 2;
+    if (third_ >= size_)
+    {
+      first_ = 0;
+      second_ = 1;
+      third_ = 2;
+    }
     while (third_ < size_)
     {
       if (getMixedProduct(vector_t(points_[third_], points_[first_]), vector_t(points_[second_], points_[first_])) > 0)
@@ -45,7 +48,8 @@ Triangle TriangulatePoints::operator()()
           Triangle triangle = Triangle(points_[first_], points_[second_], points_[third_]);
           if (!containsAnyPoint(triangle))
           {
-            removePoint(second_);
+            second_++;
+            third_++;
             count_triangles_++;
             return triangle;
           }

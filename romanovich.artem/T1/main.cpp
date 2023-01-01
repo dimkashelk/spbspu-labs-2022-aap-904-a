@@ -70,7 +70,7 @@ int main()
   size_t capacity = 10, rectArraySize = 0;
   Rectangle *rectArray = new Rectangle[capacity];
   double iScaleX = 0, iScaleY = 0, iScaleK = 1;
-  while (figureName != "SCALE")
+  while (std::cin)
   {
     std::cin >> figureName;
     if (rectArraySize >= capacity)

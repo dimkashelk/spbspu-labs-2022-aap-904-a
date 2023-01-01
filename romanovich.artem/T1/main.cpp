@@ -1,28 +1,42 @@
 #include <string>
 #include <iostream>
+#include "base-types.h"
 void buildParallelogram()
 {
-  double xa, ya, xb, yb, xc, yc = 0;
-  std::cin >> xa >> ya >> xb >> yb >> xc >> yc;
-  double xd = xa - xb + xc;
-  double yd = ya - yb + yc;
-  std::cout << xd << " " << yd;
+  point_t A{}, B{}, C{}, D{};
+  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+  D.x = A.x - B.x + C.x;
+  D.y = A.y - B.y + C.y;
 }
-void scale(double x, double y, double k)
+void buildRectangle()
 {
-  if (k > 0)
-  {
-  }
+  point_t A{}, B{}, C{}, D{};
+  std::cin >> A.x >> A.y >> C.x >> C.y;
+  C.x = A.x;
+  C.y = B.y;
+  D.x = B.x;
+  D.y = A.y;
 }
-// PARALLELOGRAM, CONCAVE
+void buildConcave()
+{
+  point_t A{}, B{}, C{}, D{};
+  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
+}
 int main()
 {
   std::string figureName = "";
   std::cin >> figureName;
-  std::cout << figureName << "\n";
   if (figureName == "PARALLELOGRAM")
   {
     buildParallelogram();
+  }
+  if (figureName == "RECTANGLE")
+  {
+    buildRectangle();
+  }
+  if (figureName == "CONCAVE")
+  {
+    buildConcave();
   }
   return 0;
 }

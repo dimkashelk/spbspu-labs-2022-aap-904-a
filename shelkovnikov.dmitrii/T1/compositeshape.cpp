@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <limits>
 #include "vector_t.h"
+#include "base_functions.h"
 CompositeShape::CompositeShape():
   size_(0),
   capacity_(10),
@@ -92,17 +93,21 @@ double CompositeShape::getArea() const
 rectangle_t CompositeShape::getFrameRect() const
 {
   rectangle_t rectangle = shapes_[0]->getFrameRect();
-  double x_min = rectangle.getLeftDownPoint().x;
-  double y_min = rectangle.getLeftDownPoint().y;
-  double x_max = rectangle.getRightUpPoint().x;
-  double y_max = rectangle.getRightUpPoint().y;
+  point_t left_down = getLeftDownPoint(rectangle);
+  point_t right_up = getRightUpPoint(rectangle);
+  double x_min = left_down.x;
+  double y_min = left_down.y;
+  double x_max = right_up.x;
+  double y_max = right_up.y;
   for (size_t i = 0; i < size_; i++)
   {
     rectangle = shapes_[i]->getFrameRect();
-    x_min = std::min(x_min, rectangle.getLeftDownPoint().x);
-    y_min = std::min(y_min, rectangle.getLeftDownPoint().y);
-    x_max = std::max(x_max, rectangle.getRightUpPoint().x);
-    y_max = std::max(y_max, rectangle.getRightUpPoint().y);
+    left_down = getLeftDownPoint(rectangle);
+    right_up = getRightUpPoint(rectangle);
+    x_min = std::min(x_min, left_down.x);
+    y_min = std::min(y_min, left_down.y);
+    x_max = std::max(x_max, right_up.x);
+    y_max = std::max(y_max, right_up.y);
   }
   return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }

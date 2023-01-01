@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "triangulatepoints.h"
 #include "isotropic_scaling.h"
+#include "base_functions.h"
 Polygon::Polygon(point_t *points, size_t size):
   count_(0),
   triangles_(makeTriangles(points, size))
@@ -55,17 +56,22 @@ double Polygon::getArea() const
 }
 rectangle_t Polygon::getFrameRect() const
 {
-  double x_min = triangles_[0].getFrameRect().getLeftDownPoint().x;
-  double y_min = triangles_[0].getFrameRect().getLeftDownPoint().y;
-  double x_max = x_min;
-  double y_max = y_min;
+  rectangle_t rectangle = triangles_[0].getFrameRect();
+  point_t left_down = getLeftDownPoint(rectangle);
+  point_t right_up = getRightUpPoint(rectangle);
+  double x_min = left_down.x;
+  double y_min = left_down.y;
+  double x_max = right_up.x;
+  double y_max = right_up.y;
   for (size_t i = 0; i < count_; i++)
   {
-    rectangle_t rectangle = triangles_[i].getFrameRect();
-    x_min = std::min(x_min, rectangle.getLeftDownPoint().x);
-    y_min = std::min(y_min, rectangle.getLeftDownPoint().y);
-    x_max = std::max(x_max, rectangle.getRightUpPoint().x);
-    y_max = std::max(y_max, rectangle.getRightUpPoint().y);
+    rectangle = triangles_[i].getFrameRect();
+    left_down = getLeftDownPoint(rectangle);
+    right_up = getRightUpPoint(rectangle);
+    x_min = std::min(x_min, left_down.x);
+    y_min = std::min(y_min, left_down.y);
+    x_max = std::max(x_max, right_up.x);
+    y_max = std::max(y_max, right_up.y);
   }
   return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }

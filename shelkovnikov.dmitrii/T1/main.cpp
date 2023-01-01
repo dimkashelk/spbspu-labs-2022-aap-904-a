@@ -1,5 +1,4 @@
 #include <iostream>
-#include <sstream>
 #include <stdexcept>
 #include <cstddef>
 #include <iomanip>
@@ -8,6 +7,7 @@
 #include "regular.h"
 #include "polygon.h"
 #include "compositeshape.h"
+#include "base_functions.h"
 void expand(Shape **shapes, size_t size, size_t new_capacity)
 {
   if (new_capacity < size)
@@ -37,7 +37,9 @@ std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
   for (size_t i = 0; i < size; i++)
   {
     rectangle_t rect = shapes[i]->getFrameRect();
-    out << " " << rect;
+    point_t left_down = getLeftDownPoint(rect);
+    point_t right_up = getRightUpPoint(rect);
+    out << " " << left_down.x << " " << left_down.y << " " << right_up.x << " " << right_up.y;
   }
   return out;
 }
@@ -163,8 +165,10 @@ int main()
     else if (name == "SCALE")
     {
       call_scale = true;
-      point_t point;
-      std::cin >> point;
+      double x = 0.0;
+      double y = 0.0;
+      std::cin >> x >> y;
+      point_t point(x, y);
       double k = 0.0;
       std::cin >> k;
       if (k < 0)

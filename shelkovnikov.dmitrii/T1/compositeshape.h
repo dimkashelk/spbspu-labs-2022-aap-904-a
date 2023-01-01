@@ -36,5 +36,4 @@ private:
   size_t capacity_;
   Shape **shapes_;
 };
-std::istream& operator>>(std::istream &in, CompositeShape &compositeShape);
 #endif

@@ -12,7 +12,6 @@ CompositeShape::CompositeShape(Shape **shapes, size_t size):
   capacity_(size_),
   shapes_(new Shape*[capacity_])
 {
-  shapes_ = new Shape*[capacity_];
   for (size_t i = 0; i < size_; i++)
   {
     shapes_[i] = shapes[i]->clone();
@@ -187,27 +186,4 @@ bool CompositeShape::empty() const noexcept
 size_t CompositeShape::size() const noexcept
 {
   return size_;
-}
-std::istream& operator>>(std::istream &in, CompositeShape &compositeShape)
-{
-  size_t count = 0;
-  in >> count;
-  std::string line = "";
-  std::string name = "";
-  compositeShape = CompositeShape();
-  for (size_t i = 0; i < count; i++)
-  {
-    std::getline(in, line);
-    std::istringstream stream(line);
-    stream >> name;
-    if (name == "RECTANGLE")
-    {}
-    else if (name == "REGULAR")
-    {
-    }
-    else if (name == "POLYGON")
-    {
-    }
-  }
-  return in;
 }

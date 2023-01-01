@@ -154,7 +154,6 @@ int main()
       try
       {
         CompositeShape compositeShape;
-        std::cin >> compositeShape;
       }
       catch (const std::logic_error &e)
       {

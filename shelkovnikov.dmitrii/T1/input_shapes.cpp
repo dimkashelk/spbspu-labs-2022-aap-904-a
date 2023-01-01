@@ -70,37 +70,3 @@ dimkashelk::Polygon *dimkashelk::input_polygon(std::istream &in)
     throw;
   }
 }
-dimkashelk::CompositeShape *dimkashelk::input_composite_shape(std::istream &in)
-{
-  CompositeShape *compositeShape = new CompositeShape();
-  size_t size = 0;
-  in >> size;
-  std::string name = "";
-  for (size_t i = 0; i < size; i++)
-  {
-    name = "";
-    in >> name;
-    if (name == "POLYGON")
-    {
-      compositeShape->push_back(input_polygon(in));
-    }
-    else if (name == "RECTANGLE")
-    {
-      compositeShape->push_back(input_rectangle(in));
-    }
-    else if (name == "REGULAR")
-    {
-      compositeShape->push_back(input_regular(in));
-    }
-    else if (name == "COMPLEXEND")
-    {
-      throw std::logic_error("Less shapes than count");
-    }
-  }
-  in >> name;
-  if (name != "COMPLEXEND")
-  {
-    throw std::logic_error("More shapes than count");
-  }
-  return compositeShape;
-}

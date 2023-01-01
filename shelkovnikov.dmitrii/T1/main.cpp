@@ -112,17 +112,6 @@ int main()
       }
       std::cin.clear();
     }
-    else if (name == "COMPLEX")
-    {
-      try
-      {
-        dimkashelk::CompositeShape compositeShape = *dimkashelk::input_composite_shape(std::cin);
-      }
-      catch (...)
-      {
-        contains_errors_with_shapes = true;
-      }
-    }
     else if (name == "SCALE")
     {
       call_scale = true;

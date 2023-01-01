@@ -6,7 +6,6 @@ class Polygon: virtual public Shape
 {
 public:
   Polygon(point_t *points, size_t size);
-  Polygon(Polygon &&polygon);
   ~Polygon();
   double getArea() const override;
   rectangle_t getFrameRect() const override;

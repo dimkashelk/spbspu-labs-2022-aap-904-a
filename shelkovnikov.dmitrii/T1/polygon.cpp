@@ -16,12 +16,6 @@ Polygon::Polygon(const Polygon &polygon)
   }
   count_ = polygon.count_;
 }
-Polygon::Polygon(Polygon &&polygon):
-  triangles_(polygon.triangles_),
-  count_(polygon.count_)
-{
-  delete[] polygon.triangles_;
-}
 Polygon::~Polygon() noexcept
 {
   delete[] triangles_;

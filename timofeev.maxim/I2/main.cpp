@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -52,7 +53,7 @@ int main(int argc, char *argv[])
   {
     std::cout << e.what() << "\n";
     delete [] dyn_array;
-    return 2;
+    return 0;
   }
   delete [] dyn_array;
 
@@ -103,6 +104,12 @@ int main(int argc, char *argv[])
       std::cout << "\n";
     }
     catch (std::overflow_error & e)
+    {
+      std::cout << e.what() << "\n";
+      delete [] File_Array;
+      return 0;
+    }
+    catch (std::length_error & e)
     {
       std::cout << e.what() << "\n";
       delete [] File_Array;

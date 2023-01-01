@@ -1,4 +1,5 @@
 #include "SuminSmoothMatrix.hpp"
+#include <cmath>
 
 double summingInSmoothMatrix(const int *arr, size_t cols, size_t rows)
 {

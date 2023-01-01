@@ -1,7 +1,6 @@
 #ifndef LABS_SUMINSMOOTHMATRIX_HPP
 #define LABS_SUMINSMOOTHMATRIX_HPP
 
-#include <cmath>
 #include <cstddef>
 #include "SmoothingMatrix.hpp"
 

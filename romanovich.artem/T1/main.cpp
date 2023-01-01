@@ -2,13 +2,13 @@
 #include <iostream>
 #include "base-types.h"
 #include "rectangle.h"
-void buildParallelogram()
-{
-  point_t A{}, B{}, C{}, D{};
-  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-  D.x = A.x - B.x + C.x;
-  D.y = A.y - B.y + C.y;
-}
+//void buildParallelogram()
+//{
+//  point_t A{}, B{}, C{}, D{};
+//  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+//  D.x = A.x - B.x + C.x;
+//  D.y = A.y - B.y + C.y;
+//}
 point_t *buildRectangle()
 {
   point_t A{}, B{}, C{}, D{};
@@ -28,18 +28,18 @@ point_t *buildRectangle()
   }
   return pointsArray;
 }
-void buildConcave()
-{
-  point_t A{}, B{}, C{}, D{};
-  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
-}
+//void buildConcave()
+//{
+//  point_t A{}, B{}, C{}, D{};
+//  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
+//}
 int main()
 {
   std::string figureName = "";
   std::cin >> figureName;
   if (figureName == "PARALLELOGRAM")
   {
-    buildParallelogram();
+    //buildParallelogram();
   }
   if (figureName == "RECTANGLE")
   {
@@ -51,7 +51,7 @@ int main()
   }
   if (figureName == "CONCAVE")
   {
-    buildConcave();
+    //buildConcave();
   }
   return 0;
 }

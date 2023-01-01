@@ -157,6 +157,7 @@ int main()
   }
   if (!(scaleCommand && figureCommand))
   {
+    delete[] rectArray;
     return 2;
   }
   //print sum of areas

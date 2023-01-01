@@ -1,5 +1,6 @@
 #include "parallelogram.hpp"
 #include <stdexcept>
+#include "is-repeating-points-in-array.hpp"
 
 namespace chemodurov
 {
@@ -11,6 +12,11 @@ namespace chemodurov
     arr[1] = sec;
     arr[2] = trd;
     arr[3] = {fst.x - sec.x + trd.x, fst.y - sec.y + trd.y};
+    if (isRepeatingPointsInArray(arr, x))
+    {
+      delete [] arr;
+      throw std::invalid_argument("Not correct vertices of polygon");
+    }
     return arr;
   }
 }

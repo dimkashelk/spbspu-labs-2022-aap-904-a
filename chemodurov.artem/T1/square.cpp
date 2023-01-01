@@ -5,6 +5,10 @@ namespace chemodurov
 {
   point_t * makeArrayOfXPoints(const point_t & left_down, double length)
   {
+    if (length <= 0)
+    {
+      throw std::invalid_argument("Not correct length of side of square");
+    }
     const size_t x = 4;
     point_t * arr = new point_t[x];
     arr[0] = left_down;

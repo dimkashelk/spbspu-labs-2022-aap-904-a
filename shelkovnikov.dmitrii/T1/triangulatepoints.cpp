@@ -41,7 +41,7 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
     }
     while (third_ < size_)
     {
-      if (getMixedProduct(vector_t(points_[third_], points_[first_]), vector_t(points_[second_], points_[first_])) > 0)
+      if (getMixedProduct(points_[third_], points_[first_], points_[second_], points_[first_]) > 0)
       {
         try
         {
@@ -83,16 +83,20 @@ bool dimkashelk::TriangulatePoints::hasNext() const
 {
   return size_ > count_use_points_;
 }
-double dimkashelk::TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
+double dimkashelk::TriangulatePoints::getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const
 {
   //         |i  j  k|
   // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;
   //         |x2 y2 0|
-  double third_coord = a.x * b.y - a.y * b.x;
+  double a_x = p1_end.x - p1_start.x;
+  double a_y = p1_end.y - p1_start.y;
+  double b_x = p2_end.x - p2_start.x;
+  double b_y = p2_end.y - p2_start.y;
+  double third_coord = a_x * b_y - a_y * b_x;
   //             |x1 y1 0|
   // a * b * c = |x2 y2 0| = x1 * y2 * z3 - x2 * y1 * z3
   //             |0  0 z3|
-  return a.x * b.y * third_coord - b.x * a.y * third_coord;
+  return a_x * b_y * third_coord - b_x * a_y * third_coord;
 }
 bool dimkashelk::TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
 {

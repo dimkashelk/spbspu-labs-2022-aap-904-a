@@ -7,11 +7,11 @@ namespace dimkashelk
   class Rectangle: virtual public Shape
   {
   public:
-    Rectangle(rectangle_t rectangle);
+    explicit Rectangle(rectangle_t rectangle);
     Rectangle(point_t point_1, point_t point_2);
     Rectangle(const Rectangle &rect);
     Rectangle(Rectangle &&rect);
-    Rectangle& operator=(const Rectangle &other);
+    Rectangle& operator=(const Rectangle &other) noexcept;
     Rectangle& operator=(Rectangle &&tmp) noexcept;
     double getArea() const override;
     rectangle_t getFrameRect() const override;

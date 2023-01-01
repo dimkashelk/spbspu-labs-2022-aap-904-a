@@ -2,7 +2,6 @@
 #define SPBSPU_LABS_2022_AAP_904_A_TRIANGULATEPOINTS_H
 #include <cstddef>
 #include "base_types.h"
-#include "vector_t.h"
 #include "triangle.h"
 namespace dimkashelk
 {
@@ -20,7 +19,7 @@ namespace dimkashelk
     size_t second_;
     size_t third_;
     size_t count_use_points_;
-    double getMixedProduct(vector_t a, vector_t b) const;
+    double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const;
     bool containsAnyPoint(const Triangle &triangle) const;
     bool containsThreePointsOnLine();
   };

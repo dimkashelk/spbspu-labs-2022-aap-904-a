@@ -7,7 +7,7 @@ unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
   unsigned int maxleght = 1;
   if (size == 0)
   {
-    return 0;
+    throw std::length_error("Size AntiSwag situation");
   }
   for (size_t i = 1; i < size; ++i)
   {

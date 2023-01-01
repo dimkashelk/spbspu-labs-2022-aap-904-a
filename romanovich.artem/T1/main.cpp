@@ -8,6 +8,12 @@ void buildParallelogram()
   double yd = ya - yb + yc;
   std::cout << xd << " " << yd;
 }
+void scale(double x, double y, double k)
+{
+  if (k > 0)
+  {
+  }
+}
 // PARALLELOGRAM, CONCAVE
 int main()
 {

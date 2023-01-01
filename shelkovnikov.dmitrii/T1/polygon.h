@@ -17,11 +17,10 @@ public:
   void scale(double k) override;
   Shape* clone() const override;
 private:
-  Triangle *triangles_;
   size_t count_;
+  Triangle *triangles_;
   Polygon(const Polygon &polygon);
-  Triangle* makeTriangles(point_t *points, size_t size) const;
+  Triangle* makeTriangles(point_t *points, size_t size);
   point_t getCenter() const;
 };
-std::istream& operator>>(std::istream &in, Polygon &polygon);
 #endif

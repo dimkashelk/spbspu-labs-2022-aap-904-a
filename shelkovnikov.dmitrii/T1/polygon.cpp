@@ -3,8 +3,8 @@
 #include "triangulatepoints.h"
 #include "isotropic_scaling.h"
 Polygon::Polygon(point_t *points, size_t size):
-  triangles_(makeTriangles(points, size)),
-  count_(countTriangles())
+  count_(0),
+  triangles_(makeTriangles(points, size))
 {}
 Polygon::Polygon(const Polygon &polygon)
 {
@@ -94,12 +94,12 @@ Shape* Polygon::clone() const
 {
   return new Polygon(*this);
 }
-Triangle *Polygon::makeTriangles(point_t *points, size_t size) const
+Triangle *Polygon::makeTriangles(point_t *points, size_t size)
 {
   TriangulatePoints triangulatePoints(points, size);
-  size_t count = triangulatePoints.getSize();
-  Triangle *triangles = new Triangle[count];
-  for (size_t i = 0; i < count; i++)
+  count_ = triangulatePoints.getSize();
+  Triangle *triangles = new Triangle[count_];
+  for (size_t i = 0; i < count_; i++)
   {
     triangles[i] = triangulatePoints();
   }
@@ -120,43 +120,4 @@ point_t Polygon::getCenter() const
     delete[] points;
   }
   return point_t(x_sum / (count_ * 3), y_sum / (count_ * 3));
-}
-std::istream& operator>>(std::istream &in, Polygon &polygon)
-{
-  size_t size = 0;
-  size_t capacity = 10;
-  point_t *points = new point_t[capacity];
-  do
-  {
-    point_t point;
-    in >> point;
-    if (in)
-    {
-      points[size] = point;
-      size++;
-      if (size == capacity)
-      {
-        capacity += 10;
-        point_t *new_points = new point_t[capacity];
-        for (size_t i = 0; i < size; i++)
-        {
-          new_points[i] = points[i];
-        }
-        delete[] points;
-        points = new_points;
-      }
-    }
-  }
-  while (in);
-  try
-  {
-    polygon = Polygon(points, size);
-  }
-  catch (...)
-  {
-    delete[] points;
-    throw;
-  }
-  delete[] points;
-  return in;
 }

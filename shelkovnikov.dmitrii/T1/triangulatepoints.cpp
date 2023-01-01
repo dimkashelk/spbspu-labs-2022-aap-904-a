@@ -5,9 +5,7 @@
 dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
-  first_(0),
-  second_(1),
-  third_(2),
+  point_(1),
   count_use_points_(2)
 {
   for (size_t i = 0; i < size; i++)
@@ -33,45 +31,36 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
 {
   if (size_ > 3)
   {
-    if (third_ >= size_)
+    if (point_ + 1 >= size_)
     {
-      first_ = 0;
-      second_ = 1;
-      third_ = 2;
+      point_ = 1;
     }
-    while (third_ < size_)
+    while (point_ + 1 < size_)
     {
-      if (getMixedProduct(points_[third_], points_[first_], points_[second_], points_[first_]) > 0)
+      if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) > 0)
       {
         try
         {
-          Triangle triangle = Triangle(points_[first_], points_[second_], points_[third_]);
+          Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
           if (!containsAnyPoint(triangle))
           {
-            second_++;
-            third_++;
+            point_++;
             count_use_points_++;
             return triangle;
           }
           else
           {
-            first_ += 3;
-            second_ += 3;
-            third_ += 3;
+            point_ += 3;
           }
         }
         catch (const std::logic_error &e)
         {
-          first_ += 3;
-          second_ += 3;
-          third_ += 3;
+          point_ += 3;
         }
       }
       else
       {
-        first_ += 3;
-        second_ += 3;
-        third_ += 3;
+        point_ += 3;
       }
     }
   }

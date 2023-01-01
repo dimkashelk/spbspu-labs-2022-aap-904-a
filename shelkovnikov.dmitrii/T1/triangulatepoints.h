@@ -15,9 +15,7 @@ namespace dimkashelk
   private:
     point_t *points_;
     size_t size_;
-    size_t first_;
-    size_t second_;
-    size_t third_;
+    size_t point_;
     size_t count_use_points_;
     double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const;
     bool containsAnyPoint(const Triangle &triangle) const;

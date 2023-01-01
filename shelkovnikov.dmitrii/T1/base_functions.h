@@ -5,5 +5,6 @@ namespace dimkashelk
 {
   point_t getLeftDownPoint(rectangle_t rect);
   point_t getRightUpPoint(rectangle_t rect);
+  bool isRectangularTriangle(point_t *points);
 }
 #endif

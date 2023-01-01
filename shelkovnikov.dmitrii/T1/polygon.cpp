@@ -51,8 +51,8 @@ double dimkashelk::Polygon::getArea() const
 dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
 {
   rectangle_t rectangle = triangles_[0].getFrameRect();
-  point_t left_down = get_left_down_point(rectangle);
-  point_t right_up = get_right_up_point(rectangle);
+  point_t left_down = getLeftDownPoint(rectangle);
+  point_t right_up = getRightUpPoint(rectangle);
   double x_min = left_down.x;
   double y_min = left_down.y;
   double x_max = right_up.x;
@@ -60,8 +60,8 @@ dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
   for (size_t i = 0; i < count_; i++)
   {
     rectangle = triangles_[i].getFrameRect();
-    left_down = get_left_down_point(rectangle);
-    right_up = get_right_up_point(rectangle);
+    left_down = getLeftDownPoint(rectangle);
+    right_up = getRightUpPoint(rectangle);
     x_min = std::min(x_min, left_down.x);
     y_min = std::min(y_min, left_down.y);
     x_max = std::max(x_max, right_up.x);
@@ -86,7 +86,7 @@ void dimkashelk::Polygon::scale(double k)
   point_t center = getCenter();
   for (size_t i = 0; i < count_; i++)
   {
-    isotropic_scaling(&triangles_[i], center, k);
+    isotropicScaling(&triangles_[i], center, k);
   }
 }
 dimkashelk::Shape* dimkashelk::Polygon::clone() const

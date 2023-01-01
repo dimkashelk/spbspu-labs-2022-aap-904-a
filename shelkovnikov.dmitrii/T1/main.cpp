@@ -32,14 +32,14 @@ double getArea(dimkashelk::Shape **shapes, size_t size)
   }
   return sum_area;
 }
-std::ostream& output_shapes(std::ostream &out, dimkashelk::Shape **shapes, size_t size)
+std::ostream& outputShapes(std::ostream &out, dimkashelk::Shape **shapes, size_t size)
 {
   out << std::setprecision(1) << std::fixed << getArea(shapes, size);
   for (size_t i = 0; i < size; i++)
   {
     dimkashelk::rectangle_t rect = shapes[i]->getFrameRect();
-    dimkashelk::point_t left_down = get_left_down_point(rect);
-    dimkashelk::point_t right_up = get_right_up_point(rect);
+    dimkashelk::point_t left_down = getLeftDownPoint(rect);
+    dimkashelk::point_t right_up = getRightUpPoint(rect);
     out << " " << left_down.x << " " << left_down.y << " " << right_up.x << " " << right_up.y;
   }
   return out;
@@ -64,7 +64,7 @@ int main()
     {
       try
       {
-        shapes[size] = dimkashelk::input_rectangle(std::cin);
+        shapes[size] = dimkashelk::inputRectangle(std::cin);
         size++;
         if (size == capacity)
         {
@@ -81,7 +81,7 @@ int main()
     {
       try
       {
-        shapes[size] = dimkashelk::input_regular(std::cin);
+        shapes[size] = dimkashelk::inputRegular(std::cin);
         size++;
         if (size == capacity)
         {
@@ -98,7 +98,7 @@ int main()
     {
       try
       {
-        shapes[size] = dimkashelk::input_polygon(std::cin);
+        shapes[size] = dimkashelk::inputPolygon(std::cin);
         size++;
         if (size == capacity)
         {
@@ -137,12 +137,12 @@ int main()
         std::cerr << "Nothing to scaling";
         return 1;
       }
-      output_shapes(std::cout, shapes, size) << "\n";
+      outputShapes(std::cout, shapes, size) << "\n";
       for (size_t i = 0; i < size; i++)
       {
-        dimkashelk::isotropic_scaling(shapes[i], point, k);
+        dimkashelk::isotropicScaling(shapes[i], point, k);
       }
-      output_shapes(std::cout, shapes, size) << "\n";
+      outputShapes(std::cout, shapes, size) << "\n";
       if (contains_errors_with_shapes)
       {
         contains_errors_with_shapes = false;

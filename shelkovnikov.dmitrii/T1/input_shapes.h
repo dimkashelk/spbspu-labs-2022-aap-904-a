@@ -6,8 +6,8 @@
 #include "compositeshape.h"
 namespace dimkashelk
 {
-  Rectangle* input_rectangle(std::istream &in);
-  Regular* input_regular(std::istream &in);
-  Polygon* input_polygon(std::istream &in);
+  Rectangle* inputRectangle(std::istream &in);
+  Regular* inputRegular(std::istream &in);
+  Polygon* inputPolygon(std::istream &in);
 }
 #endif

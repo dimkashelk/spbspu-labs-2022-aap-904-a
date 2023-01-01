@@ -4,6 +4,6 @@
 #include "base_types.h"
 namespace dimkashelk
 {
-  void isotropic_scaling(Shape *shape, point_t point, double k);
+  void isotropicScaling(Shape *shape, point_t point, double k);
 }
 #endif

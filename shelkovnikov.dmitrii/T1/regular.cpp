@@ -2,11 +2,12 @@
 #include <stdexcept>
 #include <cmath>
 #include "isotropic_scaling.h"
+#include "base_functions.h"
 dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   triangle_(point_1, point_2, point_3),
   size_(0)
 {
-  if (!triangle_.isRectangular())
+  if (!dimkashelk::isRectangularTriangle(new point_t[3]{point_1, point_2, point_3}))
   {
     throw std::logic_error("Triangle isn't rectangular");
   }

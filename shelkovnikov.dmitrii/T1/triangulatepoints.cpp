@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <cmath>
 #include <limits>
-TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
+dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
   first_(0),
@@ -25,11 +25,11 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
     throw std::logic_error("Need minimum 3 points");
   }
 }
-TriangulatePoints::~TriangulatePoints()
+dimkashelk::TriangulatePoints::~TriangulatePoints()
 {
   delete[] points_;
 }
-Triangle TriangulatePoints::operator()()
+Triangle dimkashelk::TriangulatePoints::operator()()
 {
   if (size_ > 3)
   {
@@ -79,15 +79,15 @@ Triangle TriangulatePoints::operator()()
   count_use_points_ += 3;
   return triangle;
 }
-size_t TriangulatePoints::getSize() const
+size_t dimkashelk::TriangulatePoints::getSize() const
 {
   return count_use_points_;
 }
-bool TriangulatePoints::hasNext() const
+bool dimkashelk::TriangulatePoints::hasNext() const
 {
   return size_ > count_use_points_;
 }
-double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
+double dimkashelk::TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {
   //         |i  j  k|
   // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;
@@ -98,7 +98,7 @@ double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
   //             |0  0 z3|
   return a.x * b.y * third_coord - b.x * a.y * third_coord;
 }
-bool TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
+bool dimkashelk::TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
 {
   bool contains_any_point = false;
   for (size_t r = 0; r < size_; r++)
@@ -111,19 +111,7 @@ bool TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
   }
   return contains_any_point;
 }
-void TriangulatePoints::removePoint(size_t ind)
-{
-  if (size_ == 0)
-  {
-    return;
-  }
-  for (size_t i = ind; i < size_ - 1; i++)
-  {
-    points_[i] = points_[i + 1];
-  }
-  size_--;
-}
-bool TriangulatePoints::containsThreePointsOnLine()
+bool dimkashelk::TriangulatePoints::containsThreePointsOnLine()
 {
   constexpr double error = std::numeric_limits< double >::epsilon();
   bool contains_three_points_on_line = false;

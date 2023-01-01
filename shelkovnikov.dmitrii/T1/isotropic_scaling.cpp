@@ -1,5 +1,4 @@
 #include "isotropic_scaling.h"
-#include "vector_t.h"
 #include "base_functions.h"
 void dimkashelk::isotropic_scaling(Shape *shape, point_t point, double k)
 {

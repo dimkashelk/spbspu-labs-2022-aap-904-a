@@ -44,22 +44,22 @@ point_t *buildRectangle()
   std::cin >> A.x >> A.y >> C.x >> C.y;
   if (A.x >= C.x || A.y >= C.y)
   {
-    std::cerr << "Error occurred.\n";
-    return 0;
+    std::cerr << "Error occurred: points does not match the task condition.\n";
+    throw;
   }
   B.x = A.x;
   B.y = C.y;
   D.x = C.x;
   D.y = A.y;
   point_t *pointsArray = nullptr;
-  try
-  {
-    pointsArray = new point_t[4]{A, B, C, D};
-  }
-  catch (...)
-  {
-    std::cerr << "Error occurred.\n";
-  }
+//  try
+//  {
+  pointsArray = new point_t[4]{A, B, C, D};
+//  }
+//  catch (...)
+//  {
+//    std::cerr << "Error occurred.\n";
+//  }
   return pointsArray;
 }
 //
@@ -80,7 +80,7 @@ int main()
   }
   catch (...)
   {
-    std::cerr << "Error occurred.\n";
+    std::cerr << "Error occurred making rectangle.\n";
   }
   double iScaleX = 0, iScaleY = 0, iScaleK = 1;
   while (std::cin)
@@ -109,9 +109,19 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
-      point_t *pointsArray = buildRectangle();
+      point_t *pointsArray = nullptr;
+      try
+      {
+        pointsArray = buildRectangle();
+      }
+      catch (...)
+      {
+        std::cerr << "Error occurred while building rectangle.\n";
+        delete[] pointsArray;
+        return 2;
+      }
       Rectangle rectangle(pointsArray);
-      delete [] pointsArray;
+      delete[] pointsArray;
       rectArray[rectArraySize] = rectangle;
       rectArraySize++;
     }
@@ -142,6 +152,6 @@ int main()
     //
     printLine(rectArray[i]);
   }
-  delete [] rectArray;
+  delete[] rectArray;
   return 0;
 }

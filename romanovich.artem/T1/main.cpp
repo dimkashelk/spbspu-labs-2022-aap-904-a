@@ -73,7 +73,6 @@ int main()
   std::string figureName = "";
   size_t capacity = 10, rectArraySize = 0;
   Rectangle *rectArray = nullptr;
-  bool noFigure = true;
   try
   {
     rectArray = new Rectangle[capacity];
@@ -109,7 +108,6 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
-      noFigure = false;
       point_t *pointsArray = nullptr;
       try
       {
@@ -141,14 +139,10 @@ int main()
       if (iScaleK <= 0)
       {
         std::cerr << "Negative koeff.\n";
+        delete[] rectArray;
         return 2;
       }
     }
-  }
-  if (noFigure)
-  {
-    std::cerr << "No input.\n";
-    return 2;
   }
   for (size_t i = 0; i < rectArraySize; ++i) //TODO dynamic calculation
   {

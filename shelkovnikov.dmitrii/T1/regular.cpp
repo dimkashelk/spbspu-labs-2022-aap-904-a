@@ -5,7 +5,8 @@
 #include "base_functions.h"
 dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   triangle_(point_1, point_2, point_3),
-  size_(0)
+  size_(0),
+  center(point_1)
 {
   if (!dimkashelk::isRectangularTriangle(new point_t[3]{point_1, point_2, point_3}))
   {
@@ -24,7 +25,8 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
 }
 dimkashelk::Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),
-  size_(regular.size_)
+  size_(regular.size_),
+  center(regular.center)
 {}
 double dimkashelk::Regular::getArea() const
 {

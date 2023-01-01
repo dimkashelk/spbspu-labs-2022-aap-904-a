@@ -22,6 +22,7 @@ namespace dimkashelk
   private:
     Triangle triangle_;
     size_t size_;
+    point_t center;
   };
 }
 #endif

@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -8,6 +7,21 @@
 
 int main(int argc, char *argv[])
 {
+  if (argc == 1)
+  {
+    std::cerr << "File error" << "\n";
+    return 2;
+  }
+  if (argc > 2)
+  {
+    std::cerr << "File error" << "\n";
+    return 2;
+  }
+  if (argv == NULL)
+  {
+    std::cerr << "Empty File" << "\n";
+    return 2;
+  }
   int ready_array[5] = {4,5,3,2,1};
   try
   {
@@ -57,16 +71,6 @@ int main(int argc, char *argv[])
   }
   delete [] dyn_array;
 
-  if (argc == 1)
-  {
-    std::cerr << "No file" << "\n";
-    return 2;
-  }
-  if (argc > 2)
-  {
-    std::cerr << "More then 1 file" << "\n";
-    return 2;
-  }
   size_t fsize = 0;
   int * File_Array = new int[fsize];
   std::string fname = argv[1];
@@ -75,7 +79,7 @@ int main(int argc, char *argv[])
   {
     std::cout << "File Error\n" ;
     delete [] File_Array;
-    return 0;
+    return 2;
   }
   while(!input.eof())
   {
@@ -84,7 +88,7 @@ int main(int argc, char *argv[])
     {
       std::cout << "File error\n";
       delete [] File_Array;
-      return 0;
+      return 2;
     }
     for (i = 0; i < fsize; ++i)
     {
@@ -93,7 +97,7 @@ int main(int argc, char *argv[])
       {
         std::cout << "File error\n";
         delete [] File_Array;
-        return 0;
+        return 2;
       }
     }
     try

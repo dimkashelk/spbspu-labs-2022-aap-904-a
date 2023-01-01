@@ -3,6 +3,10 @@
 #include <iostream>
 int * Sort_Array(int * arr, size_t size1)
 {
+  if (size1 == 0 )
+  {
+    return 0;
+  }
   for (size_t k = 0; k < size1 - 1; k++)
   {
     for (size_t j = 0; j < size1 - 1; j++)

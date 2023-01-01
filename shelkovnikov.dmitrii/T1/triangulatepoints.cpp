@@ -42,16 +42,9 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
         try
         {
           Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
-          if (!containsAnyPoint(triangle))
-          {
-            point_++;
-            count_use_points_++;
-            return triangle;
-          }
-          else
-          {
-            point_ += 3;
-          }
+          point_++;
+          count_use_points_++;
+          return triangle;
         }
         catch (const std::logic_error &e)
         {
@@ -86,19 +79,6 @@ double dimkashelk::TriangulatePoints::getMixedProduct(point_t p1_end, point_t p1
   // a * b * c = |x2 y2 0| = x1 * y2 * z3 - x2 * y1 * z3
   //             |0  0 z3|
   return a_x * b_y * third_coord - b_x * a_y * third_coord;
-}
-bool dimkashelk::TriangulatePoints::containsAnyPoint(const Triangle &triangle) const
-{
-  bool contains_any_point = false;
-  for (size_t r = 0; r < size_; r++)
-  {
-    contains_any_point = triangle.containsPoint(points_[r]);
-    if (contains_any_point)
-    {
-      break;
-    }
-  }
-  return contains_any_point;
 }
 bool dimkashelk::TriangulatePoints::containsThreePointsOnLine()
 {

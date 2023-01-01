@@ -108,11 +108,12 @@ int main()
     }
     else if (name == "POLYGON")
     {
+      dimkashelk::point_t *points = nullptr;
       try
       {
         size_t s = 0;
         size_t cap = 10;
-        dimkashelk::point_t *points = new dimkashelk::point_t[cap];
+        points = new dimkashelk::point_t[cap];
         do
         {
           double x = 0.0;
@@ -147,6 +148,7 @@ int main()
       }
       catch (...)
       {
+        delete[] points;
         contains_errors_with_shapes = true;
       }
       std::cin.clear();

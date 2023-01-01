@@ -8,12 +8,7 @@ TaylorNextTerm::TaylorNextTerm(double x):
   factorial(2),
   denominator(1),
   terms_count(0)
-{
-  if (x < -1 || x > 1)
-  {
-    throw std::invalid_argument("x is out of range");
-  }
-}
+{}
 
 double TaylorNextTerm::operator()()
 {

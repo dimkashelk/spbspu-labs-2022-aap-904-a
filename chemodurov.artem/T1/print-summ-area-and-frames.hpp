@@ -7,7 +7,7 @@
 
 namespace chemodurov
 {
-  void printSummAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t shp_size);
+  void printSummAreaAndFrames(std::ostream & out, size_t precision, const CompositeShape & comp, size_t shp_size);
 }
 
 #endif

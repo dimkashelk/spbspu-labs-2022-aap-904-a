@@ -15,9 +15,9 @@ namespace chemodurov
   }
 }
 chemodurov::Parallelogram::Parallelogram(const point_t & fst, const point_t & sec, const point_t & trd):
-  p(makeArray(fst, sec, trd), 4ull)
+ p(makeArray(fst, sec, trd), 4ull)
 {
-  if (fst.y != sec.y && sec.y != trd.y)
+  if ((fst.y != sec.y && sec.y != trd.y) || fst == sec || sec == trd)
   {
     throw std::invalid_argument("Not correct parameters");
   }
@@ -43,7 +43,7 @@ void chemodurov::Parallelogram::scale(double k)
   p.scale(k);
 }
 chemodurov::Parallelogram::Parallelogram(const Polygon & pol):
-  p(pol)
+ p(pol)
 {}
 chemodurov::Shape * chemodurov::Parallelogram::clone() const
 {

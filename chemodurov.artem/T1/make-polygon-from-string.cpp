@@ -13,38 +13,38 @@ namespace chemodurov
     }
     return new_arr;
   }
-  point_t readPointFromString(const std::string & data, std::string::size_type * size)
+  point_t readPointFromString(const std::string & data, std::string::size_type & size)
   {
-    std::string::size_type size1 = *size;
+    std::string::size_type size1 = size;
     std::string::size_type size2 = 0;
     double x = std::stod(data.substr(size1), std::addressof(size2));
     size2 += size1;
     double y = std::stod(data.substr(size2), std::addressof(size1));
     size1 += size2;
-    *size = size1;
+    size = size1;
     point_t temp{x, y};
     return temp;
   }
 }
-chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, size_t & arr_size)
+chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, size_t pos, size_t & arr_size)
 {
   size_t capacity = 5;
+  size_t arr_temp_size = arr_size;
   point_t * arr = new point_t[capacity];
-  std::string::size_type size = 7;
   do
   {
     point_t * new_arr = nullptr;
     try
     {
-      if (arr_size == capacity)
+      if (arr_temp_size == capacity)
       {
-        new_arr = extendArray(arr, capacity, arr_size);
+        new_arr = extendArray(arr, capacity, arr_temp_size);
         capacity += 5;
         delete [] arr;
         arr = new_arr;
         new_arr = nullptr;
       }
-      arr[arr_size++] = readPointFromString(data, std::addressof(size));
+      arr[arr_temp_size++] = readPointFromString(data, pos);
     }
     catch (...)
     {
@@ -54,11 +54,6 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
     }
   }
   while (size < data.size());
+  arr_size = arr_temp_size;
   return arr;
-}
-
-chemodurov::Shape * chemodurov::makePolygonFromPoints(point_t * arr, size_t arr_size)
-{
-  Shape * temp = new Polygon(arr, arr_size);
-  return temp;
 }

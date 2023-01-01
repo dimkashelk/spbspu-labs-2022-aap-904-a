@@ -1,11 +1,7 @@
 #include "check-command-in-string.hpp"
+#include <cstring>
 
 bool chemodurov::checkCommand(const std::string & line, const char * command)
 {
-  size_t command_size = 0;
-  for (const char * i = command; *i != '\0'; ++i)
-  {
-    command_size++;
-  }
-  return (!line.compare(0, command_size, command));
+  return (!line.compare(0, std::strlen(command), command));
 }

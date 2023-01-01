@@ -23,12 +23,7 @@ chemodurov::CompositeShape::CompositeShape(size_t capacity):
  shape_(new Shape*[capacity]),
  size_(0),
  capacity_(capacity)
-{
-  for (size_t i = 0; i < capacity; ++i)
-  {
-    shape_[i] = nullptr;
-  }
-}
+{}
 chemodurov::CompositeShape::~CompositeShape()
 {
   for (size_t i = 0; i < size_; ++i)
@@ -186,6 +181,7 @@ size_t chemodurov::CompositeShape::size() const noexcept
 }
 void chemodurov::CompositeShape::push_back(const Shape * shp)
 {
+  Shape * cloned = shp->clone();
   if (capacity_ == size_)
   {
     Shape ** new_shape = new Shape * [capacity_ + 10];
@@ -194,15 +190,10 @@ void chemodurov::CompositeShape::push_back(const Shape * shp)
     {
       new_shape[i] = shape_[i];
     }
-    for (size_t i = size_; i < capacity_; ++i)
-    {
-      new_shape[i] = nullptr;
-    }
     delete[] shape_;
     shape_ = new_shape;
   }
-  shape_[size_] = shp->clone();
-  ++size_;
+  shape_[size_++] = cloned;
 }
 void chemodurov::CompositeShape::push_back(Shape * shp)
 {
@@ -213,10 +204,6 @@ void chemodurov::CompositeShape::push_back(Shape * shp)
     for (size_t i = 0; i < size_; ++i)
     {
       new_shape[i] = shape_[i];
-    }
-    for (size_t i = size_; i < capacity_; ++i)
-    {
-      new_shape[i] = nullptr;
     }
     delete[] shape_;
     shape_ = new_shape;

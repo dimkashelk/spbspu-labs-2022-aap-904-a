@@ -17,6 +17,11 @@ int main()
   chemodurov::CompositeShape shapes(shp_cap);
   chemodurov::point_t iso_scale_center;
   double iso_scale_coeff = 0;
+  const size_t polygon_size = 7;
+  const size_t square_size = 6;
+  const size_t rectangle_size = 9;
+  const size_t parallelogram_size = 13;
+  const size_t scale_size = 5;
 
   do
   {
@@ -25,15 +30,17 @@ int main()
     {
       chemodurov::point_t * arr = nullptr;
       size_t arr_size = 0;
+      chemodurov::Shape * polygon = nullptr;
       try
       {
-        arr = chemodurov::getArrayOfPoints(line, arr_size);
+        arr = chemodurov::getArrayOfPoints(line, polygon_size, arr_size);
         if (arr_size < 3 || chemodurov::isRepeatingPointsInArray(arr, arr_size))
         {
           std::cerr << "Error in description of shape\n";
           delete[] arr;
           continue;
         }
+        polygon = new chemodurov::Polygon(arr, arr_size);
       }
       catch (...)
       {
@@ -41,13 +48,13 @@ int main()
         delete[] arr;
         return 1;
       }
-      shapes.push_back(chemodurov::makePolygonFromPoints(arr, arr_size));
+      shapes.push_back(polygon);
       continue;
     }
 
     if (chemodurov::checkCommand(line, "SQUARE"))
     {
-      std::string::size_type size1 = 6;
+      std::string::size_type size1 = square_size;
       std::string::size_type size2 = 0;
       double x = std::stod(line.substr(size1), std::addressof(size2));
       size2 += size1;
@@ -66,8 +73,8 @@ int main()
 
     if (chemodurov::checkCommand(line, "RECTANGLE"))
     {
-      std::string::size_type size1 = 9;
-      std::string::size_type size2;
+      std::string::size_type size1 = rectangle_size;
+      std::string::size_type size2 = 0;
       double x = std::stod(line.substr(size1), std::addressof(size2));
       size2 += size1;
       double y = std::stod(line.substr(size2), std::addressof(size1));
@@ -89,7 +96,7 @@ int main()
 
     if (chemodurov::checkCommand(line, "PARALLELOGRAM"))
     {
-      std::string::size_type size1 = 13;
+      std::string::size_type size1 = parallelogram_size;
       std::string::size_type size2 = 0;
       double x = std::stod(line.substr(size1), std::addressof(size2));
       size2 += size1;
@@ -117,7 +124,7 @@ int main()
 
     if (chemodurov::checkCommand(line, "SCALE"))
     {
-      std::string::size_type size1 = 5;
+      std::string::size_type size1 = scale_size;
       std::string::size_type size2 = 0;
       double x = std::stod(line.substr(size1), std::addressof(size2));
       size2 += size1;

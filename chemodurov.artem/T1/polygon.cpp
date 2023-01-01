@@ -130,7 +130,6 @@ chemodurov::Shape * chemodurov::Polygon::clone() const
   catch (...)
   {
     delete [] temp;
-    delete cloned;
     throw;
   }
   return cloned;

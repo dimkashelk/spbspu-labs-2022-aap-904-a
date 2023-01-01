@@ -29,3 +29,35 @@ dimkashelk::Regular *dimkashelk::input_regular(std::istream &in)
   }
   return new Regular(point[0], point[1], point[2]);
 }
+dimkashelk::Polygon *dimkashelk::input_polygon(std::istream &in)
+{
+  size_t s = 0;
+  size_t cap = 10;
+  point_t *points = new dimkashelk::point_t[cap];
+  do
+  {
+    double x = 0.0;
+    double y = 0.0;
+    in >> x >> y;
+    if (in)
+    {
+      points[s] = dimkashelk::point_t{x, y};
+      s++;
+      if (s == cap)
+      {
+        cap += 10;
+        dimkashelk::point_t *new_points = new dimkashelk::point_t[cap];
+        for (size_t i = 0; i < s; i++)
+        {
+          new_points[i] = points[i];
+        }
+        delete[] points;
+        points = new_points;
+      }
+    }
+  }
+  while (in);
+  Polygon *polygon = new Polygon(points, s);
+  delete[] points;
+  return polygon;
+}

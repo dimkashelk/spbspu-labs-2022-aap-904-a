@@ -73,6 +73,8 @@ int main()
   size_t capacity = 10, rectArraySize = 0;
   Rectangle *rectArray = nullptr;
   bool badFigure = false;
+  bool figureCommand = false;
+  bool scaleCommand = false;
   try
   {
     rectArray = new Rectangle[capacity];
@@ -108,6 +110,7 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
+      figureCommand = true;
       point_t *pointsArray = nullptr;
       try
       {
@@ -142,6 +145,7 @@ int main()
     }
     if (figureName == "SCALE")
     {
+      scaleCommand = true;
       std::cin >> iScaleX >> iScaleY >> iScaleK;
       if (iScaleK <= 0)
       {
@@ -150,6 +154,10 @@ int main()
         return 2;
       }
     }
+  }
+  if (!(scaleCommand && figureCommand))
+  {
+    return 2;
   }
   //print sum of areas
   double area = 0;

@@ -12,7 +12,7 @@ dimkashelk::Rectangle::Rectangle(const Rectangle &rect):
 dimkashelk::Rectangle::Rectangle(Rectangle &&rect):
   rectangle_(rect.rectangle_)
 {}
-dimkashelk::Rectangle &dimkashelk::Rectangle::operator=(const Rectangle &other)
+dimkashelk::Rectangle &dimkashelk::Rectangle::operator=(const Rectangle &other) noexcept
 {
   rectangle_ = other.rectangle_;
   return *this;

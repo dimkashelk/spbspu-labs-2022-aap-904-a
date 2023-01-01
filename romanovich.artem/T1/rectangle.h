@@ -11,10 +11,10 @@ public:
   void move(double dx, double dy) override;
   void move(point_t position) override;
   void scale(double k) override;
-  static void isoScale(Rectangle rectangle, double x, double y, double k);
+  static void isoScale(Rectangle &rectangle, double x, double y, double k);
   Rectangle *clone() const override;
   ~Rectangle() override = default;
 private:
-  mutable point_t A{}, B{}, C{}, D{};//mutable point_t points[4];
+  mutable point_t A{}, B{}, C{}, D{};
 };
 #endif

@@ -8,8 +8,6 @@ public:
   Polygon(point_t *points, size_t size);
   Polygon(Polygon &&polygon);
   ~Polygon();
-  Polygon& operator=(const Polygon &other);
-  Polygon& operator=(Polygon &&tmp);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t point) override;
@@ -20,6 +18,8 @@ private:
   size_t count_;
   Triangle *triangles_;
   Polygon(const Polygon &polygon);
+  Polygon& operator=(const Polygon &other);
+  Polygon& operator=(Polygon &&tmp);
   Triangle* makeTriangles(point_t *points, size_t size);
   point_t getCenter() const;
 };

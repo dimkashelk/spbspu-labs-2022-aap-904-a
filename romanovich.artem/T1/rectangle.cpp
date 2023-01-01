@@ -1,4 +1,5 @@
 #include "rectangle.h"
+#include <iostream>
 Rectangle::Rectangle(point_t *pointsArray) :
   A(pointsArray[0]),
   B(pointsArray[1]),
@@ -40,31 +41,32 @@ void Rectangle::scale(double k)
 {
   if (k > 0)
   {
-    A.x = k * (A.x - getFrameRect().pos.x);
-    A.y = k * (A.y - getFrameRect().pos.y);
-    B.x = k * (B.x - getFrameRect().pos.x);
-    B.y = k * (B.y - getFrameRect().pos.y);
-    C.x = k * (C.x - getFrameRect().pos.x);
-    C.y = k * (C.y - getFrameRect().pos.y);
-    D.x = k * (D.x - getFrameRect().pos.x);
-    D.y = k * (D.y - getFrameRect().pos.y);
+    double centerX = getFrameRect().pos.x;
+    double centerY = getFrameRect().pos.y;
+    A.x = k * (A.x - centerX) + centerX;
+    A.y = k * (A.y - centerY) + centerY;
+    C.x = k * (C.x - centerX) + centerX;
+    C.y = k * (C.y - centerY) + centerY;
+    B.x = A.x;
+    B.y = C.y;
+    D.x = C.x;
+    D.y = A.y;
   }
 }
 Rectangle *Rectangle::clone() const
 {
   return nullptr;
 }
-void Rectangle::isoScale(Rectangle rectangle, double x, double y, double k)
+void Rectangle::isoScale(Rectangle &rectangle, double secondPosX, double secondPosY, double k)
 {
-  point_t shiftPosition{}; //TODO check calculation
-  shiftPosition.x = x;
-  shiftPosition.y = y;
-  rectangle.move(shiftPosition);
-  double dx = shiftPosition.x - rectangle.getFrameRect().pos.x;
-  double dy = shiftPosition.y - rectangle.getFrameRect().pos.y;
+  double firstPosX = rectangle.getFrameRect().pos.x;
+  double firstPosY = rectangle.getFrameRect().pos.y;
+  double dx = secondPosX - firstPosX;
+  double dy = secondPosY - firstPosY;
+  rectangle.move(dx, dy);
+  dx *= -k;
+  dy *= -k;
   rectangle.scale(k);
-  dx *= k;
-  dy *= k;
   rectangle.move(dx, dy);
 }
 Rectangle::Rectangle() = default;

@@ -4,7 +4,8 @@
 class Rectangle : public Shape
 {
 public:
-  Rectangle(point_t A_, point_t B_, point_t C_, point_t D_);
+  Rectangle();
+  explicit Rectangle(point_t *pointsArray);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(double dx, double dy) override;
@@ -14,6 +15,6 @@ public:
   Rectangle *clone() const override;
   ~Rectangle() override = default;
 private:
-  mutable point_t A, B, C, D;//mutable point_t points[4] = pointsArray;
+  mutable point_t A{}, B{}, C{}, D{};//mutable point_t points[4];
 };
 #endif

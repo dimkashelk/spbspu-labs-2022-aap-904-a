@@ -1,10 +1,9 @@
 #include "rectangle.h"
-#include <iostream>
-Rectangle::Rectangle(point_t A_, point_t B_, point_t C_, point_t D_) :
-  A(A_),
-  B(B_),
-  C(C_),
-  D(D_)
+Rectangle::Rectangle(point_t *pointsArray) :
+  A(pointsArray[0]),
+  B(pointsArray[1]),
+  C(pointsArray[2]),
+  D(pointsArray[3])
 {
 }
 double Rectangle::getArea() const
@@ -57,7 +56,7 @@ Rectangle *Rectangle::clone() const
 }
 void Rectangle::isoScale(point_t *pointsArray, double x, double y, double k)
 {
-  Rectangle rectangle(pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
+  Rectangle rectangle(pointsArray);
   point_t shiftPosition{};
   shiftPosition.x = x;
   shiftPosition.y = y;
@@ -68,4 +67,7 @@ void Rectangle::isoScale(point_t *pointsArray, double x, double y, double k)
   dx *= k;
   dy *= k;
   rectangle.move(5, 5);
+}
+Rectangle::Rectangle()
+{
 }

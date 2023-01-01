@@ -3,10 +3,12 @@
 #include "rectangle.h"
 #include "regular.h"
 #include "polygon.h"
+#include "compositeshape.h"
 namespace dimkashelk
 {
   Rectangle* input_rectangle(std::istream &in);
   Regular* input_regular(std::istream &in);
   Polygon* input_polygon(std::istream &in);
+  CompositeShape* input_composite_shape(std::istream &in);
 }
 #endif

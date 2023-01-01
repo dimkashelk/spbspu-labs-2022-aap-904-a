@@ -1,4 +1,5 @@
 #include "rectangle.h"
+#include <iostream>
 Rectangle::Rectangle(point_t A_, point_t B_, point_t C_, point_t D_) :
   A(A_),
   B(B_),
@@ -15,8 +16,8 @@ rectangle_t Rectangle::getFrameRect() const
   rectangle_t frameRect{};
   frameRect.height = B.y - A.y;
   frameRect.width = C.x - B.x;
-  frameRect.pos.x = (C.x - B.x) / 2;
-  frameRect.pos.y = (B.y - A.y) / 2;
+  frameRect.pos.x = (C.x + B.x) / 2;
+  frameRect.pos.y = (B.y + A.y) / 2;
   return frameRect;
 }
 void Rectangle::move(double dx, double dy)

@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include "base-types.h"
 #include "rectangle.h"
 //void buildParallelogram()
@@ -43,11 +44,17 @@ int main()
   }
   if (figureName == "RECTANGLE")
   {
+    auto p = std::setprecision(1);
+    std::cout << std::fixed;
     point_t *pointsArray = buildRectangle();
     Rectangle rectangle(pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
-    std::cout << rectangle.getArea() << "\n";
     rectangle_t frameRect = rectangle.getFrameRect();
-    std::cout << frameRect.width << " " << frameRect.height << " " << frameRect.pos.x << " " << frameRect.pos.y << "\n";
+    double frRectAX = frameRect.pos.x - frameRect.width / 2;
+    double frRectAY = frameRect.pos.y - frameRect.height / 2;
+    double frRectCX = frameRect.pos.x + frameRect.width / 2;
+    double frRectCY = frameRect.pos.y + frameRect.height / 2;
+    std::cout << p << rectangle.getArea() << " ";
+    std::cout << p << frRectAX << " " << p << frRectAY << " " << p << frRectCX << " " << p << frRectCY << "\n";
   }
   if (figureName == "CONCAVE")
   {

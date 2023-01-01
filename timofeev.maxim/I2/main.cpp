@@ -17,15 +17,6 @@ int main(int argc, char *argv[])
     std::cerr << "File error" << "\n";
     return 2;
   }
-  size_t fsize = 0;
-  int * File_Array = new int[fsize];
-  std::string fname = argv[1];
-  std::ifstream input(fname);
-  if (argv == NULL)
-  {
-    std::cerr << "Empty File" << "\n";
-    return 2;
-  }
   int ready_array[5] = {4,5,3,2,1};
   try
   {
@@ -75,6 +66,10 @@ int main(int argc, char *argv[])
   }
   delete [] dyn_array;
 
+  size_t fsize = 0;
+  int * File_Array = new int[fsize];
+  std::string fname = argv[1];
+  std::ifstream input(fname);
   if (!input.is_open())
   {
     std::cout << "File Error\n" ;

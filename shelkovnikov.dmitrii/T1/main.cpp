@@ -141,7 +141,7 @@ int main()
         size++;
         if (size == capacity)
         {
-          cap += 10;
+          capacity += 10;
           expand(shapes, size, capacity);
         }
         delete[] points;
@@ -157,7 +157,7 @@ int main()
     {
       try
       {
-        dimkashelk::CompositeShape compositeShape;
+
       }
       catch (const std::logic_error &e)
       {
@@ -192,7 +192,7 @@ int main()
       output_shapes(std::cout, shapes, size) << "\n";
       for (size_t i = 0; i < size; i++)
       {
-        isotropic_scaling(shapes[i], point, k);
+        dimkashelk::isotropic_scaling(shapes[i], point, k);
       }
       output_shapes(std::cout, shapes, size) << "\n";
       if (contains_errors_with_shapes)

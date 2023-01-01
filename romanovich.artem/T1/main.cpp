@@ -68,7 +68,15 @@ int main()
 {
   std::string figureName = "";
   size_t capacity = 10, rectArraySize = 0;
-  Rectangle *rectArray = new Rectangle[capacity];
+  Rectangle *rectArray = nullptr;
+  try
+  {
+    rectArray = new Rectangle[capacity];
+  }
+  catch (...)
+  {
+    std::cerr << "Error occurred.\n";
+  }
   double iScaleX = 0, iScaleY = 0, iScaleK = 1;
   while (std::cin)
   {

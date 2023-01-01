@@ -40,14 +40,14 @@ void Rectangle::scale(double k)
 {
   if (k > 0)
   {
-    A.x = k * (A.x - getFrameRect().pos.x) + getFrameRect().pos.x;
-    A.y = k * (A.y - getFrameRect().pos.y) + getFrameRect().pos.y;
-    B.x = k * (B.x - getFrameRect().pos.x) + getFrameRect().pos.x;
-    B.y = k * (B.y - getFrameRect().pos.y) + getFrameRect().pos.y;
-    C.x = k * (C.x - getFrameRect().pos.x) + getFrameRect().pos.x;
-    C.y = k * (C.y - getFrameRect().pos.y) + getFrameRect().pos.y;
-    D.x = k * (D.x - getFrameRect().pos.x) + getFrameRect().pos.x;
-    D.y = k * (D.y - getFrameRect().pos.y) + getFrameRect().pos.y;
+    A.x = k * (A.x - getFrameRect().pos.x);
+    A.y = k * (A.y - getFrameRect().pos.y);
+    B.x = k * (B.x - getFrameRect().pos.x);
+    B.y = k * (B.y - getFrameRect().pos.y);
+    C.x = k * (C.x - getFrameRect().pos.x);
+    C.y = k * (C.y - getFrameRect().pos.y);
+    D.x = k * (D.x - getFrameRect().pos.x);
+    D.y = k * (D.y - getFrameRect().pos.y);
   }
 }
 Rectangle *Rectangle::clone() const

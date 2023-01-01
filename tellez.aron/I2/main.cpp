@@ -27,7 +27,7 @@ int main (int argc, char *argv[])
   int * arr_2 = new int[n];
   const unsigned int srand_arg = 1;
   std::srand(srand_arg);
-  for (int i = 0; i < (int)n; i++)
+  for (int i = 0; i < static_cast<int> (n); i++)
   {
     arr_2[1] = std::rand();
   }

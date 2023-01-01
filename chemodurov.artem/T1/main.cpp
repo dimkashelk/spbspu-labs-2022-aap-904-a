@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "square.hpp"
 #include "rectangle.hpp"
 #include "parallelogram.hpp"
@@ -22,7 +23,6 @@ int main()
   const size_t rectangle_size = 9;
   const size_t parallelogram_size = 13;
   const size_t scale_size = 5;
-  const size_t precision = 1;
 
   do
   {
@@ -35,13 +35,13 @@ int main()
       try
       {
         arr = chemodurov::getArrayOfPoints(line, polygon_size, arr_size);
-        if (arr_size < 3 || chemodurov::isRepeatingPointsInArray(arr, arr_size))
-        {
-          std::cerr << "Error in description of shape\n";
-          delete[] arr;
-          continue;
-        }
         polygon = new chemodurov::Polygon(arr, arr_size);
+      }
+      catch (const std::invalid_argument & e)
+      {
+        std::cerr << e.what() << "\n";
+        delete [] arr;
+        continue;
       }
       catch (...)
       {
@@ -63,12 +63,15 @@ int main()
       size1 += size2;
       chemodurov::point_t temp{x, y};
       double length = std::stod(line.substr(size1));
-      if (length <= 0)
+      try
       {
-        std::cerr << "Error in description of shape\n";
+        shapes.push_back(new chemodurov::Square(temp, length));
+      }
+      catch (const std::invalid_argument & e)
+      {
+        std::cerr << e.what() << "\n";
         continue;
       }
-      shapes.push_back(new chemodurov::Square(temp, length));
       continue;
     }
 
@@ -85,13 +88,15 @@ int main()
       size2 += size1;
       y = std::stod(line.substr(size2), std::addressof(size1));
       chemodurov::point_t right_up{x, y};
-      if (left_down.x >= right_up.x || left_down.y >= right_up.y)
+      try
       {
-        std::cerr << "Error in description of shape\n";
+        shapes.push_back(new chemodurov::Rectangle(left_down, right_up));
+      }
+      catch (const std::invalid_argument & e)
+      {
+        std::cerr << e.what() << "\n";
         continue;
       }
-      shapes.push_back(new chemodurov::Rectangle(left_down, right_up));
-
       continue;
     }
 
@@ -114,12 +119,15 @@ int main()
       y = std::stod(line.substr(size2), std::addressof(size1));
       size1 += size2;
       chemodurov::point_t trd{x, y};
-      if ((fst.y != sec.y && sec.y != trd.y) || fst == sec || sec == trd)
+      try
       {
-        std::cerr << "Error in description of shape\n";
+        shapes.push_back(new chemodurov::Parallelogram(fst, sec, trd));
+      }
+      catch (const std::invalid_argument & e)
+      {
+        std::cerr << e.what() << "\n";
         continue;
       }
-      shapes.push_back(new chemodurov::Parallelogram(fst, sec, trd));
       continue;
     }
 
@@ -135,21 +143,22 @@ int main()
       iso_scale_center = {x, y};
       break;
     }
-  } while (std::cin);
+  }
+  while (std::cin);
 
   if (!std::cin || !shapes.size() || iso_scale_coeff <= 0)
   {
     std::cerr << "Error...\n";
     return 1;
   }
-  chemodurov::printSummAreaAndFrames(std::cout, precision,  shapes, shapes.size());
+  chemodurov::printSummAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  shapes, shapes.size());
   std::cout << "\n";
 
   for (size_t i = 0; i < shapes.size(); ++i)
   {
     isoScale(shapes[i], iso_scale_center, iso_scale_coeff);
   }
-  chemodurov::printSummAreaAndFrames(std::cout, precision, shapes, shapes.size());
+  chemodurov::printSummAreaAndFrames(std::cout, shapes, shapes.size());
   std::cout << "\n";
   return 0;
 }

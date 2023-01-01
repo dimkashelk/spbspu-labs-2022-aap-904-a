@@ -4,16 +4,16 @@
 
 namespace chemodurov
 {
-  void printLeftDownAndRightUp(std::ostream & out, size_t prec, const rectangle_t & rect)
+  void printLeftDownAndRightUp(std::ostream & out, const rectangle_t & rect)
   {
     point_t left_down{rect.pos.x - 0.5 * rect.width, rect.pos.y - 0.5 * rect.height};
     point_t right_up{rect.pos.x + 0.5 * rect.width, rect.pos.y + 0.5 * rect.height};
-    out << std::setprecision(prec) << left_down.x << ' ' << std::setprecision(prec) << left_down.y << ' ';
-    out << std::setprecision(prec) << right_up.x << ' ' << std::setprecision(prec) << right_up.y;
+    out << left_down.x << ' ' << left_down.y << ' ';
+    out << right_up.x << ' ' << right_up.y;
   }
 }
 
-void chemodurov::printSummAreaAndFrames(std::ostream & out, size_t precision, const CompositeShape & comp, size_t shp_size)
+void chemodurov::printSummAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t shp_size)
 {
   if (!shp_size)
   {
@@ -24,9 +24,9 @@ void chemodurov::printSummAreaAndFrames(std::ostream & out, size_t precision, co
   {
     summ_area += comp[i]->getArea();
   }
-  out << std::fixed << std::setprecision(precision) << summ_area;
+  out << summ_area;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    chemodurov::printLeftDownAndRightUp(out << ' ', precision, comp[i]->getFrameRect());
+    chemodurov::printLeftDownAndRightUp(out << ' ', comp[i]->getFrameRect());
   }
 }

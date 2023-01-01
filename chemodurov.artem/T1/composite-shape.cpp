@@ -184,7 +184,16 @@ void chemodurov::CompositeShape::push_back(const Shape * shp)
   Shape * cloned = shp->clone();
   if (capacity_ == size_)
   {
-    Shape ** new_shape = new Shape * [capacity_ + 10];
+    Shape ** new_shape = nullptr;
+    try
+    {
+      new_shape = new Shape * [capacity_ + 10];
+    }
+    catch (...)
+    {
+      delete cloned;
+      throw;
+    }
     capacity_ += 10;
     for (size_t i = 0; i < size_; ++i)
     {

@@ -18,12 +18,9 @@ namespace dimkashelk
     void move(double delta_x, double delta_y) override;
     void scale(double k) override;
     Shape* clone() const override;
-    bool isRectangular();
-    point_t* getPoints() const;
-    point_t getCenter() const;
-    bool containsPoint(point_t point) const;
   private:
     point_t points[3];
+    point_t getCenter() const;
   };
 }
 #endif

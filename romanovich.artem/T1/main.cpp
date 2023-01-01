@@ -116,7 +116,8 @@ int main()
         {
           badFigure = true;
         }
-        else{
+        else
+        {
           Rectangle rectangle(pointsArray);
           rectArray[rectArraySize] = rectangle;
           rectArraySize++;
@@ -152,11 +153,13 @@ int main()
   }
   //print sum of areas
   double area = 0;
+  auto p = std::setprecision(1);
+  std::cout << std::fixed;
   for (size_t i = 0; i < rectArraySize; ++i)
   {
     area += rectArray[i].getArea();
   }
-  std::cout << area << " ";
+  std::cout << p << area << " ";
   // print frame rect coords
   printLine(rectArray[0]);
   for (size_t i = 1; i < rectArraySize; ++i)
@@ -166,7 +169,8 @@ int main()
   }
   for (size_t i = 0; i < rectArraySize; ++i)
   {
-    //rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
+    rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
+/*
     point_t shiftPosition{};
     shiftPosition.x = iScaleX;
     shiftPosition.y = iScaleY;
@@ -176,7 +180,7 @@ int main()
     rectArray[i].scale(iScaleK);
     dx *= iScaleK;
     dy *= iScaleK;
-    rectArray[i].move(dx, dy);
+    rectArray[i].move(dx, dy);*/
   }
   std::cout << "\n";
   //print sum of scaledAreas
@@ -185,7 +189,7 @@ int main()
   {
     scaledArea += rectArray[i].getArea();
   }
-  std::cout << scaledArea << " ";
+  std::cout << p << scaledArea << " ";
   // print frame rect coords
   printLine(rectArray[0]);
   for (size_t i = 1; i < rectArraySize; ++i)

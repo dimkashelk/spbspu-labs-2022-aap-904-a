@@ -1,7 +1,6 @@
 #include <string>
 #include <iostream>
 #include "base-types.h"
-#include "rectangle.h"
 void buildParallelogram()
 {
   point_t A{}, B{}, C{}, D{};
@@ -9,7 +8,7 @@ void buildParallelogram()
   D.x = A.x - B.x + C.x;
   D.y = A.y - B.y + C.y;
 }
-void buildRectangle()
+point_t * buildRectangle()
 {
   point_t A{}, B{}, C{}, D{};
   std::cin >> A.x >> A.y >> C.x >> C.y;
@@ -17,7 +16,16 @@ void buildRectangle()
   C.y = B.y;
   D.x = B.x;
   D.y = A.y;
-  Rectangle rectangle;
+  point_t *pointsArray = nullptr;
+  try
+  {
+    pointsArray = new point_t[4]{A, B, C, D};
+  }
+  catch (...)
+  {
+    std::cerr << "Error occurred.\n";
+  }
+  return pointsArray;
 }
 void buildConcave()
 {
@@ -34,7 +42,7 @@ int main()
   }
   if (figureName == "RECTANGLE")
   {
-    buildRectangle();
+    point_t *pointsArray = buildRectangle();
   }
   if (figureName == "CONCAVE")
   {

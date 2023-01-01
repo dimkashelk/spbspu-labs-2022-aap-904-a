@@ -94,15 +94,28 @@ Shape* Polygon::clone() const
 {
   return new Polygon(*this);
 }
-Triangle *Polygon::makeTriangles(point_t *points, size_t size)
+Triangle* Polygon::makeTriangles(point_t *points, size_t size)
 {
   TriangulatePoints triangulatePoints(points, size);
-  count_ = triangulatePoints.getSize();
-  Triangle *triangles = new Triangle[count_];
-  for (size_t i = 0; i < count_; i++)
+  size_t s = 0;
+  size_t capacity = 10;
+  Triangle *triangles = new Triangle[capacity];
+  while (triangulatePoints.hasNext())
   {
-    triangles[i] = triangulatePoints();
+    triangles[s++] = triangulatePoints();
+    if (s == capacity)
+    {
+      capacity += 10;
+      Triangle *new_triangles = new Triangle[capacity];
+      for (size_t i = 0; i < s; i++)
+      {
+        new_triangles[i] = triangles[i];
+      }
+      delete[] triangles;
+      triangles = new_triangles;
+    }
   }
+  count_ = s;
   return triangles;
 }
 point_t Polygon::getCenter() const

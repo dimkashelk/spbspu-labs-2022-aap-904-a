@@ -21,9 +21,14 @@ rectangle_t Rectangle::getFrameRect() const
 }
 void Rectangle::move(double dx, double dy)
 {
+  A.x, B.x, C.x, D.x += dx;
+  A.y, B.y, C.y, D.y += dy;
 }
 void Rectangle::move(point_t position)
 {
+  double dx = position.x - getFrameRect().pos.x;
+  double dy = position.y - getFrameRect().pos.y;
+  move(dx, dy);
 }
 void Rectangle::scale(double k)
 {

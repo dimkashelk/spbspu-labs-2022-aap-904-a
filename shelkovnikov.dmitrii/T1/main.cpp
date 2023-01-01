@@ -4,9 +4,6 @@
 #include <iomanip>
 #include "rectangle.h"
 #include "isotropic_scaling.h"
-#include "regular.h"
-#include "polygon.h"
-#include "compositeshape.h"
 #include "base_functions.h"
 #include "input_shapes.h"
 void expand(dimkashelk::Shape **shapes, size_t size, size_t new_capacity)

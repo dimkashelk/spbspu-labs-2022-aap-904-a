@@ -37,8 +37,8 @@ std::ostream& output_shapes(std::ostream &out, dimkashelk::Shape **shapes, size_
   for (size_t i = 0; i < size; i++)
   {
     dimkashelk::rectangle_t rect = shapes[i]->getFrameRect();
-    dimkashelk::point_t left_down = getLeftDownPoint(rect);
-    dimkashelk::point_t right_up = getRightUpPoint(rect);
+    dimkashelk::point_t left_down = get_left_down_point(rect);
+    dimkashelk::point_t right_up = get_right_up_point(rect);
     out << " " << left_down.x << " " << left_down.y << " " << right_up.x << " " << right_up.y;
   }
   return out;

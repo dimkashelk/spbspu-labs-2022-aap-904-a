@@ -3,7 +3,7 @@
 #include "base_types.h"
 namespace dimkashelk
 {
-  point_t getLeftDownPoint(rectangle_t rect);
-  point_t getRightUpPoint(rectangle_t rect);
+  point_t get_left_down_point(rectangle_t rect);
+  point_t get_right_up_point(rectangle_t rect);
 }
 #endif

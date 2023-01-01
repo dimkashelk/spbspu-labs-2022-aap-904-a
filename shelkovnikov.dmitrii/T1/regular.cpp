@@ -2,7 +2,6 @@
 #include <stdexcept>
 #include <cmath>
 #include "isotropic_scaling.h"
-#include "vector_t.h"
 dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   triangle_(point_1, point_2, point_3),
   size_(0)
@@ -99,12 +98,10 @@ void dimkashelk::Regular::scale(double k)
 {
   point_t *points = triangle_.getPoints();
   point_t point = points[0];
-  vector_t direction_1(points[1], point);
-  vector_t direction_2(points[2], point);
-  direction_1 *= k;
-  direction_2 *= k;
-  points[1] = point_t{point.x + direction_1.x, point.y + direction_1.y};
-  points[2] = point_t{point.x + direction_2.x, point.y + direction_2.y};
+  for (size_t i = 0; i < 2; i++)
+  {
+    points[i] = point_t{point.x + k * (points[i + 1].x - point.x), point.y + k * (points[i + 1].y - point.y)};
+  }
   triangle_ = Triangle(point, points[1], points[2]);
   delete[] points;
 }

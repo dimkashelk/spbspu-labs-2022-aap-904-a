@@ -4,6 +4,12 @@
 class Rectangle : public Shape
 {
 public:
-  double getArea() const;
+  double getArea() const override;
+  rectangle_t getFrameRect() const override;
+  void move(double dx, double dy) override;
+  void move(point_t position) override;
+  void scale(double k) override;
+  Rectangle *clone() const override;
+  ~Rectangle() override = default;
 };
 #endif

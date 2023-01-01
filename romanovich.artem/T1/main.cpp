@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "base-types.h"
+#include "rectangle.h"
 void buildParallelogram()
 {
   point_t A{}, B{}, C{}, D{};
@@ -16,6 +17,7 @@ void buildRectangle()
   C.y = B.y;
   D.x = B.x;
   D.y = A.y;
+  Rectangle rectangle;
 }
 void buildConcave()
 {

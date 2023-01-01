@@ -42,6 +42,11 @@ point_t *buildRectangle()
 {
   point_t A{}, B{}, C{}, D{};
   std::cin >> A.x >> A.y >> C.x >> C.y;
+  if (A.x >= C.x || A.y >= C.y)
+  {
+    std::cerr << "Error occurred.\n";
+    return 0;
+  }
   B.x = A.x;
   B.y = C.y;
   D.x = C.x;
@@ -106,6 +111,7 @@ int main()
     {
       point_t *pointsArray = buildRectangle();
       Rectangle rectangle(pointsArray);
+      delete [] pointsArray;
       rectArray[rectArraySize] = rectangle;
       rectArraySize++;
     }
@@ -136,5 +142,6 @@ int main()
     //
     printLine(rectArray[i]);
   }
+  delete [] rectArray;
   return 0;
 }

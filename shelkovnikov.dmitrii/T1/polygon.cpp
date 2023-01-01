@@ -20,25 +20,6 @@ dimkashelk::Polygon::~Polygon() noexcept
 {
   delete[] triangles_;
 }
-dimkashelk::Polygon &dimkashelk::Polygon::operator=(const Polygon &other)
-{
-  if (triangles_)
-  {
-    delete[] triangles_;
-  }
-  triangles_ = new Triangle[other.count_];
-  for (size_t i = 0; i < other.count_; i++)
-  {
-    triangles_[i] = other.triangles_[i];
-  }
-  count_ = other.count_;
-  return *this;
-}
-dimkashelk::Polygon &dimkashelk::Polygon::operator=(Polygon &&tmp)
-{
-  operator=(tmp);
-  return *this;
-}
 double dimkashelk::Polygon::getArea() const
 {
   double global_area = 0.0;

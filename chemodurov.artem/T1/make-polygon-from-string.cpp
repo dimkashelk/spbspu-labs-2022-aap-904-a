@@ -53,7 +53,7 @@ chemodurov::point_t * chemodurov::getArrayOfPoints(const std::string & data, siz
       throw;
     }
   }
-  while (size < data.size());
+  while (pos < data.size());
   arr_size = arr_temp_size;
   return arr;
 }

@@ -22,6 +22,7 @@ int main()
   const size_t rectangle_size = 9;
   const size_t parallelogram_size = 13;
   const size_t scale_size = 5;
+  const size_t precision = 1;
 
   do
   {
@@ -141,14 +142,14 @@ int main()
     std::cerr << "Error...\n";
     return 1;
   }
-  chemodurov::printSummAreaAndFrames(std::cout, shapes, shapes.size());
+  chemodurov::printSummAreaAndFrames(std::cout, precision,  shapes, shapes.size());
   std::cout << "\n";
 
   for (size_t i = 0; i < shapes.size(); ++i)
   {
     isoScale(shapes[i], iso_scale_center, iso_scale_coeff);
   }
-  chemodurov::printSummAreaAndFrames(std::cout, shapes, shapes.size());
+  chemodurov::printSummAreaAndFrames(std::cout, precision, shapes, shapes.size());
   std::cout << "\n";
   return 0;
 }

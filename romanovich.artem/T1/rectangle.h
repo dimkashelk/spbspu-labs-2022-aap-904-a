@@ -13,7 +13,7 @@ public:
   Rectangle *clone() const override;
   ~Rectangle() override = default;
 private:
-  point_t A, B, C, D;
+  mutable point_t A, B, C, D;
   //point_t points[3] = pointsArray;
 };
 #endif

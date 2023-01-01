@@ -45,11 +45,9 @@ int main()
   {
     point_t *pointsArray = buildRectangle();
     Rectangle rectangle(pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
-    std::cout << pointsArray[0].x  << " " << pointsArray[0].y << "\n";
-    std::cout << pointsArray[1].x  << " " << pointsArray[1].y << "\n";
-    std::cout << pointsArray[2].x  << " " << pointsArray[2].y << "\n";
-    std::cout << pointsArray[3].x  << " " << pointsArray[3].y << "\n";
     std::cout << rectangle.getArea() << "\n";
+    rectangle_t frameRect = rectangle.getFrameRect();
+    std::cout << frameRect.width << " " << frameRect.height << " " << frameRect.pos.x << " " << frameRect.pos.y << "\n";
   }
   if (figureName == "CONCAVE")
   {

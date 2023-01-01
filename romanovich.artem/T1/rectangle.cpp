@@ -8,20 +8,16 @@ Rectangle::Rectangle(point_t A_, point_t B_, point_t C_, point_t D_) :
 }
 double Rectangle::getArea() const
 {
-  double area = -1;
-  if (A.x == B.x)
-  {
-    area = (A.y - B.y) * (B.x - C.x);
-  }
-  else
-  {
-    area = (A.x - B.x) * (B.y - C.y);
-  }
-  return area > 0 ? area : -area;
+  return (B.y - A.y) * (C.x - B.x);
 }
 rectangle_t Rectangle::getFrameRect() const
 {
-  return rectangle_t();
+  rectangle_t frameRect{};
+  frameRect.height = B.y - A.y;
+  frameRect.width = C.x - B.x;
+  frameRect.pos.x = (C.x - B.x) / 2;
+  frameRect.pos.y = (B.y - A.y) / 2;
+  return frameRect;
 }
 void Rectangle::move(double dx, double dy)
 {

@@ -55,3 +55,17 @@ Rectangle *Rectangle::clone() const
 {
   return nullptr;
 }
+void Rectangle::isoScale(point_t *pointsArray, double x, double y, double k)
+{
+  Rectangle rectangle(pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
+  point_t shiftPosition{};
+  shiftPosition.x = x;
+  shiftPosition.y = y;
+  rectangle.move(shiftPosition);
+  double dx = shiftPosition.x - rectangle.getFrameRect().pos.x;
+  double dy = shiftPosition.y - rectangle.getFrameRect().pos.y;
+  rectangle.scale(k);
+  dx *= k;
+  dy *= k;
+  rectangle.move(5, 5);
+}

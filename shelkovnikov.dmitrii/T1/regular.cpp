@@ -25,22 +25,6 @@ dimkashelk::Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),
   size_(regular.size_)
 {}
-dimkashelk::Regular::Regular(Regular &&regular):
-  triangle_(regular.triangle_),
-  size_(regular.size_)
-{}
-dimkashelk::Regular &dimkashelk::Regular::operator=(const Regular &other)
-{
-  triangle_ = other.triangle_;
-  size_ = other.size_;
-  return *this;
-}
-dimkashelk::Regular &dimkashelk::Regular::operator=(Regular &&tmp)
-{
-  triangle_ = tmp.triangle_;
-  size_ = tmp.size_;
-  return *this;
-}
 double dimkashelk::Regular::getArea() const
 {
   return triangle_.getArea() * size_;

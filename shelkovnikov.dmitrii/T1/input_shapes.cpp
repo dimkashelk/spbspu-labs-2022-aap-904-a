@@ -58,9 +58,17 @@ dimkashelk::Polygon *dimkashelk::input_polygon(std::istream &in)
   }
   while (in);
   in.clear();
-  Polygon *polygon = new Polygon(points, s);
-  delete[] points;
-  return polygon;
+  try
+  {
+    Polygon *polygon = new Polygon(points, s);
+    delete[] points;
+    return polygon;
+  }
+  catch (...)
+  {
+    delete[] points;
+    throw;
+  }
 }
 dimkashelk::CompositeShape *dimkashelk::input_composite_shape(std::istream &in)
 {

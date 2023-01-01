@@ -72,8 +72,7 @@ dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
 void dimkashelk::Polygon::move(point_t point)
 {
   point_t center = getCenter();
-  vector_t direction(point, center);
-  move(direction.x, direction.y);
+  move(point.x - center.x, point.y - center.y);
 }
 void dimkashelk::Polygon::move(double delta_x, double delta_y)
 {

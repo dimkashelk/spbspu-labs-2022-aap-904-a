@@ -9,10 +9,10 @@ namespace dimkashelk
   public:
     explicit Rectangle(rectangle_t rectangle);
     Rectangle(point_t point_1, point_t point_2);
-    Rectangle(const Rectangle &rect);
-    Rectangle(Rectangle &&rect);
-    Rectangle& operator=(const Rectangle &other) noexcept;
-    Rectangle& operator=(Rectangle &&tmp) noexcept;
+    Rectangle(const Rectangle &rect) = delete;
+    Rectangle(Rectangle &&rect) = delete;
+    Rectangle& operator=(const Rectangle &other) = delete;
+    Rectangle& operator=(Rectangle &&tmp) = delete;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;

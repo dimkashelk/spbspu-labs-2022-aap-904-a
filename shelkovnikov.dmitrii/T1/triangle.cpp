@@ -1,7 +1,6 @@
 #include "triangle.h"
 #include <cmath>
 #include <stdexcept>
-#include "vector_t.h"
 dimkashelk::Triangle::Triangle()
 {}
 dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
@@ -50,9 +49,11 @@ double dimkashelk::Triangle::getArea() const
   //         |i  j  k|
   // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;
   //         |x2 y2 0|
-  vector_t a(points[1].x - points[0].x, points[1].y - points[0].y);
-  vector_t b(points[2].x - points[0].x, points[2].y - points[0].y);
-  double third_coord = a.x * b.y - a.y * b.x;
+  double a_x = points[1].x - points[0].x;
+  double a_y = points[1].y - points[0].y;
+  double b_x = points[2].x - points[0].x;
+  double b_y = points[2].y - points[0].y;
+  double third_coord = a_x * b_y - a_y * b_x;
   // |a * b| = |c| = sqrt(x * x + y * y + z * z)
   // where x = 0, y = 0 => |c| = sqrt(z * z) = z
   return std::fabs(third_coord) / 2;

@@ -25,9 +25,8 @@ void printLine(Rectangle rectangle)
   double frRect1Y = frameRect.pos.y - frameRect.height / 2;
   double frRect2X = frameRect.pos.x + frameRect.width / 2;
   double frRect2Y = frameRect.pos.y + frameRect.height / 2;
-  std::cout << p << rectangle.getArea() << " ";
   std::cout << p << frRect1X << " " << p << frRect1Y << " ";
-  std::cout << p << frRect2X << " " << p << frRect2Y << "\n";
+  std::cout << p << frRect2X << " " << p << frRect2Y;
 }
 //
 void buildParallelogram()
@@ -73,6 +72,7 @@ int main()
   std::string figureName = "";
   size_t capacity = 10, rectArraySize = 0;
   Rectangle *rectArray = nullptr;
+  bool badFigure = false;
   try
   {
     rectArray = new Rectangle[capacity];
@@ -114,9 +114,14 @@ int main()
         pointsArray = buildRectangle();
         if (!pointsArray)
         {
-          std::cerr << "Error occurred: points does not match the task condition.\n";
-          return 0;
+          badFigure = true;
         }
+        else{
+          Rectangle rectangle(pointsArray);
+          rectArray[rectArraySize] = rectangle;
+          rectArraySize++;
+        }
+        delete[] pointsArray;
       }
       catch (...)
       {
@@ -124,10 +129,11 @@ int main()
         delete[] pointsArray;
         return 2;
       }
-      Rectangle rectangle(pointsArray);
-      delete[] pointsArray;
-      rectArray[rectArraySize] = rectangle;
-      rectArraySize++;
+      if (badFigure)
+      {
+        badFigure = false;
+        std::cerr << "Error occurred: points does not match the task condition.\n";
+      }
     }
     if (figureName == "CONCAVE")
     {
@@ -144,10 +150,22 @@ int main()
       }
     }
   }
-  for (size_t i = 0; i < rectArraySize; ++i) //TODO dynamic calculation
+  //print sum of areas
+  double area = 0;
+  for (size_t i = 0; i < rectArraySize; ++i)
   {
+    area += rectArray[i].getArea();
+  }
+  std::cout << area << " ";
+  // print frame rect coords
+  printLine(rectArray[0]);
+  for (size_t i = 1; i < rectArraySize; ++i)
+  {
+    std::cout << " ";
     printLine(rectArray[i]);
-    //
+  }
+  for (size_t i = 0; i < rectArraySize; ++i)
+  {
     //rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
     point_t shiftPosition{};
     shiftPosition.x = iScaleX;
@@ -159,7 +177,20 @@ int main()
     dx *= iScaleK;
     dy *= iScaleK;
     rectArray[i].move(dx, dy);
-    //
+  }
+  std::cout << "\n";
+  //print sum of scaledAreas
+  double scaledArea = 0;
+  for (size_t i = 0; i < rectArraySize; ++i)
+  {
+    scaledArea += rectArray[i].getArea();
+  }
+  std::cout << scaledArea << " ";
+  // print frame rect coords
+  printLine(rectArray[0]);
+  for (size_t i = 1; i < rectArraySize; ++i)
+  {
+    std::cout << " ";
     printLine(rectArray[i]);
   }
   delete[] rectArray;

@@ -1,4 +1,5 @@
 #include "rectangle.h"
+#include <cmath>
 Rectangle::Rectangle(rectangle_t rectangle):
   rectangle_(rectangle)
 {}
@@ -40,8 +41,8 @@ void Rectangle::move(double delta_x, double delta_y)
 }
 void Rectangle::scale(double k)
 {
-  rectangle_.width *= k;
-  rectangle_.height *= k;
+  rectangle_.width *= std::fabs(k);
+  rectangle_.height *= std::fabs(k);
 }
 Shape *Rectangle::clone() const
 {

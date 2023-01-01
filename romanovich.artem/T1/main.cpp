@@ -44,8 +44,7 @@ point_t *buildRectangle()
   std::cin >> A.x >> A.y >> C.x >> C.y;
   if (A.x >= C.x || A.y >= C.y)
   {
-    std::cerr << "Error occurred: points does not match the task condition.\n";
-    throw;
+    return nullptr;
   }
   B.x = A.x;
   B.y = C.y;
@@ -74,6 +73,7 @@ int main()
   std::string figureName = "";
   size_t capacity = 10, rectArraySize = 0;
   Rectangle *rectArray = nullptr;
+  bool noFigure = true;
   try
   {
     rectArray = new Rectangle[capacity];
@@ -109,10 +109,16 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
+      noFigure = false;
       point_t *pointsArray = nullptr;
       try
       {
         pointsArray = buildRectangle();
+        if (!pointsArray)
+        {
+          std::cerr << "Error occurred: points does not match the task condition.\n";
+          return 0;
+        }
       }
       catch (...)
       {
@@ -132,9 +138,19 @@ int main()
     if (figureName == "SCALE")
     {
       std::cin >> iScaleX >> iScaleY >> iScaleK;
+      if (iScaleK <= 0)
+      {
+        std::cerr << "Negative koeff.\n";
+        return 2;
+      }
     }
   }
-  for (size_t i = 0; i < rectArraySize; ++i)
+  if (noFigure)
+  {
+    std::cerr << "No input.\n";
+    return 2;
+  }
+  for (size_t i = 0; i < rectArraySize; ++i) //TODO dynamic calculation
   {
     printLine(rectArray[i]);
     //

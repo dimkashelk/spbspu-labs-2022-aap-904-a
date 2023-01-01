@@ -56,7 +56,7 @@ Rectangle *Rectangle::clone() const
 }
 void Rectangle::isoScale(Rectangle rectangle, double x, double y, double k)
 {
-  point_t shiftPosition{};
+  point_t shiftPosition{}; //TODO check calculation
   shiftPosition.x = x;
   shiftPosition.y = y;
   rectangle.move(shiftPosition);

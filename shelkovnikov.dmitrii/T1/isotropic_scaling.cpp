@@ -3,11 +3,9 @@
 #include "base_functions.h"
 void dimkashelk::isotropic_scaling(Shape *shape, point_t point, double k)
 {
-  rectangle_t rectangle_1 = shape->getFrameRect();
+  point_t point_1 = getLeftDownPoint(shape->getFrameRect());
   shape->move(point);
-  rectangle_t rectangle_2 = shape->getFrameRect();
-  vector_t direction(getLeftDownPoint(rectangle_2), getLeftDownPoint(rectangle_1));
-  direction *= -k;
+  point_t point_2 = getLeftDownPoint(shape->getFrameRect());
   shape->scale(k);
-  shape->move(direction.x, direction.y);
+  shape->move(-k * (point_2.x - point_1.x), -k * (point_2.y - point_1.y));
 }

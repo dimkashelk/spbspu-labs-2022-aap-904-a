@@ -197,6 +197,7 @@ int main()
     std::cout << " ";
     printLine(rectArray[i]);
   }
+  std::cout << "\n";
   delete[] rectArray;
   return 0;
 }

@@ -1,7 +1,6 @@
 #include "compositeshape.h"
 #include <algorithm>
 #include <limits>
-#include "vector_t.h"
 #include "base_functions.h"
 dimkashelk::CompositeShape::CompositeShape():
   size_(0),
@@ -114,8 +113,7 @@ dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
 void dimkashelk::CompositeShape::move(point_t point)
 {
   point_t center = getCenter();
-  vector_t direction(point, center);
-  move(direction.x, direction.y);
+  move(point.x - center.x, point.y - center.y);
 }
 void dimkashelk::CompositeShape::move(double delta_x, double delta_y)
 {
@@ -130,10 +128,8 @@ void dimkashelk::CompositeShape::scale(double k)
   for (size_t i = 0; i < size_; i++)
   {
     point_t shape_center = shapes_[i]->getFrameRect().point;
-    vector_t direction(shape_center, center);
-    direction *= k;
     shapes_[i]->scale(k);
-    shapes_[i]->move(direction.x, direction.y);
+    shapes_[i]->move(k * (shape_center.x - center.x), k * (shape_center.y - center.y));
   }
 }
 dimkashelk::point_t dimkashelk::CompositeShape::getCenter() const

@@ -28,20 +28,3 @@ rectangle_t::rectangle_t(point_t point, double width, double height):
     throw std::logic_error("It isn't rectangle");
   }
 }
-std::istream& operator>>(std::istream &in, point_t &point)
-{
-  in >> point.x >> point.y;
-  return in;
-}
-std::ostream& operator<<(std::ostream &out, point_t &point)
-{
-  out << point.x << " " << point.y;
-  return out;
-}
-std::ostream& operator<<(std::ostream &out, rectangle_t &rectangle)
-{
-  point_t leftDown = rectangle.getLeftDownPoint();
-  point_t rightUp = rectangle.getRightUpPoint();
-  out << leftDown << " " << rightUp;
-  return out;
-}

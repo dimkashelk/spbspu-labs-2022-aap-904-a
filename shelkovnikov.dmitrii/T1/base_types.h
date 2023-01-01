@@ -16,7 +16,4 @@ struct rectangle_t
   rectangle_t(point_t point_1, point_t point_2);
   rectangle_t(point_t point, double width, double height);
 };
-std::istream& operator>>(std::istream &in, point_t &point);
-std::ostream& operator<<(std::ostream &out, point_t &point);
-std::ostream& operator<<(std::ostream &out, rectangle_t &rectangle);
 #endif

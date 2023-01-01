@@ -73,13 +73,14 @@ void dimkashelk::Regular::move(double delta_x, double delta_y)
 }
 void dimkashelk::Regular::move(point_t point)
 {
-  point_t *points = triangle_.getPoints();
-  point_t center = triangle_.getCenter();
-  double delta_x = center.x - points[0].x;
-  double delta_y = center.y - points[0].y;
-  triangle_.move(point);
+  Shape *triangle = triangle_.clone();
+  triangle->move(center);
+  point_t begin_point = dimkashelk::getLeftDownPoint(triangle->getFrameRect());
+  triangle->move(point);
+  point_t end_point = dimkashelk::getLeftDownPoint(triangle->getFrameRect());
+  double delta_x = end_point.x - begin_point.x;
+  double delta_y = end_point.y - begin_point.y;
   triangle_.move(delta_x, delta_y);
-  delete[] points;
 }
 void dimkashelk::Regular::scale(double k)
 {

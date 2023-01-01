@@ -8,7 +8,7 @@ TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   first_(0),
   second_(1),
   third_(2),
-  count_triangles_(0)
+  count_use_points_(0)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -50,7 +50,7 @@ Triangle TriangulatePoints::operator()()
           {
             second_++;
             third_++;
-            count_triangles_++;
+            count_use_points_++;
             return triangle;
           }
           else
@@ -76,15 +76,16 @@ Triangle TriangulatePoints::operator()()
     }
   }
   Triangle triangle = Triangle(points_[0], points_[1], points_[2]);
+  count_use_points_ += 3;
   return triangle;
 }
 size_t TriangulatePoints::getSize() const
 {
-  return count_triangles_;
+  return count_use_points_;
 }
 bool TriangulatePoints::hasNext() const
 {
-  return size_ >= 3;
+  return size_ > count_use_points_;
 }
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {

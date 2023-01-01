@@ -2,9 +2,9 @@
 #include <cmath>
 #include <stdexcept>
 #include "vector_t.h"
-Triangle::Triangle()
+dimkashelk::Triangle::Triangle()
 {}
-Triangle::Triangle(point_t p1, point_t p2, point_t p3)
+dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
 {
   double side1 = std::sqrt(pow((p1.x - p2.x), 2) + pow(p1.y - p2.y, 2));
   double side2 = std::sqrt(pow((p1.x - p3.x), 2) + pow(p1.y - p3.y, 2));
@@ -17,33 +17,33 @@ Triangle::Triangle(point_t p1, point_t p2, point_t p3)
   points[1] = p2;
   points[2] = p3;
 }
-Triangle::Triangle(const Triangle &triangle)
+dimkashelk::Triangle::Triangle(const Triangle &triangle)
 {
   points[0] = triangle.points[0];
   points[1] = triangle.points[1];
   points[2] = triangle.points[2];
 }
-Triangle::Triangle(Triangle &&triangle)
+dimkashelk::Triangle::Triangle(Triangle &&triangle)
 {
   points[0] = triangle.points[0];
   points[1] = triangle.points[1];
   points[2] = triangle.points[2];
 }
-Triangle &Triangle::operator=(const Triangle &other)
+dimkashelk::Triangle &dimkashelk::Triangle::operator=(const Triangle &other)
 {
   points[0] = other.points[0];
   points[1] = other.points[1];
   points[2] = other.points[2];
   return *this;
 }
-Triangle &Triangle::operator=(Triangle &&tmp)
+dimkashelk::Triangle &dimkashelk::Triangle::operator=(Triangle &&tmp)
 {
   points[0] = tmp.points[0];
   points[1] = tmp.points[1];
   points[2] = tmp.points[2];
   return *this;
 }
-double Triangle::getArea() const
+double dimkashelk::Triangle::getArea() const
 {
   // the area of the triangle_ is half of the length of the vector product
   // let 's make a matrix
@@ -57,7 +57,7 @@ double Triangle::getArea() const
   // where x = 0, y = 0 => |c| = sqrt(z * z) = z
   return std::fabs(third_coord) / 2;
 }
-rectangle_t Triangle::getFrameRect() const
+dimkashelk::rectangle_t dimkashelk::Triangle::getFrameRect() const
 {
   //  _____
   // |  o  |
@@ -72,7 +72,7 @@ rectangle_t Triangle::getFrameRect() const
   double y_max = std::max(points[0].y, std::max(points[1].y, points[2].y));
   return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }
-void Triangle::move(double delta_x, double delta_y)
+void dimkashelk::Triangle::move(double delta_x, double delta_y)
 {
   for (size_t i = 0; i < 3; i++)
   {
@@ -80,12 +80,12 @@ void Triangle::move(double delta_x, double delta_y)
     points[i].y += delta_y;
   }
 }
-void Triangle::move(point_t point)
+void dimkashelk::Triangle::move(point_t point)
 {
   point_t point_center_of_gravity = this->getCenter();
   this->move(point.x - point_center_of_gravity.x, point.y - point_center_of_gravity.y);
 }
-void Triangle::scale(double k)
+void dimkashelk::Triangle::scale(double k)
 {
   point_t center_of_gravity = getCenter();
   for (size_t i = 0; i < 3; i++)
@@ -94,12 +94,12 @@ void Triangle::scale(double k)
     points[i].y = k * (points[i].y - center_of_gravity.y) + center_of_gravity.y;
   }
 }
-Shape* Triangle::clone() const
+dimkashelk::Shape* dimkashelk::Triangle::clone() const
 {
   Triangle *copy = new Triangle(points[0], points[1], points[2]);
   return copy;
 }
-bool Triangle::isRectangular()
+bool dimkashelk::Triangle::isRectangular()
 {
   double square[3];
   for (size_t i = 0; i < 3; i++)
@@ -108,15 +108,15 @@ bool Triangle::isRectangular()
   }
   return square[0]  == square[1] + square[2] || square[1] == square[0] + square[2] || square[2] == square[0] + square[1];
 }
-point_t* Triangle::getPoints() const
+dimkashelk::point_t* dimkashelk::Triangle::getPoints() const
 {
   return new point_t[3]{points[0], points[1], points[2]};
 }
-point_t Triangle::getCenter() const
+dimkashelk::point_t dimkashelk::Triangle::getCenter() const
 {
   return point_t((points[0].x + points[1].x + points[2].x) / 3, (points[0].y + points[1].y + points[2].y) / 3);
 }
-bool Triangle::containsPoint(point_t point) const
+bool dimkashelk::Triangle::containsPoint(point_t point) const
 {
   double A = points[1].y - points[0].y;
   double B = -(points[1].x - points[0].x);

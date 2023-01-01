@@ -3,11 +3,11 @@
 #include "triangulatepoints.h"
 #include "isotropic_scaling.h"
 #include "base_functions.h"
-Polygon::Polygon(point_t *points, size_t size):
+dimkashelk::Polygon::Polygon(point_t *points, size_t size):
   count_(0),
   triangles_(makeTriangles(points, size))
 {}
-Polygon::Polygon(const Polygon &polygon)
+dimkashelk::Polygon::Polygon(const Polygon &polygon)
 {
   triangles_ = new Triangle[polygon.count_];
   for (size_t i = 0; i < polygon.count_; i++)
@@ -16,11 +16,11 @@ Polygon::Polygon(const Polygon &polygon)
   }
   count_ = polygon.count_;
 }
-Polygon::~Polygon() noexcept
+dimkashelk::Polygon::~Polygon() noexcept
 {
   delete[] triangles_;
 }
-Polygon &Polygon::operator=(const Polygon &other)
+dimkashelk::Polygon &dimkashelk::Polygon::operator=(const Polygon &other)
 {
   if (triangles_)
   {
@@ -34,12 +34,12 @@ Polygon &Polygon::operator=(const Polygon &other)
   count_ = other.count_;
   return *this;
 }
-Polygon &Polygon::operator=(Polygon &&tmp)
+dimkashelk::Polygon &dimkashelk::Polygon::operator=(Polygon &&tmp)
 {
   operator=(tmp);
   return *this;
 }
-double Polygon::getArea() const
+double dimkashelk::Polygon::getArea() const
 {
   double global_area = 0.0;
   for (size_t i = 0; i < count_; i++)
@@ -48,7 +48,7 @@ double Polygon::getArea() const
   }
   return global_area;
 }
-rectangle_t Polygon::getFrameRect() const
+dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
 {
   rectangle_t rectangle = triangles_[0].getFrameRect();
   point_t left_down = getLeftDownPoint(rectangle);
@@ -69,20 +69,20 @@ rectangle_t Polygon::getFrameRect() const
   }
   return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }
-void Polygon::move(point_t point)
+void dimkashelk::Polygon::move(point_t point)
 {
   point_t center = getCenter();
   vector_t direction(point, center);
   move(direction.x, direction.y);
 }
-void Polygon::move(double delta_x, double delta_y)
+void dimkashelk::Polygon::move(double delta_x, double delta_y)
 {
   for (size_t i = 0; i < count_; i++)
   {
     triangles_[i].move(delta_x, delta_y);
   }
 }
-void Polygon::scale(double k)
+void dimkashelk::Polygon::scale(double k)
 {
   point_t center = getCenter();
   for (size_t i = 0; i < count_; i++)
@@ -90,11 +90,11 @@ void Polygon::scale(double k)
     isotropic_scaling(&triangles_[i], center, k);
   }
 }
-Shape* Polygon::clone() const
+dimkashelk::Shape* dimkashelk::Polygon::clone() const
 {
   return new Polygon(*this);
 }
-Triangle* Polygon::makeTriangles(point_t *points, size_t size)
+dimkashelk::Triangle* dimkashelk::Polygon::makeTriangles(point_t *points, size_t size)
 {
   TriangulatePoints triangulatePoints(points, size);
   size_t s = 0;
@@ -118,7 +118,7 @@ Triangle* Polygon::makeTriangles(point_t *points, size_t size)
   count_ = s;
   return triangles;
 }
-point_t Polygon::getCenter() const
+dimkashelk::point_t dimkashelk::Polygon::getCenter() const
 {
   double x_sum = 0;
   double y_sum = 0;

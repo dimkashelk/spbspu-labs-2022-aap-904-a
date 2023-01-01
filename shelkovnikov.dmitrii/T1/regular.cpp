@@ -3,7 +3,7 @@
 #include <cmath>
 #include "isotropic_scaling.h"
 #include "vector_t.h"
-Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
+dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   triangle_(point_1, point_2, point_3),
   size_(0)
 {
@@ -22,31 +22,31 @@ Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
     throw std::logic_error("Cannot build regular figure");
   }
 }
-Regular::Regular(const Regular &regular):
+dimkashelk::Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),
   size_(regular.size_)
 {}
-Regular::Regular(Regular &&regular):
+dimkashelk::Regular::Regular(Regular &&regular):
   triangle_(regular.triangle_),
   size_(regular.size_)
 {}
-Regular &Regular::operator=(const Regular &other)
+dimkashelk::Regular &dimkashelk::Regular::operator=(const Regular &other)
 {
   triangle_ = other.triangle_;
   size_ = other.size_;
   return *this;
 }
-Regular &Regular::operator=(Regular &&tmp)
+dimkashelk::Regular &dimkashelk::Regular::operator=(Regular &&tmp)
 {
   triangle_ = tmp.triangle_;
   size_ = tmp.size_;
   return *this;
 }
-double Regular::getArea() const
+double dimkashelk::Regular::getArea() const
 {
   return triangle_.getArea() * size_;
 }
-rectangle_t Regular::getFrameRect() const
+dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
 {
   // rotate point (px, py) around point (ox, oy) by angle theta
   // p'x = cos(theta) * (px-ox) - sin(theta) * (py-oy) + ox
@@ -81,11 +81,11 @@ rectangle_t Regular::getFrameRect() const
   }
   return rectangle_t(point_t(min_x, min_y), point_t(max_x, max_y));
 }
-void Regular::move(double delta_x, double delta_y)
+void dimkashelk::Regular::move(double delta_x, double delta_y)
 {
   triangle_.move(delta_x, delta_y);
 }
-void Regular::move(point_t point)
+void dimkashelk::Regular::move(point_t point)
 {
   point_t *points = triangle_.getPoints();
   point_t center = triangle_.getCenter();
@@ -95,7 +95,7 @@ void Regular::move(point_t point)
   triangle_.move(delta_x, delta_y);
   delete[] points;
 }
-void Regular::scale(double k)
+void dimkashelk::Regular::scale(double k)
 {
   point_t *points = triangle_.getPoints();
   point_t point = points[0];
@@ -108,7 +108,7 @@ void Regular::scale(double k)
   triangle_ = Triangle(point, points[1], points[2]);
   delete[] points;
 }
-Shape *Regular::clone() const
+dimkashelk::Shape *dimkashelk::Regular::clone() const
 {
   return new Regular(*this);
 }

@@ -1,7 +1,7 @@
 #include "isotropic_scaling.h"
 #include "vector_t.h"
 #include "base_functions.h"
-void isotropic_scaling(Shape *shape, point_t point, double k)
+void dimkashelk::isotropic_scaling(Shape *shape, point_t point, double k)
 {
   rectangle_t rectangle_1 = shape->getFrameRect();
   shape->move(point);

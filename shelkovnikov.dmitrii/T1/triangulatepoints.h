@@ -12,7 +12,6 @@ namespace dimkashelk
     TriangulatePoints(point_t *points, size_t size);
     ~TriangulatePoints();
     Triangle operator()();
-    size_t getSize() const;
     bool hasNext() const;
   private:
     point_t *points_;

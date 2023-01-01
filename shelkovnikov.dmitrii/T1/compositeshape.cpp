@@ -3,12 +3,12 @@
 #include <limits>
 #include "vector_t.h"
 #include "base_functions.h"
-CompositeShape::CompositeShape():
+dimkashelk::CompositeShape::CompositeShape():
   size_(0),
   capacity_(10),
   shapes_(new Shape*[capacity_])
 {}
-CompositeShape::CompositeShape(Shape **shapes, size_t size):
+dimkashelk::CompositeShape::CompositeShape(Shape **shapes, size_t size):
   size_(size),
   capacity_(size_),
   shapes_(new Shape*[capacity_])
@@ -18,7 +18,7 @@ CompositeShape::CompositeShape(Shape **shapes, size_t size):
     shapes_[i] = shapes[i]->clone();
   }
 }
-CompositeShape::CompositeShape(const CompositeShape &compositeShape):
+dimkashelk::CompositeShape::CompositeShape(const CompositeShape &compositeShape):
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),
   shapes_(new Shape*[capacity_])
@@ -28,7 +28,7 @@ CompositeShape::CompositeShape(const CompositeShape &compositeShape):
     shapes_[i] = compositeShape.shapes_[i]->clone();
   }
 }
-CompositeShape::CompositeShape(CompositeShape &&compositeShape):
+dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),
   shapes_(new Shape*[capacity_])
@@ -39,7 +39,7 @@ CompositeShape::CompositeShape(CompositeShape &&compositeShape):
   }
   delete[] compositeShape.shapes_;
 }
-CompositeShape &CompositeShape::operator=(const CompositeShape &other)
+dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const CompositeShape &other)
 {
   for (size_t i = 0; i < size_; i++)
   {
@@ -55,7 +55,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &other)
   }
   return *this;
 }
-CompositeShape &CompositeShape::operator=(CompositeShape &&tmp)
+dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape &&tmp)
 {
   operator=(tmp);
   for (size_t i = 0; i < size_; i++)
@@ -65,15 +65,15 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&tmp)
   delete[] tmp.shapes_;
   return *this;
 }
-Shape *CompositeShape::operator[](size_t id)
+dimkashelk::Shape *dimkashelk::CompositeShape::operator[](size_t id)
 {
   return shapes_[id];
 }
-const Shape *CompositeShape::operator[](size_t id) const
+const dimkashelk::Shape *dimkashelk::CompositeShape::operator[](size_t id) const
 {
   return shapes_[id];
 }
-CompositeShape::~CompositeShape()
+dimkashelk::CompositeShape::~CompositeShape()
 {
   for (size_t i = 0; i < size_; i++)
   {
@@ -81,7 +81,7 @@ CompositeShape::~CompositeShape()
   }
   delete[] shapes_;
 }
-double CompositeShape::getArea() const
+double dimkashelk::CompositeShape::getArea() const
 {
   double area = 0.0;
   for (size_t i = 0; i < size_; i++)
@@ -90,7 +90,7 @@ double CompositeShape::getArea() const
   }
   return area;
 }
-rectangle_t CompositeShape::getFrameRect() const
+dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
 {
   rectangle_t rectangle = shapes_[0]->getFrameRect();
   point_t left_down = getLeftDownPoint(rectangle);
@@ -111,20 +111,20 @@ rectangle_t CompositeShape::getFrameRect() const
   }
   return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
 }
-void CompositeShape::move(point_t point)
+void dimkashelk::CompositeShape::move(point_t point)
 {
   point_t center = getCenter();
   vector_t direction(point, center);
   move(direction.x, direction.y);
 }
-void CompositeShape::move(double delta_x, double delta_y)
+void dimkashelk::CompositeShape::move(double delta_x, double delta_y)
 {
   for (size_t i = 0; i < size_; i++)
   {
     shapes_[i]->move(delta_x, delta_y);
   }
 }
-void CompositeShape::scale(double k)
+void dimkashelk::CompositeShape::scale(double k)
 {
   point_t center = getCenter();
   for (size_t i = 0; i < size_; i++)
@@ -136,11 +136,11 @@ void CompositeShape::scale(double k)
     shapes_[i]->move(direction.x, direction.y);
   }
 }
-point_t CompositeShape::getCenter() const
+dimkashelk::point_t dimkashelk::CompositeShape::getCenter() const
 {
   return getFrameRect().point;
 }
-void CompositeShape::push_back(Shape *shp)
+void dimkashelk::CompositeShape::push_back(Shape *shp)
 {
   constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
   if (size_ == capacity_)
@@ -168,7 +168,7 @@ void CompositeShape::push_back(Shape *shp)
   shapes_[size_] = shp->clone();
   size_++;
 }
-void CompositeShape::pop_back()
+void dimkashelk::CompositeShape::pop_back()
 {
   if (!empty())
   {
@@ -176,19 +176,19 @@ void CompositeShape::pop_back()
     size_--;
   }
 }
-Shape* CompositeShape::at(size_t id)
+dimkashelk::Shape* dimkashelk::CompositeShape::at(size_t id)
 {
   return shapes_[id];
 }
-const Shape* CompositeShape::at(size_t id) const
+const dimkashelk::Shape* dimkashelk::CompositeShape::at(size_t id) const
 {
   return shapes_[id];
 }
-bool CompositeShape::empty() const noexcept
+bool dimkashelk::CompositeShape::empty() const noexcept
 {
   return size_ == 0;
 }
-size_t CompositeShape::size() const noexcept
+size_t dimkashelk::CompositeShape::size() const noexcept
 {
   return size_;
 }

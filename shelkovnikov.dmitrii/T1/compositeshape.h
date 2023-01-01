@@ -7,33 +7,36 @@
 #include "rectangle.h"
 #include "regular.h"
 #include "polygon.h"
-class CompositeShape
+namespace dimkashelk
 {
-public:
-  CompositeShape();
-  CompositeShape(Shape **shapes, size_t size);
-  CompositeShape(const CompositeShape &compositeShape);
-  CompositeShape(CompositeShape &&compositeShape);
-  CompositeShape& operator=(const CompositeShape &other);
-  CompositeShape& operator=(CompositeShape &&tmp);
-  Shape* operator[](size_t id);
-  const Shape* operator[](size_t id) const;
-  ~CompositeShape();
-  double getArea() const;
-  rectangle_t getFrameRect() const;
-  void move(point_t point);
-  void move(double delta_x, double delta_y);
-  void scale(double k);
-  point_t getCenter() const;
-  void push_back(Shape *shp);
-  void pop_back();
-  Shape* at(size_t id);
-  const Shape* at(size_t id) const;
-  bool empty() const noexcept;
-  size_t size() const noexcept;
-private:
-  size_t size_;
-  size_t capacity_;
-  Shape **shapes_;
-};
+  class CompositeShape
+  {
+  public:
+    CompositeShape();
+    CompositeShape(Shape **shapes, size_t size);
+    CompositeShape(const CompositeShape &compositeShape);
+    CompositeShape(CompositeShape &&compositeShape);
+    CompositeShape& operator=(const CompositeShape &other);
+    CompositeShape& operator=(CompositeShape &&tmp);
+    Shape* operator[](size_t id);
+    const Shape* operator[](size_t id) const;
+    ~CompositeShape();
+    double getArea() const;
+    rectangle_t getFrameRect() const;
+    void move(point_t point);
+    void move(double delta_x, double delta_y);
+    void scale(double k);
+    point_t getCenter() const;
+    void push_back(Shape *shp);
+    void pop_back();
+    Shape* at(size_t id);
+    const Shape* at(size_t id) const;
+    bool empty() const noexcept;
+    size_t size() const noexcept;
+  private:
+    size_t size_;
+    size_t capacity_;
+    Shape **shapes_;
+  };
+}
 #endif

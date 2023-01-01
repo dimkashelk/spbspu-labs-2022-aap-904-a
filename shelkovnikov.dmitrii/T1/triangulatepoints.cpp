@@ -29,7 +29,7 @@ dimkashelk::TriangulatePoints::~TriangulatePoints()
 {
   delete[] points_;
 }
-Triangle dimkashelk::TriangulatePoints::operator()()
+dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
 {
   if (size_ > 3)
   {
@@ -78,10 +78,6 @@ Triangle dimkashelk::TriangulatePoints::operator()()
   Triangle triangle = Triangle(points_[0], points_[1], points_[2]);
   count_use_points_ += 3;
   return triangle;
-}
-size_t dimkashelk::TriangulatePoints::getSize() const
-{
-  return count_use_points_;
 }
 bool dimkashelk::TriangulatePoints::hasNext() const
 {

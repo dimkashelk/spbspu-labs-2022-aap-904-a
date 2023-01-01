@@ -8,13 +8,13 @@
 #include "polygon.h"
 #include "compositeshape.h"
 #include "base_functions.h"
-void expand(Shape **shapes, size_t size, size_t new_capacity)
+void expand(dimkashelk::Shape **shapes, size_t size, size_t new_capacity)
 {
   if (new_capacity < size)
   {
     throw std::runtime_error("New capacity less size");
   }
-  Shape **new_shapes = new Shape *[new_capacity];
+  dimkashelk::Shape **new_shapes = new dimkashelk::Shape*[new_capacity];
   for (size_t i = 0; i < size; i++)
   {
     new_shapes[i] = shapes[i];
@@ -22,7 +22,7 @@ void expand(Shape **shapes, size_t size, size_t new_capacity)
   delete[] shapes;
   shapes = new_shapes;
 }
-double getArea(Shape **shapes, size_t size)
+double getArea(dimkashelk::Shape **shapes, size_t size)
 {
   double sum_area = 0.0;
   for (size_t i = 0; i < size; i++)
@@ -31,14 +31,14 @@ double getArea(Shape **shapes, size_t size)
   }
   return sum_area;
 }
-std::ostream& output_shapes(std::ostream &out, Shape **shapes, size_t size)
+std::ostream& output_shapes(std::ostream &out, dimkashelk::Shape **shapes, size_t size)
 {
   out << std::setprecision(1) << std::fixed << getArea(shapes, size);
   for (size_t i = 0; i < size; i++)
   {
-    rectangle_t rect = shapes[i]->getFrameRect();
-    point_t left_down = getLeftDownPoint(rect);
-    point_t right_up = getRightUpPoint(rect);
+    dimkashelk::rectangle_t rect = shapes[i]->getFrameRect();
+    dimkashelk::point_t left_down = getLeftDownPoint(rect);
+    dimkashelk::point_t right_up = getRightUpPoint(rect);
     out << " " << left_down.x << " " << left_down.y << " " << right_up.x << " " << right_up.y;
   }
   return out;
@@ -50,7 +50,7 @@ int main()
   bool call_scale = false;
   size_t size = 0;
   size_t capacity = 10;
-  Shape **shapes = new Shape*[capacity];
+  dimkashelk::Shape **shapes = new dimkashelk::Shape*[capacity];
   while (std::cin)
   {
     std::string name = "";
@@ -68,7 +68,7 @@ int main()
         double x2 = 0.0;
         double y2 = 0.0;
         std::cin >> x1 >> y1 >> x2 >> y2;
-        shapes[size] = new Rectangle(point_t(x1, y1), point_t(x2, y2));
+        shapes[size] = new dimkashelk::Rectangle(dimkashelk::point_t(x1, y1), dimkashelk::point_t(x2, y2));
         size++;
         if (size == capacity)
         {
@@ -87,13 +87,13 @@ int main()
       {
         double x = 0.0;
         double y = 0.0;
-        point_t point[3];
+        dimkashelk::point_t point[3];
         for (size_t i = 0; i < 3; i++)
         {
           std::cin >> x >> y;
-          point[i] = point_t(x, y);
+          point[i] = dimkashelk::point_t(x, y);
         }
-        shapes[size] = new Regular(point[0], point[1], point[2]);
+        shapes[size] = new dimkashelk::Regular(point[0], point[1], point[2]);
         size++;
         if (size == capacity)
         {
@@ -112,7 +112,7 @@ int main()
       {
         size_t s = 0;
         size_t cap = 10;
-        point_t *points = new point_t[cap];
+        dimkashelk::point_t *points = new dimkashelk::point_t[cap];
         do
         {
           double x = 0.0;
@@ -120,12 +120,12 @@ int main()
           std::cin >> x >> y;
           if (std::cin)
           {
-            points[s] = point_t(x, y);
+            points[s] = dimkashelk::point_t(x, y);
             s++;
             if (s == cap)
             {
               cap += 10;
-              point_t *new_points = new point_t[cap];
+              dimkashelk::point_t *new_points = new dimkashelk::point_t[cap];
               for (size_t i = 0; i < s; i++)
               {
                 new_points[i] = points[i];
@@ -136,7 +136,7 @@ int main()
           }
         }
         while (std::cin);
-        shapes[size] = new Polygon(points, s);
+        shapes[size] = new dimkashelk::Polygon(points, s);
         size++;
         if (size == capacity)
         {
@@ -155,7 +155,7 @@ int main()
     {
       try
       {
-        CompositeShape compositeShape;
+        dimkashelk::CompositeShape compositeShape;
       }
       catch (const std::logic_error &e)
       {
@@ -168,7 +168,7 @@ int main()
       double x = 0.0;
       double y = 0.0;
       std::cin >> x >> y;
-      point_t point(x, y);
+      dimkashelk::point_t point(x, y);
       double k = 0.0;
       std::cin >> k;
       if (k < 0)

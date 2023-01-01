@@ -108,22 +108,24 @@ int main()
     if (figureName == "SCALE")
     {
       std::cin >> iScaleX >> iScaleY >> iScaleK;
-/*      point_t *pointsArray = new point_t[4]{{-1.0, -1.0},
-                                            {1.0,  1.0}};
-      Rectangle rectangle(pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
-      auto p = std::setprecision(1);
-      std::cout << std::fixed;
-      rectangle.isoScale(pointsArray, -1.0, -1.0, 2.0);
-      rectangle_t frameRect = rectangle.getFrameRect();
-      double rectAX = frameRect.pos.x - frameRect.width / 2;
-      double rectAY = frameRect.pos.y - frameRect.height / 2;
-      double rectCX = frameRect.pos.x + frameRect.width / 2;
-      double rectCY = frameRect.pos.y + frameRect.height / 2;
-      std::cout << p << rectAX << " " << p << rectAY << " " << p << rectCX << " " << p << rectCY << "!\n";*/
     }
   }
   for (size_t i = 0; i < rectArraySize; ++i)
   {
+    printLine(rectArray[i]);
+    //
+    //rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
+    point_t shiftPosition{};
+    shiftPosition.x = iScaleX;
+    shiftPosition.y = iScaleY;
+    rectArray[i].move(shiftPosition);
+    double dx = shiftPosition.x - rectArray[i].getFrameRect().pos.x;
+    double dy = shiftPosition.y - rectArray[i].getFrameRect().pos.y;
+    rectArray[i].scale(iScaleK);
+    dx *= iScaleK;
+    dy *= iScaleK;
+    rectArray[i].move(dx, dy);
+    //
     printLine(rectArray[i]);
   }
   return 0;

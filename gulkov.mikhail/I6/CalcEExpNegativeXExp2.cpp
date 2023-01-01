@@ -1,12 +1,19 @@
 #include "CalcEExpNegativeXExp2.hpp"
 #include <cmath>
+#include <stdexcept>
 
 TaylorNextTerm::TaylorNextTerm(double x):
   x(x),
-  factorial_of(2),
-  exp(3),
+  exp_numerator(0),
+  factorial(2),
+  denominator(1),
   terms_count(0)
-{}
+{
+  if (x < -1 || x > 1)
+  {
+    throw std::invalid_argument("x is out of range");
+  }
+}
 
 double TaylorNextTerm::operator()()
 {
@@ -18,35 +25,22 @@ double TaylorNextTerm::operator()()
   }
   else if (terms_count == 1)
   {
+    exp_numerator = x * x;
     terms_count++;
-    return (-1 * (x * x));
+    return (-1 * exp_numerator);
   }
   else
   {
-    fraction = countFraction(x, factorial_of, exp);
+    exp_numerator *= x * x;
+    denominator *= factorial++;
+    fraction = exp_numerator / denominator;
     terms_count++;
+
     return terms_count % 2 != 0 ? fraction : (-1 * fraction);
   }
 }
 
-double countFraction(double x, unsigned int &factorial_of, unsigned int &exp)
-{
-  double counted_exp_x = x;
-  int factorial = 1;
-  for (unsigned int i = 0; i < exp; i++)
-  {
-    counted_exp_x *= x;
-  }
-  for (unsigned int i = 1; i <= factorial_of; i++)
-  {
-    factorial *= static_cast< int >(i);
-  }
-  exp += 2;
-  factorial_of++;
-  return (counted_exp_x / factorial);
-}
-
-double сalcEExpNegativeXExp2(double x, double abs_error, size_t number_max)
+double calcEExpNegativeXExp2(double x, double abs_error, size_t number_max)
 {
   TaylorNextTerm TaylorNextTerm(x);
   double member = 0;
@@ -58,7 +52,12 @@ double сalcEExpNegativeXExp2(double x, double abs_error, size_t number_max)
     result += member;
     counter++;
   }
-  while (std::abs(member) > abs_error && counter < number_max);
+  while (counter < number_max);
+
+  if (std::abs(member) > abs_error)
+  {
+    throw std::invalid_argument("accuracy not achieved");
+  }
 
   return result;
 }

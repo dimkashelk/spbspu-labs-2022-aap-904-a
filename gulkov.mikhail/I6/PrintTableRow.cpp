@@ -1,7 +1,6 @@
 #include "PrintTableRow.hpp"
 #include <iomanip>
 #include <cmath>
-#include "CalcEExpNegativeXExp2.hpp"
 
 void printTableRow(std::ostream &out, double x, double custom_exp)
 {

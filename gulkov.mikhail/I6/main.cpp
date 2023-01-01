@@ -17,8 +17,17 @@ int main()
     std::cerr << "Error: incorrect input\n";
     return 1;
   }
-  for (double i = lhs; i < rhs; i += step)
+
+  try
   {
-    printTableRow(std::cout, i, сalcEExpNegativeXExp2(i, error, number_max));
+    for (double i = lhs; i < rhs; i += step)
+    {
+      printTableRow(std::cout, i, calcEExpNegativeXExp2(i, error, number_max));
+    }
+  }
+  catch (const std::invalid_argument &e)
+  {
+    std::cerr << "Error: " << e.what();
+    return 1;
   }
 }

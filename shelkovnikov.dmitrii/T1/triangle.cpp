@@ -100,6 +100,14 @@ dimkashelk::Shape* dimkashelk::Triangle::clone() const
   Triangle *copy = new Triangle(points[0], points[1], points[2]);
   return copy;
 }
+dimkashelk::Triangle dimkashelk::Triangle::rotate(double theta) const
+{
+  double new_p_x_1 = std::cos(theta) * (points[1].x - points[0].x) - std::sin(theta) * (points[1].y - points[0].y) + points[0].x;
+  double new_p_y_1 = std::sin(theta) * (points[1].x - points[0].x) + std::cos(theta) * (points[1].y - points[0].y) + points[0].y;
+  double new_p_x_2 = std::cos(theta) * (points[2].x - points[0].x) - std::sin(theta) * (points[2].y - points[0].y) + points[0].x;
+  double new_p_y_2 = std::sin(theta) * (points[2].x - points[0].x) + std::cos(theta) * (points[2].y - points[0].y) + points[0].y;
+  return Triangle(points[0], point_t{new_p_x_1, new_p_y_1}, point_t{new_p_x_2, new_p_y_2});
+}
 dimkashelk::point_t dimkashelk::Triangle::getCenter() const
 {
   return point_t{(points[0].x + points[1].x + points[2].x) / 3, (points[0].y + points[1].y + points[2].y) / 3};

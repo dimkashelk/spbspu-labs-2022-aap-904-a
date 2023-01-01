@@ -11,6 +11,7 @@ public:
   ~TriangulatePoints();
   Triangle operator()();
   size_t getSize() const;
+  bool hasNext() const;
 private:
   point_t *points_;
   size_t size_;

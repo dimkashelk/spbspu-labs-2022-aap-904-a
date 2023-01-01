@@ -82,6 +82,10 @@ size_t TriangulatePoints::getSize() const
 {
   return count_triangles_;
 }
+bool TriangulatePoints::hasNext() const
+{
+  return size_ >= 3;
+}
 double TriangulatePoints::getMixedProduct(vector_t a, vector_t b) const
 {
   //         |i  j  k|

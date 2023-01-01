@@ -8,7 +8,7 @@ dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   first_(0),
   second_(1),
   third_(2),
-  count_use_points_(0)
+  count_use_points_(2)
 {
   for (size_t i = 0; i < size; i++)
   {

@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "base-types.h"
+#include "rectangle.h"
 void buildParallelogram()
 {
   point_t A{}, B{}, C{}, D{};
@@ -8,13 +9,13 @@ void buildParallelogram()
   D.x = A.x - B.x + C.x;
   D.y = A.y - B.y + C.y;
 }
-point_t * buildRectangle()
+point_t *buildRectangle()
 {
   point_t A{}, B{}, C{}, D{};
   std::cin >> A.x >> A.y >> C.x >> C.y;
-  C.x = A.x;
-  C.y = B.y;
-  D.x = B.x;
+  B.x = A.x;
+  B.y = C.y;
+  D.x = C.x;
   D.y = A.y;
   point_t *pointsArray = nullptr;
   try
@@ -43,6 +44,12 @@ int main()
   if (figureName == "RECTANGLE")
   {
     point_t *pointsArray = buildRectangle();
+    Rectangle rectangle(pointsArray[0], pointsArray[1], pointsArray[2], pointsArray[3]);
+    std::cout << pointsArray[0].x  << " " << pointsArray[0].y << "\n";
+    std::cout << pointsArray[1].x  << " " << pointsArray[1].y << "\n";
+    std::cout << pointsArray[2].x  << " " << pointsArray[2].y << "\n";
+    std::cout << pointsArray[3].x  << " " << pointsArray[3].y << "\n";
+    std::cout << rectangle.getArea() << "\n";
   }
   if (figureName == "CONCAVE")
   {

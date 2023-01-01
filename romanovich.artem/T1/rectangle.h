@@ -4,6 +4,7 @@
 class Rectangle : public Shape
 {
 public:
+  Rectangle(point_t A_, point_t B_, point_t C_, point_t D_);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(double dx, double dy) override;
@@ -11,5 +12,8 @@ public:
   void scale(double k) override;
   Rectangle *clone() const override;
   ~Rectangle() override = default;
+private:
+  point_t A, B, C, D;
+  //point_t points[3] = pointsArray;
 };
 #endif

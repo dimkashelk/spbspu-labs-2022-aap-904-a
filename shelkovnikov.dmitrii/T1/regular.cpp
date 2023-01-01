@@ -79,7 +79,7 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
     max_x = std::max(max_x, std::max(p_x_1, p_x_2));
     max_y = std::max(max_y, std::max(p_y_1, p_y_2));
   }
-  return rectangle_t(point_t(min_x, min_y), point_t(max_x, max_y));
+  return rectangle_t(point_t{min_x, min_y}, point_t{max_x, max_y});
 }
 void dimkashelk::Regular::move(double delta_x, double delta_y)
 {
@@ -103,8 +103,8 @@ void dimkashelk::Regular::scale(double k)
   vector_t direction_2(points[2], point);
   direction_1 *= k;
   direction_2 *= k;
-  points[1] = point_t(point.x + direction_1.x, point.y + direction_1.y);
-  points[2] = point_t(point.x + direction_2.x, point.y + direction_2.y);
+  points[1] = point_t{point.x + direction_1.x, point.y + direction_1.y};
+  points[2] = point_t{point.x + direction_2.x, point.y + direction_2.y};
   triangle_ = Triangle(point, points[1], points[2]);
   delete[] points;
 }

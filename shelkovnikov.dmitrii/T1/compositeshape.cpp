@@ -109,7 +109,7 @@ dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
     x_max = std::max(x_max, right_up.x);
     y_max = std::max(y_max, right_up.y);
   }
-  return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
+  return rectangle_t(point_t{x_min, y_min}, point_t{x_max, y_max});
 }
 void dimkashelk::CompositeShape::move(point_t point)
 {

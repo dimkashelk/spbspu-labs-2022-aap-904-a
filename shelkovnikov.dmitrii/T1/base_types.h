@@ -7,8 +7,6 @@ namespace dimkashelk
   {
     double x;
     double y;
-    point_t();
-    point_t(double x, double y);
   };
   struct rectangle_t
   {

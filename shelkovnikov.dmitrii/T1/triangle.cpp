@@ -70,7 +70,7 @@ dimkashelk::rectangle_t dimkashelk::Triangle::getFrameRect() const
   double y_min = std::min(points[0].y, std::min(points[1].y, points[2].y));
   double x_max = std::max(points[0].x, std::max(points[1].x, points[2].x));
   double y_max = std::max(points[0].y, std::max(points[1].y, points[2].y));
-  return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
+  return rectangle_t(point_t{x_min, y_min}, point_t{x_max, y_max});
 }
 void dimkashelk::Triangle::move(double delta_x, double delta_y)
 {
@@ -114,7 +114,7 @@ dimkashelk::point_t* dimkashelk::Triangle::getPoints() const
 }
 dimkashelk::point_t dimkashelk::Triangle::getCenter() const
 {
-  return point_t((points[0].x + points[1].x + points[2].x) / 3, (points[0].y + points[1].y + points[2].y) / 3);
+  return point_t{(points[0].x + points[1].x + points[2].x) / 3, (points[0].y + points[1].y + points[2].y) / 3};
 }
 bool dimkashelk::Triangle::containsPoint(point_t point) const
 {

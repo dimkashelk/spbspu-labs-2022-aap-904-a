@@ -68,7 +68,7 @@ int main()
         double x2 = 0.0;
         double y2 = 0.0;
         std::cin >> x1 >> y1 >> x2 >> y2;
-        shapes[size] = new dimkashelk::Rectangle(dimkashelk::point_t(x1, y1), dimkashelk::point_t(x2, y2));
+        shapes[size] = new dimkashelk::Rectangle(dimkashelk::point_t{x1, y1}, dimkashelk::point_t{x2, y2});
         size++;
         if (size == capacity)
         {
@@ -91,7 +91,7 @@ int main()
         for (size_t i = 0; i < 3; i++)
         {
           std::cin >> x >> y;
-          point[i] = dimkashelk::point_t(x, y);
+          point[i] = dimkashelk::point_t{x, y};
         }
         shapes[size] = new dimkashelk::Regular(point[0], point[1], point[2]);
         size++;
@@ -121,7 +121,7 @@ int main()
           std::cin >> x >> y;
           if (std::cin)
           {
-            points[s] = dimkashelk::point_t(x, y);
+            points[s] = dimkashelk::point_t{x, y};
             s++;
             if (s == cap)
             {
@@ -170,7 +170,7 @@ int main()
       double x = 0.0;
       double y = 0.0;
       std::cin >> x >> y;
-      dimkashelk::point_t point(x, y);
+      dimkashelk::point_t point{x, y};
       double k = 0.0;
       std::cin >> k;
       if (k < 0)

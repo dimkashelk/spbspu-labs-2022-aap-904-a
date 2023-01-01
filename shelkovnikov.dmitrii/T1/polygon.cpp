@@ -67,7 +67,7 @@ dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
     x_max = std::max(x_max, right_up.x);
     y_max = std::max(y_max, right_up.y);
   }
-  return rectangle_t(point_t(x_min, y_min), point_t(x_max, y_max));
+  return rectangle_t(point_t{x_min, y_min}, point_t{x_max, y_max});
 }
 void dimkashelk::Polygon::move(point_t point)
 {
@@ -132,5 +132,5 @@ dimkashelk::point_t dimkashelk::Polygon::getCenter() const
     }
     delete[] points;
   }
-  return point_t(x_sum / (count_ * 3), y_sum / (count_ * 3));
+  return point_t{x_sum / (count_ * 3), y_sum / (count_ * 3)};
 }

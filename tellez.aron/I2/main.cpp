@@ -55,7 +55,7 @@ int main (int argc, char *argv[])
     in >> size;
     if (!in)
     {
-      std::cout << "Error..";
+      std::cout << "Error.";
       return 1;
     }
     int *arr_3 = new int[size];

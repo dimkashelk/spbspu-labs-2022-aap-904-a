@@ -3,14 +3,17 @@
 
 point_t* inputRectangle()
 {
-  double x1 = 0.0;
-  double y1 = 0.0;
-  double x2 = 0.0;
-  double y2 = 0.0;
-  in >> x1 >> y1 >> x2 >> y2;
+  point_t {x1};
+  point_t {y1};
+  point_t {x2};
+  point_t {y2};
+  std::cin >> x1;
+  std::cin >> y1;
+  std::cin >> x2;
+  std::cin >> y2;
   if (!in)
   {
     std::cout << "error";
   }
-  return new point_t[4]{x1, x2, x3, x4};
+  return new point_t[4]{x1, y1, x2, y2};
 }

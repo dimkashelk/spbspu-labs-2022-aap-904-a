@@ -66,15 +66,13 @@ int main()
     }
     else if (name == "POLYGON")
     {
-      dimkashelk::Shape *shape = nullptr;
       try
       {
-        shape = dimkashelk::inputPolygon(std::cin);
+        dimkashelk::Shape *shape = dimkashelk::inputPolygon(std::cin);
         compositeShape.push_back(shape);
       }
       catch (...)
       {
-        delete shape;
         contains_errors_with_shapes = true;
       }
       std::cin.clear();

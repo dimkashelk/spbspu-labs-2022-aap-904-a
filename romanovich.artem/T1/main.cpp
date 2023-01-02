@@ -16,7 +16,7 @@ Rectangle *extendArray(Rectangle *rectArray, size_t size, size_t capacity)
   }
   return newRectArray;
 }
-void printLine(Rectangle rectangle)
+void printLine(const Rectangle &rectangle)
 {
   auto p = std::setprecision(1);
   std::cout << std::fixed;
@@ -28,7 +28,6 @@ void printLine(Rectangle rectangle)
   std::cout << p << frRect1X << " " << p << frRect1Y << " ";
   std::cout << p << frRect2X << " " << p << frRect2Y;
 }
-//
 void buildParallelogram()
 {
 //  point_t A{}, B{}, C{}, D{};
@@ -36,7 +35,6 @@ void buildParallelogram()
 //  D.x = A.x - B.x + C.x;
 //  D.y = A.y - B.y + C.y;
 }
-//
 point_t *buildRectangle()
 {
   point_t A{}, B{}, C{}, D{};
@@ -49,24 +47,13 @@ point_t *buildRectangle()
   B.y = C.y;
   D.x = C.x;
   D.y = A.y;
-  point_t *pointsArray = nullptr;
-//  try
-//  {
-  pointsArray = new point_t[4]{A, B, C, D};
-//  }
-//  catch (...)
-//  {
-//    std::cerr << "Error occurred.\n";
-//  }
-  return pointsArray;
+  return new point_t[4]{A, B, C, D};
 }
-//
 void buildConcave()
 {
 //  point_t A{}, B{}, C{}, D{};
 //  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
 }
-//
 int main()
 {
   std::string figureName = "";
@@ -160,7 +147,6 @@ int main()
     delete[] rectArray;
     return 2;
   }
-  //print sum of areas
   double area = 0;
   auto p = std::setprecision(1);
   std::cout << std::fixed;
@@ -169,7 +155,6 @@ int main()
     area += rectArray[i].getArea();
   }
   std::cout << p << area << " ";
-  // print frame rect coords
   printLine(rectArray[0]);
   for (size_t i = 1; i < rectArraySize; ++i)
   {
@@ -179,27 +164,14 @@ int main()
   for (size_t i = 0; i < rectArraySize; ++i)
   {
     rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
-/*
-    point_t shiftPosition{};
-    shiftPosition.x = iScaleX;
-    shiftPosition.y = iScaleY;
-    rectArray[i].move(shiftPosition);
-    double dx = shiftPosition.x - rectArray[i].getFrameRect().pos.x;
-    double dy = shiftPosition.y - rectArray[i].getFrameRect().pos.y;
-    rectArray[i].scale(iScaleK);
-    dx *= iScaleK;
-    dy *= iScaleK;
-    rectArray[i].move(dx, dy);*/
   }
   std::cout << "\n";
-  //print sum of scaledAreas
   double scaledArea = 0;
   for (size_t i = 0; i < rectArraySize; ++i)
   {
     scaledArea += rectArray[i].getArea();
   }
   std::cout << p << scaledArea << " ";
-  // print frame rect coords
   printLine(rectArray[0]);
   for (size_t i = 1; i < rectArraySize; ++i)
   {

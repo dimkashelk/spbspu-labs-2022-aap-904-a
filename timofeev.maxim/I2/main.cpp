@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
     if (fsize == 0)
     {
       std::cerr << "File is empty" << "\n";
-      return 2;
+      return 0;
     }
     for (size_t i = 0; i < fsize; ++i)
     {
@@ -96,12 +96,6 @@ int main(int argc, char *argv[])
       std::cout << "\n";
     }
     catch (std::overflow_error & e)
-    {
-      std::cout << e.what() << "\n";
-      delete [] File_Array;
-      return 0;
-    }
-    catch (std::length_error & e)
     {
       std::cout << e.what() << "\n";
       delete [] File_Array;

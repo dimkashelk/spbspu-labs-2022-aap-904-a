@@ -17,6 +17,55 @@ int main(int argc, char *argv[])
     std::cerr << "File error" << "\n";
     return 2;
   }
+  size_t fsize = 0;
+  int * File_Array = new int[fsize];
+  std::string fname =argv[1];
+  std::ifstream input(fname);
+  while (!input.is_open())
+  {
+    input >> fsize;
+    if (!input)
+    {
+      std::cout << "File error" << "\n";
+      delete [] File_Array;
+      return 2;
+    }
+    if (fsize == 0)
+    {
+      std::cerr << "File is empty" << "\n";
+      return 2;
+    }
+    for (size_t i = 0; i < fsize; ++i)
+    {
+      input >> File_Array[i];
+      if (!input)
+      {
+        std::cout << "File error" << "\n";
+        delete [] File_Array;
+        return 2;
+      }
+    }
+    try
+    {
+      std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, fsize) << "\n";
+      std::cout << "Sorted array3: " ;
+      Sort_Array(File_Array, fsize);
+      std::cout << "\n";
+    }
+    catch (std::overflow_error & e)
+    {
+      std::cout << e.what() << "\n";
+      delete [] File_Array;
+      return 0;
+    }
+    catch (std::length_error & e)
+    {
+      std::cout << e.what() << "\n";
+      delete [] File_Array;
+      return 0;
+    }
+    delete [] File_Array;
+  }
   int ready_array[5] = {4,5,3,2,1};
   try
   {
@@ -65,60 +114,4 @@ int main(int argc, char *argv[])
     return 0;
   }
   delete [] dyn_array;
-
-  size_t fsize = 0;
-  int * File_Array = new int[fsize];
-  std::string fname = argv[1];
-  std::ifstream input(fname);
-  if (!input.is_open())
-  {
-    std::cout << "File Error\n" ;
-    delete [] File_Array;
-    return 2;
-  }
-  while(!input.eof())
-  {
-    input >> fsize;
-    if (!input)
-    {
-      std::cout << "File error\n";
-      delete [] File_Array;
-      return 2;
-    }
-    if (fsize == 0)
-    {
-      std::cerr << "File is empty" << "\n";
-      return 2;
-    }
-    for (i = 0; i < fsize; ++i)
-    {
-      input >> File_Array[i];
-      if (!input)
-      {
-        std::cout << "File error\n";
-        delete [] File_Array;
-        return 2;
-      }
-    }
-    try
-    {
-      std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, fsize) << "\n";
-      std::cout << "Sorted array3: " ;
-      Sort_Array(File_Array, fsize);
-      std::cout << "\n";
-    }
-    catch (std::overflow_error & e)
-    {
-      std::cout << e.what() << "\n";
-      delete [] File_Array;
-      return 0;
-    }
-    catch (std::length_error & e)
-    {
-      std::cout << e.what() << "\n";
-      delete [] File_Array;
-      return 0;
-    }
-    delete [] File_Array;
-  }
 }

@@ -1,17 +1,17 @@
 #include "inputrectangle.h"
 #include <iostream>
 
-point_t* inputRectangle()
+point_t* inputRectangle(std::istream &in)
 {
   point_t {x1};
   point_t {y1};
   point_t {x2};
   point_t {y2};
-  std::cin >> x1;
-  std::cin >> y1;
-  std::cin >> x2;
-  std::cin >> y2;
-  if (!std::cin)
+  in >> x1;
+  in >> y1;
+  in >> x2;
+  in>> y2;
+  if (!in)
   {
     std::cout << "error";
   }

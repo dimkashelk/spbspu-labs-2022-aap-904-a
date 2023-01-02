@@ -2,11 +2,13 @@
 #include <istream>
 #include <cstring>
 #include <cstddef>
+#include <stdexcept>
 char* formingCstring(size_t & size, std::istream& input)
 {
   size_t capacity = 10;
+  size_t size = 0;
   char* cstring = new char[capacity];
-  cstring[capacity - 1] = '\0';
+  cstring[0] = '\0';
   input >> std::noskipws;
   do
   {
@@ -14,23 +16,27 @@ char* formingCstring(size_t & size, std::istream& input)
     {
       try
       {
-        char* newstr = new char[capacity + 10];
+        char* newstr = new char[capacity + 20];
         cstring[capacity - 1] = '\0';
         std::strcpy(newstr, cstring);
-        delete [] cstring;
+        delete[] cstring;
         cstring = newstr;
-        capacity += 10;
+        capacity += 20;
       }
-      catch (...)
+      catch (const std::exception& e)
       {
         delete[] cstring;
         throw;
       }
     }
     input >> cstring[size];
+  } while (input && cstring[size++] != '\n');
+  if (cstring1[0] == '\0')
+  {
+    delete[] cstring1;
+    throw std::invalid_argument("Empty string");
   }
-  while (input && cstring[size++] != '\n');
-  cstring[size] = '\0';
-  size = 10;
+  cstring[size - 1] = '\0';
+  size = 20;
   return cstring;
 }

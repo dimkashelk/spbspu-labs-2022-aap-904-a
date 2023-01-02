@@ -23,7 +23,7 @@ char* formingCstring(size_t & size, std::istream& input)
       }
       catch (...)
       {
-        delete cstring[]
+        delete cstring[];
         throw;
       }
     }

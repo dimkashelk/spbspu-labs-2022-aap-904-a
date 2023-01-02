@@ -16,6 +16,10 @@ void CompositeShape::push_back(Shape *shp)
   }
   delete[] shape_;
   shape_ = newShape;
+  for (size_t i = 0; i <= size_; ++i)
+  {
+    delete[] newShape[i];
+  }
   delete[] newShape;
   shape_[size_] = shp;
   size_++;

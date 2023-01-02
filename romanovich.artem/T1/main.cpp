@@ -148,6 +148,10 @@ int main()
     std::cout << " ";
     printLine(compositeShape[i]);
   }
+  for (size_t i = 1; i < compositeShape.size(); ++i)
+  {
+    delete[] compositeShape[i];
+  }
   std::cout << "\n";
   return 0;
 }

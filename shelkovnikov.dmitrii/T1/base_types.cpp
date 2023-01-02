@@ -1,5 +1,4 @@
 #include "base_types.h"
-#include <stdexcept>
 dimkashelk::rectangle_t::rectangle_t(point_t point_1, point_t point_2):
   point{(point_1.x + point_2.x) / 2, (point_1.y + point_2.y) / 2},
   width(point_2.x - point_1.x),

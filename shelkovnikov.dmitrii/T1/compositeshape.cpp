@@ -43,22 +43,8 @@ dimkashelk::CompositeShape::CompositeShape(const CompositeShape &compositeShape)
 dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),
-  shapes_(new Shape*[capacity_])
-{
-  for (size_t i = 0; i < size_; i++)
-  {
-    try
-    {
-      shapes_[i] = compositeShape.shapes_[i];
-    }
-    catch (...)
-    {
-      delete[] shapes_;
-      throw;
-    }
-  }
-  delete[] compositeShape.shapes_;
-}
+  shapes_(compositeShape.shapes_)
+{}
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const CompositeShape &other)
 {
   for (size_t i = 0; i < size_; i++)

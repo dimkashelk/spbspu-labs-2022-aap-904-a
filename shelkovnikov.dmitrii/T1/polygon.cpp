@@ -6,7 +6,7 @@
 dimkashelk::Polygon::Polygon(point_t *points, size_t size):
   count_(0),
   triangles_(makeTriangles(points, size)),
-  center{0.0, 0.0}
+  center_{0.0, 0.0}
 {
   double x_sum = 0.0;
   double y_sum = 0.0;
@@ -15,12 +15,12 @@ dimkashelk::Polygon::Polygon(point_t *points, size_t size):
     x_sum += points[i].x;
     y_sum += points[i].y;
   }
-  center = point_t{x_sum / size, y_sum / size};
+  center_ = point_t{x_sum / size, y_sum / size};
 }
 dimkashelk::Polygon::Polygon(const Polygon &polygon):
   count_(polygon.count_),
   triangles_(new Triangle[polygon.count_]),
-  center(polygon.center)
+  center_(polygon.center_)
 {
   for (size_t i = 0; i < polygon.count_; i++)
   {
@@ -63,7 +63,7 @@ dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
 }
 void dimkashelk::Polygon::move(point_t point)
 {
-  move(point.x - center.x, point.y - center.y);
+  move(point.x - center_.x, point.y - center_.y);
 }
 void dimkashelk::Polygon::move(double delta_x, double delta_y)
 {
@@ -71,8 +71,8 @@ void dimkashelk::Polygon::move(double delta_x, double delta_y)
   {
     triangles_[i].move(delta_x, delta_y);
   }
-  center.x += delta_x;
-  center.y += delta_y;
+  center_.x += delta_x;
+  center_.y += delta_y;
 }
 void dimkashelk::Polygon::scale(double k)
 {
@@ -82,7 +82,7 @@ void dimkashelk::Polygon::scale(double k)
   }
   for (size_t i = 0; i < count_; i++)
   {
-    isotropicScaling(&triangles_[i], center, k);
+    isotropicScaling(&triangles_[i], center_, k);
   }
 }
 dimkashelk::Shape* dimkashelk::Polygon::clone() const

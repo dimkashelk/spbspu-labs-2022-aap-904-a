@@ -18,7 +18,7 @@ namespace dimkashelk
   private:
     size_t count_;
     Triangle *triangles_;
-    point_t center;
+    point_t center_;
     Polygon(const Polygon &polygon);
     Polygon(Polygon &&polygon) = delete;
     Polygon& operator=(const Polygon &other) = delete;

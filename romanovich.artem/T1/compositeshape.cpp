@@ -8,7 +8,16 @@ void CompositeShape::push_back(Shape *shp)
   {
     throw std::invalid_argument("Expansion is impossible.");
   }
-  Shape **newShape = new Shape *[capacity_ + capAdd];
+  Shape **newShape = nullptr;
+  try
+  {
+    newShape = new Shape *[capacity_ + capAdd];
+  }
+  catch (...)
+  {
+    delete shape_;
+    throw;
+  }
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
   {
@@ -16,11 +25,6 @@ void CompositeShape::push_back(Shape *shp)
   }
   delete[] shape_;
   shape_ = newShape;
-  for (size_t i = 0; i <= size_; ++i)
-  {
-    delete[] newShape[i];
-  }
-  delete[] newShape;
   shape_[size_] = shp;
   size_++;
 }
@@ -47,7 +51,7 @@ CompositeShape::CompositeShape(size_t capacity)
 }
 Shape *CompositeShape::operator[](size_t id)
 {
-  return shape_[id];
+  return shape_[id];//!
 }
 void CompositeShape::move(point_t)
 {

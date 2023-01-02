@@ -8,16 +8,6 @@ dimkashelk::CompositeShape::CompositeShape():
   capacity_(10),
   shapes_(new Shape*[capacity_])
 {}
-dimkashelk::CompositeShape::CompositeShape(Shape **shapes, size_t size):
-  size_(size),
-  capacity_(size_),
-  shapes_(new Shape*[capacity_])
-{
-  for (size_t i = 0; i < size_; i++)
-  {
-    shapes_[i] = shapes[i]->clone();
-  }
-}
 dimkashelk::CompositeShape::CompositeShape(const CompositeShape &compositeShape):
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),

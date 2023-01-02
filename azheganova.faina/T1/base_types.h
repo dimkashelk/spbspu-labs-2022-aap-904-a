@@ -9,11 +9,10 @@ struct point_t
 
 struct rectangle_t
 {
+  point_t pos;
   double width;
   double height;
-  point_t pos;
   rectangle_t(point_t pos1, point_t pos2);
-  rectangle_t(point_t pos, double width, double height);
 };
 
 #endif

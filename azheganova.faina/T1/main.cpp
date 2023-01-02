@@ -8,7 +8,6 @@
 #include "inputrectangle.h"
 #include "compositeshape.h"
 #include "isoscale.h"
-#include "increasearr.h"
 
 int main()
 {

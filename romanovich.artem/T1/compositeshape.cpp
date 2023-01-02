@@ -44,16 +44,16 @@ Shape *CompositeShape::operator[](size_t id)
 {
   return shape_[id];
 }
-void CompositeShape::move(point_t position)
+void CompositeShape::move(point_t)
 {
 }
-void CompositeShape::scale(double k)
+void CompositeShape::scale(double)
 {
 }
-void CompositeShape::move(double dx, double dy)
+void CompositeShape::move(double, double)
 {
 }
-Shape *CompositeShape::at(size_t id)
+Shape *CompositeShape::at(size_t)
 {
   return nullptr;
 }
@@ -69,7 +69,7 @@ bool CompositeShape::empty()
 {
   return false;
 }
-CompositeShape::CompositeShape(const CompositeShape &rhs)
+CompositeShape::CompositeShape(const CompositeShape &)
 {
 }
 CompositeShape::CompositeShape(CompositeShape &)

@@ -201,10 +201,18 @@ void dimkashelk::CompositeShape::pop_back()
 }
 dimkashelk::Shape* dimkashelk::CompositeShape::at(size_t id)
 {
+  if (id >= size_)
+  {
+    throw std::out_of_range("Check number");
+  }
   return shapes_[id];
 }
 const dimkashelk::Shape* dimkashelk::CompositeShape::at(size_t id) const
 {
+  if (id >= size_)
+  {
+    throw std::out_of_range("Check number");
+  }
   return shapes_[id];
 }
 bool dimkashelk::CompositeShape::empty() const noexcept

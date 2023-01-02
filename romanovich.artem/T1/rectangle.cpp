@@ -56,16 +56,4 @@ Rectangle *Rectangle::clone() const
 {
   return nullptr;
 }
-void Rectangle::isoScale(Rectangle &rectangle, double secondPosX, double secondPosY, double k)
-{
-  double firstPosX = rectangle.getFrameRect().pos.x;
-  double firstPosY = rectangle.getFrameRect().pos.y;
-  double dx = secondPosX - firstPosX;
-  double dy = secondPosY - firstPosY;
-  rectangle.move(dx, dy);
-  dx *= -k;
-  dy *= -k;
-  rectangle.scale(k);
-  rectangle.move(dx, dy);
-}
 Rectangle::Rectangle() = default;

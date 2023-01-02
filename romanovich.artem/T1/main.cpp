@@ -5,17 +5,20 @@
 #include "rectangle.h"
 #include "parallelogram.h"
 #include "compositeshape.h"
-void printLine(const Shape &shape)
+void printLine(Shape *shape)
 {
   auto p = std::setprecision(1);
   std::cout << std::fixed;
-  rectangle_t frameRect = shape.getFrameRect();
+  std::cout << "Evth is working 4 :)\n";
+  rectangle_t frameRect = shape->getFrameRect();
+  std::cout << "Evth is working 5 :)\n";
   double frRect1X = frameRect.pos.x - frameRect.width / 2;
   double frRect1Y = frameRect.pos.y - frameRect.height / 2;
   double frRect2X = frameRect.pos.x + frameRect.width / 2;
   double frRect2Y = frameRect.pos.y + frameRect.height / 2;
   std::cout << p << frRect1X << " " << p << frRect1Y << " ";
   std::cout << p << frRect2X << " " << p << frRect2Y;
+  std::cout << "Evth is working 6 :)\n";
 }
 point_t *buildParallelogram()
 {
@@ -47,7 +50,7 @@ void buildConcave()
 int main()
 {
   std::string figureName = "";
-  size_t compShapeCapacity = 0;
+  size_t compShapeCapacity = 10;
   CompositeShape compositeShape(compShapeCapacity);
   bool badFigure = false;
   bool figureCommand = false;
@@ -86,7 +89,6 @@ int main()
         else
         {
           compositeShape.push_back(new Rectangle(pointsArray));
-          compShapeCapacity++;
         }
         delete[] pointsArray;
       }
@@ -121,48 +123,40 @@ int main()
   {
     return 2;
   }
-  double area = 0;
   auto p = std::setprecision(1);
   std::cout << std::fixed;
-  ///for (size_t i = 0; i < rectArraySize; ++i)
-  for (size_t i = 0; i < compShapeCapacity; ++i)
-  {
-    ///area += rectArray[i].getArea();
-    area += compositeShape[i]->getArea();
-  }
-  std::cout << p << area << " ";
+  std::cout << p << compositeShape.getArea() << " ";
   ///printLine(rectArray[0]);
-  printLine(*compositeShape[0]);
+  printLine(compositeShape[0]);
   ///for (size_t i = 1; i < rectArraySize; ++i)
-  for (size_t i = 1; i < compShapeCapacity; ++i)
+  for (size_t i = 1; i < compositeShape.size(); ++i)
   {
     std::cout << " ";
     ///printLine(rectArray[i]);
-    printLine(*compositeShape[i]);
+    printLine(compositeShape[i]);
   }
-  ///for (size_t i = 0; i < rectArraySize; ++i)
-  for (size_t i = 0; i < compShapeCapacity; ++i)
+  for (size_t i = 0; i < compositeShape.size(); ++i)
   {
     ///rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
-    compositeShape[i]->isoScale(compositeShape[i], iScaleX, iScaleY, iScaleK);
+    compositeShape.isoScale(*compositeShape[i], iScaleX, iScaleY, iScaleK);
   }
   std::cout << "\n";
   double scaledArea = 0;
   ///for (size_t i = 0; i < rectArraySize; ++i)
-  for (size_t i = 0; i < compShapeCapacity; ++i)
+  for (size_t i = 0; i < compositeShape.size(); ++i)
   {
     ///scaledArea += rectArray[i].getArea();
     scaledArea += compositeShape[i]->getArea();
   }
   std::cout << p << scaledArea << " ";
   ///printLine(rectArray[0]);
-  printLine(*compositeShape[0]);
+  printLine(compositeShape[0]);
   ///for (size_t i = 1; i < rectArraySize; ++i)
-  for (size_t i = 1; i < compShapeCapacity; ++i)
+  for (size_t i = 1; i < compositeShape.size(); ++i)
   {
     std::cout << " ";
     ///printLine(rectArray[i]);
-    printLine(*compositeShape[i]);
+    printLine(compositeShape[i]);
   }
   std::cout << "\n";
   return 0;

@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     int arr[1000];
     try
     {
-      fillArray(arr, rows, cols, &in);
+      fillArray(arr, rows, cols, in);
     }
     catch (const std::exception& e)
     {
@@ -53,6 +53,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     printArray(output, arr, rows, cols);
+    output << "\n";
     size_t positiveRowsCount = getPositiveRowsCount(reinterpret_cast< int* >(&arr), rows, cols);
     output << "Found positive rows count: " << positiveRowsCount << "\n";
   }
@@ -76,7 +77,7 @@ int main(int argc, char* argv[])
     int* arr = new int[rows * cols];
     try
     {
-      fillArray(arr, rows, cols, &in);
+      fillArray(arr, rows, cols, in);
     }
     catch (const std::exception& e)
     {
@@ -85,6 +86,7 @@ int main(int argc, char* argv[])
       return 1;
     }
     printArray(output, arr, rows, cols);
+    output << "\n";
     int maxSumDiag = getMaxSumDiag(arr, rows);
     output << "Max sum in diagonals except main one: " << maxSumDiag << "\n";
     delete[] arr;

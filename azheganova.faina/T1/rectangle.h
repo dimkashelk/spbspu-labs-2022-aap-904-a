@@ -17,10 +17,6 @@ class rectangle : virtual public shape
     shape * clone() const;
   private:
     rectangle_t rectangle1;
-    point_t x1{};
-    point_t y1{};
-    point_t x2{};
-    point_t y2{};
 };
 
 #endif

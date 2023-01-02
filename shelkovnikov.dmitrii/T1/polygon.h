@@ -18,13 +18,12 @@ namespace dimkashelk
   private:
     size_t count_;
     Triangle *triangles_;
-    point_t center;
     Polygon(const Polygon &polygon);
     Polygon(Polygon &&polygon) = delete;
     Polygon& operator=(const Polygon &other) = delete;
     Polygon& operator=(Polygon &&tmp) = delete;
     Triangle* makeTriangles(point_t *points, size_t size);
-    point_t getCenter(point_t *points, size_t size) const;
+    point_t getCenter() const;
   };
 }
 #endif

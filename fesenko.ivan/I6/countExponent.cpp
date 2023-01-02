@@ -19,10 +19,13 @@ double ElementOfRow::operator()()
 
 double countExponent(double x, double absError, unsigned numberMax)
 {
+  if (numberMax == 1) {
+    return 1;
+  }
   ElementOfRow elementOfRow(x);
   double result = 1 + x;
   double element = 0.0;
-  for (unsigned i = 1; i < numberMax; i++) {
+  for (unsigned i = 2; i < numberMax; i++) {
     element = elementOfRow();
     if (element < absError) {
       return result;

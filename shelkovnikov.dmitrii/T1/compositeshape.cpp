@@ -35,7 +35,15 @@ dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes_[i] = compositeShape.shapes_[i];
+    try
+    {
+      shapes_[i] = compositeShape.shapes_[i];
+    }
+    catch (...)
+    {
+      delete[] shapes_;
+      throw;
+    }
   }
   delete[] compositeShape.shapes_;
 }

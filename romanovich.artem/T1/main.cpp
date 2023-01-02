@@ -58,6 +58,11 @@ int main()
   while (std::cin)
   {
     std::cin >> figureName;
+    if (badFigure)
+    {
+      badFigure = false;
+      std::cerr << "Error occurred: points does not match the task condition.\n";
+    }
     if (figureName == "PARALLELOGRAM")
     {
       figureCommand = true;
@@ -104,11 +109,6 @@ int main()
         delete[] pointsArray;
         return 2;
       }
-      if (badFigure)
-      {
-        badFigure = false;
-        std::cerr << "Error occurred: points does not match the task condition.\n";
-      }
     }
     if (figureName == "CONCAVE")
     {
@@ -117,7 +117,8 @@ int main()
       try
       {
         pointsArray = buildConcave();
-        if (!(new Concave(pointsArray))->goodConcaveInput())
+        Concave *concave = new Concave(pointsArray);
+        if (!concave->goodConcaveInput())
         {
           badFigure = true;
         }
@@ -126,6 +127,7 @@ int main()
           Shape *shape = new Concave(pointsArray);
           compositeShape.push_back(shape);
         }
+        delete concave;
         delete[] pointsArray;
       }
       catch (...)

@@ -31,4 +31,5 @@ char* formingCstring(size_t & size, std::istream& input)
   while (input && cstring[size++] != '\n');
   cstring[size] = '\0';
   return cstring;
+  return size;
 }

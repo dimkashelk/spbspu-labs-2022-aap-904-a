@@ -13,7 +13,7 @@ int main()
   cstring1[0] = '\0';
   try
   {
-    cstring1 = formingCstring(cstring1, capacity1, std::cin);
+    cstring1 = formingCstring(size, std::cin);
     if (cstring1[0] == '\0')
     {
       std::cout << " Empty string ";

@@ -9,6 +9,7 @@ int main()
   size_t capacity = 10;
   size_t size = 0;
   char* cstring = nullptr;
+  cstring[0] = '\0';
   try
   {
     cstring = new char[capacity];
@@ -19,7 +20,6 @@ int main()
     std::cout << e.what();
     return 3;
   }
-  cstring[0] = '\0';
 
   try
   {
@@ -39,6 +39,8 @@ int main()
   }
   catch (const std::exception& e)
   {
+    delete[] cstring;
+    delete[] destination1;
     std::cout << e.what();
     return 1;
   }

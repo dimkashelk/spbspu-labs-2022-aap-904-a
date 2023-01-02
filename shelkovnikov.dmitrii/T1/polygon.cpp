@@ -7,14 +7,14 @@ dimkashelk::Polygon::Polygon(point_t *points, size_t size):
   count_(0),
   triangles_(makeTriangles(points, size))
 {}
-dimkashelk::Polygon::Polygon(const Polygon &polygon)
+dimkashelk::Polygon::Polygon(const Polygon &polygon):
+  count_(polygon.count_),
+  triangles_(new Triangle[polygon.count_])
 {
-  triangles_ = new Triangle[polygon.count_];
   for (size_t i = 0; i < polygon.count_; i++)
   {
-    triangles_[i] = polygon.triangles_[i];
+    triangles_[i] = Triangle(polygon.triangles_[i]);
   }
-  count_ = polygon.count_;
 }
 dimkashelk::Polygon::~Polygon() noexcept
 {

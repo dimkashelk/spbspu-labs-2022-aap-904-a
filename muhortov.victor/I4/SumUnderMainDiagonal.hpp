@@ -3,5 +3,6 @@
 
 #include <cstddef>
 
-double sumUnderMainDiagonal(const double *smooth_arr, size_t cols, size_t rows);
+double sumUnderMainDiagonal(const double *arr, size_t cols, size_t rows);
+
 #endif

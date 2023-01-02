@@ -58,6 +58,7 @@ int main()
       {
         dimkashelk::Shape *shape = dimkashelk::inputRegular(std::cin);
         compositeShape.push_back(shape);
+        delete shape;
       }
       catch (const std::logic_error &e)
       {

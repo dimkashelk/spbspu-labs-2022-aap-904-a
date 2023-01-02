@@ -1,5 +1,5 @@
 #include "rectangle.h"
-#include <cmath>
+#include <stdexcept>
 dimkashelk::Rectangle::Rectangle(rectangle_t rectangle):
   rectangle_(rectangle)
 {}
@@ -25,8 +25,12 @@ void dimkashelk::Rectangle::move(double delta_x, double delta_y)
 }
 void dimkashelk::Rectangle::scale(double k)
 {
-  rectangle_.width *= std::fabs(k);
-  rectangle_.height *= std::fabs(k);
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
+  rectangle_.width *= k;
+  rectangle_.height *= k;
 }
 dimkashelk::Shape *dimkashelk::Rectangle::clone() const
 {

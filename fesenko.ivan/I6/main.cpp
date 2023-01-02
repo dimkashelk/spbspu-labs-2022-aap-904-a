@@ -1,8 +1,9 @@
 #include <iostream>
+#include "printTable.h"
 
 int main()
 {
-  size_t numberMax = 0;
+  unsigned numberMax = 0;
   const double step = 0.01;
   const double absError = 0.0001;
   double left = 0.0;
@@ -14,6 +15,13 @@ int main()
   }
   if (left > right) {
     std::cerr << "Invalid range\n";
+    return 2;
+  }
+  try {
+    printTable(std::cout, left, right, step, numberMax, absError);
+  }
+  catch (const std::exception &e) {
+    std::cerr << e.what() << "\n";
     return 2;
   }
 }

@@ -45,7 +45,7 @@ int main()
   }
   catch (const std::exception& e)
   {
-    delete[] cstring[];
+    delete[] cstring;
     delete[] destination1;
     delete[] destination2;
     std::cout << e.what();

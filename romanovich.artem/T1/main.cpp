@@ -28,12 +28,13 @@ void printLine(const Rectangle &rectangle)
   std::cout << p << frRect1X << " " << p << frRect1Y << " ";
   std::cout << p << frRect2X << " " << p << frRect2Y;
 }
-void buildParallelogram()
+point_t *buildParallelogram()
 {
-//  point_t A{}, B{}, C{}, D{};
-//  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-//  D.x = A.x - B.x + C.x;
-//  D.y = A.y - B.y + C.y;
+  point_t A{}, B{}, C{}, D{};
+  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+  D.x = A.x - B.x + C.x;
+  D.y = A.y - B.y + C.y;
+  return new point_t[4]{A, B, C, D};
 }
 point_t *buildRectangle()
 {

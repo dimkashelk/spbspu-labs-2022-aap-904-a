@@ -97,7 +97,8 @@ void dimkashelk::Triangle::scale(double k)
 }
 dimkashelk::Shape* dimkashelk::Triangle::clone() const
 {
-  return new Triangle(points[0], points[1], points[2]);
+  Triangle *copy = new Triangle(points[0], points[1], points[2]);
+  return copy;
 }
 dimkashelk::Triangle dimkashelk::Triangle::rotate(double theta) const
 {

@@ -1,5 +1,5 @@
-#ifndef T1_INPUT_SHAPES_H
-#define T1_INPUT_SHAPES_H
+#ifndef SPBSPU_LABS_2022_AAP_904_A__INPUT_SHAPES_H
+#define SPBSPU_LABS_2022_AAP_904_A__INPUT_SHAPES_H
 #include "rectangle.h"
 #include "regular.h"
 #include "polygon.h"

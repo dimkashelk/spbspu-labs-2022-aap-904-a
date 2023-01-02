@@ -1,6 +1,7 @@
 #include "compositeshape.h"
 #include <algorithm>
 #include <limits>
+#include <stdexcept>
 #include "base_functions.h"
 dimkashelk::CompositeShape::CompositeShape():
   size_(0),
@@ -124,6 +125,10 @@ void dimkashelk::CompositeShape::move(double delta_x, double delta_y)
 }
 void dimkashelk::CompositeShape::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
   point_t center = getCenter();
   for (size_t i = 0; i < size_; i++)
   {

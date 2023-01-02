@@ -100,15 +100,36 @@ dimkashelk::Shape* dimkashelk::Triangle::clone() const
   Triangle *copy = new Triangle(points[0], points[1], points[2]);
   return copy;
 }
-dimkashelk::Triangle dimkashelk::Triangle::rotate(double theta) const
+bool dimkashelk::Triangle::isRectangular()
 {
-  double new_p_x_1 = std::cos(theta) * (points[1].x - points[0].x) - std::sin(theta) * (points[1].y - points[0].y) + points[0].x;
-  double new_p_y_1 = std::sin(theta) * (points[1].x - points[0].x) + std::cos(theta) * (points[1].y - points[0].y) + points[0].y;
-  double new_p_x_2 = std::cos(theta) * (points[2].x - points[0].x) - std::sin(theta) * (points[2].y - points[0].y) + points[0].x;
-  double new_p_y_2 = std::sin(theta) * (points[2].x - points[0].x) + std::cos(theta) * (points[2].y - points[0].y) + points[0].y;
-  return Triangle(points[0], point_t{new_p_x_1, new_p_y_1}, point_t{new_p_x_2, new_p_y_2});
+  double square[3];
+  for (size_t i = 0; i < 3; i++)
+  {
+    square[i] = std::pow(points[i].x - points[(i + 1) % 3].x, 2) + std::pow(points[i].y - points[(i + 1) % 3].y, 2);
+  }
+  return square[0]  == square[1] + square[2] || square[1] == square[0] + square[2] || square[2] == square[0] + square[1];
+}
+dimkashelk::point_t* dimkashelk::Triangle::getPoints() const
+{
+  return new point_t[3]{points[0], points[1], points[2]};
 }
 dimkashelk::point_t dimkashelk::Triangle::getCenter() const
 {
   return point_t{(points[0].x + points[1].x + points[2].x) / 3, (points[0].y + points[1].y + points[2].y) / 3};
+}
+bool dimkashelk::Triangle::containsPoint(point_t point) const
+{
+  double A = points[1].y - points[0].y;
+  double B = -(points[1].x - points[0].x);
+  double C = -B * points[0].y - A * points[0].x;
+  bool one_side_with_point3 = ((A * point.x + B * point.y + C) * (A * points[2].x + B * points[2].y + C)) > 0;
+  A = points[2].y - points[0].y;
+  B = -(points[2].x - points[0].x);
+  C = -B * points[0].y - A * points[0].x;
+  bool one_side_with_point2 = ((A * point.x + B * point.y + C) * (A * points[1].x + B * points[1].y + C)) > 0;
+  A = points[2].y - points[1].y;
+  B = -(points[2].x - points[1].x);
+  C = -B * points[1].y - A * points[1].x;
+  bool one_side_with_point1 = ((A * point.x + B * point.y + C) * (A * points[0].x + B * points[0].y + C)) > 0;
+  return one_side_with_point1 && one_side_with_point2 && one_side_with_point3;
 }

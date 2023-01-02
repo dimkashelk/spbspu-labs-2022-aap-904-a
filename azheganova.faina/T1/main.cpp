@@ -15,14 +15,17 @@ int main()
   size_t capacity = 10;
   size_t size = 0;
   shape **shapes = new shape*[capacity];
+  CompositeShape compositeShape(capacity);
+  point_t *arr = nullptr;
   while(std::cin)
   {
     std::string name = "";
     std::cin >> name;
     if (name == "RECTANGLE")
     {
-      shapes[size] = inputRectangle(std::cin);
-      CompositeShape increaseArr(shape);
+      arr = inputRectangle();
+      shape *shape = new rectangle(arr);
+      compositeShape.push_back(shape);
     }
   }
 }

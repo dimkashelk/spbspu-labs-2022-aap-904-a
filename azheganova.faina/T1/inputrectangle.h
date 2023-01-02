@@ -3,5 +3,5 @@
 #include <stdexcept>
 #include "rectangle.h"
 
-rectangle* inputRectangle(std::istream &in);
+point_t* inputRectangle();
 #endif

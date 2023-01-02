@@ -1,7 +1,7 @@
 #include "inputrectangle.h"
 #include <iostream>
 
-rectangle* inputRectangle(std::istream &in)
+point_t* inputRectangle()
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -12,5 +12,5 @@ rectangle* inputRectangle(std::istream &in)
   {
     std::cout << "error";
   }
-  return new rectangle(point_t{x1, y1}, point_t{x2, y2});
+  return new point_t[4]{x1, x2, x3, x4};
 }

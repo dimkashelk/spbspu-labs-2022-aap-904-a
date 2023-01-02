@@ -6,6 +6,7 @@
 class CompositeShape
 {
   public:
+    CompositeShape compositeShape();
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
     double getArea() const;
@@ -13,7 +14,7 @@ class CompositeShape
     void move(double dx, double dy);
     void move(point_t position);
     void scale(const point_t & position, double k);
-    void increaseArr(const shape * shapes);
+    void push_back(shape * shapes);
   private:
     shape ** shape_;
     size_t size_;

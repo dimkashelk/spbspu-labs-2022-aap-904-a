@@ -10,7 +10,7 @@ class shape
     virtual void move(double dx, double dy) = 0;
     virtual void move(point_t position) = 0;
     virtual void scale(double k) = 0;
-    virtual ~shape();
+    virtual ~shape() = default;
     virtual shape * clone() const = 0;
 };
 

@@ -1,4 +1,5 @@
 #include "isoscale.h"
+#include <iostream>
 
 void isoScale(shape * scale, const point_t & position, double k)
 {

@@ -3,9 +3,10 @@
 #include "base_types.h"
 #include "shape.h"
 
-class rectangle : public shape
+class rectangle : virtual public shape
 {
   public:
+    explicit rectangle(point_t *inputRectangle);
     rectangle(rectangle_t rectangle);
     rectangle(point_t point1, point_t point2);
     double getArea() const;

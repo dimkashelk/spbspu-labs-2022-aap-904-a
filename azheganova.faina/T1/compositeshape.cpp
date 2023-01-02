@@ -11,6 +11,15 @@ CompositeShape::CompositeShape(const CompositeShape & rhs)
   }
 }
 
+CompositeShape::CompositeShape(CompositeShape && rhs):
+ shape_(rhs.shape_),
+ size_(rhs.size_),
+ capacity_(rhs.capacity_)
+{
+  rhs.shape_ = nullptr;
+  rhs.size_ = 0;
+}
+
 double CompositeShape::getArea() const
 {
   double square = 0.0;
@@ -73,7 +82,7 @@ void CompositeShape::scale(const point_t & position, double k)
   }
 }
 
-void CompositeShape::increaseArr(const shape * shapes)
+void CompositeShape::push_back(shape * shapes)
 {
   shape * shape2 = shapes->clone();
   if (capacity_ == size_)

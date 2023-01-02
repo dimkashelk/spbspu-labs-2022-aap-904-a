@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "base-types.h"
 #include "rectangle.h"
+#include "parallelogram.h"
 Rectangle *extendArray(Rectangle *rectArray, size_t size, size_t capacity)
 {
   if (capacity < size)
@@ -94,7 +95,21 @@ int main()
     }
     if (figureName == "PARALLELOGRAM")
     {
-      buildParallelogram();
+      point_t *pointsArray = nullptr;
+      try
+      {
+        pointsArray = buildParallelogram();
+        Parallelogram parallelogram(pointsArray);
+        //rectArray[rectArraySize] = parallelogram;
+        //rectArraySize++;
+        delete[] pointsArray;
+      }
+      catch (...)
+      {
+        std::cerr << "Error occurred while building parallelogram.\n";
+        delete[] pointsArray;
+        return 2;
+      }
     }
     if (figureName == "RECTANGLE")
     {

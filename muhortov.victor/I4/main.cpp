@@ -102,6 +102,7 @@ int main(int argc, char *argv[])
     out << sumUnderMainDiagonal(smooth_arr, cols, rows);
 
     delete[] arr;
+    delete[] smooth_arr;
   }
   else
   {

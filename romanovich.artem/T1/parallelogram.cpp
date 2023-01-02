@@ -1,3 +1,4 @@
+#include <cmath>
 #include "parallelogram.h"
 Parallelogram::Parallelogram(point_t *pointsArray) :
   A(pointsArray[0]),
@@ -8,7 +9,17 @@ Parallelogram::Parallelogram(point_t *pointsArray) :
 }
 double Parallelogram::getArea() const
 {
-  return -1;
+  double ax = C.x - B.x;
+  double ay = C.y - B.y;
+  double by = A.y - B.y;
+  double bx = A.x - B.x;
+  double cx = C.x - A.x;
+  double cy = C.y - A.y;
+  double a = sqrt(ax * ax + ay * ay);
+  double b = sqrt(bx * bx + by * by);
+  double c = sqrt(cx * cx + cy * cy);
+  double p = (a + b + c) / 2;
+  return sqrt(p * (p - a) * (p - b) * (p - c));
 }
 rectangle_t Parallelogram::getFrameRect() const
 {
@@ -36,6 +47,16 @@ void Parallelogram::scale(double k)
 {
   if (k > 0)
   {
+    double centerX = getFrameRect().pos.x;
+    double centerY = getFrameRect().pos.y;
+    A.x = k * (A.x - centerX) + centerX;
+    A.y = k * (A.y - centerY) + centerY;
+    C.x = k * (C.x - centerX) + centerX;
+    C.y = k * (C.y - centerY) + centerY;
+    B.x = k * (B.x - centerX) + centerX;
+    B.y = k * (B.y - centerY) + centerY;
+    D.x = k * (D.x - centerX) + centerX;
+    D.y = k * (D.y - centerY) + centerY;
   }
 }
 Parallelogram *Parallelogram::clone() const

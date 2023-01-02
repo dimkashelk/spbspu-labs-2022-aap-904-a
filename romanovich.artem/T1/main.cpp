@@ -5,6 +5,7 @@
 #include "rectangle.h"
 #include "parallelogram.h"
 #include "compositeshape.h"
+#include "concave.h"
 void printLine(Shape *shape)
 {
   auto p = std::setprecision(1);
@@ -39,10 +40,12 @@ point_t *buildRectangle()
   D.y = A.y;
   return new point_t[4]{A, B, C, D};
 }
-void buildConcave()
+point_t * buildConcave()
 {
-//  point_t A{}, B{}, C{}, D{};
-//  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
+  //Проверить свойства треугольника
+  point_t A{}, B{}, C{}, D{};
+  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
+  return new point_t[4]{A, B, C, D};
 }
 int main()
 {
@@ -62,7 +65,7 @@ int main()
       try
       {
         pointsArray = buildParallelogram();
-        Shape * shape = new Parallelogram(pointsArray);
+        Shape *shape = new Parallelogram(pointsArray);
         compositeShape.push_back(shape);
         delete[] pointsArray;
       }
@@ -86,7 +89,7 @@ int main()
         }
         else
         {
-          Shape * shape = new Rectangle(pointsArray);
+          Shape *shape = new Rectangle(pointsArray);
           compositeShape.push_back(shape);
         }
         delete[] pointsArray;
@@ -105,7 +108,20 @@ int main()
     }
     if (figureName == "CONCAVE")
     {
-      buildConcave();
+      point_t *pointsArray = nullptr;
+      try
+      {
+        pointsArray = buildConcave();
+        Shape *shape = new Concave(pointsArray);
+        compositeShape.push_back(shape);
+        delete[] pointsArray;
+      }
+      catch (...)
+      {
+        std::cerr << "Error occurred while building parallelogram.\n";
+        delete[] pointsArray;
+        return 2;
+      }
     }
     if (figureName == "SCALE")
     {

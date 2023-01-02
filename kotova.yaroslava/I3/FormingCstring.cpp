@@ -29,7 +29,7 @@ char* formingCstring(size_t & size, std::istream& input)
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
-  cstring[size] = '\0';
+  cstring[size - 1] = '\0';
+  size = 10;
   return cstring;
-  return size;
 }

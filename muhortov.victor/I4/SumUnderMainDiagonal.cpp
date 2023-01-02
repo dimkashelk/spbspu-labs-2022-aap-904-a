@@ -1,7 +1,7 @@
-#include "SuminSmoothMatrix.hpp"
+#include "SumUnderMainDiagonal.hpp"
 #include <cmath>
 
-double summingInSmoothMatrix(const double *smooth_arr, size_t cols, size_t rows)
+double sumUnderMainDiagonal(const double *smooth_arr, size_t cols, size_t rows)
 {
   double sum = 0;
 
@@ -15,8 +15,6 @@ double summingInSmoothMatrix(const double *smooth_arr, size_t cols, size_t rows)
       }
     }
   }
-
-  delete[] smooth_arr;
 
   return sum;
 }

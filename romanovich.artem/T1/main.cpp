@@ -42,7 +42,6 @@ point_t *buildRectangle()
 }
 point_t *buildConcave()
 {
-  //Проверить свойства треугольника
   point_t A{}, B{}, C{}, D{};
   std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
   return new point_t[4]{A, B, C, D};
@@ -65,6 +64,10 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
+        if (!pointsArray)
+        {
+          badFigure = true;
+        }
         pointsArray = buildParallelogram();
         Shape *shape = new Parallelogram(pointsArray);
         compositeShape.push_back(shape);
@@ -113,10 +116,17 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-      pointsArray = buildConcave();
-      Shape *shape = new Concave(pointsArray);
-      compositeShape.push_back(shape);
-      delete[] pointsArray;
+        pointsArray = buildConcave();
+        if (!(new Concave(pointsArray))->goodConcaveInput())
+        {
+          badFigure = true;
+        }
+        else
+        {
+          Shape *shape = new Concave(pointsArray);
+          compositeShape.push_back(shape);
+        }
+        delete[] pointsArray;
       }
       catch (...)
       {

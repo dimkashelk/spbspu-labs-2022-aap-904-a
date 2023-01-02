@@ -13,6 +13,8 @@ public:
   void scale(double k) override;
   void isoScale(Concave &concave, double x, double y, double k);
   Concave *clone() const override;
+  bool goodConcaveInput() const;
+  double *getSides() const;
   ~Concave() override = default;
 private:
   mutable point_t A{}, B{}, C{}, D{};

@@ -3,7 +3,7 @@
 #include "base_types.h"
 #include "compositeshape.h"
 
-void increaseArr(shape * shapes, size_t size, size_t new_capacity)
+void increaseArr(const shape *shapes)
 {
   shape ** shape_;
   size_t size_;

@@ -8,7 +8,6 @@ rectangle_t::rectangle_t(point_t pos1, point_t pos2):
 {}
 
 rectangle_t::rectangle_t(point_t pos, double width, double height):
-  pos(pos),
   width(width),
   height(height)
 {

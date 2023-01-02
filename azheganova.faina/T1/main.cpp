@@ -24,7 +24,7 @@ int main()
     {
       shapes[size] = inputRectangle(std::cin);
       size++;
-      increaseArr(shapes, size, capacity);
+      increaseArr(shapes);
     }
   }
 }

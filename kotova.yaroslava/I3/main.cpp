@@ -7,9 +7,19 @@
 int main()
 {
   size_t capacity = 10;
-  size_t capacity2 = 10;
+  size_t capacity = 10;
   size_t size = 0;
-  char* cstring = new char[capacity];
+  char* cstring = nullptr;
+  try
+  {
+    cstring = new char[capacity];
+  }
+  catch (const std::exception& e)
+  {
+    delete[] cstring;
+    std::cout << e.what();
+    return 3;
+  }
   cstring[0] = '\0';
 
   try
@@ -41,7 +51,7 @@ int main()
   char* destination2 = nullptr;
   try
   {
-    destination2 = new char[capacity2];
+    destination2 = new char[capacity];
   }
   catch (const std::exception& e)
   {

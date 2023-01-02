@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
     std::cerr << "Cannot open output file\n";
     return 1;
   }
-  if (!strcmp(argv[1], "1"))
+  if (!std::strcmp(argv[1], "1"))
   {
     int arr[1000];
     try
@@ -54,10 +54,10 @@ int main(int argc, char* argv[])
     }
     printArray(output, arr, rows, cols);
     output << "\n";
-    size_t positiveRowsCount = getPositiveRowsCount(reinterpret_cast< int* >(&arr), rows, cols);
+    size_t positiveRowsCount = getPositiveRowsCount( arr, rows, cols);
     output << "Found positive rows count: " << positiveRowsCount << "\n";
   }
-  else if (!strcmp(argv[1], "2"))
+  else if (!std::strcmp(argv[1], "2"))
   {
     if ((rows * cols) == 0)
     {
@@ -75,9 +75,11 @@ int main(int argc, char* argv[])
       return 1;
     }
     int* arr = new int[rows * cols];
+    int maxSumDiag = 0;
     try
     {
       fillArray(arr, rows, cols, in);
+      maxSumDiag = getMaxSumDiag(arr, rows);
     }
     catch (const std::exception& e)
     {
@@ -87,13 +89,12 @@ int main(int argc, char* argv[])
     }
     printArray(output, arr, rows, cols);
     output << "\n";
-    int maxSumDiag = getMaxSumDiag(arr, rows);
     output << "Max sum in diagonals except main one: " << maxSumDiag << "\n";
     delete[] arr;
   }
   else
   {
-    std::cerr << "Unexpected task number. #3, #14 are supported\n";
+    std::cerr << "Error: no such parameter\n";
     return 1;
   }
 

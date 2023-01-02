@@ -14,6 +14,7 @@ public:
   void isoScale(Parallelogram &parallelogram, double x, double y, double k);
   Parallelogram *clone() const override;
   ~Parallelogram() override = default;
+  bool goodParallelogramInput() const;
 private:
   mutable point_t A{}, B{}, C{}, D{};
 };

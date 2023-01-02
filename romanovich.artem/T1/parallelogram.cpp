@@ -1,4 +1,5 @@
 #include <cmath>
+#include <algorithm>
 #include "parallelogram.h"
 Parallelogram::Parallelogram(point_t *pointsArray) :
   A(pointsArray[0]),
@@ -19,11 +20,19 @@ double Parallelogram::getArea() const
   double b = sqrt(bx * bx + by * by);
   double c = sqrt(cx * cx + cy * cy);
   double p = (a + b + c) / 2;
-  return sqrt(p * (p - a) * (p - b) * (p - c));
+  return 2 * sqrt(p * (p - a) * (p - b) * (p - c));
 }
 rectangle_t Parallelogram::getFrameRect() const
 {
   rectangle_t frameRect{};
+  double sup = std::max({A.y, B.y, C.y});
+  double inf = std::min({A.y, B.y, C.y});
+  frameRect.height = sup - inf;
+  double left = std::min({A.x, B.x, C.x});
+  double right = std::max({A.x, B.x, C.x});
+  frameRect.width = right - left;
+  frameRect.pos.x = (right + left) / 2;
+  frameRect.pos.y = (sup + inf) / 2;
   return frameRect;
 }
 void Parallelogram::move(double dx, double dy)
@@ -74,5 +83,9 @@ void Parallelogram::isoScale(Parallelogram &parallelogram, double secondPosX, do
   dy *= -k;
   parallelogram.scale(k);
   parallelogram.move(dx, dy);
+}
+bool Parallelogram::goodParallelogramInput() const
+{
+  return (((A.y == B.y) || (B.y == C.y)) && (A.y - B.y != C.y - B.y));
 }
 Parallelogram::Parallelogram() = default;

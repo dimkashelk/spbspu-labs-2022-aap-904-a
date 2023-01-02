@@ -69,13 +69,18 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        if (!pointsArray)
+        pointsArray = buildParallelogram();
+        Parallelogram *parallelogram = new Parallelogram(pointsArray);
+        if (!parallelogram->goodParallelogramInput())
         {
           badFigure = true;
         }
-        pointsArray = buildParallelogram();
-        Shape *shape = new Parallelogram(pointsArray);
-        compositeShape.push_back(shape);
+        else
+        {
+          Shape *shape = new Parallelogram(pointsArray);
+          compositeShape.push_back(shape);
+        }
+        delete parallelogram;
         delete[] pointsArray;
       }
       catch (...)
@@ -132,7 +137,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "Error occurred while building parallelogram.\n";
+        std::cerr << "Error occurred while building concave.\n";
         delete[] pointsArray;
         return 2;
       }

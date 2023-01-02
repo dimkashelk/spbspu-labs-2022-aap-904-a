@@ -13,6 +13,7 @@ int main()
   try
   {
     cstring1 = new char[capacity1];
+    delete[] cstring1;
   }
   catch (const std::exception &e)
   {

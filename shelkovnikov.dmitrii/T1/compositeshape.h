@@ -13,7 +13,6 @@ namespace dimkashelk
   {
   public:
     CompositeShape();
-    CompositeShape(Shape **shapes, size_t size);
     CompositeShape(const CompositeShape &compositeShape);
     CompositeShape(CompositeShape &&compositeShape);
     CompositeShape& operator=(const CompositeShape &other);

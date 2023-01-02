@@ -17,6 +17,7 @@ class rectangle : virtual public shape
     shape * clone() const;
   private:
     rectangle_t rectangle1;
+    mutable point_t x1{}, y1{}, x2{}, y2{};
 };
 
 #endif

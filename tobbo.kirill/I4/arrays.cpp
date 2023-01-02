@@ -57,7 +57,7 @@ size_t getPositiveRowsCount(const int* arr, size_t rows, size_t cols)
   return count;
 }
 
-int calcSummDiagonal(const int* arr, size_t rows, size_t cols, size_t diagNum)
+int calcSumDiagonal(const int* arr, size_t rows, size_t cols, size_t diagNum)
 {
   int summ = 0;
   for (size_t row = 0; row < rows; ++row)
@@ -82,7 +82,7 @@ int getMaxSumDiag(const int* arr, size_t size)
   {
     if (diag + 1 != rows)
     {
-      int sum = calcSummDiagonal(arr, rows, cols, diag);
+      int sum = calcSumDiagonal(arr, rows, cols, diag);
       if (maxSum < sum)
       {
         maxSum = sum;

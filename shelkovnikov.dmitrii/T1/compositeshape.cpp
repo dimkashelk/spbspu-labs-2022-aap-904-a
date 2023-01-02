@@ -47,28 +47,57 @@ dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
 {}
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const CompositeShape &other)
 {
+  Shape **shapes = new Shape*[other.capacity_];
+  for (size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      shapes[i] = other.shapes_[i]->clone();
+    }
+    catch(...)
+    {
+      for (size_t j = 0; j < i; j++)
+      {
+        delete shapes[j];
+      }
+      delete[] shapes;
+      throw;
+    }
+  }
   for (size_t i = 0; i < size_; i++)
   {
     delete shapes_[i];
   }
   delete[] shapes_;
+  shapes_ = shapes;
   size_ = other.size_;
   capacity_ = other.capacity_;
-  shapes_ = new Shape*[capacity_];
-  for (size_t i = 0; i < size_; i++)
-  {
-    shapes_[i] = other.shapes_[i]->clone();
-  }
   return *this;
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape &&tmp)
 {
-  operator=(tmp);
-  for (size_t i = 0; i < size_; i++)
+  Shape **shapes = new Shape*[tmp.capacity_];
+  for (size_t i = 0; i < tmp.size_; i++)
   {
-    delete tmp.shapes_[i];
+    try
+    {
+      shapes[i] = tmp[i];
+    }
+    catch (...)
+    {
+      delete[] shapes;
+      throw;
+    }
   }
   delete[] tmp.shapes_;
+  for (size_t i = 0; i < size_; i++)
+  {
+    delete shapes_[i];
+  }
+  delete[] shapes_;
+  shapes_ = shapes;
+  size_ = tmp.size_;
+  capacity_ = tmp.capacity_;
   return *this;
 }
 dimkashelk::Shape *dimkashelk::CompositeShape::operator[](size_t id)

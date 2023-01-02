@@ -6,7 +6,6 @@
 char* formingCstring(size_t & size, std::istream& input)
 {
   size_t capacity = 10;
-  size_t size = 0;
   char* cstring = new char[capacity];
   cstring[0] = '\0';
   input >> std::noskipws;
@@ -31,9 +30,9 @@ char* formingCstring(size_t & size, std::istream& input)
     }
     input >> cstring[size];
   } while (input && cstring[size++] != '\n');
-  if (cstring1[0] == '\0')
+  if (cstring[0] == '\0')
   {
-    delete[] cstring1;
+    delete[] cstring;
     throw std::invalid_argument("Empty string");
   }
   cstring[size - 1] = '\0';

@@ -31,11 +31,11 @@ int main()
   catch (const std::exception& e)
   {
     delete[] destination1;
-    delete[] cstring1;
+    delete[] cstring;
     std::cout << e.what();
     return 1;
   }
-  destination1 = deleteNumbers(destination1, cstring1);
+  destination1 = deleteNumbers(destination1, cstring);
   std::cout << destination1 << "\n";
 
   char* destination2 = nullptr;
@@ -51,7 +51,7 @@ int main()
     std::cout << e.what();
     return 1;
   }
-  destination2 = replacingLetters(cstring1, destination2);
+  destination2 = replacingLetters(cstring, destination2);
   std::cout << destination2 << "\n";
   delete[] cstring;
   delete[] destination1;

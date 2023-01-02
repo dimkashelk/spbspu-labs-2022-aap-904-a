@@ -15,14 +15,17 @@ double Concave::getArea() const
   double bx = A.x - B.x;
   double cx = C.x - D.x;
   double cy = C.y - D.y;
-  double dx = D.x - A.x;
-  double dy = D.y - A.y;
+  double dx = D.x - B.x;
+  double dy = D.y - B.y;
+  double fx = A.x - C.x;
+  double fy = A.y - C.y;
   double a = sqrt(ax * ax + ay * ay);
   double b = sqrt(bx * bx + by * by);
   double c = sqrt(cx * cx + cy * cy);
   double d = sqrt(dx * dx + dy * dy);
-  double p1 = (a + b + c) / 2;
-  double p2 = (d + b + c) / 2;
+  double f = sqrt(fx * fx + fy * fy);
+  double p1 = (a + b + f) / 2;
+  double p2 = (a + d + c) / 2;
   double s1 = sqrt(p1 * (p1 - a) * (p1 - b) * (p1 - c));
   double s2 = sqrt(p2 * (p2 - d) * (p2 - b) * (p2 - c));
   return s1 - s2;
@@ -30,6 +33,10 @@ double Concave::getArea() const
 rectangle_t Concave::getFrameRect() const
 {
   rectangle_t frameRect{};
+  frameRect.height = A.y - C.y;
+  frameRect.width = A.x - C.x;
+  frameRect.pos.x = (C.x + C.x) / 2;
+  frameRect.pos.y = (A.y + C.y) / 2;
   return frameRect;
 }
 void Concave::move(double dx, double dy)

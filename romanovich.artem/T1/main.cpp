@@ -40,7 +40,7 @@ point_t *buildRectangle()
   D.y = A.y;
   return new point_t[4]{A, B, C, D};
 }
-point_t * buildConcave()
+point_t *buildConcave()
 {
   //Проверить свойства треугольника
   point_t A{}, B{}, C{}, D{};
@@ -61,6 +61,7 @@ int main()
     std::cin >> figureName;
     if (figureName == "PARALLELOGRAM")
     {
+      figureCommand = true;
       point_t *pointsArray = nullptr;
       try
       {
@@ -108,13 +109,14 @@ int main()
     }
     if (figureName == "CONCAVE")
     {
+      figureCommand = true;
       point_t *pointsArray = nullptr;
       try
       {
-        pointsArray = buildConcave();
-        Shape *shape = new Concave(pointsArray);
-        compositeShape.push_back(shape);
-        delete[] pointsArray;
+      pointsArray = buildConcave();
+      Shape *shape = new Concave(pointsArray);
+      compositeShape.push_back(shape);
+      delete[] pointsArray;
       }
       catch (...)
       {

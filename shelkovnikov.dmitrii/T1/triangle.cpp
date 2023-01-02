@@ -3,39 +3,43 @@
 #include <stdexcept>
 dimkashelk::Triangle::Triangle()
 {}
-dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3):
-  points(new point_t[3])
+dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
 {
   double side1 = std::sqrt(pow((p1.x - p2.x), 2) + pow(p1.y - p2.y, 2));
   double side2 = std::sqrt(pow((p1.x - p3.x), 2) + pow(p1.y - p3.y, 2));
   double side3 = std::sqrt(pow((p3.x - p2.x), 2) + pow(p3.y - p2.y, 2));
   if (side1 >= side2 + side3 || side2 >= side1 + side3 || side3 >= side1 + side2)
   {
-    delete[] points;
     throw std::logic_error("It's not a triangle_");
   }
   points[0] = p1;
   points[1] = p2;
   points[2] = p3;
 }
-dimkashelk::Triangle::Triangle(const Triangle &triangle):
-  points(new point_t[3]{triangle.points[0], triangle.points[1], triangle.points[2]})
-{}
-dimkashelk::Triangle::Triangle(Triangle &&triangle):
-  points(new point_t[3]{triangle.points[0], triangle.points[1], triangle.points[2]})
-{}
-dimkashelk::Triangle::~Triangle() noexcept
+dimkashelk::Triangle::Triangle(const Triangle &triangle)
 {
-  delete[] points;
+  points[0] = triangle.points[0];
+  points[1] = triangle.points[1];
+  points[2] = triangle.points[2];
+}
+dimkashelk::Triangle::Triangle(Triangle &&triangle)
+{
+  points[0] = triangle.points[0];
+  points[1] = triangle.points[1];
+  points[2] = triangle.points[2];
 }
 dimkashelk::Triangle &dimkashelk::Triangle::operator=(const Triangle &other)
 {
-  points = new point_t[3]{other.points[0], other.points[1], other.points[2]};
+  points[0] = other.points[0];
+  points[1] = other.points[1];
+  points[2] = other.points[2];
   return *this;
 }
 dimkashelk::Triangle &dimkashelk::Triangle::operator=(Triangle &&tmp)
 {
-  points = new point_t[3]{tmp.points[0], tmp.points[1], tmp.points[2]};
+  points[0] = tmp.points[0];
+  points[1] = tmp.points[1];
+  points[2] = tmp.points[2];
   return *this;
 }
 double dimkashelk::Triangle::getArea() const

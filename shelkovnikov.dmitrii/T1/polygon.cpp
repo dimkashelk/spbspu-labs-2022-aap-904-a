@@ -10,19 +10,15 @@ dimkashelk::Polygon::Polygon(point_t *points, size_t size):
 {}
 dimkashelk::Polygon::Polygon(const Polygon &polygon)
 {
-  triangles_ = new Triangle*[polygon.count_];
+  triangles_ = new Triangle[polygon.count_];
   for (size_t i = 0; i < polygon.count_; i++)
   {
-    triangles_[i] = new Triangle(*polygon.triangles_[i]);
+    triangles_[i] = Triangle(polygon.triangles_[i]);
   }
   count_ = polygon.count_;
 }
 dimkashelk::Polygon::~Polygon() noexcept
 {
-  for (size_t i = 0; i < count_; i++)
-  {
-    delete triangles_[i];
-  }
   delete[] triangles_;
 }
 double dimkashelk::Polygon::getArea() const
@@ -30,13 +26,13 @@ double dimkashelk::Polygon::getArea() const
   double global_area = 0.0;
   for (size_t i = 0; i < count_; i++)
   {
-    global_area += triangles_[i]->getArea();
+    global_area += triangles_[i].getArea();
   }
   return global_area;
 }
 dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
 {
-  rectangle_t rectangle = triangles_[0]->getFrameRect();
+  rectangle_t rectangle = triangles_[0].getFrameRect();
   point_t left_down = getLeftDownPoint(rectangle);
   point_t right_up = getRightUpPoint(rectangle);
   double x_min = left_down.x;
@@ -45,7 +41,7 @@ dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
   double y_max = right_up.y;
   for (size_t i = 0; i < count_; i++)
   {
-    rectangle = triangles_[i]->getFrameRect();
+    rectangle = triangles_[i].getFrameRect();
     left_down = getLeftDownPoint(rectangle);
     right_up = getRightUpPoint(rectangle);
     x_min = std::min(x_min, left_down.x);
@@ -63,33 +59,33 @@ void dimkashelk::Polygon::move(double delta_x, double delta_y)
 {
   for (size_t i = 0; i < count_; i++)
   {
-    triangles_[i]->move(delta_x, delta_y);
+    triangles_[i].move(delta_x, delta_y);
   }
 }
 void dimkashelk::Polygon::scale(double k)
 {
   for (size_t i = 0; i < count_; i++)
   {
-    isotropicScaling(triangles_[i], center, k);
+    isotropicScaling(&triangles_[i], center, k);
   }
 }
 dimkashelk::Shape* dimkashelk::Polygon::clone() const
 {
   return new Polygon(*this);
 }
-dimkashelk::Triangle** dimkashelk::Polygon::makeTriangles(point_t *points, size_t size)
+dimkashelk::Triangle* dimkashelk::Polygon::makeTriangles(point_t *points, size_t size)
 {
   TriangulatePoints triangulatePoints(points, size);
   size_t s = 0;
   size_t capacity = 10;
-  Triangle **triangles = new Triangle*[capacity];
+  Triangle *triangles = new Triangle[capacity];
   while (triangulatePoints.hasNext())
   {
-    triangles[s++] = new Triangle(triangulatePoints());
+    triangles[s++] = triangulatePoints();
     if (s == capacity)
     {
       capacity += 10;
-      Triangle **new_triangles = new Triangle*[capacity];
+      Triangle *new_triangles = new Triangle[capacity];
       for (size_t i = 0; i < s; i++)
       {
         new_triangles[i] = triangles[i];

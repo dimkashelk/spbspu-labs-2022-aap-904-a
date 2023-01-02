@@ -13,7 +13,7 @@ dimkashelk::Polygon::Polygon(const Polygon &polygon)
   triangles_ = new Triangle[polygon.count_];
   for (size_t i = 0; i < polygon.count_; i++)
   {
-    triangles_[i] = polygon.triangles_[i];
+    triangles_[i] = Triangle(polygon.triangles_[i]);
   }
   count_ = polygon.count_;
 }

@@ -40,7 +40,6 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
   // rotate point (px, py) around point (ox, oy) by angle theta
   // p'x = cos(theta) * (px-ox) - sin(theta) * (py-oy) + ox
   // p'y = sin(theta) * (px-ox) + cos(theta) * (py-oy) + oy
-  Triangle rotate_triangle = triangle_;
   rectangle_t rectangle = triangle_.getFrameRect();
   point_t left_down = dimkashelk::getLeftDownPoint(rectangle);
   point_t right_up = dimkashelk::getRightUpPoint(rectangle);
@@ -51,8 +50,8 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
   double theta = 360.0 / size_ * 2 * M_PI / 180;
   for (size_t i = 0; i < size_; i++)
   {
-    rotate_triangle = rotate_triangle.rotate(theta);
-    rectangle = triangle_.getFrameRect();
+    Triangle rotate_triangle = triangle_.rotate(i * theta);
+    rectangle = rotate_triangle.getFrameRect();
     left_down = dimkashelk::getLeftDownPoint(rectangle);
     right_up = dimkashelk::getRightUpPoint(rectangle);
     min_x = std::min(min_x, left_down.x);

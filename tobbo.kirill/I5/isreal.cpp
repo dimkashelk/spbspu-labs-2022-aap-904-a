@@ -41,10 +41,10 @@ bool isOrder(std::string str, int& index)
 }
 bool isMantissa(std::string str, int& index)
 {
-  return (str[index] == '.' && isNatural(str, ++index) || isNatural(str, index) && str[index] == '.' && isNatural(str, ++index));
+  return (str[index] == '.' && isNatural(str, ++index) || (isNatural(str, index) && str[index] == '.' && isNatural(str, ++index)));
 }
 bool isReal(const std::string str)
 {
   int i = 0;
-  return (isMantissa(str, i) && isOrder(str, i) || isSign(str[i]) && isMantissa(str, ++i) && isOrder(str, i));
+  return (isMantissa(str, i) && isOrder(str, i) || (isSign(str[i]) && isMantissa(str, ++i) && isOrder(str, i)));
 }

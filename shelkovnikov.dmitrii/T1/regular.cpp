@@ -88,7 +88,9 @@ void dimkashelk::Regular::move(point_t point)
 }
 void dimkashelk::Regular::scale(double k)
 {
-  dimkashelk::isotropicScaling(&triangle_, center, k);
+  point_t *points = triangle_.getPoints();
+  dimkashelk::isotropicScaling(&triangle_, points[0], k);
+  delete[] points;
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {

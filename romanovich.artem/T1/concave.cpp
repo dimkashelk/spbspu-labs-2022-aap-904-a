@@ -15,7 +15,7 @@ bool Concave::goodConcaveInput() const
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];
-  delete sides;
+  delete[] sides;
   double max_ = std::max({a, b, c});
   double min_ = std::max({a, b, c});
   double midl_ = a + b + c - max_ - min_;
@@ -66,7 +66,7 @@ double Concave::getArea() const
   double a1 = sides[3];
   double b1 = sides[4];
   double c1 = sides[5];
-  delete sides;
+  delete[] sides;
   double p1 = (a + b + c) / 2;
   double p2 = (a1 + b1 + c1) / 2;
   double s1 = sqrt(p1 * (p1 - a) * (p1 - b) * (p1 - c));

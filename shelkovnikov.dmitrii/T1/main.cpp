@@ -6,21 +6,35 @@
 #include "isotropic_scaling.h"
 #include "base_functions.h"
 #include "input_shapes.h"
-double getArea(const dimkashelk::CompositeShape &compositeShape)
+void expand(dimkashelk::Shape **shapes, size_t size, size_t new_capacity)
+{
+  if (new_capacity < size)
+  {
+    throw std::runtime_error("New capacity less size");
+  }
+  dimkashelk::Shape **new_shapes = new dimkashelk::Shape*[new_capacity];
+  for (size_t i = 0; i < size; i++)
+  {
+    new_shapes[i] = shapes[i];
+  }
+  delete[] shapes;
+  shapes = new_shapes;
+}
+double getArea(dimkashelk::Shape **shapes, size_t size)
 {
   double sum_area = 0.0;
-  for (size_t i = 0; i < compositeShape.size(); i++)
+  for (size_t i = 0; i < size; i++)
   {
-    sum_area += compositeShape[i]->getArea();
+    sum_area += shapes[i]->getArea();
   }
   return sum_area;
 }
-std::ostream& outputShapes(std::ostream &out, const dimkashelk::CompositeShape &compositeShape)
+std::ostream& outputShapes(std::ostream &out, dimkashelk::Shape **shapes, size_t size)
 {
-  out << std::setprecision(1) << std::fixed << getArea(compositeShape);
-  for (size_t i = 0; i < compositeShape.size(); i++)
+  out << std::setprecision(1) << std::fixed << getArea(shapes, size);
+  for (size_t i = 0; i < size; i++)
   {
-    dimkashelk::rectangle_t rect = compositeShape[i]->getFrameRect();
+    dimkashelk::rectangle_t rect = shapes[i]->getFrameRect();
     dimkashelk::point_t left_down = getLeftDownPoint(rect);
     dimkashelk::point_t right_up = getRightUpPoint(rect);
     out << " " << left_down.x << " " << left_down.y << " " << right_up.x << " " << right_up.y;
@@ -32,7 +46,9 @@ int main()
   std::string line = "";
   bool contains_errors_with_shapes = false;
   bool call_scale = false;
-  dimkashelk::CompositeShape compositeShape;
+  size_t size = 0;
+  size_t capacity = 10;
+  dimkashelk::Shape **shapes = new dimkashelk::Shape*[capacity];
   while (std::cin)
   {
     std::string name = "";
@@ -45,7 +61,13 @@ int main()
     {
       try
       {
-        compositeShape.push_back(dimkashelk::inputRectangle(std::cin));
+        shapes[size] = dimkashelk::inputRectangle(std::cin);
+        size++;
+        if (size == capacity)
+        {
+          capacity += 10;
+          expand(shapes, size, capacity);
+        }
       }
       catch (const std::logic_error &e)
       {
@@ -56,7 +78,13 @@ int main()
     {
       try
       {
-        compositeShape.push_back(dimkashelk::inputRegular(std::cin));
+        shapes[size] = dimkashelk::inputRegular(std::cin);
+        size++;
+        if (size == capacity)
+        {
+          capacity += 10;
+          expand(shapes, size, capacity);
+        }
       }
       catch (const std::logic_error &e)
       {
@@ -67,7 +95,13 @@ int main()
     {
       try
       {
-        compositeShape.push_back(dimkashelk::inputPolygon(std::cin));
+        shapes[size] = dimkashelk::inputPolygon(std::cin);
+        size++;
+        if (size == capacity)
+        {
+          capacity += 10;
+          expand(shapes, size, capacity);
+        }
       }
       catch (...)
       {
@@ -84,22 +118,28 @@ int main()
       dimkashelk::point_t point{x, y};
       double k = 0.0;
       std::cin >> k;
-      if (compositeShape.empty())
+      if (k < 0)
       {
+        for (size_t i = 0; i < size; i++)
+        {
+          delete shapes[i];
+        }
+        delete[] shapes;
+        std::cerr << "Negative Coeff Scale";
+        return 1;
+      }
+      if (size == 0)
+      {
+        delete[] shapes;
         std::cerr << "Nothing to scaling";
         return 1;
       }
-      outputShapes(std::cout, compositeShape) << "\n";
-      try
+      outputShapes(std::cout, shapes, size) << "\n";
+      for (size_t i = 0; i < size; i++)
       {
-        dimkashelk::isotropicScaling(compositeShape, point, k);
+        dimkashelk::isotropicScaling(shapes[i], point, k);
       }
-      catch (const std::logic_error &e)
-      {
-        std::cerr << e.what();
-        return 1;
-      }
-      outputShapes(std::cout, compositeShape) << "\n";
+      outputShapes(std::cout, shapes, size) << "\n";
       if (contains_errors_with_shapes)
       {
         contains_errors_with_shapes = false;
@@ -116,6 +156,11 @@ int main()
       std::cin.clear();
     }
   }
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shapes[i];
+  }
+  delete[] shapes;
   if (!call_scale)
   {
     std::cerr << "Not scaled shapes";

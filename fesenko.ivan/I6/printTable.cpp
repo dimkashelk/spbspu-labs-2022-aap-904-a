@@ -1,7 +1,7 @@
 #include "printTable.h"
-#include "countExponent.h"
 #include <cmath>
 #include <iomanip>
+#include "countExponent.h"
 
 void printTableRow(std::ostream &out, double x, unsigned numberMax, double absError)
 {

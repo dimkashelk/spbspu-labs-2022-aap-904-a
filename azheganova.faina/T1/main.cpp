@@ -13,8 +13,6 @@ int main()
 {
   std::string line;
   size_t capacity = 10;
-  size_t size = 0;
-  shape **shapes = new shape*[capacity];
   CompositeShape compositeShape(capacity);
   point_t *arr = nullptr;
   while(std::cin)

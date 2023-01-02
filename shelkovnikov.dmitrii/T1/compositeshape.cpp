@@ -15,18 +15,7 @@ dimkashelk::CompositeShape::CompositeShape(const CompositeShape &compositeShape)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    try
-    {
-      shapes_[i] = compositeShape.shapes_[i]->clone();
-    }
-    catch(...)
-    {
-      for (size_t j = 0; j < i; j++)
-      {
-        delete shapes_[j];
-      }
-      delete[] shapes_;
-    }
+    shapes_[i] = compositeShape.shapes_[i]->clone();
   }
 }
 dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):

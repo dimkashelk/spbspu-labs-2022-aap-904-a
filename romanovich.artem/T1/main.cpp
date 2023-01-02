@@ -4,24 +4,28 @@
 #include "base-types.h"
 #include "rectangle.h"
 #include "parallelogram.h"
-Rectangle *extendArray(Rectangle *rectArray, size_t size, size_t capacity)
+#include "compositeshape.h"
+///Rectangle *extendArray(Rectangle *rectArray, size_t size, size_t capacity)
+CompositeShape *extendArray(CompositeShape *compositeShape, size_t size, size_t capacity)
 {
   if (capacity < size)
   {
     throw std::invalid_argument("Expansion is impossible.");
   }
-  Rectangle *newRectArray = new Rectangle[capacity];
-  for (auto i = rectArray, j = newRectArray; i != rectArray + size; ++i, ++j)
+  CompositeShape *newCompShape = new CompositeShape[capacity];
+  for (auto i = compositeShape, j = newCompShape; i != compositeShape + size; ++i, ++j)
   {
     *j = *i;
   }
-  return newRectArray;
+  return newCompShape;
 }
-void printLine(const Rectangle &rectangle)
+///void printLine(const Rectangle &rectangle)
+void printLine(const CompositeShape &compositeShape)
 {
   auto p = std::setprecision(1);
   std::cout << std::fixed;
-  rectangle_t frameRect = rectangle.getFrameRect();
+  ///rectangle_t frameRect = rectangle.getFrameRect();
+  rectangle_t frameRect = compositeShape.getFrameRect();
   double frRect1X = frameRect.pos.x - frameRect.width / 2;
   double frRect1Y = frameRect.pos.y - frameRect.height / 2;
   double frRect2X = frameRect.pos.x + frameRect.width / 2;
@@ -59,14 +63,18 @@ void buildConcave()
 int main()
 {
   std::string figureName = "";
-  size_t capacity = 10, rectArraySize = 0;
-  Rectangle *rectArray = nullptr;
+  size_t capacity = 10;
+  ///size_t rectArraySize = 0;
+  ///Rectangle *rectArray = nullptr;
+  size_t compShapeSize = 0;
+  CompositeShape *compositeShape = nullptr;
   bool badFigure = false;
   bool figureCommand = false;
   bool scaleCommand = false;
   try
   {
-    rectArray = new Rectangle[capacity];
+    ///rectArray = new Rectangle[capacity];
+    compositeShape = new CompositeShape[capacity];
   }
   catch (...)
   {
@@ -76,20 +84,26 @@ int main()
   while (std::cin)
   {
     std::cin >> figureName;
-    if (rectArraySize >= capacity)
+    ///if (rectArraySize >= capacity)
+    if (compShapeSize >= capacity)
     {
       try
       {
         size_t capacityAdd = 2;
-        Rectangle *extendedRectArray = extendArray(rectArray, rectArraySize, capacity + capacityAdd);
-        delete[] rectArray;
-        rectArray = extendedRectArray;
-        extendedRectArray = nullptr;
+        ///Rectangle *extendedRectArray = extendArray(rectArray, rectArraySize, capacity + capacityAdd);
+        ///delete[] rectArray;
+        ///rectArray = extendedRectArray;
+        ///extendedRectArray = nullptr;
+        CompositeShape *extendedCompShape = extendArray(compositeShape, compShapeSize, capacity + capacityAdd);
+        delete[] compositeShape;
+        compositeShape = extendedCompShape;
+        extendedCompShape = nullptr;
         capacity += capacityAdd;
       }
       catch (...)
       {
-        delete[] rectArray;
+        ///delete[] rectArray;
+        delete[] compositeShape;
         throw std::invalid_argument("Error while extending array.");
       }
     }
@@ -125,8 +139,10 @@ int main()
         else
         {
           Rectangle rectangle(pointsArray);
-          rectArray[rectArraySize] = rectangle;
-          rectArraySize++;
+          ///rectArray[rectArraySize] = rectangle;
+          ///rectArraySize++;
+          compositeShape[compShapeSize] = rectangle;
+          compShapeSize++;
         }
         delete[] pointsArray;
       }
@@ -153,48 +169,63 @@ int main()
       if (iScaleK <= 0)
       {
         std::cerr << "Negative koeff.\n";
-        delete[] rectArray;
+        ///delete[] rectArray;
+        delete[] compositeShape;
         return 2;
       }
     }
   }
   if (!(scaleCommand && figureCommand))
   {
-    delete[] rectArray;
+    ///delete[] rectArray;
+    delete[] compositeShape;
     return 2;
   }
   double area = 0;
   auto p = std::setprecision(1);
   std::cout << std::fixed;
-  for (size_t i = 0; i < rectArraySize; ++i)
+  ///for (size_t i = 0; i < rectArraySize; ++i)
+  for (size_t i = 0; i < compShapeSize; ++i)
   {
-    area += rectArray[i].getArea();
+    ///area += rectArray[i].getArea();
+    area += compositeShape[i].getArea();
   }
   std::cout << p << area << " ";
-  printLine(rectArray[0]);
-  for (size_t i = 1; i < rectArraySize; ++i)
+  ///printLine(rectArray[0]);
+  printLine(compositeShape[0]);
+  ///for (size_t i = 1; i < rectArraySize; ++i)
+  for (size_t i = 1; i < compShapeSize; ++i)
   {
     std::cout << " ";
-    printLine(rectArray[i]);
+    ///printLine(rectArray[i]);
+    printLine(compositeShape[i]);
   }
-  for (size_t i = 0; i < rectArraySize; ++i)
+  ///for (size_t i = 0; i < rectArraySize; ++i)
+  for (size_t i = 0; i < compShapeSize; ++i)
   {
-    rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
+    ///rectArray[i].isoScale(rectArray[i], iScaleX, iScaleY, iScaleK);
+    compositeShape[i].isoScale(compositeShape[i], iScaleX, iScaleY, iScaleK);
   }
   std::cout << "\n";
   double scaledArea = 0;
-  for (size_t i = 0; i < rectArraySize; ++i)
+  ///for (size_t i = 0; i < rectArraySize; ++i)
+  for (size_t i = 0; i < compShapeSize; ++i)
   {
-    scaledArea += rectArray[i].getArea();
+    ///scaledArea += rectArray[i].getArea();
+    scaledArea += compositeShape[i].getArea();
   }
   std::cout << p << scaledArea << " ";
-  printLine(rectArray[0]);
-  for (size_t i = 1; i < rectArraySize; ++i)
+  ///printLine(rectArray[0]);
+  printLine(compositeShape[0]);
+  ///for (size_t i = 1; i < rectArraySize; ++i)
+  for (size_t i = 1; i < compShapeSize; ++i)
   {
     std::cout << " ";
-    printLine(rectArray[i]);
+    ///printLine(rectArray[i]);
+    printLine(compositeShape[i]);
   }
   std::cout << "\n";
-  delete[] rectArray;
+  ///delete[] rectArray;
+  delete[] compositeShape;
   return 0;
 }

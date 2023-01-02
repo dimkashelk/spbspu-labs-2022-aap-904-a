@@ -8,13 +8,14 @@ class CompositeShape
 public:
   CompositeShape(const CompositeShape &rhs);
   CompositeShape(CompositeShape &);
-  virtual double getArea() const = 0;
-  virtual rectangle_t getFrameRect() const = 0;
-  virtual void move(double dx, double dy) = 0;
-  virtual void move(point_t position) = 0;
-  virtual void scale(double k) = 0;
-  virtual CompositeShape *clone() const = 0;
-  virtual ~CompositeShape() = default;
+  CompositeShape();
+  double getArea() const;
+  rectangle_t getFrameRect() const;
+  void move(double dx, double dy);
+  void move(point_t position);
+  void scale(double k);
+  CompositeShape *clone() const;
+  ~CompositeShape() = default;
 private:
   Shape **shape_;
   size_t size_;

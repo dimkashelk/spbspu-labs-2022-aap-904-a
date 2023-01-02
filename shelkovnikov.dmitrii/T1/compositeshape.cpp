@@ -150,8 +150,15 @@ void dimkashelk::CompositeShape::push_back(Shape *shp)
     {
       throw std::overflow_error("Stack overflow");
     }
-    Shape **new_shapes = new Shape*[capacity_ + 10];
-    capacity_ += 10;
+    if (max_size_t - 10 < capacity_)
+    {
+      capacity_ = max_size_t;
+    }
+    else
+    {
+      capacity_ += 10;
+    }
+    Shape **new_shapes = new Shape*[capacity_];
     for (size_t i = 0; i < size_; i++)
     {
       new_shapes[i] = shapes_[i];

@@ -10,14 +10,14 @@ void CompositeShape::push_back(Shape *shp)
   }
   Shape **newShape = new Shape *[capacity_ + capAdd];
   capacity_ += capAdd;
-  size_++;
-  for (size_t i = 0; i < size_; ++i)
+  for (size_t i = 0; i <= size_; ++i)
   {
     newShape[i] = shape_[i];
   }
   delete[] shape_;
   shape_ = newShape;
   shape_[size_] = shp;
+  size_++;
 }
 void CompositeShape::isoScale(Shape &shape, double secondPosX, double secondPosY, double k)
 {

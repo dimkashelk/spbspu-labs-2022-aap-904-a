@@ -11,9 +11,11 @@ Concave::Concave(point_t *pointsArray) :
 }
 bool Concave::goodConcaveInput() const
 {
-  double a = getSides()[0];
-  double b = getSides()[1];
-  double c = getSides()[2];
+  double *sides = getSides();
+  double a = sides[0];
+  double b = sides[1];
+  double c = sides[2];
+  delete sides;
   double max_ = std::max({a, b, c});
   double min_ = std::max({a, b, c});
   double midl_ = a + b + c - max_ - min_;
@@ -57,13 +59,14 @@ double *Concave::getSides() const
 double Concave::getArea() const
 {
   //std::cout << goodConcaveInput() << "\n";
-  getSides();
-  double a = getSides()[0];
-  double b = getSides()[1];
-  double c = getSides()[2];
-  double a1 = getSides()[3];
-  double b1 = getSides()[4];
-  double c1 = getSides()[5];
+  double *sides = getSides();
+  double a = sides[0];
+  double b = sides[1];
+  double c = sides[2];
+  double a1 = sides[3];
+  double b1 = sides[4];
+  double c1 = sides[5];
+  delete sides;
   double p1 = (a + b + c) / 2;
   double p2 = (a1 + b1 + c1) / 2;
   double s1 = sqrt(p1 * (p1 - a) * (p1 - b) * (p1 - c));

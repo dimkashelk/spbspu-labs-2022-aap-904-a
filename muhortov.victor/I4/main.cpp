@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstring>
 #include "CountMoreThanThree.hpp"
+#include "SmoothingMatrix.hpp"
 #include "SuminSmoothMatrix.hpp"
 
 int main(int argc, char *argv[])
@@ -83,10 +84,24 @@ int main(int argc, char *argv[])
       }
     }
 
+    double *smooth_arr = nullptr;
+
+    try
+    {
+      smooth_arr = new double[cols * rows];
+    }
+    catch (const std::bad_alloc &e)
+    {
+      std::cerr << "Error: " << e.what();
+      return 1;
+    }
+
+    smoothingMatrix(arr, cols, rows, smooth_arr);
+
     std::ofstream out(argv[3]);
     try
     {
-      out << summingInSmoothMatrix(arr, cols, rows);
+      out << summingInSmoothMatrix(smooth_arr, cols, rows);
     }
     catch (const std::invalid_argument &e)
     {

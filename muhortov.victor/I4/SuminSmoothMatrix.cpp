@@ -1,12 +1,9 @@
 #include "SuminSmoothMatrix.hpp"
 #include <cmath>
 
-double summingInSmoothMatrix(const int *arr, size_t cols, size_t rows)
+double summingInSmoothMatrix(const double *smooth_arr, size_t cols, size_t rows)
 {
   double sum = 0;
-  double *smooth_arr = new double[cols * rows];
-
-  smoothingMatrix(arr, cols, rows, smooth_arr);
 
   for (size_t i = 0; i < cols; i++)
   {

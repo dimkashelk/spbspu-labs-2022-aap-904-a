@@ -1,6 +1,6 @@
 #include "SmoothingMatrix.hpp"
 
-int smoothingMatrix(const int *arr, size_t cols, size_t rows, double *smooth_arr)
+double smoothingMatrix(const int *arr, size_t cols, size_t rows, double *smooth_arr)
 {
   double avg = 0;
   size_t count_near_elements = 0;

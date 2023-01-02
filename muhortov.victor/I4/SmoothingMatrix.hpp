@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-int smoothingMatrix(const int *arr, size_t cols, size_t rows, double *smooth_arr);
+double smoothingMatrix(const int *arr, size_t cols, size_t rows, double *smooth_arr);
 
 #endif

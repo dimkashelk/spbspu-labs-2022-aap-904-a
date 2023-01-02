@@ -93,6 +93,7 @@ int main(int argc, char *argv[])
     catch (const std::bad_alloc &e)
     {
       std::cerr << "Error: " << e.what();
+      delete[] arr;
       return 1;
     }
 

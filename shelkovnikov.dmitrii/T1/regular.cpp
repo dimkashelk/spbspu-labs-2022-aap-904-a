@@ -8,10 +8,13 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   size_(0),
   center(point_1)
 {
-  if (!dimkashelk::isRectangularTriangle(new point_t[3]{point_1, point_2, point_3}))
+  point_t *points = new point_t[3]{point_1, point_2, point_3};
+  if (!dimkashelk::isRectangularTriangle(points))
   {
+    delete[] points;
     throw std::logic_error("Triangle isn't rectangular");
   }
+  delete[] points;
   double side_1 = std::sqrt(std::pow(point_2.x - point_1.x, 2) + std::pow(point_2.y - point_1.y, 2));
   double side_2 = std::sqrt(std::pow(point_3.x - point_1.x, 2) + std::pow(point_3.y - point_1.y, 2));
   double hypotenuse = std::max(side_1, side_2);

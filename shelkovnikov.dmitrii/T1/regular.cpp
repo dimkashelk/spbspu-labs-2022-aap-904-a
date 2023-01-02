@@ -84,13 +84,13 @@ void dimkashelk::Regular::move(point_t point)
   double delta_x = end_point.x - begin_point.x;
   double delta_y = end_point.y - begin_point.y;
   triangle_.move(delta_x, delta_y);
+  center.x += delta_x;
+  center.y += delta_y;
   delete triangle;
 }
 void dimkashelk::Regular::scale(double k)
 {
-  point_t *points = triangle_.getPoints();
-  dimkashelk::isotropicScaling(&triangle_, points[0], k);
-  delete[] points;
+  dimkashelk::isotropicScaling(&triangle_, center, k);
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {

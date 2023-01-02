@@ -13,8 +13,7 @@ class CompositeShape
     void move(double dx, double dy);
     void move(point_t position);
     void scale(const point_t & position, double k);
-    void back(const shape * shp);
-    void back(shape * shp);
+    void increaseArr(const shape * shapes);
   private:
     shape ** shape_;
     size_t size_;

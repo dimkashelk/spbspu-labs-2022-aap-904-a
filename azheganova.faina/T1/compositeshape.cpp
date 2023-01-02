@@ -72,3 +72,29 @@ void CompositeShape::scale(const point_t & position, double k)
     isoScale(shape_[i], position, k);
   }
 }
+
+void CompositeShape::increaseArr(const shape * shapes)
+{
+  shape * shape2 = shapes->clone();
+  if (capacity_ == size_)
+  {
+    shape ** new_shape = nullptr;
+    try
+    {
+      new_shape = new shape * [capacity_ + 10];
+    }
+    catch (...)
+    {
+      delete shape2;
+      throw;
+    }
+    capacity_ += 10;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      new_shape[i] = shape_[i];
+    }
+    delete[] shape_;
+    shape_ = new_shape;
+  }
+  shape_[size_++] = shape2;
+}

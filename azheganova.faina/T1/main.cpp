@@ -23,8 +23,7 @@ int main()
     if (name == "RECTANGLE")
     {
       shapes[size] = inputRectangle(std::cin);
-      size++;
-      increaseArr(shapes);
+      CompositeShape.increaseArr(shape);
     }
   }
 }

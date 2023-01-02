@@ -11,7 +11,7 @@ point_t* inputRectangle()
   std::cin >> y1;
   std::cin >> x2;
   std::cin >> y2;
-  if (!in)
+  if (!std::cin)
   {
     std::cout << "error";
   }

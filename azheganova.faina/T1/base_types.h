@@ -1,5 +1,5 @@
-#ifndef BASE-TYPES_H
-#define BASE-TYPES_H
+#ifndef BASE_TYPES_H
+#define BASE_TYPES_H
 
 struct point_t
 {

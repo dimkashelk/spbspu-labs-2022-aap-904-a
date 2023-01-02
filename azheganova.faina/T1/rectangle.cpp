@@ -1,5 +1,5 @@
 #include "rectangle.h"
-#include "base-types.h"
+#include "base_types.h"
 #include <cmath>
 
 rectangle::rectangle(point_t point1, point_t point2):

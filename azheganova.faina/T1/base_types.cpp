@@ -1,4 +1,4 @@
-#include "base-types.h"
+#include "base_types.h"
 #include <iostream>
 
 rectangle_t::rectangle_t(point_t pos1, point_t pos2):

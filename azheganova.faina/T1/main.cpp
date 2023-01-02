@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <iomanip>
 #include <stdexcept>
-#include "base-types.h"
+#include "base_types.h"
 #include "rectangle.h"
 #include "inputrectangle.h"
 #include "compositeshape.h"

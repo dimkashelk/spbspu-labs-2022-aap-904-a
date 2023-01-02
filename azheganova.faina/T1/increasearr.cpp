@@ -1,6 +1,6 @@
 #include "increasearr.h"
 #include <cstddef>
-#include "base-types.h"
+#include "base_types.h"
 #include "compositeshape.h"
 
 void increaseArr(shape * shapes, size_t size, size_t new_capacity)

@@ -23,13 +23,14 @@ char* formingCstring(size_t & size, std::istream& input)
       }
       catch (...)
       {
+        delete cstring[]
         throw;
       }
     }
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
+  cstring[size] = '\0';
   size = 10;
   return cstring;
 }

@@ -64,6 +64,10 @@ void dimkashelk::Polygon::move(double delta_x, double delta_y)
 }
 void dimkashelk::Polygon::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
   point_t center = getCenter();
   for (size_t i = 0; i < count_; i++)
   {

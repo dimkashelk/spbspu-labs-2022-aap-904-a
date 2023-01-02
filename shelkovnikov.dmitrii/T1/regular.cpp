@@ -90,6 +90,10 @@ void dimkashelk::Regular::move(point_t point)
 }
 void dimkashelk::Regular::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
   dimkashelk::isotropicScaling(&triangle_, center_, k);
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const

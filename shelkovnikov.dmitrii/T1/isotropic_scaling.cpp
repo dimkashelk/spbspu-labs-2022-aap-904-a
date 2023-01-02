@@ -1,7 +1,12 @@
 #include "isotropic_scaling.h"
+#include <stdexcept>
 #include "base_functions.h"
 void dimkashelk::isotropicScaling(Shape *shape, point_t point, double k)
 {
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
   point_t point_1 = getLeftDownPoint(shape->getFrameRect());
   shape->move(point);
   point_t point_2 = getLeftDownPoint(shape->getFrameRect());

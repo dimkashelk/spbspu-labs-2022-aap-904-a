@@ -1,6 +1,7 @@
 #include "decrease.h"
 #include <limits>
 #include <stdexcept>
+#include <iostream>
 unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
 {
   unsigned int curleght = 1;

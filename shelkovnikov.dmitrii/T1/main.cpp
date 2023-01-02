@@ -60,6 +60,7 @@ int main()
       {
         dimkashelk::Shape *shape = dimkashelk::inputRegular(std::cin);
         compositeShape.push_back(shape);
+        delete shape;
       }
       catch (const std::logic_error &e)
       {
@@ -95,7 +96,15 @@ int main()
         return 1;
       }
       outputShapes(std::cout, compositeShape) << "\n";
-      dimkashelk::isotropicScaling(compositeShape, point, k);
+      try
+      {
+        dimkashelk::isotropicScaling(compositeShape, point, k);
+      }
+      catch (const std::logic_error &e)
+      {
+        std::cerr << e.what();
+        return 1;
+      }
       outputShapes(std::cout, compositeShape) << "\n";
       if (contains_errors_with_shapes)
       {

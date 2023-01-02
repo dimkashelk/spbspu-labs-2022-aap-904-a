@@ -9,7 +9,17 @@ int main()
   size_t size = 1;
   size_t capacity1 = 10;
   size_t capacity2 = 10;
-  char* cstring1 = new char[capacity1];
+  char* cstring1 = nullptr;
+  try
+  {
+    cstring1 = new char[capacity1];
+  }
+  catch (const std::exception &e)
+  {
+    std::cout << e.what();
+    delete[] cstring1;
+    return 1;
+  }
   cstring1[0] = '\0';
   try
   {

@@ -1,42 +1,51 @@
 #include "rectangle.hpp"
+#include <stdexcept>
 
-Rectangle::Rectangle(double x1, double y1, double x2, double y2):
-  rect_(x1, y1, x2, y2)
+tarasenko::Rectangle::Rectangle(point_t point_ld, point_t point_ru):
+  rect_(point_ld, point_ru)
 {
-  if ((x1 > x2) || (y1 > y2))
+  if ((point_ld.x_ >= point_ru.x_) || (point_ld.y_ >= point_ru.y_))
   {
     throw std::invalid_argument("incorrect rectangle coordinates");
   }
 }
 
-double Rectangle::getArea() const
+tarasenko::Rectangle::Rectangle(rectangle_t rect):
+  rect_(rect)
+{}
+
+double tarasenko::Rectangle::getArea() const
 {
   return rect_.width_ * rect_.height_;
 }
 
-rectangle_t getFrameRect() const
+tarasenko::rectangle_t tarasenko::Rectangle::getFrameRect() const
 {
   return rect_;
 }
 
-void Rectangle::move(point_t pos);
+void tarasenko::Rectangle::move(point_t pos)
 {
   rect_.pos_ = pos;
 }
 
-void Rectangle::move(double dx, double dy);
+void tarasenko::Rectangle::move(double dx, double dy)
 {
   rect_.pos_.x_ += dx;
   rect_.pos_.y_ += dy;
 }
 
-void Rectangle::scale(double k);
+void tarasenko::Rectangle::scale(double k)
 {
+  if (k < 0)
+  {
+    throw std::invalid_argument("the coefficient is less than zero");
+  }
   rect_.width_ *= k;
-  rect_.height *= k;
+  rect_.height_ *= k;
 }
 
-Shape * Rectangle::clone() const
+tarasenko::Shape * tarasenko::Rectangle::clone() const
 {
   return new Rectangle(rect_);
 }

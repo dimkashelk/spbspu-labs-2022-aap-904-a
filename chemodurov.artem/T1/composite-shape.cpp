@@ -36,10 +36,6 @@ chemodurov::CompositeShape & chemodurov::CompositeShape::operator=(const Composi
 {
   Shape ** new_data = new Shape*[rhs.capacity_];
   size_t new_size = 0;
-  for (size_t i = 0; i < rhs.capacity_; ++i)
-  {
-    new_data[i] = nullptr;
-  }
   try
   {
     for (size_t i = 0; i < rhs.size_; ++i)
@@ -50,7 +46,7 @@ chemodurov::CompositeShape & chemodurov::CompositeShape::operator=(const Composi
   }
   catch (...)
   {
-    for (size_t i = 0; i < rhs.capacity_; ++i)
+    for (size_t i = 0; i < new_size; ++i)
     {
       delete new_data[i];
     }

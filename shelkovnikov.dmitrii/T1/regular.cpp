@@ -88,7 +88,11 @@ void dimkashelk::Regular::move(point_t point)
 }
 void dimkashelk::Regular::scale(double k)
 {
-  dimkashelk::isotropicScaling(&triangle_, center_, k);
+  rectangle_t begin_rect = triangle_.getFrameRect();
+  triangle_.move(dimkashelk::getLeftDownPoint(begin_rect));
+  rectangle_t end_rect = triangle_.getFrameRect();
+  triangle_.scale(k);
+  triangle_.move(k * (end_rect.point.x - begin_rect.point.x), k * (end_rect.point.y - begin_rect.point.y));
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {

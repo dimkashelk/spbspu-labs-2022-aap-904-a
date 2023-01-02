@@ -3,7 +3,7 @@
 #include <cstddef>
 #include "shape.h"
 
-class CompositeShape 
+class CompositeShape
 {
   public:
     CompositeShape(const CompositeShape & rhs);
@@ -15,7 +15,6 @@ class CompositeShape
     void scale(const point_t & position, double k);
     void back(const shape * shp);
     void back(shape * shp);
-
   private:
     shape ** shape_;
     size_t size_;

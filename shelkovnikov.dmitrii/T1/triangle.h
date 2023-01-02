@@ -20,7 +20,7 @@ namespace dimkashelk
     Shape* clone() const override;
     Triangle rotate(double theta) const;
   private:
-    point_t points[3];
+    point_t points_[3];
     point_t getCenter() const;
   };
 }

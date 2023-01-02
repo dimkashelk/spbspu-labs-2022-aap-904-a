@@ -13,6 +13,7 @@ struct rectangle_t
   double width;
   double height;
   rectangle_t(point_t pos1, point_t pos2);
+  rectangle_t(point_t pos, double width, double height);
 };
 
 #endif

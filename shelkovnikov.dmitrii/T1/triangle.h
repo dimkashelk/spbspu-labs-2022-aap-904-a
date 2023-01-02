@@ -10,7 +10,6 @@ namespace dimkashelk
     Triangle(point_t point1, point_t point2, point_t point3);
     Triangle(const Triangle &triangle);
     Triangle(Triangle &&triangle);
-    ~Triangle();
     Triangle& operator=(const Triangle &other);
     Triangle& operator=(Triangle &&tmp);
     double getArea() const override;
@@ -21,7 +20,7 @@ namespace dimkashelk
     Shape* clone() const override;
     Triangle rotate(double degree) const;
   private:
-    point_t *points;
+    point_t points[3];
     point_t getCenter() const;
   };
 }

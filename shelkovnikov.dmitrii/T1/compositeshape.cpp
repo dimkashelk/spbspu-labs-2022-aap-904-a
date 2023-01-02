@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <limits>
 #include "base_functions.h"
+#include "isotropic_scaling.h"
 dimkashelk::CompositeShape::CompositeShape():
   size_(0),
   capacity_(10),
@@ -127,9 +128,7 @@ void dimkashelk::CompositeShape::scale(double k)
   point_t center = getCenter();
   for (size_t i = 0; i < size_; i++)
   {
-    point_t shape_center = shapes_[i]->getFrameRect().point;
-    shapes_[i]->scale(k);
-    shapes_[i]->move(k * (shape_center.x - center.x), k * (shape_center.y - center.y));
+    dimkashelk::isotropicScaling(shapes_[i], center, k);
   }
 }
 dimkashelk::point_t dimkashelk::CompositeShape::getCenter() const

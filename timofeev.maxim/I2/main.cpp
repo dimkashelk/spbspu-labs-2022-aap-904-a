@@ -85,6 +85,11 @@ int main(int argc, char *argv[])
       delete [] File_Array;
       return 2;
     }
+    if (fsize == 0)
+    {
+      std::cerr << "File is empty" << "\n";
+      return 2;
+    }
     for (i = 0; i < fsize; ++i)
     {
       input >> File_Array[i];

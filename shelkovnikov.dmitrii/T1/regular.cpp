@@ -6,7 +6,7 @@
 dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   triangle_(point_1, point_2, point_3),
   size_(0),
-  center(point_1)
+  center_(point_1)
 {
   point_t *points = new point_t[3]{point_1, point_2, point_3};
   if (!dimkashelk::isRectangularTriangle(points))
@@ -29,7 +29,7 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
 dimkashelk::Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),
   size_(regular.size_),
-  center(regular.center)
+  center_(regular.center_)
 {}
 double dimkashelk::Regular::getArea() const
 {
@@ -77,20 +77,20 @@ void dimkashelk::Regular::move(double delta_x, double delta_y)
 void dimkashelk::Regular::move(point_t point)
 {
   Shape *triangle = triangle_.clone();
-  triangle->move(center);
+  triangle->move(center_);
   point_t begin_point = dimkashelk::getLeftDownPoint(triangle->getFrameRect());
   triangle->move(point);
   point_t end_point = dimkashelk::getLeftDownPoint(triangle->getFrameRect());
   double delta_x = end_point.x - begin_point.x;
   double delta_y = end_point.y - begin_point.y;
   triangle_.move(delta_x, delta_y);
-  center.x += delta_x;
-  center.y += delta_y;
+  center_.x += delta_x;
+  center_.y += delta_y;
   delete triangle;
 }
 void dimkashelk::Regular::scale(double k)
 {
-  dimkashelk::isotropicScaling(&triangle_, center, k);
+  dimkashelk::isotropicScaling(&triangle_, center_, k);
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {

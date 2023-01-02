@@ -7,14 +7,7 @@ int main()
   std::string line;
   if (std::getline(std::cin, line) && !line.empty())
   {
-    if (isReal(line))
-    {
-      std::cout << line << " true\n";
-    }
-    else
-    {
-      std::cout << line << " false\n";
-    }
+    std::cout << std::boolalpha << isReal(line) << "\n";
   }
   else
   {

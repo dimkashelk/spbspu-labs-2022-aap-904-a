@@ -21,7 +21,7 @@ public:
   bool empty();
   size_t size();
   CompositeShape *clone() const;
-  ~CompositeShape() = default;
+  ~CompositeShape();
 
   void isoScale(Shape &shape, double x, double y, double k);
 

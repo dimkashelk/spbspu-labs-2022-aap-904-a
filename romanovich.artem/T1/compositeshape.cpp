@@ -8,16 +8,16 @@ void CompositeShape::push_back(Shape *shp)
   {
     throw std::invalid_argument("Expansion is impossible.");
   }
-  Shape **newShape = nullptr;
+  Shape **newShape/* = nullptr;
   try
   {
-    newShape = new Shape *[capacity_ + capAdd];
-  }
+    newShape */= new Shape *[capacity_ + capAdd];
+  /*}
   catch (...)
   {
     delete shape_;
     throw;
-  }
+  }*/
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
   {
@@ -42,7 +42,7 @@ void CompositeShape::isoScale(Shape &shape, double secondPosX, double secondPosY
 }
 CompositeShape::CompositeShape(size_t capacity)
 {
-  shape_ = new Shape *[capacity];
+  shape_ = new Shape *[capacity]; ///!
   capacity_ = capacity;
   size_ = 0;
   //shape_(new Shape*[capacity]);
@@ -99,4 +99,12 @@ rectangle_t CompositeShape::getFrameRect() const
 }
 void CompositeShape::pop_back()
 {
+}
+CompositeShape::~CompositeShape()
+{
+  for (size_t i = 0; i < size_; ++i)
+  {
+    delete shape_[i];
+  }
+  delete[] shape_;
 }

@@ -75,11 +75,9 @@ int main(int argc, char* argv[])
       return 1;
     }
     int* arr = new int[rows * cols];
-    int maxSumDiag = 0;
     try
     {
       fillArray(arr, rows, cols, in);
-      maxSumDiag = getMaxSumDiag(arr, rows);
     }
     catch (const std::exception& e)
     {
@@ -89,6 +87,7 @@ int main(int argc, char* argv[])
     }
     printArray(output, arr, rows, cols);
     output << "\n";
+    int maxSumDiag = getMaxSumDiag(arr, rows);
     output << "Max sum in diagonals except main one: " << maxSumDiag << "\n";
     delete[] arr;
   }

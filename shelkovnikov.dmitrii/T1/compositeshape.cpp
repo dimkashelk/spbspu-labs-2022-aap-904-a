@@ -181,7 +181,7 @@ void dimkashelk::CompositeShape::push_back(Shape *shp)
   shapes_[size_] = shp;
   size_++;
 }
-void dimkashelk::CompositeShape::push_back(Shape const *shp)
+void dimkashelk::CompositeShape::push_back(const Shape *shp)
 {
   try
   {

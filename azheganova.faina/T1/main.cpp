@@ -11,7 +11,7 @@ int main()
   std::string line;
   size_t capacity = 10;
   CompositeShape compositeShape(capacity);
-  point_t *arr = nullptr;
+  rectangle *arr = nullptr;
   while(std::cin)
   {
     std::string name = "";

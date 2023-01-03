@@ -6,8 +6,7 @@
 class rectangle : public shape
 {
   public:
-    rectangle();
-    explicit rectangle(point_t *arr);
+    rectangle(rectangle *arr);
     rectangle(rectangle_t rectangle);
     rectangle(point_t point1, point_t point2);
     double getArea() const;
@@ -18,7 +17,6 @@ class rectangle : public shape
     rectangle * clone() const override;
   private:
     rectangle_t rectangle1;
-    mutable point_t x1{}, y1{}, x2{}, y2{};
 };
 
 #endif

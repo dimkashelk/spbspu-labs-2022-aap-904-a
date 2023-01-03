@@ -3,5 +3,5 @@
 #include <stdexcept>
 #include "rectangle.h"
 
-point_t* inputRectangle();
+rectangle* inputRectangle();
 #endif

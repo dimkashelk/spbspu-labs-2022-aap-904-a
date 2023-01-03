@@ -1,19 +1,16 @@
 #include "inputrectangle.h"
 #include <iostream>
 
-point_t* inputRectangle()
+rectangle* inputRectangle()
 {
-  point_t x1{};
-  point_t y1{};
-  point_t x2{};
-  point_t y2{};
-  std::cin >> x1.x;
-  std::cin >> y1.y;
-  std::cin >> x2.x;
-  std::cin >> y2.y;
-  if (!std::cin)
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  input >> x1 >> y1 >> x2 >> y2;
+  if (!input)
   {
     std::cout << "error";
   }
-  return new point_t[4]{x1, y1, x2, y2};
+  return new rectangle(point_t{x1, y1}, point_t{x2, y2});
 }

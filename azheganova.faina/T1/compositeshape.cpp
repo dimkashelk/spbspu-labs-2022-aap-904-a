@@ -3,9 +3,9 @@
 #include "isoscale.h"
 
 CompositeShape::CompositeShape():
-  shape_(new shape*[capacity_]),
   size_(0),
-  capacity_(10)
+  capacity_(10),
+  shape_(new shape*[capacity_])
 {}
 
 CompositeShape::CompositeShape(const CompositeShape & rhs)

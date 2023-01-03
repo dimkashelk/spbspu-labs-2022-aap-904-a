@@ -19,8 +19,8 @@ class CompositeShape
     void push_back(shape * shapes);
     CompositeShape *clone() const;
   private:
-    shape ** shape_;
     size_t size_;
     size_t capacity_;
+    shape ** shape_;
 };
 #endif

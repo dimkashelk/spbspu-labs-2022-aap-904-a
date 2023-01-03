@@ -8,17 +8,7 @@ int main()
 {
   size_t capacity = 20;
   size_t size = 0;
-  char* cstring = nullptr;
-  try
-  {
-    cstring = new char[capacity];
-  }
-  catch (const std::exception& e)
-  {
-    delete[] cstring;
-    std::cout << e.what();
-    return 3;
-  }
+  char* cstring = new char[capacity];
 
   try
   {

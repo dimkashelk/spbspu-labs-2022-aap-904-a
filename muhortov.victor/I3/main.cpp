@@ -14,7 +14,7 @@ int main()
 
   try
   {
-    makeCString(c_string, size, capacity, std::cin);
+    c_string = makeCString(c_string, size, capacity, std::cin);
   }
   catch (const std::bad_alloc &e)
   {
@@ -31,6 +31,7 @@ int main()
   }
 
   c_string[size] = '\0';
+  std::cout << c_string << "!\n";
   // task 6
 
   char *repeat_symbols = nullptr;

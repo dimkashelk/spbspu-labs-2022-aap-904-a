@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <fstream>
 #include "sumindexelements.h"
-#include "largestdengthdecreasing.h"
+#include "lengthlongerdecreasing.h"
 int main (int argc, char *argv[])
 {
   if (argc != 2)
@@ -15,7 +15,7 @@ int main (int argc, char *argv[])
   try
   {
     std::cout << sum_index_elements(arr_1, 10) << std::endl;
-    std::cout << largest_dength_decreasing (arr_1, 10) << std::endl;
+    std::cout << length_longer_decreasing(arr_1, 10) << std::endl;
   }
   catch (const std::overflow_error &e)
   {
@@ -34,7 +34,7 @@ int main (int argc, char *argv[])
   try
   {
     std::cout << sum_index_elements(arr_2, n) << std::endl;
-    std::cout << largest_dength_decreasing(arr_2, n) << std::endl;
+    std::cout << length_longer_decreasing(arr_2, n) << std::endl;
   }
   catch (const std::overflow_error &e)
   {
@@ -58,7 +58,7 @@ int main (int argc, char *argv[])
       std::cout << "Error.";
       return 1;
     }
-    int *arr_3 = new int[size];
+    int *arr_3 = new int(size);
     for (size_t i = 0; i < size; i++)
     {
       in >> arr_3[i];
@@ -71,8 +71,8 @@ int main (int argc, char *argv[])
     }
     try
     {
-      std::cout << sum_index_elements(arr_3, size) << std::endl;
-      std::cout << largest_dength_decreasing(arr_3, size) << std::endl;
+      std::cout << sum_index_elements(arr_3, size) << "\n";
+      std::cout << length_longer_decreasing(arr_3, size) << "\n";
     }
     catch (const std::overflow_error &e)
     {

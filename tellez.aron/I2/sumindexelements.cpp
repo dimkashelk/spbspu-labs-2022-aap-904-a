@@ -1,13 +1,14 @@
 #include "sumindexelements.h"
 #include <climits>
+#include <limits>
 size_t sum_index_elements(const int *arr, const size_t size)
 {
   if (size == 0)
   {
     return 0;
   }
-  int min = INT_MAX;
-  int max = INT_MIN;
+  int min = std::numeric_limits<int>::max();
+  int max = std::numeric_limits<int>::min();
   for (size_t i = 0; i < size; i++)
   {
     if (arr[i] < min)
@@ -19,7 +20,7 @@ size_t sum_index_elements(const int *arr, const size_t size)
       max = arr[i];
     }
   }
-  int sum= max + min;
+  int sum = max + min;
   return sum;
 }
 

@@ -41,14 +41,14 @@ int main()
   {
     sum = sum + shapes[k]->getArea();
   }
-  std::cout << std::setprecision(1) << std::fixed << sum << " ";
+  std::cout << std::setprecision(1) << std::fixed << sum;
   for (size_t k = 0; k < i; k++)
   {
     turkin::rectangle_t buffer = shapes[k]->getFrameRect();
-    std::cout << buffer.position.x - (buffer.width / 2.0) << " ";
+    std::cout << " " << buffer.position.x - (buffer.width / 2.0) << " ";
     std::cout << buffer.position.y - (buffer.height / 2.0) << " ";
     std::cout << buffer.position.x + (buffer.width / 2.0) << " ";
-    std::cout << buffer.position.y + (buffer.height / 2.0) << " ";
+    std::cout << buffer.position.y + (buffer.height / 2.0);
   }
   std::cout << "\n";
   sum = 0.0;
@@ -61,14 +61,14 @@ int main()
   {
     sum = sum + shapes[k]->getArea();
   }
-  std::cout << std::setprecision(1) << std::fixed << sum << " ";
+  std::cout << std::setprecision(1) << std::fixed << sum;
   for (size_t k = 0; k < i; k++)
   {
     turkin::rectangle_t buffer = shapes[k]->getFrameRect();
-    std::cout << buffer.position.x - (buffer.width / 2.0) << " ";
+    std::cout << " " << buffer.position.x - (buffer.width / 2.0) << " ";
     std::cout << buffer.position.y - (buffer.height / 2.0) << " ";
     std::cout << buffer.position.x + (buffer.width / 2.0) << " ";
-    std::cout << buffer.position.y + (buffer.height / 2.0) << " ";
+    std::cout << buffer.position.y + (buffer.height / 2.0);
   }
   std::cout << "\n";
   for (size_t k = 0; k < i; k++)

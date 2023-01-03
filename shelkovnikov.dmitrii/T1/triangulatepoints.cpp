@@ -38,7 +38,6 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
       }
       catch(...)
       {
-        delete[] points_;
         throw;
       }
     }

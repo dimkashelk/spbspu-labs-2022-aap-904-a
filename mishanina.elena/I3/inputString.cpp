@@ -1,8 +1,10 @@
 #include "inputString.h"
 
-char* inputString(char* cstring, size_t &capacity, std::istream& input)
+char* inputString(size_t &capacity, std::istream& input)
 {
   size_t size = 0;
+  char* cstring = new char[capacity];
+  cstring[0] = '\0';
   input >> std::noskipws;
   do
   {
@@ -28,6 +30,11 @@ char* inputString(char* cstring, size_t &capacity, std::istream& input)
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
-  capacity = size;
+  if (cstring[0] == '\0')
+  {
+    delete[] cstring;
+    throw std::invalid_argument("Empty string");
+  }
+  cstring[size - 1] = '\0';
   return cstring;
 }

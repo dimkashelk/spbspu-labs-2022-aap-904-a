@@ -6,6 +6,7 @@
 class CompositeShape
 {
   public:
+    CompositeShape();
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
     explicit CompositeShape(size_t capasity);
@@ -16,7 +17,6 @@ class CompositeShape
     void scale(const point_t & position, double k);
     void push_back(shape * shapes);
     CompositeShape *clone() const;
-    ~CompositeShape();
   private:
     shape ** shape_;
     size_t size_;

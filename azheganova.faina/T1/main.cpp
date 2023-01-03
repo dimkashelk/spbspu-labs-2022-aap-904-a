@@ -10,7 +10,7 @@ int main()
 {
   std::string line;
   size_t capacity = 10;
-  CompositeShape compositeShape(capacity);
+  CompositeShape compositeShape;
   point_t *arr = nullptr;
   while(std::cin)
   {
@@ -19,7 +19,7 @@ int main()
     if (name == "RECTANGLE")
     {
       arr = inputRectangle();
-      shape *shape = new rectangle(arr);
+      shape *shape = new rectangle();
       compositeShape.push_back(shape);
     }
   }

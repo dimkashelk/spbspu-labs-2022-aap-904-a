@@ -4,7 +4,7 @@
 #include "triangle.h"
 namespace dimkashelk
 {
-  class Polygon: virtual public Shape
+  class Polygon: public Shape
   {
   public:
     Polygon(point_t *points, size_t size);

@@ -4,7 +4,7 @@
 #include "shape.h"
 namespace dimkashelk
 {
-  class Rectangle: virtual public Shape
+  class Rectangle: public Shape
   {
   public:
     explicit Rectangle(rectangle_t rectangle);

@@ -3,7 +3,7 @@
 #include "shape.h"
 namespace dimkashelk
 {
-  class Triangle: virtual public Shape
+  class Triangle: public Shape
   {
   public:
     Triangle();

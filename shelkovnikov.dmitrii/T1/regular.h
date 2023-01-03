@@ -5,7 +5,7 @@
 #include "triangle.h"
 namespace dimkashelk
 {
-  class Regular: virtual public Shape
+  class Regular: public Shape
   {
   public:
     Regular(point_t point_1, point_t point_2, point_t point_3);

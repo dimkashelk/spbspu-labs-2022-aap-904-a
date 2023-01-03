@@ -9,7 +9,6 @@ class rectangle : virtual public shape
     explicit rectangle(point_t *inputRectangle);
     rectangle(rectangle_t rectangle);
     rectangle(point_t point1, point_t point2);
-    rectangle(point_t*);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(double dx, double dy);

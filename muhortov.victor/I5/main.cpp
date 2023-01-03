@@ -1,5 +1,6 @@
 #include <iostream>
 #include <makecstring.hpp>
+#include "IsRealNumber.hpp"
 
 int main()
 {
@@ -27,10 +28,9 @@ int main()
     return 2;
   }
 
-  c_string[size] = '\0';
+  c_string[size - 1] = '\0';
 
-  std::cout << c_string << '\n';
+  std::cout << std::boolalpha << isRealNum(c_string) << '\n';
 
   delete[] c_string;
-  return 0;
 }

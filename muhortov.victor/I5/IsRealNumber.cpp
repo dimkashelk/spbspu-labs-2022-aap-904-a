@@ -33,7 +33,7 @@ bool isNumWithoutSign(const char *x)
 
 bool isOrder(const char *x)
 {
-  return (isE(*x) && isSign(*(++x)) && isNumWithoutSign(x + 2)) || (isE(*x) && isNumWithoutSign(++x));
+  return (isE(*x) && isSign(*(x + 1)) && isNumWithoutSign(x + 2)) || (isE(*x) && isNumWithoutSign(x + 1));
 }
 
 bool isMantis(const char *x)
@@ -48,10 +48,10 @@ bool beforeE(const char *x)
 
 bool afterE(const char *x)
 {
-  return (isOrder(x + 3)) || (isOrder(x + 4));
+  return (isOrder(x + 2)) || (isOrder(x + 3));
 }
 
 bool isRealNum(const char *x)
 {
-  return isEnd(*x) || beforeE(x) || afterE(x);
+  return isEnd(*x) || (beforeE(x) && afterE(x));
 }

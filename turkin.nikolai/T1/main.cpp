@@ -51,6 +51,7 @@ int main()
     std::cout << buffer.position.y + (buffer.height / 2.0) << " ";
   }
   std::cout << "\n";
+  sum = 0.0;
   for (size_t k = 0; k < i; k++)
   {
     //shapes[k]->scale(scale.scale);

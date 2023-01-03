@@ -19,8 +19,8 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(point_t *points, size_t size)
     }
     if (s == capacity)
     {
+      Triangle *new_triangles = new Triangle[capacity + 10];
       capacity += 10;
-      Triangle *new_triangles = new Triangle[capacity];
       for (size_t i = 0; i < s; i++)
       {
         new_triangles[i] = triangles[i];

@@ -8,7 +8,7 @@ char *makeCString(char *c_string, size_t &size, size_t &capacity, std::istream &
 
   do
   {
-    if (size == capacity)
+    if (size + 1 == capacity)
     {
       char *newstr = new char[capacity + 10];
       c_string[capacity - 1] = '\0';

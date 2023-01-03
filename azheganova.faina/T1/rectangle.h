@@ -9,13 +9,13 @@ class rectangle : virtual public shape
     explicit rectangle(point_t *inputRectangle);
     rectangle(rectangle_t rectangle);
     rectangle(point_t point1, point_t point2);
-    rectangle(point_t arr);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(double dx, double dy);
     void move(point_t position);
     void scale(double k);
     rectangle *clone() const;
+    ~rectangle();
   private:
     rectangle_t rectangle1;
     mutable point_t x1{}, y1{}, x2{}, y2{};

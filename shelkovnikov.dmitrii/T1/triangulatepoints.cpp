@@ -5,8 +5,7 @@
 dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
-  point_(1),
-  count_use_points_(2)
+  point_(1)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -29,41 +28,30 @@ dimkashelk::TriangulatePoints::~TriangulatePoints()
 }
 dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
 {
-  if (size_ > 3)
+  if (point_ + 1 >= size_)
   {
-    if (point_ + 1 >= size_)
+    point_ = 1;
+  }
+  while (point_ + 1 < size_)
+  {
+    if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) > 0)
     {
-      point_ = 1;
+      Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
+      point_++;
+      return triangle;
     }
-    while (point_ + 1 < size_)
+    else
     {
-      if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) > 0)
-      {
-        try
-        {
-          Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
-          point_++;
-          count_use_points_++;
-          return triangle;
-        }
-        catch (const std::logic_error &e)
-        {
-          point_ += 3;
-        }
-      }
-      else
-      {
-        point_ += 3;
-      }
+      point_++;
     }
   }
-  Triangle triangle = Triangle(points_[0], points_[1], points_[2]);
-  count_use_points_ += 3;
+  Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
+  points_++;
   return triangle;
 }
 bool dimkashelk::TriangulatePoints::hasNext() const
 {
-  return size_ > count_use_points_;
+  return size_ > point_ + 1;
 }
 double dimkashelk::TriangulatePoints::getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const
 {

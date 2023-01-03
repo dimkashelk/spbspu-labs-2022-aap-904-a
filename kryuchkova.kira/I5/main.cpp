@@ -1,2 +1,30 @@
 #include <iostream>
-#include <input_string.hpp>
+#include <cstddef>
+#include <input_string.h>
+#include "expression.h"
+
+int main()
+{
+  size_t capacity = 10;
+  char *cstring = new char[capacity];
+  cstring[0] = '\0';
+  try
+  {
+    cstring = inputString(cstring, capacity);
+    if (cstring[0] == '\0')
+    {
+      std::cout << "empty string";
+      delete[] cstring;
+      return 1;
+    }
+    cstring[capacity - 1] = '\0';
+  }
+  catch (const std::exception &e)
+  {
+    std::cout << e.what();
+    delete[] cstring;
+    return 1;
+  }
+  std::cout << std::boolalpha << isExpression(cstring) << '\n';
+  delete [] cstring;
+}

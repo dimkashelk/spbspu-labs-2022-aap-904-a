@@ -1,6 +1,6 @@
 #include <iostream>
 #include <exception>
-#include <input_string.hpp>
+#include <input_string.h>
 #include "remove_extra_spaces.h"
 #include "delete_identical_chars.h"
 

@@ -6,6 +6,5 @@
 namespace dimkashelk
 {
   void isotropicScaling(Shape *shape, point_t point, double k);
-  void isotropicScaling(CompositeShape &compositeShape, point_t point, double k);
 }
 #endif

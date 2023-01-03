@@ -93,7 +93,7 @@ int main()
       outputShapes(std::cout, compositeShape) << "\n";
       try
       {
-        dimkashelk::isotropicScaling(compositeShape, point, k);
+        compositeShape.isotropicScaling(point, k);
       }
       catch (const std::logic_error &e)
       {

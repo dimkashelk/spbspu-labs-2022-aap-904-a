@@ -8,7 +8,15 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(point_t *points, size_t size)
   Triangle *triangles = new Triangle[capacity];
   while (triangulatePoints.hasNext())
   {
-    triangles[s++] = triangulatePoints();
+    try
+    {
+      triangles[s++] = triangulatePoints();
+    }
+    catch(...)
+    {
+      delete[] triangles;
+      throw;
+    }
     if (s == capacity)
     {
       capacity += 10;

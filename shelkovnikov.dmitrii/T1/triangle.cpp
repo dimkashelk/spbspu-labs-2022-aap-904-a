@@ -88,6 +88,10 @@ void dimkashelk::Triangle::move(point_t point)
 }
 void dimkashelk::Triangle::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
   point_t center_of_gravity = getCenter();
   for (size_t i = 0; i < 3; i++)
   {

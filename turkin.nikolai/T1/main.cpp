@@ -68,6 +68,14 @@ int main()
        break;
      }
   }
+
+  if (i == 0)
+  {
+    std::cerr << "nothing to scale" << "\n";
+    delete [] shapes;
+    return 1;
+  }
+
   double sum = 0.0;
   for (size_t k = 0; k < i; k++)
   {

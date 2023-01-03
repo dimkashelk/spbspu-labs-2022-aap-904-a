@@ -14,8 +14,7 @@ class rectangle : virtual public shape
     void move(double dx, double dy);
     void move(point_t position);
     void scale(double k);
-    rectangle *clone() const;
-    ~rectangle();
+    rectangle * clone() const override;
   private:
     rectangle_t rectangle1;
     mutable point_t x1{}, y1{}, x2{}, y2{};

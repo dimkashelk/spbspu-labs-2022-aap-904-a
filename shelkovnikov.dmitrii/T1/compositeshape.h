@@ -27,6 +27,7 @@ namespace dimkashelk
     const Shape* at(size_t id) const;
     bool empty() const noexcept;
     size_t size() const noexcept;
+    void isotropicScaling(point_t point, double k);
   private:
     size_t size_;
     size_t capacity_;

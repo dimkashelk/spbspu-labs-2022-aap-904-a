@@ -213,3 +213,15 @@ size_t dimkashelk::CompositeShape::size() const noexcept
 {
   return size_;
 }
+void dimkashelk::CompositeShape::isotropicScaling(point_t point, double k)
+{
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
+  point_t point_1 = getFrameRect().point;
+  move(point);
+  point_t point_2 = getFrameRect().point;
+  scale(k);
+  move(-k * (point_2.x - point_1.x), -k * (point_2.y - point_1.y));
+}

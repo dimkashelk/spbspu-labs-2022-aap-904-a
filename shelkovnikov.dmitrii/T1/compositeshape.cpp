@@ -187,11 +187,8 @@ void dimkashelk::CompositeShape::push_back(Shape const *shp)
 }
 void dimkashelk::CompositeShape::pop_back()
 {
-  if (!empty())
-  {
-    delete shapes_[size_ - 1];
-    size_--;
-  }
+  delete shapes_[size_ - 1];
+  size_--;
 }
 dimkashelk::Shape* dimkashelk::CompositeShape::at(size_t id)
 {

@@ -6,7 +6,6 @@
 
 int main()
 {
-  int exitCode = 0;
   size_t i = 0;
   auto ** shapes = new turkin::Shape*[10];
   std::string line;
@@ -24,7 +23,6 @@ int main()
        catch (const std::logic_error & error)
        {
          std::cerr << error.what() << "\n";
-         exitCode = 1;
        }
      }
      if (line == "SQUARE")
@@ -37,7 +35,6 @@ int main()
        catch (const std::logic_error & error)
        {
          std::cerr << error.what() << "\n";
-         exitCode = 1;
        }
      }
      if (line == "ELLIPSE")
@@ -50,7 +47,6 @@ int main()
        catch (const std::logic_error & error)
        {
          std::cerr << error.what() << "\n";
-         exitCode = 1;
        }
      }
      if (line == "SCALE")
@@ -106,5 +102,5 @@ int main()
     delete shapes[k];
   }
   delete [] shapes;
-  return exitCode;
+  return 0;
 }

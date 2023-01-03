@@ -22,6 +22,7 @@ namespace dimkashelk
     void move(double delta_x, double delta_y);
     void scale(double k);
     void push_back(Shape *shp);
+    void push_back (Shape const *shp);
     void pop_back();
     Shape* at(size_t id);
     const Shape* at(size_t id) const;

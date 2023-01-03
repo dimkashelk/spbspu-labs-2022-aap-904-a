@@ -178,8 +178,12 @@ void dimkashelk::CompositeShape::push_back(Shape *shp)
     delete[] shapes_;
     shapes_ = new_shapes;
   }
-  shapes_[size_] = shp->clone();
+  shapes_[size_] = shp;
   size_++;
+}
+void dimkashelk::CompositeShape::push_back(Shape const *shp)
+{
+  push_back(shp->clone());
 }
 void dimkashelk::CompositeShape::pop_back()
 {

@@ -2,6 +2,12 @@
 #include <algorithm>
 #include "isoscale.h"
 
+CompositeShape::CompositeShape():
+  size_(0),
+  capacity_(10),
+  shape_(new shape*[capacity_])
+{}
+
 CompositeShape::CompositeShape(const CompositeShape & rhs)
 {
   for (size_t i = 0; i < rhs.size_; ++i)

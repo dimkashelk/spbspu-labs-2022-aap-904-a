@@ -1,4 +1,4 @@
-#include "input_string.h"
+#include "input_string.hpp"
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>

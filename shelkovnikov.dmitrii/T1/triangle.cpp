@@ -3,7 +3,8 @@
 #include <stdexcept>
 dimkashelk::Triangle::Triangle()
 {}
-dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
+dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3):
+  points_{p1, p2, p3}
 {
   double side1 = std::sqrt(pow((p1.x - p2.x), 2) + pow(p1.y - p2.y, 2));
   double side2 = std::sqrt(pow((p1.x - p3.x), 2) + pow(p1.y - p3.y, 2));
@@ -12,22 +13,13 @@ dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3)
   {
     throw std::logic_error("It's not a triangle_");
   }
-  points_[0] = p1;
-  points_[1] = p2;
-  points_[2] = p3;
 }
-dimkashelk::Triangle::Triangle(const Triangle &triangle)
-{
-  points_[0] = triangle.points_[0];
-  points_[1] = triangle.points_[1];
-  points_[2] = triangle.points_[2];
-}
-dimkashelk::Triangle::Triangle(Triangle &&triangle)
-{
-  points_[0] = triangle.points_[0];
-  points_[1] = triangle.points_[1];
-  points_[2] = triangle.points_[2];
-}
+dimkashelk::Triangle::Triangle(const Triangle &triangle):
+  points_{triangle.points_[0], triangle.points_[1], triangle.points_[2]}
+{}
+dimkashelk::Triangle::Triangle(Triangle &&triangle):
+  points_{triangle.points_[0], triangle.points_[1], triangle.points_[2]}
+{}
 dimkashelk::Triangle &dimkashelk::Triangle::operator=(const Triangle &other)
 {
   points_[0] = other.points_[0];

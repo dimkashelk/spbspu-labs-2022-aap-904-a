@@ -18,7 +18,7 @@ int main()
     std::cin >> name;
     if (name == "RECTANGLE")
     {
-      arr = inputRectangle();
+      arr = inputRectangle(std::cin);
       shape *shape = new rectangle(arr);
       compositeShape.push_back(shape);
     }

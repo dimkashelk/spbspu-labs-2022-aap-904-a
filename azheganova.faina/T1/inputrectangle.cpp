@@ -1,7 +1,7 @@
 #include "inputrectangle.h"
 #include <iostream>
 
-rectangle* inputRectangle()
+rectangle* inputRectangle(std::istream &input)
 {
   double x1 = 0.0;
   double y1 = 0.0;

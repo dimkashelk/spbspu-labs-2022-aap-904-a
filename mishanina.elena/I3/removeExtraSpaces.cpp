@@ -2,50 +2,72 @@
 
 char* removeExtraSpaces(char* destination, const char* cstring)
 {
-  int numberOfSymbols1 = 0;
-  int numberOfSymbols2 = 0;
-  int numberOfSpaces = 0;
-  int numberOfDeletedSpaces = 0;
+  size_t numberOfSymbols1 = 0;
+  size_t numberOfSymbols2 = 0;
+  size_t numberOfSpaces = 0;
+  size_t numberOfDeletedSpaces = 0;
+  size_t numberOfOccurrencesInCstring = 0;
+  size_t numberOfOccurrencesInDestination = 0;
 
-  for (size_t i = 0; i < strlen(cstring); i++)
+  while (*cstring != '\0')
   {
-    if (cstring[i] != ' ')
+    if (*cstring != ' ')
     {
       numberOfSymbols1++;
     }
+    numberOfOccurrencesInCstring++;
+    cstring++;
   }
 
-  for (size_t i = 0, j = 0; i < strlen(cstring); i++)
+  size_t numberOfOccurrencesInCstring1 = numberOfOccurrencesInCstring;
+  while (numberOfOccurrencesInCstring1 != 0)
   {
-    if (cstring[i] != ' ')
+    numberOfOccurrencesInCstring1--;
+    cstring--;
+  }
+
+  while (*cstring != '\0')
+  {
+    if (*cstring != ' ')
     {
       numberOfSymbols2++;
     }
     if (numberOfSymbols2 == 0)
     {
       numberOfDeletedSpaces++;
+      cstring++;
       continue;
     }
 
-    if (numberOfSymbols2 == numberOfSymbols1 && cstring[i] == ' ')
+    if (numberOfSymbols2 == numberOfSymbols1 && *cstring == ' ')
     {
       numberOfSpaces++;
     }
 
-    if (i != 0 && cstring[i] == cstring[i - 1] && cstring[i] == ' ' && numberOfSymbols2 != numberOfSymbols1)
+    if (numberOfOccurrencesInCstring != 0 && *cstring == *(cstring - 1) && *cstring == ' ' && numberOfSymbols2 != numberOfSymbols1)
     {
       numberOfDeletedSpaces++;
+      cstring++;
       continue;
     }
 
     if (numberOfSymbols2 == numberOfSymbols1 && numberOfSpaces != 0)
     {
       numberOfDeletedSpaces++;
+      cstring++;
       continue;
     }
-    destination[j] = cstring[i];
-    j++;
+    *destination = *cstring;
+    destination++;
+    cstring++;
+    numberOfOccurrencesInDestination++;
   }
-  destination[strlen(cstring) - numberOfDeletedSpaces] = '\0';
+  *destination = '\0';
+
+  while (numberOfOccurrencesInDestination != 0)
+  {
+    numberOfOccurrencesInDestination--;
+    destination--;
+  }
   return destination;
 }

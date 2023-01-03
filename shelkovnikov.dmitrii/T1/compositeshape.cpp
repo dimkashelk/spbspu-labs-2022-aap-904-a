@@ -68,28 +68,18 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const Composit
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape &&tmp)
 {
-  Shape **shapes = new Shape*[tmp.capacity_];
-  for (size_t i = 0; i < tmp.size_; i++)
+  if (&tmp != this)
   {
-    try
+    for (size_t i = 0; i < size_; i++)
     {
-      shapes[i] = tmp[i];
+      delete shapes_[i];
     }
-    catch (...)
-    {
-      delete[] shapes;
-      throw;
-    }
+    delete[] shapes_;
+    size_ = tmp.size_;
+    capacity_ = tmp.capacity_;
+    shapes_ = tmp.shapes_;
+    tmp.shapes_ = nullptr;
   }
-  delete[] tmp.shapes_;
-  for (size_t i = 0; i < size_; i++)
-  {
-    delete shapes_[i];
-  }
-  delete[] shapes_;
-  shapes_ = shapes;
-  size_ = tmp.size_;
-  capacity_ = tmp.capacity_;
   return *this;
 }
 dimkashelk::Shape *dimkashelk::CompositeShape::operator[](size_t id)

@@ -25,3 +25,20 @@ bool isSign(const char data)
 {
   return data == '+' || data == '-' || data == '/' || data == '*';
 }
+
+bool isUnsigned(const char *data)
+{
+  return isDigit(*data) || (isDigit(*data) && isUnsigned(++data));
+}
+bool isFactor(const char *data)
+{
+  return isUnsigned(data) || isIdentificator(*data) || (isOpenBrace(*data) && isExpression(++data) && isCloseBrace(*data));
+}
+bool isTerm(const char *data)
+{
+  return isFactor(data) || (isOpenBrace(*data) && isFactor(data) && isSign(*data) && isFactor(data) && isCloseBrace(*data));
+}
+bool isExpression(const char *data)
+{
+  return isEnd(*data) || (isTerm(data) && isSign(*(++data)) && isExpression(++data)) || isDigit(*data);
+}

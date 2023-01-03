@@ -7,16 +7,6 @@
 
 int main(int argc, char *argv[])
 {
-  if (argc == 1)
-  {
-    std::cerr << "File error" << "\n";
-    return 2;
-  }
-  if (argc > 2)
-  {
-    std::cerr << "File error" << "\n";
-    return 2;
-  }
   int ready_array[5] = {4,5,3,2,1};
   try
   {
@@ -41,28 +31,45 @@ int main(int argc, char *argv[])
   std::srand(time(NULL));
   int * dyn_array = new int[line];
   size_t i;
-  for (i = 0; i < line; i++)
+  if (line > 0)
   {
-    dyn_array[i] = rand() % 100;
-  }
-  try
-  {
-    std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
-    std::cout << "Sorted array2: " ;
-    Sort_Array(dyn_array,line);
-    std::cout << "\n";
-  }
-  catch (std::overflow_error & e)
-  {
-    std::cout << e.what() << "\n";
+    for (i = 0; i < line; i++)
+    {
+      dyn_array[i] = rand() % 100;
+    }
+    try
+    {
+      std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
+      std::cout << "Sorted array2: " ;
+      Sort_Array(dyn_array,line);
+      std::cout << "\n";
+    }
+    catch (std::overflow_error & e)
+    {
+      std::cout << e.what() << "\n";
+      delete [] dyn_array;
+      return 2;
+    }
     delete [] dyn_array;
+    }
+  else
+  {
+    std::cout << "Error " << "\n";
+  }
+
+  if (argc == 1)
+  {
+    std::cerr << "File error" << "\n";
     return 2;
   }
-  delete [] dyn_array;
-
+  if (argc > 2)
+  {
+    std::cerr << "File error" << "\n";
+    return 2;
+  }
   size_t fsize = 0;
   int * File_Array = new int[fsize];
-  std::string fname =argv[1];
+  std::string fname = argv[1];
   std::ifstream input(fname);
   while (!input.is_open())
   {
@@ -72,11 +79,6 @@ int main(int argc, char *argv[])
       std::cout << "File error" << "\n";
       delete [] File_Array;
       return 2;
-    }
-    if (fsize == 0)
-    {
-      std::cerr << "File is empty" << "\n";
-      return 0;
     }
     for (size_t i = 0; i < fsize; ++i)
     {

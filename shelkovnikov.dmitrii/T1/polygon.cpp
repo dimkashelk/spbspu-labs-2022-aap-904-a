@@ -93,26 +93,3 @@ dimkashelk::Shape* dimkashelk::Polygon::clone() const
 {
   return new Polygon(*this);
 }
-dimkashelk::Triangle* dimkashelk::Polygon::makeTriangles(point_t *points, size_t size)
-{
-  TriangulatePoints triangulatePoints(points, size);
-  size_t s = 0;
-  size_t capacity = 10;
-  Triangle *triangles = new Triangle[capacity];
-  while (triangulatePoints.hasNext())
-  {
-    triangles[s++] = triangulatePoints();
-    if (s == capacity)
-    {
-      capacity += 10;
-      Triangle *new_triangles = new Triangle[capacity];
-      for (size_t i = 0; i < s; i++)
-      {
-        new_triangles[i] = triangles[i];
-      }
-      delete[] triangles;
-      triangles = new_triangles;
-    }
-  }
-  return triangles;
-}

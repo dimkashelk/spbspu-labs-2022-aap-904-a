@@ -23,7 +23,6 @@ namespace dimkashelk
     Polygon(Polygon &&polygon) = delete;
     Polygon& operator=(const Polygon &other) = delete;
     Polygon& operator=(Polygon &&tmp) = delete;
-    Triangle* makeTriangles(point_t *points, size_t size);
   };
 }
 #endif

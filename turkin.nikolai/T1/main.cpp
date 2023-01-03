@@ -10,6 +10,7 @@ int main()
   auto ** shapes = new turkin::Shape*[10];
   std::string line;
   turkin::scale_t scale = {{0.0, 0.0}, 0.0};
+  bool isscale = false;
   while (std::cin)
   {
      std::cin >> line;
@@ -54,6 +55,7 @@ int main()
        try
        {
          scale = turkin::getScale(std::cin);
+         isscale = true;
        }
        catch (const std::logic_error & error)
        {
@@ -75,7 +77,7 @@ int main()
     delete [] shapes;
     return 1;
   }
-  if (scale.scale == 0.0)
+  if (!isscale)
   {
     std::cerr << "no scale command" << "\n";
     for (size_t k = 0; k < i; k++)

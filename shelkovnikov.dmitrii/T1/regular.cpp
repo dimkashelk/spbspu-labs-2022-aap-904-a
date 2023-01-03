@@ -81,7 +81,7 @@ void dimkashelk::Regular::scale(double k)
   {
     throw std::logic_error("Coefficient below zero");
   }
-  isotropicScaling(&triangle_, center_, k);
+  isotropicScaling(std::addressof(triangle_), center_, k);
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {

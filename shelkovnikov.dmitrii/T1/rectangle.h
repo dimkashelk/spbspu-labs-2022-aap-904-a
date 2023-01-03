@@ -9,10 +9,6 @@ namespace dimkashelk
   public:
     explicit Rectangle(rectangle_t rectangle);
     Rectangle(point_t point_1, point_t point_2);
-    Rectangle(const Rectangle &rect) = delete;
-    Rectangle(Rectangle &&rect) = delete;
-    Rectangle& operator=(const Rectangle &other) = delete;
-    Rectangle& operator=(Rectangle &&tmp) = delete;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
@@ -21,6 +17,10 @@ namespace dimkashelk
     Shape* clone() const override;
   private:
     rectangle_t rectangle_;
+    Rectangle(const Rectangle &rect) = delete;
+    Rectangle(Rectangle &&rect) = delete;
+    Rectangle& operator=(const Rectangle &other) = delete;
+    Rectangle& operator=(Rectangle &&tmp) = delete;
   };
 }
 #endif

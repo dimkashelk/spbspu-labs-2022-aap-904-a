@@ -75,6 +75,16 @@ int main()
     delete [] shapes;
     return 1;
   }
+  if (scale.scale == 0.0)
+  {
+    std::cerr << "no scale command" << "\n";
+    for (size_t k = 0; k < i; k++)
+    {
+      delete shapes[k];
+    }
+    delete [] shapes;
+    return 1;
+  }
 
   double sum = 0.0;
   for (size_t k = 0; k < i; k++)

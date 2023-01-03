@@ -8,6 +8,10 @@ dimkashelk::Polygon::Polygon(point_t *points, size_t size):
   triangles_(makeTriangles(points, size)),
   center_{0.0, 0.0}
 {
+  if (size >= 3)
+  {
+    count_ = size - 2;
+  }
   double x_sum = 0.0;
   double y_sum = 0.0;
   for (size_t i = 0; i < size; i++)
@@ -110,6 +114,5 @@ dimkashelk::Triangle* dimkashelk::Polygon::makeTriangles(point_t *points, size_t
       triangles = new_triangles;
     }
   }
-  count_ = s;
   return triangles;
 }

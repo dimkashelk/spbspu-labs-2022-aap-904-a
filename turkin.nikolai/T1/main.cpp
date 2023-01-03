@@ -58,6 +58,11 @@ int main()
        catch (const std::logic_error & error)
        {
          std::cerr << error.what() << "\n";
+         for (size_t k = 0; k < i; k++)
+         {
+           delete shapes[k];
+         }
+         delete [] shapes;
          return 1;
        }
        break;

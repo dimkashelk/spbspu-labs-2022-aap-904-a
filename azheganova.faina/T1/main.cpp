@@ -9,17 +9,14 @@
 int main()
 {
   std::string line;
-  size_t capacity = 10;
   CompositeShape compositeShape;
-  point_t *arr = nullptr;
   while(std::cin)
   {
     std::string name = "";
     std::cin >> name;
     if (name == "RECTANGLE")
     {
-      arr = inputRectangle();
-      shape *shape = new rectangle();
+      shape *shape = inputRectangle();
       compositeShape.push_back(shape);
     }
   }

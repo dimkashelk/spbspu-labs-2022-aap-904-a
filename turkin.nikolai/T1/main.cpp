@@ -1,12 +1,11 @@
 #include <iostream>
-#include <iomanip>
 #include "shapesPatterns.h"
-#include "readShapes.h"
+#include "readWriteShapes.h"
 #include "isoscale.h"
 
 int main()
 {
-  size_t i = 0;
+  size_t size = 0;
   auto ** shapes = new turkin::Shape*[10];
   std::string line;
   turkin::scale_t scale = {{0.0, 0.0}, 0.0};
@@ -18,8 +17,8 @@ int main()
      {
        try
        {
-         shapes[i] = turkin::createRectangle(std::cin);
-         i++;
+         shapes[size] = turkin::createRectangle(std::cin);
+         size++;
        }
        catch (const std::logic_error & error)
        {
@@ -30,8 +29,8 @@ int main()
      {
        try
        {
-         shapes[i] = turkin::createSquare(std::cin);
-         i++;
+         shapes[size] = turkin::createSquare(std::cin);
+         size++;
        }
        catch (const std::logic_error & error)
        {
@@ -42,8 +41,8 @@ int main()
      {
        try
        {
-         shapes[i] = turkin::createEllipse(std::cin);
-         i++;
+         shapes[size] = turkin::createEllipse(std::cin);
+         size++;
        }
        catch (const std::logic_error & error)
        {
@@ -60,7 +59,7 @@ int main()
        catch (const std::logic_error & error)
        {
          std::cerr << error.what() << "\n";
-         for (size_t k = 0; k < i; k++)
+         for (size_t k = 0; k < size; k++)
          {
            delete shapes[k];
          }
@@ -71,7 +70,7 @@ int main()
      }
   }
 
-  if (i == 0)
+  if (size == 0)
   {
     std::cerr << "nothing to scale" << "\n";
     delete [] shapes;
@@ -80,7 +79,7 @@ int main()
   if (!isscale)
   {
     std::cerr << "no scale command" << "\n";
-    for (size_t k = 0; k < i; k++)
+    for (size_t k = 0; k < size; k++)
     {
       delete shapes[k];
     }
@@ -88,44 +87,17 @@ int main()
     return 1;
   }
 
-  double sum = 0.0;
-  for (size_t k = 0; k < i; k++)
+  turkin::printAreaPoints(std::cout, shapes, size);
+  for (size_t k = 0; k < size; k++)
   {
-    sum = sum + shapes[k]->getArea();
+    turkin::isoScale(shapes[k], scale);
   }
-  std::cout << std::setprecision(1) << std::fixed << sum;
-  for (size_t k = 0; k < i; k++)
-  {
-    turkin::rectangle_t buffer = shapes[k]->getFrameRect();
-    std::cout << " " << buffer.position.x - (buffer.width / 2.0) << " ";
-    std::cout << buffer.position.y - (buffer.height / 2.0) << " ";
-    std::cout << buffer.position.x + (buffer.width / 2.0) << " ";
-    std::cout << buffer.position.y + (buffer.height / 2.0);
-  }
-  std::cout << "\n";
-  sum = 0.0;
-  for (size_t k = 0; k < i; k++)
-  {
-    chemodurov::isoScale(shapes[k], scale.position, scale.scale);
-  }
-  for (size_t k = 0; k < i; k++)
-  {
-    sum = sum + shapes[k]->getArea();
-  }
-  std::cout << std::setprecision(1) << std::fixed << sum;
-  for (size_t k = 0; k < i; k++)
-  {
-    turkin::rectangle_t buffer = shapes[k]->getFrameRect();
-    std::cout << " " << buffer.position.x - (buffer.width / 2.0) << " ";
-    std::cout << buffer.position.y - (buffer.height / 2.0) << " ";
-    std::cout << buffer.position.x + (buffer.width / 2.0) << " ";
-    std::cout << buffer.position.y + (buffer.height / 2.0);
-  }
-  std::cout << "\n";
-  for (size_t k = 0; k < i; k++)
+  turkin::printAreaPoints(std::cout, shapes, size);
+  for (size_t k = 0; k < size; k++)
   {
     delete shapes[k];
   }
   delete [] shapes;
   return 0;
 }
+

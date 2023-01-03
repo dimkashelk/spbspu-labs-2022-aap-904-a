@@ -34,3 +34,4 @@ turkin::Rectangle::Rectangle(turkin::point_t one, turkin::point_t two):
 turkin::Rectangle::Rectangle(turkin::point_t one, double side):
   rect_(one, side)
 {}
+

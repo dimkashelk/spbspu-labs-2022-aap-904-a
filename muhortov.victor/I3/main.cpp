@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <makecstring.hpp>
 #include "RepeatSymbols.hpp"
 #include "Vowel.hpp"
 int main()
@@ -11,29 +12,16 @@ int main()
 
   c_string[0] = '\n';
 
-  std::cin >> std::noskipws;
-  do
+  try
   {
-    if (size == capacity)
-    {
-      try
-      {
-        char *newstr = new char[capacity + 10];
-        c_string[capacity - 1] = '\0';
-        std::strcpy(newstr, c_string);
-        delete[] c_string;
-        c_string = newstr;
-        capacity += 10;
-      }
-      catch (const std::bad_alloc &e)
-      {
-        std::cerr << "Error: " << e.what();
-        return 1;
-      }
-    }
-    std::cin >> c_string[size];
+    makeCString(c_string, size, capacity, std::cin);
   }
-  while (std::cin && c_string[size++] != '\n');
+  catch (const std::bad_alloc &e)
+  {
+    std::cerr << "Error: " << e.what();
+    delete[] c_string;
+    return 1;
+  }
 
   if (c_string[0] == '\n')
   {
@@ -43,7 +31,6 @@ int main()
   }
 
   c_string[size] = '\0';
-
   // task 6
 
   char *repeat_symbols = nullptr;

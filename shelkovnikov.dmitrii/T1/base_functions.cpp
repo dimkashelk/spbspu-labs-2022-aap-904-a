@@ -10,7 +10,7 @@ dimkashelk::point_t dimkashelk::getRightUpPoint(rectangle_t rect)
 }
 bool dimkashelk::isRectangularTriangle(const point_t *points)
 {
-  double square[3];
+  double square[3]{0.0, 0.0, 0.0};
   for (size_t i = 0; i < 3; i++)
   {
     square[i] = std::pow(points[i].x - points[(i + 1) % 3].x, 2) + std::pow(points[i].y - points[(i + 1) % 3].y, 2);

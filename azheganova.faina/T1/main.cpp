@@ -9,7 +9,7 @@
 int main()
 {
   std::string line;
-  CompositeShape (rhs);
+  CompositeShape rhs;
   while(std::cin)
   {
     std::string name = "";

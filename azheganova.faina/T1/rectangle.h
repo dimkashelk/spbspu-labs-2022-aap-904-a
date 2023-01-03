@@ -3,7 +3,7 @@
 #include "base_types.h"
 #include "shape.h"
 
-class rectangle : public shape
+class rectangle : virtual public shape
 {
   public:
     rectangle(rectangle_t rectangle);
@@ -13,6 +13,7 @@ class rectangle : public shape
     void move(double dx, double dy);
     void move(point_t position);
     void scale(double k);
+    shape * clone() const override;
   private:
     rectangle_t rectangle1;
 };

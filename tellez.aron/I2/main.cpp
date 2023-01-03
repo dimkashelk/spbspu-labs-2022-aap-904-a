@@ -25,11 +25,10 @@ int main (int argc, char *argv[])
   size_t n = 0;
   std::cin >> n;
   int * arr_2 = new int[n];
-  const unsigned int srand_arg = 1;
-  std::srand(srand_arg);
-  for (int i = 0; i < static_cast<int> (n); i++)
+  std::srand(time(nullptr));
+  for (size_t i = 0; i < static_cast<size_t> (n); i++)
   {
-    arr_2[1] = std::rand();
+    arr_2[i] = (std::rand()%10)+1;
   }
   try
   {
@@ -49,38 +48,36 @@ int main (int argc, char *argv[])
     std::cout << "Error while opening file";
     return 1;
   }
-  while (!in.eof())
+
+  if (!in)
   {
-    size_t size = 0;
-    in >> size;
+    std::cout << "Error.";
+    return 1;
+  }
+  size_t size = 0;
+  in >> size;
+  int *arr_3 = new int[size];
+  for (size_t i = 0; i < size; i++)
+  {
+    in >> arr_3[i];
     if (!in)
     {
-      std::cout << "Error.";
+      std::cout << "Error..";
+      delete[] arr_3;
       return 1;
     }
-    int *arr_3 = new int(size);
-    for (size_t i = 0; i < size; i++)
-    {
-      in >> arr_3[i];
-      if (!in)
-      {
-        std::cout << "Error..";
-        delete[] arr_3;
-        return 1;
-      }
-    }
-    try
-    {
-      std::cout << sum_index_elements(arr_3, size) << "\n";
-      std::cout << length_longer_decreasing(arr_3, size) << "\n";
-    }
-    catch (const std::overflow_error &e)
-    {
-      std::cout << e.what();
-      delete[] arr_3;
-      return 2;
-    }
-    delete[] arr_3;
   }
+  try
+  {
+    std::cout << sum_index_elements(arr_3, size) << "\n";
+    std::cout << length_longer_decreasing(arr_3, size) << "\n";
+  }
+  catch (const std::overflow_error &e)
+  {
+    std::cout << e.what();
+    delete[] arr_3;
+    return 2;
+  }
+  delete[] arr_3;
   return 0;
 }

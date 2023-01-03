@@ -3,8 +3,6 @@
 #include "shapesPatterns.h"
 #include "readShapes.h"
 #include "isoscale.h"
-//RECTANGLE (SQUARE)
-//ELLIPSE
 
 int main()
 {
@@ -17,22 +15,50 @@ int main()
      std::cin >> line;
      if (line == "RECTANGLE")
      {
-       shapes[i] = turkin::createRectangle(std::cin);
-       i++;
+       try
+       {
+         shapes[i] = turkin::createRectangle(std::cin);
+         i++;
+       }
+       catch (const std::logic_error & error)
+       {
+         std::cerr << error.what() << "\n";
+       }
      }
      if (line == "SQUARE")
      {
-       shapes[i] = turkin::createSquare(std::cin);
-       i++;
+       try
+       {
+         shapes[i] = turkin::createSquare(std::cin);
+         i++;
+       }
+       catch (const std::logic_error & error)
+       {
+         std::cerr << error.what() << "\n";
+       }
      }
      if (line == "ELLIPSE")
      {
-       shapes[i] = turkin::createEllipse(std::cin);
-       i++;
+       try
+       {
+         shapes[i] = turkin::createEllipse(std::cin);
+         i++;
+       }
+       catch (const std::logic_error & error)
+       {
+         std::cerr << error.what() << "\n";
+       }
      }
      if (line == "SCALE")
      {
-       scale = turkin::getScale(std::cin);
+       try
+       {
+         scale = turkin::getScale(std::cin);
+       }
+       catch (const std::logic_error & error)
+       {
+         std::cerr << error.what() << "\n";
+       }
        break;
      }
   }
@@ -78,3 +104,4 @@ int main()
   delete [] shapes;
   return 0;
 }
+

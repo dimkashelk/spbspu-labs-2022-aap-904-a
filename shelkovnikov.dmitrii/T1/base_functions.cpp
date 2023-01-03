@@ -39,6 +39,8 @@ dimkashelk::rectangle_t dimkashelk::makeRectangle(point_t left_down, point_t rig
   {
     throw std::logic_error("It isn't rectangle");
   }
-  rectangle_t rect{point_t{(left_down.x + right_up.x) / 2, (left_down.y + right_up.y) / 2}, right_up.x - left_down.x, right_up.y - left_down.y};
+  rectangle_t rect{point_t{(left_down.x + right_up.x) / 2, (left_down.y + right_up.y) / 2},
+                   right_up.x - left_down.x,
+                   right_up.y - left_down.y};
   return rect;
 }

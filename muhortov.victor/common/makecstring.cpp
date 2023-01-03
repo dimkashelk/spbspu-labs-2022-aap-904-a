@@ -21,7 +21,5 @@ char *makeCString(char *c_string, size_t &size, size_t &capacity, std::istream &
   }
   while (input && c_string[size++] != '\n');
 
-  std::cout << c_string << "!!\n";
-
   return c_string;
 }

@@ -31,7 +31,7 @@ int main()
   }
 
   c_string[size] = '\0';
-  std::cout << c_string << "!\n";
+
   // task 6
 
   char *repeat_symbols = nullptr;

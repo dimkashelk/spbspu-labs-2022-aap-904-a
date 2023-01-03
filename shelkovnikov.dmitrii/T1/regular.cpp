@@ -9,7 +9,7 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   center_(point_1)
 {
   point_t *points = new point_t[3]{point_1, point_2, point_3};
-  if (!dimkashelk::isRectangularTriangle(points))
+  if (!isRectangularTriangle(points))
   {
     delete[] points;
     throw std::logic_error("Triangle isn't rectangular");
@@ -38,8 +38,8 @@ double dimkashelk::Regular::getArea() const
 dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
 {
   rectangle_t rectangle = triangle_.getFrameRect();
-  point_t left_down = dimkashelk::getLeftDownPoint(rectangle);
-  point_t right_up = dimkashelk::getRightUpPoint(rectangle);
+  point_t left_down = getLeftDownPoint(rectangle);
+  point_t right_up = getRightUpPoint(rectangle);
   double min_x = left_down.x;
   double min_y = left_down.y;
   double max_x = right_up.x;
@@ -49,8 +49,8 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
   {
     Triangle rotate_triangle = triangle_.rotate(i * theta);
     rectangle = rotate_triangle.getFrameRect();
-    left_down = dimkashelk::getLeftDownPoint(rectangle);
-    right_up = dimkashelk::getRightUpPoint(rectangle);
+    left_down = getLeftDownPoint(rectangle);
+    right_up = getRightUpPoint(rectangle);
     min_x = std::min(min_x, left_down.x);
     min_y = std::min(min_y, left_down.y);
     max_x = std::max(max_x, right_up.x);
@@ -66,9 +66,9 @@ void dimkashelk::Regular::move(point_t point)
 {
   Shape *triangle = triangle_.clone();
   triangle->move(center_);
-  point_t begin_point = dimkashelk::getLeftDownPoint(triangle->getFrameRect());
+  point_t begin_point = getLeftDownPoint(triangle->getFrameRect());
   triangle->move(point);
-  point_t end_point = dimkashelk::getLeftDownPoint(triangle->getFrameRect());
+  point_t end_point = getLeftDownPoint(triangle->getFrameRect());
   double delta_x = end_point.x - begin_point.x;
   double delta_y = end_point.y - begin_point.y;
   triangle_.move(delta_x, delta_y);
@@ -82,7 +82,7 @@ void dimkashelk::Regular::scale(double k)
   {
     throw std::logic_error("Coefficient below zero");
   }
-  dimkashelk::isotropicScaling(&triangle_, center_, k);
+  isotropicScaling(&triangle_, center_, k);
 }
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {

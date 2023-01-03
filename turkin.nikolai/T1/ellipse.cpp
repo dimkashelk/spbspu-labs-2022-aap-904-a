@@ -19,7 +19,7 @@ void turkin::Ellipse::move(double dx, double dy)
 
 void turkin::Ellipse::move(turkin::point_t position)
 {
-  move(position.x, position.y);
+  rect_.position = position;
 }
 
 void turkin::Ellipse::scale(double ds)

@@ -18,7 +18,7 @@ void turkin::Rectangle::move(double dx, double dy)
 
 void turkin::Rectangle::move(turkin::point_t position)
 {
-  move(position.x, position.y);
+  rect_.position = position;
 }
 
 void turkin::Rectangle::scale(double ds)

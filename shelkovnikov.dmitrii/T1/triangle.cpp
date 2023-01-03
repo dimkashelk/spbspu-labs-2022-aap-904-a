@@ -1,6 +1,7 @@
 #include "triangle.h"
 #include <cmath>
 #include <stdexcept>
+#include "base_functions.h"
 dimkashelk::Triangle::Triangle()
 {}
 dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3):
@@ -37,7 +38,7 @@ dimkashelk::Triangle &dimkashelk::Triangle::operator=(Triangle &&tmp)
 double dimkashelk::Triangle::getArea() const
 {
   // the area of the triangle_ is half of the length of the vector product
-  // let 's make a matrix
+  // let 's makeRectangle a matrix
   //         |i  j  k|
   // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;
   //         |x2 y2 0|
@@ -63,7 +64,7 @@ dimkashelk::rectangle_t dimkashelk::Triangle::getFrameRect() const
   double y_min = std::min(points_[0].y, std::min(points_[1].y, points_[2].y));
   double x_max = std::max(points_[0].x, std::max(points_[1].x, points_[2].x));
   double y_max = std::max(points_[0].y, std::max(points_[1].y, points_[2].y));
-  return rectangle_t(point_t{x_min, y_min}, point_t{x_max, y_max});
+  return makeRectangle(point_t{x_min, y_min}, point_t{x_max, y_max});
 }
 void dimkashelk::Triangle::move(double delta_x, double delta_y)
 {

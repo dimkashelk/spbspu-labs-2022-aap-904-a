@@ -1,9 +1,10 @@
 #include "rectangle.h"
+#include "base_functions.h"
 dimkashelk::Rectangle::Rectangle(rectangle_t rectangle):
   rectangle_(rectangle)
 {}
 dimkashelk::Rectangle::Rectangle(point_t point_1, point_t point_2):
-  rectangle_(point_1, point_2)
+  rectangle_(makeRectangle(point_1, point_2))
 {}
 double dimkashelk::Rectangle::getArea() const
 {

@@ -56,7 +56,7 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
     max_x = std::max(max_x, right_up.x);
     max_y = std::max(max_y, right_up.y);
   }
-  return rectangle_t(point_t{min_x, min_y}, point_t{max_x, max_y});
+  return makeRectangle(point_t{min_x, min_y}, point_t{max_x, max_y});
 }
 void dimkashelk::Regular::move(double delta_x, double delta_y)
 {

@@ -7,6 +7,6 @@ namespace dimkashelk
   point_t getRightUpPoint(rectangle_t rect);
   bool isRectangularTriangle(point_t *points);
   point_t getCenterOfWeight(point_t *points, size_t size);
-  rectangle_t make(point_t left_down, point_t right_up);
+  rectangle_t makeRectangle(point_t left_down, point_t right_up);
 }
 #endif

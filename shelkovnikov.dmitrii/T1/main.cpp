@@ -90,11 +90,6 @@ int main()
       dimkashelk::point_t point{x, y};
       double k = 0.0;
       std::cin >> k;
-      if (compositeShape.empty())
-      {
-        std::cerr << "Nothing to scaling";
-        return 1;
-      }
       outputShapes(std::cout, compositeShape) << "\n";
       try
       {

@@ -142,6 +142,10 @@ void dimkashelk::CompositeShape::move(double delta_x, double delta_y)
 }
 void dimkashelk::CompositeShape::scale(double k)
 {
+  if (empty())
+  {
+    throw std::logic_error("CompositeShape empty");
+  }
   point_t center = getCenter();
   for (size_t i = 0; i < size_; i++)
   {

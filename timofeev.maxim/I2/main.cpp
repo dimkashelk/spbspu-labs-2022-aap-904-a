@@ -21,6 +21,8 @@ int main(int argc, char *argv[])
     return 0;
   }
 
+
+
   size_t line;
   std::cin >> line;
   if (!std::cin)
@@ -67,19 +69,20 @@ int main(int argc, char *argv[])
     std::cerr << "File error" << "\n";
     return 2;
   }
+
   size_t fsize = 0;
   int * File_Array = new int[fsize];
   std::string fname = argv[1];
   std::ifstream input(fname);
+  input >> fsize;
+  if (!input)
+  {
+    std::cerr << "File error" << "\n";
+    delete [] File_Array;
+    return 2;
+  }
   while (!input.is_open())
   {
-    input >> fsize;
-    if (!input)
-    {
-      std::cout << "File error" << "\n";
-      delete [] File_Array;
-      return 2;
-    }
     for (size_t i = 0; i < fsize; ++i)
     {
       input >> File_Array[i];

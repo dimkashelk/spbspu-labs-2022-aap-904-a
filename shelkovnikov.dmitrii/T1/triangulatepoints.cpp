@@ -26,7 +26,7 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
   {
     point_ = 1;
   }
-  while (point_ + 1 < size_)
+  if (point_ + 1 < size_)
   {
     if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) > 0)
     {
@@ -47,7 +47,7 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
       point_++;
     }
   }
-  Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
+  Triangle triangle = Triangle(points_[0], points_[1], points_[2]);
   points_++;
   return triangle;
 }

@@ -17,3 +17,14 @@ bool dimkashelk::isRectangularTriangle(point_t *points)
   }
   return square[0]  == square[1] + square[2] || square[1] == square[0] + square[2] || square[2] == square[0] + square[1];
 }
+dimkashelk::point_t dimkashelk::getCenterOfWeight(point_t *points, size_t size)
+{
+  double x_sum = 0.0;
+  double y_sum = 0.0;
+  for (size_t i = 0; i < size; i++)
+  {
+    x_sum += points[i].x;
+    y_sum += points[i].y;
+  }
+  return point_t{x_sum / size, y_sum / size};
+}

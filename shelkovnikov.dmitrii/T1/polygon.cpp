@@ -6,20 +6,12 @@
 dimkashelk::Polygon::Polygon(point_t *points, size_t size):
   count_(0),
   triangles_(makeTriangles(points, size)),
-  center_{0.0, 0.0}
+  center_(getCenterOfWeight(points, size))
 {
   if (size >= 3)
   {
     count_ = size - 2;
   }
-  double x_sum = 0.0;
-  double y_sum = 0.0;
-  for (size_t i = 0; i < size; i++)
-  {
-    x_sum += points[i].x;
-    y_sum += points[i].y;
-  }
-  center_ = point_t{x_sum / size, y_sum / size};
 }
 dimkashelk::Polygon::Polygon(const Polygon &polygon):
   count_(polygon.count_),

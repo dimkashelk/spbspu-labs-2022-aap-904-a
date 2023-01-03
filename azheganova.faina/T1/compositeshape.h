@@ -7,10 +7,8 @@ class CompositeShape
 {
   public:
     CompositeShape();
-    CompositeShape(const CompositeShape &compositeShape);
-    CompositeShape(CompositeShape &&compositeShape);
-    CompositeShape(const CompositeShape&);
-    CompositeShape(CompositeShape&&);
+    CompositeShape(const CompositeShape & rhs);
+    CompositeShape(CompositeShape && rhs);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(double dx, double dy);

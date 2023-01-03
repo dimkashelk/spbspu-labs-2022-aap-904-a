@@ -15,5 +15,5 @@ rectangle* inputRectangle()
   {
     std::cout << "error";
   }
-  return new point_t[4]{x1, y1, x2, y2};
+  return new rectangle[4]{x1, y1, x2, y2};
 }

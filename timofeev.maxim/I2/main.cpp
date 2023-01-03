@@ -52,12 +52,12 @@ int main(int argc, char *argv[])
       delete [] dyn_array;
       return 2;
     }
-    delete [] dyn_array;
-    }
+  }
   else
   {
     std::cout << "Error " << "\n";
   }
+  delete [] dyn_array;
 
   if (argc == 1)
   {
@@ -106,6 +106,6 @@ int main(int argc, char *argv[])
       delete [] File_Array;
       return 0;
     }
-    delete [] File_Array;
   }
+  delete [] File_Array;
 }

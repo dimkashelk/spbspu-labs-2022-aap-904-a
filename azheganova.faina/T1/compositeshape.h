@@ -8,7 +8,7 @@ class CompositeShape
   public:
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape &&);
-    CompositeShape(unsigned long&);
+    CompositeShape(size_t capasity);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(double dx, double dy);

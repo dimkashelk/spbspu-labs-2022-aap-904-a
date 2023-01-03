@@ -12,7 +12,7 @@
 int main()
 {
   std::string line;
-  unsigned long capacity = 10;
+  size_t capacity = 10;
   CompositeShape compositeShape(capacity);
   point_t *arr = nullptr;
   while(std::cin)

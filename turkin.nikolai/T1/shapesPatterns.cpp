@@ -14,8 +14,8 @@ turkin::rectangle_t::rectangle_t(turkin::point_t one, double side):
 
 turkin::rectangle_t::rectangle_t(turkin::point_t one, double r1, double r2):
   position{one.x, one.y},
-  width(r1 * 2.0),
-  height(r2 * 2.0)
+  width(r2 * 2.0),
+  height(r1 * 2.0)
 {}
 
 turkin::point_t::point_t(double nx, double ny):

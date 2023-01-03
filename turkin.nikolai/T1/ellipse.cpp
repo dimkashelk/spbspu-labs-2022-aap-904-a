@@ -26,8 +26,8 @@ void turkin::Ellipse::scale(double ds)
 {
   r1 = r1 * ds;
   r2 = r2 * ds;
-  rect_.width = r1 * 2.0;
-  rect_.height = r2 * 2.0;
+  rect_.width = r2 * 2.0;
+  rect_.height = r1 * 2.0;
 }
 
 turkin::Ellipse::Ellipse(turkin::point_t one, double nr1, double nr2):

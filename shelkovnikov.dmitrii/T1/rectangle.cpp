@@ -1,5 +1,4 @@
 #include "rectangle.h"
-#include <cmath>
 dimkashelk::Rectangle::Rectangle(rectangle_t rectangle):
   rectangle_(rectangle)
 {}

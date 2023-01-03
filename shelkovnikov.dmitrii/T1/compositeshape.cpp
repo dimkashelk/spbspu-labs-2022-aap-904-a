@@ -157,7 +157,7 @@ void dimkashelk::CompositeShape::scale(double k)
   point_t center = getFrameRect().point;
   for (size_t i = 0; i < size_; i++)
   {
-    dimkashelk::isotropicScaling(shapes_[i], center, k);
+    isotropicScaling(shapes_[i], center, k);
   }
 }
 void dimkashelk::CompositeShape::push_back(Shape *shp)

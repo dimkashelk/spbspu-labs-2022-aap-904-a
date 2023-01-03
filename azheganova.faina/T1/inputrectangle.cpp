@@ -1,7 +1,7 @@
 #include "inputrectangle.h"
 #include <iostream>
 
-point_t* inputRectangle()
+rectangle* inputRectangle()
 {
   point_t x1{};
   point_t y1{};

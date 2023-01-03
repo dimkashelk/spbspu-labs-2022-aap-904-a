@@ -25,9 +25,10 @@ char* removeExtraSpaces(char* destination, const char* cstring)
     numberOfOccurrencesInCstring1--;
     cstring--;
   }
-
+  numberOfOccurrencesInCstring = 0;
   while (*cstring != '\0')
   {
+    numberOfOccurrencesInCstring++;
     if (*cstring != ' ')
     {
       numberOfSymbols2++;
@@ -44,7 +45,7 @@ char* removeExtraSpaces(char* destination, const char* cstring)
       numberOfSpaces++;
     }
 
-    if (numberOfOccurrencesInCstring != 0 && *cstring == *(cstring - 1) && *cstring == ' ' && numberOfSymbols2 != numberOfSymbols1)
+    if (numberOfOccurrencesInCstring != 1 && *cstring == *(cstring - 1) && *cstring == ' ' && numberOfSymbols2 != numberOfSymbols1)
     {
       numberOfDeletedSpaces++;
       cstring++;

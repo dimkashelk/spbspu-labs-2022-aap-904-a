@@ -19,7 +19,7 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   double side_2 = std::sqrt(std::pow(point_3.x - point_1.x, 2) + std::pow(point_3.y - point_1.y, 2));
   double hypotenuse = std::max(side_1, side_2);
   double cathet = std::min(side_1, side_2);
-  double angle_degrees = std::round((acos(cathet / hypotenuse) * 180.0 / M_PI) * 1000) / 1000;
+  double angle_degrees = std::round((std::acos(cathet / hypotenuse) * 180.0 / 3.1415926) * 1000) / 1000;
   size_ = static_cast< size_t >(360 / angle_degrees);
   if (size_ * angle_degrees != 360)
   {
@@ -44,7 +44,7 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
   double min_y = left_down.y;
   double max_x = right_up.x;
   double max_y = right_up.y;
-  double theta = 360.0 / size_ * 2 * M_PI / 180;
+  double theta = 360.0 / size_ * 2 * 3.1415926 / 180;
   for (size_t i = 1; i < size_; i++)
   {
     Triangle rotate_triangle = triangle_.rotate(i * theta);

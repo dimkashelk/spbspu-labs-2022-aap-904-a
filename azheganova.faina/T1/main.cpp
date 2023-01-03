@@ -9,7 +9,6 @@
 int main()
 {
   std::string line;
-  size_t capacity = 10;
   CompositeShape rhs;
   while(std::cin)
   {

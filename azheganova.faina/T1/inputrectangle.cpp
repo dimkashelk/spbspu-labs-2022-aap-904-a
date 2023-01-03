@@ -1,12 +1,12 @@
 #include "inputrectangle.h"
 #include <iostream>
 
-rectangle* inputRectangle()
+point_t* inputRectangle()
 {
-  rectangle x1{};
-  rectangle y1{};
-  rectangle x2{};
-  rectangle y2{};
+  point_t x1{};
+  point_t y1{};
+  point_t x2{};
+  point_t y2{};
   std::cin >> x1.x;
   std::cin >> y1.y;
   std::cin >> x2.x;
@@ -15,5 +15,5 @@ rectangle* inputRectangle()
   {
     std::cout << "error";
   }
-  return new rectangle[4]{x1, y1, x2, y2};
+  return new point_t[4]{x1, y1, x2, y2};
 }

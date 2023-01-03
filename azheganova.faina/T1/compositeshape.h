@@ -15,6 +15,8 @@ class CompositeShape
     void move(point_t position);
     void scale(const point_t & position, double k);
     void push_back(shape * shapes);
+    CompositeShape *clone() const;
+    ~CompositeShape();
   private:
     shape ** shape_;
     size_t size_;

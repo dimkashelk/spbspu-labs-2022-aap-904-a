@@ -1,7 +1,7 @@
+#include "parallelogram.h"
 #include <cmath>
 #include <algorithm>
-#include "parallelogram.h"
-Parallelogram::Parallelogram(point_t *pointsArray) :
+Parallelogram::Parallelogram(point_t *pointsArray):
   A(pointsArray[0]),
   B(pointsArray[1]),
   C(pointsArray[2]),

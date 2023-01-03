@@ -22,9 +22,7 @@ public:
   size_t size();
   CompositeShape *clone() const;
   ~CompositeShape();
-
   void isoScale(Shape &shape, double x, double y, double k);
-
 private:
   Shape **shape_;
   size_t size_;

@@ -1,7 +1,7 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_CONCAVE_H
 #define SPBSPU_LABS_2022_AAP_904_A_CONCAVE_H
 #include "shape.h"
-class Concave : public Shape
+class Concave: public Shape
 {
 public:
   Concave();

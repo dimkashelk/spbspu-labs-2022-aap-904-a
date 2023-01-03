@@ -1,5 +1,4 @@
 #include <stdexcept>
-#include <iostream>
 #include "compositeshape.h"
 void CompositeShape::push_back(Shape *shp)
 {
@@ -8,16 +7,7 @@ void CompositeShape::push_back(Shape *shp)
   {
     throw std::invalid_argument("Expansion is impossible.");
   }
-  Shape **newShape/* = nullptr;
-  try
-  {
-    newShape */= new Shape *[capacity_ + capAdd];
-  /*}
-  catch (...)
-  {
-    delete shape_;
-    throw;
-  }*/
+  Shape **newShape = new Shape *[capacity_ + capAdd];
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
   {
@@ -42,16 +32,13 @@ void CompositeShape::isoScale(Shape &shape, double secondPosX, double secondPosY
 }
 CompositeShape::CompositeShape(size_t capacity)
 {
-  shape_ = new Shape *[capacity]; ///!
+  shape_ = new Shape *[capacity];
   capacity_ = capacity;
   size_ = 0;
-  //shape_(new Shape*[capacity]);
-  //capacity(capacity);
-  //size_(0);
 }
 Shape *CompositeShape::operator[](size_t id)
 {
-  return shape_[id];//!
+  return shape_[id];
 }
 void CompositeShape::move(point_t)
 {

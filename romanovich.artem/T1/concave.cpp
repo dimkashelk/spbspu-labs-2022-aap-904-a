@@ -1,8 +1,7 @@
 #include "concave.h"
 #include <cmath>
 #include <algorithm>
-#include <iostream>
-Concave::Concave(point_t *pointsArray) :
+Concave::Concave(point_t *pointsArray):
   A(pointsArray[0]),
   B(pointsArray[1]),
   C(pointsArray[2]),
@@ -20,7 +19,6 @@ bool Concave::goodConcaveInput() const
   double min_ = std::max({a, b, c});
   double midl_ = a + b + c - max_ - min_;
   bool firstThreeTriangle = (max_ < min_ + midl_);
-  // https://habr.com/ru/post/148325/
   bool fourthLeftAB = ((D.x - A.x) * (B.y - A.y) - (D.y - A.y) * (B.x - A.x) > 0);
   bool fourthLeftBC = ((D.x - B.x) * (C.y - B.y) - (D.y - B.y) * (C.x - B.x) > 0);
   bool fourthLeftCA = ((D.x - C.x) * (A.y - C.y) - (D.y - C.y) * (A.x - C.x) > 0);
@@ -58,7 +56,6 @@ double *Concave::getSides() const
 }
 double Concave::getArea() const
 {
-  //std::cout << goodConcaveInput() << "\n";
   double *sides = getSides();
   double a = sides[0];
   double b = sides[1];

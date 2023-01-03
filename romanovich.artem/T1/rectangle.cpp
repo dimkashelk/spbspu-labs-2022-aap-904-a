@@ -1,5 +1,5 @@
 #include "rectangle.h"
-Rectangle::Rectangle(point_t *pointsArray) :
+Rectangle::Rectangle(point_t *pointsArray):
   A(pointsArray[0]),
   B(pointsArray[1]),
   C(pointsArray[2]),

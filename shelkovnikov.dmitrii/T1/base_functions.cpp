@@ -15,7 +15,12 @@ bool dimkashelk::isRectangularTriangle(const point_t *points)
   {
     square[i] = std::pow(points[i].x - points[(i + 1) % 3].x, 2) + std::pow(points[i].y - points[(i + 1) % 3].y, 2);
   }
-  return square[0]  == square[1] + square[2] || square[1] == square[0] + square[2] || square[2] == square[0] + square[1];
+  bool result = false;
+  for (size_t i = 0; i < 3; i++)
+  {
+    result = result || square[i]  == square[(i + 1) % 3] + square[(i + 2) % 3];
+  }
+  return result;
 }
 dimkashelk::point_t dimkashelk::getCenterOfWeight(const point_t *points, size_t size)
 {

@@ -9,7 +9,6 @@ int main()
   size_t capacity = 10;
   size_t size = 0;
   char* cstring = nullptr;
-  cstring[0] = '\0';
   try
   {
     cstring = new char[capacity];

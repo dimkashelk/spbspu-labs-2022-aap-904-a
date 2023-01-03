@@ -1,12 +1,12 @@
 #include "IsRealNumber.hpp"
 #include <cctype>
 
-bool findDot(char *);
-bool afterDot(char *);
-bool findE(char *);
-bool findSign(char *);
-bool afterSign(char *);
-bool finish(char *);
+bool findDot(const char *);
+bool afterDot(const char *);
+bool findE(const char *);
+bool findSign(const char *);
+bool afterSign(const char *);
+bool finish(const char *);
 
 bool isSign(char x)
 {
@@ -33,40 +33,40 @@ bool isEnd(char x)
   return x == '\0';
 }
 
-bool start(char *x)
+bool start(const char *x)
 {
-  return isDigit(*x) && (start(++x) || findDot(++x));
+  return isDigit(*x) && (start(x + 1) || findDot(x + 1));
 }
-bool findDot(char *x)
+bool findDot(const char *x)
 {
-  return isDot(*x) && afterDot(++x);
+  return isDot(*x) && afterDot(x + 1);
 }
-bool afterDot(char *x)
+bool afterDot(const char *x)
 {
-  return isDigit(*x) && (afterDot(++x) || findE(++x));
+  return isDigit(*x) && (afterDot(x + 1) || findE(x + 1));
 }
-bool findE(char *x)
+bool findE(const char *x)
 {
-  return isE(*x) && (findSign(++x) || afterSign(++x) || finish(++x));
+  return isE(*x) && (findSign(x + 1) || afterSign(x + 1) || finish(x + 1));
 }
-bool findSign(char *x)
+bool findSign(const char *x)
 {
-  return isSign(*x) && (afterSign(++x) || finish(++x));
+  return isSign(*x) && (afterSign(x + 1) || finish(x + 1));
 }
-bool afterSign(char *x)
+bool afterSign(const char *x)
 {
-  return isDigit(*x) && (afterSign(++x) || finish(++x));
+  return isDigit(*x) && (afterSign(x + 1) || finish(x + 1));
 }
-bool finish(char *x)
+bool finish(const char *x)
 {
-  return isDigit(*x) && isEnd(*(++x));
+  return isDigit(*x) && isEnd(*(x + 1));
 }
 
-bool isRealNum(char *x)
+bool isRealNum(const char *x)
 {
-  bool first_variant = isSign(*x) && (start(++x) || findDot(++x));
-  bool second_variant = isDigit(*x) && (start(++x) || findDot(++x));
-  bool third_variant = isDot(*x) && afterDot(++x);
+  bool first_variant = isSign(*x) && (start(x + 1) || findDot(x + 1));
+  bool second_variant = isDigit(*x) && (start(x + 1) || findDot(x + 1));
+  bool third_variant = isDot(*x) && afterDot(x + 1);
 
   return first_variant || second_variant || third_variant;
 }

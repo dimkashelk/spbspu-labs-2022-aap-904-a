@@ -2,15 +2,19 @@
 
 bool hasItTheSameSimbols(const char* cstring1, const char* cstring2)
 {
-  for (size_t i = 0; i < strlen(cstring1); i++)
+  const char* cstr1 = cstring1;
+  while (*cstr1 != '\0')
   {
-    for (size_t j = 0; j < strlen(cstring2); j++)
+    const char* cstr2 = cstring2;
+    while (*cstr2 != '\0')
     {
-      if (cstring1[i] == cstring2[j])
+      if (*cstr1 == *cstr2)
       {
         return true;
       }
+      cstr2++;
     }
+    cstr1++;
   }
   return false;
 }

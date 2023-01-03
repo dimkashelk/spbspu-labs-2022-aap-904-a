@@ -13,8 +13,6 @@ namespace dimkashelk
     point_t point;
     double width;
     double height;
-    rectangle_t(point_t point_1, point_t point_2);
-    rectangle_t(point_t point, double width, double height);
   };
 }
 #endif

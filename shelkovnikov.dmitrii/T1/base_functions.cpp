@@ -28,3 +28,12 @@ dimkashelk::point_t dimkashelk::getCenterOfWeight(point_t *points, size_t size)
   }
   return point_t{x_sum / size, y_sum / size};
 }
+dimkashelk::rectangle_t dimkashelk::make(point_t left_down, point_t right_up)
+{
+  if (right_up.x <= left_down.x || right_up.y <= left_down.y)
+  {
+    throw std::logic_error("It isn't rectangle");
+  }
+  rectangle_t rect{point_t{(left_down.x + right_up.x) / 2, (left_down.y + right_up.y) / 2}, right_up.x - left_down.x, right_up.y - left_down.y};
+  return rect;
+}

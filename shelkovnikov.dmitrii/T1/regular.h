@@ -9,10 +9,6 @@ namespace dimkashelk
   {
   public:
     Regular(point_t point_1, point_t point_2, point_t point_3);
-    Regular(const Regular &regular);
-    Regular(Regular &&regular) = delete;
-    Regular& operator=(const Regular &other) = delete;
-    Regular& operator=(Regular &&tmp) = delete;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
@@ -23,6 +19,10 @@ namespace dimkashelk
     Triangle triangle_;
     size_t size_;
     point_t center_;
+    Regular(const Regular &regular);
+    Regular(Regular &&regular) = delete;
+    Regular& operator=(const Regular &other) = delete;
+    Regular& operator=(Regular &&tmp) = delete;
   };
 }
 #endif

@@ -1,4 +1,5 @@
 #include "lnPlusOneOverMinusOne.hpp"
+#include <stdexcept>
 
 struct LnTermGenerator {
   double oneOverXSquared;
@@ -26,5 +27,21 @@ struct LnTermGenerator {
 
 double odintsov::lnPlusOneOverMinusOne(double x, double absError, unsigned numberMax)
 {
-  return 0.0;
+  if ((x <= 2.0) || (x >= 3.0)) {
+    throw std::invalid_argument("x is set incorrectly");
+  }
+  double result = 0.0;
+  LnTermGenerator generateTerm(x);
+  double term = 0.0;
+  for (unsigned i = 0; i < numberMax; i++) {
+    term = generateTerm(); 
+    if (term < absError) {
+      break;
+    }
+    result += term;
+  }
+  if (term > absError) {
+    throw std::runtime_error("absolute error not achieved");
+  }
+  return result * 2;
 }

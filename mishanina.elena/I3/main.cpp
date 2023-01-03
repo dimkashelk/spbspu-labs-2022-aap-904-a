@@ -10,14 +10,7 @@ int main()
   cstring1[0] = '\0';
   try
   {
-    cstring1 = inputString(cstring1, capacity1, std::cin);
-    if (cstring1[0] == '\0')
-    {
-      std::cerr << "ERROR: empty string";
-      delete[] cstring1;
-      return 1;
-    }
-    cstring1[capacity1 - 1] = '\0';
+    cstring1 = inputString( capacity1, std::cin);
   }
   catch (const std::exception& e)
   {
@@ -25,10 +18,11 @@ int main()
     delete[] cstring1;
     return 1;
   }
-  char* destination = new char[capacity1];
-  destination[0] = '\0';
+  char* destination{};
   try
   {
+    destination = new char[capacity1];
+    destination[0] = '\0';
     destination = removeExtraSpaces(destination, cstring1);
     std::cout << destination << "\n";
     delete[] destination;
@@ -45,22 +39,13 @@ int main()
   cstring2[0] = '\0';
   try
   {
-    cstring2 = inputString(cstring2, capacity2, std::cin);
-    if (capacity2 == 0)
-    {
-      cstring2[capacity2] = '\0';
-    }
-    else
-    {
-      cstring2[capacity2 - 1] = '\0';
-    }
+    cstring2 = inputString(capacity2, std::cin);
   }
   catch (const std::exception& e)
   {
     std::cerr << e.what();
     delete[] cstring1;
     delete[] cstring2;
-    delete[] destination;
     return 1;
   }
   bool result = false;

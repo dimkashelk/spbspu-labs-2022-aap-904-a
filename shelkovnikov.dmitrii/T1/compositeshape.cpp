@@ -34,7 +34,9 @@ dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),
   shapes_(compositeShape.shapes_)
-{}
+{
+  compositeShape.shapes_ = nullptr;
+}
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const CompositeShape &other)
 {
   Shape **shapes = new Shape*[other.capacity_];

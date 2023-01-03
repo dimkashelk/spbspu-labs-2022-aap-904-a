@@ -7,10 +7,10 @@ point_t* inputRectangle()
   point_t y1{};
   point_t x2{};
   point_t y2{};
-  std::cin >> x1;
-  std::cin >> y1;
-  std::cin >> x2;
-  std::cin >> y2;
+  std::cin >> x1.x;
+  std::cin >> y1.y;
+  std::cin >> x2.x;
+  std::cin >> y2.y;
   if (!std::cin)
   {
     std::cout << "error";

@@ -6,7 +6,6 @@
 class rectangle : public shape
 {
   public:
-    rectangle(rectangle *arr);
     rectangle(rectangle_t rectangle);
     rectangle(point_t point1, point_t point2);
     double getArea() const;
@@ -14,7 +13,7 @@ class rectangle : public shape
     void move(double dx, double dy);
     void move(point_t position);
     void scale(double k);
-    rectangle * clone() const override;
+    shape * clone() const override;
   private:
     rectangle_t rectangle1;
 };

@@ -1,12 +1,12 @@
 #include "IsRealNumber.hpp"
 #include <cctype>
 
-bool findDot(const char *);
-bool afterDot(const char *);
-bool findE(const char *);
-bool findSign(const char *);
-bool afterSign(const char *);
-bool finish(const char *);
+bool findDot(char *);
+bool afterDot(char *);
+bool findE(char *);
+bool findSign(char *);
+bool afterSign(char *);
+bool finish(char *);
 
 bool isSign(char x)
 {
@@ -33,36 +33,36 @@ bool isEnd(char x)
   return x == '\0';
 }
 
-bool start(const char *x)
+bool start(char *x)
 {
   return isDigit(*x) && (start(++x) || findDot(++x));
 }
-bool findDot(const char *x)
+bool findDot(char *x)
 {
   return isDot(*x) && afterDot(++x);
 }
-bool afterDot(const char *x)
+bool afterDot(char *x)
 {
   return isDigit(*x) && (afterDot(++x) || findE(++x));
 }
-bool findE(const char *x)
+bool findE(char *x)
 {
   return isE(*x) && (findSign(++x) || afterSign(++x) || finish(++x));
 }
-bool findSign(const char *x)
+bool findSign(char *x)
 {
   return isSign(*x) && (afterSign(++x) || finish(++x));
 }
-bool afterSign(const char *x)
+bool afterSign(char *x)
 {
   return isDigit(*x) && (afterSign(++x) || finish(++x));
 }
-bool finish(const char *x)
+bool finish(char *x)
 {
   return isDigit(*x) && isEnd(*(++x));
 }
 
-bool isRealNum(const char *x)
+bool isRealNum(char *x)
 {
   bool first_variant = isSign(*x) && (start(++x) || findDot(++x));
   bool second_variant = isDigit(*x) && (start(++x) || findDot(++x));

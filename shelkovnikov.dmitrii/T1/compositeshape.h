@@ -21,7 +21,6 @@ namespace dimkashelk
     void move(point_t point);
     void move(double delta_x, double delta_y);
     void scale(double k);
-    point_t getCenter() const;
     void push_back(Shape *shp);
     void pop_back();
     Shape* at(size_t id);

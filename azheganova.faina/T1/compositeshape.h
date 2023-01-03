@@ -8,7 +8,7 @@
 class CompositeShape
 {
   public:
-    CompositeShape();
+    explicit CompositeShape();
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
     double getArea() const;

@@ -8,7 +8,7 @@ dimkashelk::point_t dimkashelk::getRightUpPoint(rectangle_t rect)
 {
   return point_t{rect.point.x + rect.width / 2, rect.point.y + rect.height / 2};
 }
-bool dimkashelk::isRectangularTriangle(point_t *points)
+bool dimkashelk::isRectangularTriangle(const point_t *points)
 {
   double square[3];
   for (size_t i = 0; i < 3; i++)

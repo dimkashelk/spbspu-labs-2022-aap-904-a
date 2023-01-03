@@ -113,6 +113,10 @@ double dimkashelk::CompositeShape::getArea() const
 }
 dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
 {
+  if (empty())
+  {
+    throw std::logic_error("CompositeShape empty");
+  }
   rectangle_t rectangle = shapes_[0]->getFrameRect();
   point_t left_down = getLeftDownPoint(rectangle);
   point_t right_up = getRightUpPoint(rectangle);

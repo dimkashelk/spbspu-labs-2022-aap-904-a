@@ -17,7 +17,6 @@ namespace dimkashelk
     size_t size_;
     size_t point_;
     double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const;
-    bool containsThreePointsOnLine();
   };
 }
 #endif

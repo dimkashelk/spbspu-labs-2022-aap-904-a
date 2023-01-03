@@ -1,7 +1,6 @@
 #include "triangulatepoints.h"
 #include <stdexcept>
 #include <cmath>
-#include <limits>
 dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
@@ -10,11 +9,6 @@ dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
   for (size_t i = 0; i < size; i++)
   {
     points_[i] = points[i];
-  }
-  if (containsThreePointsOnLine())
-  {
-    delete[] points_;
-    throw std::logic_error("3 or more points_ on one line here.......");
   }
   if (size < 3)
   {
@@ -36,9 +30,17 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
   {
     if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) > 0)
     {
-      Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
-      point_++;
-      return triangle;
+      try
+      {
+        Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
+        point_++;
+        return triangle;
+      }
+      catch(...)
+      {
+        delete[] points_;
+        throw;
+      }
     }
     else
     {
@@ -67,26 +69,4 @@ double dimkashelk::TriangulatePoints::getMixedProduct(point_t p1_end, point_t p1
   // a * b * c = |x2 y2 0| = x1 * y2 * z3 - x2 * y1 * z3
   //             |0  0 z3|
   return a_x * b_y * third_coord - b_x * a_y * third_coord;
-}
-bool dimkashelk::TriangulatePoints::containsThreePointsOnLine()
-{
-  constexpr double error = std::numeric_limits< double >::epsilon();
-  bool contains_three_points_on_line = false;
-  for (size_t i = 0; i < size_ - 2 && !contains_three_points_on_line; i++)
-  {
-    for (size_t j = i + 1; j < size_ - 1 && !contains_three_points_on_line; j++)
-    {
-      for (size_t k = j + 1; k < size_ && !contains_three_points_on_line; k++)
-      {
-        double A = points_[i].y - points_[j].y;
-        double B = -(points_[i].x - points_[j].x);
-        double C = -B * points_[j].y - A * points_[j].x;
-        if (std::fabs(A * points_[k].x + B * points_[k].y + C) <= error)
-        {
-          contains_three_points_on_line = true;
-        }
-      }
-    }
-  }
-  return contains_three_points_on_line;
 }

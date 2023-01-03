@@ -17,11 +17,11 @@ dimkashelk::Regular *dimkashelk::inputRegular(std::istream &in)
 {
   double x = 0.0;
   double y = 0.0;
-  dimkashelk::point_t point[3];
+  point_t point[3];
   for (size_t i = 0; i < 3; i++)
   {
     in >> x >> y;
-    point[i] = dimkashelk::point_t{x, y};
+    point[i] = point_t{x, y};
   }
   if (!in)
   {
@@ -33,7 +33,7 @@ dimkashelk::Polygon *dimkashelk::inputPolygon(std::istream &in)
 {
   size_t s = 0;
   size_t cap = 10;
-  point_t *points = new dimkashelk::point_t[cap];
+  point_t *points = new point_t[cap];
   do
   {
     double x = 0.0;
@@ -41,12 +41,12 @@ dimkashelk::Polygon *dimkashelk::inputPolygon(std::istream &in)
     in >> x >> y;
     if (in)
     {
-      points[s] = dimkashelk::point_t{x, y};
+      points[s] = point_t{x, y};
       s++;
       if (s == cap)
       {
         cap += 10;
-        dimkashelk::point_t *new_points = new dimkashelk::point_t[cap];
+        point_t *new_points = new point_t[cap];
         for (size_t i = 0; i < s; i++)
         {
           new_points[i] = points[i];

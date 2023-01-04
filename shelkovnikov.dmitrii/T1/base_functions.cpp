@@ -43,3 +43,17 @@ dimkashelk::rectangle_t dimkashelk::makeRectangle(point_t left, point_t right)
   rectangle_t rect{point_t{(left.x + right.x) / 2, (left.y + right.y) / 2},right.x - left.x,right.y - left.y};
   return rect;
 }
+dimkashelk::point_t dimkashelk::getLeftDownPoint(point_t point1, point_t point2)
+{
+  return point_t{std::min(point1.x, point2.x), std::min(point1.y, point2.y)};
+}
+dimkashelk::point_t dimkashelk::getRightUpPoint(point_t point1, point_t point2)
+{
+  return point_t{std::max(point1.x, point2.x), std::max(point1.y, point2.y)};
+}
+dimkashelk::rectangle_t dimkashelk::getFrameRect(rectangle_t rect1, rectangle_t rect2)
+{
+  point_t left_down = getLeftDownPoint(getLeftDownPoint(rect1), getLeftDownPoint(rect1));
+  point_t right_up = getRightUpPoint(getRightUpPoint(rect1), getRightUpPoint(rect1));
+  return makeRectangle(left_down, right_up);
+}

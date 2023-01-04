@@ -2,6 +2,7 @@
 #define SPBSPU_LABS_2022_AAP_904_A_BASE_FUNCTIONS_H
 #include "base_types.h"
 #include <cstddef>
+#include "shape.h"
 namespace dimkashelk
 {
   point_t getLeftDownPoint(rectangle_t rect);
@@ -9,5 +10,8 @@ namespace dimkashelk
   bool isRectangularTriangle(const point_t *points);
   point_t getCenterOfWeight(const point_t *points, size_t size);
   rectangle_t makeRectangle(point_t left, point_t right);
+  point_t getLeftDownPoint(point_t point1, point_t point2);
+  point_t getRightUpPoint(point_t point1, point_t point2);
+  rectangle_t getFrameRect(rectangle_t rect1, rectangle_t rect2);
 }
 #endif

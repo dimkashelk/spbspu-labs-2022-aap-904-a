@@ -1,6 +1,6 @@
 #include "outputframerect.hpp"
 
-void outputFrameRect(std::ostream & output, const tarasenko::rectangle_t & rect)
+void tarasenko::outputFrameRect(std::ostream & output, const tarasenko::rectangle_t & rect)
 {
   tarasenko::point_t point_ld(rect.pos_.x_ - rect.width_ * 0.5, rect.pos_.y_ - rect.height_ * 0.5);
   tarasenko::point_t point_ru(rect.pos_.x_ + rect.width_ * 0.5, rect.pos_.y_ + rect.height_ * 0.5);

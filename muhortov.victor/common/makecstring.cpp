@@ -1,5 +1,6 @@
 #include "makecstring.hpp"
 #include <extendcstring.hpp>
+#include <cstring>
 
 char *makeCString(size_t &size, size_t &capacity, std::istream &input)
 {
@@ -11,7 +12,10 @@ char *makeCString(size_t &size, size_t &capacity, std::istream &input)
   {
     if (size + 1 == capacity)
     {
-      c_string = extendCString(c_string, capacity);
+      char *newstr = extendCString(capacity);
+      std::strcpy(newstr, c_string);
+      delete[] c_string;
+      c_string = newstr;
     }
     input >> c_string[size];
   }

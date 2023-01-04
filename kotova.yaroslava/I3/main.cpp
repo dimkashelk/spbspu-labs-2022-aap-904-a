@@ -21,7 +21,6 @@ int main()
   }
 
   char* destination1 = nullptr;
-  destination1 = new char[capacity];
 
   destination1 = deleteNumbers(cstring, destination1);
   std::cout << destination1 << "\n";

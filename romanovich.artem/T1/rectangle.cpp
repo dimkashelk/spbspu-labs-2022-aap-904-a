@@ -1,5 +1,6 @@
+#include <stdexcept>
 #include "rectangle.h"
-Rectangle::Rectangle(point_t *pointsArray):
+Rectangle::Rectangle(point_t *pointsArray) :
   A(pointsArray[0]),
   B(pointsArray[1]),
   C(pointsArray[2]),
@@ -51,9 +52,12 @@ void Rectangle::scale(double k)
     D.x = C.x;
     D.y = A.y;
   }
+  else
+  {
+    throw std::invalid_argument("Invalid scaling coeff.");
+  }
 }
 Rectangle *Rectangle::clone() const
 {
   return nullptr;
 }
-Rectangle::Rectangle() = default;

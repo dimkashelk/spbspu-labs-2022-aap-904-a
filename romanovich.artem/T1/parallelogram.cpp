@@ -1,6 +1,7 @@
 #include "parallelogram.h"
 #include <cmath>
 #include <algorithm>
+#include <stdexcept>
 Parallelogram::Parallelogram(point_t *pointsArray):
   A(pointsArray[0]),
   B(pointsArray[1]),
@@ -67,6 +68,10 @@ void Parallelogram::scale(double k)
     D.x = k * (D.x - centerX) + centerX;
     D.y = k * (D.y - centerY) + centerY;
   }
+  else
+  {
+    throw std::invalid_argument("Invalid scaling coeff.");
+  }
 }
 Parallelogram *Parallelogram::clone() const
 {
@@ -88,4 +93,3 @@ bool Parallelogram::goodParallelogramInput() const
 {
   return (((A.y == B.y) || (B.y == C.y)) && (A.y - B.y != C.y - B.y));
 }
-Parallelogram::Parallelogram() = default;

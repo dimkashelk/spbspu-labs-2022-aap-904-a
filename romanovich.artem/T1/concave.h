@@ -4,7 +4,6 @@
 class Concave: public Shape
 {
 public:
-  Concave();
   explicit Concave(point_t *pointsArray);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
@@ -17,6 +16,6 @@ public:
   double *getSides() const;
   ~Concave() override = default;
 private:
-  mutable point_t A{}, B{}, C{}, D{};
+  point_t A{}, B{}, C{}, D{};
 };
 #endif

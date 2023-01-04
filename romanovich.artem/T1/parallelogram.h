@@ -4,7 +4,6 @@
 class Parallelogram: public Shape
 {
 public:
-  Parallelogram();
   explicit Parallelogram(point_t *pointsArray);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
@@ -16,6 +15,6 @@ public:
   ~Parallelogram() override = default;
   bool goodParallelogramInput() const;
 private:
-  mutable point_t A{}, B{}, C{}, D{};
+  point_t A{}, B{}, C{}, D{};
 };
 #endif

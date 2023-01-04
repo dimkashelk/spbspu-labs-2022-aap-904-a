@@ -30,7 +30,7 @@ char* inputString(size_t &capacity, std::istream& input)
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
-  if (cstring[0] == '\0')
+  if (size == 1)
   {
     delete[] cstring;
     throw std::invalid_argument("ERROR: Empty string");

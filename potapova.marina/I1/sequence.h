@@ -1,15 +1,16 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
+#include <cstddef>
 struct CounterPythagoreanTriplets {
   void operator()(int currval);
   int predval;
   int predpredval;
-  int count;
+  size_t count;
 };
 
 struct CounterSignChange {
   void operator()(int currval);
   int predval;
-  int count;
+  size_t count;
 };
 #endif

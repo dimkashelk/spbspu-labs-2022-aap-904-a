@@ -1,5 +1,6 @@
 #include "polygon.h"
 #include <algorithm>
+#include <stdexcept>
 #include "isotropic_scaling.h"
 #include "base_functions.h"
 #include "make_triangles.h"

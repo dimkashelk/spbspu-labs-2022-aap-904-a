@@ -1,12 +1,8 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_COMPOSITE_SHAPE_H
 #define SPBSPU_LABS_2022_AAP_904_A_COMPOSITE_SHAPE_H
 #include <cstddef>
-#include <sstream>
 #include "base_types.h"
 #include "shape.h"
-#include "rectangle.h"
-#include "regular.h"
-#include "polygon.h"
 namespace dimkashelk
 {
   class CompositeShape

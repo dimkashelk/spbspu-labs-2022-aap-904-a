@@ -1,6 +1,7 @@
 #include "compositeshape.h"
 #include <algorithm>
 #include <limits>
+#include <stdexcept>
 #include "base_functions.h"
 #include "isotropic_scaling.h"
 dimkashelk::CompositeShape::CompositeShape():

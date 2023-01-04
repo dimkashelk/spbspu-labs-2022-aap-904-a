@@ -34,7 +34,7 @@ void Rectangle::move(double dx, double dy)
   right_up_.y += dy;
 }
 
-void Rectangle::move(point_t& position)
+void Rectangle::move(point_t position)
 {
   double dx = position.x - getFrameRectangle().position.x;
   double dy = position.y - getFrameRectangle().position.y;

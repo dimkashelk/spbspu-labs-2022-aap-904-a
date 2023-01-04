@@ -6,19 +6,10 @@
 
 int main()
 {
-  size_t capacity = 20;
+  size_t capacity = 10;
   size_t size = 0;
-  char* cstring = new char[capacity];
-  try
-  {
-    cstring = formingCstring(size, std::cin);
-  }
-  catch (const std::exception& e)
-  {
-    std::cout << e.what();
-    delete[] cstring;
-    return 2;
-  }
+  char* cstring = formingCstring(size, std::cin);
+
 
   char* destination1 = nullptr;
   try

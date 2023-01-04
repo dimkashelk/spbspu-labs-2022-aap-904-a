@@ -4,12 +4,12 @@
 
 int main()
 {
-  double absError = 0.01;
+  constexpr double absError = 0.00001;
+  constexpr double step = 0.02;
   unsigned numberMax = 3;
   double l = 2.1;
   double r = 2.9;
-  double step = 0.1;
-  std::cin >> absError >> numberMax >> l >> r >> step;
+  std::cin >> l >> r >> numberMax;
   if (!std::cin) {
     std::cout << "Error: Input error";
     return 1;

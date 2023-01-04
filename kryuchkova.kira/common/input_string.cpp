@@ -16,12 +16,12 @@ char *inputString(char *cstring, size_t &capacity)
       try
       {
         char *newstr = new char[capacity + 20];
-        newstr[capacity + 20] = '\0';
+        newstr[capacity + 19] = '\0';
         for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
         {
           *j = *i;
         }
-        delete[] cstring;
+        //delete[] cstring;
 
         strcpy(cstring, newstr);
         //cstring = newstr;

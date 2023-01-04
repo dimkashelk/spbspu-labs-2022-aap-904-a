@@ -6,31 +6,40 @@
 
 int main()
 {
-  std::string name = "";
+  std::string figure = "";
   double x = 0.0;
   double y = 0.0;
-  std::cin >> name >> x >> y;
-  if (!std::cin)
+
+  do 
   {
-    std::cerr << "Error: wrong input";
-    return 1;
+    std::cin >> figure;
+    if (figure == "RECTANGLE")
+    {
+      point_t left_down_point{}, right_up_point{};
+      try
+      {
+        std::cin >> left_down_point.x >> left_down_point.y >> right_up_point.x >> right_up_point.y;
+        Shape* rectangle = new Rectangle(left_down_point, right_up_point);
+      }
+      catch (...)
+      {
+        std::cerr << "Error while reading parameters of the rectangle\n";
+        return 2;
+      }
+    }
+
+    if (figure == "RING")
+    {
+      //Shape* ring = new Ring();
+      return 0;
+    }
+
+    if (figure == "ELLIPSE")
+    {
+      //Shape* ellipse = new Ellipse();
+      return 0;
+    }
   }
-  if (name == "RECTANGLE")
-  {
-    Shape* rectangle = new Rectangle();
-  }
-  else if (name == "RING")
-  {
-    Shape* ring = new Ring();
-  }
-  else if (name == "Ellipse")
-  {
-    Shape* ellipse = new Ellipse();
-  }
-  else
-  {
-    std::cerr << "Error: wrong name of the figure";
-	return 1;
-  }
+  while (std::cin);
   return 0;
 }

@@ -22,11 +22,10 @@ char *inputString(char *cstring, size_t &capacity)
           //*j = *i;
         //}
         //delete[] cstring;
-        cstring[size] = '\0';
+        cstring[size - 1] = '\0';
         const char *newstr_1 = cstring;
         std::strcpy(newstr, newstr_1);
         delete[] cstring;
-        delete[] newstr_1;
         cstring = newstr;
         capacity += 20;
       }

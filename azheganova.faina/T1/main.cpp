@@ -12,24 +12,50 @@ int main()
 {
   std::string line;
   CompositeShape rhs;
+  bool wrongfigure = false;
   while(std::cin)
   {
     std::string name = "";
     std::cin >> name;
     if (name == "RECTANGLE")
     {
-      shape *shape = inputRectangle(std::cin);
-      rhs.push_back(shape);
+      try
+      {
+        shape *shape = inputRectangle(std::cin);
+        rhs.push_back(shape);
+      }
+      catch(const std::logic_error &e)
+      {
+        wrongfigure = true;
+      }
     }
-    if (name == "TRIANGLE")
+    else if (name == "TRIANGLE")
     {
-      shape *shape = inputTriangle(std::cin);
-      rhs.push_back(shape);
+      try
+      {
+        shape *shape = inputTriangle(std::cin);
+        rhs.push_back(shape);
+      }
+      catch(const std::logic_error &e)
+      {
+        wrongfigure = true;
+      }
     }
-    if (name == "COMPLEXQUAD")
+    else if (name == "COMPLEXQUAD")
     {
+      try
+      {
       shape *shape = inputComplexquad(std::cin);
       rhs.push_back(shape);
+      }
+      catch(const std::logic_error &e)
+      {
+        wrongfigure = true;
+      }
+    }
+    else
+    {
+      std::cerr << "not a figure";
     }
   }
 }

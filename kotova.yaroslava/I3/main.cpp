@@ -33,7 +33,7 @@ int main()
     std::cout << e.what();
     return 1;
   }
-  destination1 = deleteNumbers(cstring, destination1);
+  destination1 = deleteNumbers(destination1, cstring);
   std::cout << destination1 << "\n";
 
   char* destination2 = nullptr;
@@ -52,6 +52,5 @@ int main()
   destination2 = replacingLetters(cstring, destination2);
   std::cout << destination2 << "\n";
   delete[] cstring;
-  delete[] destination1;
   delete[] destination2;
 }

@@ -68,5 +68,5 @@ dimkashelk::Shape *dimkashelk::Regular::clone() const
 }
 void dimkashelk::Regular::unsafeScale(double k) noexcept
 {
-  isotropicScaling(std::addressof(triangle_), center_, k);
+  unsafeIsotropicScaling(std::addressof(triangle_), center_, k);
 }

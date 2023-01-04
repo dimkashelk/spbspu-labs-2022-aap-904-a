@@ -37,7 +37,6 @@ dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
 {
   compositeShape.shapes_ = nullptr;
   compositeShape.size_ = 0;
-  compositeShape.capacity_ = 0;
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const CompositeShape &other)
 {
@@ -82,7 +81,6 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape
     shapes_ = tmp.shapes_;
     tmp.shapes_ = nullptr;
     tmp.size_ = 0;
-    tmp.capacity_ = 0;
   }
   return *this;
 }

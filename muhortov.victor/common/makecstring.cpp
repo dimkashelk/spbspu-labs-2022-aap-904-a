@@ -17,7 +17,7 @@ char *makeCString(size_t &size, size_t &capacity, std::istream &input)
   }
   while (input && c_string[size++] != '\n');
 
-  c_string[size - 1] = '\0';
+  c_string[size] = '\0';
 
   return c_string;
 }

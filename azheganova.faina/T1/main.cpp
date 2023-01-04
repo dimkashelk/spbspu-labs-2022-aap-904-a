@@ -15,19 +15,19 @@ void printFramePoints(std::ostream & output, const rectangle_t & rectangle)
   point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
   output << point1.x << ' ' << point1.y << ' ' << point2.x << ' ' << point2.y;
 }
-void printAreaAndFrames(std::ostream & output, const CompositeShape & tmp, size_t size)
+void printAreaAndFrames(std::ostream & output, const CompositeShape & tmp, size_t size_)
 {
-  if (!size)
+  if (!size_)
   {
     throw std::invalid_argument("error");
   }
   double summ_area = 0.0;
-  for (size_t i = 0; i < size; ++i)
+  for (size_t i = 0; i < size_; ++i)
   {
     summ_area += tmp[i]->getArea();
   }
   output << summ_area;
-  for (size_t i = 0; i < size; ++i)
+  for (size_t i = 0; i < size_; ++i)
   {
     printFramePoints(output << ' ', tmp[i]->getFrameRect());
   }

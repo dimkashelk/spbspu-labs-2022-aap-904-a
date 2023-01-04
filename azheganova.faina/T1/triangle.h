@@ -7,9 +7,11 @@ class triangle : virtual public shape
 {
   public:
     triangle(point_t point1, point_t point2, point_t point3);
+    triangle(const triangle &tmp);
+    triangle(triangle &&tmp);
     double getArea() const;
     rectangle_t getFrameRect() const;
-    point_t triangle::findCenterOfTriangle();
+    point_t findCenterOfTriangle();
     void move(point_t position);
     void move(double dx, double dy);
     void scale(double k);

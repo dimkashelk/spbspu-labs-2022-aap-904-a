@@ -18,10 +18,10 @@ complexquad::complexquad(complexquad &&tmp):
 double complexquad::getArea() const
 {
   point_t center = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};
-  double firsttriangle1 = 0.0;
-  double firsttriangle2 = 0.0;
-  double secondtriangle1 = 0.0;
-  double secondtriangle2 = 0.0;
+  double firsttriangle1 = 0;
+  double firsttriangle2 = 0;
+  double secondtriangle1 = 0;
+  double secondtriangle2 = 0;
   firsttriangle1 = (complexquad1[0].x - complexquad1[3].x) * (center.y - complexquad1[3].y);
   firsttriangle2 = (center.x - complexquad1[3].x) * (complexquad1[0].y - complexquad1[3].y);
   secondtriangle1 = (complexquad1[2].x - complexquad1[1].x) * (center.y - complexquad1[1].y);
@@ -41,6 +41,7 @@ rectangle_t complexquad::getFrameRect() const
   double minx = std::min(complexquad1[4].x, std::min(complexquad1[0].x, std::min(complexquad1[1].x, minx1)));
   double miny = std::min(complexquad1[4].y, std::min(complexquad1[0].y, std::min(complexquad1[1].y, miny1)));
   rectangle_t forcomplexquad(point_t {(minx + maxx) / 2}, point_t {(maxy + miny) / 2});
+  return forcomplexquad;
 }
 void complexquad::move(point_t point)
 {

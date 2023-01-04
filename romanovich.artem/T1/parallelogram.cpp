@@ -78,7 +78,7 @@ void Parallelogram::scale(double k)
     throw std::invalid_argument("Invalid scaling coeff.");
   }
 }
-Parallelogram *Parallelogram::clone() const
+Shape *Parallelogram::clone() const
 {
   return nullptr;
 }

@@ -125,7 +125,7 @@ void Concave::scale(double k)
     throw std::invalid_argument("Invalid scaling coeff.");
   }
 }
-Concave *Concave::clone() const
+Shape *Concave::clone() const
 {
   return nullptr;
 }

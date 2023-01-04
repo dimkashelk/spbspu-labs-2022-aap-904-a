@@ -4,7 +4,6 @@
 class Parallelogram : public Shape
 {
 public:
-  //explicit Parallelogram(point_t *pointsArray);
   explicit Parallelogram(point_t A, point_t B, point_t C);
   double getArea() const override;
   rectangle_t getFrameRect() const override;

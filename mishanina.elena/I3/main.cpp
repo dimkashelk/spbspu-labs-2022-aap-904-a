@@ -10,13 +10,22 @@ int main()
   try
   {
     cstring1 = new char[capacity1];
-    cstring1 = inputString(capacity1, std::cin);
   }
   catch (const std::exception& e)
   {
     std::cerr << e.what();
     delete[] cstring1;
     return 1;
+  }
+  try
+  {
+      cstring1 = inputString(capacity1, std::cin);
+  }
+  catch (const std::exception& e)
+  {
+      std::cerr << e.what();
+      delete[] cstring1;
+      return 1;
   }
   char* destination = nullptr;
   try
@@ -34,8 +43,18 @@ int main()
     return 1;
   }
   size_t capacity2 = 10;
-  char* cstring2 = new char[capacity2];
-  cstring2[0] = '\0';
+  char* cstring2 = nullptr;
+  try
+  {
+      cstring2 = new char[capacity2];
+  }
+  catch (const std::exception& e)
+  {
+      std::cerr << e.what();
+      delete[] cstring1;
+      delete[] cstring2;
+      return 1;
+  }
   try
   {
     cstring2 = inputString(capacity2, std::cin);

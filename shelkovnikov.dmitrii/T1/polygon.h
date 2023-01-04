@@ -20,7 +20,6 @@ namespace dimkashelk
     Triangle *triangles_;
     point_t center_;
     Polygon(const Polygon &polygon);
-    void unsafeScale(double k) noexcept override;
   };
 }
 #endif

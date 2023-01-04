@@ -62,7 +62,7 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape
 {
   if (std::addressof(tmp) != this)
   {
-    free();
+    free(shapes_, size_);
     size_ = tmp.size_;
     capacity_ = tmp.capacity_;
     shapes_ = tmp.shapes_;

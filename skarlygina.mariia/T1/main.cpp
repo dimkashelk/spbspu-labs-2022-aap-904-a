@@ -1,4 +1,9 @@
 #include <iostream>
+#include "shape.h"
+#include "rectangle.h"
+#include "ellipse.h"
+#include "ring.h"
+
 int main()
 {
   std::string name = "";
@@ -12,15 +17,15 @@ int main()
   }
   if (name == "RECTANGLE")
   {
-    return 0;
+    Shape* rectangle = new Rectangle();
   }
   else if (name == "RING")
   {
-    return 0;
+    Shape* ring = new Ring();
   }
   else if (name == "Ellipse")
   {
-    return 0;
+    Shape* ellipse = new Ellipse();
   }
   else
   {

@@ -1,25 +1,23 @@
 #include "makecstring.hpp"
-#include <iostream>
-#include <cstring>
+#include <extendcstring.hpp>
 
-char *makeCString(char *c_string, size_t &size, size_t &capacity, std::istream &input)
+char *makeCString(size_t &size, size_t &capacity, std::istream &input)
 {
-  input >> std::noskipws;
+  char *c_string = new char[capacity];
+  c_string[0] = '\n';
 
+  input >> std::noskipws;
   do
   {
     if (size + 1 == capacity)
     {
-      char *newstr = new char[capacity + 10];
-      c_string[capacity - 1] = '\0';
-      std::strcpy(newstr, c_string);
-      delete[] c_string;
-      c_string = newstr;
-      capacity += 10;
+      c_string = extendCString(c_string, capacity);
     }
     input >> c_string[size];
   }
   while (input && c_string[size++] != '\n');
+
+  c_string[size - 1] = '\0';
 
   return c_string;
 }

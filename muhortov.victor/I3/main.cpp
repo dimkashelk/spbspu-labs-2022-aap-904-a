@@ -1,27 +1,13 @@
 #include <iostream>
-#include <cstring>
+#include <cstddef>
 #include <makecstring.hpp>
 #include "RepeatSymbols.hpp"
 #include "Vowel.hpp"
 int main()
 {
-  size_t capacity = 10;
   size_t size = 0;
-
-  char *c_string = new char[capacity];
-
-  c_string[0] = '\n';
-
-  try
-  {
-    c_string = makeCString(c_string, size, capacity, std::cin);
-  }
-  catch (const std::bad_alloc &e)
-  {
-    std::cerr << "Error: " << e.what();
-    delete[] c_string;
-    return 1;
-  }
+  size_t capacity = 10;
+  char *c_string = makeCString(size, capacity, std::cin);
 
   if (c_string[0] == '\n')
   {
@@ -29,8 +15,6 @@ int main()
     std::cerr << "Error: empty string \n";
     return 2;
   }
-
-  c_string[size] = '\0';
 
   // task 6
 

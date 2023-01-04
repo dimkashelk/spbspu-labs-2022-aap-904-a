@@ -1,9 +1,9 @@
 #ifndef GITLAB_LABS_MAKECSTRING_HPP
 #define GITLAB_LABS_MAKECSTRING_HPP
 
-#include <cstddef>
 #include <istream>
+#include <cstddef>
 
-char *makeCString(char *cstring, size_t &size, size_t &capacity, std::istream &input);
+char *makeCString(size_t &size, size_t &capacity, std::istream &input);
 
 #endif

@@ -18,5 +18,8 @@ int main()
     return 1;
   }
 
-  return 0;
+  for (double x = left; x < right; x += step)
+  {
+    print(std::cout, x, ads_Error, number_Max);
+  }
 }

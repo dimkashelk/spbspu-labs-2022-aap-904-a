@@ -8,9 +8,10 @@ int main()
 {
   size_t capacity = 10;
   size_t size = 0;
+  char* cstring = nullptr;
   try
   {
-    char* cstring = formingCstring(size, std::cin);
+    cstring = formingCstring(size, std::cin);
   }
   catch (const std::exception& e)
   {

@@ -7,7 +7,7 @@ triangle::triangle()
 {}
 
 triangle::triangle(point_t pos1, point_t pos2, point_t pos3):
-  triangle1{triangle1[0], triangle1[1], triangle1[2]}
+  triangle1{pos1, pos2, pos3}
 {}
 
 triangle::triangle(const triangle &tmp):

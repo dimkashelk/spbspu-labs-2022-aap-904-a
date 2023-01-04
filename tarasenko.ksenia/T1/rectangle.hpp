@@ -3,12 +3,12 @@
 #include "shape.hpp"
 namespace tarasenko
 {
-  class Rectangle : public Shape
+  class Rectangle: public Shape
   {
   public:
+   point_t vertexes[2];
    rectangle_t rect_;
    Rectangle(point_t point_ld, point_t point_ru);
-   Rectangle(rectangle_t rect);
    double getArea() const override;
    rectangle_t getFrameRect() const override;
    void move(point_t pos) override;

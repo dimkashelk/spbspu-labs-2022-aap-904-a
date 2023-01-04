@@ -1,6 +1,5 @@
 #include "isotropic_scaling.h"
 #include <stdexcept>
-#include "base_functions.h"
 void dimkashelk::isotropicScaling(Shape *shape, point_t point, double k)
 {
   if (k <= 0)

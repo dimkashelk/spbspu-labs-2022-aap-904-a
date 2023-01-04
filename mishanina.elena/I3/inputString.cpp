@@ -17,6 +17,7 @@ char* inputString(size_t &capacity, std::istream& input)
         {
           *j = *i;
         }
+        delete[] cstring;
         cstring = newstr;
         capacity += 20;
       }

@@ -6,17 +6,8 @@
 int main()
 {
   size_t capacity1 = 10;
-  char* cstring1 = nullptr;
-  try
-  {
-    cstring1 = new char[capacity1];
-  }
-  catch (const std::exception& e)
-  {
-    std::cerr << e.what();
-    delete[] cstring1;
-    return 1;
-  }
+  char* cstring1 = new char[capacity1];
+  cstring1[0] = '\0';
   try
   {
       cstring1 = inputString(capacity1, std::cin);
@@ -31,6 +22,7 @@ int main()
   try
   {
     destination = new char[capacity1];
+    destination[0] = '\0';
     destination = removeExtraSpaces(destination, cstring1);
     std::cout << destination << "\n";
     delete[] destination;
@@ -43,18 +35,8 @@ int main()
     return 1;
   }
   size_t capacity2 = 10;
-  char* cstring2 = nullptr;
-  try
-  {
-      cstring2 = new char[capacity2];
-  }
-  catch (const std::exception& e)
-  {
-      std::cerr << e.what();
-      delete[] cstring1;
-      delete[] cstring2;
-      return 1;
-  }
+  char* cstring2 = new char[capacity2];
+  cstring2[0] = '\0';
   try
   {
     cstring2 = inputString(capacity2, std::cin);

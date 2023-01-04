@@ -2,6 +2,6 @@
 #define SUBARRAY_H
 #include <cstddef>
 
-size_t count_sequence_similar(const int *array, size_t size);
+size_t countSequenceSimilar(const int *array, size_t size);
 
 #endif

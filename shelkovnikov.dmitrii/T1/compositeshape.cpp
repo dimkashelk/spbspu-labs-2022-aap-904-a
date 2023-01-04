@@ -21,11 +21,7 @@ dimkashelk::CompositeShape::CompositeShape(const CompositeShape &compositeShape)
     }
     catch (...)
     {
-      for (size_t j = 0; j < i; j++)
-      {
-        delete shapes_[i];
-      }
-      delete[] shapes_;
+      free();
       throw;
     }
   }
@@ -57,11 +53,7 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const Composit
       throw;
     }
   }
-  for (size_t i = 0; i < size_; i++)
-  {
-    delete shapes_[i];
-  }
-  delete[] shapes_;
+  free();
   shapes_ = shapes;
   size_ = other.size_;
   capacity_ = other.capacity_;
@@ -71,11 +63,7 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape
 {
   if (&tmp != this)
   {
-    for (size_t i = 0; i < size_; i++)
-    {
-      delete shapes_[i];
-    }
-    delete[] shapes_;
+    free();
     size_ = tmp.size_;
     capacity_ = tmp.capacity_;
     shapes_ = tmp.shapes_;
@@ -94,11 +82,7 @@ const dimkashelk::Shape *dimkashelk::CompositeShape::operator[](size_t id) const
 }
 dimkashelk::CompositeShape::~CompositeShape()
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    delete shapes_[i];
-  }
-  delete[] shapes_;
+  free();
 }
 double dimkashelk::CompositeShape::getArea() const
 {
@@ -228,4 +212,12 @@ void dimkashelk::CompositeShape::isotropicScaling(point_t point, double k)
   point_t point_2 = getFrameRect().pos;
   scale(k);
   move(-k * (point_2.x - point_1.x), -k * (point_2.y - point_1.y));
+}
+void dimkashelk::CompositeShape::free()
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    delete shapes_[i];
+  }
+  delete[] shapes_;
 }

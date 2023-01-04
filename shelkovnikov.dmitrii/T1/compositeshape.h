@@ -37,6 +37,7 @@ namespace dimkashelk
     CompositeShape(CompositeShape &&compositeShape);
     CompositeShape& operator=(const CompositeShape &other);
     CompositeShape& operator=(CompositeShape &&tmp);
+    void free();
   };
 }
 #endif

@@ -30,10 +30,10 @@ void CompositeShape::isoScale(Shape &shape, double secondPosX, double secondPosY
   shape.scale(k);
   shape.move(dx, dy);
 }
-CompositeShape::CompositeShape(size_t capacity) :
+CompositeShape::CompositeShape(size_t capacity):
   shape_(new Shape *[capacity]),
-  capacity_(capacity),
-  size_(0)
+  size_(0),
+  capacity_(capacity)
 {
 }
 Shape *CompositeShape::operator[](size_t id)

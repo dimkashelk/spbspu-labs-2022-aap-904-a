@@ -36,28 +36,31 @@ dimkashelk::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const CompositeShape &other)
 {
-  Shape **shapes = new Shape*[other.capacity_];
-  for (size_t i = 0; i < size_; i++)
+  if (std::addressof(other) != this)
   {
-    try
+    Shape **shapes = new Shape *[other.capacity_];
+    for (size_t i = 0; i < size_; i++)
     {
-      shapes[i] = other.shapes_[i]->clone();
-    }
-    catch(...)
-    {
-      for (size_t j = 0; j < i; j++)
+      try
       {
-        delete shapes[j];
+        shapes[i] = other.shapes_[i]->clone();
       }
-      delete[] shapes;
-      throw;
+      catch (...)
+      {
+        for (size_t j = 0; j < i; j++)
+        {
+          delete shapes[j];
+        }
+        delete[] shapes;
+        throw;
+      }
     }
+    free();
+    shapes_ = shapes;
+    size_ = other.size_;
+    capacity_ = other.capacity_;
+    return *this;
   }
-  free();
-  shapes_ = shapes;
-  size_ = other.size_;
-  capacity_ = other.capacity_;
-  return *this;
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape &&tmp)
 {

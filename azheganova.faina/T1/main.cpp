@@ -36,7 +36,8 @@ void printAreaAndFrames(std::ostream & output, const CompositeShape & tmp, size_
 int main()
 {
   std::string line;
-  CompositeShape rhs;
+  size_t cap = 10;
+  CompositeShape rhs(cap);
   while(std::cin)
   {
     std::string name = "";

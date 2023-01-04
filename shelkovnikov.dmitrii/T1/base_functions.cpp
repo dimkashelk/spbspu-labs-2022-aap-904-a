@@ -57,3 +57,18 @@ dimkashelk::rectangle_t dimkashelk::getFrameRect(rectangle_t rect1, rectangle_t 
   point_t right_up = getRightUpPoint(getRightUpPoint(rect1), getRightUpPoint(rect2));
   return makeRectangle(left_down, right_up);
 }
+double dimkashelk::getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start)
+{
+  //         |i  j  k|
+  // a * b = |x1 y1 0| = 0 * i + 0 * j + (x1 * y2 - x2 * y1) * k;
+  //         |x2 y2 0|
+  double a_x = p1_end.x - p1_start.x;
+  double a_y = p1_end.y - p1_start.y;
+  double b_x = p2_end.x - p2_start.x;
+  double b_y = p2_end.y - p2_start.y;
+  double third_coord = a_x * b_y - a_y * b_x;
+  //             |x1 y1 0|
+  // a * b * c = |x2 y2 0| = x1 * y2 * z3 - x2 * y1 * z3
+  //             |0  0 z3|
+  return a_x * b_y * third_coord - b_x * a_y * third_coord;
+}

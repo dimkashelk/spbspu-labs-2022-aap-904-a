@@ -13,5 +13,6 @@ namespace dimkashelk
   point_t getLeftDownPoint(point_t point1, point_t point2);
   point_t getRightUpPoint(point_t point1, point_t point2);
   rectangle_t getFrameRect(rectangle_t rect1, rectangle_t rect2);
+  double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start);
 }
 #endif

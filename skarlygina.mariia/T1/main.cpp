@@ -30,14 +30,34 @@ int main()
 
     if (figure == "RING")
     {
-      //Shape* ring = new Ring();
-      return 0;
+      point_t center{};
+      double radius_small, radius_big;
+      try
+      {
+        std::cin >> center.x >> center.y >> radius_small >> radius_big;
+        Shape* ring = new Ring(center, radius_small, radius_big);
+      }
+      catch (...)
+      {
+        std::cerr << "Error while reading parameters of the ring\n";
+        return 2;
+      }
     }
 
     if (figure == "ELLIPSE")
     {
-      //Shape* ellipse = new Ellipse();
-      return 0;
+      double radius_vertical, radius_horizontal;
+      point_t center;
+      try
+      {
+        std::cin >> center.x >> center.y >> radius_vertical >> radius_horizontal;
+        Shape* ellipse = new Ellipse(center, radius_vertical, radius_horizontal);
+      }
+      catch (...)
+      {
+          std::cerr << "Error while reading parameters of the ellipse\n";
+          return 2;
+      }
     }
   }
   while (std::cin);

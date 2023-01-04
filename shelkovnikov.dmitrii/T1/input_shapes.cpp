@@ -1,6 +1,9 @@
 #include "input_shapes.h"
 #include <stdexcept>
-dimkashelk::Rectangle* dimkashelk::inputRectangle(std::istream &in)
+#include "rectangle.h"
+#include "regular.h"
+#include "polygon.h"
+dimkashelk::Shape* dimkashelk::inputRectangle(std::istream &in)
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -13,7 +16,7 @@ dimkashelk::Rectangle* dimkashelk::inputRectangle(std::istream &in)
   }
   return new Rectangle(point_t{x1, y1}, point_t{x2, y2});
 }
-dimkashelk::Regular *dimkashelk::inputRegular(std::istream &in)
+dimkashelk::Shape* dimkashelk::inputRegular(std::istream &in)
 {
   double x = 0.0;
   double y = 0.0;
@@ -29,7 +32,7 @@ dimkashelk::Regular *dimkashelk::inputRegular(std::istream &in)
   }
   return new Regular(point[0], point[1], point[2]);
 }
-dimkashelk::Polygon *dimkashelk::inputPolygon(std::istream &in)
+dimkashelk::Shape* dimkashelk::inputPolygon(std::istream &in)
 {
   size_t s = 0;
   size_t cap = 10;

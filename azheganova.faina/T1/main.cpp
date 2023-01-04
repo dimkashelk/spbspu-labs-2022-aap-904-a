@@ -15,6 +15,11 @@ int main()
   bool wrongfigure = false;
   while(std::cin)
   {
+    if (wrongfigure)
+    {
+      wrongfigure = false;
+      std::cerr << "error";
+    }
     std::string name = "";
     std::cin >> name;
     if (name == "RECTANGLE")

@@ -9,9 +9,16 @@ int main()
   size_t capacity = 10;
   size_t size = 0;
   char* cstring = new char[capacity];
+  cstring[0] = '\0';
   try
   {
     cstring = formingCstring(size, std::cin);
+    if (cstring[0] == '\0')
+    {
+      delete[] cstring;
+      std::cout << "Empty string";
+      return 2;
+    }
   }
   catch (const std::exception& e)
   {

@@ -1,5 +1,8 @@
 #include "lnPlusOneOverMinusOne.hpp"
+#include <iostream>
+#include <iomanip>
 #include <stdexcept>
+#include <cmath>
 
 struct LnTermGenerator {
   double oneOverXSquared;
@@ -34,7 +37,7 @@ double odintsov::lnPlusOneOverMinusOne(double x, double absError, unsigned numbe
   LnTermGenerator generateTerm(x);
   double term = 0.0;
   for (unsigned i = 0; i < numberMax; i++) {
-    term = generateTerm(); 
+    term = generateTerm();
     if (term < absError) {
       break;
     }
@@ -44,4 +47,19 @@ double odintsov::lnPlusOneOverMinusOne(double x, double absError, unsigned numbe
     throw std::runtime_error("absolute error not achieved");
   }
   return result * 2;
+}
+
+std::ostream& odintsov::outputComparison(std::ostream& out, double x, double absError, unsigned numberMax)
+{
+  out << std::setw(7) << std::setprecision(5) << x << ' ';
+  out << std::setw(7) << std::setprecision(5) << lnPlusOneOverMinusOne(x, absError, numberMax) << ' ';
+  return out << std::setw(7) << std::setprecision(5) << std::log((x + 1) / (x - 1));
+}
+
+std::ostream& odintsov::outputComparisonTable(std::ostream& out, double l, double r, double step, double absError, unsigned num)
+{
+  for (double x = l; x < r; x += step) {
+    outputComparison(out, x, absError, num) << '\n';
+  }
+  return out;
 }

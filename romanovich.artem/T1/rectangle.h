@@ -11,10 +11,10 @@ public:
   void move(double dx, double dy) override;
   void move(point_t position) override;
   void scale(double k) override;
-  Rectangle *clone() const override;
+  Shape *clone() const override;
   ~Rectangle() override = default;
 private:
   bool goodRectangleInput() const;
-  point_t A{}, B{}, C{}, D{};
+  point_t A, B, C, D;
 };
 #endif

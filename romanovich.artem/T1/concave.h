@@ -10,12 +10,12 @@ public:
   void move(double dx, double dy) override;
   void move(point_t position) override;
   void scale(double k) override;
-  Concave *clone() const override;
+  Shape *clone() const override;
   double *getSides() const;
   ~Concave() override = default;
 private:
   bool goodConcaveInput() const;
-  point_t A{}, B{}, C{}, D{};
+  point_t A, B, C, D;
   void isoScale(Concave &concave, double x, double y, double k);
 };
 #endif

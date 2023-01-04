@@ -10,7 +10,7 @@ int main()
   cstring[0] = '\0';
   try
   {
-    cstring = inputString(cstring, capacity);
+    std::pair< size_t, char * > inputString(std::istream &);
     if (cstring[0] == '\0')
     {
       std::cout << "empty string";

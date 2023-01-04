@@ -6,16 +6,16 @@ int output(int* arr, size_t size, size_t n, size_t m) {
   if (size > 1) {
     std::cout << "Max number on even position: " << *maxEven(arr, size) << '\n';
     try {
-      shiftByIndexes(arr, size, n, m);
+      shitByIndexes(arr, size, n, m);
     }
     catch (const std::runtime_error &err) {
       std::cerr << "Error: " << err.what();
       return 1;
     }
   }
-  std::cout << "Processed array: ";
+  std::cout << "Processed array: { ";
   printArray(std::cout, arr, size);
-  std::cout << '\n';
+  std::cout << " }\n";
   return 0;
 }
 
@@ -47,6 +47,10 @@ int main(int argc, char* argv[])
   }
   unsigned int n = size / 3;
   unsigned int m = n * 2;
+  std::cout << "Processed array: { ";
+  printArray(std::cout, arr3, size);
+  std::cout << " }\n";
+  std::cout << n << m << '\n';
 
   if (output(arr3, size, n, m)) {
     delete[] arr3;
@@ -57,6 +61,7 @@ int main(int argc, char* argv[])
   size = 7; //Task 1 & 2
   //Task 1
   int arr1[] = { -5, 3, -8, 5, 5, -8, 9 };
+  //int arr1[] = {0, 1, 2, 3, 4, 5, 6};
   if (output(arr1, size, n, m)) {
     return 4;
   }

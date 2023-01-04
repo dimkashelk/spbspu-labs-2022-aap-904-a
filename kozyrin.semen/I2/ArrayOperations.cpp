@@ -2,14 +2,13 @@
 #include <iostream>
 #include <limits>
 
-void printArray(std::ostream& stream, const int* arr, size_t size)
+void printArray(std::ostream& stream, const int* arr, size_t size, const char* sep)
 {
   size_t last_id = size - 1;
-  stream << "{ ";
   for (size_t i = 0; i < last_id; i++) {
-    stream << arr[i] << ", ";
+    stream << arr[i] << sep;
   }
-  stream << arr[last_id] << " }";
+  stream << arr[last_id];
 }
 
 void randomizeArray(int* arr, size_t size)
@@ -20,7 +19,7 @@ void randomizeArray(int* arr, size_t size)
   }
 }
 
-void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
+void shitByIndexes(int* arr, size_t size, size_t n, size_t m)
 {
   if (m > size) {
     throw std::runtime_error("index out of range");
@@ -28,28 +27,21 @@ void shiftByIndexes(int* arr, size_t size, size_t n, size_t m)
   if (m < n) {
     throw std::runtime_error("left index cannot be greater than right");
   }
-  size_t offset = size - m;
-  size_t offset1 = m - n;
-  int curr = arr[n];
+  if (size == m) {
+    return;
+  }
   int temp = 0;
-  size_t i = n;
-  size_t j = 0;
+  int curr = 0;
 
-  while (true) {
-    if (i >= n && i < m) {
-      j = i + offset;
-    }
-    else {
-      j = i - offset1;
-    }
-    temp = arr[j];
-    arr[j] = curr;
-    curr = temp;
-    i = j;
+  for (size_t j = 1; j <= m - n; ++j) {
+    curr = arr[size - 1];
 
-    if (i == n) {
-      break;
+    for (size_t i = size - 2; i >= n; --i) {
+      temp = arr[i];
+      arr[i] = curr;
+      curr = temp;
     }
+    arr[size - 1] = curr;
   }
 }
 

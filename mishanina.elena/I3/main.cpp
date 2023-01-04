@@ -49,6 +49,7 @@ int main()
     delete[] cstring2;
     return 1;
   }
+
   bool result = false;
   try
   {

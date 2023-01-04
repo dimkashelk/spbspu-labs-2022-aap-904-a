@@ -22,8 +22,8 @@ double NextTaylorElement::operator()()
   {
     numerator_counter *= x * x;
     result = numerator_counter / factorial;
-    factorial *= (previous_factorial_counter + 1) * (previous_factorial_counter + 2);
     previous_factorial_counter += 2;
+    factorial *= (previous_factorial_counter + 1) * (previous_factorial_counter + 2);
     terms_counter++;
 
     return result;

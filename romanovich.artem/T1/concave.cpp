@@ -2,7 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Concave::Concave(point_t A, point_t B, point_t C, point_t D) :
+Concave::Concave(point_t A, point_t B, point_t C, point_t D):
   A(A),
   B(B),
   C(C),
@@ -128,16 +128,4 @@ void Concave::scale(double k)
 Shape *Concave::clone() const
 {
   return nullptr;
-}
-void Concave::isoScale(Concave &concave, double secondPosX, double secondPosY, double k)
-{
-  double firstPosX = concave.getFrameRect().pos.x;
-  double firstPosY = concave.getFrameRect().pos.y;
-  double dx = secondPosX - firstPosX;
-  double dy = secondPosY - firstPosY;
-  concave.move(dx, dy);
-  dx *= -k;
-  dy *= -k;
-  concave.scale(k);
-  concave.move(dx, dy);
 }

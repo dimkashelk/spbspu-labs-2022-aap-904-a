@@ -18,12 +18,6 @@ void printLine(Shape *shape)
   std::cout << p << frRect1X << " " << p << frRect1Y << " ";
   std::cout << p << frRect2X << " " << p << frRect2Y;
 }
-point_t *buildConcave(std::istream &inputPoints)
-{
-  point_t A{}, B{}, C{}, D{};
-  inputPoints >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
-  return new point_t[4]{A, B, C, D};
-}
 int main()
 {
   std::string figureName = "";
@@ -47,7 +41,6 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        //pointsArray = buildParallelogram(std::cin);
         point_t A{}, B{}, C{};
         std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
         Shape *shape = new Parallelogram(A, B, C);
@@ -70,7 +63,6 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        //pointsArray = buildRectangle(std::cin);
         point_t A{}, C{};
         std::cin >> A.x >> A.y >> C.x >> C.y;
         Shape *shape = new Rectangle(A, C);
@@ -95,8 +87,7 @@ int main()
       {
         point_t A{}, B{}, C{}, D{};
         std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
-        //pointsArray = buildConcave(std::cin);
-        Shape *shape = new Concave(A,B,C,D);
+        Shape *shape = new Concave(A, B, C, D);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)

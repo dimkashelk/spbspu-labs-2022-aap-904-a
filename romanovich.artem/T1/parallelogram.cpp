@@ -2,8 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-//Parallelogram::Parallelogram(point_t *pointsArray) :
-Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
+Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
   A(A),
   B(B),
   C(C),
@@ -81,18 +80,6 @@ void Parallelogram::scale(double k)
 Shape *Parallelogram::clone() const
 {
   return nullptr;
-}
-void Parallelogram::isoScale(Parallelogram &parallelogram, double secondPosX, double secondPosY, double k)
-{
-  double firstPosX = parallelogram.getFrameRect().pos.x;
-  double firstPosY = parallelogram.getFrameRect().pos.y;
-  double dx = secondPosX - firstPosX;
-  double dy = secondPosY - firstPosY;
-  parallelogram.move(dx, dy);
-  dx *= -k;
-  dy *= -k;
-  parallelogram.scale(k);
-  parallelogram.move(dx, dy);
 }
 bool Parallelogram::goodParallelogramInput() const
 {

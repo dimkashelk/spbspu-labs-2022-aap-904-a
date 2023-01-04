@@ -1,7 +1,7 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_PARALLELOGRAM_H
 #define SPBSPU_LABS_2022_AAP_904_A_PARALLELOGRAM_H
 #include "shape.h"
-class Parallelogram : public Shape
+class Parallelogram: public Shape
 {
 public:
   explicit Parallelogram(point_t A, point_t B, point_t C);
@@ -15,6 +15,5 @@ public:
 private:
   bool goodParallelogramInput() const;
   point_t A, B, C, D;
-  void isoScale(Parallelogram &parallelogram, double x, double y, double k);
 };
 #endif

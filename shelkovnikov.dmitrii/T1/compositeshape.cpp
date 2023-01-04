@@ -109,7 +109,7 @@ dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
   double y_min = left_down.y;
   double x_max = right_up.x;
   double y_max = right_up.y;
-  for (size_t i = 0; i < size_; i++)
+  for (size_t i = 1; i < size_; i++)
   {
     rectangle = shapes_[i]->getFrameRect();
     left_down = getLeftDownPoint(rectangle);

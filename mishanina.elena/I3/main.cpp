@@ -6,18 +6,9 @@
 int main()
 {
   size_t capacity1 = 10;
-  char* cstring1 = new char[capacity1];
-  cstring1[0] = '\0';
-  try
-  {
-      cstring1 = inputString(capacity1, std::cin);
-  }
-  catch (const std::exception& e)
-  {
-      std::cerr << e.what();
-      delete[] cstring1;
-      return 1;
-  }
+  
+  char* cstring1 = inputString(capacity1, std::cin);
+  
   char* destination = nullptr;
   try
   {

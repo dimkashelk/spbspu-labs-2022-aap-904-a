@@ -32,12 +32,12 @@ char* formingCstring(size_t & size, std::istream& input)
     input >> cstring[size];
     cnt++;
   } while (input && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
   if (cstring[0] == '\0')
   {
     delete[] cstring;
     throw std::invalid_argument("Empty string");
   }
+  cstring[size - 1] = '\0';
   size = cnt;
   return cstring;
 }

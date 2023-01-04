@@ -12,10 +12,10 @@ namespace dimkashelk
     virtual void move(point_t point) = 0;
     virtual void move(double delta_x, double delta_y) = 0;
     virtual void scale(double k);
+    virtual void unsafeScale(double k) noexcept = 0;
     virtual Shape* clone() const = 0;
     virtual ~Shape() = default;
   private:
-    virtual void unsafeScale(double k) noexcept = 0;
   };
 }
 #endif

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
-#include <cctype>
+#include <cstring>
 
 char *inputString(char *cstring, size_t &capacity)
 {
@@ -22,7 +22,7 @@ char *inputString(char *cstring, size_t &capacity)
           //*j = *i;
         //}
         //delete[] cstring;
-        //cstring[capacity] = '\0';
+        cstring[capacity] = '\0';
         strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;

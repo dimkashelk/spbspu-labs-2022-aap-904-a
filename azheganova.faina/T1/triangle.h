@@ -1,21 +1,21 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
 #include "base_types.h"
 #include "shape.h"
 
-class rectangle : virtual public shape
+class triangle : virtual public shape
 {
   public:
-    rectangle(rectangle_t rectangle);
-    rectangle(point_t point1, point_t point2);
+    triangle(point_t point1, point_t point2, point_t point3);
     double getArea() const;
     rectangle_t getFrameRect() const;
+    point_t triangle::findCenterOfTriangle();
     void move(point_t position);
     void move(double dx, double dy);
     void scale(double k);
     shape * clone() const override;
   private:
-    rectangle_t rectangle1;
+    point_t triangle1[3];
 };
 
 #endif

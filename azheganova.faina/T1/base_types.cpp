@@ -17,5 +17,3 @@ rectangle_t::rectangle_t(point_t pos, double width, double height):
     std::cout << "wrong values";
   }
 }
-
-

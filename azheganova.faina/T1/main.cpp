@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include "inputrectangle.h"
 #include "compositeshape.h"
+#include "inputtriangle.h"
 
 int main()
 {
@@ -17,6 +18,11 @@ int main()
     if (name == "RECTANGLE")
     {
       shape *shape = inputRectangle(std::cin);
+      rhs.push_back(shape);
+    }
+    if (name == "TRIANGLE")
+    {
+      shape *shape = inputTriangle(std::cin);
       rhs.push_back(shape);
     }
   }

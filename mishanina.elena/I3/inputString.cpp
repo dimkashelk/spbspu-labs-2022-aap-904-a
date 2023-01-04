@@ -10,17 +10,31 @@ char* inputString(size_t &capacity, std::istream& input)
   {
     if (size == capacity)
     {
-      char* newstr = new char[capacity + 20];
-      for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+      try
       {
-        *j = *i;
+        char* newstr = new char[capacity + 20];
+        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+        {
+          *j = *i;
+        }
+        delete[] cstring;
+        cstring = newstr;
+        capacity += 20;
       }
-      cstring = newstr;
-      capacity += 20;
+      catch (...)
+      {
+        delete[] cstring;
+        throw;
+      }
     }
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
+  if (cstring[0] == '\0')
+  {
+    delete[] cstring;
+    throw std::invalid_argument("Empty string");
+  }
   cstring[size - 1] = '\0';
   return cstring;
 }

@@ -11,12 +11,6 @@ int main()
   try
   {
     cstring1 = inputString(capacity1, std::cin);
-    if (cstring1[0] == '\0')
-    {
-      std::cerr << "ERROR:empty cstring";
-      delete[] cstring1;
-      return 1;
-    }
   }
   catch (const std::exception& e)
   {
@@ -45,12 +39,6 @@ int main()
   try
   {
     cstring2 = inputString(capacity2, std::cin);
-    if (cstring2[0] == '\0') {
-      std::cerr << "ERROR:empty cstring";
-      delete[] cstring1;
-      delete[] cstring2;
-      return 1;
-    }
   }
   catch (const std::exception& e)
   {

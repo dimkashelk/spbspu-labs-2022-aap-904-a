@@ -30,7 +30,7 @@ rectangle_t triangle::getFrameRect() const
   double maxy = std::max(triangle1[0].y, std::max(triangle1[1].y, triangle1[2].y));
   double minx = std::min(triangle1[0].x, std::min(triangle1[1].x, triangle1[2].x));
   double miny = std::min(triangle1[0].y, std::min(triangle1[1].y, triangle1[2].y));
-  rectangle_t fortriangle(point_t {(minx + maxx) / 2}, point_t {(maxy + miny) / 2});
+  rectangle_t fortriangle(point_t{minx, miny}, point_t{maxx, maxy});
   return fortriangle;
 }
 point_t triangle::findCenterOfTriangle()

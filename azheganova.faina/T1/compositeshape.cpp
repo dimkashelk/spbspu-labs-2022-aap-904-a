@@ -4,7 +4,8 @@
 
 CompositeShape::CompositeShape():
   size_(0),
-  capacity_(10)
+  capacity_(10),
+  shape_(new shape*[capacity_])
 {}
 
 CompositeShape::CompositeShape(const CompositeShape & rhs):
@@ -26,6 +27,22 @@ CompositeShape::CompositeShape(CompositeShape && rhs):
 {
   rhs.shape_ = nullptr;
   rhs.size_ = 0;
+}
+
+CompositeShape::CompositeShape(size_t capacity):
+ size_(0),
+ capacity_(capacity),
+ shape_(new shape*[capacity])
+{}
+
+shape * CompositeShape::operator[](size_t i)
+{
+  return shape_[i];
+}
+
+shape * CompositeShape::operator[](size_t i) const
+{
+  return shape_[i];
 }
 
 double CompositeShape::getArea() const

@@ -11,6 +11,9 @@ class CompositeShape
     explicit CompositeShape();
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
+    CompositeShape(size_t capacity);
+    shape * operator[](size_t i);
+    shape * operator[](size_t i) const;
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(double dx, double dy);
@@ -18,6 +21,8 @@ class CompositeShape
     void scale(const point_t & position, double k);
     void push_back(shape * shapes);
     CompositeShape *clone() const;
+    shape* at(size_t id);
+    const shape* at(size_t id) const;
   private:
     size_t size_;
     size_t capacity_;

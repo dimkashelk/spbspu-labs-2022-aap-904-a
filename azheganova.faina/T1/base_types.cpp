@@ -17,7 +17,3 @@ rectangle_t::rectangle_t(point_t pos, double width, double height):
     std::cout << "wrong values";
   }
 }
-
-triangle_t::triangle_t(point_t pos1, point_t pos2, point_t pos3):
-  pos(pos)
-{}

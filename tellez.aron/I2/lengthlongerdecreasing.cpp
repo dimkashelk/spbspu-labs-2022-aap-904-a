@@ -2,7 +2,7 @@
 #include "lengthlongerdecreasing.h"
 size_t length_longer_decreasing(const int *arr, const size_t size)
 {
-  if (size <= 1)
+  if (size == 0)
   {
     return 0;
   }

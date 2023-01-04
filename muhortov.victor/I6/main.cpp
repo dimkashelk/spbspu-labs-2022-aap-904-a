@@ -1,4 +1,21 @@
+#include <iostream>
+#include <cstddef>
+
 int main()
 {
+  size_t number_Max = 0;
+  double left = 0.0;
+  double right = 0.0;
+  const double step = 0.01;
+  const double ads_Error = 0.0001;
+
+  std::cin >> left >> right >> number_Max;
+
+  if (!std::cin || left > right || left <= -1.0 || right >= 1.0)
+  {
+    std::cerr << "Error with input\n";
+    return 1;
+  }
+
   return 0;
 }

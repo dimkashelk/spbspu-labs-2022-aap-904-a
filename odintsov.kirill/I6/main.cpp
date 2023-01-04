@@ -6,8 +6,8 @@ int main()
 {
   double absError = 0.01;
   unsigned numberMax = 3;
-  double l = 2.0;
-  double r = 3.0;
+  double l = 2.1;
+  double r = 2.9;
   double step = 0.1;
   std::cin >> absError >> numberMax >> l >> r >> step;
   if (!std::cin) {

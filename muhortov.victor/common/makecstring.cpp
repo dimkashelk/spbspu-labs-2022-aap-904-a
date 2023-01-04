@@ -13,6 +13,7 @@ char *makeCString(size_t &size, size_t &capacity, std::istream &input)
     if (size + 1 == capacity)
     {
       char *newstr = extendCString(capacity);
+      c_string[size] = '\0';
       std::strcpy(newstr, c_string);
       delete[] c_string;
       c_string = newstr;

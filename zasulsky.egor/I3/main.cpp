@@ -30,6 +30,7 @@ int main()
 
   char* newstr = new char[size];
   std::cout << zasulsky::replaceSymbol(newstr, cstring, 'e', 'a') << '\n';
+  delete [] newstr;
 
   std::cout << zasulsky::countUniqueLatin(cstring) << '\n';
 

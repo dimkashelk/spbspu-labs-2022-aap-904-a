@@ -11,16 +11,6 @@ int main()
   char* cstring = nullptr;
   try
   {
-    cstring = new char[capacity];
-  }
-  catch (const std::exception& e)
-  {
-    std::cout << e.what();
-    delete[] cstring;
-    return 2;
-  }
-  try
-  {
     cstring = formingCstring(size, std::cin);
   }
   catch (const std::exception& e)

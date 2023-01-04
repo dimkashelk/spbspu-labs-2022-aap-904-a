@@ -123,10 +123,14 @@ void dimkashelk::CompositeShape::scale(double k)
   {
     throw std::logic_error("CompositeShape empty");
   }
+  unsafeScale(k);
+}
+void dimkashelk::CompositeShape::unsafeScale(double k)
+{
   point_t center = getFrameRect().pos;
   for (size_t i = 0; i < size_; i++)
   {
-    dimkashelk::isotropicScaling(shapes_[i], center, k);
+    dimkashelk::unsafeIsotropicScaling(shapes_[i], center, k);
   }
 }
 void dimkashelk::CompositeShape::push_back(Shape *shp)
@@ -205,7 +209,7 @@ void dimkashelk::CompositeShape::unsafeIsotropicScaling(point_t point, double k)
   point_t point_1 = getFrameRect().pos;
   move(point);
   point_t point_2 = getFrameRect().pos;
-  scale(k);
+  unsafeScale(k);
   move(-k * (point_2.x - point_1.x), -k * (point_2.y - point_1.y));
 }
 void dimkashelk::CompositeShape::free(Shape **shapes, size_t size)

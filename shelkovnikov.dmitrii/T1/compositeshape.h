@@ -21,6 +21,7 @@ namespace dimkashelk
     void move(point_t point);
     void move(double delta_x, double delta_y);
     void scale(double k);
+    void unsafeScale(double k);
     void push_back(Shape *shp);
     void push_back (Shape const *shp);
     void pop_back();

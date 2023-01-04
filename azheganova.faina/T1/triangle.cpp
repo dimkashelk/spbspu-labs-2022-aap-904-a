@@ -6,6 +6,10 @@
 triangle::triangle()
 {}
 
+triangle::triangle(point_t pos1, point_t pos2, point_t pos3):
+  triangle1{triangle1[0], triangle1[1], triangle1[2]}
+{}
+
 triangle::triangle(const triangle &tmp):
   triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}

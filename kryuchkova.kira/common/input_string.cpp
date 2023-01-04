@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
-#include <cstring>
+#include <cctype>
 
-char *inputString(const char *cstring, size_t &capacity)
+char *inputString(char *cstring, size_t &capacity)
 {
   size_t size = 0;
   std::cin >> std::noskipws;

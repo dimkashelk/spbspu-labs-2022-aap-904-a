@@ -1,5 +1,6 @@
 #include "base_functions.h"
 #include <cmath>
+#include <stdexcept>
 dimkashelk::point_t dimkashelk::getLeftDownPoint(rectangle_t rect)
 {
   return point_t{rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2};

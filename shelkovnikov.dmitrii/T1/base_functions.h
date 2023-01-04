@@ -1,6 +1,7 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_BASE_FUNCTIONS_H
 #define SPBSPU_LABS_2022_AAP_904_A_BASE_FUNCTIONS_H
 #include "base_types.h"
+#include <cstddef>
 namespace dimkashelk
 {
   point_t getLeftDownPoint(rectangle_t rect);

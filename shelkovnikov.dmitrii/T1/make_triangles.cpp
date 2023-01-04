@@ -1,5 +1,6 @@
 #include "make_triangles.h"
 #include <stdexcept>
+#include "base_functions.h"
 dimkashelk::Triangle* dimkashelk::makeTriangles(const point_t *points, size_t size)
 {
   TriangulatePoints triangulatePoints(points, size);
@@ -56,17 +57,13 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
   {
     point_ = 1;
   }
-  while (point_ + 1 < size_)
+  if (point_ + 1 < size_)
   {
     if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) >= 0)
     {
       Triangle triangle = Triangle(points_[0], points_[point_], points_[point_ + 1]);
       point_++;
       return triangle;
-    }
-    else
-    {
-      point_++;
     }
   }
   Triangle triangle = Triangle(points_[0], points_[1], points_[2]);

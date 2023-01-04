@@ -1,11 +1,10 @@
 #include "regular.h"
 #include <stdexcept>
-#include <cmath>
 #include "isotropic_scaling.h"
 #include "base_functions.h"
 dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   triangle_(point_1, point_2, point_3),
-  size_(0),
+  size_(getCountTriangles(point_1, point_2, point_3)),
   center_(point_1)
 {
   point_t *points = new point_t[3]{point_1, point_2, point_3};
@@ -15,16 +14,6 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
     throw std::logic_error("Triangle isn't rectangular");
   }
   delete[] points;
-  double side_1 = std::sqrt(std::pow(point_2.x - point_1.x, 2) + std::pow(point_2.y - point_1.y, 2));
-  double side_2 = std::sqrt(std::pow(point_3.x - point_1.x, 2) + std::pow(point_3.y - point_1.y, 2));
-  double hypotenuse = std::max(side_1, side_2);
-  double cathet = std::min(side_1, side_2);
-  double angle_degrees = std::round((std::acos(cathet / hypotenuse) * 180.0 / 3.1415926) * 1000) / 1000;
-  size_ = static_cast< size_t >(360 / angle_degrees);
-  if (size_ * angle_degrees != 360)
-  {
-    throw std::logic_error("Cannot build regular figure");
-  }
 }
 dimkashelk::Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),

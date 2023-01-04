@@ -2,6 +2,6 @@
 #define INPUT_STRINGS_H
 #include <istream>
 
-char* inputString(size_t &capacity, std::istream& input);
+char* inputString(size_t& newsize, size_t &capacity, std::istream& input);
 
 #endif

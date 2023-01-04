@@ -1,6 +1,6 @@
 #include "inputString.h"
 
-char* inputString(size_t &capacity, std::istream& input)
+char* inputString(size_t& newsize, size_t &capacity, std::istream& input)
 {
   size_t size = 0;
   char* cstring = new char[capacity];
@@ -30,11 +30,6 @@ char* inputString(size_t &capacity, std::istream& input)
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
-  if (cstring[0] == '\0')
-  {
-    delete[] cstring;
-    throw std::invalid_argument("Empty string");
-  }
-  cstring[size - 1] = '\0';
+  newsize = size;
   return cstring;
 }

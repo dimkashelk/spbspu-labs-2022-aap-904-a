@@ -16,4 +16,10 @@ struct rectangle_t
   rectangle_t(point_t pos, double width, double height);
 };
 
+struct triangle_t
+{
+  point_t pos;
+  triangle_t(point_t pos1, point_t pos2, point_t pos3);
+};
+
 #endif

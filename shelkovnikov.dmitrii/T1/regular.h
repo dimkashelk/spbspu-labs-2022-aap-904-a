@@ -20,7 +20,6 @@ namespace dimkashelk
     size_t size_;
     point_t center_;
     Regular(const Regular &regular);
-    void unsafeScale(double k) noexcept override;
   };
 }
 #endif

@@ -15,7 +15,6 @@ namespace dimkashelk
     virtual void unsafeScale(double k) noexcept = 0;
     virtual Shape* clone() const = 0;
     virtual ~Shape() = default;
-  private:
   };
 }
 #endif

@@ -1,5 +1,6 @@
 #include "rectangle.h"
 #include "base_types.h"
+#include <iostream>
 #include <cmath>
 
 rectangle::rectangle(point_t point1, point_t point2):
@@ -27,6 +28,10 @@ void rectangle::move(double dx, double dy)
 }
 void rectangle::scale(double k)
 {
+  if (k <= 0)
+  {
+    std::cout << "incorrect value";
+  }
   rectangle1.width *= std::fabs(k);
   rectangle1.height *= std::fabs(k);
 }

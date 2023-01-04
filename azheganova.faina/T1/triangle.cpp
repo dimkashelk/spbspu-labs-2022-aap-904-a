@@ -1,5 +1,6 @@
 #include "triangle.h"
 #include "base_types.h"
+#include <iostream>
 #include <cmath>
 #include <stdexcept>
 
@@ -55,6 +56,10 @@ void triangle::move(double dx, double dy)
 }
 void triangle::scale(double k)
 {
+  if (k <= 0)
+  {
+    std::cout << "incorrect value";
+  }
   point_t center = findCenterOfTriangle();
   triangle1[0].x = k * (triangle1[0].x - center.x) + center.x;
   triangle1[1].x = k * (triangle1[1].x - center.x) + center.x;

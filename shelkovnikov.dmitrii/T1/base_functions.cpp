@@ -2,11 +2,11 @@
 #include <cmath>
 dimkashelk::point_t dimkashelk::getLeftDownPoint(rectangle_t rect)
 {
-  return point_t{rect.point.x - rect.width / 2, rect.point.y - rect.height / 2};
+  return point_t{rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2};
 }
 dimkashelk::point_t dimkashelk::getRightUpPoint(rectangle_t rect)
 {
-  return point_t{rect.point.x + rect.width / 2, rect.point.y + rect.height / 2};
+  return point_t{rect.pos.x + rect.width / 2, rect.pos.y + rect.height / 2};
 }
 bool dimkashelk::isRectangularTriangle(const point_t *points)
 {

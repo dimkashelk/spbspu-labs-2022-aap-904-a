@@ -58,8 +58,8 @@ dimkashelk::rectangle_t dimkashelk::Triangle::getFrameRect() const
   // | / \ |
   // |/   \|
   // o_____o
-  // (x_min, y_min) - left down point of frame rect
-  // (x_max, y_max) - right up point of frame rect
+  // (x_min, y_min) - left down pos of frame rect
+  // (x_max, y_max) - right up pos of frame rect
   double x_min = std::min(points_[0].x, std::min(points_[1].x, points_[2].x));
   double y_min = std::min(points_[0].y, std::min(points_[1].y, points_[2].y));
   double x_max = std::max(points_[0].x, std::max(points_[1].x, points_[2].x));
@@ -99,7 +99,7 @@ dimkashelk::Shape* dimkashelk::Triangle::clone() const
 }
 dimkashelk::Triangle dimkashelk::Triangle::rotate(double theta) const
 {
-  // rotate point (px, py) around point (ox, oy) by angle theta
+  // rotate pos (px, py) around pos (ox, oy) by angle theta
   // p'x = cos(theta) * (px-ox) - sin(theta) * (py-oy) + ox
   // p'y = sin(theta) * (px-ox) + cos(theta) * (py-oy) + oy
   double new_p_x_1 = std::cos(theta) * (points_[1].x - points_[0].x) - std::sin(theta) * (points_[1].y - points_[0].y) + points_[0].x;

@@ -138,7 +138,7 @@ dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
 }
 void dimkashelk::CompositeShape::move(point_t point)
 {
-  point_t center = getFrameRect().point;
+  point_t center = getFrameRect().pos;
   move(point.x - center.x, point.y - center.y);
 }
 void dimkashelk::CompositeShape::move(double delta_x, double delta_y)
@@ -154,7 +154,7 @@ void dimkashelk::CompositeShape::scale(double k)
   {
     throw std::logic_error("CompositeShape empty");
   }
-  point_t center = getFrameRect().point;
+  point_t center = getFrameRect().pos;
   for (size_t i = 0; i < size_; i++)
   {
     dimkashelk::isotropicScaling(shapes_[i], center, k);
@@ -225,9 +225,9 @@ void dimkashelk::CompositeShape::isotropicScaling(point_t point, double k)
   {
     throw std::logic_error("Coefficient below zero");
   }
-  point_t point_1 = getFrameRect().point;
+  point_t point_1 = getFrameRect().pos;
   move(point);
-  point_t point_2 = getFrameRect().point;
+  point_t point_2 = getFrameRect().pos;
   scale(k);
   move(-k * (point_2.x - point_1.x), -k * (point_2.y - point_1.y));
 }

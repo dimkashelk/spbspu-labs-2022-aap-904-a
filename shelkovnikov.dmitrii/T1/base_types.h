@@ -9,7 +9,7 @@ namespace dimkashelk
   };
   struct rectangle_t
   {
-    point_t point;
+    point_t pos;
     double width;
     double height;
   };

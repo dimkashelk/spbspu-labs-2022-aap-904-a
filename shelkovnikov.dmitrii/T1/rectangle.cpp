@@ -16,12 +16,12 @@ dimkashelk::rectangle_t dimkashelk::Rectangle::getFrameRect() const
 }
 void dimkashelk::Rectangle::move(point_t point)
 {
-  rectangle_.point = point;
+  rectangle_.pos = point;
 }
 void dimkashelk::Rectangle::move(double delta_x, double delta_y)
 {
-  rectangle_.point.x += delta_x;
-  rectangle_.point.y += delta_y;
+  rectangle_.pos.x += delta_x;
+  rectangle_.pos.y += delta_y;
 }
 void dimkashelk::Rectangle::scale(double k)
 {

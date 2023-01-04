@@ -198,6 +198,10 @@ void dimkashelk::CompositeShape::isotropicScaling(point_t point, double k)
   {
     throw std::logic_error("Coefficient below zero");
   }
+  unsafeIsotropicScaling(point, k);
+}
+void dimkashelk::CompositeShape::unsafeIsotropicScaling(point_t point, double k)
+{
   point_t point_1 = getFrameRect().pos;
   move(point);
   point_t point_2 = getFrameRect().pos;

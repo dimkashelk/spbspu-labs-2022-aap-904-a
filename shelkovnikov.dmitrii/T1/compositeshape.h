@@ -29,6 +29,7 @@ namespace dimkashelk
     bool empty() const noexcept;
     size_t size() const noexcept;
     void isotropicScaling(point_t point, double k);
+    void unsafeIsotropicScaling(point_t point, double k);
   private:
     size_t size_;
     size_t capacity_;

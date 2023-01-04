@@ -35,7 +35,7 @@ char* formingCstring(size_t & size, std::istream& input)
     delete[] cstring;
     throw std::invalid_argument("Empty string");
   }
-  cstring[size - 1] = '\0';
-  size = 20;
+  cstring[size] = '\0';
+  size = capacity - 1;
   return cstring;
 }

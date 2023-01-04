@@ -9,7 +9,7 @@
 #include "inputtriangle.h"
 #include "inputcomplexquad.h"
 
-int main(std::ostream & output)
+int main()
 {
   std::string line;
   CompositeShape rhs;
@@ -69,7 +69,6 @@ int main(std::ostream & output)
       point_t point {x, y};
     }
   }
-  output << std::setprecision(1) << std::fixed << rhs.getArea();
   std::cout << "\n";
   printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), rhs, rhs.size());
   std::cout << "\n";

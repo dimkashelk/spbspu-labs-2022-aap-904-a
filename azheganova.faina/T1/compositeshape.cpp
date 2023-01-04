@@ -131,3 +131,8 @@ void CompositeShape::push_back(shape * shapes)
     shape_ = new_shape;
   }
 }
+
+size_t CompositeShape::size() const
+{
+  return size_;
+}

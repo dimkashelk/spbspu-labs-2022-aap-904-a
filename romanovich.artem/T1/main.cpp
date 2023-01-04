@@ -18,18 +18,18 @@ void printLine(Shape *shape)
   std::cout << p << frRect1X << " " << p << frRect1Y << " ";
   std::cout << p << frRect2X << " " << p << frRect2Y;
 }
-point_t *buildParallelogram()
+point_t *buildParallelogram(std::istream &inputPoints)
 {
   point_t A{}, B{}, C{}, D{};
-  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+  inputPoints >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
   D.x = A.x - B.x + C.x;
   D.y = A.y - B.y + C.y;
   return new point_t[4]{A, B, C, D};
 }
-point_t *buildRectangle()
+point_t *buildRectangle(std::istream &inputPoints)
 {
   point_t A{}, B{}, C{}, D{};
-  std::cin >> A.x >> A.y >> C.x >> C.y;
+  inputPoints >> A.x >> A.y >> C.x >> C.y;
   if (A.x >= C.x || A.y >= C.y)
   {
     return nullptr;
@@ -40,10 +40,10 @@ point_t *buildRectangle()
   D.y = A.y;
   return new point_t[4]{A, B, C, D};
 }
-point_t *buildConcave()
+point_t *buildConcave(std::istream &inputPoints)
 {
   point_t A{}, B{}, C{}, D{};
-  std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
+  inputPoints >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y >> D.x >> D.y;
   return new point_t[4]{A, B, C, D};
 }
 int main()
@@ -69,7 +69,7 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        pointsArray = buildParallelogram();
+        pointsArray = buildParallelogram(std::cin);
         Parallelogram *parallelogram = new Parallelogram(pointsArray);
         if (!parallelogram->goodParallelogramInput())
         {
@@ -96,7 +96,7 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        pointsArray = buildRectangle();
+        pointsArray = buildRectangle(std::cin);
         if (!pointsArray)
         {
           badFigure = true;
@@ -121,7 +121,7 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        pointsArray = buildConcave();
+        pointsArray = buildConcave(std::cin);
         Concave *concave = new Concave(pointsArray);
         if (!concave->goodConcaveInput())
         {

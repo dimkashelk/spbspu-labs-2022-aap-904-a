@@ -1,5 +1,5 @@
-#include <stdexcept>
 #include "compositeshape.h"
+#include <stdexcept>
 void CompositeShape::push_back(Shape *shp)
 {
   size_t capAdd = 2;

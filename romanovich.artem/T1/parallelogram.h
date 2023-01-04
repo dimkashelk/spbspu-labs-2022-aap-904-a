@@ -10,11 +10,11 @@ public:
   void move(double dx, double dy) override;
   void move(point_t position) override;
   void scale(double k) override;
-  void isoScale(Parallelogram &parallelogram, double x, double y, double k);
   Parallelogram *clone() const override;
   ~Parallelogram() override = default;
-  bool goodParallelogramInput() const;
 private:
+  bool goodParallelogramInput() const;
   point_t A{}, B{}, C{}, D{};
+  void isoScale(Parallelogram &parallelogram, double x, double y, double k);
 };
 #endif

@@ -1,5 +1,4 @@
 #include "compositeshape.h"
-#include <algorithm>
 #include <limits>
 #include <stdexcept>
 #include "base_functions.h"
@@ -60,8 +59,8 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const Composit
     shapes_ = shapes;
     size_ = other.size_;
     capacity_ = other.capacity_;
-    return *this;
   }
+  return *this;
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape &&tmp)
 {

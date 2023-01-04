@@ -58,8 +58,7 @@ int main (int argc, char *argv[])
   in >> size;
   if (size == 0)
   {
-    std::cout << "Error array size 0";
-    return 1;
+    return 0;
   }
   int *arr_3 = new int[size];
   for (size_t i = 0; i < size; i++)

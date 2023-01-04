@@ -6,9 +6,7 @@
 int main()
 {
   size_t capacity1 = 10;
-  
   char* cstring1 = inputString(capacity1, std::cin);
-  
   char* destination = nullptr;
   try
   {

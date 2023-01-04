@@ -62,6 +62,6 @@ void dimkashelk::Polygon::unsafeScale(double k) noexcept
 {
   for (size_t i = 0; i < count_; i++)
   {
-    isotropicScaling(&triangles_[i], center_, k);
+    isotropicScaling(std::addressof(triangles_[i]), center_, k);
   }
 }

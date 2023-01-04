@@ -10,7 +10,7 @@ int main()
   double x = 0.0;
   double y = 0.0;
 
-  do 
+  do
   {
     std::cin >> figure;
     if (figure == "RECTANGLE")
@@ -24,9 +24,9 @@ int main()
       }
       catch (const std::invalid_argument& e)
       {
-          std::cerr << e.what() << "\n";
-          delete rectangle;
-          continue;
+        std::cerr << e.what() << "\n";
+        delete rectangle;
+        continue;
       }
       catch (...)
       {
@@ -47,9 +47,9 @@ int main()
       }
       catch (const std::invalid_argument& e)
       {
-          std::cerr << e.what() << "\n";
-          delete ring;
-          continue;
+        std::cerr << e.what() << "\n";
+        delete ring;
+        continue;
       }
       catch (...)
       {
@@ -76,8 +76,8 @@ int main()
       }
       catch (...)
       {
-          std::cerr << "Error while reading the ellipse\n";
-          return 2;
+        std::cerr << "Error while reading the ellipse\n";
+        return 2;
       }
     }
   }

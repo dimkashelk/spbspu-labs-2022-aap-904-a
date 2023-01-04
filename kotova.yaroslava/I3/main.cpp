@@ -6,6 +6,7 @@
 
 int main()
 {
+  size_t capacity = 10;
   size_t size = 0;
   char* cstring = nullptr;
   try
@@ -25,7 +26,18 @@ int main()
   std::cout << destination1 << "\n";
 
   char* destination2 = nullptr;
-
+  try
+  {
+    destination2 = new char[capacity];
+  }
+  catch (const std::exception& e)
+  {
+    delete[] cstring;
+    delete[] destination1;
+    delete[] destination2;
+    std::cout << e.what();
+    return 1;
+  }
   destination2 = replacingLetters(cstring, destination2);
   std::cout << destination2 << "\n";
   delete[] cstring;

@@ -123,6 +123,10 @@ void dimkashelk::CompositeShape::scale(double k)
   {
     throw std::logic_error("CompositeShape empty");
   }
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
   unsafeScale(k);
 }
 void dimkashelk::CompositeShape::unsafeScale(double k)

@@ -42,7 +42,7 @@ dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
   rectangle_t rectangle = dimkashelk::getFrameRect(triangles_[0].getFrameRect(), triangles_[0].getFrameRect());
   for (size_t i = 1; i < count_; i++)
   {
-    rectangle = dimkashelk::getFrameRect(triangles_[0].getFrameRect(), triangles_[0].getFrameRect());
+    rectangle = dimkashelk::getFrameRect(triangles_[i].getFrameRect(), triangles_[i].getFrameRect());
   }
   return rectangle;
 }

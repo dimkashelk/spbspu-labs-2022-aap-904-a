@@ -4,5 +4,6 @@
 namespace dimkashelk
 {
   void isotropicScaling(Shape *shape, point_t point, double k);
+  void unsafeIsotropicScaling(Shape *shape, point_t point, double k);
 }
 #endif

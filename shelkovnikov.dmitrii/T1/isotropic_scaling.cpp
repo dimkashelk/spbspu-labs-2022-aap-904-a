@@ -6,6 +6,10 @@ void dimkashelk::isotropicScaling(Shape *shape, point_t point, double k)
   {
     throw std::logic_error("Coefficient below zero");
   }
+  unsafeIsotropicScaling(shape, point, k);
+}
+void dimkashelk::unsafeIsotropicScaling(Shape *shape, point_t point, double k)
+{
   point_t point_1 = shape->getFrameRect().pos;
   shape->move(point);
   point_t point_2 = shape->getFrameRect().pos;

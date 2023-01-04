@@ -4,8 +4,7 @@
 
 CompositeShape::CompositeShape():
   size_(0),
-  capacity_(10),
-  shape_(new shape*[capacity_])
+  capacity_(10)
 {}
 
 CompositeShape::CompositeShape(const CompositeShape & rhs):

@@ -6,8 +6,7 @@
 int main()
 {
   size_t capacity1 = 10;
-  char* cstring1 = new char[capacity1];
-  cstring1[0] = '\0';
+  char* cstring1 = nullptr;
   try
   {
     cstring1 = inputString(capacity1, std::cin);

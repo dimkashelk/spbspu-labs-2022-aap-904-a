@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
+#include <cstring>
 
 char *inputString(char *cstring, size_t &capacity)
 {
@@ -16,10 +17,10 @@ char *inputString(char *cstring, size_t &capacity)
       {
         char *newstr = new char[capacity + 20];
         newstr[capacity + 20] = '\0';
-        //for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        //{
-          //*j = *i;
-        //}
+        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+        {
+          *j = *i;
+        }
         delete[] cstring;
 
         strcpy(cstring, newstr);

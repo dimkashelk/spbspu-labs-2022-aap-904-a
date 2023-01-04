@@ -20,6 +20,14 @@ int main()
 
   for (double x = left; x < right; x += step)
   {
-    print(std::cout, x, ads_Error, number_Max);
+    try
+    {
+      print(std::cout, x, ads_Error, number_Max);
+    }
+    catch (const std::invalid_argument &e)
+    {
+      std::cerr << "Error: " << e.what();
+      return 2;
+    }
   }
 }

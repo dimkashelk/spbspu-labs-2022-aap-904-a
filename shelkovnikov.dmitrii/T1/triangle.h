@@ -13,10 +13,10 @@ namespace dimkashelk
     void move(point_t point) override;
     void move(double delta_x, double delta_y) override;
     Shape* clone() const override;
+    void unsafeScale(double k) noexcept override;
     Triangle rotate(double theta) const;
   private:
     point_t points_[3];
-    void unsafeScale(double k) noexcept override;
     point_t getCenter() const;
   };
 }

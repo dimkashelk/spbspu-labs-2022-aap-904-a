@@ -4,14 +4,14 @@
 #include <stdexcept>
 
 triangle::triangle(point_t point1, point_t point2, point_t point3):
-  triangle(point1, point2, point3)
+  triangle2(point1, point2, point3)
 {}
 
 triangle::triangle(const triangle &tmp):
-  triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
+  triangle2{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}
 triangle::triangle(triangle &&tmp):
-  triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
+  triangle2{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}
 double triangle::getArea() const
 {

@@ -18,6 +18,7 @@ class triangle : virtual public shape
     shape * clone() const override;
   private:
     point_t triangle1[3];
+    triangle_t triangle2;
 };
 
 #endif

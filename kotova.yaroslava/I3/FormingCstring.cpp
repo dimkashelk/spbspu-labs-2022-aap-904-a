@@ -16,12 +16,12 @@ char* formingCstring(size_t & size, std::istream& input)
     {
       try
       {
-        char* newstr = new char[capacity + 20];
+        char* newstr = new char[capacity + 10];
         cstring[capacity - 1] = '\0';
         std::strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;
-        capacity += 20;
+        capacity += 10;
       }
       catch (const std::exception& e)
       {

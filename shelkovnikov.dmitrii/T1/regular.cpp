@@ -7,13 +7,11 @@ dimkashelk::Regular::Regular(point_t point_1, point_t point_2, point_t point_3):
   size_(getCountTriangles(point_1, point_2, point_3)),
   center_(point_1)
 {
-  point_t *points = new point_t[3]{point_1, point_2, point_3};
+  point_t points[3]{point_1, point_2, point_3};
   if (!isRectangularTriangle(points))
   {
-    delete[] points;
     throw std::logic_error("Triangle isn't rectangular");
   }
-  delete[] points;
 }
 dimkashelk::Regular::Regular(const Regular &regular):
   triangle_(regular.triangle_),

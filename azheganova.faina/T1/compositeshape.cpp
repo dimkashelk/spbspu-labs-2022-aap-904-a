@@ -113,5 +113,4 @@ void CompositeShape::push_back(shape * shapes)
     delete[] shape_;
     shape_ = new_shape;
   }
-  shape_[size_++] = shape2;
 }

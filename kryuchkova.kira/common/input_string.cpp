@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <cstring>
 
-char *inputString(char *cstring, size_t &capacity)
+char *inputString(const char *cstring, size_t &capacity)
 {
   size_t size = 0;
   std::cin >> std::noskipws;
@@ -22,7 +22,7 @@ char *inputString(char *cstring, size_t &capacity)
           //*j = *i;
         //}
         //delete[] cstring;
-        cstring[capacity] = '\0';
+        //cstring[capacity] = '\0';
         strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;

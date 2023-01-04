@@ -8,7 +8,7 @@ int main()
 {
   size_t capacity = 10;
   size_t size = 0;
-  char* cstring = nullptr;
+  char* cstring = new char[capacity];
   try
   {
     cstring = formingCstring(size, std::cin);

@@ -5,7 +5,6 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(const point_t *points, size_t si
 {
   TriangulatePoints triangulatePoints(points, size);
   size_t s = 0;
-  size_t capacity = 10;
   Triangle *triangles = new Triangle[size - 2];
   while (triangulatePoints.hasNext())
   {
@@ -17,25 +16,6 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(const point_t *points, size_t si
     {
       delete[] triangles;
       throw;
-    }
-    if (s == capacity)
-    {
-      try
-      {
-        Triangle *new_triangles = new Triangle[capacity + 10];
-        capacity += 10;
-        for (size_t i = 0; i < s; i++)
-        {
-          new_triangles[i] = triangles[i];
-        }
-        delete[] triangles;
-        triangles = new_triangles;
-      }
-      catch (const std::bad_alloc &e)
-      {
-        delete[] triangles;
-        throw;
-      }
     }
   }
   return triangles;

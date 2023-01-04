@@ -4,28 +4,29 @@
 #include <stdexcept>
 #include <cmath>
 
-struct LnTermGenerator {
-  double oneOverXSquared;
-  double term;
-  unsigned number;
+class LnTermGenerator {
+  public:
+    explicit LnTermGenerator(double x):
+      oneOverXSquared(1 / (x * x)),
+      term(2 / x),
+      number(0)
+    {}
 
-  explicit LnTermGenerator(double x):
-    oneOverXSquared(1 / (x * x)),
-    term(2 / x),
-    number(0)
-  {}
-
-  double operator()()
-  {
-    if (number == 0) {
-      number++;
+    double operator()()
+    {
+      if (number == 0) {
+        number++;
+        return term;
+      }
+      term *= (number++) * 2 - 1;
+      term *= oneOverXSquared;
+      term /= number * 2 - 1;
       return term;
     }
-    term *= (number++) * 2 - 1;
-    term *= oneOverXSquared;
-    term /= number * 2 - 1;
-    return term;
-  }
+  private:
+    double oneOverXSquared;
+    double term;
+    unsigned number;
 };
 
 double odintsov::lnPlusOneOverMinusOne(double x, double absError, unsigned numberMax)

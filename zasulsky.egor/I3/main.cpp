@@ -26,6 +26,11 @@ int main()
     }
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
+  if (size <= 1) {
+    std::cout << "Empty string\n";
+    delete [] cstring;
+    return 1;
+  }
   cstring[size - 1] = '\0';
 
   char* newstr = new char[size];

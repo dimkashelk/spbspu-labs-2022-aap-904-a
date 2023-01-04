@@ -45,14 +45,22 @@ dimkashelk::Polygon *dimkashelk::inputPolygon(std::istream &in)
       s++;
       if (s == cap)
       {
-        point_t *new_points = new point_t[cap + 10];
-        cap += 10;
-        for (size_t i = 0; i < s; i++)
+        try
         {
-          new_points[i] = points[i];
+          point_t *new_points = new point_t[cap + 10];
+          cap += 10;
+          for (size_t i = 0; i < s; i++)
+          {
+            new_points[i] = points[i];
+          }
+          delete[] points;
+          points = new_points;
         }
-        delete[] points;
-        points = new_points;
+        catch(...)
+        {
+          delete[] points;
+          throw;
+        }
       }
     }
   }

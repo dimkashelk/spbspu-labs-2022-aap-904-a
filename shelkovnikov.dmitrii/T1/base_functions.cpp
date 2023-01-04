@@ -53,7 +53,7 @@ dimkashelk::point_t dimkashelk::getRightUpPoint(point_t point1, point_t point2)
 }
 dimkashelk::rectangle_t dimkashelk::getFrameRect(rectangle_t rect1, rectangle_t rect2)
 {
-  point_t left_down = getLeftDownPoint(getLeftDownPoint(rect1), getLeftDownPoint(rect1));
-  point_t right_up = getRightUpPoint(getRightUpPoint(rect1), getRightUpPoint(rect1));
+  point_t left_down = getLeftDownPoint(getLeftDownPoint(rect1), getLeftDownPoint(rect2));
+  point_t right_up = getRightUpPoint(getRightUpPoint(rect1), getRightUpPoint(rect2));
   return makeRectangle(left_down, right_up);
 }

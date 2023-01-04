@@ -18,6 +18,5 @@ namespace dimkashelk
     size_t point_;
     double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const;
   };
-  Triangle* makeTriangles(const point_t *points, size_t size);
 }
 #endif

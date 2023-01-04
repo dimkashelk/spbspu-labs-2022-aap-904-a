@@ -11,7 +11,7 @@ struct LnTermGenerator {
 
   explicit LnTermGenerator(double x):
     oneOverXSquared(1 / (x * x)),
-    term(1 / x),
+    term(2 / x),
     number(0)
   {}
 
@@ -46,7 +46,7 @@ double odintsov::lnPlusOneOverMinusOne(double x, double absError, unsigned numbe
   if (term > absError) {
     throw std::runtime_error("absolute error not achieved");
   }
-  return result * 2;
+  return result;
 }
 
 std::ostream& odintsov::outputComparison(std::ostream& out, double x, double absError, unsigned numberMax)

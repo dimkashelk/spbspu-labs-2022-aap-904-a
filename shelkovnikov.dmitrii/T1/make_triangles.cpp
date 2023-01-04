@@ -53,10 +53,6 @@ dimkashelk::TriangulatePoints::~TriangulatePoints()
 }
 dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
 {
-  if (point_ + 1 >= size_)
-  {
-    point_ = 1;
-  }
   if (point_ + 1 < size_)
   {
     if (getMixedProduct(points_[point_ + 1], points_[0], points_[point_], points_[0]) >= 0)

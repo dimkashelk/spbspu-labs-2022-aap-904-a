@@ -5,5 +5,18 @@
 namespace dimkashelk
 {
   Triangle* makeTriangles(const point_t *points, size_t size);
+  class TriangulatePoints
+  {
+  public:
+    TriangulatePoints(const point_t *points, size_t size);
+    ~TriangulatePoints();
+    Triangle operator()();
+    bool hasNext() const;
+  private:
+    point_t *points_;
+    size_t size_;
+    size_t point_;
+    double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start) const;
+  };
 }
 #endif

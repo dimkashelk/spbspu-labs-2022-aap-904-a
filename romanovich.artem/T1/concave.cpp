@@ -2,11 +2,11 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Concave::Concave(point_t *pointsArray) :
-  A(pointsArray[0]),
-  B(pointsArray[1]),
-  C(pointsArray[2]),
-  D(pointsArray[3])
+Concave::Concave(point_t A, point_t B, point_t C, point_t D) :
+  A(A),
+  B(B),
+  C(C),
+  D(D)
 {
   if (!goodConcaveInput())
   {

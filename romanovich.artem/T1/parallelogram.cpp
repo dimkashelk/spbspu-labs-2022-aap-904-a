@@ -2,11 +2,12 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Parallelogram::Parallelogram(point_t *pointsArray) :
-  A(pointsArray[0]),
-  B(pointsArray[1]),
-  C(pointsArray[2]),
-  D(pointsArray[3])
+//Parallelogram::Parallelogram(point_t *pointsArray) :
+Parallelogram::Parallelogram(point_t A, point_t B, point_t C) :
+  A(A),
+  B(B),
+  C(C),
+  D{A.x - B.x + C.x, A.y - B.y + C.y}
 {
   if (!goodParallelogramInput())
   {

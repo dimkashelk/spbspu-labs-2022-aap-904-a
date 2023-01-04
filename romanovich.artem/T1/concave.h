@@ -4,7 +4,7 @@
 class Concave : public Shape
 {
 public:
-  explicit Concave(point_t *pointsArray);
+  explicit Concave(point_t A, point_t B, point_t C, point_t D);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(double dx, double dy) override;

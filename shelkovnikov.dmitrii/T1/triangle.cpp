@@ -76,7 +76,7 @@ dimkashelk::Triangle dimkashelk::Triangle::rotate(double theta) const
   double new_p_y_2 = std::sin(theta) * (points_[2].x - points_[0].x) + std::cos(theta) * (points_[2].y - points_[0].y) + points_[0].y;
   return Triangle(points_[0], point_t{new_p_x_1, new_p_y_1}, point_t{new_p_x_2, new_p_y_2});
 }
-void dimkashelk::Triangle::scaleShape(double k)
+void dimkashelk::Triangle::unsafeScale(double k) noexcept
 {
   point_t center_of_gravity = getCenter();
   for (size_t i = 0; i < 3; i++)

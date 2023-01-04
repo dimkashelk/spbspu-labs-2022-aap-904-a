@@ -27,7 +27,7 @@ dimkashelk::Shape* dimkashelk::Rectangle::clone() const
 {
   return new Rectangle(rectangle_);
 }
-void dimkashelk::Rectangle::scaleShape(double k)
+void dimkashelk::Rectangle::unsafeScale(double k) noexcept
 {
   rectangle_.width *= k;
   rectangle_.height *= k;

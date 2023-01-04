@@ -17,12 +17,12 @@ namespace dimkashelk
       {
         throw std::logic_error("Coefficient below zero");
       }
-      scaleShape(k);
+      unsafeScale(k);
     };
     virtual Shape* clone() const = 0;
     virtual ~Shape() = default;
   private:
-    virtual void scaleShape(double k) = 0;
+    virtual void unsafeScale(double k) noexcept = 0;
   };
 }
 #endif

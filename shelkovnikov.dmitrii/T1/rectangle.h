@@ -20,7 +20,7 @@ namespace dimkashelk
     Rectangle(Rectangle &&rect) = delete;
     Rectangle& operator=(const Rectangle &other) = delete;
     Rectangle& operator=(Rectangle &&tmp) = delete;
-    void scaleShape(double k) override;
+    void unsafeScale(double k) noexcept override;
   };
 }
 #endif

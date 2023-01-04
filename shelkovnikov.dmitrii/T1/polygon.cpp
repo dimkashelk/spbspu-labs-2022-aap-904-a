@@ -58,7 +58,7 @@ dimkashelk::Shape* dimkashelk::Polygon::clone() const
 {
   return new Polygon(*this);
 }
-void dimkashelk::Polygon::scaleShape(double k)
+void dimkashelk::Polygon::unsafeScale(double k) noexcept
 {
   for (size_t i = 0; i < count_; i++)
   {

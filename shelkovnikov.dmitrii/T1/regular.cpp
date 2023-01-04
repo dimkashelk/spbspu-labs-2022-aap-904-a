@@ -66,7 +66,7 @@ dimkashelk::Shape *dimkashelk::Regular::clone() const
 {
   return new Regular(*this);
 }
-void dimkashelk::Regular::scaleShape(double k)
+void dimkashelk::Regular::unsafeScale(double k) noexcept
 {
   isotropicScaling(std::addressof(triangle_), center_, k);
 }

@@ -16,7 +16,7 @@ namespace dimkashelk
     Triangle rotate(double theta) const;
   private:
     point_t points_[3];
-    void scaleShape(double k) override;
+    void unsafeScale(double k) noexcept override;
     point_t getCenter() const;
   };
 }

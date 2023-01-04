@@ -59,6 +59,9 @@ std::ostream& odintsov::outputComparison(std::ostream& out, double x, double abs
 
 std::ostream& odintsov::outputComparisonTable(std::ostream& out, double l, double r, double step, double absError, unsigned num)
 {
+  if (r < l) {
+    throw std::invalid_argument("interval set incorrectly");
+  }
   for (double x = l; x < r; x += step) {
     outputComparison(out, x, absError, num) << '\n';
   }

@@ -39,12 +39,24 @@ double dimkashelk::Polygon::getArea() const
 }
 dimkashelk::rectangle_t dimkashelk::Polygon::getFrameRect() const
 {
-  rectangle_t rectangle = dimkashelk::getFrameRect(triangles_[0].getFrameRect(), triangles_[0].getFrameRect());
+  rectangle_t rectangle = triangles_[0].getFrameRect();
+  point_t left_down = getLeftDownPoint(rectangle);
+  point_t right_up = getRightUpPoint(rectangle);
+  double x_min = left_down.x;
+  double y_min = left_down.y;
+  double x_max = right_up.x;
+  double y_max = right_up.y;
   for (size_t i = 0; i < count_; i++)
   {
-    rectangle = dimkashelk::getFrameRect(triangles_[i].getFrameRect(), triangles_[i].getFrameRect());
+    rectangle = triangles_[i].getFrameRect();
+    left_down = getLeftDownPoint(rectangle);
+    right_up = getRightUpPoint(rectangle);
+    x_min = std::min(x_min, left_down.x);
+    y_min = std::min(y_min, left_down.y);
+    x_max = std::max(x_max, right_up.x);
+    y_max = std::max(y_max, right_up.y);
   }
-  return rectangle;
+  return makeRectangle(point_t{x_min, y_min}, point_t{x_max, y_max});
 }
 void dimkashelk::Polygon::move(point_t point)
 {

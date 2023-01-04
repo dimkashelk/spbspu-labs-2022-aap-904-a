@@ -9,8 +9,6 @@ int main()
   char* cstring1 = nullptr;
   try
   {
-    cstring1 = new char[capacity1];
-    cstring1[0] = '\0';
     cstring1 = inputString(capacity1, std::cin);
   }
   catch (const std::exception& e)

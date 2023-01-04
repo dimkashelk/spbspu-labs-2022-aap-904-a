@@ -38,11 +38,15 @@ int main()
   }
 
   size_t capacity2 = 10;
-  char* cstring2 = new char[capacity2];
+  char* cstring2 = nullptr;
+  char simbol = ' ';
   try
   {
-    for (size_t i = 0; i < capacity2; i++) {
-      cstring2[i] = char(std::rand() % 10 + 0x61);
+    cstring2 = new char[capacity2];
+    for (size_t i = 0; i < capacity2; i++)
+    {
+      simbol = std::rand() % 10 + 0x61;
+      cstring2[i] = simbol;
     }
     cstring2[capacity2 - 1] = '\0';
   }

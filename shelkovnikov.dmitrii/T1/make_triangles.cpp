@@ -36,14 +36,14 @@ dimkashelk::TriangulatePoints::TriangulatePoints(const point_t *points, size_t s
   size_(size),
   point_(1)
 {
-  for (size_t i = 0; i < size; i++)
-  {
-    points_[i] = points[i];
-  }
   if (size < 3)
   {
     delete[] points_;
     throw std::logic_error("Need minimum 3 points");
+  }
+  for (size_t i = 0; i < size; i++)
+  {
+    points_[i] = points[i];
   }
 }
 dimkashelk::TriangulatePoints::~TriangulatePoints()

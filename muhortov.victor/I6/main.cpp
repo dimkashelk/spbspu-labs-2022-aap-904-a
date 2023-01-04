@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstddef>
+#include "PrintResult.hpp"
 
 int main()
 {

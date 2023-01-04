@@ -86,8 +86,10 @@ int main()
       point_t *pointsArray = nullptr;
       try
       {
-        pointsArray = buildRectangle(std::cin);
-        Shape *shape = new Rectangle(pointsArray);
+        //pointsArray = buildRectangle(std::cin);
+        point_t A{}, C{};
+        std::cin >> A.x >> A.y >> C.x >> C.y;
+        Shape *shape = new Rectangle(A, C);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)

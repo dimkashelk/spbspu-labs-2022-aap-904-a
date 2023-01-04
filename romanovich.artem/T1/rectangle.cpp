@@ -1,10 +1,15 @@
 #include <stdexcept>
 #include "rectangle.h"
-Rectangle::Rectangle(point_t *pointsArray) :
-  A(pointsArray[0]),
-  B(pointsArray[1]),
-  C(pointsArray[2]),
-  D(pointsArray[3])
+//Rectangle::Rectangle(point_t *pointsArray) :
+Rectangle::Rectangle(point_t A,point_t C) :
+//  A(pointsArray[0]),
+//  B(pointsArray[1]),
+//  C(pointsArray[2]),
+//  D(pointsArray[3])
+  A(A),
+  B{A.x, C.y},
+  C(C),
+  D{C.x, A.y}
 {
   if (!goodRectangleInput())
   {

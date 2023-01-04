@@ -36,10 +36,14 @@ double complexquad::getArea() const
 rectangle_t complexquad::getFrameRect() const
 {
   point_t complexquad1[4] = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};
-  double maxx = std::max(complexquad1[4].x, std::max(complexquad1[0].x, std::max(complexquad1[1].x, std::max(complexquad1[2].x, complexquad1[3].x))));
-  double maxy = std::max(complexquad1[4].y, std::max(complexquad1[0].y, std::max(complexquad1[1].y, std::max(complexquad1[2].y, complexquad1[3].y))));
-  double minx = std::min(complexquad1[4].x, std::min(complexquad1[0].x, std::min(complexquad1[1].x, std::min(complexquad1[2].x, complexquad1[3].x))));
-  double miny = std::min(complexquad1[4].y, std::min(complexquad1[0].y, std::min(complexquad1[1].y, std::min(complexquad1[2].y, complexquad1[3].y))));
+  double maxx1 = std::max(complexquad1[2].x, complexquad1[3].x);
+  double maxy1 = std::max(complexquad1[2].y, complexquad1[3].y);
+  double minx1 = std::min(complexquad1[2].x, complexquad1[3].x);
+  double miny1 = std::min(complexquad1[2].y, complexquad1[3].y);
+  double maxx = std::max(complexquad1[4].x, std::max(complexquad1[0].x, std::max(complexquad1[1].x, maxx1)));
+  double maxy = std::max(complexquad1[4].y, std::max(complexquad1[0].y, std::max(complexquad1[1].y, maxy1)));
+  double minx = std::min(complexquad1[4].x, std::min(complexquad1[0].x, std::min(complexquad1[1].x, minx1)));
+  double miny = std::min(complexquad1[4].y, std::min(complexquad1[0].y, std::min(complexquad1[1].y, miny1)));
   rectangle_t forcomplexquad(point_t {(minx + maxx) / 2}, point_t {(maxy + miny) / 2});
 }
 void complexquad::move(point_t point)

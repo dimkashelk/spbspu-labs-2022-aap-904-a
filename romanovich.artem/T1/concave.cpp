@@ -2,12 +2,16 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Concave::Concave(point_t *pointsArray):
+Concave::Concave(point_t *pointsArray) :
   A(pointsArray[0]),
   B(pointsArray[1]),
   C(pointsArray[2]),
   D(pointsArray[3])
 {
+  if (!goodConcaveInput())
+  {
+    throw std::invalid_argument("Bad concave input.");
+  }
 }
 bool Concave::goodConcaveInput() const
 {

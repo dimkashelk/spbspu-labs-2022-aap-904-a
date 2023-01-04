@@ -13,6 +13,7 @@ public:
   Rectangle *clone() const override;
   ~Rectangle() override = default;
 private:
+  bool goodRectangleInput() const;
   point_t A{}, B{}, C{}, D{};
 };
 #endif

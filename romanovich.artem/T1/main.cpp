@@ -30,10 +30,6 @@ point_t *buildRectangle(std::istream &inputPoints)
 {
   point_t A{}, B{}, C{}, D{};
   inputPoints >> A.x >> A.y >> C.x >> C.y;
-  if (A.x >= C.x || A.y >= C.y)
-  {
-    return nullptr;
-  }
   B.x = A.x;
   B.y = C.y;
   D.x = C.x;
@@ -70,25 +66,19 @@ int main()
       try
       {
         pointsArray = buildParallelogram(std::cin);
-        Parallelogram *parallelogram = new Parallelogram(pointsArray);
-        if (!parallelogram->goodParallelogramInput())
-        {
-          badFigure = true;
-        }
-        else
-        {
-          Shape *shape = new Parallelogram(pointsArray);
-          compositeShape.push_back(shape);
-        }
-        delete parallelogram;
-        delete[] pointsArray;
+        Shape *shape = new Parallelogram(pointsArray);
+        compositeShape.push_back(shape);
+      }
+      catch (const std::invalid_argument &e)
+      {
+        badFigure = true;
       }
       catch (...)
       {
         std::cerr << "Error occurred while building parallelogram.\n";
-        delete[] pointsArray;
         return 2;
       }
+      delete[] pointsArray;
     }
     if (figureName == "RECTANGLE")
     {
@@ -97,23 +87,19 @@ int main()
       try
       {
         pointsArray = buildRectangle(std::cin);
-        if (!pointsArray)
-        {
-          badFigure = true;
-        }
-        else
-        {
-          Shape *shape = new Rectangle(pointsArray);
-          compositeShape.push_back(shape);
-        }
-        delete[] pointsArray;
+        Shape *shape = new Rectangle(pointsArray);
+        compositeShape.push_back(shape);
+      }
+      catch (const std::invalid_argument &e)
+      {
+        badFigure = true;
       }
       catch (...)
       {
         std::cerr << "Error occurred while building rectangle.\n";
-        delete[] pointsArray;
         return 2;
       }
+      delete[] pointsArray;
     }
     if (figureName == "CONCAVE")
     {
@@ -122,25 +108,19 @@ int main()
       try
       {
         pointsArray = buildConcave(std::cin);
-        Concave *concave = new Concave(pointsArray);
-        if (!concave->goodConcaveInput())
-        {
-          badFigure = true;
-        }
-        else
-        {
-          Shape *shape = new Concave(pointsArray);
-          compositeShape.push_back(shape);
-        }
-        delete concave;
-        delete[] pointsArray;
+        Shape *shape = new Concave(pointsArray);
+        compositeShape.push_back(shape);
+      }
+      catch (const std::invalid_argument &e)
+      {
+        badFigure = true;
       }
       catch (...)
       {
         std::cerr << "Error occurred while building concave.\n";
-        delete[] pointsArray;
         return 2;
       }
+      delete[] pointsArray;
     }
     if (figureName == "SCALE")
     {

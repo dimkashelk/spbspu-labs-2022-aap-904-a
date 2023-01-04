@@ -2,12 +2,16 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Parallelogram::Parallelogram(point_t *pointsArray):
+Parallelogram::Parallelogram(point_t *pointsArray) :
   A(pointsArray[0]),
   B(pointsArray[1]),
   C(pointsArray[2]),
   D(pointsArray[3])
 {
+  if (!goodParallelogramInput())
+  {
+    throw std::invalid_argument("Bad parallelogram input.");
+  }
 }
 double Parallelogram::getArea() const
 {

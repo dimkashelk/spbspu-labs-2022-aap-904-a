@@ -6,6 +6,10 @@ Rectangle::Rectangle(point_t *pointsArray) :
   C(pointsArray[2]),
   D(pointsArray[3])
 {
+  if (!goodRectangleInput())
+  {
+    throw std::invalid_argument("Bad rectangle input.");
+  }
 }
 double Rectangle::getArea() const
 {
@@ -60,4 +64,8 @@ void Rectangle::scale(double k)
 Rectangle *Rectangle::clone() const
 {
   return nullptr;
+}
+bool Rectangle::goodRectangleInput() const
+{
+  return (A.x < C.x && A.y < C.y);
 }

@@ -36,8 +36,7 @@ int main()
   }
 
   size_t capacity2 = 10;
-  char* cstring2 = new char[capacity2];
-  cstring2[0] = '\0';
+  char* cstring2 = nullptr;
   try
   {
     cstring2 = inputString(capacity2, std::cin);

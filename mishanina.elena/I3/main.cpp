@@ -10,7 +10,7 @@ int main()
   cstring1[0] = '\0';
   try
   {
-    cstring1 = inputString( capacity1, std::cin);
+    cstring1 = inputString(capacity1, std::cin);
   }
   catch (const std::exception& e)
   {
@@ -18,11 +18,10 @@ int main()
     delete[] cstring1;
     return 1;
   }
-  char* destination{};
+  char* destination = nullptr;
   try
   {
     destination = new char[capacity1];
-    destination[0] = '\0';
     destination = removeExtraSpaces(destination, cstring1);
     std::cout << destination << "\n";
     delete[] destination;

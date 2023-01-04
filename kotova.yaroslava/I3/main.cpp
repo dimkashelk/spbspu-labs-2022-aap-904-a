@@ -24,7 +24,7 @@ int main()
   char* destination1 = nullptr;
   try
   {
-    destination10 = new char[capacity];
+    destination1 = new char[capacity];
   }
   catch (const std::exception& e)
   {

@@ -6,11 +6,10 @@
 int main()
 {
   size_t capacity1 = 10;
-  char* cstring1{};
+  char* cstring1 = new char[capacity1];
+  cstring1[0] = '\0';
   try
   {
-    cstring1 = new char[capacity1];
-    cstring1[0] = '\0';
     cstring1 = inputString( capacity1, std::cin);
   }
   catch (const std::exception& e)
@@ -53,8 +52,6 @@ int main()
   try
   {
     result = hasItTheSameSimbols(cstring1, cstring2);
-    delete[] cstring1;
-    delete[] cstring2;
   }
   catch (const std::exception& e)
   {
@@ -71,5 +68,7 @@ int main()
   {
     std::cout << "Strings don't have the same simbols" << "\n";
   }
+  delete[] cstring1;
+  delete[] cstring2;
   return 0;
 }

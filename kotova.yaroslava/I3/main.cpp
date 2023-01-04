@@ -32,7 +32,7 @@ int main()
     std::cout << e.what();
     return 1;
   }
-  destination1 = deleteNumbers(destination1, cstring);
+  destination1 = deleteNumbers(cstring, destination1);
   std::cout << destination1 << "\n";
 
   char* destination2 = nullptr;

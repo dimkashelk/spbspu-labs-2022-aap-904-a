@@ -27,7 +27,7 @@ int main()
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
   cstring[size - 1] = '\0';
-  
+
   char* newstr = new char[size];
   std::cout << zasulsky::replaceSymbol(newstr, cstring, 'e', 'a') << '\n';
 

@@ -4,6 +4,6 @@
 #include <cstddef>
 namespace dimkashelk
 {
-  Triangle* makeTriangles(point_t *points, size_t size);
+  Triangle* makeTriangles(const point_t *points, size_t size);
 }
 #endif

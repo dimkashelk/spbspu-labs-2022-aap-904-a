@@ -1,6 +1,6 @@
 #include "make_triangles.h"
 #include "triangulatepoints.h"
-dimkashelk::Triangle* dimkashelk::makeTriangles(point_t *points, size_t size)
+dimkashelk::Triangle* dimkashelk::makeTriangles(const point_t *points, size_t size)
 {
   TriangulatePoints triangulatePoints(points, size);
   size_t s = 0;

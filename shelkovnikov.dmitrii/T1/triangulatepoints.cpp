@@ -1,7 +1,7 @@
 #include "triangulatepoints.h"
 #include <stdexcept>
 #include <cmath>
-dimkashelk::TriangulatePoints::TriangulatePoints(point_t *points, size_t size):
+dimkashelk::TriangulatePoints::TriangulatePoints(const point_t *points, size_t size):
   points_(new point_t[size]),
   size_(size),
   point_(1)

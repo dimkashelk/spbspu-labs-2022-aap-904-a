@@ -4,7 +4,7 @@
 #include "isotropic_scaling.h"
 #include "base_functions.h"
 #include "make_triangles.h"
-dimkashelk::Polygon::Polygon(point_t *points, size_t size):
+dimkashelk::Polygon::Polygon(const point_t *points, size_t size):
   count_(0),
   triangles_(makeTriangles(points, size)),
   center_(getCenterOfWeight(points, size))

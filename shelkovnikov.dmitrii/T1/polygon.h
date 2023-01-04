@@ -7,7 +7,7 @@ namespace dimkashelk
   class Polygon: public Shape
   {
   public:
-    Polygon(point_t *points, size_t size);
+    Polygon(const point_t *points, size_t size);
     ~Polygon();
     double getArea() const override;
     rectangle_t getFrameRect() const override;

@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <cstddef>
 #include <iomanip>
-#include "rectangle.h"
+#include "compositeshape.h"
 #include "isotropic_scaling.h"
 #include "base_functions.h"
 #include "input_shapes.h"

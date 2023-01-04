@@ -8,7 +8,7 @@ namespace dimkashelk
   class TriangulatePoints
   {
   public:
-    TriangulatePoints(point_t *points, size_t size);
+    TriangulatePoints(const point_t *points, size_t size);
     ~TriangulatePoints();
     Triangle operator()();
     bool hasNext() const;

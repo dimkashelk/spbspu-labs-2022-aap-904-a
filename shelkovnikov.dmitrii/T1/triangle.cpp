@@ -2,7 +2,8 @@
 #include <cmath>
 #include <stdexcept>
 #include "base_functions.h"
-dimkashelk::Triangle::Triangle()
+dimkashelk::Triangle::Triangle():
+  points_{point_t{0.0, 0.0}, point_t{0.0, 0.0}, point_t{0.0, 0.0}}
 {}
 dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3):
   points_{p1, p2, p3}
@@ -14,26 +15,6 @@ dimkashelk::Triangle::Triangle(point_t p1, point_t p2, point_t p3):
   {
     throw std::logic_error("It's not a triangle_");
   }
-}
-dimkashelk::Triangle::Triangle(const Triangle &triangle):
-  points_{triangle.points_[0], triangle.points_[1], triangle.points_[2]}
-{}
-dimkashelk::Triangle::Triangle(Triangle &&triangle):
-  points_{triangle.points_[0], triangle.points_[1], triangle.points_[2]}
-{}
-dimkashelk::Triangle &dimkashelk::Triangle::operator=(const Triangle &other)
-{
-  points_[0] = other.points_[0];
-  points_[1] = other.points_[1];
-  points_[2] = other.points_[2];
-  return *this;
-}
-dimkashelk::Triangle &dimkashelk::Triangle::operator=(Triangle &&tmp)
-{
-  points_[0] = tmp.points_[0];
-  points_[1] = tmp.points_[1];
-  points_[2] = tmp.points_[2];
-  return *this;
 }
 double dimkashelk::Triangle::getArea() const
 {

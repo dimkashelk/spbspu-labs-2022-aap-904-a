@@ -8,10 +8,6 @@ namespace dimkashelk
   public:
     Triangle();
     Triangle(point_t point1, point_t point2, point_t point3);
-    Triangle(const Triangle &triangle);
-    Triangle(Triangle &&triangle);
-    Triangle& operator=(const Triangle &other);
-    Triangle& operator=(Triangle &&tmp);
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;

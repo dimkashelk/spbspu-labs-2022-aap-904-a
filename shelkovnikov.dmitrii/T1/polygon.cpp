@@ -1,19 +1,13 @@
 #include "polygon.h"
 #include <algorithm>
-#include <stdexcept>
 #include "isotropic_scaling.h"
 #include "base_functions.h"
 #include "make_triangles.h"
 dimkashelk::Polygon::Polygon(const point_t *points, size_t size):
-  count_(0),
+  count_(size - 2),
   triangles_(makeTriangles(points, size)),
   center_(getCenterOfWeight(points, size))
-{
-  if (size >= 3)
-  {
-    count_ = size - 2;
-  }
-}
+{}
 dimkashelk::Polygon::Polygon(const Polygon &polygon):
   count_(polygon.count_),
   triangles_(new Triangle[polygon.count_]),

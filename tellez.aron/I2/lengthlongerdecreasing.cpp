@@ -2,6 +2,10 @@
 #include "lengthlongerdecreasing.h"
 size_t length_longer_decreasing(const int *arr, const size_t size)
 {
+  if (arr == nullptr)
+  {
+    return 0;
+  }
   size_t max = 0;
   size_t len = 1;
   size_t i = 0;

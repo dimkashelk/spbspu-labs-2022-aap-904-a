@@ -61,5 +61,5 @@ std::ostream& odintsov::outputComparisonTable(std::ostream& out, double l, doubl
   for (double x = l; x < r; x += step) {
     outputComparison(out, x, absError, num) << '\n';
   }
-  return out;
+  return outputComparison(out, r, absError, num);
 }

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <exception>
 #include "lnPlusOneOverMinusOne.hpp"
 
 int main()
@@ -15,7 +16,7 @@ int main()
   }
   try {
     odintsov::outputComparisonTable(std::cout, l, r, step, absError, numberMax) << '\n';
-  } catch (const std::invalid_argument& err) {
+  } catch (const std::exception& err) {
     std::cout << err.what() << '\n';
     return 1;
   }

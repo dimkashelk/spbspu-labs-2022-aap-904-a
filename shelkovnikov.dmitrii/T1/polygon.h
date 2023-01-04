@@ -20,9 +20,6 @@ namespace dimkashelk
     Triangle *triangles_;
     point_t center_;
     Polygon(const Polygon &polygon);
-    Polygon(Polygon &&polygon) = delete;
-    Polygon& operator=(const Polygon &other) = delete;
-    Polygon& operator=(Polygon &&tmp) = delete;
   };
 }
 #endif

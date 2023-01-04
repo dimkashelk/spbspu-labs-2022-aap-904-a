@@ -20,9 +20,6 @@ namespace dimkashelk
     size_t size_;
     point_t center_;
     Regular(const Regular &regular);
-    Regular(Regular &&regular) = delete;
-    Regular& operator=(const Regular &other) = delete;
-    Regular& operator=(Regular &&tmp) = delete;
   };
 }
 #endif

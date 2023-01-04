@@ -10,7 +10,6 @@ char* replacingLetters(const char* source, char* destination)
       *k = std::tolower(*i);
       k++;
     }
-    i++;
   }
   *k = '\0';
   return destination;

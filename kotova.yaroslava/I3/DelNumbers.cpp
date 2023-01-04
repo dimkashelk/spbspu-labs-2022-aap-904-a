@@ -10,7 +10,6 @@ char* deleteNumbers(const char* source, char* destination)
       *k = *i;
       ++k;
     }
-    i++;
   }
   *k = '\0';
   return destination;

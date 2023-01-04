@@ -20,14 +20,22 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(const point_t *points, size_t si
     }
     if (s == capacity)
     {
-      Triangle *new_triangles = new Triangle[capacity + 10];
-      capacity += 10;
-      for (size_t i = 0; i < s; i++)
+      try
       {
-        new_triangles[i] = triangles[i];
+        Triangle *new_triangles = new Triangle[capacity + 10];
+        capacity += 10;
+        for (size_t i = 0; i < s; i++)
+        {
+          new_triangles[i] = triangles[i];
+        }
+        delete[] triangles;
+        triangles = new_triangles;
       }
-      delete[] triangles;
-      triangles = new_triangles;
+      catch (const std::bad_alloc &e)
+      {
+        delete[] triangles;
+        throw;
+      }
     }
   }
   return triangles;

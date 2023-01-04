@@ -3,7 +3,7 @@
 #include <cmath>
 #include <stdexcept>
 
-triangle::triangle(point_t point1, point_t point2, point_t point3)
+triangle::triangle()
 {}
 
 triangle::triangle(const triangle &tmp):

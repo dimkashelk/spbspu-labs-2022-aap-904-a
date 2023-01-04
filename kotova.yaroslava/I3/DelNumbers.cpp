@@ -1,6 +1,6 @@
 #include "DelNumbers.h"
 #include <cctype>
-char* deleteNumbers(char* destination, const char* source)
+char* deleteNumbers(const char* source, char* destination)
 {
   auto k = destination;
   for (auto i = source; *i != '\0'; i++)

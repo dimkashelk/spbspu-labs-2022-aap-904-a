@@ -6,8 +6,8 @@
 
 int main()
 {
-  size_t capacity = 10;
-  size_t capacity2 = 10;
+//  size_t capacity = 10;
+//  size_t capacity2 = 10;
   size_t size = 0;
   char* cstring = nullptr;
   try
@@ -22,7 +22,7 @@ int main()
   }
 
   char* destination1 = nullptr;
-  try
+ /* try
   {
     destination1 = new char[capacity];
   }
@@ -32,12 +32,12 @@ int main()
     delete[] destination1;
     std::cout << e.what();
     return 1;
-  }
-  destination1 = deleteNumbers(destination1, cstring);
+  }*/
+  destination1 = deleteNumbers(cstring, destination1);
   std::cout << destination1 << "\n";
 
   char* destination2 = nullptr;
-  try
+ /* try
   {
     destination2 = new char[capacity2];
   }
@@ -48,9 +48,10 @@ int main()
     delete[] destination2;
     std::cout << e.what();
     return 1;
-  }
+  }*/
   destination2 = replacingLetters(cstring, destination2);
   std::cout << destination2 << "\n";
   delete[] cstring;
+  delete[] destination1;
   delete[] destination2;
 }

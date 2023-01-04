@@ -11,7 +11,7 @@ int main()
   char* cstring = nullptr;
   try
   {
-    char* cstring = new char[capacity];
+    cstring = new char[capacity];
   }
   catch (const std::exception& e)
   {

@@ -6,7 +6,7 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(const point_t *points, size_t si
   TriangulatePoints triangulatePoints(points, size);
   size_t s = 0;
   size_t capacity = 10;
-  Triangle *triangles = new Triangle[capacity];
+  Triangle *triangles = new Triangle[size - 2];
   while (triangulatePoints.hasNext())
   {
     try

@@ -8,7 +8,10 @@ CompositeShape::CompositeShape():
   shape_(new shape*[capacity_])
 {}
 
-CompositeShape::CompositeShape(const CompositeShape & rhs)
+CompositeShape::CompositeShape(const CompositeShape & rhs):
+  size_(rhs.size_),
+  capacity_(rhs.capacity_),
+  shape_(rhs.shape_)
 {
   for (size_t i = 0; i < rhs.size_; ++i)
   {
@@ -18,9 +21,9 @@ CompositeShape::CompositeShape(const CompositeShape & rhs)
 }
 
 CompositeShape::CompositeShape(CompositeShape && rhs):
- shape_(rhs.shape_),
- size_(rhs.size_),
- capacity_(rhs.capacity_)
+  size_(rhs.size_),
+  capacity_(rhs.capacity_),
+  shape_(rhs.shape_)
 {
   rhs.shape_ = nullptr;
   rhs.size_ = 0;

@@ -78,7 +78,7 @@ size_t dimkashelk::getCountTriangles(point_t point_1, point_t point_2, point_t p
   double side_2 = std::sqrt(std::pow(point_3.x - point_1.x, 2) + std::pow(point_3.y - point_1.y, 2));
   double hypotenuse = std::max(side_1, side_2);
   double cathet = std::min(side_1, side_2);
-  double angle_degrees = std::round((std::acos(cathet / hypotenuse) * 180.0 / 3.1415926) * 1000) / 1000;
+  double angle_degrees = std::round((std::acos(cathet / hypotenuse) * 180.0 / PI) * 1000) / 1000;
   size_t size = static_cast< size_t >(360 / angle_degrees);
   if (size * angle_degrees != 360)
   {

@@ -5,6 +5,7 @@
 #include "shape.h"
 namespace dimkashelk
 {
+  constexpr double PI = 3.1415926;
   point_t getLeftDownPoint(rectangle_t rect);
   point_t getRightUpPoint(rectangle_t rect);
   bool isRectangularTriangle(const point_t *points);

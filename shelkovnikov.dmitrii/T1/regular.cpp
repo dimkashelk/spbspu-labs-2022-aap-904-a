@@ -31,7 +31,7 @@ dimkashelk::rectangle_t dimkashelk::Regular::getFrameRect() const
   double min_y = left_down.y;
   double max_x = right_up.x;
   double max_y = right_up.y;
-  double theta = 360.0 / size_ * 2 * 3.1415926 / 180;
+  double theta = 360.0 / size_ * 2 * PI / 180;
   for (size_t i = 1; i < size_; i++)
   {
     Triangle rotate_triangle = triangle_.rotate(i * theta);

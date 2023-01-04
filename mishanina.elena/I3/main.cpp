@@ -1,10 +1,12 @@
 ﻿#include <iostream>
+#include <ctime>
 #include "inputString.h"
 #include "removeExtraSpaces.h"
 #include "hasItTheSameSimbols.h"
 
 int main()
 {
+  std::srand(std::time(nullptr));
   size_t capacity1 = 10;
   char* cstring1 = nullptr;
   try
@@ -36,10 +38,13 @@ int main()
   }
 
   size_t capacity2 = 10;
-  char* cstring2 = nullptr;
+  char* cstring2 = new char[capacity2];
   try
   {
-    cstring2 = inputString(capacity2, std::cin);
+    for (size_t i = 0; i < capacity2; i++) {
+      cstring2[i] = char(std::rand() % 10 + 0x61);
+    }
+    cstring2[capacity2 - 1] = '\0';
   }
   catch (const std::exception& e)
   {

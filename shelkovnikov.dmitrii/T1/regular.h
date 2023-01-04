@@ -13,13 +13,13 @@ namespace dimkashelk
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
     void move(double delta_x, double delta_y) override;
-    void scale(double k) override;
     Shape* clone() const override;
   private:
     Triangle triangle_;
     size_t size_;
     point_t center_;
     Regular(const Regular &regular);
+    void scaleShape(double k) override;
   };
 }
 #endif

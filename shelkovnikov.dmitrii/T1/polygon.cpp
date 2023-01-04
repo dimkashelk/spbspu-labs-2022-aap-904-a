@@ -60,18 +60,14 @@ void dimkashelk::Polygon::move(double delta_x, double delta_y)
   center_.x += delta_x;
   center_.y += delta_y;
 }
-void dimkashelk::Polygon::scale(double k)
+dimkashelk::Shape* dimkashelk::Polygon::clone() const
 {
-  if (k <= 0)
-  {
-    throw std::logic_error("Coefficient below zero");
-  }
+  return new Polygon(*this);
+}
+void dimkashelk::Polygon::scaleShape(double k)
+{
   for (size_t i = 0; i < count_; i++)
   {
     isotropicScaling(&triangles_[i], center_, k);
   }
-}
-dimkashelk::Shape* dimkashelk::Polygon::clone() const
-{
-  return new Polygon(*this);
 }

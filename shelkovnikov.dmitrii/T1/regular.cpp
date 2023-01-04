@@ -62,15 +62,11 @@ void dimkashelk::Regular::move(point_t point)
   center_.x += delta_x;
   center_.y += delta_y;
 }
-void dimkashelk::Regular::scale(double k)
-{
-  if (k <= 0)
-  {
-    throw std::logic_error("Coefficient below zero");
-  }
-  isotropicScaling(std::addressof(triangle_), center_, k);
-}
 dimkashelk::Shape *dimkashelk::Regular::clone() const
 {
   return new Regular(*this);
+}
+void dimkashelk::Regular::scaleShape(double k)
+{
+  isotropicScaling(std::addressof(triangle_), center_, k);
 }

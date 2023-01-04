@@ -13,7 +13,6 @@ namespace dimkashelk
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
     void move(double delta_x, double delta_y) override;
-    void scale(double k) override;
     Shape* clone() const override;
   private:
     rectangle_t rectangle_;
@@ -21,6 +20,7 @@ namespace dimkashelk
     Rectangle(Rectangle &&rect) = delete;
     Rectangle& operator=(const Rectangle &other) = delete;
     Rectangle& operator=(Rectangle &&tmp) = delete;
+    void scaleShape(double k) override;
   };
 }
 #endif

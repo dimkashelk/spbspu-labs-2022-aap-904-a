@@ -23,16 +23,12 @@ void dimkashelk::Rectangle::move(double delta_x, double delta_y)
   rectangle_.pos.x += delta_x;
   rectangle_.pos.y += delta_y;
 }
-void dimkashelk::Rectangle::scale(double k)
-{
-  if (k <= 0)
-  {
-    throw std::logic_error("Coefficient below zero");
-  }
-  rectangle_.width *= k;
-  rectangle_.height *= k;
-}
-dimkashelk::Shape *dimkashelk::Rectangle::clone() const
+dimkashelk::Shape* dimkashelk::Rectangle::clone() const
 {
   return new Rectangle(rectangle_);
+}
+void dimkashelk::Rectangle::scaleShape(double k)
+{
+  rectangle_.width *= k;
+  rectangle_.height *= k;
 }

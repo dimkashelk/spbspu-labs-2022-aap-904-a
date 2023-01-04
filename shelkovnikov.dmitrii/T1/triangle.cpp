@@ -60,19 +60,6 @@ void dimkashelk::Triangle::move(point_t point)
   point_t point_center_of_gravity = this->getCenter();
   this->move(point.x - point_center_of_gravity.x, point.y - point_center_of_gravity.y);
 }
-void dimkashelk::Triangle::scale(double k)
-{
-  if (k <= 0)
-  {
-    throw std::logic_error("Coefficient below zero");
-  }
-  point_t center_of_gravity = getCenter();
-  for (size_t i = 0; i < 3; i++)
-  {
-    points_[i].x = k * (points_[i].x - center_of_gravity.x) + center_of_gravity.x;
-    points_[i].y = k * (points_[i].y - center_of_gravity.y) + center_of_gravity.y;
-  }
-}
 dimkashelk::Shape* dimkashelk::Triangle::clone() const
 {
   Triangle *copy = new Triangle(points_[0], points_[1], points_[2]);
@@ -88,6 +75,15 @@ dimkashelk::Triangle dimkashelk::Triangle::rotate(double theta) const
   double new_p_x_2 = std::cos(theta) * (points_[2].x - points_[0].x) - std::sin(theta) * (points_[2].y - points_[0].y) + points_[0].x;
   double new_p_y_2 = std::sin(theta) * (points_[2].x - points_[0].x) + std::cos(theta) * (points_[2].y - points_[0].y) + points_[0].y;
   return Triangle(points_[0], point_t{new_p_x_1, new_p_y_1}, point_t{new_p_x_2, new_p_y_2});
+}
+void dimkashelk::Triangle::scaleShape(double k)
+{
+  point_t center_of_gravity = getCenter();
+  for (size_t i = 0; i < 3; i++)
+  {
+    points_[i].x = k * (points_[i].x - center_of_gravity.x) + center_of_gravity.x;
+    points_[i].y = k * (points_[i].y - center_of_gravity.y) + center_of_gravity.y;
+  }
 }
 dimkashelk::point_t dimkashelk::Triangle::getCenter() const
 {

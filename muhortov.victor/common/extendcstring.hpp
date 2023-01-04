@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-char *extendCString(size_t &capacity);
+char *extendCString(const char *c_string,size_t &capacity);
 
 #endif

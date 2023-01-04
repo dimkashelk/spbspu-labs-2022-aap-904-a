@@ -7,7 +7,7 @@
 int main()
 {
   size_t capacity = 10;
-  size_t size = 0;
+  size_t size = 1;
   char* cstring = new char[capacity];
   try
   {

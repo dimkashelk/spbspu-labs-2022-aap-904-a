@@ -1,7 +1,6 @@
 #include "triangle.h"
 #include "base_types.h"
 #include <iostream>
-#include <cmath>
 #include <stdexcept>
 
 triangle::triangle()
@@ -19,11 +18,11 @@ triangle::triangle(triangle &&tmp):
 {}
 double triangle::getArea() const
 {
-  double firstpart = 0;
-  double secondpart = 0;
+  double firstpart = 0.0;
+  double secondpart = 0.0;
   firstpart = (triangle1[2].x - triangle1[1].x) * (triangle1[3].y - triangle1[1].y);
   secondpart = (triangle1[3].x - triangle1[1].x) * (triangle1[2].y - triangle1[1].y);
-  return std::fabs(0.5*(firstpart - secondpart));
+  return std::fabs(0.5 * (firstpart - secondpart));
 }
 rectangle_t triangle::getFrameRect() const
 {
@@ -60,10 +59,13 @@ void triangle::scale(double k)
   {
     std::cout << "incorrect value";
   }
+  else
+  {
   point_t center = findCenterOfTriangle();
   triangle1[0].x = k * (triangle1[0].x - center.x) + center.x;
   triangle1[1].x = k * (triangle1[1].x - center.x) + center.x;
   triangle1[2].x = k * (triangle1[2].x - center.x) + center.x;
+  }
 }
 
 shape* triangle::clone() const

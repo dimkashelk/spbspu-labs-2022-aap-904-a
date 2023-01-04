@@ -6,6 +6,7 @@
 #include "inputrectangle.h"
 #include "compositeshape.h"
 #include "inputtriangle.h"
+#include "inputcomplexquad.h"
 
 int main()
 {
@@ -23,6 +24,11 @@ int main()
     if (name == "TRIANGLE")
     {
       shape *shape = inputTriangle(std::cin);
+      rhs.push_back(shape);
+    }
+    if (name == "COMPLEXQUAD")
+    {
+      shape *shape = inputComplexquad(std::cin);
       rhs.push_back(shape);
     }
   }

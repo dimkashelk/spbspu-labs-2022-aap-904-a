@@ -32,8 +32,11 @@ void rectangle::scale(double k)
   {
     std::cout << "incorrect value";
   }
+  else
+  {
   rectangle1.width *= std::fabs(k);
   rectangle1.height *= std::fabs(k);
+  }
 }
 shape *rectangle::clone() const
 {

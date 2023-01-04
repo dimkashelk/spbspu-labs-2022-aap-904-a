@@ -56,7 +56,7 @@ dimkashelk::Polygon *dimkashelk::inputPolygon(std::istream &in)
           delete[] points;
           points = new_points;
         }
-        catch(...)
+        catch (...)
         {
           delete[] points;
           throw;

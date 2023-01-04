@@ -12,7 +12,7 @@ dimkashelk::Triangle* dimkashelk::makeTriangles(point_t *points, size_t size)
     {
       triangles[s++] = triangulatePoints();
     }
-    catch(...)
+    catch (...)
     {
       delete[] triangles;
       throw;

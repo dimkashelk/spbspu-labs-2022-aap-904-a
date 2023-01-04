@@ -185,7 +185,7 @@ void dimkashelk::CompositeShape::push_back(const Shape *shp)
   {
     push_back(shp->clone());
   }
-  catch(...)
+  catch (...)
   {}
 }
 void dimkashelk::CompositeShape::pop_back()

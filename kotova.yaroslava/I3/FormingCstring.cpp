@@ -35,6 +35,6 @@ char* formingCstring(size_t & size, std::istream& input)
     throw std::invalid_argument("Empty string");
   }
   cstring[size - 1] = '\0';
-  size++;
+  size = strlen(cstring);
   return cstring;
 }

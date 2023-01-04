@@ -64,7 +64,7 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const Composit
 }
 dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(CompositeShape &&tmp)
 {
-  if (&tmp != this)
+  if (std::addressof(tmp) != this)
   {
     free();
     size_ = tmp.size_;

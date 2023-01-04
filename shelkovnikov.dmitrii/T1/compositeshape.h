@@ -33,7 +33,7 @@ namespace dimkashelk
     size_t size_;
     size_t capacity_;
     Shape **shapes_;
-    void free();
+    void free(Shape **shapes, size_t size);
   };
 }
 #endif

@@ -21,7 +21,7 @@ dimkashelk::CompositeShape::CompositeShape(const CompositeShape &compositeShape)
     }
     catch (...)
     {
-      free();
+      free(shapes_, i);
       throw;
     }
   }
@@ -47,15 +47,11 @@ dimkashelk::CompositeShape &dimkashelk::CompositeShape::operator=(const Composit
       }
       catch (...)
       {
-        for (size_t j = 0; j < i; j++)
-        {
-          delete shapes[j];
-        }
-        delete[] shapes;
+        free(shapes, i);
         throw;
       }
     }
-    free();
+    free(shapes_, size_);
     shapes_ = shapes;
     size_ = other.size_;
     capacity_ = other.capacity_;
@@ -85,7 +81,7 @@ const dimkashelk::Shape *dimkashelk::CompositeShape::operator[](size_t id) const
 }
 dimkashelk::CompositeShape::~CompositeShape()
 {
-  free();
+  free(shapes_, size_);
 }
 double dimkashelk::CompositeShape::getArea() const
 {
@@ -199,11 +195,11 @@ void dimkashelk::CompositeShape::isotropicScaling(point_t point, double k)
   scale(k);
   move(-k * (point_2.x - point_1.x), -k * (point_2.y - point_1.y));
 }
-void dimkashelk::CompositeShape::free()
+void dimkashelk::CompositeShape::free(Shape **shapes, size_t size)
 {
-  for (size_t i = 0; i < size_; i++)
+  for (size_t i = 0; i < size; i++)
   {
-    delete shapes_[i];
+    delete shapes[i];
   }
-  delete[] shapes_;
+  delete[] shapes;
 }

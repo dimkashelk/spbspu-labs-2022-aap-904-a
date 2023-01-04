@@ -105,7 +105,7 @@ dimkashelk::rectangle_t dimkashelk::CompositeShape::getFrameRect() const
   rectangle_t rectangle = dimkashelk::getFrameRect(shapes_[0]->getFrameRect(), shapes_[0]->getFrameRect());
   for (size_t i = 1; i < size_; i++)
   {
-    rectangle = dimkashelk::getFrameRect(shapes_[0]->getFrameRect(), shapes_[0]->getFrameRect());
+    rectangle = dimkashelk::getFrameRect(shapes_[i]->getFrameRect(), shapes_[i]->getFrameRect());
   }
   return rectangle;
 }

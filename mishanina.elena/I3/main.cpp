@@ -6,18 +6,11 @@
 int main()
 {
   size_t capacity1 = 10;
-  size_t newsize1 = 0;
   char* cstring1 = new char[capacity1];
   cstring1[0] = '\0';
   try
   {
-    cstring1 = inputString(newsize1, capacity1, std::cin);
-    if (newsize1 == 1) {
-      std::cerr << "ERROR: Empty string\n";
-      delete[] cstring1;
-      return 1;
-    }
-    cstring1[newsize1 - 1] = '\0';
+    cstring1 = inputString(capacity1, std::cin);
   }
   catch (const std::exception& e)
   {
@@ -44,19 +37,11 @@ int main()
   }
 
   size_t capacity2 = 10;
-  size_t newsize2 = 0;
   char* cstring2 = new char[capacity2];
   cstring2[0] = '\0';
   try
   {
-    cstring2 = inputString(newsize2, capacity2, std::cin);
-    if (newsize2 == 1) {
-      std::cerr << "ERROR: Empty string\n";
-      delete[] cstring1;
-      delete[] cstring2;
-      return 1;
-    }
-    cstring2[newsize2 - 1] = '\0';
+    cstring2 = inputString(capacity2, std::cin);
   }
   catch (const std::exception& e)
   {

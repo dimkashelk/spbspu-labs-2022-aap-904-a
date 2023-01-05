@@ -1,5 +1,6 @@
 #include "input_string.h"
 #include <iostream>
+#include <utility>
 #include <cstddef>
 #include <stdexcept>
 #include <cstring>

@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <fstream>
+#include "count_rows_without_zero.h"
 
 int main(int argc, char * argv[])
 {
@@ -55,6 +56,12 @@ int main(int argc, char * argv[])
           return 1;
         }
       }
+    }
+    output << countRowsWithoutZero(matrix, rows, columns) << '\n';
+    if (!output)
+    {
+      std::cerr << "ERROR: file cannot be read\n";
+      return 1;
     }
   }
   else if (!std::strcmp(argv[1], "2"))

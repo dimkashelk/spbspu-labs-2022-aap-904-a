@@ -64,7 +64,17 @@ int main(int argc, char * argv[])
   }
   else if (!std::strcmp(argv[1], "2"))
   {
-    int* dynamicMatrix = new int[rows * columns];
+    int* dynamicMatrix = nullptr;
+    try
+    {
+      dynamicMatrix = new int[rows * columns];
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        delete[] dynamicMatrix;
+        return 1;
+    }
     for (size_t i = 0; i < rows; i++)
     {
       for (size_t j = 0; j < columns; j++)

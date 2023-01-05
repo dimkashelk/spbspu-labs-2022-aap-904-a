@@ -5,15 +5,15 @@ class Ellipse : public Shape
 {
 
 public:
-  Ellipse(point_t center, double radius_vert, double radius_horizont): center_(center), radius_vert_(radius_vert), radius_horizont_(radius_horizont) {}
+  Ellipse(point_t center, double axis_vertical, double axis_horizontal);
   double getArea() const override;
   rectangle_t getFrameRectangle() const override;
-  void move(const point_t& position) override;
+  void move(point_t position) override;
   void move(double dx, double dy) override;
   void scale(double k) override;
 
 private:
-  double radius_vert_, radius_horizont_;
+  double axis_vertical_, axis_horizontal_;
   point_t center_;
 
 };

@@ -7,8 +7,6 @@
 int main()
 {
   std::string figure = "";
-  double x = 0.0;
-  double y = 0.0;
 
   do
   {

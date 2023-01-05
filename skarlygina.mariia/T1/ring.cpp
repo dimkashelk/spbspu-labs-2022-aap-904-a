@@ -39,10 +39,10 @@ void Ring::move(point_t position)
 
 void Ring::scale(double k)
 {
-	if (k <= 0)
-	{
-		throw std::logic_error("Error: wrong coefficient");
-	}
-	double center_x = getFrameRectangle().position.x;
-	double center_y = getFrameRectangle().position.y;
+  if (k <= 0)
+  {
+    throw std::logic_error("Error: wrong coefficient");
+  }
+  double center_x = getFrameRectangle().position.x;
+  double center_y = getFrameRectangle().position.y;
 }

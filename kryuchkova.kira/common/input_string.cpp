@@ -4,9 +4,12 @@
 #include <stdexcept>
 #include <cstring>
 
-char *inputString(char *cstring, size_t &capacity)
+std::pair< size_t, char * > inputString(std::istream)
 {
   size_t size = 0;
+  size_t capacity = 10;
+  char *cstring = new char[capacity];
+  cstring[0] = '\0';
   std::cin >> std::noskipws;
 
   do
@@ -16,12 +19,6 @@ char *inputString(char *cstring, size_t &capacity)
       try
       {
         char *newstr = new char[capacity + 20];
-        //newstr[capacity + 20] = '\0';
-        //for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        //{
-          //*j = *i;
-        //}
-        //delete[] cstring;
         cstring[size - 1] = '\0';
         const char *newstr_1 = cstring;
         std::strcpy(newstr, newstr_1);
@@ -39,5 +36,5 @@ char *inputString(char *cstring, size_t &capacity)
   }
   while (std::cin && cstring[size++] != '\n');
   capacity = size;
-  return cstring;
+  return std::make_pair(capacity, cstring);
 }

@@ -67,6 +67,7 @@ int main(int argc, char * argv[])
     try
     {
       dynamicMatrix = new int[rows * columns];
+      dynamicMatrix = readMatrixFromFile(dynamicMatrix, rows, columns, input);
     }
     catch (const std::exception& e)
     {
@@ -74,7 +75,6 @@ int main(int argc, char * argv[])
       delete[] dynamicMatrix;
       return 1;
     }
-    dynamicMatrix = readMatrixFromFile(dynamicMatrix, rows, columns, input);
 
     size_t squareMatrixSize = std::min(rows, columns);
 

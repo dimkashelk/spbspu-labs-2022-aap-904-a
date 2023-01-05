@@ -6,26 +6,22 @@
 
 int main()
 {
-  size_t capacity = 10;
-  char *cstring = new char[capacity];
-  cstring[0] = '\0';
   try
   {
-    std::pair< size_t, char * > inputString(std::istream &);
+    std::pair< size_t, char * > cstring_pair = inputString(std::cin);
+    char *cstring = cstring_pair.second;
+    size_t capacity = cstring_pair.first;
     if (cstring[0] == '\0')
     {
       std::cout << "empty string";
-      delete[] cstring;
       return 1;
     }
     cstring[capacity - 1] = '\0';
+    std::cout << std::boolalpha << isExpression(cstring) << '\n';
   }
   catch (const std::exception &e)
   {
     std::cout << e.what();
-    delete[] cstring;
     return 1;
   }
-  std::cout << std::boolalpha << isExpression(cstring) << '\n';
-  delete [] cstring;
 }

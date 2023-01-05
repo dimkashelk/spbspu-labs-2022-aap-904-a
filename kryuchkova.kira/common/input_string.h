@@ -2,7 +2,8 @@
 #define INPUT_STRING_HPP
 #include <cstddef>
 #include <utility>
+#include <istream>
 
-std::pair< size_t, char * > inputString(std::istream);
+std::pair< size_t, char * > inputString(std::istream &in);
 
 #endif

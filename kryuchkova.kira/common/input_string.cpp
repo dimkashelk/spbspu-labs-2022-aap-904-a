@@ -5,13 +5,13 @@
 #include <stdexcept>
 #include <cstring>
 
-std::pair< size_t, char * > inputString(std::istream)
+std::pair< size_t, char * > inputString(std::istream &in)
 {
   size_t size = 0;
   size_t capacity = 10;
   char *cstring = new char[capacity];
   cstring[0] = '\0';
-  std::cin >> std::noskipws;
+  in >> std::noskipws;
 
   do
   {
@@ -33,9 +33,9 @@ std::pair< size_t, char * > inputString(std::istream)
         throw;
       }
     }
-    std::cin >> cstring[size];
+    in >> cstring[size];
   }
-  while (std::cin && cstring[size++] != '\n');
+  while (in && cstring[size++] != '\n');
   capacity = size;
   return std::make_pair(capacity, cstring);
 }

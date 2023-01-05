@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-<<<<<<< HEAD
 #include <cstddef>
 #include "makeNewStringWithoutRepeat.h"
 #include "makeNewStringWithMissingLetters.h"
@@ -33,8 +32,7 @@ int main()
       }
     }
     std::cin >> source1[size];
-  } 
-  while (std::cin && source1[size++] != '\n');
+  } while (std::cin && source1[size++] != '\n');
   if (!std::cin && !size)
   {
     std::cout << "Error...";
@@ -47,7 +45,7 @@ int main()
   char* destination1 = new char[30];
   destination1 = makeNewStringWithoutRepeat(destination1, source1, source2, size);
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
-  
+
   //2
   char* destination2;
   destination2 = new char[27];
@@ -57,10 +55,4 @@ int main()
   delete[] destination1;
   delete[] destination2;
   return 0;
-=======
-
-int main()
-{
-    return 0;
->>>>>>> 32ad7c7fca9914ab99aed8fd0df0441e4c1917c3
 }

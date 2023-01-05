@@ -6,7 +6,7 @@ size_t countUniqueElOfCol(const int* matrix, size_t column, size_t line)
   {
     for (size_t j = 0; j < line; j++)
     {
-      if (matrix[column * i + j] == matrix[column * i + j + 1])
+      if (matrix[column * j + i] != matrix[(column * j + 1) + i])
       {
         count++;
       }

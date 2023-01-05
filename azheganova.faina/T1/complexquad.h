@@ -3,13 +3,13 @@
 #include "base_types.h"
 #include "shape.h"
 
-class complexquad : virtual public shape
+class Complexquad : virtual public shape
 {
   public:
-    complexquad();
-    complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
-    complexquad(const complexquad &tmp);
-    complexquad(complexquad &&tmp);
+    Complexquad();
+    Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
+    Complexquad(const Complexquad &tmp);
+    Complexquad(Complexquad &&tmp);
     double getArea() const;
     rectangle_t getFrameRect() const;
     point_t findCenterOfTriangle();

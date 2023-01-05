@@ -3,11 +3,11 @@
 #include "base_types.h"
 #include "shape.h"
 
-class rectangle : virtual public shape
+class Rectangle : virtual public shape
 {
   public:
-    rectangle(rectangle_t rectangle);
-    rectangle(point_t point1, point_t point2);
+    Rectangle(rectangle_t Rectangle);
+    Rectangle(point_t point1, point_t point2);
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(point_t position);

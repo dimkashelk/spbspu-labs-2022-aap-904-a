@@ -2,20 +2,20 @@
 #include <iostream>
 #include <stdexcept>
 
-complexquad::complexquad()
+Complexquad::Complexquad()
 {}
 
-complexquad::complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
+Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   complexquad1{pos1, pos2, pos3, pos4}
 {}
 
-complexquad::complexquad(const complexquad &tmp):
+Complexquad::Complexquad(const Complexquad &tmp):
   complexquad1{tmp.complexquad1[0], tmp.complexquad1[1], tmp.complexquad1[2], tmp.complexquad1[3]}
 {}
-complexquad::complexquad(complexquad &&tmp):
+Complexquad::Complexquad(Complexquad &&tmp):
   complexquad1{tmp.complexquad1[0], tmp.complexquad1[1], tmp.complexquad1[2], tmp.complexquad1[3]}
 {}
-double complexquad::getArea() const
+double Complexquad::getArea() const
 {
   point_t center = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};
   double firsttriangle1 = 0.0;
@@ -31,7 +31,7 @@ double complexquad::getArea() const
   return std::abs(areaforcomplexquad);
 }
 
-rectangle_t complexquad::getFrameRect() const
+rectangle_t Complexquad::getFrameRect() const
 {
   point_t complexquad1[4] = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};
   double maxx1 = std::max(complexquad1[2].x, complexquad1[3].x);
@@ -45,12 +45,12 @@ rectangle_t complexquad::getFrameRect() const
   rectangle_t forcomplexquad(point_t {(minx + maxx) / 2}, point_t {(maxy + miny) / 2});
   return forcomplexquad;
 }
-void complexquad::move(point_t point)
+void Complexquad::move(point_t point)
 {
   point_t center = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};
   return move(point.x - center.x, point.y - center.y);
 }
-void complexquad::move(double dx, double dy)
+void Complexquad::move(double dx, double dy)
 {
   complexquad1[0].x += dx;
   complexquad1[0].y += dy;
@@ -61,7 +61,7 @@ void complexquad::move(double dx, double dy)
   complexquad1[3].x += dx;
   complexquad1[3].y += dy;
 }
-void complexquad::scale(double k)
+void Complexquad::scale(double k)
 {
   if (k <= 0)
   {
@@ -74,8 +74,8 @@ void complexquad::scale(double k)
   complexquad1[3].x = k * (complexquad1[3].x - center.x) + center.x;
 }
 
-shape* complexquad::clone() const
+shape* Complexquad::clone() const
 {
-  complexquad *copy = new complexquad(complexquad1[0], complexquad1[1], complexquad1[2], complexquad1[3]);
+  Complexquad *copy = new Complexquad(complexquad1[0], complexquad1[1], complexquad1[2], complexquad1[3]);
   return copy;
 }

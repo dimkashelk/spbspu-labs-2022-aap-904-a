@@ -29,6 +29,15 @@ CompositeShape::CompositeShape(size_t capacity):
  shape_(new shape*[capacity])
 {}
 
+CompositeShape::~CompositeShape()
+{
+  for (size_t i = 0; i < size_; ++i)
+  {
+    delete shape_[i];
+  }
+  delete [] shape_;
+}
+
 shape * CompositeShape::operator[](size_t i)
 {
   return shape_[i];

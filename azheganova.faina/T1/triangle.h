@@ -3,13 +3,13 @@
 #include "base_types.h"
 #include "shape.h"
 
-class triangle : virtual public shape
+class Triangle : virtual public shape
 {
   public:
-    triangle();
-    triangle(point_t pos1, point_t pos2, point_t pos3);
-    triangle(const triangle &tmp);
-    triangle(triangle &&tmp);
+    Triangle();
+    Triangle(point_t pos1, point_t pos2, point_t pos3);
+    Triangle(const Triangle &tmp);
+    Triangle(Triangle &&tmp);
     double getArea() const;
     rectangle_t getFrameRect() const;
     point_t findCenterOfTriangle();

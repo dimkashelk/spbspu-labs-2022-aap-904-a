@@ -3,30 +3,30 @@
 #include <iostream>
 #include <cmath>
 
-rectangle::rectangle(point_t point1, point_t point2):
+Rectangle::Rectangle(point_t point1, point_t point2):
   rectangle1(point1, point2)
 {}
-rectangle::rectangle(rectangle_t rectangle1):
+Rectangle::Rectangle(rectangle_t rectangle1):
   rectangle1(rectangle1)
 {}
-double rectangle::getArea() const
+double Rectangle::getArea() const
 {
   return rectangle1.width * rectangle1.height;
 }
-rectangle_t rectangle::getFrameRect() const
+rectangle_t Rectangle::getFrameRect() const
 {
   return rectangle1;
 }
-void rectangle::move(point_t point)
+void Rectangle::move(point_t point)
 {
   rectangle1.pos = point;
 }
-void rectangle::move(double dx, double dy)
+void Rectangle::move(double dx, double dy)
 {
   rectangle1.pos.x += dx;
   rectangle1.pos.y += dy;
 }
-void rectangle::scale(double k)
+void Rectangle::scale(double k)
 {
   if (k <= 0)
   {
@@ -38,7 +38,7 @@ void rectangle::scale(double k)
   rectangle1.height *= std::fabs(k);
   }
 }
-shape *rectangle::clone() const
+shape *Rectangle::clone() const
 {
-  return new rectangle(rectangle1);
+  return new Rectangle(rectangle1);
 }

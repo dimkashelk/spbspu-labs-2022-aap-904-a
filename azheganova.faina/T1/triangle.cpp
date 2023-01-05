@@ -3,20 +3,20 @@
 #include <iostream>
 #include <stdexcept>
 
-triangle::triangle()
+Triangle::Triangle()
 {}
 
-triangle::triangle(point_t pos1, point_t pos2, point_t pos3):
+Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
   triangle1{pos1, pos2, pos3}
 {}
 
-triangle::triangle(const triangle &tmp):
+Triangle::Triangle(const Triangle &tmp):
   triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}
-triangle::triangle(triangle &&tmp):
+Triangle::Triangle(Triangle &&tmp):
   triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}
-double triangle::getArea() const
+double Triangle::getArea() const
 {
   double firstpart = 0.0;
   double secondpart = 0.0;
@@ -24,7 +24,7 @@ double triangle::getArea() const
   secondpart = (triangle1[3].x - triangle1[1].x) * (triangle1[2].y - triangle1[1].y);
   return std::abs(0.5 * (firstpart - secondpart));
 }
-rectangle_t triangle::getFrameRect() const
+rectangle_t Triangle::getFrameRect() const
 {
   double maxx = std::max(triangle1[0].x, std::max(triangle1[1].x, triangle1[2].x));
   double maxy = std::max(triangle1[0].y, std::max(triangle1[1].y, triangle1[2].y));
@@ -33,18 +33,18 @@ rectangle_t triangle::getFrameRect() const
   rectangle_t fortriangle(point_t{minx, miny}, point_t{maxx, maxy});
   return fortriangle;
 }
-point_t triangle::findCenterOfTriangle()
+point_t Triangle::findCenterOfTriangle()
 {
   double pos1 = (triangle1[0].x + triangle1[1].x + triangle1[2].x) / 3;
   double pos2 = (triangle1[0].y + triangle1[1].y + triangle1[2].y) / 2;
   return (point_t {pos1, pos2});
 }
-void triangle::move(point_t point)
+void Triangle::move(point_t point)
 {
   point_t center = findCenterOfTriangle();
   move(point.x - center.x, point.y - center.y);
 }
-void triangle::move(double dx, double dy)
+void Triangle::move(double dx, double dy)
 {
   triangle1[0].x += dx;
   triangle1[0].y += dy;
@@ -53,7 +53,7 @@ void triangle::move(double dx, double dy)
   triangle1[2].x += dx;
   triangle1[2].y += dy;
 }
-void triangle::scale(double k)
+void Triangle::scale(double k)
 {
   if (k <= 0)
   {
@@ -68,8 +68,8 @@ void triangle::scale(double k)
   }
 }
 
-shape* triangle::clone() const
+shape* Triangle::clone() const
 {
-  triangle *copy = new triangle(triangle1[0], triangle1[1], triangle1[2]);
+  Triangle *copy = new Triangle(triangle1[0], triangle1[1], triangle1[2]);
   return copy;
 }

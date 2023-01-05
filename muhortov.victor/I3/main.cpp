@@ -1,39 +1,13 @@
 #include <iostream>
-#include <cstring>
+#include <cstddef>
+#include <makecstring.hpp>
 #include "RepeatSymbols.hpp"
 #include "Vowel.hpp"
 int main()
 {
-  size_t capacity = 10;
   size_t size = 0;
-
-  char *c_string = new char[capacity];
-
-  c_string[0] = '\n';
-
-  std::cin >> std::noskipws;
-  do
-  {
-    if (size == capacity)
-    {
-      try
-      {
-        char *newstr = new char[capacity + 10];
-        c_string[capacity - 1] = '\0';
-        std::strcpy(newstr, c_string);
-        delete[] c_string;
-        c_string = newstr;
-        capacity += 10;
-      }
-      catch (const std::bad_alloc &e)
-      {
-        std::cerr << "Error: " << e.what();
-        return 1;
-      }
-    }
-    std::cin >> c_string[size];
-  }
-  while (std::cin && c_string[size++] != '\n');
+  size_t capacity = 10;
+  char *c_string = makeCString(size, capacity, std::cin);
 
   if (c_string[0] == '\n')
   {
@@ -41,8 +15,6 @@ int main()
     std::cerr << "Error: empty string \n";
     return 2;
   }
-
-  c_string[size] = '\0';
 
   // task 6
 

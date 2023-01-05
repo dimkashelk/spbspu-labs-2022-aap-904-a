@@ -3,55 +3,45 @@
 int main()
 {
   int n = 0;
-  int numberafter = 0;
-  int currentnumber = 0;
-  int numberbefore = 0;
-  int sum = 0;
-  int smalln = std::numeric_limits<int>::max();
-  int possiblesmallest = std::numeric_limits<int>::max();
+  int numberBefore = 0;
+  int currentNumber = 0;
+  int numberAfter = 0;
+  int smallerThanPrevBiggerThanNextCount = 0;
+  int smallestNumber = std::numeric_limits<int>::max();
   int counter = 0;
-  while(std::cin>>n && n != 0)
+  while (std::cin >> n && n != 0)
   {
-   numberbefore = currentnumber;
-   currentnumber = numberafter;
-   numberafter = n;
-   if(numberafter == 0)
-   {
-    continue;
-   }
-   else
+    numberBefore = currentNumber;
+    currentNumber = numberAfter;
+    numberAfter = n;
+    if (numberAfter == 0)
     {
-     if((currentnumber < numberbefore) && (currentnumber > numberafter))
-     {
-      sum++;
-     }
+      continue;
     }
-   if(counter == 0)
+    else
     {
-     counter++;
-     continue;
-    }
-   else
-     {
-      if(n < possiblesmallest)
+      if (currentNumber < numberBefore && currentNumber > numberAfter)
       {
-       if(possiblesmallest == smalln)
-       {
-        possiblesmallest = n;
-       }
-      else
-       {
-        smalln = possiblesmallest;
-        possiblesmallest = n;
-       }
+        ++smallerThanPrevBiggerThanNextCount;
       }
-      else
-       {
-        smalln = possiblesmallest;
-       }
-     }
+    }
+
+    if (counter == 0)
+    {
+      counter++;
+      continue;
+    }
+    else
+    {
+      if (currentNumber < smallestNumber)
+      {
+        smallestNumber = currentNumber;
+      }
+    }
   }
-  std::cout << "Amount of numbers that are smaller than the previous one but bigger:  "<<sum<<std::endl;
-  std::cout << "The smallest number (Excluding first and last):  "<<smalln<<std::endl;
+  std::cout << "Amount of numbers that are smaller than the previous one but bigger:  "
+            << smallerThanPrevBiggerThanNextCount << std::endl;
+  std::cout << "The smallest number (Excluding first and last): "
+            << smallestNumber << std::endl;
   return 0;
 }

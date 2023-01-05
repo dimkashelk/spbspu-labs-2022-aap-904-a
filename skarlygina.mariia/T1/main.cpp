@@ -115,7 +115,7 @@ int main()
     }
   }
   while (std::cin);
-
+  makeOutput::makeOutputSumm(std::cout, array_figures, size);
   for (size_t i = 0; i < size; i++)
   {
     delete array_figures[i];

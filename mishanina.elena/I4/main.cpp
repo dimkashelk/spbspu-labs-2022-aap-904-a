@@ -67,7 +67,7 @@ int main(int argc, char * argv[])
     {
       dynamicMatrix = new int[rows * columns];
     }
-    catch (std::exception& e)
+    catch (const std::exception& e)
     {
       std::cerr << e.what() << '\n';
       delete[] dynamicMatrix;
@@ -89,7 +89,7 @@ int main(int argc, char * argv[])
       {
         squareMatrix = new int[squareMatrixSize * squareMatrixSize];
       }
-      catch (std::exception& e)
+      catch (const std::exception& e)
       {
         std::cerr << e.what() << '\n';
         delete[] dynamicMatrix;

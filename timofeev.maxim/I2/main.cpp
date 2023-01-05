@@ -3,7 +3,7 @@
 #include <fstream>
 #include <ctime>
 #include "decrease.h"
-#include "OrderMethod.h"
+#include "order.h"
 
 int main(int argc, char *argv[])
 {

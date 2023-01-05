@@ -18,6 +18,7 @@ int main()
     }
     cstring[capacity - 1] = '\0';
     std::cout << std::boolalpha << isExpression(cstring) << '\n';
+    delete[] cstring;
   }
   catch (const std::exception &e)
   {

@@ -39,6 +39,8 @@ int main()
     destination_2 = deleteIdenticalChars(destination_2, cstring_1, cstring_2);
     std::cout << destination_2 << "\n";
     delete[] destination_2;
+    delete[] cstring_1;
+    delete[] cstring_2;
   }
   catch (const std::exception &e)
   {

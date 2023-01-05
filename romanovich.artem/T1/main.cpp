@@ -127,7 +127,7 @@ int main()
   }
   for (size_t i = 0; i < compositeShape.size(); ++i)
   {
-    compositeShape.isoScale(*compositeShape[i], iScaleX, iScaleY, iScaleK);
+    compositeShape.scale(*compositeShape[i], {iScaleX, iScaleY}, iScaleK);
   }
   std::cout << "\n";
   double scaledArea = 0;

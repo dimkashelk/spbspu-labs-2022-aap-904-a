@@ -4,7 +4,7 @@
 class Rectangle: public Shape
 {
 public:
-  explicit Rectangle(const point_t & A, const point_t & C);
+  explicit Rectangle(const point_t &A, const point_t &C);
   ~Rectangle() override = default;
   double getArea() const override;
   rectangle_t getFrameRect() const override;

@@ -48,12 +48,12 @@ void CompositeShape::pop_back()
 {
   delete shape_[size_];
 }
-void CompositeShape::isoScale(Shape &shape, double secondPosX, double secondPosY, double k)
+void CompositeShape::scale(Shape &shape, const point_t &position, double k)
 {
   double firstPosX = shape.getFrameRect().pos.x;
   double firstPosY = shape.getFrameRect().pos.y;
-  double dx = secondPosX - firstPosX;
-  double dy = secondPosY - firstPosY;
+  double dx = position.x - firstPosX;
+  double dy = position.y - firstPosY;
   shape.move(dx, dy);
   dx *= -k;
   dy *= -k;
@@ -82,10 +82,6 @@ void CompositeShape::move(double, double)
 Shape *CompositeShape::at(size_t id)
 {
   return shape_[id];
-}
-CompositeShape *CompositeShape::clone()
-{
-  return nullptr;
 }
 size_t CompositeShape::size() const noexcept
 {
@@ -162,7 +158,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
   size_ = newSize;
   return *this;
 }
-CompositeShape &CompositeShape::operator=(CompositeShape &&rhs)
+CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
 {
   CompositeShape::~CompositeShape();
   shape_ = rhs.shape_;

@@ -1,6 +1,6 @@
 #include "rectangle.h"
 #include <stdexcept>
-Rectangle::Rectangle(const point_t & A, const point_t & C):
+Rectangle::Rectangle(const point_t &A, const point_t &C):
   a_(A),
   c_(C)
 {

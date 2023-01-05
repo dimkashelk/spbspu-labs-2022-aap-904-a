@@ -11,21 +11,20 @@ public:
   explicit CompositeShape(size_t capacity);
   ~CompositeShape();
   CompositeShape &operator=(const CompositeShape &rhs);
-  CompositeShape &operator=(CompositeShape &&rhs);
+  CompositeShape &operator=(CompositeShape &&rhs) noexcept;
+  Shape *operator[](size_t id);
+  Shape *at(size_t id);
   double getArea() const;
   rectangle_t getFrameRect();
   void move(double dx, double dy);
   void move(point_t position);
   void scale(double k);
+  void scale(Shape &shape, const point_t &position, double k);
   void push_back(Shape *shp);
   void push_back(const Shape *shp);
   void pop_back();
-  Shape *at(size_t id);
-  Shape *operator[](size_t id);
   bool empty() const noexcept;
   size_t size() const noexcept;
-  CompositeShape *clone();
-  void isoScale(Shape &shape, double x, double y, double k);
 private:
   Shape **shape_;
   size_t size_;

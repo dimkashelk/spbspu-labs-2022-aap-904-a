@@ -132,6 +132,8 @@ int main(int argc, char * argv[])
     {
       std::cout << "Empty matrix\n";
       return 0;
+      delete[] dynamicMatrix;
+      delete[] squareMatrix;
     }
     output << countDiagonalsParallelToSecondaryWithoutZero(squareMatrix, squareMatrixSize) << '\n';
     if (!output)

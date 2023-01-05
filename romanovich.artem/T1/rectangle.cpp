@@ -1,10 +1,8 @@
 #include "rectangle.h"
 #include <stdexcept>
 Rectangle::Rectangle(point_t A, point_t C):
-  A_(A),
-  //B_{A.x, C.y},
-  C_(C)
-//D_{C.x, A.y}
+  a_(A),
+  c_(C)
 {
   if (!goodRectangleInput())
   {
@@ -13,19 +11,18 @@ Rectangle::Rectangle(point_t A, point_t C):
 }
 double Rectangle::getArea() const
 {
-  return (C_.y - A_.y) * (C_.x - A_.x);
+  return (c_.y - a_.y) * (c_.x - a_.x);
 }
 rectangle_t Rectangle::getFrameRect() const
 {
-  return {(C_.x + A_.x) / 2, (C_.y + A_.y) / 2, C_.x - A_.x, C_.y - A_.y};
+  return {(c_.x + a_.x) / 2, (c_.y + a_.y) / 2, c_.x - a_.x, c_.y - a_.y};
 }
 void Rectangle::move(double dx, double dy)
 {
-  for (point_t p: {A_, C_})
-  {
-    p.x += dx;
-    p.y += dy;
-  }
+  a_.x += dx;
+  a_.y += dy;
+  c_.x += dx;
+  c_.y += dy;
 }
 void Rectangle::move(point_t position)
 {
@@ -41,16 +38,16 @@ void Rectangle::scale(double k)
   }
   double centerX = getFrameRect().pos.x;
   double centerY = getFrameRect().pos.y;
-  A_.x = k * (A_.x - centerX) + centerX;
-  A_.y = k * (A_.y - centerY) + centerY;
-  C_.x = k * (C_.x - centerX) + centerX;
-  C_.y = k * (C_.y - centerY) + centerY;
+  a_.x = k * (a_.x - centerX) + centerX;
+  a_.y = k * (a_.y - centerY) + centerY;
+  c_.x = k * (c_.x - centerX) + centerX;
+  c_.y = k * (c_.y - centerY) + centerY;
 }
 Shape *Rectangle::clone() const
 {
-  return new Rectangle(A_, C_);
+  return new Rectangle(a_, c_);
 }
 bool Rectangle::goodRectangleInput() const
 {
-  return (A_.x < C_.x && A_.y < C_.y);
+  return (a_.x < c_.x && a_.y < c_.y);
 }

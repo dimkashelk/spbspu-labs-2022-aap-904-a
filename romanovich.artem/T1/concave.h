@@ -16,6 +16,7 @@ public:
 private:
   std::array<double, 6> splitIntoTriangles() const;
   bool goodConcaveInput() const;
-  point_t A_, B_, C_, D_;
+  double buildLineFromTwoDots(point_t p1, point_t p2) const;
+  point_t a_, b_, c_, d_;
 };
 #endif

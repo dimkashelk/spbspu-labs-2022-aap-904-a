@@ -4,10 +4,10 @@
 #include <stdexcept>
 #include <array>
 Concave::Concave(point_t A, point_t B, point_t C, point_t D):
-  A_(A),
-  B_(B),
-  C_(C),
-  D_(D)
+  a_(A),
+  b_(B),
+  c_(C),
+  d_(D)
 {
   if (!goodConcaveInput())
   {
@@ -24,9 +24,9 @@ bool Concave::goodConcaveInput() const
   double min_ = std::max({a, b, c});
   double midl_ = a + b + c - max_ - min_;
   bool firstThreeTriangle = (max_ < min_ + midl_);
-  bool fourthLeftAB = ((D_.x - A_.x) * (B_.y - A_.y) - (D_.y - A_.y) * (B_.x - A_.x) > 0);
-  bool fourthLeftBC = ((D_.x - B_.x) * (C_.y - B_.y) - (D_.y - B_.y) * (C_.x - B_.x) > 0);
-  bool fourthLeftCA = ((D_.x - C_.x) * (A_.y - C_.y) - (D_.y - C_.y) * (A_.x - C_.x) > 0);
+  bool fourthLeftAB = ((d_.x - a_.x) * (b_.y - a_.y) - (d_.y - a_.y) * (b_.x - a_.x) > 0);
+  bool fourthLeftBC = ((d_.x - b_.x) * (c_.y - b_.y) - (d_.y - b_.y) * (c_.x - b_.x) > 0);
+  bool fourthLeftCA = ((d_.x - c_.x) * (a_.y - c_.y) - (d_.y - c_.y) * (a_.x - c_.x) > 0);
   if (fourthLeftAB && fourthLeftBC && fourthLeftCA)
   {
     return firstThreeTriangle;
@@ -37,26 +37,20 @@ bool Concave::goodConcaveInput() const
   }
   return false;
 }
+double Concave::buildLineFromTwoDots(point_t p1, point_t p2) const
+{
+  double line_x = p1.x - p2.x;
+  double line_y = p1.y - p2.y;
+  return sqrt(line_x * line_x + line_y * line_y);
+}
 std::array<double, 6> Concave::splitIntoTriangles() const
 {
-  double a_x = A_.x - C_.x;
-  double a_y = A_.y - C_.y;
-  double b_x = C_.x - B_.x;
-  double b_y = C_.y - B_.y;
-  double c_y = A_.y - B_.y;
-  double c_x = A_.x - B_.x;
-  double a1_x = C_.x - D_.x;
-  double a1_y = C_.y - D_.y;
-  double b1_x = b_x;
-  double b1_y = b_y;
-  double c1_x = D_.x - B_.x;
-  double c1_y = D_.y - B_.y;
-  double a = sqrt(a_x * a_x + a_y * a_y);
-  double b = sqrt(b_x * b_x + b_y * b_y);
-  double c = sqrt(c_x * c_x + c_y * c_y);
-  double a1 = sqrt(a1_x * a1_x + a1_y * a1_y);
-  double b1 = sqrt(b1_x * b1_x + b1_y * b1_y);
-  double c1 = sqrt(c1_x * c1_x + c1_y * c1_y);
+  double a = buildLineFromTwoDots(a_, c_);
+  double b = buildLineFromTwoDots(c_, b_);
+  double c = buildLineFromTwoDots(a_, b_);
+  double a1 = buildLineFromTwoDots(c_, d_);
+  double b1 = b;
+  double c1 = buildLineFromTwoDots(d_, b_);
   std::array<double, 6> arr = {a, b, c, a1, b1, c1};
   return arr;
 }
@@ -77,15 +71,15 @@ double Concave::getArea() const
 }
 rectangle_t Concave::getFrameRect() const
 {
-  double sup = std::max({A_.y, B_.y, C_.y});
-  double inf = std::min({A_.y, B_.y, C_.y});
-  double left = std::min({A_.x, B_.x, C_.x});
-  double right = std::max({A_.x, B_.x, C_.x});
+  double sup = std::max({a_.y, b_.y, c_.y});
+  double inf = std::min({a_.y, b_.y, c_.y});
+  double left = std::min({a_.x, b_.x, c_.x});
+  double right = std::max({a_.x, b_.x, c_.x});
   return {(right + left) / 2, (sup + inf) / 2, right - left, sup - inf};
 }
 void Concave::move(double dx, double dy)
 {
-  point_t *points[4]{&A_, &B_, &C_, &D_};
+  point_t *points[4]{&a_, &b_, &c_, &d_};
   for (point_t *p: points)
   {
     p->x += dx;
@@ -106,7 +100,7 @@ void Concave::scale(double k)
   }
   double centerX = getFrameRect().pos.x;
   double centerY = getFrameRect().pos.y;
-  point_t *points[4]{&A_, &B_, &C_, &D_};
+  point_t *points[4]{&a_, &b_, &c_, &d_};
   for (point_t *p: points)
   {
     p->x = k * (p->x - centerX) + centerX;
@@ -115,5 +109,5 @@ void Concave::scale(double k)
 }
 Shape *Concave::clone() const
 {
-  return new Concave(A_, B_, C_, D_);
+  return new Concave(a_, b_, c_, d_);
 }

@@ -3,10 +3,9 @@
 #include <algorithm>
 #include <stdexcept>
 Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
-  A_(A),
-  B_(B),
-  C_(C)
-//D_{A.x - B.x + C.x, A.y - B.y + C.y}
+  a_(A),
+  b_(B),
+  c_(C)
 {
   if (!goodParallelogramInput())
   {
@@ -15,12 +14,12 @@ Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
 }
 double Parallelogram::getArea() const
 {
-  double ax = C_.x - B_.x;
-  double ay = C_.y - B_.y;
-  double by = A_.y - B_.y;
-  double bx = A_.x - B_.x;
-  double cx = C_.x - A_.x;
-  double cy = C_.y - A_.y;
+  double ax = c_.x - b_.x;
+  double ay = c_.y - b_.y;
+  double by = a_.y - b_.y;
+  double bx = a_.x - b_.x;
+  double cx = c_.x - a_.x;
+  double cy = c_.y - a_.y;
   double a = sqrt(ax * ax + ay * ay);
   double b = sqrt(bx * bx + by * by);
   double c = sqrt(cx * cx + cy * cy);
@@ -29,15 +28,15 @@ double Parallelogram::getArea() const
 }
 rectangle_t Parallelogram::getFrameRect() const
 {
-  double sup = std::max({A_.y, B_.y, C_.y});
-  double inf = std::min({A_.y, B_.y, C_.y});
-  double left = std::min({A_.x, B_.x, C_.x});
-  double right = std::max({A_.x, B_.x, C_.x});
+  double sup = std::max({a_.y, b_.y, c_.y});
+  double inf = std::min({a_.y, b_.y, c_.y});
+  double left = std::min({a_.x, b_.x, c_.x});
+  double right = std::max({a_.x, b_.x, c_.x});
   return {(right + left) / 2, (sup + inf) / 2, right - left, sup - inf};
 }
 void Parallelogram::move(double dx, double dy)
 {
-  point_t *points[3]{&A_, &B_, &C_};
+  point_t *points[3]{&a_, &b_, &c_};
   for (point_t *p: points)
   {
     p->x += dx;
@@ -58,7 +57,7 @@ void Parallelogram::scale(double k)
   }
   double centerX = getFrameRect().pos.x;
   double centerY = getFrameRect().pos.y;
-  point_t *points[3]{&A_, &B_, &C_};
+  point_t *points[3]{&a_, &b_, &c_};
   for (point_t *p: points)
   {
     p->x = k * (p->x - centerX) + centerX;
@@ -67,9 +66,9 @@ void Parallelogram::scale(double k)
 }
 Shape *Parallelogram::clone() const
 {
-  return new Parallelogram(A_, B_, C_);
+  return new Parallelogram(a_, b_, c_);
 }
 bool Parallelogram::goodParallelogramInput() const
 {
-  return (((A_.y == B_.y) || (B_.y == C_.y)) && (A_.y - B_.y != C_.y - B_.y));
+  return (((a_.y == b_.y) || (b_.y == c_.y)) && (a_.y - b_.y != c_.y - b_.y));
 }

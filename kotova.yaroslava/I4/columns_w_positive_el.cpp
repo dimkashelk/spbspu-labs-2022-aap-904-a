@@ -10,6 +10,7 @@ size_t countPositiveElOfCol(const int* matrix, size_t column, size_t line)
       {
         count++;
       }
+    }
   }
   return count;
 }

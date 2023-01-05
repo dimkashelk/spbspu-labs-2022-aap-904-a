@@ -9,6 +9,7 @@ public:
   CompositeShape(const CompositeShape &rhs);
   CompositeShape(CompositeShape &);
   explicit CompositeShape(size_t capacity);
+  ~CompositeShape();
   double getArea() const;
   rectangle_t getFrameRect() const;
   void move(double dx, double dy);
@@ -21,7 +22,6 @@ public:
   bool empty();
   size_t size();
   CompositeShape *clone() const;
-  ~CompositeShape();
   void isoScale(Shape &shape, double x, double y, double k);
 private:
   Shape **shape_;

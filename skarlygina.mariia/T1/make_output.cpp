@@ -18,7 +18,7 @@ void makeOutputPosition(std::ostream& out, Shape* figure)
 
 void makeOutput(std::ostream& out, Shape** array_figures, size_t size)
 {
-  if (!size)
+  if (size < 1)
   {
     throw std::invalid_argument("Invalid size of Shape array");
   }
@@ -32,5 +32,6 @@ void makeOutput(std::ostream& out, Shape** array_figures, size_t size)
   {
     makeOutputPosition(out, array_figures[i]);
   }
+  out << "\n";
 }
 

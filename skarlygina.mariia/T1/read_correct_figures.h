@@ -6,8 +6,8 @@
 #include <istream>
 namespace correctFigures
 {
-  Rectangle* readCorrectRectangle(std::istream& in);
-  Ring* readCorrectRing(std::istream& in);
-  Ellipse* readCorrectEllipse(std::istream& in);
+  Rectangle* readCorrectRectangle(std::istream& in, bool& isCorrect);
+  Ring* readCorrectRing(std::istream& in, bool& isCorrect);
+  Ellipse* readCorrectEllipse(std::istream& in, bool& isCorrect);
 }
 #endif

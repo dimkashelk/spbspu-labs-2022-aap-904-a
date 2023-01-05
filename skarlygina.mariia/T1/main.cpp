@@ -10,6 +10,7 @@ int main()
   size_t size = 0;
   point_t point{};
   double coefficient = 0;
+  bool isCorrectFigure = true;
   Shape** array_figures = new Shape* [10];
   do
   {
@@ -17,11 +18,19 @@ int main()
     if (figure == "RECTANGLE")
     {
       Shape* rectangle = nullptr;
+      isCorrectFigure = true;
       try
       {
-        rectangle = correctFigures::readCorrectRectangle(std::cin);
-        array_figures[size] = rectangle;
-        size++;
+        rectangle = correctFigures::readCorrectRectangle(std::cin, isCorrectFigure);
+        if (isCorrectFigure)
+        {
+          array_figures[size] = rectangle;
+          size++;
+        }
+        else
+        {
+          delete rectangle;
+        }
       }
       catch (const std::invalid_argument& e)
       {
@@ -39,11 +48,19 @@ int main()
     if (figure == "RING")
     {
       Shape* ring = nullptr;
+      isCorrectFigure = true;
       try
       {
-        ring = correctFigures::readCorrectRing(std::cin);
-        array_figures[size] = ring;
-        size++;
+        ring = correctFigures::readCorrectRing(std::cin, isCorrectFigure);
+        if (isCorrectFigure)
+        {
+          array_figures[size] = ring;
+          size++;
+        }
+        else
+        {
+          delete ring;
+        }
       }
       catch (const std::invalid_argument& e)
       {
@@ -61,11 +78,19 @@ int main()
     if (figure == "ELLIPSE")
     {
       Shape* ellipse = nullptr;
+      isCorrectFigure = true;
       try
       {
-        ellipse = correctFigures::readCorrectEllipse(std::cin);
-        array_figures[size] = ellipse;
-        size++;
+        ellipse = correctFigures::readCorrectEllipse(std::cin, isCorrectFigure);
+        if (isCorrectFigure)
+        {
+          array_figures[size] = ellipse;
+          size++;
+        }
+        else
+        {
+          delete ellipse;
+        }
       }
       catch (const std::invalid_argument& e)
       {
@@ -105,12 +130,22 @@ int main()
     }
   }
   while (std::cin);
-  makeOutput(std::cout, array_figures, size);
-  for (size_t i = 0; i < size; ++i)
-  {
-    makeIsotropicScaling(array_figures[i], point, coefficient);
-  }
 
+  if (size > 0)
+  {
+    makeOutput(std::cout, array_figures, size);
+    for (size_t i = 0; i < size; i++)
+    {
+      makeIsotropicScaling(array_figures[i], point, coefficient);
+    }
+    makeOutput(std::cout, array_figures, size);
+  }
+  else
+  {
+    delete[] array_figures;
+    std::cerr << "Error: size could not be under zero";
+    return 2;
+  }
   for (size_t i = 0; i < size; i++)
   {
     delete array_figures[i];

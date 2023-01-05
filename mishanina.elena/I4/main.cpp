@@ -5,6 +5,7 @@
 #include "count_rows_without_zero.h"
 #include "count_diagonals_parallel_to_secondary_without_zero.h"
 #include "read_matrix_from_file.h"
+#include "create_square_matrix.h"
 
 int main(int argc, char * argv[])
 {
@@ -96,23 +97,7 @@ int main(int argc, char * argv[])
         delete[] squareMatrix;
         return 1;
       }
-      if (columns < rows)
-      {
-        for (size_t i = 0; i < (squareMatrixSize * squareMatrixSize); ++i)
-        {
-          squareMatrix[i] = dynamicMatrix[i];
-        }
-      }
-      else if (columns > rows)
-      {
-        for (size_t i = 0; i < squareMatrixSize; ++i)
-        {
-          for (size_t j = 0; j < squareMatrixSize; ++j)
-          {
-            squareMatrix[squareMatrixSize * i + j] = dynamicMatrix[columns * i + j];
-          }
-        }
-      }
+      squareMatrix = createSquareMatrix(dynamicMatrix, rows, columns, squareMatrix, squareMatrixSize);
     }
     if (squareMatrixSize == 0)
     {

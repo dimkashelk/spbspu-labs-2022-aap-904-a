@@ -15,6 +15,10 @@ size_t countUniqueElOfCol(const int* matrix, size_t column, size_t line)
             count++;
           }
         }
+        if (j == n)
+        {
+          count = 0;
+        }
       }
     }
   }

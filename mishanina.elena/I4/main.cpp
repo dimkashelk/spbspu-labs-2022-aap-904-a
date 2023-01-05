@@ -44,16 +44,13 @@ int main(int argc, char * argv[])
   if (!std::strcmp(argv[1], "1"))
   {
     int matrix[1000];
-    for (size_t i = 0; i < rows; i++)
+    for (size_t i = 0; i < rows * columns; i++)
     {
-      for (size_t j = 0; j < columns; j++)
+      input >> matrix[i];
+      if (!input)
       {
-        input >> matrix[rows * i + j];
-        if (!input)
-        {
-          std::cerr << "ERROR: file cannot be read\n";
-          return 1;
-        }
+        std::cerr << "ERROR: file cannot be read\n";
+        return 1;
       }
     }
     output << countRowsWithoutZero(matrix, rows, columns) << '\n';

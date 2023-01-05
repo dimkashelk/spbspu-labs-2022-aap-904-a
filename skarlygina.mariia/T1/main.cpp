@@ -78,6 +78,26 @@ int main()
         return 2;
       }
     }
+
+    if (figure == "SCALE")
+    {
+      point_t point{};
+      double coefficient = 0;
+      try
+      {
+        std::cin >> point.x >> point.y >> coefficient;
+        if (coefficient <= 0)
+        {
+          std::cerr << "Error: coefficient could not be under zero\n";
+          return 2;
+        }
+      }
+      catch (...)
+      {
+        std::cerr << "Error: wrong parameters of the point and coefficient\n";
+        return 2;
+      }
+    }
   }
   while (std::cin);
   return 0;

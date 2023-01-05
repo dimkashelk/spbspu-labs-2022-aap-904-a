@@ -14,6 +14,6 @@ public:
   Shape *clone() const override;
 private:
   bool goodRectangleInput() const;
-  point_t A, B, C, D;
+  point_t A_, B_, C_, D_;
 };
 #endif

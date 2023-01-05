@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <stdexcept>
 Concave::Concave(point_t A, point_t B, point_t C, point_t D):
-  A(A),
-  B(B),
-  C(C),
-  D(D)
+  A_(A),
+  B_(B),
+  C_(C),
+  D_(D)
 {
   if (!goodConcaveInput())
   {
@@ -24,9 +24,9 @@ bool Concave::goodConcaveInput() const
   double min_ = std::max({a, b, c});
   double midl_ = a + b + c - max_ - min_;
   bool firstThreeTriangle = (max_ < min_ + midl_);
-  bool fourthLeftAB = ((D.x - A.x) * (B.y - A.y) - (D.y - A.y) * (B.x - A.x) > 0);
-  bool fourthLeftBC = ((D.x - B.x) * (C.y - B.y) - (D.y - B.y) * (C.x - B.x) > 0);
-  bool fourthLeftCA = ((D.x - C.x) * (A.y - C.y) - (D.y - C.y) * (A.x - C.x) > 0);
+  bool fourthLeftAB = ((D_.x - A_.x) * (B_.y - A_.y) - (D_.y - A_.y) * (B_.x - A_.x) > 0);
+  bool fourthLeftBC = ((D_.x - B_.x) * (C_.y - B_.y) - (D_.y - B_.y) * (C_.x - B_.x) > 0);
+  bool fourthLeftCA = ((D_.x - C_.x) * (A_.y - C_.y) - (D_.y - C_.y) * (A_.x - C_.x) > 0);
   if (fourthLeftAB && fourthLeftBC && fourthLeftCA)
   {
     return firstThreeTriangle;
@@ -39,18 +39,18 @@ bool Concave::goodConcaveInput() const
 }
 double *Concave::getSides() const
 {
-  double a_x = A.x - C.x;
-  double a_y = A.y - C.y;
-  double b_x = C.x - B.x;
-  double b_y = C.y - B.y;
-  double c_y = A.y - B.y;
-  double c_x = A.x - B.x;
-  double a1_x = C.x - D.x;
-  double a1_y = C.y - D.y;
+  double a_x = A_.x - C_.x;
+  double a_y = A_.y - C_.y;
+  double b_x = C_.x - B_.x;
+  double b_y = C_.y - B_.y;
+  double c_y = A_.y - B_.y;
+  double c_x = A_.x - B_.x;
+  double a1_x = C_.x - D_.x;
+  double a1_y = C_.y - D_.y;
   double b1_x = b_x;
   double b1_y = b_y;
-  double c1_x = D.x - B.x;
-  double c1_y = D.y - B.y;
+  double c1_x = D_.x - B_.x;
+  double c1_y = D_.y - B_.y;
   double a = sqrt(a_x * a_x + a_y * a_y);
   double b = sqrt(b_x * b_x + b_y * b_y);
   double c = sqrt(c_x * c_x + c_y * c_y);
@@ -78,11 +78,11 @@ double Concave::getArea() const
 rectangle_t Concave::getFrameRect() const
 {
   rectangle_t frameRect{};
-  double sup = std::max({A.y, B.y, C.y});
-  double inf = std::min({A.y, B.y, C.y});
+  double sup = std::max({A_.y, B_.y, C_.y});
+  double inf = std::min({A_.y, B_.y, C_.y});
   frameRect.height = sup - inf;
-  double left = std::min({A.x, B.x, C.x});
-  double right = std::max({A.x, B.x, C.x});
+  double left = std::min({A_.x, B_.x, C_.x});
+  double right = std::max({A_.x, B_.x, C_.x});
   frameRect.width = right - left;
   frameRect.pos.x = (right + left) / 2;
   frameRect.pos.y = (sup + inf) / 2;
@@ -90,14 +90,14 @@ rectangle_t Concave::getFrameRect() const
 }
 void Concave::move(double dx, double dy)
 {
-  A.x += dx;
-  B.x += dx;
-  C.x += dx;
-  D.x += dx;
-  A.y += dy;
-  B.y += dy;
-  C.y += dy;
-  D.y += dy;
+  A_.x += dx;
+  B_.x += dx;
+  C_.x += dx;
+  D_.x += dx;
+  A_.y += dy;
+  B_.y += dy;
+  C_.y += dy;
+  D_.y += dy;
 }
 void Concave::move(point_t position)
 {
@@ -111,14 +111,14 @@ void Concave::scale(double k)
   {
     double centerX = getFrameRect().pos.x;
     double centerY = getFrameRect().pos.y;
-    A.x = k * (A.x - centerX) + centerX;
-    A.y = k * (A.y - centerY) + centerY;
-    C.x = k * (C.x - centerX) + centerX;
-    C.y = k * (C.y - centerY) + centerY;
-    B.x = k * (B.x - centerX) + centerX;
-    B.y = k * (B.y - centerY) + centerY;
-    D.x = k * (D.x - centerX) + centerX;
-    D.y = k * (D.y - centerY) + centerY;
+    A_.x = k * (A_.x - centerX) + centerX;
+    A_.y = k * (A_.y - centerY) + centerY;
+    C_.x = k * (C_.x - centerX) + centerX;
+    C_.y = k * (C_.y - centerY) + centerY;
+    B_.x = k * (B_.x - centerX) + centerX;
+    B_.y = k * (B_.y - centerY) + centerY;
+    D_.x = k * (D_.x - centerX) + centerX;
+    D_.y = k * (D_.y - centerY) + centerY;
   }
   else
   {

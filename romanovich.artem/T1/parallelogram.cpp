@@ -3,10 +3,10 @@
 #include <algorithm>
 #include <stdexcept>
 Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
-  A(A),
-  B(B),
-  C(C),
-  D{A.x - B.x + C.x, A.y - B.y + C.y}
+  A_(A),
+  B_(B),
+  C_(C),
+  D_{A.x - B.x + C.x, A.y - B.y + C.y}
 {
   if (!goodParallelogramInput())
   {
@@ -15,12 +15,12 @@ Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
 }
 double Parallelogram::getArea() const
 {
-  double ax = C.x - B.x;
-  double ay = C.y - B.y;
-  double by = A.y - B.y;
-  double bx = A.x - B.x;
-  double cx = C.x - A.x;
-  double cy = C.y - A.y;
+  double ax = C_.x - B_.x;
+  double ay = C_.y - B_.y;
+  double by = A_.y - B_.y;
+  double bx = A_.x - B_.x;
+  double cx = C_.x - A_.x;
+  double cy = C_.y - A_.y;
   double a = sqrt(ax * ax + ay * ay);
   double b = sqrt(bx * bx + by * by);
   double c = sqrt(cx * cx + cy * cy);
@@ -30,11 +30,11 @@ double Parallelogram::getArea() const
 rectangle_t Parallelogram::getFrameRect() const
 {
   rectangle_t frameRect{};
-  double sup = std::max({A.y, B.y, C.y});
-  double inf = std::min({A.y, B.y, C.y});
+  double sup = std::max({A_.y, B_.y, C_.y});
+  double inf = std::min({A_.y, B_.y, C_.y});
   frameRect.height = sup - inf;
-  double left = std::min({A.x, B.x, C.x});
-  double right = std::max({A.x, B.x, C.x});
+  double left = std::min({A_.x, B_.x, C_.x});
+  double right = std::max({A_.x, B_.x, C_.x});
   frameRect.width = right - left;
   frameRect.pos.x = (right + left) / 2;
   frameRect.pos.y = (sup + inf) / 2;
@@ -42,14 +42,14 @@ rectangle_t Parallelogram::getFrameRect() const
 }
 void Parallelogram::move(double dx, double dy)
 {
-  A.x += dx;
-  B.x += dx;
-  C.x += dx;
-  D.x += dx;
-  A.y += dy;
-  B.y += dy;
-  C.y += dy;
-  D.y += dy;
+  A_.x += dx;
+  B_.x += dx;
+  C_.x += dx;
+  D_.x += dx;
+  A_.y += dy;
+  B_.y += dy;
+  C_.y += dy;
+  D_.y += dy;
 }
 void Parallelogram::move(point_t position)
 {
@@ -63,14 +63,14 @@ void Parallelogram::scale(double k)
   {
     double centerX = getFrameRect().pos.x;
     double centerY = getFrameRect().pos.y;
-    A.x = k * (A.x - centerX) + centerX;
-    A.y = k * (A.y - centerY) + centerY;
-    C.x = k * (C.x - centerX) + centerX;
-    C.y = k * (C.y - centerY) + centerY;
-    B.x = k * (B.x - centerX) + centerX;
-    B.y = k * (B.y - centerY) + centerY;
-    D.x = k * (D.x - centerX) + centerX;
-    D.y = k * (D.y - centerY) + centerY;
+    A_.x = k * (A_.x - centerX) + centerX;
+    A_.y = k * (A_.y - centerY) + centerY;
+    C_.x = k * (C_.x - centerX) + centerX;
+    C_.y = k * (C_.y - centerY) + centerY;
+    B_.x = k * (B_.x - centerX) + centerX;
+    B_.y = k * (B_.y - centerY) + centerY;
+    D_.x = k * (D_.x - centerX) + centerX;
+    D_.y = k * (D_.y - centerY) + centerY;
   }
   else
   {
@@ -83,5 +83,5 @@ Shape *Parallelogram::clone() const
 }
 bool Parallelogram::goodParallelogramInput() const
 {
-  return (((A.y == B.y) || (B.y == C.y)) && (A.y - B.y != C.y - B.y));
+  return (((A_.y == B_.y) || (B_.y == C_.y)) && (A_.y - B_.y != C_.y - B_.y));
 }

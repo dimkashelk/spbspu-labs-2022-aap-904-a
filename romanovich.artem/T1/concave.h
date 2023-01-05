@@ -15,6 +15,6 @@ public:
 private:
   double *getSides() const;
   bool goodConcaveInput() const;
-  point_t A, B, C, D;
+  point_t A_, B_, C_, D_;
 };
 #endif

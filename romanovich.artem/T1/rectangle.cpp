@@ -1,10 +1,10 @@
 #include <stdexcept>
 #include "rectangle.h"
 Rectangle::Rectangle(point_t A, point_t C):
-  A(A),
-  B{A.x, C.y},
-  C(C),
-  D{C.x, A.y}
+  A_(A),
+  B_{A.x, C.y},
+  C_(C),
+  D_{C.x, A.y}
 {
   if (!goodRectangleInput())
   {
@@ -13,27 +13,27 @@ Rectangle::Rectangle(point_t A, point_t C):
 }
 double Rectangle::getArea() const
 {
-  return (B.y - A.y) * (C.x - B.x);
+  return (B_.y - A_.y) * (C_.x - B_.x);
 }
 rectangle_t Rectangle::getFrameRect() const
 {
   rectangle_t frameRect{};
-  frameRect.height = B.y - A.y;
-  frameRect.width = C.x - B.x;
-  frameRect.pos.x = (C.x + B.x) / 2;
-  frameRect.pos.y = (B.y + A.y) / 2;
+  frameRect.height = B_.y - A_.y;
+  frameRect.width = C_.x - B_.x;
+  frameRect.pos.x = (C_.x + B_.x) / 2;
+  frameRect.pos.y = (B_.y + A_.y) / 2;
   return frameRect;
 }
 void Rectangle::move(double dx, double dy)
 {
-  A.x += dx;
-  B.x += dx;
-  C.x += dx;
-  D.x += dx;
-  A.y += dy;
-  B.y += dy;
-  C.y += dy;
-  D.y += dy;
+  A_.x += dx;
+  B_.x += dx;
+  C_.x += dx;
+  D_.x += dx;
+  A_.y += dy;
+  B_.y += dy;
+  C_.y += dy;
+  D_.y += dy;
 }
 void Rectangle::move(point_t position)
 {
@@ -47,14 +47,14 @@ void Rectangle::scale(double k)
   {
     double centerX = getFrameRect().pos.x;
     double centerY = getFrameRect().pos.y;
-    A.x = k * (A.x - centerX) + centerX;
-    A.y = k * (A.y - centerY) + centerY;
-    C.x = k * (C.x - centerX) + centerX;
-    C.y = k * (C.y - centerY) + centerY;
-    B.x = A.x;
-    B.y = C.y;
-    D.x = C.x;
-    D.y = A.y;
+    A_.x = k * (A_.x - centerX) + centerX;
+    A_.y = k * (A_.y - centerY) + centerY;
+    C_.x = k * (C_.x - centerX) + centerX;
+    C_.y = k * (C_.y - centerY) + centerY;
+    B_.x = A_.x;
+    B_.y = C_.y;
+    D_.x = C_.x;
+    D_.y = A_.y;
   }
   else
   {
@@ -67,5 +67,5 @@ Shape *Rectangle::clone() const
 }
 bool Rectangle::goodRectangleInput() const
 {
-  return (A.x < C.x && A.y < C.y);
+  return (A_.x < C_.x && A_.y < C_.y);
 }

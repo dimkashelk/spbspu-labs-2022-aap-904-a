@@ -45,4 +45,8 @@ void Ellipse::scale(double k)
   }
   double center_x = getFrameRectangle().position.x;
   double center_y = getFrameRectangle().position.y;
+  axis_horizontal_ *= k;
+  axis_vertical_ *= k;
+  center_.x = center_x * k;
+  center_.y = center_y * k;
 }

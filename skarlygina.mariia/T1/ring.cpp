@@ -45,4 +45,8 @@ void Ring::scale(double k)
   }
   double center_x = getFrameRectangle().position.x;
   double center_y = getFrameRectangle().position.y;
+  radius_small_ *= k;
+  radius_big_ *= k;
+  center_.x = center_x * k;
+  center_.y = center_y * k;
 }

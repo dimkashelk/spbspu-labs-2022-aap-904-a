@@ -1,7 +1,7 @@
 #include "order.h"
 #include <algorithm>
 #include <iostream>
-int * Sort_Array(int * arr, size_t size)
+int *partition(int *arr, size_t size)
 {
   if (size == 0 )
   {
@@ -17,10 +17,5 @@ int * Sort_Array(int * arr, size_t size)
       }
     }
   }
-  for (size_t p = 0; p < size; p++)
-  {
-    std::cout << arr[p] << " " ;
-  }
   return 0;
 }
-

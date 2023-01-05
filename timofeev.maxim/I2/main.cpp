@@ -10,19 +10,27 @@ int main(int argc, char *argv[])
   int ready_array[5] = {4,5,3,2,1};
   try
   {
-    std::cout << "Length of Decrease1: " << LengthOfDecreaseVal(ready_array, 5) << "\n";
+    std::cout << "Length of Decrease1: " << length_of_decrease_value(ready_array, 5) << "\n";
     std::cout << "Sorted array1: " ;
-    Sort_Array(ready_array,5);
+    partition(ready_array, 5);
+    for (int p = 0; p < 5; p++)
+    {
+      if (p != 5)
+      {
+        std::cout << ready_array[p] << " ";
+      }
+      else
+      {
+        std::cout << ready_array[p];
+      }
+    }
     std::cout << "\n";
   }
-  catch (std::overflow_error & e)
+  catch (const std::length_error & e)
   {
     std::cout << e.what() << "\n";
     return 0;
   }
-
-
-
   size_t line;
   std::cin >> line;
   if (!std::cin)
@@ -30,28 +38,29 @@ int main(int argc, char *argv[])
     std::cout << "Input error" << "\n";
     return 2;
   }
-  std::srand(time(NULL));
-  int * dyn_array = new int[line];
-  size_t i;
+  std::srand(time(nullptr));
+  int *dyn_array = new int[line];
   if (line > 0)
   {
-    for (i = 0; i < line; i++)
+    for (size_t i = 0; i < line; i++)
     {
-      dyn_array[i] = rand() % 100;
+      dyn_array[i] = std::rand() % 100;
     }
-    try
+    std::cout << "Length of Decrease2: " << length_of_decrease_value(dyn_array, line) << "\n";
+    std::cout << "Sorted array2: " ;
+    partition(dyn_array,line);
+    for (size_t w = 0; w < line; w++)
     {
-      std::cout << "Length of Decrease2: " << LengthOfDecreaseVal(dyn_array, line) << "\n";
-      std::cout << "Sorted array2: " ;
-      Sort_Array(dyn_array,line);
-      std::cout << "\n";
+      if (w != line)
+      {
+        std::cout << dyn_array[w] << " ";
+      }
+      else
+      {
+        std::cout << dyn_array[w];
+      }
     }
-    catch (std::overflow_error & e)
-    {
-      std::cout << e.what() << "\n";
-      delete [] dyn_array;
-      return 2;
-    }
+    std::cout << "\n";
   }
   else
   {
@@ -66,7 +75,7 @@ int main(int argc, char *argv[])
   }
 
   size_t fsize = 0;
-  int * File_Array = new int[fsize];
+  int *File_Array = new int[fsize];
   std::string fname = argv[1];
   std::ifstream input(fname);
   input >> fsize;
@@ -76,31 +85,39 @@ int main(int argc, char *argv[])
     delete [] File_Array;
     return 2;
   }
-  while (!input.is_open())
+  for (size_t i = 0; i < fsize; ++i)
   {
-    for (size_t i = 0; i < fsize; ++i)
+    input >> File_Array[i];
+    if (!input)
     {
-      input >> File_Array[i];
-      if (!input)
+      std::cout << "File error" << "\n";
+      delete [] File_Array;
+      return 2;
+    }
+  }
+  try
+  {
+    std::cout << "Length of Decrease3: " << length_of_decrease_value(File_Array, fsize) << "\n";
+    std::cout << "Sorted array3: " ;
+    partition(File_Array, fsize);
+    for (size_t q = 0; q < fsize; q++)
+    {
+      if (q != fsize)
       {
-        std::cout << "File error" << "\n";
-        delete [] File_Array;
-        return 2;
+        std::cout << ready_array[q] << " ";
+      }
+      else
+      {
+        std::cout << ready_array[q];
       }
     }
-    try
-    {
-      std::cout << "Length of Decrease3: " << LengthOfDecreaseVal(File_Array, fsize) << "\n";
-      std::cout << "Sorted array3: " ;
-      Sort_Array(File_Array, fsize);
-      std::cout << "\n";
-    }
-    catch (std::overflow_error & e)
-    {
-      std::cout << e.what() << "\n";
-      delete [] File_Array;
-      return 0;
-    }
+    std::cout << "\n";
+  }
+  catch (const std::length_error & e)
+  {
+    std::cout << e.what() << "\n";
+    delete [] File_Array;
+    return 0;
   }
   delete [] File_Array;
 }

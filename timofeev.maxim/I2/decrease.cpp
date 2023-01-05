@@ -1,15 +1,13 @@
 #include "decrease.h"
 #include <limits>
 #include <stdexcept>
-#include <iostream>
-unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
+unsigned int length_of_decrease_value(const int *arr, size_t size)
 {
   size_t curleght = 1;
   size_t maxleght = 1;
   if (size == 0)
   {
-    std::cout << "Size AntiSwag situation" << "\n";
-    return 0;
+    throw std::length_error("Size error");
   }
   for (size_t i = 1; i < size; ++i)
   {
@@ -19,10 +17,6 @@ unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
       if (curleght > maxleght)
       {
         maxleght = curleght;
-      }
-      if (curleght == std::numeric_limits< unsigned int >::max())
-      {
-        throw std::overflow_error("Overflow AntiSwag situation");
       }
     }
     if (arr[i] > arr[i - 1])

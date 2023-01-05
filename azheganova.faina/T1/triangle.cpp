@@ -16,6 +16,7 @@ Triangle::Triangle(const Triangle &tmp):
 Triangle::Triangle(Triangle &&tmp):
   triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}
+
 double Triangle::getArea() const
 {
   double firstpart = 0.0;

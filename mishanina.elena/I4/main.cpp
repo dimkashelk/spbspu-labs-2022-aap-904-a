@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
 #include "count_rows_without_zero.h"
+#include "count_diagonals_parallel_to_secondary_without_zero.h"
 
 int main(int argc, char * argv[])
 {
@@ -123,6 +124,12 @@ int main(int argc, char * argv[])
           }
         }
       }
+    }
+    output << countDiagonalsParallelToSecondaryWithoutZero(squareMatrix, squareMatrixSize) << '\n';
+    if (!output)
+    {
+      std::cerr << "ERROR: file cannot be read\n";
+      return 1;
     }
 
     delete[] dynamicMatrix;

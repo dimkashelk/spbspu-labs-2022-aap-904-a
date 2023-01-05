@@ -13,8 +13,8 @@ public:
   void scale(double k) override;
 
 private:
-  double axis_vertical_, axis_horizontal_;
   point_t center_;
+  double axis_vertical_, axis_horizontal_;
 
 };
 #endif

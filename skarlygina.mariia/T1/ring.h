@@ -13,8 +13,8 @@ public:
   void scale(double k) override;
 
 private:
-  double radius_small_, radius_big_;
   point_t center_;
+  double radius_small_, radius_big_;
 
 };
 #endif

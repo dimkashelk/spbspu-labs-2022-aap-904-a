@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+<<<<<<< HEAD
 #include <cstddef>
 #include "makeNewStringWithoutRepeat.h"
 #include "makeNewStringWithMissingLetters.h"
@@ -56,4 +57,10 @@ int main()
   delete[] destination1;
   delete[] destination2;
   return 0;
+=======
+
+int main()
+{
+    return 0;
+>>>>>>> 32ad7c7fca9914ab99aed8fd0df0441e4c1917c3
 }

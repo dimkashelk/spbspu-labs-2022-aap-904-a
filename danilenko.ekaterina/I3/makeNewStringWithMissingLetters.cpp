@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cctype>
 
 char* makeNewStringWithMissingLetters(char* destination, const char* source)
@@ -24,18 +24,4 @@ char* makeNewStringWithMissingLetters(char* destination, const char* source)
   destination[new_elements] = '\0';
 
   return destination;
-}
-
-int main()
-{
-  char source[10] = "";
-  std::cout << "Enter a string: ";
-  std::cin >> source;
-  char* destination;
-  destination = new char[27];
-
-  destination = makeNewStringWithMissingLetters(destination, source);
-  std::cout << destination << '\n';
-
-  return 0;
 }

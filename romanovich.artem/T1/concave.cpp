@@ -85,10 +85,11 @@ rectangle_t Concave::getFrameRect() const
 }
 void Concave::move(double dx, double dy)
 {
-  for (point_t p: {A_, B_, C_, D_})
+  point_t *points[4]{&A_, &B_, &C_, &D_};
+  for (point_t *p: points)
   {
-    p.x += dx;
-    p.y += dy;
+    p->x += dx;
+    p->y += dy;
   }
 }
 void Concave::move(point_t position)
@@ -105,10 +106,11 @@ void Concave::scale(double k)
   }
   double centerX = getFrameRect().pos.x;
   double centerY = getFrameRect().pos.y;
-  for (point_t p: {A_, B_, C_, D_})
+  point_t *points[4]{&A_, &B_, &C_, &D_};
+  for (point_t *p: points)
   {
-    p.x = k * (p.x - centerX) + centerX;
-    p.y = k * (p.y - centerY) + centerY;
+    p->x = k * (p->x - centerX) + centerX;
+    p->y = k * (p->y - centerY) + centerY;
   }
 }
 Shape *Concave::clone() const

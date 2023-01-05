@@ -113,6 +113,10 @@ int main()
     }
   }
   while (std::cin);
-
+  for (size_t i = 0; i < size; i++)
+  {
+    delete array_figures[i];
+  }
+  delete[] array_figures;
   return 0;
 }

@@ -3,6 +3,7 @@
 #include "rectangle.h"
 #include "ellipse.h"
 #include "ring.h"
+#include "make_output.h"
 
 int main()
 {
@@ -113,6 +114,7 @@ int main()
     }
   }
   while (std::cin);
+
   for (size_t i = 0; i < size; i++)
   {
     delete array_figures[i];

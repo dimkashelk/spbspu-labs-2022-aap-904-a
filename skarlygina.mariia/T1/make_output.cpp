@@ -3,7 +3,17 @@
 #include <iostream>
 #include "shape.h"
 
-void makeOutputPosition(std::ostream& out, Shape* figure)
+void makeOutput::makeOutputSumm(std::ostream& out, Shape** array_figures, size_t size)
+{
+  double sum = 0.0;
+  for (size_t i = 0; i < size; i++)
+  {
+    sum += array_figures[i]->getArea();
+  }
+  out << std::fixed << sum << " ";
+}
+
+void makeOutput::makeOutputPosition(std::ostream& out, Shape* figure)
 {
   out << std::fixed;
   rectangle_t frame_rectangle = figure->getFrameRectangle();

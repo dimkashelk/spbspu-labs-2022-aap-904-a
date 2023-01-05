@@ -8,7 +8,9 @@ int main()
 {
   std::string figure = "";
   size_t size = 0;
-  Shape** array_figures = new Shape* [7];
+  point_t point{};
+  double coefficient = 0;
+  Shape** array_figures = new Shape* [10];
   do
   {
     std::cin >> figure;
@@ -80,8 +82,6 @@ int main()
 
     if (figure == "SCALE")
     {
-      point_t point{};
-      double coefficient = 0;
       try
       {
         std::cin >> point.x >> point.y >> coefficient;
@@ -105,7 +105,12 @@ int main()
     }
   }
   while (std::cin);
-  makeOutput::makeOutputSumm(std::cout, array_figures, size);
+  makeOutput(std::cout, array_figures, size);
+  for (size_t i = 0; i < size; ++i)
+  {
+    makeIsotropicScaling(array_figures[i], point, coefficient);
+  }
+
   for (size_t i = 0; i < size; i++)
   {
     delete array_figures[i];

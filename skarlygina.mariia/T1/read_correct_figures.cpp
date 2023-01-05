@@ -18,7 +18,7 @@ Ring* correctFigures::readCorrectRing(std::istream& in)
   {
     throw std::logic_error("Incorrect Ring parameters");
   }
-  return new Ring({ parameters[0], parameters[1] }, parameters[2], parameters[3]);
+  return new Ring({ parameters[0], parameters[1] }, parameters[3], parameters[2]);
 }
 Ellipse* correctFigures::readCorrectEllipse(std::istream& in)
 {

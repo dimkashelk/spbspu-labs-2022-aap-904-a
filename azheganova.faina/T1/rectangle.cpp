@@ -7,7 +7,7 @@ Rectangle::Rectangle(rectangle_t rectangle1):
   rectangle1(rectangle1)
 {}
 Rectangle::Rectangle(point_t point1, point_t point2):
-  rectangle1(point1, point2)
+  rectangle1(makeFrame(point1, point2))
 {}
 double Rectangle::getArea() const
 {

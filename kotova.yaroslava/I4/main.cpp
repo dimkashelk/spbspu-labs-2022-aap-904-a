@@ -4,6 +4,7 @@
 #include <cstddef>
 #include "columns_w_positive_el.h"
 #include "columns_w_unique_el.h"
+#include "reading_elements.h"
 int main(int argc, char* argv[])
 {
   size_t column = 0;
@@ -40,17 +41,14 @@ int main(int argc, char* argv[])
   if (!std::strcmp(argv[1], "1"))
   {
     int matrix[1000];
-    for (size_t i = 0; i < column; i++)
+    try
     {
-      for (size_t j = 0; j < line; j++)
-      {
-        file_matrix_in >> matrix[column * j + i];
-        if (!file_matrix_in)
-        {
-          std::cout << "elements read with an error";
-          return 1;
-        }
-      }
+      read_el(matrix, column, line, file_matrix_in);
+    }
+    catch (const std::exception& e)
+    {
+      std::cerr << e.what() << "\n";
+      return 1;
     }
     std::ofstream file_matrix_out(argv[3]);
     file_matrix_out << countPositiveElOfCol(matrix, column, line) << "\n";
@@ -79,18 +77,15 @@ int main(int argc, char* argv[])
         std::cout << e.what();
         return 1;
       }
-      for (size_t i = 0; i < column; i++)
+      try
       {
-        for (size_t j = 0; j < line; j++)
-        {
-          file_matrix_in >> matrix[j * column + i];
-          if (!file_matrix_in)
-          {
-            std::cout << "elements read with an error";
-            delete[] matrix;
-            return 1;
-          }
-        }
+        read_el(matrix, column, line, file_matrix_in);
+      }
+      catch (const std::exception& e)
+      {
+        std::cerr << e.what() << "\n";
+        delete[] matrix;
+        return 1;
       }
       std::ofstream file_matrix_out(argv[3]);
       file_matrix_out << countUniqueElOfCol(matrix, column, line) << "\n";

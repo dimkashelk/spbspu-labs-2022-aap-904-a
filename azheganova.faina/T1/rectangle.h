@@ -6,7 +6,7 @@
 class Rectangle : virtual public Shape
 {
   public:
-    Rectangle(rectangle_t Rectangle);
+    Rectangle(rectangle_t rectangle);
     Rectangle(point_t point1, point_t point2);
     double getArea() const;
     rectangle_t getFrameRect() const;

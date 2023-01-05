@@ -4,6 +4,7 @@
 #include <cstring>
 #include "count_rows_without_zero.h"
 #include "count_diagonals_parallel_to_secondary_without_zero.h"
+#include "read_matrix_from_file.h"
 
 int main(int argc, char * argv[])
 {
@@ -75,19 +76,7 @@ int main(int argc, char * argv[])
       delete[] dynamicMatrix;
       return 1;
     }
-    for (size_t i = 0; i < rows; i++)
-    {
-      for (size_t j = 0; j < columns; j++)
-      {
-        input >> dynamicMatrix[rows * i + j];
-        if (!input)
-        {
-          std::cerr << "ERROR: file cannot be read\n";
-          delete[] dynamicMatrix;
-          return 1;
-        }
-      }
-    }
+    dynamicMatrix = readMatrixFromFile(dynamicMatrix, rows, columns, input);
 
     size_t squareMatrixSize = std::min(rows, columns);
 

@@ -7,7 +7,8 @@
 int main()
 {
   std::string figure = "";
-
+  size_t size = 0;
+  Shape** array_figures = new Shape* [7];
   do
   {
     std::cin >> figure;
@@ -19,6 +20,8 @@ int main()
       {
         std::cin >> left_down_point.x >> left_down_point.y >> right_up_point.x >> right_up_point.y;
         rectangle = new Rectangle(left_down_point, right_up_point);
+        array_figures[size] = rectangle;
+        size++;
       }
       catch (const std::invalid_argument& e)
       {
@@ -42,6 +45,8 @@ int main()
       {
         std::cin >> center.x >> center.y >> radius_small >> radius_big;
         ring = new Ring(center, radius_small, radius_big);
+        array_figures[size] = ring;
+        size++;
       }
       catch (const std::invalid_argument& e)
       {
@@ -65,6 +70,8 @@ int main()
       {
         std::cin >> center.x >> center.y >> radius_vertical >> radius_horizontal;
         ellipse = new Ellipse(center, radius_vertical, radius_horizontal);
+        array_figures[size] = ellipse;
+        size++;
       }
       catch (const std::invalid_argument& e)
       {
@@ -94,11 +101,18 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "Error: wrong parameters of the point and coefficient\n";
+        std::cerr << "Error: wrong parameters of the point, coefficient\n";
+        for (size_t i = 0; i < size; i++)
+        {
+          delete array_figures[i];
+        }
+        delete[] array_figures;
         return 2;
       }
+      break;
     }
   }
   while (std::cin);
+
   return 0;
 }

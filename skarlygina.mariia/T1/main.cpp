@@ -4,6 +4,7 @@
 #include "ellipse.h"
 #include "ring.h"
 #include "make_output.h"
+#include "isotropic_scale.h"
 
 int main()
 {

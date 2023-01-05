@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <string>
-#include <cstrfnc.h>
+#include "cstrfnc.h"
 #include "isreal.h"
 
 int main()

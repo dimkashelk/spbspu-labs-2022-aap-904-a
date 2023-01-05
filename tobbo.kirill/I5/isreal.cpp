@@ -1,4 +1,5 @@
 #include "isreal.h"
+#include <string>
 
 bool isSign(char c)
 {

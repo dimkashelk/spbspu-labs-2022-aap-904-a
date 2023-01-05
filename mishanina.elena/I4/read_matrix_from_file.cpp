@@ -7,7 +7,6 @@ int* readMatrixFromFile(int* matrix, size_t rows, size_t columns, std::ifstream&
     input >> matrix[i];
     if (!input)
     {
-      delete[] matrix;
       throw std::runtime_error("ERROR: file cannot be read\n");
     }
   }

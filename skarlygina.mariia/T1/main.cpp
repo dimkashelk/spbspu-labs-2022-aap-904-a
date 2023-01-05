@@ -105,11 +105,13 @@ int main()
     }
   }
   while (std::cin);
+
   makeOutput(std::cout, array_figures, size);
   for (size_t i = 0; i < size; ++i)
   {
     makeIsotropicScaling(array_figures[i], point, coefficient);
   }
+  makeOutput(std::cout, array_figures, size);
 
   for (size_t i = 0; i < size; i++)
   {

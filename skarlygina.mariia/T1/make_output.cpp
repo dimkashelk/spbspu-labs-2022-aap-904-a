@@ -32,5 +32,6 @@ void makeOutput(std::ostream& out, Shape** array_figures, size_t size)
   {
     makeOutputPosition(out, array_figures[i]);
   }
+  out << "\n";
 }
 

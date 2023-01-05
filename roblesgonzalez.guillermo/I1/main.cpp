@@ -1,14 +1,15 @@
 #include <iostream>
 #include <limits>
+#include <cstddef>
 int main()
 {
   int n = 0;
   int numberBefore = 0;
   int currentNumber = 0;
   int numberAfter = 0;
-  int smallerThanPrevBiggerThanNextCount = std::size_t();
-  int smallestNumber = std::numeric_limits< int >::max();
-  int counter = std::size_t();
+  size_t smallerThanPrevBiggerThanNextCount = 0;
+  int smallestNumber = std::numeric_limits < int > ::max();
+  size_t counter = 0;
   while (std::cin >> n && n != 0)
   {
     numberBefore = currentNumber;

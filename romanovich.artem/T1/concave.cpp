@@ -16,7 +16,7 @@ Concave::Concave(point_t A, point_t B, point_t C, point_t D):
 }
 bool Concave::goodConcaveInput() const
 {
-  std::array<double, 6> sides = getSides();
+  std::array<double, 6> sides = splitIntoTriangles();
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];
@@ -37,7 +37,7 @@ bool Concave::goodConcaveInput() const
   }
   return false;
 }
-std::array<double, 6> Concave::getSides() const
+std::array<double, 6> Concave::splitIntoTriangles() const
 {
   double a_x = A_.x - C_.x;
   double a_y = A_.y - C_.y;
@@ -62,7 +62,7 @@ std::array<double, 6> Concave::getSides() const
 }
 double Concave::getArea() const
 {
-  std::array<double, 6> sides = getSides();
+  std::array<double, 6> sides = splitIntoTriangles();
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];

@@ -21,7 +21,7 @@ turkin::Rectangle * turkin::createSquare(std::istream & input)
   {
     throw std::logic_error("bad square size");
   }
-  return new Rectangle({points[0], points[1]}, {points[0] + points[2] / 2, points[1] + points[2] / 2});
+  return new Rectangle({points[0] - points[2] / 2.0, points[1] - points[2] / 2.0}, {points[0] + points[2] / 2.0, points[1] + points[2] / 2.0});
 }
 
 turkin::Ellipse * turkin::createEllipse(std::istream & input)
@@ -32,7 +32,7 @@ turkin::Ellipse * turkin::createEllipse(std::istream & input)
   {
     throw std::logic_error("bad ellipse size");
   }
-  return new Ellipse({points[0], points[1]}, points[2], points[3]);
+  return new Ellipse({points[0], points[1]}, points[2] * 2.0, points[3] * 2.0);
 }
 
 turkin::scale_t turkin::getScale(std::istream &input)

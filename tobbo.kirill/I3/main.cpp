@@ -28,9 +28,9 @@ int main()
   try
   {
     std::cout << "Enter string#1: ";
-    strPair1 = getCString(std::cin);
+    strPair1 = getCString2(std::cin);
     std::cout << "Enter string#2: ";
-    strPair2 = getCString(std::cin);
+    strPair2 = getCString2(std::cin);
     if (strPair1.second == 1 && strPair2.second == 1)
     {
       throw std::invalid_argument("Two empty strings are forbidden by test#1");

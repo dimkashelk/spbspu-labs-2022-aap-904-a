@@ -3,7 +3,7 @@
 #include <cstring>
 #include <stdexcept>
 
-std::pair< char*, size_t > getCString(std::istream& stream)
+std::pair< char*, size_t > getCString2(std::istream& stream)
 {
   size_t size = 0;
   size_t capacity = 10;

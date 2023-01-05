@@ -1,5 +1,5 @@
-#include <stdexcept>
 #include "rectangle.h"
+#include <stdexcept>
 Rectangle::Rectangle(point_t A, point_t C):
   A_(A),
   B_{A.x, C.y},
@@ -17,12 +17,7 @@ double Rectangle::getArea() const
 }
 rectangle_t Rectangle::getFrameRect() const
 {
-  rectangle_t frameRect{};
-  frameRect.height = B_.y - A_.y;
-  frameRect.width = C_.x - B_.x;
-  frameRect.pos.x = (C_.x + B_.x) / 2;
-  frameRect.pos.y = (B_.y + A_.y) / 2;
-  return frameRect;
+  return {(C_.x + B_.x) / 2, (B_.y + A_.y) / 2, C_.x - B_.x, B_.y - A_.y};
 }
 void Rectangle::move(double dx, double dy)
 {
@@ -43,19 +38,16 @@ void Rectangle::move(point_t position)
 }
 void Rectangle::scale(double k)
 {
-  if (k > 0)
-  {
-    double centerX = getFrameRect().pos.x;
-    double centerY = getFrameRect().pos.y;
-    for (point_t p: {A_, B_, C_, D_})
-    {
-      p.x = k * (p.x - centerX) + centerX;
-      p.y = k * (p.y - centerY) + centerY;
-    }
-  }
-  else
+  if (k <= 0)
   {
     throw std::invalid_argument("Invalid scaling coeff.");
+  }
+  double centerX = getFrameRect().pos.x;
+  double centerY = getFrameRect().pos.y;
+  for (point_t p: {A_, B_, C_, D_})
+  {
+    p.x = k * (p.x - centerX) + centerX;
+    p.y = k * (p.y - centerY) + centerY;
   }
 }
 Shape *Rectangle::clone() const

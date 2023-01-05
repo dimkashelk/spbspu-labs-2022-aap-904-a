@@ -2,7 +2,8 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Concave::Concave(point_t A, point_t B, point_t C, point_t D) :
+#include <array>
+Concave::Concave(point_t A, point_t B, point_t C, point_t D):
   A_(A),
   B_(B),
   C_(C),
@@ -15,11 +16,10 @@ Concave::Concave(point_t A, point_t B, point_t C, point_t D) :
 }
 bool Concave::goodConcaveInput() const
 {
-  double *sides = getSides();
+  std::array<double, 6> sides = getSides();
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];
-  delete[] sides;
   double max_ = std::max({a, b, c});
   double min_ = std::max({a, b, c});
   double midl_ = a + b + c - max_ - min_;
@@ -37,7 +37,7 @@ bool Concave::goodConcaveInput() const
   }
   return false;
 }
-double *Concave::getSides() const
+std::array<double, 6> Concave::getSides() const
 {
   double a_x = A_.x - C_.x;
   double a_y = A_.y - C_.y;
@@ -57,18 +57,18 @@ double *Concave::getSides() const
   double a1 = sqrt(a1_x * a1_x + a1_y * a1_y);
   double b1 = sqrt(b1_x * b1_x + b1_y * b1_y);
   double c1 = sqrt(c1_x * c1_x + c1_y * c1_y);
-  return new double[6]{a, b, c, a1, b1, c1};
+  std::array<double, 6> arr = {a, b, c, a1, b1, c1};
+  return arr;
 }
 double Concave::getArea() const
 {
-  double *sides = getSides();
+  std::array<double, 6> sides = getSides();
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];
   double a1 = sides[3];
   double b1 = sides[4];
   double c1 = sides[5];
-  delete[] sides;
   double p1 = (a + b + c) / 2;
   double p2 = (a1 + b1 + c1) / 2;
   double s1 = sqrt(p1 * (p1 - a) * (p1 - b) * (p1 - c));
@@ -77,16 +77,11 @@ double Concave::getArea() const
 }
 rectangle_t Concave::getFrameRect() const
 {
-  rectangle_t frameRect{};
   double sup = std::max({A_.y, B_.y, C_.y});
   double inf = std::min({A_.y, B_.y, C_.y});
-  frameRect.height = sup - inf;
   double left = std::min({A_.x, B_.x, C_.x});
   double right = std::max({A_.x, B_.x, C_.x});
-  frameRect.width = right - left;
-  frameRect.pos.x = (right + left) / 2;
-  frameRect.pos.y = (sup + inf) / 2;
-  return frameRect;
+  return {(right + left) / 2, (sup + inf) / 2, right - left, sup - inf};
 }
 void Concave::move(double dx, double dy)
 {
@@ -107,19 +102,16 @@ void Concave::move(point_t position)
 }
 void Concave::scale(double k)
 {
-  if (k > 0)
-  {
-    double centerX = getFrameRect().pos.x;
-    double centerY = getFrameRect().pos.y;
-    for (point_t p: {A_, B_, C_, D_})
-    {
-      p.x = k * (p.x - centerX) + centerX;
-      p.y = k * (p.y - centerY) + centerY;
-    }
-  }
-  else
+  if (k <= 0)
   {
     throw std::invalid_argument("Invalid scaling coeff.");
+  }
+  double centerX = getFrameRect().pos.x;
+  double centerY = getFrameRect().pos.y;
+  for (point_t p: {A_, B_, C_, D_})
+  {
+    p.x = k * (p.x - centerX) + centerX;
+    p.y = k * (p.y - centerY) + centerY;
   }
 }
 Shape *Concave::clone() const

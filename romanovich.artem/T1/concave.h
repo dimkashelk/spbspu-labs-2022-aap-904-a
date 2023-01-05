@@ -1,5 +1,6 @@
 #ifndef SPBSPU_LABS_2022_AAP_904_A_CONCAVE_H
 #define SPBSPU_LABS_2022_AAP_904_A_CONCAVE_H
+#include <array>
 #include "shape.h"
 class Concave: public Shape
 {
@@ -13,7 +14,7 @@ public:
   void scale(double k) override;
   Shape *clone() const override;
 private:
-  double *getSides() const;
+  std::array<double, 6> getSides() const;
   bool goodConcaveInput() const;
   point_t A_, B_, C_, D_;
 };

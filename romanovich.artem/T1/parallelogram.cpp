@@ -29,16 +29,11 @@ double Parallelogram::getArea() const
 }
 rectangle_t Parallelogram::getFrameRect() const
 {
-  rectangle_t frameRect{};
   double sup = std::max({A_.y, B_.y, C_.y});
   double inf = std::min({A_.y, B_.y, C_.y});
-  frameRect.height = sup - inf;
   double left = std::min({A_.x, B_.x, C_.x});
   double right = std::max({A_.x, B_.x, C_.x});
-  frameRect.width = right - left;
-  frameRect.pos.x = (right + left) / 2;
-  frameRect.pos.y = (sup + inf) / 2;
-  return frameRect;
+  return {(right + left) / 2, (sup + inf) / 2, right - left, sup - inf};
 }
 void Parallelogram::move(double dx, double dy)
 {
@@ -59,19 +54,16 @@ void Parallelogram::move(point_t position)
 }
 void Parallelogram::scale(double k)
 {
-  if (k > 0)
-  {
-    double centerX = getFrameRect().pos.x;
-    double centerY = getFrameRect().pos.y;
-    for (point_t p: {A_, B_, C_, D_})
-    {
-      p.x = k * (p.x - centerX) + centerX;
-      p.y = k * (p.y - centerY) + centerY;
-    }
-  }
-  else
+  if (k <= 0)
   {
     throw std::invalid_argument("Invalid scaling coeff.");
+  }
+  double centerX = getFrameRect().pos.x;
+  double centerY = getFrameRect().pos.y;
+  for (point_t p: {A_, B_, C_, D_})
+  {
+    p.x = k * (p.x - centerX) + centerX;
+    p.y = k * (p.y - centerY) + centerY;
   }
 }
 Shape *Parallelogram::clone() const

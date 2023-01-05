@@ -7,7 +7,15 @@ void CompositeShape::push_back(Shape *shp)
   {
     throw std::invalid_argument("Expansion is impossible.");
   }
-  Shape **newShape = new Shape *[capacity_ + capAdd];
+  Shape **newShape = nullptr;
+  try
+  {
+    newShape = new Shape *[capacity_ + capAdd];
+  }
+  catch (...)
+  {
+    throw std::invalid_argument("Error while adding figure.");
+  }
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
   {
@@ -87,12 +95,24 @@ bool CompositeShape::empty() const noexcept
 {
   return (size_ == 0);
 }
-/*CompositeShape::CompositeShape(const CompositeShape &)
+CompositeShape::CompositeShape(const CompositeShape &rhs):
+  CompositeShape(rhs.capacity_)
 {
+  size_ = rhs.size_;
+  for (size_t i = 0; i < rhs.size_; ++i)
+  {
+    shape_[i] = rhs.shape_[i]->clone();
+  }
 }
-CompositeShape::CompositeShape(CompositeShape &)
+CompositeShape::CompositeShape(CompositeShape &&rhs) noexcept:
+  CompositeShape(rhs.capacity_)
 {
-}*/
+  size_ = rhs.size_;
+  for (size_t i = 0; i < rhs.size_; ++i)
+  {
+    shape_[i] = rhs.shape_[i]->clone();
+  }
+}
 double CompositeShape::getArea() const
 {
   double area = 0;
@@ -113,4 +133,32 @@ CompositeShape::~CompositeShape()
     delete shape_[i];
   }
   delete[] shape_;
+}
+CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
+{
+  Shape **newShape = nullptr;
+  size_t newSize = 0;
+  try
+  {
+    newShape = new Shape *[rhs.capacity_];
+    for (size_t i = 0; i < rhs.size_; ++i)
+    {
+      newShape[i] = rhs.shape_[i]->clone();
+      ++newSize;
+    }
+  }
+  catch (...)
+  {
+    for (size_t i = 0; i < newSize; ++i)
+    {
+      delete newShape[i];
+    }
+    delete[] newShape;
+    throw std::invalid_argument("Error while coping figure.");
+  }
+  delete[] shape_;
+  shape_ = newShape;
+  capacity_ = rhs.capacity_;
+  size_ = newSize;
+  return *this;
 }

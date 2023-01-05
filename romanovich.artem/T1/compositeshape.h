@@ -6,12 +6,13 @@
 class CompositeShape
 {
 public:
-/*  CompositeShape(const CompositeShape &rhs);
-  CompositeShape(CompositeShape &);*/
+  CompositeShape(const CompositeShape &rhs);
+  CompositeShape(CompositeShape &&rhs) noexcept;
   explicit CompositeShape(size_t capacity);
   ~CompositeShape();
+  CompositeShape &operator=(const CompositeShape &rhs);
   double getArea() const;
-  rectangle_t getFrameRect() ;
+  rectangle_t getFrameRect();
   void move(double dx, double dy);
   void move(point_t position);
   void scale(double k);

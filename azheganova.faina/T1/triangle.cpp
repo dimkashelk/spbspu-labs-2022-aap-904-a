@@ -3,6 +3,12 @@
 #include <iostream>
 #include <stdexcept>
 
+rectangle_t makeFrame(point_t point1, point_t point2)
+{
+  rectangle_t frame{point_t{(point1.x + point2.x) / 2, (point1.y + point2.y) / 2}, point2.x - point1.x, point2.y - point1.y};
+  return frame;
+}
+
 Triangle::Triangle()
 {}
 
@@ -30,8 +36,7 @@ rectangle_t Triangle::getFrameRect() const
   double maxy = std::max(triangle1[0].y, std::max(triangle1[1].y, triangle1[2].y));
   double minx = std::min(triangle1[0].x, std::min(triangle1[1].x, triangle1[2].x));
   double miny = std::min(triangle1[0].y, std::min(triangle1[1].y, triangle1[2].y));
-  rectangle_t fortriangle(point_t{minx, miny}, point_t{maxx, maxy});
-  return fortriangle;
+  return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
 }
 point_t Triangle::findCenterOfTriangle()
 {

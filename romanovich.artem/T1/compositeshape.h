@@ -11,6 +11,7 @@ public:
   explicit CompositeShape(size_t capacity);
   ~CompositeShape();
   CompositeShape &operator=(const CompositeShape &rhs);
+  CompositeShape &operator=(CompositeShape &&rhs);
   double getArea() const;
   rectangle_t getFrameRect();
   void move(double dx, double dy);

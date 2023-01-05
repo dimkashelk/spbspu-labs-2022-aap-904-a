@@ -156,9 +156,17 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
     delete[] newShape;
     throw std::invalid_argument("Error while coping figure.");
   }
-  delete[] shape_;
+  CompositeShape::~CompositeShape();
   shape_ = newShape;
   capacity_ = rhs.capacity_;
   size_ = newSize;
+  return *this;
+}
+CompositeShape &CompositeShape::operator=(CompositeShape &&rhs)
+{
+  CompositeShape::~CompositeShape();
+  shape_ = rhs.shape_;
+  capacity_ = rhs.capacity_;
+  size_ = rhs.size_;
   return *this;
 }

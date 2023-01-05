@@ -6,9 +6,12 @@ size_t countPositiveElOfCol(const int* matrix, size_t column, size_t line)
   {
     for (size_t j = 0; j < line; j++)
     {
-      if (matrix[column * j + i] > 0)
+      for(size_t n = 0; n < line; n++)
       {
-        count++;
+        if ((matrix[column * j + i] && matrix[column * n + i]) > 0 && j != n)
+        {
+          count++;
+        }
       }
     }
   }

@@ -3,22 +3,22 @@
 #include <cmath>
 #include <stdexcept>
 
-Ellipse::Ellipse(point_t center, double axis_vertical, double axis_horizontal):
+Ellipse::Ellipse(point_t center, double radius_vertical, double radius_horizontal):
   center_(center),
-  axis_vertical_(axis_vertical),
-  axis_horizontal_(axis_horizontal)
+  radius_vertical_(radius_vertical),
+  radius_horizontal_(radius_horizontal)
 {}
 
 double Ellipse::getArea() const
 {
   const double pi = M_PI;
-  return (pi * (axis_vertical_ / 2) * (axis_horizontal_ / 2));
+  return (pi * radius_vertical_ * radius_horizontal_);
 }
 rectangle_t Ellipse::getFrameRectangle() const
 {
   rectangle_t frame_rectangle{};
-  frame_rectangle.height = axis_vertical_;
-  frame_rectangle.width = axis_horizontal_;
+  frame_rectangle.height = radius_vertical_;
+  frame_rectangle.width = radius_horizontal_;
   frame_rectangle.position.x = center_.x;
   frame_rectangle.position.y = center_.y;
   return frame_rectangle;
@@ -45,8 +45,8 @@ void Ellipse::scale(double k)
   }
   double center_x = getFrameRectangle().position.x;
   double center_y = getFrameRectangle().position.y;
-  axis_horizontal_ *= k;
-  axis_vertical_ *= k;
+  radius_horizontal_ *= k;
+  radius_vertical_ *= k;
   center_.x = center_x * k;
   center_.y = center_y * k;
 }

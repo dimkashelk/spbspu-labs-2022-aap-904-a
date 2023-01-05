@@ -1,9 +1,7 @@
 #include <iostream>
 #include "shape.h"
-#include "rectangle.h"
-#include "ellipse.h"
-#include "ring.h"
 #include "make_output.h"
+#include "read_correct_figures.h"
 #include "isotropic_scale.h"
 
 int main()
@@ -16,12 +14,10 @@ int main()
     std::cin >> figure;
     if (figure == "RECTANGLE")
     {
-      point_t left_down_point{}, right_up_point{};
       Shape* rectangle = nullptr;
       try
       {
-        std::cin >> left_down_point.x >> left_down_point.y >> right_up_point.x >> right_up_point.y;
-        rectangle = new Rectangle(left_down_point, right_up_point);
+        rectangle = correctFigures::readCorrectRectangle(std::cin);
         array_figures[size] = rectangle;
         size++;
       }
@@ -40,13 +36,10 @@ int main()
 
     if (figure == "RING")
     {
-      point_t center{};
-      double radius_small, radius_big;
       Shape* ring = nullptr;
       try
       {
-        std::cin >> center.x >> center.y >> radius_small >> radius_big;
-        ring = new Ring(center, radius_small, radius_big);
+        ring = correctFigures::readCorrectRing(std::cin);
         array_figures[size] = ring;
         size++;
       }
@@ -65,13 +58,10 @@ int main()
 
     if (figure == "ELLIPSE")
     {
-      double radius_vertical, radius_horizontal;
-      point_t center;
       Shape* ellipse = nullptr;
       try
       {
-        std::cin >> center.x >> center.y >> radius_vertical >> radius_horizontal;
-        ellipse = new Ellipse(center, radius_vertical, radius_horizontal);
+        ellipse = correctFigures::readCorrectEllipse(std::cin);
         array_figures[size] = ellipse;
         size++;
       }

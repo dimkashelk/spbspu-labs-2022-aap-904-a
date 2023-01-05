@@ -17,10 +17,6 @@ void printFramePoints(std::ostream & output, const rectangle_t & rectangle)
 }
 void printAreaAndFrames(std::ostream & output, const CompositeShape & tmp, size_t size_)
 {
-  if (!size_)
-  {
-    throw std::invalid_argument("error");
-  }
   double summ_area = 0.0;
   for (size_t i = 0; i < size_; ++i)
   {

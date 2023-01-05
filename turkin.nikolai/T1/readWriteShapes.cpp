@@ -4,46 +4,46 @@
 
 turkin::Rectangle * turkin::createRectangle(std::istream & input)
 {
-  double points[4] {0.0, 0.0, 0.0, 0.0};
-  input >> points[0] >> points[1] >> points[2] >> points[3];
-  if (points[0] > points[2] || points[1] > points[3])
+  double p[4] {0.0, 0.0, 0.0, 0.0};
+  input >> p[0] >> p[1] >> p[2] >> p[3];
+  if (p[0] > p[2] || p[1] > p[3])
   {
     throw std::logic_error("bad rectangle size");
   }
-  return new Rectangle({points[0], points[1]}, {points[2], points[3]});
+  return new Rectangle({p[0], p[1]}, {p[2], p[3]});
 }
 
 turkin::Rectangle * turkin::createSquare(std::istream & input)
 {
-  double points[3] {0.0, 0.0, 0.0};
-  input >> points[0] >> points[1] >> points[2];
-  if (points[2] <= 0.0)
+  double p[3] {0.0, 0.0, 0.0};
+  input >> p[0] >> p[1] >> p[2];
+  if (p[2] <= 0.0)
   {
     throw std::logic_error("bad square size");
   }
-  return new Rectangle({points[0] - points[2] / 2.0, points[1] - points[2] / 2.0}, {points[0] + points[2] / 2.0, points[1] + points[2] / 2.0});
+  return new Rectangle({p[0] - p[2] / 2.0, p[1] - p[2] / 2.0}, {p[0] + p[2] / 2.0, p[1] + p[2] / 2.0});
 }
 
 turkin::Ellipse * turkin::createEllipse(std::istream & input)
 {
-  double points[4] {0.0, 0.0, 0.0, 0.0};
-  input >> points[0] >> points[1] >> points[2] >> points[3];
-  if (points[2] <= 0.0 || points[3] <= 0.0)
+  double p[4] {0.0, 0.0, 0.0, 0.0};
+  input >> p[0] >> p[1] >> p[2] >> p[3];
+  if (p[2] <= 0.0 || p[3] <= 0.0)
   {
     throw std::logic_error("bad ellipse size");
   }
-  return new Ellipse({points[0], points[1]}, points[2] * 2.0, points[3] * 2.0);
+  return new Ellipse({p[0], p[1]}, p[2] * 2.0, p[3] * 2.0);
 }
 
 turkin::scale_t turkin::getScale(std::istream &input)
 {
-  double points[3] {0.0, 0.0, 0.0};
-  input >> points[0] >> points[1] >> points[2];
-  if (points[2] < 0.0)
+  double p[3] {0.0, 0.0, 0.0};
+  input >> p[0] >> p[1] >> p[2];
+  if (p[2] < 0.0)
   {
     throw std::logic_error("bad scale size");
   }
-  return {{points[0], points[1]}, points[2]};
+  return {{p[0], p[1]}, p[2]};
 }
 
 void turkin::printAreaPoints(std::ostream & output, Shape ** shapes, size_t size)

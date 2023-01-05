@@ -1,7 +1,8 @@
+#include "makeNewStringWithoutRepeat.h"
 #include <iostream>
 #include <cctype>
 
-char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2, const size_t size)
+char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2, size_t size)
 {
   size_t new_elements = 0;
   for (size_t i = 0; i < size; i++)

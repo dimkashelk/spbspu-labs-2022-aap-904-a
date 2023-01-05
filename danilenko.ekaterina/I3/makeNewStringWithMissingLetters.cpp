@@ -1,3 +1,4 @@
+#include "makeNewStringWithMissingLetters.h"
 #include <iostream>
 #include <cctype>
 

@@ -13,6 +13,7 @@ class rectangle : virtual public shape
     void move(point_t position);
     void move(double dx, double dy);
     void scale(double k);
+    shape * clone() const override;
   private:
     rectangle_t rectangle1;
 };

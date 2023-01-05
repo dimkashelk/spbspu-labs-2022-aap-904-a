@@ -1,13 +1,13 @@
 #ifndef T1_RECTANGLE_H
 #define T1_RECTANGLE_H
-#include "shapesPatterns.h"
+#include "base-types.h"
+#include "shape.h"
 namespace turkin
 {
-  class Rectangle: virtual public Shape
+  class Rectangle: public Shape
   {
     public:
-      Rectangle(point_t one, point_t two);
-      Rectangle(point_t one, double side);
+      explicit Rectangle(point_t one, point_t two);
       double getArea() const override;
       rectangle_t getFrameRect() const override;
       void move(double dx, double dy) override;

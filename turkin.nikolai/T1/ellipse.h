@@ -1,9 +1,10 @@
 #ifndef T1_ELLIPSE_H
 #define T1_ELLIPSE_H
-#include "shapesPatterns.h"
+#include "base-types.h"
+#include "shape.h"
 namespace turkin
 {
-  class Ellipse: virtual public Shape
+  class Ellipse: public Shape
   {
     public:
       Ellipse(point_t one, double nr1, double nr2);

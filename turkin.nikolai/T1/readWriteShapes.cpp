@@ -1,7 +1,6 @@
 #include "readWriteShapes.h"
 #include <istream>
 #include <iomanip>
-#include "shapesPatterns.h"
 
 turkin::Rectangle * turkin::createRectangle(std::istream & input)
 {
@@ -11,7 +10,7 @@ turkin::Rectangle * turkin::createRectangle(std::istream & input)
   {
     throw std::logic_error("bad rectangle size");
   }
-  return new turkin::Rectangle(turkin::point_t(points[0], points[1]), turkin::point_t(points[2], points[3]));
+  return new Rectangle({points[0], points[1]}, {points[2], points[3]});
 }
 
 turkin::Rectangle * turkin::createSquare(std::istream & input)
@@ -22,7 +21,7 @@ turkin::Rectangle * turkin::createSquare(std::istream & input)
   {
     throw std::logic_error("bad square size");
   }
-  return new turkin::Rectangle(turkin::point_t(points[0], points[1]), points[2]);
+  return new Rectangle({points[0], points[1]}, {points[0] + points[2] / 2, points[1] + points[2] / 2});
 }
 
 turkin::Ellipse * turkin::createEllipse(std::istream & input)
@@ -33,7 +32,7 @@ turkin::Ellipse * turkin::createEllipse(std::istream & input)
   {
     throw std::logic_error("bad ellipse size");
   }
-  return new turkin::Ellipse(turkin::point_t(points[0], points[1]), points[2], points[3]);
+  return new Ellipse({points[0], points[1]}, points[2], points[3]);
 }
 
 turkin::scale_t turkin::getScale(std::istream &input)
@@ -44,7 +43,7 @@ turkin::scale_t turkin::getScale(std::istream &input)
   {
     throw std::logic_error("bad scale size");
   }
-  return {turkin::point_t(points[0], points[1]), points[2]};
+  return {{points[0], points[1]}, points[2]};
 }
 
 void turkin::printAreaPoints(std::ostream & output, Shape ** shapes, size_t size)
@@ -57,7 +56,7 @@ void turkin::printAreaPoints(std::ostream & output, Shape ** shapes, size_t size
   output << std::setprecision(1) << std::fixed << sum;
   for (size_t i = 0; i < size; i++)
   {
-    turkin::rectangle_t buffer = shapes[i]->getFrameRect();
+    rectangle_t buffer = shapes[i]->getFrameRect();
     output << " " << buffer.position.x - (buffer.width / 2.0) << " ";
     output << buffer.position.y - (buffer.height / 2.0) << " ";
     output << buffer.position.x + (buffer.width / 2.0) << " ";

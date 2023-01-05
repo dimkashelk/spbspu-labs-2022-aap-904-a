@@ -1,5 +1,5 @@
 #include <iostream>
-#include "shapesPatterns.h"
+#include "base-types.h"
 #include "readWriteShapes.h"
 #include "isoscale.h"
 
@@ -90,7 +90,14 @@ int main()
   turkin::printAreaPoints(std::cout, shapes, size);
   for (size_t k = 0; k < size; k++)
   {
-    turkin::isoScale(shapes[k], scale);
+    try
+    {
+      turkin::isoScale(shapes[k], scale);
+    }
+    catch (const std::logic_error & error)
+    {
+      std::cerr << error.what() << "\n";
+    }
   }
   turkin::printAreaPoints(std::cout, shapes, size);
   for (size_t k = 0; k < size; k++)

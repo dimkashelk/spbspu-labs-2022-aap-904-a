@@ -1,4 +1,5 @@
 #include "rectangle.h"
+#include <stdexcept>
 
 double turkin::Rectangle::getArea() const
 {
@@ -16,22 +17,22 @@ void turkin::Rectangle::move(double dx, double dy)
   rect_.position.y = rect_.position.y + dy;
 }
 
-void turkin::Rectangle::move(turkin::point_t position)
+void turkin::Rectangle::move(point_t position)
 {
   rect_.position = position;
 }
 
 void turkin::Rectangle::scale(double ds)
 {
+  if (ds <= 0.0)
+  {
+    throw std::logic_error("bad scale size");
+  }
   rect_.width = rect_.width * ds;
   rect_.height = rect_.height * ds;
 }
 
-turkin::Rectangle::Rectangle(turkin::point_t one, turkin::point_t two):
-  rect_(one, two)
-{}
-
-turkin::Rectangle::Rectangle(turkin::point_t one, double side):
-  rect_(one, side)
+turkin::Rectangle::Rectangle(point_t one, point_t two):
+  rect_({{(one.x + two.x) / 2.0, (one.y + two.y) / 2.0}, two.x - one.x, two.y - one.y})
 {}
 

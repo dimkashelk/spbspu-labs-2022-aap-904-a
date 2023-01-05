@@ -1,5 +1,6 @@
 #include "inputtriangle.h"
 #include <iostream>
+#include "compositeshape.h"
 
 Shape* inputTriangle(std::istream &input)
 {

@@ -2,6 +2,7 @@
 #include "base_types.h"
 #include <iostream>
 #include <cmath>
+#include "compositeshape.h"
 
 Rectangle::Rectangle(rectangle_t rectangle1):
   rectangle1(rectangle1)

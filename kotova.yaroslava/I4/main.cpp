@@ -69,7 +69,16 @@ int main(int argc, char* argv[])
         file_matrix_out << "empty file";
         return 0;
       }
-      int* matrix = new int[column * line];
+      int *matrix = nullptr;
+      try
+      {
+        int* matrix = new int[column * line];
+      }
+      catch(const std::bad_alloc &e)
+      {
+        std::cout << e.what();
+        return 1;
+      }
       for (size_t i = 0; i < column; i++)
       {
         for (size_t j = 0; j < line; j++)
@@ -85,6 +94,7 @@ int main(int argc, char* argv[])
       }
       std::ofstream file_matrix_out(argv[3]);
       file_matrix_out << countUniqueElOfCol(matrix, column, line) << "\n";
+
       if (!file_matrix_out)
       {
         std::cout << "number writes with an error";

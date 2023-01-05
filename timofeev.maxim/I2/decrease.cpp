@@ -4,8 +4,8 @@
 #include <iostream>
 unsigned int LengthOfDecreaseVal(const int *arr, size_t size)
 {
-  unsigned int curleght = 1;
-  unsigned int maxleght = 1;
+  size_t curleght = 1;
+  size_t maxleght = 1;
   if (size == 0)
   {
     std::cout << "Size AntiSwag situation" << "\n";

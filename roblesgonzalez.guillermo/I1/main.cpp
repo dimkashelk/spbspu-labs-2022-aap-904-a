@@ -6,9 +6,9 @@ int main()
   int numberBefore = 0;
   int currentNumber = 0;
   int numberAfter = 0;
-  int smallerThanPrevBiggerThanNextCount = 0;
-  int smallestNumber = std::numeric_limits<int>::max();
-  int counter = 0;
+  int smallerThanPrevBiggerThanNextCount = std::size_t();
+  int smallestNumber = std::numeric_limits< int >::max();
+  int counter = std::size_t();
   while (std::cin >> n && n != 0)
   {
     numberBefore = currentNumber;

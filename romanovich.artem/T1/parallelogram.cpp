@@ -65,7 +65,7 @@ void Parallelogram::scale(double k)
 }
 Shape *Parallelogram::clone() const
 {
-  return nullptr;
+  return new Parallelogram(A_, B_, C_);
 }
 bool Parallelogram::goodParallelogramInput() const
 {

@@ -69,11 +69,11 @@ double Concave::getArea() const
   double a1 = sides[3];
   double b1 = sides[4];
   double c1 = sides[5];
-  double p1 = (a + b + c) / 2;
-  double p2 = (a1 + b1 + c1) / 2;
-  double s1 = sqrt(p1 * (p1 - a) * (p1 - b) * (p1 - c));
-  double s2 = sqrt(p2 * (p2 - a1) * (p2 - b1) * (p2 - c1));
-  return s1 - s2;
+  double p = (a + b + c) / 2;
+  double p1 = (a1 + b1 + c1) / 2;
+  double s = sqrt(p * (p - a) * (p - b) * (p - c));
+  double s1 = sqrt(p1 * (p1 - a1) * (p1 - b1) * (p1 - c1));
+  return s - s1;
 }
 rectangle_t Concave::getFrameRect() const
 {
@@ -85,14 +85,11 @@ rectangle_t Concave::getFrameRect() const
 }
 void Concave::move(double dx, double dy)
 {
-  A_.x += dx;
-  B_.x += dx;
-  C_.x += dx;
-  D_.x += dx;
-  A_.y += dy;
-  B_.y += dy;
-  C_.y += dy;
-  D_.y += dy;
+  for (point_t p: {A_, B_, C_, D_})
+  {
+    p.x += dx;
+    p.y += dy;
+  }
 }
 void Concave::move(point_t position)
 {
@@ -116,5 +113,5 @@ void Concave::scale(double k)
 }
 Shape *Concave::clone() const
 {
-  return nullptr;
+  return new Concave(A_, B_, C_, D_);
 }

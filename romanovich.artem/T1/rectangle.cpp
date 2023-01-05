@@ -49,7 +49,7 @@ void Rectangle::scale(double k)
 }
 Shape *Rectangle::clone() const
 {
-  return nullptr;
+  return new Rectangle(A_, C_);
 }
 bool Rectangle::goodRectangleInput() const
 {

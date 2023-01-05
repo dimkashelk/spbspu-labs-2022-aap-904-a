@@ -71,9 +71,9 @@ int main(int argc, char * argv[])
     }
     catch (std::exception& e)
     {
-        std::cerr << e.what() << '\n';
-        delete[] dynamicMatrix;
-        return 1;
+      std::cerr << e.what() << '\n';
+      delete[] dynamicMatrix;
+      return 1;
     }
     for (size_t i = 0; i < rows; i++)
     {

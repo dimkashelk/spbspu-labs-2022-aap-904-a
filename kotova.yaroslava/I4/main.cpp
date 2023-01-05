@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
       int *matrix = nullptr;
       try
       {
-        int* matrix = new int[column * line];
+        matrix = new int[column * line];
       }
       catch(const std::bad_alloc &e)
       {

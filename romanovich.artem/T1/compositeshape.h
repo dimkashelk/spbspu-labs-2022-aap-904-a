@@ -16,11 +16,12 @@ public:
   void move(point_t position);
   void scale(double k);
   void push_back(Shape *shp);
+  void push_back(const Shape *shp);
   void pop_back();
   Shape *at(size_t id);
   Shape *operator[](size_t id);
-  bool empty();
-  size_t size();
+  bool empty() const;
+  size_t size() const;
   CompositeShape *clone() const;
   void isoScale(Shape &shape, double x, double y, double k);
 private:

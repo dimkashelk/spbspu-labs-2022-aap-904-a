@@ -20,10 +20,10 @@ bool Concave::goodConcaveInput() const
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];
-  double max_ = std::max({a, b, c});
-  double min_ = std::max({a, b, c});
-  double midl_ = a + b + c - max_ - min_;
-  bool firstThreeTriangle = (max_ < min_ + midl_);
+  double maxSide = std::max({a, b, c});
+  double minSide = std::max({a, b, c});
+  double midlSide = a + b + c - maxSide - minSide;
+  bool firstThreeTriangle = (maxSide < minSide + midlSide);
   bool fourthLeftAB = ((d_.x - a_.x) * (b_.y - a_.y) - (d_.y - a_.y) * (b_.x - a_.x) > 0);
   bool fourthLeftBC = ((d_.x - b_.x) * (c_.y - b_.y) - (d_.y - b_.y) * (c_.x - b_.x) > 0);
   bool fourthLeftCA = ((d_.x - c_.x) * (a_.y - c_.y) - (d_.y - c_.y) * (a_.x - c_.x) > 0);
@@ -65,8 +65,8 @@ double Concave::getArea() const
   double c1 = sides[5];
   double p = (a + b + c) / 2;
   double p1 = (a1 + b1 + c1) / 2;
-  double s = sqrt(p * (p - a) * (p - b) * (p - c));
-  double s1 = sqrt(p1 * (p1 - a1) * (p1 - b1) * (p1 - c1));
+  double s = std::sqrt(p * (p - a) * (p - b) * (p - c));
+  double s1 = std::sqrt(p1 * (p1 - a1) * (p1 - b1) * (p1 - c1));
   return s - s1;
 }
 rectangle_t Concave::getFrameRect() const

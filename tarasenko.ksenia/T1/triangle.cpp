@@ -27,8 +27,8 @@ tarasenko::rectangle_t tarasenko::Triangle::getFrameRect() const
   double min_y = std::min(std::min(vertexes[0].y_, vertexes[1].y_), vertexes[2].y_);
   double max_x = std::max(std::max(vertexes[0].x_, vertexes[1].x_), vertexes[2].x_);
   double max_y = std::max(std::max(vertexes[0].y_, vertexes[1].y_), vertexes[2].y_);
-  rectangle_t framerect_(point_t(min_x, min_y),point_t(max_x, max_y));
-  return framerect_;
+  rectangle_t frame_rect(point_t(min_x, min_y),point_t(max_x, max_y));
+  return frame_rect;
 }
 
 void tarasenko::Triangle::move(double dx, double dy)
@@ -38,6 +38,8 @@ void tarasenko::Triangle::move(double dx, double dy)
     vertexes[i].x_ += dx;
     vertexes[i].y_ += dy;
   }
+  center.x_ += dx;
+  center.y_ += dy;
 }
 
 void tarasenko::Triangle::move(point_t pos)

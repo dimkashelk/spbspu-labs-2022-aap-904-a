@@ -11,4 +11,3 @@ namespace correctFigures
   Ellipse* readCorrectEllipse(std::istream& in);
 }
 #endif
-

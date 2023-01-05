@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <cstddef>
+#include <cstring>
 #include "count_rows_without_zero.h"
 #include "count_diagonals_parallel_to_secondary_without_zero.h"
 

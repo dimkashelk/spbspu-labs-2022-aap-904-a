@@ -1,6 +1,4 @@
 #include "reading_elements.h"
-#include <cstddef>
-#include <cstring>
 #include <stdexcept>
 void read_el(int* matrix, size_t column, size_t line, std::ifstream& file_matrix_in)
 {
@@ -9,7 +7,7 @@ void read_el(int* matrix, size_t column, size_t line, std::ifstream& file_matrix
     file_matrix_in >> matrix[i];
     if (!file_matrix_in.good())
     {
-      throw std::exception("something went wrong..");
+      throw std::runtime_error("something went wrong..");
     }
   }
 }

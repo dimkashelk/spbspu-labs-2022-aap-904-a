@@ -1,17 +1,15 @@
 #include "rectangle.hpp"
+#include <stdexcept>
 #include "base-types.hpp"
 
-odintsov::Rectangle::Rectangle(double x, double y, double width, double height):
-  rect{width, height, {x, y}}
-{}
 
-odintsov::Rectangle::Rectangle(const point_t& pos, double width, double height):
-  rect{width, height, pos}
-{}
-
-odintsov::Rectangle::Rectangle(const rectangle_t& rect):
-  rect(rect)
-{}
+odintsov::Rectangle::Rectangle(double leftX, double bottomY, double rightX, double topY):
+  rect{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}}
+{
+  if ((rightX <= leftX) || (topY <= bottomY)) {
+    throw std::invalid_argument("coordinates set incorrectly");
+  }
+}
 
 double odintsov::Rectangle::getArea() const
 {

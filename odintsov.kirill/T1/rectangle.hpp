@@ -7,9 +7,7 @@
 namespace odintsov {
   class Rectangle: public Shape {
     public:
-      Rectangle(double x, double y, double width, double height);
-      Rectangle(const point_t& pos, double width, double height);
-      explicit Rectangle(const rectangle_t& rect);
+      Rectangle(double leftX, double bottomY, double rightX, double topY);
 
       double getArea() const;
       rectangle_t getFrameRect() const;

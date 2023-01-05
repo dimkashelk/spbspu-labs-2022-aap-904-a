@@ -48,10 +48,6 @@ int main(int argc, char* argv[])
   }
   unsigned int n = size / 3;
   unsigned int m = n * 2;
-  std::cout << "Processed array: { ";
-  printArray(std::cout, arr3, size);
-  std::cout << " }\n";
-  std::cout << n << m << '\n';
 
   if (output(arr3, size, n, m)) {
     delete[] arr3;

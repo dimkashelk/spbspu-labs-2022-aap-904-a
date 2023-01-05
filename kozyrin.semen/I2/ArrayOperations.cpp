@@ -1,6 +1,7 @@
 #include "ArrayOperations.h"
 #include <iostream>
 #include <limits>
+#include <algorithm>
 
 void printArray(std::ostream& stream, const int* arr, size_t size, const char* sep)
 {
@@ -13,7 +14,6 @@ void printArray(std::ostream& stream, const int* arr, size_t size, const char* s
 
 void randomizeArray(int* arr, size_t size)
 {
-  std::srand(time(nullptr));
   for (size_t i = 0; i < size; i++) {
     arr[i] = std::rand();
   }
@@ -30,16 +30,13 @@ void shitByIndexes(int* arr, size_t size, size_t n, size_t m)
   if (size == m) {
     return;
   }
-  int temp = 0;
   int curr = 0;
 
   for (size_t j = 1; j <= m - n; ++j) {
     curr = arr[size - 1];
 
     for (size_t i = size - 2; i >= n; --i) {
-      temp = arr[i];
-      arr[i] = curr;
-      curr = temp;
+      std::swap(curr, arr[i]);
     }
     arr[size - 1] = curr;
   }

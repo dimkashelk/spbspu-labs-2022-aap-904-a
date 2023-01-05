@@ -21,6 +21,7 @@ int output(int* arr, size_t size, size_t n, size_t m) {
 
 int main(int argc, char* argv[])
 {
+  std::srand(time(nullptr));
   //Task 3
   if (argc != 2) {
     std::cerr << "Incorrect amount of arguments";

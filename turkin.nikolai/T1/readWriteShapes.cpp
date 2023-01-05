@@ -32,7 +32,7 @@ turkin::Ellipse * turkin::createEllipse(std::istream & input)
   {
     throw std::logic_error("bad ellipse size");
   }
-  return new Ellipse({p[0], p[1]}, p[2], p[3]);
+  return new Ellipse({p[0], p[1]}, p[3], p[2]);
 }
 
 turkin::scale_t turkin::getScale(std::istream &input)

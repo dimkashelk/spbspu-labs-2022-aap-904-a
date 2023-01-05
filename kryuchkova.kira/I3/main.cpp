@@ -14,6 +14,7 @@ int main()
     if (cstring_1[0] == '\0')
     {
       std::cout << "empty string";
+      delete[] cstring_1;
       return 1;
     }
     cstring_1[capacity - 1] = '\0';

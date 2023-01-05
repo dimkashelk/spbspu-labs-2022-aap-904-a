@@ -1,20 +1,14 @@
 #include "isreal.h"
 
-bool isDigit(char c)
-{
-  return c >= '0' && c <= '9';
-}
 bool isSign(char c)
 {
-  if (c == '+' || c == '-')
-    return true;
-  return false;
+  return (c == '+' || c == '-');
 }
 bool isNatural(std::string str, int& index)
 {
-  if (isDigit(str[index]))
+  if (std::isdigit(str[index]))
   {
-    while (isDigit(str[++index]));
+    isNatural(str, ++index);
     return true;
   }
   return false;
@@ -43,7 +37,7 @@ bool isMantissa(std::string str, int& index)
 {
   return ((str[index] == '.' && isNatural(str, ++index)) || (isNatural(str, index) && str[index] == '.' && isNatural(str, ++index)));
 }
-bool isReal(const std::string str)
+bool isReal(const char* str)
 {
   int i = 0;
   return ((isMantissa(str, i) && isOrder(str, i)) || (isSign(str[i]) && isMantissa(str, ++i) && isOrder(str, i)));

@@ -1,18 +1,26 @@
-﻿#include<iostream>
-#include<string>
+﻿#include <iostream>
+#include <string>
+#include <cstrfnc.h>
 #include "isreal.h"
 
 int main()
 {
-  std::string line;
-  if (std::getline(std::cin, line) && !line.empty())
+  int rc = 0;
+  std::pair< char*, size_t > strPair = std::make_pair(nullptr, 0);
+  try
   {
-    std::cout << std::boolalpha << isReal(line) << "\n";
+    std::cout << "Enter real number: ";
+    strPair = getCString(std::cin);
+    std::cout << std::boolalpha << isReal(strPair.first) << "\n";
   }
-  else
+  catch (const std::exception& e)
   {
-    std::cerr << "Error input!\n";
-    return 1;
+    std::cerr << e.what() << "\n";
+    rc = 1;
   }
-  return 0;
+  if (strPair.first)
+  {
+    delete[] strPair.first;
+  }
+  return rc;
 }

@@ -26,7 +26,7 @@ CompositeShape::CompositeShape(CompositeShape && rhs):
 CompositeShape::CompositeShape(size_t capacity):
  size_(0),
  capacity_(capacity),
- shape_(new shape*[capacity])
+ shape_(new Shape*[capacity])
 {}
 
 CompositeShape::~CompositeShape()
@@ -38,12 +38,12 @@ CompositeShape::~CompositeShape()
   delete [] shape_;
 }
 
-shape * CompositeShape::operator[](size_t i)
+Shape * CompositeShape::operator[](size_t i)
 {
   return shape_[i];
 }
 
-shape * CompositeShape::operator[](size_t i) const
+Shape * CompositeShape::operator[](size_t i) const
 {
   return shape_[i];
 }
@@ -115,11 +115,11 @@ size_t CompositeShape::size() const
   return size_;
 }
 
-void CompositeShape::push_back(shape * shapes)
+void CompositeShape::push_back(Shape * shapes)
 {
   if (capacity_ == size_)
   {
-    shape ** new_shape = new shape * [capacity_ + 10];
+    Shape ** new_shape = new Shape * [capacity_ + 10];
     capacity_ += 10;
     for (size_t i = 0; i < size_; ++i)
     {

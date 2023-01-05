@@ -2,7 +2,7 @@
 #define SHAPE_H
 #include "base_types.h"
 
-class shape
+class Shape
 {
   public:
     virtual double getArea() const = 0;
@@ -10,8 +10,8 @@ class shape
     virtual void move(double dx, double dy) = 0;
     virtual void move(point_t position) = 0;
     virtual void scale(double k) = 0;
-    virtual ~shape() = default;
-    virtual shape * clone() const = 0;
+    virtual ~Shape() = default;
+    virtual Shape * clone() const = 0;
 };
 
 #endif

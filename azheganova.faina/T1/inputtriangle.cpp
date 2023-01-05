@@ -1,7 +1,7 @@
 #include "inputtriangle.h"
 #include <iostream>
 
-triangle* inputTriangle(std::istream &input)
+Shape* inputTriangle(std::istream &input)
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -18,5 +18,5 @@ triangle* inputTriangle(std::istream &input)
   {
     std::cout << "error";
   }
-  return new triangle(point[0], point[1], point[2]);
+  return new Triangle(point[0], point[1], point[2]);
 }

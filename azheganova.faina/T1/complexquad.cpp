@@ -74,7 +74,7 @@ void Complexquad::scale(double k)
   complexquad1[3].x = k * (complexquad1[3].x - center.x) + center.x;
 }
 
-shape* Complexquad::clone() const
+Shape* Complexquad::clone() const
 {
   Complexquad *copy = new Complexquad(complexquad1[0], complexquad1[1], complexquad1[2], complexquad1[3]);
   return copy;

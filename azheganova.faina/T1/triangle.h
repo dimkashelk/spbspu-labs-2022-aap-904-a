@@ -3,7 +3,7 @@
 #include "base_types.h"
 #include "shape.h"
 
-class Triangle : virtual public shape
+class Triangle : virtual public Shape
 {
   public:
     Triangle();
@@ -16,7 +16,7 @@ class Triangle : virtual public shape
     void move(point_t position);
     void move(double dx, double dy);
     void scale(double k);
-    shape * clone() const override;
+    Shape * clone() const override;
   private:
     point_t triangle1[3];
 };

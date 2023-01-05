@@ -68,7 +68,7 @@ void Triangle::scale(double k)
   }
 }
 
-shape* Triangle::clone() const
+Shape* Triangle::clone() const
 {
   Triangle *copy = new Triangle(triangle1[0], triangle1[1], triangle1[2]);
   return copy;

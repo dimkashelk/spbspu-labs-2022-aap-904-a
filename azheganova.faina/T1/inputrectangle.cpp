@@ -12,5 +12,5 @@ rectangle* inputRectangle(std::istream &input)
   {
     std::cout << "error";
   }
-  return new rectangle(point_t{x1, y1}, point_t{x2, y2});
+  return new Rectangle(point_t{x1, y1}, point_t{x2, y2});
 }

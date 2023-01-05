@@ -42,7 +42,7 @@ int main()
     {
       try
       {
-        shape *shape = inputRectangle(std::cin);
+        Shape *shape = inputRectangle(std::cin);
         rhs.push_back(shape);
       }
       catch(const std::logic_error &e)
@@ -55,7 +55,7 @@ int main()
     {
       try
       {
-        shape *shape = inputTriangle(std::cin);
+        Shape *shape = inputTriangle(std::cin);
         rhs.push_back(shape);
       }
       catch(const std::logic_error &e)
@@ -68,7 +68,7 @@ int main()
     {
       try
       {
-      shape *shape = inputComplexquad(std::cin);
+      Shape *shape = inputComplexquad(std::cin);
       rhs.push_back(shape);
       }
       catch(const std::logic_error &e)

@@ -3,5 +3,5 @@
 #include <stdexcept>
 #include "complexquad.h"
 
-complexquad* inputComplexquad(std::istream &input);
+Shape* inputComplexquad(std::istream &input);
 #endif

@@ -3,5 +3,5 @@
 #include <stdexcept>
 #include "triangle.h"
 
-triangle* inputTriangle(std::istream &input);
+Shape* inputTriangle(std::istream &input);
 #endif

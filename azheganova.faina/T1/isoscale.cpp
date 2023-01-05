@@ -1,7 +1,7 @@
 #include "isoscale.h"
 #include <iostream>
 
-void isoScale(shape * scale, const point_t & position, double k)
+void isoScale(Shape * scale, const point_t & position, double k)
 {
   point_t position1 = scale->getFrameRect().pos;
   scale->move(position);

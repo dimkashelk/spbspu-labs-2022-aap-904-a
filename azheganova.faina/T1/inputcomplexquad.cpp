@@ -1,7 +1,7 @@
 #include "inputcomplexquad.h"
 #include <iostream>
 
-complexquad* inputComplexquad(std::istream &input)
+Shape* inputComplexquad(std::istream &input)
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -21,5 +21,5 @@ complexquad* inputComplexquad(std::istream &input)
   {
     std::cout << "error";
   }
-  return new complexquad(point[0], point[1], point[2], point[3]);
+  return new Complexquad(point[0], point[1], point[2], point[3]);
 }

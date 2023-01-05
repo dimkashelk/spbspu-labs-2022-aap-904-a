@@ -78,11 +78,7 @@ int main(int argc, char * argv[])
         }
       }
     }
-    if (std::min(rows, columns) == 0)
-    {
-      std::cerr << "ERROR: empty matrix\n";
-      return 1;
-    }
+
     size_t squareMatrixSize = std::min(rows, columns);
 
     int* squareMatrix = nullptr;

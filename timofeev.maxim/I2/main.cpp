@@ -59,14 +59,9 @@ int main(int argc, char *argv[])
   }
   delete [] dyn_array;
 
-  if (argc == 1)
+  if (argc != 2)
   {
-    std::cerr << "File error" << "\n";
-    return 2;
-  }
-  if (argc > 2)
-  {
-    std::cerr << "File error" << "\n";
+    std::cerr << "Not correct amount of CML argc" << "\n";
     return 2;
   }
 

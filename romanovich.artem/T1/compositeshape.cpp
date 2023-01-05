@@ -75,24 +75,24 @@ Shape *CompositeShape::at(size_t id)
 {
   return shape_[id];
 }
-CompositeShape *CompositeShape::clone() const
+CompositeShape *CompositeShape::clone()
 {
   return nullptr;
 }
-size_t CompositeShape::size() const
+size_t CompositeShape::size() const noexcept
 {
   return size_;
 }
-bool CompositeShape::empty() const
+bool CompositeShape::empty() const noexcept
 {
   return (size_ == 0);
 }
-CompositeShape::CompositeShape(const CompositeShape &)
+/*CompositeShape::CompositeShape(const CompositeShape &)
 {
 }
 CompositeShape::CompositeShape(CompositeShape &)
 {
-}
+}*/
 double CompositeShape::getArea() const
 {
   double area = 0;
@@ -102,9 +102,9 @@ double CompositeShape::getArea() const
   }
   return area;
 }
-rectangle_t CompositeShape::getFrameRect() const
+rectangle_t CompositeShape::getFrameRect()
 {
-  return rectangle_t();
+  return rectangle_t{};
 }
 CompositeShape::~CompositeShape()
 {

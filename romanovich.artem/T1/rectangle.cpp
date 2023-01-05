@@ -1,6 +1,6 @@
 #include "rectangle.h"
 #include <stdexcept>
-Rectangle::Rectangle(point_t A, point_t C):
+Rectangle::Rectangle(const point_t & A, const point_t & C):
   a_(A),
   c_(C)
 {
@@ -24,7 +24,7 @@ void Rectangle::move(double dx, double dy)
   c_.x += dx;
   c_.y += dy;
 }
-void Rectangle::move(point_t position)
+void Rectangle::move(const point_t &position)
 {
   double dx = position.x - getFrameRect().pos.x;
   double dy = position.y - getFrameRect().pos.y;

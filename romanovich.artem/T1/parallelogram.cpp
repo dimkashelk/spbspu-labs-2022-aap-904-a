@@ -2,7 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-Parallelogram::Parallelogram(point_t A, point_t B, point_t C):
+Parallelogram::Parallelogram(const point_t &A, const point_t &B, const point_t &C):
   a_(A),
   b_(B),
   c_(C)
@@ -43,7 +43,7 @@ void Parallelogram::move(double dx, double dy)
     p->y += dy;
   }
 }
-void Parallelogram::move(point_t position)
+void Parallelogram::move(const point_t &position)
 {
   double dx = position.x - getFrameRect().pos.x;
   double dy = position.y - getFrameRect().pos.y;

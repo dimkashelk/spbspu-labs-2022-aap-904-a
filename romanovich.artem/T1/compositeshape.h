@@ -6,12 +6,12 @@
 class CompositeShape
 {
 public:
-  CompositeShape(const CompositeShape &rhs);
-  CompositeShape(CompositeShape &);
+/*  CompositeShape(const CompositeShape &rhs);
+  CompositeShape(CompositeShape &);*/
   explicit CompositeShape(size_t capacity);
   ~CompositeShape();
   double getArea() const;
-  rectangle_t getFrameRect() const;
+  rectangle_t getFrameRect() ;
   void move(double dx, double dy);
   void move(point_t position);
   void scale(double k);
@@ -20,9 +20,9 @@ public:
   void pop_back();
   Shape *at(size_t id);
   Shape *operator[](size_t id);
-  bool empty() const;
-  size_t size() const;
-  CompositeShape *clone() const;
+  bool empty() const noexcept;
+  size_t size() const noexcept;
+  CompositeShape *clone();
   void isoScale(Shape &shape, double x, double y, double k);
 private:
   Shape **shape_;

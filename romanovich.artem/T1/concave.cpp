@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <array>
-Concave::Concave(point_t A, point_t B, point_t C, point_t D):
+Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
   a_(A),
   b_(B),
   c_(C),
@@ -37,7 +37,7 @@ bool Concave::goodConcaveInput() const
   }
   return false;
 }
-double Concave::buildLineFromTwoDots(point_t p1, point_t p2) const
+double Concave::buildLineFromTwoDots(const point_t &p1, const point_t &p2)
 {
   double line_x = p1.x - p2.x;
   double line_y = p1.y - p2.y;
@@ -86,7 +86,7 @@ void Concave::move(double dx, double dy)
     p->y += dy;
   }
 }
-void Concave::move(point_t position)
+void Concave::move(const point_t &position)
 {
   double dx = position.x - getFrameRect().pos.x;
   double dy = position.y - getFrameRect().pos.y;

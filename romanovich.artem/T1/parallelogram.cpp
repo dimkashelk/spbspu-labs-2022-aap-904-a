@@ -63,14 +63,11 @@ void Parallelogram::scale(double k)
   {
     double centerX = getFrameRect().pos.x;
     double centerY = getFrameRect().pos.y;
-    A_.x = k * (A_.x - centerX) + centerX;
-    A_.y = k * (A_.y - centerY) + centerY;
-    C_.x = k * (C_.x - centerX) + centerX;
-    C_.y = k * (C_.y - centerY) + centerY;
-    B_.x = k * (B_.x - centerX) + centerX;
-    B_.y = k * (B_.y - centerY) + centerY;
-    D_.x = k * (D_.x - centerX) + centerX;
-    D_.y = k * (D_.y - centerY) + centerY;
+    for (point_t p: {A_, B_, C_, D_})
+    {
+      p.x = k * (p.x - centerX) + centerX;
+      p.y = k * (p.y - centerY) + centerY;
+    }
   }
   else
   {

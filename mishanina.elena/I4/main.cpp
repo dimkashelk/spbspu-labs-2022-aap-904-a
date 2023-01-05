@@ -33,11 +33,6 @@ int main(int argc, char * argv[])
     std::cerr << "ERROR: matrix is too large\n";
     return 1;
   }
-  if (rows == 0 && columns == 0)
-  {
-    std::cerr << "ERROR: empty matrix\n";
-    return 1;
-  }
   std::ofstream output(argv[3]);
   if (!output)
   {

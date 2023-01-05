@@ -128,6 +128,11 @@ int main(int argc, char * argv[])
         }
       }
     }
+    if (squareMatrixSize == 0)
+    {
+      std::cout << "Empty matrix\n";
+      return 0;
+    }
     output << countDiagonalsParallelToSecondaryWithoutZero(squareMatrix, squareMatrixSize) << '\n';
     if (!output)
     {

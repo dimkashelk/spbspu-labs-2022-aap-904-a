@@ -8,7 +8,7 @@ size_t countDiagonalsParallelToSecondaryWithoutZero(const int* matrix, size_t ro
   {
     for (size_t j = 0; j <= i; j++)
     {
-      if (rows != 0 && matrix[i + (rows - 1) * j] == 0)
+      if (matrix[i + (rows - 1) * j] == 0)
       {
         numberOfDiagonalsWithZero++;
         break;

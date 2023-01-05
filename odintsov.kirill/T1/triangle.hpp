@@ -14,6 +14,7 @@ namespace odintsov {
       void move(const point_t& pos);
       void scale(double k);
       point_t getMiddlePoint() const;
+      bool isPointInside(const point_t& p) const;
     private:
       point_t p1, p2, p3;
   };

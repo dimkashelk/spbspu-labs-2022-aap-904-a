@@ -1,7 +1,9 @@
 #ifndef CONCAVE_HPP
 #define CONCAVE_HPP
 
+#include "base-types.hpp"
 #include "shape.hpp"
+#include "triangle.hpp"
 
 namespace odintsov {
   class Concave: public Shape {
@@ -13,6 +15,7 @@ namespace odintsov {
       void move(double dx, double dy);
       void move(const point_t& pos);
       void scale(double k);
+      point_t getMiddlePoint() const;
     private:
       point_t p1, p2, p3, p4;
   };

@@ -3,18 +3,7 @@
 #include <cmath>
 #include "base-types.hpp"
 #include "getDistance.hpp"
-
-double min(double a, double b, double c)
-{
-  double minVal = a < b ? a : b;
-  return c < minVal ? c : minVal;
-}
-
-double max(double a, double b, double c)
-{
-  double maxVal = a > b ? a : b;
-  return c > maxVal ? c : maxVal;
-}
+#include "minmax.hpp"
 
 odintsov::Triangle::Triangle(const point_t& p1, const point_t& p2, const point_t& p3):
   p1(p1),
@@ -26,7 +15,7 @@ odintsov::Triangle::Triangle(const point_t& p1, const point_t& p2, const point_t
   double c = getDistance(p2, p3);
   double maxSide = max(a, b, c);
   if (maxSide >= a + b + c - maxSide) {
-    throw std::invalid_argument("triangle is set incorrectly");
+    throw std::invalid_argument("points are set incorrectly");
   }
 }
 
@@ -72,4 +61,12 @@ void odintsov::Triangle::scale(double k)
 odintsov::point_t odintsov::Triangle::getMiddlePoint() const
 {
   return point_t{(p1.x + p2.x + p3.x) / 3.0, (p1.y + p2.y + p3.y) / 3.0};
+}
+
+bool odintsov::Triangle::isPointInside(const point_t& p) const
+{
+  Triangle t1(p1, p2, p);
+  Triangle t2(p1, p3, p);
+  Triangle t3(p2, p3, p);
+  return getArea() == t1.getArea() + t2.getArea() + t3.getArea();
 }

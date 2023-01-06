@@ -6,7 +6,7 @@ void makeIsotropicScaling(Shape* figure, point_t point, double k)
   double dy = point.y - position.y;
   figure->move(dx, dy);
   dx = - dx * k;
-  dy *= - dy * k;
+  dy = - dy * k;
   figure->scale(k);
   figure->move(dx, dy);
 }

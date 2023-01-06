@@ -32,7 +32,7 @@ int main()
       }
     }
     std::cin >> source1[size];
-  } 
+  }
   while (std::cin && source1[size++] != '\n');
   if (!std::cin && !size)
   {
@@ -43,7 +43,7 @@ int main()
 
   //1
   char source2[] = "ahleptgsl";
-  char *destination1 = new char[30];
+  char* destination1 = new char[30];
   destination1 = makeNewStringWithoutRepeat(destination1, source1, source2, size);
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
 

@@ -96,6 +96,7 @@ int main()
       if (k <= 0)
       {
         std::cout << "incorrect value";
+        return 1;
       }
       scalecenter = {x, y};
       scalek = k;

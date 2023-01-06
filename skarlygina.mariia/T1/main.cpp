@@ -39,6 +39,7 @@ int main()
       {
         std::cerr << e.what() << "\n";
         delete rectangle;
+        isCommand = false;
         continue;
       }
       catch (...)
@@ -70,6 +71,7 @@ int main()
       {
         std::cerr << e.what() << "\n";
         delete ring;
+        isCommand = false;
         continue;
       }
       catch (...)
@@ -101,6 +103,7 @@ int main()
       {
         std::cerr << e.what() << "\n";
         delete ellipse;
+        isCommand = false;
         continue;
       }
       catch (...)

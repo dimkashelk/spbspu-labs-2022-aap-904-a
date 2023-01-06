@@ -39,10 +39,6 @@ void Ellipse::move(point_t position)
 
 void Ellipse::scale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::logic_error("Error: wrong coefficient");
-  }
   double center_x = getFrameRectangle().position.x;
   double center_y = getFrameRectangle().position.y;
   radius_horizontal_ *= k;

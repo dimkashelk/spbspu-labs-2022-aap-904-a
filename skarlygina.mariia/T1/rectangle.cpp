@@ -43,10 +43,6 @@ void Rectangle::move(point_t position)
 
 void Rectangle::scale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::logic_error("Error: wrong coefficient");
-  }
   double center_x = getFrameRectangle().position.x;
   double center_y = getFrameRectangle().position.y;
   left_down_.x = center_x + (left_down_.x - center_x) * k;

@@ -1,40 +1,57 @@
 #include <iostream>
+#include <cstring>
 #include "formStringFromFirstWithoutSecond.h"
 #include "formStringFromOtherSymbols.h"
-int main()
+char *expandString(char *oldString, size_t newSize)
+{
+  char *newStr = new char[newSize];
+  strcpy(newStr, oldString);
+  delete[] oldString;
+  newStr[newSize - 1] = '\0';
+  return newStr;
+}
+char *scanStr(size_t &length, std::istream &in)
 {
   size_t capacity = 10;
-  char *cstring = new char[capacity];
-  size_t size = 0;
-  std::cin >> std::noskipws;
+  char *cstring = nullptr;
+  try
+  {
+    cstring = new char[capacity];
+  }
+  catch (const std::bad_alloc &)
+  {
+    return nullptr;
+  }
+  cstring[capacity - 1] = '\0';
+  length = 0;
+  in >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (length + 1 == capacity)
     {
       try
       {
-        char *newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete[] cstring;
-        cstring = newstr;
         capacity += 20;
+        cstring = expandString(cstring, capacity);
       }
-      catch (...)
+      catch (const std::bad_alloc &)
       {
         delete[] cstring;
-        return 1;
+        return nullptr;
       }
     }
-    std::cin >> cstring[size];
-  }
-  while (std::cin && cstring[size++] != '\n');
-  if (size > 0)
+    in >> cstring[length];
+  } while (std::cin && cstring[length++] != '\n');
+  if (length > 0)
   {
-    cstring[size - 1] = '\0';
+    cstring[length - 1] = '\0';
   }
+  return cstring;
+}
+int main()
+{
+  size_t size;
+  char *cstring = scanStr(size, std::cin);
   if (size == 0 || size == 1)
   {
     std::cerr << "Empty input" << '\n';
@@ -49,7 +66,7 @@ int main()
     std::cout << formStringFromOtherSymbols(result1, cstring, cstring2) << "\n";
     delete[] result1;
   }
-  catch (std::bad_alloc const& e)
+  catch (const std::bad_alloc &e)
   {
     std::cerr << "Fail" << "\n";
     return 3;
@@ -60,12 +77,11 @@ int main()
     std::cout << formStringFromFirstWithoutSecond(result2, cstring, cstring2) << "\n";
     delete[] result2;
   }
-  catch (std::bad_alloc const& e)
+  catch (const std::bad_alloc &e)
   {
     std::cerr << "Fail" << "\n";
     return 3;
   }
-
   delete[] cstring;
   return 0;
 }

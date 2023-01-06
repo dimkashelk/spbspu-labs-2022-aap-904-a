@@ -13,7 +13,7 @@ public:
   void scale(double k) override;
   Shape *clone() const override;
 private:
-  bool goodRectangleInput() const;
   point_t a_, c_;
+  bool isGoodRectangleInput() const;
 };
 #endif

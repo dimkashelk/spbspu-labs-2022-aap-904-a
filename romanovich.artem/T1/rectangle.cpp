@@ -4,7 +4,7 @@ Rectangle::Rectangle(const point_t &A, const point_t &C):
   a_(A),
   c_(C)
 {
-  if (!goodRectangleInput())
+  if (!isGoodRectangleInput())
   {
     throw std::invalid_argument("Bad rectangle input.");
   }
@@ -37,7 +37,7 @@ Shape *Rectangle::clone() const
 {
   return new Rectangle(a_, c_);
 }
-bool Rectangle::goodRectangleInput() const
+bool Rectangle::isGoodRectangleInput() const
 {
   return (a_.x < c_.x && a_.y < c_.y);
 }

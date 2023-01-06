@@ -13,7 +13,7 @@ public:
   void scale(double k) override;
   Shape *clone() const override;
 private:
-  bool goodParallelogramInput() const;
   point_t points_[3];
+  bool isGoodParallelogramInput() const;
 };
 #endif

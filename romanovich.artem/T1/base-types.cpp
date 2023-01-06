@@ -1,7 +1,7 @@
+#include "base-types.h"
 #include <cmath>
 #include <algorithm>
 #include <array>
-#include "base-types.h"
 double twoPointsDistance(const point_t &p1, const point_t &p2)
 {
   double line_x = p1.x - p2.x;

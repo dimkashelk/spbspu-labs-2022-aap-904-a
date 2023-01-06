@@ -14,8 +14,8 @@ public:
   void scale(double k) override;
   Shape *clone() const override;
 private:
-  std::array< double, 6 > splitIntoTriangles() const;
-  bool goodConcaveInput() const;
   point_t points_[4];
+  std::array< double, 6 > splitIntoTriangles() const;
+  bool isGoodConcaveInput() const;
 };
 #endif

@@ -41,6 +41,7 @@ int main()
   size_t cap = 10;
   CompositeShape rhs(cap);
   point_t scalecenter;
+  double scalek = 0;
   bool isscale = false;
   while(std::cin)
   {
@@ -97,6 +98,7 @@ int main()
         std::cout << "incorrect value";
       }
       scalecenter = {x, y};
+      scalek = k;
       break;
     }
   }
@@ -116,7 +118,7 @@ int main()
   {
     for (size_t i = 0; i < rhs.size(); ++i)
     {
-      isoScale(rhs[i], scalecenter, k);
+      isoScale(rhs[i], scalecenter, scalek);
     }
   }
   catch(const std::logic_error &e)

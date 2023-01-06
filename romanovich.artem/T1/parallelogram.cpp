@@ -2,6 +2,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
+#include <iostream>
 Parallelogram::Parallelogram(const point_t &A, const point_t &B, const point_t &C):
   a_(A),
   b_(B),
@@ -33,15 +34,13 @@ void Parallelogram::move(double dx, double dy)
   point_t *points[3]{&a_, &b_, &c_};
   for (point_t *p: points)
   {
-    p->x += dx;
-    p->y += dy;
+    addVectorToPoint(p, dx, dy);
   }
 }
 void Parallelogram::move(const point_t &position)
 {
-  double dx = position.x - getFrameRect().pos.x;
-  double dy = position.y - getFrameRect().pos.y;
-  move(dx, dy);
+  point_t s = shift(position, getFrameRect().pos);
+  move(s.x, s.y);
 }
 void Parallelogram::scale(double k)
 {
@@ -51,9 +50,9 @@ void Parallelogram::scale(double k)
   }
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   point_t point[3]{a_, b_, c_};
-  for (size_t i = 0; i < 3; ++i)
+  for (point_t p: point)
   {
-    multiplyVector(center, &point[i], k);
+    multiplyVector(center, &p, k);
   }
 }
 Shape *Parallelogram::clone() const

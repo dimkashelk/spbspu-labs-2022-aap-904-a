@@ -19,16 +19,13 @@ rectangle_t Rectangle::getFrameRect() const
 }
 void Rectangle::move(double dx, double dy)
 {
-  a_.x += dx;
-  a_.y += dy;
-  c_.x += dx;
-  c_.y += dy;
+  addVectorToPoint(&a_, dx, dy);
+  addVectorToPoint(&c_, dx, dy);
 }
 void Rectangle::move(const point_t &position)
 {
-  double dx = position.x - getFrameRect().pos.x;
-  double dy = position.y - getFrameRect().pos.y;
-  move(dx, dy);
+  point_t s = shift(position, getFrameRect().pos);
+  move(s.x, s.y);
 }
 void Rectangle::scale(double k)
 {

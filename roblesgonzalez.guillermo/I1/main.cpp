@@ -8,7 +8,7 @@ int main()
   int currentNumber = 0;
   int numberAfter = 0;
   size_t smallerThanPrevBiggerThanNextCount = 0;
-  int smallestNumber = std::numeric_limits < int > ::max();
+  int smallestNumber = std::numeric_limits< int >::max();
   size_t counter = 0;
   while (std::cin >> n && n != 0)
   {

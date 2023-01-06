@@ -2,6 +2,7 @@
 #define COMPOSITESHAPE_HPP
 
 #include <cstddef>
+#include <iosfwd>
 #include "shape.hpp"
 #include "base-types.hpp"
 
@@ -36,6 +37,7 @@ namespace odintsov {
       Shape** shapes;
       void extend(size_t newCap);
   };
+  std::ostream& outputCompositeShape(std::ostream& out, CompositeShape& composite);
 }
 
 #endif

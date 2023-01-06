@@ -1,4 +1,5 @@
 #include "compositeshape.hpp"
+#include <iostream>
 #include <cstddef>
 #include <stdexcept>
 #include "shape.hpp"
@@ -197,4 +198,15 @@ void odintsov::CompositeShape::extend(size_t newCap)
   delete [] shapes;
   shapes = newShapes;
   cap_ = newCap;
+}
+
+std::ostream& odintsov::outputCompositeShape(std::ostream& out, CompositeShape& composite)
+{
+  out << composite.getArea();
+  for (size_t i = 0; i < composite.size(); i++) {
+    rectangle_t rect = composite[i]->getFrameRect();
+    out << ' ' << rect.pos.x - rect.width * 0.5 << ' ' << rect.pos.y - rect.height * 0.5;
+    out << ' ' << rect.pos.x + rect.width * 0.5 << ' ' << rect.pos.y + rect.height * 0.5;
+  }
+  return out;
 }

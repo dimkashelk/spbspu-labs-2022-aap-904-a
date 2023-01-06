@@ -3,10 +3,10 @@
 #include "base-types.hpp"
 
 
-odintsov::Rectangle::Rectangle(double leftX, double bottomY, double rightX, double topY):
-  rect{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}}
+odintsov::Rectangle::Rectangle(const point_t& p1, const point_t& p2):
+  rect{p2.x - p1.x, p2.y - p1.y, {(p1.x + p2.x) * 0.5, (p1.y + p2.y) * 0.5}}
 {
-  if ((rightX <= leftX) || (topY <= bottomY)) {
+  if ((p2.x <= p1.x) || (p2.y <= p1.y)) {
     throw std::invalid_argument("coordinates set incorrectly");
   }
 }
@@ -44,5 +44,5 @@ odintsov::Rectangle* odintsov::Rectangle::clone() const
   double rightX = rect.pos.x + rect.width * 0.5;
   double bottomY = rect.pos.y - rect.height * 0.5;
   double topY = rect.pos.y + rect.height * 0.5;
-  return new Rectangle(leftX, bottomY, rightX, topY);
+  return new Rectangle(point_t{leftX, bottomY}, point_t{rightX, topY});
 }

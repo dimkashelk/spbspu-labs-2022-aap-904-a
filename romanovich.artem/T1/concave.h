@@ -11,11 +11,11 @@ public:
   rectangle_t getFrameRect() const override;
   void move(double dx, double dy) override;
   void move(const point_t &position) override;
-  void unsafeScale(double k) noexcept override;
+  void scale(double k) override;
   Shape *clone() const override;
 private:
-  point_t points_[4];
   std::array< double, 6 > splitIntoTriangles() const;
-  bool isGoodConcaveInput() const;
+  bool goodConcaveInput() const;
+  point_t points_[4];
 };
 #endif

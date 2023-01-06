@@ -10,10 +10,10 @@ public:
   rectangle_t getFrameRect() const override;
   void move(double dx, double dy) override;
   void move(const point_t &position) override;
-  void unsafeScale(double k) noexcept override;
+  void scale(double k) override;
   Shape *clone() const override;
 private:
+  bool goodRectangleInput() const;
   point_t a_, c_;
-  bool isGoodRectangleInput() const;
 };
 #endif

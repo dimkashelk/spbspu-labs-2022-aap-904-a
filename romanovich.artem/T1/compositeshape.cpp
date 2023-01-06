@@ -1,10 +1,21 @@
 #include "compositeshape.h"
 #include <stdexcept>
-#include <iostream>
 void CompositeShape::push_back(Shape *shp)
 {
   size_t capAdd = 2;
-  Shape **newShape = new Shape *[capacity_ + capAdd];
+  if (capacity_ < size_)
+  {
+    throw std::invalid_argument("Expansion is impossible.");
+  }
+  Shape **newShape = nullptr;
+  try
+  {
+    newShape = new Shape *[capacity_ + capAdd];
+  }
+  catch (...)
+  {
+    throw std::invalid_argument("Error while adding figure.");
+  }
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
   {
@@ -17,41 +28,34 @@ void CompositeShape::push_back(Shape *shp)
 }
 void CompositeShape::push_back(const Shape *shp)
 {
-  Shape *shpCopy = shp->clone();
-  try
+  size_t capAdd = 2;
+  if (capacity_ < size_)
   {
-    push_back(shpCopy);
+    throw std::invalid_argument("Expansion is impossible.");
   }
-  catch (...)
+  Shape **newShape = new Shape *[capacity_ + capAdd];
+  capacity_ += capAdd;
+  for (size_t i = 0; i <= size_; ++i)
   {
-    delete shpCopy;
-    throw;
+    newShape[i] = shape_[i];
   }
+  delete[] shape_;
+  shape_ = newShape;
+  shape_[size_] = shp->clone();
+  size_++;
 }
 void CompositeShape::pop_back()
 {
   delete shape_[size_];
-  size_--;
 }
-void CompositeShape::scale(const point_t &position, double k)
+void CompositeShape::scale(Shape &shape, const point_t &position, double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Invalid scaling koeff.");
-  }
-  unsafeIsoScale(position, k);
-}
-void CompositeShape::unsafeIsoScale(const point_t &position, double k) noexcept
-{
-  for (size_t i = 0; i < size_; i++)
-  {
-    shape_[i]->move(position);
-    shape_[i]->scale(k);
-    point_t s = shift(shape_[i]->getFrameRect().pos, position);
-    s.x *= -k;
-    s.y *= -k;
-    shape_[i]->move(s.x, s.y);
-  }
+  point_t s = shift(position, shape.getFrameRect().pos);
+  shape.move(s.x, s.y);
+  s.x *= -k;
+  s.y *= -k;
+  shape.tryScale(k);
+  shape.move(s.x, s.y);
 }
 CompositeShape::CompositeShape(size_t capacity):
   shape_(new Shape *[capacity]),
@@ -63,31 +67,17 @@ Shape *CompositeShape::operator[](size_t id)
 {
   return at(id);
 }
-void CompositeShape::move(point_t position)
+void CompositeShape::move(point_t)
 {
-  point_t s = shift(position, getFrameRect().pos);
-  move(s.x, s.y);
 }
-void CompositeShape::move(double dx, double dy)
+void CompositeShape::scale(double)
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    shape_[i]->move(dx, dy);
-  }
 }
-void CompositeShape::scale(double k)
+void CompositeShape::move(double, double)
 {
-  for (size_t i = 0; i < size_; ++i)
-  {
-    shape_[i]->unsafeScale(k);
-  }
 }
 Shape *CompositeShape::at(size_t id)
 {
-  if (id >= size_)
-  {
-    throw std::invalid_argument("Invalid id provided.");
-  }
   return shape_[id];
 }
 size_t CompositeShape::size() const noexcept
@@ -127,26 +117,7 @@ double CompositeShape::getArea() const
 }
 rectangle_t CompositeShape::getFrameRect()
 {
-  rectangle_t firstRectangle = shape_[0]->getFrameRect();
-  double minX = firstRectangle.pos.x - firstRectangle.width * 0.5;
-  double maxX = firstRectangle.pos.x + firstRectangle.width * 0.5;
-  double minY = firstRectangle.pos.y - firstRectangle.height * 0.5;
-  double maxY = firstRectangle.pos.y + firstRectangle.height * 0.5;
-  for (size_t i = 1; i < size_; i++)
-  {
-    rectangle_t rectangle = shape_[i]->getFrameRect();
-    double left = firstRectangle.pos.x - firstRectangle.width * 0.5;
-    double right = firstRectangle.pos.x + firstRectangle.width * 0.5;
-    double inf = firstRectangle.pos.y - firstRectangle.height * 0.5;
-    double sup = firstRectangle.pos.y + firstRectangle.height * 0.5;
-    minX = left < minX ? left : minX;
-    maxX = right > maxX ? right : maxX;
-    minY = inf < minY ? inf : minY;
-    maxY = sup > maxY ? sup : maxY;
-  }
-  point_t pos{(minX + maxX) / 2, (minY + maxY) / 2};
-  rectangle_t frame{pos, maxX - minX, maxY - minY};
-  return frame;
+  return rectangle_t{};
 }
 CompositeShape::~CompositeShape()
 {
@@ -176,13 +147,9 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
       delete newShape[i];
     }
     delete[] newShape;
-    throw;
+    throw std::invalid_argument("Error while coping figure.");
   }
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete[] shape_;
+  CompositeShape::~CompositeShape();
   shape_ = newShape;
   capacity_ = rhs.capacity_;
   size_ = newSize;
@@ -190,11 +157,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
 }
 CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
 {
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete[] shape_;
+  CompositeShape::~CompositeShape();
   shape_ = rhs.shape_;
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;

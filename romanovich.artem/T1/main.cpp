@@ -105,11 +105,11 @@ int main()
     {
       scaleCommand = true;
       std::cin >> iScaleX >> iScaleY >> iScaleK;
-      //if (iScaleK <= 0)
-      //{
-      //  std::cerr << "Negative koeff.\n";
-      //  return 2;
-      //}
+      if (iScaleK <= 0)
+      {
+        std::cerr << "Negative koeff.\n";
+        return 2;
+      }
     }
   }
   if (!(scaleCommand && figureCommand))
@@ -125,9 +125,17 @@ int main()
     std::cout << " ";
     printLine(compositeShape[i]);
   }
-  compositeShape.scale({iScaleX, iScaleY}, iScaleK);
+  for (size_t i = 0; i < compositeShape.size(); ++i)
+  {
+    compositeShape.scale(*compositeShape[i], {iScaleX, iScaleY}, iScaleK);
+  }
   std::cout << "\n";
-  std::cout << p << compositeShape.getArea() << " ";
+  double scaledArea = 0;
+  for (size_t i = 0; i < compositeShape.size(); ++i)
+  {
+    scaledArea += compositeShape[i]->getArea();
+  }
+  std::cout << p << scaledArea << " ";
   printLine(compositeShape[0]);
   for (size_t i = 1; i < compositeShape.size(); ++i)
   {

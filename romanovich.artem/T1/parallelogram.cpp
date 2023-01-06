@@ -20,11 +20,11 @@ double Parallelogram::getArea() const
   double bx = a_.x - b_.x;
   double cx = c_.x - a_.x;
   double cy = c_.y - a_.y;
-  double a = sqrt(ax * ax + ay * ay);
-  double b = sqrt(bx * bx + by * by);
-  double c = sqrt(cx * cx + cy * cy);
+  double a = std::sqrt(ax * ax + ay * ay);
+  double b = std::sqrt(bx * bx + by * by);
+  double c = std::sqrt(cx * cx + cy * cy);
   double p = (a + b + c) / 2;
-  return 2 * sqrt(p * (p - a) * (p - b) * (p - c));
+  return 2 * std::sqrt(p * (p - a) * (p - b) * (p - c));
 }
 rectangle_t Parallelogram::getFrameRect() const
 {

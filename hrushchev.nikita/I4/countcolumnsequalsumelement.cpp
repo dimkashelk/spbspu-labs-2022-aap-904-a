@@ -40,7 +40,7 @@ size_t countColumnsEqualSumElement(const int* array, const size_t rows, const si
         {
           count += current_count;
         }
-        current_count = 1;   
+        current_count = 1;
       }
     }
     delete[] array_sum;
@@ -52,3 +52,4 @@ size_t countColumnsEqualSumElement(const int* array, const size_t rows, const si
     throw e;
   }
 }
+

@@ -2,6 +2,6 @@
 #define ISLOWERTRIANGLEMATRIX_HPP
 #include <cstddef>
 
-bool isLowerTriangleMatirix(const int* array, size_t rows, size_t columns);
+bool isLowerTriangleMatirix(const int* array, size_t size);
 
 #endif

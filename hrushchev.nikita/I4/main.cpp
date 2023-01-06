@@ -13,8 +13,8 @@ int main(int argc, char* argv[])
     return 1;
   }
 
-  std::ifstream input_file(argv[2]); 
-  std::ofstream output_file(argv[3]); 
+  std::ifstream input_file(argv[2]);
+  std::ofstream output_file(argv[3]);
 
 
   if (!input_file.is_open())
@@ -63,7 +63,12 @@ int main(int argc, char* argv[])
     }
     try
     {
-      std::cout << countColumnsEqualSumElement(array, rows, columns) << "\n";
+      output_file << countColumnsEqualSumElement(array, rows, columns);
+      if (!output_file)
+      {
+        std::cerr << "Error while output\n";
+        return 1;
+      }
     }
     catch (const std::bad_alloc& e)
     {
@@ -71,4 +76,40 @@ int main(int argc, char* argv[])
       return 1;
     }
   }
+  else
+  {
+    if (rows != columns)
+    {
+      std::cerr << "Not square matrix\n";
+    }
+    int* array = nullptr;
+    size_t arr_size = rows;
+    try
+    {
+      array = new int[arr_size * arr_size];
+      for (size_t i = 0; i < arr_size; i++)
+      {
+        input_file >> array[i];
+        if (!input_file)
+        {
+          std::cerr << "Error while reading";
+          return 1;
+        }
+      }
+      output_file << isLowerTriangleMatirix(array, arr_size);
+      if (!output_file)
+      {
+        std::cerr << "Error while output\n";
+        return 1;
+      }
+    }
+    catch (const std::bad_alloc& e)
+    {
+      std::cerr << "Error dynamic array\n";
+      delete[] array;
+      return 1;
+    }
+    delete[] array;
+  }
 }
+

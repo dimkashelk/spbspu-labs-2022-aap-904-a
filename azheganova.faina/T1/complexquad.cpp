@@ -48,7 +48,7 @@ double Complexquad::getArea() const
       double secondpart2 = (y - complexquad1[2].y) / (complexquad1[3].y - complexquad1[2].y);
       if ((firstpart1 - firstpart2) == (secondpart1 - secondpart2))
       {
-          point_t center = {y, x};
+          point_t center = {x, y};
           double firsttriangle1 = 0.0;
           double firsttriangle2 = 0.0;
           double secondtriangle1 = 0.0;

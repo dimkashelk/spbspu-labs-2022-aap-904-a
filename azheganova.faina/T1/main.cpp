@@ -34,13 +34,12 @@ void printAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t 
   }
 }
 
-
-
-
 int main()
 {
   std::string line;
   size_t cap = 10;
+  double scalek;
+  point_t scalecenter = {0, 0};
   CompositeShape rhs(cap);
   while(std::cin)
   {
@@ -96,14 +95,22 @@ int main()
         std::cout << "incorrect value";
       }
       point_t scalecenter = {x, y};
-      printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());
-      std::cout << "\n";
-      for (size_t i = 0; i < rhs.size(); ++i)
-      {
-        isoScale(rhs[i], scalecenter, k);
-      }
-      printAreaAndFrames(std::cout, rhs, rhs.size());
-      std::cout << "\n";
     }
   }
+  if (!std::cin)
+  {
+    std::cout << "error";
+  }
+  if (scalek <= 0)
+  {
+    std::cout << "error";
+  }
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());
+  std::cout << "\n";
+  for (size_t i = 0; i < rhs.size(); ++i)
+  {
+    isoScale(rhs[i], scalecenter, scalek);
+  }
+  printAreaAndFrames(std::cout, rhs, rhs.size());
+  std::cout << "\n";
 }

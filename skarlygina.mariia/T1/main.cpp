@@ -11,6 +11,7 @@ int main()
   point_t point{};
   double coefficient = 0;
   bool isCorrectFigure = true;
+  bool isScale = false;
   Shape** array_figures = new Shape* [10];
   do
   {
@@ -110,10 +111,25 @@ int main()
       try
       {
         std::cin >> point.x >> point.y >> coefficient;
-        if (coefficient <= 0)
+        if (coefficient <= 0 && size >= 1)
         {
           std::cerr << "Error: coefficient could not be under zero\n";
+          for (size_t i = 0; i < size; i++)
+          {
+              delete array_figures[i];
+          }
+          delete[] array_figures;
           return 2;
+        }
+        else if (coefficient <= 0 && size < 1)
+        {
+          std::cerr << "Error: coefficient and number of figures could not be under zero\n";
+          delete[] array_figures;
+          return 2;
+        }
+        else if (size > 1 && coefficient > 0)
+        {
+          isScale = true;
         }
       }
       catch (...)
@@ -131,7 +147,7 @@ int main()
   }
   while (std::cin);
 
-  if (size > 0)
+  if (size > 0 && isScale)
   {
     makeOutput(std::cout, array_figures, size);
     for (size_t i = 0; i < size; i++)

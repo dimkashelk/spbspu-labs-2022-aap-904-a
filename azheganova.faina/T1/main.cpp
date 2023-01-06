@@ -39,12 +39,14 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
+  bool isfigure = false;
   do
   {
     std::string name = "";
     std::cin >> name;
     if (name == "RECTANGLE")
     {
+      isfigure = true;
       try
       {
         Shape *shape = inputRectangle(std::cin);
@@ -59,6 +61,7 @@ int main()
     }
     if (name == "TRIANGLE")
     {
+      isfigure = true;
       try
       {
         Shape *shape = inputTriangle(std::cin);
@@ -73,6 +76,7 @@ int main()
     }
     if (name == "COMPLEXQUAD")
     {
+      isfigure = true;
       try
       {
       Shape *shape = inputComplexquad(std::cin);
@@ -97,19 +101,14 @@ int main()
         std::cerr << "incorrect value";
         return 1;
       }
-      if (!std::cin)
-      {
-        throw std::logic_error("error");
-      }
       scalecenter = {x, y};
       scalek = k;
       break;
     }
   }
   while(std::cin);
-  if (!isscale)
+  if (!(isscale && isfigure))
   {
-    std::cerr << "error";
     return 1;
   }
   printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());

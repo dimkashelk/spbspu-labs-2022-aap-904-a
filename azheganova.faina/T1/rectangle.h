@@ -8,7 +8,6 @@ class Rectangle : virtual public Shape
   public:
     Rectangle(rectangle_t rectangle);
     Rectangle(point_t point1, point_t point2);
-    ~Rectangle() = default;
     double getArea() const;
     rectangle_t getFrameRect() const;
     void move(point_t position);

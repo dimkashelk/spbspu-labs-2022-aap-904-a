@@ -131,3 +131,66 @@ void CompositeShape::push_back(Shape * shapes)
     size_++;
   }
 }
+
+void CompositeShape::push_back(const Shape * shp)
+{
+  Shape * cloned = shp->clone();
+  if (capacity_ == size_)
+  {
+    Shape ** new_shape = nullptr;
+    try
+    {
+      new_shape = new Shape * [capacity_ + 10];
+    }
+    catch (...)
+    {
+      delete cloned;
+      throw;
+    }
+    capacity_ += 10;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      new_shape[i] = shape_[i];
+    }
+    delete[] shape_;
+    shape_ = new_shape;
+  }
+  shape_[size_++] = cloned;
+}
+
+
+void CompositeShape::push_back(Shape * shp)
+{
+  if (capacity_ == size_)
+  {
+    Shape ** new_shape = new Shape * [capacity_ + 10];
+    capacity_ += 10;
+    for (size_t i = 0; i < size_; ++i)
+    {
+      new_shape[i] = shape_[i];
+    }
+    delete[] shape_;
+    shape_ = new_shape;
+  }
+  shape_[size_++] = shp;
+}
+
+
+void CompositeShape::pop_back()
+{
+  delete shape_[size_ - 1];
+  size_--;
+}
+
+bool CompositeShape::empty()
+{
+  return size_ == 0;
+}
+
+size_t CompositeShape::size()
+{
+  return size_;
+}
+
+
+

@@ -23,8 +23,8 @@ char* zasulsky::readString(std::istream& in)
         throw;
       }
     }
-    in >> cstring[size];
-  } while (in && cstring[size++] != '\n');
+    in >> cstring[size++];
+  } while (in && cstring[size - 1] != '\n');
   cstring[size - 1] = '\0';
   return cstring;
 }

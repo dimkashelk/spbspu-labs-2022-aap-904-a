@@ -65,6 +65,9 @@ void Triangle::scale(double k)
   triangle1[0].x = k * (triangle1[0].x - center.x) + center.x;
   triangle1[1].x = k * (triangle1[1].x - center.x) + center.x;
   triangle1[2].x = k * (triangle1[2].x - center.x) + center.x;
+  triangle1[0].y = k * (triangle1[0].y - center.y) + center.y;
+  triangle1[1].y = k * (triangle1[1].y - center.y) + center.y;
+  triangle1[2].y = k * (triangle1[2].y - center.y) + center.y;
   }
 }
 

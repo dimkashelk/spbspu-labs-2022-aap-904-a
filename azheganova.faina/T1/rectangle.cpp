@@ -35,8 +35,8 @@ void Rectangle::scale(double k)
   }
   else
   {
-  rectangle1.width *= std::fabs(k);
-  rectangle1.height *= std::fabs(k);
+  rectangle1.width *= k;
+  rectangle1.height *= k;
   }
 }
 Shape *Rectangle::clone() const

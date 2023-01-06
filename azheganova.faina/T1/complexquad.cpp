@@ -71,6 +71,10 @@ void Complexquad::scale(double k)
   complexquad1[1].x = k * (complexquad1[1].x - center.x) + center.x;
   complexquad1[2].x = k * (complexquad1[2].x - center.x) + center.x;
   complexquad1[3].x = k * (complexquad1[3].x - center.x) + center.x;
+  complexquad1[0].y = k * (complexquad1[0].y - center.y) + center.y;
+  complexquad1[1].y = k * (complexquad1[1].y - center.y) + center.y;
+  complexquad1[2].y = k * (complexquad1[2].y - center.y) + center.y;
+  complexquad1[3].y = k * (complexquad1[3].y - center.y) + center.y;
 }
 
 Shape* Complexquad::clone() const

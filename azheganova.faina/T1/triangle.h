@@ -8,8 +8,6 @@ class Triangle : virtual public Shape
   public:
     Triangle();
     Triangle(point_t pos1, point_t pos2, point_t pos3);
-    Triangle(const Triangle &tmp);
-    Triangle(Triangle &&tmp);
     double getArea() const;
     rectangle_t getFrameRect() const;
     point_t findCenterOfTriangle();

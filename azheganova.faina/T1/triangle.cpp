@@ -3,18 +3,12 @@
 #include <iostream>
 #include <stdexcept>
 
-Triangle::Triangle()
+Triangle::Triangle():
+  triangle1{point_t{0.0, 0.0}, point_t{0.0, 0.0}, point_t{0.0, 0.0}}
 {}
 
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
   triangle1{pos1, pos2, pos3}
-{}
-
-Triangle::Triangle(const Triangle &tmp):
-  triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
-{}
-Triangle::Triangle(Triangle &&tmp):
-  triangle1{tmp.triangle1[0], tmp.triangle1[1], tmp.triangle1[2]}
 {}
 
 double Triangle::getArea() const

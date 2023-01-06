@@ -28,10 +28,11 @@ bool pointInsideTriangle(triangle_t triangle, point_t point)
   bool isLeftCA = ((point.x - c.x) * (a.y - c.y) - (point.y - c.y) * (a.x - c.x) > 0);
   return ((isLeftAB && isLeftBC && isLeftCA) || (!isLeftAB && !isLeftBC && !isLeftCA));
 }
-void multiplyVector(point_t center, point_t *point, double koeff)
+point_t multiplyVector(point_t center, point_t point, double koeff)
 {
-  point->x = koeff * (point->x - center.x) + center.x;
-  point->y = koeff * (point->y - center.y) + center.y;
+  point.x = koeff * (point.x - center.x) + center.x;
+  point.y = koeff * (point.y - center.y) + center.y;
+  return point;
 }
 point_t shift(point_t position, point_t center)
 {
@@ -39,8 +40,9 @@ point_t shift(point_t position, point_t center)
   double dy = position.y - center.y;
   return {dx, dy};
 }
-void addVectorToPoint(point_t *point, double dx, double dy)
+point_t addVectorToPoint(point_t point, double dx, double dy)
 {
-  point->x += dx;
-  point->y += dy;
+  point.x += dx;
+  point.y += dy;
+  return point;
 }

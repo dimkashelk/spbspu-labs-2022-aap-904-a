@@ -1,13 +1,12 @@
 #ifndef T1_READWRITESHAPES_H
 #define T1_READWRITESHAPES_H
 #include <istream>
-#include "rectangle.h"
-#include "ellipse.h"
+#include "shape.h"
 namespace turkin
 {
-   Rectangle * createRectangle(std::istream & input);
-   Rectangle * createSquare(std::istream & input);
-   Ellipse * createEllipse(std::istream & input);
+   Shape * createRectangle(std::istream & input);
+   Shape * createSquare(std::istream & input);
+   Shape * createEllipse(std::istream & input);
    scale_t getScale(std::istream & input);
    void printAreaPoints(std::ostream & output, Shape ** shapes, size_t size);
 }

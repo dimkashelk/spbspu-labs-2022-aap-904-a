@@ -1,6 +1,5 @@
 #ifndef T1_BASE_TYPES_H
 #define T1_BASE_TYPES_H
-#include <cstddef>
 namespace turkin
 {
   struct point_t
@@ -10,16 +9,15 @@ namespace turkin
 
   struct rectangle_t
   {
-    point_t position;
+    point_t pos;
     double width, height;
   };
 
   struct scale_t
   {
-    point_t position;
+    point_t pos;
     double scale;
   };
 }
-
 #endif
 

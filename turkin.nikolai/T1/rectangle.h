@@ -7,12 +7,12 @@ namespace turkin
   class Rectangle: public Shape
   {
     public:
-      explicit Rectangle(point_t one, point_t two);
+      Rectangle(point_t one, point_t two);
       double getArea() const override;
       rectangle_t getFrameRect() const override;
       void move(double dx, double dy) override;
       void move(point_t position) override;
-      void scale(double ds) override;
+      void scaleW(double ds) override;
     private:
       rectangle_t rect_;
   };

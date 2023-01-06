@@ -13,26 +13,27 @@ turkin::rectangle_t turkin::Rectangle::getFrameRect() const
 
 void turkin::Rectangle::move(double dx, double dy)
 {
-  rect_.position.x = rect_.position.x + dx;
-  rect_.position.y = rect_.position.y + dy;
+  rect_.pos.x = rect_.pos.x + dx;
+  rect_.pos.y = rect_.pos.y + dy;
 }
 
 void turkin::Rectangle::move(point_t position)
 {
-  rect_.position = position;
+  rect_.pos = position;
 }
 
-void turkin::Rectangle::scale(double ds)
+void turkin::Rectangle::scaleW(double ds)
 {
-  if (ds <= 0.0)
-  {
-    throw std::logic_error("bad scale size");
-  }
   rect_.width = rect_.width * ds;
   rect_.height = rect_.height * ds;
 }
 
 turkin::Rectangle::Rectangle(point_t one, point_t two):
   rect_({{(one.x + two.x) / 2.0, (one.y + two.y) / 2.0}, two.x - one.x, two.y - one.y})
-{}
+{
+  if (rect_.width <= 0.0 || rect_.height <= 0.0)
+  {
+    throw std::logic_error("bad rectangle size");
+  }
+}
 

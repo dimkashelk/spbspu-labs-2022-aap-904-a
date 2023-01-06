@@ -1,4 +1,4 @@
 #ifndef SORTSTRINGBYASCII_H
 #define SORTSTRINGBYASCII_H
-char* sortStringByAscii(char* newstr3, char* cstring, char* newstr2);
+char* sortStringByAscii(char* finalstr, const char* cstring, const char* newstr);
 #endif

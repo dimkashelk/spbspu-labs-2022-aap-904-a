@@ -2,33 +2,25 @@
 #include <cctype>
 #include <stdexcept>
 
-void swapEl(size_t elstr, char* newstr3)
+void sort(size_t elstr, char* finalstr)
 {
   for (size_t i = 0; i < elstr; i++)
   {
     for (size_t j = i + 1; j < elstr; j++)
     {
-      if (newstr3[i] > newstr3[j])
+      if (finalstr[i] > finalstr[j])
       {
-        std::swap(newstr3[i], newstr3[j]);
+        std::swap(finalstr[i], finalstr[j]);
       }
     }
   }
 }
-bool compare(char* i, char* q)
+bool compare(const char* i, const char* q)
 {
   bool match = false;
-  for (char* j = i + 1; *j; j++)
+  for (const char* j = i + 1, *z = q; *j, *z; z++, j++)
   {
-    if ((std::toupper(*i)) == std::toupper(*j))
-    {
-      match = true;
-      break;
-    }
-  }
-  for (char* z = q; *z; z++)
-  {
-    if ((std::toupper(*i)) == std::toupper(*z))
+    if ((std::toupper(*i)) == std::toupper(*j) || (std::toupper(*i)) == std::toupper(*z))
     {
       match = true;
       break;
@@ -36,33 +28,33 @@ bool compare(char* i, char* q)
   }
   return match;
 }
-char* sortStringByAscii(char* newstr3, char* cstring, char* newstr2)
+char* sortStringByAscii(char* finalstr, const char* cstring, const char* newstr)
 {
   size_t elstr = 0;
-  char* q = newstr2;
-  for (char* i = cstring; *i; i++)
+  const char* q = newstr;
+  for (const char* i = cstring; *i; i++)
   {
     if (std::isalpha(*i))
     {
       bool matching = compare(i, q);
       if (!matching)
       {
-        newstr3[elstr++] = std::toupper(*i);
+        finalstr[elstr++] = std::toupper(*i);
       }
     }
   }
-  for (char* i = newstr2; *i; i++)
+  for (const char* i = newstr; *i; i++)
   {
     if (std::isalpha(*i))
     {
       bool matching = compare(i, q);
       if (matching)
       {
-        newstr3[elstr++] = std::toupper(*i);
+        finalstr[elstr++] = std::toupper(*i);
       }
     }
   }
-  swapEl(elstr, newstr3);
-  newstr3[elstr] = '\0';
-  return newstr3;
+  sort(elstr, finalstr);
+  finalstr[elstr] = '\0';
+  return finalstr;
 }

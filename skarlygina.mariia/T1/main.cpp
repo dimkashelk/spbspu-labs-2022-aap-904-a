@@ -164,7 +164,17 @@ int main()
       std::cerr << "Some figures are not correct\n";
     }
   }
-  else
+  else if (size > 0 && !isScale)
+  {
+    for (size_t i = 0; i < size; i++)
+    {
+      delete array_figures[i];
+    }
+    delete[] array_figures;
+    std::cerr << "Error: the final figure could be SCALE";
+    return 2;
+  }
+  else if (!size && !isScale)
   {
     delete[] array_figures;
     std::cerr << "Error: size could not be under zero";

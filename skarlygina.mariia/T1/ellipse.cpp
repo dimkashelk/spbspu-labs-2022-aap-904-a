@@ -17,8 +17,8 @@ double Ellipse::getArea() const
 rectangle_t Ellipse::getFrameRectangle() const
 {
   rectangle_t frame_rectangle{};
-  frame_rectangle.height = radius_vertical_;
-  frame_rectangle.width = radius_horizontal_;
+  frame_rectangle.height = radius_vertical_ * 2;
+  frame_rectangle.width = radius_horizontal_ * 2;
   frame_rectangle.position.x = center_.x;
   frame_rectangle.position.y = center_.y;
   return frame_rectangle;

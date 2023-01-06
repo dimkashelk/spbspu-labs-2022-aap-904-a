@@ -69,22 +69,12 @@ void Concave::move(const point_t &position)
 }
 void Concave::scale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Invalid scaling coeff.");
-  }
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  point_t point[4]{a_, b_, c_, d_};
-  std::cout << "\n" << a_.x << b_.x << c_.x << d_.x << "\n";
-  for (point_t p: point)
+  point_t *point[4]{&a_, &b_, &c_, &d_};
+  for (point_t *p: point)
   {
-    std::cout << p.x << "\n";
-    multiplyVector(center, &p, k);
-    std::cout << p.x << "\n";
+    multiplyVector(center, p, k);
   }
-  std::cout << "\n" << a_.x << b_.x << c_.x << d_.x << "\n";
-  //point_t b[] = {a_, b_, c_, d_};
-  //std::swap(point,b);
 }
 Shape *Concave::clone() const
 {

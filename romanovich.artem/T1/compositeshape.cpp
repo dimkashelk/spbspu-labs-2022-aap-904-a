@@ -115,8 +115,8 @@ CompositeShape::CompositeShape(const CompositeShape &rhs):
 }
 CompositeShape::CompositeShape(CompositeShape &&rhs) noexcept:
   shape_(rhs.shape_),
-  capacity_(rhs.capacity_),
-  size_(rhs.size_)
+  size_(rhs.size_),
+  capacity_(rhs.capacity_)
 {
   rhs.size_ = 0;
   rhs.shape_ = nullptr;

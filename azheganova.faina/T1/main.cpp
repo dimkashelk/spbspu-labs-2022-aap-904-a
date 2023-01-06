@@ -41,6 +41,7 @@ int main()
   double scalek;
   point_t scalecenter = {0, 0};
   CompositeShape rhs(cap);
+  bool isscale = false;
   while(std::cin)
   {
     std::string name = "";
@@ -86,6 +87,7 @@ int main()
     }
     if (name == "SCALE")
     {
+      isscale = true
       double x = 0.0;
       double y = 0.0;
       double k = 0.0;
@@ -94,23 +96,34 @@ int main()
       {
         std::cout << "incorrect value";
       }
-      point_t scalecenter = {x, y};
+      scalecenter = {x, y};
     }
   }
   if (!std::cin)
   {
     std::cout << "error";
-  }
-  if (scalek <= 0)
-  {
-    std::cout << "error";
+    return 1;
   }
   printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());
   std::cout << "\n";
-  for (size_t i = 0; i < rhs.size(); ++i)
+  try
   {
-    isoScale(rhs[i], scalecenter, scalek);
+    for (size_t i = 0; i < rhs.size(); ++i)
+    {
+      isoScale(rhs[i], scalecenter, scalek);
+    }
+  }
+  catch(const std::logic_error &e)
+  {
+    std::cerr << e.what() << '\n';
+    return 1;
   }
   printAreaAndFrames(std::cout, rhs, rhs.size());
   std::cout << "\n";
+  if (!isscale)
+  {
+    std::cout << "error";
+    return 1;
+  }
+  return 0;
 }

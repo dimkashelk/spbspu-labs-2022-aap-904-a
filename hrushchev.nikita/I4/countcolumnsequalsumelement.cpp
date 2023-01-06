@@ -12,7 +12,7 @@ size_t countColumnsEqualSumElement(const int* array, const size_t rows, const si
   int* array_sum = nullptr;
   try
   {
-    int* array_sum = new int[columns];
+    array_sum = new int[columns];
     size_t count = 0;
     int current_sum = 0;
 

@@ -96,7 +96,7 @@ int main(int argc, char* argv[])
           return 1;
         }
       }
-      output_file << isLowerTriangleMatirix(array, arr_size);
+      output_file << isLowerTriangleMatrix(array, arr_size);
       if (!output_file)
       {
         std::cerr << "Error while output\n";

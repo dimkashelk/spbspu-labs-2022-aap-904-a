@@ -22,11 +22,8 @@ double odintsov::Concave::getArea() const
 
 odintsov::rectangle_t odintsov::Concave::getFrameRect() const
 {
-  double leftX = min(p1.x, p2.x, p3.x, p4.x);
-  double rightX = max(p1.x, p2.x, p3.x, p4.x);
-  double bottomY = min(p1.y, p2.y, p3.y, p4.y);
-  double topY = max(p1.y, p2.y, p3.y, p4.y);
-  return rectangle_t{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}};
+  point_t points[4] = {p1, p2, p3, p4};
+  return getFrameRectFromPoints(points, 4);
 }
 
 void odintsov::Concave::move(double dx, double dy)

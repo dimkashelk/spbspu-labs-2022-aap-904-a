@@ -25,7 +25,7 @@ char* inputString(std::istream& stream, size_t& size)
     if (size == capacity) {
       capacity += 20;
       char* temp = new char[capacity];
-      for (size_t i = 0; i <= size; ++i) {
+      for (size_t i = 0; i < size; ++i) {
         temp[i] = str[i];
       }
       delete[] str;

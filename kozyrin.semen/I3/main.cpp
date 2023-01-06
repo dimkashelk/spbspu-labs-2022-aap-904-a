@@ -26,6 +26,7 @@ int main()
   }
   catch (const std::bad_alloc & err) {
     delete[] src;
+    delete[] dest;
     std::cerr << "Error: " << err.what();
     return 3;
   }
@@ -39,6 +40,7 @@ int main()
     dest = new char[4];
   }
   catch (const std::bad_alloc & err) {
+    delete[] dest;
     delete[] src;
     std::cerr << "Error: " << err.what();
     return 3;

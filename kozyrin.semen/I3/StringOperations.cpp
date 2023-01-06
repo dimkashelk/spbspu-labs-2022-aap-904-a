@@ -17,13 +17,14 @@ char* inputString(std::istream& stream, size_t& size)
 {
   stream >> std::noskipws;
   size_t capacity = 20;
+  size = 0;
   char* str = new char[capacity];
 
-  while (str[size - 1] != '\0') {
+  do {
     if (size == capacity) {
       capacity += 20;
       char* temp = new char[capacity];
-      for (size_t i = 0; i < size; ++i) {
+      for (size_t i = 0; i <= size; ++i) {
         temp[i] = str[i];
       }
       delete[] str;
@@ -31,8 +32,9 @@ char* inputString(std::istream& stream, size_t& size)
     }
     stream >> str[size];
     size++;
-  }
-  str[size - 1] = '\0';
+  } while(str[size] != '\0');
+
+  str[size] = '\0';
   return str;
 }
 

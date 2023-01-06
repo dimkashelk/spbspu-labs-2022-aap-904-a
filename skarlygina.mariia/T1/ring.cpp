@@ -17,8 +17,8 @@ double Ring::getArea() const
 rectangle_t Ring::getFrameRectangle() const
 {
   rectangle_t frame_rectangle{};
-  frame_rectangle.height = radius_big_;
-  frame_rectangle.width = radius_big_;
+  frame_rectangle.height = radius_big_ * 2;
+  frame_rectangle.width = radius_big_ * 2;
   frame_rectangle.position.x = center_.x;
   frame_rectangle.position.y = center_.y;
   return frame_rectangle;

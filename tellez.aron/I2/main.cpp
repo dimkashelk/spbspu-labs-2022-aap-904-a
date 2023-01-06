@@ -65,7 +65,7 @@ int main (int argc, char *argv[])
   in >> size;
   if(in.eof())
   {
-    std::cout << "Error." << "\n";\
+    std::cout << "Error." << "\n";
     return 1;
   }
   if (size == 0)
@@ -77,6 +77,11 @@ int main (int argc, char *argv[])
   for (size_t i = 0; i < size; i++)
   {
     in >> arr_3[i];
+    if(in.eof())
+    {
+      std::cout << "Error." << "\n";
+      return 1;
+    }
   }
   try
   {

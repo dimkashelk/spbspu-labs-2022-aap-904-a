@@ -113,7 +113,26 @@ double CompositeShape::getArea() const
 }
 rectangle_t CompositeShape::getFrameRect()
 {
-  return rectangle_t{};
+  rectangle_t firstRectangle = shape_[0]->getFrameRect();
+  double minX = firstRectangle.pos.x - firstRectangle.width * 0.5;
+  double maxX = firstRectangle.pos.x + firstRectangle.width * 0.5;
+  double minY = firstRectangle.pos.y - firstRectangle.height * 0.5;
+  double maxY = firstRectangle.pos.y + firstRectangle.height * 0.5;
+  for (size_t i = 1; i < size_; i++)
+  {
+    rectangle_t rectangle = shape_[i]->getFrameRect();
+    double left = firstRectangle.pos.x - firstRectangle.width * 0.5;
+    double right = firstRectangle.pos.x + firstRectangle.width * 0.5;
+    double inf = firstRectangle.pos.y - firstRectangle.height * 0.5;
+    double sup = firstRectangle.pos.y + firstRectangle.height * 0.5;
+    minX = left < minX ? left : minX;
+    maxX = right > maxX ? right : maxX;
+    minY = inf < minY ? inf : minY;
+    maxY = sup > maxY ? sup : maxY;
+  }
+  point_t pos{(minX + maxX) / 2, (minY + maxY) / 2};
+  rectangle_t frame{pos, maxX - minX, maxY - minY};
+  return frame;
 }
 CompositeShape::~CompositeShape()
 {

@@ -26,4 +26,11 @@ int main()
   std::cout << "string with switched case: " << dest << '\n';
   delete[] dest;
 
+  //Task 19
+  dest = new char[4];
+  threeMostCommon(src, dest);
+  std::cout << "Most common characters: " << dest;
+
+  delete[] dest;
+  delete[] src;
 }

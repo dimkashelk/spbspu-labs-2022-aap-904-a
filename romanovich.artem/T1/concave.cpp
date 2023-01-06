@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <array>
+#include <iostream>
 Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
   points_{A, B, C, D}
 {
@@ -64,10 +65,9 @@ void Concave::move(const point_t &position)
 }
 void Concave::unsafeScale(double k) noexcept
 {
-  point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  for (point_t point: points_)
+  for (point_t &point: points_)
   {
-    multiplyVector(center, point, k);
+    point = multiplyVector(getFrameRect().pos, point, k);
   }
 }
 Shape *Concave::clone() const

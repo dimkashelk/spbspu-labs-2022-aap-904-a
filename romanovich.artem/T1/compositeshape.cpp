@@ -33,13 +33,25 @@ void CompositeShape::pop_back()
   delete shape_[size_];
   size_--;
 }
-void CompositeShape::scale(Shape &shape, const point_t &position, double k) noexcept
+void CompositeShape::scale(const point_t &position, double k)
 {
   if (k <= 0)
   {
     throw std::invalid_argument("Invalid scaling koeff.");
   }
-  unsafeScale(shape, position, k);
+  unsafeScale(position, k);
+}
+void CompositeShape::unsafeScale(const point_t &position, double k) noexcept
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    point_t s = shift(position, shape_[i]->getFrameRect().pos);
+    shape_[i]->move(s.x, s.y);
+    s.x *= -k;
+    s.y *= -k;
+    shape_[i]->scale(k);
+    shape_[i]->move(s.x, s.y);
+  }
 }
 CompositeShape::CompositeShape(size_t capacity):
   shape_(new Shape *[capacity]),
@@ -51,14 +63,21 @@ Shape *CompositeShape::operator[](size_t id)
 {
   return at(id);
 }
-void CompositeShape::move(point_t)
+void CompositeShape::move(point_t position)
 {
+  point_t s = shift(position, getFrameRect().pos);
+  move(s.x, s.y);
 }
-void CompositeShape::scale(double)
+void CompositeShape::scale(double k)
 {
+  unsafeScale(getFrameRect().pos, k);
 }
-void CompositeShape::move(double, double)
+void CompositeShape::move(double dx, double dy)
 {
+  for (size_t i = 0; i < size_; i++)
+  {
+    shape_[i]->move(dx, dy);
+  }
 }
 Shape *CompositeShape::at(size_t id)
 {
@@ -101,7 +120,12 @@ double CompositeShape::getArea() const
 }
 rectangle_t CompositeShape::getFrameRect()
 {
-  return rectangle_t{};
+  rectangle_t rectangle = shape_[0]->getFrameRect();
+  for (size_t i = 1; i < size_; i++)
+  {
+    rectangle = shape_[i]->getFrameRect();
+  }
+  return rectangle;
 }
 CompositeShape::~CompositeShape()
 {
@@ -154,13 +178,4 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;
   return *this;
-}
-void CompositeShape::unsafeScale(Shape &shape, const point_t &position, double k) noexcept
-{
-  point_t s = shift(position, shape.getFrameRect().pos);
-  shape.move(s.x, s.y);
-  s.x *= -k;
-  s.y *= -k;
-  shape.scale(k);
-  shape.move(s.x, s.y);
 }

@@ -2,7 +2,7 @@
 
 double computeDS(double one, double two, double scale)
 {
-  return (two - one) * scale;
+  return (one - two) * scale;
 }
 
 void turkin::isoScale(Shape * shape, scale_t scale)

@@ -41,15 +41,16 @@ double Complexquad::getArea() const
   double equationx = 0.0;
   double equationy = 0.0;
   double k1 = (complexquad1[0].y - complexquad1[1].y) / (complexquad1[0].x - complexquad1[1].x);
-  double b1 = complexquad1[1].y - k1 * complexquad1[1].x;
+  double b1 = (complexquad1[1].x * complexquad1[0].y - complexquad1[0].x * complexquad1[1].y) / (complexquad1[1].x - complexquad1[0].x);
   double k2 = (complexquad1[2].y - complexquad1[3].y) / (complexquad1[2].x - complexquad1[3].x);
-  double b2 = complexquad1[3].y - k1 * complexquad1[3].x;
+  double b2 = (complexquad1[3].x * complexquad1[2].y - complexquad1[2].x * complexquad1[3].y) / (complexquad1[3].x - complexquad1[2].x);
   for (x = 0; x < 1000; x++)
   {
     if (k1 * x + b1 == k2 * x + b2)
     {
       equationx = x;
       equationy = k1 * equationx + b1;
+      break;
     }
   }
   point_t center = {equationx, equationy};
@@ -84,9 +85,9 @@ void Complexquad::move(point_t point)
   double equationx = 0.0;
   double equationy = 0.0;
   double k1 = (complexquad1[0].y - complexquad1[1].y) / (complexquad1[0].x - complexquad1[1].x);
-  double b1 = complexquad1[1].y - k1 * complexquad1[1].x;
+  double b1 = (complexquad1[1].x * complexquad1[0].y - complexquad1[0].x * complexquad1[1].y) / (complexquad1[1].x - complexquad1[0].x);
   double k2 = (complexquad1[2].y - complexquad1[3].y) / (complexquad1[2].x - complexquad1[3].x);
-  double b2 = complexquad1[3].y - k1 * complexquad1[3].x;
+  double b2 = (complexquad1[3].x * complexquad1[2].y - complexquad1[2].x * complexquad1[3].y) / (complexquad1[3].x - complexquad1[2].x);
   for (x = 0; x < 1000; x++)
   {
     if (k1 * x + b1 == k2 * x + b2)

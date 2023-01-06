@@ -75,7 +75,7 @@ void CompositeShape::unsafeScale(double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    unsafeIsoScale(shape_[i], getFrameRect().pos, k);
+    singleIsoScale(shape_[i], getFrameRect().pos, k);
   }
 }
 void CompositeShape::move(double dx, double dy)

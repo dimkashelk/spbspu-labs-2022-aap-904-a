@@ -1,6 +1,7 @@
 #include "makeNewStringWithoutRepeat.h"
 #include <iostream>
 #include <cctype>
+#include <cstddef>
 
 char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2, size_t size)
 {

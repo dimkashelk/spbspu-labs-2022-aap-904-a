@@ -36,7 +36,7 @@ rectangle_t Triangle::getFrameRect() const
 point_t Triangle::findCenterOfTriangle()
 {
   double pos1 = (triangle1[0].x + triangle1[1].x + triangle1[2].x) / 3;
-  double pos2 = (triangle1[0].y + triangle1[1].y + triangle1[2].y) / 2;
+  double pos2 = (triangle1[0].y + triangle1[1].y + triangle1[2].y) / 3;
   return (point_t {pos1, pos2});
 }
 void Triangle::move(point_t point)
@@ -57,7 +57,7 @@ void Triangle::scale(double k)
 {
   if (k <= 0)
   {
-    std::cout << "incorrect value";
+    std::cerr << "incorrect value";
   }
   else
   {

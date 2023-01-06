@@ -61,23 +61,17 @@ int main (int argc, char *argv[])
     std::cout << "Error while opening file" << "\n";
     return 1;
   }
-
-  if (in.eof() == std::ifstream::traits_type::eof())
-  {
-    std::cout << "Error." << "\n";
-    return 1;
-  }
   size_t size = 0;
   in >> size;
+  if(in.eof())
+  {
+    std::cout << "Error." << "\n";\
+    return 1;
+  }
   if (size == 0)
   {
     std::cout << "Error size = 0" << "\n";
     return 0;
-  }
-  if(in.eof() == std::ifstream::traits_type::eof())
-  {
-    std::cout << "Error.." << "\n";
-    return 1;
   }
   int *arr_3 = new int[size];
   for (size_t i = 0; i < size; i++)

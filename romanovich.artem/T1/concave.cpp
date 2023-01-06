@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <array>
+#include <iostream>
 Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
   a_(A),
   b_(B),
@@ -74,10 +75,16 @@ void Concave::scale(double k)
   }
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   point_t point[4]{a_, b_, c_, d_};
+  std::cout << "\n" << a_.x << b_.x << c_.x << d_.x << "\n";
   for (point_t p: point)
   {
+    std::cout << p.x << "\n";
     multiplyVector(center, &p, k);
+    std::cout << p.x << "\n";
   }
+  std::cout << "\n" << a_.x << b_.x << c_.x << d_.x << "\n";
+  //point_t b[] = {a_, b_, c_, d_};
+  //std::swap(point,b);
 }
 Shape *Concave::clone() const
 {

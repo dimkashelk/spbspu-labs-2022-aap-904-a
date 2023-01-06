@@ -29,10 +29,6 @@ void Rectangle::move(const point_t &position)
 }
 void Rectangle::scale(double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Invalid scaling coeff.");
-  }
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   multiplyVector(center, &a_, k);
   multiplyVector(center, &c_, k);

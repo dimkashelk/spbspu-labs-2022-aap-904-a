@@ -50,15 +50,12 @@ void CompositeShape::pop_back()
 }
 void CompositeShape::scale(Shape &shape, const point_t &position, double k)
 {
-  double firstPosX = shape.getFrameRect().pos.x;
-  double firstPosY = shape.getFrameRect().pos.y;
-  double dx = position.x - firstPosX;
-  double dy = position.y - firstPosY;
-  shape.move(dx, dy);
-  dx *= -k;
-  dy *= -k;
-  shape.scale(k);
-  shape.move(dx, dy);
+  point_t s = shift(position, shape.getFrameRect().pos);
+  shape.move(s.x, s.y);
+  s.x *= -k;
+  s.y *= -k;
+  shape.tryScale(k);
+  shape.move(s.x, s.y);
 }
 CompositeShape::CompositeShape(size_t capacity):
   shape_(new Shape *[capacity]),

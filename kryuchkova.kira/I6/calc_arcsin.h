@@ -1,5 +1,6 @@
 #ifndef CALC_ARCSIN_H
 #define CALC_ARCSIN_H
+#include <cstddef>
 
 class TaylorTerm
 {

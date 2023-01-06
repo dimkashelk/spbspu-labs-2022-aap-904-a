@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstddef>
+#include "calc_arcsin.h"
+#include "print_table.h"
 
 int main()
 {
@@ -14,6 +16,11 @@ int main()
   {
     std::cerr << "invalid input" << '\n';
     return 1;
+  }
+
+  for (double i = left; i <= right; i += step)
+  {
+    printTable(std::cout, i, calcArcsin(i, error, max_number));
   }
 
 }

@@ -40,8 +40,9 @@ point_t shift(point_t position, point_t center)
   double dy = position.y - center.y;
   return {dx, dy};
 }
-void addVectorToPoint(point_t point, double dx, double dy)
+point_t addVectorToPoint(point_t point, double dx, double dy)
 {
   point.x += dx;
   point.y += dy;
+  return point;
 }

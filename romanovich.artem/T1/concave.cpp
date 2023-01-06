@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <stdexcept>
 #include <array>
-#include <iostream>
 Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
   points_{A, B, C, D}
 {
@@ -53,9 +52,9 @@ rectangle_t Concave::getFrameRect() const
 }
 void Concave::move(double dx, double dy)
 {
-  for (point_t point: points_)
+  for (point_t &point: points_)
   {
-    addVectorToPoint(point, dx, dy);
+    point = addVectorToPoint(point, dx, dy);
   }
 }
 void Concave::move(const point_t &position)

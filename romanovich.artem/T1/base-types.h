@@ -20,5 +20,5 @@ bool isTriangle(std::array< double, 3 > sides);
 bool pointInsideTriangle(triangle_t triangle, point_t point);
 point_t multiplyVector(point_t center, point_t point, double koeff);
 point_t shift(point_t position, point_t center);
-void addVectorToPoint(point_t point, double dx, double dy);
+point_t addVectorToPoint(point_t point, double dx, double dy);
 #endif

@@ -2,7 +2,6 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-#include <iostream>
 Parallelogram::Parallelogram(const point_t &A, const point_t &B, const point_t &C):
   points_{A, B, C}
 {
@@ -29,9 +28,9 @@ rectangle_t Parallelogram::getFrameRect() const
 }
 void Parallelogram::move(double dx, double dy)
 {
-  for (point_t point: points_)
+  for (point_t &point: points_)
   {
-    addVectorToPoint(point, dx, dy);
+    point = addVectorToPoint(point, dx, dy);
   }
 }
 void Parallelogram::move(const point_t &position)

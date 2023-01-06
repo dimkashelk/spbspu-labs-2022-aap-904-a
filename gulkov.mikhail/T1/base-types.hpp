@@ -1,19 +1,16 @@
 #ifndef BASE_TYPES_HPP
 #define BASE_TYPES_HPP
 
-namespace gulkov
+struct point_t
 {
-  struct point_t
-  {
-    double x, y;
-  };
+  double x, y;
+};
 
-  struct rectangle_t
-  {
-    point_t pos;
-    double width;
-    double height;
-  };
-}
+struct rectangle_t
+{
+  point_t pos;
+  double width;
+  double height;
+};
 
 #endif

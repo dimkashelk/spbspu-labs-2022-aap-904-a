@@ -35,7 +35,7 @@ char* inputString(std::istream& stream, size_t& size)
     size++;
   } while(str[size - 1] != '\n' && stream);
 
-  str[size] = '\0';
+  str[size - 1] = '\0';
   return str;
 }
 

@@ -1,7 +1,6 @@
 #include "readString.hpp"
 #include <iostream>
 #include <cstddef>
-#include <exception>
 #include "extendString.hpp"
 
 char* zasulsky::readString(std::istream& in)
@@ -19,8 +18,7 @@ char* zasulsky::readString(std::istream& in)
         delete [] cstring;
         cstring = newstr;
         capacity += 20;
-      } catch (const std::exception& err) {
-        std::cout << err.what() << '\n';
+      } catch (...) {
         delete [] cstring;
         throw;
       }

@@ -19,6 +19,7 @@ char* inputString(std::istream& stream, size_t& size)
   size_t capacity = 20;
   size = 0;
   char* str = new char[capacity];
+  str[0] = '\0';
 
   do {
     if (size == capacity) {
@@ -32,7 +33,7 @@ char* inputString(std::istream& stream, size_t& size)
     }
     stream >> str[size];
     size++;
-  } while(str[size] != '\n' && stream);
+  } while(str[size - 1] != '\n' && stream);
 
   str[size] = '\0';
   return str;

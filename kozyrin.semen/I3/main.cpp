@@ -5,6 +5,7 @@ int main()
 {
   size_t size = 0;
   char* src = new char[1];
+  src[0] = '\0';
   try {
     src = inputString(std::cin, size);
   }

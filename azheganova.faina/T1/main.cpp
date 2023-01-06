@@ -21,7 +21,7 @@ void printAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t 
 {
   if (!shp_size)
   {
-    throw std::invalid_argument("Invalid size of Shape array");
+    throw std::invalid_argument("error");
   }
   double summ_area = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
@@ -40,6 +40,7 @@ int main()
   std::string line;
   size_t cap = 10;
   CompositeShape rhs(cap);
+  point_t scalecenter;
   bool isscale = false;
   while(std::cin)
   {
@@ -95,23 +96,8 @@ int main()
       {
         std::cout << "incorrect value";
       }
-      point_t scalecenter = {x, y};
-      printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());
-      std::cout << "\n";
-      try
-      {
-        for (size_t i = 0; i < rhs.size(); ++i)
-        {
-          isoScale(rhs[i], scalecenter, k);
-        }
-      }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << '\n';
-        return 1;
-      }
-      printAreaAndFrames(std::cout, rhs, rhs.size());
-      std::cout << "\n";
+      scalecenter = {x, y};
+      break;
     }
   }
   if (!std::cin)
@@ -124,5 +110,21 @@ int main()
     std::cout << "error";
     return 1;
   }
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());
+  std::cout << "\n";
+  try
+  {
+    for (size_t i = 0; i < rhs.size(); ++i)
+    {
+      isoScale(rhs[i], scalecenter, k);
+    }
+  }
+  catch(const std::logic_error &e)
+  {
+    std::cerr << e.what() << '\n';
+    return 1;
+  }
+  printAreaAndFrames(std::cout, rhs, rhs.size());
+  std::cout << "\n";
   return 0;
 }

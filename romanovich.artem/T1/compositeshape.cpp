@@ -32,22 +32,22 @@ void CompositeShape::pop_back()
   delete shape_[size_];
   size_--;
 }
-void CompositeShape::isoScale(Shape &shape, const point_t &position, double k)
+void CompositeShape::isoScale(const point_t &position, double k)
 {
   if (k <= 0)
   {
     throw std::invalid_argument("Invalid scaling koeff.");
   }
-  unsafeIsoScale(shape, position, k);
+  unsafeIsoScale(position, k);
 }
-void CompositeShape::unsafeIsoScale(Shape &shape, const point_t &position, double k) noexcept
+void CompositeShape::unsafeIsoScale(const point_t &position, double k) noexcept
 {
-  point_t s = shift(position, shape.getFrameRect().pos);
-  shape.move(s.x, s.y);
+  point_t s = shift(position, getFrameRect().pos);
+  move(s.x, s.y);
   s.x *= -k;
   s.y *= -k;
-  shape.scale(k);
-  shape.move(s.x, s.y);
+  scale(k);
+  move(s.x, s.y);
 }
 CompositeShape::CompositeShape(size_t capacity):
   shape_(new Shape *[capacity]),
@@ -75,7 +75,7 @@ void CompositeShape::unsafeScale(double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    unsafeIsoScale(*shape_[i], getFrameRect().pos, k);
+    unsafeIsoScale(getFrameRect().pos, k);
   }
 }
 void CompositeShape::move(double dx, double dy)

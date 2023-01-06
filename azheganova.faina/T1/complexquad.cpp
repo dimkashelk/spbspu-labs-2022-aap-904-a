@@ -61,7 +61,7 @@ rectangle_t Complexquad::getFrameRect() const
   double maxy = std::max(complexquad1[0].y, std::max(complexquad1[1].y, maxy1));
   double minx = std::min(complexquad1[0].x, std::min(complexquad1[1].x, minx1));
   double miny = std::min(complexquad1[0].y, std::min(complexquad1[1].y, miny1));
-  return makeFrame(point_t {minx, miny}, point_t {miny, maxy});
+  return makeFrame(point_t {minx, maxx}, point_t {miny, maxy});
 }
 void Complexquad::move(point_t point)
 {

@@ -14,6 +14,7 @@ namespace odintsov {
       virtual void move(const point_t& pos) = 0;
       virtual void scale(double k) = 0;
   };
+  void isoScale(Shape* shp, const point_t& anchor, double k);
 }
 
 #endif

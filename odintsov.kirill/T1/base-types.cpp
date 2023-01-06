@@ -9,7 +9,7 @@ void odintsov::movePoint(point_t& p, double dx, double dy)
   p.y += dy;
 }
 
-void odintsov::isoScalePoint(const point_t& anchor, point_t& p, double k)
+void odintsov::isoScalePoint(point_t& p, const point_t& anchor, double k)
 {
   movePoint(p, (p.x - anchor.x) * (k - 1.0), (p.y - anchor.y) * (k - 1.0));
 }

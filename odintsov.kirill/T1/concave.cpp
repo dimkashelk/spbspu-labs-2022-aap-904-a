@@ -43,10 +43,10 @@ void odintsov::Concave::move(const point_t& pos)
 void odintsov::Concave::scale(double k)
 {
   point_t middle = getMiddlePoint();
-  isoScalePoint(middle, p1, k);
-  isoScalePoint(middle, p2, k);
-  isoScalePoint(middle, p3, k);
-  isoScalePoint(middle, p4, k);
+  isoScalePoint(p1, middle, k);
+  isoScalePoint(p2, middle, k);
+  isoScalePoint(p3, middle, k);
+  isoScalePoint(p4, middle, k);
 }
 
 odintsov::point_t odintsov::Concave::getMiddlePoint() const

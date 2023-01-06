@@ -37,20 +37,14 @@ bool Concave::goodConcaveInput() const
   }
   return false;
 }
-double Concave::buildLineFromTwoDots(const point_t &p1, const point_t &p2)
-{
-  double line_x = p1.x - p2.x;
-  double line_y = p1.y - p2.y;
-  return std::sqrt(line_x * line_x + line_y * line_y);
-}
 std::array<double, 6> Concave::splitIntoTriangles() const
 {
-  double a = buildLineFromTwoDots(a_, c_);
-  double b = buildLineFromTwoDots(c_, b_);
-  double c = buildLineFromTwoDots(a_, b_);
-  double a1 = buildLineFromTwoDots(c_, d_);
+  double a = twoPointsDistance(a_, c_);
+  double b = twoPointsDistance(c_, b_);
+  double c = twoPointsDistance(a_, b_);
+  double a1 = twoPointsDistance(c_, d_);
   double b1 = b;
-  double c1 = buildLineFromTwoDots(d_, b_);
+  double c1 = twoPointsDistance(d_, b_);
   std::array<double, 6> arr = {a, b, c, a1, b1, c1};
   return arr;
 }

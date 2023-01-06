@@ -14,15 +14,9 @@ Parallelogram::Parallelogram(const point_t &A, const point_t &B, const point_t &
 }
 double Parallelogram::getArea() const
 {
-  double ax = c_.x - b_.x;
-  double ay = c_.y - b_.y;
-  double by = a_.y - b_.y;
-  double bx = a_.x - b_.x;
-  double cx = c_.x - a_.x;
-  double cy = c_.y - a_.y;
-  double a = std::sqrt(ax * ax + ay * ay);
-  double b = std::sqrt(bx * bx + by * by);
-  double c = std::sqrt(cx * cx + cy * cy);
+  double a = twoPointsDistance(b_, c_);
+  double b = twoPointsDistance(a_, b_);
+  double c = twoPointsDistance(a_, c_);
   double p = (a + b + c) / 2;
   return 2 * std::sqrt(p * (p - a) * (p - b) * (p - c));
 }

@@ -9,7 +9,12 @@ Rectangle::Rectangle(rectangle_t rectangle):
 {}
 Rectangle::Rectangle(point_t point1, point_t point2):
   rectangle1(makeFrame(point1, point2))
-{}
+{
+  if (point1.x >= point2.x || point1.y >= point2.y)
+  {
+    throw std::invalid_argument("wrong rectangle");
+  }
+}
 double Rectangle::getArea() const
 {
   return rectangle1.width * rectangle1.height;

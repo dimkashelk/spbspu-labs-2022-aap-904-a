@@ -10,24 +10,24 @@
 #include "inputcomplexquad.h"
 
 void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangle)
-  {
-    point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
-    point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
-    output << point1.x << ' ' << point1.y << ' ';
-    output << point2.x << ' ' << point2.y;
-  }
+{
+  point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
+  point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
+  output << point1.x << ' ' << point1.y << ' ';
+  output << point2.x << ' ' << point2.y;
+}
 
-void printAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t shp_size)
+void printAreaAndFrames(std::ostream & output, const CompositeShape & comp, size_t shp_size)
 {
   double summ_area = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
   {
     summ_area += comp[i]->getArea();
   }
-  out << summ_area;
+  output << summ_area;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    printLeftDownAndRightUp(out << ' ', comp[i]->getFrameRect());
+    printLeftDownAndRightUp(output << ' ', comp[i]->getFrameRect());
   }
 }
 
@@ -39,7 +39,7 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
-  while(std::cin)
+  do
   {
     std::string name = "";
     std::cin >> name;
@@ -102,6 +102,7 @@ int main()
       break;
     }
   }
+  while(std::cin);
   if (!isscale)
   {
     std::cerr << "error";

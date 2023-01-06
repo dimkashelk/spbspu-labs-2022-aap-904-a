@@ -15,7 +15,7 @@ class Triangle : virtual public Shape
     point_t findCenterOfTriangle();
     void move(point_t position);
     void move(double dx, double dy);
-    void scale(double k);
+    void scale(double k) noexcept;
     Shape * clone() const override;
   private:
     point_t triangle1[3];

@@ -60,12 +60,8 @@ void Complexquad::move(double dx, double dy)
   complexquad1[3].x += dx;
   complexquad1[3].y += dy;
 }
-void Complexquad::scale(double k)
+void Complexquad::scale(double k) noexcept
 {
-  if (k <= 0)
-  {
-    std::cout << "incorrect value";
-  }
   point_t center = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};
   complexquad1[0].x = k * (complexquad1[0].x - center.x) + center.x;
   complexquad1[1].x = k * (complexquad1[1].x - center.x) + center.x;

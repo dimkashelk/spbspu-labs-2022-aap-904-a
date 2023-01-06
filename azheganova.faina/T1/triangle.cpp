@@ -53,14 +53,8 @@ void Triangle::move(double dx, double dy)
   triangle1[2].x += dx;
   triangle1[2].y += dy;
 }
-void Triangle::scale(double k)
+void Triangle::scale(double k) noexcept
 {
-  if (k <= 0)
-  {
-    std::cerr << "incorrect value";
-  }
-  else
-  {
   point_t center = findCenterOfTriangle();
   triangle1[0].x = k * (triangle1[0].x - center.x) + center.x;
   triangle1[1].x = k * (triangle1[1].x - center.x) + center.x;
@@ -68,7 +62,6 @@ void Triangle::scale(double k)
   triangle1[0].y = k * (triangle1[0].y - center.y) + center.y;
   triangle1[1].y = k * (triangle1[1].y - center.y) + center.y;
   triangle1[2].y = k * (triangle1[2].y - center.y) + center.y;
-  }
 }
 
 Shape* Triangle::clone() const

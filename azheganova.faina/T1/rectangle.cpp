@@ -4,8 +4,8 @@
 #include <cmath>
 #include "compositeshape.h"
 
-Rectangle::Rectangle(rectangle_t rectangle1):
-  rectangle1(rectangle1)
+Rectangle::Rectangle(rectangle_t rectangle):
+  rectangle1(rectangle)
 {}
 Rectangle::Rectangle(point_t point1, point_t point2):
   rectangle1(makeFrame(point1, point2))
@@ -27,17 +27,10 @@ void Rectangle::move(double dx, double dy)
   rectangle1.pos.x += dx;
   rectangle1.pos.y += dy;
 }
-void Rectangle::scale(double k)
+void Rectangle::scale(double k) noexcept
 {
-  if (k <= 0)
-  {
-    std::cerr << "incorrect value";
-  }
-  else
-  {
   rectangle1.width *= k;
   rectangle1.height *= k;
-  }
 }
 Shape *Rectangle::clone() const
 {

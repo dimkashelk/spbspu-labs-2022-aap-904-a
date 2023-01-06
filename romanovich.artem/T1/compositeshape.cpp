@@ -114,13 +114,12 @@ CompositeShape::CompositeShape(const CompositeShape &rhs):
   }
 }
 CompositeShape::CompositeShape(CompositeShape &&rhs) noexcept:
-  CompositeShape(rhs.capacity_)
+  shape_(rhs.shape_),
+  capacity_(rhs.capacity_),
+  size_(rhs.size_)
 {
-  size_ = rhs.size_;
-  for (size_t i = 0; i < rhs.size_; ++i)
-  {
-    shape_[i] = rhs.shape_[i]->clone();
-  }
+  rhs.size_ = 0;
+  rhs.shape_ = nullptr;
 }
 double CompositeShape::getArea() const
 {
@@ -164,11 +163,10 @@ CompositeShape::~CompositeShape()
 }
 CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
 {
-  Shape **newShape = nullptr;
+  Shape **newShape = new Shape *[rhs.capacity_];
   size_t newSize = 0;
   try
   {
-    newShape = new Shape *[rhs.capacity_];
     for (size_t i = 0; i < rhs.size_; ++i)
     {
       newShape[i] = rhs.shape_[i]->clone();

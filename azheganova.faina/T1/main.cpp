@@ -98,7 +98,7 @@ int main()
       std::cin >> x >> y >> k;
       if (k <= 0)
       {
-        std::cout << "incorrect value";
+        std::cerr << "incorrect value";
         return 1;
       }
       scalecenter = {x, y};
@@ -108,12 +108,12 @@ int main()
   }
   if (!std::cin)
   {
-    std::cout << "error";
+    std::cerr << "error";
     return 1;
   }
   if (!isscale)
   {
-    std::cout << "error";
+    std::cerr << "error";
     return 1;
   }
   printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());

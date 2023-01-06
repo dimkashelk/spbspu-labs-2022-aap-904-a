@@ -17,7 +17,7 @@ Shape* inputTriangle(std::istream &input)
   point[2] = point_t {x3, y3};
   if (!input)
   {
-    std::cout << "error";
+    throw std::logic_error("error");
   }
   return new Triangle(point[0], point[1], point[2]);
 }

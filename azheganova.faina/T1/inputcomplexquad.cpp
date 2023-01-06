@@ -19,7 +19,7 @@ Shape* inputComplexquad(std::istream &input)
   point[3] = point_t {x4, y4};
   if (!input)
   {
-    std::cout << "error";
+    throw std::logic_error("error");
   }
   return new Complexquad(point[0], point[1], point[2], point[3]);
 }

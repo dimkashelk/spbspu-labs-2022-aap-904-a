@@ -1,13 +1,13 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
+#ifndef ELLIPSE_HPP
+#define ELLIPSE_HPP
 
 #include "Base-types.hpp"
 #include "Shape.hpp"
 
-class Rectangle : public Shape
+class Ellipse : public Shape
 {
 public:
-  Rectangle(point_t one, point_t two);
+  Ellipse(point_t center, double radius1, double radius2);
 
   double getArea() const override;
   rectangle_t getFrameRect() const override;
@@ -17,6 +17,8 @@ public:
 
 private:
   rectangle_t rect_;
+  double local_radius1;
+  double local_radius2;
 };
 
 #endif

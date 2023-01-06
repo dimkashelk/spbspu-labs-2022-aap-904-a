@@ -27,7 +27,7 @@ void Rectangle::move(const point_t &position)
   point_t s = shift(position, getFrameRect().pos);
   move(s.x, s.y);
 }
-void Rectangle::scale(double k)
+void Rectangle::unsafeScale(double k) noexcept
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   a_ = multiplyVector(center, a_, k);

@@ -62,7 +62,7 @@ void Concave::move(const point_t &position)
   point_t s = shift(position, getFrameRect().pos);
   move(s.x, s.y);
 }
-void Concave::scale(double k)
+void Concave::unsafeScale(double k) noexcept
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   for (point_t &point: points_)

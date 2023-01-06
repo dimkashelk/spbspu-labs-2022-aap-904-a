@@ -11,7 +11,7 @@ public:
   rectangle_t getFrameRect() const override;
   void move(double dx, double dy) override;
   void move(const point_t &position) override;
-  void scale(double k) override;
+  void unsafeScale(double k) noexcept override;
   Shape *clone() const override;
 private:
   point_t points_[4];

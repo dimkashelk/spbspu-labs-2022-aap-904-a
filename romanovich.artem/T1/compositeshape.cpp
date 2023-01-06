@@ -49,7 +49,7 @@ CompositeShape::CompositeShape(size_t capacity):
 }
 Shape *CompositeShape::operator[](size_t id)
 {
-  return at(id);
+  return shape_[id];
 }
 void CompositeShape::move(point_t)
 {
@@ -62,6 +62,10 @@ void CompositeShape::move(double, double)
 }
 Shape *CompositeShape::at(size_t id)
 {
+  if (id >= size_)
+  {
+    throw std::invalid_argument("Invalid id provided.");
+  }
   return shape_[id];
 }
 size_t CompositeShape::size() const noexcept

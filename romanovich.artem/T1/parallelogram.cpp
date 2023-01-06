@@ -49,13 +49,11 @@ void Parallelogram::scale(double k)
   {
     throw std::invalid_argument("Invalid scaling coeff.");
   }
-  double centerX = getFrameRect().pos.x;
-  double centerY = getFrameRect().pos.y;
-  point_t *points[3]{&a_, &b_, &c_};
-  for (point_t *p: points)
+  point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
+  point_t point[3]{a_, b_, c_};
+  for (size_t i = 0; i < 3; ++i)
   {
-    p->x = k * (p->x - centerX) + centerX;
-    p->y = k * (p->y - centerY) + centerY;
+    multiplyVector(center, &point[i], k);
   }
 }
 Shape *Parallelogram::clone() const

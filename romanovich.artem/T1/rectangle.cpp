@@ -37,8 +37,8 @@ void Rectangle::scale(double k)
     throw std::invalid_argument("Invalid scaling coeff.");
   }
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  multiplyVector(center, a_, k);
-  multiplyVector(center, c_, k);
+  multiplyVector(center, &a_, k);
+  multiplyVector(center, &c_, k);
 }
 Shape *Rectangle::clone() const
 {

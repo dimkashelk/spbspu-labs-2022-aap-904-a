@@ -1,9 +1,8 @@
-#ifndef CSTRFNC_H
-#define CSTRFNC_H
-#include <cstddef>
+#ifndef CSTRFNC_LAB3_H
+#define CSTRFNC_LAB3_H
+#include <cstddef_lab3>
 #include <iostream>
 
-std::pair< char*, size_t > getCString2(std::istream& stream);
 bool isIntersectedStrings(const char* str1, const char* str2);
 char* removeLatinVowelSymbols(char* destination, const char* source);
 

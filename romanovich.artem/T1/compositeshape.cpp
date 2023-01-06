@@ -121,10 +121,10 @@ rectangle_t CompositeShape::getFrameRect()
   for (size_t i = 1; i < size_; i++)
   {
     rectangle_t rectangle = shape_[i]->getFrameRect();
-    double left = firstRectangle.pos.x - firstRectangle.width * 0.5;
-    double right = firstRectangle.pos.x + firstRectangle.width * 0.5;
-    double inf = firstRectangle.pos.y - firstRectangle.height * 0.5;
-    double sup = firstRectangle.pos.y + firstRectangle.height * 0.5;
+    double left = rectangle.pos.x - rectangle.width * 0.5;
+    double right = rectangle.pos.x + rectangle.width * 0.5;
+    double inf = rectangle.pos.y - rectangle.height * 0.5;
+    double sup = rectangle.pos.y + rectangle.height * 0.5;
     minX = left < minX ? left : minX;
     maxX = right > maxX ? right : maxX;
     minY = inf < minY ? inf : minY;

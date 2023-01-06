@@ -15,7 +15,7 @@ odintsov::ComplexQuad::ComplexQuad(const point_t& p1, const point_t& p2, const p
 double odintsov::ComplexQuad::getArea() const
 {
   point_t ip = getIntersectionPoint();
-  return Triangle(p1, p4, ip).getArea() + Triangle(p2, p3, ip).getArea();
+  return getTriangleArea(p1, p4, ip) + getTriangleArea(p2, p3, ip);
 }
 
 odintsov::rectangle_t odintsov::ComplexQuad::getFrameRect() const

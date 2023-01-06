@@ -5,7 +5,7 @@ bool isSign(char c)
 {
   return (c == '+' || c == '-');
 }
-bool isNatural(std::string str, int& index)
+bool isNatural(std::string str, size_t& index)
 {
   if (std::isdigit(str[index]))
   {
@@ -14,7 +14,7 @@ bool isNatural(std::string str, int& index)
   }
   return false;
 }
-bool isOrder(std::string str, int& index)
+bool isOrder(std::string str, size_t& index)
 {
   if (str[index] == 'E')
   {
@@ -34,12 +34,12 @@ bool isOrder(std::string str, int& index)
   }
   return false;
 }
-bool isMantissa(std::string str, int& index)
+bool isMantissa(std::string str, size_t& index)
 {
   return ((str[index] == '.' && isNatural(str, ++index)) || (isNatural(str, index) && str[index] == '.' && isNatural(str, ++index)));
 }
 bool isReal(const char* str)
 {
-  int i = 0;
+  size_t i = 0;
   return ((isMantissa(str, i) && isOrder(str, i)) || (isSign(str[i]) && isMantissa(str, ++i) && isOrder(str, i)));
 }

@@ -18,7 +18,7 @@ void sort(size_t elstr, char* finalstr)
 bool compare(const char* i, const char* q)
 {
   bool match = false;
-  for (const char* j = i + 1, *z = q; *z; z++, j++)
+  for (const char* j = i + 1, *z = q; *j || *z; z++, j++)
   {
     if ((std::toupper(*i)) == std::toupper(*j) || (std::toupper(*i)) == std::toupper(*z))
     {
@@ -28,10 +28,10 @@ bool compare(const char* i, const char* q)
   }
   return match;
 }
-char* sortStringByAscii(char* finalstr, const char* cstring, char* newstr)
+char* sortStringByAscii(char* finalstr, const char* cstring, const char* newstr)
 {
   size_t elstr = 0;
-  char* q = newstr;
+  const char* q = newstr;
   for (const char* i = cstring; *i; i++)
   {
     if (std::isalpha(*i))

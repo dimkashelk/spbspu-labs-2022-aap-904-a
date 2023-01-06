@@ -44,8 +44,6 @@ double Complexquad::getArea() const
   double b1 = complexquad1[1].y - k1 * complexquad1[1].x;
   double k2 = (complexquad1[2].y - complexquad1[3].y) / (complexquad1[2].x - complexquad1[3].x);
   double b2 = complexquad1[3].y - k1 * complexquad1[3].x;
-  double equation1 = k1 * x + b1;
-  double equation2 = k2 * x + b2;
   for (x = 0; x < 1000; x++)
   {
     if (k1 * x + b1 == k2 * x + b2)
@@ -77,8 +75,6 @@ rectangle_t Complexquad::getFrameRect() const
   double b1 = complexquad1[1].y - k1 * complexquad1[1].x;
   double k2 = (complexquad1[2].y - complexquad1[3].y) / (complexquad1[2].x - complexquad1[3].x);
   double b2 = complexquad1[3].y - k1 * complexquad1[3].x;
-  double equation1 = k1 * x + b1;
-  double equation2 = k2 * x + b2;
   for (x = 0; x < 1000; x++)
   {
     if (k1 * x + b1 == k2 * x + b2)
@@ -107,8 +103,6 @@ void Complexquad::move(point_t point)
   double b1 = complexquad1[1].y - k1 * complexquad1[1].x;
   double k2 = (complexquad1[2].y - complexquad1[3].y) / (complexquad1[2].x - complexquad1[3].x);
   double b2 = complexquad1[3].y - k1 * complexquad1[3].x;
-  double equation1 = k1 * x + b1;
-  double equation2 = k2 * x + b2;
   for (x = 0; x < 1000; x++)
   {
     if (k1 * x + b1 == k2 * x + b2)
@@ -140,8 +134,6 @@ void Complexquad::scale(double k) noexcept
   double b1 = complexquad1[1].y - k1 * complexquad1[1].x;
   double k2 = (complexquad1[2].y - complexquad1[3].y) / (complexquad1[2].x - complexquad1[3].x);
   double b2 = complexquad1[3].y - k1 * complexquad1[3].x;
-  double equation1 = k1 * x + b1;
-  double equation2 = k2 * x + b2;
   for (x = 0; x < 1000; x++)
   {
     if (k1 * x + b1 == k2 * x + b2)

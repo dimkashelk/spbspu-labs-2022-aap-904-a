@@ -32,6 +32,7 @@ void Rectangle::scale(double k)
   if (k <= 0)
   {
     std::cout << "incorrect value";
+    
   }
   else
   {

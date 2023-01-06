@@ -59,6 +59,7 @@ int main()
         std::cerr << e.what() << "\n";
         continue;
       }
+      continue;
     }
     if (name == "TRIANGLE")
     {
@@ -72,6 +73,7 @@ int main()
         std::cerr << e.what() << "\n";
         continue;
       }
+      continue;
     }
     if (name == "COMPLEXQUAD")
     {
@@ -85,6 +87,7 @@ int main()
         std::cerr << e.what() << "\n";
         continue;
       }
+      continue;
     }
     if (name == "SCALE")
     {

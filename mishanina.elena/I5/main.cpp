@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include "inputString.h"
+#include "expression.h"
 
 int main()
 {
@@ -15,6 +16,7 @@ int main()
     delete[] cstring;
     return 1;
   }
+  std::cout << std::boolalpha << isExpression(cstring) << '\n';
   delete[] cstring;
   return 0;
 }

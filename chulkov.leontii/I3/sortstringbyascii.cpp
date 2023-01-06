@@ -18,7 +18,7 @@ void sort(size_t elstr, char* finalstr)
 bool compare(const char* i, const char* q)
 {
   bool match = false;
-  for (const char* j = i + 1, *z = q; *j, *z; z++, j++)
+  for (const char* j = i + 1, *z = q; *z; z++, j++)
   {
     if ((std::toupper(*i)) == std::toupper(*j) || (std::toupper(*i)) == std::toupper(*z))
     {

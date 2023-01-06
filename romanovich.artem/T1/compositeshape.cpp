@@ -42,12 +42,15 @@ void CompositeShape::isoScale(const point_t &position, double k)
 }
 void CompositeShape::unsafeIsoScale(const point_t &position, double k) noexcept
 {
-  point_t s = shift(position, getFrameRect().pos);
-  move(s.x, s.y);
-  s.x *= -k;
-  s.y *= -k;
-  unsafeScale(k);
-  move(s.x, s.y);
+  for (size_t i = 0; i < size_; i++)
+  {
+    point_t s = shift(position, shape_[i]->getFrameRect().pos);
+    shape_[i]->move(s.x, s.y);
+    s.x *= -k;
+    s.y *= -k;
+    shape_[i]->unsafeScale(k);
+    shape_[i]->move(s.x, s.y);
+  }
 }
 CompositeShape::CompositeShape(size_t capacity):
   shape_(new Shape *[capacity]),

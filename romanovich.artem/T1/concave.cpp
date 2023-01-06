@@ -4,10 +4,7 @@
 #include <stdexcept>
 #include <array>
 Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
-  a_(A),
-  b_(B),
-  c_(C),
-  d_(D)
+  points_{A, B, C, D}
 {
   if (!goodConcaveInput())
   {
@@ -16,17 +13,17 @@ Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const poi
 }
 bool Concave::goodConcaveInput() const
 {
-  return pointInsideTriangle(triangle_t{a_, b_, c_}, d_)
+  return pointInsideTriangle(triangle_t{points_[0], points_[1], points_[2]}, points_[3])
          && isTriangle(splitIntoTriangles());
 }
 std::array< double, 6 > Concave::splitIntoTriangles() const
 {
-  double a = twoPointsDistance(a_, c_);
-  double b = twoPointsDistance(c_, b_);
-  double c = twoPointsDistance(a_, b_);
-  double a1 = twoPointsDistance(c_, d_);
+  double a = twoPointsDistance(points_[0], points_[2]);
+  double b = twoPointsDistance(points_[2], points_[1]);
+  double c = twoPointsDistance(points_[0], points_[1]);
+  double a1 = twoPointsDistance(points_[2], points_[3]);
   double b1 = b;
-  double c1 = twoPointsDistance(d_, b_);
+  double c1 = twoPointsDistance(points_[3], points_[1]);
   std::array< double, 6 > arr = {a, b, c, a1, b1, c1};
   return arr;
 }
@@ -47,18 +44,17 @@ double Concave::getArea() const
 }
 rectangle_t Concave::getFrameRect() const
 {
-  double sup = std::max({a_.y, b_.y, c_.y});
-  double inf = std::min({a_.y, b_.y, c_.y});
-  double left = std::min({a_.x, b_.x, c_.x});
-  double right = std::max({a_.x, b_.x, c_.x});
+  double sup = std::max({points_[0].y, points_[1].y, points_[2].y});
+  double inf = std::min({points_[0].y, points_[1].y, points_[2].y});
+  double left = std::min({points_[0].x, points_[1].x, points_[2].x});
+  double right = std::max({points_[0].x, points_[1].x, points_[2].x});
   return {(right + left) / 2, (sup + inf) / 2, right - left, sup - inf};
 }
 void Concave::move(double dx, double dy)
 {
-  point_t *points[4]{&a_, &b_, &c_, &d_};
-  for (point_t *p: points)
+  for (point_t &point: points_)
   {
-    addVectorToPoint(p, dx, dy);
+    addVectorToPoint(&point, dx, dy);
   }
 }
 void Concave::move(const point_t &position)
@@ -69,13 +65,12 @@ void Concave::move(const point_t &position)
 void Concave::scale(double k)
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  point_t *point[4]{&a_, &b_, &c_, &d_};
-  for (point_t *p: point)
+  for (point_t &point: points_)
   {
-    multiplyVector(center, p, k);
+    multiplyVector(center, &point, k);
   }
 }
 Shape *Concave::clone() const
 {
-  return new Concave(a_, b_, c_, d_);
+  return new Concave(points_[0], points_[1], points_[2], points_[3]);
 }

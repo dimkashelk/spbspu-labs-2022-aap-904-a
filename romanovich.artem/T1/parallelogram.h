@@ -14,6 +14,6 @@ public:
   Shape *clone() const override;
 private:
   bool goodParallelogramInput() const;
-  point_t a_, b_, c_;
+  point_t points_[3];
 };
 #endif

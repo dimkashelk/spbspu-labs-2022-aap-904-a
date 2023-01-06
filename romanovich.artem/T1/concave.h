@@ -16,6 +16,6 @@ public:
 private:
   std::array< double, 6 > splitIntoTriangles() const;
   bool goodConcaveInput() const;
-  point_t a_, b_, c_, d_;
+  point_t points_[4];
 };
 #endif

@@ -9,8 +9,8 @@ public:
   virtual rectangle_t getFrameRect() const = 0;
   virtual void move(double dx, double dy) = 0;
   virtual void move(const point_t &position) = 0;
-  virtual void scale(double k) = 0;
-  void tryScale(double k);
+  virtual void unsafeScale(double k) noexcept = 0;
+  void scale(double k);
   virtual Shape *clone() const = 0;
 };
 #endif

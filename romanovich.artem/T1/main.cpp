@@ -105,11 +105,11 @@ int main()
     {
       scaleCommand = true;
       std::cin >> iScaleX >> iScaleY >> iScaleK;
-      if (iScaleK <= 0)
-      {
-        std::cerr << "Negative koeff.\n";
-        return 2;
-      }
+      //if (iScaleK <= 0)
+      //{
+      //  std::cerr << "Negative koeff.\n";
+      //  return 2;
+      //}
     }
   }
   if (!(scaleCommand && figureCommand))

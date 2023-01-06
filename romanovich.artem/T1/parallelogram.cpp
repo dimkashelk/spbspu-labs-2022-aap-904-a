@@ -5,7 +5,7 @@
 Parallelogram::Parallelogram(const point_t &A, const point_t &B, const point_t &C):
   points_{A, B, C}
 {
-  if (!goodParallelogramInput())
+  if (!isGoodParallelogramInput())
   {
     throw std::invalid_argument("Bad parallelogram input.");
   }
@@ -28,9 +28,9 @@ rectangle_t Parallelogram::getFrameRect() const
 }
 void Parallelogram::move(double dx, double dy)
 {
-  for (point_t &point: points_)
+  for (point_t point: points_)
   {
-    addVectorToPoint(&point, dx, dy);
+    addVectorToPoint(point, dx, dy);
   }
 }
 void Parallelogram::move(const point_t &position)
@@ -38,19 +38,19 @@ void Parallelogram::move(const point_t &position)
   point_t s = shift(position, getFrameRect().pos);
   move(s.x, s.y);
 }
-void Parallelogram::scale(double k)
+void Parallelogram::unsafeScale(double k)noexcept
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  for (point_t &point: points_)
+  for (point_t point: points_)
   {
-    multiplyVector(center, &point, k);
+    multiplyVector(center, point, k);
   }
 }
 Shape *Parallelogram::clone() const
 {
   return new Parallelogram(points_[0], points_[1], points_[2]);
 }
-bool Parallelogram::goodParallelogramInput() const
+bool Parallelogram::isGoodParallelogramInput() const
 {
   return (((points_[0].y == points_[1].y) || (points_[1].y == points_[2].y)) &&
           (points_[0].y - points_[1].y != points_[2].y - points_[1].y));

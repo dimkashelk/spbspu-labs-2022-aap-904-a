@@ -6,15 +6,15 @@
 Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
   points_{A, B, C, D}
 {
-  if (!goodConcaveInput())
+  if (!isGoodConcaveInput())
   {
     throw std::invalid_argument("Bad concave input.");
   }
 }
-bool Concave::goodConcaveInput() const
+bool Concave::isGoodConcaveInput() const
 {
-  return pointInsideTriangle(triangle_t{points_[0], points_[1], points_[2]}, points_[3])
-         && isTriangle(splitIntoTriangles());
+  std::array< double, 3 > arr = {splitIntoTriangles()[0], splitIntoTriangles()[1], splitIntoTriangles()[2]};
+  return pointInsideTriangle(triangle_t{points_[0], points_[1], points_[2]}, points_[3]) && isTriangle(arr);
 }
 std::array< double, 6 > Concave::splitIntoTriangles() const
 {
@@ -52,9 +52,9 @@ rectangle_t Concave::getFrameRect() const
 }
 void Concave::move(double dx, double dy)
 {
-  for (point_t &point: points_)
+  for (point_t point: points_)
   {
-    addVectorToPoint(&point, dx, dy);
+    addVectorToPoint(point, dx, dy);
   }
 }
 void Concave::move(const point_t &position)
@@ -62,12 +62,12 @@ void Concave::move(const point_t &position)
   point_t s = shift(position, getFrameRect().pos);
   move(s.x, s.y);
 }
-void Concave::scale(double k)
+void Concave::unsafeScale(double k) noexcept
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  for (point_t &point: points_)
+  for (point_t point: points_)
   {
-    multiplyVector(center, &point, k);
+    multiplyVector(center, point, k);
   }
 }
 Shape *Concave::clone() const

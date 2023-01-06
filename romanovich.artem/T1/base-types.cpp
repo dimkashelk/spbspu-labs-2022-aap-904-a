@@ -1,14 +1,14 @@
+#include "base-types.h"
 #include <cmath>
 #include <algorithm>
 #include <array>
-#include "base-types.h"
 double twoPointsDistance(const point_t &p1, const point_t &p2)
 {
   double line_x = p1.x - p2.x;
   double line_y = p1.y - p2.y;
   return std::sqrt(line_x * line_x + line_y * line_y);
 }
-bool isTriangle(std::array< double, 6 > sides)
+bool isTriangle(std::array< double, 3 > sides)
 {
   double a = sides[0];
   double b = sides[1];
@@ -28,10 +28,10 @@ bool pointInsideTriangle(triangle_t triangle, point_t point)
   bool isLeftCA = ((point.x - c.x) * (a.y - c.y) - (point.y - c.y) * (a.x - c.x) > 0);
   return ((isLeftAB && isLeftBC && isLeftCA) || (!isLeftAB && !isLeftBC && !isLeftCA));
 }
-void multiplyVector(point_t center, point_t *point, double koeff)
+void multiplyVector(point_t center, point_t point, double koeff)
 {
-  point->x = koeff * (point->x - center.x) + center.x;
-  point->y = koeff * (point->y - center.y) + center.y;
+  point.x = koeff * (point.x - center.x) + center.x;
+  point.y = koeff * (point.y - center.y) + center.y;
 }
 point_t shift(point_t position, point_t center)
 {
@@ -39,8 +39,8 @@ point_t shift(point_t position, point_t center)
   double dy = position.y - center.y;
   return {dx, dy};
 }
-void addVectorToPoint(point_t *point, double dx, double dy)
+void addVectorToPoint(point_t point, double dx, double dy)
 {
-  point->x += dx;
-  point->y += dy;
+  point.x += dx;
+  point.y += dy;
 }

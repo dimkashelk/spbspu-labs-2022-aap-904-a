@@ -8,8 +8,6 @@ class Complexquad : virtual public Shape
   public:
     Complexquad();
     Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
-    Complexquad(const Complexquad &tmp);
-    Complexquad(Complexquad &&tmp);
     double getArea() const;
     rectangle_t getFrameRect() const;
     point_t findCenterOfTriangle();

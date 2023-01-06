@@ -2,19 +2,14 @@
 #include <iostream>
 #include <stdexcept>
 
-Complexquad::Complexquad()
+Complexquad::Complexquad():
+  complexquad1{point_t{0.0, 0.0}, point_t{0.0, 0.0}, point_t{0.0, 0.0}, point_t{0.0, 0.0}}
 {}
 
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   complexquad1{pos1, pos2, pos3, pos4}
 {}
 
-Complexquad::Complexquad(const Complexquad &tmp):
-  complexquad1{tmp.complexquad1[0], tmp.complexquad1[1], tmp.complexquad1[2], tmp.complexquad1[3]}
-{}
-Complexquad::Complexquad(Complexquad &&tmp):
-  complexquad1{tmp.complexquad1[0], tmp.complexquad1[1], tmp.complexquad1[2], tmp.complexquad1[3]}
-{}
 double Complexquad::getArea() const
 {
   point_t center = {(complexquad1[0].x + complexquad1[1].x) / 2, (complexquad1[0].y + complexquad1[1].y) / 2};

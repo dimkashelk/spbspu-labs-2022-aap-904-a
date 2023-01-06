@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <ctime>
-#include "inputString.h"
+#include <inputString.h>
 #include "removeExtraSpaces.h"
 #include "hasItTheSameSimbols.h"
 

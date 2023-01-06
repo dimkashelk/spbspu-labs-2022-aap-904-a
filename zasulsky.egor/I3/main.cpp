@@ -1,39 +1,27 @@
 #include <iostream>
+#include <cstddef>
 #include "countUniqueLatin.hpp"
 #include "replaceSymbol.hpp"
+#include "readString.hpp"
+#include "getStringSize.hpp"
 
 int main()
 {
-  size_t capacity = 10;
-  char* cstring = new char[capacity];
-  size_t size = 0;
-
-  std::cin >> std::noskipws;
-  do {
-    if (size == capacity) {
-      try {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j) {
-          *j = *i;
-        }
-        delete [] cstring;
-        cstring = newstr;
-        capacity += 20;
-      } catch (...) {
-        delete [] cstring;
-        return 1;
-      }
-    }
-    std::cin >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
-  if (size <= 1) {
+  char* cstring = zasulsky::readString(std::cin);
+  size_t size = zasulsky::getStringSize(cstring);
+  if (size == 0) {
     std::cout << "Empty string\n";
-    delete [] cstring;
     return 1;
   }
-  cstring[size - 1] = '\0';
 
-  char* newstr = new char[size];
+  char* newstr = nullptr;
+  try {
+    newstr = new char[size + 1];
+  } catch (...) {
+    delete [] cstring;
+    delete [] newstr;
+    return 1;
+  }
   std::cout << zasulsky::replaceSymbol(newstr, cstring, 'e', 'a') << '\n';
   delete [] newstr;
 

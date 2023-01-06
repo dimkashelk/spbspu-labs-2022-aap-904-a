@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include "inputString.h"
+#include <inputString.h>
 #include "expression.h"
 
 int main()

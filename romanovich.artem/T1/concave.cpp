@@ -16,28 +16,10 @@ Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const poi
 }
 bool Concave::goodConcaveInput() const
 {
-  std::array<double, 6> sides = splitIntoTriangles();
-  double a = sides[0];
-  double b = sides[1];
-  double c = sides[2];
-  double maxSide = std::max({a, b, c});
-  double minSide = std::max({a, b, c});
-  double midlSide = a + b + c - maxSide - minSide;
-  bool firstThreeTriangle = (maxSide < minSide + midlSide);
-  bool fourthLeftAB = ((d_.x - a_.x) * (b_.y - a_.y) - (d_.y - a_.y) * (b_.x - a_.x) > 0);
-  bool fourthLeftBC = ((d_.x - b_.x) * (c_.y - b_.y) - (d_.y - b_.y) * (c_.x - b_.x) > 0);
-  bool fourthLeftCA = ((d_.x - c_.x) * (a_.y - c_.y) - (d_.y - c_.y) * (a_.x - c_.x) > 0);
-  if (fourthLeftAB && fourthLeftBC && fourthLeftCA)
-  {
-    return firstThreeTriangle;
-  }
-  if (!fourthLeftAB && !fourthLeftBC && !fourthLeftCA)
-  {
-    return firstThreeTriangle;
-  }
-  return false;
+  return pointInsideTriangle(triangle_t{a_, b_, c_}, d_)
+         && isTriangle(splitIntoTriangles());
 }
-std::array<double, 6> Concave::splitIntoTriangles() const
+std::array< double, 6 > Concave::splitIntoTriangles() const
 {
   double a = twoPointsDistance(a_, c_);
   double b = twoPointsDistance(c_, b_);
@@ -45,12 +27,12 @@ std::array<double, 6> Concave::splitIntoTriangles() const
   double a1 = twoPointsDistance(c_, d_);
   double b1 = b;
   double c1 = twoPointsDistance(d_, b_);
-  std::array<double, 6> arr = {a, b, c, a1, b1, c1};
+  std::array< double, 6 > arr = {a, b, c, a1, b1, c1};
   return arr;
 }
 double Concave::getArea() const
 {
-  std::array<double, 6> sides = splitIntoTriangles();
+  std::array< double, 6 > sides = splitIntoTriangles();
   double a = sides[0];
   double b = sides[1];
   double c = sides[2];

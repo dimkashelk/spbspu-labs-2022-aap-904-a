@@ -12,7 +12,8 @@ int main()
   double coefficient = 0;
   bool isCorrectFigure = true;
   bool isScale = false;
-  Shape** array_figures = new Shape* [10];
+  bool isCommand = true;
+  Shape** array_figures = new Shape*[10];
   do
   {
     std::cin >> figure;
@@ -31,6 +32,7 @@ int main()
         else
         {
           delete rectangle;
+          isCommand = false;
         }
       }
       catch (const std::invalid_argument& e)
@@ -61,6 +63,7 @@ int main()
         else
         {
           delete ring;
+          isCommand = false;
         }
       }
       catch (const std::invalid_argument& e)
@@ -91,6 +94,7 @@ int main()
         else
         {
           delete ellipse;
+          isCommand = false;
         }
       }
       catch (const std::invalid_argument& e)
@@ -116,7 +120,7 @@ int main()
           std::cerr << "Error: coefficient could not be under zero\n";
           for (size_t i = 0; i < size; i++)
           {
-              delete array_figures[i];
+            delete array_figures[i];
           }
           delete[] array_figures;
           return 2;
@@ -127,7 +131,7 @@ int main()
           delete[] array_figures;
           return 2;
         }
-        else if (size > 1 && coefficient > 0)
+        else if (size > 0 && coefficient > 0)
         {
           isScale = true;
         }
@@ -155,6 +159,10 @@ int main()
       makeIsotropicScaling(array_figures[i], point, coefficient);
     }
     makeOutput(std::cout, array_figures, size);
+    if (!isCommand)
+    {
+      std::cout << "Some figures are not correct\n";
+    }
   }
   else
   {

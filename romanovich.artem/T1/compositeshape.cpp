@@ -137,7 +137,11 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
     delete[] newShape;
     throw;
   }
-  CompositeShape::~CompositeShape();
+  for (size_t i = 0; i < size_; ++i)
+  {
+    delete shape_[i];
+  }
+  delete[] shape_;
   shape_ = newShape;
   capacity_ = rhs.capacity_;
   size_ = newSize;
@@ -145,7 +149,11 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
 }
 CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
 {
-  CompositeShape::~CompositeShape();
+  for (size_t i = 0; i < size_; ++i)
+  {
+    delete shape_[i];
+  }
+  delete[] shape_;
   shape_ = rhs.shape_;
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;

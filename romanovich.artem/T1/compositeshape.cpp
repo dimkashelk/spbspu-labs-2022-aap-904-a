@@ -16,17 +16,16 @@ void CompositeShape::push_back(Shape *shp)
 }
 void CompositeShape::push_back(const Shape *shp)
 {
-  size_t capAdd = 2;
-  Shape **newShape = new Shape *[capacity_ + capAdd];
-  capacity_ += capAdd;
-  for (size_t i = 0; i <= size_; ++i)
+  Shape *shpCopy = shp->clone();
+  try
   {
-    newShape[i] = shape_[i];
+    push_back(shpCopy);
   }
-  delete[] shape_;
-  shape_ = newShape;
-  shape_[size_] = shp->clone();
-  size_++;
+  catch (...)
+  {
+    delete shpCopy;
+    throw;
+  }
 }
 void CompositeShape::pop_back()
 {

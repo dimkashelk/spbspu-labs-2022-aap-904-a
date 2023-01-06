@@ -32,7 +32,7 @@ void CompositeShape::pop_back()
   delete shape_[size_];
   size_--;
 }
-void CompositeShape::scale(Shape &shape, const point_t &position, double k)
+void CompositeShape::isoScale(Shape &shape, const point_t &position, double k)
 {
   if (k <= 0)
   {
@@ -59,14 +59,19 @@ Shape *CompositeShape::operator[](size_t id)
 {
   return shape_[id];
 }
-void CompositeShape::move(point_t)
+void CompositeShape::move(point_t position)
 {
+  move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
 }
 void CompositeShape::scale(double)
 {
 }
-void CompositeShape::move(double, double)
+void CompositeShape::move(double dx, double dy)
 {
+  for (size_t i = 0; i < size_; ++i)
+  {
+    shape_[i]->move(dx, dy);
+  }
 }
 Shape *CompositeShape::at(size_t id)
 {

@@ -19,7 +19,7 @@ public:
   void move(double dx, double dy);
   void move(point_t position);
   void scale(double k);
-  void scale(Shape &shape, const point_t &position, double k);
+  void isoScale(Shape &shape, const point_t &position, double k);
   void unsafeIsoScale(Shape &shape, const point_t &position, double k) noexcept;
   void push_back(Shape *shp);
   void push_back(const Shape *shp);

@@ -48,8 +48,17 @@ int main()
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
 
   //2
-  char* destination2;
-  destination2 = new char[27];
+  char* destination2 = nullptr;
+  try
+  {
+    destination2 = new char[27];
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cout << e.what() << '\n';
+    delete[] source1;
+    return 1;
+  }
   destination2 = makeNewStringWithMissingLetters(destination2, source1);
   std::cout << "New string with missing letters in first string: " << destination2;
 

@@ -9,5 +9,5 @@ void odintsov::isoScale(Shape* shp, const point_t& anchor, double k)
   shp->scale(k);
   isoScalePoint(A1, anchor, k);
   isoScalePoint(A2, anchor, k);
-  shp->move(A2.x - A1.x, A2.y - A1.y);
+  shp->move(A1.x - A2.x, A1.y - A2.y);
 }

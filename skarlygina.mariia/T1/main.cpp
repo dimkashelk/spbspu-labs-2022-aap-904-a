@@ -161,7 +161,7 @@ int main()
     makeOutput(std::cout, array_figures, size);
     if (!isCommand)
     {
-      std::cout << "Some figures are not correct\n";
+      std::cerr << "Some figures are not correct\n";
     }
   }
   else

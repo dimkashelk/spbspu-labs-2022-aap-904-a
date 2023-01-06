@@ -97,6 +97,10 @@ int main()
         std::cerr << "incorrect value";
         return 1;
       }
+      if (!std::cin)
+      {
+        throw std::logic_error("error");
+      }
       scalecenter = {x, y};
       scalek = k;
       break;

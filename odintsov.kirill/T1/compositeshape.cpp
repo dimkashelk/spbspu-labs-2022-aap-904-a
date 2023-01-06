@@ -5,18 +5,82 @@
 #include "base-types.hpp"
 #include "minmax.hpp"
 
+odintsov::CompositeShape::CompositeShape():
+  size_(0),
+  cap_(5),
+  shapes(new Shape*[cap_])
+{}
+
 odintsov::CompositeShape::CompositeShape(size_t cap):
   size_(0),
   cap_(cap),
   shapes(new Shape*[cap_])
 {}
 
+odintsov::CompositeShape::CompositeShape(const odintsov::CompositeShape& shp):
+  size_(0),
+  cap_(shp.size()),
+  shapes(new Shape*[cap_])
+{
+  try {
+    for (size_t i = 0; i < size(); i++) {
+      push_back(shp[i]->clone());
+    }
+  } catch (...) {
+    while (!empty()) {
+      pop_back();
+    }
+    throw;
+  }
+}
+
+
+odintsov::CompositeShape::CompositeShape(odintsov::CompositeShape&& shp):
+  size_(0),
+  cap_(shp.size()),
+  shapes(new Shape*[cap_])
+{
+  while (!shp.empty()) {
+    push_back(shp[shp.size() - 1]);
+    shp.pop_back();
+  }
+}
+
 odintsov::CompositeShape::~CompositeShape()
 {
-  for (size_t i = 0; i < size(); i++) {
-    delete shapes[i];
+  while (!empty()) {
+    pop_back();
   }
   delete [] shapes;
+}
+
+odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::CompositeShape& shp)
+{
+  while(!empty()) {
+    pop_back();
+  }
+  if (cap_ < shp.size()) {
+    extend(shp.size());
+  }
+  for (size_t i = 0; i < shp.size(); i++) {
+    push_back(shp[i]->clone());
+  }
+  return *this;
+}
+
+odintsov::CompositeShape& odintsov::CompositeShape::operator=(odintsov::CompositeShape&& shp)
+{
+  while(!empty()) {
+    pop_back();
+  }
+  if (cap_ < shp.size()) {
+    extend(shp.size());
+  }
+  while (!shp.empty()) {
+    push_back(shp[shp.size() - 1]);
+    shp.pop_back();
+  }
+  return *this;
 }
 
 double odintsov::CompositeShape::getArea() const
@@ -93,7 +157,8 @@ void odintsov::CompositeShape::push_back(Shape* shp)
 
 void odintsov::CompositeShape::pop_back()
 {
-  shapes[--size_] = nullptr;
+  delete shapes[--size_];
+  shapes[size_] = nullptr;
 }
 
 odintsov::Shape* odintsov::CompositeShape::at(size_t id) const

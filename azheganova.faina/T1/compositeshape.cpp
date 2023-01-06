@@ -115,23 +115,6 @@ size_t CompositeShape::size() const
   return size_;
 }
 
-void CompositeShape::push_back(Shape * shapes)
-{
-  if (capacity_ == size_)
-  {
-    Shape ** new_shape = new Shape * [capacity_ + 10];
-    capacity_ += 10;
-    for (size_t i = 0; i < size_; ++i)
-    {
-      new_shape[i] = shape_[i];
-    }
-    delete[] shape_;
-    shape_ = new_shape;
-    shape_[size_] = shapes;
-    size_++;
-  }
-}
-
 void CompositeShape::push_back(const Shape * shp)
 {
   Shape * cloned = shp->clone();
@@ -158,7 +141,6 @@ void CompositeShape::push_back(const Shape * shp)
   shape_[size_++] = cloned;
 }
 
-
 void CompositeShape::push_back(Shape * shp)
 {
   if (capacity_ == size_)
@@ -174,6 +156,7 @@ void CompositeShape::push_back(Shape * shp)
   }
   shape_[size_++] = shp;
 }
+
 
 
 void CompositeShape::pop_back()

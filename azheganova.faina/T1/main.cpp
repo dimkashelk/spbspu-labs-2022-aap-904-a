@@ -13,7 +13,8 @@ void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangl
   {
     point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
     point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
-    output << point1.x << ' ' << point1.y << ' '<< point2.x << ' ' << point2.y;
+    output << point1.x << ' ' << point1.y << ' ';
+    output << point2.x << ' ' << point2.y;
   }
 
 void printAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t shp_size)

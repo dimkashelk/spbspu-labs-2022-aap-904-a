@@ -1,7 +1,12 @@
 #include <iostream>
 #include <stdexcept>
-#include "base-types.hpp"
 #include "rectangle.hpp"
+#include "triangle.hpp"
+#include "complexquad.hpp"
+#include "compositeshape.hpp"
+#include "inputshape.hpp"
+#include "outputframerect.hpp"
+#include "isoscale.hpp"
 
 int main()
 {
@@ -12,27 +17,61 @@ int main()
     if (!std::cin)
     {
       std::cout << "Error in name/n";
-      return 1;
+      break;
     }
+    tarasenko::CompositeShape compositeShape;
     if (name == "RECTANGLE")
     {
       try
       {
-        double x1, y1, x2, y2;
-        std::cin >> x1 >> y1 >> x2 >> y2;
-        if (!std::cin)
-        {
-          std::cout << "Error in coordinates/n";
-          return 1;
-        }
-        tarasenko::point_t point_ld(x1,y1);
-        tarasenko::point_t point_ru(x2,y2);
-        tarasenko::Rectangle rect(point_ld, point_ru);
+        tarasenko::Shape * shape = tarasenko::inputRectangle(std::cin);
+        compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument & e)
       {
         return 1;
       }
+    }
+    else if (name == "TRIANGLE")
+    {
+      try
+      {
+        tarasenko::Shape * shape = tarasenko::inputTriangle(std::cin);
+        compositeShape.push_back(shape);
+      }
+      catch (const std::invalid_argument & e)
+      {
+        return 1;
+      }
+    }
+    else if (name == "COMPLEXQUAD")
+    {
+      tarasenko::Shape * shape = tarasenko::inputComplexquad(std::cin);
+      compositeShape.push_back(shape);
+    }
+    else if (name == "SCALE")
+    {
+      //outputShape
+      try
+      {
+        double x = 0;
+        double y = 0;
+        double k = 0;
+        std::cin >> x >> y >> k;
+        tarasenko::point_t center_scale(x, y);
+        for (size_t i = 0; i < compositeShape.size_; i++)
+        {
+          isoScale(compositeShape.shapes[i], center_scale, k);
+        }
+      }
+      catch (std::invalid_argument & e)
+      {
+
+      }
+    }
+    else
+    {
+      return 1;
     }
   }
 }

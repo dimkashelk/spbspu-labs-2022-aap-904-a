@@ -19,4 +19,11 @@ int main()
     return 2;
   }
 
+  //Task11
+  char* dest = new char[size];
+  switchCase(src, dest);
+
+  std::cout << "string with switched case: " << dest << '\n';
+  delete[] dest;
+
 }

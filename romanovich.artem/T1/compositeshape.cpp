@@ -63,8 +63,20 @@ void CompositeShape::move(point_t position)
 {
   move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
 }
-void CompositeShape::scale(double)
+void CompositeShape::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Invalid scaling koeff.");
+  }
+  unsafeScale(k);
+}
+void CompositeShape::unsafeScale(double k)
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    unsafeIsoScale(*shape_[i], getFrameRect().pos, k);
+  }
 }
 void CompositeShape::move(double dx, double dy)
 {

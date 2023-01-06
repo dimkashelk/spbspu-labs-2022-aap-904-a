@@ -15,4 +15,4 @@ class TaylorTerm
 
 double calcArcsin(double x, double error, size_t max_number);
 
-#endif CALC_ARCSIN_H
+#endif

@@ -53,3 +53,8 @@ odintsov::point_t odintsov::Concave::getMiddlePoint() const
 {
   return p4;
 }
+
+odintsov::Concave* odintsov::Concave::clone() const
+{
+  return new Concave(p1, p2, p3, p4);
+}

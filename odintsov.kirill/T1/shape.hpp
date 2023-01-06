@@ -13,6 +13,7 @@ namespace odintsov {
       virtual void move(double dx, double dy) = 0;
       virtual void move(const point_t& pos) = 0;
       virtual void scale(double k) = 0;
+      virtual Shape* clone() const = 0;
   };
   void isoScale(Shape* shp, const point_t& anchor, double k);
 }

@@ -56,3 +56,8 @@ odintsov::point_t odintsov::ComplexQuad::getIntersectionPoint() const
 {
   return getLineSegIntersectionPoint(p1, p2, p3, p4);
 }
+
+odintsov::ComplexQuad* odintsov::ComplexQuad::clone() const
+{
+  return new ComplexQuad(p1, p2, p3, p4);
+}

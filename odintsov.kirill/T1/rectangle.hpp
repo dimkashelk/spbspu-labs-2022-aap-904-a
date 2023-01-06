@@ -14,6 +14,7 @@ namespace odintsov {
       void move(double dx, double dy);
       void move(const point_t& pos);
       void scale(double k);
+      Rectangle* clone() const;
     private:
       rectangle_t rect;
   };

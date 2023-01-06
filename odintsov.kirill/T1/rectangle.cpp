@@ -37,3 +37,12 @@ void odintsov::Rectangle::scale(double k)
   rect.width *= k;
   rect.height *= k;
 }
+
+odintsov::Rectangle* odintsov::Rectangle::clone() const
+{
+  double leftX = rect.pos.x - rect.width * 0.5;
+  double rightX = rect.pos.x + rect.width * 0.5;
+  double bottomY = rect.pos.y - rect.height * 0.5;
+  double topY = rect.pos.y + rect.height * 0.5;
+  return new Rectangle(leftX, bottomY, rightX, topY);
+}

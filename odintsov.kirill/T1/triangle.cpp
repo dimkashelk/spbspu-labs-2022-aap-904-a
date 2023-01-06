@@ -3,6 +3,7 @@
 #include "base-types.hpp"
 #include "getDistance.hpp"
 #include "minmax.hpp"
+#include "nearlyEquals.hpp"
 
 bool odintsov::isTriangle(const point_t& p1, const point_t& p2, const point_t& p3)
 {
@@ -27,5 +28,6 @@ bool odintsov::isPointInsideTriangle(const point_t& p, const point_t& p1, const 
   double area1 = getTriangleArea(p1, p2, p);
   double area2 = getTriangleArea(p1, p3, p);
   double area3 = getTriangleArea(p2, p3, p);
-  return getTriangleArea(p1, p2, p3) == area1 + area2 + area3;
+  constexpr double epsilon = 0.00001;
+  return nearlyEquals(getTriangleArea(p1, p2, p3), area1 + area2 + area3, epsilon);
 }

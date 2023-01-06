@@ -31,6 +31,7 @@ void CompositeShape::push_back(const Shape *shp)
 void CompositeShape::pop_back()
 {
   delete shape_[size_];
+  size_--;
 }
 void CompositeShape::scale(Shape &shape, const point_t &position, double k)
 {

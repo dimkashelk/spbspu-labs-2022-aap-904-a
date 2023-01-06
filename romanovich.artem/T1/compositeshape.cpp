@@ -75,7 +75,7 @@ void CompositeShape::unsafeScale(double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    singleIsoScale(shape_[i], getFrameRect().pos, k);
+    shape_[i]->scale(k);
   }
 }
 void CompositeShape::move(double dx, double dy)
@@ -202,13 +202,4 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;
   return *this;
-}
-void CompositeShape::singleIsoScale(Shape *shp, const point_t &position, double k)
-{
-  point_t s = shift(position, shp->getFrameRect().pos);
-  shp->move(s.x, s.y);
-  s.x *= -k;
-  s.y *= -k;
-  shp->unsafeScale(k);
-  shp->move(s.x, s.y);
 }

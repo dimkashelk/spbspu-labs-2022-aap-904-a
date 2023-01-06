@@ -31,6 +31,5 @@ private:
   Shape **shape_;
   size_t size_;
   size_t capacity_;
-  void singleIsoScale(Shape *shp, const point_t &position, double k);
 };
 #endif

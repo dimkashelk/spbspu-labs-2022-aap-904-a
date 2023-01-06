@@ -19,7 +19,7 @@ char* inputString(std::istream& stream, size_t& size)
   size_t capacity = 20;
   char* str = new char[capacity];
 
-  while (str[size - 1] != '\n') {
+  while (str[size - 1] != '\0') {
     if (size == capacity) {
       capacity += 20;
       char* temp = new char[capacity];

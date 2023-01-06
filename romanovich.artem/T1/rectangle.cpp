@@ -19,8 +19,8 @@ rectangle_t Rectangle::getFrameRect() const
 }
 void Rectangle::move(double dx, double dy)
 {
-  addVectorToPoint(&a_, dx, dy);
-  addVectorToPoint(&c_, dx, dy);
+  a_ = addVectorToPoint(a_, dx, dy);
+  c_ = addVectorToPoint(c_, dx, dy);
 }
 void Rectangle::move(const point_t &position)
 {
@@ -30,8 +30,8 @@ void Rectangle::move(const point_t &position)
 void Rectangle::scale(double k)
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  multiplyVector(center, &a_, k);
-  multiplyVector(center, &c_, k);
+  a_ = multiplyVector(center, a_, k);
+  c_ = multiplyVector(center, c_, k);
 }
 Shape *Rectangle::clone() const
 {

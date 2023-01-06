@@ -30,7 +30,7 @@ void Parallelogram::move(double dx, double dy)
 {
   for (point_t &point: points_)
   {
-    addVectorToPoint(&point, dx, dy);
+    point = addVectorToPoint(point, dx, dy);
   }
 }
 void Parallelogram::move(const point_t &position)
@@ -43,7 +43,7 @@ void Parallelogram::scale(double k)
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   for (point_t &point: points_)
   {
-    multiplyVector(center, &point, k);
+    point = multiplyVector(center, point, k);
   }
 }
 Shape *Parallelogram::clone() const

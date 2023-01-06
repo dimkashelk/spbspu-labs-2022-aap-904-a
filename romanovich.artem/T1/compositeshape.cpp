@@ -3,19 +3,7 @@
 void CompositeShape::push_back(Shape *shp)
 {
   size_t capAdd = 2;
-  if (capacity_ < size_)
-  {
-    throw std::invalid_argument("Expansion is impossible.");
-  }
-  Shape **newShape = nullptr;
-  try
-  {
-    newShape = new Shape *[capacity_ + capAdd];
-  }
-  catch (...)
-  {
-    throw std::invalid_argument("Error while adding figure.");
-  }
+  Shape **newShape = new Shape *[capacity_ + capAdd];
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
   {
@@ -29,10 +17,6 @@ void CompositeShape::push_back(Shape *shp)
 void CompositeShape::push_back(const Shape *shp)
 {
   size_t capAdd = 2;
-  if (capacity_ < size_)
-  {
-    throw std::invalid_argument("Expansion is impossible.");
-  }
   Shape **newShape = new Shape *[capacity_ + capAdd];
   capacity_ += capAdd;
   for (size_t i = 0; i <= size_; ++i)
@@ -147,7 +131,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
       delete newShape[i];
     }
     delete[] newShape;
-    throw std::invalid_argument("Error while coping figure.");
+    throw;
   }
   CompositeShape::~CompositeShape();
   shape_ = newShape;

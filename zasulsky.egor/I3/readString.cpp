@@ -18,6 +18,7 @@ char* zasulsky::readString(std::istream& in)
         char* newstr = extendString(cstring, capacity, capacity + 20);
         delete [] cstring;
         cstring = newstr;
+        capacity += 20;
       } catch (const std::exception& err) {
         std::cout << err.what() << '\n';
         delete [] cstring;

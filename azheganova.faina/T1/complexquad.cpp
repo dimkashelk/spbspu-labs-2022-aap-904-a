@@ -9,11 +9,35 @@ Complexquad::Complexquad():
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   complexquad1{pos1, pos2, pos3, pos4}
 {
+  double pos1x = pos1.x;
+  double pos2x = pos2.x;
+  double pos3x = pos3.x;
+  double pos4x = pos4.x;
+  double pos1y = pos1.y;
+  double pos2y = pos2.y;
+  double pos3y = pos3.y;
+  double pos4y = pos4.y;
   if (((pos1.x == pos2.x) && (pos1.y== pos2.y)) || ((pos1.x == pos3.x) && (pos1.y== pos3.y)) || ((pos1.x == pos4.x) && (pos1.y== pos4.y)))
   {
     throw std::invalid_argument("wrong complexquad");
   }
   if (((pos2.x == pos3.x) && (pos2.y== pos3.y)) || ((pos2.x == pos4.x) && (pos2.y== pos4.y)) || ((pos3.x == pos4.x) && (pos3.y== pos4.y)))
+  {
+    throw std::invalid_argument("wrong complexquad");
+  }
+  if (( pos1.x - pos3.x ) * ( pos2.y - pos3.y ) - ( pos2.x - pos3.x ) * ( pos1.y - pos3.y ) == 0)
+  {
+    throw std::invalid_argument("wrong complexquad");
+  }
+  if (( pos2.x - pos4.x ) * ( pos3.y - pos4.y ) - ( pos3.x - pos4.x ) * ( pos2.y - pos4.y ) == 0)
+  {
+    throw std::invalid_argument("wrong complexquad");
+  }
+  if (( pos1.x - pos4.x ) * ( pos2.y - pos4.y ) - ( pos2.x - pos4.x ) * ( pos1.y - pos4.y ) == 0)
+  {
+    throw std::invalid_argument("wrong complexquad");
+  }
+  if (( pos1.x - pos4.x ) * ( pos3.y - pos4.y ) - ( pos3.x - pos4.x ) * ( pos1.y - pos4.y ) == 0)
   {
     throw std::invalid_argument("wrong complexquad");
   }

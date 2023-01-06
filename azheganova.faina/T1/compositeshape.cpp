@@ -58,37 +58,32 @@ double CompositeShape::getArea() const
   return square;
 }
 
-
 rectangle_t CompositeShape::getFrameRect() const
 {
   rectangle_t rectangle = shape_[0]->getFrameRect();
-  double max_x = rectangle.pos.x + 0.5 * rectangle.width;
-  double max_y = rectangle.pos.y + 0.5 * rectangle.height;
-  double min_x = max_x;
-  double min_y = max_y;
-  for (size_t i = 0; i < size_; ++i)
+  double leftdownx = rectangle.pos.x - rectangle.width / 2;
+  double leftdowny = rectangle.pos.x - rectangle.height / 2;
+  double rightupx = rectangle.pos.x + rectangle.width / 2;
+  double rightupy = rectangle.pos.y + rectangle.height / 2;
+  double minx = leftdownx;
+  double miny = leftdowny;
+  double maxx = rightupx;
+  double maxy = rightupy;
+  for (size_t i = 0; i < size_; i++)
   {
-    rectangle_t rectangle1 = shape_[i]->getFrameRect();
-    if (max_x < rectangle1.pos.x + 0.5 * rectangle1.width)
-    {
-      max_x = rectangle1.pos.x + 0.5 * rectangle1.width;
-    }
-    if (min_x > rectangle1.pos.x - 0.5 * rectangle1.width)
-    {
-      min_x = rectangle1.pos.x - 0.5 * rectangle1.width;
-    }
-    if (max_y < rectangle1.pos.y + 0.5 * rectangle1.height)
-    {
-      max_y = rectangle1.pos.y + 0.5 * rectangle1.height;
-    }
-    if (min_y > rectangle1.pos.y - 0.5 * rectangle1.height)
-    {
-      min_y = rectangle1.pos.y - 0.5 * rectangle1.height;
-    }
+    rectangle = shape_[i]->getFrameRect();
+    leftdownx = rectangle.pos.x - rectangle.width / 2;
+    leftdowny = rectangle.pos.x - rectangle.height / 2;
+    rightupx = rectangle.pos.x + rectangle.width / 2;
+    rightupy = rectangle.pos.y + rectangle.height / 2;
+    minx = std::min(minx, leftdownx);
+    miny = std::min(miny, leftdowny);
+    maxx = std::max(maxx, rightupx);
+    maxy = std::max(maxy, rightupy);
   }
-  point_t centerofframe{(max_x + min_x) / 2, (max_y + min_y) / 2};
-  rectangle_t frameRectangle{centerofframe, max_x - min_x, max_y - min_y};
-  return frameRectangle;
+  point_t center({(minx + maxx) / 2, (miny + maxy) / 2});
+  rectangle_t framerect{center, maxx - minx, maxy - miny};
+  return framerect;
 }
 
 

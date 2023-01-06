@@ -19,10 +19,6 @@ void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangl
 
 void printAreaAndFrames(std::ostream & out, const CompositeShape & comp, size_t shp_size)
 {
-  if (!shp_size)
-  {
-    throw std::invalid_argument("error");
-  }
   double summ_area = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
   {
@@ -105,11 +101,6 @@ int main()
       scalek = k;
       break;
     }
-  }
-  if (!std::cin)
-  {
-    std::cerr << "error";
-    return 1;
   }
   if (!isscale)
   {

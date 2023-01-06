@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <stdexcept>
 #include <array>
-#include <iostream>
 Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const point_t &D):
   a_(A),
   b_(B),

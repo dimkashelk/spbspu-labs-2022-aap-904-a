@@ -2,7 +2,6 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-#include <iostream>
 Parallelogram::Parallelogram(const point_t &A, const point_t &B, const point_t &C):
   a_(A),
   b_(B),

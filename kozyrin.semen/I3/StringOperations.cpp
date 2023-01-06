@@ -32,7 +32,7 @@ char* inputString(std::istream& stream, size_t& size)
     }
     stream >> str[size];
     size++;
-  } while(str[size] != '\0');
+  } while(str[size] != '\n' && stream);
 
   str[size] = '\0';
   return str;

@@ -13,7 +13,8 @@ Concave::Concave(const point_t &A, const point_t &B, const point_t &C, const poi
 }
 bool Concave::isGoodConcaveInput() const
 {
-  return pointInsideTriangle(triangle_t{points_[0], points_[1], points_[2]}, points_[3]) && isTriangle(splitIntoTriangles());
+  std::array< double, 3 > arr = {splitIntoTriangles()[0], splitIntoTriangles()[1], splitIntoTriangles()[2]};
+  return pointInsideTriangle(triangle_t{points_[0], points_[1], points_[2]}, points_[3]) && isTriangle(arr);
 }
 std::array< double, 6 > Concave::splitIntoTriangles() const
 {

@@ -8,7 +8,7 @@ double twoPointsDistance(const point_t &p1, const point_t &p2)
   double line_y = p1.y - p2.y;
   return std::sqrt(line_x * line_x + line_y * line_y);
 }
-bool isTriangle(std::array< double, 6 > sides)
+bool isTriangle(std::array< double, 3 > sides)
 {
   double a = sides[0];
   double b = sides[1];

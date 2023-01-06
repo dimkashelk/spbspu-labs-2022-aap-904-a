@@ -28,7 +28,7 @@ bool compare(const char* i, const char* q)
   }
   return match;
 }
-char* sortStringByAscii(char* finalstr, const char* cstring, char* newstr)
+char* sortStringByAscii(char* finalstr, char* cstring, char* newstr)
 {
   size_t elstr = 0;
   char* q = newstr;
@@ -43,7 +43,7 @@ char* sortStringByAscii(char* finalstr, const char* cstring, char* newstr)
       }
     }
   }
-  for (const char* i = newstr; *i; i++)
+  for (char* i = newstr; *i; i++)
   {
     if (std::isalpha(*i))
     {

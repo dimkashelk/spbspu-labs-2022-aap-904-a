@@ -28,3 +28,9 @@ bool pointInsideTriangle(triangle_t triangle, point_t point)
   bool isLeftCA = ((point.x - c.x) * (a.y - c.y) - (point.y - c.y) * (a.x - c.x) > 0);
   return ((isLeftAB && isLeftBC && isLeftCA) || (!isLeftAB && !isLeftBC && !isLeftCA));
 }
+point_t multiplyVector(point_t center, point_t point, double koeff)
+{
+  point.x = koeff * (point.x - center.x) + center.x;
+  point.y = koeff * (point.y - center.y) + center.y;
+  return point;
+}

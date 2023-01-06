@@ -18,5 +18,5 @@ struct rectangle_t
 double twoPointsDistance(const point_t &p1, const point_t &p2);
 bool isTriangle(std::array< double, 6 > sides);
 bool pointInsideTriangle(triangle_t triangle, point_t point);
-void vectorsSum();
+point_t multiplyVector(point_t center, point_t point, double koeff);
 #endif

@@ -7,9 +7,8 @@ namespace tarasenko
   class CompositeShape
   {
   public:
-   size_t size_;
-   Shape ** shapes;
    CompositeShape();
+   size_t size() const;
    double getArea() const;
    rectangle_t getFrameRect() const;
    void move(point_t pos);
@@ -23,6 +22,8 @@ namespace tarasenko
    ~CompositeShape();
   private:
    size_t capacity_;
+   size_t size_;
+   Shape ** shapes;
   };
 }
 #endif

@@ -8,6 +8,11 @@ tarasenko::CompositeShape::CompositeShape():
   shapes(new Shape * [capacity_])
 {}
 
+size_t tarasenko::CompositeShape::size() const
+{
+  return size_;
+}
+
 double tarasenko::CompositeShape::getArea() const
 {
   double area = 0.0;

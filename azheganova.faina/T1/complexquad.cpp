@@ -44,7 +44,7 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   cy = numeratorcy / denominatorcy;
   numeratorcx = (cy - pos1.y) * (pos2.x - pos1.x);
   denominatorcx = pos2.y - pos1.y;
-  cx = (numeratorcy / denominatorcy) - pos1.x;
+  cx = (numeratorcx / denominatorcx) - pos1.x;
   return (point_t {cx, cy});
 }
 

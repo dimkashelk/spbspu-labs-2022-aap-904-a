@@ -17,17 +17,17 @@ void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangl
   output << point2.x << ' ' << point2.y;
 }
 
-void printAreaAndFrames(std::ostream & output, const CompositeShape & rhs, size_t shp_size)
+void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, size_t size)
 {
-  double summ_area = 0.0;
-  for (size_t i = 0; i < shp_size; ++i)
+  double summarea = 0.0;
+  for (size_t i = 0; i < size; ++i)
   {
-    summ_area += rhs[i]->getArea();
+    summarea += shapes[i]->getArea();
   }
-  output << summ_area;
-  for (size_t i = 0; i < shp_size; ++i)
+  output << summarea;
+  for (size_t i = 0; i < size; ++i)
   {
-    printLeftDownAndRightUp(output << ' ', rhs[i]->getFrameRect());
+    printLeftDownAndRightUp(output << ' ', shapes[i]->getFrameRect());
   }
 }
 
@@ -35,7 +35,7 @@ int main()
 {
   std::string line;
   size_t cap = 10;
-  CompositeShape rhs(cap);
+  CompositeShape shapes(cap);
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
@@ -50,7 +50,7 @@ int main()
       try
       {
         Shape *shape = inputRectangle(std::cin);
-        rhs.push_back(shape);
+        shapes.push_back(shape);
       }
       catch(const std::logic_error &e)
       {
@@ -65,7 +65,7 @@ int main()
       try
       {
         Shape *shape = inputTriangle(std::cin);
-        rhs.push_back(shape);
+        shapes.push_back(shape);
       }
       catch(const std::logic_error &e)
       {
@@ -79,8 +79,8 @@ int main()
       isfigure = true;
       try
       {
-      Shape *shape = inputComplexquad(std::cin);
-      rhs.push_back(shape);
+        Shape *shape = inputComplexquad(std::cin);
+        shapes.push_back(shape);
       }
       catch(const std::logic_error &e)
       {
@@ -111,13 +111,13 @@ int main()
   {
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1),  rhs, rhs.size());
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
   std::cout << "\n";
   try
   {
-    for (size_t i = 0; i < rhs.size(); ++i)
+    for (size_t i = 0; i < shapes.size(); ++i)
     {
-      isoScale(rhs[i], scalecenter, scalek);
+      isoScale(shapes[i], scalecenter, scalek);
     }
   }
   catch(const std::logic_error &e)
@@ -125,7 +125,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  printAreaAndFrames(std::cout, rhs, rhs.size());
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
   std::cout << "\n";
   return 0;
 }

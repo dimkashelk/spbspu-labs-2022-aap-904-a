@@ -86,7 +86,6 @@ rectangle_t CompositeShape::getFrameRect() const
   return framerect;
 }
 
-
 void CompositeShape::move(const point_t position)
 {
   rectangle_t framerect = CompositeShape::getFrameRect();
@@ -158,8 +157,6 @@ void CompositeShape::push_back(Shape * shp)
   shape_[size_++] = shp;
 }
 
-
-
 void CompositeShape::pop_back()
 {
   delete shape_[size_ - 1];
@@ -175,6 +172,3 @@ size_t CompositeShape::size()
 {
   return size_;
 }
-
-
-

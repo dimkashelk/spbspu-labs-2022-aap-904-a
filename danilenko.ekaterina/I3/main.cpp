@@ -42,8 +42,18 @@ int main()
   }
 
   //1
+  char* destination1 = nullptr;
+  try
+  {
+    destination1 = new char[27];
+  }
+  catch (const std::bad_alloc& e)
+  {
+    std::cout << e.what() << '\n';
+    delete[] source1;
+    return 1;
+  }
   const char source2[] = "abcd";
-  char* destination1 = new char[30];
   destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
 

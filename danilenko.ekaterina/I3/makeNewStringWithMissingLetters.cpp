@@ -1,6 +1,7 @@
 #include "makeNewStringWithMissingLetters.h"
 #include <iostream>
 #include <cctype>
+#include <cstddef>
 
 char* makeNewStringWithMissingLetters(char* destination, const char* source)
 {

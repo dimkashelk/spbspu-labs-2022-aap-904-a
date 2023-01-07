@@ -1,5 +1,5 @@
 #include "lengthlongerdecreasing.h"
-size_t length_longer_decreasing(const int *arr, const size_t size)
+size_t length_longer_decreasing(const int *arr, size_t size)
 {
   if (size == 0)
   {

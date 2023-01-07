@@ -39,10 +39,6 @@ void Rectangle::move(point_t position)
 
 void Rectangle::scale(double k)
 {
-  double center_x = getFrameRectangle().position.x;
-  double center_y = getFrameRectangle().position.y;
-  left_down_.x = center_x + (left_down_.x - center_x) * k;
-  left_down_.y = center_y + (left_down_.y - center_y) * k;
-  right_up_.x = center_x + (right_up_.x - center_x) * k;
-  right_up_.y = center_y + (right_up_.y - center_y) * k;
+  left_down_ = baseFunctions::Scale(left_down_, getFrameRectangle().position, k);
+  right_up_ = baseFunctions::Scale(right_up_, getFrameRectangle().position, k);
 }

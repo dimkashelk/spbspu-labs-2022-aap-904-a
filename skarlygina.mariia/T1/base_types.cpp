@@ -11,3 +11,10 @@ double baseFunctions::findDifference(double position, double rect)
 {
   return position - rect;
 }
+
+point_t Scale(point_t point, point_t center, double k)
+{
+  point.x = center.x + (point.x - center.x) * k;
+  point.y = center.y + (point.y - center.y) * k;
+  return point;
+}

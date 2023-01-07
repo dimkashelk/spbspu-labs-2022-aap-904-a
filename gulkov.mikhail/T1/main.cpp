@@ -29,7 +29,20 @@ int main()
         std::cerr << e.what() << "\n";
       }
     }
-    if (input == "SCALE")
+    else if (input == "ELLIPSE")
+    {
+      try
+      {
+        shapes[size] = makeEllipse(std::cin);
+        ++size;
+      }
+      catch (const std::invalid_argument &e)
+      {
+        std::cerr << "Error: \n";
+        std::cerr << e.what() << "\n";
+      }
+    }
+    else if (input == "SCALE")
     {
       try
       {

@@ -2,7 +2,7 @@
 #include <cmath>
 #include <stdexcept>
 
-Rectangle::Rectangle(point_t left_down, point_t right_up) :
+Rectangle::Rectangle(point_t left_down, point_t right_up):
   left_down_(left_down),
   right_up_(right_up),
   left_up_ {left_down.x, right_up.y}

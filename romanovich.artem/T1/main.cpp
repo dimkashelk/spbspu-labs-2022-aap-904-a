@@ -8,15 +8,14 @@
 #include "concave.h"
 void printLine(Shape *shape)
 {
-  auto p = std::setprecision(1);
   std::cout << std::fixed;
   rectangle_t frameRect = shape->getFrameRect();
   double frRect1X = frameRect.pos.x - frameRect.width / 2;
   double frRect1Y = frameRect.pos.y - frameRect.height / 2;
   double frRect2X = frameRect.pos.x + frameRect.width / 2;
   double frRect2Y = frameRect.pos.y + frameRect.height / 2;
-  std::cout << p << frRect1X << " " << p << frRect1Y << " ";
-  std::cout << p << frRect2X << " " << p << frRect2Y;
+  std::cout << frRect1X << " " << frRect1Y << " ";
+  std::cout << frRect2X << " " << frRect2Y;
 }
 int main()
 {

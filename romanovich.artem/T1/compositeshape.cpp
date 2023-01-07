@@ -48,7 +48,7 @@ void CompositeShape::unsafeIsoScale(const point_t &position, double k) noexcept
     shape_[i]->move(s.x, s.y);
     s.x *= -k;
     s.y *= -k;
-    shape_[i]->scale(k);
+    shape_[i]->unsafeScale(k);
     shape_[i]->move(s.x, s.y);
   }
 }
@@ -113,7 +113,7 @@ void CompositeShape::unsafeScale(double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shape_[i]->scale(k);
+    shape_[i]->unsafeScale(k);
   }
 }
 CompositeShape::CompositeShape(const CompositeShape &rhs):

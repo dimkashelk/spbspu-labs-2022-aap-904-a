@@ -69,14 +69,11 @@ void Concave::move(double dx, double dy)
 void Concave::makeScale(double k)
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  dots_[0].x = k * (dots_[0].x - center.x) + center.x;
-  dots_[0].y = k * (dots_[0].y - center.y) + center.y;
-  dots_[1].x = k * (dots_[1].x - center.x) + center.x;
-  dots_[1].y = k * (dots_[1].y - center.y) + center.y;
-  dots_[2].x = k * (dots_[2].x - center.x) + center.x;
-  dots_[2].y = k * (dots_[2].y - center.y) + center.y;
-  dots_[3].x = k * (dots_[3].x - center.x) + center.x;
-  dots_[3].y = k * (dots_[3].y - center.y) + center.y;
+  for (point_t &dot: dots_)
+  {
+    dot.x = k * (dot.x - center.x) + center.x;
+    dot.y = k * (dot.y - center.y) + center.y;
+  }
 }
 
 Shape *Concave::clone() const

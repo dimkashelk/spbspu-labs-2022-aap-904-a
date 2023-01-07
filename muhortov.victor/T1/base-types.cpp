@@ -23,17 +23,3 @@ bool checkingConcave(const point_t &one, const point_t &two, const point_t &thre
 
   return (first || second || third);
 }
-
-point_t moveToPosition(point_t position, double delta_x, double delta_y)
-{
-  position.x += delta_x;
-  position.y += delta_y;
-  return position;
-}
-
-point_t multiplyPosition(point_t position, point_t center, double k)
-{
-  position.x = k * (position.x - center.x) + center.x;
-  position.y = k * (position.y - center.y) + center.y;
-  return position;
-}

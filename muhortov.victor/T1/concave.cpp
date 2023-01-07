@@ -20,7 +20,7 @@ std::array< double, 6 > Concave::splitIntoTriangles() const
   double c1_ = calculatePointsDistance(positions[0], positions[1]);
   double a2_ = calculatePointsDistance(positions[2], positions[3]);
   double b2_ = b1_;
-  double c2_ = calculatePointsDistance(positions[3], positions[2]);
+  double c2_ = calculatePointsDistance(positions[3], positions[1]);
   std::array< double, 6 > arr = {a1_, b1_, c1_, a2_, b2_, c2_};
   return arr;
 }
@@ -61,7 +61,8 @@ void Concave::move(double delta_x, double delta_y)
 {
   for (point_t &position: positions)
   {
-    position = moveToPosition(position, delta_x, delta_y);
+    position.x += delta_x;
+    position.y += delta_y;
   }
 }
 
@@ -70,7 +71,8 @@ void Concave::scaleWithoutCheck(double k)
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
   for (point_t &position: positions)
   {
-    position = multiplyPosition(position, center, k);
+    position.x = k * (position.x - center.x) + center.x;
+    position.y = k * (position.y - center.y) + center.y;
   }
 }
 

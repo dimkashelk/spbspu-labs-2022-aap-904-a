@@ -20,7 +20,5 @@ struct scale_t
 
 double calculatePointsDistance(const point_t &p1, const point_t &p2);
 bool checkingConcave(const point_t &one, const point_t &two, const point_t &three, const point_t &four);
-point_t moveToPosition(point_t position, double delta_x, double delta_y);
-point_t multiplyPosition(point_t position, point_t center, double k);
 
 #endif

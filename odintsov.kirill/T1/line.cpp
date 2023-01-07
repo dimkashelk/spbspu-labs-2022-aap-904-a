@@ -11,7 +11,7 @@ double odintsov::getLineSegLength(const point_t& p1, const point_t& p2)
 
 double getDeterminant(double m11, double m12, double m21, double m22)
 {
-  return m11 * m22 - m12 * m21
+  return m11 * m22 - m12 * m21;
 }
 
 odintsov::point_t odintsov::getLineIntersectionPoint(const point_t& p1, const point_t& p2, const point_t& p3, const point_t& p4)

@@ -17,7 +17,8 @@ namespace odintsov {
 
       CompositeShape& operator=(const CompositeShape& shp);
       CompositeShape& operator=(CompositeShape&& shp);
-      Shape* operator[](size_t id) const;
+      Shape* operator[](size_t id);
+      const Shape* operator[](size_t id) const;
 
       double getArea() const;
       rectangle_t getFrameRect() const;
@@ -28,7 +29,8 @@ namespace odintsov {
 
       void push_back(Shape* shp);
       void pop_back();
-      Shape* at(size_t id) const;
+      Shape* at(size_t id);
+      const Shape* at(size_t id) const;
       bool empty() const;
       size_t size() const;
     private:

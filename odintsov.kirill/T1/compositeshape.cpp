@@ -162,7 +162,7 @@ void odintsov::CompositeShape::pop_back()
   shapes[size_] = nullptr;
 }
 
-odintsov::Shape* odintsov::CompositeShape::at(size_t id) const
+odintsov::Shape* odintsov::CompositeShape::at(size_t id)
 {
   if (id >= size())
   {
@@ -171,7 +171,21 @@ odintsov::Shape* odintsov::CompositeShape::at(size_t id) const
   return shapes[id];
 }
 
-odintsov::Shape* odintsov::CompositeShape::operator[](size_t id) const
+const odintsov::Shape* odintsov::CompositeShape::at(size_t id) const
+{
+  if (id >= size())
+  {
+    throw std::out_of_range("index out of range");
+  }
+  return shapes[id];
+}
+
+odintsov::Shape* odintsov::CompositeShape::operator[](size_t id)
+{
+  return shapes[id];
+}
+
+const odintsov::Shape* odintsov::CompositeShape::operator[](size_t id) const
 {
   return shapes[id];
 }
@@ -200,7 +214,7 @@ void odintsov::CompositeShape::extend(size_t newCap)
   cap_ = newCap;
 }
 
-std::ostream& odintsov::outputCompositeShape(std::ostream& out, CompositeShape& composite)
+std::ostream& odintsov::outputCompositeShape(std::ostream& out, const CompositeShape& composite)
 {
   out << composite.getArea();
   for (size_t i = 0; i < composite.size(); i++) {

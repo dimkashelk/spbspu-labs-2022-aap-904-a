@@ -21,15 +21,7 @@ Shape *createRing(std::istream &input)
 Shape *createConcave(std::istream &input)
 {
   double positions[8] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-  try
-  {
-    input >> positions[0] >> positions[1] >> positions[2] >> positions[3] >> positions[4] >> positions[5] >> positions[6]
-          >> positions[7];
-  }
-  catch (...)
-  {
-    throw std::invalid_argument("Error test");
-  }
+  input >> positions[0] >> positions[1] >> positions[2] >> positions[3] >> positions[4] >> positions[5] >> positions[6] >> positions[7];
   return new Concave({positions[0], positions[1]}, {positions[2], positions[3]}, {positions[4], positions[5]}, {positions[6], positions[7]});
 }
 

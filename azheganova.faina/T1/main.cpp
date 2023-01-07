@@ -11,15 +11,12 @@
 
 void printFlamePoint(Shape *shape)
 {
-  auto set = std::setprecision(1);
   std::cout << std::fixed;
-  rectangle_t rectangle = shape->getFrameRect();
-  double point1 = rectangle.pos.x - 0.5 * rectangle.width;
-  double point2 = rectangle.pos.y - 0.5 * rectangle.height;
-  double point3 = rectangle.pos.x + 0.5 * rectangle.width;
-  double point4 = rectangle.pos.y + 0.5 * rectangle.height;
-  std::cout  << set << point1 << ' ' << set << point2 << ' ';
-  std::cout  << set << point3 << ' ' << set << point4;
+  rectangle_t rect = shape->getFrameRect();
+  point_t point1{rect.pos.x - 0.5 * rect.width, rect.pos.y - 0.5 * rect.height};
+  point_t point2{rect.pos.x + 0.5 * rect.width, rect.pos.y + 0.5 * rect.height};
+  std::cout  << std::setprecision(1) << point1.x << ' ' << std::setprecision(1) << point1.y << ' ';
+  std::cout  << std::setprecision(1) << point2.x << ' ' << std::setprecision(1) << point2.y;
 }
 
 int main()
@@ -107,8 +104,7 @@ int main()
     std::cerr << "error";
     return 1;
   }
-  auto set = std::setprecision(1);
-  std::cout << std::fixed << set << compositeShape.getArea() << " ";
+  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
   printFlamePoint(compositeShape[0]);
   for (size_t i = 1; i < compositeShape.size(); ++i)
   {
@@ -128,7 +124,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  std::cout << std::fixed << set << compositeShape.getArea() << " ";
+  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
   printFlamePoint(compositeShape[0]);
   for (size_t i = 1; i < compositeShape.size(); ++i)
   {

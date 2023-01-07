@@ -10,8 +10,7 @@ odintsov::Concave::Concave(const point_t& p1, const point_t& p2, const point_t& 
   p3(p3),
   p4(p4)
 {
-  if (!(isTriangle(p1, p2, p3) && isPointInsideTriangle(p4, p1, p2, p3)) ||
-      isPointOnLineSeg(p4, p1, p2) || isPointOnLineSeg(p4, p1, p3) || isPointOnLineSeg(p4, p2, p3)) {
+  if (!(isTriangle(p1, p2, p3) && isPointStrictlyInsideTriangle(p4, p1, p2, p3))) {
     throw std::invalid_argument("points are set incorrectly");
   }
 }

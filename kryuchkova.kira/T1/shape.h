@@ -16,6 +16,7 @@ namespace kryuchkova
     virtual void move(double dx, double dy) = 0;
     virtual void scale(double k) = 0;
     //virtual Shape *clone() const = 0;
+    bool operator >(const Shape &sh);
     virtual ~Shape() = default;
   };
 

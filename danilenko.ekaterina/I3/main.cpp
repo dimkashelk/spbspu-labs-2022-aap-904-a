@@ -42,7 +42,7 @@ int main()
   }
 
   //1
-  char source2[] = "abcd";
+  const char source2[] = "abcd";
   char* destination1 = new char[capacity];
   destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";

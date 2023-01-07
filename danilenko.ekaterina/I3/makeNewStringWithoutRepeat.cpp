@@ -23,37 +23,3 @@ char* makeNewStringWithoutRepeat(char* destination, const char* source1, const c
   destination[new_elements] = '\0';
   return destination;
 }
-
-
-
-
-/*while (*i != '\0')
-    {
-      const char* j = source2;
-      while (*j != '\0' && *j != *i)
-      {
-        j++;
-      }
-      if (*j != *i)
-      {
-        destination[new_elements++] = *i;
-      }
-      i++;
-    }
-  }
-  {
-    const char* j = source2;
-    while (*j != '\0')
-    {
-      const char* i = source1;
-      while (*i != '\0' && *i != *j)
-      {
-        i++;
-      }
-      if (*i != *j)
-      {
-        destination[new_elements++] = *j;
-      }
-      j++;
-    }
-  }*/

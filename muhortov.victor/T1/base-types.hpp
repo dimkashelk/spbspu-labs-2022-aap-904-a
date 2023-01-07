@@ -17,4 +17,6 @@ struct scale_t
   point_t pos;
   double scale;
 };
+
+double twoPointsDistance(const point_t &p1, const point_t &p2);
 #endif

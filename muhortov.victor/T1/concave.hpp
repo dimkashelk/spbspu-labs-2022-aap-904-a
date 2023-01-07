@@ -2,6 +2,7 @@
 #define CONCAVE_HPP
 #include "base-types.hpp"
 #include "shape.hpp"
+#include <array>
 
 class Concave: public Shape
 {
@@ -18,6 +19,7 @@ private:
   double a, b, c, inTrOne, inTrTwo, p, pIn;
   bool checkTrOne, checkTrTwo, checkTrThree;
   point_t first, second ,third, fourth;
+  std::array< double, 6 > splitIntoTriangles() const;
 };
 
 #endif

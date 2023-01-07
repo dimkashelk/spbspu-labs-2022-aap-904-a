@@ -48,7 +48,6 @@ double Complexquad::getArea() const
   double det = a1 * b2 - a2 * b1;
   cx = (b1 * c2 - b2 * c1) / det;
   cy = (a2 * c1 - a1 * c2) / det;
-  point_t center = {cx, cy};
   point_t complexquad1[4] = {cx, cy};
   double firsttriangle1 = 0.0;
   double firsttriangle2 = 0.0;

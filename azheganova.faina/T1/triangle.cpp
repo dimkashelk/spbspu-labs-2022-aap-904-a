@@ -1,5 +1,6 @@
 #include "triangle.h"
 #include "base_types.h"
+#include <iostream>
 #include <stdexcept>
 #include <cmath>
 
@@ -25,7 +26,7 @@ double Triangle::getArea() const
   double secondpart = 0.0;
   firstpart = (triangle1[1].x - triangle1[0].x) * (triangle1[2].y - triangle1[0].y);
   secondpart = (triangle1[2].x - triangle1[0].x) * (triangle1[1].y - triangle1[0].y);
-  return std::fabs(firstpart - secondpart) / 2;
+  return std::abs(0.5 * (firstpart - secondpart));
 }
 rectangle_t Triangle::getFrameRect() const
 {

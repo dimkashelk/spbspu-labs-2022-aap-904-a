@@ -16,13 +16,13 @@ namespace kryuchkova
     virtual void move(double dx, double dy) = 0;
     virtual void scale(double k) = 0;
     //virtual Shape *clone() const = 0;
-    bool operator >(const Shape &sh);
+    bool operator<(const Shape &sh);
     virtual ~Shape() = default;
   };
 
   void isoScale(kryuchkova::Shape *shape, kryuchkova::point_t point, double k);
-  std::ostream& operator << (std::ostream &out, const kryuchkova::point_t &point);
-  std::ostream& operator << (std::ostream &out, const kryuchkova::Shape &shape);
+  std::ostream& operator<<(std::ostream &out, const kryuchkova::point_t &point);
+  std::ostream& operator<<(std::ostream &out, const kryuchkova::Shape &shape);
 }
 
 #endif

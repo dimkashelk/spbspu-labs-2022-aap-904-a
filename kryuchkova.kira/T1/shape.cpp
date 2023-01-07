@@ -17,12 +17,12 @@ namespace kryuchkova
     shape->move(dx, dy);
   }
 
-  std::ostream& operator << (std::ostream &out, const point_t &point)
+  std::ostream& operator<<(std::ostream &out, const point_t &point)
   {
     return out << round(point.x * 10) / 10 << " " << round(point.y * 10) / 10;
   }
 
-  std::ostream& operator << (std::ostream &out, const Shape &shape)
+  std::ostream& operator<<(std::ostream &out, const Shape &shape)
   {
     std::string name = shape.getName();
     double area = round(shape.getArea() * 10) / 10;
@@ -32,8 +32,8 @@ namespace kryuchkova
     return out << name << " " << area << " " << lb << ru;
   }
 
-  bool Shape::operator >(const Shape &sh)
+  bool Shape::operator<(const Shape &sh)
   {
-    return (getArea() > sh.getArea());
+    return (getArea() < sh.getArea());
   }
 }

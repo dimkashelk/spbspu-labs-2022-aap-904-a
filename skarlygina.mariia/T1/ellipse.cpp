@@ -1,6 +1,4 @@
 #include "ellipse.h"
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include <stdexcept>
 
 Ellipse::Ellipse(point_t center, double radius_vertical, double radius_horizontal):
@@ -11,7 +9,7 @@ Ellipse::Ellipse(point_t center, double radius_vertical, double radius_horizonta
 
 double Ellipse::getArea() const
 {
-  const double pi = M_PI;
+  const double pi = 3.1416;
   return (pi * radius_vertical_ * radius_horizontal_);
 }
 rectangle_t Ellipse::getFrameRectangle() const

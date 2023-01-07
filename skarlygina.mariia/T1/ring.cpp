@@ -1,7 +1,6 @@
 #include "ring.h"
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include <stdexcept>
+
 Ring::Ring(point_t center, double radius_small, double radius_big):
   center_(center),
   radius_small_(radius_small),
@@ -10,7 +9,7 @@ Ring::Ring(point_t center, double radius_small, double radius_big):
 
 double Ring::getArea() const
 {
-  const double pi = M_PI;
+  const double pi = 3.1416;
   return (pi * radius_big_ * radius_big_ - pi * radius_small_ * radius_small_);
 }
 

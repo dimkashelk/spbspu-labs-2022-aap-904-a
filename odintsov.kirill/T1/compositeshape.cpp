@@ -7,9 +7,7 @@
 #include "base-types.hpp"
 
 odintsov::CompositeShape::CompositeShape():
-  size_(0),
-  cap_(5),
-  shapes(new Shape*[cap_])
+  CompositeShape(5)
 {}
 
 odintsov::CompositeShape::CompositeShape(size_t cap):
@@ -19,32 +17,31 @@ odintsov::CompositeShape::CompositeShape(size_t cap):
 {}
 
 odintsov::CompositeShape::CompositeShape(const odintsov::CompositeShape& shp):
-  size_(0),
-  cap_(shp.size()),
-  shapes(new Shape*[cap_])
+  CompositeShape(shp.cap_)
 {
   try {
-    for (size_t i = 0; i < size(); i++) {
-      push_back(shp[i]->clone());
+    for (size_t i = 0; i < shp.size(); i++) {
+      Shape* clone = shp[i]->clone();
+      push_back(clone);
     }
   } catch (...) {
     while (!empty()) {
       pop_back();
     }
+    delete [] shapes;
     throw;
   }
 }
 
 
 odintsov::CompositeShape::CompositeShape(odintsov::CompositeShape&& shp):
-  size_(0),
-  cap_(shp.size()),
-  shapes(new Shape*[cap_])
+  size_(shp.size()),
+  cap_(shp.cap_),
+  shapes(shp.shapes)
 {
-  while (!shp.empty()) {
-    push_back(shp[shp.size() - 1]);
-    shp.pop_back();
-  }
+  shp.shapes = nullptr;
+  shp.cap_ = 0;
+  shp.size_ = 0;
 }
 
 odintsov::CompositeShape::~CompositeShape()
@@ -57,15 +54,25 @@ odintsov::CompositeShape::~CompositeShape()
 
 odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::CompositeShape& shp)
 {
+  Shape** clonedShapes = new Shape*[shp.cap_];
+  for (size_t i = 0; i < shp.size(); i++) {
+    try {
+      clonedShapes[i] = shp[i]->clone();
+    } catch (...) {
+      for (size_t j = 0; j < i; i++) {
+        delete clonedShapes[j];
+      }
+      delete [] clonedShapes;
+      throw;
+    }
+  }
   while(!empty()) {
     pop_back();
   }
-  if (cap_ < shp.size()) {
-    extend(shp.size());
-  }
-  for (size_t i = 0; i < shp.size(); i++) {
-    push_back(shp[i]->clone());
-  }
+  delete [] shapes;
+  shapes = clonedShapes;
+  cap_ = shp.cap_;
+  size_ = shp.size_;
   return *this;
 }
 
@@ -74,13 +81,12 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(odintsov::Composit
   while(!empty()) {
     pop_back();
   }
-  if (cap_ < shp.size()) {
-    extend(shp.size());
-  }
-  while (!shp.empty()) {
-    push_back(shp[shp.size() - 1]);
-    shp.pop_back();
-  }
+  size_ = shp.size_;
+  cap_ = shp.cap_;
+  shapes = shp.shapes;
+  shp.size_ = 0;
+  shp.cap_ = 0;
+  shp.shapes = nullptr;
   return *this;
 }
 
@@ -149,6 +155,9 @@ void odintsov::CompositeShape::push_back(Shape* shp)
 
 void odintsov::CompositeShape::pop_back()
 {
+  if (size_ == 0) {
+    return;
+  }
   delete shapes[--size_];
   shapes[size_] = nullptr;
 }

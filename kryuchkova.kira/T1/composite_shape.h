@@ -25,6 +25,10 @@ namespace kryuchkova
     void push_back(Shape *sh);
     void push_back (Shape const *sh);
     void pop_back();
+    Shape* at(size_t index);
+    const Shape* at(size_t index) const;
+    bool empty() const;
+    size_t size() const;
   private:
     size_t size;
     size_t capacity;

@@ -205,3 +205,40 @@ void kryuchkova::CompositeShape::pop_back()
   delete shapes[size - 1];
   size--;
 }
+
+kryuchkova::Shape* kryuchkova::CompositeShape::at(size_t index)
+{
+  if (index > size)
+  {
+    throw std::out_of_range("out of range");
+  }
+  return shapes[index];
+}
+
+const kryuchkova::Shape* kryuchkova::CompositeShape::at(size_t index) const
+{
+  if (index > size)
+  {
+    throw std::out_of_range("out of range");
+  }
+  return shapes[index];
+}
+
+bool kryuchkova::CompositeShape::empty() const
+{
+  return size == 0;
+}
+
+size_t kryuchkova::CompositeShape::size() const
+{
+  return size;
+}
+
+void kryuchkova::CompositeShape::free(Shape **shapes, size_t size)
+{
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shapes[i];
+  }
+  delete[] shapes;
+}

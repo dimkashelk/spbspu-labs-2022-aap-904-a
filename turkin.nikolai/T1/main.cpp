@@ -13,62 +13,40 @@ int main()
   while (std::cin)
   {
      std::cin >> line;
-     if (line == "RECTANGLE")
+     try
      {
-       try
+       if (line == "RECTANGLE")
        {
          compositeShape.push_back(turkin::createRectangle(std::cin));
        }
-       catch (const std::logic_error & error)
-       {
-         std::cerr << error.what() << "\n";
-       }
-     }
-     if (line == "SQUARE")
-     {
-       try
+       if (line == "SQUARE")
        {
          compositeShape.push_back(turkin::createSquare(std::cin));
        }
-       catch (const std::logic_error & error)
-       {
-         std::cerr << error.what() << "\n";
-       }
-     }
-     if (line == "ELLIPSE")
-     {
-       try
+       if (line == "ELLIPSE")
        {
          compositeShape.push_back(turkin::createEllipse(std::cin));
        }
-       catch (const std::logic_error & error)
-       {
-         std::cerr << error.what() << "\n";
-       }
-     }
-     if (line == "SCALE")
-     {
-       try
+       if (line == "SCALE")
        {
          scale = turkin::getScale(std::cin);
          isscale = true;
+         break;
        }
-       catch (const std::logic_error & error)
-       {
-         std::cerr << error.what() << "\n";
-         return 1;
-       }
-       break;
+     }
+     catch (const std::logic_error & error)
+     {
+       std::cerr << error.what() << "\n";
      }
   }
   if (compositeShape.empty())
   {
-    std::cerr << "nothing to scale" << "\n";
+    std::cerr << "nothing to scaleWithVerify" << "\n";
     return 1;
   }
   if (!isscale)
   {
-    std::cerr << "no scale command" << "\n";
+    std::cerr << "no scaleWithVerify command" << "\n";
     return 1;
   }
   turkin::printAreaPoints(std::cout, compositeShape);

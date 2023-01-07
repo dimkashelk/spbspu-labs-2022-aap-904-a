@@ -1,4 +1,6 @@
 #include "compositeShape.h"
+#include <limits>
+#include <stdexcept>
 #include "isoscale.h"
 
 turkin::CompositeShape::~CompositeShape()
@@ -26,17 +28,32 @@ bool turkin::CompositeShape::empty() const
   return size_ == 0;
 }
 
-void turkin::CompositeShape::scale(turkin::scale_t scale)
+void turkin::CompositeShape::scale(scale_t scale)
 {
-  for (size_t i = 0; i < size_; i++)
+  if (scale.ds > 0)
   {
-    turkin::isoScale(shapes[i], scale);
+    scaleWithoutVerify(scale);
+  }
+  else
+  {
+    scaleWithVerify(scale);
   }
 }
 
-void turkin::CompositeShape::pop_back()
+void turkin::CompositeShape::scaleWithVerify(scale_t scale)
 {
-  delete shapes[--size_];
+  for (size_t i = 0; i < size_; i++)
+  {
+    isoScaleWithVerify(shapes[i], scale);
+  }
+}
+
+void turkin::CompositeShape::scaleWithoutVerify(scale_t scale)
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    isoScaleWithoutVerify(shapes[i], scale);
+  }
 }
 
 void turkin::CompositeShape::move(double dx, double dy)
@@ -49,10 +66,7 @@ void turkin::CompositeShape::move(double dx, double dy)
 
 void turkin::CompositeShape::move(turkin::point_t position)
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    shapes[i]->move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
-  }
+  move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
 }
 
 double turkin::CompositeShape::getArea() const
@@ -65,17 +79,12 @@ double turkin::CompositeShape::getArea() const
   return sum;
 }
 
-turkin::Shape * turkin::CompositeShape::at(size_t id) const
-{
-  return shapes[id];
-}
-
 turkin::rectangle_t turkin::CompositeShape::getFrameRect() const
 {
-  double A = 0.0;
-  double B = 0.0;
-  double C = 0.0;
-  double D = 0.0;
+  double A = std::numeric_limits< double >::min();
+  double B = std::numeric_limits< double >::min();
+  double C = std::numeric_limits< double >::max();
+  double D = std::numeric_limits< double >::max();
   for (size_t i = 0; i < size_; i++)
   {
     rectangle_t buffer = shapes[i]->getFrameRect();
@@ -85,11 +94,6 @@ turkin::rectangle_t turkin::CompositeShape::getFrameRect() const
     D = (D < buffer.pos.y - buffer.height / 2.0) ? D : buffer.pos.y - buffer.height / 2.0;
   }
   return {{(A + C) / 2.0, (B + D) / 2.0}, C - A, D - B};
-}
-
-turkin::Shape * turkin::CompositeShape::operator[](size_t id) const
-{
-  return shapes[id];
 }
 
 void turkin::CompositeShape::push_back(const turkin::Shape * shp)
@@ -113,4 +117,54 @@ void turkin::CompositeShape::push_back(Shape * shp)
   }
   shapes[size_++] = shp;
 }
+
+void turkin::CompositeShape::pop_back()
+{
+  delete shapes[--size_];
+}
+
+turkin::Shape * turkin::CompositeShape::at(size_t id)
+{
+  if (id >= size_)
+  {
+    throw std::invalid_argument("incorrect argument");
+  }
+  return shapes[id];
+}
+
+turkin::Shape * turkin::CompositeShape::operator[](size_t id)
+{
+  return shapes[id];
+}
+
+const turkin::Shape * turkin::CompositeShape::at(size_t id) const
+{
+  if (id >= size_)
+  {
+    throw std::invalid_argument("incorrect argument");
+  }
+  return shapes[id];
+}
+
+const turkin::Shape * turkin::CompositeShape::operator[](size_t id) const
+{
+  return shapes[id];
+}
+
+turkin::CompositeShape * turkin::CompositeShape::clone() const
+{
+  return new CompositeShape(shapes, capacity_, size_);
+}
+
+turkin::CompositeShape::CompositeShape(turkin::CompositeShape & compositeShape):
+  shapes(compositeShape.shapes),
+  capacity_(compositeShape.capacity_),
+  size_(compositeShape.size_)
+{}
+
+turkin::CompositeShape::CompositeShape(Shape ** shapes, size_t capacity, size_t size):
+  shapes(shapes),
+  capacity_(capacity),
+  size_(size)
+{}
 

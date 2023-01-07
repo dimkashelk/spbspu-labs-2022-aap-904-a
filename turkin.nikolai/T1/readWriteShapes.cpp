@@ -31,7 +31,7 @@ turkin::scale_t turkin::getScale(std::istream & input)
   input >> p[0] >> p[1] >> p[2];
   if (p[2] < 0.0)
   {
-    throw std::logic_error("bad scale size");
+    throw std::logic_error("bad scaleWithVerify size");
   }
   return {{p[0], p[1]}, p[2]};
 }

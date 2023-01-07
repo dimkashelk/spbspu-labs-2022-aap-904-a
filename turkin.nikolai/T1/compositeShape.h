@@ -8,19 +8,26 @@ namespace turkin
   {
     public:
       explicit CompositeShape(size_t capacity);
+      explicit CompositeShape(CompositeShape & compositeShape);
+      CompositeShape(Shape ** shapes, size_t capacity, size_t size);
+      ~CompositeShape();
+      Shape * operator[](size_t id);
+      const Shape * operator[](size_t id) const;
+      double getArea() const;
+      rectangle_t getFrameRect() const;
+      void move(point_t position);
+      void move(double dx, double dy);
+      void scale(scale_t scale);
       void push_back(Shape * shp);
       void push_back(const Shape * shp);
       void pop_back();
-      Shape * at(size_t id) const;
-      Shape * operator[](size_t id) const;
+      CompositeShape * clone() const;
+      Shape * at(size_t id);
+      const Shape * at(size_t id) const;
       bool empty() const;
       size_t size() const;
-      rectangle_t getFrameRect() const;
-      double getArea() const;
-      void move(double dx, double dy);
-      void move(point_t position);
-      void scale(turkin::scale_t scale);
-      ~CompositeShape();
+      void scaleWithVerify(scale_t scale);
+      void scaleWithoutVerify(scale_t scale);
     private:
       Shape ** shapes;
       size_t capacity_;

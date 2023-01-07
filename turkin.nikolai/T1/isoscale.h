@@ -4,7 +4,8 @@
 #include "shape.h"
 namespace turkin
 {
-  void isoScale(Shape * shape, scale_t scale);
+  void isoScaleWithVerify(Shape * shape, scale_t scale);
+  void isoScaleWithoutVerify(Shape * shape, scale_t scale);
 }
 #endif
 

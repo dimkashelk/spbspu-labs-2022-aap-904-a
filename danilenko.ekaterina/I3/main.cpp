@@ -32,7 +32,7 @@ int main()
       }
     }
     std::cin >> source1[size];
-  } 
+  }
   while (std::cin && source1[size++] != '\n');
   if (!std::cin && !size)
   {

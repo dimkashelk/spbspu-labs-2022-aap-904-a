@@ -14,9 +14,9 @@ namespace odintsov {
       void move(double dx, double dy);
       void move(const point_t& pos);
       void scale(double k);
-      point_t getMiddlePoint() const;
       Concave* clone() const;
     private:
+      point_t getMiddlePoint() const;
       point_t p1, p2, p3, p4;
   };
 }

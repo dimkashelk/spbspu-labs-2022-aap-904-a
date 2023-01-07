@@ -25,7 +25,7 @@ turkin::Shape * turkin::createEllipse(std::istream & input)
   return new Ellipse({p[0], p[1]}, p[3], p[2]);
 }
 
-turkin::scale_t turkin::getScale(std::istream &input)
+turkin::scale_t turkin::getScale(std::istream & input)
 {
   double p[3] {0.0, 0.0, 0.0};
   input >> p[0] >> p[1] >> p[2];
@@ -38,25 +38,19 @@ turkin::scale_t turkin::getScale(std::istream &input)
 
 void printPoints(std::ostream & output, turkin::Shape * shape)
 {
-
-  turkin::rectangle_t buffer = shape->getFrameRect();
-  output << " " << buffer.pos.x - (buffer.width / 2.0) << " ";
-  output << buffer.pos.y - (buffer.height / 2.0) << " ";
-  output << buffer.pos.x + (buffer.width / 2.0) << " ";
-  output << buffer.pos.y + (buffer.height / 2.0);
+  turkin::rectangle_t rect = shape->getFrameRect();
+  output << rect.pos.x - (rect.width / 2.0) << " ";
+  output << rect.pos.y - (rect.height / 2.0) << " ";
+  output << rect.pos.x + (rect.width / 2.0) << " ";
+  output << rect.pos.y + (rect.height / 2.0);
 }
 
-void turkin::printAreaPoints(std::ostream & output, Shape ** shapes, size_t size)
+void turkin::printAreaPoints(std::ostream & output, CompositeShape & compositeShape)
 {
-  double sum = 0.0;
-  for (size_t i = 0; i < size; i++)
+  output << std::setprecision(1) << std::fixed << compositeShape.getArea();
+  for (size_t i = 0; i < compositeShape.size(); i++)
   {
-    sum = sum + shapes[i]->getArea();
-  }
-  output << std::setprecision(1) << std::fixed << sum;
-  for (size_t i = 0; i < size; i++)
-  {
-    printPoints(output, shapes[i]);
+    printPoints(output << " ", compositeShape.at(i));
   }
   output << "\n";
 }

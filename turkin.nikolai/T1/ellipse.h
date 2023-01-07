@@ -12,7 +12,8 @@ namespace turkin
       rectangle_t getFrameRect() const override;
       void move(double dx, double dy) override;
       void move(point_t position) override;
-      void scaleW(double ds) override;
+      void scaleWithoutVerify(double ds) override;
+      Shape * clone() const override;
     private:
       rectangle_t rect_;
       double r1, r2;

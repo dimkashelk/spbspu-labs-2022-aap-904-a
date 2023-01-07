@@ -8,11 +8,13 @@ namespace turkin
   {
     public:
       Rectangle(point_t one, point_t two);
+      Rectangle(rectangle_t rectangle);
       double getArea() const override;
       rectangle_t getFrameRect() const override;
       void move(double dx, double dy) override;
       void move(point_t position) override;
-      void scaleW(double ds) override;
+      void scaleWithoutVerify(double ds) override;
+      Shape * clone() const override;
     private:
       rectangle_t rect_;
   };

@@ -16,7 +16,7 @@ namespace turkin
   struct scale_t
   {
     point_t pos;
-    double scale;
+    double ds;
   };
 }
 #endif

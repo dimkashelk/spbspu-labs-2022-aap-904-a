@@ -22,7 +22,7 @@ void turkin::Ellipse::move(point_t position)
   rect_.pos = position;
 }
 
-void turkin::Ellipse::scaleW(double ds)
+void turkin::Ellipse::scaleWithoutVerify(double ds)
 {
   r1 = r1 * ds;
   r2 = r2 * ds;
@@ -39,5 +39,10 @@ turkin::Ellipse::Ellipse(point_t one, double nr1, double nr2):
   {
     throw std::logic_error("bad ellipse size");
   }
+}
+
+turkin::Shape * turkin::Ellipse::clone() const
+{
+  return new Ellipse(rect_.pos, r1, r2);
 }
 

@@ -22,7 +22,7 @@ void turkin::Rectangle::move(point_t position)
   rect_.pos = position;
 }
 
-void turkin::Rectangle::scaleW(double ds)
+void turkin::Rectangle::scaleWithoutVerify(double ds)
 {
   rect_.width = rect_.width * ds;
   rect_.height = rect_.height * ds;
@@ -36,4 +36,13 @@ turkin::Rectangle::Rectangle(point_t one, point_t two):
     throw std::logic_error("bad rectangle size");
   }
 }
+
+turkin::Shape * turkin::Rectangle::clone() const
+{
+  return new Rectangle(rect_);
+}
+
+turkin::Rectangle::Rectangle(rectangle_t rectangle):
+  rect_(rectangle)
+{}
 

@@ -1,14 +1,14 @@
 #include <iostream>
 #include "base-types.h"
 #include "readWriteShapes.h"
-#include "isoscale.h"
+#include "compositeShape.h"
 
 int main()
 {
-  size_t size = 0;
-  auto ** shapes = new turkin::Shape*[10];
+  const size_t basicCapacity = 10;
+  turkin::CompositeShape compositeShape(basicCapacity);
   std::string line;
-  turkin::scale_t scale = {{0.0, 0.0}, 0.0};
+  turkin::scale_t scale = {{0.0, 0.0}, 2.0};
   bool isscale = false;
   while (std::cin)
   {
@@ -17,8 +17,7 @@ int main()
      {
        try
        {
-         shapes[size] = turkin::createRectangle(std::cin);
-         size++;
+         compositeShape.push_back(turkin::createRectangle(std::cin));
        }
        catch (const std::logic_error & error)
        {
@@ -29,8 +28,7 @@ int main()
      {
        try
        {
-         shapes[size] = turkin::createSquare(std::cin);
-         size++;
+         compositeShape.push_back(turkin::createSquare(std::cin));
        }
        catch (const std::logic_error & error)
        {
@@ -41,8 +39,7 @@ int main()
      {
        try
        {
-         shapes[size] = turkin::createEllipse(std::cin);
-         size++;
+         compositeShape.push_back(turkin::createEllipse(std::cin));
        }
        catch (const std::logic_error & error)
        {
@@ -59,52 +56,32 @@ int main()
        catch (const std::logic_error & error)
        {
          std::cerr << error.what() << "\n";
-         for (size_t k = 0; k < size; k++)
-         {
-           delete shapes[k];
-         }
-         delete [] shapes;
          return 1;
        }
        break;
      }
   }
-
-  if (size == 0)
+  if (compositeShape.empty())
   {
     std::cerr << "nothing to scale" << "\n";
-    delete [] shapes;
     return 1;
   }
   if (!isscale)
   {
     std::cerr << "no scale command" << "\n";
-    for (size_t k = 0; k < size; k++)
-    {
-      delete shapes[k];
-    }
-    delete [] shapes;
     return 1;
   }
-
-  turkin::printAreaPoints(std::cout, shapes, size);
-  for (size_t k = 0; k < size; k++)
+  turkin::printAreaPoints(std::cout, compositeShape);
+  try
   {
-    try
-    {
-      turkin::isoScale(shapes[k], scale);
-    }
-    catch (const std::logic_error & error)
-    {
-      std::cerr << error.what() << "\n";
-    }
+    compositeShape.scale(scale);
   }
-  turkin::printAreaPoints(std::cout, shapes, size);
-  for (size_t k = 0; k < size; k++)
+  catch (const std::logic_error & error)
   {
-    delete shapes[k];
+    std::cerr << error.what() << "\n";
+    return 1;
   }
-  delete [] shapes;
+  turkin::printAreaPoints(std::cout, compositeShape);
   return 0;
 }
 

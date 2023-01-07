@@ -49,6 +49,6 @@ double calcArcsin(double x, double error, size_t max_number)
   {
     throw std::invalid_argument("accuracy not achieved");
   }
-  
+
   return res;
 }

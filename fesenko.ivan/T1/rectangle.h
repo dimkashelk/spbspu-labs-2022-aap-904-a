@@ -3,7 +3,7 @@
 #include "shape.h"
 class Rectangle: public Shape {
  public:
-  Rectangle(const point_t &pos, double width, double height);
+  Rectangle(const point_t &point1, const point_t &point2);
   explicit Rectangle(const rectangle_t &rect);
   double getArea() const;
   rectangle_t getFrameRect() const;

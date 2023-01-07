@@ -214,5 +214,8 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
   shape_ = rhs.shape_;
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;
+  rhs.shape_ = nullptr;
+  rhs.capacity_ = 0;
+  rhs.size_ = 0;
   return *this;
 }

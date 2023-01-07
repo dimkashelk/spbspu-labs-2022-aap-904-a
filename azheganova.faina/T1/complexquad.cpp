@@ -35,15 +35,16 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 {
   double cx = 0.0;
   double cy = 0.0;
-  double a1 = pos1.y - pos2.y;
-  double b1 = pos2.x - pos1.x;
-  double c1 = pos1.x * pos2.y - pos2.x * pos1.y;
-  double a2 = pos3.y - pos4.y;
-  double b2 = pos4.x - pos3.x;
-  double c2 = pos3.x * pos4.y - pos4.x * pos3.y;
-  double det = a1 * b2 - a2 * b1;
-  cx = (b1 * c2 - b2 * c1) / det;
-  cy = (a2 * c1 - a1 * c2) / det;
+  double numeratorcy = 0.0;
+  double denominatorcy = 0.0;
+  double numeratorcx = 0.0;
+  double denominatorcx = 0.0;
+  numeratorcy = (pos2.y - pos1.y) * (pos3.x * pos4.y - pos4.x * pos3.y) + (pos4.y - pos3.y) * (pos2.x * pos1.y - pos1.x * pos2.y);
+  denominatorcy = (pos4.y - pos3.y) * (pos2.x - pos1.x) - (pos4.x - pos3.x) * (pos2.y - pos1.y);
+  cy = numeratorcy / denominatorcy;
+  numeratorcx = (cy - pos1.y) * (pos2.x - pos1.x);
+  denominatorcx = pos2.y - pos1.y;
+  cx = (numeratorcy / denominatorcy) - pos1.x;
   return (point_t {cx, cy});
 }
 

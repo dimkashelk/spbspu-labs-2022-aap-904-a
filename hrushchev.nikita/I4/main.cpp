@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
     try
     {
       array = new int[arr_size * arr_size];
-      for (size_t i = 0; i < arr_size; i++)
+      for (size_t i = 0; i < arr_size * arr_size; i++)
       {
         input_file >> array[i];
         if (!input_file)
@@ -114,3 +114,4 @@ int main(int argc, char* argv[])
     }
   }
 }
+

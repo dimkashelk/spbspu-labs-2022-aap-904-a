@@ -56,8 +56,8 @@ double Complexquad::getArea() const
   double secondtriangle2 = 0.0;
   firsttriangle1 = (complexquad1[0].x - complexquad1[4].x) * (complexquad1[3].y - complexquad1[4].y);
   firsttriangle2 = (complexquad1[3].x - complexquad1[4].x) * (complexquad1[0].y - complexquad1[4].y);
-  secondtriangle1 = (complexquad1[1].x - complexquad1[2].x) * (complexquad1[4].y - complexquad1[2].y);
-  secondtriangle2 = (complexquad1[4].x - complexquad1[2].x) * (complexquad1[1].y - complexquad1[2].y);
+  secondtriangle1 = (complexquad1[1].x - complexquad1[4].x) * (complexquad1[2].y - complexquad1[4].y);
+  secondtriangle2 = (complexquad1[2].x - complexquad1[4].x) * (complexquad1[1].y - complexquad1[4].y);
   return ((0.5 * std::abs((firsttriangle1 - firsttriangle2))) + ((0.5 * std::abs(secondtriangle1 - secondtriangle2))));
 }
 

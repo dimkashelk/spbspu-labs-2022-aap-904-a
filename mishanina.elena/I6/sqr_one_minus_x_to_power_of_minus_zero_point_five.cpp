@@ -45,9 +45,10 @@ double znam(unsigned currentMember)
 double sqrtOneMinusXToPowerOfMinusZeroPointFive(double x, unsigned members, double error)
 {
   double result = 0.0;
+  double next = 0.0;
   int power = 2;
   unsigned i = 1;
-  while (i != members + 1)
+  while (i != members + 1 || next > error)
   {
     if (i == 1)
     {
@@ -55,7 +56,8 @@ double sqrtOneMinusXToPowerOfMinusZeroPointFive(double x, unsigned members, doub
     }
     else
     {
-      result += numerator(i) / znam(i) * raiseToPower(x, power);
+      next = numerator(i) / znam(i) * raiseToPower(x, power)
+      result += next;
       power += 2;
     }
     i++;

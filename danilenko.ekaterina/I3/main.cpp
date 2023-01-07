@@ -32,7 +32,7 @@ int main()
       }
     }
     std::cin >> source1[size];
-  }
+  } 
   while (std::cin && source1[size++] != '\n');
   if (!std::cin && !size)
   {
@@ -42,7 +42,6 @@ int main()
   }
 
   //1
-  
   const char source2[] = "abcd";
   size_t size_source2 = sizeof source2;
   char* destination1 = nullptr;

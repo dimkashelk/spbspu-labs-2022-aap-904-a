@@ -20,6 +20,8 @@ public:
   rectangle_t getFrameRect();
   void move(double dx, double dy);
   void move(point_t position);
+  void scale(double k);
+  void unsafeScale(double k);
   void isoScale(const point_t &position, double k);
   void unsafeIsoScale(const point_t &position, double k) noexcept;
   void push_back(Shape *shp);

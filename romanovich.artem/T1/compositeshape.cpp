@@ -101,6 +101,21 @@ bool CompositeShape::empty() const noexcept
 {
   return (size_ == 0);
 }
+void CompositeShape::scale(double k)
+{
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Invalid scaling koeff.");
+  }
+  unsafeScale(k);
+}
+void CompositeShape::unsafeScale(double k)
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    shape_[i]->scale(k);
+  }
+}
 CompositeShape::CompositeShape(const CompositeShape &rhs):
   CompositeShape(rhs.capacity_)
 {

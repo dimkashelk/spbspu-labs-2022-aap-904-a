@@ -30,9 +30,8 @@ void Ring::move(double dx, double dy)
 
 void Ring::move(point_t position)
 {
-  double dx = baseFunctions::findDifference(position.x, getFrameRectangle().position.x);
-  double dy = baseFunctions::findDifference(position.y, getFrameRectangle().position.y);
-  move(dx, dy);
+  point_t diff = baseFunctions::findDifference(position, getFrameRectangle().position);
+  move(diff.x, diff.y);
 }
 
 void Ring::scale(double k)

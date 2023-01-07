@@ -105,6 +105,7 @@ int main()
     return 1;
   }
   std::cout << std::fixed << std::setprecision(1) << rhs.getArea() << " ";
+  printFlamePoint(rhs[0]);
   for (size_t i = 1; i < rhs.size(); ++i)
   {
     std::cout << " ";
@@ -124,6 +125,7 @@ int main()
     return 1;
   }
   std::cout << std::fixed << std::setprecision(1) << rhs.getArea() << " ";
+  printFlamePoint(rhs[0]);
   for (size_t i = 1; i < rhs.size(); ++i)
   {
     std::cout << " ";

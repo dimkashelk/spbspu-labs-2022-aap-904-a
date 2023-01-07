@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
   }
   size_t size = 0;
   in >> size;
-  if(in.eof())
+  if(in.peek() == std::ifstream::traits_type::eof())
   {
     std::cout << "Error.";
     return 1;

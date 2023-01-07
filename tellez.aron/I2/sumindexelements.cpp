@@ -5,7 +5,6 @@ size_t sum_index_elements(const int *arr, const size_t size)
 {
   if (size == 0)
   {
-    throw std::overflow_error("Error size = 0");
     return 0;
   }
   int min = std::numeric_limits< int >::max();

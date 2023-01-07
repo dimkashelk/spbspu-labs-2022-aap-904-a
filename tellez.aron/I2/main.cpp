@@ -70,18 +70,12 @@ int main (int argc, char *argv[])
   }
   if (size == 0)
   {
-    std::cout << "Error size = 0" << "\n";
     return 0;
   }
   int *arr_3 = new int[size];
   for (size_t i = 0; i < size; i++)
   {
     in >> arr_3[i];
-    if(in.eof())
-    {
-      std::cout << "Error." << "\n";
-      return 1;
-    }
   }
   try
   {

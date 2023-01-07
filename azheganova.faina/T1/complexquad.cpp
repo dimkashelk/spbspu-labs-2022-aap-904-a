@@ -37,8 +37,8 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 
 double Complexquad::getArea() const
 {
-  double x = 0.0;
-  double y = 0.0;
+  double cx = 0.0;
+  double cy = 0.0;
   double a1 = complexquad1[0].y - complexquad1[1].y;
   double b1 = complexquad1[1].x - complexquad1[0].x;
   double c1 = complexquad1[0].x * complexquad1[1].y - complexquad1[1].x * complexquad1[0].y;
@@ -46,19 +46,24 @@ double Complexquad::getArea() const
   double b2 = complexquad1[3].x - complexquad1[2].x;
   double c2 = complexquad1[2].x * complexquad1[2].y - complexquad1[3].x * complexquad1[2].y;
   double det = a1 * b2 - a2 * b1;
-  x = (b1 * c2 - b2 * c1) / det;
-  y = (a2 * c1 - a1 * c2) / det;
-  point_t center = {x, y};
+  cx = (b1 * c2 - b2 * c1) / det;
+  cy = (a2 * c1 - a1 * c2) / det;
+  point_t center = {cx, cy};
+  point_t complexquad1[4] = {cx, cy};
   double firsttriangle1 = 0.0;
   double firsttriangle2 = 0.0;
+  double firsttriangle = 0.0;
   double secondtriangle1 = 0.0;
   double secondtriangle2 = 0.0;
+  double secondtriangle = 0.0;
   double areaforcomplexquad = 0.0;
-  firsttriangle1 = (complexquad1[0].x - complexquad1[3].x) * (center.y - complexquad1[3].y);
-  firsttriangle2 = (center.x - complexquad1[3].x) * (complexquad1[0].y - complexquad1[3].y);
-  secondtriangle1 = (complexquad1[2].x - complexquad1[1].x) * (center.y - complexquad1[1].y);
-  secondtriangle2 = (center.x - complexquad1[1].x) * (complexquad1[2].y - complexquad1[1].y);
-  areaforcomplexquad = (0.5 * (secondtriangle1 - secondtriangle2)) + (0.5 * (firsttriangle1 - firsttriangle2));
+  firsttriangle1 = (complexquad1[0].x - complexquad1[4].x) * (complexquad1[3].y - complexquad1[4].y);
+  firsttriangle2 = (complexquad1[3].x - complexquad1[4].x) * (complexquad1[0].y - complexquad1[4].y);
+  firsttriangle = 0.5 * (firsttriangle1 - firsttriangle2);
+  secondtriangle1 = (complexquad1[1].x - complexquad1[2].x) * (complexquad1[4].y - complexquad1[2].y);
+  secondtriangle2 = (complexquad1[4].x - complexquad1[2].x) * (complexquad1[1].y - complexquad1[2].y);
+  secondtriangle = 0.5 * (secondtriangle1 - secondtriangle2);
+  areaforcomplexquad = firsttriangle + secondtriangle;
   return std::abs(areaforcomplexquad);
 }
 

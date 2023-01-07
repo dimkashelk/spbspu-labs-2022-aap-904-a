@@ -1,20 +1,20 @@
 #include "Ellipse.hpp"
 #include <stdexcept>
 
-Ellipse::Ellipse(point_t center, double radius1, double radius2):
-  rect_({{center.x, center.y}, radius1 * 2.0, radius2 * 2.0}),
-  r1_(radius1),
-  r2_(radius2)
+Ellipse::Ellipse(point_t one, double r1, double r2):
+  rect_({{one.x, one.y}, r2 * 2.0, r1 * 2.0}),
+  r1_(r1),
+  r2_(r2)
 {
-  if (rect_.width <= 0 || rect_.height <= 0)
+  if (r1 <= 0.0 || r2 <= 0.0)
   {
-    throw std::invalid_argument("Bad input, invalid ellipse size");
+    throw std::invalid_argument("bad ellipse size");
   }
 }
 
 double Ellipse::getArea() const
 {
-  return 3.1415926535 * r1_ * r2_;
+  return r1_ * r2_ * 3.14159265358979323846;
 }
 
 rectangle_t Ellipse::getFrameRect() const
@@ -22,25 +22,25 @@ rectangle_t Ellipse::getFrameRect() const
   return rect_;
 }
 
+void Ellipse::move(double dx, double dy)
+{
+  rect_.pos.x = rect_.pos.x + dx;
+  rect_.pos.y = rect_.pos.y + dy;
+}
+
 void Ellipse::move(point_t position)
 {
   rect_.pos = position;
 }
 
-void Ellipse::move(double dx, double dy)
+void Ellipse::makeScale(double k)
 {
-  rect_.pos.x += dx;
-  rect_.pos.y += dy;
-}
-
-
-void Ellipse::makeScale(double value)
-{
-  r1_ *= value;
-  r2_ *= value;
-  rect_.width = r1_ * 2.0;
+  r1_ = r1_ * k;
+  r2_ = r2_ * k;
+  rect_.width = r2_ * 2.0;
   rect_.height = r1_ * 2.0;
 }
+
 
 Shape *Ellipse::clone() const
 {

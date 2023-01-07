@@ -12,35 +12,18 @@ int main (int argc, char *argv[])
     return 1;
   }
   int arr_1[10] = {10, 8, 6, 4, 2, 8, 5, 7, 3, 1};
-  try
-  {
-    std::cout << sum_index_elements(arr_1, 10) << std::endl;
-    std::cout << length_longer_decreasing(arr_1, 10) << std::endl;
-  }
-  catch (const std::overflow_error &e)
-  {
-    std::cout << e.what();
-    return 2;
-  }
+  std::cout << sum_index_elements(arr_1, 10) << "\n";
+  std::cout << length_longer_decreasing(arr_1, 10) << "\n";
   size_t n = 0;
   std::cin >> n;
   int * arr_2 = new int[n];
   std::srand(time(nullptr));
-  for (size_t i = 0; i < static_cast<size_t> (n); i++)
+  for (size_t i = 0; i < n; i++)
   {
-    arr_2[i] = (std::rand()%10)+1;
+    arr_2[i] = (std::rand() % 10) + 1;
   }
-  try
-  {
-    std::cout << sum_index_elements(arr_2, n) << std::endl;
-    std::cout << length_longer_decreasing(arr_2, n) << std::endl;
-  }
-  catch (const std::overflow_error &e)
-  {
-    std::cout << e.what();
-    delete[] arr_2;
-    return 2;
-  }
+  std::cout << sum_index_elements(arr_2, n) << "\n";
+  std::cout << length_longer_decreasing(arr_2, n) << "\n";
   delete[] arr_2;
   std::ifstream in(argv[1]);
   if (!in.is_open())
@@ -70,17 +53,8 @@ int main (int argc, char *argv[])
       return 1;
     }
   }
-  try
-  {
-    std::cout << sum_index_elements(arr_3, size) << "\n";
-    std::cout << length_longer_decreasing(arr_3, size) << "\n";
-  }
-  catch (const std::overflow_error &e)
-  {
-    std::cout << e.what();
-    delete[] arr_3;
-    return 2;
-  }
+  std::cout << sum_index_elements(arr_3, size) << "\n";
+  std::cout << length_longer_decreasing(arr_3, size) << "\n";
   delete[] arr_3;
   return 0;
 }

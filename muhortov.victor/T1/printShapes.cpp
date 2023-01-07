@@ -1,7 +1,7 @@
 #include "printShapes.hpp"
 #include <iomanip>
 
-void printRectangle(std::ostream &output, Shape *shape)
+void printRectangle(std::ostream &output, const Shape *shape)
 {
   rectangle_t temp = shape->getFrameRect();
   output << temp.pos.x - (temp.width / 2.0) << " ";

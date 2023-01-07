@@ -1,73 +1,91 @@
 #include "Concave.hpp"
+#include <stdexcept>
 #include <algorithm>
 #include <cmath>
-#include <stdexcept>
 
 Concave::Concave(point_t one, point_t two, point_t three, point_t four):
-  one_(one),
-  two_(two),
-  three_(three),
-  four_(four),
-  rect_({{four.x, four.y}, std::max(std::max(one.x, two.x), three.x), std::max(std::max(one.y, two.y), three.y)})
+  first({one.x, one.y}),
+  second({two.x, two.y}),
+  third({three.x, three.y}),
+  fourth({four.x, four.y})
 {
-  double a = sqrt((three.x - one.x) * (three.x - one.x) + (three.y - one.y) * (three.y - one.y));
-  double b = sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y));
-  double c = sqrt((three.x - two.x) * (three.x - two.x) + (three.y - two.y) * (three.y - two.y));
-
-  bool triangle1 = ((one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y)) > 0;
-  bool triangle2 = ((two.x - four.x) * (three.y - two.y) - (three.x - two.x) * (two.y - four.y)) > 0;
-  bool triangle3 = ((three.x - four.x) * (one.y - three.y) - (one.x - three.x) * (three.y - four.y)) > 0;
-
-  bool fail_vec = a + b < c || a + c < b || b + c < a;
-  bool fail_coord = one.x == four.x || one.y == four.y;
-  bool check_triangles = !((triangle1 && triangle2 && triangle3) || (!triangle1 && !triangle2 && !triangle3));
-
-  if (fail_vec || fail_coord)
+  if (validateConcave(one, two, three, four))
   {
     throw std::invalid_argument("Bad input, invalid concave size");
   }
+}
 
-//  double a = std::sqrt(pow((one.x - two.x), 2) + pow((one.y - two.y), 2));
-//  double b = std::sqrt(pow((three.x - two.x), 2) + pow((three.y - two.y), 2));
-//  double c = std::sqrt(pow((one.x - three.x), 2) + pow((one.y - three.y), 2));
-//  if (a >= b + c || b >= a + c || c >= b + a)
-//  {
-//    throw std::invalid_argument("Bad input, invalid triangle size");
-//  }
-//  a = (one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y);
-//  b = (two.x - four.x) * (three.y - two.y) - (three.x - two.x) * (two.y - four.y);
-//  c = (three.x - four.x) * (one.y - three.y) - (one.x - three.x) * (three.y - four.y);
-//  if ((a > 0 && b > 0 && c > 0 || a < 0 && b < 0 && c < 0))
-//  {
-//    throw std::invalid_argument("Bad input, invalid concave size");
-//  }
+
+std::array< double, 6 > Concave::splitIntoTriangles() const
+{
+  double a_ = calcVectorLength(first, third);
+  double b_ = calcVectorLength(third, second);
+  double c_ = calcVectorLength(first, second);
+  double a1_ = calcVectorLength(third, fourth);
+  double b1_ = b_;
+  double c1_ = calcVectorLength(fourth, second);
+  std::array< double, 6 > arr = {a_, b_, c_, a1_, b1_, c1_};
+  return arr;
 }
 
 double Concave::getArea() const
 {
-  double det1 = std::abs(one_.x * two_.y - one_.y * two_.x);
-  double det2 = std::abs(two_.x * three_.y - two_.y * three_.x);
-  double det3 = std::abs(three_.x * four_.y - three_.y * four_.x);
-  double det4 = std::abs(four_.x * one_.y - four_.y * one_.x);
-  return 0.5 * (det1 + det2 + det3 + det4);
+  std::array< double, 6 > sides = splitIntoTriangles();
+  double a = sides[0];
+  double b = sides[1];
+  double c = sides[2];
+  double a1 = sides[3];
+  double b1 = sides[4];
+  double c1 = sides[5];
+  double p = (a + b + c) / 2;
+  double p1 = (a1 + b1 + c1) / 2;
+  double s = std::sqrt(p * (p - a) * (p - b) * (p - c));
+  double s1 = std::sqrt(p1 * (p1 - a1) * (p1 - b1) * (p1 - c1));
+  return s - s1;
 }
 
 rectangle_t Concave::getFrameRect() const
 {
-  return rect_;
+  double up = std::max({first.y, second.y, third.y});
+  double down = std::min({first.y, second.y, third.y});
+  double left = std::min({first.x, second.x, third.x});
+  double right = std::max({first.x, second.x, third.x});
+  return {{(right + left) / 2, (up + down) / 2}, right - left, up - down};
 }
 
 void Concave::move(point_t position)
 {
-  rect_.pos = position;
+  double dx = position.x - getFrameRect().pos.x;
+  double dy = position.y - getFrameRect().pos.y;
+  move(dx, dy);
 }
 
 void Concave::move(double dx, double dy)
 {
-  rect_.pos.x += dx;
-  rect_.pos.y += dy;
+  first.x += dx;
+  first.y += dy;
+  second.x += dx;
+  second.y += dy;
+  third.x += dx;
+  third.y += dy;
+  fourth.x += dx;
+  fourth.y += dy;
 }
 
-void Concave::makeScale(double value)
+void Concave::makeScale(double k)
 {
+  point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
+  first.x = k * (first.x - center.x) + center.x;
+  first.y = k * (first.y - center.y) + center.y;
+  second.x = k * (second.x - center.x) + center.x;
+  second.y = k * (second.y - center.y) + center.y;
+  third.x = k * (third.x - center.x) + center.x;
+  third.y = k * (third.y - center.y) + center.y;
+  fourth.x = k * (fourth.x - center.x) + center.x;
+  fourth.y = k * (fourth.y - center.y) + center.y;
+}
+
+Shape *Concave::clone() const
+{
+  return new Concave(first, second, third, fourth);
 }

@@ -9,22 +9,15 @@ class Concave : public Shape
 {
 public:
   Concave(point_t one, point_t two, point_t three, point_t four);
-
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t position) override;
   void move(double dx, double dy) override;
-  void makeScale(double value) override;
-
+  void makeScale(double k) override;
+  Shape *clone() const override;
 private:
-  rectangle_t rect_;
-  point_t one_;
-  point_t two_;
-  point_t three_;
-  point_t four_;
-  point_t points_[4];
+  point_t first, second, third, fourth;
   std::array< double, 6 > splitIntoTriangles() const;
-  bool isGoodConcaveInput() const;
 };
 
 #endif

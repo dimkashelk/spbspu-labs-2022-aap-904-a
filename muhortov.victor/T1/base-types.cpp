@@ -17,7 +17,11 @@ bool checkingConcave(const point_t &one, const point_t &two, const point_t &thre
   bool trTwo = ((two.x - four.x) * (three.y - two.y) - (three.x - two.x) * (two.y - four.y)) > 0;
   bool trThree = ((three.x - four.x) * (one.y - three.y) - (one.x - three.x) * (three.y - four.y)) > 0;
 
-  return (a + b < c || a + c < b || b + c < a || one.x == four.x || one.y == four.y || !((trOne && trTwo && trThree) || (!trOne && !trTwo && !trThree)));
+  bool first = a + b < c || a + c < b || b + c < a;
+  bool second =  one.x == four.x || one.y == four.y;
+  bool third = !((trOne && trTwo && trThree) || (!trOne && !trTwo && !trThree));
+
+  return (first || second || third);
 }
 
 point_t moveToPosition(point_t position, double delta_x, double delta_y)

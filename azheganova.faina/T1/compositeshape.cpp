@@ -48,12 +48,12 @@ Shape * CompositeShape::operator[](size_t i) const
 
 double CompositeShape::getArea() const
 {
-  double square = 0.0;
+  double area = 0.0;
   for (size_t i = 0; i < size_; ++i)
   {
-    square += shape_[i]->getArea();
+    area += shape_[i]->getArea();
   }
-  return square;
+  return area;
 }
 
 rectangle_t CompositeShape::getFrameRect() const

@@ -11,12 +11,11 @@
 
 void printFlamePoint(Shape *shape)
 {
-  auto set = std::setprecision(1);
   rectangle_t rectangle = shape->getFrameRect();
   point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
   point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
-  std::cout << std::fixed << set << point1.x << ' ' << point1.y << ' ';
-  std::cout << std::fixed << set << point2.x << ' ' << point2.y;
+  std::cout << std::fixed << std::setprecision(1) << point1.x << ' ' << point1.y << ' ';
+  std::cout << std::fixed << std::setprecision(1) << point2.x << ' ' << point2.y;
 }
 
 int main()
@@ -104,8 +103,7 @@ int main()
     std::cerr << "error";
     return 1;
   }
-  auto set = std::setprecision(1);
-  std::cout << std::fixed << set << rhs.getArea() << " ";
+  std::cout << std::fixed << std::setprecision(1) << rhs.getArea() << " ";
   printFlamePoint(rhs[0]);
   for (size_t i = 1; i < rhs.size(); ++i)
   {
@@ -125,7 +123,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  std::cout << std::fixed << set << rhs.getArea() << " ";
+  std::cout << std::fixed << std::setprecision(1) << rhs.getArea() << " ";
   printFlamePoint(rhs[0]);
   for (size_t i = 1; i < rhs.size(); ++i)
   {

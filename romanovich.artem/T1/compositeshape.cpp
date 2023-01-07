@@ -62,6 +62,10 @@ Shape *CompositeShape::operator[](size_t id)
 {
   return shape_[id];
 }
+Shape *CompositeShape::operator[](size_t id) const
+{
+  return shape_[id];
+}
 void CompositeShape::move(point_t position)
 {
   move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
@@ -89,6 +93,14 @@ void CompositeShape::move(double dx, double dy)
   }
 }
 Shape *CompositeShape::at(size_t id)
+{
+  if (id >= size_)
+  {
+    throw std::invalid_argument("Invalid id provided.");
+  }
+  return shape_[id];
+}
+Shape *CompositeShape::at(size_t id) const
 {
   if (id >= size_)
   {

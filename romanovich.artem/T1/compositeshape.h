@@ -13,7 +13,9 @@ public:
   CompositeShape &operator=(const CompositeShape &rhs);
   CompositeShape &operator=(CompositeShape &&rhs) noexcept;
   Shape *operator[](size_t id);
+  Shape *operator[](size_t id) const;
   Shape *at(size_t id);
+  Shape *at(size_t id) const;
   double getArea() const;
   rectangle_t getFrameRect();
   void move(double dx, double dy);

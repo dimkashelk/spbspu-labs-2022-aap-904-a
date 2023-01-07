@@ -8,8 +8,8 @@ size_t sum_index_elements(const int *arr, size_t size)
   }
   int min = std::numeric_limits< int >::max();
   int max = std::numeric_limits< int >::min();
-  int min_index = 0;
-  int max_index = 0;
+  size_t min_index = 0;
+  size_t max_index = 0;
   for (size_t i = 0; i < size; i++)
   {
     if (arr[i] < min)

@@ -116,7 +116,7 @@ int main()
   {
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes);
+  printAreaAndFrames(std::cout, shapes);
   std::cout << "\n";
   try
   {
@@ -130,7 +130,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes);
+  printAreaAndFrames(std::cout, shapes);
   std::cout << "\n";
   return 0;
 }

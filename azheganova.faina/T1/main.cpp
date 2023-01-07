@@ -9,7 +9,7 @@
 #include "inputtriangle.h"
 #include "inputcomplexquad.h"
 
-void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangle)
+void printFlamePoint(std::ostream & output, const rectangle_t & rectangle)
 {
   point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
   point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
@@ -21,7 +21,7 @@ void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, si
 {
   if (!shp_size)
   {
-    throw std::invalid_argument("Invalid size of Shape array");
+    throw std::invalid_argument("error");
   }
   double summarea = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
@@ -31,7 +31,7 @@ void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, si
   output << summarea;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    printLeftDownAndRightUp(output << ' ', shapes[i]->getFrameRect());
+    printFlamePoint(output << ' ', shapes[i]->getFrameRect());
   }
 }
 

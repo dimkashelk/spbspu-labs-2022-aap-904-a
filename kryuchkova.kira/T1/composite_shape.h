@@ -22,6 +22,9 @@ namespace kryuchkova
     void move(double dx, double dy);
     void scale(double k);
     void isoScale(point_t point, double k);
+    void push_back(Shape *sh);
+    void push_back (Shape const *sh);
+    void pop_back();
   private:
     size_t size;
     size_t capacity;

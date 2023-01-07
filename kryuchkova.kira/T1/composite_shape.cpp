@@ -168,3 +168,40 @@ void kryuchkova::CompositeShape::isoScale(point_t point, double k)
     kryuchkova::isoScale(shapes[i], point, k);
   } 
 }
+
+void kryuchkova::CompositeShape::push_back(Shape *sh)
+{
+  if (size == capacity)
+  {
+    Shape **new_shapes = new Shape*[capacity + 20];
+    capacity += 20;
+    for (size_t i = 0; i < size; i++)
+    {
+      new_shapes[i] = shapes[i];
+    }
+    delete[] shapes;
+    shapes = new_shapes;
+  }
+  shapes[size] = sh;
+  size++;
+}
+
+void kryuchkova::CompositeShape::push_back(const Shape *sh)
+{
+  Shape *clone = sh->clone();
+  try
+  {
+    push_back(clone);
+  }
+  catch(...)
+  {
+    delete clone;
+    throw;
+  }
+}
+
+void kryuchkova::CompositeShape::pop_back()
+{
+  delete shapes[size - 1];
+  size--;
+}

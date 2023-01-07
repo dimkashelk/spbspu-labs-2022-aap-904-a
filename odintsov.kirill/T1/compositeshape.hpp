@@ -37,7 +37,7 @@ namespace odintsov {
       Shape** shapes;
       void extend(size_t newCap);
   };
-  std::ostream& outputCompositeShape(std::ostream& out, CompositeShape& composite);
+  std::ostream& outputCompositeShape(std::ostream& out, const CompositeShape& composite);
 }
 
 #endif

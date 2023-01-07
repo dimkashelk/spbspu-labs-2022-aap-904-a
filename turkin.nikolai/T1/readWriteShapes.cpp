@@ -31,12 +31,12 @@ turkin::scale_t turkin::getScale(std::istream & input)
   input >> p[0] >> p[1] >> p[2];
   if (p[2] < 0.0)
   {
-    throw std::logic_error("bad scaleWithVerify size");
+    throw std::logic_error("bad scale size");
   }
   return {{p[0], p[1]}, p[2]};
 }
 
-void printPoints(std::ostream & output, turkin::Shape * shape)
+void printPoints(std::ostream & output, const turkin::Shape * shape)
 {
   turkin::rectangle_t rect = shape->getFrameRect();
   output << rect.pos.x - (rect.width / 2.0) << " ";

@@ -4,10 +4,11 @@
 
 namespace kryuchkova
 {
-  class Square: Shape
+  class Square: public Shape
   {
   public:
     Square(const point_t &lb_point, const double &length);
+    std::string getName() const;
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;

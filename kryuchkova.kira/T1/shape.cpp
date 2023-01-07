@@ -1,5 +1,6 @@
 #include "shape.h"
 #include <typeinfo>
+#include <cmath>
 
 namespace kryuchkova
 {
@@ -18,17 +19,16 @@ namespace kryuchkova
 
   std::ostream& operator << (std::ostream &out, const point_t &point)
   {
-    return out << point.x << " " << point.y;
+    return out << round(point.x * 10) / 10 << " " << round(point.y * 10) / 10;
   }
 
   std::ostream& operator << (std::ostream &out, const Shape &shape)
   {
-    std::setprecision(1);
-    std::string name = typeid(shape).name();
-    double area = shape.getArea();
+    std::string name = shape.getName();
+    double area = round(shape.getArea() * 10) / 10;
     kryuchkova::rectangle_t rect = shape.getFrameRect();
     kryuchkova::point_t lb(rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2);
     kryuchkova::point_t ru(rect.pos.x + rect.width / 2, rect.pos.y + rect.height / 2); 
-    return out << name << " " << area << " " << lb << ru << '\n';
+    return out << name << " " << area << " " << lb << ru;
   }
 }

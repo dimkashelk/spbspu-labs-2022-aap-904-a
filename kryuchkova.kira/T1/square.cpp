@@ -11,6 +11,11 @@ kryuchkova::Square::Square(const point_t &lb_point, const double &length):
   }
 }
 
+std::string kryuchkova::Square::getName() const
+{
+  return "SQUARE";
+}
+
 double kryuchkova::Square::getArea() const
 {
   return length * length;

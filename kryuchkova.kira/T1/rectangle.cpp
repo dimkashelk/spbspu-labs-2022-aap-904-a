@@ -11,6 +11,11 @@ kryuchkova::Rectangle::Rectangle(const point_t &lb_point, const point_t &ru_poin
   }
 }
 
+std::string kryuchkova::Rectangle::getName() const
+{
+  return "RECTANGLE";
+}
+
 double kryuchkova::Rectangle::getArea() const
 {
   return (ru_point.x - lb_point.x) * (ru_point.y - lb_point.y);

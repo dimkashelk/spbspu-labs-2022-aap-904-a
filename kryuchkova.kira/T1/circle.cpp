@@ -11,6 +11,11 @@ kryuchkova::Circle::Circle(const point_t &pos, const double &radius):
   }
 }
 
+std::string kryuchkova::Circle::getName() const
+{
+  return "CIRCLE";
+}
+
 double kryuchkova::Circle::getArea() const
 {
   double pi = 3.14159265358979323846;

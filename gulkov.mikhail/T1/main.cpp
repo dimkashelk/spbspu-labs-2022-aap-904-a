@@ -25,7 +25,7 @@ int main()
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "\nError:\n";
+        std::cerr << "\nError: ";
         std::cerr << e.what() << '\n';
       }
     }
@@ -37,7 +37,7 @@ int main()
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "\nError:\n";
+        std::cerr << "\nError: ";
         std::cerr << e.what() << '\n';
       }
     }
@@ -49,7 +49,7 @@ int main()
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "\nError:\n";
+        std::cerr << "\nError: ";
         std::cerr << e.what() << '\n';
       }
     }
@@ -62,7 +62,7 @@ int main()
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "\nError:\n";
+        std::cerr << "\nError: ";
         std::cerr << e.what() << '\n';
       }
       break;
@@ -71,14 +71,12 @@ int main()
 
   if (compositeShape.empty())
   {
-    std::cerr << "\nError:\n";
-    std::cerr << "It is nothing to scale\n";
+    std::cerr << "\nError: nothing to scale\n";
     return 1;
   }
   if (!is_scale)
   {
-    std::cerr << "\nError:\n";
-    std::cerr << "no scale command\n";
+    std::cerr << "\nError: no scale command\n";
     return 1;
   }
 

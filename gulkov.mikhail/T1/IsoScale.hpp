@@ -4,6 +4,6 @@
 #include "Base-types.hpp"
 #include "Shape.hpp"
 
-void isotropicScale(Shape *shape, scale_t scale);
+void doIsoScale(Shape *shape, scale_t scale);
 
 #endif

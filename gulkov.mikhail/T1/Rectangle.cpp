@@ -6,7 +6,7 @@ Rectangle::Rectangle(point_t one, point_t two):
 {
   if (rect_.width <= 0.0 || rect_.height <= 0.0)
   {
-    throw std::invalid_argument("Bad input, invalid concave size");
+    throw std::invalid_argument("Bad input, invalid rectangle size");
   }
 }
 

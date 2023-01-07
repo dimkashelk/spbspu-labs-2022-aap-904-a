@@ -1,14 +1,11 @@
 #include "IsoScale.hpp"
-#include "Shape.hpp"
-#include "Base-types.hpp"
 
-void isotropicScale(Shape *shape, scale_t s_value)
+void doIsoScale(Shape *shape, scale_t scale)
 {
-  point_t position1 = shape->getFrameRect().pos;
-  shape->move(s_value.pos);
-  point_t position2 = shape->getFrameRect().pos;
-  shape->makeSafeScale(s_value.scale);
-  double dx = (position1.x - position2.x) * s_value.scale;
-  double dy = (position1.y - position2.y) * s_value.scale;
-  shape->move(dx, dy);
+  point_t pos = shape->getFrameRect().pos;
+  shape->move(scale.pos);
+  shape->makeSafeScale(scale.scale);
+  double delta_x = (pos.x - scale.pos.x) * scale.scale;
+  double delta_y = (pos.y - scale.pos.y) * scale.scale;
+  shape->move(delta_x, delta_y);
 }

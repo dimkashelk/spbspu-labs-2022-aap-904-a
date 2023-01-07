@@ -10,9 +10,9 @@ double calcVectorLength(const point_t &p1, const point_t &p2)
 
 bool validateConcave(const point_t &one, const point_t &two, const point_t &three, const point_t &four)
 {
-  double side_a = sqrt((three.x - one.x) * (three.x - one.x) + (three.y - one.y) * (three.y - one.y));
-  double side_b = sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y));
-  double side_c = sqrt((three.x - two.x) * (three.x - two.x) + (three.y - two.y) * (three.y - two.y));
+  double side_a = std::sqrt(std::pow((three.x - one.x), 2) + std::pow((three.y - one.y), 2));
+  double side_b = std::sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y));
+  double side_c = std::sqrt((three.x - two.x) * (three.x - two.x) + (three.y - two.y) * (three.y - two.y));
 
   bool triangle1 = ((one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y)) > 0;
   bool triangle2 = ((two.x - four.x) * (three.y - two.y) - (three.x - two.x) * (two.y - four.y)) > 0;

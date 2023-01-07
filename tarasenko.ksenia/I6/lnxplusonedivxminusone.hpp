@@ -8,6 +8,7 @@ class LnXPlusOneDivXMinusOne
    double operator()();
   private:
    double x_;
+   double x0_;
    double member_;
    unsigned number_;
 };

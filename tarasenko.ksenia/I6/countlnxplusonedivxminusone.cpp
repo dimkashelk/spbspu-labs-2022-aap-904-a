@@ -1,5 +1,6 @@
 #include "countlnxplusonedivxminusone.hpp"
 #include <cmath>
+#include <stdexcept>
 #include "lnxplusonedivxminusone.hpp"
 
 double countLnXPlusOneDivXMinusOne(double x, double absError, unsigned numberMax)
@@ -14,10 +15,10 @@ double countLnXPlusOneDivXMinusOne(double x, double absError, unsigned numberMax
     sum += member;
     number++;
   }
-  while(number <= numberMax && std::abs(member) > absError);
+  while (number <= numberMax && std::abs(member) > absError);
   if (number >= numberMax && std::abs(member) > absError)
   {
-    throw "accuracy not achieved";
+    throw std::invalid_argument("accuracy not achieved");
   }
   return sum;
 }

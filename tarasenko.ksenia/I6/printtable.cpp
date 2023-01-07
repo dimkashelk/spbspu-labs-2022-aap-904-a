@@ -12,7 +12,7 @@ void printTableRow(std::ostream & out, double x, double absError, unsigned numbe
 
 void printTable(std::ostream & out, double leftBorder, double rightBorder, double step, double absError, unsigned numberMax)
 {
-  for (double i = leftBorder; std::round(i*10)/10 <= rightBorder; i += step)
+  for (double i = leftBorder; std::round(i * 10) / 10 <= rightBorder; i += step)
   {
     printTableRow(out, i, absError, numberMax);
   }

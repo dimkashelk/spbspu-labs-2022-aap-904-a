@@ -90,6 +90,8 @@ void Complexquad::move(double dx, double dy)
   complexquad1[2].y += dy;
   complexquad1[3].x += dx;
   complexquad1[3].y += dy;
+  complexquad1[4].x += dx;
+  complexquad1[4].y += dy;
 }
 void Complexquad::scale(double k) noexcept
 {

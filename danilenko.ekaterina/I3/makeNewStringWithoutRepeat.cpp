@@ -3,37 +3,22 @@
 #include <cctype>
 #include <cstddef>
 
-char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2, size_t size)
+char* makeNewStringWithoutRepeat(char *destination, const char *source1, const char *source2)
 {
   size_t new_elements = 0;
-  for (size_t i = 0; i < size; i++)
+  const char* i = source1;
+  while (*i != '\0')
   {
-    for (size_t j = 0; j < size; j++)
+    const char* j = source2;
+    while (*j != '\0' && *j != *i)
     {
-      if (std::tolower(source1[i]) == std::tolower(source2[j]))
-      {
-        break;
-      }
-      else if (j == size - 1)
-      {
-        destination[new_elements++] = source1[i];
-      }
+      j++;
     }
-  }
-
-  for (size_t i = 0; i < size; i++)
-  {
-    for (size_t j = 0; j < size; j++)
+    if (*j != *i)
     {
-      if (std::tolower(source2[i]) == std::tolower(source1[j]))
-      {
-        break;
-      }
-      else if (j == size - 1)
-      {
-        destination[new_elements++] = source2[i];
-      }
+      destination[new_elements++] = *i;
     }
+    i++;
   }
   destination[new_elements] = '\0';
   return destination;

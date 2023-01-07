@@ -13,6 +13,8 @@ class CompositeShape
     CompositeShape(CompositeShape && rhs);
     CompositeShape(size_t capacity);
     ~CompositeShape();
+    CompositeShape & operator=(const CompositeShape & rhs);
+    CompositeShape & operator=(CompositeShape && rhs);
     Shape * operator[](size_t i);
     Shape * operator[](size_t i) const;
     double getArea() const;

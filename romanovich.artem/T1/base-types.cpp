@@ -18,14 +18,18 @@ bool isTriangle(std::array< double, 3 > sides)
   double midlSide = a + b + c - maxSide - minSide;
   return (maxSide < minSide + midlSide);
 }
+bool pointLeftToLine(point_t point, point_t l1, point_t l2)
+{
+  return ((point.x - l1.x) * (l2.y - l1.y) - (point.y - l1.y) * (l2.x - l1.x) > 0);
+}
 bool pointInsideTriangle(triangle_t triangle, point_t point)
 {
   point_t a = triangle.a;
   point_t b = triangle.b;
   point_t c = triangle.c;
-  bool isLeftAB = ((point.x - a.x) * (b.y - a.y) - (point.y - a.y) * (b.x - a.x) > 0);
-  bool isLeftBC = ((point.x - b.x) * (c.y - b.y) - (point.y - b.y) * (c.x - b.x) > 0);
-  bool isLeftCA = ((point.x - c.x) * (a.y - c.y) - (point.y - c.y) * (a.x - c.x) > 0);
+  bool isLeftAB = pointLeftToLine(point, a, b);
+  bool isLeftBC = pointLeftToLine(point, b, c);
+  bool isLeftCA = pointLeftToLine(point, c, a);
   return ((isLeftAB && isLeftBC && isLeftCA) || (!isLeftAB && !isLeftBC && !isLeftCA));
 }
 point_t multiplyVector(point_t center, point_t point, double koeff)

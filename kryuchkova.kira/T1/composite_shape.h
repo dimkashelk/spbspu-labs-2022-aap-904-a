@@ -11,8 +11,17 @@ namespace kryuchkova
     CompositeShape();
     CompositeShape(const CompositeShape &compositeShape);
     CompositeShape(CompositeShape &&compositeShape);
-    CompositeShape& operator=(const CompositeShape &compositeShape);
-    CompositeShape& operator=(CompositeShape &&compositeShape);
+    CompositeShape &operator=(const CompositeShape &compositeShape);
+    CompositeShape &operator=(CompositeShape &&compositeShape);
+    ~CompositeShape();
+    Shape *operator[](size_t index);
+    const Shape *operator[](size_t index) const;
+    double getArea() const;
+    rectangle_t getFrameRect() const;
+    void move(point_t point);
+    void move(double dx, double dy);
+    void scale(double k);
+    void isoScale(point_t point, double k);
   private:
     size_t size;
     size_t capacity;

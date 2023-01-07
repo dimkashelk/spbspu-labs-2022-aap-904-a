@@ -16,10 +16,6 @@ int main (int argc, char *argv[])
   std::cout << length_longer_decreasing(arr_1, 10) << "\n";
   size_t n = 0;
   std::cin >> n;
-  if(n <= 0)
-  {
-    return 0;
-  }
   int * arr_2 = new int[n];
   std::srand(time(nullptr));
   for (size_t i = 0; i < n; i++)
@@ -35,39 +31,42 @@ int main (int argc, char *argv[])
     std::cout << "Error while opening file";
     return 1;
   }
-  if (in.eof())
-  {
-    std::cout << "Error.";
-    return 1;
-  }
   size_t size = 0;
-  in >> size;
-  if (size == 0)
+  if(in.good())
   {
-    return 0;
-  }
-  int *arr_3 = new int[size];
-  try
-  {
-    for (size_t i = 0; i < size; i++)
+    in >> size;
+    if(in.eof())
     {
-      in >> arr_3[i];
-      if (!in)
-      {
-        std::cout << "Error..";
-        delete[] arr_3;
-        return 1;
-      }
+      std::cout << "Error.";
+      return 1;
     }
-    std::cout << sum_index_elements(arr_3, size) << "\n";
-    std::cout << length_longer_decreasing(arr_3, size) << "\n";
-  }
-  catch (const std::bad_alloc &e)
-  {
-    std::cout << e.what();
+    if (size == 0)
+    {
+      return 0;
+    }
+    int *arr_3 = new int[size];
+    try
+    {
+      for (size_t i = 0; i < size; i++)
+      {
+        in >> arr_3[i];
+        if (!in)
+        {
+          std::cout << "Error..";
+          delete[] arr_3;
+          return 1;
+        }
+      }
+      std::cout << sum_index_elements(arr_3, size) << "\n";
+      std::cout << length_longer_decreasing(arr_3, size) << "\n";
+    }
+    catch (const std::bad_alloc &e)
+    {
+      std::cout << e.what();
+      delete[] arr_3;
+      return 2;
+    }
     delete[] arr_3;
-    return 2;
   }
-  delete[] arr_3;
   return 0;
 }

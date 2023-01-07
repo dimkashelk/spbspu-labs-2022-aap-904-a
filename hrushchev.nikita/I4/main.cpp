@@ -102,6 +102,7 @@ int main(int argc, char* argv[])
         std::cerr << "Error while output\n";
         return 1;
       }
+      delete[] array;
     }
     catch (const std::bad_alloc& e)
     {
@@ -109,7 +110,6 @@ int main(int argc, char* argv[])
       delete[] array;
       return 1;
     }
-    delete[] array;
   }
 }
 

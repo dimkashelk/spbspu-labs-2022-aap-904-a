@@ -1,3 +1,4 @@
+#include "islowertrianglematrix.hpp"
 #include <cstddef>
 
 bool isLowerTriangleMatrix(const int* array, const size_t size)
@@ -6,12 +7,12 @@ bool isLowerTriangleMatrix(const int* array, const size_t size)
   {
     for (size_t j = 0; j < size; j++)
     {
-      if (i < j && array[i * size + j] != 0)
+      if ((j > i) && (array[i * size + j] != 0))
       {
+        std::cout << i << " " << j << '\n';
         return false;
       }
     }
   }
   return true;
 }
-

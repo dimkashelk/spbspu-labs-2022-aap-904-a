@@ -19,7 +19,7 @@ size_t countColumnsEqualSumElement(const int* array, const size_t rows, const si
     for (size_t i = 0; i < columns; i++)
     {
       for (size_t j = 0; j < rows; j++)
-      { 
+      {
         current_sum += array[i + rows * j];
       }
       array_sum[i] = current_sum;

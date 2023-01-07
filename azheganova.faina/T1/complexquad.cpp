@@ -2,8 +2,25 @@
 #include <iostream>
 #include <stdexcept>
 
+point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
+{
+  double cx = 0.0;
+  double cy = 0.0;
+  double numeratorcy = 0.0;
+  double denominatorcy = 0.0;
+  double numeratorcx = 0.0;
+  double denominatorcx = 0.0;
+  numeratorcy = (pos2.y - pos1.y) * (pos3.x * pos4.y - pos4.x * pos3.y) + (pos4.y - pos3.y) * (pos2.x * pos1.y - pos1.x * pos2.y);
+  denominatorcy = (pos4.y - pos3.y) * (pos2.x - pos1.x) - (pos4.x - pos3.x) * (pos2.y - pos1.y);
+  cy = numeratorcy / denominatorcy;
+  numeratorcx = (cy - pos1.y) * (pos2.x - pos1.x);
+  denominatorcx = pos2.y - pos1.y;
+  cx = (numeratorcx / denominatorcx) - pos1.x;
+  return (point_t {cx, cy});
+}
+
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
-  complexquad1{pos1, pos2, pos3, pos4}
+  complexquad1{pos1, pos2, pos3, pos4, findCenter(pos1, pos2, pos3, pos4)}
 {
   if (((pos1.x == pos2.x) && (pos1.y== pos2.y)) || ((pos1.x == pos3.x) && (pos1.y== pos3.y)) || ((pos1.x == pos4.x) && (pos1.y== pos4.y)))
   {
@@ -29,23 +46,6 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   {
     throw std::invalid_argument("wrong complexquad");
   }
-}
-
-point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
-{
-  double cx = 0.0;
-  double cy = 0.0;
-  double numeratorcy = 0.0;
-  double denominatorcy = 0.0;
-  double numeratorcx = 0.0;
-  double denominatorcx = 0.0;
-  numeratorcy = (pos2.y - pos1.y) * (pos3.x * pos4.y - pos4.x * pos3.y) + (pos4.y - pos3.y) * (pos2.x * pos1.y - pos1.x * pos2.y);
-  denominatorcy = (pos4.y - pos3.y) * (pos2.x - pos1.x) - (pos4.x - pos3.x) * (pos2.y - pos1.y);
-  cy = numeratorcy / denominatorcy;
-  numeratorcx = (cy - pos1.y) * (pos2.x - pos1.x);
-  denominatorcx = pos2.y - pos1.y;
-  cx = (numeratorcx / denominatorcx) - pos1.x;
-  return (point_t {cx, cy});
 }
 
 double Complexquad::getArea() const

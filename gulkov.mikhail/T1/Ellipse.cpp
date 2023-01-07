@@ -41,7 +41,6 @@ void Ellipse::makeScale(double k)
   rect_.height = r1_ * 2.0;
 }
 
-
 Shape *Ellipse::clone() const
 {
   return new Ellipse(rect_.pos, r1_, r2_);

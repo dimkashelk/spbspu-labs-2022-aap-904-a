@@ -16,7 +16,7 @@ public:
   void makeScale(double k) override;
   Shape *clone() const override;
 private:
-  point_t first, second, third, fourth;
+  point_t dots_[4];
   std::array< double, 6 > splitIntoTriangles() const;
 };
 

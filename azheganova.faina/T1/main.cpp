@@ -90,7 +90,26 @@ int main()
       }
       scalecenter = {x, y};
       scalek = k;
-      break;
+      std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
+      printFlamePoint(compositeShape[0]);
+      for (size_t i = 1; i < compositeShape.size(); ++i)
+      {
+        std::cout << " ";
+        printFlamePoint(compositeShape[i]);
+      }
+      std::cout << "\n";
+      try
+      {
+        for (size_t i = 0; i < compositeShape.size(); ++i)
+        {
+          isoScale(compositeShape[i], scalecenter, scalek);
+        }
+      }
+      catch(const std::logic_error &e)
+      {
+        std::cerr << e.what() << '\n';
+        return 1;
+      }
     }
   }
   while(std::cin);
@@ -98,38 +117,6 @@ int main()
   {
     std::cerr << "error";
     return 1;
-  }
-  if (!compositeShape.size())
-  {
-    std::cerr << "error";
-    return 1;
-  }
-  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
-  printFlamePoint(compositeShape[0]);
-  for (size_t i = 1; i < compositeShape.size(); ++i)
-  {
-    std::cout << " ";
-    printFlamePoint(compositeShape[i]);
-  }
-  std::cout << "\n";
-  try
-  {
-    for (size_t i = 0; i < compositeShape.size(); ++i)
-    {
-      isoScale(compositeShape[i], scalecenter, scalek);
-    }
-  }
-  catch(const std::logic_error &e)
-  {
-    std::cerr << e.what() << '\n';
-    return 1;
-  }
-  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
-  printFlamePoint(compositeShape[0]);
-  for (size_t i = 1; i < compositeShape.size(); ++i)
-  {
-    std::cout << " ";
-    printFlamePoint(compositeShape[i]);
   }
   std::cout << "\n";
   return 0;

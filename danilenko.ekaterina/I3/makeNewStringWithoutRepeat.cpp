@@ -6,10 +6,10 @@
 char* makeNewStringWithoutRepeat(char *destination, const char *source1, const char *source2)
 {
   size_t new_elements = 0;
-  const char* i = source1;
+  const char *i = source1;
   while (*i != '\0')
   {
-    const char* j = source2;
+    const char *j = source2;
     while (*j != '\0' && *j != *i)
     {
       j++;

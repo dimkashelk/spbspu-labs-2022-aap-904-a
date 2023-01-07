@@ -9,6 +9,7 @@ class Concave: public Shape
   void move(double dx, double dy) override;
   void move(const point_t &pos) override;
   void scale(double k) override;
+  ~Concave() override = default;
  private:
   point_t p1_, p2_, p3_, p4_;
 }

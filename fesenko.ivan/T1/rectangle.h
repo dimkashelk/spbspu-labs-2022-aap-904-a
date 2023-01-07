@@ -10,6 +10,7 @@ class Rectangle: public Shape {
   void move(double dx, double dy) override;
   void move(const point_t &pos) override;
   void scale(double k) override;
+  ~Rectangle() override = default;
  private:
   rectangle_t rect_;
 };

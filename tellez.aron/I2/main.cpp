@@ -43,27 +43,18 @@ int main (int argc, char *argv[])
     return 0;
   }
   int *arr_3;
-  try
+  arr_3 = new int[size];
+  for (size_t i = 0; i < size; i++)
   {
-    arr_3 = new int[size];
-    for (size_t i = 0; i < size; i++)
+    in >> arr_3[i];
+    if (!in)
     {
-      in >> arr_3[i];
-      if (!in)
-      {
-        delete[] arr_3;
-        return 0;
-      }
+      delete[] arr_3;
+      return 0;
     }
-    std::cout << sum_index_elements(arr_3, size) << "\n";
-    std::cout << length_longer_decreasing(arr_3, size) << "\n";
   }
-  catch (const std::bad_array_new_length &e)
-  {
-    std::cout << e.what();
-    delete[] arr_3;
-    return 2;
-  }
+  std::cout << sum_index_elements(arr_3, size) << "\n";
+  std::cout << length_longer_decreasing(arr_3, size) << "\n";
   delete[] arr_3;
   return 0;
 }

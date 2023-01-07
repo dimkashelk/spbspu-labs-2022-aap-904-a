@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
   }
   if ((rows == 0) || (columns == 0) || (rows * columns > 1000))
   {
-    std::cerr << "Incorrect input\n";
+    std::cout << "Incorrect input\n";
     return 0;
   }
 

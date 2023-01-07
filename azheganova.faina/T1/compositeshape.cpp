@@ -27,6 +27,16 @@ CompositeShape::CompositeShape(CompositeShape && rhs):
   rhs.size_ = 0;
 }
 
+bool CompositeShape::empty()
+{
+  return size_ == 0;
+}
+
+size_t CompositeShape::size()
+{
+  return size_;
+}
+
 CompositeShape::CompositeShape(size_t capacity):
  size_(0),
  capacity_(capacity),
@@ -78,7 +88,6 @@ CompositeShape & CompositeShape::operator=(CompositeShape && rhs)
   capacity_ = rhs.capacity_;
   return *this;
 }
-
 
 CompositeShape::~CompositeShape()
 {
@@ -212,14 +221,4 @@ void CompositeShape::pop_back()
 {
   delete shape_[size_ - 1];
   size_--;
-}
-
-bool CompositeShape::empty()
-{
-  return size_ == 0;
-}
-
-size_t CompositeShape::size()
-{
-  return size_;
 }

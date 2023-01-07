@@ -29,18 +29,6 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   {
     throw std::invalid_argument("wrong complexquad");
   }
-  double cx = 0.0;
-  double cy = 0.0;
-  double a1 = complexquad1[0].y - complexquad1[1].y;
-  double b1 = complexquad1[1].x - complexquad1[0].x;
-  double c1 = complexquad1[0].x * complexquad1[1].y - complexquad1[1].x * complexquad1[0].y;
-  double a2 = complexquad1[2].y - complexquad1[2].y;
-  double b2 = complexquad1[3].x - complexquad1[2].x;
-  double c2 = complexquad1[2].x * complexquad1[2].y - complexquad1[3].x * complexquad1[2].y;
-  double det = a1 * b2 - a2 * b1;
-  cx = (b1 * c2 - b2 * c1) / det;
-  cy = (a2 * c1 - a1 * c2) / det;
-  point_t complexquad1[4] = {cx, cy};
 }
 
 point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)

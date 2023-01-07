@@ -1,7 +1,7 @@
 #include "circle.h"
 #include <stdexcept>
 
-kryuchkova::Circle::Circle(const point_t & pos, const double & radius):
+kryuchkova::Circle::Circle(const point_t &pos, const double &radius):
   pos(pos),
   radius(radius)
 {
@@ -11,7 +11,7 @@ kryuchkova::Circle::Circle(const point_t & pos, const double & radius):
   }
 }
 
-double kryuchkova::Circle::getArea()
+double kryuchkova::Circle::getArea() const
 {
   double pi = 3.14159265358979323846;
   return pi * radius * radius;

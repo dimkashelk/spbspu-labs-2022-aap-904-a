@@ -1,7 +1,7 @@
 #include "square.h"
 #include <stdexcept>
 
-kryuchkova::Square::Square(const point_t & ld_point, const double & length):
+kryuchkova::Square::Square(const point_t &lb_point, const double &length):
   lb_point(lb_point),
   length(length)
 {
@@ -11,7 +11,7 @@ kryuchkova::Square::Square(const point_t & ld_point, const double & length):
   }
 }
 
-double kryuchkova::Square::getArea()
+double kryuchkova::Square::getArea() const
 {
   return length * length;
 }

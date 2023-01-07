@@ -1,7 +1,7 @@
 #include "rectangle.h"
 #include <stdexcept>
 
-kryuchkova::Rectangle::Rectangle(const point_t & ld_point, const point_t & ru_point):
+kryuchkova::Rectangle::Rectangle(const point_t &lb_point, const point_t &ru_point):
   lb_point(lb_point),
   ru_point(ru_point)
 {
@@ -11,7 +11,7 @@ kryuchkova::Rectangle::Rectangle(const point_t & ld_point, const point_t & ru_po
   }
 }
 
-double kryuchkova::Rectangle::getArea()
+double kryuchkova::Rectangle::getArea() const
 {
   return (ru_point.x - lb_point.x) * (ru_point.y - lb_point.y);
 }

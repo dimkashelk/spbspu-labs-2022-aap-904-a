@@ -49,7 +49,7 @@ int main (int argc, char *argv[])
     return 1;
   }
 
-  if (in.peek() == std::ifstream::traits_type::eof())
+  if (in.eof())
   {
     std::cout << "Error.";
     return 1;

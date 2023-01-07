@@ -17,19 +17,19 @@ void printFlamePoint(std::ostream & output, const rectangle_t & rectangle)
   output << point2.x << ' ' << point2.y;
 }
 
-void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, size_t shp_size)
+void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes)
 {
-  if (!shp_size)
+  if (!shapes.size())
   {
     throw std::invalid_argument("error");
   }
   double summarea = 0.0;
-  for (size_t i = 0; i < shp_size; ++i)
+  for (size_t i = 0; i < shapes.size(); ++i)
   {
     summarea += shapes[i]->getArea();
   }
   output << summarea;
-  for (size_t i = 0; i < shp_size; ++i)
+  for (size_t i = 0; i < shapes.size(); ++i)
   {
     printFlamePoint(output << ' ', shapes[i]->getFrameRect());
   }
@@ -115,7 +115,7 @@ int main()
   {
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes);
   std::cout << "\n";
   try
   {
@@ -129,7 +129,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes);
   std::cout << "\n";
   return 0;
 }

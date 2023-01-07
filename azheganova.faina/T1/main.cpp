@@ -19,6 +19,10 @@ void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangl
 
 void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, size_t shp_size)
 {
+  if (!shp_size)
+  {
+    throw std::invalid_argument("Invalid size of Shape array");
+  }
   double summarea = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
   {

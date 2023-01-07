@@ -34,12 +34,22 @@ void CompositeShape::pop_back()
   delete shapes[--size_];
 }
 
-Shape *CompositeShape::at(size_t i) const
+Shape *CompositeShape::at(size_t i)
 {
   return shapes[i];
 }
 
-Shape *CompositeShape::operator[](size_t i) const
+const Shape *CompositeShape::at(size_t i) const
+{
+  return shapes[i];
+}
+
+Shape *CompositeShape::operator[](size_t i)
+{
+  return shapes[i];
+}
+
+const Shape *CompositeShape::operator[](size_t i) const
 {
   return shapes[i];
 }

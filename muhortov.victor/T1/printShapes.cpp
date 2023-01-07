@@ -1,6 +1,5 @@
 #include "printShapes.hpp"
 #include <iomanip>
-#include "rectangle.hpp"
 
 void printRectangle(std::ostream &output, Shape *shape)
 {

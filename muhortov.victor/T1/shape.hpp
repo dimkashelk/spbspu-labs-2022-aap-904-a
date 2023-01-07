@@ -1,6 +1,5 @@
 #ifndef GITLAB_LABS_SHAPE_HPP
 #define GITLAB_LABS_SHAPE_HPP
-
 #include "base-types.hpp"
 
 class Shape

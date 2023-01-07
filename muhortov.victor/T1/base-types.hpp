@@ -11,4 +11,10 @@ struct  rectangle_t
   point_t pos;
   double width, height;
   };
+
+struct scale_t
+{
+  point_t pos;
+  double scale;
+};
 #endif

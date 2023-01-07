@@ -18,6 +18,7 @@ namespace kryuchkova
     point_t lb_point;
     point_t ru_point;
   };
+  
 }
 
 #endif

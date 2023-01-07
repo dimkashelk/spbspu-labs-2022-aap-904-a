@@ -30,3 +30,20 @@ kryuchkova::rectangle_t kryuchkova::Rectangle::getFrameRect() const
   return rectangle_t(width, height, pos);
 }
 
+void kryuchkova::Rectangle::move(double dx, double dy)
+{
+  lb_point.x += dx;
+  lb_point.y += dy;
+  ru_point.x += dx;
+  ru_point.y += dy;
+}
+
+void kryuchkova::Rectangle::move(point_t point)
+{
+  point_t pos((lb_point.x + ru_point.x) / 2.0, (lb_point.y + ru_point.y) / 2.0);
+  double dx = point.x - pos.x;
+  double dy = point.y - pos.y;
+  move(dx, dy);
+}
+
+

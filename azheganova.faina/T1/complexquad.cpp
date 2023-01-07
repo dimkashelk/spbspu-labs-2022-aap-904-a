@@ -39,7 +39,7 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   double b1 = pos2.x - pos1.x;
   double c1 = pos1.x * pos2.y - pos2.x * pos1.y;
   double a2 = pos3.y - pos4.y;
-  double b2 = pos3.x - pos4.x;
+  double b2 = pos4.x - pos3.x;
   double c2 = pos3.x * pos4.y - pos4.x * pos3.y;
   double det = a1 * b2 - a2 * b1;
   cx = (b1 * c2 - b2 * c1) / det;
@@ -57,7 +57,7 @@ double Complexquad::getArea() const
   firsttriangle2 = (complexquad1[3].x - complexquad1[4].x) * (complexquad1[0].y - complexquad1[4].y);
   secondtriangle1 = (complexquad1[1].x - complexquad1[2].x) * (complexquad1[4].y - complexquad1[2].y);
   secondtriangle2 = (complexquad1[4].x - complexquad1[2].x) * (complexquad1[1].y - complexquad1[2].y);
-  return ((0.5 * std::abs((firsttriangle1 - firsttriangle2))) + ((0.5 * std::abs(secondtriangle1 - secondtriangle2))));
+  return ((0.5 * ((firsttriangle1 - firsttriangle2))) + ((0.5 * (secondtriangle1 - secondtriangle2))));
 }
 
 rectangle_t Complexquad::getFrameRect() const

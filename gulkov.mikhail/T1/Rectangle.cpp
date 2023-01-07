@@ -30,3 +30,9 @@ void Rectangle::move(double dx, double dy)
   rect_.pos.x += dx;
   rect_.pos.y += dy;
 }
+
+void Rectangle::makeScale(double value)
+{
+  rect_.width *= value;
+  rect_.height *= value;
+}

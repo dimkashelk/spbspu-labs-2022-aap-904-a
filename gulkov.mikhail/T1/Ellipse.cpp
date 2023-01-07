@@ -32,3 +32,12 @@ void Ellipse::move(double dx, double dy)
   rect_.pos.x += dx;
   rect_.pos.y += dy;
 }
+
+
+void Ellipse::makeScale(double value)
+{
+  local_radius1 *= value;
+  local_radius2 *= value;
+  rect_.width = local_radius1 * 2.0;
+  rect_.height = local_radius2 * 2.0;
+}

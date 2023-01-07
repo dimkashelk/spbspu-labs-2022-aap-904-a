@@ -2,7 +2,7 @@
 #include "Shape.hpp"
 #include "Base-types.hpp"
 
-void isoScale(Shape *shape, scale_t s_value)
+void isotropicScale(Shape *shape, scale_t s_value)
 {
   point_t position1 = shape->getFrameRect().pos;
   shape->move(s_value.pos);

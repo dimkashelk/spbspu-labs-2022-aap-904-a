@@ -13,7 +13,7 @@ public:
   rectangle_t getFrameRect() const override;
   void move(point_t position) override;
   void move(double dx, double dy) override;
-  //void scale(double k) override;
+  void makeScale(double value) override;
 
 private:
   rectangle_t rect_;

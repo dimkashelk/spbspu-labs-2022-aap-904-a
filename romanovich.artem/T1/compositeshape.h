@@ -33,5 +33,6 @@ private:
   Shape **shape_;
   size_t size_;
   size_t capacity_;
+  void remove(Shape **shape, size_t size);
 };
 #endif

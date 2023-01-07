@@ -167,11 +167,7 @@ rectangle_t CompositeShape::getFrameRect()
 }
 CompositeShape::~CompositeShape()
 {
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete[] shape_;
+  remove(shape_, size_);
 }
 CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
 {
@@ -187,18 +183,10 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
   }
   catch (...)
   {
-    for (size_t i = 0; i < newSize; ++i)
-    {
-      delete newShape[i];
-    }
-    delete[] newShape;
+    remove(newShape, newSize);
     throw;
   }
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete[] shape_;
+  remove(shape_, size_);
   shape_ = newShape;
   capacity_ = rhs.capacity_;
   size_ = newSize;
@@ -206,11 +194,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &rhs)
 }
 CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
 {
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete[] shape_;
+  remove(shape_, size_);
   shape_ = rhs.shape_;
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;
@@ -218,4 +202,12 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
   rhs.capacity_ = 0;
   rhs.size_ = 0;
   return *this;
+}
+void CompositeShape::remove(Shape **shape, size_t size)
+{
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shape[i];
+  }
+  delete[] shape;
 }

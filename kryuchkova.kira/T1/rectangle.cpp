@@ -46,4 +46,14 @@ void kryuchkova::Rectangle::move(point_t point)
   move(dx, dy);
 }
 
-
+void kryuchkova::Rectangle::scale(double k)
+{
+  double width = ru_point.x - lb_point.x;
+  double height = ru_point.y - lb_point.y;
+  double dx = ((k - 1) * width) / 2;
+  double dy = ((k - 1) * height) / 2;
+  lb_point.x -= dx;
+  lb_point.y -= dy;
+  ru_point.x += dx;
+  ru_point.y += dy;
+}

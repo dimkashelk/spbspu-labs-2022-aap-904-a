@@ -6,13 +6,14 @@
 void makeOutputPosition(std::ostream& out, const Shape* figure)
 {
   out << std::fixed;
+  auto round = std::setprecision(1);
   rectangle_t frame_rectangle = figure->getFrameRectangle();
   double framed_x1 = frame_rectangle.position.x - frame_rectangle.width / 2;
   double framed_y1 = frame_rectangle.position.y - frame_rectangle.height / 2;
   double framed_x2 = frame_rectangle.position.x + frame_rectangle.width / 2;
   double framed_y2 = frame_rectangle.position.y + frame_rectangle.height / 2;
-  out << " " << framed_x1 << " " << framed_y1 << " ";
-  out << framed_x2 << " " << framed_y2;
+  out << " " << round << framed_x1 << " " << round << framed_y1 << " ";
+  out << round << framed_x2 << " " << round << framed_y2;
 }
 
 void makeOutput(std::ostream& out, Shape** array_figures, size_t size)

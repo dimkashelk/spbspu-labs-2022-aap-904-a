@@ -44,3 +44,8 @@ void kryuchkova::Circle::scale(double k)
 {
   radius *= k;
 }
+
+kryuchkova::Shape *kryuchkova::Circle::clone() const
+{
+  return new Circle(pos, radius);
+}

@@ -14,7 +14,7 @@ namespace kryuchkova
     void move(point_t point) override;
     void move(double dx, double dy) override;
     void scale(double k) override;
-    //Shape *clone() const override;
+    Shape *clone() const override;
   private:
     point_t lb_point;
     point_t ru_point;

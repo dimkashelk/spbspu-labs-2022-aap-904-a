@@ -56,3 +56,8 @@ void kryuchkova::Rectangle::scale(double k)
   ru_point.x += dx;
   ru_point.y += dy;
 }
+
+kryuchkova::Shape *kryuchkova::Rectangle::clone() const
+{
+  return new Rectangle(lb_point, ru_point);
+}

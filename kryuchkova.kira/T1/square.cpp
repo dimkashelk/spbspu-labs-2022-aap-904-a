@@ -49,3 +49,8 @@ void kryuchkova::Square::scale(double k)
   lb_point.y -= dy;
   length *= k;
 }
+
+kryuchkova::Shape *kryuchkova::Square::clone() const
+{
+  return new Square(lb_point, length);
+}

@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
+#include <algorithm>
 #include "shape.hpp"
 #include "base-types.hpp"
-#include "minmax.hpp"
 
 odintsov::CompositeShape::CompositeShape():
   size_(0),
@@ -105,10 +105,10 @@ odintsov::rectangle_t odintsov::CompositeShape::getFrameRect() const
   double topY = rect.pos.y + rect.height * 0.5;
   for (size_t i = 1; i < size(); i++) {
     rect = shapes[i]->getFrameRect();
-    leftX = min(leftX, rect.pos.x - rect.width * 0.5);
-    rightX = max(rightX, rect.pos.x + rect.width * 0.5);
-    bottomY = min(bottomY, rect.pos.y - rect.height * 0.5);
-    topY = max(topY, rect.pos.y + rect.height * 0.5);
+    leftX = std::min(leftX, rect.pos.x - rect.width * 0.5);
+    rightX = std::max(rightX, rect.pos.x + rect.width * 0.5);
+    bottomY = std::min(bottomY, rect.pos.y - rect.height * 0.5);
+    topY = std::max(topY, rect.pos.y + rect.height * 0.5);
   }
   return rectangle_t{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}};
 }

@@ -3,7 +3,6 @@
 #include "line.hpp"
 #include "triangle.hpp"
 #include "base-types.hpp"
-#include "minmax.hpp"
 
 odintsov::Concave::Concave(const point_t& p1, const point_t& p2, const point_t& p3, const point_t& p4):
   p1(p1),

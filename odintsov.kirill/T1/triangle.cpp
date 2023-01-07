@@ -1,8 +1,8 @@
 #include "triangle.hpp"
 #include <cmath>
+#include <algorithm>
 #include "base-types.hpp"
 #include "line.hpp"
-#include "minmax.hpp"
 #include "nearlyEquals.hpp"
 
 bool odintsov::isTriangle(const point_t& p1, const point_t& p2, const point_t& p3)
@@ -10,7 +10,7 @@ bool odintsov::isTriangle(const point_t& p1, const point_t& p2, const point_t& p
   double a = getLineSegLength(p1, p2);
   double b = getLineSegLength(p1, p3);
   double c = getLineSegLength(p2, p3);
-  double maxSide = max(a, b, c);
+  double maxSide = std::max(std::max(a, b), c);
   return maxSide < a + b + c - maxSide;
 }
 

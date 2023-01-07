@@ -1,7 +1,7 @@
 #include "base-types.hpp"
 #include <cstddef>
 #include <stdexcept>
-#include "minmax.hpp"
+#include <algorithm>
 
 void odintsov::movePoint(point_t& p, double dx, double dy)
 {
@@ -24,10 +24,10 @@ odintsov::rectangle_t odintsov::getFrameRectFromPoints(const point_t* points, si
   double bottomY = points[0].y;
   double topY = points[0].y;
   for (size_t i = 1; i < amt; i++) {
-    leftX = min(points[i].x, leftX);
-    rightX = max(points[i].x, rightX);
-    bottomY = min(points[i].y, bottomY);
-    topY = max(points[i].y, topY);
+    leftX = std::min(points[i].x, leftX);
+    rightX = std::max(points[i].x, rightX);
+    bottomY = std::min(points[i].y, bottomY);
+    topY = std::max(points[i].y, topY);
   }
   return rectangle_t{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}};
 }

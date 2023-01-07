@@ -1,7 +1,7 @@
 #include "nearlyEquals.hpp"
 #include <limits>
 #include <cmath>
-#include "minmax.hpp"
+#include <algorithm>
 #include "base-types.hpp"
 
 bool odintsov::nearlyEquals(double a, double b, double epsilon)
@@ -17,7 +17,7 @@ bool odintsov::nearlyEquals(double a, double b, double epsilon)
   } else if (a == 0 || b == 0 || (absA + absB < dblMinNormal)) {
     return diff < (epsilon * dblMinNormal);
   } else {
-    return diff / min((absA + absB), std::numeric_limits< double >::max()) < epsilon;
+    return diff / std::min((absA + absB), std::numeric_limits< double >::max()) < epsilon;
   }
 }
 

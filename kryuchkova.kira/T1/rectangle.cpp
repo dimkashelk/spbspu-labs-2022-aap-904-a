@@ -47,6 +47,10 @@ void kryuchkova::Rectangle::move(point_t point)
 
 void kryuchkova::Rectangle::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("scaling koef must be positive");
+  }
   double width = ru_point.x - lb_point.x;
   double height = ru_point.y - lb_point.y;
   double dx = ((k - 1) * width) / 2;

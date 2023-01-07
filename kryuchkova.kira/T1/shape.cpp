@@ -6,6 +6,10 @@ namespace kryuchkova
 {
   void isoScale(kryuchkova::Shape *shape, point_t point, double k)
   {
+    if (k <= 0)
+    {
+      throw std::invalid_argument("scaling koef must be positive");
+    }
     rectangle_t rect1 = shape->getFrameRect();
     point_t pos1 = rect1.pos;
     shape->move(point);

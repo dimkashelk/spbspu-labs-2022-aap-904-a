@@ -43,6 +43,10 @@ void kryuchkova::Square::move(point_t point)
 
 void kryuchkova::Square::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("scaling koef must be positive");
+  }
   double dx = ((k - 1) * length) / 2;
   double dy = ((k - 1) * length) / 2;
   lb_point.x -= dx;

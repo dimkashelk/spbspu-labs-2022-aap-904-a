@@ -42,6 +42,10 @@ void kryuchkova::Circle::move(point_t point)
 
 void kryuchkova::Circle::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("scaling koef must be positive");
+  }
   radius *= k;
 }
 

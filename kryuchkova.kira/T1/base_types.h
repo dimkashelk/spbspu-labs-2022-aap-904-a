@@ -1,7 +1,7 @@
 #ifndef BASE_TYPES_H
 #define BASE_TYPES_H
 
-namespace kiragelaz
+namespace kryuchkova
 {
   struct point_t
   {

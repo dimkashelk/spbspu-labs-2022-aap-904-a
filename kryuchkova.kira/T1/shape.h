@@ -2,7 +2,7 @@
 #define SHAPE_H
 #include "base_types.h"
 
-namespace kiragelaz
+namespace kryuchkova
 {
   class Shape
   {

@@ -62,5 +62,11 @@ double sqrtOneMinusXToPowerOfMinusZeroPointFive(double x, unsigned members, doub
     }
     i++;
   }
+
+  if (std::abs(next) > error)
+  {
+      throw std::invalid_argument("ERROR: accuracy of the result does not fit the required");
+  }
+
   return result;
 }

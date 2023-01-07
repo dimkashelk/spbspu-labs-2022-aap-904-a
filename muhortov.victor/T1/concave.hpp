@@ -15,9 +15,6 @@ public:
   void scaleWithoutCheck(double k) override;
   Shape *clone() const override;
 private:
-  rectangle_t rectangle;
-  double a, b, c, inTrOne, inTrTwo, p, pIn;
-  bool checkTrOne, checkTrTwo, checkTrThree;
   point_t first, second ,third, fourth;
   std::array< double, 6 > splitIntoTriangles() const;
 };

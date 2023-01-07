@@ -2,15 +2,15 @@
 #define GITLAB_LABS_BASE_TYPES_HPP
 
 struct point_t
-  {
+{
   double x, y;
-  };
+};
 
-struct  rectangle_t
-  {
+struct rectangle_t
+{
   point_t pos;
   double width, height;
-  };
+};
 
 struct scale_t
 {
@@ -18,5 +18,9 @@ struct scale_t
   double scale;
 };
 
-double twoPointsDistance(const point_t &p1, const point_t &p2);
+double calculatePointsDistance(const point_t &p1, const point_t &p2);
+bool checkingConcave(const point_t &one, const point_t &two, const point_t &three, const point_t &four);
+point_t moveToPosition(point_t position, double delta_x, double delta_y);
+point_t multiplyPosition(point_t position, point_t center, double k);
+
 #endif

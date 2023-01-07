@@ -4,24 +4,12 @@
 #include <cmath>
 
 Concave::Concave(point_t one, point_t two, point_t three, point_t four):
-  rectangle({{four.x, four.y}, std::max(std::max(one.x, two.x), three.x), std::max(std::max(one.y, two.y), three.y)}),
-  a(sqrt((three.x - one.x) * (three.x - one.x) + (three.y - one.y) * (three.y - one.y))),
-  b(sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y))),
-  c(sqrt((three.x - two.x) * (three.x - two.x) + (three.y - two.y) * (three.y - two.y))),
-  inTrOne(sqrt((four.x - one.x) * (four.x - one.x) + (four.y - one.y) * (four.y - one.y))),
-  inTrTwo(sqrt((four.x - three.x) * (four.x - three.x) + (four.y - three.y) * (four.y - three.y))),
-  p((a + b + c) / 2),
-  pIn((a + inTrOne + inTrTwo) / 2),
-  checkTrOne(((one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y)) > 0),
-  checkTrTwo(((two.x - four.x) * (three.y - two.y) - (three.x - two.x) * (two.y - four.y)) > 0),
-  checkTrThree(((three.x - four.x) * (one.y - three.y) - (one.x - three.x) * (three.y - four.y)) > 0),
   first({one.x, one.y}),
   second({two.x, two.y}),
   third({three.x, three.y}),
   fourth({four.x, four.y})
 {
-  if (a + b < c || a + c < b || b + c < a || one.x == four.x || one.y == four.y ||
-      !((checkTrOne && checkTrTwo && checkTrThree) || (!checkTrOne && !checkTrTwo && !checkTrThree)))
+  if (checkingConcave(first, second, third, fourth))
   {
     throw std::invalid_argument("Error: invalid concave parameters");
   }
@@ -30,13 +18,13 @@ Concave::Concave(point_t one, point_t two, point_t three, point_t four):
 
 std::array< double, 6 > Concave::splitIntoTriangles() const
 {
-  double a_ = twoPointsDistance(first, third);
-  double b_ = twoPointsDistance(third, second);
-  double c_ = twoPointsDistance(first, second);
-  double a1_ = twoPointsDistance(third, fourth);
-  double b1_ = b_;
-  double c1_ = twoPointsDistance(fourth, second);
-  std::array< double, 6 > arr = {a_, b_, c_, a1_, b1_, c1_};
+  double a1_ = calculatePointsDistance(first, third);
+  double b1_ = calculatePointsDistance(third, second);
+  double c1_ = calculatePointsDistance(first, second);
+  double a2_ = calculatePointsDistance(third, fourth);
+  double b2_ = b1_;
+  double c2_ = calculatePointsDistance(fourth, second);
+  std::array< double, 6 > arr = {a1_, b1_, c1_, a2_, b2_, c2_};
   return arr;
 }
 
@@ -67,34 +55,26 @@ rectangle_t Concave::getFrameRect() const
 
 void Concave::move(point_t position)
 {
-  double dx = position.x - getFrameRect().pos.x;
-  double dy = position.y - getFrameRect().pos.y;
-  move(dx, dy);
+  double delta_x = position.x - getFrameRect().pos.x;
+  double delta_y = position.y - getFrameRect().pos.y;
+  move(delta_x, delta_y);
 }
 
 void Concave::move(double delta_x, double delta_y)
 {
-  first.x += delta_x;
-  first.y += delta_y;
-  second.x += delta_x;
-  second.y += delta_y;
-  third.x += delta_x;
-  third.y += delta_y;
-  fourth.x += delta_x;
-  fourth.y += delta_y;
+  first = moveToPosition(first, delta_x, delta_y);
+  second = moveToPosition(second, delta_x, delta_y);
+  third = moveToPosition(third, delta_x, delta_y);
+  fourth = moveToPosition(fourth, delta_x, delta_y);
 }
 
 void Concave::scaleWithoutCheck(double k)
 {
   point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
-  first.x = k * (first.x - center.x) + center.x;
-  first.y = k * (first.y - center.y) + center.y;
-  second.x = k * (second.x - center.x) + center.x;
-  second.y = k * (second.y - center.y) + center.y;
-  third.x = k * (third.x - center.x) + center.x;
-  third.y = k * (third.y - center.y) + center.y;
-  fourth.x = k * (fourth.x - center.x) + center.x;
-  fourth.y = k * (fourth.y - center.y) + center.y;
+  first = multiplyPosition(first, center, k);
+  second = multiplyPosition(second, center, k);
+  third = multiplyPosition(third, center, k);
+  fourth = multiplyPosition(fourth, center, k);
 }
 
 Shape *Concave::clone() const

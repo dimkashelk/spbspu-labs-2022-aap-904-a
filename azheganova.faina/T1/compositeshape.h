@@ -10,7 +10,6 @@ class CompositeShape
   public:
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
-    CompositeShape(size_t capacity);
     ~CompositeShape();
     Shape * operator[](size_t i);
     Shape * operator[](size_t i) const;

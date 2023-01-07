@@ -21,7 +21,6 @@ void printFlamePoint(Shape *shape)
 
 int main()
 {
-  std::string line;
   size_t cap = 10;
   CompositeShape rhs(cap);
   point_t scalecenter;

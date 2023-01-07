@@ -57,7 +57,7 @@ double Complexquad::getArea() const
   firsttriangle2 = (complexquad1[3].x - complexquad1[4].x) * (complexquad1[0].y - complexquad1[4].y);
   secondtriangle1 = (complexquad1[1].x - complexquad1[2].x) * (complexquad1[4].y - complexquad1[2].y);
   secondtriangle2 = (complexquad1[4].x - complexquad1[2].x) * (complexquad1[1].y - complexquad1[2].y);
-  return ((0.5 * ((firsttriangle1 - firsttriangle2))) + ((0.5 * (secondtriangle1 - secondtriangle2))));
+  return ((0.5 * std::abs((firsttriangle1 - firsttriangle2))) + ((0.5 * std::abs(secondtriangle1 - secondtriangle2))));
 }
 
 rectangle_t Complexquad::getFrameRect() const

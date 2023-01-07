@@ -1,7 +1,7 @@
 #include "Shape.hpp"
 #include <stdexcept>
 
-void Shape::makeSafeScale(double value)
+void Shape::makeSafeScale(double k)
 {
-  value <= 0.0 ? throw std::invalid_argument("Scale error, invalid scale value") : makeScale(value);
+  k <= 0.0 ? throw std::invalid_argument("Scale error, invalid scale value") : makeScale(k);
 }

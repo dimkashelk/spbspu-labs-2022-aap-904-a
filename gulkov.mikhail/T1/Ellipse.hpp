@@ -7,18 +7,17 @@
 class Ellipse : public Shape
 {
 public:
-  Ellipse(point_t center, double radius1, double radius2);
-
+  Ellipse(point_t one, double first, double second);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t position) override;
   void move(double dx, double dy) override;
-  void makeScale(double value) override;
-
+  void makeScale(double k) override;
+  Shape *clone() const override;
 private:
   rectangle_t rect_;
-  double local_radius1;
-  double local_radius2;
+  double r1_;
+  double r2_;
 };
 
 #endif

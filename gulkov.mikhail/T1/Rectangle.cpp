@@ -2,13 +2,17 @@
 #include <stdexcept>
 
 Rectangle::Rectangle(point_t one, point_t two):
-  rect_({{(one.x + two.x) / 2, (one.y + two.y) / 2}, two.x - one.x, two.y - one.y})
+  rect_({{(one.x + two.x) / 2.0, (one.y + two.y) / 2.0}, two.x - one.x, two.y - one.y})
 {
   if (rect_.width <= 0.0 || rect_.height <= 0.0)
   {
-    throw std::invalid_argument("Bad input, invalid rectangle size");
+    throw std::invalid_argument("Bad input, invalid concave size");
   }
 }
+
+Rectangle::Rectangle(rectangle_t rect_):
+  rect_(rect_)
+{}
 
 double Rectangle::getArea() const
 {
@@ -31,8 +35,13 @@ void Rectangle::move(double dx, double dy)
   rect_.pos.y += dy;
 }
 
-void Rectangle::makeScale(double value)
+void Rectangle::makeScale(double k)
 {
-  rect_.width *= value;
-  rect_.height *= value;
+  rect_.width *= k;
+  rect_.height *= k;
+}
+
+Shape *Rectangle::clone() const
+{
+  return new Rectangle(rect_);
 }

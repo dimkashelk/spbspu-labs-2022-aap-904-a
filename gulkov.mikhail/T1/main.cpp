@@ -1,116 +1,100 @@
 #include <iostream>
 #include "Base-types.hpp"
-#include "IsoScale.hpp"
-#include "GetShapes.hpp"
-#include "PrintCoordinates.hpp"
+#include "MakeShapes.hpp"
+#include "PrintShapes.hpp"
+#include "CompositeShape.hpp"
 
 int main()
 {
-  size_t size = 0;
-  std::string input;
-  bool isscale = false;
-  scale_t scale = {{0.0, 0.0}, 0.0};
+  size_t capacity = 10;
+  bool is_scale = false;
+  std::string input = " ";
 
-  Shape **shapes = new Shape *[10];
+  CompositeShape compositeShape(capacity);
+  scale_t scale = {{0.0, 0.0}, 0.0};
 
   while (std::cin)
   {
     std::cin >> input;
+
     if (input == "RECTANGLE")
     {
       try
       {
-        shapes[size] = makeRectangle(std::cin);
-        ++size;
+        compositeShape.push_back(makeRectangle(std::cin));
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "Error: \n";
-        std::cerr << e.what() << "\n";
+        std::cerr << "\nError:\n";
+        std::cerr << e.what() << '\n';
       }
     }
-    if (input == "ELLIPSE")
+    else if (input == "ELLIPSE")
     {
       try
       {
-        shapes[size] = makeEllipse(std::cin);
-        ++size;
+        compositeShape.push_back(makeEllipse(std::cin));
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "Error: \n";
-        std::cerr << e.what() << "\n";
+        std::cerr << "\nError:\n";
+        std::cerr << e.what() << '\n';
       }
     }
-    if (input == "CONCAVE")
+    else if (input == "CONCAVE")
     {
       try
       {
-        shapes[size] = makeConcave(std::cin);
-        ++size;
+        compositeShape.push_back(makeConcave(std::cin));
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "Error: \n";
-        std::cerr << e.what() << "\n";
+        std::cerr << "\nError:\n";
+        std::cerr << e.what() << '\n';
       }
     }
-    if (input == "SCALE")
+    else if (input == "SCALE")
     {
       try
       {
-        scale = calcScale(std::cin);
-        isscale = true;
+        scale = getScale(std::cin);
+        is_scale = true;
       }
       catch (const std::invalid_argument &e)
       {
-        std::cerr << "Error: \n";
-        std::cerr << e.what() << "\n";
-        for (size_t i = 0; i < size; i++)
-        {
-          delete shapes[i];
-        }
-        delete[] shapes;
-        return 1;
+        std::cerr << "\nError:\n";
+        std::cerr << e.what() << '\n';
       }
       break;
     }
   }
 
-  if (size == 0)
+  if (compositeShape.empty())
   {
-    std::cerr << "Error: nothing to scale\n";
-    delete[] shapes;
+    std::cerr << "\nError:\n";
+    std::cerr << "It is nothing to scale\n";
     return 1;
   }
-  if (!isscale)
+  if (!is_scale)
   {
-    std::cerr << "no scale command" << "\n";
-    for (size_t k = 0; k < size; k++)
-    {
-      delete shapes[k];
-    }
-    delete[] shapes;
+    std::cerr << "\nError:\n";
+    std::cerr << "no scale command\n";
     return 1;
   }
 
-  printAreaPoints(std::cout, shapes, size);
-  for (size_t k = 0; k < size; k++)
+  printShapesArea(std::cout, compositeShape);
+  try
   {
-    try
-    {
-      isotropicScale(shapes[k], scale);
-    }
-    catch (const std::logic_error &error)
-    {
-      std::cerr << error.what() << "\n";
-    }
+    compositeShape.scale(scale);
   }
-  printAreaPoints(std::cout, shapes, size);
-  for (size_t k = 0; k < size; k++)
+  catch (const std::invalid_argument &e)
   {
-    delete shapes[k];
+    std::cerr << "\nError:\n";
+    std::cerr << e.what() << '\n';
+    return 1;
   }
-  delete[] shapes;
+
+  printShapesArea(std::cout, compositeShape);
+
   return 0;
 }

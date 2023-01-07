@@ -9,8 +9,7 @@ struct point_t
 struct rectangle_t
 {
   point_t pos;
-  double width;
-  double height;
+  double width, height;
 };
 
 struct scale_t
@@ -18,6 +17,7 @@ struct scale_t
   point_t pos;
   double scale;
 };
+
 
 double twoPointsDistance(const point_t &p1, const point_t &p2);
 

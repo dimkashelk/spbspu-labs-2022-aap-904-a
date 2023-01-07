@@ -3,8 +3,8 @@
 
 Ellipse::Ellipse(point_t center, double radius1, double radius2):
   rect_({{center.x, center.y}, radius1 * 2.0, radius2 * 2.0}),
-  local_radius1(radius1),
-  local_radius2(radius2)
+  r1_(radius1),
+  r2_(radius2)
 {
   if (rect_.width <= 0 || rect_.height <= 0)
   {
@@ -14,7 +14,7 @@ Ellipse::Ellipse(point_t center, double radius1, double radius2):
 
 double Ellipse::getArea() const
 {
-  return 3.1415926535 * local_radius1 * local_radius2;
+  return 3.1415926535 * r1_ * r2_;
 }
 
 rectangle_t Ellipse::getFrameRect() const
@@ -36,8 +36,13 @@ void Ellipse::move(double dx, double dy)
 
 void Ellipse::makeScale(double value)
 {
-  local_radius1 *= value;
-  local_radius2 *= value;
-  rect_.width = local_radius1 * 2.0;
-  rect_.height = local_radius2 * 2.0;
+  r1_ *= value;
+  r2_ *= value;
+  rect_.width = r1_ * 2.0;
+  rect_.height = r1_ * 2.0;
+}
+
+Shape *Ellipse::clone() const
+{
+  return new Ellipse(rect_.pos, r1_, r2_);
 }

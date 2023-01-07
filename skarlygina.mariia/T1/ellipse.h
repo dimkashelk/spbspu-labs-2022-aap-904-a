@@ -1,9 +1,8 @@
 #ifndef ELLIPSE_H
 #define ELLIPSE_H
 #include "shape.h"
-class Ellipse : public Shape
+class Ellipse: public Shape
 {
-
 public:
   Ellipse(point_t center, double radius_vertical, double radius_horizontal);
   double getArea() const override;
@@ -15,6 +14,5 @@ public:
 private:
   point_t center_;
   double radius_vertical_, radius_horizontal_;
-
 };
 #endif

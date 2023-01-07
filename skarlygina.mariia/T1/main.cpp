@@ -23,8 +23,8 @@ int main()
       isCorrectFigure = true;
       try
       {
-        rectangle = correctFigures::readCorrectRectangle(std::cin, isCorrectFigure);
-        if (isCorrectFigure)
+        rectangle = correctFigures::readCorrectRectangle(std::cin);
+        if (rectangle)
         {
           array_figures[size] = rectangle;
           size++;
@@ -45,6 +45,14 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the rectangle\n";
+        if (size > 0)
+        {
+          for (size_t i = 0; i < size; i++)
+          {
+            delete array_figures[i];
+          }
+        }
+        delete[] array_figures;
         return 2;
       }
     }
@@ -55,8 +63,8 @@ int main()
       isCorrectFigure = true;
       try
       {
-        ring = correctFigures::readCorrectRing(std::cin, isCorrectFigure);
-        if (isCorrectFigure)
+        ring = correctFigures::readCorrectRing(std::cin);
+        if (ring)
         {
           array_figures[size] = ring;
           size++;
@@ -77,6 +85,14 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the ring\n";
+        if (size > 0)
+        {
+          for (size_t i = 0; i < size; i++)
+          {
+            delete array_figures[i];
+          }
+        }
+        delete[] array_figures;
         return 2;
       }
     }
@@ -87,8 +103,8 @@ int main()
       isCorrectFigure = true;
       try
       {
-        ellipse = correctFigures::readCorrectEllipse(std::cin, isCorrectFigure);
-        if (isCorrectFigure)
+        ellipse = correctFigures::readCorrectEllipse(std::cin);
+        if (ellipse)
         {
           array_figures[size] = ellipse;
           size++;
@@ -109,6 +125,14 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the ellipse\n";
+        if (size > 0)
+        {
+          for (size_t i = 0; i < size; i++)
+          {
+            delete array_figures[i];
+          }
+        }
+        delete[] array_figures;
         return 2;
       }
     }

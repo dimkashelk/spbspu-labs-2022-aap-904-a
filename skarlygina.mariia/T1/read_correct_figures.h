@@ -1,13 +1,14 @@
 #ifndef READ_CORRECT_FIGURES_H
 #define READ_CORRECT_FIGURES_H
+#include "shape.h"
 #include "ellipse.h"
 #include "ring.h"
 #include "rectangle.h"
 #include <istream>
 namespace correctFigures
 {
-  Rectangle* readCorrectRectangle(std::istream& in, bool& isCorrect);
-  Ring* readCorrectRing(std::istream& in, bool& isCorrect);
-  Ellipse* readCorrectEllipse(std::istream& in, bool& isCorrect);
+  Shape* readCorrectRectangle(std::istream& in);
+  Shape* readCorrectRing(std::istream& in);
+  Shape* readCorrectEllipse(std::istream& in);
 }
 #endif

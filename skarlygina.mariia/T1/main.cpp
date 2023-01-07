@@ -10,7 +10,6 @@ int main()
   size_t size = 0;
   point_t point{};
   double coefficient = 0;
-  bool isCorrectFigure = true;
   bool isScale = false;
   bool isCommand = true;
   Shape** array_figures = new Shape*[10];
@@ -20,7 +19,6 @@ int main()
     if (figure == "RECTANGLE")
     {
       Shape* rectangle = nullptr;
-      isCorrectFigure = true;
       try
       {
         rectangle = correctFigures::readCorrectRectangle(std::cin);
@@ -60,7 +58,6 @@ int main()
     if (figure == "RING")
     {
       Shape* ring = nullptr;
-      isCorrectFigure = true;
       try
       {
         ring = correctFigures::readCorrectRing(std::cin);
@@ -100,7 +97,6 @@ int main()
     if (figure == "ELLIPSE")
     {
       Shape* ellipse = nullptr;
-      isCorrectFigure = true;
       try
       {
         ellipse = correctFigures::readCorrectEllipse(std::cin);

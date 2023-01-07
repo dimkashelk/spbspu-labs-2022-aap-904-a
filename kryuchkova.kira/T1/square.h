@@ -1,13 +1,13 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef SQUARE_H
+#define SQUARE_H
 #include "shape.h"
 
 namespace kryuchkova
 {
-  class Rectangle: Shape
+  class Square: Shape
   {
   public:
-    Rectangle(const point_t & lb_point, const point_t & ru_point);
+    Square(const point_t & lb_point, const double & length);
     double getArea();
     rectangle_t getFrameRect() const;
     void move(point_t point);
@@ -16,7 +16,7 @@ namespace kryuchkova
     Shape * clone() const;
   private:
     point_t lb_point;
-    point_t ru_point;
+    double length;
   };
 
 }

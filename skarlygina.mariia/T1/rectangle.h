@@ -13,6 +13,5 @@ public:
 private:
   point_t left_down_;
   point_t right_up_;
-  point_t left_up_;
 };
 #endif

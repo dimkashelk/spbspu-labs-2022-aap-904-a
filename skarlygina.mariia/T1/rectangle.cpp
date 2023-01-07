@@ -4,15 +4,14 @@
 
 Rectangle::Rectangle(point_t left_down, point_t right_up):
   left_down_(left_down),
-  right_up_(right_up),
-  left_up_ {left_down.x, right_up.y}
+  right_up_(right_up)
 {}
 
 rectangle_t Rectangle::getFrameRectangle() const
 {
   rectangle_t frame_rectangle{};
-  frame_rectangle.height = left_up_.y - left_down_.y;
-  frame_rectangle.width = right_up_.x - left_up_.x;
+  frame_rectangle.height = right_up_.y - left_down_.y;
+  frame_rectangle.width = right_up_.x - left_down_.x;
   frame_rectangle.position.x = (left_down_.x + right_up_.x) / 2;
   frame_rectangle.position.y = (left_down_.y + right_up_.y) / 2;
   return frame_rectangle;
@@ -28,8 +27,6 @@ void Rectangle::move(double dx, double dy)
 {
   left_down_.x += dx;
   left_down_.y += dy;
-  left_up_.x += dx;
-  left_up_.y += dy;
   right_up_.x += dx;
   right_up_.y += dy;
 }
@@ -49,6 +46,4 @@ void Rectangle::scale(double k)
   left_down_.y = center_y + (left_down_.y - center_y) * k;
   right_up_.x = center_x + (right_up_.x - center_x) * k;
   right_up_.y = center_y + (right_up_.y - center_y) * k;
-  left_up_.x = left_down_.x;
-  left_up_.y = right_up_.y;
 }

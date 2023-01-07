@@ -10,12 +10,16 @@ Rectangle::Rectangle(point_t one, point_t two):
   }
 }
 
-double Rectangle::getArea()
+Rectangle::Rectangle(rectangle_t rectangle):
+  rectangle(rectangle)
+{}
+
+double Rectangle::getArea() const
 {
   return rectangle.width * rectangle.height;
 }
 
-rectangle_t Rectangle::getFrameRect()
+rectangle_t Rectangle::getFrameRect() const
 {
   return rectangle;
 }
@@ -29,4 +33,15 @@ void Rectangle::move(double delta_x, double delta_y)
 {
   rectangle.pos.x += delta_x;
   rectangle.pos.y += delta_y;
+}
+
+void Rectangle::scaleWithoutCheck(double k)
+{
+  rectangle.width *= k;
+  rectangle.height *= k;
+}
+
+Shape *Rectangle::clone() const
+{
+  return new Rectangle(rectangle);
 }

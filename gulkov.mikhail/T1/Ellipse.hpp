@@ -4,7 +4,7 @@
 #include "Base-types.hpp"
 #include "Shape.hpp"
 
-class Ellipse : public Shape
+class Ellipse: public Shape
 {
 public:
   Ellipse(point_t one, double first, double second);

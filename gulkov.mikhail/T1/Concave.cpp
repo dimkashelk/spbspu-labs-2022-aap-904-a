@@ -12,8 +12,7 @@ Concave::Concave(point_t one, point_t two, point_t three, point_t four):
   }
 }
 
-
-std::array< double, 6 > Concave::splitIntoTriangles() const
+std::array< double, 6 > Concave::calcWithTriangles() const
 {
   double vec_a = calcVectorLength(dots_[0], dots_[2]);
   double vec_b = calcVectorLength(dots_[2], dots_[1]);
@@ -27,7 +26,7 @@ std::array< double, 6 > Concave::splitIntoTriangles() const
 
 double Concave::getArea() const
 {
-  std::array< double, 6 > segments = splitIntoTriangles();
+  std::array< double, 6 > segments = calcWithTriangles();
   double a = segments[0];
   double b = segments[1];
   double c = segments[2];

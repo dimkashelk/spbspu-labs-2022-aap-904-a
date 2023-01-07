@@ -4,7 +4,7 @@
 #include "Base-types.hpp"
 #include "Shape.hpp"
 
-class Rectangle : public Shape
+class Rectangle: public Shape
 {
 public:
   Rectangle(point_t one, point_t two);

@@ -5,7 +5,7 @@
 #include "Shape.hpp"
 #include <array>
 
-class Concave : public Shape
+class Concave: public Shape
 {
 public:
   Concave(point_t one, point_t two, point_t three, point_t four);
@@ -17,7 +17,7 @@ public:
   Shape *clone() const override;
 private:
   point_t dots_[4];
-  std::array< double, 6 > splitIntoTriangles() const;
+  std::array< double, 6 > calcWithTriangles() const;
 };
 
 #endif

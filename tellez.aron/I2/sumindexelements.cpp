@@ -1,7 +1,6 @@
 #include "sumindexelements.h"
-#include <stdexcept>
 #include <limits>
-size_t sum_index_elements(const int *arr, const size_t size)
+size_t sum_index_elements(const int *arr, size_t size)
 {
   if (size == 0)
   {

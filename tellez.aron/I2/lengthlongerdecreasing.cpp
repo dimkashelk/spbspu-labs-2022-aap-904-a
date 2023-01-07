@@ -1,6 +1,4 @@
-#include <cstddef>
 #include "lengthlongerdecreasing.h"
-#include <stdexcept>
 size_t length_longer_decreasing(const int *arr, const size_t size)
 {
   if (size == 0)

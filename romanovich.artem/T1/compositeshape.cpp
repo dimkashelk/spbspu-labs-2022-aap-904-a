@@ -120,9 +120,18 @@ CompositeShape::CompositeShape(const CompositeShape &rhs):
   CompositeShape(rhs.capacity_)
 {
   size_ = rhs.size_;
-  for (size_t i = 0; i < rhs.size_; ++i)
+  size_t index = 0;
+  try
   {
-    shape_[i] = rhs.shape_[i]->clone();
+    while (index < rhs.size_)
+    {
+      shape_[index] = rhs.shape_[index]->clone();
+      ++index;
+    }
+  } catch (...)
+  {
+    remove(shape_, index);
+    throw;
   }
 }
 CompositeShape::CompositeShape(CompositeShape &&rhs) noexcept:

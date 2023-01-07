@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
   if ((rows == 0) || (columns == 0) || (rows * columns > 1000))
   {
     std::cerr << "Incorrect input\n";
-    return 1;
+    return 0;
   }
 
   if (!std::strcmp(argv[1], "1"))
@@ -112,4 +112,3 @@ int main(int argc, char* argv[])
     }
   }
 }
-

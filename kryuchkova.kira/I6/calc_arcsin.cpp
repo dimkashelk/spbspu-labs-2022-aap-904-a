@@ -45,5 +45,10 @@ double calcArcsin(double x, double error, size_t max_number)
     counter++;
   }
   while (counter < max_number && term > error);
+  if (std::abs(term) > error)
+  {
+    throw std::invalid_argument("accuracy not achieved");
+  }
+  
   return res;
 }

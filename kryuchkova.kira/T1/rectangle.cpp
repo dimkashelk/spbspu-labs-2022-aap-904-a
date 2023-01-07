@@ -1,11 +1,6 @@
 #include "rectangle.h"
 #include <stdexcept>
 
-namespace kryuchkova
-{
-
-}
-
 kryuchkova::Rectangle::Rectangle(const point_t & ld_point, const point_t & ru_point):
   lb_point(lb_point),
   ru_point(ru_point)

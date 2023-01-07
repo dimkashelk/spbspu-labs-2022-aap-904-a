@@ -13,12 +13,13 @@ namespace kryuchkova
     void move(point_t point);
     void move(double dx, double dy);
     void scale(double k);
+    void isoScale(point_t point, double k);
     Shape * clone() const;
   private:
     point_t lb_point;
     point_t ru_point;
   };
-  
+
 }
 
 #endif

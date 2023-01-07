@@ -52,6 +52,5 @@ Shape *Parallelogram::clone() const
 }
 bool Parallelogram::isGoodParallelogramInput() const
 {
-  return (((points_[0].y == points_[1].y) || (points_[1].y == points_[2].y)) &&
-          (points_[0].y - points_[1].y != points_[2].y - points_[1].y));
+  return (((points_[0].y == points_[1].y) || (points_[1].y == points_[2].y)) && (points_[0].y - points_[1].y != points_[2].y - points_[1].y));
 }

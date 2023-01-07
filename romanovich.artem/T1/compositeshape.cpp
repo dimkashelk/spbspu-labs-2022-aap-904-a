@@ -48,7 +48,7 @@ void CompositeShape::unsafeIsoScale(const point_t &position, double k) noexcept
     shape_[i]->move(s.x, s.y);
     s.x *= -k;
     s.y *= -k;
-    shape_[i]->unsafeScale(k);
+    shape_[i]->scale(k);
     shape_[i]->move(s.x, s.y);
   }
 }
@@ -62,28 +62,13 @@ Shape *CompositeShape::operator[](size_t id)
 {
   return shape_[id];
 }
-Shape *CompositeShape::operator[](size_t id) const
+const Shape *CompositeShape::operator[](size_t id) const
 {
   return shape_[id];
 }
 void CompositeShape::move(point_t position)
 {
   move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
-}
-void CompositeShape::scale(double k)
-{
-  if (k <= 0)
-  {
-    throw std::invalid_argument("Invalid scaling koeff.");
-  }
-  unsafeScale(k);
-}
-void CompositeShape::unsafeScale(double k)
-{
-  for (size_t i = 0; i < size_; i++)
-  {
-    shape_[i]->scale(k);
-  }
 }
 void CompositeShape::move(double dx, double dy)
 {
@@ -100,7 +85,7 @@ Shape *CompositeShape::at(size_t id)
   }
   return shape_[id];
 }
-Shape *CompositeShape::at(size_t id) const
+const Shape *CompositeShape::at(size_t id) const
 {
   if (id >= size_)
   {

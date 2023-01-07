@@ -126,7 +126,7 @@ int main()
   }
   compositeShape.isoScale({iScaleX, iScaleY}, iScaleK);
   std::cout << "\n";
-  std::cout << p << compositeShape.getArea() << " ";
+  std::cout << compositeShape.getArea() << " ";
   printLine(compositeShape[0]);
   for (size_t i = 1; i < compositeShape.size(); ++i)
   {

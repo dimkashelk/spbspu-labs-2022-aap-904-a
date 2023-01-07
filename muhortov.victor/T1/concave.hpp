@@ -15,7 +15,7 @@ public:
   void scaleWithoutCheck(double k) override;
   Shape *clone() const override;
 private:
-  point_t first, second ,third, fourth;
+  point_t positions[4];
   std::array< double, 6 > splitIntoTriangles() const;
 };
 

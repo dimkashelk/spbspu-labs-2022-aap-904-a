@@ -11,6 +11,8 @@ namespace kryuchkova
     CompositeShape();
     CompositeShape(const CompositeShape &compositeShape);
     CompositeShape(CompositeShape &&compositeShape);
+    CompositeShape& operator=(const CompositeShape &compositeShape);
+    CompositeShape& operator=(CompositeShape &&compositeShape);
   private:
     size_t size;
     size_t capacity;

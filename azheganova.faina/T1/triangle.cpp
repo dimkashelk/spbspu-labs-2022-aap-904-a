@@ -25,7 +25,7 @@ double Triangle::getArea() const
   double secondpart = 0.0;
   firstpart = (triangle1[1].x - triangle1[0].x) * (triangle1[2].y - triangle1[0].y);
   secondpart = (triangle1[2].x - triangle1[0].x) * (triangle1[1].y - triangle1[0].y);
-  return std::fabs(0.5 * (firstpart - secondpart));
+  return std::fabs(firstpart - secondpart) / 2;
 }
 rectangle_t Triangle::getFrameRect() const
 {

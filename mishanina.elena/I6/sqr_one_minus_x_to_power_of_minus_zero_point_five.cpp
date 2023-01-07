@@ -56,7 +56,7 @@ double sqrtOneMinusXToPowerOfMinusZeroPointFive(double x, unsigned members, doub
     }
     else
     {
-      next = numerator(i) / znam(i) * raiseToPower(x, power)
+      next = numerator(i) / znam(i) * raiseToPower(x, power);
       result += next;
       power += 2;
     }

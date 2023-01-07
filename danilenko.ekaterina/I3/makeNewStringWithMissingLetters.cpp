@@ -10,7 +10,7 @@ char* makeNewStringWithMissingLetters(char* destination, const char* source)
   for (char i = 'a'; i <= 'z'; i++)
   {
     match = false;
-    for (size_t j = 0; source[j] != '\0'; j++)
+    for (size_t j = 0; source[j] != '\n'; j++)
     {
       if (std::tolower(source[j]) == std::tolower(i))
       {

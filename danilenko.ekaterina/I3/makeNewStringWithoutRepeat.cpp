@@ -7,7 +7,7 @@ char* makeNewStringWithoutRepeat(char *destination, const char *source1, const c
 {
   size_t new_elements = 0;
   const char *i = source1;
-  while (*i != '\0')
+  while (*i != '\n')
   {
     const char *j = source2;
     while (*j != '\0' && *j != *i)

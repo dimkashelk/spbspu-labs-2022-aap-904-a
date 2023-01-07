@@ -51,30 +51,38 @@ std::istream& odintsov::processCommand(std::istream& in, std::ostream& out, Comp
   try {
     if (command == "CONCAVE") {
       composite.push_back(readConcave(in));
+      return in;
     } else if (command == "COMPLEXQUAD") {
       composite.push_back(readComplexQuad(in));
+      return in;
     } else if (command == "RECTANGLE") {
       composite.push_back(readRectangle(in));
-    } else if (command == "SCALE") {
-      point_t anchor = readPoint(in);
-      double k = 1.0;
-      in >> k;
-      if (!in) {
-        throw std::runtime_error("input error");
-      }
-      if (k < 0.0) {
-        throw std::invalid_argument("coefficient should be positive");
-      }
-      odintsov::outputCompositeShape(out, composite) << '\n';
-      for (size_t i = 0; i < composite.size(); i++) {
-        isoScale(composite[i], anchor, k);
-      }
-      odintsov::outputCompositeShape(out, composite) << '\n';
-    } else {
-      out << "Not a known command\n";
+      return in;
     }
   } catch (const std::exception& err) {
-    out << "Non-fatal error: " << err.what() << '\n';
+    std::cerr << "Non-fatal error: " << err.what() << '\n';
+    return in;
+  }
+  if (command == "SCALE") {
+    point_t anchor = readPoint(in);
+    double k = 1.0;
+    in >> k;
+    if (!in) {
+      throw std::runtime_error("input error");
+    }
+    if (k <= 0.0) {
+      throw std::invalid_argument("coefficient should be positive");
+    }
+    if (composite.size() == 0) {
+      throw std::logic_error("no shapes to scale");
+    }
+    odintsov::outputCompositeShape(out, composite) << '\n';
+    for (size_t i = 0; i < composite.size(); i++) {
+      isoScale(composite[i], anchor, k);
+    }
+    odintsov::outputCompositeShape(out, composite) << '\n';
+  } else {
+    out << "Not a known command\n";
   }
   return in;
 }

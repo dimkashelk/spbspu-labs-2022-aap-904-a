@@ -58,7 +58,7 @@ double Complexquad::getArea() const
         secondtriangle1 = (complexquad1[2].x - complexquad1[1].x) * (center.y - complexquad1[1].y);
         secondtriangle2 = (center.x - complexquad1[1].x) * (complexquad1[2].y - complexquad1[1].y);
         areaforcomplexquad = (0.5 * (secondtriangle1 - secondtriangle2)) + (0.5 * (firsttriangle1 - firsttriangle2));
-        break;
+        exit;
       }
     }
   }
@@ -93,7 +93,7 @@ void Complexquad::move(point_t point)
       {
         centerx = x;
         centery = y;
-        break;
+        exit;
       }
     }
   }
@@ -127,7 +127,7 @@ void Complexquad::scale(double k) noexcept
       {
         centerx = x;
         centery = y;
-        break;
+        exit;
       }
     }
   }

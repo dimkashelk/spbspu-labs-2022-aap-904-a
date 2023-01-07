@@ -8,6 +8,7 @@
 class CompositeShape
 {
   public:
+    CompositeShape();
     CompositeShape(const CompositeShape & rhs);
     CompositeShape(CompositeShape && rhs);
     CompositeShape(size_t capacity);

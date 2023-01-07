@@ -2,6 +2,12 @@
 #include <algorithm>
 #include "isoscale.h"
 
+CompositeShape::CompositeShape():
+  size_(0),
+  capacity_(10),
+  shape_(new Shape*[capacity_])
+{}
+
 CompositeShape::CompositeShape(const CompositeShape & rhs):
   CompositeShape(rhs.capacity_)
 {
@@ -24,8 +30,55 @@ CompositeShape::CompositeShape(CompositeShape && rhs):
 CompositeShape::CompositeShape(size_t capacity):
  size_(0),
  capacity_(capacity),
- shape_(new Shape*[capacity])
+ shape_(new Shape*[capacity_])
 {}
+
+CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
+{
+  Shape ** new_data = new Shape*[rhs.capacity_];
+  size_t new_size = 0;
+  try
+  {
+    for (size_t i = 0; i < rhs.size_; ++i)
+    {
+      new_data[i] = rhs.shape_[i]->clone();
+      new_size++;
+    }
+  }
+  catch (...)
+  {
+    for (size_t i = 0; i < new_size; ++i)
+    {
+      delete new_data[i];
+    }
+    delete [] new_data;
+    throw;
+  }
+  for (size_t i = 0; i < size_; ++i)
+  {
+    delete shape_[i];
+  }
+  delete [] shape_;
+  shape_ = new_data;
+  size_ = new_size;
+  capacity_ = rhs.capacity_;
+  return *this;
+}
+CompositeShape & CompositeShape::operator=(CompositeShape && rhs)
+{
+  for (size_t i = 0; i < size_; ++i)
+  {
+    delete shape_[i];
+  }
+  delete [] shape_;
+  shape_ = rhs.shape_;
+  rhs.shape_ = nullptr;
+  size_ = rhs.size_;
+  rhs.size_ = 0;
+  capacity_ = rhs.capacity_;
+  return *this;
+}
+
 
 CompositeShape::~CompositeShape()
 {

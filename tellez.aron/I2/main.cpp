@@ -51,9 +51,8 @@ int main (int argc, char *argv[])
       in >> arr_3[i];
       if (!in)
       {
-        std::cout << "Error..";
         delete[] arr_3;
-        return 1;
+        return 0;
       }
     }
     std::cout << sum_index_elements(arr_3, size) << "\n";

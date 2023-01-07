@@ -3,7 +3,6 @@
 
 #include "base-types.hpp"
 #include "shape.hpp"
-#include "triangle.hpp"
 
 namespace odintsov {
   class Concave: public Shape {

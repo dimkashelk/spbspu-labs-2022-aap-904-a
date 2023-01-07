@@ -29,7 +29,7 @@ int main()
         std::cerr << e.what() << "\n";
       }
     }
-    else if (input == "ELLIPSE")
+    if (input == "ELLIPSE")
     {
       try
       {
@@ -42,7 +42,20 @@ int main()
         std::cerr << e.what() << "\n";
       }
     }
-    else if (input == "SCALE")
+    if (input == "CONCAVE")
+    {
+      try
+      {
+        shapes[size] = makeConcave(std::cin);
+        ++size;
+      }
+      catch (const std::invalid_argument &e)
+      {
+        std::cerr << "Error: \n";
+        std::cerr << e.what() << "\n";
+      }
+    }
+    if (input == "SCALE")
     {
       try
       {

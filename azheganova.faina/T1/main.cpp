@@ -9,36 +9,20 @@
 #include "inputtriangle.h"
 #include "inputcomplexquad.h"
 
-void printFlamePoint(std::ostream & output, const rectangle_t & rectangle)
+void printFlamePoint(Shape *shape)
 {
+  rectangle_t rectangle = shape->getFrameRect();
   point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
   point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
-  output << point1.x << ' ' << point1.y << ' ';
-  output << point2.x << ' ' << point2.y;
-}
-
-void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, size_t size)
-{
-  if (!size)
-  {
-    throw std::invalid_argument("error");
-  }
-  double summarea = 0.0;
-  for (size_t i = 0; i < size; ++i)
-  {
-    summarea += shapes[i]->getArea();
-  }
-  for (size_t i = 0; i < shapes.size(); ++i)
-  {
-    printFlamePoint(output << summarea << ' ', shapes[i]->getFrameRect());
-  }
+  std::cout << std::fixed << std::setprecision(1) << point1.x << ' ' << point1.y << ' ';
+  std::cout << std::fixed << std::setprecision(1) << point2.x << ' ' << point2.y;
 }
 
 int main()
 {
   std::string line;
   size_t cap = 10;
-  CompositeShape shapes(cap);
+  CompositeShape rhs(cap);
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
@@ -53,7 +37,7 @@ int main()
       try
       {
         Shape *shape = inputRectangle(std::cin);
-        shapes.push_back(shape);
+        rhs.push_back(shape);
       }
       catch(const std::logic_error &e)
       {
@@ -68,7 +52,7 @@ int main()
       try
       {
         Shape *shape = inputTriangle(std::cin);
-        shapes.push_back(shape);
+        rhs.push_back(shape);
       }
       catch(const std::logic_error &e)
       {
@@ -83,7 +67,7 @@ int main()
       try
       {
         Shape *shape = inputComplexquad(std::cin);
-        shapes.push_back(shape);
+        rhs.push_back(shape);
       }
       catch(const std::logic_error &e)
       {
@@ -115,18 +99,23 @@ int main()
     std::cerr << "error";
     return 1;
   }
-  if (!shapes.size())
+  if (!rhs.size())
   {
     std::cerr << "error";
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
+  std::cout << std::fixed << std::setprecision(1) << rhs.getArea() << " ";
+  for (size_t i = 1; i < rhs.size(); ++i)
+  {
+    std::cout << " ";
+    printFlamePoint(rhs[i]);
+  }
   std::cout << "\n";
   try
   {
-    for (size_t i = 0; i < shapes.size(); ++i)
+    for (size_t i = 0; i < rhs.size(); ++i)
     {
-      isoScale(shapes[i], scalecenter, scalek);
+      isoScale(rhs[i], scalecenter, scalek);
     }
   }
   catch(const std::logic_error &e)
@@ -134,7 +123,12 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
+  std::cout << std::fixed << std::setprecision(1) << rhs.getArea() << " ";
+  for (size_t i = 1; i < rhs.size(); ++i)
+  {
+    std::cout << " ";
+    printFlamePoint(rhs[i]);
+  }
   std::cout << "\n";
   return 0;
 }

@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include "print_result.h"
 
 int main()
 {
@@ -12,6 +13,18 @@ int main()
   {
     std::cerr << "ERROR: invalid parameters\n";
     return 1;
+  }
+  for (double x = left; x < right; x += step)
+  {
+    try
+    {
+      printResult(std::cout, x, members, error);
+    }
+    catch (const std::exception& e)
+    {
+      std::cerr << e.what() << "\n";
+      return 1;
+    }
   }
   return 0;
 }

@@ -93,6 +93,7 @@ int main(int argc, char* argv[])
         if (!input_file)
         {
           std::cerr << "Error while reading";
+          delete[] array;
           return 1;
         }
       }
@@ -100,6 +101,7 @@ int main(int argc, char* argv[])
       if (!output_file)
       {
         std::cerr << "Error while output\n";
+        delete[] array;
         return 1;
       }
       delete[] array;

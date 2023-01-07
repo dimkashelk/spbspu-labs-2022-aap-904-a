@@ -14,7 +14,7 @@ double raiseToPower(double x, int power)
   return result;
 }
 
-double numerator(int currentMember)
+double numerator(unsigned currentMember)
 {
   double result = 1;
   int i = 1;
@@ -28,7 +28,7 @@ double numerator(int currentMember)
   return result;
 }
 
-double znam(int currentMember)
+double znam(unsigned currentMember)
 {
   double result = 1;
   int i = 2;
@@ -46,7 +46,7 @@ double sqrtOneMinusXToPowerOfMinusZeroPointFive(double x, unsigned members, doub
 {
   double result = 0.0;
   int power = 2;
-  int i = 1;
+  unsigned i = 1;
   while (i != members + 1)
   {
     if (i == 1)

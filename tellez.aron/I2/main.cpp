@@ -32,41 +32,39 @@ int main (int argc, char *argv[])
     return 1;
   }
   size_t size = 0;
-  if(in.good())
+  in >> size;
+  if(in.eof())
   {
-    in >> size;
-    if(in.eof())
-    {
-      std::cout << "Error.";
-      return 1;
-    }
-    if (size == 0)
-    {
-      return 0;
-    }
-    int *arr_3 = new int[size];
-    try
-    {
-      for (size_t i = 0; i < size; i++)
-      {
-        in >> arr_3[i];
-        if (!in)
-        {
-          std::cout << "Error..";
-          delete[] arr_3;
-          return 1;
-        }
-      }
-      std::cout << sum_index_elements(arr_3, size) << "\n";
-      std::cout << length_longer_decreasing(arr_3, size) << "\n";
-    }
-    catch (const std::bad_alloc &e)
-    {
-      std::cout << e.what();
-      delete[] arr_3;
-      return 2;
-    }
-    delete[] arr_3;
+    std::cout << "Error.";
+    return 1;
   }
+  if (size == 0)
+  {
+    return 0;
+  }
+  int *arr_3;
+  try
+  {
+    arr_3 = new int[size];
+    for (size_t i = 0; i < size; i++)
+    {
+      in >> arr_3[i];
+      if (!in)
+      {
+        std::cout << "Error..";
+        delete[] arr_3;
+        return 1;
+      }
+    }
+    std::cout << sum_index_elements(arr_3, size) << "\n";
+    std::cout << length_longer_decreasing(arr_3, size) << "\n";
+  }
+  catch (const std::bad_array_new_length &e)
+  {
+    std::cout << e.what();
+    delete[] arr_3;
+    return 2;
+  }
+  delete[] arr_3;
   return 0;
 }

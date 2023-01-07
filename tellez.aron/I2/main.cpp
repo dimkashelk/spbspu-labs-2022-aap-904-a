@@ -8,7 +8,7 @@ int main (int argc, char *argv[])
 {
   if (argc != 2)
   {
-    std::cout << "Error" << "\n";
+    std::cout << "Error";
     return 1;
   }
   int arr_1[10] = {10, 8, 6, 4, 2, 8, 5, 7, 3, 1};
@@ -39,7 +39,7 @@ int main (int argc, char *argv[])
     }
     catch (const std::overflow_error &e)
     {
-      std::cout << e.what() << "\n";
+      std::cout << e.what();
       delete[] arr_2;
       return 2;
     }
@@ -47,12 +47,12 @@ int main (int argc, char *argv[])
   }
   catch (const std::bad_array_new_length &e)
   {
-    std::cout << e.what() << "\n";
+    std::cout << e.what();
     return 2;
   }
   catch (const std::bad_alloc &e)
   {
-    std::cout << e.what() << "\n";
+    std::cout << e.what();
     return 2;
   }
   std::ifstream in(argv[1]);
@@ -65,7 +65,7 @@ int main (int argc, char *argv[])
   in >> size;
   if(in.eof())
   {
-    std::cout << "Error." << "\n";
+    std::cout << "Error.";
     return 1;
   }
   if (size == 0)
@@ -84,7 +84,7 @@ int main (int argc, char *argv[])
   }
   catch (const std::overflow_error &e)
   {
-    std::cout << e.what() << "\n";
+    std::cout << e.what();
     delete[] arr_3;
     return 2;
   }

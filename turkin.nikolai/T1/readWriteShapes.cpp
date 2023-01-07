@@ -45,7 +45,7 @@ void printPoints(std::ostream & output, turkin::Shape * shape)
   output << rect.pos.y + (rect.height / 2.0);
 }
 
-void turkin::printAreaPoints(std::ostream & output, CompositeShape & compositeShape)
+void turkin::printAreaPoints(std::ostream & output, const CompositeShape & compositeShape)
 {
   output << std::setprecision(1) << std::fixed << compositeShape.getArea();
   for (size_t i = 0; i < compositeShape.size(); i++)

@@ -8,7 +8,7 @@ namespace turkin
   {
     public:
       Rectangle(point_t one, point_t two);
-      Rectangle(rectangle_t rectangle);
+      explicit Rectangle(rectangle_t rectangle);
       double getArea() const override;
       rectangle_t getFrameRect() const override;
       void move(double dx, double dy) override;

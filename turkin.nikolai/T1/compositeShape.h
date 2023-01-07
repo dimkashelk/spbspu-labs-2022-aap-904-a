@@ -9,13 +9,14 @@ namespace turkin
     public:
       explicit CompositeShape(size_t capacity);
       void push_back(Shape * shp);
+      void push_back(const Shape * shp);
       void pop_back();
-      Shape * at(size_t id);
-      Shape * operator[](size_t id);
+      Shape * at(size_t id) const;
+      Shape * operator[](size_t id) const;
       bool empty() const;
       size_t size() const;
-      rectangle_t getFrameRect();
-      double getArea();
+      rectangle_t getFrameRect() const;
+      double getArea() const;
       void move(double dx, double dy);
       void move(point_t position);
       void scale(turkin::scale_t scale);

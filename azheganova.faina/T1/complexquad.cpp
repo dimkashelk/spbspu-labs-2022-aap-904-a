@@ -2,10 +2,6 @@
 #include <iostream>
 #include <stdexcept>
 
-Complexquad::Complexquad():
-  complexquad1{point_t{0.0, 0.0}, point_t{0.0, 0.0}, point_t{0.0, 0.0}, point_t{0.0, 0.0}}
-{}
-
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   complexquad1{pos1, pos2, pos3, pos4}
 {
@@ -33,10 +29,6 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   {
     throw std::invalid_argument("wrong complexquad");
   }
-}
-
-double Complexquad::getArea() const
-{
   double cx = 0.0;
   double cy = 0.0;
   double a1 = complexquad1[0].y - complexquad1[1].y;
@@ -49,9 +41,28 @@ double Complexquad::getArea() const
   cx = (b1 * c2 - b2 * c1) / det;
   cy = (a2 * c1 - a1 * c2) / det;
   point_t complexquad1[4] = {cx, cy};
+}
+
+point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
+{
+  double cx = 0.0;
+  double cy = 0.0;
+  double a1 = pos1.y - pos2.y;
+  double b1 = pos2.x - pos1.x;
+  double c1 = pos1.x * pos2.y - pos2.x * pos1.y;
+  double a2 = pos3.y - pos4.y;
+  double b2 = pos4.x - pos3.x;
+  double c2 = pos3.x * pos4.y - pos4.x * pos3.y;
+  double det = a1 * b2 - a2 * b1;
+  cx = (b1 * c2 - b2 * c1) / det;
+  cy = (a2 * c1 - a1 * c2) / det;
+  return (point_t {cx, cy});
+}
+
+double Complexquad::getArea() const
+{
   double firsttriangle1 = 0.0;
   double firsttriangle2 = 0.0;
-
   double secondtriangle1 = 0.0;
   double secondtriangle2 = 0.0;
   firsttriangle1 = (complexquad1[0].x - complexquad1[4].x) * (complexquad1[3].y - complexquad1[4].y);
@@ -79,18 +90,6 @@ rectangle_t Complexquad::getFrameRect() const
 }
 void Complexquad::move(point_t point)
 {
-  double cx = 0.0;
-  double cy = 0.0;
-  double a1 = complexquad1[0].y - complexquad1[1].y;
-  double b1 = complexquad1[1].x - complexquad1[0].x;
-  double c1 = complexquad1[0].x * complexquad1[1].y - complexquad1[1].x * complexquad1[0].y;
-  double a2 = complexquad1[2].y - complexquad1[2].y;
-  double b2 = complexquad1[3].x - complexquad1[2].x;
-  double c2 = complexquad1[2].x * complexquad1[2].y - complexquad1[3].x * complexquad1[2].y;
-  double det = a1 * b2 - a2 * b1;
-  cx = (b1 * c2 - b2 * c1) / det;
-  cy = (a2 * c1 - a1 * c2) / det;
-  point_t complexquad1[4] = {cx, cy};
   return move(point.x - complexquad1[4].x, point.y - complexquad1[4].y);
 }
 void Complexquad::move(double dx, double dy)
@@ -106,18 +105,6 @@ void Complexquad::move(double dx, double dy)
 }
 void Complexquad::scale(double k) noexcept
 {
-  double cx = 0.0;
-  double cy = 0.0;
-  double a1 = complexquad1[0].y - complexquad1[1].y;
-  double b1 = complexquad1[1].x - complexquad1[0].x;
-  double c1 = complexquad1[0].x * complexquad1[1].y - complexquad1[1].x * complexquad1[0].y;
-  double a2 = complexquad1[2].y - complexquad1[2].y;
-  double b2 = complexquad1[3].x - complexquad1[2].x;
-  double c2 = complexquad1[2].x * complexquad1[2].y - complexquad1[3].x * complexquad1[2].y;
-  double det = a1 * b2 - a2 * b1;
-  cx = (b1 * c2 - b2 * c1) / det;
-  cy = (a2 * c1 - a1 * c2) / det;
-  point_t complexquad1[4] = {cx, cy};
   complexquad1[0].x = k * (complexquad1[0].x - complexquad1[4].x) + complexquad1[4].x;
   complexquad1[1].x = k * (complexquad1[1].x - complexquad1[4].x) + complexquad1[4].x;
   complexquad1[2].x = k * (complexquad1[2].x - complexquad1[4].x) + complexquad1[4].x;

@@ -6,7 +6,6 @@
 class Complexquad : virtual public Shape
 {
   public:
-    Complexquad();
     Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
     double getArea() const;
     rectangle_t getFrameRect() const;
@@ -17,6 +16,7 @@ class Complexquad : virtual public Shape
     Shape * clone() const override;
   private:
     point_t complexquad1[5];
+    point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
 };
 
 #endif

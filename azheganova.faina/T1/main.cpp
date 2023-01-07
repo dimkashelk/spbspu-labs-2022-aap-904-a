@@ -9,16 +9,6 @@
 #include "inputtriangle.h"
 #include "inputcomplexquad.h"
 
-double getArea(const CompositeShape &rhs)
-{
-  double sumarea = 0.0;
-  for (size_t i = 0; i < rhs.size(); i++)
-  {
-    sumarea += rhs[i]->getArea();
-  }
-  return sumarea;
-}
-
 void printFlamePoint(std::ostream & output, const rectangle_t & rectangle)
 {
   point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
@@ -27,12 +17,20 @@ void printFlamePoint(std::ostream & output, const rectangle_t & rectangle)
   output << point2.x << ' ' << point2.y;
 }
 
-void printAreaAndFrames(std::ostream & output, const CompositeShape & rhs)
+void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes, size_t size)
 {
-  output << std::setprecision(1) << std::fixed << getArea(rhs);
-  for (size_t i = 0; i < rhs.size(); ++i)
+  if (!size)
   {
-    printFlamePoint(output << ' ', rhs[i]->getFrameRect());
+    throw std::invalid_argument("error");
+  }
+  double summarea = 0.0;
+  for (size_t i = 0; i < size; ++i)
+  {
+    summarea += shapes[i]->getArea();
+  }
+  for (size_t i = 0; i < shapes.size(); ++i)
+  {
+    printFlamePoint(output << summarea << ' ', shapes[i]->getFrameRect());
   }
 }
 
@@ -114,9 +112,15 @@ int main()
   while(std::cin);
   if (!(isscale && isfigure))
   {
+    std::cerr << "error";
     return 1;
   }
-  printAreaAndFrames(std::cout, shapes);
+  if (!shapes.size())
+  {
+    std::cerr << "error";
+    return 1;
+  }
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
   std::cout << "\n";
   try
   {
@@ -130,7 +134,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  printAreaAndFrames(std::cout, shapes);
+  printAreaAndFrames(std::cout << std::fixed << std::setprecision(1), shapes, shapes.size());
   std::cout << "\n";
   return 0;
 }

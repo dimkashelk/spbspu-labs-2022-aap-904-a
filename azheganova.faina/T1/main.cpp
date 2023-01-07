@@ -28,10 +28,9 @@ void printAreaAndFrames(std::ostream & output, const CompositeShape & shapes)
   {
     summarea += shapes[i]->getArea();
   }
-  output << summarea;
   for (size_t i = 0; i < shapes.size(); ++i)
   {
-    printFlamePoint(output << ' ', shapes[i]->getFrameRect());
+    printFlamePoint(output << summarea << ' ', shapes[i]->getFrameRect());
   }
 }
 

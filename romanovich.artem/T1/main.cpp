@@ -115,9 +115,8 @@ int main()
   {
     return 2;
   }
-  auto p = std::setprecision(1);
   std::cout << std::fixed;
-  std::cout << p << compositeShape.getArea() << " ";
+  std::cout << std::setprecision(1) << compositeShape.getArea() << " ";
   printLine(compositeShape[0]);
   for (size_t i = 1; i < compositeShape.size(); ++i)
   {

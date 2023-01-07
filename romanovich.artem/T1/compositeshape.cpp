@@ -113,7 +113,8 @@ CompositeShape::CompositeShape(const CompositeShape &rhs):
       shape_[index] = rhs.shape_[index]->clone();
       ++index;
     }
-  } catch (...)
+  }
+  catch (...)
   {
     remove(shape_, index);
     throw;
@@ -193,7 +194,6 @@ CompositeShape &CompositeShape::operator=(CompositeShape &&rhs) noexcept
   capacity_ = rhs.capacity_;
   size_ = rhs.size_;
   rhs.shape_ = nullptr;
-  rhs.capacity_ = 0;
   rhs.size_ = 0;
   return *this;
 }

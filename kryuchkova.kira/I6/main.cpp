@@ -25,7 +25,7 @@ int main()
       printTable(std::cout, i, calcArcsin(i, error, max_number));
     }
   }
-  catch(const std::invalid_argument &e)
+  catch (const std::invalid_argument &e)
   {
     std::cerr << e.what() << '\n';
     return 1;

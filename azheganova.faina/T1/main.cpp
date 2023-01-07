@@ -17,17 +17,17 @@ void printLeftDownAndRightUp(std::ostream & output, const rectangle_t & rectangl
   output << point2.x << ' ' << point2.y;
 }
 
-void printAreaAndFrames(std::ostream & output, const CompositeShape & comp, size_t shp_size)
+void printAreaAndFrames(std::ostream & output, const CompositeShape & rhs, size_t shp_size)
 {
   double summ_area = 0.0;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    summ_area += comp[i]->getArea();
+    summ_area += rhs[i]->getArea();
   }
   output << summ_area;
   for (size_t i = 0; i < shp_size; ++i)
   {
-    printLeftDownAndRightUp(output << ' ', comp[i]->getFrameRect());
+    printLeftDownAndRightUp(output << ' ', rhs[i]->getFrameRect());
   }
 }
 

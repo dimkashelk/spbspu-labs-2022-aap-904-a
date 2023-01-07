@@ -3,7 +3,7 @@
 #include <iostream>
 #include "shape.h"
 
-void makeOutputPosition(std::ostream& out, Shape* figure)
+void makeOutputPosition(std::ostream& out, const Shape* figure)
 {
   out << std::fixed;
   rectangle_t frame_rectangle = figure->getFrameRectangle();

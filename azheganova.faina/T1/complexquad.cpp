@@ -38,7 +38,7 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   double a1 = pos1.y - pos2.y;
   double b1 = pos2.x - pos1.x;
   double c1 = pos1.x * pos2.y - pos2.x * pos1.y;
-  double a2 = pos3.y - pos4.y;
+  double a2 = pos3.y - pos3.y;
   double b2 = pos4.x - pos3.x;
   double c2 = pos3.x * pos4.y - pos4.x * pos3.y;
   double det = a1 * b2 - a2 * b1;

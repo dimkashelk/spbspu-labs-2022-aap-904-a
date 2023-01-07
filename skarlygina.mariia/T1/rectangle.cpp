@@ -1,4 +1,5 @@
 #include "rectangle.h"
+#include "base_types.h"
 #include <cmath>
 #include <stdexcept>
 
@@ -25,16 +26,14 @@ double Rectangle::getArea() const
 
 void Rectangle::move(double dx, double dy)
 {
-  left_down_.x += dx;
-  left_down_.y += dy;
-  right_up_.x += dx;
-  right_up_.y += dy;
+  left_down_ = baseFunctions::SummVector(left_down_, dx, dy);
+  right_up_ = baseFunctions::SummVector(right_up_, dx, dy);
 }
 
 void Rectangle::move(point_t position)
 {
-  double dx = position.x - getFrameRectangle().position.x;
-  double dy = position.y - getFrameRectangle().position.y;
+  double dx = baseFunctions::findDifference(position.x, getFrameRectangle().position.x);
+  double dy = baseFunctions::findDifference(position.y, getFrameRectangle().position.y);
   move(dx, dy);
 }
 

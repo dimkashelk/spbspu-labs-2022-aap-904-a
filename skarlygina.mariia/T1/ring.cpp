@@ -25,14 +25,13 @@ rectangle_t Ring::getFrameRectangle() const
 
 void Ring::move(double dx, double dy)
 {
-  center_.x += dx;
-  center_.y += dy;
+  center_ = baseFunctions::SummVector(center_, dx, dy);
 }
 
 void Ring::move(point_t position)
 {
-  double dx = position.x - getFrameRectangle().position.x;
-  double dy = position.y - getFrameRectangle().position.y;
+  double dx = baseFunctions::findDifference(position.x, getFrameRectangle().position.x);
+  double dy = baseFunctions::findDifference(position.y, getFrameRectangle().position.y);
   move(dx, dy);
 }
 

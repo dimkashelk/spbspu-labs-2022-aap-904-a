@@ -14,5 +14,11 @@ struct rectangle_t
   point_t position;
 };
 
+namespace baseFunctions
+{
+  point_t SummVector(point_t point, double dx, double dy);
+  double findDifference(double position, double rect);
+}
+
 #endif
 

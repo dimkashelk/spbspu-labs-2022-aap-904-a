@@ -24,14 +24,13 @@ rectangle_t Ellipse::getFrameRectangle() const
 
 void Ellipse::move(double dx, double dy)
 {
-  center_.x += dx;
-  center_.y += dy;
+  center_ = baseFunctions::SummVector(center_, dx, dy);
 }
 
 void Ellipse::move(point_t position)
 {
-  double dx = position.x - getFrameRectangle().position.x;
-  double dy = position.y - getFrameRectangle().position.y;
+  double dx = baseFunctions::findDifference(position.x, getFrameRectangle().position.x);
+  double dy = baseFunctions::findDifference(position.y, getFrameRectangle().position.y);
   move(dx, dy);
 }
 

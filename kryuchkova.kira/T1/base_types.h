@@ -7,12 +7,21 @@ namespace kryuchkova
   {
     double x;
     double y;
+    point_t(double x, double y):
+    x(x),
+    y(y)
+    {};
   };
   struct rectangle_t
   {
     point_t pos;
     double width;
     double height;
+    rectangle_t(double width, double height, point_t pos):
+    width(width),
+    height(height),
+    pos(pos)
+    {};
   };
 }
 

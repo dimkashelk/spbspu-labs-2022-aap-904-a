@@ -14,6 +14,9 @@ namespace kryuchkova
     void move(double dx, double dy);
     void scale(double k);
     Shape * clone() const;
+  private:
+    point_t lb_point;
+    point_t ru_point;
   };
 }
 

@@ -6,6 +6,7 @@
 class Complexquad : virtual public Shape
 {
   public:
+    point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
     Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
     double getArea() const;
     rectangle_t getFrameRect() const;

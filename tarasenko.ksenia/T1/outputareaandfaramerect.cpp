@@ -17,7 +17,7 @@ void tarasenko::outputFrameRect(std::ostream & output, CompositeShape & c_shp)
     tarasenko::outputFrameRect(output, c_shp[i]->getFrameRect());
   }
 }
-void outputAreaAndFrameRect(std::ostream & output, tarasenko::CompositeShape & c_shp)
+void tarasenko::outputAreaAndFrameRect(std::ostream & output, tarasenko::CompositeShape & c_shp)
 {
   tarasenko::outputArea(std::cout, c_shp);
   output << " ";

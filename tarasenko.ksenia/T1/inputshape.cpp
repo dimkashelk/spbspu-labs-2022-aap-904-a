@@ -4,7 +4,7 @@
 #include "triangle.hpp"
 #include "complexquad.hpp"
 
-tarasenko::Shape * inputRectangle(std::istream & input)
+tarasenko::Shape * tarasenko::inputRectangle(std::istream & input)
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -20,7 +20,7 @@ tarasenko::Shape * inputRectangle(std::istream & input)
   return new tarasenko::Rectangle(point_ld, point_ru);
 }
 
-tarasenko::Shape * inputTriangle(std::istream & input)
+tarasenko::Shape * tarasenko::inputTriangle(std::istream & input)
 {
   double x = 0.0;
   double y = 0.0;
@@ -38,7 +38,7 @@ tarasenko::Shape * inputTriangle(std::istream & input)
   return new tarasenko::Triangle(vertexes[0], vertexes[1], vertexes[2]);
 }
 
-tarasenko::Shape * inputComplexquad(std::istream & input)
+tarasenko::Shape * tarasenko::inputComplexquad(std::istream & input)
 {
   double x = 0.0;
   double y = 0.0;

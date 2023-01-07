@@ -1,7 +1,9 @@
 #include "complexquad.hpp"
+#include <stdexcept>
 #include "base-types.hpp"
 #include "triangle.hpp"
 #include "line.hpp"
+#include "nearlyEquals.hpp"
 
 odintsov::ComplexQuad::ComplexQuad(const point_t& p1, const point_t& p2, const point_t& p3, const point_t& p4):
   p1(p1),
@@ -9,7 +11,11 @@ odintsov::ComplexQuad::ComplexQuad(const point_t& p1, const point_t& p2, const p
   p3(p3),
   p4(p4)
 {
-  getIntersectionPoint();
+  point_t ip = getIntersectionPoint();
+  const double e = 0.00001;
+  if (nearlyEquals(ip, p1, e) || nearlyEquals(ip, p2, e) || nearlyEquals(ip, p3, e) || nearlyEquals(ip, p4, e)) {
+    throw std::invalid_argument("points set incorrectly");
+  }
 }
 
 double odintsov::ComplexQuad::getArea() const

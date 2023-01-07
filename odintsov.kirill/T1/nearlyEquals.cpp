@@ -2,6 +2,7 @@
 #include <limits>
 #include <cmath>
 #include "minmax.hpp"
+#include "base-types.hpp"
 
 bool odintsov::nearlyEquals(double a, double b, double epsilon)
 {
@@ -18,4 +19,10 @@ bool odintsov::nearlyEquals(double a, double b, double epsilon)
   } else {
     return diff / min((absA + absB), std::numeric_limits< double >::max()) < epsilon;
   }
+}
+
+
+bool odintsov::nearlyEquals(const point_t& a, const point_t& b, double epsilon)
+{
+  return nearlyEquals(a.x, b.x, epsilon) && nearlyEquals(a.y, b.y, epsilon);
 }

@@ -36,7 +36,7 @@ void turkin::CompositeShape::scale(scale_t scale)
   }
   else
   {
-    scaleWithVerify(scale);
+    throw std::logic_error("bad scale size");
   }
 }
 
@@ -85,6 +85,10 @@ turkin::rectangle_t turkin::CompositeShape::getFrameRect() const
   double B = std::numeric_limits< double >::min();
   double C = std::numeric_limits< double >::max();
   double D = std::numeric_limits< double >::max();
+  if (size_ == 0)
+  {
+    throw std::logic_error("no shapes");
+  }
   for (size_t i = 0; i < size_; i++)
   {
     rectangle_t buffer = shapes[i]->getFrameRect();
@@ -157,10 +161,15 @@ turkin::CompositeShape * turkin::CompositeShape::clone() const
 }
 
 turkin::CompositeShape::CompositeShape(turkin::CompositeShape & compositeShape):
-  shapes(compositeShape.shapes),
+  shapes(new Shape * [compositeShape.capacity_]),
   capacity_(compositeShape.capacity_),
   size_(compositeShape.size_)
-{}
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    shapes[i] = compositeShape.shapes[i]->clone();
+  }
+}
 
 turkin::CompositeShape::CompositeShape(Shape ** shapes, size_t capacity, size_t size):
   shapes(shapes),

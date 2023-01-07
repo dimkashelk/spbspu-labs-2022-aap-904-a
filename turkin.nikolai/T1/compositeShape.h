@@ -8,7 +8,7 @@ namespace turkin
   {
     public:
       explicit CompositeShape(size_t capacity);
-      explicit CompositeShape(CompositeShape & compositeShape);
+      CompositeShape(CompositeShape & compositeShape);
       CompositeShape(Shape ** shapes, size_t capacity, size_t size);
       ~CompositeShape();
       Shape * operator[](size_t id);

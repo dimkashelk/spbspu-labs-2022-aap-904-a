@@ -184,7 +184,19 @@ turkin::CompositeShape::CompositeShape(const turkin::CompositeShape & compositeS
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i] = compositeShape.shapes[i]->clone();
+    try
+    {
+      shapes[i] = compositeShape.shapes[i]->clone();
+    }
+    catch (...)
+    {
+      for (size_t q = 0; q < size_; q++)
+      {
+        delete shapes[i];
+      }
+      delete [] shapes;
+      throw std::runtime_error("copy error");
+    }
   }
 }
 

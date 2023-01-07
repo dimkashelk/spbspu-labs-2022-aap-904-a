@@ -9,7 +9,6 @@ bool isLowerTriangleMatrix(const int* array, const size_t size)
     {
       if ((j > i) && (array[i * size + j] != 0))
       {
-        std::cout << i << " " << j << '\n';
         return false;
       }
     }

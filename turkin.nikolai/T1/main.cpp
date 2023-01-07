@@ -41,7 +41,6 @@ int main()
      catch (const std::logic_error & error)
      {
        std::cerr << error.what() << "\n";
-       delete buffer;
      }
   }
   if (compositeShape.empty())

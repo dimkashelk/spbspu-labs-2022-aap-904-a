@@ -156,10 +156,10 @@ rectangle_t CompositeShape::getFrameRect()
     double right = rectangle.pos.x + rectangle.width * 0.5;
     double inf = rectangle.pos.y - rectangle.height * 0.5;
     double sup = rectangle.pos.y + rectangle.height * 0.5;
-    minX = left < minX ? left : minX;
-    maxX = right > maxX ? right : maxX;
-    minY = inf < minY ? inf : minY;
-    maxY = sup > maxY ? sup : maxY;
+    minX = std::min(left, minX);
+    maxX = std::max(right, maxX);
+    minY = std::min(inf, minY);
+    maxY = std::max(sup, maxY);
   }
   point_t pos{(minX + maxX) / 2, (minY + maxY) / 2};
   rectangle_t frame{pos, maxX - minX, maxY - minY};

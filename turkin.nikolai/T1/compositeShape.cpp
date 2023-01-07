@@ -157,10 +157,27 @@ const turkin::Shape * turkin::CompositeShape::operator[](size_t id) const
 
 turkin::CompositeShape * turkin::CompositeShape::clone() const
 {
-  return new CompositeShape(shapes, capacity_, size_);
+  Shape ** cloneShapes = new Shape * [capacity_];
+  for (size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      cloneShapes[i] = shapes[i]->clone();
+    }
+    catch (...)
+    {
+      for (size_t q = 0; q < size_; q++)
+      {
+        delete cloneShapes[q];
+      }
+      delete [] cloneShapes;
+      throw std::runtime_error("clone create error");
+    }
+  }
+  return new CompositeShape(cloneShapes, capacity_, size_);
 }
 
-turkin::CompositeShape::CompositeShape(turkin::CompositeShape & compositeShape):
+turkin::CompositeShape::CompositeShape(const turkin::CompositeShape & compositeShape):
   shapes(new Shape * [compositeShape.capacity_]),
   capacity_(compositeShape.capacity_),
   size_(compositeShape.size_)

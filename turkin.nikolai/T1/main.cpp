@@ -20,16 +20,19 @@ int main()
        {
          buffer = turkin::createRectangle(std::cin);
          compositeShape.push_back(buffer);
+         buffer = nullptr;
        }
        if (line == "SQUARE")
        {
          buffer = turkin::createSquare(std::cin);
          compositeShape.push_back(buffer);
+         buffer = nullptr;
        }
        if (line == "ELLIPSE")
        {
          buffer = turkin::createEllipse(std::cin);
          compositeShape.push_back(buffer);
+         buffer = nullptr;
        }
        if (line == "SCALE")
        {
@@ -41,6 +44,7 @@ int main()
      catch (const std::logic_error & error)
      {
        std::cerr << error.what() << "\n";
+       delete buffer;
      }
   }
   if (compositeShape.empty())

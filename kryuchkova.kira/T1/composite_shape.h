@@ -1,5 +1,6 @@
 #ifndef COMPOSITE_SHAPE_H
 #define COMPOSITE_SHAPE_H
+#include <cstddef>
 #include "base_types.h"
 #include "shape.h"
 
@@ -30,7 +31,7 @@ namespace kryuchkova
     bool empty() const;
     size_t size() const;
   private:
-    size_t size;
+    size_t size_;
     size_t capacity;
     Shape **shapes;
     void free(Shape **shapes, size_t size);

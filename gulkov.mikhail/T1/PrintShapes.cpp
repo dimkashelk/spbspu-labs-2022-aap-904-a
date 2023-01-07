@@ -1,6 +1,5 @@
 #include "PrintShapes.hpp"
 #include <iomanip>
-#include "Rectangle.hpp"
 
 void printShapesArea(std::ostream &out, const CompositeShape &compositeShape)
 {

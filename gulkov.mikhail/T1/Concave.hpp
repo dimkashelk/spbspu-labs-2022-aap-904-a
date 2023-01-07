@@ -1,9 +1,9 @@
 #ifndef CONCAVE_HPP
 #define CONCAVE_HPP
 
+#include <array>
 #include "Base-types.hpp"
 #include "Shape.hpp"
-#include <array>
 
 class Concave: public Shape
 {

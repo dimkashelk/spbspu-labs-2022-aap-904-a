@@ -48,14 +48,13 @@ int main (int argc, char *argv[])
     std::cout << "Error while opening file";
     return 1;
   }
-
+  size_t size = 0;
+  in >> size;
   if (in.eof())
   {
     std::cout << "Error.";
     return 1;
   }
-  size_t size = 0;
-  in >> size;
   if (size == 0)
   {
     return 0;

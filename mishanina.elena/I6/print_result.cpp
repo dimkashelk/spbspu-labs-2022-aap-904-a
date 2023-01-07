@@ -2,7 +2,8 @@
 
 void printResult(std::ostream& out, double x, unsigned members, double error)
 {
-  out << std::fixed << std::setw(5) << std::setprecision(2) << x << ' ';
-  out << std::setw(10) << std::setprecision(5) << sqrtOneMinusXToPowerOfMinusZeroPointFive(x, members, error) << ' ';
-  out << std::setw(10) << std::setprecision(5) << 1 / (sqrt(1 - x * x)) << '\n';
+  std::setprecision(5);
+  out << std::fixed << std::setw(5) << x << ' ';
+  out << std::setw(10) << sqrtOneMinusXToPowerOfMinusZeroPointFive(x, members, error) << ' ';
+  out << std::setw(10) << 1 / sqrt(1 - x * x) << '\n';
 }

@@ -11,11 +11,12 @@
 
 void printFlamePoint(Shape *shape)
 {
+  std::cout << std::fixed;
   rectangle_t rectangle = shape->getFrameRect();
   point_t point1{rectangle.pos.x - 0.5 * rectangle.width, rectangle.pos.y - 0.5 * rectangle.height};
   point_t point2{rectangle.pos.x + 0.5 * rectangle.width, rectangle.pos.y + 0.5 * rectangle.height};
-  std::cout << std::fixed << std::setprecision(1) << point1.x << ' ' << point1.y << ' ';
-  std::cout << std::fixed << std::setprecision(1) << point2.x << ' ' << point2.y;
+  std::cout  << std::setprecision(1) << point1.x << ' ' << std::setprecision(1) << point1.y << ' ';
+  std::cout  << std::setprecision(1) << point2.x << ' ' << std::setprecision(1) << point2.y;
 }
 
 int main()

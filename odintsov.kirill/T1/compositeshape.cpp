@@ -136,16 +136,7 @@ void odintsov::CompositeShape::scale(double k)
 
 odintsov::point_t odintsov::CompositeShape::getMiddlePoint() const
 {
-  if (empty()) {
-    throw std::logic_error("no shapes inside CompositeShape");
-  }
-  point_t middle = point_t{0.0, 0.0};
-  for (size_t i = 0; i < size(); i++) {
-    rectangle_t rect = shapes[i]->getFrameRect();
-    middle.x += rect.pos.x / size();
-    middle.y += rect.pos.y / size();
-  }
-  return middle;
+  return getFrameRect().pos;
 }
 
 void odintsov::CompositeShape::push_back(Shape* shp)

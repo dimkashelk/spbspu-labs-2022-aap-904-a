@@ -8,5 +8,6 @@ Shape *makeRectangle(std::istream &input);
 Shape *makeEllipse(std::istream &input);
 Shape *makeConcave(std::istream &input);
 scale_t getScale(std::istream &input);
+void checkInput(std::istream &input);
 
 #endif

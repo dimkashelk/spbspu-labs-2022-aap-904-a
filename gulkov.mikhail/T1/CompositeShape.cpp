@@ -44,7 +44,12 @@ Shape *CompositeShape::at(size_t i)
   return shapes[i];
 }
 
-Shape *CompositeShape::operator[](size_t i) const
+Shape *CompositeShape::operator[](size_t i)
+{
+  return shapes[i];
+}
+
+const Shape *CompositeShape::operator[](size_t i) const
 {
   return shapes[i];
 }

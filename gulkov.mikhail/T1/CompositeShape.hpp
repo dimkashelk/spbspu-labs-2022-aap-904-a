@@ -13,7 +13,8 @@ public:
   void pop_back();
   Shape *at(size_t i);
   const Shape *at(size_t i) const;
-  Shape *operator[](size_t i) const;
+  Shape *operator[](size_t i);
+  const Shape *operator[](size_t i) const;
   bool empty() const;
   size_t size() const;
   rectangle_t getFrameRect() const;

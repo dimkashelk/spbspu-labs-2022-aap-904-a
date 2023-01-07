@@ -79,8 +79,6 @@ rectangle_t Complexquad::getFrameRect() const
 }
 void Complexquad::move(point_t point)
 {
-  double x = 0.0;
-  double y = 0.0;
   double centerx = 0.0;
   double centery = 0.0;
   for (double x = 0.0; x < 100; x++)
@@ -115,8 +113,6 @@ void Complexquad::move(double dx, double dy)
 }
 void Complexquad::scale(double k) noexcept
 {
-  double x = 0.0;
-  double y = 0.0;
   double centerx = 0.0;
   double centery = 0.0;
   for (double x = 0.0; x < 100; x++)

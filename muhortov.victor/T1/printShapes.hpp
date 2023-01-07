@@ -4,6 +4,6 @@
 #include "shape.hpp"
 #include "compositeshape.hpp"
 
-void printAreaSum(std::ostream &output, CompositeShape &compositeShape);
+void printAreaSum(std::ostream &output, const CompositeShape &compositeShape);
 
 #endif

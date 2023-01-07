@@ -68,9 +68,6 @@ void Concave::scaleWithoutCheck(double k)
   second.y = k * (second.y - newcenter.y) + newcenter.y;
   third.x = k * (third.x - newcenter.x) + newcenter.x;
   third.y = k * (third.y - newcenter.y) + newcenter.y;
-  fourth.x = k * (fourth.x - newcenter.x) + newcenter.x;
-  fourth.y = k * (fourth.y - newcenter.y) + newcenter.y;
-
 }
 
 Shape *Concave::clone() const

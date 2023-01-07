@@ -11,7 +11,7 @@ void printRectangle(std::ostream &output, Shape *shape)
   output << temp.pos.y + (temp.height / 2.0);
 }
 
-void printAreaSum(std::ostream &output, CompositeShape &compositeShape)
+void printAreaSum(std::ostream &output, const CompositeShape &compositeShape)
 {
   output << std::setprecision(1) << std::fixed << compositeShape.getArea() << " ";
   for (size_t i = 0; i < compositeShape.size(); i++)

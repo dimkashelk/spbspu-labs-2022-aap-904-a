@@ -50,7 +50,7 @@ int main()
           shape = kryuchkova::inputCircle(std::cin);
         }
       }
-      catch(...)
+      catch (...)
       {
         invalidShape = true;
       }
@@ -58,7 +58,7 @@ int main()
       {
         compositeShape.push_back(shape);
       }
-      catch(...)
+      catch (...)
       {
         invalidComposite = true;
       }
@@ -80,7 +80,7 @@ int main()
       {
         compositeShape.isoScale(point, k);
       }
-      catch(...)
+      catch (...)
       {
         invalidScale = true;
       }

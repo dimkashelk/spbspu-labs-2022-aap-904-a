@@ -10,6 +10,7 @@ int main()
 {
   bool errors = false;
   bool scale_was = false;
+  tarasenko::CompositeShape compositeShape;
   while (std::cin)
   {
     std::string name = "";
@@ -19,7 +20,6 @@ int main()
       std::cout << "Error in name\n";
       break;
     }
-    tarasenko::CompositeShape compositeShape;
     if (name == "RECTANGLE")
     {
       try
@@ -55,20 +55,23 @@ int main()
       {
         errors = true;
       }
-      std::cin.clear();
     }
     else if (name == "SCALE")
     {
+      scale_was = true;
+      double x = 0.0;
+      double y = 0.0;
+      double k = 0.0;
+      std::cin >> x >> y >> k;
+      if (!std::cin)
+      {
+        std::cout << "Error\n";
+      }
+      tarasenko::point_t center_scale(x, y);
       tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
       std::cout << "\n";
       try
       {
-        scale_was = true;
-        double x = 0.0;
-        double y = 0.0;
-        double k = 0.0;
-        std::cin >> x >> y >> k;
-        tarasenko::point_t center_scale(x, y);
         for (size_t i = 0; i < compositeShape.size(); i++)
         {
           isoScale(compositeShape[i], center_scale, k);
@@ -87,6 +90,7 @@ int main()
         errors = false;
         std::cout << "Errors in shapes\n";
       }
+      break;
     }
     else
     {
@@ -98,7 +102,7 @@ int main()
       std::cin.clear();
     }
   }
-  if (scale_was)
+  if (!scale_was)
   {
     std::cout << "The SCALE was not called\n";
     return 1;

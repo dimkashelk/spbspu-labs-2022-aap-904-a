@@ -1,4 +1,5 @@
 #include "outputareaandfaramerect.hpp"
+#include <iomanip>
 #include "outputframerect.hpp"
 
 void tarasenko::outputArea(std::ostream & output, tarasenko::CompositeShape & c_shp)
@@ -19,7 +20,8 @@ void tarasenko::outputFrameRect(std::ostream & output, CompositeShape & c_shp)
 }
 void tarasenko::outputAreaAndFrameRect(std::ostream & output, tarasenko::CompositeShape & c_shp)
 {
-  tarasenko::outputArea(std::cout, c_shp);
+  output << std::setprecision(1) << std::fixed;
+  tarasenko::outputArea(output, c_shp);
   output << " ";
-  tarasenko::outputFrameRect(std::cout, c_shp);
+  tarasenko::outputFrameRect(output, c_shp);
 }

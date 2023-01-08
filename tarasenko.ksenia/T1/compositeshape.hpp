@@ -21,8 +21,8 @@ namespace tarasenko
    bool empty() const;
    ~CompositeShape();
   private:
-   size_t capacity_;
    size_t size_;
+   size_t capacity_;
    Shape ** shapes;
   };
 }

@@ -19,8 +19,8 @@ void odintsov::isoScalePoint(point_t& p, const point_t& anchor, double k)
 
 odintsov::rectangle_t odintsov::getFrameRectFromCorners(const point_t& bl, const point_t& tr)
 {
-  if (tr.x <= bl.x || tr.y <= bl.y) {
-    throw std::invalid_argument("Corners set incorrectly");
+  if (tr.x < bl.x || tr.y < bl.y) {
+    throw std::invalid_argument("corners set incorrectly");
   }
   return rectangle_t{tr.x - bl.x, tr.y - bl.y, {(bl.x + tr.x) * 0.5, (bl.y + tr.y) * 0.5}};
 }
@@ -38,7 +38,7 @@ odintsov::point_t odintsov::getFrameRectTopRightCorner(const rectangle_t& rect)
 odintsov::rectangle_t odintsov::getFrameRectFromPoints(const point_t* points, size_t amt)
 {
   if (amt <= 1) {
-    throw std::invalid_argument("Too little points for rectangle");
+    throw std::invalid_argument("too little points for rectangle");
   }
   double leftX = points[0].x;
   double rightX = points[0].x;

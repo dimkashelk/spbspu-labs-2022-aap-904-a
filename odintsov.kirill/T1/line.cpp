@@ -35,8 +35,9 @@ odintsov::point_t odintsov::getLineSegIntersectionPoint(const point_t& p1, const
 
 bool odintsov::isPointOnLineSeg(const point_t& p, const point_t& p1, const point_t& p2)
 {
-  point_t points[2] = {p1, p2};
-  if (isPointInRectangle(p, getFrameRectFromPoints(points, 2))) {
+  constexpr unsigned short pointsAmt = 2;
+  point_t points[pointsAmt] = {p1, p2};
+  if (isPointInRectangle(p, getFrameRectFromPoints(points, pointsAmt))) {
     constexpr double epsilon = 0.00001;
     return nearlyEquals(getLineSegLength(p1, p2), getLineSegLength(p1, p) + getLineSegLength(p, p2), epsilon);
   }

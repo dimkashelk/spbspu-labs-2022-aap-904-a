@@ -1,5 +1,6 @@
 #include "CompositeShape.hpp"
 #include "IsoScale.hpp"
+#include <cmath>
 
 CompositeShape::CompositeShape(size_t capacity):
   shapes(new Shape *[capacity]),
@@ -116,10 +117,10 @@ rectangle_t CompositeShape::getFrameRect() const
   for (size_t i = 0; i < size_; i++)
   {
     rectangle_t temp = shapes[i]->getFrameRect();
-    a = (a > temp.pos.x + temp.width / 2.0) ? a : temp.pos.x + temp.width / 2.0;
-    b = (b > temp.pos.y + temp.height / 2.0) ? b : temp.pos.y + temp.height / 2.0;
-    c = (c < temp.pos.x - temp.width / 2.0) ? c : temp.pos.x - temp.width / 2.0;
-    d = (d < temp.pos.y - temp.height / 2.0) ? d : temp.pos.y - temp.height / 2.0;
+    a = std::fmax(temp.pos.x + temp.width / 2.0, temp.pos.x + temp.width / 2.0);
+    b = std::fmax(temp.pos.y + temp.height / 2.0, temp.pos.y + temp.height / 2.0);
+    c = std::fmin(temp.pos.x - temp.width / 2.0, temp.pos.x - temp.width / 2.0);
+    d = std::fmin(temp.pos.y - temp.height / 2.0, temp.pos.y - temp.height / 2.0);
   }
   return {{(a + c) / 2.0, (b + d) / 2.0}, c - a, d - b};
 }

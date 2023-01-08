@@ -98,7 +98,17 @@ turkin::rectangle_t turkin::CompositeShape::getFrameRect() const
 
 void turkin::CompositeShape::push_back(const turkin::Shape * shp)
 {
-  Shape * clone = shp->clone();
+  
+  Shape * clone = nullptr;
+  try
+  {
+    clone = shp->clone();
+  }
+  catch (...)
+  {
+    delete clone;
+    throw;
+  }
   push_back(clone);
 }
 

@@ -1,15 +1,18 @@
 #include "square.h"
 #include <stdexcept>
 
-kryuchkova::Square::Square(const point_t &lb_point, const double &length):
-  lb_point_(lb_point),
-  length_(length)
+kryuchkova::Square::Square(const point_t &lb_point, const double length):
+  square_(Rectangle{lb_point, point_t{lb_point.x + length, lb_point.y + length}})
 {
   if (length <= 0)
   {
     throw std::invalid_argument("It's not a Square");
   }
 }
+
+kryuchkova::Square::Square(const Rectangle &rectangle):
+  square_(rectangle)
+{}
 
 std::string kryuchkova::Square::getName() const
 {
@@ -18,38 +21,30 @@ std::string kryuchkova::Square::getName() const
 
 double kryuchkova::Square::getArea() const
 {
-  return length_ * length_;
+  return square_.getArea();
 }
 
 kryuchkova::rectangle_t kryuchkova::Square::getFrameRect() const
 {
-  point_t pos{length_ / 2 + lb_point_.x, length_ / 2 + lb_point_.y};
-  return rectangle_t{length_, length_, pos};
+  return square_.getFrameRect();
 }
 
 void kryuchkova::Square::move(const double dx, const double dy)
 {
-  lb_point_ = movePoint(lb_point_, point_t{dx, dy});
+  square_.move(dx, dy);
 }
 
 void kryuchkova::Square::move(const point_t point)
 {
-  point_t pos{length_ / 2 + lb_point_.x, length_ / 2 + lb_point_.y};
-  double dx = point.x - pos.x;
-  double dy = point.y - pos.y;
-  move(dx, dy);
+  square_.move(point);
 }
 
 void kryuchkova::Square::doScale(const double k)
 {
-  double dx = ((k - 1) * length_) / 2;
-  double dy = ((k - 1) * length_) / 2;
-  lb_point_.x -= dx;
-  lb_point_.y -= dy;
-  length_ *= k;
+  square_.doScale(k);
 }
 
 kryuchkova::Shape *kryuchkova::Square::clone() const
 {
-  return new Square(lb_point_, length_);
+  return new Square(square_);
 }

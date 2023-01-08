@@ -51,13 +51,16 @@ void Triangle::scale(double k) noexcept
 {
   if (k <= 0)
   {
-    throw std::logic_error("error");
+    std::cerr << "error";
   }
-  point_t center = findCenterOfTriangle();
-  for (size_t i = 0; i < 3; i++)
+  else
   {
-    triangle1[i].x = k * (triangle1[i].x - center.x) + center.x;
-    triangle1[i].y = k * (triangle1[i].y - center.y) + center.y;
+    point_t center = findCenterOfTriangle();
+    for (size_t i = 0; i < 3; i++)
+    {
+      triangle1[i].x = k * (triangle1[i].x - center.x) + center.x;
+      triangle1[i].y = k * (triangle1[i].y - center.y) + center.y;
+    }
   }
 }
 

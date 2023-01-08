@@ -98,12 +98,15 @@ void Complexquad::scale(double k) noexcept
 {
   if (k <= 0)
   {
-    throw std::logic_error("error");
+    std::cerr << "error";
   }
-  for (size_t i = 0; i < 4; i++)
+  else
   {
-    complexquad1[i].x = k * (complexquad1[i].x - complexquad1[4].x) + complexquad1[4].x;
-    complexquad1[i].y = k * (complexquad1[i].y - complexquad1[4].x) + complexquad1[4].x;
+    for (size_t i = 0; i < 4; i++)
+    {
+      complexquad1[i].x = k * (complexquad1[i].x - complexquad1[4].x) + complexquad1[4].x;
+      complexquad1[i].y = k * (complexquad1[i].y - complexquad1[4].x) + complexquad1[4].x;
+    }
   }
 }
 

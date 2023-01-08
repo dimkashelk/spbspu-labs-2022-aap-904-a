@@ -16,11 +16,6 @@ void printAreaSum(std::ostream &output, const CompositeShape &compositeShape)
   for (size_t i = 0; i < compositeShape.size(); i++)
   {
     printRectangle(output, compositeShape.at(i));
-    if (i + 1 != compositeShape.size())
-    {
-      output << " ";
-    }
+    output << " ";
   }
-
-  output << "\n";
 }

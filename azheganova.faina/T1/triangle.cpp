@@ -67,13 +67,17 @@ void Triangle::move(point_t point)
   point_t center = findCenterOfTriangle();
   move(point.x - center.x, point.y - center.y);
 }
-
+point_t operator+(const point_t & pos1, const point_t & pos2)
+{
+  point_t pos{pos1.x + pos2.x, pos1.y + pos2.y};
+  return pos;
+}
 void Triangle::move(double dx, double dy)
 {
   point_t delta{dx, dy};
   for (size_t i = 0; i < 3; i++)
   {
-    triangle1[i] = delta;
+    triangle1[i] = triangle1[i] + delta;
   }
 }
 void Triangle::scale(double k) noexcept

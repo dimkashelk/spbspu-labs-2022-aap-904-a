@@ -6,6 +6,7 @@
 #include "isoscale.h"
 #include "compositeshape.h"
 #include "rectangle.h"
+#include "triangle.h"
 #include "complexquad.h"
 
 void printFlamePoint(Shape *shape)

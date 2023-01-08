@@ -28,7 +28,7 @@ int main()
   {
     std::string name = "";
     std::cin >> name;
-    try 
+    try
     {
       if (name == "RECTANGLE")
       {

@@ -25,6 +25,14 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
+    if (partition(ready_array, 5))
+    {
+      std::cout << "divider " << *partition(ready_array, 5) << "\n";
+    }
+    else
+    {
+      return 0;
+    }
   }
   catch (const std::length_error & e)
   {
@@ -61,6 +69,14 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
+    if (partition(dyn_array, line))
+    {
+      std::cout << "divider " << *partition(dyn_array, line) << "\n";
+    }
+    else
+    {
+      return 0;
+    }
   }
   else
   {
@@ -112,6 +128,14 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
+    if (partition(File_Array, 5))
+    {
+      std::cout << "divider " << *partition(File_Array, line) << "\n";
+    }
+    else
+    {
+      return 0;
+    }
   }
   catch (const std::length_error & e)
   {

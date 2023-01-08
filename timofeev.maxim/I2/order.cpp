@@ -1,6 +1,5 @@
 #include "order.h"
 #include <algorithm>
-#include <iostream>
 int *partition(int *arr, size_t size)
 {
   if (size == 0 )
@@ -17,7 +16,7 @@ int *partition(int *arr, size_t size)
       }
     }
   }
-  int *dividing = 0;
+  int *dividing = nullptr;
   for (size_t p = 0; p < size; p++)
   {
     if (arr[p] % 2 == 1)
@@ -25,6 +24,10 @@ int *partition(int *arr, size_t size)
       dividing = &arr[p];
       break;
     }
+  }
+  if (dividing == nullptr)
+  {
+    return 0;
   }
   return dividing;
 }

@@ -30,43 +30,30 @@ int main()
     {
       break;
     }
-    if (name == "RECTANGLE")
+    try
     {
-      try
+      if (name == "RECTANGLE")
       {
         kryuchkova::Shape *shape = kryuchkova::inputRectangle(std::cin);
         compositeShape.push_back(shape);
       }
-      catch (...)
-      {
-        invalidShape = true;
-      }
-    }
-    else if (name == "SQUARE")
-    {
-      try
+      else if (name == "SQUARE")
       {
         kryuchkova::Shape *shape = kryuchkova::inputSquare(std::cin);
         compositeShape.push_back(shape);
       }
-      catch (...)
-      {
-        invalidShape = true;
-      }
-    }
-    else if (name == "CIRCLE")
-    {
-      try
+      else if (name == "CIRCLE")
       {
         kryuchkova::Shape *shape = kryuchkova::inputCircle(std::cin);
         compositeShape.push_back(shape);
       }
-      catch (...)
-      {
-        invalidShape = true;
-      }
     }
-    else if (name == "SCALE")
+    catch(...)
+    {
+      invalidShape = true;;
+    }
+
+    if (name == "SCALE")
     {
       isScaleCalled = true;
       double x = 0.0;

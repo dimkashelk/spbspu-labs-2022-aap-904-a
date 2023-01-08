@@ -167,7 +167,7 @@ turkin::CompositeShape * turkin::CompositeShape::clone() const
     catch (...)
     {
       destruct(cloneShapes, size_);
-      throw std::runtime_error("clone create error");
+      throw;
     }
   }
   return new CompositeShape(cloneShapes, capacity_, size_);

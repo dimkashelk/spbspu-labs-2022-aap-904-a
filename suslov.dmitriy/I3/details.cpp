@@ -18,14 +18,15 @@ char *scanStr(size_t &length, std::istream &in)
   {
     if (length + 1 == capacity)
     {
+      char *newCstring = nullptr;
       try
       {
         capacity += 20;
-        char *newCstring = expandString(cstring, capacity);
+        newCstring = expandString(cstring, capacity);
       }
       catch (const std::bad_alloc &)
       {
-        delete[] ctring;
+        delete[] cstring;
         throw;
       }
       delete[] cstring;

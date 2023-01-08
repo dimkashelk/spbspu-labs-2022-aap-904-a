@@ -5,9 +5,10 @@
 int main()
 {
   size_t size;
+  char *cstring = nullptr;
   try
   {
-    char *cstring = scanStr(size, std::cin);
+    cstring = scanStr(size, std::cin);
   }
   catch (std::bad_alloc &e)
   {
@@ -22,9 +23,10 @@ int main()
   }
   char cstring2[] = "qwerty";
   size_t size2 = sizeof cstring2;
+  char *result1 = nullptr;
   try
   {
-    char *result1 = new char[size + size2 + 1];
+    result1 = new char[size + size2 + 1];
   }
   catch (const std::bad_alloc &e)
   {
@@ -34,9 +36,10 @@ int main()
   std::cout << formStringFromOtherSymbols(result1, cstring, cstring2) << "\n";
   delete[] result1;
 
+  char *result2 = nullptr;
   try
   {
-    char *result2 = new char[size + 1];
+    result2 = new char[size + 1];
   }
   catch (const std::bad_alloc &e)
   {

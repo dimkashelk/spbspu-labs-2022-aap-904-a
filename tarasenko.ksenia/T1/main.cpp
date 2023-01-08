@@ -76,7 +76,7 @@ int main()
       {
         std::cerr << "Error\n";
       }
-      tarasenko::point_t center_scale(x, y);
+      tarasenko::point_t center_scale{x, y};
       tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
       std::cout << "\n";
       try

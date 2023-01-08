@@ -1,15 +1,11 @@
 #include "rectangle.hpp"
 #include <stdexcept>
+#include "base-func.hpp"
 
 tarasenko::Rectangle::Rectangle(point_t point_ld, point_t point_ru):
   vertexes{point_ld, point_ru},
-  rect_(point_ld, point_ru)
-{
-  if ((point_ld.x_ >= point_ru.x_) || (point_ld.y_ >= point_ru.y_))
-  {
-    throw std::invalid_argument("incorrect rectangle coordinates");
-  }
-}
+  rect_(makeRectangle(point_ld, point_ru))
+{}
 
 double tarasenko::Rectangle::getArea() const
 {

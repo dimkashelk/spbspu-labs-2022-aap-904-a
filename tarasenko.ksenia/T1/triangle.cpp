@@ -1,10 +1,11 @@
 #include "triangle.hpp"
 #include <stdexcept>
 #include <cmath>
+#include "base-func.hpp"
 
 tarasenko::Triangle::Triangle(point_t point_1, point_t point_2, point_t point_3):
   vertexes{point_1, point_2, point_3},
-  center((vertexes[0].x_ + vertexes[1].x_ + vertexes[2].x_) / 3, (vertexes[0].y_ + vertexes[1].y_ + vertexes[2].y_) / 3),
+  center{(vertexes[0].x_ + vertexes[1].x_ + vertexes[2].x_) / 3, (vertexes[0].y_ + vertexes[1].y_ + vertexes[2].y_) / 3},
   a(std::sqrt(std::pow((point_2.x_ - point_1.x_),2) + std::pow((point_2.y_ - point_1.y_),2))),
   b(std::sqrt(std::pow((point_3.x_ - point_1.x_),2) + std::pow((point_3.y_ - point_1.y_),2))),
   c(std::sqrt(std::pow((point_3.x_ - point_2.x_),2) + std::pow((point_3.y_ - point_2.y_),2)))
@@ -27,8 +28,7 @@ tarasenko::rectangle_t tarasenko::Triangle::getFrameRect() const
   double min_y = std::min(std::min(vertexes[0].y_, vertexes[1].y_), vertexes[2].y_);
   double max_x = std::max(std::max(vertexes[0].x_, vertexes[1].x_), vertexes[2].x_);
   double max_y = std::max(std::max(vertexes[0].y_, vertexes[1].y_), vertexes[2].y_);
-  rectangle_t frame_rect(point_t(min_x, min_y),point_t(max_x, max_y));
-  return frame_rect;
+  return makeRectangle(point_t{min_x, min_y},point_t{max_x, max_y});
 }
 
 void tarasenko::Triangle::move(double dx, double dy)

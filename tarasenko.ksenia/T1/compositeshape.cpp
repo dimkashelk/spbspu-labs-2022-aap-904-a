@@ -1,5 +1,6 @@
 #include "compositeshape.hpp"
 #include <stdexcept>
+#include "base-func.hpp"
 #include "isoscale.hpp"
 
 tarasenko::CompositeShape::CompositeShape():
@@ -54,8 +55,7 @@ tarasenko::rectangle_t tarasenko::CompositeShape::getFrameRect() const
       max_y = frame_rect.pos_.y_ + 0.5 * frame_rect.height_;
     }
   }
-  rectangle_t res(point_t(min_x, min_y),point_t(max_x, max_y));
-  return res;
+  return makeRectangle(point_t{min_x, min_y},point_t{max_x, max_y});
 }
 
 void tarasenko::CompositeShape::move(double dx, double dy)

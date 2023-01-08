@@ -1,10 +1,11 @@
 #include "complexquad.hpp"
 #include "triangle.hpp"
+#include "base-func.hpp"
 #include <stdexcept>
 
 tarasenko::Complexquad::Complexquad(point_t point_1, point_t point_2, point_t point_3, point_t point_4):
   vertexes{point_1, point_2, point_3, point_4},
-  p_cross(0, 0)
+  p_cross{0, 0}
 {
   double a1 = point_2.y_ - point_1.y_;
   double b1 = point_1.x_ - point_2.x_;
@@ -42,8 +43,7 @@ tarasenko::rectangle_t tarasenko::Complexquad::getFrameRect() const
   double min_y = std::min(std::min(vertexes[0].y_, vertexes[1].y_), std::min(vertexes[2].y_, vertexes[3].y_));
   double max_x = std::max(std::max(vertexes[0].x_, vertexes[1].x_), std::max(vertexes[2].x_, vertexes[3].x_));
   double max_y = std::max(std::max(vertexes[0].y_, vertexes[1].y_), std::max(vertexes[2].y_, vertexes[3].y_));
-  rectangle_t frame_rect(point_t(min_x, min_y),point_t(max_x, max_y));
-  return frame_rect;
+  return makeRectangle(point_t{min_x, min_y},point_t{max_x, max_y});;
 }
 
 void tarasenko::Complexquad::move(double dx, double dy)

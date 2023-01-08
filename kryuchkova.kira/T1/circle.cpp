@@ -34,7 +34,7 @@ void kryuchkova::Circle::move(double dx, double dy)
 
 void kryuchkova::Circle::move(point_t point)
 {
-  movePoint(pos, point);
+  pos = point;
 }
 
 void kryuchkova::Circle::scale(const double k)

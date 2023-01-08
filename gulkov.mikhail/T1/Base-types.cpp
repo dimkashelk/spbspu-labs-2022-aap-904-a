@@ -39,3 +39,8 @@ point_t addVector(point_t dot, double dx, double dy)
   dot.y += dy;
   return dot;
 }
+
+point_t scaleDelta(point_t pos, scale_t scale)
+{
+  return {(pos.x - scale.pos.x) * scale.scale, (pos.y - scale.pos.y) * scale.scale};
+}

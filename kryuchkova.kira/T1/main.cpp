@@ -52,6 +52,7 @@ int main()
       }
       catch (...)
       {
+        delete shape;
         invalidShape = true;
       }
       try

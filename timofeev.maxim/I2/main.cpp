@@ -4,7 +4,6 @@
 #include <ctime>
 #include "decrease.h"
 #include "order.h"
-#include <iomanip>
 
 int main(int argc, char *argv[])
 {
@@ -33,7 +32,7 @@ int main(int argc, char *argv[])
     std::cout << e.what() << "\n";
     return 0;
   }
-  size_t line;
+  size_t line = 0;
   std::cin >> line;
   if (!std::cin)
   {

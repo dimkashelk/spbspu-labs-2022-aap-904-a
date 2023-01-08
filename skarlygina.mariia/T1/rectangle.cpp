@@ -1,7 +1,5 @@
 #include "rectangle.h"
-#include "base_types.h"
 #include <cmath>
-#include <stdexcept>
 
 Rectangle::Rectangle(point_t left_down, point_t right_up):
   left_down_(left_down),
@@ -38,6 +36,7 @@ void Rectangle::move(point_t position)
 
 void Rectangle::scale(double k)
 {
+  baseFunctions::findCorrectKoeff(k);
   point_t center = getFrameRectangle().position;
   left_down_ = baseFunctions::makeScale(left_down_, center, k);
   right_up_ = baseFunctions::makeScale(right_up_, center, k);

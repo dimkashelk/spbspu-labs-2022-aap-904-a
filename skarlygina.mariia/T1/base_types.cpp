@@ -1,4 +1,5 @@
 #include "base_types.h"
+#include <iostream>
 
 point_t baseFunctions::findSummVector(point_t point, double dx, double dy)
 {
@@ -29,4 +30,12 @@ point_t baseFunctions::makeCenterMove(point_t center, point_t center_rect, doubl
   center.x = center_rect.x * k;
   center.y = center_rect.y * k;
   return center;
+}
+
+void baseFunctions::findCorrectKoeff(double k)
+{
+  if (k < 1)
+  {
+    throw std::invalid_argument("Error: coefficient under zero");
+  }
 }

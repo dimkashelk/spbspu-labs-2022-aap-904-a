@@ -1,5 +1,4 @@
 #include "ring.h"
-#include <stdexcept>
 
 Ring::Ring(point_t center, double radius_small, double radius_big):
   center_(center),
@@ -36,6 +35,7 @@ void Ring::move(point_t position)
 
 void Ring::scale(double k)
 {
+  baseFunctions::findCorrectKoeff(k);
   point_t center = getFrameRectangle().position;
   radius_small_ = baseFunctions::findRadius(radius_small_, k);
   radius_big_ = baseFunctions::findRadius(radius_big_, k);

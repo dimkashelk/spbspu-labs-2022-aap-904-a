@@ -1,6 +1,5 @@
 #ifndef BASE_TYPES_H
 #define BASE_TYPES_H
-
 struct point_t
 {
   double x;
@@ -21,7 +20,6 @@ namespace baseFunctions
   point_t makeScale(point_t point, point_t center, double k);
   point_t makeCenterMove(point_t center, point_t center_rect, double k);
   double findRadius(double radius, double k);
+  void findCorrectKoeff(double k);
 }
-
 #endif
-

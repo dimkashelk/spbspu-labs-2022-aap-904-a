@@ -1,5 +1,4 @@
 #include "ellipse.h"
-#include <stdexcept>
 
 Ellipse::Ellipse(point_t center, double radius_vertical, double radius_horizontal):
   center_(center),
@@ -35,6 +34,7 @@ void Ellipse::move(point_t position)
 
 void Ellipse::scale(double k)
 {
+  baseFunctions::findCorrectKoeff(k);
   point_t center = getFrameRectangle().position;
   radius_horizontal_ = baseFunctions::findRadius(radius_horizontal_, k);
   radius_vertical_ = baseFunctions::findRadius(radius_vertical_, k);

@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "rectangle.h"
 #include "ellipse.h"
+#include "circle.h"
 
 turkin::Shape * turkin::createRectangle(std::istream & input)
 {
@@ -53,5 +54,12 @@ void turkin::printAreaPoints(std::ostream & output, const CompositeShape & compo
     printPoints(output << " ", compositeShape.at(i));
   }
   output << "\n";
+}
+
+turkin::Shape * turkin::createCircle(std::istream &input)
+{
+  double p[3] {0.0, 0.0, 0.0};
+  input >> p[0] >> p[1] >> p[2];
+  return new Circle({p[0], p[1]}, p[2]);
 }
 

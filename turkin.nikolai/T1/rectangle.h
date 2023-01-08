@@ -15,7 +15,7 @@ namespace turkin
       void move(point_t position) override;
       void scaleWithoutVerify(double ds) override;
       Shape * clone() const override;
-    private:
+    protected:
       rectangle_t rect_;
   };
 }

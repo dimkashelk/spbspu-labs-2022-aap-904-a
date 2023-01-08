@@ -34,6 +34,12 @@ int main()
          compositeShape.push_back(buffer);
          buffer = nullptr;
        }
+       if (line == "CIRCLE")
+       {
+         buffer = turkin::createCircle(std::cin);
+         compositeShape.push_back(buffer);
+         buffer = nullptr;
+       }
        if (line == "SCALE")
        {
          scale = turkin::getScale(std::cin);

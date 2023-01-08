@@ -8,6 +8,7 @@ namespace turkin
    Shape * createRectangle(std::istream & input);
    Shape * createSquare(std::istream & input);
    Shape * createEllipse(std::istream & input);
+   Shape * createCircle(std::istream & input);
    scale_t getScale(std::istream & input);
    void printAreaPoints(std::ostream & output, const CompositeShape & compositeShape);
 }

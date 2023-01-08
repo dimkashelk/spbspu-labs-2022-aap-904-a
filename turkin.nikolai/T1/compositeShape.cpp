@@ -5,11 +5,7 @@
 
 turkin::CompositeShape::~CompositeShape()
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    delete shapes[i];
-  }
-  delete [] shapes;
+  freeMemory(shapes, size_);
 }
 
 turkin::CompositeShape::CompositeShape(size_t capacity):
@@ -219,6 +215,7 @@ turkin::CompositeShape & turkin::CompositeShape::operator=(const CompositeShape 
     catch (...)
     {
       freeMemory(cloneShapes, compositeShape.size_);
+      throw;
     }
   }
   freeMemory(shapes, size_);

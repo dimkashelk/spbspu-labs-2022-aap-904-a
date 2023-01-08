@@ -6,12 +6,12 @@
 #include "rectangle.h"
 #include "composite_shape.h"
 
-void printShapes(const kryuchkova::CompositeShape &compositeShape)
+void printShapes(const kryuchkova::CompositeShape &compositeShape, char delimiter)
 {
-  std::cout << compositeShape.getArea();
+  std::cout << compositeShape.getArea() << delimiter;
   for (size_t i = 0; i < compositeShape.size(); i++)
   {
-    std::cout << *compositeShape.at(i);
+    std::cout << *compositeShape.at(i) << delimiter;
   }
 }
 
@@ -72,7 +72,7 @@ int main()
       kryuchkova::point_t point{x, y};
       double k = 0.0;
       std::cin >> k;
-      printShapes(compositeShape);
+      printShapes(compositeShape, ' ');
       std::cout << '\n';
       try
       {
@@ -82,7 +82,7 @@ int main()
       {
         invalidScale = true;
       }
-      printShapes(compositeShape);
+      printShapes(compositeShape, ' ');
       std::cout << '\n';
     }
   }

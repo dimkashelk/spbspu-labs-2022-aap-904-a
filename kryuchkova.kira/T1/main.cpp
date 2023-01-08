@@ -19,6 +19,7 @@ int main()
   std::cout << std::setprecision(1) << std::fixed;
   kryuchkova::CompositeShape compositeShape;
   bool invalidShape = false;
+  bool isScaleCalled = false;
   bool invalidScale = false;
   while (std::cin)
   {
@@ -66,6 +67,7 @@ int main()
     }
     else if (name == "SCALE")
     {
+      isScaleCalled = true;
       double x = 0.0;
       double y = 0.0;
       std::cin >> x >> y;
@@ -83,6 +85,11 @@ int main()
       }
       printShapes(compositeShape);
     }
+  }
+  if (!isScaleCalled)
+  {
+    std::cerr << "Scale was not called";
+    return 1;
   }
   if (invalidShape)
   {

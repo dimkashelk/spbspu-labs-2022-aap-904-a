@@ -26,7 +26,7 @@ namespace kryuchkova
 
   std::ostream& operator<<(std::ostream &out, const point_t &point)
   {
-    return out << point.x << " " << point.y;
+    return out << point.x << ' ' << point.y;
   }
 
   std::ostream& operator<<(std::ostream &out, const Shape &shape)
@@ -35,7 +35,7 @@ namespace kryuchkova
     kryuchkova::rectangle_t rect = shape.getFrameRect();
     kryuchkova::point_t lb(rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2);
     kryuchkova::point_t ru(rect.pos.x + rect.width / 2, rect.pos.y + rect.height / 2);
-    return out << area << " " << lb << ' ' << ru;
+    return out << area << ' ' << lb << ' ' << ru;
   }
 
   bool Shape::operator<(const Shape &sh)

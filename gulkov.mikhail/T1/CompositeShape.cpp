@@ -78,7 +78,7 @@ void CompositeShape::scale(scale_t scale)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    doIsoScale(shapes[i], scale);
+    doSafeIsoScale(shapes[i], scale);
   }
 }
 

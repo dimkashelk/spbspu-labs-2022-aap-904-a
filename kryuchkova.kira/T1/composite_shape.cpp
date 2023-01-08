@@ -177,7 +177,7 @@ void kryuchkova::CompositeShape::push_back(const Shape *sh)
   {
     push_back(clone);
   }
-  catch(...)
+  catch (...)
   {
     delete clone;
     throw;

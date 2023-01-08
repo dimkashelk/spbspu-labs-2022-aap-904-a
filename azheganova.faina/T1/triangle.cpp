@@ -2,12 +2,33 @@
 #include <iostream>
 #include <cmath>
 
+Shape* inputTriangle(std::istream &input)
+{
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  double x3 = 0.0;
+  double y3 = 0.0;
+  input >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+  if (!input)
+  {
+    throw std::logic_error("error");
+  }
+  return new Triangle(point_t{x1, y1}, point_t{x2, y2}, point_t{x3, y3});
+}
+
+double findSide(point_t p1, point_t p2)
+{
+  return pow((pow((p2.x - p1.x), 2) + pow((p2.y - p1.y), 2 )), 0.5);
+}
+
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
   triangle1{pos1, pos2, pos3}
 {
-  double side1 = pow((pow((pos2.x - pos1.x), 2) + pow((pos2.y - pos1.y), 2 )), 0.5);
-  double side2 = pow((pow((pos3.x - pos2.x), 2) + pow((pos2.y - pos2.y), 2 )), 0.5);
-  double side3 = pow((pow((pos1.x - pos3.x), 2) + pow((pos1.y - pos3.y), 2 )), 0.5);
+  double side1 = findSide(pos1, pos2);
+  double side2 = findSide(pos2, pos3);
+  double side3 = findSide(pos3, pos1);
   if (((side3 + side2) <= side1) || ((side2 + side1) <= side3) || ((side3 + side1) <= side2))
   {
     throw std::invalid_argument("wrong triangle");
@@ -39,12 +60,13 @@ void Triangle::move(point_t point)
   point_t center = findCenterOfTriangle();
   move(point.x - center.x, point.y - center.y);
 }
+
 void Triangle::move(double dx, double dy)
 {
+  point_t delta{dx, dy};
   for (size_t i = 0; i < 3; i++)
   {
-    triangle1[i].x += dx;
-    triangle1[i].y += dy;
+    triangle1[i] = delta;
   }
 }
 void Triangle::scale(double k) noexcept

@@ -14,8 +14,8 @@ class Triangle: virtual public Shape
     void scale(double k) noexcept;
     Shape * clone() const override;
   private:
+    point_t triangle1[3];
     point_t findCenterOfTriangle();
-    point_t triangle1 [3];
 };
 
 #endif

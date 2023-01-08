@@ -2,6 +2,24 @@
 #include <iostream>
 #include <stdexcept>
 
+Shape* inputComplexquad(std::istream &input)
+{
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  double x3 = 0.0;
+  double y3 = 0.0;
+  double x4 = 0.0;
+  double y4 = 0.0;
+  input >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
+  if (!input)
+  {
+    throw std::logic_error("error");
+  }
+  return new Complexquad(point_t{x1, y1}, point_t{x2, y2}, point_t{x3, y3}, point_t{x4, y4});
+}
+
 point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 {
   double cx = 0.0;

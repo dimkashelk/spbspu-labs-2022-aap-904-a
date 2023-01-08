@@ -2,6 +2,20 @@
 #include <iostream>
 #include <cmath>
 
+Shape* inputRectangle(std::istream &input)
+{
+  double x1 = 0.0;
+  double y1 = 0.0;
+  double x2 = 0.0;
+  double y2 = 0.0;
+  input >> x1 >> y1 >> x2 >> y2;
+  if (!input)
+  {
+    throw std::logic_error("error");
+  }
+  return new Rectangle(point_t{x1, y1}, point_t{x2, y2});
+}
+
 Rectangle::Rectangle(rectangle_t rectangle):
   rectangle1(rectangle)
 {}

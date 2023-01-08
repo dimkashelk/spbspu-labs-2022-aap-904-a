@@ -150,9 +150,6 @@ void odintsov::CompositeShape::pop_back()
 
 void odintsov::CompositeShape::quiet_pop_back()
 {
-  if (empty()) {
-    return;
-  }
   delete shapes[--size_];
 }
 

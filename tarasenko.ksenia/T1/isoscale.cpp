@@ -1,8 +1,12 @@
 #include "isoscale.hpp"
+#include <stdexcept>
 
 void tarasenko::isoScale(Shape * shape, point_t center, double k)
 {
-  shape->checkCoefficient(k);
+  if (k <= 0)
+  {
+    throw std::invalid_argument("the coefficient is less than zero");
+  }
   point_t pos_1 = shape->getFrameRect().pos_;
   shape->move(center);
   point_t pos_2 = shape->getFrameRect().pos_;

@@ -18,6 +18,8 @@ namespace turkin
     point_t pos;
     double ds;
   };
+
+  const double PI = 3.14159265358979323846;
 }
 #endif
 

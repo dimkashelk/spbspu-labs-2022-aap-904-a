@@ -1,13 +1,13 @@
-#ifndef RECTANGLE_HPP
-#define RECTANGLE_HPP
+#ifndef DIAMOND_HPP
+#define DIAMOND_HPP
+#include <array>
 #include "base-types.hpp"
 #include "shape.hpp"
 
-class Rectangle: public Shape
+class Diamond: public Shape
 {
 public:
-  Rectangle(point_t one, point_t two);
-  explicit Rectangle(rectangle_t rectangle);
+  Diamond(point_t one, point_t two, point_t three);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;
@@ -15,7 +15,9 @@ public:
   void scaleWithoutCheck(double k) override;
   Shape *clone() const override;
 private:
-  rectangle_t rectangle;
+  std::array< point_t, 4 > positions;
+  double d1, d2;
+
 };
 
 #endif

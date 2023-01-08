@@ -1,11 +1,37 @@
 #include "base-types.hpp"
 #include <cmath>
+#include <stdexcept>
 
 double calculatePointsDistance(const point_t &p1, const point_t &p2)
 {
   double line_x = p1.x - p2.x;
   double line_y = p1.y - p2.y;
   return std::sqrt(line_x * line_x + line_y * line_y);
+}
+
+std::array< point_t, 4 > findLastDiamodPosition(point_t one, point_t two, point_t three)
+{
+  if (one.x == two.x || one.y == two.y)
+  {
+    return {one, two, three, {std::abs(one.x - two.x), std::abs(one.y - two.y)}};
+  }
+  else if (one.x == three.x || one.y == three.y)
+  {
+    return {one, three, two, {std::abs(one.x - three.x), std::abs(one.y - three.y)}};
+  }
+  else if (three.x == two.x || three.y == two.y)
+  {
+    return {three, two, one, {std::abs(three.x - two.x), std::abs(three.y - two.y)}};
+  }
+  else
+  {
+    throw std::invalid_argument("Invalid arguments for diamond");
+  }
+}
+
+point_t findDiamondCenter(point_t one, point_t two)
+{
+  return {(one.x - two.x) / 2, (one.y - two.y) / 2};
 }
 
 point_t findDeltaScale(point_t pos, scale_t scale)

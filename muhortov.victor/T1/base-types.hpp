@@ -1,5 +1,6 @@
 #ifndef GITLAB_LABS_BASE_TYPES_HPP
 #define GITLAB_LABS_BASE_TYPES_HPP
+#include <array>
 
 struct point_t
 {
@@ -19,6 +20,8 @@ struct scale_t
 };
 
 double calculatePointsDistance(const point_t &p1, const point_t &p2);
+std::array< point_t, 4 >findLastDiamodPosition(point_t one, point_t two, point_t three);
+point_t findDiamondCenter(point_t one, point_t two);
 point_t findDeltaScale(point_t pos, scale_t scale);
 point_t calculateVectorSum(point_t position, double delta_x, double delta_y);
 point_t calculateVectorDifference(point_t position, double delta_x, double delta_y);

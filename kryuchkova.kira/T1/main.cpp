@@ -52,7 +52,6 @@ int main()
       }
       catch (...)
       {
-        delete shape;
         invalidShape = true;
       }
       try
@@ -107,7 +106,6 @@ int main()
   if (invalidComposite)
   {
     std::cerr << "Invalid composite";
-    return 1;
   }
   return 0;
 }

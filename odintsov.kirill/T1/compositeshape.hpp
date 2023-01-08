@@ -25,7 +25,6 @@ namespace odintsov {
       void move(double dx, double dy);
       void move(const point_t& pos);
       void scale(double k);
-      point_t getMiddlePoint() const;
 
       void push_back(Shape* shp);
       void pop_back();
@@ -38,6 +37,7 @@ namespace odintsov {
       size_t cap_;
       Shape** shapes;
       void extend(size_t newCap);
+      point_t getMiddlePoint() const;
   };
   std::ostream& outputCompositeShape(std::ostream& out, const CompositeShape& composite);
 }

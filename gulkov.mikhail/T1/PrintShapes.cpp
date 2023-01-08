@@ -13,6 +13,4 @@ void printShapesArea(std::ostream &out, const CompositeShape &compositeShape)
     out << temp.pos.x + (temp.width / 2.0) << " ";
     out << temp.pos.y + (temp.height / 2.0);
   }
-
-  out << "\n";
 }

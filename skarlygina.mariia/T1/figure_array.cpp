@@ -17,9 +17,12 @@ void FigureArray::ExtendArray(Shape** &array_figure, Shape* figure, size_t size)
 {
   size_t capacity = size + 1;
   Shape** array_extended = new Shape*[capacity];
-  for (size_t i = 0; i < capacity; i++)
+  if (size > 0)
   {
-    array_extended[i] = array_figure[i];
+    for (size_t i = 0; i < size; i++)
+    {
+      array_extended[i] = array_figure[i];
+    }
   }
   delete[] array_figure;
   array_extended[capacity - 1] = figure;

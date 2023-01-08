@@ -8,4 +8,3 @@ namespace FigureArray
   void ExtendArray(Shape** &array_figure, Shape* figure, size_t size);
 }
 #endif
-

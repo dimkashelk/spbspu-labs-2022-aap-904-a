@@ -12,7 +12,7 @@ namespace turkin
       CompositeShape(Shape ** shapes, size_t capacity, size_t size);
       ~CompositeShape();
       CompositeShape & operator=(const CompositeShape & compositeShape);
-      CompositeShape & operator=(CompositeShape && compositeShape);
+      CompositeShape & operator=(CompositeShape && compositeShape) noexcept;
       Shape * operator[](size_t id);
       const Shape * operator[](size_t id) const;
       double getArea() const;
@@ -34,7 +34,7 @@ namespace turkin
       Shape ** shapes;
       size_t capacity_;
       size_t size_;
-      void destruct(Shape ** shp, size_t size) const;
+      void freeMemory(Shape ** shp, size_t size) const;
   };
 }
 #endif

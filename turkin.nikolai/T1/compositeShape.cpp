@@ -166,7 +166,7 @@ turkin::CompositeShape * turkin::CompositeShape::clone() const
     }
     catch (...)
     {
-      destruct(cloneShapes, size_);
+      freeMemory(cloneShapes, size_);
       throw;
     }
   }
@@ -186,7 +186,7 @@ turkin::CompositeShape::CompositeShape(const turkin::CompositeShape & compositeS
     }
     catch (...)
     {
-      destruct(shapes, size_);
+      freeMemory(shapes, size_);
       throw;
     }
   }
@@ -198,7 +198,7 @@ turkin::CompositeShape::CompositeShape(Shape ** shapes, size_t capacity, size_t 
   size_(size)
 {}
 
-void turkin::CompositeShape::destruct(Shape ** shp, size_t size) const
+void turkin::CompositeShape::freeMemory(Shape ** shp, size_t size) const
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -218,19 +218,19 @@ turkin::CompositeShape & turkin::CompositeShape::operator=(const CompositeShape 
     }
     catch (...)
     {
-      destruct(cloneShapes, compositeShape.size_);
+      freeMemory(cloneShapes, compositeShape.size_);
     }
   }
-  destruct(shapes, size_);
+  freeMemory(shapes, size_);
   shapes = cloneShapes;
   size_ = compositeShape.size_;
   capacity_ = compositeShape.capacity_;
   return * this;
 }
 
-turkin::CompositeShape &turkin::CompositeShape::operator=(turkin::CompositeShape &&compositeShape)
+turkin::CompositeShape & turkin::CompositeShape::operator=(turkin::CompositeShape && compositeShape) noexcept
 {
-  destruct(shapes, size_);
+  freeMemory(shapes, size_);
   size_ = compositeShape.size_;
   capacity_ = compositeShape.capacity_;
   shapes = compositeShape.shapes;

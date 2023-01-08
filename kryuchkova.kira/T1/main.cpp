@@ -53,7 +53,7 @@ int main()
           compositeShape.push_back(shape);
         }
       }
-      catch (std::invalid_argument)
+      catch (std::invalid_argument &e)
       {
         invalidShape = true;
       }

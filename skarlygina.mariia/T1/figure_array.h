@@ -4,7 +4,7 @@
 #include <cstddef>
 namespace FigureArray
 {
-  void DeleteArray(size_t size, Shape** array_figures);
-  void ExtendArray(Shape** &array_figure, Shape* figure, size_t size);
+  void deleteArray(size_t size, Shape** array_figures);
+  void extendArray(Shape** &array_figure, Shape* figure, size_t size);
 }
 #endif

@@ -34,7 +34,7 @@ point_t baseFunctions::makeCenterMove(point_t center, point_t center_rect, doubl
 
 void baseFunctions::findCorrectKoeff(double k)
 {
-  if (k < 1)
+  if (k <= 0)
   {
     throw std::invalid_argument("Error: coefficient under zero");
   }

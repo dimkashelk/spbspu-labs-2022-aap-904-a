@@ -23,7 +23,7 @@ int main()
       try
       {
         rectangle = correctFigures::readCorrectRectangle(std::cin);
-        FigureArray::ExtendArray(array_figures, rectangle, size);
+        FigureArray::extendArray(array_figures, rectangle, size);
         size++;
       }
       catch (const std::invalid_argument& e)
@@ -36,7 +36,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the rectangle\n";
-        FigureArray::DeleteArray(size, array_figures);
+        FigureArray::deleteArray(size, array_figures);
         return 2;
       }
     }
@@ -47,7 +47,7 @@ int main()
       try
       {
         ring = correctFigures::readCorrectRing(std::cin);
-        FigureArray::ExtendArray(array_figures, ring, size);
+        FigureArray::extendArray(array_figures, ring, size);
         size++;
       }
       catch (const std::invalid_argument& e)
@@ -60,7 +60,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the ring\n";
-        FigureArray::DeleteArray(size, array_figures);
+        FigureArray::deleteArray(size, array_figures);
         return 2;
       }
     }
@@ -71,7 +71,7 @@ int main()
       try
       {
         ellipse = correctFigures::readCorrectEllipse(std::cin);
-        FigureArray::ExtendArray(array_figures, ellipse, size);
+        FigureArray::extendArray(array_figures, ellipse, size);
         size++;
       }
       catch (const std::invalid_argument& e)
@@ -84,7 +84,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the ellipse\n";
-        FigureArray::DeleteArray(size, array_figures);
+        FigureArray::deleteArray(size, array_figures);
         return 2;
       }
     }
@@ -98,14 +98,14 @@ int main()
         if (coefficient <= 0)
         {
           std::cerr << "Error: coefficient could not be under zero\n";
-          FigureArray::DeleteArray(size, array_figures);
+          FigureArray::deleteArray(size, array_figures);
           return 2;
         }
       }
       catch (...)
       {
         std::cerr << "Error: wrong parameters of the point, coefficient\n";
-        FigureArray::DeleteArray(size, array_figures);
+        FigureArray::deleteArray(size, array_figures);
         return 2;
       }
       break;
@@ -128,16 +128,16 @@ int main()
   }
   else if (!isScale)
   {
-    FigureArray::DeleteArray(size, array_figures);
+    FigureArray::deleteArray(size, array_figures);
     std::cerr << "Error: the final figure could be SCALE and size bigger than zero";
     return 2;
   }
   else if (size < 1)
   {
-    FigureArray::DeleteArray(size, array_figures);
+    FigureArray::deleteArray(size, array_figures);
     std::cerr << "Error: the final figure could be SCALE and size bigger than zero";
     return 2;
   }
-  FigureArray::DeleteArray(size, array_figures);
+  FigureArray::deleteArray(size, array_figures);
   return 0;
 }

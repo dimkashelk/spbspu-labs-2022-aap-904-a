@@ -47,22 +47,33 @@ double calculateTriangleArea(const double &a, const double &b, const double &c)
   return std::sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
+double calculateSideForTriangle(const point_t &one, const point_t &two)
+{
+  return std::sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y));
+}
+
+bool checkingSideForPosition(const point_t &one, const point_t &two, const point_t &four)
+{
+  return ((one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y)) > 0;
+}
+
 bool checkingTriangle(const point_t &one, const point_t &two, const point_t &three)
 {
-  double a = std::sqrt((three.x - one.x) * (three.x - one.x) + (three.y - one.y) * (three.y - one.y));
-  double b = std::sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y));
-  double c = std::sqrt((three.x - two.x) * (three.x - two.x) + (three.y - two.y) * (three.y - two.y));
+  double a = calculateSideForTriangle(three, one);
+  double b = calculateSideForTriangle(two, one);
+  double c = calculateSideForTriangle(three, two);
   return a + b < c || a + c < b || b + c < a;
+}
+
+bool checkingPosition(const point_t &one, const point_t &two, const point_t &three, const point_t &four)
+{
+  bool trOne = checkingSideForPosition(one, two, four);
+  bool trTwo = checkingSideForPosition(two, three, four);
+  bool trThree = checkingSideForPosition(three, one, four);;
+  return !((trOne && trTwo && trThree) || (!trOne && !trTwo && !trThree));
 }
 
 bool checkingConcave(const point_t &one, const point_t &two, const point_t &three, const point_t &four)
 {
-  bool trOne = ((one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y)) > 0;
-  bool trTwo = ((two.x - four.x) * (three.y - two.y) - (three.x - two.x) * (two.y - four.y)) > 0;
-  bool trThree = ((three.x - four.x) * (one.y - three.y) - (one.x - three.x) * (three.y - four.y)) > 0;
-
-  bool second =  one.x == four.x || one.y == four.y;
-  bool third = !((trOne && trTwo && trThree) || (!trOne && !trTwo && !trThree));
-
-  return (checkingTriangle(one, two, three) || second || third);
+  return (checkingTriangle(one, two, three) || one.x == four.x || one.y == four.y || checkingPosition(one, two, three, four));
 }

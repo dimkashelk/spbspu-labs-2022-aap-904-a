@@ -49,10 +49,10 @@ rectangle_t Triangle::getFrameRect() const
   double miny = 0.0;
   for (size_t i = 0; i < 2; i++)
   {
-    maxx = std::max(maxx, triangle1[i].x, triangle1[i + 1].x);
-    maxy = std::max(maxy, triangle1[i].y, triangle1[i + 1].y);
-    minx = std::min(minx, triangle1[i].x, triangle1[i + 1].x);
-    miny = std::min(miny, triangle1[i].y, triangle1[i + 1].y);
+    maxx = std::max(maxx, std::max(triangle1[i].x, triangle1[i + 1].x));
+    maxy = std::max(maxy, std::max(triangle1[i].y, triangle1[i + 1].y));
+    minx = std::min(minx, std::min(triangle1[i].x, triangle1[i + 1].x));
+    miny = std::min(miny, std::min(triangle1[i].y, triangle1[i + 1].y));
   }
   return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
 }

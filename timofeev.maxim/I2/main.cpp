@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    std::cout << "divider " << partition(ready_array, 5) << "\n";
+    std::cout << "divider " << *partition(ready_array, 5) << "\n";
   }
   catch (const std::length_error & e)
   {
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    //std::cout << "divider " << *reinterpret_cast<int*>(partition(dyn_array, line)) << "\n";
+    std::cout << "divider " << *partition(dyn_array, line) << "\n";
   }
   else
   {
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    //std::cout << "divider " << *reinterpret_cast<int*>(partition(File_Array, fsize)) << "\n";
+    std::cout << "divider " << *partition(File_Array, fsize) << "\n";
   }
   catch (const std::length_error & e)
   {

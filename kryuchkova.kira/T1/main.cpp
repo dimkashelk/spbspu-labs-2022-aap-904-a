@@ -24,7 +24,7 @@ int main()
     if (!std::cin)
     {
       std::cerr << "invalid input";
-      return 1;
+      //return 1;
     }
     if (name == "RECTANGLE")
     {

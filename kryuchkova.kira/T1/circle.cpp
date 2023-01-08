@@ -24,7 +24,7 @@ double kryuchkova::Circle::getArea() const
 
 kryuchkova::rectangle_t kryuchkova::Circle::getFrameRect() const
 {
-  return rectangle_t(radius * 2, radius * 2, pos);
+  return rectangle_t{radius * 2, radius * 2, pos};
 }
 
 void kryuchkova::Circle::move(double dx, double dy)

@@ -133,7 +133,7 @@ kryuchkova::rectangle_t kryuchkova::CompositeShape::getFrameRect() const
       maxy = ru_y;
     }
   }
-  return rectangle_t(maxx - minx, maxy - miny, point_t((maxx + minx) / 2, (maxy + miny) / 2));
+  return rectangle_t{maxx - minx, maxy - miny, point_t{(maxx + minx) / 2, (maxy + miny) / 2}};
 }
 
 void kryuchkova::CompositeShape::move(const point_t point)

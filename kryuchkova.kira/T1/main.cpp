@@ -72,7 +72,7 @@ int main()
       double x = 0.0;
       double y = 0.0;
       std::cin >> x >> y;
-      kryuchkova::point_t point(x, y);
+      kryuchkova::point_t point{x, y};
       double k = 0.0;
       std::cin >> k;
       printShapes(compositeShape);

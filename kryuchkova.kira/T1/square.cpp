@@ -23,8 +23,8 @@ double kryuchkova::Square::getArea() const
 
 kryuchkova::rectangle_t kryuchkova::Square::getFrameRect() const
 {
-  point_t pos(length / 2 + lb_point.x, length / 2 + lb_point.y);
-  return rectangle_t(length, length, pos);
+  point_t pos{length / 2 + lb_point.x, length / 2 + lb_point.y};
+  return rectangle_t{length, length, pos};
 }
 
 void kryuchkova::Square::move(const double dx, const double dy)
@@ -35,7 +35,7 @@ void kryuchkova::Square::move(const double dx, const double dy)
 
 void kryuchkova::Square::move(const point_t point)
 {
-  point_t pos(length / 2 + lb_point.x, length / 2 + lb_point.y);
+  point_t pos{length / 2 + lb_point.x, length / 2 + lb_point.y};
   double dx = point.x - pos.x;
   double dy = point.y - pos.y;
   move(dx, dy);

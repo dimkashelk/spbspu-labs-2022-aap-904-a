@@ -32,8 +32,8 @@ namespace kryuchkova
   std::ostream& operator<<(std::ostream &out, const Shape &shape)
   {
     kryuchkova::rectangle_t rect = shape.getFrameRect();
-    kryuchkova::point_t lb(rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2);
-    kryuchkova::point_t ru(rect.pos.x + rect.width / 2, rect.pos.y + rect.height / 2);
+    kryuchkova::point_t lb{rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2};
+    kryuchkova::point_t ru{rect.pos.x + rect.width / 2, rect.pos.y + rect.height / 2};
     return out << ' ' << lb << ' ' << ru;
   }
 
@@ -53,7 +53,7 @@ namespace kryuchkova
     {
       throw std::invalid_argument("invalid input");
     }
-    return new Rectangle(point_t(lb_x, lb_y), point_t(ru_x, ru_y));
+    return new Rectangle(point_t{lb_x, lb_y}, point_t{ru_x, ru_y});
   }
 
   Shape *inputCircle(std::istream &in)
@@ -66,7 +66,7 @@ namespace kryuchkova
     {
       throw std::invalid_argument("invalid input");
     }
-    return new Circle(point_t(pos_x, pos_y), radius);
+    return new Circle(point_t{pos_x, pos_y}, radius);
   }
 
   Shape *inputSquare(std::istream &in)
@@ -79,6 +79,6 @@ namespace kryuchkova
     {
       throw std::invalid_argument("invalid input");
     }
-    return new Square(point_t(lb_x, lb_y), length);
+    return new Square(point_t{lb_x, lb_y}, length);
   }
 }

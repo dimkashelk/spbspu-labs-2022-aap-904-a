@@ -38,9 +38,7 @@ odintsov::CompositeShape::CompositeShape(odintsov::CompositeShape&& shp):
 
 odintsov::CompositeShape::~CompositeShape()
 {
-  while (!empty()) {
-    pop_back();
-  }
+  clear();
   delete [] shapes;
 }
 
@@ -58,9 +56,7 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::Co
       throw;
     }
   }
-  while (!empty()) {
-    pop_back();
-  }
+  clear();
   delete [] shapes;
   shapes = clonedShapes;
   cap_ = shp.cap_;
@@ -70,9 +66,8 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::Co
 
 odintsov::CompositeShape& odintsov::CompositeShape::operator=(odintsov::CompositeShape&& shp)
 {
-  while (!empty()) {
-    pop_back();
-  }
+  clear();
+  delete [] shapes;
   size_ = shp.size_;
   cap_ = shp.cap_;
   shapes = shp.shapes;
@@ -205,6 +200,14 @@ void odintsov::CompositeShape::extend(size_t newCap)
   delete [] shapes;
   shapes = newShapes;
   cap_ = newCap;
+}
+
+void odintsov::CompositeShape::clear()
+{
+  while (!empty())
+  {
+    pop_back();
+  }
 }
 
 std::ostream& odintsov::outputCompositeShape(std::ostream& out, const CompositeShape& composite)

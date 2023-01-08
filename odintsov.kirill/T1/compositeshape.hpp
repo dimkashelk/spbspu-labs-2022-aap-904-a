@@ -37,6 +37,7 @@ namespace odintsov {
       size_t cap_;
       Shape** shapes;
       void extend(size_t newCap);
+      void clear();
       point_t getMiddlePoint() const;
   };
   std::ostream& outputCompositeShape(std::ostream& out, const CompositeShape& composite);

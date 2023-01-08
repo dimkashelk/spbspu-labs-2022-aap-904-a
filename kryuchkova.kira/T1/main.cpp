@@ -91,6 +91,7 @@ int main()
   if (invalidScale)
   {
     std::cerr << "Invalid scaling";
+    return 1;
   }
   return 0;
 }

@@ -2,6 +2,7 @@
 #include "shape.h"
 #include "make_output.h"
 #include "read_correct_figures.h"
+#include "figure_array.h"
 #include "isotropic_scale.h"
 
 int main()
@@ -43,14 +44,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the rectangle\n";
-        if (size > 0)
-        {
-          for (size_t i = 0; i < size; i++)
-          {
-            delete array_figures[i];
-          }
-        }
-        delete[] array_figures;
+        FigureArray::DeleteArray(size, array_figures);
         return 2;
       }
     }
@@ -82,14 +76,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the ring\n";
-        if (size > 0)
-        {
-          for (size_t i = 0; i < size; i++)
-          {
-            delete array_figures[i];
-          }
-        }
-        delete[] array_figures;
+        FigureArray::DeleteArray(size, array_figures);
         return 2;
       }
     }
@@ -121,14 +108,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error while reading the ellipse\n";
-        if (size > 0)
-        {
-          for (size_t i = 0; i < size; i++)
-          {
-            delete array_figures[i];
-          }
-        }
-        delete[] array_figures;
+        FigureArray::DeleteArray(size, array_figures);
         return 2;
       }
     }
@@ -162,11 +142,7 @@ int main()
       catch (...)
       {
         std::cerr << "Error: wrong parameters of the point, coefficient\n";
-        for (size_t i = 0; i < size; i++)
-        {
-          delete array_figures[i];
-        }
-        delete[] array_figures;
+        FigureArray::DeleteArray(size, array_figures);
         return 2;
       }
       break;
@@ -187,26 +163,12 @@ int main()
       std::cerr << "Some figures are not correct\n";
     }
   }
-  else if (size > 0 && !isScale)
+  else if (!isScale)
   {
-    for (size_t i = 0; i < size; i++)
-    {
-      delete array_figures[i];
-    }
-    delete[] array_figures;
-    std::cerr << "Error: the final figure could be SCALE";
+    FigureArray::DeleteArray(size, array_figures);
+    std::cerr << "Error: the final figure could be SCALE and size bigger than zero";
     return 2;
   }
-  else if (!size && !isScale)
-  {
-    delete[] array_figures;
-    std::cerr << "Error: size could not be under zero";
-    return 2;
-  }
-  for (size_t i = 0; i < size; i++)
-  {
-    delete array_figures[i];
-  }
-  delete[] array_figures;
+  FigureArray::DeleteArray(size, array_figures);
   return 0;
 }

@@ -13,7 +13,7 @@ int main()
   double coefficient = 0;
   bool isScale = false;
   bool isCommand = true;
-  Shape** array_figures = new Shape*[10];
+  Shape** array_figures = new Shape*[size];
   do
   {
     std::cin >> figure;
@@ -25,7 +25,7 @@ int main()
         rectangle = correctFigures::readCorrectRectangle(std::cin);
         if (rectangle)
         {
-          array_figures[size] = rectangle;
+          FigureArray::ExtendArray(array_figures, rectangle, size);
           size++;
         }
         else
@@ -57,7 +57,7 @@ int main()
         ring = correctFigures::readCorrectRing(std::cin);
         if (ring)
         {
-          array_figures[size] = ring;
+          FigureArray::ExtendArray(array_figures, ring, size);
           size++;
         }
         else
@@ -89,7 +89,7 @@ int main()
         ellipse = correctFigures::readCorrectEllipse(std::cin);
         if (ellipse)
         {
-          array_figures[size] = ellipse;
+          FigureArray::ExtendArray(array_figures, ellipse, size);
           size++;
         }
         else

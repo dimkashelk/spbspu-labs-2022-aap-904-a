@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    if (partition(ready_array, 5))
+    if (partition(ready_array, 5) != nullptr)
     {
       std::cout << "divider " << *partition(ready_array, 5) << "\n";
     }
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    if (partition(dyn_array, line))
+    if (partition(dyn_array, line) != nullptr)
     {
       std::cout << "divider " << *partition(dyn_array, line) << "\n";
     }
@@ -128,9 +128,9 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    if (partition(File_Array, 5))
+    if (partition(File_Array, fsize) != nullptr)
     {
-      std::cout << "divider " << *partition(File_Array, line) << "\n";
+      std::cout << "divider " << *partition(File_Array, fsize) << "\n";
     }
     else
     {

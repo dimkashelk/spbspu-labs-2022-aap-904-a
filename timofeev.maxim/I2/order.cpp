@@ -25,9 +25,5 @@ int *partition(int *arr, size_t size)
       break;
     }
   }
-  if (dividing == nullptr)
-  {
-    return 0;
-  }
   return dividing;
 }

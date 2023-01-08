@@ -26,7 +26,7 @@ namespace kryuchkova
 
   std::ostream& operator<<(std::ostream &out, const point_t &point)
   {
-    return out << round(point.x * 10) / 10 << " " << round(point.y * 10) / 10;
+    return out << round(point.x * 100) / 100 << " " << round(point.y * 100) / 100;
   }
 
   std::ostream& operator<<(std::ostream &out, const Shape &shape)

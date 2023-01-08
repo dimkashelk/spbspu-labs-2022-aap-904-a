@@ -34,7 +34,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid input";
+        // std::cerr << "invalid input";
         //return 1;
       }
     }
@@ -47,7 +47,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid input";
+        // std::cerr << "invalid input";
         //return 1;
       }
     }
@@ -60,7 +60,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid input";
+        // std::cerr << "invalid input";
         //return 1;
       }
     }
@@ -79,7 +79,7 @@ int main()
       }
       catch(...)
       {
-        std::cerr << "invalid scaling input";
+        //std::cerr << "invalid scaling input";
         //return 1;
       }
       printShapes(compositeShape);

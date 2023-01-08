@@ -8,6 +8,12 @@ class CompositeShape
 {
 public:
   explicit CompositeShape(size_t capacity);
+  CompositeShape(const CompositeShape &compositeShape);
+  CompositeShape(Shape **shapes, size_t capacity, size_t size);
+  ~CompositeShape();
+  CompositeShape &operator=(const CompositeShape &compositeShape);
+  CompositeShape &operator=(CompositeShape &&compositeShape);
+  CompositeShape *clone() const;
   void push_back(Shape *shape);
   void push_back(const Shape *shape);
   void pop_back();
@@ -22,11 +28,12 @@ public:
   void move(point_t position);
   void move(double delta_x, double delta_y);
   void scale(scale_t scale);
-  ~CompositeShape();
+
 private:
   Shape **shapes;
   size_t capacity_;
   size_t size_;
+  void destruct(Shape **shape, size_t size) const;
 };
 
 #endif

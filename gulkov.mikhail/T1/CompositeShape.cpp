@@ -9,6 +9,26 @@ CompositeShape::CompositeShape(size_t capacity):
   size_(0)
 {}
 
+
+CompositeShape::CompositeShape(const CompositeShape &compositeShape):
+  shapes(new Shape *[compositeShape.capacity_]),
+  capacity_(compositeShape.capacity_),
+  size_(compositeShape.size_)
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      shapes[i] = compositeShape.shapes[i]->clone();
+    }
+    catch (...)
+    {
+      destruct(shapes, size_);
+      throw;
+    }
+  }
+}
+
 void CompositeShape::push_back(const Shape *shape)
 {
   Shape *clone = shape->clone();
@@ -128,4 +148,72 @@ rectangle_t CompositeShape::getFrameRect() const
     d = std::fmin(temp.pos.y - temp.height / 2.0, temp.pos.y - temp.height / 2.0);
   }
   return {{(a + c) / 2.0, (b + d) / 2.0}, c - a, d - b};
+}
+
+
+CompositeShape *CompositeShape::clone() const
+{
+  Shape **cloneShapes = new Shape *[capacity_];
+  for (size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      cloneShapes[i] = shapes[i]->clone();
+    }
+    catch (...)
+    {
+      destruct(cloneShapes, size_);
+      throw;
+    }
+  }
+  return new CompositeShape(cloneShapes, capacity_, size_);
+}
+
+CompositeShape::CompositeShape(Shape **shapes, size_t capacity, size_t size):
+  shapes(shapes),
+  capacity_(capacity),
+  size_(size)
+{}
+
+
+void CompositeShape::destruct(Shape **shape, size_t size) const
+{
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shape[i];
+  }
+  delete[] shape;
+}
+
+
+CompositeShape &CompositeShape::operator=(const CompositeShape &compositeShape)
+{
+  Shape **cloneShapes = new Shape *[compositeShape.capacity_];
+  for (size_t i = 0; i < compositeShape.size_; i++)
+  {
+    try
+    {
+      cloneShapes[i] = compositeShape[i]->clone();
+    }
+    catch (...)
+    {
+      destruct(cloneShapes, compositeShape.size_);
+    }
+  }
+  destruct(shapes, size_);
+  shapes = cloneShapes;
+  size_ = compositeShape.size_;
+  capacity_ = compositeShape.capacity_;
+  return *this;
+}
+
+CompositeShape &::CompositeShape::operator=(CompositeShape &&compositeShape)
+{
+  destruct(shapes, size_);
+  size_ = compositeShape.size_;
+  capacity_ = compositeShape.capacity_;
+  shapes = compositeShape.shapes;
+  compositeShape.shapes = nullptr;
+  compositeShape.size_ = 0;
+  return *this;
 }

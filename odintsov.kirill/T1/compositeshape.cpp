@@ -89,19 +89,11 @@ odintsov::rectangle_t odintsov::CompositeShape::getFrameRect() const
   if (empty()) {
     throw std::logic_error("no shapes inside CompositeShape");
   }
-  rectangle_t rect = shapes[0]->getFrameRect();
-  point_t bl = getFrameRectBottomLeftCorner(rect);
-  point_t tr = getFrameRectTopRightCorner(rect);
-  for (size_t i = 1; i < size(); i++) {
-    rect = shapes[i]->getFrameRect();
-    point_t newbl = getFrameRectBottomLeftCorner(rect);
-    point_t newtr = getFrameRectTopRightCorner(rect);
-    bl.x = std::min(bl.x, newbl.x);
-    bl.y = std::min(bl.y, newbl.y);
-    tr.x = std::max(tr.x, newtr.x);
-    tr.y = std::max(tr.y, newtr.y);
+  FrameRectBuilder builder(shapes[0]->getFrameRect());
+  for (size_t i = 0; i < size(); i++) {
+    builder << shapes[i]->getFrameRect();
   }
-  return getFrameRectFromCorners(bl, tr);
+  return builder.rect();
 }
 
 void odintsov::CompositeShape::move(double dx, double dy)

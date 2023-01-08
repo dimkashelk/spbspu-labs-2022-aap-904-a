@@ -5,6 +5,35 @@
 #include <iostream>
 #include "shape.hpp"
 
+odintsov::FrameRectBuilder::FrameRectBuilder(const point_t& p):
+  bl(p),
+  tr(p)
+{}
+
+odintsov::FrameRectBuilder::FrameRectBuilder(const rectangle_t& r):
+  bl(getFrameRectBottomLeftCorner(r)),
+  tr(getFrameRectTopRightCorner(r))
+{}
+
+odintsov::FrameRectBuilder& odintsov::FrameRectBuilder::operator<<(const point_t& p)
+{
+  bl.x = std::min(bl.x, p.x);
+  bl.y = std::min(bl.y, p.y);
+  tr.x = std::max(tr.x, p.x);
+  tr.y = std::max(tr.y, p.y);
+  return *this;
+}
+
+odintsov::FrameRectBuilder& odintsov::FrameRectBuilder::operator<<(const rectangle_t& r)
+{
+  return *this << getFrameRectBottomLeftCorner(r) << getFrameRectTopRightCorner(r);
+}
+
+odintsov::rectangle_t odintsov::FrameRectBuilder::rect()
+{
+  return getFrameRectFromCorners(bl, tr);
+}
+
 void odintsov::movePoint(point_t& p, double dx, double dy)
 {
   p.x += dx;
@@ -33,24 +62,6 @@ odintsov::point_t odintsov::getFrameRectBottomLeftCorner(const rectangle_t& rect
 odintsov::point_t odintsov::getFrameRectTopRightCorner(const rectangle_t& rect)
 {
   return point_t{rect.pos.x + rect.width * 0.5, rect.pos.y + rect.height * 0.5};
-}
-
-odintsov::rectangle_t odintsov::getFrameRectFromPoints(const point_t* points, size_t amt)
-{
-  if (amt <= 1) {
-    throw std::invalid_argument("too little points for rectangle");
-  }
-  double leftX = points[0].x;
-  double rightX = points[0].x;
-  double bottomY = points[0].y;
-  double topY = points[0].y;
-  for (size_t i = 1; i < amt; i++) {
-    leftX = std::min(points[i].x, leftX);
-    rightX = std::max(points[i].x, rightX);
-    bottomY = std::min(points[i].y, bottomY);
-    topY = std::max(points[i].y, topY);
-  }
-  return getFrameRectFromCorners(point_t{leftX, bottomY}, point_t{rightX, topY});
 }
 
 std::ostream& odintsov::outputFrameRect(std::ostream& out, const rectangle_t& rect)

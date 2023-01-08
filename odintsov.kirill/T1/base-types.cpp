@@ -14,6 +14,24 @@ void odintsov::isoScalePoint(point_t& p, const point_t& anchor, double k)
   movePoint(p, (p.x - anchor.x) * (k - 1.0), (p.y - anchor.y) * (k - 1.0));
 }
 
+odintsov::rectangle_t odintsov::getFrameRectFromCorners(const point_t& bl, const point_t& tr)
+{
+  if (tr.x <= bl.x || tr.y <= bl.y) {
+    throw std::invalid_argument("Corners set incorrectly");
+  }
+  return rectangle_t{tr.x - bl.x, tr.y - bl.y, {(bl.x + tr.x) * 0.5, (bl.y + tr.y) * 0.5}};
+}
+
+odintsov::point_t odintsov::getFrameRectBottomLeftCorner(const rectangle_t& rect)
+{
+  return point_t{rect.pos.x - rect.width * 0.5, rect.pos.y - rect.height * 0.5};
+}
+
+odintsov::point_t odintsov::getFrameRectTopRightCorner(const rectangle_t& rect)
+{
+  return point_t{rect.pos.x + rect.width * 0.5, rect.pos.y + rect.height * 0.5};
+}
+
 odintsov::rectangle_t odintsov::getFrameRectFromPoints(const point_t* points, size_t amt)
 {
   if (amt <= 1) {
@@ -29,11 +47,12 @@ odintsov::rectangle_t odintsov::getFrameRectFromPoints(const point_t* points, si
     bottomY = std::min(points[i].y, bottomY);
     topY = std::max(points[i].y, topY);
   }
-  return rectangle_t{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}};
+  return getFrameRectFromCorners(point_t{leftX, bottomY}, point_t{rightX, topY});
 }
 
 bool odintsov::isPointInRectangle(const point_t& p, const rectangle_t& rect)
 {
-  return rect.pos.x - rect.width * 0.5 <= p.x && p.x <= rect.pos.x + rect.width * 0.5 &&
-         rect.pos.y - rect.height * 0.5 <= p.y && p.y <= rect.pos.y + rect.height * 0.5;
+  point_t bl = getFrameRectBottomLeftCorner(rect);
+  point_t tr = getFrameRectTopRightCorner(rect);
+  return bl.x <= p.x && p.x <= tr.x && bl.y <= p.y && p.y <= tr.y;
 }

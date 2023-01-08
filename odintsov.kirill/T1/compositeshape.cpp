@@ -143,6 +143,14 @@ void odintsov::CompositeShape::push_back(Shape* shp)
 void odintsov::CompositeShape::pop_back()
 {
   if (empty()) {
+    throw std::logic_error("attempt to pop element from empty CompositeShape");
+  }
+  quiet_pop_back();
+}
+
+void odintsov::CompositeShape::quiet_pop_back()
+{
+  if (empty()) {
     return;
   }
   delete shapes[--size_];

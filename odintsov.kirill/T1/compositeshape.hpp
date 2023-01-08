@@ -28,6 +28,7 @@ namespace odintsov {
 
       void push_back(Shape* shp);
       void pop_back();
+      void quiet_pop_back();
       Shape* at(size_t id);
       const Shape* at(size_t id) const;
       bool empty() const;

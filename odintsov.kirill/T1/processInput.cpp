@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include <cstddef>
 #include "compositeshape.hpp"
 #include "concave.hpp"
 #include "complexquad.hpp"

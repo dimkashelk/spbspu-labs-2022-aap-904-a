@@ -40,30 +40,27 @@ int main()
         if (name == "RECTANGLE")
         {
           shape = kryuchkova::inputRectangle(std::cin);
+          compositeShape.push_back(shape);
         }
         else if (name == "SQUARE")
         {
           shape = kryuchkova::inputSquare(std::cin);
+          compositeShape.push_back(shape);
         }
         else if (name == "CIRCLE")
         {
           shape = kryuchkova::inputCircle(std::cin);
+          compositeShape.push_back(shape);
         }
       }
-      catch (...)
+      catch (std::invalid_argument)
       {
-        delete shape;
         invalidShape = true;
-      }
-      try
-      {
-        compositeShape.push_back(shape);
       }
       catch (...)
       {
         invalidComposite = true;
       }
-
     }
 
     if (name == "SCALE")

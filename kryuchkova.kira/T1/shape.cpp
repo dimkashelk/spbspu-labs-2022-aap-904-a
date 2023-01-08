@@ -31,12 +31,12 @@ namespace kryuchkova
 
   std::ostream& operator<<(std::ostream &out, const Shape &shape)
   {
-    std::string name = shape.getName();
+    // std::string name = shape.getName();
     double area = shape.getArea();
     kryuchkova::rectangle_t rect = shape.getFrameRect();
     kryuchkova::point_t lb(rect.pos.x - rect.width / 2, rect.pos.y - rect.height / 2);
     kryuchkova::point_t ru(rect.pos.x + rect.width / 2, rect.pos.y + rect.height / 2);
-    return out << name << " " << area << " " << lb << ' ' << ru;
+    return out << area << " " << lb << ' ' << ru;
   }
 
   bool Shape::operator<(const Shape &sh)

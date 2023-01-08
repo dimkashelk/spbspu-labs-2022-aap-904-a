@@ -89,8 +89,8 @@ namespace kryuchkova
 
   point_t scalePoint(const point_t point, const point_t pos, const double k)
   {
-    double dx = (pos.x - point.x) * k;
-    double dy = (pos.y - point.y) * k;
+    double dx = (point.x - pos.x) * k;
+    double dy = (point.y - pos.y) * k;
     return movePoint(pos, point_t{dx, dy});
   }
 }

@@ -43,10 +43,17 @@ double Triangle::getArea() const
 }
 rectangle_t Triangle::getFrameRect() const
 {
-  double maxx = std::max(triangle1[0].x, std::max(triangle1[1].x, triangle1[2].x));
-  double maxy = std::max(triangle1[0].y, std::max(triangle1[1].y, triangle1[2].y));
-  double minx = std::min(triangle1[0].x, std::min(triangle1[1].x, triangle1[2].x));
-  double miny = std::min(triangle1[0].y, std::min(triangle1[1].y, triangle1[2].y));
+  double maxx = 0.0;
+  double maxy = 0.0;
+  double minx = 0.0;
+  double miny = 0.0;
+  for (size_t i = 0; i < 2; i++)
+  {
+    maxx = std::max(triangle1[i].x, triangle1[i + 1].x);
+    maxy = std::max(triangle1[i].y, triangle1[i + 1].y);
+    minx = std::min(triangle1[i].x, triangle1[i + 1].x);
+    miny = std::min(triangle1[i].y, triangle1[i + 1].y);
+  }
   return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
 }
 point_t Triangle::findCenterOfTriangle()

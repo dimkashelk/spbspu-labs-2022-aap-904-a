@@ -1,5 +1,6 @@
 #ifndef COMPLEXQUAD_H
 #define COMPLEXQUAD_H
+#include <iostream>
 #include "base_types.h"
 #include "shape.h"
 #include "triangle.h"

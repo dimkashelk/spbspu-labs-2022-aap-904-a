@@ -58,7 +58,7 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(const Composit
     free(shapes, size_);
     this->shapes = shapes;
     this->size_ = compositeShape.size_;
-    this->capacity = compositeShape.capacity;    
+    this->capacity = compositeShape.capacity;
   }
   return *this;
 }
@@ -166,7 +166,7 @@ void kryuchkova::CompositeShape::isoScale(point_t point, double k)
   for (size_t i = 0; i < size_; i++)
   {
     kryuchkova::isoScale(shapes[i], point, k);
-  } 
+  }
 }
 
 void kryuchkova::CompositeShape::push_back(Shape *sh)

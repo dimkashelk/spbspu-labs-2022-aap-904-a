@@ -21,5 +21,6 @@ struct scale_t
 
 double calcVectorLength(const point_t &p1, const point_t &p2);
 bool validateConcave(const point_t &one, const point_t &two, const point_t &three, const point_t &four);
+point_t addVector(point_t dot, double dx, double dy);
 
 #endif

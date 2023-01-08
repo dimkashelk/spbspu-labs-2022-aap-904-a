@@ -24,3 +24,10 @@ bool validateConcave(const point_t &one, const point_t &two, const point_t &thre
 
   return is_not_side || is_not_coordinates || is_not_triangles;
 }
+
+point_t addVector(point_t dot, double dx, double dy)
+{
+  dot.x += dx;
+  dot.y += dy;
+  return dot;
+}

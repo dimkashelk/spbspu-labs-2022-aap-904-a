@@ -60,8 +60,7 @@ void Concave::move(double dx, double dy)
 {
   for (point_t &dot: dots_)
   {
-    dot.x += dx;
-    dot.y += dy;
+    dot = addVector(dot, dx, dy);
   }
 }
 

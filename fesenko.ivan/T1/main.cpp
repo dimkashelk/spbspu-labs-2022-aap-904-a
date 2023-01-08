@@ -3,6 +3,7 @@
 #include "workWithArray.h"
 #include "rectangle.h"
 #include "concave.h"
+#include "complexquad.h"
 
 int main()
 {
@@ -44,7 +45,25 @@ int main()
         badShape = true;
       }
       catch (...) {
-        std::cerr << "Error with rectangle\n";
+        std::cerr << "Error with concave\n";
+        deleteArray(shapes, size);
+        return 2;
+      }
+    }
+    if (figureName == "COMPLEXQUAD") {
+      try {
+        point_t point1, point2, point3, point4;
+        std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
+        expandArray(shapes, size);
+        shapes[size] = new Complexquad(point1, point2, point3, point4);
+        size++;
+      }
+      catch (const std::invalid_argument &e) {
+        std::cerr << e.what() << "\n";
+        badShape = true;
+      }
+      catch (...) {
+        std::cerr << "Error with complexquad\n";
         deleteArray(shapes, size);
         return 2;
       }

@@ -22,6 +22,7 @@ namespace kryuchkova
   };
 
   void isoScale(kryuchkova::Shape *shape, kryuchkova::point_t point, double k);
+  void doIsoScale(kryuchkova::Shape *shape, const point_t point, const double k);
   std::ostream& operator<<(std::ostream &out, const point_t &point);
   std::ostream& operator<<(std::ostream &out, const Shape &shape);
 

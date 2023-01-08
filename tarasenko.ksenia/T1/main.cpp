@@ -17,7 +17,7 @@ int main()
     std::cin >> name;
     if (!std::cin)
     {
-      std::cout << "Error in name\n";
+      std::cerr << "Error in name\n";
       break;
     }
     if (name == "RECTANGLE")
@@ -65,7 +65,7 @@ int main()
       std::cin >> x >> y >> k;
       if (!std::cin)
       {
-        std::cout << "Error\n";
+        std::cerr << "Error\n";
       }
       tarasenko::point_t center_scale(x, y);
       tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
@@ -79,8 +79,8 @@ int main()
       }
       catch (std::invalid_argument & e)
       {
-        std::cout << "Error: ";
-        std::cout << e.what() << "\n";
+        std::cerr << "Error: ";
+        std::cerr << e.what() << "\n";
         return 1;
       }
       tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
@@ -88,7 +88,7 @@ int main()
       if (errors)
       {
         errors = false;
-        std::cout << "Errors in shapes\n";
+        std::cerr << "Errors in shapes\n";
       }
       break;
     }

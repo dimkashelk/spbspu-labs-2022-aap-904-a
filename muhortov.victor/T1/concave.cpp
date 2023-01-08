@@ -1,7 +1,6 @@
 #include "concave.hpp"
 #include <stdexcept>
 #include <algorithm>
-#include <cmath>
 
 Concave::Concave(point_t one, point_t two, point_t three, point_t four):
   positions{one, two, three, four}

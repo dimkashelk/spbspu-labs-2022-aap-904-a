@@ -16,51 +16,30 @@ int main()
   {
     std::cin >> input;
 
-    if (input == "RECTANGLE")
+    try
     {
-      try
+      if (input == "RECTANGLE")
       {
         compositeShape.push_back(createRectangle(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << e.what() << '\n';
-      }
-    }
-    else if (input == "RING")
-    {
-      try
+      if (input == "RING")
       {
         compositeShape.push_back(createRing(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << e.what() << '\n';
-      }
-    }
-    else if (input == "CONCAVE")
-    {
-      try
+      if (input == "CONCAVE")
       {
         compositeShape.push_back(createConcave(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << e.what() << '\n';
-      }
-    }
-    else if (input == "SCALE")
-    {
-      try
+      if (input == "SCALE")
       {
         scale = getScale(std::cin);
         is_scale = true;
+        break;
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << e.what() << '\n';
-      }
-      break;
+    }
+    catch (const std::invalid_argument &e)
+    {
+      std::cerr << e.what() << '\n';
     }
   }
 

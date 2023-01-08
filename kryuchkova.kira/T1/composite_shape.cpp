@@ -111,27 +111,10 @@ kryuchkova::rectangle_t kryuchkova::CompositeShape::getFrameRect() const
   for (size_t i = 0; i < size_; i++)
   {
     rectangle_t rectangle = shapes_[i]->getFrameRect();
-    double lb_x = rectangle.pos.x - rectangle.width / 2;
-    double lb_y = rectangle.pos.y - rectangle.height / 2;
-    double ru_x = rectangle.pos.x + rectangle.width / 2;
-    double ru_y = rectangle.pos.y + rectangle.height / 2;
-
-    if (lb_x < minx)
-    {
-      minx = lb_x;
-    }
-    if (lb_y < miny)
-    {
-      miny = lb_y;
-    }
-    if (ru_x > maxx)
-    {
-      maxx = ru_x;
-    }
-    if (ru_y > maxy)
-    {
-      maxy = ru_y;
-    }
+    minx = std::min(rectangle.pos.x - rectangle.width / 2, minx);
+    miny = std::min(rectangle.pos.y - rectangle.height / 2, miny);
+    maxx = std::max(rectangle.pos.x + rectangle.width / 2, maxx);
+    maxy = std::max(rectangle.pos.y + rectangle.height / 2, maxy);
   }
   return rectangle_t{maxx - minx, maxy - miny, point_t{(maxx + minx) / 2, (maxy + miny) / 2}};
 }

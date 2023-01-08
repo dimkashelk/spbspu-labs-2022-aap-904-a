@@ -9,7 +9,6 @@
 
 int main()
 {
-  bool badShape = false;
   bool isScale = false;
   size_t size = 0;
   double sumArea = 0.0;
@@ -30,7 +29,6 @@ int main()
       }
       catch (const std::invalid_argument &e) {
         std::cerr << e.what() << "\n";
-        badShape = true;
       }
       catch (...) {
         std::cerr << "Error while work with rectangle\n";
@@ -49,7 +47,6 @@ int main()
       }
       catch (const std::invalid_argument &e) {
         std::cerr << e.what() << "\n";
-        badShape = true;
       }
       catch (...) {
         std::cerr << "Error while work with concave\n";
@@ -68,7 +65,6 @@ int main()
       }
       catch (const std::invalid_argument &e) {
         std::cerr << e.what() << "\n";
-        badShape = true;
       }
       catch (...) {
         std::cerr << "Error while work with complexquad\n";
@@ -92,9 +88,6 @@ int main()
     }
   }
   if (isScale) {
-    if (badShape) {
-      std::cerr << "Incorrect shape\n";
-    }
     double leftBottomX = 0.0;
     double leftBottomY = 0.0;
     double rightTopX = 0.0;

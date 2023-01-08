@@ -1,6 +1,5 @@
 #include "Ring.hpp"
 #include <stdexcept>
-#include <cmath>
 
 Ring::Ring(point_t center, double r1_v, double r1_h, double r2_v, double r2_h):
   rect_({{center.x, center.y}, r2_h * 2.0, r2_v * 2.0}),

@@ -6,7 +6,7 @@
 Concave::Concave(point_t one, point_t two, point_t three, point_t four):
   dots_{one, two, three, four}
 {
-  if (validateConcave(one, two, three, four))
+  if (validateConcave(dots_))
   {
     throw std::invalid_argument("Bad input, invalid concave size");
   }

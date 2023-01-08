@@ -1,8 +1,8 @@
 #ifndef RING_HPP
 #define RING_HPP
 
-#include "base-types.hpp"
-#include "shape.hpp"
+#include "Base-types.hpp"
+#include "Shape.hpp"
 
 class Ring: public Shape
 {

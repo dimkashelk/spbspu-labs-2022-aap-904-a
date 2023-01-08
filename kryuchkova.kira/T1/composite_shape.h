@@ -32,8 +32,8 @@ namespace kryuchkova
     size_t size() const;
   private:
     size_t size_;
-    size_t capacity;
-    Shape **shapes;
+    size_t capacity_;
+    Shape **shapes_;
     void free(Shape **shapes, size_t size);
   };
 

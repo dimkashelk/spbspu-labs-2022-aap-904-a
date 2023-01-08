@@ -2,8 +2,8 @@
 #include <stdexcept>
 
 kryuchkova::Square::Square(const point_t &lb_point, const double &length):
-  lb_point(lb_point),
-  length(length)
+  lb_point_(lb_point),
+  length_(length)
 {
   if (length <= 0)
   {
@@ -18,23 +18,23 @@ std::string kryuchkova::Square::getName() const
 
 double kryuchkova::Square::getArea() const
 {
-  return length * length;
+  return length_ * length_;
 }
 
 kryuchkova::rectangle_t kryuchkova::Square::getFrameRect() const
 {
-  point_t pos{length / 2 + lb_point.x, length / 2 + lb_point.y};
-  return rectangle_t{length, length, pos};
+  point_t pos{length_ / 2 + lb_point_.x, length_ / 2 + lb_point_.y};
+  return rectangle_t{length_, length_, pos};
 }
 
 void kryuchkova::Square::move(const double dx, const double dy)
 {
-  movePoint(lb_point, point_t{dx, dy});
+  movePoint(lb_point_, point_t{dx, dy});
 }
 
 void kryuchkova::Square::move(const point_t point)
 {
-  point_t pos{length / 2 + lb_point.x, length / 2 + lb_point.y};
+  point_t pos{length_ / 2 + lb_point_.x, length_ / 2 + lb_point_.y};
   double dx = point.x - pos.x;
   double dy = point.y - pos.y;
   move(dx, dy);
@@ -46,14 +46,14 @@ void kryuchkova::Square::scale(const double k)
   {
     throw std::invalid_argument("scaling koef must be positive");
   }
-  double dx = ((k - 1) * length) / 2;
-  double dy = ((k - 1) * length) / 2;
-  lb_point.x -= dx;
-  lb_point.y -= dy;
-  length *= k;
+  double dx = ((k - 1) * length_) / 2;
+  double dy = ((k - 1) * length_) / 2;
+  lb_point_.x -= dx;
+  lb_point_.y -= dy;
+  length_ *= k;
 }
 
 kryuchkova::Shape *kryuchkova::Square::clone() const
 {
-  return new Square(lb_point, length);
+  return new Square(lb_point_, length_);
 }

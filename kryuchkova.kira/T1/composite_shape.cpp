@@ -6,24 +6,24 @@
 
 kryuchkova::CompositeShape::CompositeShape():
   size_(0),
-  capacity(1),
-  shapes(new Shape*[capacity])
+  capacity_(1),
+  shapes_(new Shape*[capacity_])
 {}
 
 kryuchkova::CompositeShape::CompositeShape(const CompositeShape &compositeShape):
   size_(compositeShape.size_),
-  capacity(compositeShape.capacity),
-  shapes(new Shape*[capacity])
+  capacity_(compositeShape.capacity_),
+  shapes_(new Shape*[capacity_])
 {
   for (size_t i = 0; i < size_; i++)
   {
     try
     {
-      shapes[i] = compositeShape.shapes[i]->clone();
+      shapes_[i] = compositeShape.shapes_[i]->clone();
     }
     catch(...)
     {
-      free(shapes, i);
+      free(shapes_, i);
       throw;
     }
   }
@@ -31,10 +31,10 @@ kryuchkova::CompositeShape::CompositeShape(const CompositeShape &compositeShape)
 
 kryuchkova::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
   size_(compositeShape.size_),
-  capacity(compositeShape.capacity),
-  shapes(compositeShape.shapes)
+  capacity_(compositeShape.capacity_),
+  shapes_(compositeShape.shapes_)
 {
-  compositeShape.shapes = nullptr;
+  compositeShape.shapes_ = nullptr;
   compositeShape.size_ = 0;
 }
 
@@ -42,12 +42,12 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(const Composit
 {
   if (std::addressof(compositeShape) != this)
   {
-    Shape **shapes = new Shape *[compositeShape.capacity];
+    Shape **shapes = new Shape *[compositeShape.capacity_];
     for (size_t i = 0; i < size_; i++)
     {
       try
       {
-        shapes[i] = compositeShape.shapes[i]->clone();
+        shapes[i] = compositeShape.shapes_[i]->clone();
       }
       catch (...)
       {
@@ -56,9 +56,9 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(const Composit
       }
     }
     free(shapes, size_);
-    this->shapes = shapes;
-    this->size_ = compositeShape.size_;
-    this->capacity = compositeShape.capacity;
+    shapes_ = shapes;
+    size_ = compositeShape.size_;
+    capacity_ = compositeShape.capacity_;
   }
   return *this;
 }
@@ -67,11 +67,11 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(CompositeShape
 {
   if (std::addressof(compositeShape) != this)
   {
-    free(shapes, size_);
+    free(shapes_, size_);
     size_ = compositeShape.size_;
-    capacity = compositeShape.capacity;
-    shapes = compositeShape.shapes;
-    compositeShape.shapes = nullptr;
+    capacity_ = compositeShape.capacity_;
+    shapes_ = compositeShape.shapes_;
+    compositeShape.shapes_ = nullptr;
     compositeShape.size_ = 0;
   }
   return *this;
@@ -79,17 +79,17 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(CompositeShape
 
 kryuchkova::Shape *kryuchkova::CompositeShape::operator[](const size_t index)
 {
-  return shapes[index];
+  return shapes_[index];
 }
 
 const kryuchkova::Shape *kryuchkova::CompositeShape::operator[](const size_t index) const
 {
-  return shapes[index];
+  return shapes_[index];
 }
 
 kryuchkova::CompositeShape::~CompositeShape()
 {
-  free(shapes, size_);
+  free(shapes_, size_);
 }
 
 double kryuchkova::CompositeShape::getArea() const
@@ -97,7 +97,7 @@ double kryuchkova::CompositeShape::getArea() const
   double area = 0;
   for (size_t i = 0; i < size_; i++)
   {
-    area += shapes[i]->getArea();
+    area += shapes_[i]->getArea();
   }
   return area;
 }
@@ -110,7 +110,7 @@ kryuchkova::rectangle_t kryuchkova::CompositeShape::getFrameRect() const
   double maxy = std::numeric_limits< double >::min();
   for (size_t i = 0; i < size_; i++)
   {
-    rectangle_t rectangle = shapes[i]->getFrameRect();
+    rectangle_t rectangle = shapes_[i]->getFrameRect();
     double lb_x = rectangle.pos.x - rectangle.width / 2;
     double lb_y = rectangle.pos.y - rectangle.height / 2;
     double ru_x = rectangle.pos.x + rectangle.width / 2;
@@ -149,7 +149,7 @@ void kryuchkova::CompositeShape::move(const double dx, const double dy)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->move(dx, dy);
+    shapes_[i]->move(dx, dy);
   }
 }
 
@@ -157,7 +157,7 @@ void kryuchkova::CompositeShape::scale(const double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->scale(k);
+    shapes_[i]->scale(k);
   }
 }
 
@@ -169,24 +169,24 @@ void kryuchkova::CompositeShape::isoScale(const point_t point, const double k)
   }
   for (size_t i = 0; i < size_; i++)
   {
-    kryuchkova::isoScale(shapes[i], point, k);
+    kryuchkova::isoScale(shapes_[i], point, k);
   }
 }
 
 void kryuchkova::CompositeShape::push_back(Shape *sh)
 {
-  if (size_ == capacity)
+  if (size_ == capacity_)
   {
-    Shape **new_shapes = new Shape*[capacity + 2];
-    capacity += 2;
+    Shape **new_shapes = new Shape*[capacity_ + 2];
+    capacity_ += 2;
     for (size_t i = 0; i < size_; i++)
     {
-      new_shapes[i] = shapes[i];
+      new_shapes[i] = shapes_[i];
     }
-    delete[] shapes;
-    shapes = new_shapes;
+    delete[] shapes_;
+    shapes_ = new_shapes;
   }
-  shapes[size_] = sh;
+  shapes_[size_] = sh;
   size_++;
 }
 
@@ -206,7 +206,7 @@ void kryuchkova::CompositeShape::push_back(const Shape *sh)
 
 void kryuchkova::CompositeShape::pop_back()
 {
-  delete shapes[size_ - 1];
+  delete shapes_[size_ - 1];
   size_--;
 }
 
@@ -216,7 +216,7 @@ kryuchkova::Shape* kryuchkova::CompositeShape::at(const size_t index)
   {
     throw std::out_of_range("out of range");
   }
-  return shapes[index];
+  return shapes_[index];
 }
 
 const kryuchkova::Shape* kryuchkova::CompositeShape::at(const size_t index) const
@@ -225,7 +225,7 @@ const kryuchkova::Shape* kryuchkova::CompositeShape::at(const size_t index) cons
   {
     throw std::out_of_range("out of range");
   }
-  return shapes[index];
+  return shapes_[index];
 }
 
 bool kryuchkova::CompositeShape::empty() const

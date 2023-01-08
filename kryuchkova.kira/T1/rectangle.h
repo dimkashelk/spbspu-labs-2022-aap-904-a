@@ -16,8 +16,8 @@ namespace kryuchkova
     void scale(double k) override;
     Shape *clone() const override;
   private:
-    point_t lb_point;
-    point_t ru_point;
+    point_t lb_point_;
+    point_t ru_point_;
   };
 
 }

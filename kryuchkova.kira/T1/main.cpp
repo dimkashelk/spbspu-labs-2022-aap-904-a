@@ -16,6 +16,7 @@ void printShapes(const kryuchkova::CompositeShape &compositeShape)
 
 int main()
 {
+  std::cout << std::setprecision(1) << std::fixed;
   kryuchkova::CompositeShape compositeShape;
   while (std::cin)
   {

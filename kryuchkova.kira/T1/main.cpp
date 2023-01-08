@@ -23,8 +23,7 @@ int main()
     std::cin >> name;
     if (!std::cin)
     {
-      std::cerr << "invalid input";
-      return 1;
+      break;
     }
     if (name == "RECTANGLE")
     {
@@ -86,4 +85,5 @@ int main()
       printShapes(compositeShape);
     }
   }
+  return 0;
 }

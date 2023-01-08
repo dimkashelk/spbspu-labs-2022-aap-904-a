@@ -90,7 +90,7 @@ int main()
   }
   if (invalidScale)
   {
-    std::cout << "Invalid scaling";
+    std::cerr << "Invalid scaling";
   }
   return 0;
 }

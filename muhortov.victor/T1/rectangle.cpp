@@ -31,8 +31,7 @@ void Rectangle::move(point_t newpos)
 
 void Rectangle::move(double delta_x, double delta_y)
 {
-  rectangle.pos.x += delta_x;
-  rectangle.pos.y += delta_y;
+  rectangle.pos = calculateVectorSum(rectangle.pos, delta_x, delta_y);
 }
 
 void Rectangle::scaleWithoutCheck(double k)

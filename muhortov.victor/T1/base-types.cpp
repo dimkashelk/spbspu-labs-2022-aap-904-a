@@ -13,6 +13,13 @@ double findDeltaScale(double x, scale_t scale)
   return (x - scale.pos.x) * scale.scale;
 }
 
+point_t calculateVectorSum(point_t position, double delta_x, double delta_y)
+{
+  position.x += delta_x;
+  position.y += delta_y;
+  return position;
+}
+
 point_t calculateScale(point_t position, point_t center, double k)
 {
   position.x = k * (position.x - center.x) + center.x;

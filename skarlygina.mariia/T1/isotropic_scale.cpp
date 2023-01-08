@@ -1,6 +1,10 @@
 #include "isotropic_scale.h"
 void makeIsotropicScaling(Shape* figure, point_t point, double k)
 {
+  if (k <= 0)
+  {
+    throw;
+  }
   point_t position{figure->getFrameRectangle().position.x, figure->getFrameRectangle().position.y};
   double dx = point.x - position.x;
   double dy = point.y - position.y;

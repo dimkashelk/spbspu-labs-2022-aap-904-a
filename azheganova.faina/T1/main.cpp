@@ -32,21 +32,18 @@ int main()
     {
       if (name == "RECTANGLE")
       {
-        bool isfigure = true;
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
       }
       continue;
       if (name == "TRIANGLE")
       {
-        bool isfigure = true;
         Shape *shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
       }
       continue;
       if (name == "COMPLEXQUAD")
       {
-        bool isfigure = true;
         Shape *shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
       }

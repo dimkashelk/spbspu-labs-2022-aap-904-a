@@ -26,7 +26,7 @@ kryuchkova::rectangle_t kryuchkova::Rectangle::getFrameRect() const
 {
   double width = ru_point_.x - lb_point_.x;
   double height = ru_point_.y - lb_point_.y;
-  point_t pos{(lb_point_.x + ru_point_.x) / 2, (lb_point_.y + ru_point_.y) / 2};
+  point_t pos = kryuchkova::getCentre(lb_point_, ru_point_);
   return rectangle_t{width, height, pos};
 }
 
@@ -38,7 +38,7 @@ void kryuchkova::Rectangle::move(const double dx, const double dy)
 
 void kryuchkova::Rectangle::move(const point_t point)
 {
-  point_t pos{(lb_point_.x + ru_point_.x) / 2, (lb_point_.y + ru_point_.y) / 2};
+  point_t pos = kryuchkova::getCentre(lb_point_, ru_point_);
   double dx = point.x - pos.x;
   double dy = point.y - pos.y;
   move(dx, dy);
@@ -63,4 +63,9 @@ void kryuchkova::Rectangle::scale(const double k)
 kryuchkova::Shape *kryuchkova::Rectangle::clone() const
 {
   return new Rectangle(lb_point_, ru_point_);
+}
+
+kryuchkova::point_t kryuchkova::getCentre(const kryuchkova::point_t point1, const kryuchkova::point_t point2)
+{
+  return point_t{(point1.x + point2.x) / 2, (point1.y + point2.y) / 2};
 }

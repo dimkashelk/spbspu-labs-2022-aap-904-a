@@ -20,6 +20,7 @@ namespace kryuchkova
     point_t ru_point_;
   };
 
+  point_t getCentre(point_t point1, point_t point2);
 }
 
 #endif

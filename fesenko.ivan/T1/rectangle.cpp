@@ -3,7 +3,7 @@
 #include "base-types.h"
 
 Rectangle::Rectangle(const point_t &point1, const point_t &point2):
-  rect_{point2.x - point1.x, point2.y - point1.y, {(point1.x + point2.x) / 2, (point1.y + point2.y) / 2}}
+  rect_{point2.x - point1.x, point2.y - point1.y, {(point1.x + point2.x) * 0.5, (point1.y + point2.y) * 0.5}}
 {
   if (point1.x >= point2.x || point1.y >= point2.y) {
     throw std::invalid_argument("Wrong rectangle input\n");

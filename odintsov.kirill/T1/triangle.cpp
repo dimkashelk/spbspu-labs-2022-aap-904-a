@@ -30,7 +30,7 @@ bool odintsov::isPointStrictlyInsideTriangle(const point_t& p, const point_t& p1
   double area3 = getTriangleArea(p2, p3, p);
   constexpr double epsilon = 0.00001;
   if (isPointOnLineSeg(p, p1, p2) || isPointOnLineSeg(p, p1, p3) || isPointOnLineSeg(p, p2, p3)) {
-      return false;
+    return false;
   }
   return nearlyEquals(getTriangleArea(p1, p2, p3), area1 + area2 + area3, epsilon);
 }

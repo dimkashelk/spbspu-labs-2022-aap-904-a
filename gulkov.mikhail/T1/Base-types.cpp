@@ -44,3 +44,8 @@ point_t scaleDelta(point_t pos, scale_t scale)
 {
   return {(pos.x - scale.pos.x) * scale.scale, (pos.y - scale.pos.y) * scale.scale};
 }
+
+point_t getVectorDiff(point_t position, rectangle_t frame_rect)
+{
+  return {position.x - frame_rect.pos.x, position.y - frame_rect.pos.y};
+}

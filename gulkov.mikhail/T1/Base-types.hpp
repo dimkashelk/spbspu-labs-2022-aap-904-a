@@ -25,5 +25,6 @@ point_t addVector(point_t dot, double dx, double dy);
 bool checkTriangleSides(point_t dots[]);
 bool checkTriangles(point_t dots[]);
 point_t scaleDelta(point_t pos, scale_t scale);
+point_t getVectorDiff(point_t position, rectangle_t frame_rect);
 
 #endif

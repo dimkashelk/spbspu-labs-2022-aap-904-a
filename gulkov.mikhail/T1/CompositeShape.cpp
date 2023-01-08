@@ -86,7 +86,7 @@ void CompositeShape::move(point_t position)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
+    shapes[i]->move(getVectorDiff(position, getFrameRect()));
   }
 }
 

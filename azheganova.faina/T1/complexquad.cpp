@@ -21,7 +21,7 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   triangle1{pos1, pos4, findCenter(pos1, pos2, pos3, pos4)},
-  triangle2{pos2, pos4, findCenter(pos1, pos2, pos3, pos4)}
+  triangle2{pos2, pos3, findCenter(pos1, pos2, pos3, pos4)}
 {
   double s1 = pos1.x == pos2.x;
   double s2 = pos1.y == pos2.y;

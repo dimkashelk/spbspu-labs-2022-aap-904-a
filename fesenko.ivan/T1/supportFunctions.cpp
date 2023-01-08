@@ -13,7 +13,7 @@ void movePointBecauseOfScale(point_t &p, point_t &zoomCenter, double k)
   if (k <= 0) {
     throw std::invalid_argument("Ratio must be greater then 0\n");
   }
-  movePoint(p, (p.x - zoomCenter.x) * (k - 1), (p.y - zoomCenter.y) * (k - 1));
+  movePoint(p, (p.x - zoomCenter.x) * (k - 1.0), (p.y - zoomCenter.y) * (k - 1.0));
 }
 
 bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, const point_t &point3, const point_t &point4)

@@ -148,7 +148,7 @@ void kryuchkova::CompositeShape::unsafeScale(const double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes_[i]->scale(k);
+    shapes_[i]->unsafeScale(k);
   }
 }
 
@@ -169,7 +169,7 @@ void kryuchkova::CompositeShape::unsafeIsoScale(const point_t point, const doubl
 {
   for (size_t i = 0; i < size_; i++)
   {
-    kryuchkova::isoScale(shapes_[i], point, k);
+    kryuchkova::unsafeIsoScale(shapes_[i], point, k);
   }
 }
 

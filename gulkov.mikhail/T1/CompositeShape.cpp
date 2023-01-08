@@ -9,7 +9,6 @@ CompositeShape::CompositeShape(size_t capacity):
   size_(0)
 {}
 
-
 CompositeShape::CompositeShape(const CompositeShape &compositeShape):
   shapes(new Shape *[compositeShape.capacity_]),
   capacity_(compositeShape.capacity_),
@@ -107,7 +106,8 @@ void CompositeShape::move(point_t position)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->move(getVectorDiff(position, getFrameRect()));
+    point_t offset = getVectorDiff(position, getFrameRect());
+    shapes[i]->move(offset);
   }
 }
 

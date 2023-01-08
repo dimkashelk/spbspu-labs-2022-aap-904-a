@@ -22,7 +22,7 @@ Shape* correctFigures::readCorrectRing(std::istream& in)
   {
     throw std::invalid_argument("Error: false ring parameters");
   }
-  return new Ring({ parameters[0], parameters[1] }, parameters[3], parameters[2]);
+  return new Ring({parameters[0], parameters[1]}, parameters[3], parameters[2]);
 }
 
 Shape* correctFigures::readCorrectEllipse(std::istream& in)

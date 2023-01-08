@@ -13,12 +13,10 @@ double Ellipse::getArea() const
 }
 rectangle_t Ellipse::getFrameRectangle() const
 {
-  rectangle_t frame_rectangle{};
-  frame_rectangle.height = radius_vertical_ * 2;
-  frame_rectangle.width = radius_horizontal_ * 2;
-  frame_rectangle.position.x = center_.x;
-  frame_rectangle.position.y = center_.y;
-  return frame_rectangle;
+  double height = radius_vertical_ * 2;
+  double width = radius_horizontal_ * 2;
+  point_t position = {center_.x, center_.y};
+  return {height, width, position};
 }
 
 void Ellipse::move(double dx, double dy)

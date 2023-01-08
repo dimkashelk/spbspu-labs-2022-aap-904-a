@@ -14,12 +14,10 @@ double Ring::getArea() const
 
 rectangle_t Ring::getFrameRectangle() const
 {
-  rectangle_t frame_rectangle{};
-  frame_rectangle.height = radius_big_ * 2;
-  frame_rectangle.width = radius_big_ * 2;
-  frame_rectangle.position.x = center_.x;
-  frame_rectangle.position.y = center_.y;
-  return frame_rectangle;
+  double height = radius_big_ * 2;
+  double width = radius_big_ * 2;
+  point_t position = {center_.x, center_.y};
+  return {height, width, position};
 }
 
 void Ring::move(double dx, double dy)

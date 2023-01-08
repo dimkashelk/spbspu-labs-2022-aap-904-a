@@ -8,12 +8,10 @@ Rectangle::Rectangle(point_t left_down, point_t right_up):
 
 rectangle_t Rectangle::getFrameRectangle() const
 {
-  rectangle_t frame_rectangle{};
-  frame_rectangle.height = right_up_.y - left_down_.y;
-  frame_rectangle.width = right_up_.x - left_down_.x;
-  frame_rectangle.position.x = (left_down_.x + right_up_.x) / 2;
-  frame_rectangle.position.y = (left_down_.y + right_up_.y) / 2;
-  return frame_rectangle;
+  double height = right_up_.y - left_down_.y;
+  double width = right_up_.x - left_down_.x;
+  point_t position = {(left_down_.x + right_up_.x) / 2, (left_down_.y + right_up_.y) / 2};
+  return {height, width, position};
 }
 
 double Rectangle::getArea() const

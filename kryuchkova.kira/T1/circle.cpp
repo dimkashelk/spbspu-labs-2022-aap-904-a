@@ -1,7 +1,7 @@
 #include "circle.h"
 #include <stdexcept>
 
-kryuchkova::Circle::Circle(const point_t &pos, const double &radius):
+kryuchkova::Circle::Circle(const point_t &pos, const double radius):
   pos(pos),
   radius(radius)
 {
@@ -40,7 +40,7 @@ void kryuchkova::Circle::move(point_t point)
   move(dx, dy);
 }
 
-void kryuchkova::Circle::scale(double k)
+void kryuchkova::Circle::scale(const double k)
 {
   if (k <= 0)
   {

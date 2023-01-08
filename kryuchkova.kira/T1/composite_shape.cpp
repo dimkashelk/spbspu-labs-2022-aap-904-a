@@ -77,12 +77,12 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(CompositeShape
   return *this;
 }
 
-kryuchkova::Shape *kryuchkova::CompositeShape::operator[](size_t index)
+kryuchkova::Shape *kryuchkova::CompositeShape::operator[](const size_t index)
 {
   return shapes[index];
 }
 
-const kryuchkova::Shape *kryuchkova::CompositeShape::operator[](size_t index) const
+const kryuchkova::Shape *kryuchkova::CompositeShape::operator[](const size_t index) const
 {
   return shapes[index];
 }
@@ -136,7 +136,7 @@ kryuchkova::rectangle_t kryuchkova::CompositeShape::getFrameRect() const
   return rectangle_t(maxx - minx, maxy - miny, point_t((maxx + minx) / 2, (maxy + miny) / 2));
 }
 
-void kryuchkova::CompositeShape::move(point_t point)
+void kryuchkova::CompositeShape::move(const point_t point)
 {
   for (size_t i = 0; i < size_; i++)
   {
@@ -145,7 +145,7 @@ void kryuchkova::CompositeShape::move(point_t point)
   }
 }
 
-void kryuchkova::CompositeShape::move(double dx, double dy)
+void kryuchkova::CompositeShape::move(const double dx, const double dy)
 {
   for (size_t i = 0; i < size_; i++)
   {
@@ -153,7 +153,7 @@ void kryuchkova::CompositeShape::move(double dx, double dy)
   }
 }
 
-void kryuchkova::CompositeShape::scale(double k)
+void kryuchkova::CompositeShape::scale(const double k)
 {
   for (size_t i = 0; i < size_; i++)
   {
@@ -161,7 +161,7 @@ void kryuchkova::CompositeShape::scale(double k)
   }
 }
 
-void kryuchkova::CompositeShape::isoScale(point_t point, double k)
+void kryuchkova::CompositeShape::isoScale(const point_t point, const double k)
 {
   if (empty())
   {
@@ -210,7 +210,7 @@ void kryuchkova::CompositeShape::pop_back()
   size_--;
 }
 
-kryuchkova::Shape* kryuchkova::CompositeShape::at(size_t index)
+kryuchkova::Shape* kryuchkova::CompositeShape::at(const size_t index)
 {
   if (index > size_)
   {
@@ -219,7 +219,7 @@ kryuchkova::Shape* kryuchkova::CompositeShape::at(size_t index)
   return shapes[index];
 }
 
-const kryuchkova::Shape* kryuchkova::CompositeShape::at(size_t index) const
+const kryuchkova::Shape* kryuchkova::CompositeShape::at(const size_t index) const
 {
   if (index > size_)
   {
@@ -238,7 +238,7 @@ size_t kryuchkova::CompositeShape::size() const
   return size_;
 }
 
-void kryuchkova::CompositeShape::free(Shape **shapes, size_t size)
+void kryuchkova::CompositeShape::free(Shape **shapes, const size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {

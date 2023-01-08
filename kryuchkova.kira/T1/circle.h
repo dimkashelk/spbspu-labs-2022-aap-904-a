@@ -7,7 +7,7 @@ namespace kryuchkova
   class Circle: public Shape
   {
   public:
-    Circle(const point_t &pos, const double &radius);
+    Circle(const point_t &pos, const double radius);
     std::string getName() const;
     double getArea() const override;
     rectangle_t getFrameRect() const override;

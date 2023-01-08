@@ -7,7 +7,7 @@
 
 namespace kryuchkova
 {
-  void isoScale(kryuchkova::Shape *shape, point_t point, double k)
+  void isoScale(kryuchkova::Shape *shape, const point_t point, const double k)
   {
     if (k <= 0)
     {

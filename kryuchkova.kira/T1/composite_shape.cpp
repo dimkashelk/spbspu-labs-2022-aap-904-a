@@ -163,6 +163,10 @@ void kryuchkova::CompositeShape::scale(double k)
 
 void kryuchkova::CompositeShape::isoScale(point_t point, double k)
 {
+  if (empty())
+  {
+    throw std::invalid_argument("CompositeShape is empty, nothing to scale");
+  }
   for (size_t i = 0; i < size_; i++)
   {
     kryuchkova::isoScale(shapes[i], point, k);

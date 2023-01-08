@@ -3,20 +3,18 @@
 #include <cstddef>
 #include <iomanip>
 #include <stdexcept>
-#include "inputrectangle.h"
 #include "isoscale.h"
 #include "compositeshape.h"
-#include "inputtriangle.h"
-#include "inputcomplexquad.h"
+#include "inputfigure.h"
 
 void printFlamePoint(Shape *shape)
 {
-  std::cout << std::fixed;
+  std::cout << std::fixed << std::setprecision(1);
   rectangle_t rect = shape->getFrameRect();
   point_t point1{rect.pos.x - 0.5 * rect.width, rect.pos.y - 0.5 * rect.height};
   point_t point2{rect.pos.x + 0.5 * rect.width, rect.pos.y + 0.5 * rect.height};
-  std::cout  << std::setprecision(1) << point1.x << ' ' << std::setprecision(1) << point1.y << ' ';
-  std::cout  << std::setprecision(1) << point2.x << ' ' << std::setprecision(1) << point2.y;
+  std::cout << point1.x << ' ' << point1.y << ' ';
+  std::cout << point2.x << ' ' << point2.y;
 }
 
 int main()
@@ -26,56 +24,37 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
-  bool isfigure = false;
   do
   {
     std::string name = "";
     std::cin >> name;
-    if (name == "RECTANGLE")
+    try 
     {
-      isfigure = true;
-      try
+      if (name == "RECTANGLE")
       {
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
-      }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << "\n";
         continue;
       }
-      continue;
-    }
-    if (name == "TRIANGLE")
-    {
-      isfigure = true;
-      try
+      if (name == "TRIANGLE")
       {
         Shape *shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
       }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << "\n";
-        continue;
-      }
       continue;
-    }
-    if (name == "COMPLEXQUAD")
-    {
-      isfigure = true;
-      try
+      if (name == "COMPLEXQUAD")
       {
         Shape *shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
       }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << "\n";
-        continue;
-      }
       continue;
     }
+    catch(const std::logic_error &e)
+    {
+      std::cerr << e.what() << "\n";
+      continue;
+    }
+    continue;
     if (name == "SCALE")
     {
       isscale = true;
@@ -94,7 +73,7 @@ int main()
     }
   }
   while(std::cin);
-  if (!(isscale && isfigure))
+  if (!(isscale))
   {
     std::cerr << "error";
     return 1;
@@ -114,10 +93,7 @@ int main()
   std::cout << "\n";
   try
   {
-    for (size_t i = 0; i < compositeShape.size(); ++i)
-    {
-      isoScale(compositeShape[i], scalecenter, scalek);
-    }
+    compositeShape.scale(scalecenter, scalek);
   }
   catch(const std::logic_error &e)
   {

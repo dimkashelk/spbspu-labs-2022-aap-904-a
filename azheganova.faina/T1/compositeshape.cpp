@@ -1,5 +1,5 @@
 #include "compositeshape.h"
-#include <algorithm>
+#include <stdexcept>
 #include "isoscale.h"
 
 CompositeShape::CompositeShape():
@@ -43,6 +43,15 @@ CompositeShape::CompositeShape(size_t capacity):
  shape_(new Shape*[capacity_])
 {}
 
+void CompositeShape::deleteshape_(Shape **shape, size_t size)
+{
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shape[i];
+  }
+  delete[] shape;
+}
+
 CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
 {
   Shape ** new_data = new Shape*[rhs.capacity_];
@@ -57,18 +66,10 @@ CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
   }
   catch (...)
   {
-    for (size_t i = 0; i < new_size; ++i)
-    {
-      delete new_data[i];
-    }
-    delete [] new_data;
+    deleteshape_(new_data, new_size);
     throw;
   }
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete [] shape_;
+  deleteshape_(shape_, size_);
   shape_ = new_data;
   size_ = new_size;
   capacity_ = rhs.capacity_;
@@ -76,11 +77,7 @@ CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
 }
 CompositeShape & CompositeShape::operator=(CompositeShape && rhs)
 {
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete [] shape_;
+  deleteshape_(shape_, size_);
   shape_ = rhs.shape_;
   rhs.shape_ = nullptr;
   size_ = rhs.size_;
@@ -91,11 +88,7 @@ CompositeShape & CompositeShape::operator=(CompositeShape && rhs)
 
 CompositeShape::~CompositeShape()
 {
-  for (size_t i = 0; i < size_; ++i)
-  {
-    delete shape_[i];
-  }
-  delete [] shape_;
+  deleteshape_(shape_, size_);
 }
 
 Shape * CompositeShape::operator[](size_t i)
@@ -103,7 +96,7 @@ Shape * CompositeShape::operator[](size_t i)
   return shape_[i];
 }
 
-Shape * CompositeShape::operator[](size_t i) const
+const Shape * CompositeShape::operator[](size_t i) const
 {
   return shape_[i];
 }
@@ -129,7 +122,7 @@ rectangle_t CompositeShape::getFrameRect() const
   double miny = leftdowny;
   double maxx = rightupx;
   double maxy = rightupy;
-  for (size_t i = 0; i < size_; i++)
+  for (size_t i = 1; i < size_; i++)
   {
     rectangle = shape_[i]->getFrameRect();
     leftdownx = rectangle.pos.x - rectangle.width / 2;
@@ -169,6 +162,32 @@ void CompositeShape::scale(const point_t & position, double k)
     isoScale(shape_[i], position, k);
   }
 }
+
+void CompositeShape::scale(double k)
+{
+  rectangle_t frame = CompositeShape::getFrameRect();
+  scale(frame.pos, k);
+}
+
+
+Shape* CompositeShape::at(size_t id)
+{
+  if (id >= size_)
+  {
+    throw std::out_of_range("Check number");
+  }
+  return shape_[id];
+}
+
+const Shape* CompositeShape::at(size_t id) const
+{
+  if (id >= size_)
+  {
+    throw std::out_of_range("Check number");
+  }
+  return shape_[id];
+}
+
 
 size_t CompositeShape::size() const
 {

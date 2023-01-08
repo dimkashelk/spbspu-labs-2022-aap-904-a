@@ -2,10 +2,9 @@
 #define COMPLEXQUAD_H
 #include "base_types.h"
 #include "shape.h"
+#include "triangle.h"
 
-point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
-
-class Complexquad : virtual public Shape
+class Complexquad: virtual public Shape
 {
   public:
     Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
@@ -17,6 +16,7 @@ class Complexquad : virtual public Shape
     void scale(double k) noexcept;
     Shape * clone() const override;
   private:
+    point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
     point_t complexquad1[5];
 };
 

@@ -19,17 +19,9 @@ odintsov::CompositeShape::CompositeShape(size_t cap):
 odintsov::CompositeShape::CompositeShape(const odintsov::CompositeShape& shp):
   CompositeShape(shp.cap_)
 {
-  try {
-    for (size_t i = 0; i < shp.size(); i++) {
-      Shape* clone = shp[i]->clone();
-      push_back(clone);
-    }
-  } catch (...) {
-    while (!empty()) {
-      pop_back();
-    }
-    delete [] shapes;
-    throw;
+  for (size_t i = 0; i < shp.size(); i++) {
+    Shape* clone = shp[i]->clone();
+    push_back(clone);
   }
 }
 

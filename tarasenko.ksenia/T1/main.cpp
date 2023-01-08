@@ -9,6 +9,7 @@
 int main()
 {
   bool errors = false;
+  bool shape_was = false;
   bool scale_was = false;
   tarasenko::CompositeShape compositeShape;
   while (std::cin)
@@ -31,6 +32,7 @@ int main()
       {
         errors = true;
       }
+      shape_was = true;
     }
     else if (name == "TRIANGLE")
     {
@@ -43,6 +45,7 @@ int main()
       {
         errors = true;
       }
+      shape_was = true;
     }
     else if (name == "COMPLEXQUAD")
     {
@@ -55,9 +58,15 @@ int main()
       {
         errors = true;
       }
+      shape_was = true;
     }
     else if (name == "SCALE")
     {
+      if (!shape_was)
+      {
+        std::cout << "The shape was not called\n";
+        return 1;
+      }
       scale_was = true;
       double x = 0.0;
       double y = 0.0;

@@ -15,10 +15,6 @@ size_t tarasenko::CompositeShape::size() const
 
 double tarasenko::CompositeShape::getArea() const
 {
-  if (empty())
-  {
-    throw std::logic_error("CompositeShape is empty");
-  }
   double area = 0.0;
   for (size_t i = 0; i < size_; i++)
   {
@@ -31,7 +27,7 @@ tarasenko::rectangle_t tarasenko::CompositeShape::getFrameRect() const
 {
   if (empty())
   {
-    throw std::logic_error("CompositeShape is empty");
+    throw std::invalid_argument("CompositeShape is empty");
   }
   rectangle_t frame_rect = shapes[0]->getFrameRect();
   double min_x = frame_rect.pos_.x_ - 0.5 * frame_rect.width_;

@@ -18,6 +18,15 @@ tarasenko::Complexquad::Complexquad(point_t point_1, point_t point_2, point_t po
   }
   p_cross.x_ = (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
   p_cross.y_ = (a2 * c1 - a1 * c2) / (a1 * b2 - a2 * b1);
+  try
+  {
+    tarasenko::Triangle triangle_1(vertexes[0], vertexes[3], p_cross);
+    tarasenko::Triangle triangle_2(vertexes[1], vertexes[2], p_cross);
+  }
+  catch (...)
+  {
+    throw std::invalid_argument("incorrect complexquad coordinates");
+  }
 }
 
 double tarasenko::Complexquad::getArea() const

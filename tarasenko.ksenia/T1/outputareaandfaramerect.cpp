@@ -9,7 +9,7 @@ void tarasenko::outputArea(std::ostream & output, tarasenko::CompositeShape & c_
   {
     area += c_shp[i]->getArea();
   }
-  output << area;
+    output << area;
 }
 void tarasenko::outputFrameRect(std::ostream & output, CompositeShape & c_shp)
 {

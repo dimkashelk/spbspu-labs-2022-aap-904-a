@@ -50,6 +50,9 @@ void tarasenko::Triangle::move(point_t pos)
 void tarasenko::Triangle::scale(double k)
 {
   this->checkCoefficient(k);
+  a *= k;
+  b *= k;
+  c *= k;
   for (int i = 0; i < 3; i++)
   {
     vertexes[i].x_ = center.x_ + (vertexes[i].x_ - center.x_) * k;

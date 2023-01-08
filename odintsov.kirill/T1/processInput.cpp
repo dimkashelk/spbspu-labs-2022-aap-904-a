@@ -11,25 +11,24 @@
 
 struct StringSplitter {
   explicit StringSplitter(const std::string& str):
-    str(str)
+    str_(str)
   {}
 
   StringSplitter& operator>>(std::string& ostr)
   {
-    if (str.empty()) {
+    if (str_.empty()) {
       throw std::runtime_error("Read error");
     }
-    size_t spaceIndex = str.find_first_of(' ');
+    size_t spaceIndex = str_.find_first_of(' ');
 
-    ostr = str.substr(0, spaceIndex);
-    if (spaceIndex == str.npos) {
-      str.clear();
+    ostr = str_.substr(0, spaceIndex);
+    if (spaceIndex == str_.npos) {
+      str_.clear();
     } else {
-      str = str.substr(spaceIndex + 1);
+      str_ = str_.substr(spaceIndex + 1);
     }
     return *this;
   }
-
   StringSplitter& operator>>(double& d)
   {
     std::string dstr = "";
@@ -37,14 +36,13 @@ struct StringSplitter {
     d = std::stod(dstr);
     return *this;
   }
-
   StringSplitter& operator>>(odintsov::point_t& p)
   {
     return *this >> p.x >> p.y;
   }
 
   private:
-    std::string str;
+    std::string str_;
 };
 
 struct CommandProcessor {
@@ -93,7 +91,7 @@ struct CommandProcessor {
         isoScale(composite[i], anchor, k);
       }
       odintsov::outputCompositeShape(out, composite) << '\n';
-      scaled = true;
+      scaled_ = true;
     } else {
       errstream << "Not a known command\n";
     }
@@ -102,15 +100,16 @@ struct CommandProcessor {
     out(out),
     errstream(errstream),
     composite(composite),
-    scaled(false)
+    scaled_(false)
   {}
 
   bool hasScaled() {
-    return scaled;
+    return scaled_;
   }
 
   private:
-    bool scaled;
+    bool scaled_;
+
     odintsov::Rectangle* readRectangle(StringSplitter& in)
     {
       odintsov::point_t p1, p2;

@@ -12,14 +12,17 @@ namespace odintsov {
     double width, height;
     point_t pos;
   };
-  struct FrameRectBuilder {
-    explicit FrameRectBuilder(const point_t& p);
-    explicit FrameRectBuilder(const rectangle_t& r);
-    FrameRectBuilder& operator<<(const point_t& p);
-    FrameRectBuilder& operator<<(const rectangle_t& r);
-    rectangle_t rect();
+  class FrameRectBuilder {
+    public:
+      explicit FrameRectBuilder(const point_t& p);
+      explicit FrameRectBuilder(const rectangle_t& r);
+
+      FrameRectBuilder& operator<<(const point_t& p);
+      FrameRectBuilder& operator<<(const rectangle_t& r);
+
+      rectangle_t rect();
     private:
-      point_t bl, tr;
+      point_t bl_, tr_;
   };
   void movePoint(point_t& p, double dx, double dy);
   void isoScalePoint(point_t& p, const point_t& anchor, double k);

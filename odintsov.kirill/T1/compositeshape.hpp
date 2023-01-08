@@ -37,6 +37,7 @@ namespace odintsov {
       size_t size_;
       size_t cap_;
       Shape** shapes_;
+
       void extend(size_t newCap);
       void clear();
       point_t getMiddlePoint() const;

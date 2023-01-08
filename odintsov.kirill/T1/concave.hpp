@@ -17,6 +17,7 @@ namespace odintsov {
       Concave* clone() const;
     private:
       point_t p1_, p2_, p3_, p4_;
+
       point_t getMiddlePoint() const;
   };
 }

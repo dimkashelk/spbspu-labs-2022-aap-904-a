@@ -6,21 +6,21 @@
 #include "shape.hpp"
 
 odintsov::FrameRectBuilder::FrameRectBuilder(const point_t& p):
-  bl(p),
-  tr(p)
+  bl_(p),
+  tr_(p)
 {}
 
 odintsov::FrameRectBuilder::FrameRectBuilder(const rectangle_t& r):
-  bl(getFrameRectBottomLeftCorner(r)),
-  tr(getFrameRectTopRightCorner(r))
+  bl_(getFrameRectBottomLeftCorner(r)),
+  tr_(getFrameRectTopRightCorner(r))
 {}
 
 odintsov::FrameRectBuilder& odintsov::FrameRectBuilder::operator<<(const point_t& p)
 {
-  bl.x = std::min(bl.x, p.x);
-  bl.y = std::min(bl.y, p.y);
-  tr.x = std::max(tr.x, p.x);
-  tr.y = std::max(tr.y, p.y);
+  bl_.x = std::min(bl_.x, p.x);
+  bl_.y = std::min(bl_.y, p.y);
+  tr_.x = std::max(tr_.x, p.x);
+  tr_.y = std::max(tr_.y, p.y);
   return *this;
 }
 
@@ -31,7 +31,7 @@ odintsov::FrameRectBuilder& odintsov::FrameRectBuilder::operator<<(const rectang
 
 odintsov::rectangle_t odintsov::FrameRectBuilder::rect()
 {
-  return getFrameRectFromCorners(bl, tr);
+  return getFrameRectFromCorners(bl_, tr_);
 }
 
 void odintsov::movePoint(point_t& p, double dx, double dy)

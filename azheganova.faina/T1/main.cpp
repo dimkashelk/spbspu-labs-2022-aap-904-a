@@ -24,7 +24,6 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
-  bool isfigure = false;
   do
   {
     std::string name = "";
@@ -36,8 +35,8 @@ int main()
         bool isfigure = true;
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
-        continue;
       }
+      continue;
       if (name == "TRIANGLE")
       {
         bool isfigure = true;
@@ -77,7 +76,7 @@ int main()
     }
   }
   while(std::cin);
-  if (!(isscale && isfigure))
+  if (!isscale)
   {
     std::cerr << "error";
     return 1;

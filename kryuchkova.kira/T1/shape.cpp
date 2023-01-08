@@ -7,6 +7,15 @@
 
 namespace kryuchkova
 {
+  void Shape::scale(const double k)
+  {
+    if (k <= 0)
+    {
+      throw std::invalid_argument("scaling koef must be positive");
+    }
+    doScale(k);
+  }
+
   void isoScale(kryuchkova::Shape *shape, const point_t point, const double k)
   {
     if (k <= 0)

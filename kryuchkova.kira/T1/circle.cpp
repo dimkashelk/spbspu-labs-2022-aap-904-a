@@ -29,7 +29,7 @@ kryuchkova::rectangle_t kryuchkova::Circle::getFrameRect() const
 
 void kryuchkova::Circle::move(double dx, double dy)
 {
-  movePoint(pos_, point_t{dx, dy});
+  pos_ = movePoint(pos_, point_t{dx, dy});
 }
 
 void kryuchkova::Circle::move(point_t point)
@@ -37,12 +37,8 @@ void kryuchkova::Circle::move(point_t point)
   pos_ = point;
 }
 
-void kryuchkova::Circle::scale(const double k)
+void kryuchkova::Circle::doScale(const double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("scaling koef must be positive");
-  }
   radius_ *= k;
 }
 

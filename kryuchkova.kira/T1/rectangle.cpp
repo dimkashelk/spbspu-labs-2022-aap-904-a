@@ -32,8 +32,8 @@ kryuchkova::rectangle_t kryuchkova::Rectangle::getFrameRect() const
 
 void kryuchkova::Rectangle::move(const double dx, const double dy)
 {
-  movePoint(lb_point_, point_t{dx, dy});
-  movePoint(ru_point_, point_t{dx, dy});
+  lb_point_ = movePoint(lb_point_, point_t{dx, dy});
+  ru_point_ = movePoint(ru_point_, point_t{dx, dy});
 }
 
 void kryuchkova::Rectangle::move(const point_t point)
@@ -44,12 +44,8 @@ void kryuchkova::Rectangle::move(const point_t point)
   move(dx, dy);
 }
 
-void kryuchkova::Rectangle::scale(const double k)
+void kryuchkova::Rectangle::doScale(const double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("scaling koef must be positive");
-  }
   point_t centre = getCentre(lb_point_, ru_point_);
   lb_point_ = scalePoint(lb_point_, centre, k);
   ru_point_ = scalePoint(ru_point_, centre, k);

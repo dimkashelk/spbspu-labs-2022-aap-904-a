@@ -29,7 +29,7 @@ kryuchkova::rectangle_t kryuchkova::Square::getFrameRect() const
 
 void kryuchkova::Square::move(const double dx, const double dy)
 {
-  movePoint(lb_point_, point_t{dx, dy});
+  lb_point_ = movePoint(lb_point_, point_t{dx, dy});
 }
 
 void kryuchkova::Square::move(const point_t point)
@@ -40,12 +40,8 @@ void kryuchkova::Square::move(const point_t point)
   move(dx, dy);
 }
 
-void kryuchkova::Square::scale(const double k)
+void kryuchkova::Square::doScale(const double k)
 {
-  if (k <= 0)
-  {
-    throw std::invalid_argument("scaling koef must be positive");
-  }
   double dx = ((k - 1) * length_) / 2;
   double dy = ((k - 1) * length_) / 2;
   lb_point_.x -= dx;

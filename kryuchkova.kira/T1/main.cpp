@@ -18,6 +18,8 @@ int main()
 {
   std::cout << std::setprecision(1) << std::fixed;
   kryuchkova::CompositeShape compositeShape;
+  bool invalidShape = false;
+  bool invalidScale = false;
   while (std::cin)
   {
     std::string name = "";
@@ -35,8 +37,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid input";
-        //return 1;
+        invalidShape = true;
       }
     }
     else if (name == "SQUARE")
@@ -48,8 +49,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid input";
-        //return 1;
+        invalidShape = true;
       }
     }
     else if (name == "CIRCLE")
@@ -61,8 +61,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid input";
-        //return 1;
+        invalidShape = true;
       }
     }
     else if (name == "SCALE")
@@ -80,11 +79,18 @@ int main()
       }
       catch(...)
       {
-        std::cerr << "invalid scaling input";
-        //return 1;
+        invalidScale = true;
       }
       printShapes(compositeShape);
     }
+  }
+  if (invalidShape)
+  {
+    std::cerr << "Invalid shape or shapes";
+  }
+  if (invalidScale)
+  {
+    std::cerr << "Invalid scaling";
   }
   return 0;
 }

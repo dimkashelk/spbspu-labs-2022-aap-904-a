@@ -28,33 +28,48 @@ int main()
   {
     std::string name = "";
     std::cin >> name;
-    try
+    if (name == "RECTANGLE")
     {
-      if (name == "RECTANGLE")
+      try
       {
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
       }
+      catch(const std::logic_error &e)
+      {
+        std::cerr << e.what() << "\n";
+        continue;
+      }
       continue;
-      if (name == "TRIANGLE")
+    }
+    if (name == "TRIANGLE")
+    {
+      try
       {
         Shape *shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
       }
+      catch(const std::logic_error &e)
+      {
+        std::cerr << e.what() << "\n";
+        continue;
+      }
       continue;
-      if (name == "COMPLEXQUAD")
+    }
+    if (name == "COMPLEXQUAD")
+    {
+      try
       {
         Shape *shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
       }
+      catch(const std::logic_error &e)
+      {
+        std::cerr << e.what() << "\n";
+        continue;
+      }
       continue;
     }
-    catch(const std::logic_error &e)
-    {
-      std::cerr << e.what() << "\n";
-      continue;
-    }
-    continue;
     if (name == "SCALE")
     {
       isscale = true;
@@ -93,10 +108,7 @@ int main()
   std::cout << "\n";
   try
   {
-    for (size_t i = 0; i < compositeShape.size(); ++i)
-    {
-      isoScale(compositeShape[i], scalecenter, scalek);
-    }
+    compositeShape.scale(scalecenter, scalek);
   }
   catch(const std::logic_error &e)
   {

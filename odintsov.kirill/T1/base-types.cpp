@@ -55,7 +55,7 @@ std::ostream& odintsov::outputFrameRect(std::ostream& out, const rectangle_t& re
 {
   point_t bl = getFrameRectBottomLeftCorner(rect);
   point_t tr = getFrameRectTopRightCorner(rect);
-  out << bl.x << ' ' << bl.y << ' ' << tr.x << tr.y;
+  return out << bl.x << ' ' << bl.y << ' ' << tr.x << tr.y;
 }
 
 bool odintsov::isPointInRectangle(const point_t& p, const rectangle_t& rect)

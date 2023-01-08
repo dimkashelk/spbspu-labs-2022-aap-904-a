@@ -55,7 +55,7 @@ int main()
   }
 
   printAreaSum(std::cout, compositeShape);
-  std::cout << '\n';
+  std::cout << "\n";
 
   try
   {
@@ -67,6 +67,7 @@ int main()
     return 1;
   }
   printAreaSum(std::cout, compositeShape);
+  std::cout << "\n";
 
   return 0;
 }

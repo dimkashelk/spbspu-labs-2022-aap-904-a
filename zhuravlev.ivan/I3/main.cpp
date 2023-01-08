@@ -1,6 +1,5 @@
 #include<iostream>
 #include <exception>
-#include <cstring>
 #include "finder.three.elements.h"
 #include "finder_same_elements_in_two_string.h"
 
@@ -19,7 +18,10 @@ int main()
       try
       {
         char * newstr = new char[capacity + 20];
-        strcpy(newstr, cstring);
+        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+        {
+          *j = *i;
+        }
         delete [] cstring;
         cstring = newstr;
         capacity += 20;

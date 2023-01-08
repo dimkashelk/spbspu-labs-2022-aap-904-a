@@ -226,16 +226,3 @@ void kryuchkova::CompositeShape::free(Shape **shapes, const size_t size)
   }
   delete[] shapes;
 }
-
-void kryuchkova::sortByArea(kryuchkova::CompositeShape *comp_sh)
-{
-  for (size_t i = 0; i < comp_sh->size() - 1; i++)
-  {
-    if (!(comp_sh->at(i) < comp_sh->at(i + 1)))
-    {
-      kryuchkova::Shape *temp = comp_sh->at(i);
-      *comp_sh->at(i) = *comp_sh->at(i + 1);
-      *comp_sh->at(i + 1) = *temp;
-    }
-  }
-}

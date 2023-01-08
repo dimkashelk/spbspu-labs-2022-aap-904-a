@@ -18,7 +18,7 @@ std::string kryuchkova::Rectangle::getName() const
 
 double kryuchkova::Rectangle::getArea() const
 {
-  rectangle_t rect = getFrameRect(); 
+  rectangle_t rect = getFrameRect();
   return rect.height * rect.width;
 }
 

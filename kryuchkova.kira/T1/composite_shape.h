@@ -36,6 +36,8 @@ namespace kryuchkova
     Shape **shapes;
     void free(Shape **shapes, size_t size);
   };
+
+  void sortByArea(CompositeShape *comp_sh);
 }
 
 #endif

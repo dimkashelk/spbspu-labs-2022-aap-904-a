@@ -7,14 +7,14 @@
 #include "nearlyEquals.hpp"
 
 odintsov::ComplexQuad::ComplexQuad(const point_t& p1, const point_t& p2, const point_t& p3, const point_t& p4):
-  p1(p1),
-  p2(p2),
-  p3(p3),
-  p4(p4)
+  p1_(p1),
+  p2_(p2),
+  p3_(p3),
+  p4_(p4)
 {
   point_t ip = getIntersectionPoint();
   const double e = 0.00001;
-  if (nearlyEquals(ip, p1, e) || nearlyEquals(ip, p2, e) || nearlyEquals(ip, p3, e) || nearlyEquals(ip, p4, e)) {
+  if (nearlyEquals(ip, p1_, e) || nearlyEquals(ip, p2_, e) || nearlyEquals(ip, p3_, e) || nearlyEquals(ip, p4_, e)) {
     throw std::invalid_argument("points set incorrectly");
   }
 }
@@ -22,20 +22,20 @@ odintsov::ComplexQuad::ComplexQuad(const point_t& p1, const point_t& p2, const p
 double odintsov::ComplexQuad::getArea() const
 {
   point_t ip = getIntersectionPoint();
-  return getTriangleArea(p1, p4, ip) + getTriangleArea(p2, p3, ip);
+  return getTriangleArea(p1_, p4_, ip) + getTriangleArea(p2_, p3_, ip);
 }
 
 odintsov::rectangle_t odintsov::ComplexQuad::getFrameRect() const
 {
-  return (FrameRectBuilder(p1) << p2 << p3 << p4).rect();
+  return (FrameRectBuilder(p1_) << p2_ << p3_ << p4_).rect();
 }
 
 void odintsov::ComplexQuad::move(double dx, double dy)
 {
-  movePoint(p1, dx, dy);
-  movePoint(p2, dx, dy);
-  movePoint(p3, dx, dy);
-  movePoint(p4, dx, dy);
+  movePoint(p1_, dx, dy);
+  movePoint(p2_, dx, dy);
+  movePoint(p3_, dx, dy);
+  movePoint(p4_, dx, dy);
 }
 
 void odintsov::ComplexQuad::move(const point_t& pos)
@@ -48,10 +48,10 @@ void odintsov::ComplexQuad::scale(double k)
 {
   assertValidScaling(k);
   point_t middle = getMiddlePoint();
-  isoScalePoint(p1, middle, k);
-  isoScalePoint(p2, middle, k);
-  isoScalePoint(p3, middle, k);
-  isoScalePoint(p4, middle, k);
+  isoScalePoint(p1_, middle, k);
+  isoScalePoint(p2_, middle, k);
+  isoScalePoint(p3_, middle, k);
+  isoScalePoint(p4_, middle, k);
 }
 
 odintsov::point_t odintsov::ComplexQuad::getMiddlePoint() const
@@ -61,10 +61,10 @@ odintsov::point_t odintsov::ComplexQuad::getMiddlePoint() const
 
 odintsov::point_t odintsov::ComplexQuad::getIntersectionPoint() const
 {
-  return getLineSegIntersectionPoint(p1, p2, p3, p4);
+  return getLineSegIntersectionPoint(p1_, p2_, p3_, p4_);
 }
 
 odintsov::ComplexQuad* odintsov::ComplexQuad::clone() const
 {
-  return new ComplexQuad(p1, p2, p3, p4);
+  return new ComplexQuad(p1_, p2_, p3_, p4_);
 }

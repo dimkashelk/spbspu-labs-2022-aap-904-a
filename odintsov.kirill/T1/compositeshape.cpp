@@ -13,7 +13,7 @@ odintsov::CompositeShape::CompositeShape():
 odintsov::CompositeShape::CompositeShape(size_t cap):
   size_(0),
   cap_(cap),
-  shapes(new Shape*[cap_])
+  shapes_(new Shape*[cap_])
 {}
 
 odintsov::CompositeShape::CompositeShape(const odintsov::CompositeShape& shp):
@@ -29,16 +29,16 @@ odintsov::CompositeShape::CompositeShape(const odintsov::CompositeShape& shp):
 odintsov::CompositeShape::CompositeShape(odintsov::CompositeShape&& shp):
   size_(shp.size()),
   cap_(shp.cap_),
-  shapes(shp.shapes)
+  shapes_(shp.shapes_)
 {
-  shp.shapes = nullptr;
+  shp.shapes_ = nullptr;
   shp.size_ = 0;
 }
 
 odintsov::CompositeShape::~CompositeShape()
 {
   clear();
-  delete [] shapes;
+  delete [] shapes_;
 }
 
 odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::CompositeShape& shp)
@@ -56,8 +56,8 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::Co
     }
   }
   clear();
-  delete [] shapes;
-  shapes = clonedShapes;
+  delete [] shapes_;
+  shapes_ = clonedShapes;
   cap_ = shp.cap_;
   size_ = shp.size_;
   return *this;
@@ -66,12 +66,12 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::Co
 odintsov::CompositeShape& odintsov::CompositeShape::operator=(odintsov::CompositeShape&& shp)
 {
   clear();
-  delete [] shapes;
+  delete [] shapes_;
   size_ = shp.size_;
   cap_ = shp.cap_;
-  shapes = shp.shapes;
+  shapes_ = shp.shapes_;
   shp.size_ = 0;
-  shp.shapes = nullptr;
+  shp.shapes_ = nullptr;
   return *this;
 }
 
@@ -79,7 +79,7 @@ double odintsov::CompositeShape::getArea() const
 {
   double area = 0.0;
   for (size_t i = 0; i < size(); i++) {
-    area += shapes[i]->getArea();
+    area += shapes_[i]->getArea();
   }
   return area;
 }
@@ -89,9 +89,9 @@ odintsov::rectangle_t odintsov::CompositeShape::getFrameRect() const
   if (empty()) {
     throw std::logic_error("no shapes inside CompositeShape");
   }
-  FrameRectBuilder builder(shapes[0]->getFrameRect());
+  FrameRectBuilder builder(shapes_[0]->getFrameRect());
   for (size_t i = 0; i < size(); i++) {
-    builder << shapes[i]->getFrameRect();
+    builder << shapes_[i]->getFrameRect();
   }
   return builder.rect();
 }
@@ -99,7 +99,7 @@ odintsov::rectangle_t odintsov::CompositeShape::getFrameRect() const
 void odintsov::CompositeShape::move(double dx, double dy)
 {
   for (size_t i = 0; i < size(); i++) {
-    shapes[i]->move(dx, dy);
+    shapes_[i]->move(dx, dy);
   }
 }
 
@@ -114,7 +114,7 @@ void odintsov::CompositeShape::scale(double k)
   assertValidScaling(k);
   point_t middle = getMiddlePoint();
   for (size_t i = 0; i < size(); i++) {
-    isoScale(shapes[i], middle, k);
+    isoScale(shapes_[i], middle, k);
   }
 }
 
@@ -128,7 +128,7 @@ void odintsov::CompositeShape::push_back(Shape* shp)
   if (size() == cap_) {
     extend(cap_ + 10);
   }
-  shapes[size_++] = shp;
+  shapes_[size_++] = shp;
 }
 
 void odintsov::CompositeShape::pop_back()
@@ -141,7 +141,7 @@ void odintsov::CompositeShape::pop_back()
 
 void odintsov::CompositeShape::quiet_pop_back()
 {
-  delete shapes[--size_];
+  delete shapes_[--size_];
 }
 
 odintsov::Shape* odintsov::CompositeShape::at(size_t id)
@@ -150,7 +150,7 @@ odintsov::Shape* odintsov::CompositeShape::at(size_t id)
   {
     throw std::out_of_range("index out of range");
   }
-  return shapes[id];
+  return shapes_[id];
 }
 
 const odintsov::Shape* odintsov::CompositeShape::at(size_t id) const
@@ -159,17 +159,17 @@ const odintsov::Shape* odintsov::CompositeShape::at(size_t id) const
   {
     throw std::out_of_range("index out of range");
   }
-  return shapes[id];
+  return shapes_[id];
 }
 
 odintsov::Shape* odintsov::CompositeShape::operator[](size_t id)
 {
-  return shapes[id];
+  return shapes_[id];
 }
 
 const odintsov::Shape* odintsov::CompositeShape::operator[](size_t id) const
 {
-  return shapes[id];
+  return shapes_[id];
 }
 
 bool odintsov::CompositeShape::empty() const
@@ -192,10 +192,10 @@ void odintsov::CompositeShape::extend(size_t newCap)
   }
   Shape** newShapes = new Shape*[newCap];
   for (size_t i = 0; i < size(); i++) {
-    newShapes[i] = shapes[i];
+    newShapes[i] = shapes_[i];
   }
-  delete [] shapes;
-  shapes = newShapes;
+  delete [] shapes_;
+  shapes_ = newShapes;
   cap_ = newCap;
 }
 

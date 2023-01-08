@@ -15,7 +15,7 @@ namespace odintsov {
       void scale(double k);
       ComplexQuad* clone() const;
     private:
-      point_t p1, p2, p3, p4;
+      point_t p1_, p2_, p3_, p4_;
       point_t getMiddlePoint() const;
       point_t getIntersectionPoint() const;
   };

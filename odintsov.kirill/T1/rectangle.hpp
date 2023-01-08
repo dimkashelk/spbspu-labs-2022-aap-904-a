@@ -17,7 +17,7 @@ namespace odintsov {
       void scale(double k);
       Rectangle* clone() const;
     private:
-      rectangle_t rect;
+      rectangle_t rect_;
   };
 }
 

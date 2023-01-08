@@ -6,6 +6,14 @@
 #include "rectangle.h"
 #include "composite_shape.h"
 
+void printShapes(const kryuchkova::CompositeShape &compositeShape)
+{
+  for (size_t i = 0; i < compositeShape.size(); i++)
+  {
+    std::cout << *compositeShape.at(i) << '\n';
+  }
+}
+
 int main()
 {
   kryuchkova::CompositeShape compositeShape;
@@ -56,6 +64,26 @@ int main()
         std::cerr << "invalid input";
         return 1;
       }
+    }
+    else if (name == "SCALE")
+    {
+      double x = 0.0;
+      double y = 0.0;
+      std::cin >> x >> y;
+      kryuchkova::point_t point(x, y);
+      double k = 0.0;
+      std::cin >> k;
+      printShapes(compositeShape);
+      try
+      {
+        compositeShape.isoScale(point, k);
+      }
+      catch(...)
+      {
+        std::cerr << "invalid scaling input";
+        return 1;
+      }
+      printShapes(compositeShape);
     }
   }
 }

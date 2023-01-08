@@ -4,8 +4,6 @@
 #include "shape.h"
 #include "triangle.h"
 
-point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
-
 class Complexquad: virtual public Shape
 {
   public:

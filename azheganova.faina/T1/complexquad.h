@@ -4,6 +4,8 @@
 #include "shape.h"
 #include "triangle.h"
 
+Shape* inputComplexquad(std::istream &input);
+
 class Complexquad: virtual public Shape
 {
   public:

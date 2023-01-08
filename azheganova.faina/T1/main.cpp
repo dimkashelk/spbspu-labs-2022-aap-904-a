@@ -5,7 +5,8 @@
 #include <stdexcept>
 #include "isoscale.h"
 #include "compositeshape.h"
-#include "inputfigure.h"
+#include "rectangle.h"
+#include "complexquad.h"
 
 void printFlamePoint(Shape *shape)
 {

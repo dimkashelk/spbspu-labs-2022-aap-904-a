@@ -3,6 +3,8 @@
 #include "base_types.h"
 #include "shape.h"
 
+Shape* inputRectangle(std::istream &input);
+
 class Rectangle : virtual public Shape
 {
   public:

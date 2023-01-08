@@ -23,16 +23,8 @@ int main()
       try
       {
         rectangle = correctFigures::readCorrectRectangle(std::cin);
-        if (rectangle)
-        {
-          FigureArray::ExtendArray(array_figures, rectangle, size);
-          size++;
-        }
-        else
-        {
-          delete rectangle;
-          isCommand = false;
-        }
+        FigureArray::ExtendArray(array_figures, rectangle, size);
+        size++;
       }
       catch (const std::invalid_argument& e)
       {
@@ -55,16 +47,8 @@ int main()
       try
       {
         ring = correctFigures::readCorrectRing(std::cin);
-        if (ring)
-        {
-          FigureArray::ExtendArray(array_figures, ring, size);
-          size++;
-        }
-        else
-        {
-          delete ring;
-          isCommand = false;
-        }
+        FigureArray::ExtendArray(array_figures, ring, size);
+        size++;
       }
       catch (const std::invalid_argument& e)
       {
@@ -87,16 +71,8 @@ int main()
       try
       {
         ellipse = correctFigures::readCorrectEllipse(std::cin);
-        if (ellipse)
-        {
-          FigureArray::ExtendArray(array_figures, ellipse, size);
-          size++;
-        }
-        else
-        {
-          delete ellipse;
-          isCommand = false;
-        }
+        FigureArray::ExtendArray(array_figures, ellipse, size);
+        size++;
       }
       catch (const std::invalid_argument& e)
       {

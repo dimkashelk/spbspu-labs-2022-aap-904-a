@@ -19,13 +19,28 @@ bool checkTriangleSides(point_t dots[])
   return side_a + side_b < side_c || side_a + side_c < side_b || side_b + side_c < side_a;
 }
 
+double checkOneTriangle(point_t a, point_t b, point_t c)
+{
+  return ((a.x - c.x) * (b.y - a.y) - (b.x - a.x) * (a.y - c.y));
+}
+
 bool checkTriangles(point_t dots[])
 {
-  bool triangle1 = ((dots[0].x - dots[3].x) * (dots[1].y - dots[0].y) - (dots[1].x - dots[0].x) * (dots[0].y - dots[3].y)) > 0;
-  bool triangle2 = ((dots[1].x - dots[3].x) * (dots[2].y - dots[1].y) - (dots[2].x - dots[1].x) * (dots[1].y - dots[3].y)) > 0;
-  bool triangle3 = ((dots[2].x - dots[3].x) * (dots[0].y - dots[2].y) - (dots[0].x - dots[2].x) * (dots[2].y - dots[3].y)) > 0;
+  double triangle1 = checkOneTriangle(dots[0], dots[1], dots[3]);
+  double triangle2 = checkOneTriangle(dots[1], dots[2], dots[3]);
+  bool is_above_zero = triangle1 > 0.0 && triangle2 > 0.0;
+  bool is_below_zero = triangle1 < 0.0 && triangle2 < 0.0;
+  double triangle3 = 0.0;
 
-  return !((triangle1 && triangle2 && triangle3) || (!triangle1 && !triangle2 && !triangle3));
+  if (is_above_zero || is_below_zero)
+  {
+    triangle3 = checkOneTriangle(dots[2], dots[0], dots[3]);
+    if ((triangle3 > 0.0 && is_above_zero) || (triangle3 < 0.0 && is_below_zero))
+    {
+      return false;
+    }
+  }
+  return true;
 }
 
 bool validateConcave(point_t dots[])

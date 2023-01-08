@@ -93,7 +93,10 @@ int main()
   std::cout << "\n";
   try
   {
-    compositeShape.scale(scalecenter, scalek);
+    for (size_t i = 0; i < compositeShape.size(); ++i)
+    {
+      isoScale(compositeShape[i], scalecenter, scalek);
+    }
   }
   catch(const std::logic_error &e)
   {

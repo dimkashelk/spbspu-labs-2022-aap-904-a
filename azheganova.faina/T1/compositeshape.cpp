@@ -190,7 +190,6 @@ const Shape* CompositeShape::at(size_t id) const
   return shape_[id];
 }
 
-
 size_t CompositeShape::size() const
 {
   return size_;

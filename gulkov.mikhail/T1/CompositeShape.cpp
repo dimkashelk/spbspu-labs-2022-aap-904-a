@@ -150,7 +150,6 @@ rectangle_t CompositeShape::getFrameRect() const
   return {{(a + c) / 2.0, (b + d) / 2.0}, c - a, d - b};
 }
 
-
 CompositeShape *CompositeShape::clone() const
 {
   Shape **cloneShapes = new Shape *[capacity_];

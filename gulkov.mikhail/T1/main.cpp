@@ -29,7 +29,7 @@ int main()
         std::cerr << e.what() << '\n';
       }
     }
-    else if (input == "ELLIPSE")
+    if (input == "ELLIPSE")
     {
       try
       {
@@ -41,7 +41,7 @@ int main()
         std::cerr << e.what() << '\n';
       }
     }
-    else if (input == "CONCAVE")
+    if (input == "CONCAVE")
     {
       try
       {
@@ -53,7 +53,19 @@ int main()
         std::cerr << e.what() << '\n';
       }
     }
-    else if (input == "SCALE")
+    if (input == "ELLIPSE_RING")
+    {
+      try
+      {
+        compositeShape.push_back(makeEllipseRing(std::cin));
+      }
+      catch (const std::invalid_argument &e)
+      {
+        std::cerr << "\nError: ";
+        std::cerr << e.what() << '\n';
+      }
+    }
+    if (input == "SCALE")
     {
       try
       {

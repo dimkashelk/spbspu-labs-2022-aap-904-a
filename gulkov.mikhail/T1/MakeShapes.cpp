@@ -3,10 +3,11 @@
 #include "Rectangle.hpp"
 #include "Ellipse.hpp"
 #include "Concave.hpp"
+#include "Ring.hpp"
 
 Shape *makeRectangle(std::istream &input)
 {
-  double dots[4]{0.0, 0.0, 0.0, 0.0};
+  double dots[4]{0};
   input >> dots[0] >> dots[1] >> dots[2] >> dots[3];
   checkInput(input);
   return new Rectangle({dots[0], dots[1]}, {dots[2], dots[3]});
@@ -14,7 +15,7 @@ Shape *makeRectangle(std::istream &input)
 
 Shape *makeEllipse(std::istream &input)
 {
-  double dots[4]{0.0, 0.0, 0.0, 0.0};
+  double dots[4]{0};
   input >> dots[0] >> dots[1] >> dots[2] >> dots[3];
   checkInput(input);
   return new Ellipse({dots[0], dots[1]}, dots[2], dots[3]);
@@ -22,10 +23,21 @@ Shape *makeEllipse(std::istream &input)
 
 Shape *makeConcave(std::istream &input)
 {
-  double dots[8]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+  double dots[8]{0};
   input >> dots[0] >> dots[1] >> dots[2] >> dots[3] >> dots[4] >> dots[5] >> dots[6] >> dots[7];
   checkInput(input);
   return new Concave({dots[0], dots[1]}, {dots[2], dots[3]}, {dots[4], dots[5]}, {dots[6], dots[7]});
+}
+
+Shape *makeEllipseRing(std::istream &input)
+{
+  double dots[6]{0};
+  for (double &dot: dots)
+  {
+    input >> dot;
+  }
+  checkInput(input);
+  return new Ring({dots[0], dots[1]}, dots[2], dots[3], dots[4], dots[5]);
 }
 
 scale_t getScale(std::istream &input)

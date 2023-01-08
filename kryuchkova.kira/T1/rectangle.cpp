@@ -50,14 +50,9 @@ void kryuchkova::Rectangle::scale(const double k)
   {
     throw std::invalid_argument("scaling koef must be positive");
   }
-  double width = ru_point_.x - lb_point_.x;
-  double height = ru_point_.y - lb_point_.y;
-  double dx = ((k - 1) * width) / 2;
-  double dy = ((k - 1) * height) / 2;
-  lb_point_.x -= dx;
-  lb_point_.y -= dy;
-  ru_point_.x += dx;
-  ru_point_.y += dy;
+  point_t centre = getCentre(lb_point_, ru_point_);
+  lb_point_ = scalePoint(lb_point_, centre, k);
+  ru_point_ = scalePoint(ru_point_, centre, k);
 }
 
 kryuchkova::Shape *kryuchkova::Rectangle::clone() const

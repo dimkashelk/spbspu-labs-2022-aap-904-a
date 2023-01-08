@@ -82,9 +82,15 @@ namespace kryuchkova
     return new Square(point_t{lb_x, lb_y}, length);
   }
 
-  void movePoint(point_t &point, const point_t dpoint)
+  point_t movePoint(const point_t point, const point_t dpoint)
   {
-    point.x += dpoint.x;
-    point.y += dpoint.y;
+    return point_t{point.x + dpoint.x, point.y + dpoint.y};
+  }
+
+  point_t scalePoint(const point_t point, const point_t pos, const double k)
+  {
+    double dx = (pos.x - point.x) * k;
+    double dy = (pos.y - point.y) * k;
+    return movePoint(pos, point_t{dx, dy});
   }
 }

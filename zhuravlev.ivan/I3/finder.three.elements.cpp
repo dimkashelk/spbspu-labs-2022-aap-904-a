@@ -8,9 +8,6 @@ char* finderThreeSameElements(char* destination, const char* str)
   size_t max_cnt = 0;
   size_t prev_max = 0;
   size_t prev_prev_max = 0;
-  char first;
-  char second;
-  char third;
   for (auto i = str; *i != '\0'; ++i)
   {
     for (auto j = str; *j != '\0'; ++j)

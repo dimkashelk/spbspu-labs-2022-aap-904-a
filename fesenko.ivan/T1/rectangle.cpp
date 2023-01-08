@@ -1,6 +1,6 @@
 #include "rectangle.h"
 #include <stdexcept>
-#include "base-types.h"
+#include "supportFunctions.h"
 
 Rectangle::Rectangle(const point_t &point1, const point_t &point2):
   rect_{point2.x - point1.x, point2.y - point1.y, {(point1.x + point2.x) * 0.5, (point1.y + point2.y) * 0.5}}
@@ -22,8 +22,7 @@ rectangle_t Rectangle::getFrameRect() const
 
 void Rectangle::move(double dx, double dy)
 {
-  rect_.pos.x += dx;
-  rect_.pos.y += dy;
+  movePoint(rect_.pos, dx, dy);
 }
 
 void Rectangle::move(const point_t &pos)

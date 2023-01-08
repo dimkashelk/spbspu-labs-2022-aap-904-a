@@ -1,7 +1,6 @@
 #ifndef CONCAVE_H
 #define CONCAVE_H
 #include "shape.h"
-#include "base-types.h"
 class Concave: public Shape
 {
  public:

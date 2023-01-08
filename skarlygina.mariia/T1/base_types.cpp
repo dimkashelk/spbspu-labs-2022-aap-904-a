@@ -18,3 +18,15 @@ point_t baseFunctions::Scale(point_t point, point_t center, double k)
   point.y = center.y + (point.y - center.y) * k;
   return point;
 }
+
+double baseFunctions::Radius(double radius, double k)
+{
+  return radius * k;
+}
+
+point_t baseFunctions::CenterMove(point_t center, point_t center_rect, double k)
+{
+  center.x = center_rect.x * k;
+  center.y = center_rect.y * k;
+  return center;
+}

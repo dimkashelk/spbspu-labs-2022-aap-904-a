@@ -36,8 +36,7 @@ void Ellipse::move(point_t position)
 void Ellipse::scale(double k)
 {
   point_t center = getFrameRectangle().position;
-  radius_horizontal_ *= k;
-  radius_vertical_ *= k;
-  center_.x = center.x * k;
-  center_.y = center.y * k;
+  radius_horizontal_ = baseFunctions::Radius(radius_horizontal_, k);
+  radius_vertical_ = baseFunctions::Radius(radius_vertical_, k);
+  center_ = baseFunctions::CenterMove(center_, center, k);
 }

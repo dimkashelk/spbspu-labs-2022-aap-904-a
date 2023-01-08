@@ -1,9 +1,6 @@
 #ifndef READ_CORRECT_FIGURES_H
 #define READ_CORRECT_FIGURES_H
 #include "shape.h"
-#include "ellipse.h"
-#include "ring.h"
-#include "rectangle.h"
 #include <istream>
 namespace correctFigures
 {

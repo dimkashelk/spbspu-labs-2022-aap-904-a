@@ -16,11 +16,11 @@ struct rectangle_t
 
 namespace baseFunctions
 {
-  point_t SummVector(point_t point, double dx, double dy);
+  point_t findSummVector(point_t point, double dx, double dy);
   point_t findDifference(point_t position, point_t rect);
-  point_t Scale(point_t point, point_t center, double k);
-  point_t CenterMove(point_t center, point_t center_rect, double k);
-  double Radius(double radius, double k);
+  point_t makeScale(point_t point, point_t center, double k);
+  point_t makeCenterMove(point_t center, point_t center_rect, double k);
+  double findRadius(double radius, double k);
 }
 
 #endif

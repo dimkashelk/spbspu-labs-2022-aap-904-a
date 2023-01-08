@@ -24,7 +24,7 @@ rectangle_t Ellipse::getFrameRectangle() const
 
 void Ellipse::move(double dx, double dy)
 {
-  center_ = baseFunctions::SummVector(center_, dx, dy);
+  center_ = baseFunctions::findSummVector(center_, dx, dy);
 }
 
 void Ellipse::move(point_t position)
@@ -36,7 +36,7 @@ void Ellipse::move(point_t position)
 void Ellipse::scale(double k)
 {
   point_t center = getFrameRectangle().position;
-  radius_horizontal_ = baseFunctions::Radius(radius_horizontal_, k);
-  radius_vertical_ = baseFunctions::Radius(radius_vertical_, k);
-  center_ = baseFunctions::CenterMove(center_, center, k);
+  radius_horizontal_ = baseFunctions::findRadius(radius_horizontal_, k);
+  radius_vertical_ = baseFunctions::findRadius(radius_vertical_, k);
+  center_ = baseFunctions::makeCenterMove(center_, center, k);
 }

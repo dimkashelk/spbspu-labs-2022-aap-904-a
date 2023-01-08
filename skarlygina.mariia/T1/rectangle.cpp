@@ -26,8 +26,8 @@ double Rectangle::getArea() const
 
 void Rectangle::move(double dx, double dy)
 {
-  left_down_ = baseFunctions::SummVector(left_down_, dx, dy);
-  right_up_ = baseFunctions::SummVector(right_up_, dx, dy);
+  left_down_ = baseFunctions::findSummVector(left_down_, dx, dy);
+  right_up_ = baseFunctions::findSummVector(right_up_, dx, dy);
 }
 
 void Rectangle::move(point_t position)
@@ -39,6 +39,6 @@ void Rectangle::move(point_t position)
 void Rectangle::scale(double k)
 {
   point_t center = getFrameRectangle().position;
-  left_down_ = baseFunctions::Scale(left_down_, center, k);
-  right_up_ = baseFunctions::Scale(right_up_, center, k);
+  left_down_ = baseFunctions::makeScale(left_down_, center, k);
+  right_up_ = baseFunctions::makeScale(right_up_, center, k);
 }

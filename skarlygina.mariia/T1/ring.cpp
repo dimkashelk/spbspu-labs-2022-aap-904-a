@@ -25,7 +25,7 @@ rectangle_t Ring::getFrameRectangle() const
 
 void Ring::move(double dx, double dy)
 {
-  center_ = baseFunctions::SummVector(center_, dx, dy);
+  center_ = baseFunctions::findSummVector(center_, dx, dy);
 }
 
 void Ring::move(point_t position)
@@ -37,7 +37,7 @@ void Ring::move(point_t position)
 void Ring::scale(double k)
 {
   point_t center = getFrameRectangle().position;
-  radius_small_ = baseFunctions::Radius(radius_small_, k);
-  radius_big_ = baseFunctions::Radius(radius_big_, k);
-  center_ = baseFunctions::CenterMove(center_, center, k);
+  radius_small_ = baseFunctions::findRadius(radius_small_, k);
+  radius_big_ = baseFunctions::findRadius(radius_big_, k);
+  center_ = baseFunctions::makeCenterMove(center_, center, k);
 }

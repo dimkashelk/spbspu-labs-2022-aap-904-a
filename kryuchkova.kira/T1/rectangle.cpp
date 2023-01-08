@@ -31,10 +31,8 @@ kryuchkova::rectangle_t kryuchkova::Rectangle::getFrameRect() const
 
 void kryuchkova::Rectangle::move(const double dx, const double dy)
 {
-  lb_point.x += dx;
-  lb_point.y += dy;
-  ru_point.x += dx;
-  ru_point.y += dy;
+  movePoint(lb_point, point_t{dx, dy});
+  movePoint(ru_point, point_t{dx, dy});
 }
 
 void kryuchkova::Rectangle::move(const point_t point)

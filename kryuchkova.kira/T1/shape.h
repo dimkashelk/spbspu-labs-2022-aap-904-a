@@ -27,6 +27,8 @@ namespace kryuchkova
   Shape *inputRectangle(std::istream &in);
   Shape *inputCircle(std::istream &in);
   Shape *inputSquare(std::istream &in);
+
+  point_t movePoint(point_t point, point_t dpoint);
 }
 
 #endif

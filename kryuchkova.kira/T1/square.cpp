@@ -29,8 +29,7 @@ kryuchkova::rectangle_t kryuchkova::Square::getFrameRect() const
 
 void kryuchkova::Square::move(const double dx, const double dy)
 {
-  lb_point.x += dx;
-  lb_point.y += dy;
+  movePoint(lb_point, point_t{dx, dy});
 }
 
 void kryuchkova::Square::move(const point_t point)

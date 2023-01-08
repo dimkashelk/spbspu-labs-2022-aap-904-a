@@ -29,15 +29,12 @@ kryuchkova::rectangle_t kryuchkova::Circle::getFrameRect() const
 
 void kryuchkova::Circle::move(double dx, double dy)
 {
-  pos.x += dx;
-  pos.y += dy;
+  movePoint(pos, point_t{dx, dy});
 }
 
 void kryuchkova::Circle::move(point_t point)
 {
-  double dx = point.x - pos.x;
-  double dy = point.y - pos.y;
-  move(dx, dy);
+  pos = point;
 }
 
 void kryuchkova::Circle::scale(const double k)

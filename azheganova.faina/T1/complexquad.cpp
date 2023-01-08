@@ -96,18 +96,18 @@ void Complexquad::move(double dx, double dy)
 }
 void Complexquad::scale(double k) noexcept
 {
-  complexquad1[0].x = k * (complexquad1[0].x - complexquad1[4].x) + complexquad1[4].x;
-  complexquad1[1].x = k * (complexquad1[1].x - complexquad1[4].x) + complexquad1[4].x;
-  complexquad1[2].x = k * (complexquad1[2].x - complexquad1[4].x) + complexquad1[4].x;
-  complexquad1[3].x = k * (complexquad1[3].x - complexquad1[4].x) + complexquad1[4].x;
-  complexquad1[0].y = k * (complexquad1[0].y - complexquad1[4].y) + complexquad1[4].y;
-  complexquad1[1].y = k * (complexquad1[1].y - complexquad1[4].y) + complexquad1[4].y;
-  complexquad1[2].y = k * (complexquad1[2].y - complexquad1[4].y) + complexquad1[4].y;
-  complexquad1[3].y = k * (complexquad1[3].y - complexquad1[4].y) + complexquad1[4].y;
+  if (k <= 0)
+  {
+    throw std::logic_error("error");
+  }
+  for (size_t i = 0; i < 4; i++)
+  {
+    complexquad1[i].x = k * (complexquad1[i].x - complexquad1[4].x) + complexquad1[4].x;
+    complexquad1[i].y = k * (complexquad1[i].y - complexquad1[4].x) + complexquad1[4].x;
+  }
 }
 
 Shape* Complexquad::clone() const
 {
-  Complexquad *copy = new Complexquad(complexquad1[0], complexquad1[1], complexquad1[2], complexquad1[3]);
-  return copy;
+  return new Complexquad(complexquad1[0], complexquad1[1], complexquad1[2], complexquad1[3]);
 }

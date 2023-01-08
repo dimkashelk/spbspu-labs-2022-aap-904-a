@@ -2,7 +2,6 @@
 #define COMPLEXQUAD_H
 #include "base_types.h"
 #include "shape.h"
-#include "triangle.h"
 
 class Complexquad: virtual public Shape
 {

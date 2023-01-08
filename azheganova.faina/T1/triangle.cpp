@@ -41,15 +41,18 @@ void Triangle::move(point_t point)
 }
 void Triangle::move(double dx, double dy)
 {
-  triangle1[0].x += dx;
-  triangle1[0].y += dy;
-  triangle1[1].x += dx;
-  triangle1[1].y += dy;
-  triangle1[2].x += dx;
-  triangle1[2].y += dy;
+  for (size_t i = 0; i < 3; i++)
+  {
+    triangle1[i].x += dx;
+    triangle1[i].y += dy;
+  }
 }
 void Triangle::scale(double k) noexcept
 {
+  if (k <= 0)
+  {
+    throw std::logic_error("error");
+  }
   point_t center = findCenterOfTriangle();
   for (size_t i = 0; i < 3; i++)
   {
@@ -60,6 +63,5 @@ void Triangle::scale(double k) noexcept
 
 Shape* Triangle::clone() const
 {
-  Triangle *copy = new Triangle(triangle1[0], triangle1[1], triangle1[2]);
-  return copy;
+  return new Triangle(triangle1[0], triangle1[1], triangle1[2]);
 }

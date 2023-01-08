@@ -16,6 +16,17 @@ void printFlamePoint(Shape *shape)
   std::cout << point1.x << ' ' << point1.y << ' ';
   std::cout << point2.x << ' ' << point2.y;
 }
+void printAreaAndFlamePoint(CompositeShape &compositeShape)
+{
+  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
+  printFlamePoint(compositeShape[0]);
+  for (size_t i = 1; i < compositeShape.size(); ++i)
+  {
+    std::cout << " ";
+    printFlamePoint(compositeShape[i]);
+  }
+  std::cout << "\n";
+}
 
 int main()
 {
@@ -28,46 +39,27 @@ int main()
   {
     std::string name = "";
     std::cin >> name;
-   if (name == "RECTANGLE")
+    try
     {
-      try
+      if (name == "RECTANGLE")
       {
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
       }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << "\n";
-        continue;
-      }
-      continue;
-    }
-    if (name == "TRIANGLE")
-    {
-      try
+      if (name == "TRIANGLE")
       {
         Shape *shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
       }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << "\n";
-        continue;
-      }
-      continue;
-    }
-    if (name == "COMPLEXQUAD")
-    {
-      try
+      if (name == "COMPLEXQUAD")
       {
         Shape *shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
       }
-      catch(const std::logic_error &e)
-      {
-        std::cerr << e.what() << "\n";
-        continue;
-      }
+    }
+    catch (const std::logic_error &e)
+    {
+      std::cerr << e.what() << "\n";
       continue;
     }
     if (name == "SCALE")
@@ -98,14 +90,7 @@ int main()
     std::cerr << "error";
     return 1;
   }
-  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
-  printFlamePoint(compositeShape[0]);
-  for (size_t i = 1; i < compositeShape.size(); ++i)
-  {
-    std::cout << " ";
-    printFlamePoint(compositeShape[i]);
-  }
-  std::cout << "\n";
+  printAreaAndFlamePoint(compositeShape);
   try
   {
     compositeShape.scale(scalecenter, scalek);
@@ -115,13 +100,6 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
-  printFlamePoint(compositeShape[0]);
-  for (size_t i = 1; i < compositeShape.size(); ++i)
-  {
-    std::cout << " ";
-    printFlamePoint(compositeShape[i]);
-  }
-  std::cout << "\n";
+  printAreaAndFlamePoint(compositeShape);
   return 0;
 }

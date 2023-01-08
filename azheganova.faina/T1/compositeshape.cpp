@@ -1,6 +1,5 @@
 #include "compositeshape.h"
 #include <stdexcept>
-
 #include <algorithm>
 #include "isoscale.h"
 

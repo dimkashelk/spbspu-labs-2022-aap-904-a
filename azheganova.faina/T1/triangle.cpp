@@ -1,5 +1,6 @@
 #include "triangle.h"
 #include <iostream>
+#include <stdexcept>
 #include <cmath>
 
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):

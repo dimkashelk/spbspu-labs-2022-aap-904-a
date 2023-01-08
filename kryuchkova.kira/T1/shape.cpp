@@ -1,6 +1,9 @@
 #include "shape.h"
 #include <typeinfo>
 #include <cmath>
+#include "rectangle.h"
+#include "square.h"
+#include "circle.h"
 
 namespace kryuchkova
 {
@@ -39,5 +42,45 @@ namespace kryuchkova
   bool Shape::operator<(const Shape &sh)
   {
     return (getArea() < sh.getArea());
+  }
+
+  Shape *inputRectangle(std::istream &in)
+  {
+    double lb_x = 0.0;
+    double lb_y = 0.0;
+    double ru_x = 0.0;
+    double ru_y = 0.0;
+    in >> lb_x >> lb_y >> ru_x >> ru_y;
+    if (!in)
+    {
+      throw std::invalid_argument("invalid input");
+    }
+    return new Rectangle(point_t(lb_x, lb_y), point_t(ru_x, ru_y));
+  }
+
+  Shape *inputCircle(std::istream &in)
+  {
+    double pos_x = 0.0;
+    double pos_y = 0.0;
+    double radius = 0.0;
+    in >> pos_x >> pos_y >> radius;
+    if (!in)
+    {
+      throw std::invalid_argument("invalid input");
+    }
+    return new Circle(point_t(pos_x, pos_y), radius);
+  }
+
+  Shape *inputSquare(std::istream &in)
+  {
+    double lb_x = 0.0;
+    double lb_y = 0.0;
+    double length = 0.0;
+    in >> lb_x >> lb_y >> length;
+    if (!in)
+    {
+      throw std::invalid_argument("invalid input");
+    }
+    return new Square(point_t(lb_x, lb_y), length);
   }
 }

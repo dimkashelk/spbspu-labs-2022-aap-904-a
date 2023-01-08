@@ -19,7 +19,6 @@ namespace kryuchkova
     point_t pos;
     double radius;
   };
-
 }
 
 #endif

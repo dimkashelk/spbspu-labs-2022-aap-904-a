@@ -16,6 +16,7 @@ namespace odintsov {
       virtual Shape* clone() const = 0;
   };
   void isoScale(Shape* shp, const point_t& anchor, double k);
+  void assertValidScaling(double k);
 }
 
 #endif

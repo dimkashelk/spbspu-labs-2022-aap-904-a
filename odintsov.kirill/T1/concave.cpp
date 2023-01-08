@@ -1,5 +1,6 @@
 #include "concave.hpp"
 #include <stdexcept>
+#include "shape.hpp"
 #include "line.hpp"
 #include "triangle.hpp"
 #include "base-types.hpp"
@@ -43,6 +44,7 @@ void odintsov::Concave::move(const point_t& pos)
 
 void odintsov::Concave::scale(double k)
 {
+  assertValidScaling(k);
   point_t middle = getMiddlePoint();
   isoScalePoint(p1, middle, k);
   isoScalePoint(p2, middle, k);

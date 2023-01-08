@@ -120,6 +120,7 @@ void odintsov::CompositeShape::move(const point_t& pos)
 
 void odintsov::CompositeShape::scale(double k)
 {
+  assertValidScaling(k);
   point_t middle = getMiddlePoint();
   for (size_t i = 0; i < size(); i++) {
     isoScale(shapes[i], middle, k);

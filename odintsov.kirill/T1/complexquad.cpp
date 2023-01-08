@@ -1,6 +1,7 @@
 #include "complexquad.hpp"
 #include <stdexcept>
 #include "base-types.hpp"
+#include "shape.hpp"
 #include "triangle.hpp"
 #include "line.hpp"
 #include "nearlyEquals.hpp"
@@ -47,6 +48,7 @@ void odintsov::ComplexQuad::move(const point_t& pos)
 
 void odintsov::ComplexQuad::scale(double k)
 {
+  assertValidScaling(k);
   point_t middle = getMiddlePoint();
   isoScalePoint(p1, middle, k);
   isoScalePoint(p2, middle, k);

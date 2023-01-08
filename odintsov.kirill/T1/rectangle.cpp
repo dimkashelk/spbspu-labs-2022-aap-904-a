@@ -1,6 +1,7 @@
 #include "rectangle.hpp"
 #include <stdexcept>
 #include "base-types.hpp"
+#include "shape.hpp"
 
 odintsov::Rectangle::Rectangle(const rectangle_t& rect):
   rect(rect)
@@ -32,6 +33,7 @@ void odintsov::Rectangle::move(const point_t& pos)
 
 void odintsov::Rectangle::scale(double k)
 {
+  assertValidScaling(k);
   rect.width *= k;
   rect.height *= k;
 }

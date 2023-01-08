@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include "shape.hpp"
 
 void odintsov::movePoint(point_t& p, double dx, double dy)
 {
@@ -12,6 +13,7 @@ void odintsov::movePoint(point_t& p, double dx, double dy)
 
 void odintsov::isoScalePoint(point_t& p, const point_t& anchor, double k)
 {
+  assertValidScaling(k);
   movePoint(p, (p.x - anchor.x) * (k - 1.0), (p.y - anchor.y) * (k - 1.0));
 }
 

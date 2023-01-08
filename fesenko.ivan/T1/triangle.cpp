@@ -6,12 +6,12 @@
 bool isTriangle(const point_t &p1, const point_t &p2, const point_t &p3)
 {
   const double e = 0.001;
-  return abs((p1_.x - p2_.x) / (p1_.y - p2_.y) - (p1_.x - p3_.x) / (p1_.y - p3_.y)) > e;
+  return abs((p1.x - p2.x) / (p1.y - p2.y) - (p1.x - p3.x) / (p1.y - p3.y)) > e;
 }
 
 double getTriangleArea(const point_t &p1, const point_t &p2, const point_t &p3)
 {
-  return 0.5 * std::abs((p2_.x - p1_.x) * (p3_.y - p1_.y) - (p3_.x - p1_.x) * (p2_.y - p1_.y));
+  return 0.5 * std::abs((p2.x - p1.x) * (p3.y - p1.y) - (p3.x - p1.x) * (p2.y - p1.y));
 }
 
 bool isPointInsideTriangle(const point_t &p1, const point_t &p2, const point_t &p3, const point_t &p0)

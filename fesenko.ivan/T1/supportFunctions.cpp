@@ -1,5 +1,6 @@
 #include "supportFunctions.h"
 #include <algorithm>
+#include <stdexcept>
 
 void movePoint(point_t &p, double dx, double dy)
 {
@@ -9,20 +10,28 @@ void movePoint(point_t &p, double dx, double dy)
 
 void movePointBecauseOfScale(point_t &p, point_t &zoomCenter, double k)
 {
+  if (k <= 0) {
+    throw std::invalid_argument("Ratio must be greater then 0\n");
+  }
   movePoint(p, (p.x - zoomCenter.x) * (k - 1), (p.y - zoomCenter.y) * (k - 1));
 }
 
-bool isIntersectionOfSegments(point_t &p1, point_t &p2, point_t &p3, point_t &p4)
+bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, const point_t &point3, const point_t &point4)
 {
-  if (p2.x < p1.x) { //Очень плохая идея менять местами, но пока работает только так
-    point_t tmp = p1;
-    p1 = p2;
-    p2 = tmp;
+  point_t p1, p2, p3, p4;
+  if (point1.x < point2.x) {
+    p1 = point1;
+    p2 = point2;
+  } else {
+    p1 = point2;
+    p2 = point1;
   }
-  if (p4.x < p3.x) {
-    point_t tmp = p3;
-    p3 = p4;
-    p4 = tmp;
+  if (point3.x < point4.x) {
+    p3 = point3;
+    p4 = point4;
+  } else {
+    p3 = point4;
+    p4 = point3;
   }
   if (p2.x < p3.x) {
     return false;
@@ -60,8 +69,46 @@ bool isIntersectionOfSegments(point_t &p1, point_t &p2, point_t &p3, point_t &p4
   double xa = (b2 - b1) / (a1 - a2);
   if (xa < std::max(p1.x, p3.x) || xa > std::min(p2.x, p4.x)) {
     return false;
-  }
-  else {
+  } else {
     return true;
   }
 }
+point_t getIntersectionPoint(const point_t &point1, const point_t &point2, const point_t &point3, const point_t &point4)
+{
+  point_t p1, p2, p3, p4;
+  double x0 = 0.0, y0 = 0.0;
+  if (point1.x < point2.x) {
+    p1 = point1;
+    p2 = point2;
+  } else {
+    p1 = point2;
+    p2 = point1;
+  }
+  if (point3.x < point4.x) {
+    p3 = point3;
+    p4 = point4;
+  } else {
+    p3 = point4;
+    p4 = point3;
+  }
+  if (p1.x - p2.x == 0) {
+    x0 = p1.x;
+    double a2 = (p3.y - p4.y) / (p3.x - p4.x);
+    double b2 = p3.y - a2 * p3.x;
+    y0 = a2 * x0 + b2;
+  } else if (p3.x - p4.x == 0) {
+    x0 = p3.x;
+    double a1 = (p1.y - p2.y) / (p1.x - p2.x);
+    double b1 = p1.y - a1 * p1.x;
+    y0 = a1 * x0 + b1;
+  } else {
+    double a1 = (p1.y - p2.y) / (p1.x - p2.x);
+    double a2 = (p3.y - p4.y) / (p3.x - p4.x);
+    double b1 = p1.y - a1 * p1.x;
+    double b2 = p3.y - a2 * p3.x;
+    x0 = (b2 - b1) / (a1 - a2);
+    y0 = (x0 - p1.x) * a1 + p1.y;
+  }
+  return {x0, y0};
+}
+

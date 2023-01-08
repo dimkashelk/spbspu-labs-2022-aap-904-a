@@ -11,5 +11,7 @@ class Complexquad: public Shape
   void move(const point_t &pos) override;
   void scale(double k) override;
   ~Complexquad() override = default;
+ private:
+  point_t p1_, p2_, p3_, p4_;
 };
 #endif

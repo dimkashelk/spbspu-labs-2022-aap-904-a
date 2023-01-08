@@ -47,7 +47,8 @@ rectangle_t Concave::getFrameRect() const
 
 void Concave::move(point_t position)
 {
-  move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
+  point_t delta = calculateVectorDifference(position, getFrameRect().pos.x, getFrameRect().pos.y);
+  move(delta.x, delta.y);
 }
 
 void Concave::move(double delta_x, double delta_y)

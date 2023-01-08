@@ -4,13 +4,58 @@
 #include "circle.h"
 #include "square.h"
 #include "rectangle.h"
+#include "composite_shape.h"
 
 int main()
 {
-  kryuchkova::point_t lb(1.0, 2.0);
-  kryuchkova::point_t ru(9.0, 5.0);
-  kryuchkova::Shape* rectangle = new kryuchkova::Rectangle(lb, ru);
-  kryuchkova::Shape* square = new kryuchkova::Square(lb, 5);
-  kryuchkova::Shape* circle = new kryuchkova::Circle(lb, 5);
-  std::cout << *rectangle << '\n' << *square << '\n' << *circle << '\n';
+  kryuchkova::CompositeShape compositeShape;
+  while (std::cin)
+  {
+    std::string name = "";
+    std::cin >> name;
+    if (!std::cin)
+    {
+      std::cerr << "invalid input";
+      return 1;
+    }
+    if (name == "RECTANGLE")
+    {
+      try
+      {
+        kryuchkova::Shape *shape = kryuchkova::inputRectangle(std::cin);
+        compositeShape.push_back(shape);
+      }
+      catch (...)
+      {
+        std::cerr << "invalid input";
+        return 1;
+      }
+    }
+    else if (name == "SQUARE")
+    {
+      try
+      {
+        kryuchkova::Shape *shape = kryuchkova::inputSquare(std::cin);
+        compositeShape.push_back(shape);
+      }
+      catch (...)
+      {
+        std::cerr << "invalid input";
+        return 1;
+      }
+    }
+    else if (name == "CIRCLE")
+    {
+      try
+      {
+        kryuchkova::Shape *shape = kryuchkova::inputCircle(std::cin);
+        compositeShape.push_back(shape);
+      }
+      catch (...)
+      {
+        std::cerr << "invalid input";
+        return 1;
+      }
+    }
+  }
 }

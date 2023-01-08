@@ -16,6 +16,18 @@ void movePointBecauseOfScale(point_t &p, point_t &zoomCenter, double k)
   movePoint(p, (p.x - zoomCenter.x) * (k - 1.0), (p.y - zoomCenter.y) * (k - 1.0));
 }
 
+void fullScale(Shape *shape, point_t &zoomCenter, double k)
+{
+  point_t pos{shape->getFrameRect().pos.x, shape->getFrameRect().pos.y};
+  double dx = zoomCenter.x - pos.x;
+  double dy = zoomCenter.y - pos.y;
+  shape->move(dx, dy);
+  dx = -1 * dx * k;
+  dy = -1 * dy * k;
+  shape->scale(k);
+  shape->move(dx, dy);
+}
+
 bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, const point_t &point3, const point_t &point4)
 {
   point_t p1, p2, p3, p4;

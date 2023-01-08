@@ -5,6 +5,7 @@
 #include "rectangle.h"
 #include "concave.h"
 #include "complexquad.h"
+#include "supportFunctions.h"
 
 int main()
 {
@@ -12,6 +13,8 @@ int main()
   bool isScale = false;
   size_t size = 0;
   double sumArea = 0.0;
+  point_t zoomCenter = {0, 0};
+  double ratio = 0.0;
   std::string figureName = "";
   Shape **shapes = new Shape*[size];
   while (std::cin) {
@@ -75,9 +78,7 @@ int main()
     }
     if (figureName == "SCALE") {
       try {
-        point_t center;
-        double ratio;
-        std::cin >> center.x >> center.y >> ratio;
+        std::cin >> zoomCenter.x >> zoomCenter.y >> ratio;
         if (size > 0) {
           isScale = true;
         }
@@ -99,6 +100,17 @@ int main()
     double rightTopX = 0.0;
     double rightTopY = 0.0;
     std::cout << std::fixed << std::setprecision(1) << sumArea << " ";
+    sumArea = 0.0;
+    for (size_t i = 0; i < size; i++) {
+      leftBottomX = shapes[i]->getFrameRect().pos.x - shapes[i]->getFrameRect().width / 2;
+      leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
+      rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
+      rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
+      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY << " ";
+      fullScale(shapes[i], zoomCenter, ratio);
+      sumArea += shapes[i]->getArea();
+    }
+    std::cout << std::fixed << std::setprecision(1) << "\n" << sumArea << " ";
     for (size_t i = 0; i < size; i++) {
       leftBottomX = shapes[i]->getFrameRect().pos.x - shapes[i]->getFrameRect().width / 2;
       leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
@@ -107,6 +119,7 @@ int main()
       std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY << " ";
     }
     std::cout << "\n";
+    deleteArray(shapes, size);
   } else {
     std::cerr << "No scale?\n";
     deleteArray(shapes, size);

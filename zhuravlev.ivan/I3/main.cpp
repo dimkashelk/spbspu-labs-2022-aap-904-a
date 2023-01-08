@@ -1,5 +1,6 @@
 #include<iostream>
 #include <exception>
+#include <cstring>
 #include "finder.three.elements.h"
 #include "finder_same_elements_in_two_string.h"
 

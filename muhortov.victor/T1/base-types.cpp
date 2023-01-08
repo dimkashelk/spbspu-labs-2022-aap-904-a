@@ -8,6 +8,11 @@ double calculatePointsDistance(const point_t &p1, const point_t &p2)
   return std::sqrt(line_x * line_x + line_y * line_y);
 }
 
+double findDeltaScale(double x, scale_t scale)
+{
+  return (x - scale.pos.x) * scale.scale;
+}
+
 point_t calculateScale(point_t position, point_t center, double k)
 {
   position.x = k * (position.x - center.x) + center.x;

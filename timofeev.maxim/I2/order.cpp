@@ -17,15 +17,14 @@ int *partition(int *arr, size_t size)
       }
     }
   }
-  int q = 0;
+  int *dividing = 0;
   for (size_t p = 0; p < size; p++)
   {
     if (arr[p] % 2 == 1)
     {
-      q = arr[p];
+      dividing = &arr[p];
       break;
     }
   }
-  int *dividing = &q;
   return dividing;
 }

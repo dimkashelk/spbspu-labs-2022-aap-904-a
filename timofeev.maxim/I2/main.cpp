@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
       }
     }
     std::cout << "\n";
-    std::cout << "divider " << partition(ready_array, 5 << "\n";
+    std::cout << "divider " << partition(ready_array, 5) << "\n";
   }
   catch (const std::length_error & e)
   {

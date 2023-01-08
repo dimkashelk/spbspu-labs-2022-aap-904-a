@@ -77,9 +77,6 @@ struct CommandProcessor {
       in >> anchor;
       double k = 1.0;
       in >> k;
-      if (k <= 0.0) {
-        throw std::invalid_argument("coefficient should be positive");
-      }
       if (composite.size() == 0) {
         throw std::logic_error("no shapes to scale");
       }

@@ -4,6 +4,7 @@
 
 void odintsov::isoScale(Shape* shp, const point_t& anchor, double k)
 {
+  assertValidScaling(k);
   point_t A1 = shp->getFrameRect().pos;
   shp->move(anchor);
   point_t A2 = shp->getFrameRect().pos;

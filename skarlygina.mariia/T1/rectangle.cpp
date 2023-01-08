@@ -8,10 +8,9 @@ Rectangle::Rectangle(point_t left_down, point_t right_up):
 
 rectangle_t Rectangle::getFrameRectangle() const
 {
-  double height = right_up_.y - left_down_.y;
-  double width = right_up_.x - left_down_.x;
+  point_t side = baseFunctions::findDifference(right_up_, left_down_);
   point_t position = {(left_down_.x + right_up_.x) / 2, (left_down_.y + right_up_.y) / 2};
-  return {height, width, position};
+  return {side.y, side.x, position};
 }
 
 double Rectangle::getArea() const

@@ -14,8 +14,8 @@ double Ring::getArea() const
 
 rectangle_t Ring::getFrameRectangle() const
 {
-  double height = radius_big_ * 2;
-  double width = radius_big_ * 2;
+  double height = baseFunctions::findRadius(radius_big_, 2.0);
+  double width = baseFunctions::findRadius(radius_big_, 2.0);
   point_t position = {center_.x, center_.y};
   return {height, width, position};
 }

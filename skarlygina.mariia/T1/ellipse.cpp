@@ -13,8 +13,8 @@ double Ellipse::getArea() const
 }
 rectangle_t Ellipse::getFrameRectangle() const
 {
-  double height = radius_vertical_ * 2;
-  double width = radius_horizontal_ * 2;
+  double height = baseFunctions::findRadius(radius_vertical_, 2.0);
+  double width = baseFunctions::findRadius(radius_horizontal_, 2.0);
   point_t position = {center_.x, center_.y};
   return {height, width, position};
 }

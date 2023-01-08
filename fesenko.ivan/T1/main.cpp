@@ -100,7 +100,12 @@ int main()
       rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
       rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
       std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY << " ";
-      fullScale(shapes[i], zoomCenter, ratio);
+      try {
+        fullScale(shapes[i], zoomCenter, ratio);
+      }
+      catch (const std::invalid_argument &e) {
+        std::cerr << e.what() << "\n";
+      }
       sumArea += shapes[i]->getArea();
     }
     std::cout << std::fixed << std::setprecision(1) << "\n" << sumArea << " ";

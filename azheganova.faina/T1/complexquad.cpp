@@ -39,7 +39,7 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   double s14 = (pos2.x - pos4.x) * (pos3.y - pos4.y) - (pos3.x - pos4.x) * (pos2.y - pos4.y);
   double s15 = (pos1.x - pos4.x) * (pos2.y - pos4.y) - (pos2.x - pos4.x) * (pos1.y - pos4.y);
   double s16 = (pos1.x - pos4.x) * (pos3.y - pos4.y) - (pos3.x - pos4.x) * (pos1.y - pos4.y);
-  if (s1 && s2 || s3 && s4 || s5 && s6 || s7 && s8 || s9 && s10 || s11 && s12 || s13 == 0 || s14 == 0|| s15 == 0 || s16 == 0)
+  if ((s1 && s2) || (s3 && s4) || (s5 && s6) || (s7 && s8) || (s9 && s10) || (s11 && s12) || s13 == 0 || s14 == 0|| s15 == 0 || s16 == 0)
   {
     throw std::invalid_argument("wrong complexquad");
   }

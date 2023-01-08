@@ -26,9 +26,10 @@ void makeOutput(std::ostream& out, Shape** array_figures, size_t size)
   {
     sum += array_figures[i]->getArea();
   }
-  out << std::fixed << std::setprecision(1) << sum << " ";
+  out << std::fixed << std::setprecision(1) << sum;
   for (size_t i = 0; i < size; i++)
   {
+    out << " ";
     makeOutputPosition(out, array_figures[i]);
   }
   out << "\n";

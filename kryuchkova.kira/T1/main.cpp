@@ -12,7 +12,6 @@ void printShapes(const kryuchkova::CompositeShape &compositeShape)
   {
     std::cout << *compositeShape.at(i) << '\n';
   }
-  std::cout << '\n';
 }
 
 int main()

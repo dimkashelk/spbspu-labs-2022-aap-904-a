@@ -1,8 +1,8 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#include "base_types.h"
 #include <iomanip>
 #include <ostream>
+#include "base_types.h"
 
 namespace kryuchkova
 {

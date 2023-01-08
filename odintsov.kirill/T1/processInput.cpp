@@ -57,20 +57,24 @@ struct CommandProcessor {
     StringSplitter in(commandLine);
     std::string command = "";
     in >> command;
+    odintsov::Shape* shp = nullptr;
     try {
       if (command == "CONCAVE") {
-        composite.push_back(readConcave(in));
+        shp = readConcave(in);
         return;
       } else if (command == "COMPLEXQUAD") {
-        composite.push_back(readComplexQuad(in));
+        shp = readComplexQuad(in);
         return;
       } else if (command == "RECTANGLE") {
-        composite.push_back(readRectangle(in));
+        shp = readRectangle(in);
         return;
       }
     } catch (const std::exception& err) {
       errstream << "Non-fatal error: " << err.what() << '\n';
       return;
+    }
+    if (shp != nullptr) {
+      composite.push_back(shp);
     }
     if (command == "SCALE") {
       odintsov::point_t anchor;

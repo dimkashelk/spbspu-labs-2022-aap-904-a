@@ -95,16 +95,12 @@ int main()
       try
       {
         std::cin >> point.x >> point.y >> coefficient;
-        /*if (coefficient <= 0)
+        if (coefficient <= 0)
         {
           std::cerr << "Error: coefficient could not be under zero\n";
           FigureArray::DeleteArray(size, array_figures);
           return 2;
         }
-        else if (size > 0 && coefficient > 0)
-        {
-          isScale = true;
-        }*/
       }
       catch (...)
       {
@@ -131,6 +127,12 @@ int main()
     }
   }
   else if (!isScale)
+  {
+    FigureArray::DeleteArray(size, array_figures);
+    std::cerr << "Error: the final figure could be SCALE and size bigger than zero";
+    return 2;
+  }
+  else if (size < 1)
   {
     FigureArray::DeleteArray(size, array_figures);
     std::cerr << "Error: the final figure could be SCALE and size bigger than zero";

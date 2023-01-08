@@ -30,6 +30,10 @@ int main()
       {
         compositeShape.push_back(createConcave(std::cin));
       }
+      if (input == "DIAMOND")
+      {
+        compositeShape.push_back(createDiamond(std::cin));
+      }
       if (input == "SCALE")
       {
         scale = getScale(std::cin);

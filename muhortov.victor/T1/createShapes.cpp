@@ -3,6 +3,7 @@
 #include "rectangle.hpp"
 #include "ring.hpp"
 #include "concave.hpp"
+#include "diamond.hpp"
 
 void checkingInput(std::istream  &input)
 {
@@ -34,6 +35,14 @@ Shape *createConcave(std::istream &input)
   input >> positions[0] >> positions[1] >> positions[2] >> positions[3] >> positions[4] >> positions[5] >> positions[6] >> positions[7];
   checkingInput(input);
   return new Concave({positions[0], positions[1]}, {positions[2], positions[3]}, {positions[4], positions[5]}, {positions[6], positions[7]});
+}
+
+Shape *createDiamond(std::istream &input)
+{
+  double positions[6] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+  input >> positions[0] >> positions[1] >> positions[2] >> positions[3] >> positions[4] >> positions[5];
+  checkingInput(input);
+  return new Diamond({positions[0], positions[1]}, {positions[2], positions[3]}, {positions[4], positions[5]});
 }
 
 scale_t getScale(std::istream &input)

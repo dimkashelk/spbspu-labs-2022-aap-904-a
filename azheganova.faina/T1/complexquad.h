@@ -2,6 +2,7 @@
 #define COMPLEXQUAD_H
 #include "base_types.h"
 #include "shape.h"
+#include "triangle.h"
 
 class Complexquad: virtual public Shape
 {
@@ -15,7 +16,8 @@ class Complexquad: virtual public Shape
     void scale(double k) noexcept;
     Shape * clone() const override;
   private:
-    point_t complexquad1[5];
+    point_t triangle1[3];
+    point_t triangle2[3];
 };
 
 #endif

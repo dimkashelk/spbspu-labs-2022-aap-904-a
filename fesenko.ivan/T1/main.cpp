@@ -99,7 +99,12 @@ int main()
       leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
       rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
       rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
-      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY << " ";
+      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY;
+      if (i == size - 1) {
+        std::cout << "\n";
+      } else {
+        std::cout << " ";
+      }
       try {
         fullScale(shapes[i], zoomCenter, ratio);
       }
@@ -114,9 +119,13 @@ int main()
       leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
       rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
       rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
-      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY << " ";
+      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY;
+      if (i == size - 1) {
+        std::cout << "\n";
+      } else {
+        std::cout << " ";
+      }
     }
-    std::cout << "\n";
     deleteArray(shapes, size);
   } else {
     std::cerr << "No scale?\n";

@@ -37,7 +37,7 @@ void kryuchkova::Circle::move(point_t point)
   pos_ = point;
 }
 
-void kryuchkova::Circle::doScale(const double k)
+void kryuchkova::Circle::unsafeScale(const double k)
 {
   radius_ *= k;
 }

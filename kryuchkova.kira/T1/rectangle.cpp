@@ -44,7 +44,7 @@ void kryuchkova::Rectangle::move(const point_t point)
   move(dx, dy);
 }
 
-void kryuchkova::Rectangle::doScale(const double k)
+void kryuchkova::Rectangle::unsafeScale(const double k)
 {
   point_t centre = getCentre(lb_point_, ru_point_);
   lb_point_ = scalePoint(lb_point_, centre, k);

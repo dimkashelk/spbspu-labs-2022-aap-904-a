@@ -137,6 +137,15 @@ void kryuchkova::CompositeShape::move(const double dx, const double dy)
 
 void kryuchkova::CompositeShape::scale(const double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("scaling koef must be positive");
+  }
+  unsafeScale(k);
+}
+
+void kryuchkova::CompositeShape::unsafeScale(const double k)
+{
   for (size_t i = 0; i < size_; i++)
   {
     shapes_[i]->scale(k);
@@ -145,10 +154,19 @@ void kryuchkova::CompositeShape::scale(const double k)
 
 void kryuchkova::CompositeShape::isoScale(const point_t point, const double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("scaling koef must be positive");
+  }
   if (empty())
   {
     throw std::invalid_argument("CompositeShape is empty, nothing to scale");
   }
+  unsafeIsoScale(point, k);
+}
+
+void kryuchkova::CompositeShape::unsafeIsoScale(const point_t point, const double k)
+{
   for (size_t i = 0; i < size_; i++)
   {
     kryuchkova::isoScale(shapes_[i], point, k);

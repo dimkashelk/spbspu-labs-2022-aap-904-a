@@ -14,7 +14,7 @@ namespace kryuchkova
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
     void move(double dx, double dy) override;
-    void doScale(double k) override;
+    void unsafeScale(double k) override;
     Shape * clone() const;
   private:
     Rectangle square_;

@@ -13,7 +13,7 @@ namespace kryuchkova
     {
       throw std::invalid_argument("scaling koef must be positive");
     }
-    doScale(k);
+    unsafeScale(k);
   }
 
   void isoScale(kryuchkova::Shape *shape, const point_t point, const double k)
@@ -22,10 +22,10 @@ namespace kryuchkova
     {
       throw std::invalid_argument("scaling koef must be positive");
     }
-    doIsoScale(shape, point, k);
+    unsafeIsoScale(shape, point, k);
   }
 
-  void doIsoScale(kryuchkova::Shape *shape, const point_t point, const double k)
+  void unsafeIsoScale(kryuchkova::Shape *shape, const point_t point, const double k)
   {
     rectangle_t rect1 = shape->getFrameRect();
     point_t pos1 = rect1.pos;
@@ -34,7 +34,7 @@ namespace kryuchkova
     point_t pos2 = rect2.pos;
     double dx = k * (pos1.x - pos2.x);
     double dy = k * (pos1.y - pos2.y);
-    shape->doScale(k);
+    shape->unsafeScale(k);
     shape->move(dx, dy);
   }
 

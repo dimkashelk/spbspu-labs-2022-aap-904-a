@@ -39,9 +39,9 @@ void kryuchkova::Square::move(const point_t point)
   square_.move(point);
 }
 
-void kryuchkova::Square::doScale(const double k)
+void kryuchkova::Square::unsafeScale(const double k)
 {
-  square_.doScale(k);
+  square_.unsafeScale(k);
 }
 
 kryuchkova::Shape *kryuchkova::Square::clone() const

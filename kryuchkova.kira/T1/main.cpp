@@ -10,7 +10,7 @@ void printShapes(const kryuchkova::CompositeShape &compositeShape)
 {
   for (size_t i = 0; i < compositeShape.size(); i++)
   {
-    std::cout << *compositeShape.at(i) << '\n';
+    std::cout << ' ' << *compositeShape.at(i);
   }
 }
 
@@ -75,6 +75,7 @@ int main()
       double k = 0.0;
       std::cin >> k;
       printShapes(compositeShape);
+      std::cout << '\n';
       try
       {
         compositeShape.isoScale(point, k);
@@ -84,6 +85,7 @@ int main()
         invalidScale = true;
       }
       printShapes(compositeShape);
+      std::cout << '\n';
     }
   }
   if (!isScaleCalled)

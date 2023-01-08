@@ -93,7 +93,7 @@ int main()
   }
   if (invalidShape)
   {
-    std::cout << "Invalid shape or shapes";
+    std::cerr << "Invalid shape or shapes";
   }
   if (invalidScale)
   {

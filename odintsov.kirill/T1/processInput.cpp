@@ -74,7 +74,12 @@ struct CommandProcessor {
       return;
     }
     if (shp != nullptr) {
-      composite.push_back(shp);
+      try {
+        composite.push_back(shp);
+      } catch (...) {
+        delete shp;
+        throw;
+      }
     }
     if (command == "SCALE") {
       odintsov::point_t anchor;

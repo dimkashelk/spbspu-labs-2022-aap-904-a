@@ -67,7 +67,7 @@ void Concave::move(double dx, double dy)
 
 void Concave::makeScale(double k)
 {
-  point_t center{getFrameRect().pos.x, getFrameRect().pos.y};
+  point_t center = getFrameRect().pos;
   for (point_t &dot: dots_)
   {
     dot.x = k * (dot.x - center.x) + center.x;

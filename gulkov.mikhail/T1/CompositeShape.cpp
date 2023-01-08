@@ -206,7 +206,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &compositeShape)
   return *this;
 }
 
-CompositeShape &::CompositeShape::operator=(CompositeShape &&compositeShape)
+CompositeShape &::CompositeShape::operator=(CompositeShape &compositeShape)
 {
   destruct(shapes, size_);
   size_ = compositeShape.size_;

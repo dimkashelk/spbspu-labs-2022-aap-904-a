@@ -121,11 +121,8 @@ kryuchkova::rectangle_t kryuchkova::CompositeShape::getFrameRect() const
 
 void kryuchkova::CompositeShape::move(const point_t point)
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    point_t pos = getFrameRect().pos;
-    move (point.x - pos.x, point.y - pos.y);
-  }
+  point_t pos = getFrameRect().pos;
+  move(point.x - pos.x, point.y - pos.y);
 }
 
 void kryuchkova::CompositeShape::move(const double dx, const double dy)

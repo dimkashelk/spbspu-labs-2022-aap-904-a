@@ -61,21 +61,20 @@ struct CommandProcessor {
     try {
       if (command == "CONCAVE") {
         shp = readConcave(in);
-        return;
       } else if (command == "COMPLEXQUAD") {
         shp = readComplexQuad(in);
-        return;
       } else if (command == "RECTANGLE") {
         shp = readRectangle(in);
-        return;
       }
     } catch (const std::exception& err) {
+      delete shp;
       errstream << "Non-fatal error: " << err.what() << '\n';
       return;
     }
     if (shp != nullptr) {
       try {
         composite.push_back(shp);
+        return;
       } catch (...) {
         delete shp;
         throw;

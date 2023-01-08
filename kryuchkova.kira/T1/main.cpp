@@ -8,10 +8,10 @@
 
 void printShapes(const kryuchkova::CompositeShape &compositeShape, char delimiter)
 {
-  std::cout << compositeShape.getArea() << delimiter;
+  std::cout << compositeShape.getArea();
   for (size_t i = 0; i < compositeShape.size(); i++)
   {
-    std::cout << *compositeShape.at(i) << delimiter;
+    std::cout << delimiter << *compositeShape.at(i);
   }
 }
 

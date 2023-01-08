@@ -21,7 +21,7 @@ kryuchkova::CompositeShape::CompositeShape(const CompositeShape &compositeShape)
     {
       shapes_[i] = compositeShape.shapes_[i]->clone();
     }
-    catch(...)
+    catch (...)
     {
       free(shapes_, i);
       throw;
@@ -104,6 +104,10 @@ double kryuchkova::CompositeShape::getArea() const
 
 kryuchkova::rectangle_t kryuchkova::CompositeShape::getFrameRect() const
 {
+  if (empty())
+  {
+    throw std::invalid_argument("CompositeShape is empty");
+  }
   double minx = std::numeric_limits< double >::max();
   double miny = std::numeric_limits< double >::max();
   double maxx = std::numeric_limits< double >::min();

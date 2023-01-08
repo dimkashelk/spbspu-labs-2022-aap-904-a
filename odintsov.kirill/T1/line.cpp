@@ -27,7 +27,7 @@ odintsov::point_t odintsov::getLineIntersectionPoint(const point_t& p1, const po
 odintsov::point_t odintsov::getLineSegIntersectionPoint(const point_t& p1, const point_t& p2, const point_t& p3, const point_t& p4)
 {
   point_t ip = getLineIntersectionPoint(p1, p2, p3, p4);
-  if(!(isPointOnLineSeg(ip, p1, p2) && isPointOnLineSeg(ip, p3, p4))) {
+  if (!(isPointOnLineSeg(ip, p1, p2) && isPointOnLineSeg(ip, p3, p4))) {
     throw std::invalid_argument("Line segments do not intersect");
   }
   return ip;

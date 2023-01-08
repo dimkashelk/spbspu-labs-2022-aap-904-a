@@ -3,7 +3,6 @@
 #include <cstddef>
 #include "shape.h"
 #include "base_types.h"
-#include "rectangle.h"
 
 class CompositeShape
 {

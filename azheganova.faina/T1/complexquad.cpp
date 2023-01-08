@@ -60,24 +60,23 @@ double Complexquad::getArea() const
 
 rectangle_t Complexquad::getFrameRect() const
 {
-  double maxx1 = 0.0;
-  double maxy1 = 0.0;
-  double minx1 = 0.0;
-  double miny1 = 0.0;
-  maxx1 = std::max(triangle2[1].x, triangle1[1].x);
-  maxy1 = std::max(triangle2[1].y, triangle1[1].y);
-  minx1 = std::min(triangle2[1].x, triangle1[1].x);
-  miny1 = std::min(triangle2[1].y, triangle1[1].y);
+  double maxx1 = std::max(triangle2[1].x, triangle1[1].x);
+  double maxy1 = std::max(triangle2[1].y, triangle1[1].y);
+  double minx1 = std::min(triangle2[1].x, triangle1[1].x);
+  double miny1 = std::min(triangle2[1].y, triangle1[1].y);
   double maxx = std::max(triangle1[0].x, std::max(triangle2[0].x, maxx1));
   double maxy = std::max(triangle1[0].y, std::max(triangle2[0].y, maxy1));
   double minx = std::min(triangle1[0].x, std::min(triangle2[0].x, minx1));
   double miny = std::min(triangle1[0].y, std::min(triangle2[0].y, miny1));
   return makeFrame(point_t {minx, miny}, point_t {maxx, maxy});
 }
+
 void Complexquad::move(point_t point)
 {
   return move(point.x - triangle1[2].x, point.y - triangle1[2].y);
+  return move(point.x - triangle2[2].x, point.y - triangle2[2].y);
 }
+
 void Complexquad::move(double dx, double dy)
 {
   triangle1[0].x += dx;
@@ -93,6 +92,7 @@ void Complexquad::move(double dx, double dy)
   triangle2[2].x += dx;
   triangle2[2].y += dy;
 }
+
 void Complexquad::scale(double k) noexcept
 {
   if (k <= 0)

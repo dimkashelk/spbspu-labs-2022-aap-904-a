@@ -1,5 +1,7 @@
 #ifndef CONCAVE_H
 #define CONCAVE_H
+#include "shape.h"
+#include "base-types.h"
 class Concave: public Shape
 {
  public:
@@ -12,5 +14,5 @@ class Concave: public Shape
   ~Concave() override = default;
  private:
   point_t p1_, p2_, p3_, p4_;
-}
+};
 #endif

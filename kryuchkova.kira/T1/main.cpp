@@ -86,11 +86,11 @@ int main()
   }
   if (invalidShape)
   {
-    std::cerr << "Invalid shape or shapes";
+    std::cout << "Invalid shape or shapes";
   }
   if (invalidScale)
   {
-    std::cerr << "Invalid scaling";
+    std::cout << "Invalid scaling";
   }
   return 0;
 }

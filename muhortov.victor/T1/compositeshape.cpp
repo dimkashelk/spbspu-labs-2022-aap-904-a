@@ -1,4 +1,5 @@
 #include "compositeshape.hpp"
+#include <stdexcept>
 #include "iscale.hpp"
 
 CompositeShape::CompositeShape(size_t capacity):
@@ -36,11 +37,19 @@ void CompositeShape::pop_back()
 
 Shape *CompositeShape::at(size_t i)
 {
+  if (i > size_)
+  {
+    throw std::invalid_argument("Invalid argument");
+  }
   return shapes[i];
 }
 
 const Shape *CompositeShape::at(size_t i) const
 {
+  if (i > size_)
+  {
+    throw std::invalid_argument("Invalid argument");
+  }
   return shapes[i];
 }
 
@@ -113,7 +122,7 @@ rectangle_t CompositeShape::getFrameRect() const
   double b = 0.0;
   double c = 0.0;
   double d = 0.0;
-  for (size_t i = 0; i < size_; i++)
+  for (size_t i = 1; i < size_; i++)
   {
     rectangle_t temp = shapes[i]->getFrameRect();
     a = (a > temp.pos.x + temp.width / 2.0) ? a : temp.pos.x + temp.width / 2.0;

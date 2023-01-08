@@ -2,6 +2,7 @@
 #define BASE_TYPES_HPP
 
 #include <cstddef>
+#include <iosfwd>
 
 namespace odintsov {
   struct point_t {
@@ -17,6 +18,7 @@ namespace odintsov {
   point_t getFrameRectBottomLeftCorner(const rectangle_t& rect);
   point_t getFrameRectTopRightCorner(const rectangle_t& rect);
   rectangle_t getFrameRectFromPoints(const point_t* points, size_t amt);
+  std::ostream& outputFrameRect(std::ostream& out, const rectangle_t& rect);
   bool isPointInRectangle(const point_t& p, const rectangle_t& rect);
 }
 

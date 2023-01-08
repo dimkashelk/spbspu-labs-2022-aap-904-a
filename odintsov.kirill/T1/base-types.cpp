@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <stdexcept>
 #include <algorithm>
+#include <iostream>
 
 void odintsov::movePoint(point_t& p, double dx, double dy)
 {
@@ -48,6 +49,13 @@ odintsov::rectangle_t odintsov::getFrameRectFromPoints(const point_t* points, si
     topY = std::max(points[i].y, topY);
   }
   return getFrameRectFromCorners(point_t{leftX, bottomY}, point_t{rightX, topY});
+}
+
+std::ostream& odintsov::outputFrameRect(std::ostream& out, const rectangle_t& rect)
+{
+  point_t bl = getFrameRectBottomLeftCorner(rect);
+  point_t tr = getFrameRectTopRightCorner(rect);
+  out << bl.x << ' ' << bl.y << ' ' << tr.x << tr.y;
 }
 
 bool odintsov::isPointInRectangle(const point_t& p, const rectangle_t& rect)

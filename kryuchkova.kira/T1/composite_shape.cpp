@@ -40,7 +40,7 @@ kryuchkova::CompositeShape::CompositeShape(CompositeShape &&compositeShape):
 
 kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(const CompositeShape &compositeShape)
 {
-  if (&compositeShape != this)
+  if (std::addressof(compositeShape) != this)
   {
     Shape **shapes = new Shape *[compositeShape.capacity];
     for (size_t i = 0; i < size_; i++)
@@ -65,7 +65,7 @@ kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(const Composit
 
 kryuchkova::CompositeShape &kryuchkova::CompositeShape::operator=(CompositeShape &&compositeShape)
 {
-  if (&compositeShape != this)
+  if (std::addressof(compositeShape) != this)
   {
     free(shapes, size_);
     size_ = compositeShape.size_;

@@ -22,8 +22,9 @@ double odintsov::Concave::getArea() const
 
 odintsov::rectangle_t odintsov::Concave::getFrameRect() const
 {
-  point_t points[4] = {p1, p2, p3, p4};
-  return getFrameRectFromPoints(points, 4);
+  constexpr unsigned short pointsAmt = 4;
+  point_t points[pointsAmt] = {p1, p2, p3, p4};
+  return getFrameRectFromPoints(points, pointsAmt);
 }
 
 void odintsov::Concave::move(double dx, double dy)

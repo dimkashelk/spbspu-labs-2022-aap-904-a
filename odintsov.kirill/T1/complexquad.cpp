@@ -26,8 +26,9 @@ double odintsov::ComplexQuad::getArea() const
 
 odintsov::rectangle_t odintsov::ComplexQuad::getFrameRect() const
 {
-  point_t points[4] = {p1, p2, p3, p4};
-  return getFrameRectFromPoints(points, 4);
+  constexpr unsigned short pointsAmt = 4;
+  point_t points[pointsAmt] = {p1, p2, p3, p4};
+  return getFrameRectFromPoints(points, pointsAmt);
 }
 
 void odintsov::ComplexQuad::move(double dx, double dy)

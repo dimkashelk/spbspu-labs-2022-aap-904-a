@@ -58,7 +58,7 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::Co
       throw;
     }
   }
-  while(!empty()) {
+  while (!empty()) {
     pop_back();
   }
   delete [] shapes;
@@ -70,14 +70,13 @@ odintsov::CompositeShape& odintsov::CompositeShape::operator=(const odintsov::Co
 
 odintsov::CompositeShape& odintsov::CompositeShape::operator=(odintsov::CompositeShape&& shp)
 {
-  while(!empty()) {
+  while (!empty()) {
     pop_back();
   }
   size_ = shp.size_;
   cap_ = shp.cap_;
   shapes = shp.shapes;
   shp.size_ = 0;
-  shp.cap_ = 0;
   shp.shapes = nullptr;
   return *this;
 }
@@ -97,18 +96,18 @@ odintsov::rectangle_t odintsov::CompositeShape::getFrameRect() const
     throw std::logic_error("no shapes inside CompositeShape");
   }
   rectangle_t rect = shapes[0]->getFrameRect();
-  double leftX = rect.pos.x - rect.width * 0.5;
-  double rightX = rect.pos.x + rect.width * 0.5;
-  double bottomY = rect.pos.y - rect.height * 0.5;
-  double topY = rect.pos.y + rect.height * 0.5;
+  point_t bl = getFrameRectBottomLeftCorner(rect);
+  point_t tr = getFrameRectTopRightCorner(rect);
   for (size_t i = 1; i < size(); i++) {
     rect = shapes[i]->getFrameRect();
-    leftX = std::min(leftX, rect.pos.x - rect.width * 0.5);
-    rightX = std::max(rightX, rect.pos.x + rect.width * 0.5);
-    bottomY = std::min(bottomY, rect.pos.y - rect.height * 0.5);
-    topY = std::max(topY, rect.pos.y + rect.height * 0.5);
+    point_t newbl = getFrameRectBottomLeftCorner(rect);
+    point_t newtr = getFrameRectTopRightCorner(rect);
+    bl.x = std::min(bl.x, newbl.x);
+    bl.y = std::min(bl.y, newbl.y);
+    tr.x = std::max(tr.x, newtr.x);
+    tr.y = std::max(tr.y, newtr.y);
   }
-  return rectangle_t{rightX - leftX, topY - bottomY, {(leftX + rightX) * 0.5, (bottomY + topY) * 0.5}};
+  return getFrameRectFromCorners(bl, tr);
 }
 
 void odintsov::CompositeShape::move(double dx, double dy)
@@ -147,11 +146,10 @@ void odintsov::CompositeShape::push_back(Shape* shp)
 
 void odintsov::CompositeShape::pop_back()
 {
-  if (size_ == 0) {
+  if (empty()) {
     return;
   }
   delete shapes[--size_];
-  shapes[size_] = nullptr;
 }
 
 odintsov::Shape* odintsov::CompositeShape::at(size_t id)
@@ -196,6 +194,9 @@ void odintsov::CompositeShape::extend(size_t newCap)
 {
   if (newCap < cap_) {
     throw std::logic_error("attempt to shrink Shape container");
+  }
+  if (newCap == cap_) {
+    return;
   }
   Shape** newShapes = new Shape*[newCap];
   for (size_t i = 0; i < size(); i++) {

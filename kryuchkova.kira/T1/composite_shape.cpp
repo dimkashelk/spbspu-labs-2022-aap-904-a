@@ -6,7 +6,7 @@
 
 kryuchkova::CompositeShape::CompositeShape():
   size_(0),
-  capacity(10),
+  capacity(1),
   shapes(new Shape*[capacity])
 {}
 
@@ -177,8 +177,8 @@ void kryuchkova::CompositeShape::push_back(Shape *sh)
 {
   if (size_ == capacity)
   {
-    Shape **new_shapes = new Shape*[capacity + 20];
-    capacity += 20;
+    Shape **new_shapes = new Shape*[capacity + 2];
+    capacity += 2;
     for (size_t i = 0; i < size_; i++)
     {
       new_shapes[i] = shapes[i];

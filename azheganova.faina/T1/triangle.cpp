@@ -1,18 +1,12 @@
 #include "triangle.h"
 #include <iostream>
 
-double side(point_t pos1, point_t pos2)
-{
-  double s = pow((pow((pos2.x - pos1.x), 2) + pow((pos2.y - pos1.y), 2 )), 0.5);
-  return s;
-}
-
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
   triangle1{pos1, pos2, pos3}
 {
-  double side1 = side(pos1, pos2);
-  double side2 = side(pos2, pos3);
-  double side3 = side(pos3, pos1);
+  double side1 = pow((pow((pos2.x - pos1.x), 2) + pow((pos2.y - pos1.y), 2 )), 0.5);
+  double side2 = pow((pow((pos3.x - pos2.x), 2) + pow((pos2.y - pos2.y), 2 )), 0.5);
+  double side3 = pow((pow((pos1.x - pos3.x), 2) + pow((pos1.y - pos3.y), 2 )), 0.5);
   if (((side3 + side2) <= side1) || ((side2 + side1) <= side3) || ((side3 + side1) <= side2))
   {
     throw std::invalid_argument("wrong triangle");

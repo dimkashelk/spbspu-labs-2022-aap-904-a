@@ -1,5 +1,6 @@
 #include "compositeshape.h"
 #include <stdexcept>
+#include <cstddef>
 #include "isoscale.h"
 
 CompositeShape::CompositeShape():

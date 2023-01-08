@@ -41,7 +41,6 @@ Shape* inputComplexquad(std::istream &input)
   double y3 = 0.0;
   double x4 = 0.0;
   double y4 = 0.0;
-  point_t point[4];
   input >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> x4 >> y4;
   if (!input)
   {

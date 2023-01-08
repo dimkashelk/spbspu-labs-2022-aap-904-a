@@ -32,7 +32,6 @@ odintsov::CompositeShape::CompositeShape(odintsov::CompositeShape&& shp):
   shapes(shp.shapes)
 {
   shp.shapes = nullptr;
-  shp.cap_ = 0;
   shp.size_ = 0;
 }
 

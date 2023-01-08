@@ -73,8 +73,8 @@ rectangle_t Complexquad::getFrameRect() const
 
 void Complexquad::move(point_t point)
 {
-  return move(point.x - triangle1[2].x, point.y - triangle1[2].y);
-  return move(point.x - triangle2[2].x, point.y - triangle2[2].y);
+  point_t center = triangle1[2] = triangle2[2];
+  return move(point.x - center.x, point.y - center.y);
 }
 
 void Complexquad::move(double dx, double dy)
@@ -101,14 +101,15 @@ void Complexquad::scale(double k) noexcept
   }
   else
   {
-    triangle1[0].x = k * (triangle1[0].x - triangle1[2].x) + triangle1[2].x;
-    triangle1[0].y = k * (triangle1[0].y - triangle1[2].y) + triangle1[2].y;
-    triangle1[1].x = k * (triangle1[1].x - triangle1[2].x) + triangle1[2].x;
-    triangle1[1].y = k * (triangle1[1].y - triangle1[2].y) + triangle1[2].y;
-    triangle2[0].x = k * (triangle2[0].x - triangle1[2].x) + triangle1[2].x;
-    triangle2[0].y = k * (triangle2[0].y - triangle1[2].y) + triangle1[2].y;
-    triangle2[1].x = k * (triangle2[1].x - triangle1[2].x) + triangle1[2].x;
-    triangle2[1].y = k * (triangle2[1].y - triangle1[2].y) + triangle1[2].y;
+    point_t center = triangle1[2] = triangle2[2];
+    triangle1[0].x = k * (triangle1[0].x - center.x) + center.x;
+    triangle1[0].y = k * (triangle1[0].y - center.y) + center.y;
+    triangle1[1].x = k * (triangle1[1].x - center.x) + center.x;
+    triangle1[1].y = k * (triangle1[1].y - center.y) + center.y;
+    triangle2[0].x = k * (triangle2[0].x - center.x) + center.x;
+    triangle2[0].y = k * (triangle2[0].y - center.y) + center.y;
+    triangle2[1].x = k * (triangle2[1].x - center.x) + center.x;
+    triangle2[1].y = k * (triangle2[1].y - center.y) + center.y;
   }
 }
 

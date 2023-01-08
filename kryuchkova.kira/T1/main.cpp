@@ -24,7 +24,7 @@ int main()
     if (!std::cin)
     {
       std::cerr << "invalid input";
-      //return 1;
+      return 1;
     }
     if (name == "RECTANGLE")
     {
@@ -36,7 +36,7 @@ int main()
       catch (...)
       {
         std::cerr << "invalid input";
-        return 1;
+        //return 1;
       }
     }
     else if (name == "SQUARE")
@@ -49,7 +49,7 @@ int main()
       catch (...)
       {
         std::cerr << "invalid input";
-        return 1;
+        //return 1;
       }
     }
     else if (name == "CIRCLE")
@@ -62,7 +62,7 @@ int main()
       catch (...)
       {
         std::cerr << "invalid input";
-        return 1;
+        //return 1;
       }
     }
     else if (name == "SCALE")
@@ -81,7 +81,7 @@ int main()
       catch(...)
       {
         std::cerr << "invalid scaling input";
-        return 1;
+        //return 1;
       }
       printShapes(compositeShape);
     }

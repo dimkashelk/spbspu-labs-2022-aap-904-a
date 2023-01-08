@@ -85,9 +85,29 @@ CompositeShape::~CompositeShape()
 
 void CompositeShape::scale(scale_t scale)
 {
+  if (scale.scale > 0)
+  {
+    scaleWithoutChecking(scale);
+  }
+  else
+  {
+    throw std::invalid_argument("Invalid scale size");
+  }
+}
+
+void CompositeShape::scaleCheck(scale_t scale)
+{
   for (size_t i = 0; i < size_; i++)
   {
-    iScale(shapes[i], scale);
+    iScaleCheck(shapes[i], scale);
+  }
+}
+
+void CompositeShape::scaleWithoutChecking(scale_t scale)
+{
+  for (size_t i = 0; i < size_; i++)
+  {
+    iScaleWithoutChecking(shapes[i], scale);
   }
 }
 

@@ -3,6 +3,7 @@
 #include "base-types.hpp"
 #include "shape.hpp"
 
-void iScale(Shape *shape, scale_t scale);
+void iScaleCheck(Shape *shape, scale_t scale);
+void iScaleWithoutChecking(Shape *shape, scale_t scale);
 
 #endif

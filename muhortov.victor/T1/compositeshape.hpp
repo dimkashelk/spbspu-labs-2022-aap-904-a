@@ -21,6 +21,8 @@ public:
   void move(point_t position);
   void move(double delta_x, double delta_y);
   void scale(scale_t scale);
+  void scaleCheck(scale_t scale);
+  void scaleWithoutChecking(scale_t scale);
   ~CompositeShape();
 private:
   Shape **shapes;

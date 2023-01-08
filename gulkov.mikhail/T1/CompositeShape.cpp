@@ -1,6 +1,7 @@
 #include "CompositeShape.hpp"
 #include "IsoScale.hpp"
 #include <cmath>
+#include <stdexcept>
 
 CompositeShape::CompositeShape(size_t capacity):
   shapes(new Shape *[capacity]),
@@ -110,6 +111,10 @@ double CompositeShape::getArea() const
 
 rectangle_t CompositeShape::getFrameRect() const
 {
+  if (size_ == 0)
+  {
+    throw std::invalid_argument("No shapes");
+  }
   double a = 0.0;
   double b = 0.0;
   double c = 0.0;

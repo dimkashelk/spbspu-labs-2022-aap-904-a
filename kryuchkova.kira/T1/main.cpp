@@ -22,6 +22,7 @@ int main()
   bool invalidShape = false;
   bool isScaleCalled = false;
   bool invalidScale = false;
+  bool invalidComposite = false;
   while (std::cin)
   {
     std::string name = "";
@@ -30,27 +31,38 @@ int main()
     {
       break;
     }
-    try
+
+    if (name == "RECTANGLE" || name == "SQUARE" || name == "CIRCLE")
     {
-      if (name == "RECTANGLE")
+      kryuchkova::Shape *shape = nullptr;
+      try
       {
-        kryuchkova::Shape *shape = kryuchkova::inputRectangle(std::cin);
+        if (name == "RECTANGLE")
+        {
+          shape = kryuchkova::inputRectangle(std::cin);
+        }
+        else if (name == "SQUARE")
+        {
+          shape = kryuchkova::inputSquare(std::cin);
+        }
+        else if (name == "CIRCLE")
+        {
+          shape = kryuchkova::inputCircle(std::cin);
+        }
+      }
+      catch(...)
+      {
+        invalidShape = true;
+      }
+      try
+      {
         compositeShape.push_back(shape);
       }
-      else if (name == "SQUARE")
+      catch(...)
       {
-        kryuchkova::Shape *shape = kryuchkova::inputSquare(std::cin);
-        compositeShape.push_back(shape);
+        invalidComposite = true;
       }
-      else if (name == "CIRCLE")
-      {
-        kryuchkova::Shape *shape = kryuchkova::inputCircle(std::cin);
-        compositeShape.push_back(shape);
-      }
-    }
-    catch(...)
-    {
-      invalidShape = true;;
+
     }
 
     if (name == "SCALE")
@@ -76,6 +88,7 @@ int main()
       std::cout << '\n';
     }
   }
+
   if (!isScaleCalled)
   {
     std::cerr << "Scale was not called";
@@ -88,6 +101,11 @@ int main()
   if (invalidScale)
   {
     std::cerr << "Invalid scaling";
+    return 1;
+  }
+  if (invalidComposite)
+  {
+    std::cerr << "Invalid composite";
     return 1;
   }
   return 0;

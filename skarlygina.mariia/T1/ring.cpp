@@ -36,10 +36,9 @@ void Ring::move(point_t position)
 
 void Ring::scale(double k)
 {
-  double center_x = getFrameRectangle().position.x;
-  double center_y = getFrameRectangle().position.y;
+  point_t center = getFrameRectangle().position;
   radius_small_ *= k;
   radius_big_ *= k;
-  center_.x = center_x * k;
-  center_.y = center_y * k;
+  center_.x = center.x * k;
+  center_.y = center.y * k;
 }

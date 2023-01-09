@@ -23,9 +23,7 @@ point_t calculateVectorSum(point_t position, double delta_x, double delta_y)
 
 point_t calculateVectorDifference(point_t position, double delta_x, double delta_y)
 {
-  position.x -= delta_x;
-  position.y -= delta_y;
-  return position;
+  return calculateVectorSum(position, -delta_x, -delta_y);
 }
 
 point_t multiplicationVector(point_t position, double k)

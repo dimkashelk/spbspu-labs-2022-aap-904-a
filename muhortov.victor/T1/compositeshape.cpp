@@ -6,7 +6,7 @@
 
 CompositeShape::CompositeShape(size_t capacity):
   shapes(new Shape * [capacity]),
-  capacity_(2),
+  capacity_(capacity),
   size_(0)
 {}
 

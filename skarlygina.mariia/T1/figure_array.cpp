@@ -12,7 +12,7 @@ void FigureArray::deleteArray(size_t size, Shape** array_figures)
   delete[] array_figures;
 }
 
-void FigureArray::extendArray(Shape** &array_figure, Shape* figure, size_t size)
+Shape** FigureArray::extendArray(Shape** array_figure, Shape* figure, size_t size)
 {
   size_t capacity = size + 1;
   Shape** array_extended = new Shape*[capacity];
@@ -23,9 +23,8 @@ void FigureArray::extendArray(Shape** &array_figure, Shape* figure, size_t size)
       array_extended[i] = array_figure[i];
     }
   }
-  delete[] array_figure;
   array_extended[capacity - 1] = figure;
-  array_figure = array_extended;
+  return array_extended;
 }
 
 void FigureArray::deleteArgument(Shape* figure, bool isCommand)

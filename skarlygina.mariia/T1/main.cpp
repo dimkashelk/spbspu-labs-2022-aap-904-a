@@ -27,7 +27,9 @@ int main()
         double parameters[4]{};
         std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
         rectangle = new Rectangle({parameters[0], parameters[1]}, {parameters[2], parameters[3]});
-        FigureArray::extendArray(array_figures, rectangle, size);
+        Shape** extend_array = FigureArray::extendArray(array_figures, rectangle, size);
+        delete[] array_figures;
+        array_figures = extend_array;
         size++;
       }
       catch (const std::invalid_argument& e)
@@ -51,7 +53,8 @@ int main()
         double parameters[4]{};
         std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
         ring = new Ring({parameters[0], parameters[1]}, parameters[3], parameters[2]);
-        FigureArray::extendArray(array_figures, ring, size);
+        Shape** extend_array = FigureArray::extendArray(array_figures, ring, size);
+        delete[] array_figures;
         size++;
       }
       catch (const std::invalid_argument& e)
@@ -75,7 +78,8 @@ int main()
         double parameters[4]{};
         std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
         ellipse = new Ellipse({parameters[0], parameters[1]}, parameters[2], parameters[3]);
-        FigureArray::extendArray(array_figures, ellipse, size);
+        Shape** extend_array = FigureArray::extendArray(array_figures, ellipse, size);
+        delete[] array_figures;
         size++;
       }
       catch (const std::invalid_argument& e)

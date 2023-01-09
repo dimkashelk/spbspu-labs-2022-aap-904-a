@@ -12,7 +12,7 @@ public:
   CompositeShape(Shape **shapes, size_t capacity, size_t size);
   ~CompositeShape();
   CompositeShape &operator=(const CompositeShape &compositeShape);
-  CompositeShape &operator=(CompositeShape &compositeShape);
+  CompositeShape &operator=(CompositeShape &&compositeShape) noexcept;
   CompositeShape *clone() const;
   void push_back(Shape *shape);
   void push_back(const Shape *shape);

@@ -203,7 +203,7 @@ const Shape* CompositeShape::at(size_t id) const
   return shape_[id];
 }
 
-void changeShape(Shape **shape, Shape **newshape)
+void CompositeShape::changeShape(Shape **shape, Shape **newshape)
 {
   delete[] shape;
   shape = newshape;

@@ -44,6 +44,7 @@ void Ring::move(point_t position)
 void Ring::move(double delta_x, double delta_y)
 {
   EllipseOne_->move(delta_x, delta_y);
+  EllipseTwo_->move(delta_x, delta_y);
 }
 
 void Ring::makeScale(double k)

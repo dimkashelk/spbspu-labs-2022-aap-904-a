@@ -81,7 +81,7 @@ void Triangle::move(double dx, double dy)
   }
 }
 
-void Triangle::toscale(double k) noexcept
+void Triangle::scale(double k) noexcept
 {
   point_t center = findCenterOfTriangle();
   for (size_t i = 0; i < 3; i++)

@@ -96,10 +96,10 @@ void Complexquad::move(double dx, double dy)
   triangle2->move(dx, dy);
 }
 
-void Complexquad::toscale(double k) noexcept
+void Complexquad::scale(double k) noexcept
 {
-  triangle1->toscale(k);
-  triangle2->toscale(k);
+  triangle1->scale(k);
+  triangle2->scale(k);
 }
 
 Shape* Complexquad::clone() const

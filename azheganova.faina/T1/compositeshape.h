@@ -21,6 +21,7 @@ class CompositeShape
     rectangle_t getFrameRect() const;
     void move(double dx, double dy);
     void move(point_t position);
+    void checkScale(double k);
     void scale(double k);
     void scale(const point_t & position, double k);
     Shape* at(size_t id);

@@ -15,7 +15,5 @@ struct rectangle_t
 };
 
 rectangle_t makeFrame(point_t point1, point_t point2);
-void checkScale(double k);
-void toscale(double k);
 
 #endif

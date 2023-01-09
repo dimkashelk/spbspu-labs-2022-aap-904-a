@@ -156,6 +156,18 @@ void CompositeShape::move(double dx, double dy)
   }
 }
 
+void CompositeShape::checkScale(double k)
+{
+  if (k <= 0)
+  {
+    throw std::logic_error("error");
+  }
+  else
+  {
+    scale(k);
+  }
+}
+
 void CompositeShape::scale(const point_t & position, double k)
 {
   for (size_t i = 0; i < size_; ++i)

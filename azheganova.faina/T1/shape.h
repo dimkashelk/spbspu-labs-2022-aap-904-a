@@ -10,7 +10,7 @@ class Shape
     virtual void move(double dx, double dy) = 0;
     virtual void move(point_t position) = 0;
     virtual void checkScale(double k);
-    virtual void toscale(double k) noexcept;
+    virtual void scale(double k) noexcept;
     virtual ~Shape() = default;
     virtual Shape * clone() const = 0;
 };

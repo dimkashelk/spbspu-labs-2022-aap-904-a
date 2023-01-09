@@ -17,7 +17,7 @@ class Complexquad: public Shape
     void move(point_t position);
     void move(double dx, double dy);
     void checkScale(double k);
-    void toscale(double k) noexcept;
+    void scale(double k) noexcept;
     Shape * clone() const override;
   private:
     point_t center;

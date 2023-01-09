@@ -12,6 +12,7 @@ namespace tarasenko
    void move(point_t pos) override;
    void move(double dx, double dy) override;
    void scale(double k) override;
+   void scaleRelativeToPoint(double k, point_t point);
    Shape * clone() const override;
   private:
    point_t vertexes[3];

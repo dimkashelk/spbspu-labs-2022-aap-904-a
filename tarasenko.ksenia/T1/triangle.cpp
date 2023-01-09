@@ -68,6 +68,16 @@ void tarasenko::Triangle::scale(double k)
     vertexes[i].y_ = center.y_ + (vertexes[i].y_ - center.y_) * k;
   }
 }
+void tarasenko::Triangle::scaleRelativeToPoint(double k, point_t point)
+{
+  this->checkCoefficient(k);
+  for (int i = 0; i < 3; i++)
+  {
+    vertexes[i].x_ = point.x_ + (vertexes[i].x_ - point.x_) * k;
+    vertexes[i].y_ = point.y_ + (vertexes[i].y_ - point.y_) * k;
+  }
+}
+
 tarasenko::Shape * tarasenko::Triangle::clone() const
 {
   return new Triangle(vertexes[0], vertexes[1], vertexes[2]);

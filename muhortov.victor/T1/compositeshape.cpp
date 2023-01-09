@@ -218,25 +218,22 @@ void CompositeShape::destruct(Shape **shape, size_t size) const
 
 CompositeShape &CompositeShape::operator=(const CompositeShape &compositeShape)
 {
-  if (std::addressof(compositeShape) != this)
+  Shape **cloneShapes = new Shape *[compositeShape.capacity_];
+  for (size_t i = 0; i < compositeShape.size_; i++)
   {
-    Shape **cloneShapes = new Shape *[compositeShape.capacity_];
-    for (size_t i = 0; i < compositeShape.size_; i++)
+    try
     {
-      try
-      {
-        cloneShapes[i] = compositeShape[i]->clone();
-      }
-      catch (...)
-      {
-        destruct(cloneShapes, i);
-        throw;
-      }
+      cloneShapes[i] = compositeShape[i]->clone();
     }
-    destruct(shapes, size_);
-    shapes = cloneShapes;
-    size_ = compositeShape.size_;
-    capacity_ = compositeShape.capacity_;
+    catch (...)
+    {
+      destruct(cloneShapes, i);
+      throw;
+    }
   }
+  destruct(shapes, size_);
+  shapes = cloneShapes;
+  size_ = compositeShape.size_;
+  capacity_ = compositeShape.capacity_;
   return * this;
 }

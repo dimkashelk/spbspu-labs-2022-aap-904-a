@@ -91,6 +91,21 @@ void tarasenko::CompositeShape::push_back(Shape * shp)
   size_++;
 }
 
+void tarasenko::CompositeShape::push_back(const tarasenko::Shape * shp)
+{
+  Shape * cloned_shp = nullptr;
+  try
+  {
+    cloned_shp = shp->clone();
+  }
+  catch (...)
+  {
+    delete cloned_shp;
+    throw;
+  }
+  push_back(cloned_shp);
+}
+
 void tarasenko::CompositeShape::pop_back()
 {
   delete shapes[size_ - 1];

@@ -16,6 +16,7 @@ namespace tarasenko
    void move(double dx, double dy);
    void scale(double k);
    void push_back(Shape * shp);
+   void push_back(const Shape * shp);
    void pop_back();
    Shape * at(size_t id);
    Shape * operator[](size_t id);

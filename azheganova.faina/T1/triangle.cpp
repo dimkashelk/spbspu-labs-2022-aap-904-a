@@ -20,7 +20,7 @@ Shape* inputTriangle(std::istream &input)
 
 double findSide(point_t p1, point_t p2)
 {
-  return pow((pow((p2.x - p1.x), 2) + pow((p2.y - p1.y), 2 )), 0.5);
+  return pow((pow((p2.x - p1.x), 2) + pow((p2.y - p1.y), 2)), 0.5);
 }
 
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
@@ -84,7 +84,7 @@ void Triangle::scale(double k) noexcept
 {
   if (k <= 0)
   {
-    std::cerr << "error";
+    throw std::logic_error("error");
   }
   else
   {

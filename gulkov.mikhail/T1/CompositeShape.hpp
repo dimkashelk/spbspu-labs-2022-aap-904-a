@@ -15,6 +15,7 @@ public:
   CompositeShape &operator=(CompositeShape &&compositeShape) noexcept;
   CompositeShape *clone() const;
   void push_back(Shape *shape);
+  void safe_push_back(Shape *shape);
   void push_back(const Shape *shape);
   void pop_back();
   Shape *at(size_t i);

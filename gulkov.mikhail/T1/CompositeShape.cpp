@@ -60,6 +60,18 @@ void CompositeShape::push_back(Shape *shape)
   shapes[size_++] = shape;
 }
 
+void CompositeShape::safe_push_back(Shape *shape)
+{
+  try
+  {
+    push_back(shape);
+  }
+  catch (...)
+  {
+    delete shape;
+  }
+}
+
 void CompositeShape::pop_back()
 {
   delete shapes[--size_];

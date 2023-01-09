@@ -18,7 +18,6 @@ Ring::Ring(Ellipse smallEllipse, Ellipse bigEllipse):
 
 double Ring::getArea() const
 {
-  const double pi = 3.1416;
   return (bigEllipse_.getArea() - smallEllipse_.getArea());
 }
 

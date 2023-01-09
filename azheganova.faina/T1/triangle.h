@@ -6,7 +6,7 @@
 
 Shape* inputTriangle(std::istream &input);
 
-class Triangle: virtual public Shape
+class Triangle: public Shape
 {
   public:
     Triangle(point_t pos1, point_t pos2, point_t pos3);
@@ -14,7 +14,8 @@ class Triangle: virtual public Shape
     rectangle_t getFrameRect() const;
     void move(point_t position);
     void move(double dx, double dy);
-    void scale(double k) noexcept;
+    void checkScale(double k);
+    void toscale(double k) noexcept;
     Shape * clone() const override;
   private:
     point_t triangle1[3];

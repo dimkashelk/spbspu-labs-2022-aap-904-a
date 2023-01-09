@@ -80,20 +80,14 @@ void Triangle::move(double dx, double dy)
     triangle1[i] = triangle1[i] + delta;
   }
 }
-void Triangle::scale(double k) noexcept
+
+void Triangle::toscale(double k) noexcept
 {
-  if (k <= 0)
+  point_t center = findCenterOfTriangle();
+  for (size_t i = 0; i < 3; i++)
   {
-    throw std::logic_error("error");
-  }
-  else
-  {
-    point_t center = findCenterOfTriangle();
-    for (size_t i = 0; i < 3; i++)
-    {
-      triangle1[i].x = k * (triangle1[i].x - center.x) + center.x;
-      triangle1[i].y = k * (triangle1[i].y - center.y) + center.y;
-    }
+    triangle1[i].x = k * (triangle1[i].x - center.x) + center.x;
+    triangle1[i].y = k * (triangle1[i].y - center.y) + center.y;
   }
 }
 

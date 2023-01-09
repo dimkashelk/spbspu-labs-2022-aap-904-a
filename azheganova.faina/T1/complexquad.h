@@ -7,7 +7,7 @@
 
 Shape* inputComplexquad(std::istream &input);
 
-class Complexquad: virtual public Shape
+class Complexquad: public Shape
 {
   public:
     Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
@@ -16,12 +16,13 @@ class Complexquad: virtual public Shape
     point_t findCenterOfTriangle();
     void move(point_t position);
     void move(double dx, double dy);
-    void scale(double k) noexcept;
+    void checkScale(double k);
+    void toscale(double k) noexcept;
     Shape * clone() const override;
   private:
+    point_t center;
     Shape* triangle1;
     Shape* triangle2;
-    point_t center;
     point_t p1;
     point_t p2;
     point_t p3;

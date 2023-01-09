@@ -4,8 +4,6 @@
 #include "Ellipse.hpp"
 #include "Concave.hpp"
 #include "Ring.hpp"
-#include "CompositeShape.hpp"
-#include <iostream>
 
 Shape *makeRectangle(std::istream &input)
 {

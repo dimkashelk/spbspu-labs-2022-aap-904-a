@@ -8,7 +8,7 @@ Ring::Ring(point_t one, double first, double second):
 {
   if (first <= 0.0 || second <= 0.0 || first < second)
   {
-    throw std::invalid_argument("Error: invalid ring radius");
+    throw std::invalid_argument("invalid ring radius");
   }
 }
 

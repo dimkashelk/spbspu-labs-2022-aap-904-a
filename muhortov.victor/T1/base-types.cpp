@@ -1,37 +1,13 @@
 #include "base-types.hpp"
 #include <cmath>
 #include <stdexcept>
+#include <iostream>
 
 double calculatePointsDistance(const point_t &p1, const point_t &p2)
 {
   double line_x = p1.x - p2.x;
   double line_y = p1.y - p2.y;
   return std::sqrt(line_x * line_x + line_y * line_y);
-}
-
-std::array< point_t, 4 > findLastDiamodPosition(point_t one, point_t two, point_t three)
-{
-  if (one.x == two.x || one.y == two.y)
-  {
-    return {one, two, three, {std::abs(one.x - two.x), std::abs(one.y - two.y)}};
-  }
-  else if (one.x == three.x || one.y == three.y)
-  {
-    return {one, three, two, {std::abs(one.x - three.x), std::abs(one.y - three.y)}};
-  }
-  else if (three.x == two.x || three.y == two.y)
-  {
-    return {three, two, one, {std::abs(three.x - two.x), std::abs(three.y - two.y)}};
-  }
-  else
-  {
-    throw std::invalid_argument("Invalid arguments for diamond");
-  }
-}
-
-point_t findDiamondCenter(point_t one, point_t two)
-{
-  return {(one.x - two.x) / 2, (one.y - two.y) / 2};
 }
 
 point_t findDeltaScale(point_t pos, scale_t scale)
@@ -103,3 +79,41 @@ bool checkingConcave(const point_t &one, const point_t &two, const point_t &thre
 {
   return (checkingTriangle(one, two, three) || one.x == four.x || one.y == four.y || checkingPosition(one, two, three, four));
 }
+
+point_t calcPosXY(point_t pos, point_t center)
+{
+  return {pos.x - (pos.x - center.x) * 2.0, pos.y - (pos.y - center.y) * 2.0};
+}
+
+std::array< point_t, 5 > findLastDiamodPosition(point_t one, point_t two, point_t three)
+{
+  if (one.x == two.x && one.y == three.y)
+  {
+    return {one, two, three, calcPosXY(two, one), calcPosXY(three, one)};
+  }
+  else if(one.y == two.y && one.x == three.x)
+  {
+    return {one, three, two, calcPosXY(three, one), calcPosXY(two, one)};
+  }
+  else if(two.x == one.x && two.y == three.y)
+  {
+    return {two, one, three, calcPosXY(one, two), calcPosXY(three, two)};
+  }
+  else if(two.y == one.y && two.x == three.x)
+  {
+    return {two, three, one, calcPosXY(three, two), calcPosXY(one, two)};
+  }
+  else if(three.x == one.x && three.y == two.y)
+  {
+    return {three, one, two, calcPosXY(one, three), calcPosXY(two, three)};
+  }
+  else if(three.y == one.y && three.x == two.x)
+  {
+    return {three, two, one, calcPosXY(two, three), calcPosXY(one, three)};
+  }
+  else
+  {
+    throw std::invalid_argument("Invalid value for DIAMOND");
+  }
+}
+

@@ -4,8 +4,8 @@
 
 Diamond::Diamond(point_t one, point_t two, point_t three):
   positions({findLastDiamodPosition(one, two, three)}),
-  d1(std::abs(calculatePointsDistance(positions[0], positions[1]))),
-  d2(std::abs(calculatePointsDistance(positions[2], positions[3])))
+  d1(std::abs(calculatePointsDistance(positions[1], positions[3]))),
+  d2(std::abs(calculatePointsDistance(positions[2], positions[4])))
   {}
 
 double Diamond::getArea() const
@@ -15,14 +15,7 @@ double Diamond::getArea() const
 
 rectangle_t Diamond::getFrameRect() const
 {
-  if (positions[0].x == positions[1].y)
-  {
-    return {findDiamondCenter(positions[0], positions[1]), d1, d2};
-  }
-  else
-  {
-    return {findDiamondCenter(positions[0], positions[1]), d2, d1};
-  }
+  return {positions[0], d2, d1};
 }
 
 void Diamond::move(point_t position)
@@ -42,13 +35,15 @@ void Diamond::move(double delta_x, double delta_y)
 void Diamond::scaleWithoutCheck(double k)
 {
   point_t center = getFrameRect().pos;
-  for (point_t &position: positions)
+  for (size_t i = 1; i < 5; i++)
   {
-    position = calculateScale(position, center, k);
+    positions[i] = calculateScale(positions[i], center, k);
   }
+  d1 *= k;
+  d2 *= k;
 }
 
 Shape *Diamond::clone() const
 {
-  return new Diamond(positions[0], positions[1] , positions[2]);
+  return new Diamond(positions[1], positions[2] , positions[3]);
 }

@@ -6,7 +6,7 @@ Rectangle::Rectangle(point_t one, point_t two):
 {
   if (rectangle.width <= 0.0 || rectangle.height <= 0.0)
   {
-    throw std::invalid_argument("Error: invalid rectangle size");
+    throw std::invalid_argument("invalid rectangle size");
   }
 }
 

@@ -15,9 +15,8 @@ public:
   void scaleWithoutCheck(double k) override;
   Shape *clone() const override;
 private:
-  std::array< point_t, 4 > positions;
+  std::array< point_t, 5 > positions;
   double d1, d2;
-
 };
 
 #endif

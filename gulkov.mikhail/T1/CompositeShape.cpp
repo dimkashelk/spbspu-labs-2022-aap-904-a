@@ -57,12 +57,12 @@ void CompositeShape::pop_back()
 
 const Shape *CompositeShape::at(size_t i) const
 {
-  return shapes[i];
+  return i > size_ ? throw std::invalid_argument("invalid size") : shapes[i];
 }
 
 Shape *CompositeShape::at(size_t i)
 {
-  return shapes[i];
+  return i > size_ ? throw std::invalid_argument("invalid size") : shapes[i];
 }
 
 Shape *CompositeShape::operator[](size_t i)
@@ -106,8 +106,8 @@ void CompositeShape::move(point_t position)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    point_t offset = getVectorDiff(position, getFrameRect());
-    shapes[i]->move(offset);
+    //point_t offset = getVectorDiff(position, getFrameRect());
+    shapes[i]->move(position);
   }
 }
 

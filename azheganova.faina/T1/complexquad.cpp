@@ -118,6 +118,6 @@ Shape* Complexquad::clone() const
 
 Complexquad::~Complexquad()
 {
-  delete[] triangle_1;
-  delete[] triangle_2;
+  delete triangle_1;
+  delete triangle_2;
 }

@@ -47,19 +47,19 @@ int main()
       {
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
-        delete[] shape;
+        delete shape;
       }
       if (name == "TRIANGLE")
       {
         Shape *shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
-        delete[] shape;
+        delete shape;
       }
       if (name == "COMPLEXQUAD")
       {
         Shape *shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
-        delete[] shape;
+        delete shape;
       }
     }
     catch (const std::logic_error &e)

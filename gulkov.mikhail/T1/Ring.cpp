@@ -12,6 +12,8 @@ Ring::Ring(point_t center, double r1, double r2):
 {
   if (EllipseOne_->getArea() < EllipseTwo_->getArea())
   {
+    delete EllipseOne_;
+    delete EllipseTwo_;
     throw std::invalid_argument("Bad input, invalid ellipses radius's, => invalid ring");
   }
 }
@@ -57,3 +59,4 @@ Ring::~Ring()
   delete EllipseOne_;
   delete EllipseTwo_;
 }
++

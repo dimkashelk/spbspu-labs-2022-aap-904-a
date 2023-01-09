@@ -15,8 +15,8 @@ namespace tarasenko
    Shape * clone() const override;
   private:
    point_t vertexes[3];
-   point_t center;
-   double a, b, c;
+   point_t getCenter() const;
+   double * getSides(point_t point_1, point_t point_2, point_t point_3) const;
   };
 }
 #endif

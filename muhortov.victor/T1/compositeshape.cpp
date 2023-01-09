@@ -34,12 +34,12 @@ void CompositeShape::push_back(const Shape *shape)
   Shape *clone = shape->clone();
   try
   {
+
     push_back(clone);
   }
   catch (...)
   {
-    delete shape;
-    //delete clone;
+    delete clone;
     throw;
   }
 }

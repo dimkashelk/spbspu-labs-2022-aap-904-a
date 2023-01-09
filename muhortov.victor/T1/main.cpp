@@ -21,26 +21,50 @@ int main()
       if (input == "RECTANGLE")
       {
         temp = createRectangle(std::cin);
-        compositeShape.push_back(temp);
-        temp = nullptr;
+        try
+        {
+          compositeShape.push_back(temp);
+        }
+        catch (...)
+        {
+          delete temp;
+        }
       }
       if (input == "RING")
       {
         temp = createRing(std::cin);
-        compositeShape.push_back(temp);
-        temp = nullptr;
+        try
+        {
+          compositeShape.push_back(temp);
+        }
+        catch (...)
+        {
+          delete temp;
+        }
       }
       if (input == "CONCAVE")
       {
         temp = createConcave(std::cin);
-        compositeShape.push_back(temp);
-        temp = nullptr;
+        try
+        {
+          compositeShape.push_back(temp);
+        }
+        catch (...)
+        {
+          delete temp;
+        }
       }
       if (input == "DIAMOND")
       {
         temp = createDiamond(std::cin);
-        compositeShape.push_back(temp);
-        temp = nullptr;
+        try
+        {
+          compositeShape.push_back(temp);
+        }
+        catch (...)
+        {
+          delete temp;
+        }
       }
       if (input == "SCALE")
       {

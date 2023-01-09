@@ -8,6 +8,7 @@ class Diamond: public Shape
 {
 public:
   Diamond(point_t one, point_t two, point_t three);
+  Rectangle findLastDiamondPosition(point_t one, point_t two, point_t three);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;

@@ -74,36 +74,3 @@ point_t calcPosXY(point_t pos, point_t center)
 {
   return {pos.x - (pos.x - center.x) * 2.0, pos.y - (pos.y - center.y) * 2.0};
 }
-
-std::array< point_t, 5 > findLastDiamondPosition(point_t one, point_t two, point_t three)
-{
-  if (one.x == two.x && one.y == three.y)
-  {
-    return {one, two, three, calcPosXY(two, one), calcPosXY(three, one)};
-  }
-  else if (one.y == two.y && one.x == three.x)
-  {
-    return {one, three, two, calcPosXY(three, one), calcPosXY(two, one)};
-  }
-  else if (two.x == one.x && two.y == three.y)
-  {
-    return {two, one, three, calcPosXY(one, two), calcPosXY(three, two)};
-  }
-  else if (two.y == one.y && two.x == three.x)
-  {
-    return {two, three, one, calcPosXY(three, two), calcPosXY(one, two)};
-  }
-  else if (three.x == one.x && three.y == two.y)
-  {
-    return {three, one, two, calcPosXY(one, three), calcPosXY(two, three)};
-  }
-  else if (three.y == one.y && three.x == two.x)
-  {
-    return {three, two, one, calcPosXY(two, three), calcPosXY(one, three)};
-  }
-  else
-  {
-    throw std::invalid_argument("Invalid value for DIAMOND");
-  }
-}
-

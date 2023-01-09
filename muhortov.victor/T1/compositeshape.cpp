@@ -4,15 +4,15 @@
 #include "iscale.hpp"
 #include "base-types.hpp"
 
-CompositeShape::CompositeShape(size_t capacity):
-  shapes(new Shape * [capacity]),
-  capacity_(capacity),
+CompositeShape::CompositeShape():
+  capacity_(1),
+  shapes(new Shape * [capacity_]),
   size_(0)
 {}
 
 CompositeShape::CompositeShape(const CompositeShape &compositeShape):
-  shapes(new Shape *[compositeShape.capacity_]),
   capacity_(compositeShape.capacity_),
+  shapes(new Shape *[compositeShape.capacity_]),
   size_(compositeShape.size_)
 {
   for (size_t i = 0; i < size_; i++)
@@ -47,8 +47,8 @@ void CompositeShape::push_back(Shape *shape)
 {
   if (capacity_ == size_)
   {
-    Shape **extendShapes = new Shape *[capacity_ + 10];
-    capacity_ += 10;
+    Shape **extendShapes = new Shape *[capacity_ + 2];
+    capacity_ += 2;
     for (size_t i = 0; i < size_; i++)
     {
       extendShapes[i] = shapes[i];
@@ -164,7 +164,7 @@ double CompositeShape::getArea() const
 
 rectangle_t CompositeShape::getFrameRect() const
 {
-  if (size_ == 0)
+  if (empty())
   {
     throw std::invalid_argument("No shapes");
   }
@@ -202,8 +202,8 @@ CompositeShape *CompositeShape::clone() const
 }
 
 CompositeShape::CompositeShape(Shape ** shapes, size_t capacity, size_t size):
-  shapes(shapes),
   capacity_(capacity),
+  shapes(shapes),
   size_(size)
 {}
 
@@ -216,38 +216,27 @@ void CompositeShape::destruct(Shape **shape, size_t size) const
   delete [] shape;
 }
 
-CompositeShape &CompositeShape::operator=(const CompositeShape & compositeShape)
-{
-  Shape **cloneShapes = new Shape * [compositeShape.capacity_];
-  for (size_t i = 0; i < compositeShape.size_; i++)
-  {
-    try
-    {
-      cloneShapes[i] = compositeShape[i]->clone();
-    }
-    catch (...)
-    {
-      destruct(cloneShapes, i);
-      throw;
-    }
-  }
-  destruct(shapes, size_);
-  shapes = cloneShapes;
-  size_ = compositeShape.size_;
-  capacity_ = compositeShape.capacity_;
-  return * this;
-}
-
-CompositeShape &::CompositeShape::operator=(CompositeShape &&compositeShape)
+CompositeShape &CompositeShape::operator=(const CompositeShape &compositeShape)
 {
   if (std::addressof(compositeShape) != this)
   {
+    Shape **cloneShapes = new Shape *[compositeShape.capacity_];
+    for (size_t i = 0; i < compositeShape.size_; i++)
+    {
+      try
+      {
+        cloneShapes[i] = compositeShape[i]->clone();
+      }
+      catch (...)
+      {
+        destruct(cloneShapes, i);
+        throw;
+      }
+    }
     destruct(shapes, size_);
+    shapes = cloneShapes;
     size_ = compositeShape.size_;
     capacity_ = compositeShape.capacity_;
-    shapes = compositeShape.shapes;
-    compositeShape.shapes = nullptr;
-    compositeShape.size_ = 0;
   }
-  return *this;
+  return * this;
 }

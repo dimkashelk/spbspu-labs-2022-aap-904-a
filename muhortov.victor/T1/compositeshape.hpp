@@ -6,12 +6,11 @@
 class CompositeShape
 {
 public:
-  explicit CompositeShape(size_t capacity);
+  explicit CompositeShape();
   CompositeShape(const CompositeShape &compositeShape);
   CompositeShape(Shape **shapes, size_t capacity, size_t size);
-  ~CompositeShape();
   CompositeShape &operator=(const CompositeShape &compositeShape);
-  CompositeShape &operator=(CompositeShape &&compositeShape);
+  ~CompositeShape();
   CompositeShape * clone() const;
   void push_back(Shape *shape);
   void push_back(const Shape *shape);
@@ -30,8 +29,8 @@ public:
   void scaleCheck(scale_t scale);
   void scaleWithoutChecking(scale_t scale);
 private:
-  Shape **shapes;
   size_t capacity_;
+  Shape **shapes;
   size_t size_;
   void destruct(Shape **shape, size_t size) const;
 };

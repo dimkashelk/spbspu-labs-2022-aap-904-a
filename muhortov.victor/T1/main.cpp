@@ -6,8 +6,7 @@
 
 int main()
 {
-  size_t capacity = 10;
-  CompositeShape compositeShape(capacity);
+  CompositeShape compositeShape;
   bool is_scale = false;
   scale_t scale = {{0.0, 0.0}, 0.0};
   std::string input = " ";

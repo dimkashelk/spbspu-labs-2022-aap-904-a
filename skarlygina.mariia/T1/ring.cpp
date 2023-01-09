@@ -12,8 +12,8 @@ Ring::Ring(point_t center, double radius_small, double radius_big):
 }
 
 Ring::Ring(Ellipse smallEllipse, Ellipse bigEllipse):
-	smallEllipse_(smallEllipse),
-	bigEllipse_(bigEllipse)
+  smallEllipse_(smallEllipse),
+  bigEllipse_(bigEllipse)
 {}
 
 double Ring::getArea() const

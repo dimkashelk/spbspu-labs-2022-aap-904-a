@@ -14,5 +14,6 @@ public:
 private:
   point_t center_;
   double radius_vertical_, radius_horizontal_;
+  bool isBadEllipse();
 };
 #endif

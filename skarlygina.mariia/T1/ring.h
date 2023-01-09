@@ -13,5 +13,6 @@ public:
 private:
   point_t center_;
   double radius_small_, radius_big_;
+  bool isBadRing();
 };
 #endif

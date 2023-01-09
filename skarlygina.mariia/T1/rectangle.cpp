@@ -1,10 +1,20 @@
 #include "rectangle.h"
 #include <cmath>
-
+#include <stdexcept>
 Rectangle::Rectangle(point_t left_down, point_t right_up):
   left_down_(left_down),
   right_up_(right_up)
-{}
+{
+  if (isBadRectangle())
+  {
+    throw std::invalid_argument("Error: false rectangle parameters");
+  }
+}
+
+bool Rectangle::isBadRectangle()
+{
+  return (left_down_.x >= right_up_.x || left_down_.y >= right_up_.y);
+}
 
 rectangle_t Rectangle::getFrameRectangle() const
 {

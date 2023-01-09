@@ -1,10 +1,20 @@
 #include "ellipse.h"
-
+#include <stdexcept>
 Ellipse::Ellipse(point_t center, double radius_vertical, double radius_horizontal):
   center_(center),
   radius_vertical_(radius_vertical),
   radius_horizontal_(radius_horizontal)
-{}
+{
+  if (isBadEllipse())
+  {
+    throw std::invalid_argument("Error: false ellipse parameters");
+  }
+}
+
+bool Ellipse::isBadEllipse()
+{
+  return (radius_horizontal_ <= 0 || radius_vertical_ <= 0);
+}
 
 double Ellipse::getArea() const
 {

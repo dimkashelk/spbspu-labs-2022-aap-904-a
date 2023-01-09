@@ -1,10 +1,20 @@
 #include "ring.h"
-
+#include <stdexcept>
 Ring::Ring(point_t center, double radius_small, double radius_big):
   center_(center),
   radius_small_(radius_small),
   radius_big_(radius_big)
-{}
+{
+  if (isBadRing())
+  {
+	throw std::invalid_argument("Error: false ring parameters");
+  }
+}
+
+bool Ring::isBadRing()
+{
+  return (radius_big_ <= radius_small_ || radius_big_ <= 0 || radius_small_ <= 0);
+}
 
 double Ring::getArea() const
 {

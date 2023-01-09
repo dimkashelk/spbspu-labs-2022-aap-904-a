@@ -1,7 +1,9 @@
 #include <iostream>
 #include "shape.h"
+#include "rectangle.h"
+#include "ring.h"
+#include "ellipse.h"
 #include "make_output.h"
-#include "read_correct_figures.h"
 #include "figure_array.h"
 #include "isotropic_scale.h"
 
@@ -22,7 +24,9 @@ int main()
       Shape* rectangle = nullptr;
       try
       {
-        rectangle = correctFigures::readCorrectRectangle(std::cin);
+        double parameters[4]{};
+        std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
+        rectangle = new Rectangle({parameters[0], parameters[1]}, {parameters[2], parameters[3]});
         FigureArray::extendArray(array_figures, rectangle, size);
         size++;
       }
@@ -46,7 +50,9 @@ int main()
       Shape* ring = nullptr;
       try
       {
-        ring = correctFigures::readCorrectRing(std::cin);
+        double parameters[4]{};
+        std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
+        ring = new Ring({parameters[0], parameters[1]}, parameters[3], parameters[2]);
         FigureArray::extendArray(array_figures, ring, size);
         size++;
       }
@@ -70,7 +76,9 @@ int main()
       Shape* ellipse = nullptr;
       try
       {
-        ellipse = correctFigures::readCorrectEllipse(std::cin);
+        double parameters[4]{};
+        std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
+        ellipse = new Ellipse({parameters[0], parameters[1]}, parameters[2], parameters[3]);
         FigureArray::extendArray(array_figures, ellipse, size);
         size++;
       }

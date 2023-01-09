@@ -59,4 +59,3 @@ Ring::~Ring()
   delete EllipseOne_;
   delete EllipseTwo_;
 }
-+

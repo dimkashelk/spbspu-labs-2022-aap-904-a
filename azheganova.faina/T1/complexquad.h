@@ -7,7 +7,7 @@
 
 Shape* inputComplexquad(std::istream &input);
 
-class Complexquad: public Shape
+class Complexquad: virtual public Shape
 {
   public:
     Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);

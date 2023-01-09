@@ -6,7 +6,7 @@
 
 Shape* inputTriangle(std::istream &input);
 
-class Triangle: public Shape
+class Triangle: virtual public Shape
 {
   public:
     Triangle(point_t pos1, point_t pos2, point_t pos3);

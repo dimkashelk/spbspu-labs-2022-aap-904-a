@@ -16,68 +16,35 @@ int main()
   while (std::cin)
   {
     std::cin >> input;
-
-    if (input == "RECTANGLE")
+    try
     {
-      try
+      if (input == "RECTANGLE")
       {
         compositeShape.push_back(makeRectangle(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << "\nError: ";
-        std::cerr << e.what() << '\n';
-      }
-    }
-    if (input == "ELLIPSE")
-    {
-      try
+      if (input == "ELLIPSE")
       {
         compositeShape.push_back(makeEllipse(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << "\nError: ";
-        std::cerr << e.what() << '\n';
-      }
-    }
-    if (input == "CONCAVE")
-    {
-      try
+      if (input == "CONCAVE")
       {
         compositeShape.push_back(makeConcave(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << "\nError: ";
-        std::cerr << e.what() << '\n';
-      }
-    }
-    if (input == "RING")
-    {
-      try
+      if (input == "RING")
       {
         compositeShape.push_back(makeRing(std::cin));
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << "\nError: ";
-        std::cerr << e.what() << '\n';
-      }
-    }
-    if (input == "SCALE")
-    {
-      try
+      if (input == "SCALE")
       {
         scale = getScale(std::cin);
         is_scale = true;
+        break;
       }
-      catch (const std::invalid_argument &e)
-      {
-        std::cerr << "\nError: ";
-        std::cerr << e.what() << '\n';
-      }
-      break;
+    }
+    catch (const std::invalid_argument &e)
+    {
+      std::cerr << "\nError: ";
+      std::cerr << e.what() << '\n';
     }
   }
 

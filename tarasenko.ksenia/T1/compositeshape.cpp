@@ -44,22 +44,10 @@ tarasenko::rectangle_t tarasenko::CompositeShape::getFrameRect() const
   for (size_t i = 1; i < size_; i++)
   {
     frame_rect = shapes[i]->getFrameRect();
-    if (min_x > frame_rect.pos_.x_ - 0.5 * frame_rect.width_)
-    {
-      min_x = frame_rect.pos_.x_ - 0.5 * frame_rect.width_;
-    }
-    if (min_y > frame_rect.pos_.y_ - 0.5 * frame_rect.height_)
-    {
-      min_y = frame_rect.pos_.y_ - 0.5 * frame_rect.height_;
-    }
-    if (max_x < frame_rect.pos_.x_ + 0.5 * frame_rect.width_)
-    {
-      max_x = frame_rect.pos_.x_ + 0.5 * frame_rect.width_;
-    }
-    if (max_y < frame_rect.pos_.y_ + 0.5 * frame_rect.height_)
-    {
-      max_y = frame_rect.pos_.y_ + 0.5 * frame_rect.height_;
-    }
+    min_x = std::min(min_x, frame_rect.pos_.x_ - 0.5 * frame_rect.width_);
+    min_y = std::min(min_y, frame_rect.pos_.y_ - 0.5 * frame_rect.height_);
+    max_x = std::max(max_x, frame_rect.pos_.x_ + 0.5 * frame_rect.width_);
+    max_y = std::max(max_y, frame_rect.pos_.y_ + 0.5 * frame_rect.height_);
   }
   return makeRectangle(point_t{min_x, min_y},point_t{max_x, max_y});
 }

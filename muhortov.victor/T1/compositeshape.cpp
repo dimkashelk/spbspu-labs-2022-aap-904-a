@@ -139,7 +139,7 @@ void CompositeShape::scaleWithoutChecking(scale_t scale)
 
 void CompositeShape::move(point_t position)
 {
-  move(getFrameRect().pos.x, getFrameRect().pos.y);
+  move(position.x - getFrameRect().pos.x, position.y - getFrameRect().pos.y);
 }
 
 void CompositeShape::move(double delta_x, double delta_y)

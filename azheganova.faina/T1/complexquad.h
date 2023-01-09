@@ -16,7 +16,6 @@ class Complexquad: public Shape
     point_t findCenterOfTriangle();
     void move(point_t position);
     void move(double dx, double dy);
-    void checkScale(double k);
     void scale(double k) noexcept;
     Shape * clone() const override;
   private:

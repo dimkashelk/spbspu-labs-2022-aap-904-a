@@ -14,7 +14,6 @@ class Triangle: public Shape
     rectangle_t getFrameRect() const;
     void move(point_t position);
     void move(double dx, double dy);
-    void checkScale(double k);
     void scale(double k) noexcept;
     Shape * clone() const override;
   private:

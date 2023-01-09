@@ -42,13 +42,15 @@ char* sortStringByAscii(char* finalstr, const char* cstring, const char* newstr)
   const char* q = newstr;
   for (const char* i = cstring, *j = newstr; *i; j++, i++)
   {
-    if (std::isalpha(*i) || std::isalpha(*j))
+    if (std::isalpha(*i))
     {
       bool matching1 = compare(i, q);
-      if (!matching1)
-      {
+      if (!matching1) {
         finalstr[elstr++] = std::toupper(*i);
       }
+    }
+    if (std::isalpha(*j))
+    {
       bool matching2 = compare(j, q);
       if (matching2)
       {

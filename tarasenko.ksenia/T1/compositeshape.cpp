@@ -9,6 +9,12 @@ tarasenko::CompositeShape::CompositeShape():
   shapes(new Shape * [capacity_])
 {}
 
+tarasenko::CompositeShape::CompositeShape(Shape ** shp, size_t size, size_t capacity):
+  size_(size),
+  capacity_(capacity),
+  shapes(shp)
+{}
+
 size_t tarasenko::CompositeShape::size() const
 {
   return size_;
@@ -118,11 +124,34 @@ bool tarasenko::CompositeShape::empty() const
   return (size_ == 0);
 }
 
-tarasenko::CompositeShape::~CompositeShape()
+tarasenko::CompositeShape * tarasenko::CompositeShape::clone() const
 {
+  Shape ** clone_shps = new Shape * [capacity_];
   for (size_t i = 0; i < size_; i++)
   {
-    delete shapes[i];
+    try
+    {
+      clone_shps[i] = shapes[i]->clone();
+    }
+    catch (...)
+    {
+      deleteCompositeShape(clone_shps, size_);
+      throw;
+    }
+    return new CompositeShape(clone_shps, size_, capacity_);
   }
-  delete [] shapes;
+}
+
+void tarasenko::CompositeShape::deleteCompositeShape(Shape ** shps, size_t size) const
+{
+  for (size_t i = 0; i < size; i++)
+  {
+    delete shps[i];
+  }
+  delete [] shps;
+}
+
+tarasenko::CompositeShape::~CompositeShape()
+{
+  deleteCompositeShape(shapes, size_);
 }

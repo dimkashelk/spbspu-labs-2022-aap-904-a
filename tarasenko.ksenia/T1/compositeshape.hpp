@@ -8,6 +8,7 @@ namespace tarasenko
   {
   public:
    CompositeShape();
+   CompositeShape(Shape ** shp, size_t size, size_t capacity);
    size_t size() const;
    double getArea() const;
    rectangle_t getFrameRect() const;
@@ -19,11 +20,13 @@ namespace tarasenko
    Shape * at(size_t id);
    Shape * operator[](size_t id);
    bool empty() const;
+   CompositeShape * clone() const;
    ~CompositeShape();
   private:
    size_t size_;
    size_t capacity_;
    Shape ** shapes;
+   void deleteCompositeShape(Shape ** shapes, size_t size_) const;
   };
 }
 #endif

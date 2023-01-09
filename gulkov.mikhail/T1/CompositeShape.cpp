@@ -215,6 +215,7 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &compositeShape)
     catch (...)
     {
       destruct(cloneShapes, compositeShape.size_);
+      throw std::invalid_argument("fail cloning shape");
     }
   }
   destruct(shapes, size_);

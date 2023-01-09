@@ -23,7 +23,6 @@ class CompositeShape
     void move(point_t position);
     void checkScale(double k);
     void scale(double k);
-    void scale(const point_t & position, double k);
     Shape* at(size_t id);
     const Shape* at(size_t id) const;
     void push_back(const Shape * shp);

@@ -162,26 +162,17 @@ void CompositeShape::checkScale(double k)
   {
     throw std::logic_error("error");
   }
-  else
-  {
-    scale(k);
-  }
-}
-
-void CompositeShape::scale(const point_t & position, double k)
-{
-  for (size_t i = 0; i < size_; ++i)
-  {
-    isoScale(shape_[i], position, k);
-  }
+  scale(k);
 }
 
 void CompositeShape::scale(double k)
 {
   rectangle_t frame = CompositeShape::getFrameRect();
-  scale(frame.pos, k);
+  for (size_t i = 0; i < size_; ++i)
+  {
+    isoScale(shape_[i], frame.pos, k);
+  }
 }
-
 
 Shape* CompositeShape::at(size_t id)
 {

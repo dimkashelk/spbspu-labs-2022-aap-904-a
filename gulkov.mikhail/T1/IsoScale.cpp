@@ -9,7 +9,7 @@ void doSafeIsoScale(Shape *shape, scale_t scale)
 void doIsoScale(Shape *shape, scale_t scale)
 {
   point_t pos = shape->getFrameRect().pos;
-  shape->makeSafeScale(scale.scale);
+  shape->makeScale(scale.scale);
   shape->move(scale.pos);
   point_t offset = scaleDelta(pos, scale);
   shape->move(offset.x, offset.y);

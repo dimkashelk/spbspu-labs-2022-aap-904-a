@@ -11,6 +11,7 @@ int main()
   bool is_scale = false;
   scale_t scale = {{0.0, 0.0}, 0.0};
   std::string input = " ";
+  Shape *temp = nullptr;
 
   while (std::cin)
   {
@@ -20,24 +21,33 @@ int main()
     {
       if (input == "RECTANGLE")
       {
-        compositeShape.push_back(createRectangle(std::cin));
+        temp = createRectangle(std::cin);
+        compositeShape.push_back(temp);
+        temp = nullptr;
       }
       if (input == "RING")
       {
-        compositeShape.push_back(createRing(std::cin));
+        temp = createRing(std::cin);
+        compositeShape.push_back(temp);
+        temp = nullptr;
       }
       if (input == "CONCAVE")
       {
-        compositeShape.push_back(createConcave(std::cin));
+        temp = createConcave(std::cin);
+        compositeShape.push_back(temp);
+        temp = nullptr;
       }
       if (input == "DIAMOND")
       {
-        compositeShape.push_back(createDiamond(std::cin));
+        temp = createDiamond(std::cin);
+        compositeShape.push_back(temp);
+        temp = nullptr;
       }
       if (input == "SCALE")
       {
         scale = getScale(std::cin);
         is_scale = true;
+        delete temp;
         break;
       }
     }

@@ -138,8 +138,8 @@ tarasenko::CompositeShape * tarasenko::CompositeShape::clone() const
       deleteCompositeShape(clone_shps, size_);
       throw;
     }
-    return new CompositeShape(clone_shps, size_, capacity_);
   }
+  return new CompositeShape(clone_shps, size_, capacity_);
 }
 
 void tarasenko::CompositeShape::deleteCompositeShape(Shape ** shps, size_t size) const

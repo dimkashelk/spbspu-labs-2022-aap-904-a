@@ -33,14 +33,12 @@ int main()
       catch (const std::invalid_argument& e)
       {
         std::cerr << e.what() << "\n";
-        delete rectangle;
-        isCommand = false;
+        FigureArray::deleteArgument(rectangle, isCommand);
         continue;
       }
       catch (...)
       {
-        std::cerr << "Error while reading the rectangle\n";
-        FigureArray::deleteArray(size, array_figures);
+        makeErrorOutput("Error: could not read rectangle\n", size, array_figures);
         return 2;
       }
     }
@@ -59,14 +57,12 @@ int main()
       catch (const std::invalid_argument& e)
       {
         std::cerr << e.what() << "\n";
-        delete ring;
-        isCommand = false;
+        FigureArray::deleteArgument(ring, isCommand);
         continue;
       }
       catch (...)
       {
-        std::cerr << "Error while reading the ring\n";
-        FigureArray::deleteArray(size, array_figures);
+        makeErrorOutput("Error: could not read ring\n", size, array_figures);
         return 2;
       }
     }
@@ -85,14 +81,12 @@ int main()
       catch (const std::invalid_argument& e)
       {
         std::cerr << e.what() << "\n";
-        delete ellipse;
-        isCommand = false;
+        FigureArray::deleteArgument(ellipse, isCommand);
         continue;
       }
       catch (...)
       {
-        std::cerr << "Error while reading the ellipse\n";
-        FigureArray::deleteArray(size, array_figures);
+        makeErrorOutput("Error: could not read ellipse\n", size, array_figures);
         return 2;
       }
     }
@@ -112,8 +106,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "Error: wrong parameters of the point, coefficient\n";
-        FigureArray::deleteArray(size, array_figures);
+        makeErrorOutput("Error: wrong parameters of the point, coefficient\n", size, array_figures);
         return 2;
       }
       break;

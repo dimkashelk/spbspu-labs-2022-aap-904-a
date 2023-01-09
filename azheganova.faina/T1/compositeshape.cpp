@@ -114,22 +114,17 @@ double CompositeShape::getArea() const
 
 rectangle_t CompositeShape::getFrameRect() const
 {
-  rectangle_t rectangle = shape_[0]->getFrameRect();
-  double leftdownx = rectangle.pos.x - rectangle.width / 2;
-  double leftdowny = rectangle.pos.x - rectangle.height / 2;
-  double rightupx = rectangle.pos.x + rectangle.width / 2;
-  double rightupy = rectangle.pos.y + rectangle.height / 2;
-  double minx = leftdownx;
-  double miny = leftdowny;
-  double maxx = rightupx;
-  double maxy = rightupy;
+  double minx = 0.0;
+  double miny = 0.0;
+  double maxx = 0.0;
+  double maxy = 0.0;
   for (size_t i = 1; i < size_; i++)
   {
-    rectangle = shape_[i]->getFrameRect();
-    leftdownx = rectangle.pos.x - rectangle.width / 2;
-    leftdowny = rectangle.pos.x - rectangle.height / 2;
-    rightupx = rectangle.pos.x + rectangle.width / 2;
-    rightupy = rectangle.pos.y + rectangle.height / 2;
+    rectangle_t rectangle = shape_[i]->getFrameRect();
+    double leftdownx = rectangle.pos.x - rectangle.width / 2;
+    double leftdowny = rectangle.pos.x - rectangle.height / 2;
+    double rightupx = rectangle.pos.x + rectangle.width / 2;
+    double rightupy = rectangle.pos.y + rectangle.height / 2;
     minx = std::min(minx, leftdownx);
     miny = std::min(miny, leftdowny);
     maxx = std::max(maxx, rightupx);

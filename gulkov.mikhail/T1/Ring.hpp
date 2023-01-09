@@ -9,7 +9,6 @@ class Ring: public Shape
 {
 public:
   Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo);
-  ~Ring();
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;
@@ -21,6 +20,8 @@ private:
   rectangle_t rect_;
   Shape *EllipseOne_;
   Shape *EllipseTwo_;
+
+  //надо тут эллипсы создавать а не в другом месте, их же можно будет деструктором удалить. Осталось не забыть все это сделать
 };
 
 #endif

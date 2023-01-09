@@ -2,8 +2,8 @@
 #include <stdexcept>
 #include "ellipse.h"
 Ring::Ring(point_t center, double radius_small, double radius_big):
-  smallEllipse_({center, radius_small, radius_small}),
-  bigEllipse_({center, radius_big, radius_big})
+  smallEllipse_(center, radius_small, radius_small),
+  bigEllipse_(center, radius_big, radius_big)
 {
   if (radius_big <= radius_small || radius_big <= 0 || radius_small <= 0)
   {

@@ -1,6 +1,5 @@
 #include "figure_array.h"
-#include <cstddef>
-#include <iostream>
+
 void FigureArray::deleteArray(size_t size, Shape** array_figures)
 {
   if (size > 0)

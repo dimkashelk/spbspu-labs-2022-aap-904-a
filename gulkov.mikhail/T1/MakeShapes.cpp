@@ -40,7 +40,7 @@ Shape *makeConcave(std::istream &input)
   return new Concave({dots[0], dots[1]}, {dots[2], dots[3]}, {dots[4], dots[5]}, {dots[6], dots[7]});
 }
 
-Shape *makeRing(CompositeShape &compositeShape, std::istream &input)
+Shape *makeRing(std::istream &input)
 {
   double dots[4]{0};
   for (double &dot: dots)

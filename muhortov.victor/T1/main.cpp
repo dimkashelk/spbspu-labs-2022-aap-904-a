@@ -10,11 +10,11 @@ int main()
   bool is_scale = false;
   scale_t scale = {{0.0, 0.0}, 0.0};
   std::string input = " ";
-  Shape *temp = nullptr;
 
   while (std::cin)
   {
     std::cin >> input;
+    Shape *temp = nullptr;
 
     try
     {

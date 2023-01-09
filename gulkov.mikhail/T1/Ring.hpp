@@ -9,6 +9,7 @@ class Ring: public Shape
 {
 public:
   Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo);
+  ~Ring();
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;

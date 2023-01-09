@@ -50,8 +50,6 @@ Shape *makeRing(CompositeShape &compositeShape, std::istream &input)
   checkInput(input);
   Shape *EllipseOne = new Ellipse({dots[0], dots[1]}, dots[2], dots[2]);
   Shape *EllipseTwo = new Ellipse({dots[0], dots[1]}, dots[3], dots[3]);
-  //compositeShape.push_back(EllipseOne);
-  //compositeShape.push_back(EllipseTwo);
 
   return new Ring({dots[0], dots[1]}, EllipseOne, EllipseTwo);
 }

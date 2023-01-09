@@ -48,3 +48,9 @@ Shape *Ring::clone() const
 {
   return new Ring(center_, EllipseOne_, EllipseTwo_);
 }
+
+Ring::~Ring()
+{
+  delete EllipseOne_;
+  delete EllipseTwo_;
+}

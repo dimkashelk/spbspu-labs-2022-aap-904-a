@@ -7,7 +7,7 @@ Ring::Ring(point_t center, double radius_small, double radius_big):
 {
   if (radius_big <= radius_small || radius_big <= 0 || radius_small <= 0)
   {
-	throw std::invalid_argument("Error: false ring parameters");
+    throw std::invalid_argument("Error: false ring parameters");
   }
 }
 

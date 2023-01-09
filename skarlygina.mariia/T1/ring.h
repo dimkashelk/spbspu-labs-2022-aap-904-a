@@ -1,6 +1,7 @@
 #ifndef RING_H
 #define RING_H
 #include "shape.h"
+#include "ellipse.h"
 class Ring: public Shape
 {
 public:

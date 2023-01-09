@@ -19,26 +19,26 @@ Ring::Ring(Ellipse smallEllipse, Ellipse bigEllipse):
 double Ring::getArea() const
 {
   const double pi = 3.1416;
-  return (bigEllipse_->getArea() - smallEllipse_->getArea());
+  return (bigEllipse_.getArea() - smallEllipse_.getArea());
 }
 
 rectangle_t Ring::getFrameRectangle() const
 {
-  return bigEllipse_->getFrameRectangle();
+  return bigEllipse_.getFrameRectangle();
 }
 
 void Ring::move(double dx, double dy)
 {
-  bigEllipse_->move(dx, dy);
+  bigEllipse_.move(dx, dy);
 }
 
 void Ring::move(point_t position)
 {
-  bigEllipse_->move(position);
+  bigEllipse_.move(position);
 }
 
 void Ring::scale(double k)
 {
-  bigEllipse_->scale(k);
-  smallEllipse_->scale(k);
+  bigEllipse_.scale(k);
+  smallEllipse_.scale(k);
 }

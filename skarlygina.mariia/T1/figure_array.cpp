@@ -26,9 +26,3 @@ Shape** FigureArray::extendArray(Shape** array_figure, Shape* figure, size_t siz
   array_extended[capacity - 1] = figure;
   return array_extended;
 }
-
-void FigureArray::deleteArgument(Shape* figure, bool isCommand)
-{
-  delete figure;
-  isCommand = false;
-}

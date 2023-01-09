@@ -6,6 +6,5 @@ namespace FigureArray
 {
   void deleteArray(size_t size, Shape** array_figures);
   Shape** extendArray(Shape** array_figure, Shape* figure, size_t size);
-  void deleteArgument(Shape* figure, bool isCommand);
 }
 #endif

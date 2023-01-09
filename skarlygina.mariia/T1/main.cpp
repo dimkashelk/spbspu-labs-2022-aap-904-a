@@ -35,7 +35,8 @@ int main()
       catch (const std::invalid_argument& e)
       {
         std::cerr << e.what() << "\n";
-        FigureArray::deleteArgument(rectangle, isCommand);
+        delete rectangle;
+        isCommand = false;
         continue;
       }
       catch (...)
@@ -61,7 +62,8 @@ int main()
       catch (const std::invalid_argument& e)
       {
         std::cerr << e.what() << "\n";
-        FigureArray::deleteArgument(ring, isCommand);
+        delete ring;
+        isCommand = false;
         continue;
       }
       catch (...)
@@ -87,7 +89,8 @@ int main()
       catch (const std::invalid_argument& e)
       {
         std::cerr << e.what() << "\n";
-        FigureArray::deleteArgument(ellipse, isCommand);
+        delete ellipse;
+        isCommand = false;
         continue;
       }
       catch (...)

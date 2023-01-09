@@ -46,11 +46,6 @@ double calculateTriangleArea(const double &a, const double &b, const double &c)
   return std::sqrt(p * (p - a) * (p - b) * (p - c));
 }
 
-double calculateSideForTriangle(const point_t &one, const point_t &two)
-{
-  return std::sqrt((two.x - one.x) * (two.x - one.x) + (two.y - one.y) * (two.y - one.y));
-}
-
 bool checkingSideForPosition(const point_t &one, const point_t &two, const point_t &four)
 {
   return ((one.x - four.x) * (two.y - one.y) - (two.x - one.x) * (one.y - four.y)) > 0;
@@ -58,9 +53,9 @@ bool checkingSideForPosition(const point_t &one, const point_t &two, const point
 
 bool checkingTriangle(const point_t &one, const point_t &two, const point_t &three)
 {
-  double a = calculateSideForTriangle(three, one);
-  double b = calculateSideForTriangle(two, one);
-  double c = calculateSideForTriangle(three, two);
+  double a = calculatePointsDistance(three, one);
+  double b = calculatePointsDistance(two, one);
+  double c = calculatePointsDistance(three, two);
   return a + b < c || a + c < b || b + c < a;
 }
 

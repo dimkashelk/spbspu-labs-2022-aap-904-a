@@ -28,7 +28,6 @@ point_t calculateVectorDifference(point_t position, double delta_x, double delta
 point_t calculateScale(point_t position, point_t center, double k);
 point_t multiplicationVector(point_t position, double k);
 double calculateTriangleArea(const double &a, const double &b, const double &c);
-double calculateSideForTriangle(const point_t &one, const point_t &two);
 bool checkingSideForPosition(const point_t &one, const point_t &two, const point_t &four);
 bool checkingTriangle(const point_t &one, const point_t &two, const point_t &three);
 bool checkingPosition(const point_t &one, const point_t &two, const point_t &three, const point_t &four);

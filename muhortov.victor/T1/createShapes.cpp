@@ -7,7 +7,7 @@
 
 void checkingInput(std::istream  &input)
 {
-  if(!input)
+  if (!input)
   {
     throw std::invalid_argument("Invalid argument");
   }

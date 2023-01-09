@@ -6,7 +6,7 @@
 
 CompositeShape::CompositeShape(size_t capacity):
   shapes(new Shape * [capacity]),
-  capacity_(capacity),
+  capacity_(2),
   size_(0)
 {}
 
@@ -23,7 +23,7 @@ CompositeShape::CompositeShape(const CompositeShape &compositeShape):
     }
     catch (...)
     {
-      destruct(shapes, size_);
+      destruct(shapes, i);
       throw;
     }
   }
@@ -31,8 +31,16 @@ CompositeShape::CompositeShape(const CompositeShape &compositeShape):
 
 void CompositeShape::push_back(const Shape *shape)
 {
-  Shape * clone = shape->clone();
-  push_back(clone);
+  Shape *clone = shape->clone();
+  try
+  {
+    push_back(clone);
+  }
+  catch (...)
+  {
+    delete clone;
+    throw;
+  }
 }
 
 void CompositeShape::push_back(Shape *shape)
@@ -234,11 +242,14 @@ CompositeShape &CompositeShape::operator=(const CompositeShape & compositeShape)
 
 CompositeShape &::CompositeShape::operator=(CompositeShape &&compositeShape)
 {
-  destruct(shapes, size_);
-  size_ = compositeShape.size_;
-  capacity_ = compositeShape.capacity_;
-  shapes = compositeShape.shapes;
-  compositeShape.shapes = nullptr;
-  compositeShape.size_ = 0;
-  return * this;
+  if (std::addressof(compositeShape) != this)
+  {
+    destruct(shapes, size_);
+    size_ = compositeShape.size_;
+    capacity_ = compositeShape.capacity_;
+    shapes = compositeShape.shapes;
+    compositeShape.shapes = nullptr;
+    compositeShape.size_ = 0;
+  }
+  return *this;
 }

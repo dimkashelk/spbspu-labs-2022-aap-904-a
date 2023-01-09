@@ -125,10 +125,7 @@ void CompositeShape::scale(scale_t scale)
 
 void CompositeShape::scaleCheck(scale_t scale)
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    iScaleCheck(shapes[i], scale);
-  }
+  iScaleCheck(shapes[size_], scale);
 }
 
 void CompositeShape::scaleWithoutChecking(scale_t scale)
@@ -143,7 +140,7 @@ void CompositeShape::move(point_t position)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->move(calculateVectorDifference(position, getFrameRect().pos.x, getFrameRect().pos.y));
+    shapes[i]->move(position);
   }
 }
 
@@ -230,7 +227,8 @@ CompositeShape &CompositeShape::operator=(const CompositeShape & compositeShape)
     }
     catch (...)
     {
-      destruct(cloneShapes, compositeShape.size_);
+      destruct(cloneShapes, i);
+      throw;
     }
   }
   destruct(shapes, size_);

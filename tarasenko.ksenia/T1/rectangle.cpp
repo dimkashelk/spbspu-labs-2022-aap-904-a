@@ -3,8 +3,11 @@
 #include "base-func.hpp"
 
 tarasenko::Rectangle::Rectangle(point_t point_ld, point_t point_ru):
-  vertexes{point_ld, point_ru},
   rect_(makeRectangle(point_ld, point_ru))
+{}
+
+tarasenko::Rectangle::Rectangle(rectangle_t rect):
+  rect_(rect)
 {}
 
 double tarasenko::Rectangle::getArea() const
@@ -26,10 +29,6 @@ void tarasenko::Rectangle::move(double dx, double dy)
 {
   rect_.pos_.x_ += dx;
   rect_.pos_.y_ += dy;
-  vertexes[0].x_ += dx;
-  vertexes[0].y_ += dy;
-  vertexes[1].x_ += dx;
-  vertexes[1].y_ += dy;
 }
 
 void tarasenko::Rectangle::scale(double k)
@@ -41,5 +40,5 @@ void tarasenko::Rectangle::scale(double k)
 
 tarasenko::Shape * tarasenko::Rectangle::clone() const
 {
-  return new Rectangle(vertexes[0], vertexes[1]);
+  return new Rectangle(rect_);
 }

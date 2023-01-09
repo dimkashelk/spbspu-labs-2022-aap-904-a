@@ -3,6 +3,19 @@
 #include "MakeShapes.hpp"
 #include "PrintShapes.hpp"
 #include "CompositeShape.hpp"
+#include "Shape.hpp"
+
+void safe_push_back(CompositeShape &compositeShape, Shape *shape)
+{
+  try
+  {
+    compositeShape.push_back(shape);
+  }
+  catch (...)
+  {
+    delete shape;
+  }
+}
 
 int main()
 {
@@ -20,19 +33,19 @@ int main()
     {
       if (input == "RECTANGLE")
       {
-        compositeShape.safe_push_back(makeRectangle(std::cin));
+        safe_push_back(compositeShape, makeRectangle(std::cin));
       }
       if (input == "ELLIPSE")
       {
-        compositeShape.safe_push_back(makeEllipse(std::cin));
+        safe_push_back(compositeShape, makeEllipse(std::cin));
       }
       if (input == "CONCAVE")
       {
-        compositeShape.safe_push_back(makeConcave(std::cin));
+        safe_push_back(compositeShape, makeConcave(std::cin));
       }
       if (input == "RING")
       {
-        compositeShape.safe_push_back(makeRing(std::cin));
+        safe_push_back(compositeShape, makeRing(std::cin));
       }
       if (input == "SCALE")
       {

@@ -18,10 +18,6 @@ public:
 private:
   Shape *EllipseOne_;
   Shape *EllipseTwo_;
-  rectangle_t rect_;
-  point_t center_;
-  double r1_;
-  double r2_;
 };
 
 #endif

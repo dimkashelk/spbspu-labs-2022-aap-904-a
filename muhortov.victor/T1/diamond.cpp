@@ -28,7 +28,7 @@ void Diamond::move(double delta_x, double delta_y)
 {
   for (point_t &position: positions)
   {
-    position = moveToDelta(position, delta_x, delta_y);
+    position = calculateVectorSum(position, delta_x, delta_y);
   }
 }
 

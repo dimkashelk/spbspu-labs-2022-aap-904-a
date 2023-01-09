@@ -1,7 +1,6 @@
 #include "base-types.hpp"
 #include <cmath>
 #include <stdexcept>
-#include <iostream>
 
 double calculatePointsDistance(const point_t &p1, const point_t &p2)
 {
@@ -33,13 +32,6 @@ point_t calculateScale(point_t position, point_t center, double k)
 {
   position.x = k * (position.x - center.x) + center.x;
   position.y = k * (position.y - center.y) + center.y;
-  return position;
-}
-
-point_t moveToDelta(point_t position, double delta_x, double delta_y)
-{
-  position.x += delta_x;
-  position.y += delta_y;
   return position;
 }
 

@@ -16,7 +16,7 @@ void makeOutputPosition(std::ostream& out, const Shape* figure)
   out << framed_x2 << " " << framed_y2;
 }
 
-void makeOutput(std::ostream& out, Shape* const* array_figures, size_t size)
+void makeOutput(std::ostream& out, const Shape* const* array_figures, size_t size)
 {
   if (size < 1)
   {

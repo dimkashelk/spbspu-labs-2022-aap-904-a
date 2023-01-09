@@ -32,8 +32,7 @@ int main()
         Shape** extend_array = FigureArray::extendArray(array_figures, rectangle, size);
         delete[] array_figures;
         array_figures = extend_array;
-        size++;
-        
+        size++;       
       }
       if (figure == "RING")
       {

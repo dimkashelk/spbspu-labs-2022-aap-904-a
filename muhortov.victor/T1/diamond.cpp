@@ -23,7 +23,7 @@ void Diamond::move(point_t position)
 
 void Diamond::move(double delta_x, double delta_y)
 {
-  rectangle.getFrameRect().pos = calculateVectorSum(rectangle.getFrameRect().pos, delta_x, delta_y);
+  rectangle.move(delta_x, delta_y);
 }
 
 void Diamond::scaleWithoutCheck(double k)

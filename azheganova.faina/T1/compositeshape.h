@@ -25,6 +25,7 @@ class CompositeShape
     void scale(double k);
     Shape* at(size_t id);
     const Shape* at(size_t id) const;
+    void changeShape(Shape **shape, Shape **newshape);
     void push_back(const Shape * shp);
     void push_back(Shape * shp);
     void pop_back();

@@ -57,7 +57,7 @@ int main()
     {
       try
       {
-        compositeShape.push_back(makeRing(std::cin));
+        compositeShape.push_back(makeRing(compositeShape, std::cin));
       }
       catch (const std::invalid_argument &e)
       {

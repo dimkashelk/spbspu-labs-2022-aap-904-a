@@ -3,11 +3,11 @@
 
 Ring::Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo):
   center_(center),
-  rect_(EllipseTwo->getFrameRect()),
+  rect_(EllipseOne->getFrameRect()),
   EllipseOne_(EllipseOne),
   EllipseTwo_(EllipseTwo)
 {
-  if (EllipseOne_->getArea() > EllipseOne_->getArea())
+  if (EllipseOne_->getArea() < EllipseTwo_->getArea())
   {
     throw std::invalid_argument("Bad input, invalid ellipses radius's, => invalid ring");
   }
@@ -15,7 +15,7 @@ Ring::Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo):
 
 double Ring::getArea() const
 {
-  return EllipseTwo_->getArea() - EllipseTwo_->getArea();
+  return (EllipseOne_->getArea() - EllipseTwo_->getArea());
 }
 
 rectangle_t Ring::getFrameRect() const
@@ -40,6 +40,8 @@ void Ring::makeScale(double k)
 {
   EllipseOne_->makeScale(k);
   EllipseTwo_->makeScale(k);
+  rect_.width = (EllipseOne_->getFrameRect().width / 2) * 2.0;
+  rect_.height = (EllipseOne_->getFrameRect().height / 2) * 2.0;
 }
 
 Shape *Ring::clone() const

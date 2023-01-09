@@ -82,7 +82,7 @@ bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, cons
   double a2 = (p3.y - p4.y) / (p3.x - p4.x);
   double b1 = p1.y - a1 * p1.x;
   double b2 = p3.y - a2 * p3.x;
-  if (a1 == a2) {
+  if (abs(a1) == abs(a2)) {
     return false;
   }
   double xa = (b2 - b1) / (a1 - a2);

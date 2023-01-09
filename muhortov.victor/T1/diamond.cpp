@@ -1,49 +1,47 @@
 #include "diamond.hpp"
 #include <stdexcept>
-#include <cmath>
+#include "rectangle.hpp"
 
 Diamond::Diamond(point_t one, point_t two, point_t three):
   positions({findLastDiamondPosition(one, two, three)}),
-  d1(std::abs(calculatePointsDistance(positions[1], positions[3]))),
-  d2(std::abs(calculatePointsDistance(positions[2], positions[4])))
+  rectangle(new Rectangle({positions[2].x, positions[3].y}, {positions[4].x, positions[1].y})),
+  rect{rectangle->getFrameRect()}
 {}
 
 double Diamond::getArea() const
 {
-  return 0.5 * d1 * d2;
+  return 0.5 * rectangle->getArea();
 }
 
 rectangle_t Diamond::getFrameRect() const
 {
-  return {positions[0], d2, d1};
+  return rect;
 }
 
 void Diamond::move(point_t position)
 {
-  point_t delta = calculateVectorDifference(position, getFrameRect().pos.x, getFrameRect().pos.y);
+  point_t delta = calculateVectorDifference(position, rect.pos.x, rect.pos.y);
   move(delta.x, delta.y);
 }
 
 void Diamond::move(double delta_x, double delta_y)
 {
-  for (point_t &position: positions)
-  {
-    position = calculateVectorSum(position, delta_x, delta_y);
-  }
+  rect.pos = calculateVectorSum(rect.pos, delta_x, delta_y);
 }
 
 void Diamond::scaleWithoutCheck(double k)
 {
-  point_t center = getFrameRect().pos;
-  for (size_t i = 1; i < 5; i++)
-  {
-    positions[i] = calculateScale(positions[i], center, k);
-  }
-  d1 *= k;
-  d2 *= k;
+  rectangle->scaleWithoutCheck(k);
+  rect.width *= k;
+  rect.height *= k;
 }
 
 Shape *Diamond::clone() const
 {
   return new Diamond(positions[1], positions[2], positions[3]);
+}
+
+Diamond::~Diamond() noexcept
+{
+  delete rectangle;
 }

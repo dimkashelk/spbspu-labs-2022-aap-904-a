@@ -8,6 +8,7 @@ class Diamond: public Shape
 {
 public:
   Diamond(point_t one, point_t two, point_t three);
+  ~Diamond() noexcept override;
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;
@@ -17,6 +18,8 @@ public:
 private:
   std::array< point_t, 5 > positions;
   double d1, d2;
+  Shape *rectangle;
+  rectangle_t rect;
 };
 
 #endif

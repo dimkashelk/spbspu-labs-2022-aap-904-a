@@ -1,6 +1,6 @@
 #include "figure_array.h"
 
-void FigureArray::deleteArray(size_t size, Shape** array_figures)
+void FigureArray::deleteArray(size_t size, Shape* const* array_figures)
 {
   if (size > 0)
   {
@@ -12,7 +12,7 @@ void FigureArray::deleteArray(size_t size, Shape** array_figures)
   delete[] array_figures;
 }
 
-Shape** FigureArray::extendArray(Shape** array_figure, Shape* figure, size_t size)
+Shape** FigureArray::extendArray(Shape* const* array_figure, Shape* figure, size_t size)
 {
   size_t capacity = size + 1;
   Shape** array_extended = new Shape*[capacity];

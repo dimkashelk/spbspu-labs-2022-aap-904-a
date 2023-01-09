@@ -18,71 +18,42 @@ int main()
   Shape** array_figures = new Shape*[size];
   do
   {
+    Shape* rectangle = nullptr;
+    Shape* ellipse = nullptr;
+    Shape* ring = nullptr;
     try
     {
       std::cin >> figure;
       if (figure == "RECTANGLE")
-      {
-        Shape* rectangle = nullptr;
-        try
-        {
-          double parameters[4]{};
-          std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
-          rectangle = new Rectangle({ parameters[0], parameters[1] }, { parameters[2], parameters[3] });
-          Shape** extend_array = FigureArray::extendArray(array_figures, rectangle, size);
-          delete[] array_figures;
-          array_figures = extend_array;
-          size++;
-        }
-        catch (const std::invalid_argument& e)
-        {
-          std::cerr << e.what() << "\n";
-          delete rectangle;
-          isCommand = false;
-          continue;
-        }
+      {               
+        double parameters[4]{};
+        std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
+        rectangle = new Rectangle({ parameters[0], parameters[1] }, { parameters[2], parameters[3] });
+        Shape** extend_array = FigureArray::extendArray(array_figures, rectangle, size);
+        delete[] array_figures;
+        array_figures = extend_array;
+        size++;
+        
       }
       if (figure == "RING")
       {
-        Shape* ring = nullptr;
-        try
-        {
-          double parameters[4]{};
-          std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
-          ring = new Ring({ parameters[0], parameters[1] }, parameters[3], parameters[2]);
-          Shape** extend_array = FigureArray::extendArray(array_figures, ring, size);
-          delete[] array_figures;
-          array_figures = extend_array;
-          size++;
-        }
-        catch (const std::invalid_argument& e)
-        {
-          std::cerr << e.what() << "\n";
-          delete ring;
-          isCommand = false;
-          continue;
-        }
+        double parameters[4]{};
+        std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
+        ring = new Ring({ parameters[0], parameters[1] }, parameters[3], parameters[2]);
+        Shape** extend_array = FigureArray::extendArray(array_figures, ring, size);
+        delete[] array_figures;
+        array_figures = extend_array;
+        size++;
       }
       if (figure == "ELLIPSE")
-      {
-        Shape* ellipse = nullptr;
-        try
-        {
-          double parameters[4]{};
-          std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
-          ellipse = new Ellipse({ parameters[0], parameters[1] }, parameters[2], parameters[3]);
-          Shape** extend_array = FigureArray::extendArray(array_figures, ellipse, size);
-          delete[] array_figures;
-          array_figures = extend_array;
-          size++;
-        }
-        catch (const std::invalid_argument& e)
-        {
-          std::cerr << e.what() << "\n";
-          delete ellipse;
-          isCommand = false;
-          continue;
-        }
+      {       
+        double parameters[4]{};
+        std::cin >> parameters[0] >> parameters[1] >> parameters[2] >> parameters[3];
+        ellipse = new Ellipse({ parameters[0], parameters[1] }, parameters[2], parameters[3]);
+        Shape** extend_array = FigureArray::extendArray(array_figures, ellipse, size);
+        delete[] array_figures;
+        array_figures = extend_array;
+        size++;      
       }
       if (figure == "SCALE")
       {
@@ -96,6 +67,15 @@ int main()
         }
         break;
       }
+    }
+    catch (const std::invalid_argument& e)
+    {
+      std::cerr << e.what() << "\n";
+      delete ellipse;
+      delete ring;
+      delete rectangle;
+      isCommand = false;
+      continue;
     }
     catch (...)
     {

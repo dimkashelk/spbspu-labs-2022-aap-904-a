@@ -11,10 +11,11 @@ tarasenko::rectangle_t tarasenko::makeRectangle(point_t point_ld, point_t point_
   return rect;
 }
 
-tarasenko::point_t * tarasenko::getPointRect(tarasenko::rectangle_t rect)
+tarasenko::point_t tarasenko::getPointLDRect(rectangle_t rect)
 {
-  tarasenko::point_t point_ld{rect.pos_.x_ - rect.width_ * 0.5, rect.pos_.y_ - rect.height_ * 0.5};
-  tarasenko::point_t point_ru{rect.pos_.x_ + rect.width_ * 0.5, rect.pos_.y_ + rect.height_ * 0.5};
-  static point_t points[2] = {point_ld, point_ru};
-  return points;
+  return {rect.pos_.x_ - rect.width_ * 0.5, rect.pos_.y_ - rect.height_ * 0.5};
+}
+tarasenko::point_t tarasenko::getPointRURect(rectangle_t rect)
+{
+  return {rect.pos_.x_ + rect.width_ * 0.5, rect.pos_.y_ + rect.height_ * 0.5};
 }

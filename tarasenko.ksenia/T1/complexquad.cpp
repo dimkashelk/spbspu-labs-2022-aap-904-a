@@ -43,12 +43,14 @@ double tarasenko::Complexquad::getArea() const
 
 tarasenko::rectangle_t tarasenko::Complexquad::getFrameRect() const
 {
-  tarasenko::point_t * points_rect_1 = getPointRect(triangle_1.getFrameRect());
-  tarasenko::point_t * points_rect_2 = getPointRect(triangle_2.getFrameRect());
-  double min_x = std::min(points_rect_1[0].x_, points_rect_2[0].x_);
-  double min_y = std::min(points_rect_1[0].y_, points_rect_2[0].y_);
-  double max_x = std::max(points_rect_1[1].x_, points_rect_2[1].x_);
-  double max_y = std::max(points_rect_1[1].y_, points_rect_2[1].y_);
+  tarasenko::point_t point_ld_rect_1 = getPointLDRect(triangle_1.getFrameRect());
+  tarasenko::point_t point_ru_rect_1 = getPointRURect(triangle_1.getFrameRect());
+  tarasenko::point_t points_ld_rect_2 = getPointLDRect(triangle_2.getFrameRect());
+  tarasenko::point_t points_ru_rect_2 = getPointRURect(triangle_2.getFrameRect());
+  double min_x = std::min(point_ld_rect_1.x_, points_ld_rect_2.x_);
+  double min_y = std::min(point_ld_rect_1.y_, points_ld_rect_2.y_);
+  double max_x = std::max(point_ru_rect_1.x_, points_ru_rect_2.x_);
+  double max_y = std::max(point_ru_rect_1.y_, points_ru_rect_2.y_);
   return makeRectangle(point_t{min_x, min_y},point_t{max_x, max_y});;
 }
 

@@ -1,7 +1,8 @@
 #include "complexquad.hpp"
+#include <stdexcept>
 #include "triangle.hpp"
 #include "base-func.hpp"
-#include <stdexcept>
+#include "isoscale.hpp"
 
 tarasenko::Complexquad::Complexquad(point_t point_1, point_t point_2, point_t point_3, point_t point_4):
   triangle_1({0, 0}, {1, 1}, {1, 0}),
@@ -68,8 +69,8 @@ void tarasenko::Complexquad::move(point_t pos)
 void tarasenko::Complexquad::scale(double k)
 {
   this->checkCoefficient(k);
-  triangle_1.scaleRelativeToPoint(k, p_cross);
-  triangle_2.scaleRelativeToPoint(k, p_cross);
+  triangle_1.scale(k, {0, 0});
+  triangle_2.scale(k, {0, 0});
 }
 
 tarasenko::Shape * tarasenko::Complexquad::clone() const

@@ -22,22 +22,50 @@ int main()
       if (input == "RECTANGLE")
       {
         created_shape = makeRectangle(std::cin);
-        compositeShape.push_back(created_shape);
+        try
+        {
+          compositeShape.push_back(created_shape);
+        }
+        catch (...)
+        {
+          delete created_shape;
+        }
       }
       if (input == "ELLIPSE")
       {
         created_shape = makeEllipse(std::cin);
-        compositeShape.push_back(created_shape);
+        try
+        {
+          compositeShape.push_back(created_shape);
+        }
+        catch (...)
+        {
+          delete created_shape;
+        }
       }
       if (input == "CONCAVE")
       {
         created_shape = makeConcave(std::cin);
-        compositeShape.push_back(created_shape);
+        try
+        {
+          compositeShape.push_back(created_shape);
+        }
+        catch (...)
+        {
+          delete created_shape;
+        }
       }
       if (input == "RING")
       {
         created_shape = makeRing(std::cin);
-        compositeShape.push_back(created_shape);
+        try
+        {
+          compositeShape.push_back(created_shape);
+        }
+        catch (...)
+        {
+          delete created_shape;
+        }
       }
       if (input == "SCALE")
       {
@@ -66,7 +94,7 @@ int main()
 
   printShapesArea(std::cout, compositeShape);
   std::cout << "\n";
-  
+
   try
   {
     compositeShape.scale(scale);

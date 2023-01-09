@@ -46,26 +46,18 @@ void CompositeShape::push_back(const Shape *shape)
 
 void CompositeShape::push_back(Shape *shape)
 {
-  Shape **extendShapes = nullptr;
-  try
+  if (capacity_ == size_)
   {
-    if (capacity_ == size_)
+    Shape **extendShapes = new Shape *[capacity_ + 10];
+    capacity_ += 10;
+    for (size_t i = 0; i < size_; i++)
     {
-      extendShapes = new Shape *[capacity_ + 10];
-      capacity_ += 10;
-      for (size_t i = 0; i < size_; i++)
-      {
-        extendShapes[i] = shapes[i];
-      }
-      delete[] shapes;
-      shapes = extendShapes;
+      extendShapes[i] = shapes[i];
     }
-    shapes[size_++] = shape;
+    delete[] shapes;
+    shapes = extendShapes;
   }
-  catch (...)
-  {
-    delete shape;
-  }
+  shapes[size_++] = shape;
 }
 
 void CompositeShape::pop_back()

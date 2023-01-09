@@ -47,8 +47,8 @@ void Complexquad::move(const point_t& pos)
 void Complexquad::scale(double k)
 {
   point_t center = getIntersectionPoint(p1_, p2_, p3_, p4_);
-  movePointBecauseOfScale(center, p1_, k);
-  movePointBecauseOfScale(center, p2_, k);
-  movePointBecauseOfScale(center, p3_, k);
-  movePointBecauseOfScale(center, p4_, k);
+  movePointBecauseOfScale(p1_, center, k);
+  movePointBecauseOfScale(p2_, center, k);
+  movePointBecauseOfScale(p3_, center, k);
+  movePointBecauseOfScale(p4_, center, k);
 }

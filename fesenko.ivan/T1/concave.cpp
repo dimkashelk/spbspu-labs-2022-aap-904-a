@@ -10,7 +10,7 @@ Concave::Concave(const point_t &point1, const point_t &point2, const point_t &po
   p4_(point4)
 {
   if (!isTriangle(p1_, p2_, p3_) || !isPointInsideTriangle(p1_, p2_, p3_, p4_)) {
-    throw std::invalid_argument("It`s not a concave");
+    throw std::invalid_argument("It`s not a concave\n");
   }
 }
 
@@ -43,7 +43,7 @@ void Concave::move(const point_t &pos)
 
 void Concave::scale(double k)
 {
-  movePointBecauseOfScale(p4_, p1_, k);
-  movePointBecauseOfScale(p4_, p2_, k);
-  movePointBecauseOfScale(p4_, p3_, k);
+  movePointBecauseOfScale(p1_, p4_, k);
+  movePointBecauseOfScale(p2_, p4_, k);
+  movePointBecauseOfScale(p3_, p4_, k);
 }

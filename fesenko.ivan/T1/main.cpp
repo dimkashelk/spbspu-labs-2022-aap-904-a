@@ -113,7 +113,7 @@ int main()
       }
       sumArea += shapes[i]->getArea();
     }
-    std::cout << std::fixed << std::setprecision(1) << "\n" << sumArea << " ";
+    std::cout << std::fixed << std::setprecision(1) << sumArea << " ";
     for (size_t i = 0; i < size; i++) {
       leftBottomX = shapes[i]->getFrameRect().pos.x - shapes[i]->getFrameRect().width / 2;
       leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;

@@ -235,5 +235,16 @@ CompositeShape &CompositeShape::operator=(const CompositeShape &compositeShape)
   shapes = cloneShapes;
   size_ = compositeShape.size_;
   capacity_ = compositeShape.capacity_;
+  return *this;
+}
+
+CompositeShape &CompositeShape::operator=(CompositeShape &compositeShape) noexcept
+{
+  destruct(shapes, size_);
+  size_ = compositeShape.size_;
+  capacity_ = compositeShape.capacity_;
+  shapes = compositeShape.shapes;
+  compositeShape.shapes = nullptr;
+  compositeShape.size_ = 0;
   return * this;
 }

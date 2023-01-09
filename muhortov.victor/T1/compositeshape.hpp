@@ -10,6 +10,7 @@ public:
   CompositeShape(const CompositeShape &compositeShape);
   CompositeShape(Shape **shapes, size_t capacity, size_t size);
   CompositeShape &operator=(const CompositeShape &compositeShape);
+  CompositeShape &operator=(CompositeShape &compositeShape) noexcept;
   ~CompositeShape();
   CompositeShape * clone() const;
   void push_back(Shape *shape);

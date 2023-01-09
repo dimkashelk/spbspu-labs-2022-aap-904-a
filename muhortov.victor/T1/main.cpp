@@ -6,7 +6,7 @@
 
 int main()
 {
-  size_t capacity = 1;
+  size_t capacity = 10;
   CompositeShape compositeShape(capacity);
   bool is_scale = false;
   scale_t scale = {{0.0, 0.0}, 0.0};

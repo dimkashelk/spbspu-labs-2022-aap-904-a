@@ -35,9 +35,3 @@ void makeOutput(std::ostream& out, Shape* const* array_figures, size_t size)
   }
   out << "\n";
 }
-
-void makeErrorOutput(std::string error, size_t size, Shape** array_figures)
-{
-  throw std::invalid_argument(error);
-  FigureArray::deleteArray(size, array_figures);
-}

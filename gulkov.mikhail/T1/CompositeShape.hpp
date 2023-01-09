@@ -26,7 +26,7 @@ public:
   rectangle_t getFrameRect() const;
   double getArea() const;
   void move(point_t position);
-  void move(double delta_x, double delta_y);
+  void move(double dx, double dy);
   void scale(scale_t scale);
 
 private:

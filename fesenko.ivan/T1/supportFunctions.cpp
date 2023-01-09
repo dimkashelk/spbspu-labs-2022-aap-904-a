@@ -10,9 +10,6 @@ void movePoint(point_t &p, double dx, double dy)
 
 void movePointBecauseOfScale(point_t &p, const point_t &zoomCenter, double k)
 {
-  if (k <= 0) {
-    throw std::invalid_argument("Ratio must be greater then 0\n");
-  }
   movePoint(p, (p.x - zoomCenter.x) * (k - 1.0), (p.y - zoomCenter.y) * (k - 1.0));
 }
 

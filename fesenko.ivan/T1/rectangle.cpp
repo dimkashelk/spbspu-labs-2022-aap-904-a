@@ -32,9 +32,6 @@ void Rectangle::move(const point_t &pos)
 
 void Rectangle::scale(double k)
 {
-  if (k <= 0) {
-    throw std::invalid_argument("Ratio must be greater then 0\n");
-  }
   rect_.width *= k;
   rect_.height *= k;
 }

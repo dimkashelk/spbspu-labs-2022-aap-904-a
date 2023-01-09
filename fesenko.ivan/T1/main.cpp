@@ -110,6 +110,8 @@ int main()
       }
       catch (const std::invalid_argument &e) {
         std::cerr << e.what() << "\n";
+        deleteArray(shapes, size);
+        return 2;
       }
       sumArea += shapes[i]->getArea();
     }

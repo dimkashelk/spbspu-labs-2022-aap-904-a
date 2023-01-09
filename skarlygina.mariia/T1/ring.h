@@ -14,6 +14,5 @@ public:
 private:
   Ellipse smallEllipse_;
   Ellipse bigEllipse_;
-  Ring(Ellipse smallEllipse, Ellipse bigEllipse);
 };
 #endif

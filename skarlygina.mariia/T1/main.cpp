@@ -102,7 +102,7 @@ int main()
       std::cerr << "Error: wrong parameters of the point, coefficient\n";
       FigureArray::deleteArray(size, array_figures);
       return 2;
-    }  
+    }
   }
   while (std::cin);
 

@@ -18,10 +18,11 @@ class Complexquad: virtual public Shape
     void move(double dx, double dy);
     void scale(double k) noexcept;
     Shape * clone() const override;
+    ~Complexquad();
   private:
     point_t center;
-    Triangle* triangle1;
-    Triangle* triangle2;
+    Shape* triangle1;
+    Shape* triangle2;
     point_t p1;
     point_t p2;
     point_t p3;

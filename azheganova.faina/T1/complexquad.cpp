@@ -106,3 +106,9 @@ Shape* Complexquad::clone() const
 {
   return new Complexquad(p1, p2, p3, p4);
 }
+
+Complexquad::~Complexquad()
+{
+  delete[] triangle1;
+  delete[] triangle2;
+}

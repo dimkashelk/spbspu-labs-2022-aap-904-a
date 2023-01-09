@@ -11,10 +11,8 @@ public:
   void move(double dx, double dy) override;
   void scale(double k) override;
 private:
-  point_t center_;
-  Shape* bigEllipse;
-  Shape* smallEllipse;
-  double radius_small_, radius_big_;
-  bool isBadRing();
+  Ellipse smallEllipse_;
+  Ellipse bigEllipse_;
+  Ring(Ellipse smallEllipse, Ellipse bigEllipse);
 };
 #endif

@@ -30,8 +30,16 @@ CompositeShape::CompositeShape(const CompositeShape &compositeShape):
 
 void CompositeShape::push_back(const Shape *shape)
 {
-  Shape *clone = shape->clone();
-  push_back(clone);
+  Shape *cloned = shape->clone();
+  try
+  {
+    push_back(cloned);
+  }
+  catch (...)
+  {
+    delete cloned;
+    throw;
+  }
 }
 
 void CompositeShape::push_back(Shape *shape)
@@ -106,7 +114,6 @@ void CompositeShape::move(point_t position)
 {
   for (size_t i = 0; i < size_; i++)
   {
-    //point_t offset = getVectorDiff(position, getFrameRect());
     shapes[i]->move(position);
   }
 }

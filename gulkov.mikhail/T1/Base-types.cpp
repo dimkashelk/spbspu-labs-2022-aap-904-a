@@ -11,10 +11,8 @@ double calcVectorLength(const point_t &p1, const point_t &p2)
 bool checkTriangleSides(point_t dots[])
 {
   double side_a = std::sqrt(std::pow((dots[2].x - dots[0].x), 2) + std::pow((dots[2].y - dots[0].y), 2));
-  double side_b = std::sqrt(
-    (dots[1].x - dots[0].x) * (dots[1].x - dots[0].x) + (dots[1].y - dots[0].y) * (dots[1].y - dots[0].y));
-  double side_c = std::sqrt(
-    (dots[2].x - dots[1].x) * (dots[2].x - dots[1].x) + (dots[2].y - dots[1].y) * (dots[2].y - dots[1].y));
+  double side_b = std::sqrt(std::pow((dots[1].x - dots[0].x), 2) + std::pow((dots[1].y - dots[0].y), 2));
+  double side_c = std::sqrt(std::pow((dots[2].x - dots[1].x), 2) + std::pow((dots[2].y - dots[1].y), 2));
 
   return side_a + side_b < side_c || side_a + side_c < side_b || side_b + side_c < side_a;
 }

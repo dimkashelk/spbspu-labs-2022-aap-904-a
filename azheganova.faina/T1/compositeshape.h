@@ -31,6 +31,7 @@ class CompositeShape
     bool empty();
     size_t size();
     size_t size() const;
+    void isoScale1(point_t position, double k);
   private:
     size_t size_;
     size_t capacity_;

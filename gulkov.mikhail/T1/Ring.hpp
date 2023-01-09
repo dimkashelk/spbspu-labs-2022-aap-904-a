@@ -8,7 +8,7 @@ class Ring: public Shape
 {
 public:
   Ring(point_t center, double r1, double r2);
-  ~Ring() override = default;
+  ~Ring();
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;

@@ -37,9 +37,23 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 }
 
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
-  triangle1{pos1, pos4, findCenter(pos1, pos2, pos3, pos4)},
-  triangle2{pos2, pos3, findCenter(pos1, pos2, pos3, pos4)}
+  center(findCenter(pos1, pos2, pos3, pos4)),
+  triangle_1(new Triangle(pos1, pos4, center)),
+  triangle_2(nullptr),
+  p1(pos1),
+  p2(pos2),
+  p3(pos3),
+  p4(pos4)
 {
+  try
+  {
+    triangle_2 = new Triangle(pos2, pos3, center);
+  }
+  catch (...)
+  {
+    delete triangle_1;
+    throw;
+  }
   double s1 = pos1.x == pos2.x;
   double s2 = pos1.y == pos2.y;
   double s3 = pos1.x == pos3.x;
@@ -64,73 +78,46 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 
 double Complexquad::getArea() const
 {
-  double firsttriangle1 = 0.0;
-  double firsttriangle2 = 0.0;
-  double secondtriangle1 = 0.0;
-  double secondtriangle2 = 0.0;
-  firsttriangle1 = (triangle1[0].x - triangle1[2].x) * (triangle1[1].y - triangle1[2].y);
-  firsttriangle2 = (triangle1[1].x - triangle1[2].x) * (triangle1[0].y - triangle1[2].y);
-  secondtriangle1 = (triangle2[0].x - triangle2[2].x) * (triangle2[1].y - triangle2[2].y);
-  secondtriangle2 = (triangle2[1].x - triangle2[2].x) * (triangle2[0].y - triangle2[2].y);
-  return ((0.5 * std::abs((firsttriangle1 - firsttriangle2))) + ((0.5 * std::abs(secondtriangle1 - secondtriangle2))));
+  return triangle_1->getArea() + triangle_2->getArea();
 }
 
 rectangle_t Complexquad::getFrameRect() const
 {
-  double maxx1 = std::max(triangle2[1].x, triangle1[1].x);
-  double maxy1 = std::max(triangle2[1].y, triangle1[1].y);
-  double minx1 = std::min(triangle2[1].x, triangle1[1].x);
-  double miny1 = std::min(triangle2[1].y, triangle1[1].y);
-  double maxx = std::max(triangle1[0].x, std::max(triangle2[0].x, maxx1));
-  double maxy = std::max(triangle1[0].y, std::max(triangle2[0].y, maxy1));
-  double minx = std::min(triangle1[0].x, std::min(triangle2[0].x, minx1));
-  double miny = std::min(triangle1[0].y, std::min(triangle2[0].y, miny1));
-  return makeFrame(point_t {minx, miny}, point_t {maxx, maxy});
+  double maxx1 = std::max(p2.x, std::max(p3.x, p4.x));
+  double minx1 = std::min(p2.x, std::max(p3.x, p4.x));
+  double maxy1 = std::max(p2.y, std::max(p3.y, p4.y));
+  double miny1 = std::min(p2.y, std::max(p3.y, p4.y));
+  double maxx = std::max(p1.x, maxx1);
+  double minx = std::min(p1.x, minx1);
+  double maxy = std::max(p1.y, maxy1);
+  double miny = std::min(p1.y, miny1);
+  return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
 }
 
 void Complexquad::move(point_t point)
 {
-  point_t center = triangle1[2] = triangle2[2];
   return move(point.x - center.x, point.y - center.y);
 }
 
 void Complexquad::move(double dx, double dy)
 {
-  triangle1[0].x += dx;
-  triangle1[0].y += dy;
-  triangle2[0].x += dx;
-  triangle2[0].y += dy;
-  triangle2[1].x += dx;
-  triangle2[1].y += dy;
-  triangle1[1].x += dx;
-  triangle1[1].y += dy;
-  triangle1[2].x += dx;
-  triangle1[2].y += dy;
-  triangle2[2].x += dx;
-  triangle2[2].y += dy;
+  triangle_1->move(dx, dy);
+  triangle_2->move(dx, dy);
 }
 
 void Complexquad::scale(double k) noexcept
 {
-  if (k <= 0)
-  {
-    std::cerr << "error";
-  }
-  else
-  {
-    point_t center = triangle1[2] = triangle2[2];
-    triangle1[0].x = k * (triangle1[0].x - center.x) + center.x;
-    triangle1[0].y = k * (triangle1[0].y - center.y) + center.y;
-    triangle1[1].x = k * (triangle1[1].x - center.x) + center.x;
-    triangle1[1].y = k * (triangle1[1].y - center.y) + center.y;
-    triangle2[0].x = k * (triangle2[0].x - center.x) + center.x;
-    triangle2[0].y = k * (triangle2[0].y - center.y) + center.y;
-    triangle2[1].x = k * (triangle2[1].x - center.x) + center.x;
-    triangle2[1].y = k * (triangle2[1].y - center.y) + center.y;
-  }
+  triangle_1->scale(k);
+  triangle_2->scale(k);
 }
 
 Shape* Complexquad::clone() const
 {
-  return new Complexquad(triangle1[0], triangle2[0], triangle2[1], triangle1[1]);
+  return new Complexquad(p1, p2, p3, p4);
+}
+
+Complexquad::~Complexquad()
+{
+  delete[] triangle_1;
+  delete[] triangle_2;
 }

@@ -39,6 +39,7 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   center(findCenter(pos1, pos2, pos3, pos4)),
   triangle_1(new Triangle(pos1, pos4, center)),
+  triangle_2(nullptr),
   p1(pos1),
   p2(pos2),
   p3(pos3),

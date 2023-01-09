@@ -28,8 +28,7 @@ class CompositeShape
     void push_back(const Shape * shp);
     void push_back(Shape * shp);
     void pop_back();
-    bool empty();
-    size_t size();
+    bool empty() const;
     size_t size() const;
     void isoScale1(point_t position, double k);
   private:

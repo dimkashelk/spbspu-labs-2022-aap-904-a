@@ -28,12 +28,12 @@ CompositeShape::CompositeShape(CompositeShape && rhs):
   rhs.size_ = 0;
 }
 
-bool CompositeShape::empty()
+bool CompositeShape::empty() const
 {
   return size_ == 0;
 }
 
-size_t CompositeShape::size()
+size_t CompositeShape::size() const
 {
   return size_;
 }

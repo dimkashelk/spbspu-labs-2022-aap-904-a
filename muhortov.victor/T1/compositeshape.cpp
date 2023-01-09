@@ -139,10 +139,7 @@ void CompositeShape::scaleWithoutChecking(scale_t scale)
 
 void CompositeShape::move(point_t position)
 {
-  for (size_t i = 0; i < size_; i++)
-  {
-    shapes[i]->move(position);
-  }
+  move(calculateVectorDifference(position, getFrameRect().pos.x, getFrameRect().pos.y));
 }
 
 void CompositeShape::move(double delta_x, double delta_y)

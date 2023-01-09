@@ -46,7 +46,6 @@ int main()
       {
         scale = getScale(std::cin);
         is_scale = true;
-        delete temp;
         break;
       }
     }
@@ -55,6 +54,8 @@ int main()
       std::cerr << e.what() << '\n';
     }
   }
+
+  delete temp;
 
   if (compositeShape.empty())
   {

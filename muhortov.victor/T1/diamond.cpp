@@ -6,7 +6,7 @@ Diamond::Diamond(point_t one, point_t two, point_t three):
   positions({findLastDiamondPosition(one, two, three)}),
   d1(std::abs(calculatePointsDistance(positions[1], positions[3]))),
   d2(std::abs(calculatePointsDistance(positions[2], positions[4])))
-  {}
+{}
 
 double Diamond::getArea() const
 {
@@ -45,5 +45,5 @@ void Diamond::scaleWithoutCheck(double k)
 
 Shape *Diamond::clone() const
 {
-  return new Diamond(positions[1], positions[2] , positions[3]);
+  return new Diamond(positions[1], positions[2], positions[3]);
 }

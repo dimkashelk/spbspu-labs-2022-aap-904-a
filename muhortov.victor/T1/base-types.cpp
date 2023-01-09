@@ -83,23 +83,23 @@ std::array< point_t, 5 > findLastDiamondPosition(point_t one, point_t two, point
   {
     return {one, two, three, calcPosXY(two, one), calcPosXY(three, one)};
   }
-  else if(one.y == two.y && one.x == three.x)
+  else if (one.y == two.y && one.x == three.x)
   {
     return {one, three, two, calcPosXY(three, one), calcPosXY(two, one)};
   }
-  else if(two.x == one.x && two.y == three.y)
+  else if (two.x == one.x && two.y == three.y)
   {
     return {two, one, three, calcPosXY(one, two), calcPosXY(three, two)};
   }
-  else if(two.y == one.y && two.x == three.x)
+  else if (two.y == one.y && two.x == three.x)
   {
     return {two, three, one, calcPosXY(three, two), calcPosXY(one, two)};
   }
-  else if(three.x == one.x && three.y == two.y)
+  else if (three.x == one.x && three.y == two.y)
   {
     return {three, one, two, calcPosXY(one, three), calcPosXY(two, three)};
   }
-  else if(three.y == one.y && three.x == two.x)
+  else if (three.y == one.y && three.x == two.x)
   {
     return {three, two, one, calcPosXY(two, three), calcPosXY(one, three)};
   }

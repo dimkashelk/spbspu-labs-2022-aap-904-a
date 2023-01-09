@@ -2,6 +2,7 @@
 #include "IsoScale.hpp"
 #include <cmath>
 #include <stdexcept>
+#include <limits>
 
 CompositeShape::CompositeShape(size_t capacity):
   shapes(new Shape *[capacity]),
@@ -30,16 +31,17 @@ CompositeShape::CompositeShape(const CompositeShape &compositeShape):
 
 void CompositeShape::push_back(const Shape *shape)
 {
-  Shape *cloned = shape->clone();
+  Shape *cloned = nullptr;
   try
   {
-    push_back(cloned);
+    cloned = shape->clone();
   }
   catch (...)
   {
-    delete cloned;
+    delete shape;
     throw;
   }
+  push_back(cloned);
 }
 
 void CompositeShape::push_back(Shape *shape)
@@ -112,9 +114,10 @@ void CompositeShape::scale(scale_t scale)
 
 void CompositeShape::move(point_t position)
 {
+  point_t offset = getVectorDiff(position, getFrameRect().pos);
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->move(position);
+    shapes[i]->move(offset);
   }
 }
 
@@ -142,18 +145,18 @@ rectangle_t CompositeShape::getFrameRect() const
   {
     throw std::invalid_argument("No shapes");
   }
-  double a = 0.0;
-  double b = 0.0;
-  double c = 0.0;
-  double d = 0.0;
-
-  rectangle_t temp = shapes[size_]->getFrameRect();
-
-  a = std::abs(std::fmax(temp.pos.x + temp.width / 2.0, temp.pos.x + temp.width / 2.0));
-  b = std::abs(std::fmax(temp.pos.y + temp.height / 2.0, temp.pos.y + temp.height / 2.0));
-  c = std::abs(std::fmin(temp.pos.x - temp.width / 2.0, temp.pos.x - temp.width / 2.0));
-  d = std::abs(std::fmin(temp.pos.y - temp.height / 2.0, temp.pos.y - temp.height / 2.0));
-
+  double a = std::numeric_limits< double >::min();;
+  double b = std::numeric_limits< double >::min();;
+  double c = std::numeric_limits< double >::max();;
+  double d = std::numeric_limits< double >::max();;
+  for (size_t i = 0; i < size_; i++)
+  {
+    rectangle_t temp = shapes[i]->getFrameRect();
+    a = std::abs(std::fmax(temp.pos.x + temp.width / 2.0, a));
+    b = std::abs(std::fmax(temp.pos.y + temp.height / 2.0, b));
+    c = std::abs(std::fmin(temp.pos.x - temp.width / 2.0, c));
+    d = std::abs(std::fmin(temp.pos.y - temp.height / 2.0, d));
+  }
   return {{(a + c) / 2.0, (b + d) / 2.0}, c - a, d - b};
 }
 

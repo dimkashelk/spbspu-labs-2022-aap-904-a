@@ -131,7 +131,7 @@ double CompositeShape::getArea() const
 
 rectangle_t CompositeShape::getFrameRect() const
 {
-  if (size_ == 0)
+  if (size_ < 2)
   {
     throw std::invalid_argument("No shapes");
   }
@@ -142,10 +142,10 @@ rectangle_t CompositeShape::getFrameRect() const
   for (size_t i = 0; i < size_; i++)
   {
     rectangle_t temp = shapes[i]->getFrameRect();
-    a = std::fmax(temp.pos.x + temp.width / 2.0, temp.pos.x + temp.width / 2.0);
-    b = std::fmax(temp.pos.y + temp.height / 2.0, temp.pos.y + temp.height / 2.0);
-    c = std::fmin(temp.pos.x - temp.width / 2.0, temp.pos.x - temp.width / 2.0);
-    d = std::fmin(temp.pos.y - temp.height / 2.0, temp.pos.y - temp.height / 2.0);
+    a = std::abs(std::fmax(temp.pos.x + temp.width / 2.0, temp.pos.x + temp.width / 2.0));
+    b = std::abs(std::fmax(temp.pos.y + temp.height / 2.0, temp.pos.y + temp.height / 2.0));
+    c = std::abs(std::fmin(temp.pos.x - temp.width / 2.0, temp.pos.x - temp.width / 2.0));
+    d = std::abs(std::fmin(temp.pos.y - temp.height / 2.0, temp.pos.y - temp.height / 2.0));
   }
   return {{(a + c) / 2.0, (b + d) / 2.0}, c - a, d - b};
 }

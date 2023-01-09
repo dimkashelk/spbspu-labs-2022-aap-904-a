@@ -40,25 +40,19 @@ char* sortStringByAscii(char* finalstr, const char* cstring, const char* newstr)
 {
   size_t elstr = 0;
   const char* q = newstr;
-  for (const char* i = cstring; *i; i++)
+  for (const char* i = cstring, *j = newstr; *i; j++, i++)
   {
-    if (std::isalpha(*i))
+    if (std::isalpha(*i) || std::isalpha(*j))
     {
-      bool matching = compare(i, q);
-      if (!matching)
+      bool matching1 = compare(i, q);
+      if (!matching1)
       {
         finalstr[elstr++] = std::toupper(*i);
       }
-    }
-  }
-  for (const char* i = newstr; *i; i++)
-  {
-    if (std::isalpha(*i))
-    {
-      bool matching = compare(i, q);
-      if (matching)
+      bool matching2 = compare(j, q);
+      if (matching2)
       {
-        finalstr[elstr++] = std::toupper(*i);
+        finalstr[elstr++] = std::toupper(*j);
       }
     }
   }

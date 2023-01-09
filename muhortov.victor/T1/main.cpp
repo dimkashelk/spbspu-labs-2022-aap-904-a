@@ -55,8 +55,6 @@ int main()
     }
   }
 
-  delete temp;
-
   if (compositeShape.empty())
   {
     std::cerr << "It is nothing to scale\n";

@@ -4,12 +4,22 @@
 
 Ring::Ring(point_t center, double r1, double r2):
   EllipseOne_(new Ellipse({center.x, center.y}, r1, r1)),
-  EllipseTwo_(new Ellipse({center.x, center.y}, r2, r2)),
+  EllipseTwo_(nullptr),
   rect_(EllipseOne_->getFrameRect()),
   center_(center),
   r1_(r1),
   r2_(r2)
 {
+  try
+  {
+    EllipseTwo_ = new Ellipse({center.x, center.y}, r2, r2);
+  }
+  catch (...)
+  {
+    delete EllipseOne_;
+    throw;
+  }
+
   if (EllipseOne_->getArea() < EllipseTwo_->getArea())
   {
     delete EllipseOne_;

@@ -53,11 +53,11 @@ int main()
         std::cerr << e.what() << '\n';
       }
     }
-    if (input == "ELLIPSE_RING")
+    if (input == "RING")
     {
       try
       {
-        compositeShape.push_back(makeEllipseRing(std::cin));
+        compositeShape.push_back(makeRing(std::cin));
       }
       catch (const std::invalid_argument &e)
       {

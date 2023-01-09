@@ -3,11 +3,12 @@
 
 #include "Base-types.hpp"
 #include "Shape.hpp"
+#include "Ellipse.hpp"
 
 class Ring: public Shape
 {
 public:
-  Ring(point_t center, double r1_inner, double r1_outer, double r2_inner, double r2_outer);
+  Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo);
   double getArea() const override;
   rectangle_t getFrameRect() const override;
   void move(point_t newpos) override;
@@ -15,11 +16,10 @@ public:
   void makeScale(double k) override;
   Shape *clone() const override;
 private:
+  point_t center_;
   rectangle_t rect_;
-  double r1_v_;
-  double r1_h_;
-  double r2_v_;
-  double r2_h_;
+  Shape *EllipseOne_;
+  Shape *EllipseTwo_;
 };
 
 #endif

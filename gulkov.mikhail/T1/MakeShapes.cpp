@@ -38,15 +38,17 @@ Shape *makeConcave(std::istream &input)
   return new Concave({dots[0], dots[1]}, {dots[2], dots[3]}, {dots[4], dots[5]}, {dots[6], dots[7]});
 }
 
-Shape *makeEllipseRing(std::istream &input)
+Shape *makeRing(std::istream &input)
 {
-  double dots[6]{0};
+  double dots[4]{0};
   for (double &dot: dots)
   {
     input >> dot;
   }
   checkInput(input);
-  return new Ring({dots[0], dots[1]}, dots[2], dots[3], dots[4], dots[5]);
+  Shape *EllipseOne = new Ellipse({dots[0], dots[1]}, dots[2], dots[2]);
+  Shape *EllipseTwo = new Ellipse({dots[0], dots[1]}, dots[3], dots[3]);
+  return new Ring({dots[0], dots[1]}, EllipseOne, EllipseTwo);
 }
 
 scale_t getScale(std::istream &input)

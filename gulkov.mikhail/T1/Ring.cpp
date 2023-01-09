@@ -1,14 +1,13 @@
 #include "Ring.hpp"
 #include <stdexcept>
 
-Ring::Ring(point_t center, double r1_v, double r1_h, double r2_v, double r2_h):
-  rect_({{center.x, center.y}, r2_h * 2.0, r2_v * 2.0}),
-  r1_v_(r1_v),
-  r1_h_(r1_h),
-  r2_v_(r2_v),
-  r2_h_(r2_h)
+Ring::Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo):
+  center_(center),
+  rect_(EllipseTwo->getFrameRect()),
+  EllipseOne_(EllipseOne),
+  EllipseTwo_(EllipseTwo)
 {
-  if (r1_v <= 0 || r1_h <= 0 || r2_v <= 0 || r2_h <= 0 || (r1_v == r2_v && r1_h == r2_h))
+  if (EllipseOne_->getArea() > EllipseOne_->getArea())
   {
     throw std::invalid_argument("Bad input, invalid ellipses radius's, => invalid ring");
   }
@@ -16,7 +15,7 @@ Ring::Ring(point_t center, double r1_v, double r1_h, double r2_v, double r2_h):
 
 double Ring::getArea() const
 {
-  return (r2_v_ * r2_h_ * 3.141592653589793238) - (r1_v_ * r1_h_ * 3.141592653589793238);
+  return EllipseTwo_->getArea() - EllipseTwo_->getArea();
 }
 
 rectangle_t Ring::getFrameRect() const
@@ -39,15 +38,11 @@ void Ring::move(double delta_x, double delta_y)
 
 void Ring::makeScale(double k)
 {
-  r1_v_ *= k;
-  r1_h_ *= k;
-  r2_v_ *= k;
-  r2_h_ *= k;
-  rect_.width = r2_v_ * 2.0;
-  rect_.height = r2_h_ * 2.0;
+  EllipseOne_->makeScale(k);
+  EllipseTwo_->makeScale(k);
 }
 
 Shape *Ring::clone() const
 {
-  return new Ring(rect_.pos, r1_v_, r1_h_, r2_v_, r2_h_);
+  return new Ring(center_, EllipseOne_, EllipseTwo_);
 }

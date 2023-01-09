@@ -38,7 +38,8 @@ void CompositeShape::push_back(const Shape *shape)
   }
   catch (...)
   {
-    delete clone;
+    delete shape;
+    //delete clone;
     throw;
   }
 }

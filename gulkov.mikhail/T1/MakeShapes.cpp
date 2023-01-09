@@ -46,10 +46,8 @@ Shape *makeRing(std::istream &input)
     input >> dot;
   }
   checkInput(input);
-  Shape *EllipseOne = new Ellipse({dots[0], dots[1]}, dots[2], dots[2]); // см. Ring.hpp
-  Shape *EllipseTwo = new Ellipse({dots[0], dots[1]}, dots[3], dots[3]); //
 
-  return new Ring({dots[0], dots[1]}, EllipseOne, EllipseTwo);
+  return new Ring({dots[0], dots[1]}, dots[2], dots[3]);
 }
 
 scale_t getScale(std::istream &input)

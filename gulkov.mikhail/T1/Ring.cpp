@@ -1,11 +1,14 @@
 #include "Ring.hpp"
 #include <stdexcept>
+#include "Ellipse.hpp"
 
-Ring::Ring(point_t center, Shape *EllipseOne, Shape *EllipseTwo):
+Ring::Ring(point_t center, double r1, double r2):
+  EllipseOne_(new Ellipse({center.x, center.y}, r1, r1)),
+  EllipseTwo_(new Ellipse({center.x, center.y}, r2, r2)),
+  rect_(EllipseOne_->getFrameRect()),
   center_(center),
-  rect_(EllipseOne->getFrameRect()),
-  EllipseOne_(EllipseOne),
-  EllipseTwo_(EllipseTwo)
+  r1_(r1),
+  r2_(r2)
 {
   if (EllipseOne_->getArea() < EllipseTwo_->getArea())
   {
@@ -46,7 +49,7 @@ void Ring::makeScale(double k)
 
 Shape *Ring::clone() const
 {
-  return new Ring(center_, EllipseOne_, EllipseTwo_);
+  return new Ring(center_, r1_, r2_);
 }
 
 

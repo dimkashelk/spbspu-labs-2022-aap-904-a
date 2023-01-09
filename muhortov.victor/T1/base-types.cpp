@@ -77,7 +77,7 @@ point_t calcPosXY(point_t pos, point_t center)
   return {pos.x - (pos.x - center.x) * 2.0, pos.y - (pos.y - center.y) * 2.0};
 }
 
-std::array< point_t, 5 > findLastDiamodPosition(point_t one, point_t two, point_t three)
+std::array< point_t, 5 > findLastDiamondPosition(point_t one, point_t two, point_t three)
 {
   if (one.x == two.x && one.y == three.y)
   {

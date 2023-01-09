@@ -28,11 +28,16 @@ point_t calculateVectorDifference(point_t position, double delta_x, double delta
   return position;
 }
 
+point_t multiplicationVector(point_t position, double k)
+{
+  position.x *= k;
+  position.y *= k;
+  return position;
+}
+
 point_t calculateScale(point_t position, point_t center, double k)
 {
-  position.x = k * (position.x - center.x) + center.x;
-  position.y = k * (position.y - center.y) + center.y;
-  return position;
+  return calculateVectorSum(multiplicationVector(calculateVectorDifference(position, center.x, center.y), k), center.x, center.y);
 }
 
 double calculateTriangleArea(const double &a, const double &b, const double &c)

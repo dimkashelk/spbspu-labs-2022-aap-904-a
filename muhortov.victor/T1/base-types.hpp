@@ -26,6 +26,7 @@ point_t findDeltaScale(point_t pos, scale_t scale);
 point_t calculateVectorSum(point_t position, double delta_x, double delta_y);
 point_t calculateVectorDifference(point_t position, double delta_x, double delta_y);
 point_t calculateScale(point_t position, point_t center, double k);
+point_t multiplicationVector(point_t position, double k);
 double calculateTriangleArea(const double &a, const double &b, const double &c);
 double calculateSideForTriangle(const point_t &one, const point_t &two);
 bool checkingSideForPosition(const point_t &one, const point_t &two, const point_t &four);

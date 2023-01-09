@@ -65,7 +65,6 @@ void CompositeShape::push_back(Shape *shape)
   catch (...)
   {
     delete shape;
-    throw;
   }
 }
 
@@ -123,10 +122,10 @@ void CompositeShape::scale(scale_t scale)
 
 void CompositeShape::move(point_t position)
 {
-  point_t offset = getVectorDiff(position, getFrameRect().pos);
+  point_t frame_rect = getFrameRect().pos;
   for (size_t i = 0; i < size_; i++)
   {
-    shapes[i]->move(offset);
+    shapes[i]->move(getVectorDiff(position, frame_rect));
   }
 }
 

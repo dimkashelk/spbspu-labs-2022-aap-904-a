@@ -96,7 +96,7 @@ rectangle_t Complexquad::getFrameRect() const
 
 void Complexquad::move(point_t point)
 {
-  return move(point.x - center.x, point.y - center.y);
+  return move(point.x - getFrameRect().pos.x, point.y - getFrameRect().pos.y);
 }
 
 void Complexquad::move(double dx, double dy)

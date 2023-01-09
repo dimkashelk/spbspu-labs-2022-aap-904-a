@@ -66,6 +66,7 @@ int main()
 
   printShapesArea(std::cout, compositeShape);
   std::cout << "\n";
+  
   try
   {
     compositeShape.scale(scale);

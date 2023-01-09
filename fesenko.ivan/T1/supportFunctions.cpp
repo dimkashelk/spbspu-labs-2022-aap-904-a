@@ -8,7 +8,7 @@ void movePoint(point_t &p, double dx, double dy)
   p.y += dy;
 }
 
-void movePointBecauseOfScale(point_t &p, point_t &zoomCenter, double k)
+void movePointBecauseOfScale(point_t &p, const point_t &zoomCenter, double k)
 {
   if (k <= 0) {
     throw std::invalid_argument("Ratio must be greater then 0\n");
@@ -16,16 +16,23 @@ void movePointBecauseOfScale(point_t &p, point_t &zoomCenter, double k)
   movePoint(p, (p.x - zoomCenter.x) * (k - 1.0), (p.y - zoomCenter.y) * (k - 1.0));
 }
 
-void fullScale(Shape *shape, point_t &zoomCenter, double k)
+void fullScale(Shape *shape, const point_t &zoomCenter, double k)
 {
-  point_t pos{shape->getFrameRect().pos.x, shape->getFrameRect().pos.y};
-  double dx = zoomCenter.x - pos.x;
-  double dy = zoomCenter.y - pos.y;
-  shape->move(dx, dy);
-  dx = -1 * dx * k;
-  dy = -1 * dy * k;
+  if (k <= 0) {
+    throw std::invalid_argument("Ratio must be greater then 0\n");
+  }
+  point_t a1;
+  a1.x = shape->getFrameRect().pos.x - shape->getFrameRect().width / 2;
+  a1.y = shape->getFrameRect().pos.y - shape->getFrameRect().height / 2;
+  shape->move(zoomCenter);
+  point_t a2;
+  a2.x = shape->getFrameRect().pos.x - shape->getFrameRect().width / 2;
+  a2.y = shape->getFrameRect().pos.y - shape->getFrameRect().height / 2;
+  double dx = a1.x - a2.x;
+  double dy = a1.y - a2.y;
   shape->scale(k);
-  shape->move(dx, dy);
+  movePointBecauseOfScale(a2, zoomCenter, k);
+  shape->move(k * dx, k * dy);
 }
 
 bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, const point_t &point3, const point_t &point4)
@@ -45,7 +52,7 @@ bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, cons
     p3 = point4;
     p4 = point3;
   }
-  if (p2.x < p3.x) {
+  if (p2.x <= p3.x) {
     return false;
   }
   if (p1.x - p2.x == 0 && p3.x - p4.x == 0) {

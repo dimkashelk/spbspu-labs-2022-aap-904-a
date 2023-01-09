@@ -9,6 +9,7 @@ int main()
   size_t capacity = 10;
   bool is_scale = false;
   std::string input = " ";
+  Shape *created_shape = nullptr;
 
   CompositeShape compositeShape(capacity);
   scale_t scale = {{0.0, 0.0}, 0.0};
@@ -20,19 +21,23 @@ int main()
     {
       if (input == "RECTANGLE")
       {
-        compositeShape.push_back(makeRectangle(std::cin));
+        created_shape = makeRectangle(std::cin);
+        compositeShape.push_back(created_shape);
       }
       if (input == "ELLIPSE")
       {
-        compositeShape.push_back(makeEllipse(std::cin));
+        created_shape = makeEllipse(std::cin);
+        compositeShape.push_back(created_shape);
       }
       if (input == "CONCAVE")
       {
-        compositeShape.push_back(makeConcave(std::cin));
+        created_shape = makeConcave(std::cin);
+        compositeShape.push_back(created_shape);
       }
       if (input == "RING")
       {
-        compositeShape.push_back(makeRing(std::cin));
+        created_shape = makeRing(std::cin);
+        compositeShape.push_back(created_shape);
       }
       if (input == "SCALE")
       {

@@ -51,5 +51,3 @@ Shape *Ring::clone() const
 {
   return new Ring(center_, r1_, r2_);
 }
-
-

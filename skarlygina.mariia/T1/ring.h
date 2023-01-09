@@ -12,6 +12,8 @@ public:
   void scale(double k) override;
 private:
   point_t center_;
+  Shape* bigEllipse;
+  Shape* smallEllipse;
   double radius_small_, radius_big_;
   bool isBadRing();
 };

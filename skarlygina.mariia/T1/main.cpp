@@ -55,6 +55,7 @@ int main()
         ring = new Ring({parameters[0], parameters[1]}, parameters[3], parameters[2]);
         Shape** extend_array = FigureArray::extendArray(array_figures, ring, size);
         delete[] array_figures;
+        array_figures = extend_array;
         size++;
       }
       catch (const std::invalid_argument& e)
@@ -80,6 +81,7 @@ int main()
         ellipse = new Ellipse({parameters[0], parameters[1]}, parameters[2], parameters[3]);
         Shape** extend_array = FigureArray::extendArray(array_figures, ellipse, size);
         delete[] array_figures;
+        array_figures = extend_array;
         size++;
       }
       catch (const std::invalid_argument& e)

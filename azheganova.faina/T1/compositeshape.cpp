@@ -115,21 +115,21 @@ double CompositeShape::getArea() const
 rectangle_t CompositeShape::getFrameRect() const
 {
   rectangle_t rectangle = shape_[0]->getFrameRect();
-  double minx = rectangle.pos.x - rectangle.width / 2;
-  double miny = rectangle.pos.x - rectangle.height / 2;
   double maxx = rectangle.pos.x + rectangle.width / 2;
   double maxy = rectangle.pos.y + rectangle.height / 2;
+  double minx = rectangle.pos.x + rectangle.width / 2;
+  double miny = rectangle.pos.y + rectangle.height / 2;
   for (size_t i = 1; i < size_; i++)
   {
-    rectangle_t rectangle = shape_[i]->getFrameRect();
-    double leftdownx = rectangle.pos.x - rectangle.width / 2;
-    double leftdowny = rectangle.pos.x - rectangle.height / 2;
-    double rightupx = rectangle.pos.x + rectangle.width / 2;
-    double rightupy = rectangle.pos.y + rectangle.height / 2;
-    minx = std::min(minx, leftdownx);
-    miny = std::min(miny, leftdowny);
+    rectangle_t rectangle1 = shape_[i]->getFrameRect();
+    double rightupx = rectangle1.pos.x + rectangle1.width / 2;
+    double rightupy = rectangle1.pos.y + rectangle1.height / 2;
+    double leftdownx = rectangle1.pos.x - rectangle1.width / 2;
+    double leftdowny = rectangle1.pos.y - rectangle1.height / 2;
     maxx = std::max(maxx, rightupx);
     maxy = std::max(maxy, rightupy);
+    minx = std::min(minx, leftdownx);
+    miny = std::min(miny, leftdowny);
   }
   point_t center({(minx + maxx) / 2, (miny + maxy) / 2});
   rectangle_t framerect{center, maxx - minx, maxy - miny};

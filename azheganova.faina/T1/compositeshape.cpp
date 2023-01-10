@@ -182,13 +182,16 @@ void CompositeShape::checkIsoScale1(point_t point, double k)
 
 void CompositeShape::isoScale1(point_t position, double k)
 {
+  for (size_t i = 0; i < size_; i++)
+  {
   point_t position1 = getFrameRect().pos;
   move(position);
   point_t position2 = getFrameRect().pos;
   scale(k);
-  double dx = (position1.x - position2.x) * (-k);
-  double dy = (position1.y - position2.y) * (-k);
+  double dx = (position1.x - position2.x) * k;
+  double dy = (position1.y - position2.y) * k;
   move(dx, dy);
+  }
 }
 
 Shape* CompositeShape::at(size_t id)

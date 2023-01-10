@@ -97,7 +97,7 @@ int main()
   printAreaAndFlamePoint(compositeShape);
   try
   {
-    compositeShape.checkisoScale1(scalecenter, scalek);
+    compositeShape.checkIsoScale1(scalecenter, scalek);
   }
   catch(const std::logic_error &e)
   {

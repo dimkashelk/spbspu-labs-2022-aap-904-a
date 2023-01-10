@@ -40,10 +40,8 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   center(findCenter(pos1, pos2, pos3, pos4)),
   triangle_1(new Triangle(pos1, pos4, center)),
   triangle_2(nullptr),
-  p1(pos1),
-  p2(pos2),
-  p3(pos3),
-  p4(pos4)
+  triangle_3{pos1, pos4, center},
+  triangle_4{pos2, pos3, center}
 {
   try
   {
@@ -63,15 +61,15 @@ double Complexquad::getArea() const
 
 rectangle_t Complexquad::getFrameRect() const
 {
-  double maxx1 = std::max(p2.x, std::max(p3.x, p4.x));
-  double minx1 = std::min(p2.x, std::min(p3.x, p4.x));
-  double maxy1 = std::max(p2.y, std::max(p3.y, p4.y));
-  double miny1 = std::min(p2.y, std::min(p3.y, p4.y));
-  double maxx = std::max(p1.x, maxx1);
-  double minx = std::min(p1.x, minx1);
-  double maxy = std::max(p1.y, maxy1);
-  double miny = std::min(p1.y, miny1);
-  return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
+  double maxx1 = std::max(triangle_4[1].x, std::max(triangle_4[2].x, triangle_3[2].x));
+  double minx1 = std::min(triangle_4[1].x, std::min(triangle_4[2].x, triangle_3[2].x));
+  double maxy1 = std::max(triangle_4[1].y, std::max(triangle_4[2].y, triangle_3[2].y));
+  double miny1 = std::min(triangle_4[1].y, std::min(triangle_4[2].y, triangle_3[2].y));
+  double maxx = std::max(triangle_3[1].x, maxx1);
+  double minx = std::min(triangle_3[1].x, minx1);
+  double maxy = std::max(triangle_3[1].y, maxy1);
+  double miny = std::min(triangle_3[1].y, miny1);
+  return;
 }
 
 void Complexquad::move(point_t point)
@@ -87,13 +85,13 @@ void Complexquad::move(double dx, double dy)
 
 void Complexquad::scale(double k) noexcept
 {
-  triangle_1->scale(2 * k);
-  triangle_2->scale(2 * k);
+  triangle_1->scale(k);
+  triangle_2->scale(k);
 }
 
 Shape* Complexquad::clone() const
 {
-  return new Complexquad(p1, p2, p3, p4);
+  return new Complexquad(triangle_3[1], triangle_4[1], triangle_4[2], triangle_3[2]);
 }
 
 Complexquad::~Complexquad()

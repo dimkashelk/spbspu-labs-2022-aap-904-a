@@ -170,14 +170,24 @@ void CompositeShape::scale(double k)
   }
 }
 
+void CompositeShape::checkIsoScale1(point_t point, double k)
+{
+  if (k <= 0)
+  {
+    throw std::logic_error("error");
+  }
+  isoScale1(point, k);
+}
+
+
 void CompositeShape::isoScale1(point_t position, double k)
 {
   point_t position1 = getFrameRect().pos;
   move(position);
   point_t position2 = getFrameRect().pos;
   scale(k);
-  double dx = (position1.x - position2.x) * (-k);
-  double dy = (position1.y - position2.y) * (-k);
+  double dx = (position1.x - position2.x) * k;
+  double dy = (position1.y - position2.y) * k;
   move(dx, dy);
 }
 

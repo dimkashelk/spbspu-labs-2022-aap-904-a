@@ -3,5 +3,6 @@
 #include "shape.h"
 #include "compositeshape.h"
 
+void checkisoScale(Shape *shape, point_t pos, double k);
 void isoScale(Shape * shape, const point_t & pos, double k);
 #endif

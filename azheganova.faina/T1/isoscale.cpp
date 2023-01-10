@@ -1,4 +1,15 @@
 #include "isoscale.h"
+#include <iostream>
+
+void checkisoScale(Shape *shape, point_t position, double k)
+{
+  if (k <= 0)
+  {
+    throw std::logic_error("Coefficient below zero");
+  }
+  isoScale(shape, position, k);
+}
+
 
 void isoScale(Shape * shape, const point_t & position, double k)
 {

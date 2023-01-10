@@ -9,7 +9,7 @@
 #include "triangle.h"
 #include "complexquad.h"
 
-void printFlamePoint(Shape *shape)
+void printFramePoint(Shape *shape)
 {
   std::cout << std::fixed << std::setprecision(1);
   rectangle_t rect = shape->getFrameRect();
@@ -21,11 +21,11 @@ void printFlamePoint(Shape *shape)
 void printAreaAndFlamePoint(CompositeShape &compositeShape)
 {
   std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
-  printFlamePoint(compositeShape[0]);
+  printFramePoint(compositeShape[0]);
   for (size_t i = 1; i < compositeShape.size(); ++i)
   {
     std::cout << " ";
-    printFlamePoint(compositeShape[i]);
+    printFramePoint(compositeShape[i]);
   }
   std::cout << "\n";
 }

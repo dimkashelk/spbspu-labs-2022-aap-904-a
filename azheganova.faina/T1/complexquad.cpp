@@ -38,14 +38,14 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   center(findCenter(pos1, pos2, pos3, pos4)),
-  triangle_1(new Triangle(pos1, pos4, center)),
+  triangle_1(new Triangle{pos1, pos4, center}),
   triangle_2(nullptr),
   triangle_3{pos1, pos4, center},
   triangle_4{pos2, pos3, center}
 {
   try
   {
-    triangle_2 = new Triangle(pos2, pos3, center);
+    triangle_2 = new Triangle{pos2, pos3, center};
   }
   catch (...)
   {
@@ -69,7 +69,7 @@ rectangle_t Complexquad::getFrameRect() const
   double minx = std::min(triangle_3[1].x, minx1);
   double maxy = std::max(triangle_3[1].y, maxy1);
   double miny = std::min(triangle_3[1].y, miny1);
-  return;
+  return makeFrame(point_t {minx, miny}, point_t {maxx, maxy});
 }
 
 void Complexquad::move(point_t point)

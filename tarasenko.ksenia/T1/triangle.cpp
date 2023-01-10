@@ -62,7 +62,7 @@ void tarasenko::Triangle::scale(double k)
 {
   this->checkCoefficient(k);
   point_t center = getCenter();
-  for (int i = 0; i < 3; i++)
+  for (size_t i = 0; i < 3; i++)
   {
     vertexes[i].x_ = center.x_ + (vertexes[i].x_ - center.x_) * k;
     vertexes[i].y_ = center.y_ + (vertexes[i].y_ - center.y_) * k;

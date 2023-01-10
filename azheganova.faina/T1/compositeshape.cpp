@@ -114,10 +114,11 @@ double CompositeShape::getArea() const
 
 rectangle_t CompositeShape::getFrameRect() const
 {
-  double minx = 0.0;
-  double miny = 0.0;
-  double maxx = 0.0;
-  double maxy = 0.0;
+  rectangle_t rectangle = shape_[0]->getFrameRect();
+  double minx = rectangle.pos.x - rectangle.width / 2;
+  double miny = rectangle.pos.x - rectangle.height / 2;
+  double maxx = rectangle.pos.x + rectangle.width / 2;
+  double maxy = rectangle.pos.y + rectangle.height / 2;
   for (size_t i = 1; i < size_; i++)
   {
     rectangle_t rectangle = shape_[i]->getFrameRect();

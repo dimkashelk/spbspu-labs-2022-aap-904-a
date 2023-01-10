@@ -54,26 +54,6 @@ Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
     delete triangle_1;
     throw;
   }
-  double s1 = pos1.x == pos2.x;
-  double s2 = pos1.y == pos2.y;
-  double s3 = pos1.x == pos3.x;
-  double s4 = pos1.y == pos3.y;
-  double s5 = pos1.x == pos4.x;
-  double s6 = pos1.y == pos4.y;
-  double s7 = pos2.x == pos3.x;
-  double s8 = pos2.y == pos3.y;
-  double s9 = pos2.x == pos4.x;
-  double s10 = pos2.y== pos4.y;
-  double s11 = pos3.x == pos4.x;
-  double s12 = pos3.y == pos4.y;
-  double s13 = (pos1.x - pos3.x) * (pos2.y - pos3.y) - (pos2.x - pos3.x) * (pos1.y - pos3.y);
-  double s14 = (pos2.x - pos4.x) * (pos3.y - pos4.y) - (pos3.x - pos4.x) * (pos2.y - pos4.y);
-  double s15 = (pos1.x - pos4.x) * (pos2.y - pos4.y) - (pos2.x - pos4.x) * (pos1.y - pos4.y);
-  double s16 = (pos1.x - pos4.x) * (pos3.y - pos4.y) - (pos3.x - pos4.x) * (pos1.y - pos4.y);
-  if ((s1 && s2) || (s3 && s4) || (s5 && s6) || (s7 && s8) || (s9 && s10) || (s11 && s12) || s13 == 0 || s14 == 0|| s15 == 0 || s16 == 0)
-  {
-    throw std::invalid_argument("wrong complexquad");
-  }
 }
 
 double Complexquad::getArea() const
@@ -96,7 +76,7 @@ rectangle_t Complexquad::getFrameRect() const
 
 void Complexquad::move(point_t point)
 {
-  return move(point.x - getFrameRect().pos.x, point.y - getFrameRect().pos.y);
+  return move(point.x - center.x, point.y - center.y);
 }
 
 void Complexquad::move(double dx, double dy)

@@ -32,8 +32,7 @@ void printAreaAndFlamePoint(CompositeShape &compositeShape)
 
 int main()
 {
-  size_t cap = 10;
-  CompositeShape compositeShape(cap);
+  CompositeShape compositeShape;
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;

@@ -39,21 +39,12 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
   center(findCenter(pos1, pos2, pos3, pos4)),
   triangle_1(new Triangle(pos1, pos4, center)),
-  triangle_2(nullptr),
+  triangle_2(new Triangle(pos2, pos3, center)),
   p1(pos1),
   p2(pos2),
   p3(pos3),
   p4(pos4)
 {
-  try
-  {
-    triangle_2 = new Triangle(pos2, pos3, center);
-  }
-  catch (...)
-  {
-    delete triangle_1;
-    throw;
-  }
   double s1 = pos1.x == pos2.x;
   double s2 = pos1.y == pos2.y;
   double s3 = pos1.x == pos3.x;

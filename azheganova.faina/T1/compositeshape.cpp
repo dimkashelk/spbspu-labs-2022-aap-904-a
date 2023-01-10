@@ -186,8 +186,8 @@ void CompositeShape::isoScale1(point_t position, double k)
   move(position);
   point_t position2 = getFrameRect().pos;
   scale(k);
-  double dx = (position1.x - position2.x) * k;
-  double dy = (position1.y - position2.y) * k;
+  double dx = (position1.x - position2.x) * (-k);
+  double dy = (position1.y - position2.y) * (-k);
   move(dx, dy);
 }
 

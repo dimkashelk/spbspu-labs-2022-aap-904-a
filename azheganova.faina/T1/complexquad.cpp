@@ -84,9 +84,9 @@ double Complexquad::getArea() const
 rectangle_t Complexquad::getFrameRect() const
 {
   double maxx1 = std::max(p2.x, std::max(p3.x, p4.x));
-  double minx1 = std::min(p2.x, std::max(p3.x, p4.x));
+  double minx1 = std::min(p2.x, std::min(p3.x, p4.x));
   double maxy1 = std::max(p2.y, std::max(p3.y, p4.y));
-  double miny1 = std::min(p2.y, std::max(p3.y, p4.y));
+  double miny1 = std::min(p2.y, std::min(p3.y, p4.y));
   double maxx = std::max(p1.x, maxx1);
   double minx = std::min(p1.x, minx1);
   double maxy = std::max(p1.y, maxy1);

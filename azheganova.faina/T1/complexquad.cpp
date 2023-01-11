@@ -49,8 +49,17 @@ double Complexquad::getArea() const
 
 rectangle_t Complexquad::getFrameRect() const
 {
-  return triangle_1.getFrameRect();
-  return triangle_2.getFrameRect();
+  rectangle_t framerectangle1 = triangle_1.getFrameRect();
+  rectangle_t framerectangle2 = triangle_2.getFrameRect();
+  point_t fr1leftdownpoint = {framerectangle1.pos.x - framerectangle1.width / 2, framerectangle1.pos.y - framerectangle1.height / 2};
+  point_t fr1rightuppoint = {framerectangle1.pos.x + framerectangle1.width / 2, framerectangle1.pos.y + framerectangle1.height / 2};
+  point_t fr2leftdownpoint = {framerectangle2.pos.x - framerectangle2.width / 2, framerectangle2.pos.y - framerectangle2.height / 2};
+  point_t fr2rightuppoint = {framerectangle2.pos.x + framerectangle2.width / 2, framerectangle2.pos.y + framerectangle2.height / 2};
+  double maxx = std::max(fr1rightuppoint.x, fr2rightuppoint.x);
+  double maxy = std::max(fr1rightuppoint.y, fr2rightuppoint.y);
+  double minx = std::min(fr1leftdownpoint.x, fr2leftdownpoint.x);
+  double miny = std::min(fr1leftdownpoint.y, fr2leftdownpoint.y);
+  return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
 }
 
 void Complexquad::move(point_t point)

@@ -22,10 +22,6 @@ class Complexquad: virtual public Shape
     point_t center;
     Triangle triangle_1;
     Triangle triangle_2;
-    point_t p1;
-    point_t p2;
-    point_t p3;
-    point_t p4;
 };
 
 #endif

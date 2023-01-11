@@ -11,7 +11,7 @@ int main()
   std::cin >> leftBorder >> rightBorder >> numberMax;
   if (!std::cin)
   {
-    std::cout << "incorrect input" << '\n';
+    std::cout << "Incorrect input" << '\n';
     return 1;
   }
   try

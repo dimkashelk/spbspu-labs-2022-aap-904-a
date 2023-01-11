@@ -14,7 +14,7 @@ void printTable(std::ostream& out, double leftBorder, double rightBorder, double
 {
   if (leftBorder > rightBorder)
   {
-    throw std::logic_error("incorrect borders");
+    throw std::invalid_argument("Incorrect borders");
   }
   for (double x = leftBorder; x + step < rightBorder; x = x + step)
   {

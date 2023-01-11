@@ -1,4 +1,5 @@
 #include "arcTg.h"
+#include <cmath>
 #include <stdexcept>
 
 double calcArcTg(double x, double absError, unsigned numberMax)
@@ -40,7 +41,7 @@ double MemberOfRow::operator()()
     double pi = 3.14159265358979323846;
     return pi / 2;
   }
-  double res = 1 / (ittnum * pow(x, ittnum));
+  double res = 1 / (ittnum * std::pow(x, ittnum));
   ittnum += 2;
   return res * (sign++ % 2 != 0 ? 1 : -1);
 }

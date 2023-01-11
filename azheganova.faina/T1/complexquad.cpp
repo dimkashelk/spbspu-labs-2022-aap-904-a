@@ -1,6 +1,7 @@
 #include "complexquad.h"
 #include <iostream>
 #include <stdexcept>
+#include "isoscale.h"
 
 Shape* inputComplexquad(std::istream &input)
 {
@@ -75,8 +76,8 @@ void Complexquad::move(double dx, double dy)
 
 void Complexquad::scale(double k) noexcept
 {
-  triangle_1.scale(k);
-  triangle_2.scale(k);
+  isoScale(std::addressof(triangle_1), center, k);
+  isoScale(std::addressof(triangle_2), center, k);
 }
 
 Shape* Complexquad::clone() const

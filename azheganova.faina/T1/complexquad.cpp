@@ -70,8 +70,9 @@ void Complexquad::move(point_t point)
 
 void Complexquad::move(double dx, double dy)
 {
-  triangle_1.move(dx, dy);
-  triangle_2.move(dx, dy);
+  return triangle_1.move(dx, dy);
+  return triangle_2.move(dx, dy);
+  return move(center.x + dx, center.y + dy);
 }
 
 void Complexquad::scale(double k) noexcept

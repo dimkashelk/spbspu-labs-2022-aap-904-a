@@ -125,7 +125,7 @@ rectangle_t CompositeShape::getFrameRect() const
     double rightupx = rectangle1.pos.x + rectangle1.width / 2;
     double rightupy = rectangle1.pos.y + rectangle1.height / 2;
     double leftdownx = rectangle1.pos.x - rectangle1.width / 2;
-    double leftdowny = rectangle1.pos.x - rectangle1.height / 2;
+    double leftdowny = rectangle1.pos.y - rectangle1.height / 2;
     maxx = std::max(maxx, rightupx);
     maxy = std::max(maxy, rightupy);
     minx = std::min(minx, leftdownx);

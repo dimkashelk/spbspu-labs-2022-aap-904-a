@@ -1,5 +1,6 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
+#include <iostream>
 #include "shape.h"
 
 Shape* inputTriangle(std::istream &input);

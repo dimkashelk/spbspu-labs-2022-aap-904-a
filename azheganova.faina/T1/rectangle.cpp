@@ -1,6 +1,5 @@
 #include "rectangle.h"
 #include <iostream>
-#include <cmath>
 
 Shape* inputRectangle(std::istream &input)
 {

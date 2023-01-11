@@ -2,7 +2,6 @@
 #define COMPOSITESHAPE_H
 #include <cstddef>
 #include "shape.h"
-#include "base_types.h"
 
 class CompositeShape
 {

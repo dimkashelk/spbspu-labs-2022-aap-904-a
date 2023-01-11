@@ -72,8 +72,8 @@ void Complexquad::move(double dx, double dy)
 {
   triangle_1.move(dx, dy);
   triangle_2.move(dx, dy);
-  center.x + dx;
-  center.y + dy;
+  center.x += dx;
+  center.y += dy;
 }
 
 void Complexquad::scale(double k) noexcept

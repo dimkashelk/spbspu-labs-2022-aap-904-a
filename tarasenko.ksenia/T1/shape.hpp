@@ -14,7 +14,7 @@ namespace tarasenko
    virtual Shape * clone() const = 0;
    virtual ~Shape() = default;
   protected:
-   virtual void checkCoefficient(double k) const;
+   void checkCoefficient(double k) const;
   };
 }
 #endif

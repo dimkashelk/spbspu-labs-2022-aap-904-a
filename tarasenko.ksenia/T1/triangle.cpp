@@ -47,8 +47,7 @@ void tarasenko::Triangle::move(double dx, double dy)
 {
   for (int i = 0; i < 3; i++)
   {
-    vertexes[i].x_ += dx;
-    vertexes[i].y_ += dy;
+    vertexes[i] = vertexes[i] + point_t{dx, dy};
   }
 }
 

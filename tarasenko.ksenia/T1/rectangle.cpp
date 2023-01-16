@@ -27,8 +27,7 @@ void tarasenko::Rectangle::move(point_t pos)
 
 void tarasenko::Rectangle::move(double dx, double dy)
 {
-  rect_.pos_.x_ += dx;
-  rect_.pos_.y_ += dy;
+  rect_.pos_ = rect_.pos_ + point_t{dx, dy};
 }
 
 void tarasenko::Rectangle::scale(double k)

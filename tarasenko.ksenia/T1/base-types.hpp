@@ -6,6 +6,7 @@ namespace tarasenko
   {
     double x_, y_;
   };
+  point_t operator+(const point_t & point_1, const point_t & point_2);
 
   struct rectangle_t
   {

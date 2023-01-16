@@ -117,7 +117,17 @@ tarasenko::Shape * tarasenko::CompositeShape::at(size_t id)
   return shapes[id];
 }
 
+const tarasenko::Shape * tarasenko::CompositeShape::at(size_t id) const
+{
+  return shapes[id];
+}
+
 tarasenko::Shape * tarasenko::CompositeShape::operator[](size_t id)
+{
+  return shapes[id];
+}
+
+const tarasenko::Shape * tarasenko::CompositeShape::operator[](size_t id) const
 {
   return shapes[id];
 }

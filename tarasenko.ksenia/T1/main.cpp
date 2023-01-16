@@ -9,7 +9,6 @@
 int main()
 {
   bool errors = false;
-  bool shape_was = false;
   bool scale_was = false;
   tarasenko::CompositeShape compositeShape;
   while (std::cin)
@@ -27,12 +26,12 @@ int main()
       {
         tarasenko::Shape * shape = tarasenko::inputRectangle(std::cin);
         compositeShape.push_back(shape);
+        shape = nullptr;
       }
       catch (const std::invalid_argument & e)
       {
         errors = true;
       }
-      shape_was = true;
     }
     else if (name == "TRIANGLE")
     {
@@ -40,12 +39,12 @@ int main()
       {
         tarasenko::Shape * shape = tarasenko::inputTriangle(std::cin);
         compositeShape.push_back(shape);
+        shape = nullptr;
       }
       catch (const std::invalid_argument & e)
       {
         errors = true;
       }
-      shape_was = true;
     }
     else if (name == "COMPLEXQUAD")
     {
@@ -53,20 +52,15 @@ int main()
       {
         tarasenko::Shape * shape = tarasenko::inputComplexquad(std::cin);
         compositeShape.push_back(shape);
+        shape = nullptr;
       }
       catch (const std::invalid_argument & e)
       {
         errors = true;
       }
-      shape_was = true;
     }
     else if (name == "SCALE")
     {
-      if (!shape_was)
-      {
-        std::cout << "The shape was not called\n";
-        return 1;
-      }
       scale_was = true;
       double x = 0.0;
       double y = 0.0;
@@ -111,9 +105,14 @@ int main()
       std::cin.clear();
     }
   }
+  if (!compositeShape.size())
+  {
+    std::cerr << "The shape was not called\n";
+    return 1;
+  }
   if (!scale_was)
   {
-    std::cout << "The SCALE was not called\n";
+    std::cerr << "The SCALE was not called\n";
     return 1;
   }
 }

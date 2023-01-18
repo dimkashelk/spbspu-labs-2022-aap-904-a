@@ -1,0 +1,6 @@
+#ifndef ARRAYOPERATIONS_H
+#define ARRAYOPERATIONS_H
+
+
+
+#endif //ARRAYOPERATIONS_H

@@ -50,6 +50,8 @@ int taskTwo(std::ifstream& fin, std::ofstream& fout)
     return 1;
   }
   inputArray(arr, rows * cols, fin);
+
+  std::cout << "The matrix is " << (isTriangular(arr, rows, cols) ? "" : "not ") << "triangular";
   delete[] arr;
   return 0;
 }

@@ -23,3 +23,20 @@ size_t sortedRowsCount(const int* arr, size_t rows, size_t cols)
   }
   return cnt;
 }
+
+bool isTriangular(const int* arr, size_t rows, size_t cols)
+{
+  if (rows != cols) {
+    return false;
+  }
+
+  for (size_t i = 0; i < rows; ++i) {
+    for (size_t j = i + 1; j < cols; ++j) {
+      size_t offset = i * cols;
+      if (arr[offset + j] != 0) {
+        return false;
+      }
+    }
+  }
+  return true;
+}

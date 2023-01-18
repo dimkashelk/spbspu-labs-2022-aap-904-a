@@ -1,19 +1,5 @@
 #include "ArrayOperations.h"
 
-void output(int* arr, size_t rows, size_t cols) //For debug
-{
-  int j = 0;
-  for (size_t i = 0; i < rows * cols; ++i) {
-    if (j == cols) {
-      j = 0;
-      std::cout << '\n';
-    }
-    std::cout << arr[i] << ' ';
-    j++;
-  }
-  std::cout << '\n';
-}
-
 int taskOne(std::ifstream& fin, std::ofstream& fout)
 {
   int arr[1000]{0};
@@ -28,7 +14,6 @@ int taskOne(std::ifstream& fin, std::ofstream& fout)
   }
   inputArray(arr, rows * cols, fin);
 
-  output(arr, rows, cols);
   fout << "Number of sorted rows: " << sortedRowsCount(arr, rows, cols);
   return 0;
 }
@@ -51,7 +36,7 @@ int taskTwo(std::ifstream& fin, std::ofstream& fout)
   }
   inputArray(arr, rows * cols, fin);
 
-  std::cout << "The matrix is " << (isTriangular(arr, rows, cols) ? "" : "not ") << "triangular";
+  fout << "The matrix is " << (isTriangular(arr, rows, cols) ? "indeed" : "not") << " triangular";
   delete[] arr;
   return 0;
 }

@@ -11,6 +11,7 @@ void output(int* arr, size_t rows, size_t cols) //For debug
     std::cout << arr[i] << ' ';
     j++;
   }
+  std::cout << '\n';
 }
 
 void taskOne(std::ifstream& fin, std::ofstream& fout)
@@ -28,6 +29,7 @@ void taskOne(std::ifstream& fin, std::ofstream& fout)
   inputArray(arr, rows * cols, fin);
 
   output(arr, rows, cols);
+  fout << "Number of sorted rows: " << sortedRowsCount(arr, rows, cols);
 }
 
 void taskTwo(std::ifstream& fin, std::ofstream& fout)

@@ -80,7 +80,6 @@ int main()
   if (errors)
   {
     std::cerr << "Errors in shapes\n";
-    return 1;
   }
   if (!compositeShape.size())
   {

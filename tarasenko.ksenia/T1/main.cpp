@@ -20,90 +20,67 @@ int main()
       std::cerr << "Error in name\n";
       break;
     }
-    if (name == "RECTANGLE")
+    try
     {
-      try
+      if (name == "RECTANGLE")
       {
         tarasenko::Shape * shape = tarasenko::inputRectangle(std::cin);
         compositeShape.push_back(shape);
         shape = nullptr;
       }
-      catch (const std::invalid_argument & e)
-      {
-        errors = true;
-      }
-    }
-    else if (name == "TRIANGLE")
-    {
-      try
+      else if (name == "TRIANGLE")
       {
         tarasenko::Shape * shape = tarasenko::inputTriangle(std::cin);
         compositeShape.push_back(shape);
         shape = nullptr;
       }
-      catch (const std::invalid_argument & e)
-      {
-        errors = true;
-      }
-    }
-    else if (name == "COMPLEXQUAD")
-    {
-      try
+      else if (name == "COMPLEXQUAD")
       {
         tarasenko::Shape * shape = tarasenko::inputComplexquad(std::cin);
         compositeShape.push_back(shape);
         shape = nullptr;
       }
-      catch (const std::invalid_argument & e)
+      else if (name == "SCALE")
       {
-        errors = true;
-      }
-    }
-    else if (name == "SCALE")
-    {
-      scale_was = true;
-      double x = 0.0;
-      double y = 0.0;
-      double k = 0.0;
-      std::cin >> x >> y >> k;
-      if (!std::cin)
-      {
-        std::cerr << "Error\n";
-      }
-      tarasenko::point_t center_scale{x, y};
-      tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
-      std::cout << "\n";
-      try
-      {
+        scale_was = true;
+        double x = 0.0;
+        double y = 0.0;
+        double k = 0.0;
+        std::cin >> x >> y >> k;
+        if (!std::cin)
+        {
+          std::cerr << "Error\n";
+        }
+        tarasenko::point_t center_scale{x, y};
+        tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
+        std::cout << "\n";
         for (size_t i = 0; i < compositeShape.size(); i++)
         {
           isoScale(compositeShape[i], center_scale, k);
         }
+        tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
+        std::cout << "\n";
+        break;
       }
-      catch (std::invalid_argument & e)
+      else
       {
-        std::cerr << "Error: ";
-        std::cerr << e.what() << "\n";
-        return 1;
+        double skip = 0.0;
+        while (std::cin)
+        {
+          std::cin >> skip;
+        }
+        std::cin.clear();
       }
-      tarasenko::outputAreaAndFrameRect(std::cout, compositeShape);
-      std::cout << "\n";
-      if (errors)
-      {
-        errors = false;
-        std::cerr << "Errors in shapes\n";
-      }
-      break;
     }
-    else
+    catch (...)
     {
-      double skip = 0.0;
-      while (std::cin)
-      {
-        std::cin >> skip;
-      }
-      std::cin.clear();
+      errors = true;
     }
+  }
+  if (errors)
+  {
+    std::cerr << "Errors in shapes\n";
+    return 1;
   }
   if (!compositeShape.size())
   {

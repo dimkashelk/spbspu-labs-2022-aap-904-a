@@ -5,7 +5,7 @@ void tarasenko::isoScale(Shape * shape, point_t center, double k)
 {
   if (k <= 0)
   {
-    throw std::invalid_argument("the coefficient is less than zero");
+    throw std::logic_error("the coefficient is less than zero");
   }
   point_t pos_1 = shape->getFrameRect().pos_;
   shape->move(center);

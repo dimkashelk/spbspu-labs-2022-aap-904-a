@@ -72,9 +72,14 @@ int main()
         std::cin.clear();
       }
     }
-    catch (...)
+    catch (const std::invalid_argument & e)
     {
       errors = true;
+    }
+    catch (const std::logic_error & e)
+    {
+      std::cerr << e.what();
+      return 1;
     }
   }
   if (errors)

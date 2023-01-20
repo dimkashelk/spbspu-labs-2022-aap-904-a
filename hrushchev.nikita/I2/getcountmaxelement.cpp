@@ -16,6 +16,7 @@ size_t get_count_max_element(const int* arr, const size_t size)
       max_element = arr[i];
       count_max_element = 1;
     }
+
     if (arr[i] == max_element)
     {
       count_max_element++;

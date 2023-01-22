@@ -49,3 +49,13 @@ double dimkashelk::Ellipse::getArea() const
   }
   return area;
 }
+dimkashelk::rectangle_t dimkashelk::Ellipse::getFrameRect() const
+{
+  rectangle_t frame_0_degree = triangles[0].getFrameRect();
+  rectangle_t frame_90_degree = triangles[89].getFrameRect();
+  rectangle_t frame_180_degree = triangles[179].getFrameRect();
+  rectangle_t frame_270_degree = triangles[269].getFrameRect();
+  return dimkashelk::getFrameRect(
+    dimkashelk::getFrameRect(frame_0_degree, frame_90_degree),
+    dimkashelk::getFrameRect(frame_180_degree, frame_270_degree));
+}

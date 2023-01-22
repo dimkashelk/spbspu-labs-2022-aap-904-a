@@ -52,3 +52,7 @@ void dimkashelk::Ellipse::scale(double k)
 {
   polygon.scale(k);
 }
+void dimkashelk::Ellipse::unsafeScale(double k) noexcept
+{
+  polygon.unsafeScale(k);
+}

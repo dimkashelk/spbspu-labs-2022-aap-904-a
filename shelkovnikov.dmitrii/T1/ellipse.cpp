@@ -44,3 +44,7 @@ void dimkashelk::Ellipse::move(point_t point)
 {
   polygon.move(point);
 }
+void dimkashelk::Ellipse::move(double delta_x, double delta_y)
+{
+  polygon.move(delta_x, delta_y);
+}

@@ -3,15 +3,15 @@
 
 double calcArcTg(double x, double absError, unsigned numberMax);
 
-class MemberOfRow
+class MemberOfSeries
 {
 public:
-  explicit MemberOfRow(double x);
+  explicit MemberOfSeries(double x);
   double operator()();
 
 private:
   double x;
-  unsigned ittnum;
+  unsigned step;
   unsigned sign;
 };
 

@@ -4,7 +4,7 @@
 
 double calcArcTg(double x, double absError, unsigned numberMax)
 {
-  MemberOfRow calcMember(x);
+  MemberOfSeries calcMember(x);
   double res = 0.0;
   double member = 0.0;
   unsigned count = 0;
@@ -13,7 +13,8 @@ double calcArcTg(double x, double absError, unsigned numberMax)
     member = calcMember();
     res += member;
     count++;
-  } while (std::abs(member) > absError && count < numberMax);
+  }
+  while (std::abs(member) > absError && count < numberMax);
 
   if (std::abs(member) > absError || count >= numberMax)
   {
@@ -22,9 +23,9 @@ double calcArcTg(double x, double absError, unsigned numberMax)
   return res;
 }
 
-MemberOfRow::MemberOfRow(double x) :
+MemberOfSeries::MemberOfSeries(double x):
   x(x),
-  ittnum(0),
+  step(0),
   sign(0)
 {
   if (x < 2 || x > 3)
@@ -33,15 +34,15 @@ MemberOfRow::MemberOfRow(double x) :
   }
 }
 
-double MemberOfRow::operator()()
+double MemberOfSeries::operator()()
 {
-  if (ittnum == 0)
+  if (step == 0)
   {
-    ittnum = 1;
+    step = 1;
     double pi = 3.14159265358979323846;
     return pi / 2;
   }
-  double res = 1 / (ittnum * std::pow(x, ittnum));
-  ittnum += 2;
+  double res = 1 / (step * std::pow(x, step));
+  step += 2;
   return res * (sign++ % 2 != 0 ? 1 : -1);
 }

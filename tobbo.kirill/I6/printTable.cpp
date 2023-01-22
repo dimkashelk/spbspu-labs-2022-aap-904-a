@@ -1,5 +1,5 @@
-#include "printTable.h"
 #include "arcTg.h"
+#include "printTable.h"
 #include <cmath>
 #include <iomanip>
 
@@ -7,7 +7,7 @@ void printRowInTable(std::ostream& out, double x, double absError, unsigned numb
 {
   out << std::setw(5) << x << " ";
   out << std::setw(10) << std::setprecision(5) << calcArcTg(x, absError, numberMax) << " ";
-  out << std::setw(10) << std::setprecision(5) << std::atan(x) << "\n";
+  out << std::setw(10) << std::atan(x) << "\n";
 }
 
 void printTable(std::ostream& out, double leftBorder, double rightBorder, double step, unsigned numberMax, double absError)

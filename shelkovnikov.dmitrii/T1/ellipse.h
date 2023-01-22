@@ -19,6 +19,6 @@ namespace dimkashelk
   private:
     Triangle *triangles;
   };
-  Triangle* makeTriangles(point_t point, double height, double width);
+  Triangle* makeTriangles(point_t point, double a, double b);
 }
 #endif

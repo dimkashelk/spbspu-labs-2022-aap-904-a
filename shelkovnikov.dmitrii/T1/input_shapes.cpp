@@ -3,6 +3,7 @@
 #include "rectangle.h"
 #include "regular.h"
 #include "polygon.h"
+#include "ellipse.h"
 dimkashelk::Shape* dimkashelk::inputRectangle(std::istream &in)
 {
   double x1 = 0.0;
@@ -80,4 +81,16 @@ dimkashelk::Shape* dimkashelk::inputPolygon(std::istream &in)
     delete[] points;
     throw;
   }
+}
+dimkashelk::Shape *dimkashelk::inputEllipse(std::istream &in)
+{
+  double x = 0.0;
+  double y = 0.0;
+  in >> x >> y;
+  point_t center{x, y};
+  double height = 0.0;
+  double width = 0.0;
+  in >> height >> width;
+  Ellipse *ellipse = new Ellipse(center, height, width);
+  return ellipse;
 }

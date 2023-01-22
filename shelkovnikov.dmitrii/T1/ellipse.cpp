@@ -32,6 +32,9 @@ dimkashelk::point_t *makePoints(dimkashelk::point_t point, double a, double b)
 dimkashelk::Ellipse::Ellipse(point_t point, double height, double width):
   polygon(makePoints(point, height, width), 361)
 {}
+dimkashelk::Ellipse::Ellipse(const Polygon &polygon):
+  polygon(polygon)
+{}
 double dimkashelk::Ellipse::getArea() const
 {
   return polygon.getArea();
@@ -55,4 +58,8 @@ void dimkashelk::Ellipse::scale(double k)
 void dimkashelk::Ellipse::unsafeScale(double k) noexcept
 {
   polygon.unsafeScale(k);
+}
+dimkashelk::Shape *dimkashelk::Ellipse::clone() const
+{
+  return new Ellipse(polygon);
 }

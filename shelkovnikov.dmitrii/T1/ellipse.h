@@ -19,6 +19,7 @@ namespace dimkashelk
     Shape* clone() const override;
   private:
     Polygon polygon;
+    Ellipse(const Polygon &polygon);
   };
 }
 #endif

@@ -65,3 +65,7 @@ void dimkashelk::Polygon::unsafeScale(double k) noexcept
     unsafeIsotropicScaling(std::addressof(triangles_[i]), center_, k);
   }
 }
+dimkashelk::Polygon dimkashelk::Polygon::copy() const
+{
+  return Polygon(*this);
+}

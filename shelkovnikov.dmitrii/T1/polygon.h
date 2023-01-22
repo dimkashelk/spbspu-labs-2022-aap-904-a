@@ -15,6 +15,7 @@ namespace dimkashelk
     void move(double delta_x, double delta_y) override;
     void unsafeScale(double k) noexcept override;
     Shape* clone() const override;
+    Polygon copy() const;
   private:
     size_t count_;
     Triangle *triangles_;

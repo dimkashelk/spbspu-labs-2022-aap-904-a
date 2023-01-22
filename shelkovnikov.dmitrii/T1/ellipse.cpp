@@ -48,3 +48,7 @@ void dimkashelk::Ellipse::move(double delta_x, double delta_y)
 {
   polygon.move(delta_x, delta_y);
 }
+void dimkashelk::Ellipse::scale(double k)
+{
+  polygon.scale(k);
+}

@@ -3,6 +3,7 @@
 #include "shape.h"
 #include "triangle.h"
 #include "base_types.h"
+#include "polygon.h"
 namespace dimkashelk
 {
   class Ellipse: public Shape
@@ -17,8 +18,7 @@ namespace dimkashelk
     void unsafeScale(double k) noexcept override;
     Shape* clone() const override;
   private:
-    Triangle *triangles;
+    Polygon polygon;
   };
-  Triangle* makeTriangles(point_t point, double a, double b);
 }
 #endif

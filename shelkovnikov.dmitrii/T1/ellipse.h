@@ -2,11 +2,13 @@
 #define T1_ELLIPSE_H
 #include "shape.h"
 #include "triangle.h"
+#include "base_types.h"
 namespace dimkashelk
 {
   class Ellipse: public Shape
   {
   public:
+    Ellipse(point_t point, double height, double width);
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;

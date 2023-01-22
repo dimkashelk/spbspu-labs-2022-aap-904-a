@@ -40,3 +40,12 @@ dimkashelk::Triangle *dimkashelk::makeTriangles(point_t point, double a, double 
   }
   return triangles;
 }
+double dimkashelk::Ellipse::getArea() const
+{
+  double area = 0.0;
+  for (size_t i = 0; i < 359; i++)
+  {
+    area += triangles[i].getArea();
+  }
+  return area;
+}

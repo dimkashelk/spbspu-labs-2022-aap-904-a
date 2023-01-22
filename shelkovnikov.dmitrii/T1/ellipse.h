@@ -1,5 +1,5 @@
-#ifndef T1_ELLIPSE_H
-#define T1_ELLIPSE_H
+#ifndef SPBSPU_LABS_2022_AAP_904_A_ELLIPSE_H
+#define SPBSPU_LABS_2022_AAP_904_A_ELLIPSE_H
 #include "shape.h"
 #include "triangle.h"
 #include "base_types.h"

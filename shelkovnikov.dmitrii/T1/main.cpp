@@ -78,6 +78,18 @@ int main()
       }
       std::cin.clear();
     }
+    else if (name == "ELLIPSE")
+    {
+      try
+      {
+        dimkashelk::Shape *shape = dimkashelk::inputEllipse(std::cin);
+        compositeShape.push_back(shape);
+      }
+      catch (...)
+      {
+        contains_errors_with_shapes = true;
+      }
+    }
     else if (name == "SCALE")
     {
       call_scale = true;

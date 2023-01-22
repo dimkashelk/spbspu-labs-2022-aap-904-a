@@ -1,9 +1,15 @@
 #ifndef T1_ELLIPSE_H
 #define T1_ELLIPSE_H
+#include "shape.h"
 #include "triangle.h"
-class Ellipse
+namespace dimkashelk
 {
-private:
-  dimkashelk::Triangle *triangle;
-};
+  class Ellipse: public Shape
+  {
+  public:
+
+  private:
+    Triangle *triangle;
+  };
+}
 #endif

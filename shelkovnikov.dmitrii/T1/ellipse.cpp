@@ -1,7 +1,6 @@
 #include "ellipse.h"
 #include <cmath>
 #include "base_functions.h"
-#include "make_triangles.h"
 dimkashelk::point_t makePoint(dimkashelk::point_t center, double degree, double a, double b)
 {
   double angle = degree * dimkashelk::PI / 180;
@@ -43,5 +42,5 @@ dimkashelk::rectangle_t dimkashelk::Ellipse::getFrameRect() const
 }
 void dimkashelk::Ellipse::move(point_t point)
 {
-
+  polygon.move(point);
 }

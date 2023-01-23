@@ -11,6 +11,7 @@ int main()
   size_t size = zasulsky::getStringSize(cstring);
   if (size == 0) {
     std::cout << "Empty string\n";
+    delete [] cstring;
     return 1;
   }
 

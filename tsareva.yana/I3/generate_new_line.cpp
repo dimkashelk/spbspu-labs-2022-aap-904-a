@@ -5,19 +5,19 @@ void generate_new_line(char* res, const char* str1, const char* str2)
 {
   auto i = str1;
   auto j = str2;
-  bool fl = true;
+  bool noMatches = true;
   while(*i)
   {
-    fl = true;
-    while (*j && fl)
+    noMatches = true;
+    while (*j && noMatches)
     {
       if (*i == *j)
       {
-        fl = false;
+        noMatches = false;
       }
       j++;
     }
-    if (fl)
+    if (noMatches)
     {
       *res++ = *i;
     }
@@ -26,16 +26,16 @@ void generate_new_line(char* res, const char* str1, const char* str2)
 
   while(*j)
   {
-    fl = true;
-    while (*i && fl)
+    noMatches = true;
+    while (*i && noMatches)
     {
       if (*j == *i)
       {
-        fl = false;
+        noMatches = false;
       }
       i++;
     }
-    if (fl)
+    if (noMatches)
     {
       *res++ = *i;
     }

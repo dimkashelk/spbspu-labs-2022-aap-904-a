@@ -20,8 +20,7 @@ char* generate_new_line(char* res, const char* str1, const char* str2)
     }
     if (fl)
     {
-      res[size] = *i;
-      size++;
+      *res++ = *i;
     }
     i++;
   }
@@ -39,11 +38,9 @@ char* generate_new_line(char* res, const char* str1, const char* str2)
     }
     if (fl)
     {
-      res[size] = *j;
-      size++;
+      *res++ = *i;
     }
     j++;
   }
-  res[size] = '\0';
-  return res;
+  *res = '\0';
 }

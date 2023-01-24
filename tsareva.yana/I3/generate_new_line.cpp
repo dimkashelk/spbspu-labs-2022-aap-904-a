@@ -3,7 +3,6 @@
 
 char* generate_new_line(char* res, const char* str1, const char* str2)
 {
-  size_t size = 0;
   auto i = str1;
   auto j = str2;
   bool fl = true;

@@ -33,7 +33,7 @@ int main()
         auto *j = newstr;
         while (i != str_1 + size_1)
         {
-          *j++ = *i++;
+          *(j++) = *(i++);
         }
         delete [] str_1;
         str_1 = newstr;

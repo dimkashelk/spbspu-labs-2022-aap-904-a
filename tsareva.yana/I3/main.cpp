@@ -24,7 +24,7 @@ int main()
       }
       else
       {
-        capacity_1 *= goldenRatio(capacity_1);
+        capacity_1 = goldenRatio(capacity_1);
       }
       try
       {

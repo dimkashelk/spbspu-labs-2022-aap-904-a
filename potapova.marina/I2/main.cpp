@@ -42,8 +42,8 @@ int main (int argc, char ** argv) {
     std::cerr << "Error while reading\n";
     return 2;
   }
-  size_t array_size = 0;
-  input >> array_size;
+  size_t arr_size = 0;
+  input >> arr_size;
   if (!input) {
     std::cerr << "Error while reading\n";
     return 2;
@@ -52,24 +52,23 @@ int main (int argc, char ** argv) {
     std::cerr << "0\n";
     return 1;
   } else {
-    int *array = new int[array_size];
+    int *arr = new int[arr_size];
     while (!input.eof()) {
-      for (size_t i = 0; i < array_size; i++) {
+      for (size_t i = 0; i < arr_size; i++) {
         int y  = 0;
 	input >> y;
 	if (!input) {
 	  std::cerr << "Error while reading";
 	  return 2;
 	}
-        array[i] = y;
+        arr[i] = y;
       }
     }
-    delete [] array;
-    size_t neg_after_max = potapova::findNegativeAfterMax(array, array_size);
-    size_t repeat_pos_numb = potapova::findRepeatingPositiveNumbers(array, array_size);
+    delete [] arr;
+    size_t neg_after_max = potapova::findNegativeAfterMax(arr, arr_size);
+    size_t repeat_pos_numb = potapova::findRepeatingPositiveNumbers(arr, arr_size);
     std::cout << neg_after_max << " " << repeat_pos_numb << "\n";
   }
-
 
   return 0;
   }

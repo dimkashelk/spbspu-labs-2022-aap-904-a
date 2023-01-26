@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cstddef>
+#include <cstdlib>
+#include <fstream>
 #include "elements.h"
 
 int main (int argc, char ** argv) {
@@ -31,13 +32,44 @@ int main (int argc, char ** argv) {
     size_t dyn_repeat_pos_numb = potapova::findRepeatingPositiveNumbers(dyn_array, dyn_array_size);
     delete [] dyn_array;
     std::cout << dyn_neg_after_max << " " << dyn_repeat_pos_numb << "\n";
+  } else {
+    std::cerr << "0\n";
+    return 1;
   }
-
-
 
   std::ifstream input(argv[1]);
   if (!input) {
     std::cerr << "Error while reading\n";
+    return 2;
+  }
+  size_t array_size = 0;
+  input >> array_size;
+  if (!input) {
+    std::cerr << "Error while reading\n";
+    return 2;
+  }
+  if (!array_size) {
+    std::cerr << "0\n";
+    return 1;
+  } else {
+    int *array = new int[array_size];
+    while (!input.eof()) {
+      for (size_t i = 0; i < array_size; i++) {
+        int y  = 0;
+	input >> y;
+	if (!input) {
+	  std::cerr << "Error while reading";
+	  return 2;
+	}
+        array[i] = y;
+      }
+    }
+    delete [] array;
+    size_t neg_after_max = potapova::findNegativeAfterMax(array, array_size);
+    size_t repeat_pos_numb = potapova::findRepeatingPositiveNumbers(array, array_size);
+    std::cout << neg_after_max << " " << repeat_pos_numb << "\n";
   }
 
 
+  return 0;
+  }

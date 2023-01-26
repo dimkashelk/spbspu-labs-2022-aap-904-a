@@ -48,7 +48,7 @@ int main (int argc, char ** argv) {
     std::cerr << "Error while reading\n";
     return 2;
   }
-  if (!array_size) {
+  if (!arr_size) {
     std::cerr << "0\n";
     return 1;
   } else {

@@ -53,7 +53,7 @@ int main(int argc, char ** argv) {
         int y = 0;
 	input >> y;
 	if (!input) {
-	  std::cerr << "Error while reading";
+	  std::cerr << "Error while reading\n";
 	  return 2;
 	}
         arr[i] = y;

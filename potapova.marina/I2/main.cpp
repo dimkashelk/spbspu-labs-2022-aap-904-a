@@ -3,7 +3,8 @@
 #include <fstream>
 #include "elements.h"
 
-int main(int argc, char ** argv) {
+int main(int argc, char ** argv)
+{
   if (argc != 2) {
     std::cerr << "Not correct amount of CML args\n";
     return 2;

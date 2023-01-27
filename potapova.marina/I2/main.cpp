@@ -33,8 +33,7 @@ int main (int argc, char ** argv) {
     delete [] dyn_array;
     std::cout << dyn_neg_after_max << " " << dyn_repeat_pos_numb << "\n";
   } else {
-    std::cerr << "0\n";
-    return 1;
+    std::cout << "0 0\n";
   }
 
   std::ifstream input(argv[1]);
@@ -49,8 +48,7 @@ int main (int argc, char ** argv) {
     return 2;
   }
   if (!arr_size) {
-    std::cerr << "0\n";
-    return 1;
+    std::cout << "0 0\n";
   } else {
     int *arr = new int[arr_size];
     while (!input.eof()) {

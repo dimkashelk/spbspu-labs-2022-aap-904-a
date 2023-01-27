@@ -52,11 +52,11 @@ int main(int argc, char ** argv)
     while (!input.eof()) {
       for (size_t i = 0; i < arr_size; i++) {
         int y = 0;
-	input >> y;
-	if (!input) {
-	  std::cerr << "Error while reading\n";
-	  return 2;
-	}
+        input >> y;
+        if (!input) {
+          std::cerr << "Error while reading\n";
+          return 2;
+        }
         arr[i] = y;
       }
     }

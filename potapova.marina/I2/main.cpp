@@ -3,7 +3,7 @@
 #include <fstream>
 #include "elements.h"
 
-int main (int argc, char ** argv) {
+int main(int argc, char ** argv) {
   if (argc != 2) {
     std::cerr << "Not correct amount of CML args\n";
     return 2;
@@ -50,7 +50,7 @@ int main (int argc, char ** argv) {
     int *arr = new int[arr_size];
     while (!input.eof()) {
       for (size_t i = 0; i < arr_size; i++) {
-        int y  = 0;
+        int y = 0;
 	input >> y;
 	if (!input) {
 	  std::cerr << "Error while reading";

@@ -3,20 +3,22 @@
 size_t negativeElementsAfterMax(int *array, size_t size)
 {
   int maximum = array[0];
+  size_t idx = 0;
   size_t counter = 0;
   for (size_t i = 0; i < size; i++)
   {
     if (array[i] > maximum)
     {
       maximum = array[i];
+      idx = i;
     }
   }
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = idx + 1; i < size; i++)
   {
-    if (array[i] < 0 && array[i - 1] == maximum)
+    if (array[i] < 0)
     {
       counter += 1;
     }
-    return(counter);
   }
+  return counter;
 }

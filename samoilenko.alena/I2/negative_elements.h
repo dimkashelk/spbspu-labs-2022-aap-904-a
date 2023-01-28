@@ -1,0 +1,3 @@
+#ifndef I2_NEGATIVE_ELEMENTS_H
+#define I2_NEGATIVE_ELEMENTS_H
+#endif

@@ -68,7 +68,7 @@ void tarasenko::Complexquad::move(point_t pos)
 
 void tarasenko::Complexquad::scale(double k)
 {
-  isoScale(&triangle_1, {0,0}, k);
+  isoScale(&triangle_1, {0, 0}, k);
   isoScale(&triangle_2, {0, 0}, k);
 }
 

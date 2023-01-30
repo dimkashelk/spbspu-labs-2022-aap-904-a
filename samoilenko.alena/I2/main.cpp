@@ -28,7 +28,8 @@ int main(int argc, char* argv[])
   }
   if (num_of_elem == 0)
   {
-    std::cout << "0 0" << std::endl;
+    std::cout << "Error" << std::endl;
+    return 1;
   }
   else
   {
@@ -63,7 +64,8 @@ int main(int argc, char* argv[])
   input >> size_of_mas;
   if (size_of_mas == 0)
   {
-    std::cout << "0 0" << std::endl;
+    std::cout << "Error" << std::endl;
+    return 1;
   }
   else
   {

@@ -1,4 +1,5 @@
 #include "DeleteVowelLetters.h"
+#include <cstddef>
 
 char * deleteVowels (char *result1, const char *source)
 {

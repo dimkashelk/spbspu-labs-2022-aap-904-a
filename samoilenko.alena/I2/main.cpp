@@ -5,7 +5,7 @@
 #include "shifted_array.h"
 int main(int argc, char* argv[])
 {
-  if (argc == 1 || argc > 2)
+  if (argc != 2)
   {
     std::cout << "File or parameters are incorrect";
     return 1;
@@ -21,26 +21,38 @@ int main(int argc, char* argv[])
   }
   size_t num_of_elem = 0;
   std::cin >> num_of_elem;
-  int *dynamic_array = new int[num_of_elem];
-  const size_t r = 5;
-  std::srand(r);
-  for(size_t i = 0; i < num_of_elem; i++)
+  if (!std::cin)
   {
-    dynamic_array[i] = std::rand();
+    std::cout << "Error...";
+    return 1;
   }
-  std::cout << countNegativeElementsAfterMax(dynamic_array, num_of_elem) << std::endl;
-  for (size_t i = 0; i < num_of_elem; i++)
+  if (num_of_elem == 0)
   {
-    std::cout << dynamic_array[i] << ' ';
+    std::cout << "0 0" << std::endl;
   }
-  std::cout << std::endl;
-  moveTheArray(dynamic_array, num_of_elem, array_shift);
-  for(size_t i = 0; i < num_of_elem; i++)
+  else
   {
-    std::cout << dynamic_array[i] << ' ';
+    int *dynamic_array = new int[num_of_elem];
+    const size_t r = 5;
+    std::srand(r);
+    for(size_t i = 0; i < num_of_elem; i++)
+    {
+      dynamic_array[i] = std::rand();
+    }
+    std::cout << countNegativeElementsAfterMax(dynamic_array, num_of_elem) << std::endl;
+    for (size_t i = 0; i < num_of_elem; i++)
+    {
+      std::cout << dynamic_array[i] << ' ';
+    }
+    std::cout << std::endl;
+    moveTheArray(dynamic_array, num_of_elem, array_shift);
+    for(size_t i = 0; i < num_of_elem; i++)
+    {
+      std::cout << dynamic_array[i] << ' ';
+    }
+    delete [] dynamic_array;
+    std::cout << '\n';
   }
-  delete [] dynamic_array;
-  std::cout << '\n';
   std::ifstream input(argv[1]);
   if (!input)
   {

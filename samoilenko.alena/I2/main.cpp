@@ -29,7 +29,6 @@ int main(int argc, char* argv[])
   if (num_of_elem == 0)
   {
     std::cout << "0 0" << std::endl;
-    return 0;
   }
   else
   {

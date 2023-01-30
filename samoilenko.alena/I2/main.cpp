@@ -62,6 +62,11 @@ int main(int argc, char* argv[])
   }
   size_t size_of_mas = 0;
   input >> size_of_mas;
+  if (!input)
+  {
+    std::cout << "Error during reading the file input.txt";
+    return 1;
+  }
   if (size_of_mas == 0)
   {
     std::cout << "0 0" << std::endl;
@@ -73,6 +78,11 @@ int main(int argc, char* argv[])
     for(size_t i = 0; i < size_of_mas; i++)
     {
       input >> arr_from_file[i];
+      if (!input)
+      {
+        std::cout << "Error during reading the file input.txt";
+        return 1;
+      }
     }
     std::cout << countNegativeElementsAfterMax(arr_from_file, size_of_mas);
     for (size_t i = 0; i < size_of_mas; i++)

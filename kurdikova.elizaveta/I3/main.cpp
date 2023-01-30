@@ -29,7 +29,7 @@ int main() {
   while (std::cin && cstring[size++] != '\n');
   cstring[size - 1] = '\0';
 
-  size_t size2 = 20;
+  size_t size2 = 13;
   char *cstring2 = new char[size2];
   size_t index = 0;
   for (char i : {'G', 'o', 'o', 'd', 'm', 'o', 'r', 'n', 'i', 'n', 'g', '!', '\0'}) {
@@ -38,8 +38,9 @@ int main() {
 
   char *cstringWithoutVowels = new char[size];
   deleteVowels(cstringWithoutVowels, cstring);
-  size_t sizeArraySimLet = 26;
+  size_t sizeArraySimLet = 27;
   char *arraySimilarLetters = new char[sizeArraySimLet];
+  arraySimilarLetters[sizeArraySimLet - 1] = '\0';
   lettersInOrder(arraySimilarLetters, cstring, cstring2);
 
   std::cout << "Array without vowel letters: ";

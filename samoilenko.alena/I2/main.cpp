@@ -3,7 +3,7 @@
 #include <fstream>
 #include "negative_elements.h"
 #include "shifted_array.h"
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   const size_t array_shift = 3;
   int array[10] = {6, 9, -11, 4, 1, 26, 73, -38, -45, -21};
@@ -42,6 +42,17 @@ int main(int argc, char *argv[])
     std::cout << "Error during opening the file input.txt";
     return 1;
   }
+  if (argc == 1)
+  {
+    std::cout << "File is incorrect";
+    return 1;
+  }
+  if (argc > 2)
+  {
+    std::cout << "Parameters are incorrect";
+    return 1;
+  }
+
   size_t size_of_mas = 0;
   input >> size_of_mas;
   int* arr_from_file = new int[size_of_mas];

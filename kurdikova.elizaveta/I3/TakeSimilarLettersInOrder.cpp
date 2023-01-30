@@ -5,24 +5,24 @@
 char * lettersInOrder (char *result2, const char *source1, const char *source2)
 {
   size_t num = 0;
-  for (auto i = source1; *i != '\0'; i++) {
+  for (size_t i = 0; source1[i] != '\0'; i++) {
     bool existsInBoth = false;
-    for (auto j = source2; *j != '\0'; j++) {
-      if (std::isalpha(*i) && std::isalpha(*j) &&
-        std::tolower(*i) == std::tolower(*j)) {
+    for (size_t j = 0; source2[j] != '\0'; j++) {
+      if (std::isalpha(source1[i]) && std::isalpha(source2[j]) &&
+        std::tolower(source1[i]) == std::tolower(source2[j])) {
         existsInBoth = true;
       }
     }
     if (existsInBoth) {
       bool alreadyExists = false;
-      for (auto k = result2; k != result2 + 26; k++) {
-        if (*k == *i) {
+      for (size_t k = 0; result2[k] != '\0'; k++) {
+        if (result2[k] == source1[i]) {
           alreadyExists = true;
           break;
         }
       }
       if (!alreadyExists) {
-        result2[num++] = *i;
+        result2[num++] = source1[i];
       }
     }
   }

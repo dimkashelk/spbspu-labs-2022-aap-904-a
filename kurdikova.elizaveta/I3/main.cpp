@@ -38,7 +38,6 @@ int main() {
 
   char *cstringWithoutVowels = new char[size];
   deleteVowels(cstringWithoutVowels, cstring);
-
   size_t sizeArraySimLet = 26;
   char *arraySimilarLetters = new char[sizeArraySimLet];
   lettersInOrder(arraySimilarLetters, cstring, cstring2);

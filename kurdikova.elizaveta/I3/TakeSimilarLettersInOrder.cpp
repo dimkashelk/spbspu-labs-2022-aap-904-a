@@ -13,7 +13,6 @@ char * lettersInOrder (char *result2, const char *source1, const char *source2)
         existsInBoth = true;
       }
     }
-
     if (existsInBoth) {
       bool alreadyExists = false;
       for (auto k = result2; k != result2 + 26; k++) {

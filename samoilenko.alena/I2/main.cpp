@@ -61,23 +61,29 @@ int main(int argc, char* argv[])
   }
   size_t size_of_mas = 0;
   input >> size_of_mas;
-  int* arr_from_file = new int[size_of_mas];
-  for(size_t i = 0; i < size_of_mas; i++)
+  if (size_of_mas == 0)
   {
-    input >> arr_from_file[i];
+    std::cout << "0 0" << std::endl;
   }
-  std::cout << countNegativeElementsAfterMax(arr_from_file, size_of_mas);
-  for (size_t i = 0; i < size_of_mas; i++)
+  else
   {
-    std::cout << arr_from_file << ' ';
+    int* arr_from_file = new int[size_of_mas];
+    for(size_t i = 0; i < size_of_mas; i++)
+    {
+      input >> arr_from_file[i];
+    }
+    std::cout << countNegativeElementsAfterMax(arr_from_file, size_of_mas);
+    for (size_t i = 0; i < size_of_mas; i++)
+    {
+      std::cout << arr_from_file << ' ';
+    }
+    std::cout << std::endl;
+    moveTheArray(arr_from_file, size_of_mas, array_shift);
+    for(size_t i = 0; i < size_of_mas; i++)
+    {
+      std::cout << arr_from_file[i] << ' ';
+    }
+    delete [] arr_from_file;
   }
-  std::cout << std::endl;
-  moveTheArray(arr_from_file, size_of_mas, array_shift);
-  for(size_t i = 0; i < size_of_mas; i++)
-  {
-    std::cout << arr_from_file[i] << ' ';
-  }
-  delete [] arr_from_file;
-
   return 0;
 }

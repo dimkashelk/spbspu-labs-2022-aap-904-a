@@ -23,6 +23,7 @@ char* createCString()
         delete[] cstring;
         cstring = newstr;
         capacity += 20;
+        delete[] newstr;
       }
       catch (...)
       {

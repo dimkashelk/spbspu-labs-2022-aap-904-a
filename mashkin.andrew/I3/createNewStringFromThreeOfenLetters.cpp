@@ -6,10 +6,9 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* c
   int countyOfSymbols[128]{};
   int threeOftenLetters[3]{};
   int indexOfThreeLetters[3]{};
-  size_t maxi = 0;
   for (const char* i = cstring; *i; i++)
   {
-    countyOfSymbols[(int)*i]++;
+    countyOfSymbols[static_cast<int> (*i)]++;
   }
   for (size_t i = 127; i > 0; i--)
   {
@@ -23,7 +22,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* c
           indexOfThreeLetters[k] = indexOfThreeLetters[k - 1];
         }
         threeOftenLetters[j] = countyOfSymbols[i];
-        indexOfThreeLetters[j] = (int)i;
+        indexOfThreeLetters[j] = static_cast<int> (i);
         break;
       }
     }
@@ -44,7 +43,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* c
   fromThreeLetters = new char[4];
   for (size_t i = 0; i < 3; i++)
   {
-    fromThreeLetters[i] = (char)indexOfThreeLetters[i];
+    fromThreeLetters[i] = static_cast<char> (indexOfThreeLetters[i]);
   }
   fromThreeLetters[3] = '\0';
   return fromThreeLetters;

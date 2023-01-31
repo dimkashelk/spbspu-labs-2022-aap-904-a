@@ -43,7 +43,7 @@ char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstri
               catch (...)
               {
                 delete[] newStringFromTwoOther;
-                throw std::exception("Error");
+                throw;
               }
             }
             newStringFromTwoOther[size] = *j;

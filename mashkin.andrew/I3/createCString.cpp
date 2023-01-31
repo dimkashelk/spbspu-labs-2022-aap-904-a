@@ -26,7 +26,7 @@ char* createCString()
       catch (...)
       {
         delete[] cstring;
-        throw std::exception("Error");
+        throw;
       }
     }
     std::cin >> cstring[size];

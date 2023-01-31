@@ -37,7 +37,15 @@ int main()
     return 1;
   }
   char* newStringFromTwoOther = nullptr;
-  newStringFromTwoOther = createNewStringFromTwoOther(newStringFromTwoOther, string1, string2);
+  try
+  {
+    newStringFromTwoOther = createNewStringFromTwoOther(newStringFromTwoOther, string1, string2);
+  }
+  catch (const std::exception& ex)
+  {
+    std::cout << ex.what() << "\n";
+    return 1;
+  }
   std::cout << newStringFromTwoOther << "\n";
   char* fromThreeLetters = nullptr;
   fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, cstring);

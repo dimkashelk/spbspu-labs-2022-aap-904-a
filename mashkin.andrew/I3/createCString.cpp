@@ -7,7 +7,6 @@ char* createCString()
   size_t capacity = 10;
   char* cstring = new char[capacity];
   size_t size = 0;
-
   std::cin >> std::noskipws;
   do
   {
@@ -23,7 +22,6 @@ char* createCString()
         delete[] cstring;
         cstring = newstr;
         capacity += 20;
-        delete[] newstr;
       }
       catch (...)
       {

@@ -40,9 +40,6 @@ char* createCString()
   }
   else
   {
-
-  }
-  {
     cstring[size - 1] = '\0';
   }
   return cstring;

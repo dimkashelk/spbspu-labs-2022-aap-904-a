@@ -1,15 +1,41 @@
 #include "newstring.h"
-#include <algorithm>
+#include <algorythm>
 #include <cctype>
 #include <iostream>
 
 char * potapova::addThreeMostCommonSymbols(char * destination1, const char * source)
 {
-  char * j = destination1;
-  for (const char * i = source, *i != '\0', i++)
+  char symbols[256] = {0};
+  char * k = destination1;
+  for(int i = 0; *k[i]; i++)
   {
-    
+    symbols[*k[i]]++;
   }
+  int max = 0;
+  for(int i = 1; i < 256; i++)
+  {
+    if(symbols[i] > symbols[max])
+    {
+      max = i;
+    }
+  }
+  int predmax = 0;
+  for(int i = 1; i < 256; i++)
+  {
+    if(symbols[i] > symbols[predmax] && symbols[i] < symbols[max])
+    {
+      predmax = i;
+    }
+  }
+  int prepredmax = 0;
+  for(int i = 1; i < 256; i++)
+  {
+    if(symbols[i] > symbols[prepredmax] && symbols[i] < symbols[predmax])
+    {
+      prepredmax = i;
+    }
+  }
+
 }
 char * potapova::addAllLatinLetters(char * destination2, const char * source1, const char * source2)
 {
@@ -44,6 +70,7 @@ char * potapova::addAllLatinLetters(char * destination2, const char * source1, c
       }
     }
   }
+  std::sort(*j; *j != '\0'; j++);
   return destination2;
 }
 potapova::receiveStringTypeC()

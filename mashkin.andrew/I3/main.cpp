@@ -33,7 +33,6 @@ int main()
   fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, string1);
   std::cout << fromThreeLetters << "\n";
   delete[] string1;
-  delete[] string2;
   delete[] newStringFromTwoOther;
   delete[] fromThreeLetters;
   return 0;

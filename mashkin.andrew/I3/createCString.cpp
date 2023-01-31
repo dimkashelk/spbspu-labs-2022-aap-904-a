@@ -39,7 +39,7 @@ char* createCString()
   }
   else
   {
-    cstring[size - 1] = '\0';
+    cstring[size] = '\0';
   }
   return cstring;
 }

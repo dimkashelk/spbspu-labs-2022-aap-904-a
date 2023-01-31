@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cstddef>
+#include "createNewStringFromThreeOfenLetters.h"
+#include "createNewStringFromTwoOther.h"
 #include "createCString.h"
 
-main()
+int main()
 {
 	char* string1 = nullptr;
 	try
@@ -34,8 +36,16 @@ main()
 		std::cout << ex.what() << "\n";
 		return 1;
 	}
+	char* newStringFromTwoOther = nullptr;
+	newStringFromTwoOther = createNewStringFromTwoOther(newStringFromTwoOther, string1, string2);
+	std::cout << newStringFromTwoOther << "\n";
+	char* fromThreeLetters = nullptr;
+	fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, cstring);
+	std::cout << fromThreeLetters << "\n";
 	delete[] string1;
 	delete[] string2;
 	delete[] cstring;
-  return 0;
+	delete[] newStringFromTwoOther;
+	delete[] fromThreeLetters;
+	return 0;
 }

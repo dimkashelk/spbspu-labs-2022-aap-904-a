@@ -35,32 +35,32 @@ namespace
   }
 }
 dimkashelk::Ellipse::Ellipse(point_t point, double height, double width):
-  polygon(makePoints(point, height, width), 361)
+  polygon_(makePoints(point, height, width), 361)
 {}
 dimkashelk::Ellipse::Ellipse(const Polygon &polygon):
-  polygon(polygon)
+  polygon_(polygon)
 {}
 double dimkashelk::Ellipse::getArea() const
 {
-  return polygon.getArea();
+  return polygon_.getArea();
 }
 dimkashelk::rectangle_t dimkashelk::Ellipse::getFrameRect() const
 {
-  return polygon.getFrameRect();
+  return polygon_.getFrameRect();
 }
 void dimkashelk::Ellipse::move(point_t point)
 {
-  polygon.move(point);
+  polygon_.move(point);
 }
 void dimkashelk::Ellipse::move(double delta_x, double delta_y)
 {
-  polygon.move(delta_x, delta_y);
+  polygon_.move(delta_x, delta_y);
 }
 void dimkashelk::Ellipse::unsafeScale(double k) noexcept
 {
-  polygon.unsafeScale(k);
+  polygon_.unsafeScale(k);
 }
 dimkashelk::Shape *dimkashelk::Ellipse::clone() const
 {
-  return new Ellipse(polygon);
+  return new Ellipse(polygon_);
 }

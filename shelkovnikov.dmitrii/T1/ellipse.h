@@ -17,7 +17,7 @@ namespace dimkashelk
     void unsafeScale(double k) noexcept override;
     Shape* clone() const override;
   private:
-    Polygon polygon;
+    Polygon polygon_;
     explicit Ellipse(const Polygon &polygon);
   };
 }

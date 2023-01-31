@@ -27,7 +27,7 @@ namespace
     namespace dks = dimkashelk;
     dks::point_t *points = new dks::point_t[361];
     points[0] = point;
-    for (int degree = 0; degree < 360; degree++)
+    for (size_t degree = 0; degree < 360; degree++)
     {
       points[degree + 1] = makePoint(point, degree, a, b);
     }

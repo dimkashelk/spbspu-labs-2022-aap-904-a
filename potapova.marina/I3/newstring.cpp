@@ -3,13 +3,17 @@
 #include <cctype>
 #include <iostream>
 
-char * potapova::addThreeMostCommonSymbols()
+char * potapova::addThreeMostCommonSymbols(char * destination1, const char * source)
 {
-  for (auto)
+  char * j = destination1;
+  for (const char * i = source, *i != '\0', i++)
+  {
+    
+  }
 }
-char * potapova::addAllLatinLetters(char * destination , const char * source1, const char * source2)
+char * potapova::addAllLatinLetters(char * destination2, const char * source1, const char * source2)
 {
-  char * j = destination;
+  char * j = destination2;
   for (const char * i = source1; *i != '\0'; i++)
   {
     if (std::isalpha(*i))
@@ -27,10 +31,20 @@ char * potapova::addAllLatinLetters(char * destination , const char * source1, c
       *j = *i;
       j++;
     }
-  std::sort(destination);
   }
-
-  return destination;
+  for(const char * i = 0; *i != '\0'; i++)
+  {
+    for(const char * j = i + 1; *j != '\0'; j++)
+    {
+      if(destination2[i] > destination2[j])
+      {
+        char temp = destination2[i];
+        destination2[i] = destination2[j];
+        destination2[j] = temp;
+      }
+    }
+  }
+  return destination2;
 }
 potapova::receiveStringTypeC()
 {

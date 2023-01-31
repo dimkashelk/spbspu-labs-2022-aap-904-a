@@ -5,6 +5,7 @@ namespace potapova
 {
   addThreeMostCommonSymbols();
   addAllLatinLetters();
+  receiveStringTypeC();
 }
 
 #endif

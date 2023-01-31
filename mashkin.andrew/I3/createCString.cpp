@@ -37,7 +37,7 @@ char* createCString()
     delete[] cstring;
     throw std::logic_error("empty input");
   }
-  else 
+  else
   {
     cstring[size - 1] = '\0'
   }

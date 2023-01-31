@@ -14,7 +14,6 @@ namespace dimkashelk
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
     void move(double delta_x, double delta_y) override;
-    void scale(double k) override;
     void unsafeScale(double k) noexcept override;
     Shape* clone() const override;
   private:

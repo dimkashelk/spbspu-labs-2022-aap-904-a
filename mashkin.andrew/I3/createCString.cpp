@@ -32,7 +32,7 @@ char* createCString()
     }
     std::cin >> cstring[size];
   } while (std::cin && cstring[size++] != '\n');
-  if (!(std::cin && size > 1))
+  if (size == 1)
   {
     delete[] cstring;
     throw std::logic_error("empty input");

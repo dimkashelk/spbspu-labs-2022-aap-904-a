@@ -5,7 +5,8 @@ namespace
 {
   dimkashelk::point_t makePoint(dimkashelk::point_t center, double degree, double a, double b)
   {
-    double angle = degree * dimkashelk::PI / 180;
+    namespace dks = dimkashelk;
+    double angle = degree * dks::PI / 180;
     double x = (a * b) / std::sqrt(b * b + a * a * std::tan(angle));
     if (degree >= 90 && degree <= 270)
     {
@@ -16,14 +17,15 @@ namespace
     {
       y *= -1;
     }
-    dimkashelk::point_t point = dimkashelk::point_t{x, y};
+    dks::point_t point = dks::point_t{x, y};
     point.x += center.x;
     point.y += center.y;
     return point;
   }
   dimkashelk::point_t *makePoints(dimkashelk::point_t point, double a, double b)
   {
-    dimkashelk::point_t *points = new dimkashelk::point_t[361];
+    namespace dks = dimkashelk;
+    dks::point_t *points = new dks::point_t[361];
     points[0] = point;
     for (int degree = 0; degree < 360; degree++)
     {

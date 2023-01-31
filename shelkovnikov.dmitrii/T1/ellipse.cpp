@@ -1,33 +1,36 @@
 #include "ellipse.h"
 #include <cmath>
 #include "base_functions.h"
-dimkashelk::point_t makePoint(dimkashelk::point_t center, double degree, double a, double b)
+namespace
 {
-  double angle = degree * dimkashelk::PI / 180;
-  double x = (a * b) / std::sqrt(b * b + a * a * std::tan(angle));
-  if (degree >= 90 && degree <= 270)
+  dimkashelk::point_t makePoint(dimkashelk::point_t center, double degree, double a, double b)
   {
-    x *= -1;
+    double angle = degree * dimkashelk::PI / 180;
+    double x = (a * b) / std::sqrt(b * b + a * a * std::tan(angle));
+    if (degree >= 90 && degree <= 270)
+    {
+      x *= -1;
+    }
+    double y = std::sqrt(1 - (x / a) * (x / a)) * b;
+    if (degree >= 180 && degree <= 360)
+    {
+      y *= -1;
+    }
+    dimkashelk::point_t point = dimkashelk::point_t{x, y};
+    point.x += center.x;
+    point.y += center.y;
+    return point;
   }
-  double y = std::sqrt(1 - (x / a) * (x / a)) * b;
-  if (degree >= 180 && degree <= 360)
+  dimkashelk::point_t *makePoints(dimkashelk::point_t point, double a, double b)
   {
-    y *= -1;
+    dimkashelk::point_t *points = new dimkashelk::point_t[361];
+    points[0] = point;
+    for (int degree = 0; degree < 360; degree++)
+    {
+      points[degree + 1] = makePoint(point, degree, a, b);
+    }
+    return points;
   }
-  dimkashelk::point_t point = dimkashelk::point_t{x, y};
-  point.x += center.x;
-  point.y += center.y;
-  return point;
-}
-dimkashelk::point_t *makePoints(dimkashelk::point_t point, double a, double b)
-{
-  dimkashelk::point_t *points = new dimkashelk::point_t[361];
-  points[0] = point;
-  for (int degree = 0; degree < 360; degree++)
-  {
-    points[degree + 1] = makePoint(point, degree, a, b);
-  }
-  return points;
 }
 dimkashelk::Ellipse::Ellipse(point_t point, double height, double width):
   polygon(makePoints(point, height, width), 361)

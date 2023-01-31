@@ -1,38 +1,41 @@
 #include <iostream>
+#include <cstddef>
+#include "createCString.h"
 
 main()
 {
-  size_t capacity = 10;
-  char* cstring = new char[capacity];
-  size_t size = 0;
-
-  std::cin >> std::noskipws;
-  do
-  {
-    if (size == capacity)
-    {
-      try
-      {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete[] cstring;
-        cstring = newstr;
-        capacity += 20;
-      }
-      catch (...)
-      {
-        delete[] cstring;
-        return 1;
-      }
-    }
-    std::cin >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
-
-  std::cout << cstring << "\n";
-  delete[] cstring;
+	char* string1 = nullptr;
+	try
+	{
+		string1 = createCString();
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << ex.what() << "\n";
+		return 1;
+	}
+	char* string2 = nullptr;
+	try
+	{
+		string2 = createCString();
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << ex.what() << "\n";
+		return 1;
+	}
+	char* cstring = nullptr;
+	try
+	{
+		cstring = createCString();
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << ex.what() << "\n";
+		return 1;
+	}
+	delete[] string1;
+	delete[] string2;
+	delete[] cstring;
   return 0;
 }

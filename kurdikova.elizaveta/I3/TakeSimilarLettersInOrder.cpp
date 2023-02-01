@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <cctype>
 
-char * lettersInOrder (char *result2, const char *source1, const char *source2)
+char * lettersInOrder (char *result2, char const* source1, char const* source2)
 {
   std::size_t num = 0;
   for (std::size_t i = 0; source1[i] != '\0'; i++) {

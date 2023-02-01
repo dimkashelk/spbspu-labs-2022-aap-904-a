@@ -38,7 +38,7 @@ int main() {
 
   char *cstringWithoutVowels = new char[size];
   deleteVowels(cstringWithoutVowels, cstring);
-  size_t sizeArraySimLet = 27;
+  std::size_t sizeArraySimLet = 27;
   char *arraySimilarLetters = new char[sizeArraySimLet];
   arraySimilarLetters[sizeArraySimLet - 1] = '\0';
   lettersInOrder(arraySimilarLetters, cstring, cstring2);

@@ -6,7 +6,7 @@
 #include "ellipse.h"
 namespace
 {
-  void expand(dimkashelk::point_t *points, size_t old_size, size_t new_size)
+  dimkashelk::point_t* expand(dimkashelk::point_t *points, size_t old_size, size_t new_size)
   {
     if (old_size > new_size)
     {
@@ -18,8 +18,7 @@ namespace
     {
       new_points[i] = points[i];
     }
-    delete[] points;
-    points = new_points;
+    return new_points;
   }
 }
 dimkashelk::Shape* dimkashelk::inputRectangle(std::istream &in)
@@ -69,7 +68,9 @@ dimkashelk::Shape* dimkashelk::inputPolygon(std::istream &in)
       {
         try
         {
-          expand(points, cap, cap + 10);
+          point_t *new_points = expand(points, cap, cap + 10);
+          delete[] points;
+          points = new_points;
           cap += 10;
         }
         catch (...)

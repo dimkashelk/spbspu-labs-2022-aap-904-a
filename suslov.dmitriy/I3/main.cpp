@@ -1,16 +1,16 @@
 #include <iostream>
-#include "details.h"
+#include "scanStr.h"
 #include "formStringFromFirstWithoutSecond.h"
 #include "formStringFromOtherSymbols.h"
 int main()
 {
-  size_t size;
+  size_t size = 0;
   char *cstring = nullptr;
   try
   {
     cstring = scanStr(size, std::cin);
   }
-  catch (std::bad_alloc &e)
+  catch (const std::bad_alloc &e)
   {
     std::cerr << "Few memory" << '\n' << e.what();
     return 3;
@@ -31,6 +31,7 @@ int main()
   catch (const std::bad_alloc &e)
   {
     std::cerr << "Few memory" << '\n' << e.what();
+    delete[] cstring;
     return 3;
   }
   std::cout << formStringFromOtherSymbols(result1, cstring, cstring2) << "\n";
@@ -44,6 +45,7 @@ int main()
   catch (const std::bad_alloc &e)
   {
     std::cerr << "Few memory" << '\n' << e.what();
+    delete[] cstring;
     return 3;
   }
   std::cout << formStringFromFirstWithoutSecond(result2, cstring, cstring2) << "\n";

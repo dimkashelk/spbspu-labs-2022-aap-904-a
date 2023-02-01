@@ -1,10 +1,11 @@
-#include "details.h"
+#include "scanStr.h"
 #include <cstring>
-char *expandString(char *oldString, size_t newSize)
+#include <iostream>
+char *expandString(const char *oldString, size_t oldSize, size_t delta)
 {
-  char *newStr = new char[newSize];
+  char *newStr = new char[oldSize + delta];
   std::strcpy(newStr, oldString);
-  newStr[newSize - 1] = '\0';
+  newStr[oldSize + delta - 1] = '\0';
   return newStr;
 }
 char *scanStr(size_t &length, std::istream &in)
@@ -21,14 +22,14 @@ char *scanStr(size_t &length, std::istream &in)
       char *newCstring = nullptr;
       try
       {
-        capacity += 20;
-        newCstring = expandString(cstring, capacity);
+        newCstring = expandString(cstring, capacity,20);
       }
       catch (const std::bad_alloc &)
       {
         delete[] cstring;
         throw;
       }
+      capacity += 20;
       delete[] cstring;
       cstring = newCstring;
     }

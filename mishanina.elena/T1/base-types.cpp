@@ -1,46 +1,80 @@
 #include "base-types.h"
+#include <cmath>
 
 double twoPointsDistance(const point_t& p1, const point_t& p2)
 {
-  return 0.0;
+  double line_x = p1.x - p2.x;
+  double line_y = p1.y - p2.y;
+  return std::sqrt(line_x * line_x + line_y * line_y);
 }
 
 point_t getCenterRectangle(const point_t& ld_point, const point_t& ru_point)
 {
-  return point_t{ };
+  double width = ru_point.x - ld_point.x;
+  double height = ru_point.y - ld_point.y;
+  return point_t{ width / 2, height / 2 };
 }
 
 point_t getCenterParallelogram(const point_t& lu_point, const point_t& rd_point)
 {
-  return point_t{ };
+  double width = rd_point.x - lu_point.x;
+  double height = lu_point.y - rd_point.y;
+  return point_t{ width / 2, height / 2 };
 }
 
 bool isCorrectRectangle(const point_t& ld_point, const point_t& ru_point)
 {
-  return false;
+  if (ld_point.x < ru_point.x && ld_point.y < ru_point.y)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 point_t movePoint(const point_t point, const point_t dpoint)
 {
-  return point_t{ };
+  return point_t{ point.x + dpoint.x, point.y + dpoint.y };
 }
 
 bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C)
 {
-  return false;
+  if (A.x < B.x && A.x < C.x && C.x < B.x && A.y == B.y && A.y > C.y && B.y > C.y)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 bool isCorrectTriangle(const point_t& A, const point_t& B, const point_t& C)
 {
-  return false;
+  double ab_side = std::sqrt(pow(B.x - A.x, 2) + pow(B.y - A.y, 2));
+  double ac_side = std::sqrt(pow(C.x - A.x, 2) + pow(C.y - A.y, 2));
+  double bc_side = std::sqrt(pow(C.x - B.x, 2) + pow(C.y - B.y, 2));
+  if (ab_side + ac_side > bc_side && ab_side + bc_side > ac_side && ac_side + bc_side > ab_side)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 point_t getCenterTriangle(const point_t& A, const point_t& B, const point_t& C)
 {
-  return point_t{ };
+  return { (A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3 };
 }
 
 point_t scalePoint(const point_t point, const point_t pos, const double k)
 {
-  return point_t{ };
+  double dx = (point.x - pos.x) * k;
+  double dy = (point.y - pos.y) * k;
+  point_t dpoint{ dx, dy };
+  return { pos.x + dpoint.x, pos.y + dpoint.y };
 }

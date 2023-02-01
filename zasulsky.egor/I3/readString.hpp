@@ -2,9 +2,10 @@
 #define READSTRING_HPP
 
 #include <iostream>
+#include <tuple>
 
 namespace zasulsky {
-  char* readString(std::istream& in);
+  std::tuple< char*, size_t, size_t > readString(std::istream& in);
 }
 
 #endif

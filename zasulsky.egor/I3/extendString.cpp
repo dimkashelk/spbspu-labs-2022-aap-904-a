@@ -1,13 +1,14 @@
 #include "extendString.hpp"
 #include <stdexcept>
 #include <cstring>
+#include <limits>
 
-char* zasulsky::extendString(const char* src, size_t cap, size_t newCap)
+char* zasulsky::extendString(const char* src, size_t cap, size_t capDiff)
 {
-  if (newCap < cap) {
-    throw std::invalid_argument("New string capacity must increase");
+  if (cap > std::numeric_limits<size_t>::max() - capDiff) {
+    throw std::overflow_error("String too large");
   }
-  char* newstr = new char[newCap];
+  char* newstr = new char[cap + capDiff];
   std::strcpy(newstr, src);
   return newstr;
 }

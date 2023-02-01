@@ -1,15 +1,16 @@
 #include <iostream>
 #include <cstddef>
+#include <tuple>
 #include "countUniqueLatin.hpp"
 #include "replaceSymbol.hpp"
 #include "readString.hpp"
-#include "getStringSize.hpp"
 
 int main()
 {
-  char* cstring = zasulsky::readString(std::cin);
-  size_t size = zasulsky::getStringSize(cstring);
-  if (size == 0) {
+  std::tuple< char*, size_t, size_t > stringData = zasulsky::readString(std::cin);
+  char* cstring = std::get< 0 >(stringData);
+  size_t size = std::get< 1 >(stringData);
+  if (size == 1) {
     std::cout << "Empty string\n";
     delete [] cstring;
     return 1;

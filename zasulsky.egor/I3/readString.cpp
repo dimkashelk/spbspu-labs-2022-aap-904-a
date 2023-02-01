@@ -1,9 +1,10 @@
 #include "readString.hpp"
 #include <iostream>
 #include <cstddef>
+#include <tuple>
 #include "extendString.hpp"
 
-char* zasulsky::readString(std::istream& in)
+std::tuple< char*, size_t, size_t > zasulsky::readString(std::istream& in)
 {
   size_t capacity = 10;
   size_t size = 0;
@@ -14,7 +15,7 @@ char* zasulsky::readString(std::istream& in)
     if (size == capacity - 1) {
       try {
         cstring[size] = '\0';
-        char* newstr = extendString(cstring, capacity, capacity + 20);
+        char* newstr = extendString(cstring, capacity, 20);
         delete [] cstring;
         cstring = newstr;
         capacity += 20;
@@ -26,5 +27,5 @@ char* zasulsky::readString(std::istream& in)
     in >> cstring[size++];
   } while (in && cstring[size - 1] != '\n');
   cstring[size - 1] = '\0';
-  return cstring;
+  return std::make_tuple(cstring, size, capacity);
 }

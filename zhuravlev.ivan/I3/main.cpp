@@ -36,8 +36,6 @@ int main()
     std::cout << "Empty string!" << "\n";
   }
   cstring[0] = '\0';
-  char* cstring_for_sec_func = new char[size];
-  strcpy(cstring_for_sec_func, cstring);
   try
   {
     char* destination = new char[size + size_of_static];
@@ -55,13 +53,13 @@ int main()
   try
   {
     char* destination = new char[size];
-    std::cout << finderThreeSameElements(destination, cstring_for_sec_func) << "\n";
-    delete [] cstring_for_sec_func;
+    std::cout << finderThreeSameElements(destination, cstring) << "\n";
+    delete [] cstring;
     delete [] destination;
   }
   catch (const std::bad_alloc &e)
   {
-    delete [] cstring_for_sec_func;
+    delete [] cstring;
     std::cerr << e.what() << "\n";
     return 1;
   }

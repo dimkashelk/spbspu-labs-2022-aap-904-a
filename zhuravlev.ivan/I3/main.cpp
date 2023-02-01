@@ -35,7 +35,7 @@ int main()
   {
     std::cout << "Empty string!" << "\n";
   }
-  cstring[size - 1] = '\0';
+  cstring[0] = '\0';
   char* cstring_for_sec_func = new char[size];
   strcpy(cstring_for_sec_func, cstring);
   try

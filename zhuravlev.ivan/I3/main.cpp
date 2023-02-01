@@ -20,7 +20,7 @@ int main()
       try
       {
         capacity += 20;
-        arrayExpansion(cstring, capacity);
+        *cstring = arrayExpansion(cstring, capacity);
       }
       catch (const std::bad_alloc &e)
       {

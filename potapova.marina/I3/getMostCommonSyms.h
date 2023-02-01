@@ -1,9 +1,6 @@
 #ifndef GETMOSTCOMMONSYMS_H
 #define GETMOSTCOMMONSYMS_H
 
-namespace potapova
-{
-
-}
+char* getMostCommonSyms(char* dest, const char* str);
 
 #endif

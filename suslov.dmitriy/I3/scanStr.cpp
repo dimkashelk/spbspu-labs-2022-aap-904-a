@@ -22,7 +22,7 @@ char *scanStr(size_t &length, std::istream &in)
       char *newCstring = nullptr;
       try
       {
-        newCstring = expandString(cstring, capacity,20);
+        newCstring = expandString(cstring, capacity, 20);
       }
       catch (const std::bad_alloc &)
       {

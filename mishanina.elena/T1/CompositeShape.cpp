@@ -1,105 +1,273 @@
 #include "CompositeShape.h"
+#include <stdexcept>
 
-CompositeShape::CompositeShape()
+CompositeShape::CompositeShape() :
+  name_("CompositeShape: "),
+  size_(0),
+  capacity_(1),
+  shapes_(new Shape* [capacity_])
 {
 }
 
 CompositeShape::~CompositeShape()
 {
+  remove(shapes_, size_);
 }
 
-Shape* CompositeShape::operator[](size_t index)
+Shape* CompositeShape::operator[](std::size_t index)
 {
-  return nullptr;;
+  return shapes_[index];
 }
 
-const Shape* CompositeShape::operator[](size_t index) const
+const Shape* CompositeShape::operator[](std::size_t index) const
 {
-  return nullptr;;
+  return shapes_[index];
 }
 
 std::string CompositeShape::getName() const
 {
-  return std::string();
+  return name_;
 }
 
 double CompositeShape::getArea() const
 {
-  return 0.0;
+  double area = 0;
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    area += shapes_[i]->getArea();
+  }
+  return area;
 }
 
 void CompositeShape::push_back(Shape* shape)
 {
+  if (capacity_ == size_)
+  {
+    Shape** new_arr = new Shape * [capacity_ + 2];
+    capacity_ += 2;
+    for (std::size_t i = 0; i < size_; i++)
+    {
+      new_arr[i] = shapes_[i];
+    }
+    delete[] shapes_;
+    shapes_ = new_arr;
+  }
+  shapes_[size_] = shape;
+  size_++;
 }
 
 void CompositeShape::pop_back()
 {
+  delete shapes_[size_ - 1];
+  size_--;
 }
 
-Shape* CompositeShape::at(size_t index)
+Shape* CompositeShape::at(std::size_t index)
 {
-  return nullptr;
+  if (index > size_)
+  {
+    throw std::out_of_range("out of range");
+  }
+  return shapes_[index];
 }
 
-const Shape* CompositeShape::at(size_t index) const
+const Shape* CompositeShape::at(std::size_t index) const
 {
-  return nullptr;
+  if (index > size_)
+  {
+    throw std::out_of_range("out of range");
+  }
+  return shapes_[index];
 }
 
 bool CompositeShape::empty() const
 {
-  return false;
+  return size_ == 0;
 }
 
-size_t CompositeShape::size() const
+std::size_t CompositeShape::size() const
 {
-  return std::size_t();
+  return size_;
 }
 
-void CompositeShape::remove(Shape** shapes, size_t size) const
+void CompositeShape::remove(Shape** shapes, std::size_t size) const
 {
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    delete shapes_[i];
+  }
+  delete[] shapes_;
 }
 
 void CompositeShape::move(double dx, double dy)
 {
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    shapes_[i]->move(dx, dy);
+  }
 }
 
 void CompositeShape::move(point_t point)
 {
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    shapes_[i]->move(point);
+  }
 }
 
 void CompositeShape::scale(double k)
 {
+  if (k < 0)
+  {
+    throw std::invalid_argument("Invalid k size");
+  }
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    shapes_[i]->scale(k);
+  }
 }
 
 rectangle_t CompositeShape::getFrameRect() const
 {
-  return rectangle_t{ };
+  if (empty())
+  {
+    throw std::invalid_argument("CompositeShape is empty");
+  }
+  rectangle_t Rect = shapes_[0]->getFrameRect();
+
+  double LowerLeft_x = Rect.pos.x - Rect.width / 2;
+  double LowerLeft_y = Rect.pos.y - Rect.height / 2;
+  double UpperRight_x = Rect.pos.x + Rect.width / 2;
+  double UpperRight_y = Rect.pos.y + Rect.height / 2;
+
+  point_t lower_left = { LowerLeft_x, LowerLeft_y };
+  point_t upper_right = { UpperRight_x, UpperRight_y };
+
+  for (std::size_t i = 1; i < size_; i++)
+  {
+    Rect = shapes_[i]->getFrameRect();
+    LowerLeft_x = Rect.pos.x - Rect.width / 2;
+    LowerLeft_y = Rect.pos.y - Rect.height / 2;
+    UpperRight_x = Rect.pos.x + Rect.width / 2;
+    UpperRight_y = Rect.pos.y + Rect.height / 2;
+
+    if (LowerLeft_x < lower_left.x)
+    {
+      lower_left.x = LowerLeft_x;
+    }
+
+    if (LowerLeft_y > lower_left.y)
+    {
+      lower_left.y = LowerLeft_y;
+    }
+
+    if (UpperRight_x > upper_right.x)
+    {
+      upper_right.x = UpperRight_x;
+    }
+
+    if (UpperRight_y < upper_right.y)
+    {
+      upper_right.y = UpperRight_y;
+    }
+  }
+  point_t center = { (lower_left.x + upper_right.x) / 2, (lower_left.y + upper_right.y) / 2 };
+  return { upper_right.x - lower_left.x, upper_right.y - lower_left.y, center };
 }
 
 CompositeShape* CompositeShape::clone() const
 {
-  return nullptr;
+  Shape** cloneShapes = new Shape * [capacity_];
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      cloneShapes[i] = shapes_[i]->clone();
+    }
+    catch (...)
+    {
+      remove(cloneShapes, size_);
+      throw;
+    }
+  }
+  return new CompositeShape(cloneShapes, capacity_, size_);
 }
 
-CompositeShape::CompositeShape(Shape** shapes, size_t capacity, size_t size)
+CompositeShape::CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size) :
+  capacity_(capacity),
+  shapes_(shapes),
+  size_(size)
 {
 }
 
-CompositeShape::CompositeShape(const CompositeShape& compositeShape)
+CompositeShape::CompositeShape(const CompositeShape& compositeShape) :
+  name_(compositeShape.name_),
+  size_(compositeShape.size_),
+  capacity_(compositeShape.capacity_),
+  shapes_(new Shape* [capacity_])
 {
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      shapes_[i] = compositeShape.shapes_[i]->clone();
+    }
+    catch (...)
+    {
+      remove(shapes_, i);
+      throw;
+    }
+  }
 }
 
-CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept
+CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept :
+  name_(compositeShape.name_),
+  size_(compositeShape.size_),
+  capacity_(compositeShape.capacity_),
+  shapes_(compositeShape.shapes_)
 {
+  compositeShape.shapes_ = nullptr;
+  compositeShape.size_ = 0;
+  compositeShape.name_ = " ";
 }
 
 CompositeShape& CompositeShape::operator = (const CompositeShape& compositeShape)
 {
+  if (this != &compositeShape)
+  {
+    Shape** shapes = new Shape * [compositeShape.capacity_];
+    for (std::size_t i = 0; i < size_; i++)
+    {
+      try
+      {
+        shapes[i] = compositeShape.shapes_[i]->clone();
+      }
+      catch (...)
+      {
+        remove(shapes, i);
+        throw;
+      }
+    }
+    remove(shapes, size_);
+    shapes_ = shapes;
+    name_ = compositeShape.name_;
+    size_ = compositeShape.size_;
+    capacity_ = compositeShape.capacity_;
+  }
   return *this;
 }
 
 CompositeShape& CompositeShape::operator = (CompositeShape&& compositeShape) noexcept
 {
+  if (this != &compositeShape)
+  {
+    remove(shapes_, size_);
+    name_ = compositeShape.name_;
+    size_ = compositeShape.size_;
+    capacity_ = compositeShape.capacity_;
+    shapes_ = compositeShape.shapes_;
+    compositeShape.shapes_ = nullptr;
+    compositeShape.size_ = 0;
+  }
   return *this;
 }

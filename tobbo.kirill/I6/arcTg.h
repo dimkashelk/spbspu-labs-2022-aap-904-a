@@ -10,9 +10,9 @@ public:
   double operator()();
 
 private:
-  double x;
-  unsigned step;
-  unsigned sign;
+  double x_;
+  unsigned step_;
+  unsigned sign_;
 };
 
 #endif

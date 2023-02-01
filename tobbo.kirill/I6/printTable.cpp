@@ -1,7 +1,7 @@
-#include "arcTg.h"
 #include "printTable.h"
 #include <cmath>
 #include <iomanip>
+#include "arcTg.h"
 
 void printRowInTable(std::ostream& out, double x, double absError, unsigned numberMax)
 {

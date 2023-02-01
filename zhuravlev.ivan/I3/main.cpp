@@ -1,13 +1,14 @@
 #include <iostream>
 #include <exception>
 #include <cstring>
-#include "finder.three.elements.h"
+#include "finder.three.same.elements.h"
 #include "finder_same_elements_in_two_string.h"
+#include "array.expansion.h"
 
 int main()
 {
   size_t capacity = 10;
-  char * cstring = new char[capacity];
+  char* cstring = new char[capacity];
   size_t size = 0;
   size_t size_of_static = 18;
   const char* static_string = "ABCDFEabcdef135790";
@@ -18,14 +19,8 @@ int main()
     {
       try
       {
-        char * newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
-        delete [] cstring;
-        cstring = newstr;
         capacity += 20;
+        *cstring = arrayExpansion(*cstring, capacity);
       }
       catch (const std::bad_alloc &e)
       {

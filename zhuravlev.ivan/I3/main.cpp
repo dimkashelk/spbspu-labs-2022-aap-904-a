@@ -19,11 +19,11 @@ int main()
     {
       try
       {
-        capacity += 20;
         char* new_str = new char[capacity];
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
+        capacity += 20;
       }
       catch (const std::bad_alloc &e)
       {

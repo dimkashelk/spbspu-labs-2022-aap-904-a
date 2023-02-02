@@ -1,4 +1,5 @@
 #include <iostream>
+#include "sumcount.hpp"
 int main()
 {
   unsigned int value = 0;
@@ -22,6 +23,8 @@ int main()
      std::cout << "Entered incorrect value\n";
      return 1;
     }
+    countersum += countIsSum(preprevalue, prevalue, value);
+    std::cout << "Count of sum: " << countersum << "\n";
   }
   return 0;
 }

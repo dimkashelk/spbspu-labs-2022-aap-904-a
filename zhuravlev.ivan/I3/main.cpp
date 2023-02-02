@@ -52,17 +52,18 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-
+  char* cstring_for_sec_func = new char[size];
+  strcpy(cstring_for_sec_func, cstring_);
   try
   {
     char* destination = new char[size];
-    std::cout << finderThreeSameElements(destination, cstring) << "\n";
-    delete [] cstring;
+    std::cout << finderThreeSameElements(destination, cstring_for_sec_func) << "\n";
+    delete [] cstring_for_sec_func;
     delete [] destination;
   }
   catch (const std::bad_alloc &e)
   {
-    delete [] cstring;
+    delete [] cstring_for_sec_func;
     std::cerr << e.what() << "\n";
     return 1;
   }

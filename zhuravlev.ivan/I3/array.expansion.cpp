@@ -7,5 +7,6 @@ char arrayExpansion(const char* str, size_t new_capacity)
   strcpy(new_str, str);
   delete [] str;
   str = new_str;
+  delete [] new_str;
   return *str;
 }

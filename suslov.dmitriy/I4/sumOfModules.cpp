@@ -1,6 +1,6 @@
-#include "seventeen_var_two.h"
+#include "sumOfModules.h"
 #include <fstream>
-int *scanMatrix_two(const char *in_file, int *n, int *m)
+int *scanMatrixTwo(const char *in_file, int *n, int *m)
 {
   std::ifstream in_stream;
   in_stream.open(in_file);
@@ -26,7 +26,7 @@ int *scanMatrix_two(const char *in_file, int *n, int *m)
   }
   return matrix;
 }
-int *smoothed_matrix(int *matrix, int n, int m)
+int *smoothedMatrix(int *matrix, int n, int m)
 {
   int *matrix_smoothed;
   try

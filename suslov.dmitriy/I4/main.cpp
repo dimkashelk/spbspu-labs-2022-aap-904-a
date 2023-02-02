@@ -1,7 +1,7 @@
 #include <iostream>
-#include "second_var_one.h"
+#include "localMinima.h"
 #include <fstream>
-#include "seventeen_var_two.h"
+#include "sumOfModules.h"
 int main(int argc, char **argv)
 {
   if (argc < 4)
@@ -19,20 +19,20 @@ int main(int argc, char **argv)
   if (argv[1][0] == '1' and argv[1][1] == '\0')
   {
     int n, m;
-    bool result = scanMatrix_one(argv[2], &n, &m);
+    bool result = scanMatrixOne(argv[2], &n, &m);
     if (result == true)
     {
-      out_stream << counter_zero(n, m) << "\n";
+      out_stream << counterZero(n, m) << "\n";
       return 0;
     }
   }
   else if (argv[1][0] == '2' and argv[1][1] == '\0')
   {
     int n, m;
-    int *matrix = scanMatrix_two(argv[2], &n, &m);
+    int *matrix = scanMatrixTwo(argv[2], &n, &m);
     if (matrix != nullptr)
     {
-      int *s_matrix = smoothed_matrix(matrix, n, m);
+      int *s_matrix = smoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
         out_stream << sum(s_matrix, n, m);

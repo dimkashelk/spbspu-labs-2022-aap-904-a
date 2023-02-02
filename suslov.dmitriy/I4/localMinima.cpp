@@ -1,8 +1,8 @@
-#include "second_var_one.h"
+#include "localMinima.h"
 #include <fstream>
 #include <iostream>
 int matrix[1000][1000];
-bool scanMatrix_one(const char *in_file, int *n, int *m)
+bool scanMatrixOne(const char *in_file, int *n, int *m)
 {
   std::ifstream in_stream;
   in_stream.open(in_file);
@@ -21,7 +21,7 @@ bool scanMatrix_one(const char *in_file, int *n, int *m)
   }
   return true;
 }
-unsigned int counter_zero(int n, int m)
+unsigned int counterZero(int n, int m)
 {
   unsigned int k = 0;
   for (int i = 0; i < n; ++i)

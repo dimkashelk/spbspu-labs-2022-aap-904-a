@@ -28,10 +28,10 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
 }
 int *smoothedMatrix(int *matrix, int n, int m)
 {
-  int *matrix_smoothed;
+  int *matrixSmoothed;
   try
   {
-    matrix_smoothed = new int[n * m];
+    matrixSmoothed = new int[n * m];
   } catch (const std::bad_alloc &e)
   {
     return nullptr;
@@ -51,10 +51,10 @@ int *smoothedMatrix(int *matrix, int n, int m)
           }
         }
       }
-      matrix_smoothed[i * n + j] = sum;
+      matrixSmoothed[i * n + j] = sum;
     }
   }
-  return matrix_smoothed;
+  return matrixSmoothed;
 }
 int sum(int *matrix, int n)
 {

@@ -33,7 +33,7 @@ int main()
         return 1;
       }
     }
-    std::cin >> cstring[size];
+    std::cin >> cstring[size - 1];
   }
   while (std::cin && cstring[size++] != '\n');
   if (size == 0)
@@ -47,8 +47,7 @@ int main()
   try
   {
     char* destination = new char[size + size_of_static];
-    std::cout << finderThreeSameElementsInTwoStrings(destination, cstring, static_string) << "\n";
-    //delete [] cstring;
+    std::cout << finderThreeSameElementsInTwoStrings(destination, cstring, static_string) << "\n";;
     delete [] destination;
   }
   catch (const std::bad_alloc &e)

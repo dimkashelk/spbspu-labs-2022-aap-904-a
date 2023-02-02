@@ -86,3 +86,15 @@ size_t dimkashelk::getCountTriangles(point_t point_1, point_t point_2, point_t p
   }
   return size;
 }
+int dimkashelk::sign(double value)
+{
+  if (value > 0)
+  {
+    return 1;
+  }
+  if (value < 0)
+  {
+    return -1;
+  }
+  return 0;
+}

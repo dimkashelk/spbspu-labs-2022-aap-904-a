@@ -40,7 +40,7 @@ int main()
   {
     std::cout << "Empty string!" << "\n";
   }
-  if (cstring = '\n')
+  if (cstring == '\n')
   {
     cstring[size - 1] = '\0';
   }

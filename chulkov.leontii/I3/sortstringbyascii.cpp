@@ -15,50 +15,38 @@ void sort(size_t elstr, char* finalstr)
     }
   }
 }
-bool compare(const char* i, const char* q)
+bool compare(const char i, const char* q)
 {
-  bool match = false;
-  for (const char* j = i + 1; *j; j++)
-  {
-    if ((std::toupper(*i)) == std::toupper(*j))
-    {
-      match = true;
-      break;
-    }
-  }
   for (const char* z = q; *z; z++)
   {
-    if ((std::toupper(*i)) == std::toupper(*z))
+    if ((std::toupper(i)) == std::toupper(*z))
     {
-      match = true;
-      break;
+      return true;
     }
   }
-  return match;
+  return false;
 }
-char* sortStringByAscii(char* finalstr, const char* cstring, const char* newstr)
+char* checkString(char* alpstr, const char* cstring, const char* q, size_t& elstr)
 {
-  size_t elstr = 0;
-  const char* q = newstr;
-  for (const char* i = cstring, *j = newstr; *i; j++, i++)
+  for (const char *i = cstring; *i; i++)
   {
     if (std::isalpha(*i))
     {
-      bool matching1 = compare(i, q);
-      if (!matching1) {
-        finalstr[elstr++] = std::toupper(*i);
-      }
-    }
-    if (std::isalpha(*j))
-    {
-      bool matching2 = compare(j, q);
-      if (matching2)
+      bool matching = compare(*i, q);
+      if (matching)
       {
-        finalstr[elstr++] = std::toupper(*j);
+          alpstr[elstr++] = std::toupper(*i);
       }
     }
   }
-  sort(elstr, finalstr);
-  finalstr[elstr] = '\0';
-  return finalstr;
+  return alpstr;
+}
+char* sortStringByAscii(char* alpstr, const char* cstring, const char* newstr)
+{
+  size_t elstr = 0;
+  checkString(alpstr, cstring, newstr, elstr);
+  sort(elstr, alpstr);
+  alpstr[elstr] = '\0';
+  sort(elstr, alpstr);
+  return alpstr;
 }

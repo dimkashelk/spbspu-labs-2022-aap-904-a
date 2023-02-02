@@ -39,7 +39,7 @@ int main()
   {
     std::cout << "Empty string!" << "\n";
   }
-  cstring[0] = '\0';
+  cstring[size - 1] = '\0';
   try
   {
     char* destination = new char[size + size_of_static];

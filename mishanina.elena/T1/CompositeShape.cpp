@@ -62,7 +62,7 @@ void CompositeShape::pop_back()
   size_--;
 }
 
-Shape* CompositeShape::at(std::size_t index)
+Shape* CompositeShape::at(const std::size_t index)
 {
   if (index > size_)
   {
@@ -71,7 +71,7 @@ Shape* CompositeShape::at(std::size_t index)
   return shapes_[index];
 }
 
-const Shape* CompositeShape::at(std::size_t index) const
+const Shape* CompositeShape::at(const std::size_t index) const
 {
   if (index > size_)
   {

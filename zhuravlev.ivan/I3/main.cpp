@@ -11,6 +11,7 @@ int main()
   char* cstring = new char[capacity];
   size_t size = 0;
   size_t size_of_static = 18;
+  size_t max_size_t;
   const char* static_string = "ABCDFEabcdef135790";
   std::cin >> std::noskipws;
   do
@@ -19,8 +20,15 @@ int main()
     {
       try
       {
-        capacity += 20;
-        *cstring = arrayExpansion(cstring, capacity);
+        if (capacity != max_size_t - 1)
+        {
+          capacity += 20;
+          *cstring = arrayExpansion(cstring, capacity);
+        }
+        else
+        {
+          std::cout << "ERROR\n";
+        }
       }
       catch (const std::bad_alloc &e)
       {

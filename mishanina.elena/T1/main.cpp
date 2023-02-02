@@ -3,6 +3,8 @@
 #include "parallelogram.h"
 #include "triangle.h"
 #include "CompositeShape.h"
+#include "base-types.h"
+#include "shape.h"
 
 void printShapes(char space, const CompositeShape& compositeShape)
 {

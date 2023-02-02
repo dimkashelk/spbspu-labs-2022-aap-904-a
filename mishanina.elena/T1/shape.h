@@ -1,6 +1,7 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-
+#include "base-types.h"
+#include <string>
 class Shape
 {
 public:

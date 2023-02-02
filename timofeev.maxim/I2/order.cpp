@@ -6,24 +6,44 @@ int *partition(int *arr, size_t size)
   {
     return 0;
   }
-  for (size_t k = 0; k < size-1; k++)
+  int *l = arr;
+  int *r = arr + size - 1;
+  if (l == r)
   {
-    for (size_t j = 0; j < size-1; j++)
+    return l;
+  }
+  if (l < r)
+  {
+    do
     {
-      if (arr[j] % 2 == 1 && arr[j+1] % 2 == 0)
+      while (*l % 2 == 0)
       {
-        std::swap(arr[j],arr[j+1]);
+        l++;
+        if (l == arr + size - 1)
+        {
+          return l;
+        }
+      }
+      while (*r % 2 != 0)
+      {
+        r--;
+        if (r == arr)
+        {
+          return r;
+        }
+      }
+      if ((*l % 2 != 0) || (*r % 2 == 0))
+      {
+        std::swap(arr[l - arr], arr[r - arr]);
+        l++;
+        r--;
       }
     }
+    while (l < r);
   }
-  int *dividing = nullptr;
-  for (size_t p = 0; p < size; p++)
+  else
   {
-    if (arr[p] % 2 == 1)
-    {
-      dividing = &arr[p];
-      break;
-    }
+    return 0;
   }
-  return dividing;
+  return l;
 }

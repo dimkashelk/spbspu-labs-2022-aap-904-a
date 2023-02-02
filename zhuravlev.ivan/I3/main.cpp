@@ -12,18 +12,19 @@ int main()
   size_t size = 0;
   size_t size_of_static = 18;
   const char* static_string = "ABCDFEabcdef135790";
+  cstring[0] = '\0';
   std::cin >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size + 1 == capacity)
     {
       try
       {
         char* new_str = new char[capacity];
+        cstring[size + 1] = '\0';
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
-        delete[] new_str;
         capacity += 20;
       }
       catch (const std::bad_alloc &e)

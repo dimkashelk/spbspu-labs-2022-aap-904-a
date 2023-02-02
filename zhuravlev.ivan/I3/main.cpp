@@ -21,7 +21,7 @@ int main()
       try
       {
         char* new_str = new char[capacity];
-        cstring[size + 1] = '\0';
+        cstring[size] = '\0';
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;

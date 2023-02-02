@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <iomanip>
 #include "rectangle.h"
 #include "parallelogram.h"
 #include "triangle.h"

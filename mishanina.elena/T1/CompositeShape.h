@@ -4,6 +4,7 @@
 #include "shape.h"
 #include <string>
 #include <cstddef>
+#include <iomanip>
 
 class CompositeShape : public Shape
 {

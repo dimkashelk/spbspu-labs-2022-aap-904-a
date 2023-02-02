@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <utility>
 
-size_t capasity_block = 100;
+const size_t capasity_block = 100;
 
 char* reallocMem(char* str, const size_t& size, const size_t& new_capasity)
 {

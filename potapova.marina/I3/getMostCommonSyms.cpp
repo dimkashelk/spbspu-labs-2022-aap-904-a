@@ -28,7 +28,7 @@ char* getMostCommonSyms(char* dest, const char* str)
     }
   }
   delete[] str_cpy.first;
-  int count_valid_syms = 0;
+  unsigned int count_valid_syms = 0;
   auto common_sym_ptr = common_syms;
   for (auto dest_sym_ptr = dest); common_sym_ptr < common_syms + 3; ++common_sym_ptr, ++dest_sym_ptr)
   {

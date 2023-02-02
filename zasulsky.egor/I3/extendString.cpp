@@ -12,7 +12,6 @@ char* zasulsky::extendString(const char* src, size_t capDiff)
   if (size > std::numeric_limits< size_t >::max() - capDiff) {
     throw std::overflow_error("String too large");
   }
-  std::cout << size << ' ';
   char* newstr = new char[size + capDiff];
   std::strcpy(newstr, src);
   return newstr;

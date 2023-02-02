@@ -1,5 +1,6 @@
 #include "triangle.h"
 #include <stdexcept>
+#include <math.h>
 
 Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C) :
   name_("Triangle: "),

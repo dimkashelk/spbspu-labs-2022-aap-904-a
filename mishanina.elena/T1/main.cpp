@@ -4,12 +4,12 @@
 #include "triangle.h"
 #include "CompositeShape.h"
 
-void printShapes(const CompositeShape& compositeShape)
+void printShapes(char space, const CompositeShape& compositeShape)
 {
   std::cout << compositeShape.getArea();
   for (std::size_t i = 0; i < compositeShape.size(); i++)
   {
-    std::cout << ' ' << *compositeShape.at(i);
+    std::cout << space << *compositeShape.at(i);
   }
 }
 
@@ -101,7 +101,7 @@ int main()
         std::cerr << "ERROR: invalid input k\n";
         break;
       }
-      printShapes(compositeShape);
+      printShapes(' ', compositeShape);
       std::cout << '\n';
       try
       {
@@ -112,7 +112,7 @@ int main()
         std::cerr << "invalid scale\n";
         correctScale = false;
       }
-      printShapes(compositeShape);
+      printShapes(' ', compositeShape);
       std::cout << '\n';
     }
     else

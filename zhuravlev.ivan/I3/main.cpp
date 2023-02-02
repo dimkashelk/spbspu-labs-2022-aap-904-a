@@ -53,7 +53,7 @@ int main()
     return 1;
   }
   char* cstring_for_sec_func = new char[size];
-  strcpy(cstring_for_sec_func, cstring_);
+  strcpy(cstring_for_sec_func, cstring);
   try
   {
     char* destination = new char[size];

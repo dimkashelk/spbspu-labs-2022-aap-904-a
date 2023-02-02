@@ -13,7 +13,7 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
   try
   {
     matrix = new int[(*n) * (*m)];
-  } catch (std::bad_alloc)
+  } catch (const std::bad_alloc &e)
   {
     return nullptr;
   }
@@ -32,7 +32,7 @@ int *smoothedMatrix(int *matrix, int n, int m)
   try
   {
     matrix_smoothed = new int[n * m];
-  } catch (std::bad_alloc)
+  } catch (const std::bad_alloc &e)
   {
     return nullptr;
   }
@@ -56,7 +56,7 @@ int *smoothedMatrix(int *matrix, int n, int m)
   }
   return matrix_smoothed;
 }
-int sum(int *matrix, int n, int m)
+int sum(int *matrix, int n)
 {
   int sum = 0;
   for (int i = 0; i < n; ++i)

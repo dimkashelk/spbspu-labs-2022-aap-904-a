@@ -1,11 +1,7 @@
-#ifndef NEWSTRING_H
-#define NEWSTRING_H
+#ifndef ADDALLLATINLETTERS_H
+#define ADDALLLATINLETTERS_H
 
-namespace potapova
-{
-  addThreeMostCommonSymbols();
-  addAllLatinLetters();
-  receiveStringTypeC();
-}
+void addAllLatinLettersFromStr(char*& dest_end_ptr, const char* str);
+char* addAllLatinLetters(char* dest, const char* str1, const char* str2);
 
 #endif

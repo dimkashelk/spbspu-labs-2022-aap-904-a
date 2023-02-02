@@ -9,7 +9,7 @@ int main()
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
-  size_t size = 0;
+  size_t size = 1;
   size_t size_of_static = 18;
   const char* static_string = "ABCDFEabcdef135790";
   cstring[0] = '\0';
@@ -48,7 +48,7 @@ int main()
   {
     char* destination = new char[size + size_of_static];
     std::cout << finderThreeSameElementsInTwoStrings(destination, cstring, static_string) << "\n";
-    delete [] cstring;
+    //delete [] cstring;
     delete [] destination;
   }
   catch (const std::bad_alloc &e)

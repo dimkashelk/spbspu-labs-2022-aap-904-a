@@ -17,7 +17,7 @@ int main()
   {
     if (size_1 == capacity_1)
     {
-      if (capacity_1 == max_size_t)
+      if (( max_size_t - (goldenRatio(capacity_1) - capacity_1)) >= capacity_1)
       {
         std::cout << "Too much";
         delete [] str_1;

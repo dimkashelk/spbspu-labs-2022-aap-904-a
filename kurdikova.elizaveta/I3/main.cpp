@@ -38,9 +38,12 @@ int main() {
 
   char *cstringWithoutVowels = new char[size];
   deleteVowels(cstringWithoutVowels, cstring);
-  std::size_t sizeArraySimLet = 27;
+  size_t sizeArraySimLet = 27;
   char *arraySimilarLetters = new char[sizeArraySimLet];
   arraySimilarLetters[sizeArraySimLet - 1] = '\0';
+  for (size_t i = 0; i < sizeArraySimLet - 1; i ++) {
+    arraySimilarLetters[i] = '-';
+  }
   lettersInOrder(arraySimilarLetters, cstring, cstring2);
 
   std::cout << "Array without vowel letters: ";

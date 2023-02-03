@@ -95,4 +95,5 @@ void dimkashelk::TriangulatePoints::removePoint(size_t ind)
   {
     points_[ind] = points_[ind + 1];
   }
+  size_--;
 }

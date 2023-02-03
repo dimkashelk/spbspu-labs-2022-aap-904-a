@@ -45,7 +45,7 @@ int main()
   }
   char newstr2[size2] = "azs";
   char* newstr3 = nullptr;
-  const unsigned short alphabet = 26;
+  const unsigned short alphabet = 100;
   try
   {
     newstr3 = new char[alphabet + 1];

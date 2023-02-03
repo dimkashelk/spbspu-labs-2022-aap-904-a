@@ -28,6 +28,7 @@ int main() {
   }
   while (std::cin && cstring[size++] != '\n');
   if (size <= 1) {
+    delete[] cstring;
     std::cerr << "Nothing was entered";
     return 1;
   }

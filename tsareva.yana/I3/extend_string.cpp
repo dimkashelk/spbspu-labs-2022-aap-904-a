@@ -25,5 +25,8 @@ char *extendSrting(char* str_1, size_t & capacity_1, size_t size_1){
   {
     *(j++) = *(i++);
   }
+  delete [] str_1;
+  str_1 = newstr;
+  return str_1;
 }
 

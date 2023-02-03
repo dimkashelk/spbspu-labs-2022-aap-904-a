@@ -15,7 +15,10 @@ namespace dimkashelk
   private:
     point_t *points_;
     size_t size_;
-    size_t point_;
+    size_t point_first_;
+    size_t point_second_;
+    bool containsPointInTriangle(point_t *p) const;
+    void removePoint(size_t ind);
   };
 }
 #endif

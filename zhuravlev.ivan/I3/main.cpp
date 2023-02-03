@@ -20,7 +20,6 @@ int main()
     {
       try
       {
-        //char* new_str = new char[capacity];
         char* new_str = nullptr;
         cstring[size] = '\0';
         new_str = arrayExpansion(cstring, capacity);
@@ -36,7 +35,7 @@ int main()
     }
     std::cin >> cstring[size - 1];
   }
-  while (std::cin && cstring[size - 1] != '\n' && size++);
+  while (std::cin && cstring[size++] != '\n');
   if (size == 0)
   {
     std::cout << "Empty string!" << "\n";

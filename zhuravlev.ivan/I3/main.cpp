@@ -33,7 +33,7 @@ int main()
         return 1;
       }
     }
-    std::cin >> cstring[size];
+    std::cin >> cstring[size - 1];
   }
   while (std::cin && cstring[size++] != '\n');
   if (size == 0)

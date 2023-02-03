@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <cstring>
 #include <limits>
-#include "change_chars.h"
+#include "change_register.h"
 #include "generate_new_line.h"
 #include "golden_ratio.h"
 
@@ -73,7 +73,7 @@ int main()
   try
   {
     char* res2 = new char[size_1];
-    change_chars(res2, str_1);
+    change_register(res2, str_1);
     std::cout << res2 << '\n';
     delete[] res2;
   }

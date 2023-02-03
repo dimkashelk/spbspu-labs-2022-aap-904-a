@@ -1,8 +1,8 @@
-#include "change_chars.h"
+#include "change_register.h"
 #include <cstddef>
 #include <cctype>
 
-char* change_chars(char* res, char* str)
+char* change_register(char* res, char* str)
 {
   char* i = str;
   char* j = res;

@@ -1,11 +1,9 @@
 #include <iostream>
 #include <cstddef>
 #include <cstring>
-#include <limits>
 #include "extend_string.h"
 #include "change_register.h"
 #include "generate_new_line.h"
-#include "golden_ratio.h"
 
 int main()
 {

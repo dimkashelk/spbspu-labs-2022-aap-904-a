@@ -16,5 +16,6 @@ namespace dimkashelk
   rectangle_t getFrameRect(rectangle_t rect1, rectangle_t rect2);
   double getMixedProduct(point_t p1_end, point_t p1_start, point_t p2_end, point_t p2_start);
   size_t getCountTriangles(point_t point_1, point_t point_2, point_t point_3);
+  int sign(double value);
 }
 #endif

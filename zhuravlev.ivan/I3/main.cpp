@@ -9,14 +9,14 @@ int main()
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
-  size_t size = 1;
+  size_t size = 0;
   size_t size_of_static = 18;
   const char* static_string = "ABCDFEabcdef135790";
   cstring[0] = '\0';
   std::cin >> std::noskipws;
   do
   {
-    if (size + 1 == capacity)
+    if (size == capacity)
     {
       try
       {
@@ -33,7 +33,7 @@ int main()
         return 1;
       }
     }
-    std::cin >> cstring[size - 1];
+    std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
   if (size == 0)

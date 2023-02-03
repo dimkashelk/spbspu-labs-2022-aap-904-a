@@ -38,10 +38,10 @@ char* finderThreeSameElements(char* destination, const char* str)
     }
     cnt = 0;
   }
-  *(result_string) = '\0';
+  *result_string = '\0';
   for (auto k = result_string; *k != '\0'; ++k)
   {
-    if ((static_cast<char> ((*k))) < (static_cast<char> (*(k + 1))))
+    if (((char)(*k)) < ((char)*(k + 1)))
     {
       std::swap(*k, *(k + 1));
     }

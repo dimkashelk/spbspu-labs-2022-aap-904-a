@@ -40,10 +40,6 @@ int main()
   {
     std::cout << "Empty string!" << "\n";
   }
-  if (cstring[0] != '\n')
-  {
-    cstring[size - 1] = '\0';
-  }
   try
   {
     char* destination = new char[size + size_of_static];

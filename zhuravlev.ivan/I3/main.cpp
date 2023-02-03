@@ -16,7 +16,7 @@ int main()
   std::cin >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size + 1 == capacity)
     {
       try
       {

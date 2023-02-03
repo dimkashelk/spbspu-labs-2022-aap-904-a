@@ -24,7 +24,7 @@ void generate_new_line(char* res, const char* str1, const char* str2)
     i++;
   }
 
-  while(*j)
+  while (*j)
   {
     noMatches = true;
     while (*i && noMatches)

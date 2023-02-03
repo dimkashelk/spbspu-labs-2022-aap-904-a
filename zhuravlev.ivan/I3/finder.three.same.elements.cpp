@@ -41,7 +41,7 @@ char* finderThreeSameElements(char* destination, const char* str)
   *result_string = '\0';
   for (auto k = result_string; *k != '\0'; ++k)
   {
-    if (((int)(*k)) < ((int)*(k + 1)))
+    if ((*k) < *(k + 1)))
     {
       std::swap(*k, *(k + 1));
     }

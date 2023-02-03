@@ -20,6 +20,7 @@ int main()
       if (capacity_1 == max_size_t)
       {
         std::cout << "Too much";
+        delete [] str_1;
         return 1;
       }
       else

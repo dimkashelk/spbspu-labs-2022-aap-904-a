@@ -33,12 +33,14 @@ int main()
         return 1;
       }
     }
-    std::cin >> cstring[size - 1];
+    std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (size == 0)
+  if (cstring[0] == '\n')
   {
-    std::cout << "Empty string!" << "\n";
+    delete[] cstring;
+    std::cerr << "Empty string!" << "\n";
+    return 1;
   }
   try
   {
@@ -56,7 +58,6 @@ int main()
   {
     char* destination = new char[size];
     std::cout << finderThreeSameElements(destination, cstring) << "\n";
-    delete[] cstring;
     delete[] destination;
   }
   catch (const std::bad_alloc &e)
@@ -65,5 +66,6 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
+  delete[] cstring;
   return 0;
 }

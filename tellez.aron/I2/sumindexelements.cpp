@@ -23,6 +23,6 @@ size_t sum_index_elements(const int *arr, size_t size)
       max_index = i;
     }
   }
-  int sum = max_index + min_index;
+  size_t sum = max_index + min_index;
   return sum;
 }

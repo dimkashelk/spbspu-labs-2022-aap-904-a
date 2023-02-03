@@ -35,7 +35,7 @@ int main()
     }
     std::cin >> cstring[size - 1];
   }
-  while (std::cin && cstring[size++] != '\n');
+  while (std::cin && cstring[size - 1] != '\n' && size++);
   if (size == 0)
   {
     std::cout << "Empty string!" << "\n";

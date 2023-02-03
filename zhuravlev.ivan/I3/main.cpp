@@ -20,7 +20,8 @@ int main()
     {
       try
       {
-        char* new_str = new char[capacity];
+        //char* new_str = new char[capacity];
+        char* new_str = nullptr;
         cstring[size] = '\0';
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;

@@ -27,6 +27,10 @@ int main() {
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
+  if (size == 1) {
+    std::cerr << "Nothing was entered";
+    return 1;
+  }
   cstring[size - 1] = '\0';
 
   size_t size2 = 13;
@@ -37,7 +41,12 @@ int main() {
   }
 
   char *cstringWithoutVowels = new char[size];
+  cstringWithoutVowels[size - 1] = '\0';
+  for (size_t i = 0; i < size - 1; i ++) {
+    cstringWithoutVowels[i] = '-';
+  }
   deleteVowels(cstringWithoutVowels, cstring);
+
   size_t sizeArraySimLet = 27;
   char *arraySimilarLetters = new char[sizeArraySimLet];
   arraySimilarLetters[sizeArraySimLet - 1] = '\0';

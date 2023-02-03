@@ -27,7 +27,7 @@ int main() {
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (size == 1) {
+  if (size <= 1) {
     std::cerr << "Nothing was entered";
     return 1;
   }

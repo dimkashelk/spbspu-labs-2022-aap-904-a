@@ -6,7 +6,7 @@ void generate_new_line(char* res, const char* str1, const char* str2)
   auto i = str1;
   auto j = str2;
   bool noMatches = true;
-  while(*i)
+  while (*i)
   {
     noMatches = true;
     while (*j && noMatches)

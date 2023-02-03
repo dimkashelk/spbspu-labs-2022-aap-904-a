@@ -14,5 +14,9 @@ char *extendSrting(char* str_1, size_t & capacity_1, size_t size_1){
   {
     capacity_1 = goldenRatio(capacity_1);
   }
+  if (capacity_1 < size_1)
+  {
+    throw std::invalid_argument("bruh");
+  }
 }
 

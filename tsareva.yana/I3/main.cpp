@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <cstring>
 #include <limits>
+#include "extend_string.h"
 #include "change_register.h"
 #include "generate_new_line.h"
 #include "golden_ratio.h"
@@ -9,7 +10,6 @@
 int main()
 {
   size_t capacity_1 = 10;
-  size_t max_size_t = std::numeric_limits< size_t >::max();
   char* str_1 = new char[capacity_1];
   size_t size_1 = 0;
   std::cin >> std::noskipws;
@@ -17,27 +17,9 @@ int main()
   {
     if (size_1 == capacity_1)
     {
-      if (( max_size_t - (goldenRatio(capacity_1) - capacity_1)) >= capacity_1)
-      {
-        std::cout << "Too much";
-        delete [] str_1;
-        return 1;
-      }
-      else
-      {
-        capacity_1 = goldenRatio(capacity_1);
-      }
       try
       {
-        char* newstr = new char[capacity_1];
-        auto *i = str_1;
-        auto *j = newstr;
-        while (i != str_1 + size_1)
-        {
-          *(j++) = *(i++);
-        }
-        delete [] str_1;
-        str_1 = newstr;
+        str_1 = extendString(str_1, capacity_1, size_1);
       }
       catch (...)
       {

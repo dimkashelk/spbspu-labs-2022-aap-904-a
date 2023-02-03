@@ -16,7 +16,7 @@ int main()
   std::cin >> std::noskipws;
   do
   {
-    if (size + 1 == capacity)
+    if (size == capacity)
     {
       try
       {
@@ -33,7 +33,7 @@ int main()
         return 1;
       }
     }
-    std::cin >> cstring[size];
+    std::cin >> cstring[size - 1];
   }
   while (std::cin && cstring[size++] != '\n');
   if (size == 0)
@@ -69,6 +69,5 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-  delete[] cstring;
   return 0;
 }

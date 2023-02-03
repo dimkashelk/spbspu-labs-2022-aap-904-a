@@ -48,11 +48,11 @@ int main()
   {
     char* destination = new char[size + size_of_static];
     std::cout << finderThreeSameElementsInTwoStrings(destination, cstring, static_string) << "\n";;
-    delete [] destination;
+    delete[] destination;
   }
   catch (const std::bad_alloc &e)
   {
-    delete [] cstring;
+    delete[] cstring;
     std::cerr << e.what() << "\n";
     return 1;
   }
@@ -60,14 +60,15 @@ int main()
   {
     char* destination = new char[size];
     std::cout << finderThreeSameElements(destination, cstring) << "\n";
-    delete [] cstring;
-    delete [] destination;
+    delete[] cstring;
+    delete[] destination;
   }
   catch (const std::bad_alloc &e)
   {
-    delete [] cstring;
+    delete[] cstring;
     std::cerr << e.what() << "\n";
     return 1;
   }
+  delete[] cstring;
   return 0;
 }

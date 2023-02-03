@@ -18,5 +18,12 @@ char *extendSrting(char* str_1, size_t & capacity_1, size_t size_1){
   {
     throw std::invalid_argument("bruh");
   }
+  char* newstr = new char[capacity_1];
+  auto* i = str_1;
+  auto* j = newstr;
+  while (i != str_1 + size_1)
+  {
+    *(j++) = *(i++);
+  }
 }
 

@@ -5,7 +5,6 @@
 #include "change_register.h"
 #include "generate_new_line.h"
 
-
 int main()
 {
   size_t capacity_1 = 10;

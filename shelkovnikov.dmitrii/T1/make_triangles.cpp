@@ -42,7 +42,7 @@ dimkashelk::TriangulatePoints::~TriangulatePoints()
 }
 dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
 {
-  if (point_second_ + 1 < size_ && size_ != 3)
+  if (point_second_ + 1 == size_ && size_ != 3)
   {
     point_first_ = 0;
     point_second_ = 1;
@@ -76,6 +76,7 @@ dimkashelk::Triangle dimkashelk::TriangulatePoints::operator()()
     }
   }
   Triangle triangle = Triangle(points_[0], points_[1], points_[2]);
+  removePoint(1);
   return triangle;
 }
 bool dimkashelk::TriangulatePoints::hasNext() const

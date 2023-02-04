@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-  int ready_array[5] = {4,5,3,2,1};
+  int ready_array[5] = {4, 5, 3, 2, 1};
   try
   {
     std::cout << "Length of Decrease1: " << length_of_decrease_value(ready_array, 5) << "\n";

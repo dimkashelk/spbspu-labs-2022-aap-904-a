@@ -2,7 +2,7 @@
 #include <algorithm>
 int *partition(int *arr, size_t size)
 {
-  if (size == 0 )
+  if (size == 0)
   {
     return 0;
   }

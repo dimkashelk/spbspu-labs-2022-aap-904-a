@@ -5,11 +5,11 @@ unsigned int length_of_decrease_value(const int *arr, size_t size)
 {
   size_t curleght = 1;
   size_t maxleght = 1;
-  if (size==0)
+  if (size == 0)
   {
     throw std::length_error("Size error");
   }
-  for (size_t i=1; i<size; ++i)
+  for (size_t i = 1; i < size; ++i)
   {
     if (arr[i-1] > arr[i])
     {

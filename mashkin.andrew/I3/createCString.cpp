@@ -5,7 +5,7 @@
 char* createCString()
 {
   size_t capacity = 10;
-  char* cstring = new char[capacity];
+  char* cString = new char[capacity];
   size_t size = 0;
   std::cin >> std::noskipws;
   do
@@ -14,31 +14,31 @@ char* createCString()
     {
       try
       {
-        char* newstr = new char[capacity + 20];
-        for (char* i = cstring, *j = newstr; i != cstring + size; ++i, ++j)
+        char* newStr = new char[capacity + 20];
+        for (char* i = cString, *j = newStr; i != cString + size; ++i, ++j)
         {
           *j = *i;
         }
-        delete[] cstring;
-        cstring = newstr;
+        delete[] cString;
+        cString = newStr;
         capacity += 20;
       }
       catch (...)
       {
-        delete[] cstring;
+        delete[] cString;
         throw;
       }
     }
-    std::cin >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
+    std::cin >> cString[size];
+  } while (std::cin && cString[size++] != '\n');
   if (size <= 1)
   {
-    delete[] cstring;
+    delete[] cString;
     throw std::logic_error("empty input");
   }
   else
   {
-    cstring[size - 1] = '\0';
+    cString[size - 1] = '\0';
   }
-  return cstring;
+  return cString;
 }

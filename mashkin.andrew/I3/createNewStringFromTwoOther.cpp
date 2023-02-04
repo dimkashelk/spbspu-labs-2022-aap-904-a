@@ -30,15 +30,15 @@ char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstri
             {
               try
               {
-                char* newstr = new char[capacity + 10];
-                for (char* a = newStringFromTwoOther, *b = newstr; a != newStringFromTwoOther + size; ++a, ++b)
+                char* newStr = new char[capacity + 10];
+                for (char* a = newStringFromTwoOther, *b = newStr; a != newStringFromTwoOther + size; ++a, ++b)
                 {
                   *b = *a;
                 }
                 delete[] newStringFromTwoOther;
-                newStringFromTwoOther = newstr;
+                newStringFromTwoOther = newStr;
                 capacity += 10;
-                delete[] newstr;
+                delete[] newStr;
               }
               catch (...)
               {

@@ -21,7 +21,7 @@ namespace
       throw std::logic_error("Radius must be positive");
     }
     namespace dks = dimkashelk;
-    dks::point_t points[361];
+    dks::point_t *points = new dks::point_t[361];
     points[0] = point;
     for (size_t degree = 0; degree < 360; degree++)
     {
@@ -29,9 +29,17 @@ namespace
     }
     return points;
   }
+  dimkashelk::Polygon makePolygon(dimkashelk::point_t point, double height, double width)
+  {
+    namespace dsk = dimkashelk;
+    dsk::point_t *points = makePoints(point, height, width);
+    dsk::Polygon polygon(points, 361);
+    delete[] points;
+    return polygon;
+  }
 }
 dimkashelk::Ellipse::Ellipse(point_t point, double height, double width):
-  polygon_(makePoints(point, height, width), 361)
+  polygon_(makePolygon(point, height, width))
 {}
 dimkashelk::Ellipse::Ellipse(const Polygon &polygon):
   polygon_(polygon)

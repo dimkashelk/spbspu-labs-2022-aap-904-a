@@ -35,7 +35,7 @@ char* checkString(char* alpstr, const char* cstring, const char* q, size_t& elst
       bool matching = compare(*i, q);
       if (matching)
       {
-          alpstr[elstr++] = std::toupper(*i);
+        alpstr[elstr++] = std::toupper(*i);
       }
     }
   }

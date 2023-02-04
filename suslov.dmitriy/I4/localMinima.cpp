@@ -17,7 +17,7 @@ bool scanMatrixOne(const char *in_file, int *n, int *m)
   }
   else
   {
-    return nullptr;
+    return false;
   }
   if (!in_stream.eof())
   {
@@ -25,7 +25,7 @@ bool scanMatrixOne(const char *in_file, int *n, int *m)
   }
   else
   {
-    return nullptr;
+    return false;
   }
   for (int i = 0; i < *n; ++i)
   {
@@ -37,7 +37,7 @@ bool scanMatrixOne(const char *in_file, int *n, int *m)
       }
       else
       {
-        return nullptr;
+        return false;
       }
     }
   }

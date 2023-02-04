@@ -16,6 +16,10 @@ namespace
   }
   dimkashelk::point_t *makePoints(dimkashelk::point_t point, double a, double b)
   {
+    if (a <= 0 || b <= 0)
+    {
+      throw std::logic_error("Radius must be positive");
+    }
     namespace dks = dimkashelk;
     dks::point_t points[361];
     points[0] = point;

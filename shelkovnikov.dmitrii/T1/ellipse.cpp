@@ -7,16 +7,8 @@ namespace
   {
     namespace dks = dimkashelk;
     double angle = degree * dks::PI / 180;
-    double x = (a * b) / std::sqrt(b * b + a * a * std::tan(angle));
-    if (degree >= 90 && degree <= 270)
-    {
-      x *= -1;
-    }
-    double y = std::sqrt(1 - (x / a) * (x / a)) * b;
-    if (degree >= 180 && degree <= 360)
-    {
-      y *= -1;
-    }
+    double x = a * std::cos(angle);
+    double y = b * std::sin(angle);
     dks::point_t point = dks::point_t{x, y};
     point.x += center.x;
     point.y += center.y;

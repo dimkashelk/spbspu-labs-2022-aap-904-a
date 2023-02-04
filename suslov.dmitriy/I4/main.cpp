@@ -25,6 +25,11 @@ int main(int argc, char **argv)
       out_stream << counterZero(n, m) << "\n";
       return 0;
     }
+    else
+    {
+      std::cerr << "errrr" << "\n";
+      return -1;
+    }
   }
   else if (argv[1][0] == '2' and argv[1][1] == '\0')
   {
@@ -46,6 +51,11 @@ int main(int argc, char **argv)
       }
       delete[]matrix;
       return 0;
+    }
+    else
+    {
+      std::cerr << "=()" << "\n";
+      return -1;
     }
   }
   else

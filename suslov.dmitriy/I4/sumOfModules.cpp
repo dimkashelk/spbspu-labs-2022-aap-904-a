@@ -8,7 +8,22 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
   {
     return nullptr;
   }
-  in_stream >> *n >> *m;
+  if (!in_stream.eof())
+  {
+    in_stream >> *n;
+  }
+  else
+  {
+    return nullptr;
+  }
+  if (!in_stream.eof())
+  {
+    in_stream >> *m;
+  }
+  else
+  {
+    return nullptr;
+  }
   int *matrix;
   try
   {
@@ -21,7 +36,16 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
   {
     for (int j = 0; j < *m; ++j)
     {
-      in_stream >> matrix[i * (*n) + j];
+      if (!in_stream.eof())
+      {
+        in_stream >> matrix[i * (*n) + j];
+      }
+      else
+      {
+        delete[] matrix;
+        return nullptr;
+      }
+
     }
   }
   return matrix;

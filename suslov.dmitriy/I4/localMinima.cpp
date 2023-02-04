@@ -11,12 +11,34 @@ bool scanMatrixOne(const char *in_file, int *n, int *m)
     std::cerr << "=(" << "\n";
     return false;
   }
-  in_stream >> *n >> *m;
+  if (!in_stream.eof())
+  {
+    in_stream >> *n;
+  }
+  else
+  {
+    return nullptr;
+  }
+  if (!in_stream.eof())
+  {
+    in_stream >> *m;
+  }
+  else
+  {
+    return nullptr;
+  }
   for (int i = 0; i < *n; ++i)
   {
     for (int j = 0; j < *m; ++j)
     {
-      in_stream >> matrix[i][j];
+      if (!in_stream.eof())
+      {
+        in_stream >> matrix[i][j];
+      }
+      else
+      {
+        return nullptr;
+      }
     }
   }
   return true;

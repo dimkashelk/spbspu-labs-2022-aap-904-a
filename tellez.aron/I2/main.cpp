@@ -3,8 +3,8 @@
 #include <cstddef>
 #include <fstream>
 #include "sumindexelements.h"
-#include "lengthlongerdecreasing.h"
-int main (int argc, char *argv[])
+#include "getDownSequence.h"
+int main(int argc, char *argv[])
 {
   if (argc != 2)
   {

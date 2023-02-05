@@ -28,7 +28,7 @@ int main()
         delete[] source1;
         source1 = new_string;
         new_string = nullptr;
-        delete[] new_string;
+        delete new_string;
       }
       catch (const std::bad_alloc& e)
       {

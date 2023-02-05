@@ -10,16 +10,16 @@
 int main()
 {
   CompositeShape compositeShape;
-  bool correctFigure = false;
-  bool correctScale = false;
-  //bool correctComposite = false;
+  bool correctFigure = true;
+  bool correctScale = true;
+  bool correctComposite = true;
   while (std::cin)
   {
     std::string figureName = "";
     std::cin >> figureName;
     if (!std::cin)
     {
-      std::cerr << "ERROR: invalid input\n";
+    //  std::cerr << "ERROR: invalid input\n";
       correctFigure = false;
       break;
     }//+
@@ -75,10 +75,15 @@ int main()
           }*/
         }
       }
-      catch (...)
+      catch (const std::invalid_argument& e)
       {
         correctFigure = false;
-        std::cerr << "Invalid figure\n";
+        //std::cerr << "Invalid figure\n";
+      }
+      catch (...)
+      {
+        correctComposite = false;
+     //   std::cerr << "Invalid figure\n";
         delete[] shape;
         //break;
       }
@@ -91,7 +96,8 @@ int main()
       std::cin >> k;
       if (!std::cin)
       {
-        std::cerr << "ERROR: invalid input k\n";
+        correctScale = false;
+        //std::cerr << "ERROR: invalid input k\n";
         break;
       }
       printShapes(std::cout, compositeShape);
@@ -103,7 +109,7 @@ int main()
       }
       catch (...)
       {
-        std::cerr << "invalid scale\n";
+        //std::cerr << "invalid scale\n";
         correctScale = false;
       }
       printShapes(std::cout, compositeShape);
@@ -121,9 +127,14 @@ int main()
     std::cerr << "ERROR: invalid figure\n";
     return 1;
   }
-  if (!correctScale) {
-      std::cerr << "ERROR: invalid scaling\n";
-      return 1;
+  if (!correctScale)
+  {
+    std::cerr << "ERROR: invalid scaling\n";
+    return 1;
+  }
+  if (!correctComposite)
+  {
+    std::cerr << "ERROR: invalid composite\n";
   }
   return 0;
 }

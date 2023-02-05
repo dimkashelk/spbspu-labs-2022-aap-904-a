@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-#include "sumIndexElements.h"
+#include "addIndicesElements.h"
 #include "getDownSequence.h"
 int main(int argc, char *argv[])
 {
@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     return 1;
   }
   int arr_1[10] = {10, 8, 6, 4, 2, 8, 5, 7, 3, 1};
-  std::cout << sum_index_elements(arr_1, 10) << "\n";
+  std::cout << add_indices_elements(arr_1, 10) << "\n";
   std::cout << get_down_sequence(arr_1, 10) << "\n";
   size_t n = 0;
   std::cin >> n;
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
   {
     arr_2[i] = (std::rand() % 10) + 1;
   }
-  std::cout << sum_index_elements(arr_2, n) << "\n";
+  std::cout << add_indices_elements(arr_2, n) << "\n";
   std::cout << get_down_sequence(arr_2, n) << "\n";
   delete[] arr_2;
   std::ifstream in(argv[1]);
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
       return 1;
     }
   }
-  std::cout << sum_index_elements(arr_3, size) << "\n";
+  std::cout << add_indices_elements(arr_3, size) << "\n";
   std::cout << get_down_sequence(arr_3, size) << "\n";
   delete[] arr_3;
   return 0;

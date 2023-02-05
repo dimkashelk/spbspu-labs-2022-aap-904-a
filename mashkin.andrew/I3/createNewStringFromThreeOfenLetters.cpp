@@ -34,7 +34,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
       {
         if (arrCountyOfLetter[index] < countLetter)
         {
-          for (size_t k = 2; k > index; k--)
+          for (size_t k = 2 - index; k > index; k--)
           {
             j[k] = j[k - 1];
             arrCountyOfLetter[k] = arrCountyOfLetter[k - 1];

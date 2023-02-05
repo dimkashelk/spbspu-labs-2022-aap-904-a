@@ -44,7 +44,7 @@ int main()
   }
   else
   {
-    cstring[size] = '\0';
+    cstring[size - 1] = '\0';
   }
   try
   {

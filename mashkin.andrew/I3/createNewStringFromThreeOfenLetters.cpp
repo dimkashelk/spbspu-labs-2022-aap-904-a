@@ -32,7 +32,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
       {
         *i == *j ? countLetter++ : countLetter;
       }
-      for (char* j = fromThreeLetters; *j; j++, index++)
+      for (char* j = fromThreeLetters; endIndex != 3; j++, endIndex++, index++)
       {
         if (arrCountyOfLetter[index] < countLetter)
         {
@@ -49,7 +49,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
       endIndex = 0;
     }
   }
-  for (char* i = fromThreeLetters; *i; i++)
+  for (char* j = fromThreeLetters; endIndex != 3; j++, endIndex)
   {
     char* var1 = i;
     var1++;
@@ -63,5 +63,6 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
       }
     }
   }
+  fromThreeLetters[endIndex] = "\0"
   return fromThreeLetters;
 }

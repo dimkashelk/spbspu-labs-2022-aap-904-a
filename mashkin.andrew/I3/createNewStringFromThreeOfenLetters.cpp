@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cstddef>
 
-char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* string1)
+char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* string1, size_t endIndex)
 {
   int countLetter = 0;
   size_t index = 0;
@@ -11,7 +11,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
   for (const char* i = string1; *i; i++)
   {
     bool comparison = true;
-    for (const char* j = fromThreeLetters; *j; j++)
+    for (const char* j = fromThreeLetters; endIndex != 3; j++, endIndex)
     {
       if (*j == *i)
       {
@@ -23,6 +23,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
         comparison = true;
       }
     }
+    endIndex = 0;
     index = 0;
     if (comparison)
     {
@@ -45,6 +46,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
           break;
         }
       }
+      endIndex = 0;
     }
   }
   for (char* i = fromThreeLetters; *i; i++)

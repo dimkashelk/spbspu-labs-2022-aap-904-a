@@ -10,6 +10,7 @@ int main()
   char* string1 = nullptr;
   size_t capacity = 10;
   size_t size = 0;
+  size_t endIndex = 0;
   try
   {
     string1 = new char[capacity];
@@ -36,12 +37,6 @@ int main()
   try
   {
     fromThreeLetters = new char[4];
-    size_t index = 3;
-    for (char* i = string1, *j = fromThreeLetters; index != 3; i++, j++, index++)
-    {
-      *j = *i;
-    }
-    fromThreeLetters[index] = '\0';
   }
   catch (const std::exception& ex)
   {
@@ -52,7 +47,7 @@ int main()
   }
   newStringFromTwoOther = createNewStringFromTwoOther(newStringFromTwoOther, string1, string2, size);
   std::cout << newStringFromTwoOther << "\n";
-  fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, string1);
+  fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, string1, endIndex);
   std::cout << fromThreeLetters << "\n";
   delete[] string1;
   delete[] newStringFromTwoOther;

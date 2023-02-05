@@ -25,6 +25,7 @@ int main()
         {
           new_string[i] = source1[i];
         }
+        //delete[] source1;
         source1 = new_string;
         delete[] new_string;
         new_string = nullptr;
@@ -82,6 +83,5 @@ int main()
 
   delete[] destination1;
   delete[] destination2;
-  delete[] source1;
   return 0;
 }

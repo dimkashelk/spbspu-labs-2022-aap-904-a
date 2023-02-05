@@ -20,7 +20,7 @@ int main()
       capacity = capacity + 20;
       try
       {
-        char *new_string = new char[capacity + 20];
+        char* new_string = new char[capacity + 20];
         for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];
@@ -38,7 +38,6 @@ int main()
       }
     }
     source1[size1++] = inp;
-    
   }
 
   if (size1 == 0)
@@ -49,7 +48,7 @@ int main()
   }
 
   source1[size1] = '\0';
-  
+
   //1
   const char source2[] = "abcd";
   size_t size_source2 = sizeof source2;

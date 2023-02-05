@@ -1,4 +1,4 @@
-#include "getDownSequence.h"
+#include "getdownsequence.h"
 size_t get_down_sequence(const int *arr, size_t size)
 {
   if (size == 0)

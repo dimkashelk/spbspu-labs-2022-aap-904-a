@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <fstream>
 #include "sumindexelements.h"
-#include "getDownSequence.h"
+#include "getdownsequence.h"
 int main(int argc, char *argv[])
 {
   if (argc != 2)

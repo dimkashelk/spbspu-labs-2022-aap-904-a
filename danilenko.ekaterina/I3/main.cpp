@@ -20,15 +20,15 @@ int main()
       capacity = capacity + 10;
       try
       {
-        char* new_string = new char[capacity + 20];
+        char *new_string = new char[capacity + 20];
         for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];
         }
-        delete[] source1;
         source1 = new_string;
         new_string = nullptr;
         delete[] new_string;
+        delete[] source1;
       }
       catch (const std::bad_alloc& e)
       {

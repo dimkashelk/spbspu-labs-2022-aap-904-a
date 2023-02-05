@@ -7,7 +7,7 @@ int main()
 {
   size_t capacity = 10;
   size_t size1 = 0;
-  char* source1 = new char[capacity + 1];
+  char* source1 = new char[capacity];
   char inp = '\0';
   std::cout << "Enter string: ";
 
@@ -23,7 +23,7 @@ int main()
         char *new_string = new char[capacity + 1];
         for (size_t i = 0; i < size1; i++)
         {
-          new_string[i] = source1[i];
+          new_string[i] = source1[i + 1];
         }
         //delete[] source1;
         source1 = new_string;

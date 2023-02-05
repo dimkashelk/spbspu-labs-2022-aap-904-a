@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstddef>
 #include "getMostCommonSyms.h"
 #include "addAllLatinLetters.h"
 #include "inputStr.h"
@@ -60,4 +61,3 @@ int main()
   delete[] result2;
   return 0;
 }
-o

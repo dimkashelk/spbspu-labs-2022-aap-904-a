@@ -1,10 +1,11 @@
-#include "order.h"
+#include "reorderByEven.h"
 #include <algorithm>
-int *partition(int *arr, size_t size)
+#include <stdexcept>
+int *reorderByEven(int *arr, size_t size)
 {
   if (size == 0)
   {
-    return 0;
+    throw std::length_error("Size error");
   }
   int *l = arr;
   int *r = arr + size - 1;
@@ -12,14 +13,14 @@ int *partition(int *arr, size_t size)
   {
     return l;
   }
-  if (l < r)
+  else if (l < r)
   {
     do
     {
       while (*l % 2 == 0)
       {
         l++;
-        if (l == arr + size - 1)
+        if (l >= r)
         {
           return l;
         }
@@ -27,23 +28,19 @@ int *partition(int *arr, size_t size)
       while (*r % 2 != 0)
       {
         r--;
-        if (r == arr)
+        if (r <= l)
         {
           return r;
         }
       }
       if ((*l % 2 != 0) || (*r % 2 == 0))
       {
-        std::swap(arr[l - arr], arr[r - arr]);
+        std::swap(*l, *r);
         l++;
         r--;
       }
     }
     while (l < r);
-  }
-  else
-  {
-    return 0;
   }
   return l;
 }

@@ -2,18 +2,18 @@
 #include <cstdlib>
 #include <fstream>
 #include <ctime>
-#include "decrease.h"
-#include "order.h"
+#include "countDecreasingValues.h"
+#include "reorderByEven.h"
 
 int main(int argc, char *argv[])
 {
   int ready_array[5] = {4, 5, 3, 2, 1};
   try
   {
-    std::cout << "Length of Decrease1: " << length_of_decrease_value(ready_array, 5) << "\n";
-    std::cout << "divider " << *partition(ready_array, 5) << "\n";
+    std::cout << "Length of Decrease1: " << countDecreasingValues(ready_array, 5) << "\n";
+    std::cout << "divider " << *reorderByEven(ready_array, 5) << "\n";
   }
-  catch (const std::length_error & e)
+  catch (const std::length_error &e)
   {
     std::cout << e.what() << "\n";
     return 0;
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     return 2;
   }
 
-  std::srand(time(nullptr));
+  std::srand(std::time(nullptr));
   int *dyn_array = new int[line];
   if (line > 0)
   {
@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
     {
       dyn_array[i] = std::rand() % 100;
     }
-    std::cout << "Length of Decrease2: " << length_of_decrease_value(dyn_array, line) << "\n";
-    std::cout << "divider " << *partition(dyn_array, line) << "\n";
+    std::cout << "Length of Decrease2: " << countDecreasingValues(dyn_array, line) << "\n";
+    std::cout << "divider " << *reorderByEven(dyn_array, line) << "\n";
   }
   else
   {
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
   }
 
   size_t fsize = 0;
-  int *File_Array = new int[fsize];
+  int *file_array = new int[fsize];
   std::string fname = argv[1];
   std::ifstream input(fname);
   input >> fsize;
@@ -59,32 +59,32 @@ int main(int argc, char *argv[])
   {
     std::cerr << "File error" << "\n";
     input.close();
-    delete [] File_Array;
+    delete [] file_array;
     return 2;
   }
   for (size_t i = 0; i < fsize; ++i)
   {
-    input >> File_Array[i];
+    input >> file_array[i];
     if (!input)
     {
       std::cout << "File error" << "\n";
       input.close();
-      delete [] File_Array;
+      delete [] file_array;
       return 2;
     }
   }
   try
   {
-    std::cout << "Length of Decrease3: " << length_of_decrease_value(File_Array, fsize) << "\n";
-    std::cout << "divider " << *partition(File_Array, fsize) << "\n";
+    std::cout << "Length of Decrease3: " << countDecreasingValues(file_array, fsize) << "\n";
+    std::cout << "divider " << *reorderByEven(file_array, fsize) << "\n";
   }
-  catch (const std::length_error & e)
+  catch (const std::length_error &e)
   {
     std::cout << e.what() << "\n";
     input.close();
-    delete [] File_Array;
+    delete [] file_array;
     return 0;
   }
-  delete [] File_Array;
+  delete [] file_array;
   input.close();
 }

@@ -1,7 +1,7 @@
-#include "decrease.h"
+#include "countDecreasingValues.h"
 #include <limits>
 #include <stdexcept>
-unsigned int length_of_decrease_value(const int *arr, size_t size)
+size_t countDecreasingValues(const int *arr, size_t size)
 {
   size_t curleght = 1;
   size_t maxleght = 1;

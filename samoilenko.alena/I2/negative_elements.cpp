@@ -1,6 +1,6 @@
-#include <cstddef>
 #include "negative_elements.h"
-size_t countNegativeElementsAfterMax(int* array, size_t size)
+#include <cstddef>
+size_t countNegativeElementsAfterMax(const int* array, size_t size)
 {
   int maximum = array[0];
   size_t idx = 0;

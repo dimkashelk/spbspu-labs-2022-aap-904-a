@@ -117,7 +117,7 @@ void CompositeShape::move(point_t point)
 
 void CompositeShape::scale(double k)
 {
-  if (k < 0)
+  if (k <= 0)
   {
     throw std::invalid_argument("Invalid k size");
   }

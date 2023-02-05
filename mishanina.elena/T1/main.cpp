@@ -111,16 +111,15 @@ int main()
     }
     else
     {
-//      correctFigure = false;
+      correctFigure = false;
       std::cerr << "ERROR: no such figure\n";
-   //   break;
-      continue;
+      break;
     }
-    if (correctFigure == false || correctScale == false)
-    {
-      std::cerr << "ERROR: correctFigure == false || correctScale == false\n";
-      return 1;
-    }
+  }
+  if (correctFigure == false || correctScale == false)
+  {
+    std::cerr << "ERROR: correctFigure == false || correctScale == false\n";
+    return 1;
   }
   return 0;
 }

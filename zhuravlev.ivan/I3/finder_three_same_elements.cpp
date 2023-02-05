@@ -1,4 +1,4 @@
-#include "finder.three.same.elements.h"
+#include "finder_three_same_elements.h"
 #include <cctype>
 #include <iostream>
 

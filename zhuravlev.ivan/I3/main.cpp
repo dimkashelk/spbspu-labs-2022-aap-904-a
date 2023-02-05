@@ -1,9 +1,9 @@
 #include <iostream>
 #include <exception>
 #include <cstring>
-#include "finder.three.same.elements.h"
+#include "finder_three_same_elements.h"
 #include "finder_same_elements_in_two_string.h"
-#include "array.expansion.h"
+#include "array_expansion.h"
 
 int main()
 {

@@ -1,4 +1,4 @@
-#include "array.expansion.h"
+#include "array_expansion.h"
 #include <cstring>
 
 char* arrayExpansion(const char* str, size_t new_capacity)

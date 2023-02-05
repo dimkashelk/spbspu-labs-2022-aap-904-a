@@ -2,18 +2,8 @@
 #include <iostream>
 #include <cctype>
 
-char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstring1, const char* cstring2)
+char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstring1, const char* cstring2, size_t size)
 {
-  size_t capacity = 10;
-  try
-  {
-    newStringFromTwoOther = new char[capacity];
-  }
-  catch (...)
-  {
-    throw;
-  }
-  size_t size = 0;
   for (const char* i = cstring1; *i; i++)
   {
     if (std::isdigit(*i))
@@ -33,26 +23,6 @@ char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstri
         {
           if (*j == *i)
           {
-            if (size == capacity)
-            {
-              try
-              {
-                char* newStr = new char[capacity + 10];
-                for (char* a = newStringFromTwoOther, *b = newStr; a != newStringFromTwoOther + size; ++a, ++b)
-                {
-                  *b = *a;
-                }
-                delete[] newStringFromTwoOther;
-                newStringFromTwoOther = newStr;
-                capacity += 10;
-                delete[] newStr;
-              }
-              catch (...)
-              {
-                delete[] newStringFromTwoOther;
-                throw;
-              }
-            }
             newStringFromTwoOther[size] = *j;
             size++;
           }

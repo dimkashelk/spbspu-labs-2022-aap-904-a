@@ -2,19 +2,8 @@
 #include <iostream>
 #include <stdexcept>
 
-char* createCString()
+char* createCString(char* string1, size_t capacity, size_t size)
 {
-  size_t capacity = 10;
-  char* cString = nullptr;
-  try
-  {
-    cString = new char[capacity];
-  }
-  catch (...)
-  {
-    throw;
-  }
-  size_t size = 0;
   std::cin >> std::noskipws;
   do
   {
@@ -23,30 +12,30 @@ char* createCString()
       try
       {
         char* newStr = new char[capacity + 20];
-        for (char* i = cString, *j = newStr; i != cString + size; ++i, ++j)
+        for (char* i = string1, *j = newStr; i != string1 + size; ++i, ++j)
         {
           *j = *i;
         }
-        delete[] cString;
-        cString = newStr;
+        delete[] string1;
+        string1 = newStr;
         capacity += 20;
       }
       catch (...)
       {
-        delete[] cString;
+        delete[] string1;
         throw;
       }
     }
-    std::cin >> cString[size];
-  } while (std::cin && cString[size++] != '\n');
+    std::cin >> string1[size];
+  } while (std::cin && string1[size++] != '\n');
   if (size <= 1)
   {
-    delete[] cString;
+    delete[] string1;
     throw std::logic_error("empty input");
   }
   else
   {
-    cString[size - 1] = '\0';
+    string1[size - 1] = '\0';
   }
-  return cString;
+  return string1;
 }

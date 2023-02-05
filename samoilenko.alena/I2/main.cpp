@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
   }
   const size_t array_shift = 3;
   int array[10] = {6, 9, -11, 4, 1, 26, 73, -38, -45, -21};
-  std::cout << countNegativeElementsAfterMax(array, 10) << std::endl;
+  std::cout << countNegativeElementsAfterMax(array, 10) << '\n';
   size_t size_arr = 10;
   moveTheArray(array, 10, array_shift);
   outputAnArray(array, size_arr, std::cout);

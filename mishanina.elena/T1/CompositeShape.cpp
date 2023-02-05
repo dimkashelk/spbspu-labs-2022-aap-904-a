@@ -92,11 +92,11 @@ std::size_t CompositeShape::size() const
 
 void CompositeShape::remove(Shape** shapes, std::size_t size) const
 {
-  for (std::size_t i = 0; i < size_; i++)
+  for (std::size_t i = 0; i < size; i++)
   {
-    delete shapes_[i];
+    delete, shapes[i];
   }
-  delete[] shapes_;
+  delete[] shapes;
 }
 
 void CompositeShape::move(double dx, double dy)

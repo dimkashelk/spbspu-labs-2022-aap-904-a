@@ -51,7 +51,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
   }
   for (char* j = fromThreeLetters; endIndex != 3; j++, endIndex++)
   {
-    char* var1 = i;
+    char* var1 = j;
     var1++;
     for (char* j = var1; *j; j++)
     {

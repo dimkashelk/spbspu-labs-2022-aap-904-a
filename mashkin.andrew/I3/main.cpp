@@ -37,7 +37,7 @@ int main()
   {
     fromThreeLetters = new char[4];
     size_t index = 3;
-    for (char* i = string1, *j = fromThreeLetters; j != index; i++, j++)
+    for (char* i = string1, *j = fromThreeLetters; index != 3; i++, j++, index++)
     {
       *j = *i;
     }

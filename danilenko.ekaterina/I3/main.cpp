@@ -17,10 +17,9 @@ int main()
   {
     if (size1 == capacity)
     {
-      capacity = capacity + 20;
       try
       {
-        char* new_string = new char[capacity];
+        char* new_string = new char[capacity + 20];
         for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];

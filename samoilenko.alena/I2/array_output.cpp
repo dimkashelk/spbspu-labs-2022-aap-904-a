@@ -3,8 +3,9 @@
 #include <cstddef>
 void outputAnArray(const int* array, size_t size, std::ostream & out)
 {
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = 0; i < size - 1; i++)
   {
-    out << array[i];
+    out << array[i] << ' ';
   }
+  out << array[size - 1];
 }

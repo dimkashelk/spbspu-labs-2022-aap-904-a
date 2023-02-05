@@ -1,4 +1,5 @@
 #include "createCString.h"
+#include <cstddef>
 #include <iostream>
 #include <stdexcept>
 

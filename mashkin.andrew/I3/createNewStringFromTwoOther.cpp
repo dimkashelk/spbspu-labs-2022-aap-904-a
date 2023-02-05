@@ -1,4 +1,5 @@
 #include "createNewStringFromTwoOther.h"
+#include <cstddef>
 #include <iostream>
 #include <cctype>
 

@@ -1,4 +1,5 @@
 #include "createNewStringFromThreeOfenLetters.h"
+#include <cstddef>
 #include <iostream>
 #include <cstddef>
 

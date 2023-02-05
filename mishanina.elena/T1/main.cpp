@@ -95,6 +95,11 @@ int main()
         std::cerr << "ERROR: invalid input k\n";
         break;
       }
+      if (k < 0)
+      {
+          std::cout << "Invalid k size\n";
+          break;
+      }
       printShapes(std::cout, compositeShape);
       std::cout << '\n';
       try

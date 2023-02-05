@@ -17,6 +17,7 @@ int main()
   {
     if (size1 == capacity)
     {
+      capacity = 10;
       try
       {
         char* new_string = new char[capacity + 20];

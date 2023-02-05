@@ -4,7 +4,7 @@
 
 char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* string1)
 {
-  size_t countLetter = 0;
+  int countLetter = 0;
   size_t index = 0;
   int arrCountyOfLetter[3]{};
   for (const char* i = string1; *i; i++)

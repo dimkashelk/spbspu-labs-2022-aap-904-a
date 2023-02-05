@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstddef>
 #include <fstream>
-#include "sumindexelements.h"
-#include "getdownsequence.h"
+#include "sumIndexElements.h"
+#include "getDownSequence.h"
 int main(int argc, char *argv[])
 {
   if (argc != 2)

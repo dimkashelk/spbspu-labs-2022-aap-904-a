@@ -1,4 +1,4 @@
-#include "sumindexelements.h"
+#include "sumIndexElements.h"
 #include <limits>
 size_t sum_index_elements(const int *arr, size_t size)
 {

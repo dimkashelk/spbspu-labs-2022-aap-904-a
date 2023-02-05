@@ -36,15 +36,15 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (cstring[0] == '\n')
+  if (cstring[0] != '\n')
+  {
+    cstring[size - 1] = '\0';
+  }
+  else
   {
     delete[] cstring;
     std::cerr << "Empty string!" << "\n";
     return 1;
-  }
-  else
-  {
-    cstring[size] = '\0';
   }
   try
   {
@@ -60,7 +60,7 @@ int main()
   }
   try
   {
-    char* destination = new char[size];
+    char* destination = new char[size - 1];
     std::cout << finderThreeSameElements(destination, cstring) << "\n";
     delete[] destination;
   }

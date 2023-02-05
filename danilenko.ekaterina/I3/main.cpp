@@ -7,21 +7,21 @@ int main()
 {
   size_t capacity = 10;
   size_t size1 = 0;
-  char* source1 = new char[capacity];
+  char *source1 = new char[capacity];
   char inp = '\0';
   std::cout << "Enter string: ";
 
   std::cin >> std::noskipws;
 
-  for (std::cin >> inp; (std::cin && inp) && (inp != '\n'); std::cin >> inp)
+  for (std::cin >> inp; (std::cin && inp) && (std::cin && inp != '\n'); std::cin >> inp)
   {
     if (size1 == capacity)
     {
       capacity = capacity + 20;
       try
       {
-        char *new_string = new char[capacity + 1];
-        for (size_t i = 1; i < size1 + 1; i++)
+        char *new_string = new char[capacity];
+        for (size_t i = 1; i < size1; i++)
         {
           new_string[i] = source1[i];
         }

@@ -8,7 +8,7 @@
 class CompositeShape : public Shape
 {
 public:
-  CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size);
+  CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name);
   CompositeShape();
   CompositeShape(const CompositeShape& compositeShape);
   CompositeShape(CompositeShape&& compositeShape) noexcept;

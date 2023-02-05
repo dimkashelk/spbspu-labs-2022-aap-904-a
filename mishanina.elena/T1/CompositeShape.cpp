@@ -190,13 +190,14 @@ CompositeShape* CompositeShape::clone() const
       throw;
     }
   }
-  return new CompositeShape(cloneShapes, capacity_, size_);
+  return new CompositeShape(cloneShapes, capacity_, size_, name_);
 }
 
-CompositeShape::CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size) :
+CompositeShape::CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name) :
+  name_(name),
+  size_(size),
   capacity_(capacity),
-  shapes_(shapes),
-  size_(size)
+  shapes_(shapes)
 {
 }
 

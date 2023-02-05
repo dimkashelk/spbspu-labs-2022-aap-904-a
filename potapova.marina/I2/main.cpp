@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <crandom>
 #include <fstream>
 #include "elements.h"
 
@@ -55,6 +54,7 @@ int main(int argc, char** argv)
       input >> y;
       if (!input) {
         std::cerr << "Error while reading\n";
+        delete [] arr;
         return 2;
       }
       arr[i] = y;

@@ -25,10 +25,10 @@ int main()
         {
           new_string[i] = source1[i];
         }
+        delete[] source1;
+        delete[] new_string;
         source1 = new_string;
         new_string = nullptr;
-        delete[] new_string;
-        delete[] source1;
       }
       catch (const std::bad_alloc& e)
       {

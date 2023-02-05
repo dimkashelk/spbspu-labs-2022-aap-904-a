@@ -17,18 +17,18 @@ int main()
   {
     if (size1 == capacity)
     {
-      capacity = capacity + 10;
+      capacity = capacity + 20;
       try
       {
-        char *new_string = new char[capacity + 20];
+        char *new_string = new char[capacity];
         for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];
         }
         delete[] source1;
         source1 = new_string;
-        delete[] new_string;
         new_string = nullptr;
+        delete[] new_string;
       }
       catch (const std::bad_alloc& e)
       {

@@ -11,7 +11,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
   for (const char* i = string1; *i; i++)
   {
     bool comparison = true;
-    for (const char* j = fromThreeLetters; endIndex != 3; j++, endIndex)
+    for (const char* j = fromThreeLetters; endIndex != 3; j++, endIndex++)
     {
       if (*j == *i)
       {
@@ -49,7 +49,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
       endIndex = 0;
     }
   }
-  for (char* j = fromThreeLetters; endIndex != 3; j++, endIndex)
+  for (char* j = fromThreeLetters; endIndex != 3; j++, endIndex++)
   {
     char* var1 = i;
     var1++;

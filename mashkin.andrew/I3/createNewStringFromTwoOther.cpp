@@ -1,6 +1,6 @@
+#include "createNewStringFromTwoOther.h"
 #include <iostream>
 #include <cctype>
-#include "createNewStringFromTwoOther.h"
 
 char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstring1, const char* cstring2)
 {

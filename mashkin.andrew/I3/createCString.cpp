@@ -1,6 +1,6 @@
+#include "createCString.h"
 #include <iostream>
 #include <stdexcept>
-#include "createCString.h"
 
 char* createCString()
 {

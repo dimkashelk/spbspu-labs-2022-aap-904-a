@@ -1,10 +1,11 @@
+#include "extend_string.h"
 #include <iostream>
 #include <limits>
-#include "extend_string.h"
 #include <stdexcept>
 #include "golden_ratio.h"
 
-char *extendString(char* str_1, size_t & capacity_1, size_t size_1){
+char *extendString(char* str_1, size_t & capacity_1, size_t size_1)
+{
   size_t max_size_t = std::numeric_limits< size_t >::max();
   if (( max_size_t - (goldenRatio(capacity_1) - capacity_1)) <= capacity_1)
   {

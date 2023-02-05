@@ -7,10 +7,10 @@ char* makeNewStringWithoutRepeat(char* destination, const char* source1, const c
 {
   size_t new_element = 0;
   bool match = false;
-  for (char i = 0; source1[i] != '\0'; i++)
+  for (size_t i = 0; source1[i] != '\0'; i++)
   {
     match = false;
-    for (char j = 0; source2[j] != '\0'; j++)
+    for (size_t j = 0; source2[j] != '\0'; j++)
     {
       if (source1[i] == source2[j])
       {
@@ -23,10 +23,10 @@ char* makeNewStringWithoutRepeat(char* destination, const char* source1, const c
       destination[new_element++] = source1[i];
     }
   }
-  for (char i = 0; source2[i] != '\0'; i++)
+  for (size_t i = 0; source2[i] != '\0'; i++)
   {
     match = false;
-    for (char j = 0; source1[j] != '\0'; j++)
+    for (size_t j = 0; source1[j] != '\0'; j++)
     {
       if (source2[i] == source1[j])
       {

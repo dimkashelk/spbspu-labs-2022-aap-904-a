@@ -50,14 +50,12 @@ int main(int argc, char** argv)
   } else {
     int* arr = new int[arr_size];
     for (size_t i = 0; i < arr_size; i++) {
-      int y = 0;
-      input >> y;
+      input >> a[i];
       if (!input) {
         std::cerr << "Error while reading\n";
         delete [] arr;
         return 2;
       }
-      arr[i] = y;
     }
     size_t neg_after_max = potapova::findNegativeAfterMax(arr, arr_size);
     size_t repeat_pos_numb = potapova::findRepeatingPositiveNumbers(arr, arr_size);

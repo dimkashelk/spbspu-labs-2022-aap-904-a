@@ -5,21 +5,41 @@
 
 char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2)
 {
-  size_t new_elements = 0;
-  const char* i = source1;
-  while (*i != '\0')
+  size_t new_element = 0;
+  bool match = false;
+  for (size_t i = 0; source1[i] != '\0'; i++)
   {
-    const char* j = source2;
-    while (*j != '\0' && *j != *i)
+    match = false;
+    for (size_t j = 0; source2[j] != '\0'; j++)
     {
-      j++;
+      if (source1[i] == source2[j])
+      {
+        match = true;
+        break;
+      }
     }
-    if (*j != *i)
+    if (match == false)
     {
-      destination[new_elements++] = *i;
+      destination[new_element++] = source1[i];
     }
-    i++;
   }
-  destination[new_elements] = '\0';
+  for (size_t i = 0; source2[i] != '\0'; i++)
+  {
+    match = false;
+    for (size_t j = 0; source1[j] != '\0'; j++)
+    {
+      if (source2[i] == source1[j])
+      {
+        match = true;
+        break;
+      }
+    }
+    if (match == false)
+    {
+      destination[new_element++] = source2[i];
+    }
+  }
+
+  destination[new_element] = '\0';
   return destination;
 }

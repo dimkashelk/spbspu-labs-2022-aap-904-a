@@ -44,7 +44,7 @@ int main()
   }
   else
   {
-    cstring[size - 1] = '\0';
+    cstring[size] = '\0';
   }
   try
   {
@@ -60,7 +60,7 @@ int main()
   }
   try
   {
-    char* destination = new char[size - 1];
+    char* destination = new char[size];
     std::cout << finderThreeSameElements(destination, cstring) << "\n";
     delete[] destination;
   }

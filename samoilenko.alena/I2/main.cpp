@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
   }
   else
   {
-    int *dynamic_array = new int[num_of_elem];
+    int* dynamic_array = new int[num_of_elem];
     const size_t r = 5;
     std::srand(r);
     for (size_t i = 0; i < num_of_elem; i++)

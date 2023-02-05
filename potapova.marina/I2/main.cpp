@@ -59,9 +59,9 @@ int main(int argc, char** argv)
       }
       arr[i] = y;
     }
-    delete [] arr;
     size_t neg_after_max = potapova::findNegativeAfterMax(arr, arr_size);
     size_t repeat_pos_numb = potapova::findRepeatingPositiveNumbers(arr, arr_size);
+    delete [] arr;
     std::cout << neg_after_max << " " << repeat_pos_numb << "\n";
   }
   return 0;

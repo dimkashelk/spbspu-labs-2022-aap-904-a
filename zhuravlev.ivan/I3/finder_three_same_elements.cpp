@@ -38,7 +38,7 @@ char* finderThreeSameElements(char* destination, const char* str)
     }
     cnt = 0;
   }
-  *(result_string) = '\0';
+  *(result_string - 1) = '\0';
   for (auto k = result_string; *k != '\0'; ++k)
   {
     if (int(*k) < int(*(k + 1)))

@@ -37,6 +37,11 @@ int main()
   try
   {
     fromThreeLetters = new char[4];
+    for (char* i = string1, *j = fromThreeLetters; endIndex != 3; ++i, ++j, endIndex++)
+    {
+      *j = *i;
+    }
+    fromThreeLetters[endIndex] = '\0';
   }
   catch (const std::exception& ex)
   {

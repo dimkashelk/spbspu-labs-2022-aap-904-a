@@ -64,6 +64,5 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
       }
     }
   }
-  fromThreeLetters[endIndex] = '\0';
   return fromThreeLetters;
 }

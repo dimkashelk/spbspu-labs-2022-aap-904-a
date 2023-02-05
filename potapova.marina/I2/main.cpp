@@ -50,7 +50,7 @@ int main(int argc, char** argv)
   } else {
     int* arr = new int[arr_size];
     for (size_t i = 0; i < arr_size; i++) {
-      input >> a[i];
+      input >> arr[i];
       if (!input) {
         std::cerr << "Error while reading\n";
         delete [] arr;

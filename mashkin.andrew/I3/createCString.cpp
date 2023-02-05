@@ -5,9 +5,10 @@
 char* createCString()
 {
   size_t capacity = 10;
+  char* cString = nullptr;
   try
   {
-    char* cString = new char[capacity];
+    cString = new char[capacity];
   }
   catch (...)
   {

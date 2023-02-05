@@ -25,7 +25,6 @@ int main()
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
-        capacity += 20;
       }
       catch (const std::bad_alloc &e)
       {
@@ -44,7 +43,7 @@ int main()
   }
   if (cstring[0] != '\n')
   {
-  cstring[size - 1] = '\0';
+    cstring[size - 1] = '\0';
   }
   try
   {

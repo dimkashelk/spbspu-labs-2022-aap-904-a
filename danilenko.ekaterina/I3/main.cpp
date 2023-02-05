@@ -24,11 +24,11 @@ int main()
         for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];
+          delete[] new_string;
         }
         delete[] source1;
         source1 = new_string;
         new_string = nullptr;
-        delete[] new_string;
       }
       catch (const std::bad_alloc& e)
       {

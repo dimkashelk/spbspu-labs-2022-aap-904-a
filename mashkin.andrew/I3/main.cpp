@@ -36,14 +36,10 @@ int main()
   try
   {
     fromThreeLetters = new char[4];
-    size_t index = 0;
-    for (char* i = fromThreeLetters, *j = string1; *i; i++, j++, index++)
+    size_t index = 3;
+    for (char* i = string1, *j = fromThreeLetters; *j != index; i++, j++)
     {
-      *i = *j;
-      if (index == 3)
-      {
-        break;
-      }
+      *j = *i;
     }
     fromThreeLetters[index] = '\0';
   }

@@ -6,40 +6,47 @@
 int main()
 {
   size_t capacity = 10;
+  size_t size1 = 0;
   char* source1 = new char[capacity];
-  size_t size = 0;
+  char inp = '\0';
   std::cout << "Enter string: ";
+
   std::cin >> std::noskipws;
-  do
+
+  for (std::cin >> inp; (std::cin && inp) && (inp != '\n'); std::cin >> inp)
   {
-    if (size == capacity)
+    if (size1 == capacity)
     {
+      capacity = capacity + 10;
       try
       {
-        char* new_string = new char[capacity + 20];
-        for (auto i = source1, j = new_string; i != source1 + size; i++, j++)
+        char* dupStr = new char[capacity];
+        for (size_t i = 0; i < size1; i++)
         {
-          *j = *i;
+          dupStr[i] = source1[i];
         }
         delete[] source1;
-        source1 = new_string;
-        capacity += 20;
+        source1 = dupStr;
+        dupStr = nullptr;
       }
-      catch (...)
+      catch (const std::bad_alloc& e)
       {
+        std::cout << e.what() << '\n';
         delete[] source1;
         return 1;
       }
     }
-    std::cin >> source1[size];
+    source1[size1++] = inp;
   }
-  while (std::cin && source1[size++] != '\n');
-  if (!std::cin && !size)
+
+  if (size1 == 0)
   {
-    std::cout << "Error...";
+    std::cerr << "Empty string" << '\n';
     delete[] source1;
     return 1;
   }
+
+  source1[size1] = '\0';
 
   //1
   const char source2[] = "abcd";

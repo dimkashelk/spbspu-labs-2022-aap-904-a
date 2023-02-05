@@ -2,7 +2,7 @@
 #include <iomanip>
 #include "outputframerect.hpp"
 
-void tarasenko::outputArea(std::ostream & output, tarasenko::CompositeShape & c_shp)
+void tarasenko::outputArea(std::ostream & output, CompositeShape & c_shp)
 {
   double area = 0.0;
   for (size_t i = 0; i < c_shp.size(); i++)
@@ -15,12 +15,12 @@ void tarasenko::outputFrameRect(std::ostream & output, CompositeShape & c_shp)
 {
   for (size_t i = 0; i < c_shp.size(); i++)
   {
-    tarasenko::outputFrameRect(output << " ", c_shp[i]->getFrameRect());
+    outputFrameRect(output << " ", c_shp[i]->getFrameRect());
   }
 }
-void tarasenko::outputAreaAndFrameRect(std::ostream & output, tarasenko::CompositeShape & c_shp)
+void tarasenko::outputAreaAndFrameRect(std::ostream & output, CompositeShape & c_shp)
 {
   output << std::setprecision(1) << std::fixed;
-  tarasenko::outputArea(output, c_shp);
-  tarasenko::outputFrameRect(output, c_shp);
+  outputArea(output, c_shp);
+  outputFrameRect(output, c_shp);
 }

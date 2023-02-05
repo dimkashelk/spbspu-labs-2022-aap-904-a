@@ -45,7 +45,7 @@ tarasenko::rectangle_t tarasenko::Triangle::getFrameRect() const
 
 void tarasenko::Triangle::move(double dx, double dy)
 {
-  for (int i = 0; i < 3; i++)
+  for (size_t i = 0; i < 3; i++)
   {
     vertexes[i] = vertexes[i] + point_t{dx, dy};
   }

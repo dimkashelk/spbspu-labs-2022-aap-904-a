@@ -91,7 +91,7 @@ void tarasenko::CompositeShape::push_back(Shape * shp)
   size_++;
 }
 
-void tarasenko::CompositeShape::push_back(const tarasenko::Shape * shp)
+void tarasenko::CompositeShape::push_back(const Shape * shp)
 {
   Shape * cloned_shp = nullptr;
   try

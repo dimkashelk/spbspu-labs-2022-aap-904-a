@@ -11,6 +11,7 @@ int main()
   bool errors = false;
   bool scale_was = false;
   tarasenko::CompositeShape compositeShape;
+  tarasenko::Shape * shape = nullptr;
   while (std::cin)
   {
     std::string name = "";
@@ -24,19 +25,19 @@ int main()
     {
       if (name == "RECTANGLE")
       {
-        tarasenko::Shape * shape = tarasenko::inputRectangle(std::cin);
+        shape = tarasenko::inputRectangle(std::cin);
         compositeShape.push_back(shape);
         shape = nullptr;
       }
       else if (name == "TRIANGLE")
       {
-        tarasenko::Shape * shape = tarasenko::inputTriangle(std::cin);
+        shape = tarasenko::inputTriangle(std::cin);
         compositeShape.push_back(shape);
         shape = nullptr;
       }
       else if (name == "COMPLEXQUAD")
       {
-        tarasenko::Shape * shape = tarasenko::inputComplexquad(std::cin);
+        shape = tarasenko::inputComplexquad(std::cin);
         compositeShape.push_back(shape);
         shape = nullptr;
       }
@@ -74,10 +75,12 @@ int main()
     }
     catch (const std::invalid_argument & e)
     {
+      delete shape;
       errors = true;
     }
     catch (const std::logic_error & e)
     {
+      delete shape;
       std::cerr << e.what();
       return 1;
     }

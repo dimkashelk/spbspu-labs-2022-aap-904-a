@@ -18,13 +18,12 @@ int main()
     if (size1 == capacity)
     {
       capacity = capacity + 20;
+      char* new_string = new char[capacity];
       try
       {
-        char *new_string = new char[capacity];
         for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];
-          delete[] new_string;
         }
         delete[] source1;
         source1 = new_string;
@@ -36,6 +35,7 @@ int main()
         delete[] source1;
         return 1;
       }
+      delete[] new_string;
     }
     source1[size1++] = inp;
   }

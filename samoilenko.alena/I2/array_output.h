@@ -3,5 +3,5 @@
 #include <iostream>
 #include <cstddef>
 
-void outputAnArray(int*, size_t, std::ostream & out);
+void outputAnArray(const int*, size_t, std::ostream & out);
 #endif

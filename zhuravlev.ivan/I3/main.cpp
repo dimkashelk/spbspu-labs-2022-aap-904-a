@@ -25,7 +25,7 @@ int main()
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
-        capacity+= 20;
+        capacity += 20;
       }
       catch (const std::bad_alloc &e)
       {

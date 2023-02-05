@@ -30,6 +30,15 @@ int main()
   }
   std::cout << newStringFromTwoOther << "\n";
   char* fromThreeLetters = nullptr;
+  try
+  {
+    fromThreeLetters = new char[4];
+  }
+  catch (const std::exception& ex)
+  {
+    std::cout << ex.what() << "\n";
+    return 1;
+  }
   fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, string1);
   std::cout << fromThreeLetters << "\n";
   delete[] string1;

@@ -5,7 +5,14 @@
 char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstring1, const char* cstring2)
 {
   size_t capacity = 10;
-  newStringFromTwoOther = new char[capacity];
+  try
+  {
+    newStringFromTwoOther = new char[capacity];
+  }
+  catch (...)
+  {
+    throw;
+  }
   size_t size = 0;
   for (const char* i = cstring1; *i; i++)
   {

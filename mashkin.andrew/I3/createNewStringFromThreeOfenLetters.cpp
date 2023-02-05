@@ -1,11 +1,13 @@
 #include <iostream>
+#include <cstddef>
 #include "createNewStringFromThreeOfenLetters.h"
 
 char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* cstring)
 {
+  const size_t SIZE = 3;
   int countyOfSymbols[128]{};
-  int threeOftenLetters[3]{};
-  int indexOfThreeLetters[3]{};
+  int threeOftenLetters[SIZE]{};
+  int indexOfThreeLetters[SIZE]{};
   for (const char* i = cstring; *i; i++)
   {
     countyOfSymbols[static_cast<int> (*i)]++;
@@ -27,10 +29,10 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* c
       }
     }
   }
-  for (size_t i = 0; i < 3; i++)
+  for (size_t i = 0; i < SIZE; i++)
   {
     int var = indexOfThreeLetters[i];
-    for (size_t j = i + 1; j < 3; j++)
+    for (size_t j = i + 1; j < SIZE; j++)
     {
       if (indexOfThreeLetters[i] > indexOfThreeLetters[j])
       {
@@ -40,11 +42,10 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* c
       }
     }
   }
-  fromThreeLetters = new char[4];
-  for (size_t i = 0; i < 3; i++)
+  for (size_t i = 0; i < SIZE; i++)
   {
     fromThreeLetters[i] = static_cast<char> (indexOfThreeLetters[i]);
   }
-  fromThreeLetters[3] = '\0';
+  fromThreeLetters[SIZE] = '\0';
   return fromThreeLetters;
 }

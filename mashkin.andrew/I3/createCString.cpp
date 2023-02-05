@@ -5,7 +5,14 @@
 char* createCString()
 {
   size_t capacity = 10;
-  char* cString = new char[capacity];
+  try
+  {
+    char* cString = new char[capacity];
+  }
+  catch (...)
+  {
+    throw;
+  }
   size_t size = 0;
   std::cin >> std::noskipws;
   do

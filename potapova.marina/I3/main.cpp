@@ -1,30 +1,12 @@
-#include <iostream>
-#include <cstddef>
+#include "inputStr.h"
 #include "getMostCommonSyms.h"
 #include "addAllLatinLetters.h"
-#include "inputStr.h"
 
 int main()
 {
-  size_t count;
-  if (!(std::cin >> count))
-  {
-    std::cerr << "Input error\n";
-  }
+  size_t input_size;
   char* input_str;
-  try
-  {
-    input_str = new char[count + 1];
-  }
-  catch (const std::bad_alloc & e)
-  {
-    std::cerr << "Allocation failed: " << e.what() << '\n';
-    std::exit(1);
-  }
-  if (!(std::cin >> input_str))
-  {
-    std::cerr << "Input error\n";
-  }
+  inputStr(input_size, input_str);
   char* result;
   try
   {

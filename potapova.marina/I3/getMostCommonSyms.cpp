@@ -14,7 +14,7 @@ char* getMostCommonSyms(char* dest, const char* str)
     size_t count_of_sym_common = 1;
     while (*cur_sym == *(cur_sym + 1))
     {
-      ++count_of_sem_common;
+      ++count_of_sym_common;
       ++cur_sym;
     }
     for (auto& common_sym : common_syms)
@@ -30,7 +30,7 @@ char* getMostCommonSyms(char* dest, const char* str)
   delete[] str_cpy.first;
   unsigned int count_valid_syms = 0;
   auto common_sym_ptr = common_syms;
-  for (auto dest_sym_ptr = dest); common_sym_ptr < common_syms + 3; ++common_sym_ptr, ++dest_sym_ptr)
+  for (auto dest_sym_ptr = dest; common_sym_ptr < common_syms + 3; ++common_sym_ptr, ++dest_sym_ptr)
   {
     if (common_sym_ptr->first != '\0')
     {

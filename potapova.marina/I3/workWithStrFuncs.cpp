@@ -1,9 +1,4 @@
 #include "workWithStrFuncs.h"
-#include <iostream>
-#include <cstddef>
-#include <exception>
-#include <cstdint>
-#include <utility>
 
 const size_t capasity_block = 100;
 

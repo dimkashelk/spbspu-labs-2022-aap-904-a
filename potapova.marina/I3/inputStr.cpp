@@ -1,7 +1,4 @@
 #include "inputStr.h"
-#include <iostream>
-#include <cstddef>
-#include <exception>
 
 void inputStr(size_t& size, char*& str)
 {

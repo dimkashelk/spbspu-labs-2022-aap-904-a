@@ -15,6 +15,7 @@ int main()
   bool correctScale = false;
   bool correctComposite = false;
   int k = 0;
+  int countInvalidFigure = 0;
   std::string figureName = "";
   while (std::cin)
   {
@@ -86,6 +87,7 @@ int main()
       catch (const std::invalid_argument& e)
       {
         correctFigure = false;
+        countInvalidFigure++;
         delete[] shape;
         continue;
         //std::cerr << "Invalid figure\n";
@@ -157,6 +159,10 @@ int main()
   if (!correctComposite)
   {
     std::cerr << "ERROR: invalid composite\n";
+  }
+  if (countInvalidFigure != 0)
+  {
+    std::cerr << "error...";
   }
   return 0;
 }

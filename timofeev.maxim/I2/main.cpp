@@ -3,7 +3,7 @@
 #include <fstream>
 #include <ctime>
 #include "countDecreasingValues.h"
-#include "reorderByEven.h"
+#include "partitionByEven.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << "Length of Decrease1: " << countDecreasingValues(ready_array, 5) << "\n";
-    std::cout << "divider " << *reorderByEven(ready_array, 5) << "\n";
+    std::cout << "divider " << *partitionByEven(ready_array, 5) << "\n";
   }
   catch (const std::length_error &e)
   {
@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
       dyn_array[i] = std::rand() % 100;
     }
     std::cout << "Length of Decrease2: " << countDecreasingValues(dyn_array, line) << "\n";
-    std::cout << "divider " << *reorderByEven(dyn_array, line) << "\n";
+    std::cout << "divider " << *partitionByEven(dyn_array, line) << "\n";
   }
   else
   {
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << "Length of Decrease3: " << countDecreasingValues(file_array, fsize) << "\n";
-    std::cout << "divider " << *reorderByEven(file_array, fsize) << "\n";
+    std::cout << "divider " << *partitionByEven(file_array, fsize) << "\n";
   }
   catch (const std::length_error &e)
   {

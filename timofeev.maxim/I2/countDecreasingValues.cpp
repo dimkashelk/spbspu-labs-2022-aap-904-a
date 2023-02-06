@@ -11,7 +11,7 @@ size_t countDecreasingValues(const int *arr, size_t size)
   }
   for (size_t i = 1; i < size; ++i)
   {
-    if (arr[i-1] > arr[i])
+    if (arr[i - 1] > arr[i])
     {
       curleght++;
       if (curleght > maxleght)
@@ -19,7 +19,7 @@ size_t countDecreasingValues(const int *arr, size_t size)
         maxleght = curleght;
       }
     }
-    if (arr[i] > arr[i-1])
+    if (arr[i] > arr[i - 1])
     {
       curleght = 1;
     }

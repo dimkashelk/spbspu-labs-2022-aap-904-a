@@ -1,7 +1,7 @@
-#include "reorderByEven.h"
+#include "partitionByEven.h"
 #include <algorithm>
 #include <stdexcept>
-int *reorderByEven(int *arr, size_t size)
+int *partitionByEven(int *arr, size_t size)
 {
   if (size == 0)
   {

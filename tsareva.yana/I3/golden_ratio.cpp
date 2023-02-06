@@ -1,6 +1,6 @@
 #include "golden_ratio.h"
-#include <exception>
 #include <cstddef>
+#include <limits>
 #include <cmath>
 
 size_t goldenRatio(size_t capacity)

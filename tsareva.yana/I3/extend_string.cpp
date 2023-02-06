@@ -20,6 +20,7 @@ char *extendString(char* str_1, size_t & capacity_1, size_t size_1)
   }
   delete [] str_1;
   str_1 = newstr;
+  capacity_1 = newCapacity;
   return str_1;
 }
 

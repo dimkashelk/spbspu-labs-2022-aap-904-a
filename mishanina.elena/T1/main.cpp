@@ -89,7 +89,7 @@ int main()
       }
       //delete[] shape;
     }
-    if (figureName == "SCALE")
+    else if (figureName == "SCALE")
     {
       correctScale = true;
       double k = 0;

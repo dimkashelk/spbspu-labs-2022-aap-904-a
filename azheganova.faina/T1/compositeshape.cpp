@@ -208,45 +208,6 @@ const Shape* CompositeShape::at(size_t id) const
   return shape_[id];
 }
 
-void CompositeShape::changeShape(Shape** shape, Shape** newshape)
-{
-  delete[] shape;
-  shape = newshape;
-}
-
-void CompositeShape::push_back(const Shape* shp)
-{
-  Shape* cloned = shp->clone();
-  try
-  {
-    if (capacity_ == size_)
-    {
-      Shape** new_shape = nullptr;
-      try
-      {
-        new_shape = new Shape* [capacity_ + 10];
-      }
-      catch (...)
-      {
-        delete cloned;
-        throw;
-      }
-      capacity_ += 10;
-      for (size_t i = 0; i < size_; ++i)
-      {
-        new_shape[i] = shape_[i];
-      }
-      changeShape(shape_, new_shape);
-    }
-    shape_[size_++] = cloned;
-  }
-  catch (...)
-  {
-    delete cloned;
-    throw;
-  }
-}
-
 void CompositeShape::push_back(Shape* shp)
 {
   if (capacity_ == size_)
@@ -257,9 +218,24 @@ void CompositeShape::push_back(Shape* shp)
     {
       new_shape[i] = shape_[i];
     }
-    changeShape(shape_, new_shape);
+    delete[] shape_;
+    shape_ = new_shape;
   }
   shape_[size_++] = shp;
+}
+
+void CompositeShape::push_back(const Shape* shp)
+{
+  Shape* cloned = shp->clone();
+  try
+  {
+    push_back(cloned);
+  }
+  catch (...)
+  {
+    delete cloned;
+    throw;
+  }
 }
 
 void CompositeShape::pop_back()

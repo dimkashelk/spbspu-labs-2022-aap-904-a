@@ -92,8 +92,7 @@ void Triangle::scale(double k) noexcept
   point_t center = findCenterOfTriangle();
   for (size_t i = 0; i < 3; i++)
   {
-    triangle_[i].x = k * (triangle_[i].x - center.x) + center.x;
-    triangle_[i].y = k * (triangle_[i].y - center.y) + center.y;
+    isoScaleForPoint(triangle_[i], center, k);
   }
 }
 

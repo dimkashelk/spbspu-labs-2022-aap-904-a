@@ -46,41 +46,37 @@ int main()
       {
         Shape *shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
-        shape = nullptr;
       }
       if (name == "TRIANGLE")
       {
         Shape *shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
-        shape = nullptr;
       }
       if (name == "COMPLEXQUAD")
       {
         Shape *shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
-        shape = nullptr;
+      }
+      if (name == "SCALE")
+      {
+        isscale = true;
+        double x = 0.0;
+        double y = 0.0;
+        double k = 0.0;
+        std::cin >> x >> y >> k;
+        if (k <= 0)
+        {
+          std::cerr << "incorrect value";
+          return 1;
+        }
+        scalecenter = {x, y};
+        scalek = k;
+        break;
       }
     }
     catch (const std::logic_error &e)
     {
       std::cerr << e.what() << "\n";
-      continue;
-    }
-    if (name == "SCALE")
-    {
-      isscale = true;
-      double x = 0.0;
-      double y = 0.0;
-      double k = 0.0;
-      std::cin >> x >> y >> k;
-      if (k <= 0)
-      {
-        std::cerr << "incorrect value";
-        return 1;
-      }
-      scalecenter = {x, y};
-      scalek = k;
-      break;
     }
   }
   while(std::cin);

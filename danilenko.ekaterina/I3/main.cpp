@@ -34,7 +34,7 @@ int main()
       }
     }
     std::cin >> source1[size1];
-  } 
+  }
   while (std::cin && source1[size1++] != '\n');
   source1[size1 - 1] = '\0';
 

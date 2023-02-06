@@ -1,6 +1,8 @@
 #include <iostream>
-#include "sumcount.hpp"
-#include "modcount.hpp"
+#include "issum.hpp"
+#include "ismod.hpp"
+#include "counterofmod.hpp"
+#include "counterofsum.hpp"
 int main()
 {
   unsigned int value = 0;
@@ -16,16 +18,18 @@ int main()
   }
   while (value != 0)
   {
-     preprevalue = prevalue;
-     prevalue = value;
-     std::cin >> value;
-     if (!std::cin)
-     {
-      std::cout << "Entered incorrect value\n";
-      return 1;
-     }
-     countersum += countIsSum(preprevalue, prevalue, value);
-     countermod += countIsMod(prevalue, value);
+    preprevalue = prevalue;
+    prevalue = value;
+    std::cin >> value;
+    if (!std::cin)
+    {
+     std::cout << "Entered incorrect value\n";
+     return 1;
+    }
+    bool mod = isMod(prevalue, value);
+    bool sum = isSum(preprevalue, prevalue, value);
+    countermod += counterOfMod(mod);
+    countersum += counterOfSum(sum);
   }
   std::cout << "Count of sum: " << countersum << "\n";
   std::cout << "Count of mod: " << countermod - 1 << "\n";

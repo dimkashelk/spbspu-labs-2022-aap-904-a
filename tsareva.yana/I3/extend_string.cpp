@@ -5,11 +5,13 @@
 
 char *extendString(char* str_1, size_t & capacity_1, size_t size_1)
 {
-  if (capacity_1 < size_1)
+  size_t newCapacity = goldenRatio(capacity_1);
+  if (newCapacity < size_1)
   {
     throw std::invalid_argument("bruh");
   }
-  char* newstr = new char[goldenRatio(capacity_1)];
+
+  char* newstr = new char[newCapacity];
   auto* i = str_1;
   auto* j = newstr;
   while (i != str_1 + size_1)

@@ -195,4 +195,4 @@ Accepted Labs
 | Shelkovnikov Dmitrii  |    | ✓  |
 | Tsareva Yana          |    | ✓  |
 | __Total__             |   0|   8|
->>>>>>> master
+

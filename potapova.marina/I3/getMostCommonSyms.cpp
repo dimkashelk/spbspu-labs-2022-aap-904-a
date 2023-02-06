@@ -15,7 +15,7 @@ char* getMostCommonSyms(char* dest, const char* str)
     while (*cur_sum == *(cur_sum + 1))
     {
       ++count_of_sym_common;
-      ++cur_sym;
+      ++cur_sum;
     }
     for (auto& common_sym : common_syms)
     {

@@ -30,7 +30,7 @@ double Triangle::getArea() const
 
 rectangle_t Triangle::getFrameRect() const
 {
-  double width = B_.x - C_.x;
+  double width = B_.x - A_.x;
   double height = C_.y - A_.y;
   return { width, height, getCenterRectangle(A_, B_) };
 }

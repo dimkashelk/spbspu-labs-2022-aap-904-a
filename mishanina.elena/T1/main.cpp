@@ -68,6 +68,7 @@ int main()
           Shape* shape = new Triangle(A, B, C);
           compositeShape.push_back(shape);
           correctFigure = true;
+          correctComposite = true;
             /*}
           catch (...)
           {

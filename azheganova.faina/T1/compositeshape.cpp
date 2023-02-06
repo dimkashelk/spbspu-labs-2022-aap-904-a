@@ -6,7 +6,7 @@
 CompositeShape::CompositeShape():
   size_(0),
   capacity_(10),
-  shape_(new Shape*[capacity_])
+  shape_(new Shape* [capacity_])
 {}
 
 CompositeShape::CompositeShape(const CompositeShape & rhs):
@@ -44,7 +44,7 @@ CompositeShape::CompositeShape(size_t capacity):
  shape_(new Shape*[capacity_])
 {}
 
-void CompositeShape::deleteshape_(Shape **shape, size_t size)
+void CompositeShape::deleteshape_(Shape** shape, size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -55,7 +55,7 @@ void CompositeShape::deleteshape_(Shape **shape, size_t size)
 
 CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
 {
-  Shape ** new_data = new Shape*[rhs.capacity_];
+  Shape** new_data = new Shape*[rhs.capacity_];
   size_t new_size = 0;
   try
   {
@@ -92,12 +92,12 @@ CompositeShape::~CompositeShape()
   deleteshape_(shape_, size_);
 }
 
-Shape * CompositeShape::operator[](size_t i)
+Shape* CompositeShape::operator[](size_t i)
 {
   return shape_[i];
 }
 
-const Shape * CompositeShape::operator[](size_t i) const
+const Shape* CompositeShape::operator[](size_t i) const
 {
   return shape_[i];
 }
@@ -170,17 +170,16 @@ void CompositeShape::scale(double k)
   }
 }
 
-void CompositeShape::checkIsoScale1(point_t point, double k)
+void CompositeShape::checkIsoScale_(point_t point, double k)
 {
   if (k <= 0)
   {
     throw std::logic_error("error");
   }
-  isoScale1(point, k);
+  isoScale_(point, k);
 }
 
-
-void CompositeShape::isoScale1(point_t position, double k)
+void CompositeShape::isoScale_(point_t position, double k)
 {
   point_t position1 = getFrameRect().pos;
   move(position);
@@ -209,42 +208,50 @@ const Shape* CompositeShape::at(size_t id) const
   return shape_[id];
 }
 
-void CompositeShape::changeShape(Shape **shape, Shape **newshape)
+void CompositeShape::changeShape(Shape** shape, Shape** newshape)
 {
   delete[] shape;
   shape = newshape;
 }
 
-void CompositeShape::push_back(const Shape * shp)
+void CompositeShape::push_back(const Shape* shp)
 {
-  Shape * cloned = shp->clone();
-  if (capacity_ == size_)
+  Shape* cloned = shp->clone();
+  try
   {
-    Shape ** new_shape = nullptr;
-    try
+    if (capacity_ == size_)
     {
-      new_shape = new Shape * [capacity_ + 10];
+      Shape** new_shape = nullptr;
+      try
+      {
+        new_shape = new Shape* [capacity_ + 10];
+      }
+      catch (...)
+      {
+        delete cloned;
+        throw;
+      }
+      capacity_ += 10;
+      for (size_t i = 0; i < size_; ++i)
+      {
+        new_shape[i] = shape_[i];
+      }
+      changeShape(shape_, new_shape);
     }
-    catch (...)
-    {
-      delete cloned;
-      throw;
-    }
-    capacity_ += 10;
-    for (size_t i = 0; i < size_; ++i)
-    {
-      new_shape[i] = shape_[i];
-    }
-    changeShape(shape_, new_shape);
+    shape_[size_++] = cloned;
   }
-  shape_[size_++] = cloned;
+  catch (...)
+  {
+    delete cloned;
+    throw;
+  }
 }
 
-void CompositeShape::push_back(Shape * shp)
+void CompositeShape::push_back(Shape* shp)
 {
   if (capacity_ == size_)
   {
-    Shape ** new_shape = new Shape * [capacity_ + 10];
+    Shape** new_shape = new Shape* [capacity_ + 10];
     capacity_ += 10;
     for (size_t i = 0; i < size_; ++i)
     {

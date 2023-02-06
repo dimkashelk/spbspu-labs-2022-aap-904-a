@@ -1,7 +1,7 @@
 #include "isoscale.h"
 #include <iostream>
 
-void checkisoScale(Shape *shape, point_t position, double k)
+void checkisoScale(Shape* shape, point_t position, double k)
 {
   if (k <= 0)
   {
@@ -11,7 +11,7 @@ void checkisoScale(Shape *shape, point_t position, double k)
 }
 
 
-void isoScale(Shape * shape, const point_t & position, double k)
+void isoScale(Shape* shape, const point_t & position, double k)
 {
   point_t position1 = shape->getFrameRect().pos;
   shape->move(position);

@@ -48,7 +48,7 @@ void Rectangle::scale(double k) noexcept
   rectangle1.width *= k;
   rectangle1.height *= k;
 }
-Shape *Rectangle::clone() const
+Shape* Rectangle::clone() const
 {
   return new Rectangle(rectangle1);
 }

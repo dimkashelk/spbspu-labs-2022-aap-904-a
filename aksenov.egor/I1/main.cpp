@@ -29,7 +29,7 @@ int main()
       }
       if (minv == value)
       {
-      min_count++;
+        min_count++;
       }
     }
   }

@@ -9,11 +9,12 @@ int main()
   size_t size1 = 0;
   char *source1 = new char[capacity + 1];
   char inp = '\0';
+;
   std::cout << "Enter string: ";
 
   std::cin >> std::noskipws;
 
-  for (std::cin >> inp; (std::cin && inp) && (std::cin && inp != '\n'); std::cin >> inp)
+  for (std::cin >> inp; (std::cin && inp) && (inp != '\n'); std::cin >> inp)
   {
     if (size1 == capacity)
     {

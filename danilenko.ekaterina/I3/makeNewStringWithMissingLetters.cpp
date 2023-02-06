@@ -17,7 +17,7 @@ char* makeNewStringWithMissingLetters(char* destination, const char* source)
         match = true;
       }
     }
-    if (match)
+    if (match == false)
     {
       destination[new_elements++] = i;
     }

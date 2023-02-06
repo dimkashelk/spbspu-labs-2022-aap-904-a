@@ -115,12 +115,12 @@ int main()
       printShapes(std::cout, compositeShape);
       std::cout << '\n';
     }
-    /*else
+    else
     {
-      correctFigure = false;
-      std::cerr << "ERROR: no such figure\n";
-      break;
-    }*/
+      correctFigure = true;
+     // std::cerr << "ERROR: no such figure\n";
+      continue;
+    }
   }
   if (!correctFigure)
   {

@@ -14,7 +14,7 @@ int main()
   bool correctFigure = false;
   bool correctScale = false;
   bool correctComposite = false;
-  int k = 0;
+  int countCorrectFigure = 0;
   int countInvalidFigure = 0;
   std::string figureName = "";
   while (std::cin)
@@ -37,7 +37,7 @@ int main()
           std::cin >> A.x >> A.y >> B.x >> B.y;
           Shape* shape = new Rectangle(A, B);
           compositeShape.push_back(shape);
-          k++;
+          countCorrectFigure++;
           correctFigure = true;
           correctComposite = true;
           /*}
@@ -55,7 +55,7 @@ int main()
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
           Shape* shape = new Parallelogram(A, B, C);
           compositeShape.push_back(shape);
-          k++;
+          countCorrectFigure++;
           correctFigure = true;
           correctComposite = true;
           /*}
@@ -73,7 +73,7 @@ int main()
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
           Shape* shape = new Triangle(A, B, C);
           compositeShape.push_back(shape);
-          k++;
+          countCorrectFigure++;
           correctFigure = true;
           correctComposite = true;
             /*}
@@ -103,7 +103,7 @@ int main()
     }
     else if (figureName == "SCALE")
     {
-      if (k != 0)
+      if (countCorrectFigure != 0)
       {
         correctFigure = true;
       }

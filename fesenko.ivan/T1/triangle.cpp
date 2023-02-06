@@ -1,12 +1,12 @@
 #include "triangle.h"
-#include <stdlib.h>
+#include <cmath>
 #include <algorithm>
 #include "base-types.h"
 
 bool isTriangle(const point_t &p1, const point_t &p2, const point_t &p3)
 {
   const double e = 0.001;
-  return abs((p1.x - p2.x) / (p1.y - p2.y) - (p1.x - p3.x) / (p1.y - p3.y)) > e;
+  return std::abs((p1.x - p2.x) / (p1.y - p2.y) - (p1.x - p3.x) / (p1.y - p3.y)) > e;
 }
 
 double getTriangleArea(const point_t &p1, const point_t &p2, const point_t &p3)

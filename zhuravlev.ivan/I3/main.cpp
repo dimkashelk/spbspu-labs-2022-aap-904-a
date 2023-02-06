@@ -36,20 +36,17 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (cstring[0] == '\n')
+  if (cstring[0] == '\n' || cstring[0] == '\0')
   {
     delete[] cstring;
     std::cerr << "Empty string!" << "\n";
     return 2;
   }
-  size -= 1;
-  if (cstring[size] == '\n')
-  {
-    cstring[size] = '\0';
-  }
+  cstring[size - 1] = '\0';
   try
   {
     char* destination = new char[size + size_of_static];
+    destination[0] = '\0';
     destination = finderThreeSameElementsInTwoStrings(destination, cstring, static_string);
     std::cout << destination << "\n";
     delete[] destination;
@@ -63,6 +60,7 @@ int main()
   try
   {
     char* destination = new char[size];
+    destination[0] = '\0';
     destination = finderThreeSameElements(destination, cstring);
     std::cout << destination << "\n";
   }

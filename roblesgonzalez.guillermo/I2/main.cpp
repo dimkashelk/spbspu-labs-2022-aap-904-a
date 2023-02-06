@@ -6,7 +6,7 @@
 #include <ctime>
 #include <fstream>
 
-nt main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     if (argc != 2)
     {

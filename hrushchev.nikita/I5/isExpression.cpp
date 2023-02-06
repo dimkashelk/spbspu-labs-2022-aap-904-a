@@ -25,3 +25,18 @@ bool isUnsignedInteger(const char* str)
 
   return isUnsignedInteger(str + 1);
 }
+
+bool isIdentifier(const char* str)
+{
+  if (str[0] == '\0')
+  {
+    return false;
+  }
+
+  if (!isLetter(str))
+  {
+    return false;
+  }
+
+  return isIdentifier(str + 1);
+}

@@ -1,5 +1,4 @@
 #include "golden_ratio.h"
-#include <cstddef>
 #include <limits>
 #include <cmath>
 

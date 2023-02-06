@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        std::cout << "Error";
+        std::cout << "Error ";
         return 1;
     }
     int arr1[7] = {2, 4, 6, 8, 10, 12, 14};
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         in >> size;
         if (!in)
         {
-            std::cout << "Error...";
+            std::cout << "Error ";
             return 1;
         }
         int *arr3 = new int[size];
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
             in >> arr3[i];
             if (!in)
             {
-                std::cout << "Error...";
+                std::cout << "Error ";
                 delete[] arr3;
                 return 1;
             }

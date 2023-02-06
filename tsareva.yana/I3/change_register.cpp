@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <cctype>
 
-char* change_register(char* res, char* str)
+char *change_register(char* res, char* str)
 {
   char* i = str;
   char* j = res;

@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        std::cout << "Error";
+        std::cout << "Error ";
         return 1;
     }
     int arr1[7] = {2, 4, 6, 8, 10, 12, 14};

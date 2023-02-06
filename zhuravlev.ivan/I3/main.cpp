@@ -36,13 +36,13 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  cstring[size - 1] = '\0';
   if (cstring[0] == '\n')
   {
     delete[] cstring;
     std::cerr << "Empty string!" << "\n";
     return 1;
   }
+  cstring[size - 1] = '\0';
   try
   {
     char* destination = new char[size + size_of_static];

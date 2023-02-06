@@ -67,7 +67,7 @@ int main()
 
   try
   {
-    destination2 = new char[size + 1];
+    destination2 = new char[size];
   }
   catch (const std::bad_alloc &e)
   {

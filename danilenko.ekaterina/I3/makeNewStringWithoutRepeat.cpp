@@ -7,7 +7,7 @@ char* makeNewStringWithoutRepeat(char* destination, const char* source1, const c
 {
   size_t new_element = 0;
   bool match = false;
-  
+
   for (size_t i = 0; source1[i] != '\0'; i++)
   {
     match = false;

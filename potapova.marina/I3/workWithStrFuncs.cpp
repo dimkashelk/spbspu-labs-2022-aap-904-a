@@ -36,7 +36,7 @@ void pushBack(char*& str, size_t& str_size, size_t& str_capasity, const char& ne
   str[str_size] = '\0';
 }
 
-std::pair<char*, char*> strCopy(const char* str);
+std::pair<char*, char*> strCopy(const char* str)
 {
   char* result;
   try

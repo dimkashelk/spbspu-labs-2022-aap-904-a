@@ -10,16 +10,12 @@ double twoPointsDistance(const point_t& p1, const point_t& p2)
 
 point_t getCenterRectangle(const point_t& ld_point, const point_t& ru_point)
 {
-  double width = ru_point.x - ld_point.x;
-  double height = ru_point.y - ld_point.y;
-  return point_t{ width / 2, height / 2 };
+  return point_t{ (ru_point.x + ld_point.x) / 2, (ru_point.y + ld_point.y) / 2 };
 }
 
 point_t getCenterParallelogram(const point_t& lu_point, const point_t& rd_point)
 {
-  double width = rd_point.x - lu_point.x;
-  double height = lu_point.y - rd_point.y;
-  return point_t{ width / 2, height / 2 };
+  return { (lu_point.x + rd_point.x) / 2, (lu_point.y + rd_point.y) / 2 };
 }
 
 bool isCorrectRectangle(const point_t& ld_point, const point_t& ru_point)
@@ -76,5 +72,5 @@ point_t scalePoint(const point_t point, const point_t pos, const double k)
   double dx = (point.x - pos.x) * k;
   double dy = (point.y - pos.y) * k;
   point_t dpoint{ dx, dy };
-  return { pos.x + dpoint.x, pos.y + dpoint.y };
+  return movePoint(pos, dpoint);
 }

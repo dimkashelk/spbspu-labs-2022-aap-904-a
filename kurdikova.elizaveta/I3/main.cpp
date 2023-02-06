@@ -40,7 +40,7 @@ int main()
   try {
     cstring2 = new char[size2];
   } catch (const std::bad_alloc& e) {
-    delete[] cstring;
+    delete[] cstring2;
     return 1;
   }
   char word[] = {'G', 'o', 'o', 'd', 'm', 'o', 'r', 'n', 'i', 'n', 'g', '!', '\0'};

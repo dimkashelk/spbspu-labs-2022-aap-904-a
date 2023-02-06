@@ -42,9 +42,10 @@ int main()
     std::cerr << "Empty string!" << "\n";
     return 2;
   }
-  if (cstring[size - 1] == '\n')
+  size -= 1;
+  if (cstring[size] == '\n')
   {
-    cstring[size - 1] = '\0';
+    cstring[size] = '\0';
   }
   try
   {

@@ -43,11 +43,16 @@ int main()
     delete[] cstring;
     return 1;
   }
-  size_t index = 0; //start
   char word[] = {'G', 'o', 'o', 'd', 'm', 'o', 'r', 'n', 'i', 'n', 'g', '!', '\0'};
   cstring2 = word;
 
-  char *cstringWithoutVowels = new char[size];
+  char *cstringWithoutVowels = nullptr;
+  try {
+    cstringWithoutVowels = new char[size];
+  } catch (const std::bad_alloc& e) {
+    delete[] cstringWithoutVowels;
+    return 1;
+  }
   cstringWithoutVowels[size - 1] = '\0';
   for (size_t i = 0; i < size - 1; i ++) {
     cstringWithoutVowels[i] = '-';
@@ -55,7 +60,13 @@ int main()
   deleteVowels(cstringWithoutVowels, cstring);
 
   size_t sizeArraySimLet = 27;
-  char *arraySimilarLetters = new char[sizeArraySimLet];
+  char *arraySimilarLetters = nullptr;
+  try {
+    arraySimilarLetters = new char[sizeArraySimLet];
+  } catch (const std::bad_alloc& e) {
+    delete[] arraySimilarLetters;
+    return 1;
+  }
   arraySimilarLetters[sizeArraySimLet - 1] = '\0';
   for (size_t i = 0; i < sizeArraySimLet - 1; i ++) {
     arraySimilarLetters[i] = '-';

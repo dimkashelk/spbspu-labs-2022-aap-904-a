@@ -9,7 +9,7 @@ char* getMostCommonSyms(char* dest, const char* str)
   auto str_cpy = strCopy(str);
   std::sort(str_cpy.first, str_cpy.second);
   std::pair<char, size_t> common_syms[3];
-  for (char* cur_sum = str_cpy.first; cur_sym < str_cpy.second; ++cur_sum)
+  for (char* cur_sum = str_cpy.first; cur_sum < str_cpy.second; ++cur_sum)
   {
     size_t count_of_sym_common = 1;
     while (*cur_sym == *(cur_sym + 1))

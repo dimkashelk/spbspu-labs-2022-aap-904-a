@@ -134,6 +134,7 @@ Boost
 Accepted Labs
 =============
 
+<<<<<<< HEAD
 | Name                      | S0 | I1 | I2 | I3 | I4 | I5 | I6 | T1 |
 |---------------------------|----|----|----|----|----|----|----|----|
 | Aksenov Egor              | ✓  |    |    |    |    |    |    |    |
@@ -182,3 +183,16 @@ Accepted Labs
 | Zasulsky Egor             | ✓  | ✓  |    |    |    |    |    |    |
 | Zhuravlev Ivan            | ✓  | ✓  |    |    |    |    |    |    |
 | __Total__                 |  45|  33|  17|   9|   7|   3|   2|   0|
+=======
+| Name                  | I1 | S0 |
+|-----------------------|----|----|
+| Aristarkhov Rostislav |    | ✓  |
+| Gulkov Mikhail        |    | ✓  |
+| Kasilov Vasiliy       |    | ✓  |
+| Muhortov Victor       |    | ✓  |
+| Odintsov Kirill       |    | ✓  |
+| Romanovich Artem      |    | ✓  |
+| Shelkovnikov Dmitrii  |    | ✓  |
+| Tsareva Yana          |    | ✓  |
+| __Total__             |   0|   8|
+>>>>>>> master

@@ -5,7 +5,7 @@ bool counterOfSum(bool isSum)
   {
    return 1;
   }
-  else if (isSum = false)
+  else if (isSum == false)
   {
    return 0;
   }

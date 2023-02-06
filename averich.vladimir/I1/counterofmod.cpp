@@ -5,7 +5,7 @@ bool counterOfMod(bool isMod)
   {
    return 1;
   }
-  else if (isMod = false)
+  else if (isMod == false)
   {
    return 0;
   }

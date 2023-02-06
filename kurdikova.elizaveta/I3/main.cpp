@@ -40,17 +40,22 @@ int main()
   try {
     cstring2 = new char[size2];
   } catch (const std::bad_alloc& e) {
-    delete[] cstring2;
+    delete[] cstring;
+    std::cerr << "Unable to allocate memory";
     return 1;
   }
-  char word[] = {'G', 'o', 'o', 'd', 'm', 'o', 'r', 'n', 'i', 'n', 'g', '!', '\0'};
-  cstring2 = word;
+  char word[] = "Goodmorning!\0";
+  for (size_t i = 0; i < size2; i++) {
+    cstring2[i] = word[i];
+  }
 
   char *cstringWithoutVowels = nullptr;
   try {
     cstringWithoutVowels = new char[size];
   } catch (const std::bad_alloc& e) {
-    delete[] cstringWithoutVowels;
+    delete[] cstring;
+    delete[] cstring2;
+    std::cerr << "Unable to allocate memory";
     return 1;
   }
   cstringWithoutVowels[size - 1] = '\0';
@@ -64,7 +69,10 @@ int main()
   try {
     arraySimilarLetters = new char[sizeArraySimLet];
   } catch (const std::bad_alloc& e) {
-    delete[] arraySimilarLetters;
+    delete[] cstring;
+    delete[] cstring2;
+    delete[] cstringWithoutVowels;
+    std::cerr << "Unable to allocate memory";
     return 1;
   }
   arraySimilarLetters[sizeArraySimLet - 1] = '\0';

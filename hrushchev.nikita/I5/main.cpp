@@ -1,4 +1,5 @@
 #include <iostream>
+#include "isexpression.cpp"
 
 int main()
 {
@@ -40,4 +41,6 @@ int main()
   }
   c_string[size - 1] = '\0';
   std::cout << c_string << "\n";
+  std::cout << isExpression(c_string) << "\n";
 }
+

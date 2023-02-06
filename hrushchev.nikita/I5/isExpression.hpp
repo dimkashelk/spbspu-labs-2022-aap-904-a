@@ -2,6 +2,6 @@
 #define ISEXPRESSION_HPP
 #include <cctype>
 
-bool isExpression(const char* str) 
+bool isExpression(const char* str)
 
 #endif

@@ -1,7 +1,24 @@
 #include "StringOperations.h"
-#include <algorithm>
+#include <cctype>
 
-size_t minIndex(const int* arr, size_t size) {
+void sort(int* arr, size_t len)
+{
+  while (true) {
+    for (size_t i = 0; i < len - 1; ++i) {
+      bool isNChanged = true;
+      if (arr[i] > arr[i + 1]) {
+        std::swap(arr[i], arr[i + 1]);
+        isNChanged = false;
+      }
+      if (isNChanged) {
+        return;
+      }
+    }
+  }
+}
+
+size_t minIndex(const int* arr, size_t size)
+{
   int mn = arr[0];
   size_t ind = 0;
   for (size_t i = 0; i < size; ++i) {
@@ -41,13 +58,9 @@ void switchCase(const char* src, char* dest)
 {
   size_t i = 0;
   while (src[i] != '\0') {
-    if (src[i] >= 65 && src[i] <= 90) {
-      dest[i] = src[i] + 32;
-    }
-    else if (src[i] >= 97 && src[i] <= 122) {
-      dest[i] = src[i] - 32;
-    }
-    else {
+    if (std::isalpha(src[i])) {
+      std::islower(src[i]) ? dest[i] = std::toupper(src[i]) : dest[i] = std::tolower(src[i]);
+    } else {
       dest[i] = src[i];
     }
     i++;
@@ -76,7 +89,7 @@ void threeMostCommon(const char* src, char* dest)
     }
   }
 
-  std::sort(ind, ind + 3);
+  sort(ind, 3);
   for (i = 0; i < 3; ++i) {
     if (ind[i] == 127) {
       break;

@@ -2,11 +2,11 @@
 
 Shape **expandArray(Shape **shapes, size_t &capacity)
 {
-  size_t new_capacity = capacity + 10;
-  Shape** newShapes = new Shape*[new_capacity];
+  Shape** newShapes = new Shape*[capacity + 10];
   for (size_t i = 0; i < capacity; i++) {
     newShapes[i] = shapes[i];
   }
+  capacity += 10;
   return newShapes;
 }
 

@@ -11,9 +11,9 @@
 int main()
 {
   CompositeShape compositeShape;
-  bool correctFigure = true;
-  bool correctScale = true;
-  bool correctComposite = true;
+  bool correctFigure = false;
+  bool correctScale = false;
+  bool correctComposite = false;
   std::string figureName = "";
   while (std::cin)
   {

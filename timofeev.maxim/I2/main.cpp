@@ -6,6 +6,7 @@
 #include "partitionByEven.h"
 #include "shiftArray.h"
 #include "outputForArray.h"
+#include "countDivValues.h"
 int main(int argc, char *argv[])
 {
   int ready_array[5] = {4, 5, 3, 2, 1};
@@ -13,6 +14,7 @@ int main(int argc, char *argv[])
   {
     std::cout << "Length of Decrease1: " << countDecreasingValues(ready_array, 5) << "\n";
     std::cout << "divider " << *partitionByEven(ready_array, 5) << "\n";
+    std::cout << "Amout of Div " << countDivValues(ready_array, 5, 2) << "\n";
     shiftArray(ready_array, 5, 2);
     std::cout << "Shifted ";
     outputForArray(std::cout, ready_array, 5);
@@ -41,6 +43,7 @@ int main(int argc, char *argv[])
     }
     std::cout << "Length of Decrease2: " << countDecreasingValues(dyn_array, line) << "\n";
     std::cout << "divider " << *partitionByEven(dyn_array, line) << "\n";
+    std::cout << "Amout of Div " << countDivValues(dyn_array, line, 4) << "\n";
     shiftArray(dyn_array, line, 4);
     std::cout << "Shifted ";
     outputForArray(std::cout, dyn_array, line);
@@ -84,6 +87,7 @@ int main(int argc, char *argv[])
   {
     std::cout << "Length of Decrease3: " << countDecreasingValues(file_array, fsize) << "\n";
     std::cout << "divider " << *partitionByEven(file_array, fsize) << "\n";
+    std::cout << "Amout of Div " << countDivValues(file_array, fsize, 3) << "\n";
     shiftArray(file_array, fsize, 2);
     std::cout << "Shifted ";
     outputForArray(std::cout, file_array, fsize);

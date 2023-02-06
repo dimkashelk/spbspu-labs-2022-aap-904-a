@@ -26,7 +26,7 @@ size_t countPositiveElOfCol(const int* matrix, size_t column, size_t line)
   size_t count = 0;
   for (size_t i = columns_curr; i < column - 1; i++)
   {
-    if (isPositive(matrix, column, line, columns_curr))
+    if (isPositive(matrix, line, columns_curr))
     {
       count++;
     }

@@ -1,6 +1,6 @@
 #include "descending_triple.h"
 
-size_t count_descending_triple(const int *array, const size_t size)
+size_t countDescendingTriple(const int *array, const size_t size)
 {
   size_t counter = 0;
 

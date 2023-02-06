@@ -2,7 +2,8 @@
 #include "DeleteVowelLetters.h"
 #include "TakeSimilarLettersInOrder.h"
 
-int main() {
+int main()
+{
   size_t capacity = 10;
   char *cstring = new char[capacity];
   size_t size = 0;
@@ -35,11 +36,16 @@ int main() {
   cstring[size - 1] = '\0';
 
   size_t size2 = 13;
-  char *cstring2 = new char[size2];
-  size_t index = 0;
-  for (char i : {'G', 'o', 'o', 'd', 'm', 'o', 'r', 'n', 'i', 'n', 'g', '!', '\0'}) {
-    cstring2[index++] = i;
+  char *cstring2 = nullptr;
+  try {
+    cstring2 = new char[size2];
+  } catch (const std::bad_alloc& e) {
+    delete[] cstring;
+    return 1;
   }
+  size_t index = 0; //start
+  char word[] = {'G', 'o', 'o', 'd', 'm', 'o', 'r', 'n', 'i', 'n', 'g', '!', '\0'};
+  cstring2 = word;
 
   char *cstringWithoutVowels = new char[size];
   cstringWithoutVowels[size - 1] = '\0';

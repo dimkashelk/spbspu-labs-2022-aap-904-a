@@ -1,19 +1,19 @@
 #include "TakeSimilarLettersInOrder.h"
+#include "ExistsInBoth.h"
 #include <algorithm>
 #include <cctype>
 
-char * lettersInOrder (char *result2, char const* source1, char const* source2)
+char *lettersInOrder (char *result2, const char *source1, const char *source2)
 {
   std::size_t num = 0;
   for (std::size_t i = 0; source1[i] != '\0'; i++) {
-    bool existsInBoth = false;
+    bool existsInBothStr = false;
     for (std::size_t j = 0; source2[j] != '\0'; j++) {
-      if (std::isalpha(source1[i]) && std::isalpha(source2[j]) &&
-        std::tolower(source1[i]) == std::tolower(source2[j])) {
-        existsInBoth = true;
+      if (isExistsInBoth(source1[i], source2[j])) {
+        existsInBothStr = true;
       }
     }
-    if (existsInBoth) {
+    if (existsInBothStr) {
       bool alreadyExists = false;
       for (std::size_t k = 0; result2[k] != '\0'; k++) {
         if (result2[k] == source1[i]) {

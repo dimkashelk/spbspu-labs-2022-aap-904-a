@@ -71,4 +71,5 @@ int main()
     return 1;
   }
   delete[] cstring;
+  return 0;
 }

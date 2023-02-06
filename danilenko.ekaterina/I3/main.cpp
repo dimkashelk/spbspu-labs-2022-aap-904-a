@@ -21,7 +21,7 @@ int main()
       try
       {
         char *new_string = new char[capacity];
-        for (size_t i = 1; i < size1; i++)
+        for (size_t i = 0; i < size1; i++)
         {
           new_string[i] = source1[i];
         }

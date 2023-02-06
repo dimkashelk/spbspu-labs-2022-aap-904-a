@@ -80,16 +80,18 @@ int main()
       catch (const std::invalid_argument& e)
       {
         correctFigure = false;
+        delete[] shape;
+        continue;
         //std::cerr << "Invalid figure\n";
       }
       catch (...)
       {
         correctComposite = false;
      //   std::cerr << "Invalid figure\n";
-        delete[] shape;
+      //  delete[] shape;
         //break;
       }
-      //delete[] shape;
+      delete[] shape;
     }
     else if (figureName == "SCALE")
     {

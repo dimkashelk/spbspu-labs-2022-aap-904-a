@@ -42,7 +42,7 @@ int main()
     std::cerr << "Empty string!" << "\n";
     return 1;
   }
-  cstring[size - 1] = '\0';
+  cstring[size] = '\0';
   try
   {
     char* destination = new char[size + size_of_static];

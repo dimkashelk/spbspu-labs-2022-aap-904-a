@@ -83,5 +83,6 @@ int main()
   std::cout << "New string with missing letters in first string: " << destination2;
   delete[] destination2;
 
+  delete[] source1;
   return 0;
 }

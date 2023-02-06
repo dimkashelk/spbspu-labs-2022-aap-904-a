@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 image: 'volgarenok/cxx-test:0.0.27'
-=======
-image: 'volgarenok/cxx-test:0.0.22'
->>>>>>> master
 stages:
   - sanity
   - build

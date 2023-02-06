@@ -38,13 +38,6 @@ int main()
   while (std::cin && source1[size1++] != '\n');
   source1[size1 - 1] = '\0';
 
-  if (*source1 == '\0' || *source1 == '\n')
-  {
-    std::cout << "Empty string" << '\n';
-    delete[] source1;
-    return 1;
-  }
-
   //1
   const char source2[] = "abcd";
   size_t size_source2 = sizeof(source2 + 1);

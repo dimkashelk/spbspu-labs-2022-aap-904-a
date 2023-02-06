@@ -36,10 +36,6 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (cstring[0] != '\n')
-  {
-    cstring[size] = '\0';
-  }
   else
   {
     delete[] cstring;

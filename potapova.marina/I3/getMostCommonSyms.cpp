@@ -12,7 +12,7 @@ char* getMostCommonSyms(char* dest, const char* str)
   for (char* cur_sum = str_cpy.first; cur_sum < str_cpy.second; ++cur_sum)
   {
     size_t count_of_sym_common = 1;
-    while (*cur_sum == *(cur_sym + 1))
+    while (*cur_sum == *(cur_sum + 1))
     {
       ++count_of_sym_common;
       ++cur_sym;

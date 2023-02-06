@@ -3,10 +3,11 @@ int isMod(int prevalue, int value)
 {
   if (value % prevalue == 0)
   {
-   return true;
+   return 1;
   }
   else
   {
-   return false;
+   return 0;
   }
+  return 0;
 }

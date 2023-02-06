@@ -28,8 +28,14 @@ int main()
     }
     bool mod = isMod(prevalue, value);
     bool sum = isSum(preprevalue, prevalue, value);
-    countermod += counterOfMod(mod);
-    countersum += counterOfSum(sum);
+    if (counterOfMod(mod) == true)
+    {
+     countermod++;
+    }
+    if (counterOfSum(sum) == true)
+    {
+     countersum++;
+    }
   }
   std::cout << "Count of sum: " << countersum << "\n";
   std::cout << "Count of mod: " << countermod - 1 << "\n";

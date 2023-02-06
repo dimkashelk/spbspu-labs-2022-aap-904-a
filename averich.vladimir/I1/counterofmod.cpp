@@ -1,13 +1,12 @@
 #include "counterofmod.hpp"
 bool counterOfMod(bool isMod)
 {
-  if (isMod == true)
+  if (isMod == 1)
   {
-   return 1;
+   return true;
   }
-  else if (isMod == false)
+  else if (isMod == 0)
   {
-   return 0;
+   return false;
   }
-  return 0;
 }

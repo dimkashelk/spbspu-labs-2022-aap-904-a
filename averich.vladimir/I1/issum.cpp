@@ -3,10 +3,11 @@ int isSum(int preprevalue, int prevalue, int value)
 {
   if (preprevalue + prevalue == value)
   {
-   return true;
+   return 1;
   }
   else
   {
-   return false;
+   return 0;
   }
+  return 0;
 }

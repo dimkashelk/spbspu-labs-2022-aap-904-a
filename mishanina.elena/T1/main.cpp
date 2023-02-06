@@ -13,9 +13,9 @@ int main()
   bool correctFigure = true;
   bool correctScale = true;
   bool correctComposite = true;
+  std::string figureName = "";
   while (std::cin)
   {
-    std::string figureName = "";
     std::cin >> figureName;
     if (!std::cin)
     {
@@ -23,73 +23,95 @@ int main()
       correctFigure = false;
       break;
     }//+
-    if (figureName == "RECTANGLE" || figureName == "PARALLELOGRAM" || figureName == "TRIANGLE")
+    Shape* shape = nullptr;
+    //if (figureName == "RECTANGLE" || figureName == "PARALLELOGRAM" || figureName == "TRIANGLE")
+    //{
+    correctFigure = true;
+//      Shape* shape = nullptr;
+    try
+    {
+      if (figureName == "RECTANGLE")
+      {
+        point_t A{}, B{};
+        std::cin >> A.x >> A.y >> B.x >> B.y;
+        Shape* shape = new Rectangle(A, B);
+        try
+        {
+          compositeShape.push_back(shape);
+        }
+        catch (...)
+        {
+          delete shape;
+        }
+        /*}
+        catch (...)
+        {
+        correctFigure = false;
+        std::cerr << "invalid rectangle\n";
+        }*/
+    }
+    else if (figureName == "PARALLELOGRAM")
     {
       correctFigure = true;
-      Shape* shape = nullptr;
+      /*try
+      {*/
+      point_t A{}, B{}, C{};
+      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+      Shape* shape = new Parallelogram(A, B, C);
       try
       {
-        if (figureName == "RECTANGLE")
-        {
-          point_t A{}, B{};
-          std::cin >> A.x >> A.y >> B.x >> B.y;
-          Shape* shape = new Rectangle(A, B);
-          compositeShape.push_back(shape);
-          /*}
-          catch (...)
-          {
-            correctFigure = false;
-            std::cerr << "invalid rectangle\n";
-          }*/
-        }
-        else if (figureName == "PARALLELOGRAM")
-        {
-          correctFigure = true;
-          /*try
-          {*/
-            point_t A{}, B{}, C{};
-            std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-            Shape* shape = new Parallelogram(A, B, C);
-            compositeShape.push_back(shape);
-          /*}
-          catch (...)
-          {
-            correctFigure = false;
-            std::cerr << "invalid parallelogram\n";
-          }*/
-        }
-        else if (figureName == "TRIANGLE")
-        {
-          correctFigure = true;
-         /* try
-          {*/
-            point_t A{}, B{}, C{};
-            std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-            Shape* shape = new Triangle(A, B, C);
-            compositeShape.push_back(shape);
-          /*}
-          catch (...)
-          {
-            correctFigure = false;
-            std::cerr << "invalid triangle\n";
-          }*/
-        }
-      }
-      catch (const std::invalid_argument& e)
-      {
-        correctFigure = false;
-        //std::cerr << "Invalid figure\n";
+        compositeShape.push_back(shape);
       }
       catch (...)
       {
-        correctComposite = false;
-     //   std::cerr << "Invalid figure\n";
-        delete[] shape;
-        //break;
+        delete shape;
       }
-      delete[] shape;
+        /*}
+        catch (...)
+        {
+        correctFigure = false;
+        std::cerr << "invalid parallelogram\n";
+        }*/
     }
-    if (figureName == "SCALE")
+    else if (figureName == "TRIANGLE")
+    {
+      correctFigure = true;
+        /* try
+        {*/
+      point_t A{}, B{}, C{};
+      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+      Shape* shape = new Triangle(A, B, C);
+      try
+      {
+        compositeShape.push_back(shape);
+      }
+      catch (...)
+      {
+        delete shape;
+      }
+        /*}
+        catch (...)
+        {
+        correctFigure = false;
+        std::cerr << "invalid triangle\n";
+        }*/
+    //}
+    //}
+    //catch (const std::invalid_argument& e)
+    //{
+    //correctFigure = false;
+    ////std::cerr << "Invalid figure\n";
+    //}
+    //catch (...)
+    //{
+    //correctComposite = false;
+    ////   std::cerr << "Invalid figure\n";
+    //delete[] shape;
+    ////break;
+    //}
+    //delete[] shape;
+    ////}
+    else if (figureName == "SCALE")
     {
       correctScale = true;
       double k = 0;

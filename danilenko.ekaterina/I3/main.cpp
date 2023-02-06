@@ -5,30 +5,26 @@
 
 int main()
 {
-  size_t capacity = 10;
   size_t size1 = 0;
-  char *source1 = new char[capacity + 1];
-  char inp = '\0';
-;
+  size_t capacity = 10;
+  char* source1 = new char[capacity];
   std::cout << "Enter string: ";
-
   std::cin >> std::noskipws;
 
-  for (std::cin >> inp; (std::cin && inp) && (inp != '\n'); std::cin >> inp)
+  do
   {
     if (size1 == capacity)
     {
-      capacity = capacity + 20;
       try
       {
-        char *new_string = new char[capacity];
-        for (size_t i = 0; i < size1; i++)
+        char* new_string = new char[capacity + 20];
+        for (auto i = source1, j = new_string; i != source1 + size1; i++, j++)
         {
-          new_string[i] = source1[i];
+          *j = *i;
         }
         delete[] source1;
         source1 = new_string;
-        new_string = nullptr;
+        capacity += 20;
       }
       catch (const std::bad_alloc& e)
       {
@@ -37,8 +33,9 @@ int main()
         return 1;
       }
     }
-    source1[size1++] = inp;
-  }
+    std::cin >> source1[size1];
+  } while (std::cin && source1[size1++] != '\n');
+  source1[size1 - 1] = '\0';
 
   if (size1 == 0)
   {
@@ -47,16 +44,13 @@ int main()
     return 1;
   }
 
-  source1[size1] = '\0';
-
   //1
   const char source2[] = "abcd";
-  size_t size_source1 = sizeof(source1 + 1);
   size_t size_source2 = sizeof(source2 + 1);
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[size_source1 + size_source2 + 1];
+    destination1 = new char[capacity + size_source2 + 1];
   }
   catch (const std::bad_alloc& e)
   {

@@ -18,18 +18,19 @@ int main()
       {
         compare_count++;
       }
-      if (std::cin && notZero(value) && minv != 0)
-      {
-        minv = std::min(minv, value);
-      }
-      else
+      if (minv == 0)
       {
         minv = value;
       }
-    }
-    if (minv == value)
-    {
+      if (minv != 0 && value < minv && value != 0)
+      {
+        minv = value;
+        min_count = 0;
+      }
+      if (minv == value)
+      {
       min_count++;
+      }
     }
   }
   while (value && std::cin);
@@ -38,5 +39,5 @@ int main()
     std::cout << "Error\n";
   }
   std::cout << "compare count:" << compare_count - 1;
-  std::cout << "\nmin count:" << min_count - 1;
+  std::cout << "\nmin count:" << min_count;
 }

@@ -1,5 +1,5 @@
 #include "columns_w_positive_el.h"
-bool isPositive(const int* matrix, size_t& column, size_t& line, size_t& number_column)
+bool isPositive(const int* matrix, size_t& line, size_t& number_column)
 {
   bool flag = true;
   size_t line_curr = 1;

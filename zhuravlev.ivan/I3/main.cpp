@@ -40,7 +40,7 @@ int main()
   {
     delete[] cstring;
     std::cerr << "Empty string!" << "\n";
-    return 1;
+    return 2;
   }
   cstring[size] = '\0';
   try

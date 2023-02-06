@@ -46,27 +46,33 @@ int main()
   {
     cstring[size - 1] = '\0';
   }
+
+  char* destination = nullptr;
+
   try
   {
-    char* destination = new char[size + size_of_static];
+    destination = new char[size + size_of_static];
     std::cout << finderThreeSameElementsInTwoStrings(destination, cstring, static_string) << "\n";
-    delete[] destination;
   }
   catch (const std::bad_alloc &e)
   {
     delete[] cstring;
+    delete[] destination;
     std::cerr << e.what() << "\n";
     return 1;
   }
+
+  char* destination = nullptr;
+
   try
   {
     char* destination = new char[size + 1];
     std::cout << finderThreeSameElements(destination, cstring) << "\n";
-    delete[] destination;
   }
   catch (const std::bad_alloc &e)
   {
     delete[] cstring;
+    delete[] destination;
     std::cerr << e.what() << "\n";
     return 1;
   }

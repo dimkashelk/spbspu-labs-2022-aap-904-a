@@ -45,3 +45,22 @@ bool isMultiplier(const char* str)
 {
   return isUnsignedInteger(str) || isIdentifier(str);
 }
+
+bool isTerm(const char* str) 
+{
+  if (str[0] == '\0') 
+  {
+    return false;
+  }
+
+  if (!isMultiplier(str)) 
+  {
+    return false;
+  }
+
+  if (str[0] == '*') {
+    return isTerm(str + 1);
+  }
+
+  return true;
+}

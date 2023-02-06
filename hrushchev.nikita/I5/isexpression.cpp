@@ -1,14 +1,13 @@
-#include "isExpression.hpp"
-#include <cctype>
-
-bool isDigit(const char* str)
-{
-  return std::isdigit(str);
-}
+#include "isexpression.hpp"
 
 bool isLetter(const char* str)
 {
-  return std::isalpha(str);
+    return (*str >= 'a') && (*str <= 'e');
+}
+
+bool isDigit(const char* str)
+{
+    return (*str >= '0') && (*str <= '9');
 }
 
 bool isUnsignedInteger(const char* str)

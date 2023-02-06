@@ -30,9 +30,13 @@ double Triangle::getArea() const
 
 rectangle_t Triangle::getFrameRect() const
 {
-  double width = B_.x - A_.x;
-  double height = C_.y - A_.y;
-  return { width, height, getCenterRectangle(A_, B_) };
+  double x_min = std::min(A_.x, std::min(B_.x, C_.x));
+  double y_min = std::min(A_.y, std::min(B_.y, C_.y));
+  double x_max = std::max(A_.x, std::min(B_.x, C_.x));
+  double y_max = std::max(A_.y, std::min(B_.y, C_.y));
+  point_t leftPoint{ x_min, y_min };
+  point_t rightPoint{ x_max, y_max };
+  return { rightPoint.x - leftPoint.x, rightPoint.y - leftPoint.y, point_t{(leftPoint.x + rightPoint.x) / 2, (leftPoint.y + rightPoint.y) / 2} };
 }
 
 void Triangle::move(point_t point)

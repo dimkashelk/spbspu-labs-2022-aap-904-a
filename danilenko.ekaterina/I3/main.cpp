@@ -7,8 +7,7 @@ int main()
 {
   size_t capacity = 10;
   size_t size1 = 0;
-  char *source1 = nullptr;
-  source1 = new char[capacity];
+  char *source1 = new char[capacity + 1];
   char inp = '\0';
   std::cout << "Enter string: ";
 

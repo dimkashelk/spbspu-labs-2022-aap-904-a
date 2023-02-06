@@ -40,3 +40,8 @@ bool isIdentifier(const char* str)
 
   return isIdentifier(str + 1);
 }
+
+bool isMultiplier(const char* str) 
+{
+  return isUnsignedInteger(str) || isIdentifier(str);
+}

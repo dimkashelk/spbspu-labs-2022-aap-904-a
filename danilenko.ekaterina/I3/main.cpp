@@ -7,7 +7,8 @@ int main()
 {
   size_t capacity = 10;
   size_t size1 = 0;
-  char *source1 = new char[capacity];
+  char *source1 = nullptr;
+  source1 = new char[capacity];
   char inp = '\0';
   std::cout << "Enter string: ";
 
@@ -71,7 +72,7 @@ int main()
   char* destination2 = nullptr;
   try
   {
-    destination2 = new char[27];
+    destination2 = new char[28];
   }
   catch (const std::bad_alloc& e)
   {

@@ -18,7 +18,7 @@ bool isPositive(const int* matrix, size_t& column, size_t& line, size_t& number_
       break;
     }
   }
-  return number_column;
+  return flag;
 }
 size_t countPositiveElOfCol(const int* matrix, size_t column, size_t line)
 {

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "DeleteVowelLetters.h"
 #include "TakeSimilarLettersInOrder.h"
 
@@ -44,10 +45,7 @@ int main()
     std::cerr << "Unable to allocate memory";
     return 1;
   }
-  char word[] = "Goodmorning!\0";
-  for (size_t i = 0; i < size2; i++) {
-    cstring2[i] = word[i];
-  }
+  std::strcpy(cstring2, "Goodmorning!");
 
   char *cstringWithoutVowels = nullptr;
   try {

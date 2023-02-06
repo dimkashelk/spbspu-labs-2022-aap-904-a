@@ -64,3 +64,23 @@ bool isTerm(const char* str)
 
   return true;
 }
+
+bool isExpression(const char* str) 
+{
+  if (str[0] == '\0') 
+  {
+    return false;
+  }
+
+  if (!isTerm(str)) 
+  {
+    return false;
+  }
+
+  if (str[0] == '+' || str[0] == '-') 
+  {
+    return isExpression(str + 1);
+  }
+
+  return true;
+}

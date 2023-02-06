@@ -62,20 +62,22 @@ int main()
     return 1;
   }
 
-  char* destination = nullptr;
+  char* destination2 = nullptr;
 
   try
   {
-    char* destination = new char[size + 1];
-    std::cout << finderThreeSameElements(destination, cstring) << "\n";
+    destination2 = new char[size + 1];
+    std::cout << finderThreeSameElements(destination2, cstring) << "\n";
+    delete[] destination2;
   }
   catch (const std::bad_alloc &e)
   {
     delete[] cstring;
-    delete[] destination;
     std::cerr << e.what() << "\n";
     return 1;
   }
   delete[] cstring;
+  delete[] destination;
+  delete[] destination2;
   return 0;
 }

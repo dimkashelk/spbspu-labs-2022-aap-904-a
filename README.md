@@ -134,7 +134,6 @@ Boost
 Accepted Labs
 =============
 
-<<<<<<< HEAD
 | Name                      | S0 | I1 | I2 | I3 | I4 | I5 | I6 | T1 |
 |---------------------------|----|----|----|----|----|----|----|----|
 | Aksenov Egor              | ✓  |    |    |    |    |    |    |    |
@@ -195,4 +194,3 @@ Accepted Labs
 | Shelkovnikov Dmitrii  |    | ✓  |
 | Tsareva Yana          |    | ✓  |
 | __Total__             |   0|   8|
-

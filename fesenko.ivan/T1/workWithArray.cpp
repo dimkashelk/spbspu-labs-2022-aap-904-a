@@ -1,15 +1,13 @@
 #include "workWithArray.h"
 
-void expandArray(Shape **&shapes, size_t size)
+Shape **expandArray(Shape **shapes, size_t &capacity)
 {
-  size_t capacity = size + 1;
-  Shape** newShapes = new Shape*[capacity];
-  for (size_t i = 0; i < size; i++) {
+  size_t new_capacity = capacity + 10;
+  Shape** newShapes = new Shape*[new_capacity];
+  for (size_t i = 0; i < capacity; i++) {
     newShapes[i] = shapes[i];
   }
-  delete [] shapes;
-  newShapes[size] = nullptr;
-  shapes = newShapes;
+  return newShapes;
 }
 
 void deleteArray(Shape **shapes, size_t size)

@@ -6,6 +6,7 @@
 #include "base-types.h"
 #include "shape.h"
 #include "printShapes.h"
+#include "isoScale.h"
 
 int main()
 {
@@ -92,7 +93,11 @@ int main()
     else if (figureName == "SCALE")
     {
       correctScale = true;
-      double k = 0;
+      double x = 0.0;
+      double y = 0.0;
+      std::cin >> x >> y;
+      point_t pos{ x, y };
+      double k = 0.0;
       std::cin >> k;
       if (!std::cin)
       {
@@ -104,7 +109,11 @@ int main()
       std::cout << '\n';
       try
       {
-        compositeShape.scale(k);
+        //compositeShape.scale(k);
+        for (size_t i = 0; i < compositeShape.size(); ++i)
+        {
+          compositeShape.isoScale(compositeShape[i], pos, k);
+        }
         correctScale = true;
       }
       catch (...)

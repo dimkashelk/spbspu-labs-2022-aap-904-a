@@ -54,13 +54,13 @@ void Triangle::scale(double k)
   A_ = scalePoint(A_, pos, k);
   B_ = scalePoint(B_, pos, k);
   C_ = scalePoint(C_, pos, k);*/
-    point_t pos = getCenterTriangle(A_, B_, C_);
-    A_[i].x = k * (A_[i].x - pos.x) + pos.x;
-    A_[i].y = k * (A_[i].y - pos.y) + pos.y;
-    B_[i].x = k * (B_[i].x - pos.x) + pos.x;
-    B_[i].y = k * (B_[i].y - pos.y) + pos.y;
-    C_[i].x = k * (C_[i].x - pos.x) + pos.x;
-    C_[i].y = k * (C_[i].y - pos.y) + pos.y;
+  point_t pos = getCenterTriangle(A_, B_, C_);
+  A_.x = k * (A_.x - pos.x) + pos.x;
+  A_.y = k * (A_.y - pos.y) + pos.y;
+  B_.x = k * (B_.x - pos.x) + pos.x;
+  B_.y = k * (B_.y - pos.y) + pos.y;
+  C_.x = k * (C_.x - pos.x) + pos.x;
+  C_.y = k * (C_.y - pos.y) + pos.y;
 }
 
 void Triangle::move(double dx, double dy)

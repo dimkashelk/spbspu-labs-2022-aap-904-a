@@ -9,4 +9,5 @@ bool counterOfMod(bool isMod)
   {
    return false;
   }
+  return true;
 }

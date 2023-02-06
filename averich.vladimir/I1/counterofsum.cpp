@@ -9,4 +9,5 @@ bool counterOfSum(bool isSum)
   {
    return false;
   }
+  return true;
 }

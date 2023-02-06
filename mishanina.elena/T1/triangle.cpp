@@ -36,7 +36,8 @@ rectangle_t Triangle::getFrameRect() const
   double y_max = std::max(A_.y, std::min(B_.y, C_.y));
   point_t leftPoint{ x_min, y_min };
   point_t rightPoint{ x_max, y_max };
-  return { rightPoint.x - leftPoint.x, rightPoint.y - leftPoint.y, point_t{(leftPoint.x + rightPoint.x) / 2, (leftPoint.y + rightPoint.y) / 2} };
+  point_t pos{ (leftPoint.x + rightPoint.x) / 2, (leftPoint.y + rightPoint.y) / 2 };
+  return { rightPoint.x - leftPoint.x, rightPoint.y - leftPoint.y, pos };
 }
 
 void Triangle::move(point_t point)

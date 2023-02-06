@@ -21,7 +21,7 @@ int main()
     if (!std::cin)
     {
     //  std::cerr << "ERROR: invalid input\n";
-      correctFigure = false;
+      //correctFigure = false;
       break;
     }//+
     if (figureName == "RECTANGLE" || figureName == "PARALLELOGRAM" || figureName == "TRIANGLE")
@@ -101,7 +101,7 @@ int main()
       std::cin >> k;
       if (!std::cin)
       {
-        correctScale = false;
+       // correctScale = false;
         //std::cerr << "ERROR: invalid input k\n";
         break;
       }

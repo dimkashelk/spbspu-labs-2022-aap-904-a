@@ -34,12 +34,13 @@ int main()
       }
     }
     std::cin >> source1[size1];
-  } while (std::cin && source1[size1++] != '\n');
+  } 
+  while (std::cin && source1[size1++] != '\n');
   source1[size1 - 1] = '\0';
 
-  if (size1 == 0)
+  if (*source1 == '\0' || *source1 == '\n')
   {
-    std::cerr << "Empty string" << '\n';
+    std::cout << "Empty string" << '\n';
     delete[] source1;
     return 1;
   }

@@ -112,7 +112,7 @@ int main()
         //compositeShape.scale(k);
         for (size_t i = 0; i < compositeShape.size(); ++i)
         {
-          compositeShape.isoScale(compositeShape[i], pos, k);
+          isoScale(compositeShape[i], pos, k);
         }
         correctScale = true;
       }

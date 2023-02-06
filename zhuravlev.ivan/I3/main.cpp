@@ -21,7 +21,7 @@ int main()
       try
       {
         char* new_str = nullptr;
-        cstring[size - 1] = '\0';
+        cstring[size] = '\0';
         new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
@@ -36,6 +36,7 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
+  cstring[size - 1] = '\0';
   if (cstring[0] == '\n')
   {
     delete[] cstring;

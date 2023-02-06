@@ -36,7 +36,7 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  else
+  if (cstring[0] == '\n')
   {
     delete[] cstring;
     std::cerr << "Empty string!" << "\n";

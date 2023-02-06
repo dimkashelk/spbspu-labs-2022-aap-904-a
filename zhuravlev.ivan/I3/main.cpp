@@ -63,6 +63,7 @@ int main()
     destination[0] = '\0';
     destination = finderThreeSameElements(destination, cstring);
     std::cout << destination << "\n";
+    delete[] destination;
   }
   catch (const std::bad_alloc &e)
   {

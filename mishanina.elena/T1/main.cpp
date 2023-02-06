@@ -99,9 +99,9 @@ int main()
       point_t pos{ x, y };
       double k = 0.0;
       std::cin >> k;
-      if (!std::cin)
+      if (!std::cin || k < 0)
       {
-       // correctScale = false;
+        correctScale = false;
         //std::cerr << "ERROR: invalid input k\n";
         break;
       }

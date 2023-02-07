@@ -1,5 +1,5 @@
-#ifndef INPUTSTR_H
-#define INPUTSTR_H
+#ifndef STRCOPY_H
+#define STRCOPY_H
 
 #include <iostream>
 #include <utility>

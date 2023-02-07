@@ -9,13 +9,13 @@ char *extendString(char* str_1, size_t capacity, size_t new_capacity)
   {
     throw std::invalid_argument("bruh");
   }
-  char* newstr = new char[new_capacity];
+  char* new_str = new char[new_capacity];
   auto* i = str_1;
-  auto* j = newstr;
+  auto* j = new_str;
   while (i != str_1 + capacity)
   {
     *(j++) = *(i++);
   }
-  return str_1;
+  return new_str;
 }
 

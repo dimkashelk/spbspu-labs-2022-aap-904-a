@@ -37,14 +37,14 @@ int main()
     std::cin >> source1[size1];
   }
   while (std::cin && source1[size1++] != '\n');
-  
-  if (size1 <= 1) 
+
+  if (size1 <= 1)
   {
     delete[] source1;
     std::cerr << "Error. Empty string.";
     return 1;
   }
-  
+
   source1[size1 - 1] = '\0';
 
   //1

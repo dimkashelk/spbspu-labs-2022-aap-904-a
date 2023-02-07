@@ -15,7 +15,7 @@ std::tuple< char*, size_t, size_t > zasulsky::readString(std::istream& in)
     if (size == capacity - 1) {
       try {
         cstring[size] = '\0';
-        char* newstr = extendString(cstring, 20);
+        char* newstr = extendString(cstring, capacity, 20);
         delete [] cstring;
         cstring = newstr;
         capacity += 20;

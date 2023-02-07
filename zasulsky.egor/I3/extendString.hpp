@@ -4,7 +4,7 @@
 #include <cstddef>
 
 namespace zasulsky {
-  char* extendString(const char* src, size_t capDiff);
+  char* extendString(const char* src, size_t cap, size_t capDiff);
 }
 
 #endif

@@ -1,4 +1,4 @@
-#include "workWithStrFuncs.h"
+#include "inputStr.h"
 
 const size_t capasity_block = 100;
 

@@ -38,7 +38,8 @@ int main()
     while (std::cin && string1[size++] != '\n');
     if (size <= 1)
     {
-      throw std::logic_error("empty input");
+      std::cin << "empty input";
+      return 1;
     }
     else
     {

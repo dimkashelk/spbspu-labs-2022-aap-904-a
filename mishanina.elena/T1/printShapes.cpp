@@ -6,6 +6,7 @@ void printShapes(std::ostream& out, const CompositeShape& compositeShape)
   for (size_t i = 0; i < compositeShape.size(); i++)
   {
     out << " ";
+    out << compositeShape[i]->getName() << " ";
     rectangle_t figure = compositeShape.at(i)->getFrameRect();
     out << figure.pos.x - (figure.width / 2.0) << " ";
     out << figure.pos.y - (figure.height / 2.0) << " ";

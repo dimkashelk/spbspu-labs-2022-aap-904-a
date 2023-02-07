@@ -7,12 +7,12 @@ size_t goldenRatio(size_t capacity)
 {
   const double gRatioK = ((1 + std::sqrt(5)) / 2);
   size_t max_size_t = std::numeric_limits< size_t >::max();
-  if ((static_cast< size_t >((max_size_t / gRatioK))) <= capacity)
+  if ((max_size_t - (static_cast< int >(capacity * gRatioK) - capacity )) <= capacity )
   {
     throw std::invalid_argument("too much");
   }
   else
   {
-    return std::ceil(gRatioK * capacity);
+    return capacity + (static_cast< int >(capacity * gRatioK));
   }
 }

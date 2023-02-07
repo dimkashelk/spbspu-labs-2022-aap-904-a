@@ -44,7 +44,7 @@ tarasenko::Shape * tarasenko::inputComplexquad(std::istream & input)
   double y = 0.0;
   point_t point{x, y};
   point_t vertexes[4] = {point, point, point, point};
-  for (int i = 0; i < 4; i++)
+  for (size_t i = 0; i < 4; i++)
   {
     input >> x >> y;
     if (!std::cin)

@@ -44,10 +44,10 @@ double tarasenko::Complexquad::getArea() const
 
 tarasenko::rectangle_t tarasenko::Complexquad::getFrameRect() const
 {
-  tarasenko::point_t point_ld_rect_1 = getPointLDRect(triangle_1.getFrameRect());
-  tarasenko::point_t point_ru_rect_1 = getPointRURect(triangle_1.getFrameRect());
-  tarasenko::point_t points_ld_rect_2 = getPointLDRect(triangle_2.getFrameRect());
-  tarasenko::point_t points_ru_rect_2 = getPointRURect(triangle_2.getFrameRect());
+  point_t point_ld_rect_1 = getPointLDRect(triangle_1.getFrameRect());
+  point_t point_ru_rect_1 = getPointRURect(triangle_1.getFrameRect());
+  point_t points_ld_rect_2 = getPointLDRect(triangle_2.getFrameRect());
+  point_t points_ru_rect_2 = getPointRURect(triangle_2.getFrameRect());
   double min_x = std::min(point_ld_rect_1.x_, points_ld_rect_2.x_);
   double min_y = std::min(point_ld_rect_1.y_, points_ld_rect_2.y_);
   double max_x = std::max(point_ru_rect_1.x_, points_ru_rect_2.x_);

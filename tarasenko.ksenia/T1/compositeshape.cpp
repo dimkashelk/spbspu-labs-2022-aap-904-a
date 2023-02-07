@@ -97,13 +97,13 @@ void tarasenko::CompositeShape::push_back(const Shape * shp)
   try
   {
     cloned_shp = shp->clone();
+    push_back(cloned_shp);
   }
   catch (...)
   {
     delete cloned_shp;
     throw;
   }
-  push_back(cloned_shp);
 }
 
 void tarasenko::CompositeShape::pop_back()

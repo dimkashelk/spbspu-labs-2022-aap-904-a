@@ -28,7 +28,8 @@ char* createCString(char* string1, size_t capacity, size_t size)
       }
     }
     std::cin >> string1[size];
-  } while (std::cin && string1[size++] != '\n');
+  }
+  while (std::cin && string1[size++] != '\n');
   if (size <= 1)
   {
     delete[] string1;

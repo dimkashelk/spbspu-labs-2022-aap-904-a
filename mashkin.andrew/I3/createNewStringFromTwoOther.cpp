@@ -1,6 +1,5 @@
 #include "createNewStringFromTwoOther.h"
 #include <cstddef>
-#include <iostream>
 #include <cctype>
 
 char* createNewStringFromTwoOther(char* newStringFromTwoOther, const char* cstring1, const char* cstring2, size_t size)

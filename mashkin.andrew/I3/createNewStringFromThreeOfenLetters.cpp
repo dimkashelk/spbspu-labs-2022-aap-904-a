@@ -1,13 +1,11 @@
 #include "createNewStringFromThreeOfenLetters.h"
 #include <cstddef>
-#include <iostream>
-#include <cstddef>
 
 char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* string1, size_t endIndex)
 {
-  int countLetter = 0;
+  size_t countLetter = 0;
   size_t index = 0;
-  int arrCountyOfLetter[3]{};
+  size_t arrCountyOfLetter[3]{};
   for (const char* i = string1; *i; i++)
   {
     bool comparison = true;

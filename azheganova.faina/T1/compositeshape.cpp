@@ -76,6 +76,7 @@ CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
   capacity_ = rhs.capacity_;
   return *this;
 }
+
 CompositeShape & CompositeShape::operator=(CompositeShape && rhs)
 {
   deleteshape_(shape_, size_);

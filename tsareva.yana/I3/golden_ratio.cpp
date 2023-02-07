@@ -9,7 +9,7 @@ size_t goldenRatio(size_t capacity)
   size_t max_size_t = std::numeric_limits< size_t >::max();
   if ((max_size_t - ((gRatioK * capacity) - capacity)) <= capacity)
   {
-    throw std::invalid_argument("to much");
+    throw std::invalid_argument("too much");
   }
   else
   {

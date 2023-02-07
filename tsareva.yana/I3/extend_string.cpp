@@ -13,7 +13,7 @@ char *extendString(char* str_1, size_t & capacity_1, size_t size_1)
   char* newstr = new char[newCapacity];
   auto* i = str_1;
   auto* j = newstr;
-  while (i != str_1 + size_1)
+  while (i != str_1 + size_1 - 1)
   {
     *(j++) = *(i++);
   }

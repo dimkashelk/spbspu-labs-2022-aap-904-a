@@ -1,7 +1,7 @@
 #include "generate_new_line.h"
 #include <cstddef>
 
-void generate_new_line(char* res, const char* str1, const char* str2)
+void generate_new_line(char * res, const char * str1, const char * str2)
 {
   auto i = str1;
   auto j = str2;

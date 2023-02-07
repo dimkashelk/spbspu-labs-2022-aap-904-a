@@ -1,11 +1,10 @@
 #include "change_register.h"
-#include <cstddef>
 #include <cctype>
 
-char *changeRegister(char* res, const char* str)
+char * changeRegister(char * res, const char * str)
 {
-  const char* i = str;
-  char* j = res;
+  const char * i = str;
+  char * j = res;
   while (*i)
   {
     *j++ = std::tolower(*i++);

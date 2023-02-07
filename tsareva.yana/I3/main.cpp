@@ -39,7 +39,7 @@ int main()
   const size_t size_2 = std::strlen(str_2);
   try
   {
-    char *res1 = new char[size_1 + size_2];
+    char *res1 = new char[size_1 + size_2 - 1];
     generate_new_line(res1, str_1, str_2);
     std::cout << res1 << '\n';
     delete[] res1;

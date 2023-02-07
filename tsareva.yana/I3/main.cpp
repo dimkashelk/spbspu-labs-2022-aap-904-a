@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstddef>
-#include <cstring>
 #include "extend_string.h"
 #include "change_register.h"
 #include "generate_new_line.h"
@@ -36,7 +35,7 @@ int main()
   }
   str_1[size_1 - 1] = '\0';
   const char *str_2 = "abcdefgh";
-  const size_t size_2 = std::strlen(str_2);
+  const size_t size_2 = 9;
   try
   {
     char *res1 = new char[size_1 + size_2];

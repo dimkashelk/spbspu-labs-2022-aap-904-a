@@ -36,14 +36,13 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
-  bool invalidShape = false;
+  Shape *shape = nullptr;
   do
   {
     std::string name = "";
     std::cin >> name;
     try
     {
-      Shape *shape = nullptr;
       if (name == "RECTANGLE")
       {
         shape = inputRectangle(std::cin);
@@ -79,22 +78,14 @@ int main()
         break;
       }
     }
-    catch (const std::logic_error & e)
+    catch (const std::invalid_argument & e)
     {
+      delete shape;
       std::cerr << e.what() << "\n";
       return 1;
     }
-    catch (const std::invalid_argument & e)
-    {
-      invalidShape = true;
-    }
   }
   while(std::cin);
-  if (!invalidShape)
-  {
-    std::cerr << "error";
-    return 1;
-  }
   if (!isscale)
   {
     std::cerr << "error";

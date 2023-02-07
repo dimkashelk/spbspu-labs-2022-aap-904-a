@@ -1,13 +1,15 @@
 #include "ismod.hpp"
-int isMod(int prevalue, int value)
+bool isMod(int prevalue, int value)
 {
+  bool cond = true;
   if (value % prevalue == 0)
   {
-   return 1;
+   return cond;
   }
   else
   {
-   return 0;
+   cond = false;
+   return cond;
   }
-  return 0;
+  return cond;
 }

@@ -1,15 +1,13 @@
 #include <iostream>
-#include "issum.hpp"
-#include "ismod.hpp"
-#include "counterofmod.hpp"
-#include "counterofsum.hpp"
+#include "modcount.hpp"
+#include "sumcount.hpp"
 int main()
 {
   unsigned int value = 0;
   unsigned int prevalue = 0;
   unsigned int preprevalue = 0;
-  int countersum = 0;
   int countermod = 0;
+  int countersum = 0;
   std::cin >> value;
   if (!std::cin)
   {
@@ -26,16 +24,8 @@ int main()
      std::cout << "Entered incorrect value\n";
      return 1;
     }
-    bool mod = isMod(prevalue, value);
-    bool sum = isSum(preprevalue, prevalue, value);
-    if (counterOfMod(mod) == true)
-    {
-     countermod++;
-    }
-    if (counterOfSum(sum) == true)
-    {
-     countersum++;
-    }
+    countersum += sumCount(preprevalue, prevalue, value);
+    countermod += modCount(prevalue, value);
   }
   std::cout << "Count of sum: " << countersum << "\n";
   std::cout << "Count of mod: " << countermod - 1 << "\n";

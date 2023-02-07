@@ -1,13 +1,15 @@
 #include "issum.hpp"
-int isSum(int preprevalue, int prevalue, int value)
+bool isSum(int preprevalue, int prevalue, int value)
 {
+  bool cond = true;
   if (preprevalue + prevalue == value)
   {
-   return 1;
+   return cond;
   }
   else
   {
-   return 0;
+   cond = false;
+   return cond;
   }
-  return 0;
+  return cond;
 }

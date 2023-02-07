@@ -47,22 +47,19 @@ int main()
       {
         Shape* shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
-        shape = nullptr;
       }
       else if (name == "TRIANGLE")
       {
         Shape* shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
-        shape = nullptr;
       }
       else if (name == "COMPLEXQUAD")
       {
         Shape* shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
-        shape = nullptr;
       }
     }
-    catch (const std::invalid_argument & e)
+    catch (const std::logic_error & e)
     {
       std::cerr << e.what() << "\n";
       return 1;

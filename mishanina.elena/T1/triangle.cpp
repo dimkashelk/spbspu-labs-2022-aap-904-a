@@ -65,19 +65,13 @@ void Triangle::scale(double k)
 
 void Triangle::move(double dx, double dy)
 {
-  point_t dpoint{ dx, dy };
+  //point_t dpoint{ dx, dy };
   //A_ = movePoint(A_, dpoint);
   //B_ = movePoint(B_, dpoint);
   //C_ = movePoint(C_, dpoint);
-  A_ = A_ + dpoint;
-  B_ = B_ + dpoint;
-  C_ = C_ + dpoint;
-}
-
-point_t operator+(const point_t& pos1, const point_t& pos2)
-{
-  point_t pos{ pos1.x + pos2.x, pos1.y + pos2.y };
-  return pos;
+  A_{ A_.x + dx, A_.y + dy };
+  B_{ B_.x + dx, B_.y + dy };
+  C_{ C_.x + dx, C_.y + dy };
 }
 
 Shape* Triangle::clone() const

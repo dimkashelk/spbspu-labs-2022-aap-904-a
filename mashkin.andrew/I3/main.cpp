@@ -14,11 +14,12 @@ int main()
   try
   {
     string1 = new char[capacity];
-    string1 = createCString(string1, capacity, size);
+    string1 = createCString(string1, capacity, size, std::cin);
   }
   catch (const std::exception& ex)
   {
     std::cout << ex.what() << "\n";
+    delete[] string1;
     return 1;
   }
   char string2[] = "0123456789abcdef";

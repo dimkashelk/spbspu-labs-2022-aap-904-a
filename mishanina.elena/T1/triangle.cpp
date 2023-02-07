@@ -74,6 +74,12 @@ void Triangle::move(double dx, double dy)
   C_ = C_ + dpoint;
 }
 
+point_t operator+(const point_t& pos1, const point_t& pos2)
+{
+  point_t pos{ pos1.x + pos2.x, pos1.y + pos2.y };
+  return pos;
+}
+
 Shape* Triangle::clone() const
 {
   return new Triangle(A_, B_, C_);

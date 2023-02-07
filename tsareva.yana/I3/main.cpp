@@ -45,7 +45,7 @@ int main()
   try
   {
     char * res1 = new char[size_1 + size_2 - 1];
-    generate_new_line(res1, str_1, str_2);
+    generateNewLine(res1, str_1, str_2);
     std::cout << res1 << '\n';
     delete[] res1;
   }

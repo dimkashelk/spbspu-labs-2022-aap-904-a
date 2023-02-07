@@ -1,7 +1,7 @@
 #include <iostream>
 #include "increaseLineSize.h"
 #include "ZeroAlphabetString.h"
-#include "stringmerging.h"
+#include "mergingString.h"
 int main()
 {
   char *str = nullptr;
@@ -46,7 +46,7 @@ int main()
   char *outstring3 = new char[size];
   try
   {
-    merging(outstring3, str, str2);
+    mergingStr(outstring3, str, str2);
     std::cout << outstring3 << "\n";
     delete [] outstring3;
   }

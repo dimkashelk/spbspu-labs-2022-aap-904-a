@@ -13,6 +13,6 @@ size_t goldenRatio(size_t capacity)
   }
   else
   {
-    return gRatioK * capacity;
+    return std::ceil(gRatioK * capacity);
   }
 }

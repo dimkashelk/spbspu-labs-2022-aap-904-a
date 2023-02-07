@@ -53,7 +53,7 @@ int main()
   try
   {
     char* res2 = new char[size_1];
-    change_register(res2, str_1);
+    changeRegister(res2, str_1);
     std::cout << res2 << '\n';
     delete[] res2;
   }

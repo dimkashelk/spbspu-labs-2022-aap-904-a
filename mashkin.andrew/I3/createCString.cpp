@@ -17,13 +17,11 @@ char* createCString(char* string1, size_t capacity, size_t size, std::istream& i
         {
           *j = *i;
         }
-        delete[] string1;
         string1 = newStr;
         capacity += 20;
       }
       catch (...)
       {
-        delete[] string1;
         throw;
       }
     }
@@ -31,7 +29,6 @@ char* createCString(char* string1, size_t capacity, size_t size, std::istream& i
   } while (std::cin && string1[size++] != '\n');
   if (size <= 1)
   {
-    delete[] string1;
     throw std::logic_error("empty input");
   }
   else

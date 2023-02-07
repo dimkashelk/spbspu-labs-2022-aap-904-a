@@ -19,6 +19,7 @@ int main()
   catch (const std::exception& ex)
   {
     std::cout << ex.what() << "\n";
+    delete[] string1;
     return 1;
   }
   char string2[] = "0123456789abcdef";

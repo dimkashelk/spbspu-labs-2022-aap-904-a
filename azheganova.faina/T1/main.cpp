@@ -36,6 +36,7 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
+  Shape* shape = nullptr;
   do
   {
     std::string name = "";
@@ -44,18 +45,21 @@ int main()
     {
       if (name == "RECTANGLE")
       {
-        Shape* shape = inputRectangle(std::cin);
+        shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
+        shape = nullptr;
       }
       if (name == "TRIANGLE")
       {
-        Shape* shape = inputTriangle(std::cin);
+        shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
+        shape = nullptr;
       }
       if (name == "COMPLEXQUAD")
       {
-        Shape* shape = inputComplexquad(std::cin);
+        shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
+        shape = nullptr;
       }
       if (name == "SCALE")
       {
@@ -76,6 +80,7 @@ int main()
     }
     catch (const std::logic_error & e)
     {
+      delete shape;
       std::cerr << e.what() << "\n";
     }
   }

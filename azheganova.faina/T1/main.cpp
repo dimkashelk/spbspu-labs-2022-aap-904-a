@@ -36,7 +36,6 @@ int main()
   point_t scalecenter;
   double scalek = 0;
   bool isscale = false;
-  bool invalidComposite = false;
   do
   {
     std::string name = "";
@@ -48,41 +47,37 @@ int main()
         Shape* shape = inputRectangle(std::cin);
         compositeShape.push_back(shape);
       }
-      else if (name == "TRIANGLE")
+      if (name == "TRIANGLE")
       {
         Shape* shape = inputTriangle(std::cin);
         compositeShape.push_back(shape);
       }
-      else if (name == "COMPLEXQUAD")
+      if (name == "COMPLEXQUAD")
       {
         Shape* shape = inputComplexquad(std::cin);
         compositeShape.push_back(shape);
+      }
+      if (name == "SCALE")
+      {
+        isscale = true;
+        double x = 0.0;
+        double y = 0.0;
+        double k = 0.0;
+        std::cin >> x >> y >> k;
+        if (k <= 0)
+        {
+          std::cerr << "incorrect value";
+          return 1;
+        }
+        scalecenter = {x, y};
+        scalek = k;
+        break;
       }
     }
     catch (const std::logic_error & e)
     {
       std::cerr << e.what() << "\n";
       return 1;
-    }
-    catch (...)
-    {
-      invalidComposite = true;
-    }
-    if (name == "SCALE")
-    {
-      isscale = true;
-      double x = 0.0;
-      double y = 0.0;
-      double k = 0.0;
-      std::cin >> x >> y >> k;
-      if (k <= 0)
-      {
-        std::cerr << "incorrect value";
-        return 1;
-      }
-      scalecenter = {x, y};
-      scalek = k;
-      break;
     }
   }
   while(std::cin);
@@ -91,11 +86,6 @@ int main()
     std::cerr << "error";
     return 1;
   }
-  if (invalidComposite)
-  {
-    std::cerr << "error";
-  }
-
   if (!compositeShape.size())
   {
     std::cerr << "error";

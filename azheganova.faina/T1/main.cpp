@@ -90,6 +90,11 @@ int main()
     }
   }
   while(std::cin);
+  if (!invalidShape)
+  {
+    std::cerr << "error";
+    return 1;
+  }
   if (!isscale)
   {
     std::cerr << "error";

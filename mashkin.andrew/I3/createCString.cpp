@@ -9,5 +9,5 @@ char* createCString(char* string1, char* newStr, size_t size)
   {
     *j = *i;
   }
-  return string1;
+  return newStr;
 }

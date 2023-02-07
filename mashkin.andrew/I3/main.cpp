@@ -22,17 +22,20 @@ int main()
         try
         {
           char* newStr = new char[capacity + 20];
-          string1 = createCString(string1, newStr, size);
+          newStr = createCString(string1, newStr, size);
+          delete[] string1;
           string1 = newStr;
           capacity += 20;
         }
         catch (...)
         {
-          throw;
+          delete[] string1;
+          return 1;
         }
       }
       std::cin >> string1[size];
-    } while (std::cin && string1[size++] != '\n');
+    }
+    while (std::cin && string1[size++] != '\n');
     if (size <= 1)
     {
       throw std::logic_error("empty input");
@@ -77,6 +80,7 @@ int main()
     delete[] newStringFromTwoOther;
     return 1;
   }
+  size = 0;
   newStringFromTwoOther = createNewStringFromTwoOther(newStringFromTwoOther, string1, string2, size);
   std::cout << newStringFromTwoOther << "\n";
   fromThreeLetters = createNewStringFromThreeOftenLetters(fromThreeLetters, string1, endIndex);

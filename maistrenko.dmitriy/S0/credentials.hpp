@@ -1,7 +1,6 @@
 #ifndef CREDENTIALS_HPP
 #define CREDENTIALS_HPP
 
-#include "credentials.hpp"
 #include <iosfwd>
 
 namespace maistrenko

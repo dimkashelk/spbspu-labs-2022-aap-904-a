@@ -1,7 +1,7 @@
 #include "shiftArray.h"
 #include <cstddef>
 #include <stdexcept>
-void reverse(int *arr, size_t size)
+void reverse(int *arr, const size_t size)
 {
   int *i = arr;
   int *j = arr + size - 1;
@@ -12,7 +12,7 @@ void reverse(int *arr, size_t size)
     j--;
   }
 }
-void shiftArray(int *arr, size_t size, const unsigned k)
+void shiftArray(int *arr, const size_t size, const unsigned k)
 {
   if (size == 0)
   {

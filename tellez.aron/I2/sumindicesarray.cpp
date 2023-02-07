@@ -1,6 +1,6 @@
-#include "addIndicesElements.h"
+#include "sumindicesarray.h"
 #include <limits>
-size_t add_indices_elements(const int *arr, size_t size)
+size_t add_indices_array(const int *arr, size_t size)
 {
   if (size == 0)
   {

@@ -69,9 +69,9 @@ void Triangle::move(double dx, double dy)
   //A_ = movePoint(A_, dpoint);
   //B_ = movePoint(B_, dpoint);
   //C_ = movePoint(C_, dpoint);
-  A_ += dpoint;
-  B_ += dpoint;
-  C_ += dpoint;
+  A_ = A_ + dpoint;
+  B_ = B_ + dpoint;
+  C_ = C_ + dpoint;
 }
 
 Shape* Triangle::clone() const

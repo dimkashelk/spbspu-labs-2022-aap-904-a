@@ -32,8 +32,8 @@ rectangle_t Triangle::getFrameRect() const
 {
   double x_min = std::min(A_.x, std::min(B_.x, C_.x));
   double y_min = std::min(A_.y, std::min(B_.y, C_.y));
-  double x_max = std::max(A_.x, std::min(B_.x, C_.x));
-  double y_max = std::max(A_.y, std::min(B_.y, C_.y));
+  double x_max = std::max(A_.x, std::max(B_.x, C_.x));
+  double y_max = std::max(A_.y, std::max(B_.y, C_.y));
   point_t leftPoint{ x_min, y_min };
   point_t rightPoint{ x_max, y_max };
   point_t pos{ (leftPoint.x + rightPoint.x) / 2, (leftPoint.y + rightPoint.y) / 2 };

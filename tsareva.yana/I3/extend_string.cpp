@@ -10,7 +10,6 @@ char *extendString(char* str_1, size_t & capacity_1, size_t size_1)
   {
     throw std::invalid_argument("bruh");
   }
-
   char* newstr = new char[newCapacity];
   auto* i = str_1;
   auto* j = newstr;

@@ -37,7 +37,14 @@ point_t movePoint(const point_t point, const point_t dpoint)
 
 bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C)
 {
-  if (A.x < B.x && A.x < C.x && C.x < B.x && A.y == B.y && A.y > C.y && B.y > C.y)
+//  if (A.x < B.x && A.x < C.x && C.x < B.x && A.y == B.y && A.y > C.y && B.y > C.y)
+  point_t pos{ (A.x + C.x) / 2, (A.y + C.y) / 2 };
+  point_t D{ 2 * pos.x - B.x, 2 * pos.y - B.y };
+  double AO = std::sqrt(std::pow(pos.x - A.x, 2) + std::pow(pos.y - A.y, 2));
+  double OC = std::sqrt(std::pow(pos.x - C.x, 2) + std::pow(pos.y - C.y, 2));
+  double BO = std::sqrt(std::pow(pos.x - B.x, 2) + std::pow(pos.y - B.y, 2));
+  double OD = std::sqrt(std::pow(pos.x - D.x, 2) + std::pow(pos.y - D.y, 2));
+  if (AO == OC && BO == OD)
   {
     return true;
   }

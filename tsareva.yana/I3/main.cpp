@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <cstring>
+#include "golden_ratio.h"
 #include "extend_string.h"
 #include "change_register.h"
 #include "generate_new_line.h"
@@ -17,7 +18,11 @@ int main()
     {
       try
       {
-        str_1 = extendString(str_1, capacity_1, size_1);
+        size_t new_capacity = goldenRatio(capacity_1);
+        char* new_str = extendString(str_1, capacity_1, new_capacity);
+        delete [] str_1;
+        str_1 = new_str;
+        capacity_1 = new_capacity;
       }
       catch (...)
       {

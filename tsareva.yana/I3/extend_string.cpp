@@ -3,23 +3,19 @@
 #include <stdexcept>
 #include "golden_ratio.h"
 
-char *extendString(char* str_1, size_t & capacity_1, size_t size_1)
+char *extendString(char* str_1, size_t capacity, size_t new_capacity)
 {
-  size_t newCapacity = goldenRatio(capacity_1);
-  if (newCapacity < size_1)
+  if (new_capacity < capacity )
   {
     throw std::invalid_argument("bruh");
   }
-  char* newstr = new char[newCapacity];
+  char* newstr = new char[new_capacity];
   auto* i = str_1;
   auto* j = newstr;
-  while (i != str_1 + size_1)
+  while (i != str_1 + capacity)
   {
     *(j++) = *(i++);
   }
-  delete [] str_1;
-  str_1 = newstr;
-  capacity_1 = newCapacity;
   return str_1;
 }
 

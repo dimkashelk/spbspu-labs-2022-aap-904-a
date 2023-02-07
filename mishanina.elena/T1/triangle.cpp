@@ -50,31 +50,18 @@ void Triangle::move(point_t point)
 
 void Triangle::scale(double k)
 {
- /* point_t pos = getCenterTriangle(A_, B_, C_);
+  point_t pos = getCenterTriangle(A_, B_, C_);
   A_ = scalePoint(A_, pos, k);
   B_ = scalePoint(B_, pos, k);
-  C_ = scalePoint(C_, pos, k);*/
-  point_t pos = getCenterTriangle(A_, B_, C_);
-  A_.x = k * (A_.x - pos.x) + pos.x;
-  A_.y = k * (A_.y - pos.y) + pos.y;
-  B_.x = k * (B_.x - pos.x) + pos.x;
-  B_.y = k * (B_.y - pos.y) + pos.y;
-  C_.x = k * (C_.x - pos.x) + pos.x;
-  C_.y = k * (C_.y - pos.y) + pos.y;
+  C_ = scalePoint(C_, pos, k);
 }
 
 void Triangle::move(double dx, double dy)
 {
-  //point_t dpoint{ dx, dy };
-  //A_ = movePoint(A_, dpoint);
-  //B_ = movePoint(B_, dpoint);
-  //C_ = movePoint(C_, dpoint);
-  A_.x += dx;
-  A_.y += dy;
-  B_.x += dx;
-  B_.y += dy;
-  C_.x += dx;
-  C_.y += dy;
+  point_t dpoint{ dx, dy };
+  A_ = movePoint(A_, dpoint);
+  B_ = movePoint(B_, dpoint);
+  C_ = movePoint(C_, dpoint);
 }
 
 Shape* Triangle::clone() const

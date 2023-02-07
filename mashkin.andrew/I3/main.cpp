@@ -14,7 +14,33 @@ int main()
   try
   {
     string1 = new char[capacity];
-    string1 = createCString(string1, capacity, size, std::cin);
+    std::cin >> std::noskipws;
+    do
+    {
+      if (size == capacity)
+      {
+        try
+        {
+          char* newStr = new char[capacity + 20];
+          string1 = createCString(string1, newStr, size);
+          string1 = newStr;
+          capacity += 20;
+        }
+        catch (...)
+        {
+          throw;
+        }
+      }
+      std::cin >> string1[size];
+    } while (std::cin && string1[size++] != '\n');
+    if (size <= 1)
+    {
+      throw std::logic_error("empty input");
+    }
+    else
+    {
+      string1[size - 1] = '\0';
+    }
   }
   catch (const std::exception& ex)
   {

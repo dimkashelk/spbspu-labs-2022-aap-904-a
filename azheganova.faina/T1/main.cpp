@@ -41,39 +41,35 @@ int main()
   {
     std::string name = "";
     std::cin >> name;
-    if (name == "RECTANGLE" || name == "TRIANGLE" || name == "COMPLEXQUAD")
+    try
     {
-      Shape* shape = nullptr;
-      try
+      if (name == "RECTANGLE")
       {
-        if (name == "RECTANGLE")
-        {
-          shape = inputRectangle(std::cin);
-          compositeShape.push_back(shape);
-          shape = nullptr;
-        }
-        else if (name == "TRIANGLE")
-        {
-          shape = inputTriangle(std::cin);
-          compositeShape.push_back(shape);
-          shape = nullptr;
-        }
-        else if (name == "COMPLEXQUAD")
-        {
-          shape = inputComplexquad(std::cin);
-          compositeShape.push_back(shape);
-          shape = nullptr;
-        }
+        Shape* shape = inputRectangle(std::cin);
+        compositeShape.push_back(shape);
+        shape = nullptr;
       }
-      catch (const std::invalid_argument & e)
+      else if (name == "TRIANGLE")
       {
-        std::cerr << e.what() << "\n";
-        return 1;
+        Shape* shape = inputTriangle(std::cin);
+        compositeShape.push_back(shape);
+        shape = nullptr;
       }
-      catch (...)
+      else if (name == "COMPLEXQUAD")
       {
-        invalidComposite = true;
+        Shape* shape = inputComplexquad(std::cin);
+        compositeShape.push_back(shape);
+        shape = nullptr;
       }
+    }
+    catch (const std::invalid_argument & e)
+    {
+      std::cerr << e.what() << "\n";
+      return 1;
+    }
+    catch (...)
+    {
+      invalidComposite = true;
     }
     if (name == "SCALE")
     {

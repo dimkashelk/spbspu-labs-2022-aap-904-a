@@ -41,15 +41,15 @@ int main(int argc, char **argv)
       if (s_matrix != nullptr)
       {
         out_stream << sum(s_matrix, n);
-        delete[]s_matrix;
+        delete[] s_matrix;
       }
       else
       {
         std::cerr << "ohhhhh" << "\n";
-        delete[]matrix;
+        delete[] matrix;
         return -1;
       }
-      delete[]matrix;
+      delete[] matrix;
       return 0;
     }
     else

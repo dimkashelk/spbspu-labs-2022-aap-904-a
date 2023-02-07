@@ -34,10 +34,10 @@ int main()
         size++;
       }
       catch (const std::invalid_argument &e) {
-        std::cerr << e.what() << "\n";
+        std::cerr << e.what();
       }
       catch (...) {
-        std::cerr << "Error while work with rectangle\n";
+        std::cerr << "Error while work with rectangle";
         deleteArray(shapes, size);
         return 2;
       }
@@ -57,10 +57,10 @@ int main()
         size++;
       }
       catch (const std::invalid_argument &e) {
-        std::cerr << e.what() << "\n";
+        std::cerr << e.what();
       }
       catch (...) {
-        std::cerr << "Error while work with concave\n";
+        std::cerr << "Error while work with concave";
         deleteArray(shapes, size);
         return 2;
       }
@@ -80,10 +80,10 @@ int main()
         size++;
       }
       catch (const std::invalid_argument &e) {
-        std::cerr << e.what() << "\n";
+        std::cerr << e.what();
       }
       catch (...) {
-        std::cerr << "Error while work with complexquad\n";
+        std::cerr << "Error while work with complexquad";
         deleteArray(shapes, size);
         return 2;
       }
@@ -96,7 +96,7 @@ int main()
         }
       }
       catch (...) {
-        std::cerr << "Error while work with scale\n";
+        std::cerr << "Error while work with scale";
         deleteArray(shapes, size);
         return 2;
       }
@@ -125,7 +125,7 @@ int main()
         fullScale(shapes[i], zoomCenter, ratio);
       }
       catch (const std::invalid_argument &e) {
-        std::cerr << e.what() << "\n";
+        std::cerr << e.what();
         deleteArray(shapes, size);
         return 2;
       }
@@ -146,7 +146,7 @@ int main()
     }
     deleteArray(shapes, size);
   } else {
-    std::cerr << "No scale?\n";
+    std::cerr << "No scale?";
     deleteArray(shapes, size);
     return 2;
   }

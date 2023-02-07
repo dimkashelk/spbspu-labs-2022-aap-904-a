@@ -10,7 +10,7 @@ Concave::Concave(const point_t &point1, const point_t &point2, const point_t &po
   p4_(point4)
 {
   if (!isTriangle(p1_, p2_, p3_) || !isPointInsideTriangle(p1_, p2_, p3_, p4_)) {
-    throw std::invalid_argument("It`s not a concave\n");
+    throw std::invalid_argument("It`s not a concave");
   }
 }
 

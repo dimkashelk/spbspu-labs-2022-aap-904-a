@@ -11,7 +11,7 @@ Complexquad::Complexquad(const point_t &point1, const point_t &point2, const poi
   p4_(point4)
 {
   if (!isIntersectionOfSegments(p1_, p2_, p3_, p4_)) {
-    throw std::invalid_argument("It`s not a complexquad\n");
+    throw std::invalid_argument("It`s not a complexquad");
   }
 }
 

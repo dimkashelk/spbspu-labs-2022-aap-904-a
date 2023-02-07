@@ -6,7 +6,7 @@ Rectangle::Rectangle(const point_t &point1, const point_t &point2):
   rect_{point2.x - point1.x, point2.y - point1.y, {(point1.x + point2.x) * 0.5, (point1.y + point2.y) * 0.5}}
 {
   if (point1.x >= point2.x || point1.y >= point2.y) {
-    throw std::invalid_argument("Wrong rectangle input\n");
+    throw std::invalid_argument("Wrong rectangle input");
   }
 }
 
@@ -32,6 +32,9 @@ void Rectangle::move(const point_t &pos)
 
 void Rectangle::scale(double k)
 {
+  if (k <= 0) {
+    throw std::invalid_argument("Ratio must be greater than 0");
+  }
   rect_.width *= k;
   rect_.height *= k;
 }

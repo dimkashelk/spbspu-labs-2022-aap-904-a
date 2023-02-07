@@ -8,6 +8,7 @@ int main()
   size_t size1 = 0;
   size_t capacity = 10;
   char* source1 = new char[capacity];
+  char inp = '\0';
   std::cout << "Enter string: ";
   std::cin >> std::noskipws;
 
@@ -36,6 +37,14 @@ int main()
     std::cin >> source1[size1];
   }
   while (std::cin && source1[size1++] != '\n');
+  
+  if (size1 <= 1) 
+  {
+    delete[] source1;
+    std::cerr << "Error. Empty string.";
+    return 1;
+  }
+  
   source1[size1 - 1] = '\0';
 
   //1

@@ -10,4 +10,3 @@ namespace maistrenko
 }
 
 #endif
-

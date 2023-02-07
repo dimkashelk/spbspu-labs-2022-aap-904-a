@@ -78,7 +78,7 @@ int main()
         break;
       }
     }
-    catch (const std::invalid_argument &e)
+    catch (const std::logic_error & e)
     {
       delete shape;
       std::cerr << e.what() << "\n";

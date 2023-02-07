@@ -39,6 +39,7 @@ int main()
     if (size <= 1)
     {
       std::cout << "empty input";
+      delete[] string1;
       return 1;
     }
     else

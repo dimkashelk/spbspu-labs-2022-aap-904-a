@@ -13,7 +13,6 @@ size_t goldenRatio(size_t capacity)
   }
   else
   {
-    capacity = gRatioK * capacity;
+    return gRatioK * capacity;
   }
-  return capacity;
 }

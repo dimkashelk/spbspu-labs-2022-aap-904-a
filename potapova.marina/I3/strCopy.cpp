@@ -1,4 +1,4 @@
-#include "inputStr.h"
+#include "strCopy.h"
 
 const size_t capasity_block = 100;
 

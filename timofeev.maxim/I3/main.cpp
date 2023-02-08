@@ -1,7 +1,7 @@
 #include <iostream>
 #include "increaseLineSize.h"
 #include "removeAlphabet.h"
-#include "mergingString.h"
+#include "addNumbersFromSecondToFirst.h"
 int main()
 {
   char *str = nullptr;
@@ -23,7 +23,7 @@ int main()
     str2[i] = '1';
   }
   str2[size2 - 1] = '\0';
-  for (auto p = str; *p != '\0'; p++)
+  for (char *p = str; *p != '\0'; p++)
   {
     size++;
   }
@@ -53,7 +53,7 @@ int main()
   char *outstring2 = new char[size];
   try
   {
-    mergingStr(outstring2, str, str2);
+    addNumbers(outstring2, str, str2);
     if (outstring2[0] != '\0')
     {
       std::cout << outstring2 << "\n";

@@ -9,7 +9,7 @@
 #include "triangle.h"
 #include "complexquad.h"
 
-void printFramePoint(Shape *shape)
+void printFramePoint(Shape* shape)
 {
   std::cout << std::fixed << std::setprecision(1);
   rectangle_t rect = shape->getFrameRect();
@@ -81,7 +81,7 @@ int main()
     catch (const std::logic_error& e)
     {
       delete shape;
-      std::cerr << e.what() << "\n";
+      std::cerr << e.what();
     }
   }
   while(std::cin);

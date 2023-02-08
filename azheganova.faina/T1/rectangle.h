@@ -5,7 +5,7 @@
 
 Shape* inputRectangle(std::istream &input);
 
-class Rectangle: virtual public Shape
+class Rectangle: public Shape
 {
 public:
   Rectangle(rectangle_t rectangle);

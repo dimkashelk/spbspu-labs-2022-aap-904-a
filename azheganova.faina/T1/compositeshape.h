@@ -1,6 +1,5 @@
 #ifndef COMPOSITESHAPE_H
 #define COMPOSITESHAPE_H
-#include <cstddef>
 #include "shape.h"
 
 class CompositeShape

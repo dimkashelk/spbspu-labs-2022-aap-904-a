@@ -5,7 +5,7 @@
 
 Shape* inputTriangle(std::istream &input);
 
-class Triangle: virtual public Shape
+class Triangle: public Shape
 {
 public:
   Triangle(point_t pos1, point_t pos2, point_t pos3);
@@ -16,8 +16,8 @@ public:
   void scale(double k) noexcept;
   Shape* clone() const override;
 private:
-  point_t triangle[3];
-  point_t findCenterOfTriangle();
+  point_t points[3];
+  point_t findCenterOfTriangle() const;
 };
 
 #endif

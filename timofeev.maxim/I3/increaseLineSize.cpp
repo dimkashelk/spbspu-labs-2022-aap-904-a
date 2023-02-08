@@ -24,6 +24,7 @@ char *str_input(std::istream &str, size_t &in_size)
         {
           *j = *i;
         }
+        delete [] cstring;
         cstring = newstr;
         capasity += 20;
       }
@@ -33,11 +34,12 @@ char *str_input(std::istream &str, size_t &in_size)
         throw std::runtime_error("Memory error");
       }
     }
+    str >> cstring[size];
   }
   while (str && cstring[size++] != '\n');
   if (!str || !size)
   {
-    delete || cstring;
+    delete [] cstring;
     throw std::runtime_error("Input error");
   }
   cstring[size - 1] = '\0';

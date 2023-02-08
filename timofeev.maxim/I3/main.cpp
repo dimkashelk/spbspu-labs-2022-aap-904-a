@@ -1,6 +1,6 @@
 #include <iostream>
 #include "increaseLineSize.h"
-#include "ZeroAlphabetString.h"
+#include "removeAlphabet.h"
 #include "mergingString.h"
 int main()
 {
@@ -29,8 +29,8 @@ int main()
   char *outstring2 = new char[size];
   try
   {
-    remove_alphabet(outstring1, str);
-    remove_alphabet(outstring2, str2);
+    removeAlphabet(outstring1, str);
+    removeAlphabet(outstring2, str2);
     std::cout << outstring1 << "\n";
     std::cout << outstring2 << "\n";
     delete [] outstring1;

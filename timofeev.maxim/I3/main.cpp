@@ -14,7 +14,7 @@ int main()
   catch (const std::runtime_error & e)
   {
     std::cout << e.what() << "\n";
-    return 0;
+    return 1;
   }
   if (isDigitInStr(str))
   {
@@ -60,5 +60,6 @@ int main()
   }
   delete [] str;
   delete [] str2;
+  return 0;
 }
 

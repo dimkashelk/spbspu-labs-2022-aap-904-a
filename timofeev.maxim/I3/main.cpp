@@ -2,6 +2,7 @@
 #include "increaseLineSize.h"
 #include "removeAlphabet.h"
 #include "mergingString.h"
+#include "isDigitInStr.h"
 int main()
 {
   char *str = nullptr;
@@ -13,7 +14,15 @@ int main()
   catch (const std::runtime_error & e)
   {
     std::cout << e.what() << "\n";
-    return 2;
+    return 1;
+  }
+  if (isDigitInStr(str))
+  {
+    std::cout << "Str contain digit" << "\n";
+  }
+  else
+  {
+    std::cout << "Str doesn't contain digit" << "\n";
   }
   const size_t size2 = 5;
   char *str2 = new char[size2];
@@ -33,7 +42,7 @@ int main()
   {
     std::cout << e.what();
     delete [] str;
-    return 2;
+    return 1;
   }
   char *outstring3 = new char[size];
   try
@@ -47,7 +56,7 @@ int main()
     std::cout << e.what();
     delete [] str;
     delete [] str2;
-    return 2;
+    return 1;
   }
   delete [] str;
   delete [] str2;

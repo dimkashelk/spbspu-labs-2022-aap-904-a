@@ -17,7 +17,7 @@ int main()
     std::exit(1);
   }
 
-  std::cout << getMostCommonSyms(most_common_syms, input_str);
+  std::cout << getMostCommonSyms(most_common_syms, input_str) << '\n';
 
   delete[] input_str;
   delete[] most_common_syms;

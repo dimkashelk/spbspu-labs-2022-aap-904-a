@@ -14,7 +14,7 @@ int main()
   catch (const std::runtime_error & e)
   {
     std::cout << e.what() << "\n";
-    return 1;
+    return 0;
   }
   if (isDigitInStr(str))
   {

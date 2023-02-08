@@ -7,6 +7,7 @@ class CompositeShape
 {
 public:
   CompositeShape();
+  CompositeShape::CompositeShape(Shape** shp, size_t size, size_t capacity);
   CompositeShape(const CompositeShape & rhs);
   CompositeShape(CompositeShape && rhs);
   CompositeShape(size_t capacity);
@@ -32,6 +33,7 @@ public:
   size_t size() const;
   void checkIsoScale_(point_t point, double k);
   void isoScale_(point_t position, double k);
+  CompositeShape *clone() const;
 private:
   size_t size_;
   size_t capacity_;

@@ -1,6 +1,4 @@
 #include "complexquad.h"
-#include <iostream>
-#include <stdexcept>
 #include "isoscale.h"
 
 Shape* inputComplexquad(std::istream &input)

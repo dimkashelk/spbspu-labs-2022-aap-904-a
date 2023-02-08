@@ -78,7 +78,7 @@ int main()
         break;
       }
     }
-    catch (const std::logic_error & e)
+    catch (const std::logic_error& e)
     {
       delete shape;
       std::cerr << e.what() << "\n";
@@ -100,7 +100,7 @@ int main()
   {
     compositeShape.checkIsoScale_(scalecenter, scalek);
   }
-  catch(const std::logic_error &e)
+  catch(const std::logic_error& e)
   {
     std::cerr << e.what() << '\n';
     return 1;

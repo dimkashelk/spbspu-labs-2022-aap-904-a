@@ -1,6 +1,4 @@
 #include "base_types.h"
-#include <iostream>
-#include <stdexcept>
 
 rectangle_t makeFrame(point_t point1, point_t point2)
 {

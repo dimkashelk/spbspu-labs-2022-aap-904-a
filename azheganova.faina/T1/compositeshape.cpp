@@ -1,6 +1,5 @@
 #include "compositeshape.h"
 #include <stdexcept>
-#include <algorithm>
 #include "isoscale.h"
 
 CompositeShape::CompositeShape():
@@ -8,6 +7,13 @@ CompositeShape::CompositeShape():
   capacity_(10),
   shape_(new Shape* [capacity_])
 {}
+
+CompositeShape::CompositeShape(Shape ** rhp, size_t size, size_t capacity):
+  size_(size),
+  capacity_(capacity),
+  shape_(rhp)
+{}
+
 
 CompositeShape::CompositeShape(const CompositeShape & rhs):
   CompositeShape(rhs.capacity_)
@@ -244,3 +250,24 @@ void CompositeShape::pop_back()
   delete shape_[size_ - 1];
   size_--;
 }
+
+CompositeShape* CompositeShape::clone() const
+{
+  Shape** cloned = new Shape* [capacity_];
+  for (size_t i = 0; i < size_; i++)
+  {
+    try
+    {
+      cloned[i] = shape_[i]->clone();
+    }
+    catch (...)
+    {
+      for (size_t i = 0; i < size_; i++)
+      {
+        delete shape_[i];
+      }
+    }
+  }
+  return new CompositeShape(cloned, size_, capacity_);
+}
+

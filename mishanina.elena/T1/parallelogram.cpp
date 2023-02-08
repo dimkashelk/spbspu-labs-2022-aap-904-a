@@ -1,5 +1,6 @@
 #include "parallelogram.h"
 #include <stdexcept>
+#include <cmath>
 
 Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C) :
   name_("Parallelogram: "),
@@ -29,10 +30,10 @@ double Parallelogram::getArea() const
 
 rectangle_t Parallelogram::getFrameRect() const
 {
-  double leftPointX = std::min(A_.x, B_.x, C_.x);
-  double rightPointX = std::max(A_.x, B_.x, C_.x);
-  double highestPointY = std::min(A_.y, B_.y, C_.y);
-  double lowestPointY = std::max(A_.y, B_.y, C_.y);
+  double leftPointX = std::min(A_.x, std::min(B_.x, C_.x));
+  double rightPointX = std::max(A_.x, std::max(B_.x, C_.x));
+  double highestPointY = std::min(A_.y, std::min(B_.y, C_.y));
+  double lowestPointY = std::max(A_.y, std::max(B_.y, C_.y));
   return { rightPointX - leftPointX, highestPointY - lowestPointY, getCenterParallelogram(A_, C_) };
 }
 

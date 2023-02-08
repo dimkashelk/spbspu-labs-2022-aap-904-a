@@ -7,7 +7,7 @@ char* printMostCommonCharacters(char* destination, const char* source)
   size_t i = 0;
   while (source[i] != '\0')
   {
-    ascii[source[i]]++;
+    ascii[static_cast< size_t >(source[i])]++;
     i++;
   }
   size_t idx1 = 128;

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <utility>
-#include "strCopy.h"
+#include "workWithStrs.h"
 
 char* getMostCommonSyms(char* dest, const char* str);
 

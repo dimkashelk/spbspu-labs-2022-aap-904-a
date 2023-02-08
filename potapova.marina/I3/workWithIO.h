@@ -3,8 +3,9 @@
 
 #include <fstream>
 #include <iostream>
+#include "workWithStrs.h"
 
-void inputStr(size_t& size, char*& str, const char* file_name);
+char* stdinGetLine();
 void printAnswer(char* ans, const char* file_name);
 
 #endif

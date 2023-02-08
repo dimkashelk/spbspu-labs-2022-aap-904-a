@@ -1,6 +1,4 @@
-#include "strCopy.h"
-
-const size_t capasity_block = 100;
+#include "workWithStrs.h"
 
 char* reallocMem(char* str, const size_t& size, const size_t& new_capasity)
 {

@@ -1,24 +1,12 @@
 #include "workWithIO.h"
 
-void inputStr(size_t& size, char*& str, const char* const file_name)
+char* stdinGetLine()
 {
-  std::ifstream in(file_name);
-
-  if (!in.is_open())
-  {
-    std::cerr << "Can't open " << file_name << '\n';
-    std::exit(1);
-  }
-
-  if (!(in >> size))
-  {
-    std::cerr << "Input error\n";
-    std::exit(1);
-  }
+  char* result;
 
   try
   {
-    str = new char[size + 1];
+    result = new char[capasity_block];
   }
   catch (const std::bad_alloc & e)
   {
@@ -26,11 +14,16 @@ void inputStr(size_t& size, char*& str, const char* const file_name)
     std::exit(1);
   }
 
-  if (!(in >> str))
+  size_t result_size = 0;
+  size_t result_capasity = capasity_block;
+
+  char cur_char;
+  while ((cur_char = getchar()) != '\n')
   {
-    std::cerr << "Input error\n";
-    std::exit(1);
+    pushBack(result, result_size, result_capasity, cur_char);
   }
+
+  return result;
 }
 
 void printAnswer(char* ans, const char* const file_name)

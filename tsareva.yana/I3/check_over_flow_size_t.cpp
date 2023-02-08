@@ -8,4 +8,8 @@ size_t checkOverFlowSizeT(size_t first_addend, size_t second_addend)
   {
     return first_addend + second_addend;
   }
+  else
+  {
+    return 0;
+  }
 }

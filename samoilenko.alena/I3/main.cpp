@@ -35,6 +35,11 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
+  if (size == 0 || cstring[0] == '\n')
+  {
+    std::cerr << "Error..." << '\n';
+    return 1;
+  }
   cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
   char* newstring = nullptr;

@@ -13,7 +13,7 @@ char* finderThreeSameElements(char* destination, const char* str)
   {
     for (auto j = str; *j != '\0'; ++j)
     {
-      if ((*i == *j) && isalnum(*i) && isalnum(*j))
+      if (*i == *j && isalnum(*i) && isalnum(*j))
       {
         cnt++;
       }

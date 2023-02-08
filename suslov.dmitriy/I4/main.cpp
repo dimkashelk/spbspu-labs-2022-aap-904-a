@@ -1,6 +1,6 @@
 #include <iostream>
-#include "localMinima.h"
 #include <fstream>
+#include "localMinima.h"
 #include "sumOfModules.h"
 int main(int argc, char **argv)
 {

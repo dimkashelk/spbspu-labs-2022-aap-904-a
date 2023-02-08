@@ -23,9 +23,9 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
     {
       try
       {
-        char* newStr = new char[capacity + 20];
-        cstring = increaseString(cstring, newStr, size);
-        delete[] newStr;
+        char* oldStr = cstring;
+        cstring = increaseString(cstring, capacity, size);
+        delete[] oldStr;
         capacity += 20;
       }
       catch (...)
@@ -36,7 +36,7 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
     }
     inp >> cstring[size];
   }
-  while (std::cin && cstring[size++] != '\n');
+  while (inp && cstring[size++] != '\n');
   if (size <= 1)
   {
     delete[] cstring;

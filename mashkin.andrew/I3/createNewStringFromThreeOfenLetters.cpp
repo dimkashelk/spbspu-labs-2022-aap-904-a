@@ -1,5 +1,6 @@
 #include "createNewStringFromThreeOfenLetters.h"
 #include <cstddef>
+#include <algorithm>
 
 char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* string1, size_t endIndex)
 {
@@ -56,9 +57,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
     {
       if (*i > *j)
       {
-        char var = *i;
-        *i = *j;
-        *j = var;
+        std::swap(*j, *i)
       }
     }
   }

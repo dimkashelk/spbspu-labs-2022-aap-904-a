@@ -38,6 +38,9 @@ int main(int argc, char* argv[])
       std::cout << err.what() << '\n';
       return 1;
     }
+    if (rows * cols == 0) {
+      return 0;
+    }
     std::ofstream outFile(argv[3]);
     if (!outFile.is_open()) {
       std::cout << "Output file could not be opened\n";
@@ -67,6 +70,9 @@ int main(int argc, char* argv[])
     } catch (const std::runtime_error& err) {
       std::cout << err.what() << '\n';
       return 1;
+    }
+    if (rows * cols == 0) {
+      return 0;
     }
     std::ofstream outFile(argv[3]);
     if (!outFile.is_open()) {

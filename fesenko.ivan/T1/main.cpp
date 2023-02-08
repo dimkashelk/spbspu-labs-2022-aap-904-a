@@ -19,8 +19,8 @@ int main()
   Shape **shapes = new Shape*[capacity];
   while (std::cin) {
     std::cin >> figureName;
-    if (figureName == "RECTANGLE") {
-      try {
+    try {
+      if (figureName == "RECTANGLE") {
         point_t point1, point2;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y;
         if (size == capacity) {
@@ -33,17 +33,7 @@ int main()
         sumArea += shapes[size]->getArea();
         size++;
       }
-      catch (const std::invalid_argument &e) {
-        std::cerr << e.what();
-      }
-      catch (...) {
-        std::cerr << "Error while work with rectangle";
-        deleteArray(shapes, size);
-        return 2;
-      }
-    }
-    if (figureName == "CONCAVE") {
-      try {
+      if (figureName == "CONCAVE") {
         point_t point1, point2, point3, point4;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
         if (size == capacity) {
@@ -56,17 +46,7 @@ int main()
         sumArea += shapes[size]->getArea();
         size++;
       }
-      catch (const std::invalid_argument &e) {
-        std::cerr << e.what();
-      }
-      catch (...) {
-        std::cerr << "Error while work with concave";
-        deleteArray(shapes, size);
-        return 2;
-      }
-    }
-    if (figureName == "COMPLEXQUAD") {
-      try {
+      if (figureName == "COMPLEXQUAD") {
         point_t point1, point2, point3, point4;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
         if (size == capacity) {
@@ -79,28 +59,18 @@ int main()
         sumArea += shapes[size]->getArea();
         size++;
       }
-      catch (const std::invalid_argument &e) {
-        std::cerr << e.what();
-      }
-      catch (...) {
-        std::cerr << "Error while work with complexquad";
-        deleteArray(shapes, size);
-        return 2;
-      }
-    }
-    if (figureName == "SCALE") {
-      try {
+      if (figureName == "SCALE") {
         std::cin >> zoomCenter.x >> zoomCenter.y >> ratio;
         if (size > 0) {
           isScale = true;
         }
+        break;
       }
-      catch (...) {
-        std::cerr << "Error while work with scale";
-        deleteArray(shapes, size);
-        return 2;
-      }
-      break;
+    }
+    catch (...) {
+      std::cerr << "Error while work with figures";
+      deleteArray(shapes, size);
+      return 2;
     }
   }
   if (isScale) {

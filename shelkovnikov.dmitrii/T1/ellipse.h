@@ -1,15 +1,15 @@
-#ifndef SPBSPU_LABS_2022_AAP_904_A_POLYGON_H
-#define SPBSPU_LABS_2022_AAP_904_A_POLYGON_H
-#include <cstddef>
+#ifndef SPBSPU_LABS_2022_AAP_904_A_ELLIPSE_H
+#define SPBSPU_LABS_2022_AAP_904_A_ELLIPSE_H
+#include "shape.h"
 #include "triangle.h"
+#include "base_types.h"
+#include "polygon.h"
 namespace dimkashelk
 {
-  class Polygon: public Shape
+  class Ellipse: public Shape
   {
   public:
-    Polygon(const point_t *points, size_t size);
-    Polygon(const Polygon &polygon);
-    ~Polygon();
+    Ellipse(point_t point, double height, double width);
     double getArea() const override;
     rectangle_t getFrameRect() const override;
     void move(point_t point) override;
@@ -17,9 +17,8 @@ namespace dimkashelk
     void unsafeScale(double k) noexcept override;
     Shape* clone() const override;
   private:
-    size_t count_;
-    Triangle *triangles_;
-    point_t center_;
+    Polygon polygon_;
+    explicit Ellipse(const Polygon &polygon);
   };
 }
 #endif

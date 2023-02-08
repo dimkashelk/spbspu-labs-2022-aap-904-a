@@ -3,9 +3,9 @@ int main()
 {
   int value = 0;
   int predv = 0;
-  int compare_count = 0;
+  size_t compare_count = 0;
   int minv = 0;
-  unsigned int min_count = 0;
+  size_t min_count = 0;
   do
   {
     predv = value;

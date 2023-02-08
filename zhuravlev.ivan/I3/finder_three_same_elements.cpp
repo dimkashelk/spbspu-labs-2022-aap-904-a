@@ -1,50 +1,79 @@
-#include "finder_three_same_elements.h"
-#include <cctype>
 #include <iostream>
+#include <exception>
+#include <cstring>
+#include "finder_three_same_elements.h"
+#include "finder_same_elements_in_two_string.h"
+#include "string_expansion.h"
 
-char* finderThreeSameElements(char* destination, const char* str)
+int main()
 {
-  auto result_string = destination;
-  size_t cnt = 0;
-  size_t max_cnt = 0;
-  size_t prev_max = 0;
-  size_t prev_prev_max = 0;
-  for (auto i = str; *i != '\0'; ++i)
+  size_t capacity = 10;
+  char* cstring = new char[capacity];
+  size_t size = 0;
+  size_t size_of_static = 18;
+  const char* static_string = "ABCDFEabcdef135790";
+  cstring[0] = '\0';
+  std::cin >> std::noskipws;
+  do
   {
-    for (auto j = str; *j != '\0'; ++j)
+    if (size + 1 == capacity)
     {
-      if ((*i == *j) && isalnum(*i) && isalnum(*j))
+      try
       {
-        cnt++;
+        char* new_str = nullptr;
+        cstring[size] = '\0';
+        capacity += 20;
+        new_str = arrayExpansion(cstring, capacity);
+        strcpy(new_str, cstring);
+        delete[] cstring;
+        cstring = new_str;
+      }
+      catch (const std::bad_alloc &e)
+      {
+        delete[] cstring;
+        return 1;
       }
     }
-    if (cnt > max_cnt)
-    {
-      size_t tmp = prev_max;
-      prev_max = max_cnt;
-      max_cnt = cnt;
-      prev_prev_max = tmp;
-      *result_string = *i;
-      ++result_string;
-    }
-    if (cnt >= prev_max && cnt < max_cnt)
-    {
-      prev_prev_max = prev_max;
-      prev_max = cnt;
-    }
-    if (cnt >= prev_prev_max && cnt < prev_max)
-    {
-      prev_prev_max = cnt;
-    }
-    cnt = 0;
+    std::cin >> cstring[size];
   }
-  *(result_string) = '\0';
-  for (auto k = result_string; *k != '\0'; ++k)
+  while (std::cin && cstring[size++] != '\n');
+  if (cstring[0] == '\n')
   {
-    if (*k < *(k + 1))
-    {
-      std::swap(*k, *(k + 1));
-    }
+    delete[] cstring;
+    std::cerr << "Empty string!" << "\n";
+    return 2;
   }
-  return destination;
+  size -= 1;
+  if (cstring[size] == '\n')
+  {
+    cstring[size] = '\0';
+  }
+  try
+  {
+    char* destination = new char[size + size_of_static];
+    destination = finderThreeSameElementsInTwoStrings(destination, cstring, static_string);
+    std::cout << destination << "\n";
+    delete[] destination;
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] cstring;
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
+  try
+  {
+    char* destination = new char[size - 1];
+    destination = finderThreeSameElements(destination, cstring);
+    std::cout << destination << "\n";
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete[] cstring;
+    std::cerr << e.what() << "\n";
+    return 1;
+  }
+
+  delete[] cstring;
+  return 0;
 }

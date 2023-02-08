@@ -38,6 +38,7 @@ int main()
   if (size == 0 || cstring[0] == '\n')
   {
     std::cerr << "Error..." << '\n';
+    delete [] cstring;
     return 1;
   }
   cstring[size - 1] = '\0';

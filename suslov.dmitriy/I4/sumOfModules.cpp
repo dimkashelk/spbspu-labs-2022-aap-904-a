@@ -1,16 +1,9 @@
 #include "sumOfModules.h"
-#include <fstream>
-int *scanMatrixTwo(const char *in_file, int *n, int *m)
+int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
 {
-  std::ifstream in_stream;
-  in_stream.open(in_file);
-  if (!in_stream.is_open())
-  {
-    return nullptr;
-  }
   if (!in_stream.eof())
   {
-    in_stream >> *n;
+    in_stream >> n;
   }
   else
   {
@@ -18,7 +11,7 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
   }
   if (!in_stream.eof())
   {
-    in_stream >> *m;
+    in_stream >> m;
   }
   else
   {
@@ -27,19 +20,19 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
   int *matrix;
   try
   {
-    matrix = new int[(*n) * (*m)];
+    matrix = new int[(n) * (m)];
   }
   catch (const std::bad_alloc &e)
   {
     return nullptr;
   }
-  for (int i = 0; i < *n; ++i)
+  for (size_t i = 0; i < n; ++i)
   {
-    for (int j = 0; j < *m; ++j)
+    for (size_t j = 0; j < m; ++j)
     {
       if (!in_stream.eof())
       {
-        in_stream >> matrix[i * (*n) + j];
+        in_stream >> matrix[i * (n) + j];
       }
       else
       {
@@ -51,7 +44,7 @@ int *scanMatrixTwo(const char *in_file, int *n, int *m)
   }
   return matrix;
 }
-int *smoothedMatrix(int *matrix, int n, int m)
+int *smoothedMatrix(int *matrix, size_t n, size_t m)
 {
   int *matrixSmoothed;
   try
@@ -61,14 +54,14 @@ int *smoothedMatrix(int *matrix, int n, int m)
   {
     return nullptr;
   }
-  for (int i = 0; i < n; ++i)
+  for (size_t i = 0; i < n; ++i)
   {
-    for (int j = 0; j < m; ++j)
+    for (size_t j = 0; j < m; ++j)
     {
       int sum = 0;
-      for (int k = std::max(i - 1, 0); k < std::min(i + 1, n); ++k)
+      for (size_t k = std::max<size_t>(i - 1, 0); k < std::min<size_t>(i + 1, n); ++k)
       {
-        for (int l = std::max(j - 1, 0); l < std::min(j + 1, m); ++l)
+        for (size_t l = std::max<size_t>(j - 1, 0); l < std::min<size_t>(j + 1, m); ++l)
         {
           if (k != i or l != j)
           {
@@ -81,12 +74,12 @@ int *smoothedMatrix(int *matrix, int n, int m)
   }
   return matrixSmoothed;
 }
-int sum(int *matrix, int n)
+int sum(int *matrix, size_t n)
 {
   int sum = 0;
-  for (int i = 0; i < n; ++i)
+  for (size_t i = 0; i < n; ++i)
   {
-    for (int j = 0; j < i; ++j)
+    for (size_t j = 0; j < i; ++j)
     {
       sum += matrix[i * n + j];
     }

@@ -1,6 +1,7 @@
 #ifndef SUMOFMODULES_H
 #define SUMOFMODULES_H
-int *scanMatrixTwo(const char *in_file, int *n, int *m);
-int *smoothedMatrix(int *matrix, int n, int m);
-int sum(int *matrix, int n);
+#include <iostream>
+int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m);
+int *smoothedMatrix(int *matrix, size_t n, size_t m);
+int sum(int *matrix, size_t n);
 #endif

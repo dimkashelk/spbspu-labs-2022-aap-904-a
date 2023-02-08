@@ -1,5 +1,6 @@
 #ifndef LOCALMINIMA_H
 #define LOCALMINIMA_H
-bool scanMatrixOne(const char *in_file, int *n, int *m);
-unsigned int counterZero(int n, int m);
+#include <iostream>
+bool scanMatrixOne(int matrix[30][30], std::istream &in_stream, size_t &n, size_t &m);
+unsigned int counterZero(int matrix[30][30], size_t n, size_t m);
 #endif

@@ -1,5 +1,5 @@
 #include "most_common_characters.h"
-#include <iostream>
+#include <cstddef>
 
 char* printMostCommonCharacters(char* destination, const char* source)
 {

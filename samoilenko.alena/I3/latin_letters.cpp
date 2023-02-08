@@ -1,6 +1,5 @@
 #include "latin_letters.h"
 #include <iostream>
-#include <cstddef>
 
 char* createStringNewLatinLetters(char* destination, const char* source)
 {

@@ -6,7 +6,7 @@
 
 size_t goldenRatio(size_t capacity)
 {
-  const size_t gRatioK = static_cast< size_t >(((1 + std::sqrt(5)) / 2));
+  const size_t gRatioK = static_cast< size_t >(std::ceil(((1 + std::sqrt(5)) / 2)));
   const size_t addend = capacity * (gRatioK - 1);
   bool check_over_flow = checkOverFlowSizeT(capacity,addend);
   if (check_over_flow)

@@ -1,35 +1,6 @@
 #include "StringOperations.h"
 #include <cctype>
 
-void sort(int* arr, size_t len)
-{
-  while (true) {
-    for (size_t i = 0; i < len - 1; ++i) {
-      bool isNChanged = true;
-      if (arr[i] > arr[i + 1]) {
-        std::swap(arr[i], arr[i + 1]);
-        isNChanged = false;
-      }
-      if (isNChanged) {
-        return;
-      }
-    }
-  }
-}
-
-size_t minIndex(const int* arr, size_t size)
-{
-  int mn = arr[0];
-  size_t ind = 0;
-  for (size_t i = 0; i < size; ++i) {
-    if (arr[i] < mn) {
-      mn = arr[i];
-      ind = i;
-    }
-  }
-  return ind;
-}
-
 char* inputString(std::istream& stream, size_t& size)
 {
   stream >> std::noskipws;
@@ -68,33 +39,51 @@ void switchCase(const char* src, char* dest)
   dest[i] = '\0';
 }
 
+size_t minIndex(const size_t* arr, size_t size)
+{
+  size_t mn = arr[0];
+  size_t ind = 0;
+  for (size_t i = 0; i < size; ++i) {
+    if (arr[i] < mn) {
+      mn = arr[i];
+      ind = i;
+    }
+  }
+  return ind;
+}
+
 void threeMostCommon(const char* src, char* dest)
 {
-  int dict[94]{0};
-  int i = 0;
+  size_t dict[94]{0};
+  unsigned short i = 0;
 
   while (src[i] != '\0') {
     dict[src[i] - 32]++;
     i++;
   }
 
-  int ind[3] = {127, 127, 127};
-  int mx[3] = {0};
+  unsigned short ind[3] = {0};
+  size_t mx[3] = {0};
 
   for (i = 0; i < 94; ++i) {
-    size_t min_ind = minIndex(mx, 3);
-    if (dict[i] > mx[min_ind]) {
-      mx[min_ind] = dict[i];
-      ind[min_ind] = i;
+    size_t mnInd = minIndex(mx, 3);
+    if (dict[i] > mx[mnInd]) {
+      for (unsigned short n = mnInd; n < 3; ++n) {
+        mx[n] = mx[n + 1];
+        ind[n] = ind[n + 1];
+      }
+      mx[2] = dict[i];
+      ind[2] = i;
     }
   }
 
-  sort(ind, 3);
+  unsigned short shift = 0;
   for (i = 0; i < 3; ++i) {
-    if (ind[i] == 127) {
-      break;
+    if (mx[i] == 0) {
+      shift++;
+      continue;
     }
-    dest[i] = char(ind[i] + 32);
+    dest[i - shift] = ind[i] + 32;
   }
-  dest[i] = '\0';
+  dest[i - shift] = '\0';
 }

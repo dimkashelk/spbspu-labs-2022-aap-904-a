@@ -1,4 +1,4 @@
-#include "GetSumofMinandMaxElements.h"
+#include "getSumofMinandMaxElements.h"
 #include <limits>
 size_t getSumofMinandMaxElements(const int *input_array, size_t array_size)
 {

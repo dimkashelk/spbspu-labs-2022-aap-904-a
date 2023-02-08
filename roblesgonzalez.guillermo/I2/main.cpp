@@ -3,8 +3,8 @@
 #include <ctime>
 #include <fstream>
 #include <stdexcept>
-#include "GetSumofMinandMaxElements.h"
-#include "CountAscendingPairs.h"
+#include "getSumofMinandMaxElements.h"
+#include "countAscendingPairs.h"
 int main(int argc, char *argv[])
 {
   if (argc != 2)

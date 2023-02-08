@@ -6,5 +6,5 @@ int sumCount(int preprevalue, int prevalue, int value)
   {
     return 1;
   }
-return 0;
+  return 0;
 }

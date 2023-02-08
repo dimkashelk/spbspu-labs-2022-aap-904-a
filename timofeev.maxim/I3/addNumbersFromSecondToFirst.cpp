@@ -12,16 +12,11 @@ char *addNumbers(char *destination, const char *source1, const char *source2)
   {
     if (std::isdigit(*i))
     {
+      *(j + 1) = '\0';
       *j = *i;
       ++j;
     }
   }
-  size_t size = 0;
-  for (char *p = destination; *p != '\0'; p++)
-  {
-    size++;
-  }
-  size++;
-  destination[size] = '\0';
+  *j = '\0';
   return destination;
 }

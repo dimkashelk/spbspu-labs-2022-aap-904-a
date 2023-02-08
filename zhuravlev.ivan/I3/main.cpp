@@ -23,7 +23,7 @@ int main()
         char* new_str = nullptr;
         cstring[size] = '\0';
         capacity += 20;
-        cstring = stringExpansion(cstring, capacity);
+        stringExpansion(cstring, capacity);
       }
       catch (const std::bad_alloc& e)
       {

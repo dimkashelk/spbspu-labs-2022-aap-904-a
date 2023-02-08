@@ -1,6 +1,5 @@
 #include "GetSumofMinandMaxElements.h"
 #include <limits>
-
 size_t GetSumofMinandMaxElements(const int *input_array, size_t array_size)
 {
   if (array_size == 0)

@@ -1,6 +1,5 @@
 #include "golden_ratio.h"
 #include "check_over_flow_size_t.h"
-#include <limits>
 #include <stdexcept>
 #include <cmath>
 

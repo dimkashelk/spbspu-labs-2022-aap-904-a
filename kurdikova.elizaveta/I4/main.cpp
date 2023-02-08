@@ -32,10 +32,10 @@ int main(int argc, char* argv[])
       return 4;
     }
 
-    size_t rows = 0;
-    size_t columns = 0;
+    size_t rows = 1000;
+    size_t columns = 1000;
     inputFile >> rows >> columns;
-    if (rows == 0)
+    if (rows == 0 || columns == 0)
     {
       return 0;
     }

@@ -1,4 +1,4 @@
-#include "readMatrix.h"
+#include "ReadMatrix.h"
 
 int* readMatrixFromFile(int* matrix, const size_t rows, const size_t columns, std::ifstream& inputFile)
 {

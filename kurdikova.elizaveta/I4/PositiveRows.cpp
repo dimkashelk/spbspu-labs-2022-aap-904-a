@@ -1,5 +1,4 @@
-#include <iostream>
-#include "positiveRows.h"
+#include "PositiveRows.h"
 
 size_t getPosRowsCount(const int* matrix, const size_t rows, const size_t columns)
 {

@@ -1,6 +1,4 @@
-#include <iostream>
-#include "minDiagonalSum.h"
-#include <limits>
+#include "MinDiagonalSum.h"
 
 
 size_t minDiagonalSumParallelToSecondary(const int* matrix, const size_t rows)

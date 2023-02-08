@@ -20,7 +20,6 @@ int main()
     {
       try
       {
-        char* new_str = nullptr;
         cstring[size] = '\0';
         capacity += 20;
         stringExpansion(cstring, capacity);

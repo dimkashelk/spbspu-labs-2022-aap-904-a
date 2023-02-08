@@ -49,7 +49,7 @@ int main()
     return 1;
   }
 
-  char *outstring2 = new char[100];
+  char *outstring2 = new char[size];
   try
   {
     mergingStr(outstring2, str, str2);

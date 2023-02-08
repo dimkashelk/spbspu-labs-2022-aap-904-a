@@ -82,7 +82,6 @@ int main()
     {
       delete shape;
       std::cerr << e.what() << '\n';
-      return 1;
     }
   }
   while(std::cin);

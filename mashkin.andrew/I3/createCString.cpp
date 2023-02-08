@@ -11,7 +11,7 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
   {
     cstring = new char[capacity];
   }
-  catch (const std::exception&)
+  catch (...)
   {
     delete[] cstring;
     throw;

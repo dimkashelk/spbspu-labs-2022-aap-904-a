@@ -23,6 +23,10 @@ int main()
       if (figureName == "RECTANGLE") {
         point_t point1, point2;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y;
+        if (!std::cin) {
+          std::cerr << "Error while reading";
+          continue;
+        }
         if (size == capacity) {
           expandArray(shapes, capacity);
           Shape **newShapes = expandArray(shapes, capacity);
@@ -36,6 +40,10 @@ int main()
       if (figureName == "CONCAVE") {
         point_t point1, point2, point3, point4;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
+        if (!std::cin) {
+          std::cerr << "Error while reading";
+          continue;
+        }
         if (size == capacity) {
           expandArray(shapes, capacity);
           Shape **newShapes = expandArray(shapes, capacity);
@@ -49,6 +57,10 @@ int main()
       if (figureName == "COMPLEXQUAD") {
         point_t point1, point2, point3, point4;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
+        if (!std::cin) {
+          std::cerr << "Error while reading";
+          continue;
+        }
         if (size == capacity) {
           expandArray(shapes, capacity);
           Shape **newShapes = expandArray(shapes, capacity);
@@ -61,6 +73,10 @@ int main()
       }
       if (figureName == "SCALE") {
         std::cin >> zoomCenter.x >> zoomCenter.y >> ratio;
+        if (!std::cin) {
+          std::cerr << "Error while reading";
+          break;
+        }
         if (size > 0) {
           isScale = true;
         }

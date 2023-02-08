@@ -1,6 +1,6 @@
 #include "getcountmaxelement.hpp"
 
-size_t get_count_max_element(const int* arr, const size_t size)
+size_t getCountMaxElement(const int* arr, const size_t size)
 {
   if (arr == nullptr || size == 0)
   {

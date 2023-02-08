@@ -54,26 +54,49 @@ size_t minIndex(const size_t* arr, size_t size)
 
 void threeMostCommon(const char* src, char* dest)
 {
-  size_t dict[94]{0};
-  unsigned short i = 0;
-
-  while (src[i] != '\0') {
-    dict[src[i] - 32]++;
-    i++;
-  }
-
-  unsigned short ind[3] = {0};
+  size_t i = 0;
+  char ind[3] = {0};
   size_t mx[3] = {0};
 
-  for (i = 0; i < 94; ++i) {
-    size_t mnInd = minIndex(mx, 3);
-    if (dict[i] > mx[mnInd]) {
-      for (unsigned short n = mnInd; n < 3; ++n) {
-        mx[n] = mx[n + 1];
-        ind[n] = ind[n + 1];
+  while (src[i] != '\0') {
+    char curr = src[i];
+    bool isUnique = true;
+    for (size_t j = 0; j < i; ++j) {
+      if (src[j] == curr) {
+        isUnique = false;
+        break;
       }
-      mx[2] = dict[i];
-      ind[2] = i;
+    }
+    if (!isUnique) {
+      i++;
+      continue;
+    }
+    i++;
+    size_t j = i;
+    size_t cnt = 1;
+
+    while (src[j] != '\0') {
+      if (src[j] == curr) {
+        cnt++;
+      }
+      j++;
+    }
+
+    size_t mnInd = minIndex(mx, 3);
+    if (cnt > mx[mnInd]) {
+      mx[mnInd] = cnt;
+      ind[mnInd] = curr;
+      while (true) {
+        if (mnInd < 2 && curr > ind[++mnInd]) {
+          std::swap(mx[mnInd], mx[mnInd - 1]);
+          std::swap(ind[mnInd], ind[mnInd - 1]);
+        } else if (mnInd > 0 && curr < ind[--mnInd]) {
+          std::swap(mx[mnInd], mx[mnInd + 1]);
+          std::swap(ind[mnInd], ind[mnInd + 1]);
+        } else {
+          break;
+        }
+      }
     }
   }
 
@@ -83,7 +106,7 @@ void threeMostCommon(const char* src, char* dest)
       shift++;
       continue;
     }
-    dest[i - shift] = ind[i] + 32;
+    dest[i - shift] = ind[i];
   }
   dest[i - shift] = '\0';
 }

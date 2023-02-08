@@ -1,5 +1,4 @@
 #include "generate_new_line.h"
-#include <cstddef>
 
 void generateNewLine(char * res, const char * str1, const char  * str2)
 {

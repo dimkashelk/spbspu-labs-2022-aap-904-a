@@ -1,11 +1,14 @@
-#include "increaseString.h"
 #include <cstddef>
+#include "increaseString.h"
 
-char* increaseString(char* string1, char* newStr, size_t size)
+char* increaseString(char* string1, char* newStr,const size_t size)
 {
   for (char* i = string1, *j = newStr; i != string1 + size; ++i, ++j)
   {
     *j = *i;
   }
-  return newStr;
+  char* varStr = string1;
+  string1 = newStr;
+  newStr = varStr;
+  return string1;
 }

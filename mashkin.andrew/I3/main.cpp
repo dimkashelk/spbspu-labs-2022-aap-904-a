@@ -1,9 +1,9 @@
-#include "createNewStringFromThreeOfenLetters.h"
-#include "createNewStringFromTwoOther.h"
-#include "createCString.h"
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
+#include "createNewStringFromThreeOfenLetters.h"
+#include "createNewStringFromTwoOther.h"
+#include "createCString.h"
 
 int main()
 {

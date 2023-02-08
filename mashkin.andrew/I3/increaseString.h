@@ -2,5 +2,5 @@
 #define INCREASESTRING_H
 #include <cstddef>
 
-char* increaseString(char* string1, char* newStr, size_t size);
+char* increaseString(const char* string1, char* newStr,const size_t size);
 #endif

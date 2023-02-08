@@ -1,8 +1,8 @@
-#include "createCString.h"
-#include "increaseString.h"
 #include <cstddef>
 #include <iostream>
 #include <stdexcept>
+#include "createCString.h"
+#include "increaseString.h"
 
 char* createCString(std::istream& inp, size_t size, size_t capacity)
 {
@@ -24,9 +24,8 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
       try
       {
         char* newStr = new char[capacity + 20];
-        newStr = increaseString(cstring, newStr, size);
-        delete[] cstring;
-        cstring = newStr;
+        cstring = increaseString(cstring, newStr, size);
+        delete[] newStr;
         capacity += 20;
       }
       catch (...)
@@ -36,7 +35,8 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
       }
     }
     inp >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
+  }
+  while (std::cin && cstring[size++] != '\n');
   if (size <= 1)
   {
     delete[] cstring;

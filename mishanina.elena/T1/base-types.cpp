@@ -39,10 +39,10 @@ bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C
 {
   point_t pos{ (A.x + C.x) / 2, (A.y + C.y) / 2 };
   point_t D{ 2 * pos.x - B.x, 2 * pos.y - B.y };
-  double AO = std::sqrt(std::pow(pos.x - A.x, 2) + std::pow(pos.y - A.y, 2));
-  double OC = std::sqrt(std::pow(pos.x - C.x, 2) + std::pow(pos.y - C.y, 2));
-  double BO = std::sqrt(std::pow(pos.x - B.x, 2) + std::pow(pos.y - B.y, 2));
-  double OD = std::sqrt(std::pow(pos.x - D.x, 2) + std::pow(pos.y - D.y, 2));
+  double AO = getSide(A, pos);
+  double OC = getSide(pos, C);
+  double BO = getSide(pos, B);
+  double OD = getSide(pos, D);
   if (AO == OC && BO == OD)
   {
     return true;
@@ -55,9 +55,9 @@ bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C
 
 bool isCorrectTriangle(const point_t& A, const point_t& B, const point_t& C)
 {
-  double ab_side = std::sqrt(pow(B.x - A.x, 2) + pow(B.y - A.y, 2));
-  double ac_side = std::sqrt(pow(C.x - A.x, 2) + pow(C.y - A.y, 2));
-  double bc_side = std::sqrt(pow(C.x - B.x, 2) + pow(C.y - B.y, 2));
+  double ab_side = getSide(A, B);
+  double ac_side = getSide(A, C);
+  double bc_side = getSide(C, B);
   if (ab_side + ac_side > bc_side && ab_side + bc_side > ac_side && ac_side + bc_side > ab_side)
   {
     return true;
@@ -79,4 +79,9 @@ point_t scalePoint(const point_t point, const point_t pos, const double k)
   double dy = (point.y - pos.y) * k;
   point_t dpoint{ dx, dy };
   return movePoint(pos, dpoint);
+}
+
+double getSide(const point_t& p1, const point_t& p2)
+{
+  return std::sqrt(std::pow(p1.x - p2.x, 2) + std::pow(p1.y - p2.y, 2));
 }

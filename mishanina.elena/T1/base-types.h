@@ -23,6 +23,6 @@ point_t movePoint(const point_t point, const point_t dpoint);
 bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C);
 bool isCorrectTriangle(const point_t& A, const point_t& B, const point_t& C);
 point_t getCenterTriangle(const point_t& A, const point_t& B, const point_t& C);
-
+double getSide(const point_t& p1, const point_t& p2);
 
 #endif

@@ -3,9 +3,9 @@
 
 Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C) :
   name_("Parallelogram: "),
-  lu_point_(A),
-  ru_point_(B),
-  rd_point_(C)
+  A_(A),
+  B_(B),
+  C_(C)
 {
   if (!isCorrectParallelogram(A, B, C))
   {
@@ -20,21 +20,25 @@ std::string Parallelogram::getName() const
 
 double Parallelogram::getArea() const
 {
-  double width = ru_point_.x - lu_point_.x;
-  double height = ru_point_.y - rd_point_.y;
-  return height * width;
+  double side1 = getSide(A_, B_);
+  double side2 = getSide(A_, C_);
+  double side3 = getSide(C_, B_);
+  double halfmeter = (side1 + side2 + side3) / 2;
+  return 2 * std::sqrt(halfmeter * (halfmeter - side1) * (halfmeter - side2) * (halfmeter - side3));
 }
 
 rectangle_t Parallelogram::getFrameRect() const
 {
-  double width = (ru_point_.x - lu_point_.x) + (ru_point_.x - rd_point_.x);
-  double height = ru_point_.y - rd_point_.y;
-  return { width, height, getCenterParallelogram(lu_point_, rd_point_) };
+  double leftPointX = std::min(A_.x, B_.x, C_.x);
+  double rightPointX = std::max(A_.x, B_.x, C_.x);
+  double highestPointY = std::min(A_.y, B_.y, C_.y);
+  double lowestPointY = std::max(A_.y, B_.y, C_.y);
+  return { rightPointX - leftPointX, highestPointY - lowestPointY, getCenterParallelogram(A_, C_) };
 }
 
 void Parallelogram::move(point_t point)
 {
-  point_t pos = getCenterParallelogram(lu_point_, rd_point_);
+  point_t pos = getCenterParallelogram(A_, C_);
   double dx = point.x - pos.x;
   double dy = point.y - pos.y;
   move(dx, dy);
@@ -42,21 +46,21 @@ void Parallelogram::move(point_t point)
 
 void Parallelogram::scale(double k)
 {
-  point_t pos = getCenterParallelogram(lu_point_, rd_point_);
-  lu_point_ = scalePoint(lu_point_, pos, k);
-  ru_point_ = scalePoint(ru_point_, pos, k);
-  rd_point_ = scalePoint(rd_point_, pos, k);
+  point_t pos = getCenterParallelogram(A_, C_);
+  A_ = scalePoint(A_, pos, k);
+  B_ = scalePoint(B_, pos, k);
+  C_ = scalePoint(C_, pos, k);
 }
 
 void Parallelogram::move(double dx, double dy)
 {
   point_t dpoint{ dx, dy };
-  lu_point_ = movePoint(lu_point_, dpoint);
-  ru_point_ = movePoint(ru_point_, dpoint);
-  rd_point_ = movePoint(rd_point_, dpoint);
+  A_ = movePoint(A_, dpoint);
+  B_ = movePoint(B_, dpoint);
+  C_ = movePoint(C_, dpoint);
 }
 
 Shape* Parallelogram::clone() const
 {
-  return new Parallelogram(lu_point_, ru_point_, rd_point_);
+  return new Parallelogram(A_, B_, C_);
 }

@@ -18,7 +18,7 @@ public:
 
 private:
   const char* name_;
-  point_t lu_point_, ru_point_, rd_point_;
+  point_t A_, B_, C_;
 };
 
 #endif

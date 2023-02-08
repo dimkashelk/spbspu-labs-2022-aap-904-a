@@ -27,7 +27,7 @@ int main()
         delete[] cstring;
         cstring = new_str;
       }
-      catch (const std::bad_alloc &e)
+      catch (const std::bad_alloc& e)
       {
         delete[] cstring;
         return 1;
@@ -51,7 +51,7 @@ int main()
     std::cout << destination << "\n";
     delete[] destination;
   }
-  catch (const std::bad_alloc &e)
+  catch (const std::bad_alloc& e)
   {
     delete[] cstring;
     std::cerr << e.what() << "\n";
@@ -65,7 +65,7 @@ int main()
     std::cout << destination << "\n";
     delete[] destination;
   }
-  catch (const std::bad_alloc &e)
+  catch (const std::bad_alloc& e)
   {
     delete[] cstring;
     std::cerr << e.what() << "\n";

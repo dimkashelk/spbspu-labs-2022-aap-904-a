@@ -1,12 +1,5 @@
 #include <iostream>
 
-// Multiple Inheritance
-// output: Shape
-//        rectangle
-//        Shape
-//        Triangle
-//        Figures
-
 class Shape
 {
 public:
@@ -34,63 +27,57 @@ public:
   }
 };
 
-class Figures : public Rectangle, public Triangle
+class Complexquad: virtual public Shape
 {
 public:
-  Figures()
+  Complexquad()
   {
-    std::cout << "Figures";
+    std::cout << "Complexquad" << '\n';
+  }
+};
+
+class Сircle: virtual public Shape
+{
+public:
+  Сircle()
+  {
+    std::cout << "Сircle" << '\n';
+  }
+};
+
+class multipleInheritance: public Rectangle, public Triangle
+{
+public:
+  multipleInheritance()
+  {
+    std::cout << "Multiple Inheritance";
+  }
+};
+
+class virtualiInheritance: public Complexquad, public Сircle
+{
+public:
+  virtualiInheritance()
+  {
+    std::cout << "Virtual inheritance";
   }
 };
 
 int main()
 {
-  Figures figures_;
+  multipleInheritance multipleInheritance_;
+  virtualiInheritance virtualiInheritance_;
 }
+
+// Multiple Inheritance
+// output: Shape
+//        rectangle
+//        Shape
+//        Triangle
+//        Multiple Inheritance
 
 //virtual inheritance
 //output: Shape
-//       rectangle
-//       Triangle
-//       Figures
-
-class Shape
-{
-public:
-  Shape()
-  {
-    std::cout << "Shape" << '\n';
-  }
-};
-
-class Rectangle: virtual public Shape
-{
-public:
-  Rectangle()
-  {
-    std::cout << "rectangle" << '\n';
-  }
-};
-
-class Triangle: virtual public Shape
-{
-public:
-  Triangle()
-  {
-    std::cout << "Triangle" << '\n';
-  }
-};
-
-class Figures : public Rectangle, public Triangle
-{
-public:
-  Figures()
-  {
-    std::cout << "Figures";
-  }
-};
-
-int main()
-{
-  Figures figures_;
-}
+//       Complexquad
+//       Сircle
+//       Virtual inheritance

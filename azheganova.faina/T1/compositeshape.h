@@ -7,7 +7,7 @@ class CompositeShape
 {
 public:
   CompositeShape();
-  CompositeShape::CompositeShape(Shape** shp, size_t size, size_t capacity);
+  CompositeShape(Shape** shp, size_t size, size_t capacity);
   CompositeShape(const CompositeShape & rhs);
   CompositeShape(CompositeShape && rhs);
   CompositeShape(size_t capacity);

@@ -2,14 +2,15 @@
 
 size_t countIndenticalElements(const int* arr, size_t sizeArr)
 {
-  int maxCount = 0;
-  int count = 1;
+  size_t maxCount = 0;
+  size_t count = 1;
   for (size_t i = 0; i  < sizeArr - 1; ++i)
   {
     if (arr[i] == arr[i + 1])
     {
       count++;
-    } else
+    }
+    else
     {
       count = 1;
     }

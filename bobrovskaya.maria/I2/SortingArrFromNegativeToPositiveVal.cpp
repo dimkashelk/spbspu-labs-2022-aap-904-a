@@ -1,6 +1,6 @@
 #include "SortingArrFromNegativeToPositiveVal.h"
 
-void SortingArrFromNegativeToPositiveVal(int* arr, size_t sizeArr)
+void sortingArrFromNegativeToPositiveVal(int* arr, size_t sizeArr)
 {
   for (size_t i = 0; i < sizeArr; i++)
   {

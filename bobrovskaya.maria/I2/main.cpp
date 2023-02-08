@@ -16,7 +16,7 @@ int main(int argc, char **argv)
   size_t arrSize1 = 10;
   size_t maxCountIndeticEllementsArr1 = countIndenticalElements(arr1,arrSize1);
   std::cout << "The number of indentical elements in array1: " << maxCountIndeticEllementsArr1 << "\n";
-  SortingArrFromNegativeToPositiveVal (arr1, arrSize1);
+  sortingArrFromNegativeToPositiveVal (arr1, arrSize1);
   std::cout << "Modified array1: ";
   for (size_t i = 0; i < arrSize1; i++)
   {
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     }
     size_t maxCountIndeticEllementsArr2 = countIndenticalElements(arr2,arrSize2);
     std::cout << "The number of indentical elements in array2: " << maxCountIndeticEllementsArr2 << "\n";
-    SortingArrFromNegativeToPositiveVal (arr2, arrSize2);
+    sortingArrFromNegativeToPositiveVal (arr2, arrSize2);
     std::cout << "Modified array2: ";
     for (size_t i = 0; i < arrSize2; i++)
     {
@@ -69,10 +69,9 @@ int main(int argc, char **argv)
   int* arr3 = new int[arrSize3];
   if (readFile.is_open())
   {
+    size_t num = 0;
     while (!readFile.eof())
     {
-      for (size_t i = 0; i < arrSize3; i++)
-      {
         int value = 0;
         readFile >> value;
         if (!readFile)
@@ -81,15 +80,15 @@ int main(int argc, char **argv)
           delete[] arr3;
           return 4;
         }
-        arr3[i] = value;
+      arr3[num]=value;
+      num++;
       }
       readFile >> std::ws;
     }
-  }
   readFile.close();
   size_t maxCountIndeticEllementsArr3 = countIndenticalElements(arr3,arrSize3);
   std::cout << "The number of indentical elements in array3: " << maxCountIndeticEllementsArr3 << "\n";
-  SortingArrFromNegativeToPositiveVal (arr3, arrSize3);
+  sortingArrFromNegativeToPositiveVal (arr3, arrSize3);
   std::cout << "Modified array3: ";
   for (size_t i = 0; i < arrSize3; i++)
   {

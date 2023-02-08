@@ -57,7 +57,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
     {
       if (*i > *j)
       {
-        std::swap(*j, *i)
+        std::swap(*j, *i);
       }
     }
   }

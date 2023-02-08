@@ -4,7 +4,7 @@
 char* increaseString(const char* string1, const size_t capacity, const size_t size)
 {
   char* newStr = new char[capacity + 20];
-  for (char* i = string1, *j = newStr; i != string1 + size; ++i, ++j)
+  for (const char* i = string1, *j = newStr; i != string1 + size; ++i, ++j)
   {
     *j = *i;
   }

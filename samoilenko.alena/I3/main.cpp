@@ -1,11 +1,14 @@
 #include <iostream>
 #include "latin_letters.h"
+#include "most_common_characters.h"
 
 int main()
 {
   size_t capacity = 10;
-  char * cstring = new char[capacity];
+  char* cstring = new char[capacity];
   size_t size = 0;
+  const size_t newsize = 27;
+  const size_t newnewsize = 4;
   std::cin >> std::noskipws;
   do
   {
@@ -13,7 +16,7 @@ int main()
     {
       try
       {
-        char * newstr = new char[capacity + 20];
+        char* newstr = new char[capacity + 20];
         for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
         {
           *j = *i;
@@ -22,9 +25,10 @@ int main()
         cstring = newstr;
         capacity += 20;
       }
-      catch (...)
+      catch (const std::bad_alloc& ex)
       {
         delete [] cstring;
+        std::cerr << "Error..." << '\n';
         return 1;
       }
     }
@@ -33,5 +37,33 @@ int main()
   while (std::cin && cstring[size++] != '\n');
   cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
+  char* newstring = nullptr;
+  try
+  {
+    newstring = new char[newsize];
+  }
+  catch (const std::bad_alloc& ex)
+  {
+    delete [] cstring;
+    std::cerr << "Error..." << '\n';
+    return 1;
+  }
+  std::cout << createStringNewLatinLetters(newstring, cstring);
+  std::cout << '\n';
+  delete [] newstring;
+  try
+  {
+    newstring = new char[newnewsize];
+  }
+  catch (const std::bad_alloc& ex)
+  {
+    delete [] cstring;
+    std::cerr << ex.what() << '\n';
+    return 1;
+  }
+  std::cout << printMostCommonCharacters(newstring, cstring);
+  std::cout << '\n';
+  delete [] newstring;
   delete [] cstring;
+  return 0;
 }

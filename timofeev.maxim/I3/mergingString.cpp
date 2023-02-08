@@ -2,7 +2,7 @@
 #include <cctype>
 char *mergingStr(char *destination, const char *source1, const char *source2)
 {
-  size_t sizein1 = 0;
+  /*size_t sizein1 = 0;
   size_t sizein2 = 0;
   size_t sizeout = 0;
   while (source1[sizein1])
@@ -36,5 +36,21 @@ char *mergingStr(char *destination, const char *source1, const char *source2)
   }
   destination[sizeout] = '\0';
   delete [] timestr;
+  return destination;*/
+  char *j = destination;
+  for (auto i = source1; *i != '\0'; i++)
+  {
+    *j = *i;
+    ++j;
+  }
+  for (auto i = source2; *i != '\0'; i++)
+  {
+    if (std::isdigit(*i))
+    {
+      *(j + 1) = '\0';
+      *j = *i;
+      ++j;
+    }
+  }
   return destination;
 }

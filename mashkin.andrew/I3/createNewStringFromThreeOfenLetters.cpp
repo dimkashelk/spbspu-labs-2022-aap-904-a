@@ -1,5 +1,5 @@
-#include <cstddef>
 #include "createNewStringFromThreeOfenLetters.h"
+#include <cstddef>
 
 char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* string1, size_t endIndex)
 {

@@ -1,7 +1,7 @@
+#include "createCString.h"
 #include <cstddef>
 #include <iostream>
 #include <stdexcept>
-#include "createCString.h"
 #include "increaseString.h"
 
 char* createCString(std::istream& inp, size_t size, size_t capacity)

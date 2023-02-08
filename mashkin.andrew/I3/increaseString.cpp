@@ -1,5 +1,5 @@
-#include <cstddef>
 #include "increaseString.h"
+#include <cstddef>
 
 char* increaseString(char* string1, char* newStr,const size_t size)
 {

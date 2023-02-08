@@ -11,8 +11,8 @@ int main()
   std::cin >> value;
   if (!std::cin)
   {
-   std::cout << "Error, you need to type an integer\n";
-   return 1;
+    std::cout << "Error, you need to type an integer\n";
+    return 1;
   }
   while (value != 0)
   {
@@ -21,8 +21,8 @@ int main()
     std::cin >> value;
     if (!std::cin)
     {
-     std::cout << "Entered incorrect value\n";
-     return 1;
+      std::cout << "Entered incorrect value\n";
+      return 1;
     }
     countersum += sumCount(preprevalue, prevalue, value);
     countermod += modCount(prevalue, value);

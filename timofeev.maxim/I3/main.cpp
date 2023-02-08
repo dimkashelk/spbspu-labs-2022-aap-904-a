@@ -23,7 +23,11 @@ int main()
     str2[i] = '1';
   }
   str2[size2 - 1] = '\0';
-
+  for (char p = str; *p != '\0'; p++)
+  {
+    size++;
+  }
+  size++;
   char *outstring1 = new char[size];
   try
   {

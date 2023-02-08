@@ -29,7 +29,7 @@ char *mergingStr(char *destination, const char *source1, const char *source2)
       sizeout++;
     }
   }
-  destination[sizeout + 1] = '\0';
+  destination[sizeout] = '\0';
   delete [] timestr;
   return destination;
 }

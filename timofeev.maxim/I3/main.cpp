@@ -46,6 +46,7 @@ int main()
   {
     std::cout << e.what();
     delete [] str;
+    delete [] str2;
     return 1;
   }
 
@@ -70,5 +71,7 @@ int main()
     delete [] str2;
     return 1;
   }
+  delete [] str;
+  delete [] str2;
 }
 

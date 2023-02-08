@@ -1,5 +1,4 @@
 #include "extend_string.h"
-#include <iostream>
 #include <stdexcept>
 
 char * extendString(char * str_1, size_t capacity, size_t new_capacity)

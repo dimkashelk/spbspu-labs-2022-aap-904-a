@@ -15,32 +15,24 @@ int main()
     std::cout << e.what() << "\n";
     return 2;
   }
-  char *str2 = nullptr;
-  try
+  const size_t size2 = 5;
+  char *str2 = new char[size2];
+  for (size_t i = 0; i < size2 - 1; ++i)
   {
-    str2 = str_input(std::cin, size);
+    str2[i] = '1';
   }
-  catch (const std::runtime_error & e)
-  {
-    std::cout << e.what() << "\n";
-    return 2;
-  }
+  str2[size2 - 1] = '\0';
   char *outstring1 = new char[size];
-  char *outstring2 = new char[size];
   try
   {
     removeAlphabet(outstring1, str);
-    removeAlphabet(outstring2, str2);
     std::cout << outstring1 << "\n";
-    std::cout << outstring2 << "\n";
     delete [] outstring1;
-    delete [] outstring2;
   }
   catch (const std::bad_alloc &e)
   {
     std::cout << e.what();
     delete [] str;
-    delete [] str2;
     return 2;
   }
   char *outstring3 = new char[size];
@@ -57,5 +49,7 @@ int main()
     delete [] str2;
     return 2;
   }
+  delete [] str;
+  delete [] str2;
 }
 

@@ -81,7 +81,8 @@ int main()
     catch (const std::logic_error& e)
     {
       delete shape;
-      std::cerr << e.what();
+      std::cerr << e.what() << '\n';
+      return 1;
     }
   }
   while(std::cin);

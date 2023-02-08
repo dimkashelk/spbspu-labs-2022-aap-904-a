@@ -1,5 +1,4 @@
 #include "triangle.h"
-#include <cmath>
 #include "isoscale.h"
 
 Shape* inputTriangle(std::istream &input)

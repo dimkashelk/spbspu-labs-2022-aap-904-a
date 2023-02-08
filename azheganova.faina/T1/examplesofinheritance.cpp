@@ -1,7 +1,7 @@
 #include <iostream>
 
-// множественное наследование 
-// вывод: Shape
+// Multiple Inheritance
+// output: Shape
 //        rectangle
 //        Shape
 //        Triangle
@@ -48,13 +48,11 @@ int main()
   Figures figures_;
 }
 
-//виртульаное наследование
-//вывод: Shape
+//virtual inheritance
+//output: Shape
 //       rectangle
 //       Triangle
 //       Figures
-// изначально идея была в том, чтобы класс shape не дублировался как в прошлом варианте,
-// но я уже поняла, что для данной работы это не играет особой роли 
 
 class Shape
 {

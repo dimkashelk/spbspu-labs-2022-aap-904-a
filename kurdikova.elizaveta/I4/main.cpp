@@ -35,6 +35,10 @@ int main(int argc, char* argv[])
     size_t rows = 0;
     size_t columns = 0;
     inputFile >> rows >> columns;
+    if (rows == 0)
+    {
+      return 0;
+    }
     if (!inputFile)
     {
       std::cerr << "Error! An error occurred when reading the size of the matrix";
@@ -70,7 +74,7 @@ int main(int argc, char* argv[])
     }
     else
     {
-      if (rows != columns || rows == 0)
+      if (rows != columns)
       {
         std::cerr << "Error! The specified dimensions of the matrix do not correspond to the square matrix";
         return 9;

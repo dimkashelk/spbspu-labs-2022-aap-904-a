@@ -3,7 +3,7 @@
 #include <cstring>
 #include "finder_three_same_elements.h"
 #include "finder_same_elements_in_two_string.h"
-#include "array_expansion.h"
+#include "string_expansion.h"
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
         char* new_str = nullptr;
         cstring[size] = '\0';
         capacity += 20;
-        new_str = arrayExpansion(cstring, capacity);
+        new_str = stringExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
       }

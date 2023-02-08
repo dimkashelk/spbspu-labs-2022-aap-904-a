@@ -1,6 +1,6 @@
 #include "check_similarity_letters.h"
 
-char * checkSmilarityLetters(char * res, const char * i, const char  * j)
+char * checkSmilarityLetters(char * res, const char * i, const char * j)
 {
   bool noMatches = true;
   while (*i)

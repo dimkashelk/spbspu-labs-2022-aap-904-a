@@ -37,7 +37,7 @@ char *str_input(std::istream &str, size_t &in_size)
     str >> cstring[size];
   }
   while (str && cstring[size++] != '\n');
-  if (!str || !size)
+  if (!str && !size)
   {
     delete [] cstring;
     throw std::runtime_error("Input error");

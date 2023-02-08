@@ -2,7 +2,6 @@
 #include "increaseLineSize.h"
 #include "removeAlphabet.h"
 #include "mergingString.h"
-#include "isDigitInStr.h"
 int main()
 {
   char *str = nullptr;
@@ -16,14 +15,7 @@ int main()
     std::cout << e.what() << "\n";
     return 1;
   }
-  if (isDigitInStr(str))
-  {
-    std::cout << "Str contain digit" << "\n";
-  }
-  else
-  {
-    std::cout << "Str doesn't contain digit" << "\n";
-  }
+
   const size_t size2 = 5;
   char *str2 = new char[size2];
   for (size_t i = 0; i < size2 - 1; ++i)
@@ -31,12 +23,20 @@ int main()
     str2[i] = '1';
   }
   str2[size2 - 1] = '\0';
+
   char *outstring1 = new char[size];
   try
   {
     removeAlphabet(outstring1, str);
-    std::cout << outstring1 << "\n";
-    delete [] outstring1;
+    if (outstring1[0] != '\0')
+    {
+      std::cout << outstring1 << "\n";
+      delete [] outstring1;
+    }
+    else
+    {
+      std::cerr << "Error" << "\n";
+    }
   }
   catch (const std::bad_alloc &e)
   {
@@ -44,12 +44,20 @@ int main()
     delete [] str;
     return 1;
   }
-  char *outstring3 = new char[size];
+
+  char *outstring2 = new char[size];
   try
   {
-    mergingStr(outstring3, str, str2);
-    std::cout << outstring3 << "\n";
-    delete [] outstring3;
+    mergingStr(outstring2, str, str2);
+    if (outstring2[0] != '\0')
+    {
+      std::cout << outstring2 << "\n";
+      delete [] outstring2;
+    }
+    else
+    {
+      std::cerr << "Error" << "\n";
+    }
   }
   catch (const std::bad_alloc &e)
   {
@@ -58,8 +66,5 @@ int main()
     delete [] str2;
     return 1;
   }
-  delete [] str;
-  delete [] str2;
-  return 0;
 }
 

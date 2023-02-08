@@ -32,8 +32,8 @@ rectangle_t Parallelogram::getFrameRect() const
 {
   double leftPointX = std::min(A_.x, std::min(B_.x, C_.x));
   double rightPointX = std::max(A_.x, std::max(B_.x, C_.x));
-  double highestPointY = std::min(A_.y, std::min(B_.y, C_.y));
-  double lowestPointY = std::max(A_.y, std::max(B_.y, C_.y));
+  double lowestPointY = std::min(A_.y, std::min(B_.y, C_.y));
+  double highestPointY = std::max(A_.y, std::max(B_.y, C_.y));
   return { rightPointX - leftPointX, highestPointY - lowestPointY, getCenterParallelogram(A_, C_) };
 }
 

@@ -83,6 +83,9 @@ int main()
         break;
       }
     }
+    catch (std::invalid_argument &e) {
+      std::cerr << e.what();
+    }
     catch (...) {
       std::cerr << "Error while work with figures";
       deleteArray(shapes, size);

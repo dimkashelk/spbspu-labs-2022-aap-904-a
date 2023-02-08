@@ -6,7 +6,7 @@
 size_t minDiagonalSumParallelToSecondary(const int* matrix, const size_t rows)
 {
   size_t minSum = std::numeric_limits<size_t>::max();
-  // Верхняя половина матрицы относительно побочной диагонали
+  // The upper half of the matrix is relative to the side diagonal
   for (size_t i = 0; i < rows - 1; i++)
   {
     size_t currentSum = 0;
@@ -20,7 +20,7 @@ size_t minDiagonalSumParallelToSecondary(const int* matrix, const size_t rows)
     }
   }
 
-  // Нижняя половина матрицы относительно побочной диагонали
+  // The lower half of the matrix is relative to the side diagonal
   for (size_t i = 1; i < rows; i++)
   {
     size_t currentSum = 0;

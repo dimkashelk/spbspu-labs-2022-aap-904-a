@@ -6,16 +6,16 @@
 
 int main(int argc, char* argv[])
   {
-    // Проверка входных аргументов командной строки
+    // Checking command line input arguments
     if (argc != 4)
     {
-      std::cerr << "Ошибка! Неверное кол-во аргументов";
+      std::cerr << "Error! Invalid number of arguments";
       return 1;
     }
     const char* taskNumber = argv[1];
     if (std::strcmp(taskNumber, "1") && std::strcmp(taskNumber, "2"))
     {
-      std::cerr << "Ошибка! Неверный номер задания. Номер задания должен быть равен 1 или 2";
+      std::cerr << "Error! Invalid task number. The task number must be 1 or 2";
       return 2;
     }
 
@@ -23,12 +23,12 @@ int main(int argc, char* argv[])
     std::ofstream outputFile(argv[3]);
     if (!inputFile.is_open())
     {
-      std::cerr << "Ошибка! Не удаётся открыть входной файл";
+      std::cerr << "Error! The input file cannot be opened";
       return 3;
     }
     else if (!outputFile.is_open())
     {
-      std::cerr << "Ошибка! Не удаётся открыть выходной файл";
+      std::cerr << "Error! The output file cannot be opened";
       return 4;
     }
 
@@ -37,16 +37,16 @@ int main(int argc, char* argv[])
     inputFile >> rows >> columns;
     if (!inputFile)
     {
-      std::cerr << "Ошибка! Возникла ошибка при считывании размера матрицы";
+      std::cerr << "Error! An error occurred when reading the size of the matrix";
       return 5;
     }
     if (rows * columns > 1000)
     {
-      std::cerr << "Ошибка! Размер матрицы превышает 1000 элементов";
+      std::cerr << "Error! The size of the matrix exceeds 1000 elements";
       return 6;
     }
 
-    // Запуск заданий
+    // Starting tasks
     if (!std::strcmp(taskNumber, "1"))
     {
       int matrix[1000];
@@ -64,7 +64,7 @@ int main(int argc, char* argv[])
       std::cout << result;
       if (!outputFile)
       {
-        std::cerr << "Ошибка! Возникла ошибка при записи результата в выходной файл";
+        std::cerr << "Error! An error occurred when writing the result to the output file";
         return 8;
       }
     }
@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     {
       if (rows != columns || rows == 0)
       {
-        std::cerr << "Ошибка! Заданные размеры матрицы не соответствуют квадратной матрице";
+        std::cerr << "Error! The specified dimensions of the matrix do not correspond to the square matrix";
         return 9;
       }
       int* matrix = nullptr;
@@ -92,7 +92,7 @@ int main(int argc, char* argv[])
       std::cout << result;
       if (!outputFile)
       {
-        std::cerr << "Ошибка! Возникла ошибка при записи результата в выходной файл";
+        std::cerr << "Error! An error occurred when writing the result to the output file";
         delete[] matrix;
         return 8;
       }

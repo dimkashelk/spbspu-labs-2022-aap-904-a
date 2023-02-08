@@ -37,19 +37,13 @@ point_t movePoint(const point_t point, const point_t dpoint)
 
 bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C)
 {
-  point_t pos{ (A.x + C.x) / 2, (A.y + C.y) / 2 };
-  point_t D{ 2 * pos.x - B.x, 2 * pos.y - B.y };
-  double AO = getSide(A, pos);
-  double OC = getSide(pos, C);
-  double BO = getSide(pos, B);
-  double OD = getSide(pos, D);
-  if (AO == OC && BO == OD)
+  if ((A.x == B.x && A.y == B.y) || (A.x == C.x && A.y == C.y) || (C.x == B.x && C.y == B.y) || (A.y != B.y && B.y != C.y))
   {
-    return true;
+    return false;
   }
   else
   {
-    return false;
+    return true;
   }
 }
 

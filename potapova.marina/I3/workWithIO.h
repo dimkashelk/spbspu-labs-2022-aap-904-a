@@ -6,6 +6,5 @@
 #include "workWithStrs.h"
 
 char* stdinGetLine();
-void printAnswer(char* ans, const char* file_name);
 
 #endif

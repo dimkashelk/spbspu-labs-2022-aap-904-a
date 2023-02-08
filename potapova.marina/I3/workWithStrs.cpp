@@ -1,6 +1,6 @@
 #include "workWithStrs.h"
 
-char* reallocMem(char* str, const size_t& size, const size_t& new_capasity)
+char* reallocMem(char* str, const size_t& new_capasity)
 {
   char* new_mem_block;
 
@@ -14,10 +14,14 @@ char* reallocMem(char* str, const size_t& size, const size_t& new_capasity)
     std::cerr << "Allocation error: " << e.what() << '\n';
     std::exit(1);
   }
-  for (auto old_char_ptr = str, new_char_ptr = new_mem_block; old_char_ptr < old_char_ptr + size; ++old_char_ptr, ++new_char_ptr)
+
+  char* new_char_ptr = new_mem_block;
+  for (char* old_char_ptr = str; *old_char_ptr != '\0'; ++old_char_ptr, ++new_char_ptr)
   {
     *new_char_ptr = *old_char_ptr;
   }
+  *new_char_ptr = '\0';
+
   delete[] str;
 
   return new_mem_block;
@@ -28,7 +32,7 @@ void pushBack(char*& str, size_t& str_size, size_t& str_capasity, const char& ne
   if (str_size == str_capasity)
   {
     str_capasity += capasity_block;
-    str = reallocMem(str, str_size, str_capasity);
+    str = reallocMem(str, str_capasity);
   }
   str[str_size++] = new_char;
   str[str_size] = '\0';

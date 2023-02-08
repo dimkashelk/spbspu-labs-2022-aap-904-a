@@ -63,12 +63,6 @@ public:
   }
 };
 
-int main()
-{
-  multipleInheritance multipleInheritance_;
-  virtualiInheritance virtualiInheritance_;
-}
-
 // Multiple Inheritance
 // output: Shape
 //        rectangle

@@ -1,18 +1,20 @@
 #include "golden_ratio.h"
+#include "check_over_flow_size_t.h"
 #include <limits>
 #include <stdexcept>
 #include <cmath>
 
 size_t goldenRatio(size_t capacity)
 {
-  const double gRatioK = ((1 + std::sqrt(5)) / 2);
-  size_t max_size_t = std::numeric_limits< size_t >::max();
-  if ((max_size_t - (static_cast< int >(capacity * gRatioK) - capacity )) <= capacity )
+  const size_t gRatioK = static_cast< size_t >(((1 + std::sqrt(5)) / 2));
+  const size_t addend = capacity * (gRatioK - 1);
+  bool check_over_flow = checkOverFlowSizeT(capacity,addend);
+  if (check_over_flow)
   {
-    throw std::invalid_argument("too much");
+    return capacity + addend;
   }
   else
   {
-    return capacity + (static_cast< int >(capacity * gRatioK));
+    throw std::overflow_error("Overflow");
   }
 }

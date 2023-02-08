@@ -3,5 +3,5 @@
 #include <cstddef>
 #include <iostream>
 
-char* createCString(char* string1, char* newStr, size_t size);
+char* createCString(std::istream& inp, size_t size, size_t capacity);
 #endif

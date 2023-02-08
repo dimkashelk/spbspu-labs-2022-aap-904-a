@@ -13,6 +13,11 @@ char *mergingStr(char *destination, const char *source1, const char *source2)
     sizeout++;
   }
   size_t size = 0;
+  for (auto p = source1; *p != '\0'; p++)
+  {
+    size++;
+  }
+  size++;
   char *timestr = new char[size];
   while (source2[sizein2])
   {

@@ -43,7 +43,6 @@ int main(int argc, char **argv)
     }
     size_t maxCountIndeticEllementsArr2 = countIndenticalElements(arr2,arrSize2);
     std::cout << "The number of indentical elements in array2: " << maxCountIndeticEllementsArr2 << "\n";
-     (arr2, arrSize2);
     std::cout << "Modified array2: ";
     outputArray (arr2, arrSize2);
     std::cout << "\n";

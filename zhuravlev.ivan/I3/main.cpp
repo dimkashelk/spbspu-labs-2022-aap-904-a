@@ -22,8 +22,9 @@ int main()
       {
         cstring[size] = '\0';
         capacity += 20;
-        char* new_str = new char[capacity];
-        new_str = stringExpansion(cstring, capacity);
+        char* new_str = nullptr;
+        new_str = stringExpansion(capacity);
+        std::strcpy(new_str, cstring);
         delete[] cstring;
         cstring = new_str;
       }

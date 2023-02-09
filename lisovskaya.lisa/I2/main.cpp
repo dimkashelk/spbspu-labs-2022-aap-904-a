@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
   }
   int arr1[] = {2, 5, 3, 4, 6, 7, 1};
   std::cout << counter_before_min(arr1, 7) << std::endl;
-  std::cout << arith_mean(arr1, 7) << std::endl;
+  std::cout << findArithMean(arr1, 7) << std::endl;
   size_t n = 0;
   std::cin >> n;
   int *array2 = new int[n];
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << counter_before_min(array2, n) << std::endl;
-    std::cout << arith_mean(array2, n) << std::endl;
+    std::cout << findArithMean(array2, n) << std::endl;
   }
   catch (const std::runtime_error &e)
   {
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
   try
   {
     std::cout << counter_before_min(array3, size) << "\n";
-    std::cout << arith_mean(array3, size) << "\n";
+    std::cout << findArithMean(array3, size) << "\n";
   }
   catch (const std::runtime_error &e)
   {

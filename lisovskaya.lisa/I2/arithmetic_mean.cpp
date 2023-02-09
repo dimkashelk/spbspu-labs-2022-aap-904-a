@@ -1,6 +1,6 @@
 #include "arithmetic_mean.h"
 #include <stdexcept>
-double arith_mean(const int *ar, size_t m)
+double findArithMean(const int *ar, size_t m)
 {
   if (m == 0)
   {
@@ -13,5 +13,5 @@ double arith_mean(const int *ar, size_t m)
     sum += ar[i];
     n++;
   }
-  return static_cast<double>(sum) / static_cast<double>(n);
+  return static_cast< double >(sum) / static_cast< double >(n);
 }

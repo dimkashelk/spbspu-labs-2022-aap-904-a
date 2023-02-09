@@ -1,6 +1,6 @@
 #include <iostream>
 #include <inputcstring.hpp>
-#include "isexpression.cpp"
+#include "isexpression.hpp"
 
 int main()
 {

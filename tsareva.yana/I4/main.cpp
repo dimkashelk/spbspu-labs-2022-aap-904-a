@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstddef>
 #include "counter_column_witch_duplicate_elements.h"
+#include "check_lower_triangular_matrix.h"
 
 int main(int argc, char * argv[])
 {
@@ -67,7 +68,7 @@ int main(int argc, char * argv[])
       return 1;
     }
     const size_t size_sqrt_matrix = row;
-    int * dArr = new int[size];
+    int *dArr = new int[size];
     for (size_t i = 0; i < row; i++)
     {
       for (size_t j = 0; j < column; j++)
@@ -76,9 +77,13 @@ int main(int argc, char * argv[])
         if (!inputfile)
         {
           std::cerr << "Error reading elements\n";
-          delete [] dArr;
+          delete[] dArr;
           return 1;
         }
       }
+    }
+    outputfile << checkLowerTriangularMatrix(dArr, size_sqrt_matrix);
+    delete [] dArr;
   }
+  return 0;
 }

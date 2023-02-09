@@ -13,12 +13,12 @@ int isTriplet(int arr[], int size)
   for (int i = 0; i < size; i++)
   {
     if (arr[i] > arr[j] > arr[k])
-	{
-	  countOfTriplet += 1;
-	}
-	i++;
-	j++;
-	k++;
+    {
+  	  countOfTriplet += 1;
+    }
+    i++;
+    j++;
+    k++;
   }
   std::cout << "Count of triplets: " << countOfTriplet << " ";
   return 0;

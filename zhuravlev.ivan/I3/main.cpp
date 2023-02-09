@@ -24,6 +24,7 @@ int main()
         capacity += 20;
         char* str = new char[capacity];
         std::strcpy(str, cstring);
+        delete[] cstring;
         cstring = stringExpansion(str, capacity);
         delete[] str;
       }

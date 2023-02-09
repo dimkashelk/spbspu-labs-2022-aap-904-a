@@ -61,7 +61,7 @@ int main(int argc, char** argv)
       delete[] arr3;
       }
   }
-  else 
+  else
   {
     std::cerr << "No input file." << endl;
   }

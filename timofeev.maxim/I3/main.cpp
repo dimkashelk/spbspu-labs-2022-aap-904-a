@@ -8,14 +8,13 @@ int main()
   size_t size = 0;
   try
   {
-    str = str_input(std::cin, size);
+    str = inputStr(std::cin, size);
   }
-  catch (const std::runtime_error & e)
+  catch (const std::runtime_error &e)
   {
     std::cout << e.what() << "\n";
     return 1;
   }
-
   const size_t size2 = 5;
   char *str2 = new char[size2];
   for (size_t i = 0; i < size2 - 1; ++i)
@@ -49,7 +48,6 @@ int main()
     delete [] str2;
     return 1;
   }
-
   char *outstring2 = new char[size];
   try
   {

@@ -1,7 +1,7 @@
 #include "increaseLineSize.h"
 #include <limits>
 #include <stdexcept>
-char *str_input(std::istream &str, size_t &in_size)
+char *inputStr(std::istream &str, size_t &in_size)
 {
   const size_t max_size = std::numeric_limits< size_t >::max();
   size_t capasity = 10;

@@ -1,15 +1,13 @@
-#include <iostream>
 #include "StringOperations.h"
 
 int main()
 {
   size_t size = 0;
-  char* src = {};
+  char* src = nullptr;
   try {
     src = inputString(std::cin, size);
   }
   catch (const std::bad_alloc & err) {
-    delete[] src;
     std::cerr << "Error: " << err.what();
     return 1;
   }
@@ -20,14 +18,29 @@ int main()
   }
 
   //Task11
-  char* dest = new char[size];
+  char* dest = nullptr;
+  try {
+    dest = new char[size];
+  }
+  catch (const std::bad_alloc & err) {
+    delete[] src;
+    std::cerr << "Error: " << err.what();
+    return 3;
+  }
   switchCase(src, dest);
 
   std::cout << "string with switched case: " << dest << '\n';
   delete[] dest;
 
   //Task 19
-  dest = new char[4];
+  try {
+    dest = new char[4];
+  }
+  catch (const std::bad_alloc & err) {
+    delete[] src;
+    std::cerr << "Error: " << err.what();
+    return 3;
+  }
   threeMostCommon(src, dest);
   std::cout << "Most common characters: " << dest;
 

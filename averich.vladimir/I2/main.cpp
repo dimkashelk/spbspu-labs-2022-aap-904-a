@@ -1,7 +1,16 @@
+#include <iostream>
+#include <fstream>
+#include "sort.hpp"
 int main(int argc, char * argv[])
 {
+  if (argc != 2)
+  {
+    std::cout << "Error: wrong file name" << std::endl;
+    return 2;
+  }
   const size_t sizeOfDefaultArray = 10;
   int defaultArray[sizeOfDefaultArray] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
+  sort(defaultArray, sizeOfDefaultArray);
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of array: ";
   std::cin >> sizeOfDynArray;
@@ -12,6 +21,7 @@ int main(int argc, char * argv[])
     dynArray[i] = 1 + rand() % 9;
     dynArray[i] = 1 + rand() % 9 * -1;
   }
+  sort(dynArray, sizeOfDynArray);
   delete[] dynArray;
   std::string fileName = argv[1];
   std::ifstream in(fileName);
@@ -29,6 +39,7 @@ int main(int argc, char * argv[])
       return 2;
     }
   }
+  sort(fileArray, sizeOfFileArray);
   delete[] fileArray;
   return 0;
 }

@@ -36,7 +36,7 @@ int main(int argc, char** argv)
   srand(time(NULL));
   int arr1[] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20};
   process_array(&(arr1[0]), 18);
-  int n;
+  size_t n;
   cin >> n;
   if (n <= 0) {
     std::cerr << "Invalid array length." << endl;

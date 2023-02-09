@@ -62,7 +62,7 @@ int main()
     std::cout << res2 << '\n';
     delete[] res2;
   }
-  catch (const std::bad_alloc &e)
+  catch (const std::bad_alloc & e)
   {
     std::cout << e.what();
     delete[] str_1;

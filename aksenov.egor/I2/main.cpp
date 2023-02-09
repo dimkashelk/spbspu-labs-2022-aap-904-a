@@ -7,8 +7,8 @@
 int main(int argc, char *argv[])
 {
   int filled_arr[6] = {-1, 2, 3, 4, 5, 6};
-  std::cout << countAmountOfRightPairs(filled_arr, 6) << std::endl;
-  std::cout << isRepeatingPositiveNumbers(filled_arr, 6) << std::endl;
+  std::cout << countAmountOfRightPairs(filled_arr, 6) << "\n";
+  std::cout << isRepeatingPositiveNumbers(filled_arr, 6) << "\n";
   size_t line = 0;
   std::cin >> line;
   if (!std::cin)
@@ -24,8 +24,8 @@ int main(int argc, char *argv[])
     {
       dynamic_arr[i] = std::rand();
     }
-    std::cout << countAmountOfRightPairs(dynamic_arr, line) << std::endl;
-    std::cout << isRepeatingPositiveNumbers(dynamic_arr, line) << std::endl;
+    std::cout << countAmountOfRightPairs(dynamic_arr, line) << "\n";
+    std::cout << isRepeatingPositiveNumbers(dynamic_arr, line) << "\n";
   }
   else
   {
@@ -36,11 +36,10 @@ int main(int argc, char *argv[])
   {
     std::cerr << "Not correct amount of parameters" << "\n";
   }
-  size_t fsize = 0;
-  int *f_arr = new int[fsize];
+  int *f_arr = new int[line];
   std::string fname = argv[1];
   std::ifstream input(fname);
-  input >> fsize;
+  input >> line;
   if (!input)
   {
     std::cout << "File error" << "\n";
@@ -48,7 +47,7 @@ int main(int argc, char *argv[])
     delete [] f_arr;
     return 2;
   }
-  for (size_t i = 0; i < fsize; ++i)
+  for (size_t i = 0; i < line; ++i)
   {
     input >> f_arr[i];
     if (!input)
@@ -58,8 +57,8 @@ int main(int argc, char *argv[])
       delete [] f_arr;
       return 2;
     }
-    std::cout << countAmountOfRightPairs(f_arr, fsize) << std::endl;
-    std::cout << isRepeatingPositiveNumbers(f_arr, fsize) << std::endl;
+    std::cout << countAmountOfRightPairs(f_arr, line) << "\n";
+    std::cout << isRepeatingPositiveNumbers(f_arr, line) << "\n";
     delete [] f_arr;
     input.close();
   }

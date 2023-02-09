@@ -22,11 +22,10 @@ int main()
       {
         cstring[size] = '\0';
         capacity += 20;
-        char* str = new char[capacity];
-        std::strcpy(str, cstring);
+        char* new_str = new char[capacity];
+        new_str = arrayExpansion(cstring, capacity);
         delete[] cstring;
-        cstring = stringExpansion(str, capacity);
-        delete[] str;
+        cstring = new_str;
       }
       catch (const std::bad_alloc& e)
       {

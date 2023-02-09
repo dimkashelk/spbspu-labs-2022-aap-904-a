@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
       return 2;
     }
   std::cout << countAmountOfRightPairs(f_arr, fsize) << std::endl;
-  std::cout << isRepeatingPositiveNumbers(f_arr, fsize) << std::endl; 
+  std::cout << isRepeatingPositiveNumbers(f_arr, fsize) << std::endl;
     delete [] f_arr;
     input.close();
   }

@@ -13,4 +13,22 @@ int main(int argc, char * argv[])
     dynArray[i] = 1 + rand() % 9 * -1;
   }
   delete[] dynArray;
+  std::string fileName = argv[1];
+  std::ifstream in(fileName);
+  size_t sizeOfFileArray = 0;
+  in >> sizeOfFileArray;
+  int * fileArray = new int[sizeOfFileArray];
+  for (size_t i = 0; i < sizeOfFileArray; i++)
+  {
+    in >> fileArray[i];
+    if (!in)
+    {
+      std::cout << "Error: input is empty" << std::endl;
+      in.close();
+      delete[] fileArray;
+      return 2;
+    }
+  }
+  delete[] fileArray;
+  return 0;
 }

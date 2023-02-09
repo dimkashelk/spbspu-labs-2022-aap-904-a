@@ -20,5 +20,13 @@ int main(int argc, char * argv[])
   if (!inputfile)
   {
     std::cerr << "Incorrect arguments of the matrix\n";
+    return 1;
+  }
+  size_t column =0 ;
+  inputfile >> column;
+  if (!inputfile)
+  {
+    std::cerr << "Incorrect arguments of the matrix\n";
+    return 1;
   }
 }

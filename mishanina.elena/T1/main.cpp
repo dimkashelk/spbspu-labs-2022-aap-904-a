@@ -64,12 +64,14 @@ int main()
       {
         correctFigure = false;
         countInvalidFigure++;
+        delete[] shape;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
       }
+      delete[] shape;
     }
     else if (figureName == "SCALE")
     {

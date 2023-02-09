@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "sort.hpp"
+#include "istriplet.hpp"
 int main(int argc, char * argv[])
 {
   if (argc != 2)
@@ -10,7 +11,9 @@ int main(int argc, char * argv[])
   }
   const size_t sizeOfDefaultArray = 10;
   int defaultArray[sizeOfDefaultArray] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
+  std::cout << "Before sort" << isTriplet(defaultArray, sizeOfDefaultArray) << std::endl;
   sort(defaultArray, sizeOfDefaultArray);
+  std::cout << "After sort" << isTriplet(defaultArray, sizeOfDefaultArray) << std::endl;
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of array: ";
   std::cin >> sizeOfDynArray;
@@ -21,6 +24,9 @@ int main(int argc, char * argv[])
     dynArray[i] = 1 + rand() % 9;
     dynArray[i] = 1 + rand() % 9 * -1;
   }
+  std::cout << "Before sort" << isTriplet(dynArray, sizeOfDynArray) << std::endl;
+  sort(dynArray, sizeOfDynArray);
+  std::cout << "After sort" << isTriplet(dynArray, sizeOfDynArray) << std::endl;
   sort(dynArray, sizeOfDynArray);
   delete[] dynArray;
   std::string fileName = argv[1];
@@ -39,7 +45,9 @@ int main(int argc, char * argv[])
       return 2;
     }
   }
+  std::cout << "Before sort" << isTriplet(fileArray, sizeOfFileArray) << std::endl;
   sort(fileArray, sizeOfFileArray);
+  std::cout << "After sort" << isTriplet(fileArray, sizeOfFileArray) << std::endl;
   delete[] fileArray;
   return 0;
 }

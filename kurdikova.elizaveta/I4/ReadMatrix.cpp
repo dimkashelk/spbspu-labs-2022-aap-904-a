@@ -7,7 +7,7 @@ int* readMatrixFromFile(int* matrix, const size_t rows, const size_t columns, st
     inputFile >> matrix[i];
     if (!inputFile)
     {
-      throw std::runtime_error("Error! An error occurred when reading matrix elements");
+      return nullptr;
     }
   }
   return matrix;

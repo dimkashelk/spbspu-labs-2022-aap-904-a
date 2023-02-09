@@ -7,7 +7,7 @@ size_t getPosRowsCount(const int* matrix, const size_t rows, const size_t column
   {
     for (size_t j = 0; j < columns; j++)
     {
-      if (matrix[i*columns + j] <= 0)
+      if (matrix[i * columns + j] <= 0)
       {
         break;
       }

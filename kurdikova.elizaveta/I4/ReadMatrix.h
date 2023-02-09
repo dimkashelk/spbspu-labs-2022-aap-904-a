@@ -2,5 +2,5 @@
 #define READMATRIX_H
 #include <fstream>
 
-int* readMatrixFromFile(int* matrix, const size_t rows, const size_t columns, std::ifstream& inputFile);
+int* readMatrixFromFile(int* matrix, size_t rows, size_t columns, std::ifstream& inputFile);
 #endif

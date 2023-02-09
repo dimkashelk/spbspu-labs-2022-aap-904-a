@@ -3,5 +3,5 @@
 #include <limits>
 #include <cstddef>
 
-size_t minDiagonalSumParallelToSecondary(const int* matrix, const size_t rows);
+size_t minDiagonalSumParallelToSecondary(const int* matrix, size_t rows);
 #endif

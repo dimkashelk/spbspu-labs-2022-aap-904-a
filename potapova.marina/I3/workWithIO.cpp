@@ -8,7 +8,7 @@ char* stdinGetLine()
   {
     result = new char[capasity_block];
   }
-  catch (const std::bad_alloc & e)
+  catch (const std::bad_alloc& e)
   {
     std::cerr << "Allocation failed: " << e.what() << '\n';
     std::exit(1);
@@ -16,6 +16,7 @@ char* stdinGetLine()
 
   size_t result_size = 0;
   size_t result_capasity = capasity_block;
+  *result = '\000';
 
   char cur_char;
   std::cin >> std::noskipws;

@@ -7,19 +7,22 @@ char* getMostCommonSyms(char* dest, const char* str)
   std::pair<char, size_t> common_syms[3];
   for (char* cur_sym = str_cpy.first; cur_sym < str_cpy.second; ++cur_sym)
   {
-    size_t count_of_sym_common = 1;
-    while (*cur_sym == *(cur_sym + 1))
+    if (std::isspace(*cur_sym) == 0)
     {
-      ++count_of_sym_common;
-      ++cur_sym;
-    }
-    for (auto& common_sym : common_syms)
-    {
-      if (common_sym.second < count_of_sym_common)
+      size_t count_of_sym_common = 1;
+      while (*cur_sym == *(cur_sym + 1))
       {
-        common_sym.first = *cur_sym;
-        common_sym.second = count_of_sym_common;
-        break;
+        ++count_of_sym_common;
+        ++cur_sym;
+      }
+      for (auto& common_sym : common_syms)
+      {
+        if (common_sym.second < count_of_sym_common)
+        {
+          common_sym.first = *cur_sym;
+          common_sym.second = count_of_sym_common;
+          break;
+        }
       }
     }
   }

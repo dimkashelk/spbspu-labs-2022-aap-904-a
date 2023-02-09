@@ -5,6 +5,13 @@ int main()
 {
   const char* const input_str = stdinGetLine();
 
+  if (*input_str == '\0')
+  {
+    std::cerr << "Empty input\n";
+    
+    return 1;
+  } 
+
   char* most_common_syms;
 
   try
@@ -14,7 +21,8 @@ int main()
   catch (const std::bad_alloc& e)
   {
     std::cerr << "Allocation failed: " << e.what() << '\n';
-    std::exit(1);
+
+    return 1;
   }
 
   std::cout << getMostCommonSyms(most_common_syms, input_str) << '\n';
@@ -24,3 +32,4 @@ int main()
 
   return 0;
 }
+

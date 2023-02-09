@@ -61,18 +61,23 @@ int main(int argc, char* argv[])
         return 1;
       }
     }
+    int* arr_column_sums = nullptr;
     try
     {
-      output_file << countColumnsEqualSumElement(array, rows, columns);
+      arr_column_sums = new int[columns];
+      output_file << countColumnsEqualSumElement(array, arr_column_sums, rows, columns);
       if (!output_file)
       {
         std::cerr << "Error while output\n";
+        delete[] arr_column_sums;
         return 1;
       }
+      delete[] arr_column_sums;
     }
     catch (const std::bad_alloc& e)
     {
       std::cerr << "Error func\n";
+      delete[] arr_column_sums;
       return 1;
     }
   }

@@ -22,5 +22,5 @@ size_t counterColumnWitchDuplicateElements(const int * array, const size_t row, 
       counter_column++;
     }
   }
-  return counter_column
+  return counter_column;
 }

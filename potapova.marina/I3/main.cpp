@@ -8,9 +8,9 @@ int main()
   if (*input_str == '\0')
   {
     std::cerr << "Empty input\n";
-    
+
     return 1;
-  } 
+  }
 
   char* most_common_syms;
 

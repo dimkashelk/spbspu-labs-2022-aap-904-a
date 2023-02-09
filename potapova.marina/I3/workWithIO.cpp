@@ -16,7 +16,7 @@ char* stdinGetLine()
 
   size_t result_size = 0;
   size_t result_capasity = capasity_block;
-  *result = '\000';
+  *result = '\0';
 
   char cur_char;
   std::cin >> std::noskipws;

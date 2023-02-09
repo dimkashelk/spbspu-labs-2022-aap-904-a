@@ -1,5 +1,5 @@
 #include "repeatingPositiveNumbers.h"
-bool isRepeatingPositiveNumbers(const int* arr, const size_t size)
+bool isRepeatingPositiveNumbers(const int *arr, const size_t size)
 {
   for (size_t i = 1; i < size; i++)
   {

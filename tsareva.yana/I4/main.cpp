@@ -29,4 +29,20 @@ int main(int argc, char * argv[])
     std::cerr << "Incorrect arguments of the matrix\n";
     return 1;
   }
+  size_t size = row * column;
+  std::ofstream outputfile(argv[3]);
+  if (!outputfile)
+  {
+    std::cerr << "Error file";
+    return 1;
+  }
+  if (!std::strcmp(argv[1], "1"))
+  {
+    if (size > 1000)
+    {
+      std::cerr << "Too much elements\n";
+      return 1;
+    }
+
+  }
 }

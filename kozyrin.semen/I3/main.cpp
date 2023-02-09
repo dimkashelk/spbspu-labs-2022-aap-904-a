@@ -1,3 +1,4 @@
+#include <InputString.h>
 #include "StringOperations.h"
 
 int main()

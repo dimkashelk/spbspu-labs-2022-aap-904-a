@@ -4,7 +4,7 @@
 #include <ctime>
 using namespace std;
 
-void process_array(int* arr, int n) {
+void process_array(int* arr, size_t n) {
   int max = INT_MIN;
   int min = INT_MAX;
   int imin = 0, imax = 0, suma = 0;

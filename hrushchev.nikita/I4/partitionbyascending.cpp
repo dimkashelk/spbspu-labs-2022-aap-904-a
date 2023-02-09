@@ -13,7 +13,7 @@ int* partitionByAscending(int* begin, int* end)
         min_ptr = j;
       }
     }
-    std::swap(*i, *min_ptr);
+    std::swap(*i, *min);
   }
   return begin;
 }

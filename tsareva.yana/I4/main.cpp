@@ -59,4 +59,13 @@ int main(int argc, char * argv[])
     }
     outputfile << counterColumnWitchDuplicateElements(arr, row, column) << "\n";
   }
+  if (!std::strcmp(argv[1], "2"))
+  {
+    if (row != column)
+    {
+      std::cerr << "This matrix not square\n";
+      return 1;
+    }
+    const size_t size_sqrt_matrix = row;
+  }
 }

@@ -2,9 +2,7 @@
 #include <fstream>
 #include <climits>
 #include <ctime>
-
 using namespace std;
-
 void process_array(int* arr, int n) {
   int max = INT_MIN;
   int min = INT_MAX;
@@ -27,7 +25,6 @@ void process_array(int* arr, int n) {
     ++c;
   }
   avg /= c;
-  
     std::cout << "The min element is: " << min << std::endl;
     std::cout << "The max element is: " << max << std::endl;
     std::cout << "The sum of indices of the max and min is: " << suma << std::endl;

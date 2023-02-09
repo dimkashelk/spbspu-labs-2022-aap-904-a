@@ -1,5 +1,5 @@
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
 #include <cstddef>
 
 int main(int argc, char * argv[])

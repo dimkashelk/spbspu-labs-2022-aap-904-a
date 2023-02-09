@@ -10,7 +10,7 @@ int* partitionByAscending(int* begin, int* end)
     {
       if (*j < *min)
       {
-        min_ptr = j;
+        min = j;
       }
     }
     std::swap(*i, *min);

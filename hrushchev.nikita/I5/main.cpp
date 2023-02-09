@@ -14,8 +14,7 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-  std::cout << c_string << "\n";
-  std::cout << isExpression(c_string) << "\n";
+  std::cout << std::boolalpha << isExpression(c_string) << "\n";
   delete[] c_string;
 }
 

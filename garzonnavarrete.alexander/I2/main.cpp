@@ -4,24 +4,24 @@
 #include <ctime>
 using namespace std;
 
-void process_array(int* arr, int n){
+void process_array(int* arr, int n) {
   int max = INT_MIN;
   int min = INT_MAX;
   int imin = 0, imax = 0, suma = 0;
   double avg = 0.0;
-  for (size_t i = 0; i < n; ++i){
-    if (arr[i] < min){
+  for (size_t i = 0; i < n; ++i) {
+    if (arr[i] < min) {
       min = arr[i];
       imin = i;
     }
-    if (arr[i] > max){
+    if (arr[i] > max) {
       max = arr[i];
       imax = i;
     }
   }
   suma = imin + imax;
   int c = 0;
-  for (size_t i = 0; i < n; i+=2){
+  for (size_t i = 0; i < n; i+=2) {
     avg += arr[i];
     ++c;
   }
@@ -38,32 +38,32 @@ int main(int argc, char** argv)
   process_array(&(arr1[0]), 18);
   int n;
   cin >> n;
-  if (n <= 0){
-     std::cerr << "Invalid array length." << endl;
-     return -1;
+  if (n <= 0) {
+    std::cerr << "Invalid array length." << endl;
+    return -1;
   }
   int* arr2 = new int[n];
   for(int i = 0; i < n; ++i) arr2[i] = rand();
   process_array(arr2, n);
   delete[] arr2;
-  if (argc > 0){
-     ifstream ifs;
-     ifs.open(argv[1]);
-     if (ifs){
-        ifs >> n;
-        if (n <= 0){
-           std::cerr << "Invalid array length specified in the file." << endl;
-           return -2;
+  if (argc > 0) {
+    ifstream ifs;
+    ifs.open(argv[1]);
+    if (ifs) {
+      ifs >> n;
+      if (n <= 0) {
+        std::cerr << "Invalid array length specified in the file." << endl;
+        return -2;
         }
-	int* arr3 = new int[n];
-	for(int i = 0; i < n; ++i) ifs >> arr3[i];
-	process_array(arr3, n);
-	delete[] arr3;
-     }
+      int* arr3 = new int[n];
+      for(int i = 0; i < n; ++i) ifs >> arr3[i];
+      process_array(arr3, n);
+      delete[] arr3;
+      }
   }
-  else
+  else 
   {
-     std::cerr << "No input file." << endl;
+    std::cerr << "No input file." << endl;
   }
   return 0;
 }

@@ -26,16 +26,16 @@ int main()
     }
     if (figureName == "RECTANGLE" || figureName == "PARALLELOGRAM" || figureName == "TRIANGLE")
     {
-      Shape* shape = nullptr;
       try
       {
         if (figureName == "RECTANGLE")
         {
           point_t A{}, B{};
           std::cin >> A.x >> A.y >> B.x >> B.y;
-          shape = new Rectangle(A, B);
+          Shape* shape = new Rectangle(A, B);
           compositeShape.push_back(shape);
           countCorrectFigure++;
+          delete[] shape;
           correctFigure = true;
           correctComposite = true;
         }
@@ -43,9 +43,10 @@ int main()
         {
           point_t A{}, B{}, C{};
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-          shape = new Parallelogram(A, B, C);
+          Shape* shape = new Parallelogram(A, B, C);
           compositeShape.push_back(shape);
           countCorrectFigure++;
+          delete[] shape;
           correctFigure = true;
           correctComposite = true;
         }
@@ -53,9 +54,10 @@ int main()
         {
           point_t A{}, B{}, C{};
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-          shape = new Triangle(A, B, C);
+          Shape* shape = new Triangle(A, B, C);
           compositeShape.push_back(shape);
           countCorrectFigure++;
+          delete[] shape;
           correctFigure = true;
           correctComposite = true;
         }
@@ -70,8 +72,8 @@ int main()
       catch (...)
       {
         correctComposite = false;
+        delete[] shape;
       }
-      delete[] shape;
     }
     else if (figureName == "SCALE")
     {

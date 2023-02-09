@@ -4,6 +4,14 @@
 #include "CountIndenticalElements.h"
 #include "SortingArrFromNegativeToPositiveVal.h"
 
+void outputArray(int* arr, size_t sizeArr)
+{
+  for (size_t i = 0; i < sizeArr; i++)
+  {
+    std::cout << arr[i];
+  }
+}
+
 int main(int argc, char **argv)
 {
   if (argc != 2)
@@ -16,12 +24,9 @@ int main(int argc, char **argv)
   size_t arrSize1 = 10;
   size_t maxCountIndeticEllementsArr1 = countIndenticalElements(arr1,arrSize1);
   std::cout << "The number of indentical elements in array1: " << maxCountIndeticEllementsArr1 << "\n";
-  sortingArrFromNegativeToPositiveVal (arr1, arrSize1);
+  partition (arr1, arrSize1);
   std::cout << "Modified array1: ";
-  for (size_t i = 0; i < arrSize1; i++)
-  {
-    std::cout << arr1[i];
-  }
+  outputArray (arr1, arrSize1);
   std::cout << "\n";
 
   size_t arrSize2 = 0;
@@ -34,16 +39,13 @@ int main(int argc, char **argv)
     std::srand(time(nullptr));
     for (size_t i = 0; i < arrSize2; i++)
     {
-      arr2[i] = rand() % 10;
+      arr2[i] = std::rand() % 10;
     }
     size_t maxCountIndeticEllementsArr2 = countIndenticalElements(arr2,arrSize2);
     std::cout << "The number of indentical elements in array2: " << maxCountIndeticEllementsArr2 << "\n";
-    sortingArrFromNegativeToPositiveVal (arr2, arrSize2);
+     (arr2, arrSize2);
     std::cout << "Modified array2: ";
-    for (size_t i = 0; i < arrSize2; i++)
-    {
-      std::cout << arr2[i];
-    }
+    outputArray (arr2, arrSize2);
     std::cout << "\n";
     delete[] arr2;
   }
@@ -88,12 +90,8 @@ int main(int argc, char **argv)
   readFile.close();
   size_t maxCountIndeticEllementsArr3 = countIndenticalElements(arr3,arrSize3);
   std::cout << "The number of indentical elements in array3: " << maxCountIndeticEllementsArr3 << "\n";
-  sortingArrFromNegativeToPositiveVal (arr3, arrSize3);
   std::cout << "Modified array3: ";
-  for (size_t i = 0; i < arrSize3; i++)
-  {
-    std::cout << arr3[i];
-  }
+  outputArray (arr3, arrSize3);
   std::cout << "\n";
   delete[] arr3;
 }

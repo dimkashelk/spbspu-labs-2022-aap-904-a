@@ -1,6 +1,6 @@
 #ifndef SORTINGARRFROMNEGATIVETOPOSITIVEVAL_H
 #define SORTINGARRFROMNEGATIVETOPOSITIVEVAL_H
-#include <iostream>
+#include <algorithm>
 
-void sortingArrFromNegativeToPositiveVal(int* arr, size_t sizeArr);
+void partition(int* arr, size_t sizeArr);
 #endif

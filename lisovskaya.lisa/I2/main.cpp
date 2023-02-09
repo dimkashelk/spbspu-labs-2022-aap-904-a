@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "counter_before_min.h"
-#include "arithmetic_mean.h"
+#include "findArithmeticMean.h"
 int main(int argc, char *argv[])
 {
   if (argc == 1)

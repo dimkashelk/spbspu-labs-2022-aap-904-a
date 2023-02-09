@@ -1,87 +1,47 @@
 #include "isexpression.hpp"
+#include <iostream>
 
-bool isLetter(const char* str)
+bool isIdentificator(const char x)
 {
-    return (*str >= 'a') && (*str <= 'e');
+  return x == 'a' || x == 'b' || x == 'c' || x == 'd' || x == 'e';
 }
 
-bool isDigit(const char* str)
+bool isDigit(const char x)
 {
-    return (*str >= '0') && (*str <= '9');
+  return std::isdigit(x);
 }
 
-bool isUnsignedInteger(const char* str)
+bool isEnd(const char x)
 {
-  if (*str == '\0')
-  {
-    return false;
-  }
-
-  if (!isDigit(str))
-  {
-    return false;
-  }
-
-  return isUnsignedInteger(str + 1);
+  return (x == '\0');
 }
 
-bool isIdentifier(const char* str)
+bool isSign(const char x)
 {
-  if (*str == '\0')
-  {
-    return false;
-  }
-
-  if (!isLetter(str))
-  {
-    return false;
-  }
-
-  return isIdentifier(str + 1);
+  return x == '+' || x == '-';
 }
 
-bool isMultiplier(const char* str)
+bool isUnsigned(const char *x)
 {
-  return isUnsignedInteger(str) || isIdentifier(str);
+  return isDigit(*x) || (isDigit(*x) && isUnsigned(++x));
 }
 
-bool isTerm(const char* str)
+bool isMultiplier(const char *x)
 {
-  if (*str == '\0')
-  {
-    return false;
-  }
-
-  if (!isMultiplier(str))
-  {
-    return false;
-  }
-
-  if (*str == '*')
-  {
-    return isTerm(str + 1);
-  }
-
-  return true;
+  return isUnsigned(x) || isIdentificator(*x);
 }
 
-bool isExpression(const char* str)
+bool isTerm(const char *x)
 {
-  if (*str == '\0')
-  {
-    return false;
-  }
-
-  if (!isTerm(str))
-  {
-    return false;
-  }
-
-  if (*str == '+' || *str == '-')
-  {
-    return isExpression(str + 1);
-  }
-
-  return true;
+  return isMultiplier(x) || (isMultiplier(x) && isSign(*x) && isTerm(++x));
 }
 
+bool isExpression(const char *x)
+{
+  return isTerm(x) || (isTerm(x) && (isSign(*x) || isSign(*x) ) && isExpression(++x));
+}
+
+bool checkExpression(const char *x)
+{
+  return isExpression(x) && isEnd(*x);
+}

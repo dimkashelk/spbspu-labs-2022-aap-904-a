@@ -3,6 +3,7 @@
 #include <climits>
 #include <ctime>
 using namespace std;
+
 void process_array(int* arr, int n) {
   int max = INT_MIN;
   int min = INT_MAX;
@@ -39,8 +40,7 @@ int main(int argc, char** argv)
   process_array(&(arr1[0]), 18);
   int n;
   cin >> n;
-  if (n <= 0)
-  {
+  if (n <= 0) {
      std::cerr << "Invalid array length." << endl;
      return -1;
   }
@@ -63,7 +63,8 @@ int main(int argc, char** argv)
 	delete[] arr3;
      }
   }
-  else {
+  else
+  {
      std::cerr << "No input file." << endl;
   }
   return 0;

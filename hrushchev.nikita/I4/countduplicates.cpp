@@ -1,4 +1,5 @@
 #include "countduplicates.hpp"
+#include "partitionbyascending.hpp"
 #include <cstddef>
 #include <algorithm>
 
@@ -7,7 +8,7 @@ size_t countDuplicates(int* array, const size_t size)
   size_t count = 0;
   size_t current_count = 1;
 
-  std::sort(array, array + size);
+  array = partitionByAscending(array, array + size);
   for (size_t i = 0; i < size - 1; i++)
   {
     if (array[i] == array[i + 1])

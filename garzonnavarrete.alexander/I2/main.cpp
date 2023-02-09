@@ -26,10 +26,10 @@ void process_array(int* arr, int n) {
     ++c;
   }
   avg /= c;
-    std::cout << "The min element is: " << min << std::endl;
-    std::cout << "The max element is: " << max << std::endl;
-    std::cout << "The sum of indices of the max and min is: " << suma << std::endl;
-    std::cout << "The average of elements at even indices is: " << avg <<std::endl;
+  std::cout << "The min element is: " << min << std::endl;
+  std::cout << "The max element is: " << max << std::endl;
+  std::cout << "The sum of indices of the max and min is: " << suma << std::endl;
+  std::cout << "The average of elements at even indices is: " << avg <<std::endl;
 }
 int main(int argc, char** argv)
 {

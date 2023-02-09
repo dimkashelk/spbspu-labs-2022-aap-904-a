@@ -9,11 +9,13 @@ void process_array(int* arr, int n) {
   int imin = 0, imax = 0, suma = 0;
   double avg = 0.0;
   for (size_t i = 0; i < n; ++i) {
-    if (arr[i] < min) {
+    if (arr[i] < min)
+    {
       min = arr[i];
       imin = i;
     }
-    if (arr[i] > max) {
+    if (arr[i] > max)
+    {
       max = arr[i];
       imax = i;
     }
@@ -37,7 +39,8 @@ int main(int argc, char** argv)
   process_array(&(arr1[0]), 18);
   int n;
   cin >> n;
-  if (n <= 0) {
+  if (n <= 0)
+  {
      std::cerr << "Invalid array length." << endl;
      return -1;
   }

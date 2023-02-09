@@ -23,7 +23,7 @@ int main()
         cstring[size] = '\0';
         capacity += 20;
         char* new_str = new char[capacity];
-        new_str = arrayExpansion(cstring, capacity);
+        new_str = stringExpansion(cstring, capacity);
         delete[] cstring;
         cstring = new_str;
       }

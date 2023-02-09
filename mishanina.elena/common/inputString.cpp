@@ -1,6 +1,6 @@
 #include "inputString.h"
 
-char* inputString(size_t &capacity, std::istream& input)
+char* inputString(size_t& capacity, std::istream& input)
 {
   size_t size = 0;
   char* cstring = new char[capacity];
@@ -28,8 +28,7 @@ char* inputString(size_t &capacity, std::istream& input)
       }
     }
     input >> cstring[size];
-  }
-  while (input && cstring[size++] != '\n');
+  } while (input && cstring[size++] != '\n');
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     delete[] cstring;

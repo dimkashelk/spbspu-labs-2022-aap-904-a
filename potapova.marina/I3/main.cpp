@@ -21,6 +21,8 @@ int main()
   catch (const std::bad_alloc& e)
   {
     std::cerr << "Allocation failed: " << e.what() << '\n';
+    delete[] input_str;
+    delete[] most_common_syms;
 
     return 1;
   }

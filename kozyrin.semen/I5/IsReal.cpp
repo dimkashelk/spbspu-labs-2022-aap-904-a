@@ -1,4 +1,4 @@
-#include "isReal.h"
+#include "IsReal.h"
 
 bool isSign(char chr)
 {
@@ -12,7 +12,7 @@ bool isDigit(char chr)
 
 bool isUInt(char*& str)
 {
-  return isDigit(*str) && isDigit(*++str) && isUInt(str) || isDigit(*(str - 1));
+  return (isDigit(*str) && isDigit(*++str) && isUInt(str)) || isDigit(*(str - 1));
 }
 
 bool isMantissa(char*& str)
@@ -22,10 +22,10 @@ bool isMantissa(char*& str)
 
 bool isOrder(char* str)
 {
-  return *str == 'E' && (isSign(*++str) && isUInt(++str) || isUInt(str));
+  return *str == 'E' && ((isSign(*++str) && isUInt(++str)) || isUInt(str));
 }
 
 bool isReal(char* str)
 {
-  return isSign(str[0]) && isMantissa(++str) && isOrder(str) || isMantissa(str) && isOrder(str);
+  return (isSign(str[0]) && isMantissa(++str) && isOrder(str)) || (isMantissa(str) && isOrder(str));
 }

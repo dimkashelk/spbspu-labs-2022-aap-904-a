@@ -3,7 +3,7 @@
 
 char* increaseString(char* string1, const size_t newCapacity, const size_t size)
 {
-  char* newStr = new char[newScapacity];
+  char* newStr = new char[newCapacity];
   for (char* i = string1, *j = newStr; i != string1 + size; ++i, ++j)
   {
     *j = *i;

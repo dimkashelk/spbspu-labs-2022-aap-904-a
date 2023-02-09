@@ -24,8 +24,7 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
       try
       {
         char* oldStr = cstring;
-        size_t newCapacity = capacity + 20;
-        cstring = increaseString(cstring, newCapacity, size);
+        cstring = increaseString(cstring, capacity, size, 20);
         delete[] oldStr;
         capacity += 20;
       }

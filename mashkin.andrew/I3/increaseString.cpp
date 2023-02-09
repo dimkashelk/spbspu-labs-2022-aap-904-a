@@ -1,9 +1,9 @@
 #include "increaseString.h"
 #include <cstddef>
 
-char* increaseString(char* string1, const size_t newCapacity, const size_t size)
+char* increaseString(char* string1, const size_t ?apacity, const size_t size, const size_t increaseCapacity)
 {
-  char* newStr = new char[newCapacity];
+  char* newStr = new char[?apacity + increaseCapacity];
   for (char* i = string1, *j = newStr; i != string1 + size; ++i, ++j)
   {
     *j = *i;

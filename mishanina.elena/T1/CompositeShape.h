@@ -1,9 +1,9 @@
 #ifndef COMPOSITESHAPE_H
 #define COMPOSITESHAPE_H
-#include "base-types.h"
 #include "shape.h"
 #include <string>
 #include <cstddef>
+#include <stdexcept>
 
 class CompositeShape : public Shape
 {
@@ -12,9 +12,9 @@ public:
   CompositeShape();
   CompositeShape(const CompositeShape& compositeShape);
   CompositeShape(CompositeShape&& compositeShape) noexcept;
+  ~CompositeShape();
   CompositeShape& operator = (const CompositeShape& compositeShape);
   CompositeShape& operator = (CompositeShape&& compositeShape) noexcept;
-  ~CompositeShape();
   Shape* operator[](std::size_t index);
   const Shape* operator[](std::size_t index) const;
   double getArea() const;

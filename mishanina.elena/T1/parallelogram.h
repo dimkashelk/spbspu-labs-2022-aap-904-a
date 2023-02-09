@@ -1,8 +1,9 @@
 #ifndef PARALLELOGRAM_H
 #define PARALLELOGRAM_H
-#include "base-types.h"
 #include "shape.h"
 #include <string>
+#include <stdexcept>
+#include <cmath>
 
 class Parallelogram : public Shape
 {

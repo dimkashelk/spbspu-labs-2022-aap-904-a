@@ -1,8 +1,9 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
-#include "base-types.h"
 #include "shape.h"
 #include <string>
+#include <stdexcept>
+#include <cmath>
 
 class Triangle : public Shape
 {

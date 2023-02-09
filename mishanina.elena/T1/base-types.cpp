@@ -1,5 +1,4 @@
 #include "base-types.h"
-#include <cmath>
 
 double twoPointsDistance(const point_t& p1, const point_t& p2)
 {

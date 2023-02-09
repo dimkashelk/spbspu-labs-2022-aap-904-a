@@ -22,10 +22,8 @@ int main()
     std::cin >> figureName;
     if (!std::cin)
     {
-    //  std::cerr << "ERROR: invalid input\n";
-      //correctFigure = false;
       break;
-    }//+
+    }
     if (figureName == "RECTANGLE" || figureName == "PARALLELOGRAM" || figureName == "TRIANGLE")
     {
       Shape* shape = nullptr;
@@ -40,17 +38,9 @@ int main()
           countCorrectFigure++;
           correctFigure = true;
           correctComposite = true;
-          /*}
-          catch (...)
-          {
-            correctFigure = false;
-            std::cerr << "invalid rectangle\n";
-          }*/
         }
         else if (figureName == "PARALLELOGRAM")
         {
-          /*try
-          {*/
           point_t A{}, B{}, C{};
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
           Shape* shape = new Parallelogram(A, B, C);
@@ -58,17 +48,9 @@ int main()
           countCorrectFigure++;
           correctFigure = true;
           correctComposite = true;
-          /*}
-          catch (...)
-          {
-            correctFigure = false;
-            std::cerr << "invalid parallelogram\n";
-          }*/
         }
         else if (figureName == "TRIANGLE")
         {
-         /* try
-          {*/
           point_t A{}, B{}, C{};
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
           Shape* shape = new Triangle(A, B, C);
@@ -76,30 +58,18 @@ int main()
           countCorrectFigure++;
           correctFigure = true;
           correctComposite = true;
-            /*}
-          catch (...)
-          {
-            correctFigure = false;
-            std::cerr << "invalid triangle\n";
-          }*/
         }
       }
       catch (const std::invalid_argument& e)
       {
         correctFigure = false;
         countInvalidFigure++;
-        delete[] shape;
         continue;
-        //std::cerr << "Invalid figure\n";
       }
       catch (...)
       {
         correctComposite = false;
-     //   std::cerr << "Invalid figure\n";
-      //  delete[] shape;
-        //break;
       }
-      delete[] shape;
     }
     else if (figureName == "SCALE")
     {
@@ -117,14 +87,12 @@ int main()
       if (!std::cin || k < 0)
       {
         correctScale = false;
-        //std::cerr << "ERROR: invalid input k\n";
         break;
       }
       printShapes(std::cout, compositeShape);
       std::cout << '\n';
       try
       {
-        //compositeShape.scale(k);
         for (size_t i = 0; i < compositeShape.size(); ++i)
         {
           isoScale(compositeShape[i], pos, k);
@@ -133,7 +101,6 @@ int main()
       }
       catch (...)
       {
-        //std::cerr << "invalid scale\n";
         correctScale = false;
       }
       printShapes(std::cout, compositeShape);
@@ -142,7 +109,6 @@ int main()
     else
     {
       correctFigure = true;
-     // std::cerr << "ERROR: no such figure\n";
       continue;
     }
   }

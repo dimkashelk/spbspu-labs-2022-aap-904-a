@@ -1,5 +1,4 @@
 #include "CompositeShape.h"
-#include <stdexcept>
 
 CompositeShape::CompositeShape() :
   name_("CompositeShape: "),

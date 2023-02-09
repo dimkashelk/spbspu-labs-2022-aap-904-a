@@ -1,6 +1,4 @@
 #include "parallelogram.h"
-#include <stdexcept>
-#include <cmath>
 
 Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C) :
   name_("Parallelogram: "),

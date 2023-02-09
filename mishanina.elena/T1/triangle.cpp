@@ -1,6 +1,4 @@
 #include "triangle.h"
-#include <stdexcept>
-#include <math.h>
 
 Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C) :
   name_("Triangle: "),
@@ -21,9 +19,9 @@ std::string Triangle::getName() const
 
 double Triangle::getArea() const
 {
-  double ab_side = std::sqrt(pow(B_.x - A_.x, 2) + pow(B_.y - A_.y, 2));
-  double ac_side = std::sqrt(pow(C_.x - A_.x, 2) + pow(C_.y - A_.y, 2));
-  double bc_side = std::sqrt(pow(C_.x - B_.x, 2) + pow(C_.y - B_.y, 2));
+  double ab_side = getSide(A_, B_);
+  double ac_side = getSide(A_, C_);
+  double bc_side = getSide(C_, B_);
   double halfmeter = (ab_side + ac_side + bc_side) / 2;
   return std::sqrt(halfmeter * (halfmeter - ab_side) * (halfmeter - ac_side) * (halfmeter - bc_side));
 }

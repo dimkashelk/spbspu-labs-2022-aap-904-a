@@ -1,5 +1,4 @@
 #include "rectangle.h"
-#include <stdexcept>
 
 Rectangle::Rectangle(const point_t& ld_point, const point_t& ru_point) :
   name_("Rectangle: "),

@@ -67,5 +67,18 @@ int main(int argc, char * argv[])
       return 1;
     }
     const size_t size_sqrt_matrix = row;
+    int * dArr = new int[size];
+    for (size_t i = 0; i < row; i++)
+    {
+      for (size_t j = 0; j < column; j++)
+      {
+        inputfile >> dArr[column * i + j];
+        if (!inputfile)
+        {
+          std::cerr << "Error reading elements\n";
+          delete [] dArr;
+          return 1;
+        }
+      }
   }
 }

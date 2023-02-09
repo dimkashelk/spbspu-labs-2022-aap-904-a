@@ -12,7 +12,7 @@ bool isDigit(const char* str)
 
 bool isUnsignedInteger(const char* str)
 {
-  if (str[0] == '\0')
+  if (*str == '\0')
   {
     return false;
   }
@@ -27,7 +27,7 @@ bool isUnsignedInteger(const char* str)
 
 bool isIdentifier(const char* str)
 {
-  if (str[0] == '\0')
+  if (*str == '\0')
   {
     return false;
   }
@@ -47,7 +47,7 @@ bool isMultiplier(const char* str)
 
 bool isTerm(const char* str)
 {
-  if (str[0] == '\0')
+  if (*str == '\0')
   {
     return false;
   }
@@ -57,7 +57,8 @@ bool isTerm(const char* str)
     return false;
   }
 
-  if (str[0] == '*') {
+  if (*str == '*')
+  {
     return isTerm(str + 1);
   }
 
@@ -66,7 +67,7 @@ bool isTerm(const char* str)
 
 bool isExpression(const char* str)
 {
-  if (str[0] == '\0')
+  if (*str == '\0')
   {
     return false;
   }
@@ -76,7 +77,7 @@ bool isExpression(const char* str)
     return false;
   }
 
-  if (str[0] == '+' || str[0] == '-')
+  if (*str == '+' || *str == '-')
   {
     return isExpression(str + 1);
   }

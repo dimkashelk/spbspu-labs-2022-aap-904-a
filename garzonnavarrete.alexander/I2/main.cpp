@@ -38,10 +38,6 @@ int main(int argc, char** argv)
   process_array(&(arr1[0]), 18);
   size_t n;
   cin >> n;
-  if (n < 0) {
-    std::cerr << "Invalid array length." << endl;
-    return -1;
-  }
   if (n > 0) {
     int* arr2 = new int[n];
     if (arr2 == NULL) {
@@ -61,7 +57,7 @@ int main(int argc, char** argv)
         return -2;
         }
       int* arr3 = new int[n];
-      if (arr2 == NULL) {
+      if (arr3 == NULL) {
         std::cerr << "Cannot allocate memory" << endl;
         return -6;
       }

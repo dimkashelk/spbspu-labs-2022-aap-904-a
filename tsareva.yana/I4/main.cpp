@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstddef>
+#include "counter_column_witch_duplicate_elements.h"
 
 int main(int argc, char * argv[])
 {
@@ -56,5 +57,6 @@ int main(int argc, char * argv[])
         }
       }
     }
+    outputfile << counterColumnWitchDuplicateElements(arr, row, column) << "\n";
   }
 }

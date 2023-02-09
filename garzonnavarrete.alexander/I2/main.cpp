@@ -10,7 +10,6 @@ int main()
   int min = INT_MAX;
   int imin = 0, imax = 0, suma = 0;
   double avg = 0.0;
-
   for (size_t i = 0; i < 18; ++i) {
     if (arr[i] < min) {
       min = arr[i];
@@ -26,7 +25,6 @@ int main()
     avg += arr[i];
   }
   avg /= 9;
-  
     std::cout << "The min element is: " << min << std::endl;
     std::cout << "The max element is: " << max << std::endl;
     std::cout << "The sum of indices of the max and min is: " << suma << std::endl;

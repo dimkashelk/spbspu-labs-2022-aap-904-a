@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
   int filled_arr[6] = {-1, 2, 3, 4, 5, 6};
   std::cout << countAmountOfRightPairs(filled_arr, 6) << std::endl;
-  std::cout << isRepeatingPositiveNumbers(filled_arr, 6) << std::endl; 
+  std::cout << isRepeatingPositiveNumbers(filled_arr, 6) << std::endl;
   size_t line = 0;
   std::cin >> line;
   if (!std::cin)

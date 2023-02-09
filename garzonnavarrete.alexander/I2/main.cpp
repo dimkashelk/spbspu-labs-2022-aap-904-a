@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     return -1;
   }
   int* arr2 = new int[n];
-  for(int i = 0; i < n; ++i) arr2[i] = rand();
+  for(size_t i = 0; i < n; ++i) arr2[i] = rand();
   process_array(arr2, n);
   delete[] arr2;
   if (argc > 0) {
@@ -56,7 +56,7 @@ int main(int argc, char** argv)
         return -2;
         }
       int* arr3 = new int[n];
-      for(int i = 0; i < n; ++i) ifs >> arr3[i];
+      for(size_t i = 0; i < n; ++i) ifs >> arr3[i];
       process_array(arr3, n);
       delete[] arr3;
       }

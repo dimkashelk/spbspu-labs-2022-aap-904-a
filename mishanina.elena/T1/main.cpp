@@ -33,7 +33,7 @@ int main()
         {
           point_t A{}, B{};
           std::cin >> A.x >> A.y >> B.x >> B.y;
-          Shape* shape = new Rectangle(A, B);
+          shape = new Rectangle(A, B);
           compositeShape.push_back(shape);
           countCorrectFigure++;
           correctFigure = true;
@@ -43,7 +43,7 @@ int main()
         {
           point_t A{}, B{}, C{};
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-          Shape* shape = new Parallelogram(A, B, C);
+          shape = new Parallelogram(A, B, C);
           compositeShape.push_back(shape);
           countCorrectFigure++;
           correctFigure = true;
@@ -53,7 +53,7 @@ int main()
         {
           point_t A{}, B{}, C{};
           std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-          Shape* shape = new Triangle(A, B, C);
+          shape = new Triangle(A, B, C);
           compositeShape.push_back(shape);
           countCorrectFigure++;
           correctFigure = true;

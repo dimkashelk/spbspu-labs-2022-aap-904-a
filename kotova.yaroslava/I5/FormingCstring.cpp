@@ -1,5 +1,5 @@
 #include "FormingCstring.hpp"
-#include <istream> 
+#include <istream>
 #include <cstring>
 #include <cstddef>
 #include <stdexcept>

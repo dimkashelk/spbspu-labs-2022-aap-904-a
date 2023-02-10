@@ -1,6 +1,7 @@
 #include <iostream>
 #include "latin_letters.h"
 #include "most_common_characters.h"
+#include "string_extension.h"
 
 int main()
 {
@@ -16,14 +17,11 @@ int main()
     {
       try
       {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
+        size_t newcapacity = capacity + 10;
+        char* newstr = expandString(cstring, size, newcapacity);
+        capacity = newcapacity;
         delete [] cstring;
         cstring = newstr;
-        capacity += 20;
       }
       catch (const std::bad_alloc& ex)
       {

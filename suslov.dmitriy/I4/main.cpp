@@ -55,7 +55,7 @@ int main(int argc, char **argv)
       int *s_matrix = smoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
-        out_stream << sum(s_matrix, n, m);
+        out_stream << sum(s_matrix, n);
         delete[] s_matrix;
       }
       else

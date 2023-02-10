@@ -32,7 +32,7 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
     {
       if (!in_stream)
       {
-        in_stream >> matrix[i * m + j];
+        in_stream >> matrix[i * n + j];
       }
       else
       {
@@ -65,23 +65,23 @@ int *smoothedMatrix(int *matrix, size_t n, size_t m)
         {
           if (k != i or l != j)
           {
-            sum += matrix[k * m + l];
+            sum += matrix[k * n + l];
           }
         }
       }
-      matrixSmoothed[i * m + j] = sum;
+      matrixSmoothed[i * n + j] = sum;
     }
   }
   return matrixSmoothed;
 }
-int sum(int *matrix, size_t n, size_t m)
+int sum(int *matrix, size_t n)
 {
   int sum = 0;
   for (size_t i = 0; i < n; ++i)
   {
     for (size_t j = 0; j < i; ++j)
     {
-      sum += matrix[i * m + j];
+      sum += matrix[i * n + j];
     }
   }
   return sum;

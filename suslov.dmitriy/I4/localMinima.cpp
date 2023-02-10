@@ -24,7 +24,7 @@ bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t 
     {
       if (!in_stream.eof())
       {
-        in_stream >> matrix[i * m + j];
+        in_stream >> matrix[i * n + j];
       }
       else
       {
@@ -41,7 +41,7 @@ size_t counterZero(int matrix[1000], size_t n, size_t m)
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (matrix[i * m + j] == 0)
+      if (matrix[i * n + j] == 0)
       {
         k++;
         break;

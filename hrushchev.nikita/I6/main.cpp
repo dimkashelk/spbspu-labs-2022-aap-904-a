@@ -13,6 +13,11 @@ int main() {
   size_t number_max = 0;
 
   std::cin >> x_start >> x_end >> number_max;
+  if(x_start > x_end)
+  {
+    std::cerr << "Invalid interval\n";
+    return 1;
+  }
   for (double x = x_start; x <= x_end; x += step)
   {
     try

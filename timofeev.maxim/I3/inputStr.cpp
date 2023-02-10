@@ -32,11 +32,12 @@ char *inputStr(std::istream &str, size_t &in_size)
         throw std::runtime_error("Memory error");
       }
     }
-    str >>  cstring[size];
+    str >> cstring[size];
   }
   while (str && cstring[size++] != '\n');
   if (!str && !size)
   {
+    delete [] cstring;
     throw std::runtime_error("Input error");
   }
   in_size = size;

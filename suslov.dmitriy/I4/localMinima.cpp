@@ -1,6 +1,6 @@
 #include "localMinima.h"
 #include <iostream>
-bool scanMatrixOne(int matrix[30][30], std::istream &in_stream, size_t &n, size_t &m)
+bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t &m)
 {
   if (!in_stream.eof())
   {
@@ -24,7 +24,7 @@ bool scanMatrixOne(int matrix[30][30], std::istream &in_stream, size_t &n, size_
     {
       if (!in_stream.eof())
       {
-        in_stream >> matrix[i][j];
+        in_stream >> matrix[i * m + j];
       }
       else
       {
@@ -34,14 +34,14 @@ bool scanMatrixOne(int matrix[30][30], std::istream &in_stream, size_t &n, size_
   }
   return true;
 }
-unsigned int counterZero(int matrix[30][30], size_t n, size_t m)
+size_t counterZero(int matrix[1000], size_t n, size_t m)
 {
-  unsigned int k = 0;
+  size_t k = 0;
   for (size_t i = 0; i < n; ++i)
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (matrix[i][j] == 0)
+      if (matrix[i * m + j] == 0)
       {
         k++;
         break;

@@ -1,7 +1,7 @@
 #include "sumOfModules.h"
 int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
 {
-  if (!in_stream.eof())
+  if (!in_stream)
   {
     in_stream >> n;
   }
@@ -9,7 +9,7 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
   {
     return nullptr;
   }
-  if (!in_stream.eof())
+  if (!in_stream)
   {
     in_stream >> m;
   }
@@ -20,7 +20,7 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
   int *matrix;
   try
   {
-    matrix = new int[(n) * (m)];
+    matrix = new int[n * m];
   }
   catch (const std::bad_alloc &e)
   {
@@ -30,9 +30,9 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (!in_stream.eof())
+      if (!in_stream)
       {
-        in_stream >> matrix[i * (n) + j];
+        in_stream >> matrix[i * m + j];
       }
       else
       {
@@ -59,29 +59,29 @@ int *smoothedMatrix(int *matrix, size_t n, size_t m)
     for (size_t j = 0; j < m; ++j)
     {
       int sum = 0;
-      for (size_t k = std::max<size_t>(i - 1, 0); k < std::min<size_t>(i + 1, n); ++k)
+      for (size_t k = std::max< size_t >(i - 1, 0); k < std::min< size_t >(i + 1, n); ++k)
       {
-        for (size_t l = std::max<size_t>(j - 1, 0); l < std::min<size_t>(j + 1, m); ++l)
+        for (size_t l = std::max< size_t >(j - 1, 0); l < std::min< size_t >(j + 1, m); ++l)
         {
           if (k != i or l != j)
           {
-            sum += matrix[k * n + l];
+            sum += matrix[k * m + l];
           }
         }
       }
-      matrixSmoothed[i * n + j] = sum;
+      matrixSmoothed[i * m + j] = sum;
     }
   }
   return matrixSmoothed;
 }
-int sum(int *matrix, size_t n)
+int sum(int *matrix, size_t n, size_t m)
 {
   int sum = 0;
   for (size_t i = 0; i < n; ++i)
   {
     for (size_t j = 0; j < i; ++j)
     {
-      sum += matrix[i * n + j];
+      sum += matrix[i * m + j];
     }
   }
   return sum;

@@ -10,27 +10,25 @@ int main(int argc, char **argv)
     std::cerr << "nooooooooooo" << "\n";
     return 1;
   }
-  std::ofstream out_stream;
-  out_stream.open(argv[3]);
+  std::ofstream out_stream(argv[3]);
   if (!out_stream.is_open())
   {
     std::cerr << "=(" << "\n";
     return 1;
   }
-  if (strcmp(argv[1], "1") == 0)
+  if (!strcmp(argv[1], "1"))
   {
-    int matrix[30][30];
+    int matrix[1000];
     size_t n = 0;
     size_t m = 0;
-    std::ifstream in_stream;
-    in_stream.open(argv[2]);
+    std::ifstream in_stream(argv[2]);
     if (!in_stream.is_open())
     {
       std::cerr << "errrr" << "\n";
       return 1;
     }
     bool result = scanMatrixOne(matrix, in_stream, n, m);
-    if (result == true)
+    if (result)
     {
       out_stream << counterZero(matrix, n, m) << "\n";
       return 0;
@@ -45,8 +43,7 @@ int main(int argc, char **argv)
   {
     size_t n = 0;
     size_t m = 0;
-    std::ifstream in_stream;
-    in_stream.open(argv[2]);
+    std::ifstream in_stream(argv[2]);
     if (!in_stream.is_open())
     {
       std::cerr << "=()" << "\n";
@@ -58,7 +55,7 @@ int main(int argc, char **argv)
       int *s_matrix = smoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
-        out_stream << sum(s_matrix, n);
+        out_stream << sum(s_matrix, n, m);
         delete[] s_matrix;
       }
       else

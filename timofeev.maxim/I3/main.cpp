@@ -30,44 +30,27 @@ int main()
     size++;
   }
   char *outstring1 = new char[size];
-  try
+  removeAlphabet(outstring1, str);
+  if (outstring1[0] != '\0')
   {
-    removeAlphabet(outstring1, str);
-    if (outstring1[0] != '\0')
-    {
-      std::cout << outstring1 << "\n";
-      delete [] outstring1;
-    }
-    else
-    {
-      std::cerr << "Error" << "\n";
-    }
+    std::cout << outstring1 << "\n";
+    delete [] outstring1;
   }
-  catch (const std::bad_alloc &e)
+  else
   {
-    std::cout << e.what();
-    delete [] str;
-    return 1;
+    std::cerr << "Error" << "\n";
   }
   char *outstring2 = new char[size];
-  try
+  addNumbers(outstring2, str, str2);
+  if (outstring2[0] != '\0')
   {
-    addNumbers(outstring2, str, str2);
-    if (outstring2[0] != '\0')
-    {
-      std::cout << outstring2 << "\n";
-      delete [] outstring2;
-    }
-    else
-    {
-      std::cerr << "Error" << "\n";
-    }
+    std::cout << outstring2 << "\n";
+    delete [] outstring2;
   }
-  catch (const std::bad_alloc &e)
+  else
   {
-    std::cout << e.what();
-    delete [] str;
-    return 1;
+    delete [] outstring2;
+    std::cerr << "Error" << "\n";
   }
   delete [] str;
 }

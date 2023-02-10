@@ -1,6 +1,6 @@
-#include "finder_three_same_elements.h"
-#include <cctype>
 #include <iostream>
+#include <cctype>
+#include "finder_three_same_elements.h"
 
 char* finderThreeSameElements(char* destination, const char* str)
 {

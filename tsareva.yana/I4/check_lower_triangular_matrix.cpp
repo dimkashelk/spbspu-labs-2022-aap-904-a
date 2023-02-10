@@ -3,9 +3,9 @@
 bool checkLowerTriangularMatrix(const int * array, size_t size)
 {
   bool is_lower_triangle = true;
-  for (size_t tnt i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
   {
-    for (size_t int j = i + 1; j < size; j++)
+    for (size_t j = i + 1; j < size; j++)
     {
       if (array[size * i + j] != 0)
       {

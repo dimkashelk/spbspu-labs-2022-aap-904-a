@@ -1,4 +1,5 @@
 #include "SortingArrFromNegativeToPositiveVal.h"
+#include "algorithm"
 
 void partition (int* arr, size_t sizeArr)
 {

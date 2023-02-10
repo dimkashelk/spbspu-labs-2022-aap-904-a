@@ -11,7 +11,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
   for (const char* i = string1; *i; i++)
   {
     index = 0;
-    if (compare(string1, fromThreeLetters, i, endIndex))
+    if (compare(fromThreeLetters, i, endIndex))
     {
       countLetter = 0;
       for (const char* j = string1; *j; j++)

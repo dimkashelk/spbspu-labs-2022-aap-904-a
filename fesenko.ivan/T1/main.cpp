@@ -20,6 +20,12 @@ int main()
   while (std::cin) {
     std::cin >> figureName;
     try {
+      if (size == capacity) {
+        expandArray(shapes, capacity);
+        Shape **newShapes = expandArray(shapes, capacity);
+        delete [] shapes;
+        shapes = newShapes;
+      }
       if (figureName == "RECTANGLE") {
         point_t point1, point2;
         std::cin >> point1.x >> point1.y >> point2.x >> point2.y;
@@ -27,15 +33,7 @@ int main()
           std::cerr << "Error while reading";
           continue;
         }
-        if (size == capacity) {
-          expandArray(shapes, capacity);
-          Shape **newShapes = expandArray(shapes, capacity);
-          delete [] shapes;
-          shapes = newShapes;
-        }
         shapes[size] = new Rectangle(point1, point2);
-        sumArea += shapes[size]->getArea();
-        size++;
       }
       if (figureName == "CONCAVE") {
         point_t point1, point2, point3, point4;
@@ -44,15 +42,7 @@ int main()
           std::cerr << "Error while reading";
           continue;
         }
-        if (size == capacity) {
-          expandArray(shapes, capacity);
-          Shape **newShapes = expandArray(shapes, capacity);
-          delete [] shapes;
-          shapes = newShapes;
-        }
         shapes[size] = new Concave(point1, point2, point3, point4);
-        sumArea += shapes[size]->getArea();
-        size++;
       }
       if (figureName == "COMPLEXQUAD") {
         point_t point1, point2, point3, point4;
@@ -61,16 +51,10 @@ int main()
           std::cerr << "Error while reading";
           continue;
         }
-        if (size == capacity) {
-          expandArray(shapes, capacity);
-          Shape **newShapes = expandArray(shapes, capacity);
-          delete [] shapes;
-          shapes = newShapes;
-        }
         shapes[size] = new Complexquad(point1, point2, point3, point4);
-        sumArea += shapes[size]->getArea();
-        size++;
       }
+      sumArea += shapes[size]->getArea();
+      size++;
       if (figureName == "SCALE") {
         std::cin >> zoomCenter.x >> zoomCenter.y >> ratio;
         if (!std::cin) {

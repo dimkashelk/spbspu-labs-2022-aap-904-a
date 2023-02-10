@@ -1,0 +1,41 @@
+#include "inputStr.h"
+#include <limits>
+#include <stdexcept>
+#include "increaseLineSize.h"
+char *inputStr(std::istream &str)
+{
+  const size_t max_size = std::numeric_limits< size_t >::max();
+  size_t capasity = 10;
+  size_t size = 0;
+  char *cstring = new char[capasity];
+  str >> std::noskipws;
+  do
+  {
+    if (size == capasity)
+    {
+      if (capasity == max_size)
+      {
+        delete [] cstring;
+        throw std::runtime_error("Size of string more than max_size");
+      }
+      try
+      {
+        cstring = increaseSize(cstring, capasity, size);
+        capasity += 20;
+      }
+      catch (...)
+      {
+        delete [] cstring;
+        throw std::runtime_error("Memory error");
+      }
+    }
+    str >> cstring[size];
+  }
+  while (str && cstring[size++] != '\n');
+  if (!str && !size)
+  {
+    throw std::runtime_error("Input error");
+  }
+  cstring[size - 1] = '\0';
+  return cstring;
+}

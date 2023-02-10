@@ -1,6 +1,6 @@
 #ifndef INCREASELINESIZE_H
 #define INCREASELINESIZE_H
+#include <iostream>
 #include <cstddef>
-#include <istream>
-char *inputStr(std::istream &str, size_t &size);
+char *increaseSize(char *cstring, size_t capasity, size_t size);
 #endif

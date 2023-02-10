@@ -5,7 +5,7 @@ int main()
 {
   const char* const input_str = stdinGetLine();
 
-  if (*input_str == '\0')
+  if (input_str == nullptr)
   {
     std::cerr << "Empty input\n";
 
@@ -20,6 +20,8 @@ int main()
   }
   catch (const std::bad_alloc& e)
   {
+    delete[] input_str;
+
     std::cerr << "Allocation failed: " << e.what() << '\n';
 
     return 1;
@@ -32,4 +34,3 @@ int main()
 
   return 0;
 }
-

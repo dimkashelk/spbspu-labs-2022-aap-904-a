@@ -16,19 +16,6 @@ int main()
     return 1;
   }
   const char *str2 = "1111";
-  if (str[0] == '\0')
-  {
-    std::cout << "Empty string" << "\n";
-    return 1;
-  }
-  else
-  {
-    for (char *p = str; *p != '\0'; p++)
-    {
-      size++;
-    }
-    size++;
-  }
   char *outstring1 = new char[size];
   removeAlphabet(outstring1, str);
   if (outstring1[0] != '\0')

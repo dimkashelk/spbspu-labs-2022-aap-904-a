@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <cstddef>
 #include "counter_column_which_duplicate_elements.h"
 #include "check_lower_triangular_matrix.h"

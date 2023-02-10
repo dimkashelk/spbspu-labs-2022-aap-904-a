@@ -1,49 +1,50 @@
 #include <iostream>
 #include <cstddef>
-#include <ctype.h>
-#include <limits.h>
 #include <algorithm>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
-
 int main()
 {
-  size_t cap = 10;
-  char* cstring = new char[cap];
+  constexpr size_t initialCapacity = 10;
+  constexpr size_t capacityIncrement = 20;
+  size_t capacity = initialCapacity;
+  char* cstring = new char[capacity];
   size_t size = 0;
   std::cin >> std::noskipws;
-  do
+  char inputCharacter;
+  while (std::cin >> inputCharacter)
   {
-    if (size == cap - 1)
+    if (size == capacity - 1)
     {
+      char* newString = nullptr;
       try
       {
-        cstring[cap - 1] = '\0';
-        char* newstr = new char[cap + 20];
-        std::copy(cstring, cstring + cap, newstr);
+        newString = new char[capacity + capacityIncrement];
+        std::copy(cstring, cstring + capacity, newString);
         delete [] cstring;
-        cstring = newstr;
-        cap += 20;
+        cstring = newString;
+        capacity += capacityIncrement;
       }
-      catch (...)
+      catch (const std::bad_alloc& e)
       {
+        std::cerr << e.what() << '\n';
         delete [] cstring;
         return 1;
       }
     }
-    std::cin >> cstring[size];
+    cstring[size++] = inputCharacter;
+    if (inputCharacter == '\n')
+    {
+      break;
+    }
   }
-  while (std::cin && cstring[size++] != '\n');
   if (size == 0)
   {
     std::cerr << "Empty string\n";
     delete [] cstring;
     return 1;
   }
-  else
-  {
-    cstring[size - 1] = '\0';
-  }
+  cstring[size - 1] = '\0';
   char* destination = nullptr;
   try
   {
@@ -51,7 +52,7 @@ int main()
   }
   catch (const std::bad_alloc& e)
   {
-    std::cout << e.what() << '\n';
+    std::cerr << e.what() << '\n';
     delete [] cstring;
     return 1;
   }

@@ -36,6 +36,7 @@ char* inputCString(std::istream& in)
 
   if (size <= 1)
   {
+    delete[] c_string;
     throw std::invalid_argument("Empty input\n");
   }
 

@@ -49,7 +49,7 @@ int main()
   char* united_string = nullptr;
   try
   {
-    united_string = new char[10 + rand_size];
+    united_string = new char[size + rand_size];
     united_string = uniteString(united_string, c_string, rand_string);
     std::cout << united_string << '\n';
     std::cout << existConsecutiveEqualElement(united_string) << "\n";

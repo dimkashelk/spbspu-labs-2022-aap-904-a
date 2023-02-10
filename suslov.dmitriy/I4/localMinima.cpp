@@ -2,7 +2,7 @@
 #include <iostream>
 bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t &m)
 {
-  if (!in_stream.eof())
+  if (in_stream)
   {
     in_stream >> n;
   }
@@ -10,7 +10,7 @@ bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t 
   {
     return false;
   }
-  if (!in_stream.eof())
+  if (in_stream)
   {
     in_stream >> m;
   }
@@ -22,7 +22,7 @@ bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t 
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (!in_stream.eof())
+      if (in_stream)
       {
         in_stream >> matrix[i * n + j];
       }

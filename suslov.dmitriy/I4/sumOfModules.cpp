@@ -1,17 +1,11 @@
 #include "sumOfModules.h"
 int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
 {
-  if (in_stream >> n)
-  {
-  }
-  else
+  if (!(in_stream >> n))
   {
     return nullptr;
   }
-  if (in_stream >> m)
-  {
-  }
-  else
+  if (!(in_stream >> m))
   {
     return nullptr;
   }
@@ -28,10 +22,7 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (in_stream >> matrix[i * n + j])
-      {
-      }
-      else
+      if (!(in_stream >> matrix[i * n + j]))
       {
         delete[] matrix;
         return nullptr;

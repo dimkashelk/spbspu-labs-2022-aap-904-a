@@ -20,6 +20,10 @@ int main(int argc, char** argv)
       std::cout << ex.what() << "\n";
       return 1;
     }
+    int stMatrix[1000];
+    size_t rows = 0, cols = 0;
+    inpFile >> rows;
+    inpFile >> cols;
     inpFile.close();
     std::ofstream outFile;
     outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);

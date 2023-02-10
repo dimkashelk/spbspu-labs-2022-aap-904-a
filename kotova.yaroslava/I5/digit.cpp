@@ -30,11 +30,6 @@ bool continueWithDigit(const char* data)
   return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
 }
 
-bool continueWithDigit(const char* data)
-{
-  return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
-}
-
 bool isOrder(const char* data)
 {
   return isE(*data) && ((isSign(*(data + 1)) && continueWithDigit(data + 2)) || continueWithDigit(data + 1));

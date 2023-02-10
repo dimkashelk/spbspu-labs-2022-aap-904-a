@@ -2,17 +2,23 @@
 #include <iostream>
 bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t &m)
 {
-  if (in_stream)
+  if (in_stream >> n)
   {
-    in_stream >> n;
+    if (n == 0)
+    {
+      return false;
+    }
   }
   else
   {
     return false;
   }
-  if (in_stream)
+  if (in_stream >> m)
   {
-    in_stream >> m;
+    if (m == 0)
+    {
+      return false;
+    }
   }
   else
   {
@@ -22,11 +28,7 @@ bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t 
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (in_stream)
-      {
-        in_stream >> matrix[i * n + j];
-      }
-      else
+      if (!(in_stream >> matrix[i * n + j]))
       {
         return false;
       }

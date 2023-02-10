@@ -27,14 +27,13 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
         delete[] matrix;
         return nullptr;
       }
-
     }
   }
   return matrix;
 }
 int *smoothedMatrix(int *matrix, size_t n, size_t m)
 {
-  int *matrixSmoothed;
+  int *matrixSmoothed = nullptr;
   try
   {
     matrixSmoothed = new int[n * m];
@@ -62,7 +61,7 @@ int *smoothedMatrix(int *matrix, size_t n, size_t m)
   }
   return matrixSmoothed;
 }
-int sum(int *matrix, size_t n)
+int sum(const int *matrix, const size_t n)
 {
   int sum = 0;
   for (size_t i = 0; i < n; ++i)

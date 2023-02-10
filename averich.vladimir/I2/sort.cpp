@@ -1,6 +1,7 @@
 #include "sort.hpp"
 #include <iostream>
-int sort(int arr[], int size)
+#include <cstddef>
+int sort(int arr[], size_t size)
 {
   if (size < 0)
   {

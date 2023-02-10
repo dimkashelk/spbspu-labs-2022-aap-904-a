@@ -1,5 +1,6 @@
 #include "generationdynarray.hpp"
 #include <iostream>
+#include <cstddef>
 #include "sort.hpp"
 #include "istriplet.hpp"
 int generationDynArray(size_t sizeOfDynArray)

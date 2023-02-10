@@ -3,6 +3,7 @@
 #include "sort.hpp"
 #include <iostream>
 #include <fstream>
+#include <cstddef>
 int readTheArray(std::string fileName)
 {
   std::ifstream in(fileName);

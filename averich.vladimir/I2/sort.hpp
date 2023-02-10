@@ -1,4 +1,5 @@
 #ifndef SORT_HPP
 #define SORT_HPP
-int sort(int arr[], int size);
+#include <cstddef>
+int sort(int arr[], size_t size);
 #endif

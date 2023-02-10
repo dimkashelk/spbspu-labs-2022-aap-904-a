@@ -1,25 +1,25 @@
 #include <iostream>
-#include <cctype>
-#include "removeDigits.h"
 #include "removeDuplicateSpaces.h"
+#include "removeDigits.h"
 
 int main() {
     char str[100];
     std::cin.getline(str, 100);
 
-    int size1 = removeDuplicateSpaces(str, str);
-    if (static_cast<int>(size1) == -1) {
-        std::cerr << "Error: Insufficient memory" << '\n';
-        return 3;
+    char res1[100];
+    size_t size1 = removeDuplicateSpaces(res1, str);
+    if (size1 != static_cast<size_t>(-1)) {
+        std::cout << res1 << '\n';
+    } else {
+        std::cerr << "Memory allocation failed for `res1`" << '\n';
     }
 
-    char res2[100];
-    int size2 = removeDigits(res2, str);
-    if (static_cast<int>(size2) == -1) {
-        std::cerr << "Error: Insufficient memory" << '\n';
-        return 3;
+    char res2[27];
+    size_t size2 = removeDigits(res2, str);
+    if (size2 != static_cast<size_t>(-1)) {
+        std::cout << res2 << '\n';
+    } else {
+        std::cerr << "Memory allocation failed for `res2`" << '\n';
     }
-
-    std::cout << res2 << '\n';
     return 0;
 }

@@ -42,5 +42,10 @@ char *inputStr(std::istream &str, size_t &in_size)
   }
   in_size = size;
   cstring[size - 1] = '\0';
+  if (cstring[0] == '\0')
+  {
+    delete [] cstring;
+    throw std::runtime_error("Input error");
+  }
   return cstring;
 }

@@ -38,7 +38,7 @@ bool isTerm(const char *x)
 
 bool isExpression(const char *x)
 {
-  return isTerm(x) || (isTerm(x) && (isSign(*x) || isSign(*x) ) && isExpression(++x));
+  return isTerm(x) || (isTerm(x) && (isSign(*x) || isSign(*x)) && isExpression(++x));
 }
 
 bool checkExpression(const char *x)

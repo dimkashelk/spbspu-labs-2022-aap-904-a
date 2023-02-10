@@ -30,17 +30,28 @@ bool continueWithDigit(const char* data)
   return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
 }
 
+bool continueWithDigit(const char* data)
+{
+  return isDigit(*data) && (continueWithDigit(data + 1) || isEnd(*(data + 1)));
+}
+
 bool isOrder(const char* data)
 {
-  return isE(*data) && ((isSign(*(data + 1)) && continueWithDigit(data + 2)) || continueWithDigit(data + 1));
+  return isE(*data) && (isSign(*(data + 1)) && continueWithDigit(data + 2) || continueWithDigit(data + 1));
 }
-bool continueWithOrder(const char* data)
+
+bool AfterDot(const char* data)
 {
-  return isOrder(data + 1) || (isDigit(*(data + 1)) && isOrder(data + 2));
+  return isDot(*data) && isOrder(data + 1);
+}
+
+bool isMantissa(const char* data)
+{
+  return isDigit(*data) && AfterDot(data + 1);
 }
 bool isInteger(const char* data)
 {
-  return isDigit(*data) && ((continueWithDigit(data + 1) || continueWithOrder(data + 1)));
+  return isDigit(*data) && (continueWithDigit(data + 1) || isMantissa((data + 1)));
 }
 
 bool isFloat(const char* data)

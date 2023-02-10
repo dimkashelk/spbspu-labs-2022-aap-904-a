@@ -9,10 +9,56 @@ int main(int argc, char** argv)
   }
   if (!std::strcmp(argv[1], "1"))
   {
+    std::ifstream inpFile;
+    inpFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+    try
+    {
+      inpFile.open(argv[2]);
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
+    }
+    inpFile.close();
+    std::ofstream outFile;
+    outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
+    try
+    {
+      outFile.open(argv[3]);
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
+    }
     return 0;
   }
   else if (!std::strcmp(argv[1], "2"))
   {
+    std::ifstream inpFile;
+    inpFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+    try
+    {
+      inpFile.open(argv[2]);
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
+    }
+    inpFile.close();
+    std::ofstream outFile;
+    outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
+    try
+    {
+      outFile.open(argv[3]);
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
+    }
     return 0;
   }
   else

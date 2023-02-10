@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstddef>
-#include <cstring>
 #include <ctype.h>
 #include <limits.h>
+#include <algorithm>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
 
@@ -20,7 +20,7 @@ int main()
       {
         cstring[cap - 1] = '\0';
         char* newstr = new char[cap + 20];
-        std::strcpy(newstr, cstring);
+        std::copy(cstring, cstring + cap, newstr);
         delete [] cstring;
         cstring = newstr;
         cap += 20;

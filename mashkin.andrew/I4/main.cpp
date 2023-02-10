@@ -9,7 +9,7 @@ int main(int argc, char** argv)
 {
   if (argc != 4)
   {
-    std::cout << "Error with arguments";
+    std::cout << "Error!";
     return 1;
   }
   if (!std::strcmp(argv[1], "1"))
@@ -74,6 +74,23 @@ int main(int argc, char** argv)
     size_t rows = 0, cols = 0;
     inpFile >> rows;
     inpFile >> cols;
+    int* dynMatrix = nullptr;
+    try
+    {
+      dynMatrix = new int[rows * cols];
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
+    }
+    for (size_t i = 0; i < rows; i++)
+    {
+      for (size_t j = 0; j < cols; j++)
+      {
+        inpFile >> dynMatrix[rows * i + j];
+      }
+    }
     inpFile.close();
     std::ofstream outFile;
     outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
@@ -86,7 +103,10 @@ int main(int argc, char** argv)
       std::cout << ex.what() << "\n";
       return 1;
     }
+    outFile << repeatElemInCols(dynMatrix, rows, cols) << "\n";
+    outFile << findMaxSumOfDiagonal(dynMatrix, rows, cols) << "\n";
     outFile.close();
+    delete[] dynMatrix;
     return 0;
   }
   else

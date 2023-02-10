@@ -15,6 +15,7 @@ int main()
   double sumArea = 0.0;
   point_t zoomCenter = {0, 0};
   double ratio = 0.0;
+  bool isAdded = false;
   std::string figureName = "";
   Shape **shapes = new Shape*[capacity];
   while (std::cin) {
@@ -34,6 +35,7 @@ int main()
           continue;
         }
         shapes[size] = new Rectangle(point1, point2);
+        isAdded = true;
       }
       if (figureName == "CONCAVE") {
         point_t point1, point2, point3, point4;
@@ -43,6 +45,7 @@ int main()
           continue;
         }
         shapes[size] = new Concave(point1, point2, point3, point4);
+        isAdded = true;
       }
       if (figureName == "COMPLEXQUAD") {
         point_t point1, point2, point3, point4;
@@ -52,9 +55,13 @@ int main()
           continue;
         }
         shapes[size] = new Complexquad(point1, point2, point3, point4);
+        isAdded = true;
       }
-      sumArea += shapes[size]->getArea();
-      size++;
+      if (isAdded) {
+        sumArea += shapes[size]->getArea();
+        size++;
+        isAdded = false;
+      }
       if (figureName == "SCALE") {
         std::cin >> zoomCenter.x >> zoomCenter.y >> ratio;
         if (!std::cin) {

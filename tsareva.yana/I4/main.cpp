@@ -96,5 +96,10 @@ int main(int argc, char * argv[])
     }
     delete [] dArr;
   }
+  else
+  {
+    std::cerr << "First argument must be 1 or 2\n";
+    return 1;
+  }
   return 0;
 }

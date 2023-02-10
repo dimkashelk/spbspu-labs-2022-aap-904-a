@@ -12,7 +12,13 @@ int taskOne(std::ifstream& fin, std::ofstream& fout)
     std::cerr << "Error: array too big";
     return 1;
   }
-  inputArray(arr, rows * cols, fin);
+  try {
+    inputArray(arr, rows * cols, fin);
+  }
+  catch (const std::runtime_error & err) {
+    std::cerr << "Error: " << err.what();
+    return 2;
+  }
 
   fout << "Number of sorted rows: " << sortedRowsCount(arr, rows, cols);
   return 0;
@@ -30,11 +36,17 @@ int taskTwo(std::ifstream& fin, std::ofstream& fout)
     arr = new int[rows * cols];
   }
   catch (const std::bad_alloc & err) {
-    delete[] arr;
     std::cerr << "Error: " << err.what();
     return 1;
   }
-  inputArray(arr, rows * cols, fin);
+  try {
+    inputArray(arr, rows * cols, fin);
+  }
+  catch (const std::runtime_error & err) {
+    std::cerr << "Error: " << err.what();
+    delete[] arr;
+    return 2;
+  }
 
   fout << "The matrix is " << (isTriangular(arr, rows, cols) ? "indeed" : "not") << " triangular";
   delete[] arr;
@@ -54,8 +66,13 @@ int main(int argc, char* argv[])
   }
   std::ofstream fout(argv[3]);
   if (!fout.is_open()) {
-    std::cerr << "output file could not be opened";
+    std::cerr << "Output file could not be opened";
     return 2;
+  }
+  fin.peek();
+  if (fin.eof()) {
+    std::cerr << "Input file is empty";
+    return 3;
   }
 
   int (*choose[2])(std::ifstream& fin, std::ofstream& fout) = {taskOne, taskTwo};

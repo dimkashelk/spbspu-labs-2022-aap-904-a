@@ -1,6 +1,6 @@
 #include "rectangle.h"
 
-Shape* inputRectangle(std::istream &input)
+Shape* inputRectangle(std::istream& input)
 {
   double x1 = 0.0;
   double y1 = 0.0;

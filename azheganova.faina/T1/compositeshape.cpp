@@ -1,5 +1,5 @@
 #include "compositeshape.h"
-#include <iostream>
+#include <stdexcept>
 #include "isoscale.h"
 
 CompositeShape::CompositeShape():
@@ -15,7 +15,7 @@ CompositeShape::CompositeShape(Shape** rhp, size_t size, size_t capacity):
 {}
 
 
-CompositeShape::CompositeShape(const CompositeShape & rhs):
+CompositeShape::CompositeShape(const CompositeShape& rhs):
   CompositeShape(rhs.capacity_)
 {
   for (size_t i = 0; i < rhs.size_; ++i)
@@ -25,7 +25,7 @@ CompositeShape::CompositeShape(const CompositeShape & rhs):
   }
 }
 
-CompositeShape::CompositeShape(CompositeShape && rhs):
+CompositeShape::CompositeShape(CompositeShape&& rhs):
   size_(rhs.size_),
   capacity_(rhs.capacity_),
   shape_(rhs.shape_)
@@ -45,9 +45,9 @@ size_t CompositeShape::size() const
 }
 
 CompositeShape::CompositeShape(size_t capacity):
- size_(0),
- capacity_(capacity),
- shape_(new Shape*[capacity_])
+  size_(0),
+  capacity_(capacity),
+  shape_(new Shape* [capacity_])
 {}
 
 void CompositeShape::deleteshape_(Shape** shape, size_t size)
@@ -59,9 +59,9 @@ void CompositeShape::deleteshape_(Shape** shape, size_t size)
   delete[] shape;
 }
 
-CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
+CompositeShape& CompositeShape::operator=(const CompositeShape& rhs)
 {
-  Shape** new_data = new Shape*[rhs.capacity_];
+  Shape** new_data = new Shape* [rhs.capacity_];
   size_t new_size = 0;
   try
   {
@@ -83,7 +83,7 @@ CompositeShape & CompositeShape::operator=(const CompositeShape & rhs)
   return *this;
 }
 
-CompositeShape & CompositeShape::operator=(CompositeShape && rhs)
+CompositeShape& CompositeShape::operator=(CompositeShape&& rhs)
 {
   deleteshape_(shape_, size_);
   shape_ = rhs.shape_;

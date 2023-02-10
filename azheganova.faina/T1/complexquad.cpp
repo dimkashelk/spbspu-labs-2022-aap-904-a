@@ -1,7 +1,7 @@
 #include "complexquad.h"
 #include "isoscale.h"
 
-Shape* inputComplexquad(std::istream &input)
+Shape* inputComplexquad(std::istream& input)
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -32,7 +32,7 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
   double det = a1 * b2 - a2 * b1;
   cx = (b1 * c2 - b2 * c1) / det;
   cy = (a2 * c1 - a1 * c2) / det;
-  return (point_t {cx, cy});
+  return (point_t{cx, cy});
 }
 
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):

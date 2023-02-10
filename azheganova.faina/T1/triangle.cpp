@@ -1,8 +1,9 @@
 #include "triangle.h"
+#include <stdexcept>
 #include <cmath>
 #include "isoscale.h"
 
-Shape* inputTriangle(std::istream &input)
+Shape* inputTriangle(std::istream& input)
 {
   double x1 = 0.0;
   double y1 = 0.0;
@@ -20,7 +21,7 @@ Shape* inputTriangle(std::istream &input)
 
 double findSide(point_t p1, point_t p2)
 {
-  return pow(( pow((p2.x - p1.x), 2) + pow((p2.y - p1.y), 2)), 0.5);
+  return std::pow((std::pow((p2.x - p1.x), 2) + std::pow((p2.y - p1.y), 2)), 0.5);
 }
 
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
@@ -71,7 +72,7 @@ void Triangle::move(point_t point)
   move(point.x - center.x, point.y - center.y);
 }
 
-point_t operator+(const point_t & pos1, const point_t & pos2)
+point_t operator+(const point_t& pos1, const point_t& pos2)
 {
   point_t pos{pos1.x + pos2.x, pos1.y + pos2.y};
   return pos;

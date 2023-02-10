@@ -1,9 +1,9 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
-#include <iostream>
+#include <istream>
 #include "shape.h"
 
-Shape* inputTriangle(std::istream &input);
+Shape* inputTriangle(std::istream& input);
 
 class Triangle: public Shape
 {

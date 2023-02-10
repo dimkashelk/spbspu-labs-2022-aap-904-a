@@ -18,7 +18,7 @@ void printFramePoint(Shape* shape)
   std::cout << point1.x << ' ' << point1.y << ' ';
   std::cout << point2.x << ' ' << point2.y;
 }
-void printAreaAndFlamePoint(CompositeShape &compositeShape)
+void printAreaAndFlamePoint(CompositeShape& compositeShape)
 {
   std::cout << std::fixed << std::setprecision(1) << compositeShape.getArea() << " ";
   printFramePoint(compositeShape[0]);
@@ -84,7 +84,7 @@ int main()
       std::cerr << e.what() << '\n';
     }
   }
-  while(std::cin);
+  while (std::cin);
   if (!isscale)
   {
     std::cerr << "error";
@@ -100,7 +100,7 @@ int main()
   {
     compositeShape.checkIsoScale_(scalecenter, scalek);
   }
-  catch(const std::logic_error& e)
+  catch (const std::logic_error& e)
   {
     std::cerr << e.what() << '\n';
     return 1;

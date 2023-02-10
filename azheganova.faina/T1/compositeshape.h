@@ -8,13 +8,13 @@ class CompositeShape
 public:
   CompositeShape();
   CompositeShape(Shape** shp, size_t size, size_t capacity);
-  CompositeShape(const CompositeShape & rhs);
-  CompositeShape(CompositeShape && rhs);
+  CompositeShape(const CompositeShape& rhs);
+  CompositeShape(CompositeShape&& rhs);
   CompositeShape(size_t capacity);
   ~CompositeShape();
   void deleteshape_(Shape** shape, size_t size);
-  CompositeShape & operator=(const CompositeShape & rhs);
-  CompositeShape & operator=(CompositeShape && rhs);
+  CompositeShape & operator=(const CompositeShape& rhs);
+  CompositeShape & operator=(CompositeShape&& rhs);
   Shape* operator[](size_t i);
   const Shape* operator[](size_t i) const;
   double getArea() const;
@@ -33,7 +33,7 @@ public:
   size_t size() const;
   void checkIsoScale_(point_t point, double k);
   void isoScale_(point_t position, double k);
-  CompositeShape *clone() const;
+  CompositeShape* clone() const;
 private:
   size_t size_;
   size_t capacity_;

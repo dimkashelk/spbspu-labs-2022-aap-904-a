@@ -1,5 +1,5 @@
 #include "shape.h"
-#include <iostream>
+#include <stdexcept>
 
 void Shape::checkScale(double k)
 {

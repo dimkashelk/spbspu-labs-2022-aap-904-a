@@ -1,9 +1,9 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-#include <iostream>
+#include <istream>
 #include "shape.h"
 
-Shape* inputRectangle(std::istream &input);
+Shape* inputRectangle(std::istream& input);
 
 class Rectangle: public Shape
 {

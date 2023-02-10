@@ -1,10 +1,10 @@
 #ifndef COMPLEXQUAD_H
 #define COMPLEXQUAD_H
-#include <iostream>
-#include "shape.h"
+#include <istream>
 #include "triangle.h"
+#include "shape.h"
 
-Shape* inputComplexquad(std::istream &input);
+Shape* inputComplexquad(std::istream& input);
 
 class Complexquad: public Shape
 {

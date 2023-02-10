@@ -48,6 +48,8 @@ int main(int argc, char** argv)
       std::cout << ex.what() << "\n";
       return 1;
     }
+    outFile << repeatElemInCols(stMatrix, rows, cols) << "\n";
+    outFile.close();
     return 0;
   }
   else if (!std::strcmp(argv[1], "2"))
@@ -75,6 +77,7 @@ int main(int argc, char** argv)
       std::cout << ex.what() << "\n";
       return 1;
     }
+    outFile.close();
     return 0;
   }
   else

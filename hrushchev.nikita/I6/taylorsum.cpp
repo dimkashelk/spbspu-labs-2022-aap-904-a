@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <cstddef>
 
-double taylorSum(const double x, const size_t number_max, const double abs_error) 
+double taylorSum(const double x, const size_t number_max, const double abs_error)
 {
   if (std::abs(x) >= 1)
   {
@@ -29,3 +29,4 @@ double taylorSum(const double x, const size_t number_max, const double abs_error
   }
   return result;
 }
+

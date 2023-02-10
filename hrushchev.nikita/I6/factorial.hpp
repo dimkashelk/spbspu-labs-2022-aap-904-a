@@ -5,3 +5,4 @@
 double factorial(const size_t n);
 
 #endif
+

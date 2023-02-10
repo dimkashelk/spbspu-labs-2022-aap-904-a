@@ -11,16 +11,16 @@ int main() {
   double x_start = 0.0;
   double x_end = 0.0;
   size_t number_max = 0;
-  
+
   std::cin >> x_start >> x_end >> number_max;
-  for (double x = x_start; x <= x_end; x += step) 
+  for (double x = x_start; x <= x_end; x += step)
   {
-    try 
+    try
     {
       printTable(std::cout, abs_error, step, x_start, x_end, number_max);
     }
 
-    catch (const std::exception &e) 
+    catch (const std::exception &e)
     {
       std::cerr << e.what() << "\n";
       return 1;
@@ -28,3 +28,4 @@ int main() {
   }
   return 0;
 }
+

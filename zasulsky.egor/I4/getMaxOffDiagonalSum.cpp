@@ -13,7 +13,7 @@ int getDiagonalSum(const int* matrix, size_t rows, size_t cols, size_t diagIndex
     throw std::invalid_argument("Diagonal does not exist");
   }
   while (diagRow > 0 && diagCol < cols - 1) {
-    sum += zasulsky::getMatrixValue(matrix, rows, cols, diagRow, diagCol);
+    sum += zasulsky::getMatrixValue(matrix, rows, cols, diagRow--, diagCol++);
   }
   return sum + zasulsky::getMatrixValue(matrix, rows, cols, diagRow, diagCol);
 }

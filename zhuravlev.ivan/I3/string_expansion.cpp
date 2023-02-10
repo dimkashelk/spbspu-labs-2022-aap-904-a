@@ -1,9 +1,9 @@
 #include "string_expansion.h"
 #include <cstring>
 
-char* stringExpansion(char* str, size_t new_capacity)
+char* stringExpansion(char* str, size_t capacity, size_t new_capacity)
 {
-  char* new_str = new char[new_capacity];
+  char* new_str = new char[capacity + new_capacity];
   for (char* i = str, *j = new_str; *i != '\0'; ++i, ++j)
   {
     *j = *i;

@@ -8,6 +8,7 @@
 int main()
 {
   size_t capacity = 10;
+  size_t new_capacity = capacity;
   char* cstring = new char[capacity];
   size_t size = 0;
   size_t size_of_static = 18;
@@ -21,11 +22,10 @@ int main()
       try
       {
         cstring[size] = '\0';
-        capacity += 20;
-        char* prev_cstring = cstring;
+        new_capacity += 20;
         char* new_str = nullptr;
-        new_str = stringExpansion(cstring,capacity);
-        delete[] prev_cstring;
+        new_str = stringExpansion(cstring,capacity, new_capacity);
+        delete[] cstring;
         cstring = new_str;
       }
       catch (const std::bad_alloc& e)

@@ -42,6 +42,7 @@ int main(int argc, char** argv)
     int* arr2 = new int[n];
     if (arr2 == NULL) {
       std::cerr << "Cannot allocate memory" << endl;
+      return -5;
     }
     for(size_t i = 0; i < n; ++i) arr2[i] = rand();
     process_array(arr2, n);
@@ -52,24 +53,21 @@ int main(int argc, char** argv)
     ifs.open(argv[1]);
     if (ifs) {
       ifs >> n;
-      if (n <= 0) {
-        std::cerr << "Invalid array length specified in the file." << endl;
-        return -2;
+      if (n > 0) {
+        int* arr3 = new int[n];
+        if (arr3 == NULL) {
+          std::cerr << "Cannot allocate memory" << endl;
+          return -6;
         }
-      int* arr3 = new int[n];
-      if (arr3 == NULL) {
-        std::cerr << "Cannot allocate memory" << endl;
-        return -6;
+        for(size_t i = 0; i < n; ++i) ifs >> arr3[i];
+        process_array(arr3, n);
+        delete[] arr3;
       }
-      for(size_t i = 0; i < n; ++i) ifs >> arr3[i];
-      process_array(arr3, n);
-      delete[] arr3;
-      }
-  }
-  else
-  {
-    std::cerr << "No input file." << endl;
-    return -3;
-  }
+    }
+    elsecd c
+    {
+      std::cerr << "No input file." << endl;
+      return -3;
+    }
   return 0;
 }

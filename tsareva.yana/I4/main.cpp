@@ -60,6 +60,11 @@ int main(int argc, char * argv[])
       }
     }
     outputfile << counterColumnWhichDuplicateElements(arr, row, column) << "\n";
+    if (!outputfile)
+    {
+      std::cerr << "Error writing elements\n";
+      return 1;
+    }
   }
   else if (!std::strcmp(argv[1], "2"))
   {
@@ -84,6 +89,11 @@ int main(int argc, char * argv[])
       }
     }
     outputfile << checkLowerTriangularMatrix(dArr, size_sqrt_matrix);
+    if (!outputfile)
+    {
+      std::cerr << "Error writing elements\n";
+      return 1;
+    }
     delete [] dArr;
   }
   return 0;

@@ -15,8 +15,9 @@ int main()
     std::cout << e.what() << "\n";
     return 1;
   }
-  const char *str2 = "1111";
-  char *outstring1 = new char[size + 1];
+  const size_t siz = 5;
+  const char str2[siz] = "1111";
+  char *outstring1 = new char[size];
   removeAlphabet(outstring1, str);
   if (outstring1[0] != '\0')
   {
@@ -27,7 +28,7 @@ int main()
   {
     std::cerr << "Error" << "\n";
   }
-  char *outstring2 = new char[size + 1];
+  char *outstring2 = new char[size + siz];
   addNumbers(outstring2, str, str2);
   if (outstring2[0] != '\0')
   {

@@ -28,9 +28,8 @@ int *scanMatrixTwo(std::istream& in_stream, size_t &n, size_t &m)
   {
     for (size_t j = 0; j < m; ++j)
     {
-      if (in_stream)
+      if (in_stream >> matrix[i * n + j])
       {
-        in_stream >> matrix[i * n + j];
       }
       else
       {

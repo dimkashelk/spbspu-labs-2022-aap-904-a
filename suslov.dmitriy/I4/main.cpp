@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     bool result = scanMatrixOne(matrix, in_stream, n, m);
     if (result)
     {
-      out_stream << counterZero(matrix, n, m) << "\n";
+      out_stream << counterZero(n, m, matrix) << "\n";
       return 0;
     }
     else

@@ -17,4 +17,5 @@ char* sort(char* fromThreeLetters, size_t endIndex)
       }
     }
   }
+  return fromThreeLetters;
 }

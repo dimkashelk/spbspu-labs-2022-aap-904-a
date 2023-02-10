@@ -4,10 +4,6 @@ bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t 
 {
   if (in_stream >> n)
   {
-    if (n == 0)
-    {
-      return false;
-    }
   }
   else
   {
@@ -15,10 +11,6 @@ bool scanMatrixOne(int matrix[1000], std::istream &in_stream, size_t &n, size_t 
   }
   if (in_stream >> m)
   {
-    if (m == 0)
-    {
-      return false;
-    }
   }
   else
   {

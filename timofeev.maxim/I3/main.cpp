@@ -15,18 +15,20 @@ int main()
     std::cout << e.what() << "\n";
     return 1;
   }
-  const size_t size2 = 5;
-  char *str2 = new char[size2];
-  for (size_t i = 0; i < size2 - 1; ++i)
+  const char *str2 = "1111";
+  if (str[0] == '\0')
   {
-    str2[i] = '1';
+    std::cout << "Empty string" << "\n";
+    return 1;
   }
-  str2[size2 - 1] = '\0';
-  for (char *p = str; *p != '\0'; p++)
+  else
   {
+    for (char *p = str; *p != '\0'; p++)
+    {
+      size++;
+    }
     size++;
   }
-  size++;
   char *outstring1 = new char[size];
   try
   {
@@ -45,7 +47,6 @@ int main()
   {
     std::cout << e.what();
     delete [] str;
-    delete [] str2;
     return 1;
   }
   char *outstring2 = new char[size];
@@ -66,10 +67,8 @@ int main()
   {
     std::cout << e.what();
     delete [] str;
-    delete [] str2;
     return 1;
   }
   delete [] str;
-  delete [] str2;
 }
 

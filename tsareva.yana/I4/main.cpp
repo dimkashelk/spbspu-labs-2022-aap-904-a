@@ -58,7 +58,7 @@ int main(int argc, char * argv[])
         }
       }
     }
-    outputfile << counterColumnWitchDuplicateElements(arr, row, column) << "\n";
+    outputfile << counterColumnWhichDuplicateElements(arr, row, column) << "\n";
   }
   if (!std::strcmp(argv[1], "2"))
   {

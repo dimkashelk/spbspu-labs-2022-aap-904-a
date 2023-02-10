@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include "suslov.dmitriy/I4/localMinima.h"
-#include "suslov.dmitriy/I4/sumOfModules.h"
 int main(int argc, char **argv)
 {
   if (argc < 4)

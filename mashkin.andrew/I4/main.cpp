@@ -27,19 +27,35 @@ int main(int argc, char** argv)
     }
     int stMatrix[1000];
     size_t rows = 0, cols = 0;
-    inpFile >> rows;
-    inpFile >> cols;
+    try
+    {
+      inpFile >> rows;
+      inpFile >> cols;
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
+    }
     if (rows * cols > 1000)
     {
       std::cout << rows * cols << " > " << 1000 << "\n";
       return 1;
     }
-    for (size_t i = 0; i < rows; i++)
+    try
     {
-      for (size_t j = 0; j < cols; j++)
+      for (size_t i = 0; i < rows; i++)
       {
-        inpFile >> stMatrix[rows * i + j];
+        for (size_t j = 0; j < cols; j++)
+        {
+          inpFile >> stMatrix[rows * i + j];
+        }
       }
+    }
+    catch (const std::exception& ex)
+    {
+      std::cout << ex.what() << "\n";
+      return 1;
     }
     inpFile.close();
     std::ofstream outFile;
@@ -78,18 +94,18 @@ int main(int argc, char** argv)
       inpFile >> rows;
       inpFile >> cols;
       dynMatrix = new int[rows * cols];
+      for (size_t i = 0; i < rows; i++)
+      {
+        for (size_t j = 0; j < cols; j++)
+        {
+          inpFile >> dynMatrix[rows * i + j];
+        }
+      }
     }
     catch (const std::exception& ex)
     {
       std::cout << ex.what() << "\n";
       return 1;
-    }
-    for (size_t i = 0; i < rows; i++)
-    {
-      for (size_t j = 0; j < cols; j++)
-      {
-        inpFile >> dynMatrix[rows * i + j];
-      }
     }
     inpFile.close();
     std::ofstream outFile;

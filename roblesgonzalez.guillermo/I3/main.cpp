@@ -1,28 +1,26 @@
 #include <iostream>
-#include <fstream>
+#include <cstring>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
-
+#include <limits>
 int main() {
-    std::string str;
-    std::getline(std::cin, str);
+    const int MAX_LENGTH = 100;
+    char str[MAX_LENGTH];
+    std::cin.getline(str, MAX_LENGTH);
 
-    try {
-        std::string res1 = str;
-        removeDuplicateSpaces(&res1[0], &res1[0]);
-        std::cout << res1 << '\n';
-    } catch (const std::bad_alloc &e) {
-        std::cerr << "Few memory" << '\n' << e.what();
-        return 3;
+    size_t size1 = removeDuplicateSpaces(str, str);
+    if (size1 == std::numeric_limits<size_t>::max()) {
+        std::cerr << "Error: removeDuplicateSpaces failed" << '\n';
+        return 1;
     }
 
-    try {
-        char res2[27];
-        removeDigits(res2, str.c_str());
-        std::cout << res2 << '\n';
-    } catch (const std::bad_alloc &e) {
-        std::cerr << "Few memory" << '\n' << e.what();
-        return 3;
+    char res2[MAX_LENGTH];
+    size_t size2 = removeDigits(res2, str);
+    if (size2 == std::numeric_limits<size_t>::max()) {
+        std::cerr << "Error: removeDigits failed" << '\n';
+        return 2;
     }
+
+    std::cout << res2 << '\n';
     return 0;
 }

@@ -28,6 +28,7 @@ int main()
         new_str = stringExpansion(cstring, capacity, new_capacity);
         delete[] prev_cstring;
         cstring = new_str;
+        capacity += new_capacity;
       }
       catch (const std::bad_alloc& e)
       {
@@ -38,7 +39,7 @@ int main()
     std::cin >> cstring[size];
   }
   while (std::cin && cstring[size++] != '\n');
-  if (cstring[0] == '\n' || cstring[0] == '\0')
+  if (cstring[0] == '\n' || size == 0)
   {
     delete[] cstring;
     std::cerr << "Empty string!" << "\n";

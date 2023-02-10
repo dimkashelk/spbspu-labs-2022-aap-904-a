@@ -12,7 +12,6 @@ int main()
   catch (const std::exception& e)
   {
     std::cerr << e.what() << "\n";
-    delete[] c_string;
     return 1;
   }
   std::cout << std::boolalpha << isExpression(c_string) << "\n";

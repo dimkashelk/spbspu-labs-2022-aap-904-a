@@ -4,7 +4,7 @@ int sort(int arr[], int size)
 {
   if (size < 0)
   {
-    std::cout << "Error: size of array is wrong, try again";
+   std::cout << "Error: size of array is wrong, try again";
   }
   for (int i = 0; i < size; i++)
   {
@@ -12,7 +12,7 @@ int sort(int arr[], int size)
     {
       if (arr[j] > arr[j + 1])
       {
-        std::swap(arr[j], arr[j + 1]);
+       std::swap(arr[j], arr[j + 1]);
       }
     }
   }

@@ -1,6 +1,5 @@
 #include "createNewStringFromThreeOfenLetters.h"
 #include <cstddef>
-#include <algorithm>
 #include "sortStr.h"
 #include "compareChar.h"
 
@@ -12,7 +11,7 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
   for (const char* i = string1; *i; i++)
   {
     index = 0;
-    if (compare)
+    if (compare(string1, fromThreeLetters, i, endIndex))
     {
       countLetter = 0;
       for (const char* j = string1; *j; j++)
@@ -36,6 +35,6 @@ char* createNewStringFromThreeOftenLetters(char* fromThreeLetters, const char* s
     }
     endIndex = 0;
   }
-  fromThreeLetters = sort(fromThreeLetters, endIndex)
+  fromThreeLetters = sort(fromThreeLetters, endIndex);
   return fromThreeLetters;
 }

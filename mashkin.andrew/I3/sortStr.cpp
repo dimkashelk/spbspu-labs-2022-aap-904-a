@@ -1,5 +1,6 @@
 #include "sortStr.h"
 #include <cstddef>
+#include <algorithm>
 
 char* sort(char* fromThreeLetters, size_t endIndex)
 {

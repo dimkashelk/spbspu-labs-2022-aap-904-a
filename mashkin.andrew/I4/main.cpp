@@ -1,4 +1,5 @@
 #include "repeatElemInCols.h"
+#include "findMaxSumOfDiagonal.h"
 #include <iostream>
 #include <fstream>
 #include <cstring>
@@ -53,6 +54,7 @@ int main(int argc, char** argv)
       return 1;
     }
     outFile << repeatElemInCols(stMatrix, rows, cols) << "\n";
+    outFile << findMaxSumOfDiagonal(stMatrix, rows, cols) << "\n";
     outFile.close();
     return 0;
   }

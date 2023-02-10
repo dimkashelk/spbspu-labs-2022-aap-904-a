@@ -61,7 +61,7 @@ int main(int argc, char * argv[])
     }
     outputfile << counterColumnWhichDuplicateElements(arr, row, column) << "\n";
   }
-  if (!std::strcmp(argv[1], "2"))
+  else if (!std::strcmp(argv[1], "2"))
   {
     if (row != column)
     {

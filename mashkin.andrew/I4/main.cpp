@@ -31,7 +31,7 @@ int main(int argc, char** argv)
     inpFile >> cols;
     if (rows * cols > 1000)
     {
-      std::cout << rows * cols << ' > ' << 1000 << '\n';
+      std::cout << rows * cols << " > " << 1000 << "\n";
       return 1;
     }
     for (size_t i = 0; i < rows; i++)

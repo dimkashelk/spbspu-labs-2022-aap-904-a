@@ -64,10 +64,11 @@ int main(int argc, char** argv)
         delete[] arr3;
       }
     }
-    elsecd c
+    else
     {
       std::cerr << "No input file." << endl;
       return -3;
     }
   return 0;
+}
 }

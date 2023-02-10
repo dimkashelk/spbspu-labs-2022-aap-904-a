@@ -1,5 +1,5 @@
-#ifndef EXP_HPP
-#define EXP_HPP
+#ifndef CALCULATEEXP_HPP
+#define CALCULATEEXP_HPP
 #include <iosfwd>
 double exp(double x, double absError, unsigned numberMax);
 void printRow(std::ostream& out, double x, double absError, unsigned numberMax);

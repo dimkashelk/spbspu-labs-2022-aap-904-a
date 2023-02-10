@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstddef>
-#include "counter_column_witch_duplicate_elements.h"
+#include "counter_column_which_duplicate_elements.h"
 #include "check_lower_triangular_matrix.h"
 
 int main(int argc, char * argv[])

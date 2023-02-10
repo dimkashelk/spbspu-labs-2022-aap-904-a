@@ -72,11 +72,11 @@ int main(int argc, char** argv)
       return 1;
     }
     size_t rows = 0, cols = 0;
-    inpFile >> rows;
-    inpFile >> cols;
     int* dynMatrix = nullptr;
     try
     {
+      inpFile >> rows;
+      inpFile >> cols;
       dynMatrix = new int[rows * cols];
     }
     catch (const std::exception& ex)

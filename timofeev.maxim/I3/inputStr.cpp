@@ -2,7 +2,7 @@
 #include <limits>
 #include <stdexcept>
 #include "increaseLineSize.h"
-char *inputStr(std::istream &str)
+char *inputStr(std::istream &str, size_t &in_size)
 {
   const size_t max_size = std::numeric_limits< size_t >::max();
   size_t capasity = 10;
@@ -29,13 +29,14 @@ char *inputStr(std::istream &str)
         throw std::runtime_error("Memory error");
       }
     }
-    str >> cstring[size];
+    str >>  cstring[size];
   }
   while (str && cstring[size++] != '\n');
   if (!str && !size)
   {
     throw std::runtime_error("Input error");
   }
+  in_size = size;
   cstring[size - 1] = '\0';
   return cstring;
 }

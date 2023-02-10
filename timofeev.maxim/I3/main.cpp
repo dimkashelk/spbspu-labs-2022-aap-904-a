@@ -8,7 +8,7 @@ int main()
   size_t size = 0;
   try
   {
-    str = inputStr(std::cin);
+    str = inputStr(std::cin, size);
   }
   catch (const std::runtime_error &e)
   {

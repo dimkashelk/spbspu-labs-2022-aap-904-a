@@ -5,8 +5,8 @@
 
 namespace zasulsky {
   struct MatrixWrapper {
+    int* matrix;
     size_t rows, cols;
-    int** matrix;
 
     MatrixWrapper(size_t rows, size_t cols);
     ~MatrixWrapper();

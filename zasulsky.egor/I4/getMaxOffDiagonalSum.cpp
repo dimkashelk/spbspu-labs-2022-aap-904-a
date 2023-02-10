@@ -2,8 +2,9 @@
 #include <stdexcept>
 #include <algorithm>
 #include <iostream>
+#include "matrixOperations.hpp"
 
-int zasulsky::getDiagonalSum(int** matrix, size_t rows, size_t cols, size_t diagIndex)
+int getDiagonalSum(const int* matrix, size_t rows, size_t cols, size_t diagIndex)
 {
   int sum = 0;
   size_t diagRow = std::min(rows - 1, diagIndex);
@@ -12,12 +13,12 @@ int zasulsky::getDiagonalSum(int** matrix, size_t rows, size_t cols, size_t diag
     throw std::invalid_argument("Diagonal does not exist");
   }
   while (diagRow > 0 && diagCol < cols - 1) {
-    sum += matrix[diagRow--][diagCol++];
+    sum += zasulsky::getMatrixValue(matrix, rows, cols, diagRow, diagCol);
   }
-  return sum + matrix[diagRow][diagCol];
+  return sum + zasulsky::getMatrixValue(matrix, rows, cols, diagRow, diagCol);
 }
 
-int zasulsky::getMaxOffDiagonalSum(int** matrix, size_t rows, size_t cols)
+int zasulsky::getMaxOffDiagonalSum(const int* matrix, size_t rows, size_t cols)
 {
   int maxSum = getDiagonalSum(matrix, rows, cols, 0);
   for (size_t i = 0; i < rows + cols - 1; i++) {

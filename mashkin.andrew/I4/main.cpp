@@ -24,6 +24,18 @@ int main(int argc, char** argv)
     size_t rows = 0, cols = 0;
     inpFile >> rows;
     inpFile >> cols;
+    if (rows * cols > 1000)
+    {
+      std::cout << rows * cols << ' > ' << 1000 << '\n';
+      return 1;
+    }
+    for (size_t i = 0; i < rows; i++)
+    {
+      for (size_t j = 0; j < cols; j++)
+      {
+        inpFile >> stMatrix[rows * i + j];
+      }
+    }
     inpFile.close();
     std::ofstream outFile;
     outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);

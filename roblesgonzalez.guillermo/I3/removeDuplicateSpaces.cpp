@@ -5,12 +5,10 @@ size_t removeDuplicateSpaces(char *destination, const char *source)
 {
   size_t size = 0;
   size_t d = 0;
-  // Remove leading spaces
   while (isspace(source[d]))
   {
     d++;
   }
-  // Remove consecutive spaces
   while (source[d])
   {
     if (isspace(source[d]))
@@ -30,7 +28,6 @@ size_t removeDuplicateSpaces(char *destination, const char *source)
     }
       d++;
   }
-  // Remove trailing spaces
   if (size > 0)
   {
     size--;
@@ -40,7 +37,6 @@ size_t removeDuplicateSpaces(char *destination, const char *source)
     }
     size++;
   }
-  // Terminate the string
   destination[size] = '\0';
   return size;
 }

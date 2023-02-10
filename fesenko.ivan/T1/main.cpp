@@ -83,7 +83,7 @@ int main()
         break;
       }
     }
-    catch (std::invalid_argument &e) {
+    catch (const std::invalid_argument &e) {
       std::cerr << e.what();
     }
     catch (...) {

@@ -1,5 +1,5 @@
-#include <iostream>
 #include <fstream>
+#include <memory>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
 
@@ -35,5 +35,6 @@ int main() {
         std::cerr << "Error: not enough memory" << '\n' << e.what();
         return 2;
     }
+
     return 0;
 }

@@ -3,6 +3,9 @@
 #include "removeDigits.h"
 
 size_t removeDigits(char * destination, const char * source) {
+    if (destination == nullptr || source == nullptr) {
+        return -1;
+    }
     char *result = destination;
     while (*source != '\0') {
         if (!std::isdigit(*source)) {

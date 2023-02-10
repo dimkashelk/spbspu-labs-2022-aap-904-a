@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "localMinima.h"
+#include "sumOfModules.h"
 int main(int argc, char **argv)
 {
   if (argc < 4)

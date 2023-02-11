@@ -72,9 +72,9 @@ int main(int argc, char* argv[])
       {
         arr[i] = new int[m];
       }
-      fillDynArray(arr, n, m, input);
+      fillDynArray(**arr, n, m, input);
       size_t size_dyn_arr;
-      outputfile << maxSumDiag(arr, size_dyn_arr);
+      outputfile << maxSumDiag(**arr, size_dyn_arr);
       for (size_t i = 0; i < n; ++i)
       {
         delete[] arr[i];

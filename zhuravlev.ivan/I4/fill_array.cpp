@@ -17,7 +17,7 @@ void fillDynArray(int** array_for_filling, size_t nRows, size_t nColomns, std::f
   }
 }
 
-void fillIntegratedArray(int *arr, size_t nRow, size_t nColomn, std::ifstream& input)
+void fillIntegratedArray(int* arr, size_t nRow, size_t nColomn, std::ifstream& input)
 {
   for (size_t i = 0; i < nRow; ++i)
   {

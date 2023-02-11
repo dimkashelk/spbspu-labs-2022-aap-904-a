@@ -34,11 +34,13 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& ex)
     {
+      inpFile.close();
       std::cout << ex.what() << "\n";
       return 1;
     }
     if (rows * cols > 1000)
     {
+      inpFile.close();
       std::cout << rows * cols << " > " << 1000 << "\n";
       return 1;
     }
@@ -54,6 +56,7 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& ex)
     {
+      inpFile.close();
       std::cout << ex.what() << "\n";
       return 1;
     }
@@ -105,6 +108,7 @@ int main(int argc, char** argv)
     catch (const std::exception& ex)
     {
       delete[] dynMatrix;
+      inpFile.close();
       std::cout << ex.what() << "\n";
       return 1;
     }

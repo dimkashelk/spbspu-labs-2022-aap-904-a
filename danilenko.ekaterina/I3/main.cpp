@@ -2,49 +2,24 @@
 #include <cstddef>
 #include "makeNewStringWithoutRepeat.h"
 #include "makeNewStringWithMissingLetters.h"
+#include "createStringFromInput.h"
+
 
 int main()
 {
-  size_t size1 = 0;
   size_t capacity = 10;
-  char* source1 = new char[capacity];
+  size_t size1 = 0;
+  char* source1 = nullptr;
   std::cout << "Enter string: ";
-  std::cin >> std::noskipws;
-
-  do
+  try
   {
-    if (size1 == capacity)
-    {
-      try
-      {
-        char* new_string = new char[capacity + 20];
-        for (auto i = source1, j = new_string; i != source1 + size1; i++, j++)
-        {
-          *j = *i;
-        }
-        delete[] source1;
-        source1 = new_string;
-        capacity += 20;
-      }
-      catch (const std::bad_alloc& e)
-      {
-        std::cout << e.what() << '\n';
-        delete[] source1;
-        return 1;
-      }
-    }
-    std::cin >> source1[size1];
+    source1 = createStringFromInput(std::cin);
   }
-  while (std::cin && source1[size1++] != '\n');
-
-  if (size1 <= 1)
+  catch (const std::exception& e)
   {
-    delete[] source1;
-    std::cerr << "Error. Empty string.";
+    std::cout << e.what() << '\n';
     return 1;
   }
-
-  source1[size1 - 1] = '\0';
 
   //1
   const char source2[] = "abcd";

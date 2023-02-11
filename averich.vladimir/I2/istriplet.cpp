@@ -7,7 +7,7 @@ int isTriplet(int arr[], size_t size)
   size_t j = 1;
   size_t k = 2;
   int countOfTriplet = 0;
-  for (size_t l = 0; l < size; l++)
+  for (size_t l = 0; l < size - 2; l++)
   {
     if (arr[i] > arr[j] && arr[j] > arr[k])
     {
@@ -17,6 +17,5 @@ int isTriplet(int arr[], size_t size)
   j++;
   k++;
   }
-  delete[] arr;
   return countOfTriplet;
 }

@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
     {
       inputArraySize(n, m);
       fillIntegratedArray(arr, n, m, input);
-      outputfile << counterOfRowsWithSameElements(*arr, n, m) << "\n";
+      outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
       if (!outputfile)
       {
         std::cerr << "Error with writting in output file\n";

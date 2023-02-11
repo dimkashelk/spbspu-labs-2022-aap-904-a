@@ -16,7 +16,6 @@ int main()
   }
   catch (...)
   {
-    delete[] source1;
     return 1;
   }
 

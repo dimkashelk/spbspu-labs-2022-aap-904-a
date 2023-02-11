@@ -34,7 +34,7 @@ char* createStringFromInput(std::istream& input)
       }
     }
     input >> source1[size1];
-  } 
+  }
   while (input && source1[size1++] != '\n');
 
   if (size1 <= 1)

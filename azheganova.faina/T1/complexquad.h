@@ -20,7 +20,6 @@ private:
   point_t center;
   Triangle triangle_1;
   Triangle triangle_2;
-  point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4) const;
 };
 
 #endif

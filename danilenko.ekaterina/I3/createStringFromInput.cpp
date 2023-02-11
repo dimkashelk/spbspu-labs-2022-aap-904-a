@@ -8,7 +8,8 @@ char* createStringFromInput(std::istream& input)
 {
   size_t size1 = 0;
   size_t capacity = 10;
-  char* source1 = new char[capacity];
+  char* source1 = nullptr;
+  source1 = new char[capacity];
 
   input >> std::noskipws;
 

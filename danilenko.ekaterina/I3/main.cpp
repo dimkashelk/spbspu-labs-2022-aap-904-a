@@ -28,6 +28,7 @@ int main()
   try
   {
     destination1 = new char[capacity + 1];
+    destination1[0] = '\0';
     destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
     std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
     delete[] destination1;

@@ -1,7 +1,6 @@
 #include "createStringFromInput.h"
 #include "makeStringExtention.h"
 #include <iostream>
-#include <cstring>
 #include <cstddef>
 #include <stdexcept>
 

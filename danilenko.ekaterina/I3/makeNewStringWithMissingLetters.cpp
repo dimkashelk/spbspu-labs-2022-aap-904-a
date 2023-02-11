@@ -1,8 +1,5 @@
 #include "makeNewStringWithMissingLetters.h"
-#include <cctype>
 #include <cstddef>
-#include <istream>
-#include <stdexcept>
 
 bool isNecessaryLetter(char* source, char letter)
 {

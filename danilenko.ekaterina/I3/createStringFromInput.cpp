@@ -10,7 +10,7 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
   char* source1 = nullptr;
   try
   {
-    source1 = new char[capacity + 20];
+    source1 = new char[capacity];
   }
   catch (const std::bad_alloc& e)
   {
@@ -27,11 +27,12 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
     {
       try
       {
-        char* previous_string = source1;
-        size_t capacity_extention = 20;
-        source1 = makeStringExtention(source1, capacity + 20, size, capacity_extention);
-        delete previous_string;
-        capacity += 20;
+        size_t new_cap = capacity + 20;
+        char* new_str = makeStringExtention(source1, capacity, size, new_cap);
+        delete[] source1;
+        source1 = new_str;
+        new_str = nullptr;
+        capacity = new_cap;
       }
       catch (const std::bad_alloc& e)
       {
@@ -42,16 +43,14 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
     }
     input >> source1[size];
   }
-  while (input && source1[size++] != '\n');
+  while (input && source1[size] != '\0' && source1[size++] != '\n');
 
   if (size <= 1)
   {
-    throw std::logic_error("Error. Empty input.");
+    std::cerr << "Empty string" << '\n';
     delete[] source1;
+    return nullptr;
   }
-  else
-  {
-    source1[size - 1] = '\0';
-  }
+  source1[size - 1] = '\0';
   return source1;
 }

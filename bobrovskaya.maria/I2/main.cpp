@@ -50,42 +50,31 @@ int main(int argc, char **argv)
   }
 
   std::ifstream readFile(argv[1]);
-  if (!readFile)
+  if (!readFile.is_open())
   {
-    std::cerr << "Invalid array size\n";
-    return 2;
+    std::cerr << "Error while opening file\n";
+    return 1;
   }
   size_t arrSize3 = 0;
   readFile >> arrSize3;
   if (!readFile)
   {
-    std::cerr << "Invalid number of array elements\n";
-    return 3;
+    std::cerr << "Error while reading file\n";
+    return 1;
   }
-
   if (arrSize3 == 0)
   {
     return 0;
   }
   int* arr3 = new int[arrSize3];
-  if (readFile.is_open())
-  {
-    size_t num = 0;
-    while (!readFile.eof())
-    {
-        int value = 0;
-        readFile >> value;
-        if (!readFile)
-        {
-          std::cerr << "Invalid number of array elements\n";
-          delete[] arr3;
-          return 4;
-        }
-      arr3[num]=value;
-      num++;
-      }
-      readFile >> std::ws;
+  for (size_t i = 0; i < arrSize3; i++) {
+    readFile >> arr3[i];
+    if (!readFile) {
+      std::cerr << "Invalid number of array elements\n";
+      delete[] arr3;
+      return 1;
     }
+  }
   readFile.close();
   size_t maxCountIndeticEllementsArr3 = countIndenticalElements(arr3,arrSize3);
   std::cout << "The number of indentical elements in array3: " << maxCountIndeticEllementsArr3 << "\n";

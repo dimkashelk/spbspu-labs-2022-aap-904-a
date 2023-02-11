@@ -89,20 +89,10 @@ int main(int argc, char** argv)
     }
     size_t rows = 0, cols = 0;
     int* dynMatrix = nullptr;
-    inpFile >> rows;
-    if (!inpFile)
-    {
-      std::cout << "Empty value\n";
-      return 1;
-    }
-    inpFile >> cols;
-    if (!inpFile)
-    {
-      std::cout << "Empty value\n";
-      return 1;
-    }
     try
     {
+      inpFile >> rows;
+      inpFile >> cols;
       dynMatrix = new int[rows * cols];
       for (size_t i = 0; i < rows; i++)
       {
@@ -126,6 +116,7 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& ex)
     {
+      delete[] dynMatrix;
       std::cout << ex.what() << "\n";
       return 1;
     }

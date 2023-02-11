@@ -31,7 +31,6 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
         size_t capacity_extention = 20;
         source1 = makeStringExtention(source1, capacity + 20, size, capacity_extention);
         delete previous_string;
-        source1 = nullptr;
         capacity += 20;
       }
       catch (const std::bad_alloc& e)

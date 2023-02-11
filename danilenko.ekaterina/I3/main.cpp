@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <cstddef>
+#include <cstring>
 #include "makeNewStringWithoutRepeat.h"
 #include "makeNewStringWithMissingLetters.h"
 #include "createStringFromInput.h"

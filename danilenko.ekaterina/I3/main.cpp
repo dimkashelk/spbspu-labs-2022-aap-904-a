@@ -38,7 +38,7 @@ int main()
     std::cout << e.what() << '\n';
     return 1;
   }
-  
+
   //2
   char* destination2 = nullptr;
   try

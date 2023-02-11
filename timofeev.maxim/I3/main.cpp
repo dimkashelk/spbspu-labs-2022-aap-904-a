@@ -17,7 +17,16 @@ int main()
   }
   const size_t siz = 5;
   const char str2[siz] = "1111";
-  char *outstring1 = new char[size];
+  char *outstring1 = nullptr;
+  try
+  {
+    outstring1 = new char[size];
+  }
+  catch (const std::bad_alloc &e)
+  {
+    delete [] outstring1;
+    std::cout << "Memory error" << "\n";
+  }
   removeAlphabet(outstring1, str);
   if (outstring1[0] != '\0')
   {
@@ -28,7 +37,16 @@ int main()
   {
     std::cerr << "Error" << "\n";
   }
-  char *outstring2 = new char[size + siz];
+  char *outstring2 = nullptr;
+  try
+  {
+    outstring2 = new char[size + siz];
+  }
+  catch (const std::bad_alloc &e)
+  {
+     delete [] outstring2;
+     std::cout << "Memory error" << "\n";
+  }
   addNumbers(outstring2, str, str2);
   if (outstring2[0] != '\0')
   {

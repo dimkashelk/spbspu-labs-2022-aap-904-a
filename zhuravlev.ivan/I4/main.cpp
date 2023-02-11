@@ -63,7 +63,6 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "2"))
   {
-    int arr[1000];
     try
     {
       inputArraySize(n, m);

@@ -22,25 +22,27 @@ int main()
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what() << "\n";
     delete[] source1;
+    std::cout << e.what() << "\n";
     return 1;
   }
 
   //1
   char source2[] = "abcd";
-  size_t string_size1 = capacity + size + 1;
+  size_t size1 = strlen(source1);
+  size_t size2 = strlen(source2);
+  size_t string_size1 = size1 + size2 + 1;
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[string_size1];
+    destination1 = new char[string_size1 + 20];
     destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
   }
   catch (const std::bad_alloc& e)
   {
-    std::cout << e.what() << '\n';
     delete[] destination1;
     delete[] source1;
+    std::cout << e.what() << '\n';
     return 1;
   }
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
@@ -50,14 +52,14 @@ int main()
   char* destination2 = nullptr;
   try
   {
-    destination2 = new char[string_size2];
+    destination2 = new char[string_size2 + 26];
     destination2 = makeNewStringWithMissingLetters(destination2, source1);
   }
   catch (const std::bad_alloc& e)
   {
-    std::cout << e.what() << '\n';
     delete[] destination2;
     delete[] source1;
+    std::cout << e.what() << '\n';
     return 1;
   }
   std::cout << "New string with missing letters in first string: " << destination2;

@@ -16,7 +16,7 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
   {
     std::cerr << "Error allocating memory: " << e.what() << '\n';
     delete[] source1;
-    return nullptr;
+    return 0;
   }
 
   input >> std::noskipws;
@@ -31,13 +31,14 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
         size_t capacity_extention = 20;
         source1 = makeStringExtention(source1, capacity + 20, size, capacity_extention);
         delete previous_string;
+        source1 = nullptr;
         capacity += 20;
       }
       catch (const std::bad_alloc& e)
       {
         std::cerr << "Error" << e.what() << '\n';
         delete[] source1;
-        return nullptr;
+        return 0;
       }
     }
     input >> source1[size];
@@ -46,8 +47,8 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
 
   if (size <= 1)
   {
-    delete[] source1;
     throw std::logic_error("Error. Empty input.");
+    delete[] source1;
   }
   else
   {

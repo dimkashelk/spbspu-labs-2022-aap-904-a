@@ -104,6 +104,7 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& ex)
     {
+      delete[] dynMatrix;
       std::cout << ex.what() << "\n";
       return 1;
     }
@@ -116,7 +117,6 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& ex)
     {
-      delete[] dynMatrix;
       std::cout << ex.what() << "\n";
       return 1;
     }

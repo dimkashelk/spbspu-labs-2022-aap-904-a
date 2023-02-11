@@ -21,13 +21,13 @@ int main()
   }
 
   //1
-  const char source2[] = "abcd";
+  char source2[] = "abcd";
   size_t size1 = sizeof source1;
   size_t size2 = sizeof source2;
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[size1 + size2];
+    destination1 = new char[size1 + size2 + 1];
   }
   catch (const std::bad_alloc& e)
   {

@@ -12,7 +12,6 @@ public:
   Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4);
   double getArea() const;
   rectangle_t getFrameRect() const;
-  point_t findCenterOfTriangle();
   void move(point_t position);
   void move(double dx, double dy);
   void scale(double k) noexcept;
@@ -21,6 +20,7 @@ private:
   point_t center;
   Triangle triangle_1;
   Triangle triangle_2;
+  point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4) const;
 };
 
 #endif

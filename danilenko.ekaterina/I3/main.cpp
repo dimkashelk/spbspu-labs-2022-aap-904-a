@@ -24,11 +24,10 @@ int main()
 
   //1
   char source2[] = "abcd";
-  size_t size2 = sizeof source2;
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[capacity + size2 + 1];
+    destination1 = new char[capacity + 1];
   }
   catch (const std::bad_alloc& e)
   {

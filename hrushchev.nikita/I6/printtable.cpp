@@ -18,14 +18,7 @@ void printTable(std::ostream& out, const double abs_error, const double step,
 {
   for (double x = x_start; x <= x_end; x += step)
   {
-    try
-    {
-      printTableRow(out, x, number_max, abs_error);
-    }
-    catch (const std::exception &e)
-    {
-      throw;
-    }
+    printTableRow(out, x, number_max, abs_error);
   }
 }
 

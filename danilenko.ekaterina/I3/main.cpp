@@ -13,7 +13,8 @@ int main()
 
   try
   {
-    source1 = createStringFromInput(std::cin, size, capacity);
+    size_t new_capacity = capacity + 20;
+    source1 = createStringFromInput(std::cin, size, new_capacity);
   }
   catch (const std::exception& e)
   {
@@ -25,30 +26,32 @@ int main()
   //1
   char source2[] = "abcd";
   char* destination1 = nullptr;
+  destination1 = new char[capacity + size + 1];
   try
   {
-    destination1 = new char[capacity + size + 1];
     destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
     std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
   }
   catch (const std::bad_alloc& e)
   {
     std::cout << e.what() << '\n';
+    delete[] destination1;
     delete[] source1;
     return 1;
   }
 
   //2
   char* destination2 = nullptr;
+  destination2 = new char[28];
   try
   {
-    destination2 = new char[28];
     destination2 = makeNewStringWithMissingLetters(destination2, source1);
     std::cout << "New string with missing letters in first string: " << destination2;
   }
   catch (const std::bad_alloc& e)
   {
     std::cout << e.what() << '\n';
+    delete[] destination2;
     delete[] source1;
     return 1;
   }

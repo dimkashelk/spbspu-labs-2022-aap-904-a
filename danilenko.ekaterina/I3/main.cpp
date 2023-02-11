@@ -9,18 +9,18 @@ int main()
   char* source1 = nullptr;
   size_t capacity = 10;
   size_t size = 0;
+  size_t new_capacity = capacity + 20;
   std::cout << "Enter string: ";
 
   try
   {
-    size_t new_capacity = capacity + 20;
     source1 = createStringFromInput(std::cin, size, new_capacity);
   }
   catch (const std::exception& e)
   {
     std::cout << e.what() << "\n";
     delete[] source1;
-    return 1;
+    return 2;
   }
 
   //1

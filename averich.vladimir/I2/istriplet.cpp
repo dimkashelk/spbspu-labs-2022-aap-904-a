@@ -8,7 +8,8 @@ int isTriplet(int arr[], size_t size)
   size_t k = 2;
   if (size < 3)
   {
-   std::cout << "Can't find the triplet, because the array has less than three elements ";
+   std::cout << "Can't find the triplet, because the array has less than three elements " << std::endl;
+   return 1;
   }
   int countOfTriplet = 0;
   for (size_t l = 0; l < size - 2; l++)

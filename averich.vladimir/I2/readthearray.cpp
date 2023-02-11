@@ -21,7 +21,7 @@ int readTheArray(std::string fileName)
       return 2;
     }
   }
-  std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
+  std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) /* << " in the file array"*/ << std::endl;
   sort(fileArray, sizeOfFileArray);
   delete[] fileArray;
   return 0;

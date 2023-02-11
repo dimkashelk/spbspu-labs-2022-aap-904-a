@@ -18,7 +18,7 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
     delete[] source1;
     throw;
   }
-  
+
   input >> std::noskipws;
 
   do

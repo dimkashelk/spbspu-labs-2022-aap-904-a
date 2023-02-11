@@ -14,12 +14,12 @@ int main(int argc, char * argv[])
   }
   const size_t sizeOfDefaultArray = 10;
   int defaultArray[sizeOfDefaultArray] = {-5, 2, 1, 3, 2, 1, -2, 1, -3, -4};
-  std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) /* << " in the static array"*/ << std::endl;
+  std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
   sort(defaultArray, sizeOfDefaultArray);
   size_t sizeOfDynArray = 0;
-  std::cout << "Enter size of array: " << std::endl;
+  std::cout << "Enter size of array dynamic: ";
   std::cin >> sizeOfDynArray;
-  if (!std::cin || sizeOfDynArray == 0)
+  if (!std::cin || sizeOfDynArray <= 0)
   {
    std::cout << "Error size of dynamic array, try again" << std::endl;
    return 1;

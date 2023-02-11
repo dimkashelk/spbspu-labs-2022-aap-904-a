@@ -9,6 +9,16 @@ int readTheArray(std::string fileName)
   std::ifstream in(fileName);
   size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
+  if (!in)
+  {
+   std::cout << "Error: input size is invalid or empty";
+   return 1;
+  }
+  if (sizeOfFileArray == 0)
+  {
+   std::cout << "Error: size of array = 0";
+   return 1;
+  }
   int * fileArray = new int[sizeOfFileArray];
   for (size_t i = 0; i < sizeOfFileArray; i++)
   {
@@ -18,10 +28,10 @@ int readTheArray(std::string fileName)
       std::cout << "Error: input is empty" << std::endl;
       in.close();
       delete[] fileArray;
-      return 2;
+      return 1;
     }
   }
-  std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) /* << " in the file array"*/ << std::endl;
+  std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
   sort(fileArray, sizeOfFileArray);
   delete[] fileArray;
   return 0;

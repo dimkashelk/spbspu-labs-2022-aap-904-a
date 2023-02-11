@@ -8,15 +8,15 @@
 char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
 {
   char* source1 = nullptr;
-  std::cout << "Enter string: ";
   try
   {
     source1 = new char[capacity];
   }
-  catch (...)
+  catch (const std::bad_alloc& e)
   {
+    std::cerr << "Error allocating memory: " << e.what() << '\n';
     delete[] source1;
-    throw;
+    return nullptr;
   }
 
   input >> std::noskipws;
@@ -27,16 +27,17 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
     {
       try
       {
-        char* new_string = source1;
+        char* previous_string = source1;
         size_t capacity_extention = 20;
         source1 = makeStringExtention(source1, capacity, size, capacity_extention);
-        delete[] new_string;
+        delete previous_string;
         capacity += 20;
       }
-      catch (...)
+      catch (const std::bad_alloc& e)
       {
+        std::cerr << "Error" << e.what() << '\n';
         delete[] source1;
-        throw;
+        return nullptr;
       }
     }
     input >> source1[size];
@@ -52,6 +53,5 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
   {
     source1[size - 1] = '\0';
   }
-
   return source1;
 }

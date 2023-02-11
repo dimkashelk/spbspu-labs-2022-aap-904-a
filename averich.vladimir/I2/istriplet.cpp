@@ -17,5 +17,6 @@ int isTriplet(int arr[], size_t size)
   j++;
   k++;
   }
+  delete[] arr;
   return countOfTriplet;
 }

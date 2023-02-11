@@ -19,7 +19,7 @@ int readTheArray(std::string fileName)
    std::cout << "Error: input size is invalid or empty" << std::endl;
    return 1;
   }
-  if (sizeOfFileArray == 0)
+  else if (sizeOfFileArray == 0)
   {
    std::cout << "Error: size of array is 0" << std::endl;
    return 1;

@@ -4,6 +4,6 @@
 #include <cstddef>
 #include <istream>
 
-char* createStringFromInput(std::istream& inp);
+char* createStringFromInput(std::istream& input);
 
 #endif

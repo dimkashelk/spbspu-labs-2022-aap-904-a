@@ -3,13 +3,9 @@
 #include <cstddef>
 int sort(int arr[], size_t size)
 {
-  if (size < 0)
+  for (size_t i = 0; i < size; i++)
   {
-   std::cout << "Error: size of array is wrong, try again";
-  }
-  for (int i = 0; i < size; i++)
-  {
-    for (int j = 0; j < size - 1 - i; j++)
+    for (size_t j = 0; j < size - 1 - i; j++)
     {
       if (arr[j] > arr[j + 1])
       {
@@ -18,7 +14,7 @@ int sort(int arr[], size_t size)
     }
   }
   std::cout << "Sort array: ";
-  for (int i = 0; i < size; i++)
+  for (size_t i = 0; i < size; i++)
   {
     std::cout << arr[i] << " ";
   }

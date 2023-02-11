@@ -3,10 +3,6 @@
 #include <cstddef>
 int isTriplet(int arr[], size_t size)
 {
-  if (size < 0)
-  {
-   std::cout << "Error: size of array is wrong, try again";
-  }
   size_t i = 0;
   size_t j = 1;
   size_t k = 2;

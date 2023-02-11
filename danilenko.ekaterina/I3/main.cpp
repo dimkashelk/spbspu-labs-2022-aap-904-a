@@ -51,7 +51,7 @@ int main()
   }
   destination2 = makeNewStringWithMissingLetters(destination2, source1);
   std::cout << "New string with missing letters in first string: " << destination2;
-  
+
   delete[] destination1;
   delete[] destination2;
   delete[] source1;

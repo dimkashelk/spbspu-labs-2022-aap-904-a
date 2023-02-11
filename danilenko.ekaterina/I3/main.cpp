@@ -30,9 +30,10 @@ int main()
   //1
   char source2[] = "abcd";
   size_t string_size1 = capacity + size + 1;
-  char* destination1 = new char[string_size1];
+  char* destination1 = nullptr;
   try
   {
+    destination1 = new char[string_size1];
     destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
   }
   catch (const std::bad_alloc& e)
@@ -45,10 +46,11 @@ int main()
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
 
   //2
-  size_t string_size2 = 28;
-  char* destination2 = new char[string_size2];
+  size_t string_size2 = 26;
+  char* destination2 = nullptr;
   try
   {
+    destination2 = new char[string_size2];
     destination2 = makeNewStringWithMissingLetters(destination2, source1);
   }
   catch (const std::bad_alloc& e)

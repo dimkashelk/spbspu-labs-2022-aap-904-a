@@ -1,46 +1,37 @@
 #include "makeNewStringWithoutRepeat.h"
-#include <iostream>
-#include <cctype>
 #include <cstddef>
+#include <cstring>
 
 char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2)
 {
-  size_t new_element = 0;
-  bool match = false;
+  size_t str_len1 = strlen(source1);
+  size_t str_len2 = strlen(source2);
+  size_t total_len = str_len1 + str_len2;
 
-  for (size_t i = 0; source1[i] != '\0'; i++)
+  for (size_t i = 0; i < str_len1; i++)
   {
-    match = false;
-    for (size_t j = 0; source2[j] != '\0'; j++)
-    {
-      if (source1[i] == source2[j])
-      {
-        match = true;
-        break;
-      }
-    }
-    if (match == false)
-    {
-      destination[new_element++] = source1[i];
-    }
+    destination[i] = source1[i];
   }
-  for (size_t i = 0; source2[i] != '\0'; i++)
+  for (size_t j = 0; j < str_len2; j++)
   {
-    match = false;
-    for (size_t j = 0; source1[j] != '\0'; j++)
-    {
-      if (source2[i] == source1[j])
-      {
-        match = true;
-        break;
-      }
-    }
-    if (match == false)
-    {
-      destination[new_element++] = source2[i];
-    }
+    destination[str_len1 + j] = source2[j];
   }
 
-  destination[new_element] = '\0';
+  for (size_t i = 0; i < total_len; i++)
+  {
+    for (size_t j = i + 1; j < total_len; j++)
+    {
+      if (destination[i] == destination[j])
+      {
+        total_len--;
+        for (size_t k = j; k < total_len - 1; k++)
+        {
+          destination[k] = destination[k + 1];
+        }
+        j--;
+      }
+    }
+  }
+  destination[total_len] = '\0';
   return destination;
 }

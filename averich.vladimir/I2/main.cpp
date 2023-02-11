@@ -17,7 +17,7 @@ int main(int argc, char * argv[])
   std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
   sort(defaultArray, sizeOfDefaultArray);
   size_t sizeOfDynArray = 0;
-  std::cout << "Enter size of array dynamic: ";
+  std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
   if (!std::cin || sizeOfDynArray <= 0)
   {

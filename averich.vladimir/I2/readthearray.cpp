@@ -7,7 +7,7 @@
 int readTheArray(std::string fileName)
 {
   std::ifstream in(fileName);
-  if (!in.eof())
+  if (in.eof())
   {
    std::cout << "Error: file is empty" << std::endl;
    return 1;
@@ -21,7 +21,7 @@ int readTheArray(std::string fileName)
   }
   if (sizeOfFileArray == 0)
   {
-   std::cout << "Error: size of array = 0" << std::endl;
+   std::cout << "Error: size of array is 0" << std::endl;
    return 1;
   }
   int * fileArray = new int[sizeOfFileArray];

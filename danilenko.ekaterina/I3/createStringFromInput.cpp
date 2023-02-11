@@ -40,8 +40,8 @@ char* createStringFromInput(std::istream& input)
 
   if (size1 <= 1)
   {
-    delete[] source1;
     throw std::logic_error("Empty string");
+    delete[] source1;
   }
   source1[size1 - 1] = '\0';
 

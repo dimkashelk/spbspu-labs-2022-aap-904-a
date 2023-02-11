@@ -1,29 +1,31 @@
 #include "makeNewStringWithMissingLetters.h"
-#include <iostream>
 #include <cctype>
 #include <cstddef>
+#include <istream>
+#include <stdexcept>
 
-char* makeNewStringWithMissingLetters(char* destination, const char* source)
+bool isNecessaryLetter(char* source, char letter)
 {
-  size_t new_elements = 0;
-  bool match = false;
-  for (char i = 'a'; i <= 'z'; i++)
+  for (size_t i = 0; source[i] != '\0'; i++)
   {
-    match = false;
-    for (size_t j = 0; source[j] != '\0'; j++)
+    if (source[i] == letter)
     {
-      if (std::tolower(source[j]) == std::tolower(i))
-      {
-        match = true;
-      }
-    }
-    if (match == false)
-    {
-      destination[new_elements++] = i;
+      return true;
     }
   }
+  return false;
+}
 
-  destination[new_elements] = '\0';
-
+char* makeNewStringWithMissingLetters(char* destination, char* source)
+{
+  size_t new_element = 0;
+  for (char i = 'a'; i <= 'z'; i++)
+  {
+    if (!isNecessaryLetter(source, i))
+    {
+      destination[new_element++] = i;
+    }
+  }
+  destination[new_element] = '\0';
   return destination;
 }

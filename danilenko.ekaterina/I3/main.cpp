@@ -8,7 +8,6 @@
 int main()
 {
   size_t capacity = 10;
-  size_t size1 = 0;
   char* source1 = nullptr;
   std::cout << "Enter string: ";
   try

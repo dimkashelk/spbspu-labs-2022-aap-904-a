@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     std::cerr << "=(" << "\n";
     return 1;
   }
-  if (!strcmp(argv[1], "1"))
+  if (!(strcmp(argv[1], "1")))
   {
     int matrix[1000];
     size_t n = 0;

@@ -37,7 +37,8 @@ int *smoothedMatrix(int *matrix, size_t n, size_t m)
   try
   {
     matrixSmoothed = new int[n * m];
-  } catch (const std::bad_alloc &e)
+  }
+  catch (const std::bad_alloc &e)
   {
     return nullptr;
   }

@@ -10,7 +10,7 @@ bool scanMatrixOne(int *matrix, std::istream &in_stream, size_t &n, size_t &m)
   {
     return false;
   }
-  if (n * m >1000)
+  if (n * m > 1000)
   {
     return false;
   }

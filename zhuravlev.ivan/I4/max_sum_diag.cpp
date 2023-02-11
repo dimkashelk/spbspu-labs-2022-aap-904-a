@@ -1,6 +1,6 @@
 #include "max_sum_diag.h"
 
-int maxSumDiag(int** arr, int size_of_dyn_array)
+int maxSumDiag(const int* arr, int size_of_dyn_array)
 {
   int max_sum = 0;
   for (int i = 0; i < size_of_dyn_array; ++i)

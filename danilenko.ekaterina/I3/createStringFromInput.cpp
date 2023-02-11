@@ -1,5 +1,5 @@
 #include "createStringFromInput.h"
-#include <istream>
+#include <iostream>
 #include <cstring>
 #include <cstddef>
 #include <stdexcept>
@@ -28,23 +28,25 @@ char* createStringFromInput(std::istream& input)
         source1 = new_string;
         capacity += 20;
       }
-      catch (const std::bad_alloc& e)
+      catch (...)
       {
         delete[] source1;
-        return 0;
+        throw;
       }
     }
     input >> source1[size1];
-  }
+  } 
   while (input && source1[size1++] != '\n');
 
   if (size1 <= 1)
   {
-    throw std::logic_error("Empty string");
     delete[] source1;
-    return 0;
+    throw std::logic_error("Error. Empty input.");
   }
-  source1[size1 - 1] = '\0';
+  else
+  {
+    source1[size1 - 1] = '\0';
+  }
 
   return source1;
 }

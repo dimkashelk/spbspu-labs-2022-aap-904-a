@@ -8,26 +8,25 @@
 int main()
 {
   char* source1 = nullptr;
+  size_t capacity = 10;
   std::cout << "Enter string: ";
   try
   {
     source1 = createStringFromInput(std::cin);
   }
-  catch (const std::exception& e)
+  catch (...)
   {
-    std::cout << e.what() << '\n';
     delete[] source1;
     return 1;
   }
 
   //1
   char source2[] = "abcd";
-  size_t size1 = sizeof source1;
   size_t size2 = sizeof source2;
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[size1 + size2 + 1];
+    destination1 = new char[capacity + size2 + 1];
   }
   catch (const std::bad_alloc& e)
   {

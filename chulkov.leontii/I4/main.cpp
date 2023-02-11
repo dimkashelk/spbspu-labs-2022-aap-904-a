@@ -74,12 +74,7 @@ int main(int argc, char* argv[])
     if ((c * r) == 0)
     {
       output << "0\n";
-      if (!output)
-      {
-        std::cout << "Error while writing\n";
-        return 1;
-      }
-      return 2;
+      return 0;
     }
     int* newarr = new int[c * r];
     for (size_t i = 0; i < size; i++)

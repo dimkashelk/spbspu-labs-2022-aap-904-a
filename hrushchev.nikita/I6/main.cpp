@@ -5,7 +5,8 @@
 #include <cstddef>
 #include "printtable.hpp"
 
-int main() {
+int main()
+{
   const double abs_error = 0.0001;
   const double step = 0.05;
   double x_start = 0.0;
@@ -13,7 +14,7 @@ int main() {
   size_t number_max = 0;
 
   std::cin >> x_start >> x_end >> number_max;
-  if(x_start > x_end)
+  if (x_start > x_end)
   {
     std::cerr << "Invalid interval\n";
     return 1;

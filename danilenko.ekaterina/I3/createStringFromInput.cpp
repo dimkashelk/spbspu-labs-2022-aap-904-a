@@ -10,7 +10,7 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
   char* source1 = nullptr;
   try
   {
-    source1 = new char[capacity];
+    source1 = new char[capacity + 20];
   }
   catch (const std::bad_alloc& e)
   {
@@ -29,7 +29,7 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
       {
         char* previous_string = source1;
         size_t capacity_extention = 20;
-        source1 = makeStringExtention(source1, capacity, size, capacity_extention);
+        source1 = makeStringExtention(source1, capacity + 20, size, capacity_extention);
         delete previous_string;
         capacity += 20;
       }

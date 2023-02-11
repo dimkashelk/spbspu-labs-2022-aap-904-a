@@ -2,10 +2,10 @@
 #include <cstddef>
 #include <fstream>
 #include <cstring>
-#include "input.array.size.h"
-#include "fill.array.h"
-#include "number.of.rows.with.same.elements.h"
-#include "maxSumDiag.h"
+#include "input_array_size.h"
+#include "fill_array.h"
+#include "number_of_rows_with_same_elements.h"
+#include "max_sum_diag.h"
 
 
 int main(int argc, char* argv[])
@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
       }
       fillDynArray(**arr, n, m, input);
       size_t size_dyn_arr;
-      outputfile << maxSumDiag(**arr,size_dyn_arr) << "\n";
+      outputfile << maxSumDiag(**arr,size_dyn_arr);
       for (int i = 0; i < n; ++i)
       {
         delete[] arr[i];

@@ -1,4 +1,4 @@
-#include "maxSumDiag.h"
+#include "max_sum_diag.h"
 
 int maxSumDiag(int** arr, int size_of_dyn_array)
 {

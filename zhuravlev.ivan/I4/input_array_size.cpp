@@ -1,4 +1,4 @@
-#include "input.array.size.h"
+#include "input_array_size.h"
 #include <iostream>
 
 void inputArraySize(size_t nRows, size_t nColomns)

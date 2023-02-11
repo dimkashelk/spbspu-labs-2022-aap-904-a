@@ -1,31 +1,36 @@
 #include "createStringFromInput.h"
+#include "makeStringExtention.h"
 #include <iostream>
 #include <cstring>
 #include <cstddef>
 #include <stdexcept>
 
-char* createStringFromInput(std::istream& input)
+char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
 {
-  size_t size1 = 0;
-  size_t capacity = 10;
   char* source1 = nullptr;
-  source1 = new char[capacity];
-
+  std::cout << "Enter string: ";
+  try
+  {
+    source1 = new char[capacity];
+  }
+  catch (...)
+  {
+    delete[] source1;
+    throw;
+  }
+  
   input >> std::noskipws;
 
   do
   {
-    if (size1 == capacity)
+    if (size == capacity)
     {
       try
       {
-        char* new_string = new char[capacity + 20];
-        for (auto i = source1, j = new_string; i != source1 + size1; i++, j++)
-        {
-          *j = *i;
-        }
-        delete[] source1;
-        source1 = new_string;
+        char* new_string = source1;
+        size_t capacity_extention = 20;
+        source1 = makeStringExtention(source1, capacity, size, capacity_extention);
+        delete[] new_string;
         capacity += 20;
       }
       catch (...)
@@ -34,18 +39,18 @@ char* createStringFromInput(std::istream& input)
         throw;
       }
     }
-    input >> source1[size1];
+    input >> source1[size];
   }
-  while (input && source1[size1++] != '\n');
+  while (input && source1[size++] != '\n');
 
-  if (size1 <= 1)
+  if (size <= 1)
   {
     delete[] source1;
     throw std::logic_error("Error. Empty input.");
   }
   else
   {
-    source1[size1 - 1] = '\0';
+    source1[size - 1] = '\0';
   }
 
   return source1;

@@ -9,13 +9,16 @@ int main()
 {
   char* source1 = nullptr;
   size_t capacity = 10;
-  std::cout << "Enter string: ";
+  size_t size = 0;
+
   try
   {
-    source1 = createStringFromInput(std::cin);
+    source1 = createStringFromInput(std::cin, size, capacity);
   }
-  catch (...)
+  catch (const std::exception& e)
   {
+    std::cout << e.what() << "\n";
+    delete[] source1;
     return 1;
   }
 

@@ -6,10 +6,10 @@
 
 int main()
 {
-  char* source1 = nullptr;
   size_t capacity = 10;
   size_t size = 0;
   size_t new_capacity = capacity + 20;
+  char* source1 = nullptr;
   std::cout << "Enter string: ";
 
   try
@@ -20,13 +20,12 @@ int main()
   {
     std::cout << e.what() << "\n";
     delete[] source1;
-    return 2;
+    return 1;
   }
 
   //1
   char source2[] = "abcd";
-  char* destination1 = nullptr;
-  destination1 = new char[capacity + size + 1];
+  char* destination1 = new char[capacity + size + 1];
   try
   {
     destination1 = makeNewStringWithoutRepeat(destination1, source1, source2);
@@ -41,8 +40,7 @@ int main()
   }
 
   //2
-  char* destination2 = nullptr;
-  destination2 = new char[28];
+  char* destination2 = new char[28];
   try
   {
     destination2 = makeNewStringWithMissingLetters(destination2, source1);

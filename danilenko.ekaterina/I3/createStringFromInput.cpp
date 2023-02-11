@@ -5,20 +5,12 @@
 #include <cstddef>
 #include <stdexcept>
 
-char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
+char* createStringFromInput(std::istream& input)
 {
-  char* source1 = nullptr;
-  try
-  {
-    source1 = new char[capacity];
-  }
-  catch (const std::bad_alloc& e)
-  {
-    std::cerr << "Error allocating memory: " << e.what() << '\n';
-    delete[] source1;
-    return 0;
-  }
-
+  size_t capacity = 20;
+  char* source1 = new char[capacity];
+  source1[0] = '\0';
+  size_t size = 0;
   input >> std::noskipws;
 
   do
@@ -27,29 +19,27 @@ char* createStringFromInput(std::istream& input, size_t size, size_t capacity)
     {
       try
       {
-        size_t new_cap = capacity + 20;
-        char* new_str = makeStringExtention(source1, capacity, size, new_cap);
+        size_t new_capacity = capacity + 20;
+        char* new_str = makeStringExtention(source1, capacity, size, new_capacity);
         delete[] source1;
         source1 = new_str;
         new_str = nullptr;
-        capacity = new_cap;
+        capacity = new_capacity;
       }
-      catch (const std::bad_alloc& e)
+      catch (const std::exception& e)
       {
-        std::cerr << "Error" << e.what() << '\n';
         delete[] source1;
-        return 0;
+        throw;
       }
     }
     input >> source1[size];
   }
   while (input && source1[size] != '\0' && source1[size++] != '\n');
 
-  if (size <= 1)
+  if (source1[0] == '\n' || source1[0] == '\0')
   {
-    std::cerr << "Empty string" << '\n';
     delete[] source1;
-    return nullptr;
+    throw std::logic_error("Empty string");
   }
   source1[size - 1] = '\0';
   return source1;

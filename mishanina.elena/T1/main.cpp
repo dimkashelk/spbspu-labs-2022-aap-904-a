@@ -7,7 +7,6 @@
 #include "shape.h"
 #include "printShapes.h"
 #include "isoScale.h"
-
 int main()
 {
   CompositeShape compositeShape;
@@ -24,49 +23,20 @@ int main()
     {
       break;
     }
-    if (figureName == "RECTANGLE" || figureName == "PARALLELOGRAM" || figureName == "TRIANGLE")
+    if (figureName == "RECTANGLE")
     {
+      point_t A{}, B{};
+      std::cin >> A.x >> A.y >> B.x >> B.y;
+      Shape *shape = nullptr;
       try
       {
-        if (figureName == "RECTANGLE")
-        {
-          point_t A{}, B{};
-          std::cin >> A.x >> A.y >> B.x >> B.y;
-          Shape* shape = new Rectangle(A, B);
-          compositeShape.push_back(shape);
-          countCorrectFigure++;
-          delete[] shape;
-          correctFigure = true;
-          correctComposite = true;
-        }
-        else if (figureName == "PARALLELOGRAM")
-        {
-          point_t A{}, B{}, C{};
-          std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-          Shape* shape = new Parallelogram(A, B, C);
-          compositeShape.push_back(shape);
-          countCorrectFigure++;
-          delete[] shape;
-          correctFigure = true;
-          correctComposite = true;
-        }
-        else if (figureName == "TRIANGLE")
-        {
-          point_t A{}, B{}, C{};
-          std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-          Shape* shape = new Triangle(A, B, C);
-          compositeShape.push_back(shape);
-          countCorrectFigure++;
-          delete[] shape;
-          correctFigure = true;
-          correctComposite = true;
-        }
+        shape = new Rectangle(A, B);
+        compositeShape.push_back(shape);
       }
-      catch (const std::invalid_argument& e)
+      catch (const std::invalid_argument &e)
       {
         correctFigure = false;
         countInvalidFigure++;
-        delete[] shape;
         continue;
       }
       catch (...)
@@ -74,6 +44,59 @@ int main()
         correctComposite = false;
         delete[] shape;
       }
+      countCorrectFigure++;
+      correctFigure = true;
+      correctComposite = true;
+    }
+    else if (figureName == "PARALLELOGRAM")
+    {
+      point_t A{}, B{}, C{};
+      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+      Shape *shape = nullptr;
+      try
+      {
+        shape = new Parallelogram(A, B, C);
+        compositeShape.push_back(shape);
+      }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        countInvalidFigure++;
+        continue;
+      }
+      catch (...)
+      {
+        correctComposite = false;
+        delete[] shape;
+      }
+      countCorrectFigure++;
+      correctFigure = true;
+      correctComposite = true;
+    }
+    else if (figureName == "TRIANGLE")
+    {
+      point_t A{}, B{}, C{};
+      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+      Shape *shape = nullptr;
+      try
+      {
+        shape = new Triangle(A, B, C);
+        compositeShape.push_back(shape);
+      }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        countInvalidFigure++;
+        continue;
+      }
+      catch (...)
+      {
+        correctComposite = false;
+        delete[] shape;
+      }
+      countCorrectFigure++;
+      correctFigure = true;
+      correctComposite = true;
     }
     else if (figureName == "SCALE")
     {
@@ -85,7 +108,7 @@ int main()
       double x = 0.0;
       double y = 0.0;
       std::cin >> x >> y;
-      point_t pos{ x, y };
+      point_t pos{x, y};
       double k = 0.0;
       std::cin >> k;
       if (!std::cin || k < 0)
@@ -109,6 +132,7 @@ int main()
       }
       printShapes(std::cout, compositeShape);
       std::cout << '\n';
+      break;
     }
     else
     {

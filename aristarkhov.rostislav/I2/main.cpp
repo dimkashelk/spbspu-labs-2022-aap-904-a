@@ -52,21 +52,21 @@ int main(int argc, char** argv)
   }
   else
   {
-    std::cout << "There is no suitable maximum1\n";
+    std::cout << "There is no suitable maximum\n";
   }
   delete[] arr2;
 
   std::ifstream file(argv[1]);
   if (!file.is_open())
   {
-    std::cout << "Error while opening file1\n";
+    std::cout << "Error while opening file\n";
     return 1;
   }
   size_t size_arr3 = 0;
   file >> size_arr3;
   if (!file)
   {
-    std::cout << "Error while reading file2\n";
+    std::cout << "Error while reading file\n";
     return 1;
   }
   int* arr3 = new int[size_arr3];
@@ -75,7 +75,7 @@ int main(int argc, char** argv)
     file >> arr3[i];
     if (!file)
     {
-      std::cerr << "Error while reading3>\n";
+      std::cerr << "Error while reading>\n";
       delete[] arr3;
       return 1;
     }

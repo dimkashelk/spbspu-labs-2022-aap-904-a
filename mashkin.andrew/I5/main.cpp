@@ -1,6 +1,7 @@
 #include "createCString.h"
 #include "isFloat.h"
 #include <iostream>
+#include <cstddef>
 
 int main()
 {

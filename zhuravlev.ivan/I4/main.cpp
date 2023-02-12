@@ -95,6 +95,7 @@ int main(int argc, char* argv[])
         std::cerr << "Error with writting in output file\n";
         return -1;
       }
+      delete[] dyn_array;
     }
     catch (std::exception &e)
     {

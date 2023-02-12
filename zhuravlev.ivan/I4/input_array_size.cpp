@@ -5,10 +5,10 @@ void inputArraySize(size_t nRows, size_t nColomns)
 {
   if ((nRows <= 0) || (nColomns <= 0))
   {
-    std::cerr << "Wrong input!\n";
+    std::cout << "Wrong input!\n";
   }
   if (nRows != nColomns)
   {
-    std::cerr << "You need to read task before enter the ratio\n";
+    std::cout << "You need to read task before enter the ratio\n";
   }
 }

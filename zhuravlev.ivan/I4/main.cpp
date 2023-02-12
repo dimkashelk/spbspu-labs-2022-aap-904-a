@@ -3,7 +3,6 @@
 #include <fstream>
 #include <cstring>
 #include "input_array_size.h"
-#include "fill_array.h"
 #include "number_of_rows_with_same_elements.h"
 #include "max_sum_diag.h"
 
@@ -47,12 +46,22 @@ int main(int argc, char* argv[])
     try
     {
       inputArraySize(n, m);
-      fillArray(arr, n, m, input);
-      outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
-      if (!outputfile)
+      for (size_t i = 0; i < n; ++i)
       {
-        std::cerr << "Error with writting in output file\n";
-        return -1;
+        for (size_t j = 0; j < m; ++j)
+        {
+          input >> arr[n * i + j];
+          if (!input) {
+            std::cerr << "Error with input integrated array\n";
+            return 1;
+          }
+          outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
+          if (!outputfile)
+          {
+            std::cerr << "Error with writting in output file\n";
+            return -1;
+          }
+        }
       }
     }
     catch (std::exception &e)
@@ -67,7 +76,19 @@ int main(int argc, char* argv[])
     {
       inputArraySize(n, m);
       int* dyn_array = new int[n * m];
-      fillArray(dyn_array, n, m, input);
+      for (size_t i = 0; i < n; ++i)
+      {
+        for (size_t j = 0; j < m; ++j)
+        {
+          input >> dyn_array[n * i + j];
+          if (!input)
+          {
+            std::cerr << "Error with input dynamic array\n";
+            delete[] dyn_array;
+            return 1;
+          }
+        }
+      }
       outputfile << maxSumDiag(dyn_array, n, m);
       delete[] dyn_array;
       if (!outputfile)

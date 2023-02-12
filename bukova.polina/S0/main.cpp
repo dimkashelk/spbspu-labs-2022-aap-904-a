@@ -2,6 +2,6 @@
 
 int main()
 {
-    std::cout << "bukova.polina\n";
-    return 0;
+  std::cout << "bukova.polina\n";
+  return 0;
 }

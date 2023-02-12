@@ -25,7 +25,7 @@ double findSide(point_t p1, point_t p2)
 }
 
 Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
-  points{pos1, pos2, pos3}
+  points_{pos1, pos2, pos3}
 {
   double side1 = findSide(pos1, pos2);
   double side2 = findSide(pos2, pos3);
@@ -38,8 +38,8 @@ Triangle::Triangle(point_t pos1, point_t pos2, point_t pos3):
 
 double Triangle::getArea() const
 {
-  double firstpart = (points[1].x - points[0].x) * (points[2].y - points[0].y);
-  double secondpart = (points[2].x - points[0].x) * (points[1].y - points[0].y);
+  double firstpart = (points_[1].x - points_[0].x) * (points_[2].y - points_[0].y);
+  double secondpart = (points_[2].x - points_[0].x) * (points_[1].y - points_[0].y);
   return std::abs(0.5 * (firstpart - secondpart));
 }
 
@@ -51,18 +51,18 @@ rectangle_t Triangle::getFrameRect() const
   double miny = 0.0;
   for (size_t i = 0; i < 2; i++)
   {
-    maxx = std::max(maxx, std::max(points[i].x, points[i + 1].x));
-    maxy = std::max(maxy, std::max(points[i].y, points[i + 1].y));
-    minx = std::min(minx, std::min(points[i].x, points[i + 1].x));
-    miny = std::min(miny, std::min(points[i].y, points[i + 1].y));
+    maxx = std::max(maxx, std::max(points_[i].x, points_[i + 1].x));
+    maxy = std::max(maxy, std::max(points_[i].y, points_[i + 1].y));
+    minx = std::min(minx, std::min(points_[i].x, points_[i + 1].x));
+    miny = std::min(miny, std::min(points_[i].y, points_[i + 1].y));
   }
   return makeFrame(point_t{minx, miny}, point_t{maxx, maxy});
 }
 
 point_t Triangle::findCenterOfTriangle() const
 {
-  double pos1 = (points[0].x + points[1].x + points[2].x) / 3;
-  double pos2 = (points[0].y + points[1].y + points[2].y) / 3;
+  double pos1 = (points_[0].x + points_[1].x + points_[2].x) / 3;
+  double pos2 = (points_[0].y + points_[1].y + points_[2].y) / 3;
   return (point_t {pos1, pos2});
 }
 
@@ -83,7 +83,7 @@ void Triangle::move(double dx, double dy)
   point_t delta{dx, dy};
   for (size_t i = 0; i < 3; i++)
   {
-    points[i] = points[i] + delta;
+    points_[i] = points_[i] + delta;
   }
 }
 
@@ -92,11 +92,11 @@ void Triangle::scale(double k) noexcept
   point_t center = findCenterOfTriangle();
   for (size_t i = 0; i < 3; i++)
   {
-    isoScaleForPoint(points[i], center, k);
+    isoScaleForPoint(points_[i], center, k);
   }
 }
 
 Shape* Triangle::clone() const
 {
-  return new Triangle(points[0], points[1], points[2]);
+  return new Triangle(points_[0], points_[1], points_[2]);
 }

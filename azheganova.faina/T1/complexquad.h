@@ -18,8 +18,8 @@ public:
   Shape* clone() const override;
 private:
   point_t center;
-  Triangle triangle_1;
-  Triangle triangle_2;
+  Triangle triangle1_;
+  Triangle triangle2_;
 };
 
 #endif

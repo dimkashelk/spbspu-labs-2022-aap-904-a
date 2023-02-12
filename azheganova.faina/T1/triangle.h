@@ -16,7 +16,7 @@ public:
   void scale(double k) noexcept;
   Shape* clone() const override;
 private:
-  point_t points[3];
+  point_t points_[3];
   point_t findCenterOfTriangle() const;
 };
 

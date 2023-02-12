@@ -51,17 +51,18 @@ int main(int argc, char* argv[])
         for (size_t j = 0; j < m; ++j)
         {
           input >> arr[n * i + j];
-          if (!input) {
+          if (!input)
+          {
             std::cout << "Error with input integrated array\n";
             return 1;
           }
-          outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
-          if (!outputfile)
-          {
-            std::cout << "Error with writting in output file\n";
-            return -1;
-          }
         }
+      }
+      outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
+      if (!outputfile)
+      {
+        std::cout << "Error with writting in output file\n";
+        return -1;
       }
     }
     catch (std::exception& e)

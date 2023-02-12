@@ -10,7 +10,7 @@ char* createStringNewLatinLetters(char* destination, const char* source)
     {
       if (*j == i)
       {
-        i++;
+        break;
       }
       else
       {
@@ -18,6 +18,7 @@ char* createStringNewLatinLetters(char* destination, const char* source)
         break;
       }
     }
+    i++;
   }
   return destination;
 }

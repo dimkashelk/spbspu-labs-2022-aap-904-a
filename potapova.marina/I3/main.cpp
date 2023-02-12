@@ -12,7 +12,7 @@ int main()
     return 1;
   }
 
-  char* most_common_syms;
+  char* most_common_syms = nullptr;
 
   try
   {

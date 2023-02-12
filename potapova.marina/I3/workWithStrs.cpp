@@ -2,7 +2,7 @@
 
 char* reallocMem(char* str, const size_t& new_capasity)
 {
-  char* new_mem_block;
+  char* new_mem_block = nullptr;
 
   try
   {
@@ -47,9 +47,9 @@ bool pushBack(char*& str, size_t& str_size, size_t& str_capasity, const char& ne
   return true;
 }
 
-std::pair<char*, char*> strCopy(const char* str)
+std::pair < char*, char* > strCopy(const char* str)
 {
-  char* result;
+  char* result = nullptr;
 
   try
   {
@@ -70,11 +70,11 @@ std::pair<char*, char*> strCopy(const char* str)
     {
       delete[] result;
 
-      return std::pair<char*, char*>(nullptr, nullptr);
+      return std::pair < char*, char* > (nullptr, nullptr);
     }
 
     ++str;
   }
 
-  return std::pair<char*, char*>(result, result + result_size);
+  return std::pair < char*, char* > (result, result + result_size);
 }

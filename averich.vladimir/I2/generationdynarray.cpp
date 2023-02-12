@@ -7,7 +7,7 @@ int generationDynArray(size_t sizeOfDynArray)
 {
   if (sizeOfDynArray == 0)
   {
-   std::cout << "Error: size of array is 0";
+   std::cout << "Error: invalid size of array" << std::endl;
    return 1;
   }
   else

@@ -21,7 +21,7 @@ int readTheArray(std::string fileName)
   }
   else if (sizeOfFileArray == 0)
   {
-   std::cout << "Error: size of array is 0" << std::endl;
+   std::cout << "Error: invalid size of array" << std::endl;
    return 1;
   }
   int * fileArray = new int[sizeOfFileArray];

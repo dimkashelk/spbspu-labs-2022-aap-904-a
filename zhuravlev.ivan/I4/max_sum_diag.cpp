@@ -37,7 +37,7 @@ int maxSumDiag(int* arr, size_t nRows, size_t nColomns)
   size_t dyn_size = std::min(nRows, nColomns);
   if (dyn_size == 0)
   {
-    std::cerr << "Matrix dont exist";
+    std::cout << "Matrix dont exist";
   }
   int max_sum_diag = 0;
   for (size_t i = 0; i < dyn_size; i++)

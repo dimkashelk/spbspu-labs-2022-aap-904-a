@@ -7,7 +7,7 @@ int generationDynArray(size_t sizeOfDynArray)
 {
   if (sizeOfDynArray == 0)
   {
-   std::cerr << "Error: invalid size of array" << std::endl;
+   throw std::logic_error("Error: incorrect size of array");
    return 1;
   }
   else
@@ -19,7 +19,15 @@ int generationDynArray(size_t sizeOfDynArray)
      dynArray[i] = 1 + rand() % 9;
      dynArray[i] = 1 + rand() % 9 * -1;
    }
-   std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+   try
+   {
+     std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+   }
+   catch (const std::logic_error& e)
+   {
+     std::cerr << e.what();
+     return 1;
+   }
    sort(dynArray, sizeOfDynArray);
    delete[] dynArray;
    return 0;

@@ -6,14 +6,9 @@ int isTriplet(int arr[], size_t size)
   size_t i = 0;
   size_t j = 1;
   size_t k = 2;
-  if (size < 3)
+  if (size < 3 || size == 0)
   {
-   std::cerr << "Error: can't find the triplet, because the array has less than three elements " << std::endl;
-   return 1;
-  }
-  else if (size == 0)
-  {
-   std::cerr << "Error: invalid size of array" << std::endl;
+   throw std::logic_error("Error: incorrect size of array");
    return 1;
   }
   else

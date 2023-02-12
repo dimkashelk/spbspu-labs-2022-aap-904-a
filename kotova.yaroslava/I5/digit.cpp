@@ -1,13 +1,14 @@
 #include "digit.hpp"
 #include <cctype>
-bool isSign(char c)
-{
-  return (c == '+' || c == '-');
-}
 
 bool isDigit(char c)
 {
-  return (std::isdigit(c));
+  return std::isdigit(c);
+}
+
+bool isSign(char c)
+{
+  return (c == '+' || c == '-');
 }
 
 bool isDot(char c)

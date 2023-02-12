@@ -33,3 +33,7 @@ bool isE(char symb)
 {
   return symb == 'E' || symb == 'e';
 }
+bool isDot(char symb)
+{
+  return symb == '.' || symb == ',';
+}

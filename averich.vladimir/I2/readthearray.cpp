@@ -35,8 +35,24 @@ int readTheArray(std::string fileName)
       delete[] fileArray;
     }
   }
-  std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
-  sort(fileArray, sizeOfFileArray);
+  try
+  {
+    std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
+  }
+  catch (const std::logic_error& e)
+  {
+    std::cerr << e.what();
+    return 1;
+  }
+  try
+  {
+    sort(fileArray, sizeOfFileArray);
+  }
+  catch (const std::logic_error& e)
+  {
+    std::cerr << e.what();
+    return 1;
+  }
   delete[] fileArray;
   return 0;
 }

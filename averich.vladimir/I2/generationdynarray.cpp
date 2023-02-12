@@ -23,12 +23,20 @@ int generationDynArray(size_t sizeOfDynArray)
    {
      std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
    }
+   catch (const std::logic_error & e)
+   {
+     std::cerr << e.what();
+     return 1;
+   }
+   try
+   {
+     sort(dynArray, sizeOfDynArray);
+   }
    catch (const std::logic_error& e)
    {
      std::cerr << e.what();
      return 1;
    }
-   sort(dynArray, sizeOfDynArray);
    delete[] dynArray;
    return 0;
   }

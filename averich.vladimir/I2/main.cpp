@@ -34,11 +34,17 @@ int main(int argc, char * argv[])
   }
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
-  std::cin >> sizeOfDynArray;
-  if (!std::cin)
+  try
   {
-    throw std::logic_error("Error: invalid input");
-    return 1;
+    std::cin >> sizeOfDynArray;
+  }
+  catch (...)
+  {
+    if (!std::cin)
+    {
+     throw std::logic_error("Error: invalid input");
+     return 1;
+    }
   }
   try
   {

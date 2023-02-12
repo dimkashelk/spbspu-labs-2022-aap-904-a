@@ -22,8 +22,7 @@ int main(int argc, char *argv[])
   std::cout << findArithmeticMean(arr1, 7) << std::endl;
   size_t n = 0;
   std::cin >> n;
-  int *array2 = new int[n];
-  array2 = generateRand(n);
+  int *array2 = generateRand(n);
   try
   {
     std::cout << counter_before_min(array2, n) << std::endl;
@@ -42,8 +41,7 @@ int main(int argc, char *argv[])
     std::cout << "empty file :(";
     return 1;
   }
-  int *array3 = new int[size];
-  array3 = readArray(argv[1]);
+  int *array3 = readArray(argv[1]);
   try
   {
     std::cout << counter_before_min(array3, size) << "\n";

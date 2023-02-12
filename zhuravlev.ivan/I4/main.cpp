@@ -97,6 +97,7 @@ int main(int argc, char* argv[])
         delete[] dyn_array;
         return -1;
       }
+      delete[] dyn_array;
     }
     catch (std::exception& e)
     {

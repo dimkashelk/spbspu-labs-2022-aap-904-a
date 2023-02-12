@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
   }
   if (n * m > 1000)
   {
-    std::cerr << "condition not met";
+    std::cout << "condition not met";
     return -1;
   }
   std::ofstream outputfile(argv[3]);

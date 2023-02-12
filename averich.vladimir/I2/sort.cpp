@@ -5,7 +5,7 @@ int sort(int arr[], size_t size)
 {
   if (size == 0)
   {
-   std::cout << "Error: invalid size of array";
+   std::cerr << "Error: invalid size of array";
    return 1;
   }
   for (size_t i = 0; i < size; i++)

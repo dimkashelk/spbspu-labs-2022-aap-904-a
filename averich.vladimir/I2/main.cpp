@@ -9,8 +9,8 @@ int main(int argc, char * argv[])
 {
   if (argc != 2)
   {
-   std::cout << "Error: wrong file name" << std::endl;
-   return 2;
+   std::cerr << "Error: wrong file name" << std::endl;
+   return 1;
   }
   const size_t sizeOfDefaultArray = 10;
   int defaultArray[sizeOfDefaultArray] = {-5, 2, 1, 3, 2, 1, -2, 1, -3, -4};
@@ -21,10 +21,18 @@ int main(int argc, char * argv[])
   std::cin >> sizeOfDynArray;
   if (!std::cin)
   {
-    std::cout << "Error: invalid input" << std::endl;
+    std::cerr << "Error: invalid input" << std::endl;
     return 1;
   }
   generationDynArray(sizeOfDynArray);
-  readTheArray(argv[1]);
+  try
+  {
+    readTheArray(argv[1]);
+  }
+  catch (const std::logic_error & e)
+  {
+    std::cerr << e.what();
+    return 1;
+  }
   return 0;
 }

@@ -1,7 +1,6 @@
 #include "getMaxOffDiagonalSum.hpp"
 #include <stdexcept>
 #include <algorithm>
-#include <iostream>
 #include "matrixOperations.hpp"
 
 int getDiagonalSum(const int* matrix, size_t rows, size_t cols, size_t diagIndex)

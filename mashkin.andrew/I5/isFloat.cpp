@@ -1,28 +1,29 @@
 #include "isFloat.h"
+#include <iostream>
 
-bool isFloat(const char* string)
+bool isFloat(const char* str)
 {
-  return isMantissa(string) || (isSign(*string) && isMantissa(string + 1));
+  return isMantissa(str) || (isSign(*str) && isMantissa(str + 1));
 }
-bool isMantissa(const char* string)
+bool isMantissa(const char* str)
 {
-  return (isDot(*(string)) && isUnsignedInteger(string + 1)) || isUnsignedInteger(string);
+  return (isDot(*(str)) && isUnsignedInt(str + 1)) || isUnsignedInt(str);
 }
 bool isSign(char symb)
 {
   return symb == '+' || symb == '-';
 }
-bool isUnsignedInteger(const char* string)
+bool isUnsignedInt(const char* str)
 {
-  return isDigit(*string) && (isUnsignedInteger(string + 1) || isOrder(string + 1) || isEnd(*(string + 1))) || (isDigit(*string) && isEnd(*(string + 1)));
+  return isDigit(*str) && (isUnsignedInt(str + 1) || isOrder(str + 1) || isEnd(*(str + 1))) || (isDigit(*str) && isEnd(*(str + 1)));
 }
 bool isDigit(char symb)
 {
   return std::isdigit(symb);
 }
-bool isOrder(const char* string)
+bool isOrder(const char* str)
 {
-  return (isE(*string) && isSign(*(string + 1)) && isUnsignedInteger(string + 2)) || (isE(*string) && isUnsignedInteger(string + 1));
+  return (isE(*str) && isSign(*(str + 1)) && isUnsignedInt(str + 2)) || (isE(*str) && isUnsignedInt(str + 1));
 }
 bool isEnd(char symb)
 {

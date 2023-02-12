@@ -4,6 +4,7 @@
 #include <ctime>
 #include "countAmountOfRightPairs.h"
 #include "repeatingPositiveNumbers.h"
+#include "fillArrayWithRandomNumbers.h"
 int main(int argc, char *argv[])
 {
   int filled_arr[6] = {-1, 2, 3, 4, 5, 6};
@@ -16,14 +17,10 @@ int main(int argc, char *argv[])
     std::cout << "error input" << "\n";
     return 2;
   }
-  std::srand(std::time(nullptr));
   int *dynamic_arr = new int[line];
+  dynamic_arr = fillArrayWithRandomNumbers(line);
   if (line > 0)
   {
-    for (size_t i = 0; i < line; i++)
-    {
-      dynamic_arr[i] = std::rand();
-    }
     std::cout << countAmountOfRightPairs(dynamic_arr, line) << "\n";
     std::cout << isRepeatingPositiveNumbers(dynamic_arr, line) << "\n";
   }

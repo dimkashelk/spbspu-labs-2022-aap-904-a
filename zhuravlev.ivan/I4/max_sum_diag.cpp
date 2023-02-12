@@ -24,7 +24,7 @@ int sumOfParallelDiagUnderTheMainDiag(const int* arr, const size_t dyn_size)
   {
     for (size_t j = 0; j < dyn_size; ++j)
     {
-      summ += arr[dyn_size + j * (j + i)];
+      summ += arr[dyn_size * j + (j - i)];
     }
   }
   return summ;

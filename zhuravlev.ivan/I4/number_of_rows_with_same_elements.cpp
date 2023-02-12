@@ -18,7 +18,7 @@ int counterOfRowsWithSameElements(int* arr, size_t nRows, size_t nColomns)
       }
       if (cnt_elem != 0)
       {
-        count++;
+        cnt++;
       }
       cnt_elem = 0;
     }

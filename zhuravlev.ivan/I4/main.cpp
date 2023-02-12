@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
     try
     {
       inputArraySize(n, m);
-      fillIntegratedArray(arr, n, m, input);
+      fillArray(arr, n, m, input);
       outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
       if (!outputfile)
       {
@@ -66,19 +66,10 @@ int main(int argc, char* argv[])
     try
     {
       inputArraySize(n, m);
-      int **arr = new int*[n];
-      for (size_t i = 0; i < n; ++i)
-      {
-        arr[i] = new int[m];
-      }
-      fillDynArray(**arr, n, m, input);
-      size_t size_dyn_arr;
-      outputfile << maxSumDiag(**arr, size_dyn_arr);
-      for (size_t i = 0; i < n; ++i)
-      {
-        delete[] arr[i];
-      }
-      delete[] arr;
+      int* dyn_array = new int[n * m];
+      fillArray(dyn_array, n, m, input);
+      outputfile << maxSumDiag(dyn_array, n, m);
+      delete[] dyn_array;
       if (!outputfile)
       {
         std::cerr << "Error with writting in output file\n";

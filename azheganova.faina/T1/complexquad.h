@@ -17,7 +17,7 @@ public:
   void scale(double k) noexcept;
   Shape* clone() const override;
 private:
-  point_t center;
+  point_t center_;
   Triangle triangle1_;
   Triangle triangle2_;
 };

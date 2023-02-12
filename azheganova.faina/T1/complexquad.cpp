@@ -36,9 +36,9 @@ point_t findCenter(point_t pos1, point_t pos2, point_t pos3, point_t pos4)
 }
 
 Complexquad::Complexquad(point_t pos1, point_t pos2, point_t pos3, point_t pos4):
-  center(findCenter(pos1, pos2, pos3, pos4)),
-  triangle1_(pos1, pos4, center),
-  triangle2_(pos2, pos3, center)
+  center_(findCenter(pos1, pos2, pos3, pos4)),
+  triangle1_(pos1, pos4, center_),
+  triangle2_(pos2, pos3, center_)
 {}
 
 double Complexquad::getArea() const
@@ -63,21 +63,21 @@ rectangle_t Complexquad::getFrameRect() const
 
 void Complexquad::move(point_t point)
 {
-  return move(point.x - center.x, point.y - center.y);
+  return move(point.x - center_.x, point.y - center_.y);
 }
 
 void Complexquad::move(double dx, double dy)
 {
   triangle1_.move(dx, dy);
   triangle2_.move(dx, dy);
-  center.x += dx;
-  center.y += dy;
+  center_.x += dx;
+  center_.y += dy;
 }
 
 void Complexquad::scale(double k) noexcept
 {
-  isoScale(std::addressof(triangle1_), center, k);
-  isoScale(std::addressof(triangle2_), center, k);
+  isoScale(std::addressof(triangle1_), center_, k);
+  isoScale(std::addressof(triangle2_), center_, k);
 }
 
 Shape* Complexquad::clone() const

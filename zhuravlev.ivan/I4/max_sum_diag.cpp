@@ -34,7 +34,7 @@ int sumOfParallelDiagUnderTheMainDiag(const int* arr, const size_t dyn_size)
 
 int maxSumDiag(int* arr, size_t nRows, size_t nColomns)
 {
-  size_t dyn_size = nRows * nColomns;
+  size_t dyn_size = nRows;
   if (dyn_size == 0)
   {
     std::cerr << "Matrix dont exist";

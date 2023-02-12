@@ -6,4 +6,7 @@ bool isMantissa(const char* string);
 bool isSign(char symb);
 bool isUnsignedInteger(const char* string);
 bool isDot(char symb);
+bool isDigit(char symb);
+bool isOrder(const char* string);
+bool isEnd(char symb);
 #endif

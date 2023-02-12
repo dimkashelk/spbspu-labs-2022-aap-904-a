@@ -12,3 +12,7 @@ bool isSign(char symb)
 {
   return symb == '+' || symb == '-';
 }
+bool isUnsignedInteger(const char* string)
+{
+  return isDigit(*string) && (isUnsignedInteger(string + 1) || isOrder(string + 1) || isEnd(*(string + 1))) || (isDigit(*string) && isEnd(*(string + 1)));
+}

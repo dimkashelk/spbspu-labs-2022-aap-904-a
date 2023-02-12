@@ -1,4 +1,5 @@
 #include "createCString.h"
+#include "isFloat.h"
 #include <iostream>
 
 int main()
@@ -17,5 +18,7 @@ int main()
     delete[] string;
     return 1;
   }
+  std::cout << std::boolalpha << isFloat(string) << "\n";
+  delete[] string;
   return 0;
 }

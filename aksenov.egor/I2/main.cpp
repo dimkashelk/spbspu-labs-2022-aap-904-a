@@ -7,7 +7,7 @@
 #include "fillArrayWithRandomNumbers.h"
 int main(int argc, char *argv[])
 {
-  int filled_arr[6] = {-1, 2, 3, 4, 5, 6};
+  int filled_arr[6] = {-1, 3, 3, 4, 5, 6};
   std::cout << countAmountOfRightPairs(filled_arr, 6) << "\n";
   std::cout << isRepeatingPositiveNumbers(filled_arr, 6) << "\n";
   size_t line = 0;
@@ -17,8 +17,16 @@ int main(int argc, char *argv[])
     std::cout << "error input" << "\n";
     return 2;
   }
-  int *dynamic_arr = new int[line];
-  dynamic_arr = fillArrayWithRandomNumbers(line);
+  int *dynamic_arr = nullptr;
+  try
+  {
+    dynamic_arr = new int[line];
+    dynamic_arr = fillArrayWithRandomNumbers(line);
+  }
+  catch (...)
+  {
+    delete [] dynamic_arr;
+  }
   if (line > 0)
   {
     std::cout << countAmountOfRightPairs(dynamic_arr, line) << "\n";

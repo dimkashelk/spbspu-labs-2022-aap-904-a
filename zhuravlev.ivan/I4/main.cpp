@@ -72,25 +72,24 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "2"))
   {
-    try
+    inputArraySize(n, m);
+    int* dyn_array = new int[n * m];
+    for (size_t i = 0; i < n; ++i)
     {
-      inputArraySize(n, m);
-      int* dyn_array = new int[n * m];
-      for (size_t i = 0; i < n; ++i)
+      for (size_t j = 0; j < m; ++j)
       {
-        for (size_t j = 0; j < m; ++j)
+        input >> dyn_array[n * i + j];
+        if (!input)
         {
-          input >> dyn_array[n * i + j];
-          if (!input)
-          {
-            std::cerr << "Error with input dynamic array\n";
-            delete[] dyn_array;
-            return 1;
-          }
+          std::cerr << "Error with input dynamic array\n";
+          delete[] dyn_array;
+          return 1;
         }
       }
+    }
+    try
+    {
       outputfile << maxSumDiag(dyn_array, n, m);
-      delete[] dyn_array;
       if (!outputfile)
       {
         std::cerr << "Error with writting in output file\n";
@@ -100,6 +99,7 @@ int main(int argc, char* argv[])
     catch (std::exception &e)
     {
       std::cerr << e.what();
+      delete[] dyn_array;
       return -1;
     }
   }

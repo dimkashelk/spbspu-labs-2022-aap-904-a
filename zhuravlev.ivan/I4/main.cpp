@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
   std::ifstream input(argv[2]);
   if (!input)
   {
-    std::cerr << "Error whil reading file...\n";
+    std::cerr << "Error while reading file...\n";
     return -1;
   }
   size_t n = 0;
@@ -52,19 +52,19 @@ int main(int argc, char* argv[])
         {
           input >> arr[n * i + j];
           if (!input) {
-            std::cerr << "Error with input integrated array\n";
+            std::cout << "Error with input integrated array\n";
             return 1;
           }
           outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
           if (!outputfile)
           {
-            std::cerr << "Error with writting in output file\n";
+            std::cout << "Error with writting in output file\n";
             return -1;
           }
         }
       }
     }
-    catch (std::exception &e)
+    catch (std::exception& e)
     {
       std::cerr << e.what();
       return -1;
@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
         input >> dyn_array[n * i + j];
         if (!input)
         {
-          std::cerr << "Error with input dynamic array\n";
+          std::cout << "Error with input dynamic array\n";
           delete[] dyn_array;
           return 1;
         }
@@ -97,7 +97,7 @@ int main(int argc, char* argv[])
       }
       delete[] dyn_array;
     }
-    catch (std::exception &e)
+    catch (std::exception& e)
     {
       std::cerr << e.what();
       delete[] dyn_array;

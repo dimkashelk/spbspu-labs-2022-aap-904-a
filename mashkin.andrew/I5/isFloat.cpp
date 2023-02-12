@@ -7,7 +7,7 @@ bool isFloat(const char* str)
 }
 bool isMantissa(const char* str)
 {
-  return (isDot(*(str)) && isUnsignedInt(str + 1)) || isUnsignedInt(str);
+  return (isDot(*str) && isUnsignedInt(str + 1)) || isUnsignedInt(str);
 }
 bool isSign(char symb)
 {

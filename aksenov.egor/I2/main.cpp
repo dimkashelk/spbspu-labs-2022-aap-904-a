@@ -25,13 +25,14 @@ int main(int argc, char *argv[])
   {
     std::cout << countAmountOfRightPairs(dynamic_arr, line) << "\n";
     std::cout << isRepeatingPositiveNumbers(dynamic_arr, line) << "\n";
+    delete [] dynamic_arr;
   }
   else
   {
     std::cout << "ERROR " << "\n";
+    delete [] dynamic_arr;
   }
   line = 0;
-  delete [] dynamic_arr;
   if (argc != 2)
   {
     std::cerr << "Not correct amount of parameters" << "\n";
@@ -44,6 +45,7 @@ int main(int argc, char *argv[])
   catch (const std::length_error & e)
   {
     std::cout << e.what() << "\n";
+    delete [] f_arr;
     return 2;
   }
   std::cout << countAmountOfRightPairs(f_arr, line) << "\n";

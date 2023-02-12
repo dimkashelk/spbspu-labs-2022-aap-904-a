@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
   else
   {
     std::cout << "ERROR " << "\n";
-    delete [] dynamic_arr;
   }
   delete [] dynamic_arr;
   if (argc != 2)

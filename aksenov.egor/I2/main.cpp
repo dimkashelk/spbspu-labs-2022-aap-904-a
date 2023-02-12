@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
     std::cout << "error input" << "\n";
     return 2;
   }
-  int *dynamic_arr = new int[line];
-  dynamic_arr = fillArrayWithRandomNumbers(line);
+  int *dynamic_arr = fillArrayWithRandomNumbers(line);
   if (line > 0)
   {
     std::cout << countAmountOfRightPairs(dynamic_arr, line) << "\n";
@@ -37,7 +36,7 @@ int main(int argc, char *argv[])
   {
     std::cerr << "Not correct amount of parameters" << "\n";
   }
-  int *f_arr = new int[line];
+  int *f_arr = nullptr;
   try
   {
     f_arr = readFile(argv[1], line);

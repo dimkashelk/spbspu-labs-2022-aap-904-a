@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
     }
     try
     {
-      outputfile << maxSumDiag(dyn_array, n, m);
+      outputfile << maxSumDiag(dyn_array, n, m) << "\n";
       if (!outputfile)
       {
         std::cerr << "Error with writting in output file\n";

@@ -1,50 +1,40 @@
 #include "max_sum_diag.h"
 #include <cstddef>
-#include <algorithm>
-#include <iostream>
 
-
-int sumOfParallelDiagBelowTheMainDiag(const int* arr, const size_t dyn_size)
+int maxSumDiag(int* arr, size_t nRows, size_t nColomns)
 {
-  int summ = 0;
-  for (size_t i = 0; i < dyn_size; i++)
+  int max_sum = 0;
+  int sum1 = 0;
+  int sum2 = 0;
+  for (size_t i = 0; i < nRows ; i++)
   {
-    for (size_t j = 0; j < dyn_size; j++)
+    for (size_t j = i; j < nColomns; j++)
     {
-      summ += arr[dyn_size + j * (j + i)];
+      if (j * nRows + (j - i) != (nRows + 1) * j)
+      {
+        sum1 += arr[j * nRows + (j - i)];
+      }
     }
-  }
-  return summ;
-}
-
-int sumOfParallelDiagUnderTheMainDiag(const int* arr, const size_t dyn_size)
-{
-  int summ = 0;
-  for (size_t i = 0; i < dyn_size; i++)
-  {
-    for (size_t j = 0; j < dyn_size; j++)
+    if (sum1 > max_sum)
     {
-      summ += arr[dyn_size * j + (j - i)];
+      max_sum = sum1;
     }
+    sum1 = 0;
   }
-  return summ;
-}
-
-
-
-int maxSumDiag(const int* arr, size_t nRows, size_t nColomns)
-{
-  size_t dyn_size = nColomns * nRows;
-  if (dyn_size == 0)
+  for (size_t i = 0; i < nRows; i++)
   {
-    std::cout << "Matrix dont exist";
+    for (size_t j = 0; j < nColomns - i; j++)
+    {
+      if ((j + i) * nRows + j != (nRows + 1) * j)
+      {
+        sum2 += arr[(j + i) * nRows + j];
+      }
+    }
+    if (sum2 > max_sum)
+    {
+      max_sum = sum2;
+    }
+    sum2 = 0;
   }
-  int max_sum_diag = 0;
-  for (size_t i = 0; i < dyn_size; i++)
-  {
-    int below_main_diag_summ = sumOfParallelDiagBelowTheMainDiag(arr, dyn_size);
-    int under_main_diag_summ = sumOfParallelDiagUnderTheMainDiag(arr, dyn_size);
-    max_sum_diag = std::max(max_sum_diag, std::max(below_main_diag_summ, under_main_diag_summ));
-  }
-  return max_sum_diag;
+  return max_sum;
 }

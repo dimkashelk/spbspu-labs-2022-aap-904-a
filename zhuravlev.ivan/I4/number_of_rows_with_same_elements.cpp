@@ -3,17 +3,26 @@
 
 int counterOfRowsWithSameElements(int* arr, size_t nRows, size_t nColomns)
 {
-  int cnt = 0;
-  for (size_t i = 0; i < nRows; ++i)
+  size_t cnt = 0;
+  size_t cnt_elem = 0;
+  for (size_t i = 0; i < nColomns; i++i)
   {
-    for (size_t j = 0; j < nColomns; ++j)
+    for (size_t j = 0; j < nRows - 1; ++j)
     {
-      if (arr[i] == arr[i + 1])
+      for (size_t k = 1; k < nRows; ++k)
       {
-        ++cnt;
-        break;
+        if (arr[i * nColomns + j] == arr[i * nRows + k])
+        {
+          cnt_elem++;
+        }
       }
+      if (cnt_elem != 0)
+      {
+        count++;
+      }
+      cnt_elem = 0;
     }
   }
   return cnt;
 }
+

@@ -1,10 +1,12 @@
 #include <iostream>
+#include <stdexcept>
 #include <cstdlib>
 #include <fstream>
 #include <ctime>
 #include "countAmountOfRightPairs.h"
 #include "repeatingPositiveNumbers.h"
 #include "fillArrayWithRandomNumbers.h"
+#include "readingFile.h"
 int main(int argc, char *argv[])
 {
   int filled_arr[6] = {-1, 3, 3, 4, 5, 6};
@@ -17,16 +19,8 @@ int main(int argc, char *argv[])
     std::cout << "error input" << "\n";
     return 2;
   }
-  int *dynamic_arr = nullptr;
-  try
-  {
-    dynamic_arr = new int[line];
-    dynamic_arr = fillArrayWithRandomNumbers(line);
-  }
-  catch (...)
-  {
-    delete [] dynamic_arr;
-  }
+  int *dynamic_arr = new int[line];
+  dynamic_arr = fillArrayWithRandomNumbers(line);
   if (line > 0)
   {
     std::cout << countAmountOfRightPairs(dynamic_arr, line) << "\n";
@@ -36,36 +30,23 @@ int main(int argc, char *argv[])
   {
     std::cout << "ERROR " << "\n";
   }
+  line = 0;
   delete [] dynamic_arr;
   if (argc != 2)
   {
     std::cerr << "Not correct amount of parameters" << "\n";
   }
   int *f_arr = new int[line];
-  std::string fname = argv[1];
-  std::ifstream input(fname);
-  input >> line;
-  if (!input)
+  try
   {
-    std::cout << "File error" << "\n";
-    input.close();
-    delete [] f_arr;
+    f_arr = readFile(argv[1], line);
+  }
+  catch (const std::length_error & e)
+  {
+    std::cout << e.what() << "\n";
     return 2;
   }
-  for (size_t i = 0; i < line; ++i)
-  {
-    input >> f_arr[i];
-    if (!input)
-    {
-      std::cout << "ERROR" << "\n";
-      input.close();
-      delete [] f_arr;
-      return 2;
-    }
-    std::cout << countAmountOfRightPairs(f_arr, line) << "\n";
-    std::cout << isRepeatingPositiveNumbers(f_arr, line) << "\n";
-    delete [] f_arr;
-    input.close();
-  }
+  std::cout << countAmountOfRightPairs(f_arr, line) << "\n";
+  std::cout << isRepeatingPositiveNumbers(f_arr, line) << "\n";
   delete [] f_arr;
 }

@@ -7,9 +7,9 @@
 int sumOfParallelDiagBelowTheMainDiag(const int* arr, const size_t dyn_size)
 {
   int summ = 0;
-  for (size_t i = 0; i < dyn_size; ++i)
+  for (size_t i = 0; i < dyn_size; i++)
   {
-    for (size_t j = 0; j < dyn_size; ++j)
+    for (size_t j = 0; j < dyn_size; j++)
     {
       summ += arr[dyn_size + j * (j + i)];
     }
@@ -20,9 +20,9 @@ int sumOfParallelDiagBelowTheMainDiag(const int* arr, const size_t dyn_size)
 int sumOfParallelDiagUnderTheMainDiag(const int* arr, const size_t dyn_size)
 {
   int summ = 0;
-  for (size_t i = 0; i < dyn_size; ++i)
+  for (size_t i = 0; i < dyn_size; i++)
   {
-    for (size_t j = 0; j < dyn_size; ++j)
+    for (size_t j = 0; j < dyn_size; j++)
     {
       summ += arr[dyn_size * j + (j - i)];
     }
@@ -34,7 +34,7 @@ int sumOfParallelDiagUnderTheMainDiag(const int* arr, const size_t dyn_size)
 
 int maxSumDiag(const int* arr, size_t nRows, size_t nColomns)
 {
-  size_t dyn_size = std::max(nRows, nColomns);
+  size_t dyn_size = nColomns * nRows;
   if (dyn_size == 0)
   {
     std::cout << "Matrix dont exist";

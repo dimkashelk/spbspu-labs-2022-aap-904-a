@@ -75,9 +75,9 @@ int main(int argc, char* argv[])
   {
     inputArraySize(n, m);
     int* dyn_array = new int[n * m];
-    for (size_t i = 0; i < n; ++i)
+    for (size_t i = 0; i < n; i++)
     {
-      for (size_t j = 0; j < m; ++j)
+      for (size_t j = 0; j < m; j++)
       {
         input >> dyn_array[n * i + j];
         if (!input)
@@ -97,13 +97,13 @@ int main(int argc, char* argv[])
         delete[] dyn_array;
         return -1;
       }
-      delete[] dyn_array;
     }
     catch (std::exception& e)
     {
       std::cerr << e.what();
       return -1;
     }
+    delete[] dyn_array;
   }
   return 0;
 }

@@ -15,7 +15,7 @@ bool isSign(char symb)
 }
 bool isUnsignedInt(const char* str)
 {
-  return isDigit(*str) && (isUnsignedInt(str + 1) || isOrder(str + 1) || isEnd(*(str + 1))) || (isDigit(*str) && isEnd(*(str + 1)));
+  return (isDigit(*str) && (isUnsignedInt(str + 1) || isOrder(str + 1) || isEnd(*(str + 1)))) || (isDigit(*str) && isEnd(*(str + 1)));
 }
 bool isDigit(char symb)
 {

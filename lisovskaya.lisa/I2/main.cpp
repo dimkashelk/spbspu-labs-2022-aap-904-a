@@ -3,6 +3,8 @@
 #include <fstream>
 #include "counter_before_min.h"
 #include "findArithmeticMean.h"
+#include "generateRand.h"
+#include "readArray.h"
 int main(int argc, char *argv[])
 {
   if (argc == 1)
@@ -21,11 +23,7 @@ int main(int argc, char *argv[])
   size_t n = 0;
   std::cin >> n;
   int *array2 = new int[n];
-  std::srand(time(nullptr));
-  for (size_t i = 0; i < n; i++)
-  {
-    array2[i] = std::rand();
-  }
+  array2 = generateRand(n);
   try
   {
     std::cout << counter_before_min(array2, n) << std::endl;
@@ -45,10 +43,7 @@ int main(int argc, char *argv[])
     return 1;
   }
   int *array3 = new int[size];
-  for (size_t i = 0; i < size; i++)
-  {
-    in >> array3[i];
-  }
+  array3 = readArray(argv[1]);
   try
   {
     std::cout << counter_before_min(array3, size) << "\n";

@@ -1,81 +1,84 @@
-#include <stdexcept>
 #include <iostream>
 #include <cstddef>
+#include <ctime>
 #include <fstream>
+#include <stdexcept>
 #include "countAriNum.h"
 #include "countIndices.h"
 
-int main(int argc, char *argv[]) {
-  // Check if there are more than 2 parameters
-  if (argc > 2) {
-    std::cout << "Too many parameters\n";
+int main(int argc, char *argv[])
+{
+  if (argc != 2)
+  {
+    std::cout << "Incorrect number of parameters";
     return 1;
   }
-  // Check if there is no file name
-  if (argc == 1) {
-    std::cout << "No file name...\n";
-    return 1;
+  int arr1[] = {1, 3, 6, 7, 9, 7, 14};
+  try
+  {
+    std::cout << countAriNum(arr1, 7) << "\n";
+    std::cout << countIndices(arr1, 7) << "\n";
   }
-
-  // Call the functions for the first hardcoded array
-  int arr1[] = {1, 2, 3, 4, 5, 6, 7};
-  try {
-    std::cout << countAriNum(arr1, 7) << std::endl;
-    std::cout << countIndices(arr1, 7) << std::endl;
-  } catch (const std::overflow_error &e) {
+  catch (const std::overflow_error &e)
+  {
     std::cout << e.what();
     return 2;
   }
-
-  // Call the functions for the second array
   size_t n = 0;
   std::cin >> n;
   int *arr2 = new int[n];
   std::srand(time(nullptr));
-  for (size_t i = 0; i < n; i++) {
+  for (size_t i = 0; i < n; i++)
+  {
     arr2[i] = std::rand();
   }
-  try {
-    std::cout << countAriNum(arr2, n) << std::endl;
-    std::cout << countIndices(arr2, n) << std::endl;
-  } catch (const std::overflow_error &e) {
+  try
+  {
+    std::cout << countAriNum(arr2, n) << "\n";
+    std::cout << countIndices(arr2, n) << "\n";
+  }
+  catch (const std::overflow_error &e)
+  {
     std::cout << e.what();
     delete[] arr2;
     return 2;
   }
   delete[] arr2;
-
-  // Call the functions for the arrays read from the file
   std::ifstream in(argv[1]);
-  if (!in.is_open()) {
+  if (!in.is_open())
+  {
     std::cout << "Error while opening file\n";
     return 1;
   }
-  while (!in.eof()) {
-    size_t size = 0;
-    in >> size;
-    if (!in) {
-      std::cout << "Error... =(\n";
+  size_t size = 0;
+  in >> size;
+  if (!in)
+  {
+    std::cout << "Error reading file\n";
+    return 1;
+  }
+  int *arr = new int[size];
+  for (size_t i = 0; i < size; i++)
+  {
+    in >> arr[i];
+    if (!in)
+    {
+      std::cout << "Error reading file\n";
+      delete[] arr;
       return 1;
     }
-    int *arr3 = new int[size];
-    for (size_t i = 0; i < size; i++) {
-      in >> arr3[i];
-      if (!in) {
-        std::cout << "Error... =(\n";
-        delete[] arr3;
-        return 1;
-      }
-    }
-    try {
-      std::cout << countAriNum(arr3, size) << "\n";
-      std::cout << countIndices(arr3, size) << "\n";
-    } catch (const std::overflow_error &e) {
-      std::cout << e.what();
-      delete[] arr3;
-      return 2;
-    }
-    delete[] arr3;
   }
+  try
+  {
+    std::cout << countAriNum(arr, size) << "\n";
+    std::cout << countIndices(arr, size) << "\n";
+  }
+  catch (const std::overflow_error &e)
+  {
+    std::cout << e.what();
+    delete[] arr;
+    return 2;
+  }
+  delete[] arr;
   return 0;
 }

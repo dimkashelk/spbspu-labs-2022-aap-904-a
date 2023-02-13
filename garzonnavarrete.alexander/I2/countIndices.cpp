@@ -7,7 +7,6 @@ size_t countIndices(const int *input_array, size_t array_size)
     {
         return 0;
     }
-
     int min = std::numeric_limits<int>::max();
     int max = std::numeric_limits<int>::min();
     for (size_t i = 0; i < array_size; i++)
@@ -23,4 +22,3 @@ size_t countIndices(const int *input_array, size_t array_size)
     }
     return min + max;
 }
-

@@ -6,19 +6,19 @@ char* createStringNewLatinLetters(char* destination, const char* source)
   size_t k = 0;
   for (char i = 'a'; i <= 'z'; i++)
   {
-    for (const char* j = source; *j != '\0'; j++)
+    bool exist = false;
+    for (size_t j = 0; source[j] != '\0'; j++)
     {
-      if (*j == i)
+      if (source[j] == i)
       {
-        break;
-      }
-      else
-      {
-        destination[k++] = i;
+        exist = true;
         break;
       }
     }
-    i++;
+    if (!exist)
+    {
+      destination[k++] = i;
+    }
   }
   return destination;
 }

@@ -26,6 +26,10 @@ int main(int argc, char *argv[]) {
     // Initialize array 2 and call the functions
     size_t n = 0;
     std::cin >> n;
+    if (n == 0) {
+      std::cout << "Array length cannot be 0\n";
+      return 2;
+    }
     int *arr2 = new int[n];
     std::srand(time(nullptr));
     for (size_t i = 0; i < n; i++) {
@@ -42,6 +46,11 @@ int main(int argc, char *argv[]) {
     }
     delete[] arr2;
 
+    if (argc == 1) {
+        std::cout << "No input file provided\n";
+        return 1;
+    }
+
     std::ifstream in(argv[1]);
     if (!in.is_open()) {
         std::cout << "Error while opening file\n";
@@ -53,6 +62,11 @@ int main(int argc, char *argv[]) {
     if (!in) {
         std::cout << "Error reading file\n";
         return 1;
+    }
+
+    if (size == 0) {
+      std::cout << "Array length from file cannot be 0\n";
+      return 2;
     }
 
     int *arr = new int[size];
@@ -75,5 +89,4 @@ int main(int argc, char *argv[]) {
     }
 
     delete[] arr;
-    return 0;
 }

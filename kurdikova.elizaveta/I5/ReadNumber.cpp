@@ -1,33 +1,41 @@
 #include "ReadNumber.h"
-#include <iostream>
 #include <cstddef>
 #include <cstring>
 #include <valarray>
 
-char* readNumber(char* number)
+char* readNumber(std::istream& in)
 {
   size_t size = 0;
   size_t capacity = 4;
-  number = new char[capacity];
-  std::cin >> std::noskipws;
+  char* number = new char[capacity];
+  in >> std::noskipws;
   do
   {
     if (size == capacity)
     {
-      capacity *= 2;
-      char* newstr = new char[capacity];
-      number[size] = '\0';
-      std::strcpy(newstr, number);
-      delete[] number;
-      number = newstr;
+      try
+      {
+        capacity *= 2;
+        char* newstr = new char[capacity];
+        number[size] = '\0';
+        std::strcpy(newstr, number);
+        delete[] number;
+        number = newstr;
+      }
+      catch (const std::bad_alloc& e)
+      {
+        delete[] number;
+        throw e;
+      }
     }
-    std::cin >> number[size++];
+    in >> number[size++];
   }
-  while (std::cin && number[size - 1] != '\n');
-  number[size - 1] = '\0';
+  while (in && number[size - 1] != '\n');
   if (size <= 1)
   {
-    return nullptr;
+    delete[] number;
+    throw std::invalid_argument("Nothing was entered!\n");
   }
+  number[size - 1] = '\0';
   return number;
 }

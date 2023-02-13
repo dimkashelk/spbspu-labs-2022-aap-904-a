@@ -6,11 +6,13 @@
 int main()
 {
   char* number = nullptr;
-  number = readNumber(number);
-  if (number == nullptr)
+  try
   {
-    delete[] number;
-    std::cerr << "Nothing was entered";
+    number = readNumber(std::cin);
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what() << "\n";
     return 1;
   }
   std::cout << std::boolalpha << isRealNumber(number);

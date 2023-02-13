@@ -1,5 +1,6 @@
 #ifndef MAIN_CPP_READNUMBER_H
 #define MAIN_CPP_READNUMBER_H
+#include <istream>
 
-char* readNumber(char* number);
+char* readNumber(std::istream& in);
 #endif

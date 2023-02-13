@@ -34,7 +34,6 @@ int generationDynArray(size_t sizeOfDynArray)
    catch (const std::logic_error& e)
    {
      std::cerr << e.what();
-     return 1;
    }
    delete[] dynArray;
    return 0;

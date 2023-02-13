@@ -5,7 +5,7 @@ int sort(int arr[], size_t size)
 {
   if (size == 0)
   {
-   throw std::logic_error("Error: incorrect size of array");
+    throw std::logic_error("Error: incorrect size of array");
   }
   for (size_t i = 0; i < size; i++)
   {

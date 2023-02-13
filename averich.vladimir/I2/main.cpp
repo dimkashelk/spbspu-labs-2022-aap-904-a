@@ -21,7 +21,6 @@ int main(int argc, char* argv[])
   catch (const std::logic_error& e)
   {
       std::cerr << e.what();
-      return 1;
   }
   try
   {
@@ -30,7 +29,6 @@ int main(int argc, char* argv[])
   catch (const std::logic_error& e)
   {
       std::cerr << e.what();
-      return 1;
   }
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
@@ -48,8 +46,7 @@ int main(int argc, char* argv[])
     }
     catch (const std::logic_error& e)
     {
-      std::cerr << e.what();
-      return 1;
+      std::cerr << e.what() << std::endl;
     }
   }
   try
@@ -59,7 +56,6 @@ int main(int argc, char* argv[])
   catch (const std::logic_error & e)
   {
     std::cerr << e.what();
-    return 1;
   }
   return 0;
 }

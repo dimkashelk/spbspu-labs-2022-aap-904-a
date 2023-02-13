@@ -13,8 +13,9 @@ bool isDigit(char c)
 
 bool isUnsignedInteger(char* data, size_t& move)
 {
-  bool result = isDigit(*data) && isUnsignedInteger(++data, move) || isDigit(*data);
-  return result, ++move;
+  bool result = isDigit(*data) && isUnsignedInteger(++data, move) || isDigit(*(--data));
+  ++move;
+  return result;
 }
 
 bool isInOrder(char* data, size_t& move)
@@ -26,8 +27,9 @@ bool isInOrder(char* data, size_t& move)
 bool isMantissa(char* data, size_t& move)
 {
   bool integer = (*data) != '-' && isUnsignedInteger(data, move);
-  bool fractional =  integer && (*(data + (--move))) == '.' && isUnsignedInteger(data + (++move), move);
-  return fractional || integer;
+  bool integerWotDot = integer && (*(data + (move - 1))) != '.';
+  bool fractional =  integer && (*(data + (--move))) == '.' && isUnsignedInteger(data + (move + 1), move);
+  return fractional || (integer && integerWotDot);
 }
 
 bool isEnd(char c)
@@ -40,8 +42,8 @@ bool isRealNumber(char* data)
   size_t move = 0;
   bool wthSign = false;
   bool wotSign = false;
-  wthSign = isMantissa(data, move) && isInOrder(data + (--move), move) && isEnd(*(data + (++move)));
+  wotSign = isMantissa(data, move) && isInOrder(data + (move), move) && isEnd(*(data + (++move)));
   move = 0;
-  wotSign = isSign(*data) && isMantissa(++data, move) && isInOrder(data + (--move), move) && isEnd(*(data + (++move)));
+  wthSign = isSign(*data) && isMantissa(++data, move) && isInOrder(data + (move), move) && isEnd(*(data + (++move)));
   return wthSign || wotSign;
 }

@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include "increaseString.h"
 
-char* createCString(std::istream& inp, size_t size, size_t capacity)
+char* createCString(std::istream& inp, size_t& size, size_t& capacity)
 {
   char* cstring = nullptr;
   try

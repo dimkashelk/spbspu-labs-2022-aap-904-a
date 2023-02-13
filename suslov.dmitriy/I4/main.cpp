@@ -96,6 +96,7 @@ int main(int argc, char **argv)
     else
     {
       std::cerr << "=()" << "\n";
+      delete[] matrix;
       return 2;
     }
   }

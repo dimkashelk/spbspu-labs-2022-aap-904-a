@@ -2,14 +2,11 @@
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
-int *readFile(std::string fn, size_t line)
+int *readFile(std::istream &input, size_t line, int *f_arr)
 {
-  std::ifstream input(fn);
   input >> line;
-  int *f_arr = new int[line];
   if (!input)
   {
-    input.close();
     delete [] f_arr;
     throw std::length_error("File error");
   }
@@ -18,8 +15,6 @@ int *readFile(std::string fn, size_t line)
     input >> f_arr[i];
     if (!input)
     {
-      std::cout << "ERROR" << "\n";
-      input.close();
       delete [] f_arr;
       throw std::length_error("File error");
     }

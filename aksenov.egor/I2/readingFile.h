@@ -1,6 +1,6 @@
 #ifndef READINGFILE_H
 #define READINGFILE_H
-#include <string>
+#include <istream>
 #include <cstddef>
-int *readFile(std::string fn, size_t line);
+int *readFile(std::istream &input, size_t line, int *f_arr);
 #endif

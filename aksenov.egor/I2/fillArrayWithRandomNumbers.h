@@ -1,5 +1,5 @@
 #ifndef FILLARRAYWITHRANDOMNUMBERS_H
 #define FILLARRAYWITHRANDOMNUMBERS_H
 #include <cstddef>
-int *fillArrayWithRandomNumbers(size_t size);
+int *fillArrayWithRandomNumbers(int *arr, size_t size);
 #endif

@@ -1,27 +1,29 @@
-#include <limits>
 #include "Count.h"
+#include <stdexcept>
+#include <limits>
 
-int CountChanges(int previous, int current) {
-    if ((previous > 0 && current < 0) || (previous < 0 && current > 0)) {
-        return 1;
+
+void counterSignChanges(unsigned int &countSignChanges, int previous_value, int current)
+{
+  if ((previous_value > 0 && current < 0) || (previous_value < 0 && current > 0)) {
+    if (countSignChanges == std::numeric_limits< unsigned int >::max()) {
+      throw std::overflow_error("Overflow");
     }
-    else {
-        return 0;
-    }
+    countSignChanges++;
+  }
 }
 
-void CountMin(unsigned int &countMin, int prev, int curr, int &checking) {
-  if (checking && prev < curr && curr != 0) {
-    if (countMin == std::numeric_limits<unsigned int>::max())
-    {
+void counterMin(unsigned int &countMin, int previous, int current, int& checking)
+{
+  if (checking && previous < current && current != 0) {
+    if (countMin == std::numeric_limits< unsigned int >::max()) {
       throw std::overflow_error("Overflow");
     }
     countMin++;
   }
-  if (prev > curr && prev != 0) {
+  if (previous > current && previous != 0) {
     checking = 1;
-  }
-  else {
+  } else {
     checking = 0;
   }
 }

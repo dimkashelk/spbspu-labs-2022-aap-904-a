@@ -1,13 +1,7 @@
-#include <iostream>
+#ifndef MAIN_CPP_COUNT_H
+#define MAIN_CPP_COUNT_H
 
-#ifndef MAIN_CPP_COUNTCHANGES_H
-#define MAIN_CPP_COUNTCHANGES_H
+void counterSignChanges(unsigned int &countMin, int previous_value, int current);
 
-int CountChanges(int, int);
-#endif
-
-#ifndef MAIN_CPP_COUNTLOCALMIN_H
-#define MAIN_CPP_COUNTLOCALMIN_H
-
-void CountMin(unsigned int &countMin, int prev, int curr, int &checking);
+void counterMin(unsigned int &countMin, int previous, int current, int& checking);
 #endif

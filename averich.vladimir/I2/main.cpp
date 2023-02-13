@@ -16,38 +16,30 @@ int main(int argc, char* argv[])
   int defaultArray[sizeOfDefaultArray] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
   try
   {
-      std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
+    std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
   }
   catch (const std::logic_error& e)
   {
-      std::cerr << e.what();
+    return 1;
   }
   try
   {
-      sort(defaultArray, sizeOfDefaultArray);
+    sort(defaultArray, sizeOfDefaultArray);
   }
   catch (const std::logic_error& e)
   {
-      std::cerr << e.what();
+    return 1;
   }
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
   if (!std::cin)
   {
-    std::cerr << "Error: invalid input of dynamic array";
+    return 1;
   }
   else
   {
-    try
-    {
-      generationDynArray(sizeOfDynArray);
-    }
-    catch (const std::logic_error& e)
-    {
-      std::cerr << e.what() << std::endl;
-      return 0;
-    }
+    generationDynArray(sizeOfDynArray);
   }
   try
   {
@@ -55,8 +47,7 @@ int main(int argc, char* argv[])
   }
   catch (const std::logic_error& e)
   {
-    std::cerr << e.what();
-    return 0;
+    return 1;
   }
   return 0;
 }

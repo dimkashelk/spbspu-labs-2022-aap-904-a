@@ -8,7 +8,7 @@ int isTriplet(int arr[], size_t size)
   size_t k = 2;
   if (size < 3 || size == 0)
   {
-   throw std::logic_error("Error: incorrect size of array for triplet");
+   return 1;
   }
   else
   {

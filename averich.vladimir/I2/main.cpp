@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
   std::cin >> sizeOfDynArray;
   if (!std::cin)
   {
-    return 1;
+    return 0;
   }
   else
   {

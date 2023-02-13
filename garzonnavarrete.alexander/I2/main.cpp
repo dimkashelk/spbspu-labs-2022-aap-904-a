@@ -27,8 +27,7 @@ int main(int argc, char *argv[]) {
   size_t n = 0;
   std::cin >> n;
   if (n == 0) {
-    std::cout << "Array length cannot be 0\n";
-    return 2;
+    return 0;
   }
 
   int *arr2 = new int[n];
@@ -66,8 +65,7 @@ int main(int argc, char *argv[]) {
   }
 
   if (size == 0) {
-    std::cout << "Array length from file cannot be 0\n";
-    return 2;
+    return 0;
   }
 
   int *arr = new int[size];

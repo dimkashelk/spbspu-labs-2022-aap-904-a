@@ -1,93 +1,79 @@
 #include <iostream>
-#include <fstream>
-#include <climits>
+#include "countAriNum.h"
+#include "countIndices.h"
+#include <stdexcept>
+#include <cstddef>
 #include <ctime>
-#include <cstdlib>
-#include <cmath>
+#include <fstream>
 
-using namespace std;
+int main(int argc, char *argv[]) {
 
-void process_array(int* arr, size_t n)
-{
-    int max = INT_MIN;
-    int min = INT_MAX;
-    int imin = 0, imax = 0, suma = 0;
-    double avg = 0.0;
-    int c = 0;
-
-    for (size_t i = 0; i < n; ++i)
-    {
-        if (arr[i] < min)
-        {
-            min = arr[i];
-            imin = i;
-        }
-        if (arr[i] > max)
-        {
-            max = arr[i];
-            imax = i;
-        }
-
-        if (i % 2 == 0)
-        {
-            avg += arr[i];
-            ++c;
-        }
+    if (argc > 2) {
+        std::cout << "Too many parameters\n";
+        return 1;
     }
 
-    avg /= c;
-    suma = imin + imax;
+    int arr1[] = {2, 4, 6, 8, 10, 12, 14};
+    try {
+        std::cout << countIndices(arr1, 7) << std::endl;
+        std::cout << countAriNum(arr1, 7) << std::endl;
+    }
+    catch (const std::overflow_error &e) {
+        std::cout << e.what();
+        return 2;
+    }
 
-    cout << "The min element is: " << min << endl;
-    cout << "The max element is: " << max << endl;
-    cout << "The sum of indices of the max and min is: " << suma << endl;
-    cout << "The average of elements at even indices is: " << avg << endl;
-}
+    // Initialize array 2 and call the functions
+    size_t n = 0;
+    std::cin >> n;
+    int *arr2 = new int[n];
+    std::srand(time(nullptr));
+    for (size_t i = 0; i < n; i++) {
+        arr2[i] = std::rand();
+    }
+    try {
+        std::cout << countIndices(arr2, n) << std::endl;
+        std::cout << countAriNum(arr2, n) << std::endl;
+    }
+    catch (const std::overflow_error &e) {
+        std::cout << e.what();
+        delete[] arr2;
+        return 2;
+    }
+    delete[] arr2;
 
-int main(int argc, char** argv) {
-    srand(time(NULL));
-    size_t n;
-    cout << "Enter the size of the array: ";
-    cin >> n;
+    std::ifstream in(argv[1]);
+    if (!in.is_open()) {
+        std::cout << "Error while opening file\n";
+        return 1;
+    }
 
-    if (n > 0) {
-        int *arr = new int[n];
-        if (arr == NULL) {
-            cerr << "Cannot allocate memory" << endl;
+    size_t size = 0;
+    in >> size;
+    if (!in) {
+        std::cout << "Error reading file\n";
+        return 1;
+    }
+
+    int *arr = new int[size];
+    for (size_t i = 0; i < size; i++) {
+        in >> arr[i];
+        if (!in) {
+            std::cout << "Error reading file\n";
+            delete[] arr;
             return 1;
         }
-        cout << "Enter the elements of the array: " << endl;
-        for (size_t i = 0; i < n; ++i)
-            cin >> arr[i];
-        process_array(arr, n);
+    }
+
+    try {
+        std::cout <<countIndices(arr, size) << "\n";
+        std::cout << countAriNum(arr, size) << "\n";
+    } catch (const std::overflow_error &e) {
+        std::cout << e.what();
         delete[] arr;
-    } else {
-        cerr << "Array size must be positive." << endl;
-        return 3;
+        return 2;
     }
 
-    if (argc > 1) {
-        ifstream ifs;
-        ifs.open(argv[1]);
-        if (ifs) {
-            ifs >> n;
-            if (n > 0) {
-                int *arr = new int[n];
-                if (arr == NULL) {
-                    cerr << "Cannot allocate memory" << endl;
-                    return 2;
-                }
-                for (size_t i = 0; i < n; ++i) ifs >> arr[i];
-                process_array(arr, n);
-                delete[] arr;
-            } else {
-                cerr << "Array is empty" << endl;
-                return 3;
-            }
-        } else {
-            cerr << "No input file" << endl;
-            return 0;
-        }
-    }
+    delete[] arr;
+    return 0;
 }
-

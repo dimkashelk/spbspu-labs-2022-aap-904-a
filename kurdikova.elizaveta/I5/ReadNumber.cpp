@@ -18,7 +18,10 @@ char* readNumber(std::istream& in)
         capacity *= 2;
         char* newstr = new char[capacity];
         number[size] = '\0';
-        std::strcpy(newstr, number);
+        for (auto i = number, j = newstr; i != number + size; i++, j++)
+        {
+          *j = *i;
+        }
         delete[] number;
         number = newstr;
       }

@@ -44,54 +44,50 @@ void process_array(int* arr, size_t n)
     cout << "The average of elements at even indices is: " << avg << endl;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     srand(time(NULL));
-    int arr1[] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20};
-    process_array(arr1, 18);
     size_t n;
+    cout << "Enter the size of the array: ";
     cin >> n;
-    if (n > 0)
-    {
-        int* arr2 = new int[n];
-        if (arr2 == NULL)
-        {
+
+    if (n > 0) {
+        int *arr = new int[n];
+        if (arr == NULL) {
             cerr << "Cannot allocate memory" << endl;
             return 1;
         }
-        for(size_t i = 0; i < n; ++i) arr2[i] = rand();
-        process_array(arr2, n);
-        delete[] arr2;
+        cout << "Enter the elements of the array: " << endl;
+        for (size_t i = 0; i < n; ++i)
+            cin >> arr[i];
+        process_array(arr, n);
+        delete[] arr;
+    } else {
+        cerr << "Array size must be positive." << endl;
+        return 3;
     }
-    if (argc > 1)
-    {
+
+    if (argc > 1) {
         ifstream ifs;
         ifs.open(argv[1]);
-        if (ifs)
-        {
+        if (ifs) {
             ifs >> n;
-            if (n > 0)
-            {
-                int* arr3 = new int[n];
-                if (arr3 == NULL)
-                {
+            if (n > 0) {
+                int *arr = new int[n];
+                if (arr == NULL) {
                     cerr << "Cannot allocate memory" << endl;
                     return 2;
                 }
-                for(size_t i = 0; i < n; ++i) ifs >> arr3[i];
-                process_array(arr3, n);
-                delete[] arr3;
-            }
-            else
-            {
+                for (size_t i = 0; i < n; ++i) ifs >> arr[i];
+                process_array(arr, n);
+                delete[] arr;
+            } else {
                 cerr << "Array is empty" << endl;
                 return 3;
             }
-        }
-        else
-        {
+        } else {
             cerr << "No input file" << endl;
-            return 4;
+            return 0;
         }
     }
 }
+

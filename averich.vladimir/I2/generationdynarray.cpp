@@ -8,11 +8,10 @@ int generationDynArray(size_t sizeOfDynArray)
   if (sizeOfDynArray == 0)
   {
    throw std::logic_error("Error: incorrect size of dynamic array");
-   return 0;
   }
   else
   {
-   int * dynArray = new int[sizeOfDynArray];
+   int* dynArray = new int[sizeOfDynArray];
    std::srand(time(nullptr));
    for (size_t i = 0; i < sizeOfDynArray; i++)
    {
@@ -26,7 +25,6 @@ int generationDynArray(size_t sizeOfDynArray)
    catch (const std::logic_error & e)
    {
      std::cerr << e.what();
-     return 1;
    }
    try
    {

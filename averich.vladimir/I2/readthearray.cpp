@@ -10,18 +10,18 @@ int readTheArray(std::string fileName)
   if (in.eof())
   {
    throw std::logic_error("Error: file is empty");
-   return 1;
   }
   size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
   if (!in)
   {
    throw std::logic_error("Error: invalid input");
-   return 1;
+   return 0;   
   }
   else if (sizeOfFileArray == 0)
   {
-   throw std::logic_error("Error: incorrect size of array");
+   throw std::logic_error("Error: incorrect size of file array");
+   return 0;
   }
   int * fileArray = new int[sizeOfFileArray];
   for (size_t i = 0; i < sizeOfFileArray; i++)
@@ -32,6 +32,7 @@ int readTheArray(std::string fileName)
       throw std::logic_error("Error: check the file");
       in.close();
       delete[] fileArray;
+      return 1;
     }
   }
   try
@@ -41,7 +42,6 @@ int readTheArray(std::string fileName)
   catch (const std::logic_error& e)
   {
     std::cerr << e.what();
-    return 1;
   }
   try
   {
@@ -50,7 +50,6 @@ int readTheArray(std::string fileName)
   catch (const std::logic_error& e)
   {
     std::cerr << e.what();
-    return 1;
   }
   delete[] fileArray;
   return 0;

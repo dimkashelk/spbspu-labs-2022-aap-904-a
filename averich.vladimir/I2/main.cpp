@@ -35,8 +35,7 @@ int main(int argc, char* argv[])
   std::cin >> sizeOfDynArray;
   if (!std::cin)
   {
-    std::cerr << "Error: invalid input";
-    return 0;
+    std::cerr << "Error: invalid input of dynamic array";
   }
   else
   {
@@ -47,15 +46,17 @@ int main(int argc, char* argv[])
     catch (const std::logic_error& e)
     {
       std::cerr << e.what() << std::endl;
+      return 0;
     }
   }
   try
   {
     readTheArray(argv[1]);
   }
-  catch (const std::logic_error & e)
+  catch (const std::logic_error& e)
   {
     std::cerr << e.what();
+    return 0;
   }
   return 0;
 }

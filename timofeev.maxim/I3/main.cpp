@@ -27,7 +27,15 @@ int main()
     delete [] outstring1;
     std::cout << "Memory error" << "\n";
   }
-  removeAlphabet(outstring1, str);
+  try
+  {
+    removeAlphabet(outstring1, str);
+  }
+  catch (...)
+  {
+    std::cerr << "Error" << "\n";
+    delete [] outstring1;
+  }
   if (outstring1[0] != '\0')
   {
     std::cout << outstring1 << "\n";
@@ -47,7 +55,15 @@ int main()
      delete [] outstring2;
      std::cout << "Memory error" << "\n";
   }
-  addNumbers(outstring2, str, str2);
+  try
+  {
+    addNumbers(outstring2, str, str2);
+  }
+  catch (...)
+  {
+    std::cerr << "Error" << "\n";
+    delete [] outstring2;
+  }
   if (outstring2[0] != '\0')
   {
     std::cout << outstring2 << "\n";

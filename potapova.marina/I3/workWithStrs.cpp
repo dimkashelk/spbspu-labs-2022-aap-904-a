@@ -33,8 +33,8 @@ bool pushBack(char*& str, size_t& str_size, size_t& str_capasity, const char& ne
   {
     str_capasity += capasity_block;
 
-    char* new_mem_block;
-    if ((new_mem_block = reallocMem(str, str_capasity)) == nullptr)
+    char* new_mem_block = reallocMem(str, str_capasity);
+    if (new_mem_block == nullptr)
     {
       return false;
     }

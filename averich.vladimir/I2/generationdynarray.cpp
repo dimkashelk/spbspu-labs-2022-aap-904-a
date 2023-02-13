@@ -5,23 +5,15 @@
 #include "istriplet.hpp"
 int generationDynArray(size_t sizeOfDynArray)
 {
-  if (sizeOfDynArray == 0)
+  int* dynArray = new int[sizeOfDynArray];
+  std::srand(time(nullptr));
+  for (size_t i = 0; i < sizeOfDynArray; i++)
   {
-   return 0;
+    dynArray[i] = 1 + rand() % 9;
+    dynArray[i] = 1 + rand() % 9 * -1;
   }
-  else
-  {
-   int* dynArray = new int[sizeOfDynArray];
-   std::srand(time(nullptr));
-   for (size_t i = 0; i < sizeOfDynArray; i++)
-   {
-     dynArray[i] = 1 + rand() % 9;
-     dynArray[i] = 1 + rand() % 9 * -1;
-   }
-   std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
-   sort(dynArray, sizeOfDynArray);
-   delete[] dynArray;
-   return 0;
-  }
+  std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+  sort(dynArray, sizeOfDynArray);
+  delete[] dynArray;
   return 0;
 }

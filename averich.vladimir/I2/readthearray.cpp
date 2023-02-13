@@ -9,17 +9,17 @@ int readTheArray(std::string fileName)
   std::ifstream in(fileName);
   if (in.eof())
   {
-   throw std::logic_error("Error: file is empty");
+    throw std::logic_error("Error: file is empty");
   }
   size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
   if (!in)
   {
-   throw std::logic_error("Error: invalid input");
+    throw std::logic_error("Error: invalid input");
   }
   else if (sizeOfFileArray == 0)
   {
-   throw std::logic_error("Error: incorrect size of file array");
+    throw std::logic_error("Error: incorrect size of file array");
   }
   int * fileArray = new int[sizeOfFileArray];
   for (size_t i = 0; i < sizeOfFileArray; i++)

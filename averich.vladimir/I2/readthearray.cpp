@@ -16,7 +16,7 @@ int readTheArray(std::string fileName)
   if (!in)
   {
    throw std::logic_error("Error: invalid input");
-   return 0;   
+   return 0;
   }
   else if (sizeOfFileArray == 0)
   {

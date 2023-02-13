@@ -1,6 +1,14 @@
 #include "isFloat.h"
 #include <iostream>
 
+bool isMantissa(const char* str);
+bool isSign(char symb);
+bool isUnsignedInt(const char* str);
+bool isDot(char symb);
+bool isDigit(char symb);
+bool isOrder(const char* str);
+bool isEnd(char symb);
+bool isE(char symb);
 bool isFloat(const char* str)
 {
   return isMantissa(str) || (isSign(*str) && isMantissa(str + 1));

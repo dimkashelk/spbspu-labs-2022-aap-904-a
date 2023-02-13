@@ -7,12 +7,32 @@
 #include "complexquad.h"
 #include "supportFunctions.h"
 
+void outputData(std::ostream &out, const Shape *const *shapes, const size_t size)
+{
+  double sumArea = 0.0;
+  for (size_t i = 0; i < size; i++) {
+    sumArea += shapes[i]->getArea();
+  }
+  out << std::fixed << std::setprecision(1) << sumArea;
+  double leftBottomX = 0.0;
+  double leftBottomY = 0.0;
+  double rightTopX = 0.0;
+  double rightTopY = 0.0;
+  for (size_t i = 0; i < size; i++) {
+    leftBottomX = shapes[i]->getFrameRect().pos.x - shapes[i]->getFrameRect().width / 2;
+    leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
+    rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
+    rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
+    out << " " << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY;
+  }
+  out << "\n";
+}
+
 int main()
 {
   bool isScale = false;
   size_t size = 0;
   size_t capacity = 10;
-  double sumArea = 0.0;
   point_t zoomCenter = {0, 0};
   double ratio = 0.0;
   bool isAdded = false;
@@ -58,7 +78,6 @@ int main()
         isAdded = true;
       }
       if (isAdded) {
-        sumArea += shapes[size]->getArea();
         size++;
         isAdded = false;
       }
@@ -84,44 +103,18 @@ int main()
     }
   }
   if (isScale) {
-    double leftBottomX = 0.0;
-    double leftBottomY = 0.0;
-    double rightTopX = 0.0;
-    double rightTopY = 0.0;
-    std::cout << std::fixed << std::setprecision(1) << sumArea << " ";
-    sumArea = 0.0;
-    for (size_t i = 0; i < size; i++) {
-      leftBottomX = shapes[i]->getFrameRect().pos.x - shapes[i]->getFrameRect().width / 2;
-      leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
-      rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
-      rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
-      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY;
-      if (i == size - 1) {
-        std::cout << "\n";
-      } else {
-        std::cout << " ";
-      }
-      try {
+    outputData(std::cout, shapes, size);
+    try {
+      for (size_t i = 0; i < size; i++) {
         fullScale(shapes[i], zoomCenter, ratio);
       }
-      catch (const std::invalid_argument &e) {
-        std::cerr << e.what();
-        deleteArray(shapes, size);
-        return 2;
-      }
-      sumArea += shapes[i]->getArea();
     }
-    std::cout << std::fixed << std::setprecision(1) << sumArea << " ";
-    for (size_t i = 0; i < size; i++) {
-      leftBottomX = shapes[i]->getFrameRect().pos.x - shapes[i]->getFrameRect().width / 2;
-      leftBottomY = shapes[i]->getFrameRect().pos.y - shapes[i]->getFrameRect().height / 2;
-      rightTopX = shapes[i]->getFrameRect().pos.x + shapes[i]->getFrameRect().width / 2;
-      rightTopY = shapes[i]->getFrameRect().pos.y + shapes[i]->getFrameRect().height / 2;
-      std::cout << std::fixed << std::setprecision(1) << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY;
-      if (i != size - 1) {
-        std::cout << " ";
-      }
+    catch (const std::invalid_argument &e) {
+      std::cerr << e.what();
+      deleteArray(shapes, size);
+      return 2;
     }
+    outputData(std::cout, shapes, size);
     deleteArray(shapes, size);
   } else {
     std::cerr << "No scale?";

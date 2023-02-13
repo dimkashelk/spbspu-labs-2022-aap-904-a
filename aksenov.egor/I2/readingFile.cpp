@@ -7,7 +7,6 @@ int *readFile(std::istream &input, size_t line, int *f_arr)
   input >> line;
   if (!input)
   {
-    delete [] f_arr;
     throw std::length_error("File error");
   }
   for (size_t i = 0; i < line; ++i)
@@ -15,7 +14,6 @@ int *readFile(std::istream &input, size_t line, int *f_arr)
     input >> f_arr[i];
     if (!input)
     {
-      delete [] f_arr;
       throw std::length_error("File error");
     }
   }

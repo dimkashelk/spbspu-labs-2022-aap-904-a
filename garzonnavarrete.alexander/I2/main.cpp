@@ -65,7 +65,8 @@ int main(int argc, char *argv[]) {
   }
 
   if (size == 0) {
-    return 0;
+    std::cout << "File is empty\n";
+    return 1;
   }
 
   int *arr = new int[size];
@@ -74,6 +75,20 @@ int main(int argc, char *argv[]) {
     if (!in) {
       std::cout << "Error reading file\n";
       delete[] arr;
-}
-}
+      return 2;
+    }
+  }
+
+  try {
+    std::cout << countIndices(arr, size) << std::endl;
+    std::cout << countAriNum(arr, size) << std::endl;
+  }
+  catch (const std::overflow_error &e) {
+    std::cout << e.what();
+    delete[] arr;
+    return 2;
+  }
+
+  delete[] arr;
+  return 0;
 }

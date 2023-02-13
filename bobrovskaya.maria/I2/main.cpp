@@ -79,7 +79,7 @@ int main(int argc, char **argv)
   size_t maxCountIndeticEllementsArr3 = countIndenticalElements(arr3,arrSize3);
   std::cout << "The number of indentical elements in array3: " << maxCountIndeticEllementsArr3 << "\n";
   std::cout << "Modified array3: ";
-  outputArray (arr3, arrSize3);
+  outputArray(arr3, arrSize3);
   std::cout << "\n";
   delete[] arr3;
 }

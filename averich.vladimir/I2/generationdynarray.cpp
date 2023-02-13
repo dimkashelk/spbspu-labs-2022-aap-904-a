@@ -7,7 +7,8 @@ int generationDynArray(size_t sizeOfDynArray)
 {
   if (sizeOfDynArray == 0)
   {
-   throw std::logic_error("Error: incorrect size of array");
+   throw std::logic_error("Error: incorrect size of dynamic array");
+   return 0;
   }
   else
   {

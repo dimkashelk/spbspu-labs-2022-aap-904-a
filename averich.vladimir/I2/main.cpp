@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
   if (!std::cin)
   {
     std::cerr << "Error: invalid input";
-    return 1;
+    return 0;
   }
   else
   {

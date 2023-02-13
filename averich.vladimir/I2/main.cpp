@@ -33,7 +33,14 @@ int main(int argc, char* argv[])
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
-  generationDynArray(sizeOfDynArray);
+  try
+  {
+    generationDynArray(sizeOfDynArray);
+  }
+  catch (const std::logic_error& e)
+  {
+      return 1;
+  }
   try
   {
     readTheArray(argv[1]);

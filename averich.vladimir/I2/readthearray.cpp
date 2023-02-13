@@ -46,7 +46,7 @@ int readTheArray(std::string fileName)
   }
   catch (const std::logic_error& e)
   {
-    return 1;
+    return 0;
   }
   delete[] fileArray;
   return 0;

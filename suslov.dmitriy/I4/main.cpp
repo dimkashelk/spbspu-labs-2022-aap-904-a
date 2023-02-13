@@ -39,7 +39,7 @@ int main(int argc, char **argv)
       return 2;
     }
   }
-  else if (strcmp(argv[1], "2") == 0)
+  else if (std::strcmp(argv[1], "2"))
   {
     size_t n = 0;
     size_t m = 0;

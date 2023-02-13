@@ -8,7 +8,7 @@ char* reallocMem(char* str, const size_t& new_capasity)
   {
     new_mem_block = new char[new_capasity];
   }
-  catch (const std::bad_alloc & e)
+  catch (const std::bad_alloc& e)
   {
     std::cerr << "Allocation error: " << e.what() << '\n';
 

@@ -22,7 +22,6 @@ int readTheArray(std::string fileName)
   else if (sizeOfFileArray == 0)
   {
    throw std::logic_error("Error: incorrect size of array");
-   return 1;
   }
   int * fileArray = new int[sizeOfFileArray];
   for (size_t i = 0; i < sizeOfFileArray; i++)

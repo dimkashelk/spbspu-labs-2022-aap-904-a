@@ -8,7 +8,6 @@ int generationDynArray(size_t sizeOfDynArray)
   if (sizeOfDynArray == 0)
   {
    throw std::logic_error("Error: incorrect size of array");
-   return 1;
   }
   else
   {

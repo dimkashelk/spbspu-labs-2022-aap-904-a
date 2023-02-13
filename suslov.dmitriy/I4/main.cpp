@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include "scanMatrix.h"
 #include "localMinima.h"
 #include "sumOfModules.h"
 int main(int argc, char **argv)
@@ -27,7 +28,17 @@ int main(int argc, char **argv)
       std::cerr << "errrr" << "\n";
       return 1;
     }
-    bool result = scanMatrixOne(matrix, in_stream, n, m);
+    if (!scanSize(in_stream, n, m))
+    {
+      std::cerr<< "((" << "\n";
+      return 2;
+    }
+    if (n * m > 1000)
+    {
+      std::cerr << "beda" << "\n";
+      return 2;
+    }
+    bool result = scanMatrix(matrix, in_stream, n, m);
     if (result)
     {
       out_stream << counterZero(n, m, matrix) << "\n";
@@ -39,7 +50,7 @@ int main(int argc, char **argv)
       return 2;
     }
   }
-  else if (std::strcmp(argv[1], "2"))
+  else if (!std::strcmp(argv[1], "2"))
   {
     size_t n = 0;
     size_t m = 0;
@@ -49,8 +60,23 @@ int main(int argc, char **argv)
       std::cerr << "=()" << "\n";
       return 1;
     }
-    int *matrix = scanMatrixTwo(in_stream, n, m);
-    if (matrix != nullptr)
+    if (!scanSize(in_stream, n, m))
+    {
+      std::cerr << "((" << "\n";
+      return 2;
+    }
+    int *matrix = nullptr;
+    try
+    {
+      matrix = new int[n * m];
+    }
+    catch (const std::bad_alloc &e)
+    {
+      std::cerr << "brr...memory" << "\n";
+      return 1;
+    }
+    bool result = scanMatrix(matrix, in_stream, n, m);
+    if (result)
     {
       int *s_matrix = smoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)

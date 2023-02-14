@@ -24,7 +24,7 @@ int main(int argc, char **argv)
   size_t arrSize1 = 10;
   size_t maxCountIndeticEllementsArr1 = countIndenticalElements(arr1,arrSize1);
   std::cout << "The number of indentical elements in array1: " << maxCountIndeticEllementsArr1 << "\n";
-  partition (arr1, arrSize1);
+  partition(arr1, arrSize1);
   std::cout << "Modified array1: ";
   outputArray(arr1, arrSize1);
   std::cout << "\n";
@@ -68,7 +68,8 @@ int main(int argc, char **argv)
     return 0;
   }
   int* arr3 = new int[arrSize3];
-  for (size_t i = 0; i < arrSize3; i++) {
+  for (size_t i = 0; i < arrSize3; i++)
+  {
     readFile >> arr3[i];
     if (!readFile) {
       std::cerr << "Invalid number of array elements\n";

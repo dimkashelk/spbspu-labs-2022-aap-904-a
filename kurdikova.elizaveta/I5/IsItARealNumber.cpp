@@ -14,7 +14,7 @@ bool isDigit(char c)
 bool isUnsignedInteger(char* data, size_t& move)
 {
   bool result = (isDigit(*data) && isUnsignedInteger(++data, move)) || isDigit(*(--data));
-  ++move;
+  move++;
   return result;
 }
 

@@ -1,6 +1,5 @@
 #include "ReadNumber.h"
 #include <cstddef>
-#include <cstring>
 #include <valarray>
 
 char* readNumber(std::istream& in)
@@ -15,15 +14,15 @@ char* readNumber(std::istream& in)
     {
       try
       {
-        capacity *= 2;
-        char* newstr = new char[capacity];
+        char* newstr = new char[capacity + 20];
         number[size] = '\0';
-        for (auto i = number, j = newstr; i != number + size; i++, j++)
+        for (auto i = number, j = newstr; i != (number + size); ++i, ++j)
         {
           *j = *i;
         }
         delete[] number;
         number = newstr;
+        capacity += 20;
       }
       catch (const std::bad_alloc& e)
       {
@@ -31,9 +30,9 @@ char* readNumber(std::istream& in)
         throw e;
       }
     }
-    in >> number[size++];
+    in >> number[size];
   }
-  while (in && number[size - 1] != '\n');
+  while (in && number[size++] != '\n');
   if (size <= 1)
   {
     delete[] number;

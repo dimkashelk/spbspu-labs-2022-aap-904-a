@@ -3,10 +3,17 @@
 #include <iostream>
 #include <cmath>
 
-struct term {
+struct term1 {
   double x = 0;
   double value = 1;
   size_t n = 0;
+  double operator()();
+};
+
+struct term2 {
+  double x = 0;
+  double value = 0;
+  size_t n = 1;
   double operator()();
 };
 

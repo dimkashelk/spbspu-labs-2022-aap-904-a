@@ -24,8 +24,9 @@ int main()
   }
   catch (const std::bad_alloc &e)
   {
-    delete [] outstring1;
-    std::cout << "Memory error" << "\n";
+    delete [] str;
+    std::cout << "Memory error1" << "\n";
+    return 1;
   }
   try
   {
@@ -35,6 +36,8 @@ int main()
   {
     std::cerr << "Error" << "\n";
     delete [] outstring1;
+    delete [] str;
+    return 1;
   }
   if (outstring1[0] != '\0')
   {
@@ -43,7 +46,8 @@ int main()
   }
   else
   {
-    std::cerr << "Error" << "\n";
+    std::cerr << "only alpha were in string" << "\n";
+    delete [] outstring1;
   }
   char *outstring2 = nullptr;
   try
@@ -52,8 +56,9 @@ int main()
   }
   catch (const std::bad_alloc &e)
   {
-     delete [] outstring2;
-     std::cout << "Memory error" << "\n";
+    delete [] str;
+    std::cout << "Memory error2" << "\n";
+    return 1;
   }
   try
   {
@@ -63,6 +68,8 @@ int main()
   {
     std::cerr << "Error" << "\n";
     delete [] outstring2;
+    delete [] str;
+    return 1;
   }
   if (outstring2[0] != '\0')
   {

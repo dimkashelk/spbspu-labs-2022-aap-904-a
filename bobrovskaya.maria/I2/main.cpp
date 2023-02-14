@@ -26,7 +26,7 @@ int main(int argc, char **argv)
   std::cout << "The number of indentical elements in array1: " << maxCountIndeticEllementsArr1 << "\n";
   partition (arr1, arrSize1);
   std::cout << "Modified array1: ";
-  outputArray (arr1, arrSize1);
+  outputArray(arr1, arrSize1);
   std::cout << "\n";
 
   size_t arrSize2 = 0;
@@ -43,8 +43,9 @@ int main(int argc, char **argv)
     }
     size_t maxCountIndeticEllementsArr2 = countIndenticalElements(arr2,arrSize2);
     std::cout << "The number of indentical elements in array2: " << maxCountIndeticEllementsArr2 << "\n";
+    partition(arr1, arrSize1);
     std::cout << "Modified array2: ";
-    outputArray (arr2, arrSize2);
+    outputArray(arr2, arrSize2);
     std::cout << "\n";
     delete[] arr2;
   }
@@ -76,8 +77,9 @@ int main(int argc, char **argv)
     }
   }
   readFile.close();
-  size_t maxCountIndeticEllementsArr3 = countIndenticalElements(arr3,arrSize3);
-  std::cout << "The number of indentical elements in array3: " << maxCountIndeticEllementsArr3 << "\n";
+  size_t maxCountIndeticalEllementsArr3 = countIndenticalElements(arr3, arrSize3);
+  std::cout << "The number of indentical elements in array3: " << maxCountIndeticalEllementsArr3 << "\n";
+  partition(arr3, arrSize3);
   std::cout << "Modified array3: ";
   outputArray(arr3, arrSize3);
   std::cout << "\n";

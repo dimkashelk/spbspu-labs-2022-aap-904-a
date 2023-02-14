@@ -1,3 +1,4 @@
+#include <iomanip>
 #include "shenanigans.h"
 
 double unsign(double n)
@@ -29,5 +30,29 @@ double customCos(double x, double error, size_t maxNum)
     }
     res += curr;
     curr = getNext();
+  }
+  return res;
+}
+
+void printRow(std::ostream& stream, double x, double customRes) {
+  stream << std::setw(5) << std::setprecision(5) << x << "  ";
+  try {
+    stream << std::setw(7) << std::setprecision(5) << customRes << "  ";
+  }
+  catch (std::runtime_error & err) {
+    throw err;
+  }
+  stream << std::setw(5) << std::setprecision(5) << cos(x) << '\n';
+}
+
+void printTable(std::ostream& stream, double lb, double rb, double error, size_t maxNum, double step)
+{
+  for (double i = lb; i <= rb; i += step) {
+    try {
+      printRow(stream, i, customCos(i, error, maxNum));
+    }
+    catch (std::runtime_error & err) {
+      throw err;
+    }
   }
 }

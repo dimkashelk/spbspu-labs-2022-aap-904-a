@@ -25,7 +25,7 @@ int main(int argc, char * argv[])
     std::cerr << "Incorrect arguments of the matrix\n";
     return 1;
   }
-  size_t column =0 ;
+  size_t column = 0 ;
   inputfile >> column;
   if (!inputfile)
   {
@@ -74,7 +74,7 @@ int main(int argc, char * argv[])
       return 1;
     }
     const size_t size_sqrt_matrix = row;
-    int *dArr = new int[size];
+    int * dArr = new int[size];
     for (size_t i = 0; i < row; i++)
     {
       for (size_t j = 0; j < column; j++)
@@ -83,7 +83,7 @@ int main(int argc, char * argv[])
         if (!inputfile)
         {
           std::cerr << "Error reading elements\n";
-          delete[] dArr;
+          delete [] dArr;
           return 1;
         }
       }

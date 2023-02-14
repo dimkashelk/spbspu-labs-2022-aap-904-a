@@ -9,6 +9,16 @@ int main()
   size_t maxNum = 0;
 
   std::cin >> lb >> rb >> maxNum;
+  if (!std::cin || lb <= -1 || rb >= 1 || rb < lb) {
+    std::cerr << "Error: incorrect arguments";
+    return 1;
+  }
 
-  printTable(std::cout, lb, rb, error, maxNum, step);
+  try {
+    printTable(std::cout, lb, rb, error, maxNum, step);
+  }
+  catch (std::runtime_error & err) {
+    std::cerr << "Error: " << err.what();
+    return 2;
+  }
 }

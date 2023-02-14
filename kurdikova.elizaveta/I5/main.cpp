@@ -15,7 +15,7 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-  std::cout << std::boolalpha << isRealNumber(number);
+  std::cout << std::boolalpha << isRealNumber(number) << "\n";
   delete[] number;
   return 0;
 }

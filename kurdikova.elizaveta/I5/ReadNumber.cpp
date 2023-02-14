@@ -14,14 +14,14 @@ char* readNumber(std::istream& in)
     {
       try
       {
-        char* newstr = new char[capacity + 20];
+        capacity *= 2;
+        char* newstr = new char[capacity];
         for (auto i = number, j = newstr; i != (number + size); ++i, ++j)
         {
           *j = *i;
         }
         delete[] number;
         number = newstr;
-        capacity += 20;
       }
       catch (const std::bad_alloc& e)
       {

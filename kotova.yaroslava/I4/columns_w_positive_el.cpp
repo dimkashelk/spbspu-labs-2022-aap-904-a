@@ -1,35 +1,24 @@
 #include "columns_w_positive_el.h"
-bool isPositive(const int* matrix, size_t line, size_t columns, size_t& numberColumn)
+bool isPositive(const int* matrix, size_t line, size_t column)
 {
-  bool flag = true;
-  size_t cnt = 0;
-  size_t column_curr = 0;
-  for (size_t i = 0; i < line; i++)
+  for(size_t i = 0; i < line; i++)
   {
-    numberColumn = matrix[column_curr * i];
-    if (*(matrix + columns * (numberColumn-1) * i) > 0)
+    if(*(matrix + column * i) <= 0)
     {
-      flag = true;
-      cnt++;
-    }
-    else
-    {
-      flag = false;
-      return flag;
+      return false;
     }
   }
-  return flag;
+  return true;
 }
 size_t countPositiveElOfCol(const int* matrix, size_t column, size_t line)
 {
-  size_t columns_curr = 0;
-  size_t count = 0;
-  for (size_t i = 0; i < column; i++)
+  size_t cnt = 0;
+  for(size_t curr_column = 0; curr_column < column; curr_column++)
   {
-    if (isPositive(matrix, line, column, columns_curr))
+    if (isPositive((matrix + 3 * curr_column), column, line))
     {
-      count++;
+      cnt++;
     }
   }
-  return count;
+  return cnt;
 }

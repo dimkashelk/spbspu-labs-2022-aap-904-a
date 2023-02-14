@@ -5,7 +5,7 @@ int main()
   char arr[40];
   std::cin >> arr;
   int c = 0;
-  std::cout << std::boolalpha << real(arr, c) << std::endl;
-  std::cout << c << std::endl;
+  std::cout << std::boolalpha << real(arr, c) << "\n";
+  std::cout << c << "\n";
   return 0;
 }

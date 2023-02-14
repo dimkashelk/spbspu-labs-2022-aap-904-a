@@ -4,7 +4,7 @@
 int main()
 {
   size_t size = 0;
-  char* src = nullptr;
+  char* src = {};
   try {
     src = inputString(std::cin, size);
   }
@@ -20,31 +20,14 @@ int main()
   }
 
   //Task11
-  char* dest = nullptr;
-  try {
-    dest = new char[size];
-  }
-  catch (const std::bad_alloc & err) {
-    delete[] src;
-    delete[] dest;
-    std::cerr << "Error: " << err.what();
-    return 3;
-  }
+  char* dest = new char[size];
   switchCase(src, dest);
 
   std::cout << "string with switched case: " << dest << '\n';
   delete[] dest;
 
   //Task 19
-  try {
-    dest = new char[4];
-  }
-  catch (const std::bad_alloc & err) {
-    delete[] dest;
-    delete[] src;
-    std::cerr << "Error: " << err.what();
-    return 3;
-  }
+  dest = new char[4];
   threeMostCommon(src, dest);
   std::cout << "Most common characters: " << dest;
 

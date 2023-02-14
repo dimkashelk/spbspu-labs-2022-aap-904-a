@@ -15,7 +15,6 @@ char* readNumber(std::istream& in)
       try
       {
         char* newstr = new char[capacity + 20];
-        number[size] = '\0';
         for (auto i = number, j = newstr; i != (number + size); ++i, ++j)
         {
           *j = *i;

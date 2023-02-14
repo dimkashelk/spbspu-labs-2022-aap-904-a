@@ -3,11 +3,11 @@
 
 int main()
 {
-  unsigned int countMinimum = 0;
+  size_t countSignChanges = 0;
+  size_t countMinimum = 0;
   int checking = 0;
   int value = 0;
   int previous_value = 0;
-  unsigned int countSignChanges = 0;
 
   do {
     std::cin >> value;

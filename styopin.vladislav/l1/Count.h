@@ -1,7 +1,7 @@
 #ifndef MAIN_CPP_COUNT_H
 #define MAIN_CPP_COUNT_H
 
-void counterSignChanges(unsigned int &countMin, int previous_value, int current);
+void counterSignChanges(size_t &countMin, int previous_value, int current);
 
-void counterMin(unsigned int &countMin, int previous, int current, int& checking);
+void counterMin(size_t &countMin, int previous, int current, int& checking);
 #endif

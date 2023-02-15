@@ -68,12 +68,6 @@ int main(int argc, char* argv[])
       return 0;
     }
     int* newarr = new int[c * r];
-    if (!newarr)
-    {
-      std::cout << "Error allocating memory\n";
-      delete[] newarr;
-      return 0;
-    }
     for (size_t i = 0; i < c; i++)
     {
       for (size_t j = 0; j < r; j++)
@@ -86,7 +80,7 @@ int main(int argc, char* argv[])
           return 1;
         }
       }
-     }
+    }
     size_t indrow = 1;
     size_t indcol = 1;
     try

@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     {
       scanSize(in_stream, n, m);
     }
-    catch (const std::bad_alloc &e)
+    catch (...)
     {
       std::cerr << e.what() << "\n";
       return 2;

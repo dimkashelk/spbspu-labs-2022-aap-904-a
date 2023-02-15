@@ -102,9 +102,6 @@ int main(int argc, char **argv)
       return 2;
     }
   }
-  else
-  {
-    std::cerr << "brrr...." << "\n";
-    return 1;
-  }
+  std::cerr << "<3" << "\n";
+  return 0;
 }

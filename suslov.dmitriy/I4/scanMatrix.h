@@ -1,5 +1,5 @@
-#ifndef SPBSPU_LABS_2022_AAP_904_A_SCANMATRIX_H
-#define SPBSPU_LABS_2022_AAP_904_A_SCANMATRIX_H
+#ifndef SCANMATRIX_H
+#define SCANMATRIX_H
 #include <iostream>
 #include <cstddef>
 std::istream& scanSize(std::istream &in_stream, size_t &n, size_t &m);

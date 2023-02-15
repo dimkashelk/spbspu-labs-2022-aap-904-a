@@ -11,7 +11,7 @@ std::istream& scanSize(std::istream &in_stream, size_t &n, size_t &m)
   }
   return in_stream;
 }
-bool scanMatrix(int *matrix, std::istream &in_stream, const size_t n, const size_t m)
+std::istream& scanMatrix(int *matrix, std::istream &in_stream, const size_t n, const size_t m)
 {
   for (size_t i = 0; i < n; ++i)
   {
@@ -19,9 +19,9 @@ bool scanMatrix(int *matrix, std::istream &in_stream, const size_t n, const size
     {
       if (!(in_stream >> matrix[i * n + j]))
       {
-        return false;
+        return throw std::runtime_error("matrix error");
       }
     }
   }
-  return true;
+  return in_stream;
 }

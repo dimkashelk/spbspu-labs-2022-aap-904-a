@@ -20,12 +20,12 @@ int main(int argc, char* argv[])
     return 1;
   }
   in >> c >> r;
-  size_t size = c * r;
   if (!in)
   {
     std::cout << "error while read file\n";
     return 1;
   }
+  size_t size = c * r;
   std::ofstream output(argv[3]);
   if (!output.is_open())
   {
@@ -83,7 +83,16 @@ int main(int argc, char* argv[])
      }
     size_t indrow = 1;
     size_t indcol = 1;
-    newarr = fillingTheMatrixInSpiral(newarr, c, r, indrow, indcol);
+    try
+    {
+      newarr = fillingTheMatrixInSpiral(newarr, c, r, indrow, indcol);
+    }
+    catch (const std::invalid_argument& e)
+    {
+      std::cout << e.what() << '\n';
+      delete[] newarr;
+      return 0;
+    }
     for (size_t i = 0; i < c; i++)
     {
       for (size_t j = 0; j < r; j++)

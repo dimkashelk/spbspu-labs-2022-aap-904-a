@@ -231,7 +231,7 @@ CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept:
   compositeShape.name_ = " ";
 }
 
-CompositeShape& CompositeShape::operator = (const CompositeShape& compositeShape)
+CompositeShape& CompositeShape::operator=(const CompositeShape& compositeShape)
 {
   if (this != &compositeShape)
   {
@@ -257,7 +257,7 @@ CompositeShape& CompositeShape::operator = (const CompositeShape& compositeShape
   return *this;
 }
 
-CompositeShape& CompositeShape::operator = (CompositeShape&& compositeShape) noexcept
+CompositeShape& CompositeShape::operator=(CompositeShape&& compositeShape) noexcept
 {
   if (this != &compositeShape)
   {

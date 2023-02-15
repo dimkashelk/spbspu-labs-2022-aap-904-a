@@ -13,8 +13,8 @@ public:
   CompositeShape(const CompositeShape& compositeShape);
   CompositeShape(CompositeShape&& compositeShape) noexcept;
   ~CompositeShape();
-  CompositeShape& operator = (const CompositeShape& compositeShape);
-  CompositeShape& operator = (CompositeShape&& compositeShape) noexcept;
+  CompositeShape& operator=(const CompositeShape& compositeShape);
+  CompositeShape& operator=(CompositeShape&& compositeShape) noexcept;
   Shape* operator[](std::size_t index);
   const Shape* operator[](std::size_t index) const;
   double getArea() const;

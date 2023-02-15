@@ -7,6 +7,17 @@
 #include "complexquad.h"
 #include "supportFunctions.h"
 
+bool inputArray(std::istream &in, double *coords, const size_t size)
+{
+  for (size_t i = 0; i < size; i++) {
+    in >> coords[i];
+    if (!in) {
+      return false;
+    }
+  }
+  return true;
+}
+
 void outputData(std::ostream &out, const Shape *const *shapes, const size_t size)
 {
   double sumArea = 0.0;
@@ -38,6 +49,7 @@ int main()
   bool isAdded = false;
   std::string figureName = "";
   Shape **shapes = new Shape*[capacity];
+  double coords[8] = {0.0};
   while (std::cin) {
     std::cin >> figureName;
     try {
@@ -48,32 +60,36 @@ int main()
         shapes = newShapes;
       }
       if (figureName == "RECTANGLE") {
-        point_t point1, point2;
-        std::cin >> point1.x >> point1.y >> point2.x >> point2.y;
-        if (!std::cin) {
+        if (!inputArray(std::cin, coords, 4)) {
           std::cerr << "Error while reading";
           continue;
         }
+        point_t point1 = {coords[0], coords[1]};
+        point_t point2 = {coords[2], coords[3]};
         shapes[size] = new Rectangle(point1, point2);
         isAdded = true;
       }
       if (figureName == "CONCAVE") {
-        point_t point1, point2, point3, point4;
-        std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
-        if (!std::cin) {
+        if (!inputArray(std::cin, coords, 8)) {
           std::cerr << "Error while reading";
           continue;
         }
+        point_t point1 = {coords[0], coords[1]};
+        point_t point2 = {coords[2], coords[3]};
+        point_t point3 = {coords[4], coords[5]};
+        point_t point4 = {coords[6], coords[7]};
         shapes[size] = new Concave(point1, point2, point3, point4);
         isAdded = true;
       }
       if (figureName == "COMPLEXQUAD") {
-        point_t point1, point2, point3, point4;
-        std::cin >> point1.x >> point1.y >> point2.x >> point2.y >> point3.x >> point3.y >> point4.x >> point4.y;
-        if (!std::cin) {
+        if (!inputArray(std::cin, coords, 8)) {
           std::cerr << "Error while reading";
           continue;
         }
+        point_t point1 = {coords[0], coords[1]};
+        point_t point2 = {coords[2], coords[3]};
+        point_t point3 = {coords[4], coords[5]};
+        point_t point4 = {coords[6], coords[7]};
         shapes[size] = new Complexquad(point1, point2, point3, point4);
         isAdded = true;
       }

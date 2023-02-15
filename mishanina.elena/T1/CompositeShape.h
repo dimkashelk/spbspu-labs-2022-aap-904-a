@@ -5,7 +5,7 @@
 #include <cstddef>
 #include <stdexcept>
 
-class CompositeShape : public Shape
+class CompositeShape
 {
 public:
   CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name);
@@ -29,7 +29,7 @@ public:
   bool empty() const;
   std::size_t size() const;
   rectangle_t getFrameRect() const;
-  std::string getName() const override;
+  std::string getName() const;
 private:
   std::string name_;
   std::size_t size_;

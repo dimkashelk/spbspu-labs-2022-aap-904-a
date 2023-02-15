@@ -1,5 +1,5 @@
-#ifndef POSITIVE_ELEMENTS
-#define POSITIVE_ELEMENTS
+#ifndef POSITIVEELEMENTS_H
+#define POSITIVEELEMENTS_H
 #include <cstddef>
-int getPositiveEl(int* matrix, size_t countRows, size_t countColumns);
+size_t countPositiveOnlyRows(int* matrix, size_t countRows, size_t countColumns);
 #endif

@@ -13,7 +13,6 @@ int main(int argc, char* argv[])
   }
   size_t c = 0;
   size_t r = 0;
-  size_t size = c * r;
   std::ifstream in(argv[2]);
   if (!in.is_open())
   {
@@ -21,6 +20,7 @@ int main(int argc, char* argv[])
     return 1;
   }
   in >> c >> r;
+  size_t size = c * r;
   if (!in)
   {
     std::cout << "error while read file\n";
@@ -40,15 +40,6 @@ int main(int argc, char* argv[])
       std::cout << "Error, array is large\n";
       return 1;
     }
-    for (size_t i = 0; i < size; i++)
-    {
-      in >> array[i];
-      if (!in)
-      {
-        std::cout << "Error while read file\n";
-        return 1;
-      }
-    }
     for (size_t i = 0; i < c; i++)
     {
       for (size_t j = 0; j < r; j++)
@@ -61,7 +52,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    size_t countPositiveRows = getPositiveEl (array, c, r);
+    size_t countPositiveRows = countPositiveOnlyRows(array, c, r);
     output << countPositiveRows << '\n';
     if (!output)
     {
@@ -77,15 +68,6 @@ int main(int argc, char* argv[])
       return 0;
     }
     int* newarr = new int[c * r];
-    for (size_t i = 0; i < size; i++)
-    {
-      in >> newarr[i];
-      if (!in) {
-        std::cout << "Error while read file\n";
-        delete[] newarr;
-        return 1;
-      }
-    }
     for (size_t i = 0; i < c; i++)
     {
       for (size_t j = 0; j < r; j++)
@@ -101,12 +83,6 @@ int main(int argc, char* argv[])
      }
     size_t indrow = 1;
     size_t indcol = 1;
-    if (indrow != indcol)
-    {
-      std::cout << "Error, indexes are out of bounds\n";
-      delete[] newarr;
-      return 1;
-    }
     newarr = fillingTheMatrixInSpiral(newarr, c, r, indrow, indcol);
     for (size_t i = 0; i < c; i++)
     {
@@ -114,7 +90,7 @@ int main(int argc, char* argv[])
       {
         output << newarr[c * i + j];
         i == (c * r - 1) ? output << "" : output << ' ';
-        if (!in)
+        if (!output)
         {
            std::cout << "Error while writing file\n";
            delete[] newarr;

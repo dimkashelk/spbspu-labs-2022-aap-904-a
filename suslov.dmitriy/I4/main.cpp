@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     }
     catch (...)
     {
-      std::cerr << e.what() << "\n";
+      std::cerr << "Error" << "\n";
       return 2;
     }
     if (n * m > 1000)

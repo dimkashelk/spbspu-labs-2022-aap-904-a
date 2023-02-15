@@ -27,6 +27,10 @@ int main()
     {
       point_t A{}, B{};
       std::cin >> A.x >> A.y >> B.x >> B.y;
+      if (!std::cin)
+      {
+        break;
+      }
       Shape *shape = nullptr;
       try
       {
@@ -42,7 +46,7 @@ int main()
       catch (...)
       {
         correctComposite = false;
-        delete[] shape;
+        delete shape;
       }
       countCorrectFigure++;
       correctFigure = true;
@@ -52,6 +56,10 @@ int main()
     {
       point_t A{}, B{}, C{};
       std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+      if (!std::cin)
+      {
+        break;
+      }
       Shape *shape = nullptr;
       try
       {
@@ -67,7 +75,7 @@ int main()
       catch (...)
       {
         correctComposite = false;
-        delete[] shape;
+        delete shape;
       }
       countCorrectFigure++;
       correctFigure = true;
@@ -77,6 +85,10 @@ int main()
     {
       point_t A{}, B{}, C{};
       std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
+      if (!std::cin)
+      {
+        break;
+      }
       Shape *shape = nullptr;
       try
       {
@@ -92,7 +104,7 @@ int main()
       catch (...)
       {
         correctComposite = false;
-        delete[] shape;
+        delete shape;
       }
       countCorrectFigure++;
       correctFigure = true;
@@ -108,6 +120,10 @@ int main()
       double x = 0.0;
       double y = 0.0;
       std::cin >> x >> y;
+      if (!std::cin)
+      {
+        break;
+      }
       point_t pos{x, y};
       double k = 0.0;
       std::cin >> k;

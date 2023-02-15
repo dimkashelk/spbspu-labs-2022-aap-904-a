@@ -28,9 +28,13 @@ int main(int argc, char **argv)
       std::cerr << "errrr" << "\n";
       return 1;
     }
-    if (!scanSize(in_stream, n, m))
+    try
     {
-      std::cerr<< "((" << "\n";
+      scanSize(in_stream, n, m);
+    }
+    catch (const std::bad_alloc &e)
+    {
+      std::cerr << e.what() << "\n";
       return 2;
     }
     if (n * m > 1000)
@@ -44,7 +48,7 @@ int main(int argc, char **argv)
       out_stream << countRowsWithZeros(n, m, matrix) << "\n";
       return 0;
     }
-    catch (const std::bad_alloc &e)
+    catch (...)
     {
       std::cerr << "error" << "\n";
       return 2;
@@ -60,9 +64,13 @@ int main(int argc, char **argv)
       std::cerr << "=()" << "\n";
       return 1;
     }
-    if (!scanSize(in_stream, n, m))
+    try
     {
-      std::cerr << "((" << "\n";
+      scanSize(in_stream, n, m);
+    }
+    catch (...)
+    {
+      std::cerr << "Error" << "\n";
       return 2;
     }
     int *matrix = nullptr;
@@ -87,7 +95,7 @@ int main(int argc, char **argv)
       delete[] matrix;
       return 0;
     }
-    catch(const std::bad_alloc &e)
+    catch(...)
     {
       std::cerr << "=()" << "\n";
       delete[] matrix;

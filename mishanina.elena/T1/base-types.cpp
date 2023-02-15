@@ -1,12 +1,5 @@
 #include "base-types.h"
 
-double twoPointsDistance(const point_t& p1, const point_t& p2)
-{
-  double line_x = p1.x - p2.x;
-  double line_y = p1.y - p2.y;
-  return std::sqrt(line_x * line_x + line_y * line_y);
-}
-
 point_t getCenterRectangle(const point_t& ld_point, const point_t& ru_point)
 {
   return point_t{ (ru_point.x + ld_point.x) / 2, (ru_point.y + ld_point.y) / 2 };

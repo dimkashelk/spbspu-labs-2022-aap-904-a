@@ -8,7 +8,7 @@ Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C):
 {
   if (!isCorrectTriangle(A, B, C))
   {
-    throw std::invalid_argument("invalid triangle\n");
+    throw std::invalid_argument("invalid triangle");
   }
 }
 

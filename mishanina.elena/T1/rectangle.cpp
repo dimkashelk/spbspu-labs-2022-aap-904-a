@@ -7,7 +7,7 @@ Rectangle::Rectangle(const point_t& ld_point, const point_t& ru_point):
 {
   if (!isCorrectRectangle(ld_point, ru_point))
   {
-    throw std::invalid_argument("invalid rectangle\n");
+    throw std::invalid_argument("invalid rectangle");
   }
 }
 

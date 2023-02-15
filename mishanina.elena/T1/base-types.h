@@ -15,7 +15,6 @@ struct rectangle_t
   point_t pos;
 };
 
-double twoPointsDistance(const point_t& p1, const point_t& p2);
 point_t getCenterRectangle(const point_t& l_point, const point_t& r_point);
 bool isCorrectRectangle(const point_t& ld_point, const point_t& ru_point);
 point_t scalePoint(const point_t& point, const point_t& pos, double k);

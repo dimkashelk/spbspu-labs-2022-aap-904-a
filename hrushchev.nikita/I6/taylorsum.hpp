@@ -2,7 +2,7 @@
 #define TAULORSUM_HPP
 #include <cstddef>
 
-double taylorSum(const double x, const size_t number_max, const double abs_error);
+double taylorSum(const double x, size_t number_max, double abs_error);
 
 #endif
 

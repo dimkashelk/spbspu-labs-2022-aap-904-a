@@ -25,7 +25,6 @@ int main()
     {
       printTable(std::cout, abs_error, step, x_start, x_end, number_max);
     }
-
     catch (const std::exception &e)
     {
       std::cerr << e.what() << "\n";

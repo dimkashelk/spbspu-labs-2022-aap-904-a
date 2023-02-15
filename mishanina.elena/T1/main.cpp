@@ -13,8 +13,8 @@ int main()
   bool correctFigure = false;
   bool correctScale = false;
   bool correctComposite = false;
-  int countCorrectFigure = 0;
-  int countInvalidFigure = 0;
+  std::size_t countCorrectFigure = 0;
+  std::size_t countInvalidFigure = 0;
   std::string figureName = "";
   while (std::cin)
   {

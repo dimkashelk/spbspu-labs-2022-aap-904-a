@@ -1,4 +1,5 @@
 #include "CompositeShape.h"
+#include <memory>
 
 CompositeShape::CompositeShape():
   name_("CompositeShape"),
@@ -233,7 +234,7 @@ CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept:
 
 CompositeShape& CompositeShape::operator=(const CompositeShape& compositeShape)
 {
-  if (this != &compositeShape)
+  if (std::addressof(compositeShape) != this)
   {
     Shape** shapes = new Shape * [compositeShape.capacity_];
     for (std::size_t i = 0; i < size_; i++)
@@ -259,7 +260,7 @@ CompositeShape& CompositeShape::operator=(const CompositeShape& compositeShape)
 
 CompositeShape& CompositeShape::operator=(CompositeShape&& compositeShape) noexcept
 {
-  if (this != &compositeShape)
+  if (std::addressof(compositeShape) != this)
   {
     remove(shapes_, size_);
     name_ = compositeShape.name_;

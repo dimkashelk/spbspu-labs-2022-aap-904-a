@@ -38,15 +38,15 @@ int main(int argc, char **argv)
       std::cerr << "beda" << "\n";
       return 2;
     }
-    bool result = scanMatrix(matrix, in_stream, n, m);
-    if (result)
+    try
     {
+      scanMatrix(matrix, in_stream, n, m);
       out_stream << countRowsWithZeros(n, m, matrix) << "\n";
       return 0;
     }
-    else
+    catch (const std::bad_alloc &e)
     {
-      std::cerr << "errrr" << "\n";
+      std::cerr << "error" << "\n";
       return 2;
     }
   }
@@ -75,25 +75,19 @@ int main(int argc, char **argv)
       std::cerr << "brr...memory" << "\n";
       return 1;
     }
-    bool result = scanMatrix(matrix, in_stream, n, m);
-    if (result)
+    try
     {
-      int *s_matrix = smoothedMatrix(matrix, n, m);
+    scanMatrix(matrix, in_stream, n, m);
+    int *s_matrix = smoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
         out_stream << sum(s_matrix, n);
         delete[] s_matrix;
       }
-      else
-      {
-        std::cerr << "ohhhhh" << "\n";
-        delete[] matrix;
-        return 2;
-      }
       delete[] matrix;
       return 0;
     }
-    else
+    catch(const std::bad_alloc &e)
     {
       std::cerr << "=()" << "\n";
       delete[] matrix;

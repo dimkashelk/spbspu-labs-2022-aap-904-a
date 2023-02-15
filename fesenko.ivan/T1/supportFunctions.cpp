@@ -60,20 +60,14 @@ bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, cons
     double a2 = (p3.y - p4.y) / (p3.x - p4.x);
     double b2 = p3.y - a2 * p3.x;
     double ya = a2 * xa + b2;
-    if (p3.x <= xa && p4.x >= xa && std::min(p1.y, p2.y) <= ya && std::max(p1.y, p2.y) >= ya) {
-      return true;
-    }
-    return false;
+    return p3.x <= xa && p4.x >= xa && std::min(p1.y, p2.y) <= ya && std::max(p1.y, p2.y) >= ya;
   }
   if (p3.x - p4.x == 0) {
     double xa = p3.x;
     double a1 = (p1.y - p2.y) / (p1.x - p2.x);
     double b1 = p1.y - a1 * p1.x;
     double ya = a1 * xa + b1;
-    if (p1.x <= xa && p2.x >= xa && std::min(p3.y, p4.y) <= ya && std::max(p3.y, p4.y) >= ya) {
-      return true;
-    }
-    return false;
+    return p1.x <= xa && p2.x >= xa && std::min(p3.y, p4.y) <= ya && std::max(p3.y, p4.y) >= ya;
   }
   double a1 = (p1.y - p2.y) / (p1.x - p2.x);
   double a2 = (p3.y - p4.y) / (p3.x - p4.x);
@@ -83,11 +77,7 @@ bool isIntersectionOfSegments(const point_t &point1, const point_t &point2, cons
     return false;
   }
   double xa = (b2 - b1) / (a1 - a2);
-  if (xa <= std::max(p1.x, p3.x) || xa >= std::min(p2.x, p4.x)) {
-    return false;
-  } else {
-    return true;
-  }
+  return xa <= std::max(p1.x, p3.x) || xa >= std::min(p2.x, p4.x);
 }
 point_t getIntersectionPoint(const point_t &point1, const point_t &point2, const point_t &point3, const point_t &point4)
 {

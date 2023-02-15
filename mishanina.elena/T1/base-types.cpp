@@ -29,7 +29,7 @@ bool isCorrectRectangle(const point_t& ld_point, const point_t& ru_point)
   }
 }
 
-point_t movePoint(const point_t point, const point_t dpoint)
+point_t movePoint(const point_t& point, const point_t& dpoint)
 {
   return point_t{ point.x + dpoint.x, point.y + dpoint.y };
 }
@@ -66,7 +66,7 @@ point_t getCenterTriangle(const point_t& A, const point_t& B, const point_t& C)
   return { (A.x + B.x + C.x) / 3, (A.y + B.y + C.y) / 3 };
 }
 
-point_t scalePoint(const point_t point, const point_t pos, const double k)
+point_t scalePoint(const point_t& point, const point_t& pos, const double k)
 {
   double dx = (point.x - pos.x) * k;
   double dy = (point.y - pos.y) * k;

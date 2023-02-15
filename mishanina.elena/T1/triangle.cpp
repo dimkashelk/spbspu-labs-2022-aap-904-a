@@ -1,7 +1,7 @@
 #include "triangle.h"
 
-Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C) :
-  name_("Triangle: "),
+Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C):
+  name_("Triangle"),
   A_(A),
   B_(B),
   C_(C)
@@ -38,7 +38,7 @@ rectangle_t Triangle::getFrameRect() const
   return { rightPoint.x - leftPoint.x, rightPoint.y - leftPoint.y, pos };
 }
 
-void Triangle::move(point_t point)
+void Triangle::move(const point_t& point)
 {
   point_t pos = getCenterTriangle(A_, B_, C_);
   double dx = point.x - pos.x;
@@ -48,6 +48,10 @@ void Triangle::move(point_t point)
 
 void Triangle::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("invalid k scale");
+  }
   point_t pos = getCenterTriangle(A_, B_, C_);
   A_ = scalePoint(A_, pos, k);
   B_ = scalePoint(B_, pos, k);

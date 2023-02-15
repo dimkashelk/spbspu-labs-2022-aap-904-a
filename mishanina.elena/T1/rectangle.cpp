@@ -1,7 +1,7 @@
 #include "rectangle.h"
 
-Rectangle::Rectangle(const point_t& ld_point, const point_t& ru_point) :
-  name_("Rectangle: "),
+Rectangle::Rectangle(const point_t& ld_point, const point_t& ru_point):
+  name_("Rectangle"),
   ld_point_(ld_point),
   ru_point_(ru_point)
 {
@@ -28,7 +28,7 @@ rectangle_t Rectangle::getFrameRect() const
   return { width, height, getCenterRectangle(ld_point_, ru_point_) };
 }
 
-void Rectangle::move(const point_t point)
+void Rectangle::move(const point_t& point)
 {
   point_t pos = getCenterRectangle(ld_point_, ru_point_);
   double dx = point.x - pos.x;

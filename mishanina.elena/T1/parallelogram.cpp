@@ -1,7 +1,7 @@
 #include "parallelogram.h"
 
-Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C) :
-  name_("Parallelogram: "),
+Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C):
+  name_("Parallelogram"),
   A_(A),
   B_(B),
   C_(C)
@@ -35,7 +35,7 @@ rectangle_t Parallelogram::getFrameRect() const
   return { rightPointX - leftPointX, highestPointY - lowestPointY, getCenterParallelogram(A_, C_) };
 }
 
-void Parallelogram::move(point_t point)
+void Parallelogram::move(const point_t& point)
 {
   point_t pos = getCenterParallelogram(A_, C_);
   double dx = point.x - pos.x;

@@ -1,9 +1,9 @@
 #ifndef COMPOSITESHAPE_H
 #define COMPOSITESHAPE_H
-#include "shape.h"
 #include <string>
 #include <cstddef>
 #include <stdexcept>
+#include "shape.h"
 
 class CompositeShape
 {
@@ -18,7 +18,7 @@ public:
   Shape* operator[](std::size_t index);
   const Shape* operator[](std::size_t index) const;
   double getArea() const;
-  void move(point_t point);
+  void move(const point_t& point);
   void move(double dx, double dy);
   void scale(double k);
   CompositeShape* clone() const;

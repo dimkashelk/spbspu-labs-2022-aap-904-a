@@ -1,9 +1,9 @@
 #ifndef PARALLELOGRAM_H
 #define PARALLELOGRAM_H
-#include "shape.h"
 #include <string>
 #include <stdexcept>
 #include <cmath>
+#include "shape.h"
 
 class Parallelogram: public Shape
 {
@@ -12,7 +12,7 @@ public:
   std::string getName() const;
   double getArea() const override;
   rectangle_t getFrameRect() const override;
-  void move(point_t point) override;
+  void move(const point_t& point) override;
   void scale(double k) override;
   void move(double dx, double dy) override;
   Shape* clone() const override;

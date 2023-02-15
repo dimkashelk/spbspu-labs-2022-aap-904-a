@@ -1,7 +1,7 @@
 #include "CompositeShape.h"
 
-CompositeShape::CompositeShape() :
-  name_("CompositeShape: "),
+CompositeShape::CompositeShape():
+  name_("CompositeShape"),
   size_(0),
   capacity_(1),
   shapes_(new Shape* [capacity_])
@@ -106,7 +106,7 @@ void CompositeShape::move(double dx, double dy)
   }
 }
 
-void CompositeShape::move(point_t point)
+void CompositeShape::move(const point_t& point)
 {
   for (std::size_t i = 0; i < size_; i++)
   {
@@ -220,7 +220,7 @@ CompositeShape::CompositeShape(const CompositeShape& compositeShape) :
   }
 }
 
-CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept :
+CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept:
   name_(compositeShape.name_),
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),

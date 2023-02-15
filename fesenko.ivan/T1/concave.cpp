@@ -43,6 +43,9 @@ void Concave::move(const point_t &pos)
 
 void Concave::scale(double k)
 {
+  if (k <= 0) {
+    throw std::invalid_argument("Ratio must be greater than 0");
+  }
   movePointBecauseOfScale(p1_, p4_, k);
   movePointBecauseOfScale(p2_, p4_, k);
   movePointBecauseOfScale(p3_, p4_, k);

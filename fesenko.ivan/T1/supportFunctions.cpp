@@ -15,9 +15,6 @@ void movePointBecauseOfScale(point_t &p, const point_t &zoomCenter, double k)
 
 void fullScale(Shape *shape, const point_t &zoomCenter, double k)
 {
-  if (k <= 0) {
-    throw std::invalid_argument("Ratio must be greater than 0");
-  }
   point_t a1;
   a1.x = shape->getFrameRect().pos.x - shape->getFrameRect().width / 2;
   a1.y = shape->getFrameRect().pos.y - shape->getFrameRect().height / 2;

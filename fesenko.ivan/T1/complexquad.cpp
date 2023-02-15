@@ -46,6 +46,9 @@ void Complexquad::move(const point_t& pos)
 
 void Complexquad::scale(double k)
 {
+  if (k <= 0) {
+    throw std::invalid_argument("Ratio must be greater than 0");
+  }
   point_t center = getIntersectionPoint(p1_, p2_, p3_, p4_);
   movePointBecauseOfScale(p1_, center, k);
   movePointBecauseOfScale(p2_, center, k);

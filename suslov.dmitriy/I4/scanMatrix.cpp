@@ -1,4 +1,5 @@
 #include "scanMatrix.h"
+#include <stdexept>
 std::istream& scanSize(std::istream &in_stream, size_t &n, size_t &m)
 {
   if (!(in_stream >> n))

@@ -1,7 +1,6 @@
 #include "parallelogram.h"
 
 Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& C):
-  name_("Parallelogram"),
   A_(A),
   B_(B),
   C_(C)
@@ -14,7 +13,7 @@ Parallelogram::Parallelogram(const point_t& A, const point_t& B, const point_t& 
 
 std::string Parallelogram::getName() const
 {
-  return name_;
+  return "PARALLELOGRAM";
 }
 
 double Parallelogram::getArea() const

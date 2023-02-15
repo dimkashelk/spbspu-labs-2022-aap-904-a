@@ -17,7 +17,6 @@ public:
   Shape* clone() const override;
 
 private:
-  const char* name_;
   point_t ld_point_, ru_point_;
 };
 

@@ -2,7 +2,6 @@
 #include <memory>
 
 CompositeShape::CompositeShape():
-  name_("CompositeShape"),
   size_(0),
   capacity_(1),
   shapes_(new Shape* [capacity_])
@@ -24,9 +23,12 @@ const Shape* CompositeShape::operator[](std::size_t index) const
   return shapes_[index];
 }
 
-std::string CompositeShape::getName() const
+void CompositeShape::getName() const
 {
-  return name_;
+  for (std::size_t i = 0; i < size_; i++)
+  {
+    shapes_[i]->getName();
+  }
 }
 
 double CompositeShape::getArea() const
@@ -190,11 +192,10 @@ CompositeShape* CompositeShape::clone() const
       throw;
     }
   }
-  return new CompositeShape(cloneShapes, capacity_, size_, name_);
+  return new CompositeShape(cloneShapes, capacity_, size_);
 }
 
-CompositeShape::CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name) :
-  name_(name),
+CompositeShape::CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size) :
   size_(size),
   capacity_(capacity),
   shapes_(shapes)
@@ -202,7 +203,6 @@ CompositeShape::CompositeShape(Shape** shapes, std::size_t capacity, std::size_t
 }
 
 CompositeShape::CompositeShape(const CompositeShape& compositeShape) :
-  name_(compositeShape.name_),
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),
   shapes_(new Shape* [capacity_])
@@ -222,14 +222,12 @@ CompositeShape::CompositeShape(const CompositeShape& compositeShape) :
 }
 
 CompositeShape::CompositeShape(CompositeShape&& compositeShape) noexcept:
-  name_(compositeShape.name_),
   size_(compositeShape.size_),
   capacity_(compositeShape.capacity_),
   shapes_(compositeShape.shapes_)
 {
   compositeShape.shapes_ = nullptr;
   compositeShape.size_ = 0;
-  compositeShape.name_ = " ";
 }
 
 CompositeShape& CompositeShape::operator=(const CompositeShape& compositeShape)
@@ -251,7 +249,6 @@ CompositeShape& CompositeShape::operator=(const CompositeShape& compositeShape)
     }
     remove(shapes, size_);
     shapes_ = shapes;
-    name_ = compositeShape.name_;
     size_ = compositeShape.size_;
     capacity_ = compositeShape.capacity_;
   }
@@ -263,7 +260,6 @@ CompositeShape& CompositeShape::operator=(CompositeShape&& compositeShape) noexc
   if (std::addressof(compositeShape) != this)
   {
     remove(shapes_, size_);
-    name_ = compositeShape.name_;
     size_ = compositeShape.size_;
     capacity_ = compositeShape.capacity_;
     shapes_ = compositeShape.shapes_;

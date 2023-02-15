@@ -1,7 +1,6 @@
 #include "triangle.h"
 
 Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C):
-  name_("Triangle"),
   A_(A),
   B_(B),
   C_(C)
@@ -14,7 +13,7 @@ Triangle::Triangle(const point_t& A, const point_t& B, const point_t& C):
 
 std::string Triangle::getName() const
 {
-  return name_;
+  return "TRIANGLE";
 }
 
 double Triangle::getArea() const

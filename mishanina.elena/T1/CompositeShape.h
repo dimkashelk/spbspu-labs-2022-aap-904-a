@@ -28,13 +28,12 @@ public:
   bool empty() const;
   std::size_t size() const;
   rectangle_t getFrameRect() const;
-  std::string getName() const;
+  void getName() const;
 private:
-  std::string name_;
   std::size_t size_;
   std::size_t capacity_;
   Shape** shapes_;
-  CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name);
+  CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size);
   void remove(Shape** shapes, std::size_t size) const;
 };
 

@@ -1,7 +1,6 @@
 #include "rectangle.h"
 
 Rectangle::Rectangle(const point_t& ld_point, const point_t& ru_point):
-  name_("Rectangle"),
   ld_point_(ld_point),
   ru_point_(ru_point)
 {
@@ -18,7 +17,7 @@ double Rectangle::getArea() const
 
 std::string Rectangle::getName() const
 {
-  return name_;
+  return "RECTANGLE";
 }
 
 rectangle_t Rectangle::getFrameRect() const

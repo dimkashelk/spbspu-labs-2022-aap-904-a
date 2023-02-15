@@ -4,7 +4,7 @@
 #include <string>
 #include <stdexcept>
 
-class Rectangle : public Shape
+class Rectangle: public Shape
 {
 public:
   Rectangle(const point_t& ld_point, const point_t& ru_point);

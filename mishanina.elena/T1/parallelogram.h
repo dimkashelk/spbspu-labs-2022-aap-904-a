@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <cmath>
 
-class Parallelogram : public Shape
+class Parallelogram: public Shape
 {
 public:
   Parallelogram(const point_t& A, const point_t& B, const point_t& C);

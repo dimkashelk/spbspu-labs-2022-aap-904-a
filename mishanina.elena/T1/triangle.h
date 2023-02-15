@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <cmath>
 
-class Triangle : public Shape
+class Triangle: public Shape
 {
 public:
   Triangle(const point_t& A, const point_t& B, const point_t& C);

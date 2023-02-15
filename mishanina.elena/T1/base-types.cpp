@@ -12,14 +12,7 @@ point_t getCenterParallelogram(const point_t& lu_point, const point_t& rd_point)
 
 bool isCorrectRectangle(const point_t& ld_point, const point_t& ru_point)
 {
-  if (ld_point.x < ru_point.x && ld_point.y < ru_point.y)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return (ld_point.x < ru_point.x && ld_point.y < ru_point.y);
 }
 
 point_t movePoint(const point_t& point, const point_t& dpoint)
@@ -29,14 +22,7 @@ point_t movePoint(const point_t& point, const point_t& dpoint)
 
 bool isCorrectParallelogram(const point_t& A, const point_t& B, const point_t& C)
 {
-  if ((A.x == B.x && A.y == B.y) || (A.x == C.x && A.y == C.y) || (C.x == B.x && C.y == B.y) || (A.y != B.y && B.y != C.y))
-  {
-    return false;
-  }
-  else
-  {
-    return true;
-  }
+  return ((A.x == B.x && A.y == B.y) || (A.x == C.x && A.y == C.y) || (C.x == B.x && C.y == B.y) || (A.y != B.y && B.y != C.y))
 }
 
 bool isCorrectTriangle(const point_t& A, const point_t& B, const point_t& C)
@@ -44,14 +30,7 @@ bool isCorrectTriangle(const point_t& A, const point_t& B, const point_t& C)
   double ab_side = getSide(A, B);
   double ac_side = getSide(A, C);
   double bc_side = getSide(C, B);
-  if (ab_side + ac_side > bc_side && ab_side + bc_side > ac_side && ac_side + bc_side > ab_side)
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return (ab_side + ac_side > bc_side && ab_side + bc_side > ac_side && ac_side + bc_side > ab_side);
 }
 
 point_t getCenterTriangle(const point_t& A, const point_t& B, const point_t& C)

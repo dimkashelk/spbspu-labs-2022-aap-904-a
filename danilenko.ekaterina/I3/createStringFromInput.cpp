@@ -1,8 +1,8 @@
 #include "createStringFromInput.h"
-#include "makeStringExtention.h"
 #include <iostream>
 #include <cstddef>
 #include <stdexcept>
+#include "makeStringExtention.h"
 
 char* createStringFromInput(std::istream& input)
 {

@@ -85,8 +85,8 @@ int main(int argc, char **argv)
     }
     try
     {
-    scanMatrix(matrix, in_stream, n, m);
-    int *s_matrix = smoothedMatrix(matrix, n, m);
+      scanMatrix(matrix, in_stream, n, m);
+      int *s_matrix = smoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
         out_stream << sum(s_matrix, n);
@@ -107,6 +107,4 @@ int main(int argc, char **argv)
     std::cerr << "brrr...." << "\n";
     return 1;
   }
-  std::cerr << "<3" << "\n";
-  return 0;
 }

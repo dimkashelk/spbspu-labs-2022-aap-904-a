@@ -8,7 +8,6 @@
 class CompositeShape
 {
 public:
-  CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name);
   CompositeShape();
   CompositeShape(const CompositeShape& compositeShape);
   CompositeShape(CompositeShape&& compositeShape) noexcept;
@@ -35,6 +34,7 @@ private:
   std::size_t size_;
   std::size_t capacity_;
   Shape** shapes_;
+  CompositeShape(Shape** shapes, std::size_t capacity, std::size_t size, std::string name);
   void remove(Shape** shapes, std::size_t size) const;
 };
 

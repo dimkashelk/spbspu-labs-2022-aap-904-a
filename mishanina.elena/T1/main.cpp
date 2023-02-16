@@ -177,6 +177,7 @@ int main()
       }
       printShapes(std::cout, compositeShape);
       std::cout << '\n';
+      correctFigure= true;
       break;
     }
     else

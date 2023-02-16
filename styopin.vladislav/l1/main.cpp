@@ -21,7 +21,8 @@ int main()
     }
 
     previous_value = value;
-  } while (value && std::cin);
+  }
+  while (value && std::cin);
 
   if (!std::cin) {
     std::cout << "Error...\n";

@@ -1,14 +1,15 @@
 #include <exception>
 #include "ArrayOperations.h"
 
-void inputArray(int* arr, size_t size, std::istream& stream)
+std::istream& inputArray(int* arr, size_t size, std::istream& stream)
 {
   for (size_t i = 0; i < size; ++i) {
     if (stream.eof()) {
-      throw std::runtime_error("Unexpected eof");
+      break;
     }
     stream >> arr[i];
   }
+  return stream;
 }
 
 size_t sortedRowsCount(const int* arr, size_t rows, size_t cols)
@@ -19,7 +20,7 @@ size_t sortedRowsCount(const int* arr, size_t rows, size_t cols)
     cnt++;
     for (size_t j = 0; j < cols - 1; ++j) {
       size_t offset = i * cols;
-      if (arr[offset + j] > arr[offset + j + 1]){
+      if (arr[offset + j] > arr[offset + j + 1]) {
         cnt--;
         break;
       }

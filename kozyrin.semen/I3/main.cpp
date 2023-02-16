@@ -4,7 +4,7 @@
 int main()
 {
   size_t size = 0;
-  char* src = {};
+  char* src = nullptr;
   try {
     src = inputString(std::cin, size);
   }

@@ -1,3 +1,4 @@
+#include <cstring>
 #include "ArrayOperations.h"
 
 int taskOne(std::ifstream& fin, std::ofstream& fout)
@@ -12,11 +13,9 @@ int taskOne(std::ifstream& fin, std::ofstream& fout)
     std::cerr << "Error: array too big";
     return 1;
   }
-  try {
-    inputArray(arr, rows * cols, fin);
-  }
-  catch (const std::runtime_error & err) {
-    std::cerr << "Error: " << err.what();
+
+  if (!inputArray(arr, rows * cols, fin)) {
+    std::cerr << "Error: Unexpected eof";
     return 2;
   }
 
@@ -35,15 +34,13 @@ int taskTwo(std::ifstream& fin, std::ofstream& fout)
   try {
     arr = new int[rows * cols];
   }
-  catch (const std::bad_alloc & err) {
+  catch (const std::bad_alloc& err) {
     std::cerr << "Error: " << err.what();
     return 1;
   }
-  try {
-    inputArray(arr, rows * cols, fin);
-  }
-  catch (const std::runtime_error & err) {
-    std::cerr << "Error: " << err.what();
+
+  if (!inputArray(arr, rows * cols, fin)) {
+    std::cerr << "Error: Unexpected eof";
     delete[] arr;
     return 2;
   }
@@ -75,6 +72,12 @@ int main(int argc, char* argv[])
     return 3;
   }
 
-  int (*choose[2])(std::ifstream& fin, std::ofstream& fout) = {taskOne, taskTwo};
-  return choose[argv[1][0] - 49](fin, fout);
+  if (strcmp(argv[1], "1\0") == 0) {
+    return taskOne(fin, fout);
+  } else if (strcmp(argv[1], "2\0") == 0) {
+    return taskTwo(fin, fout);
+  } else {
+    std::cerr << "Incorrect task number";
+    return 4;
+  }
 }

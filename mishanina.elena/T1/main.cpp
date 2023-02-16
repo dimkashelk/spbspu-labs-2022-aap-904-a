@@ -40,10 +40,22 @@ int main()
       catch (...)
       {
         correctFigure = false;
-        delete[] coordinates;
+        delete coordinates;
         continue;
       }
-      point_t *points = fillPoints(coordinates, size/2);
+      point_t *points = nullptr;
+      try
+      {
+        points = fillPoints(coordinates, size / 2);
+      }
+      catch (...)
+      {
+        correctFigure = false;
+        delete coordinates;
+        delete points;
+        continue;
+      }
+
 
       Shape *shape = nullptr;
       try
@@ -54,15 +66,15 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        delete[] coordinates;
-        delete[] points;
+        delete coordinates;
+        delete points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
-        delete[] coordinates;
-        delete[] points;
+        delete coordinates;
+        delete points;
         delete shape;
       }
       correctFigure = true;

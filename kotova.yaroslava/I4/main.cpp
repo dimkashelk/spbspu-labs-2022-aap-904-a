@@ -15,13 +15,13 @@ int main(int argc, char* argv[])
     return 1;
   }
   std::ifstream file_matrix_in(argv[2]);
-  file_matrix_in >> column;
-  file_matrix_in >> line;
   if (!file_matrix_in.is_open())
   {
     std::cout << "file opens with an error";
     return 1;
   }
+  file_matrix_in >> column;
+  file_matrix_in >> line;
   if (!file_matrix_in)
   {
     std::cout << "Error...";
@@ -43,14 +43,13 @@ int main(int argc, char* argv[])
     int matrix[1000];
     try
     {
-      read_el(matrix, column, line, file_matrix_in);
+      readElements(matrix, column, line, file_matrix_in);
     }
     catch (const std::exception& e)
     {
       std::cerr << e.what() << "\n";
       return 1;
     }
-    std::ofstream file_matrix_out(argv[3]);
     file_matrix_out << countPositiveElOfCol(matrix, column, line) << "\n";
     if (!file_matrix_out)
     {
@@ -72,14 +71,14 @@ int main(int argc, char* argv[])
       {
         matrix = new int[column * line];
       }
-      catch(const std::bad_alloc &e)
+      catch (const std::bad_alloc &e)
       {
         std::cout << e.what();
         return 1;
       }
       try
       {
-        read_el(matrix, column, line, file_matrix_in);
+        readElements(matrix, column, line, file_matrix_in);
       }
       catch (const std::exception& e)
       {
@@ -88,13 +87,12 @@ int main(int argc, char* argv[])
         return 1;
       }
       std::ofstream file_matrix_out(argv[3]);
-      file_matrix_out << countUniqueElOfCol(matrix, column, line) << "\n";
-
       if (!file_matrix_out)
       {
         std::cout << "number writes with an error";
         return 1;
       }
+      file_matrix_out << countUniqueElOfCol(matrix, column, line) << "\n";
       delete[] matrix;
     }
     else

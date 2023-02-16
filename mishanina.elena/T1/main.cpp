@@ -7,6 +7,7 @@
 #include "shape.h"
 #include "printShapes.h"
 #include "isoScale.h"
+#include "createPoints.h"
 int main()
 {
   CompositeShape compositeShape;
@@ -25,16 +26,30 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
-      point_t A{}, B{};
-      std::cin >> A.x >> A.y >> B.x >> B.y;
-      if (!std::cin)
+      //point_t A{}, B{};
+      //std::cin >> A.x >> A.y >> B.x >> B.y;
+      //if (!std::cin)
+      //{
+      //  break;
+      //}
+      std::size_t size = 4;
+      double *coordinates = nullptr;
+      try
       {
-        break;
+        coordinates = createCoordinates(std::cin, size);
       }
+      catch (...)
+      {
+        correctFigure = false;
+        delete[] coordinates;
+        continue;
+      }
+      point_t *points = fillPoints(coordinates, size/2);
+
       Shape *shape = nullptr;
       try
       {
-        shape = new Rectangle(A, B);
+        shape = new Rectangle(points[0], points[1]);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)

@@ -23,15 +23,12 @@ int main(int argc, char *argv[])
   if (!inputFile)
   {
     std::cout << "Input error" << "\n";
-    inputFile.close();
     return 1;
   }
   std::ofstream outputFile(argv[3]);
   if (!outputFile.is_open())
   {
     std::cout << "Output file not open" << "\n";
-    inputFile.close();
-    outputFile.close();
     return 1;
   }
   if (std::strcmp(argv[1], "1") == 0)
@@ -40,8 +37,6 @@ int main(int argc, char *argv[])
     if (r * c > 1000)
     {
       std::cout << "Array > 1000" << "\n";
-      inputFile.close();
-      outputFile.close();
       return 1;
     }
     for (size_t i = 0; i < r * c; i++)
@@ -50,8 +45,6 @@ int main(int argc, char *argv[])
       if (!inputFile)
       {
         std::cout << "Error while input" << "\n";
-        inputFile.close();
-        outputFile.close();
         return 1;
       }
     }
@@ -66,8 +59,7 @@ int main(int argc, char *argv[])
     }
     catch (const std::bad_alloc &e)
     {
-      inputFile.close();
-      outputFile.close();
+      std::cerr << "Memory error" << "\n";
       return 1;
     }
     for (size_t i = 0; i < r * c; i++)
@@ -76,8 +68,6 @@ int main(int argc, char *argv[])
       if (!inputFile)
       {
         std::cout << "Error while input" << "\n";
-        inputFile.close();
-        outputFile.close();
         delete [] dynarr;
         return 1;
       }
@@ -88,11 +78,7 @@ int main(int argc, char *argv[])
   else
   {
     std::cout << "Error" << "\n";
-    inputFile.close();
-    outputFile.close();
     return 1;
   }
-  inputFile.close();
-  outputFile.close();
   return 0;
 }

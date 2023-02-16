@@ -66,7 +66,6 @@ int main(int argc, char *argv[])
     }
     catch (const std::bad_alloc &e)
     {
-      delete [] dynarr;
       inputFile.close();
       outputFile.close();
       return 1;

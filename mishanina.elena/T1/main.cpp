@@ -43,17 +43,17 @@ int main()
         correctFigure = false;
         continue;
       }
-      point_t *points = nullptr;
-      try
-      {
-        points = fillPoints(coordinates, size / 2);
-      }
-      catch (const std::invalid_argument &e)
-      {
-        correctFigure = false;
-        delete[] coordinates;
-        continue;
-      }
+      //point_t *points = nullptr;
+      //try
+//      {
+      point_t *points = fillPoints(coordinates, size / 2);
+//      }
+//      catch (const std::invalid_argument &e)
+//      {
+//        correctFigure = false;
+//        delete[] coordinates;
+//        continue;
+//      }
 
 
       Shape *shape = nullptr;

@@ -22,8 +22,8 @@ int main(int argc, char **argv)
 
   int arr1[10] = {8, 8, 4, 6, -4, -3, 2, 5, 3, 9};
   size_t arrSize1 = 10;
-  size_t maxCountIndeticEllementsArr1 = countIndenticalElements(arr1,arrSize1);
-  std::cout << "The number of indentical elements in array1: " << maxCountIndeticEllementsArr1 << "\n";
+  size_t maxCountIndeticalEllementsArr1 = countIndenticalElements(arr1, arrSize1);
+  std::cout << "The number of indentical elements in array1: " << maxCountIndeticalEllementsArr1 << "\n";
   partition(arr1, arrSize1);
   std::cout << "Modified array1: ";
   outputArray(arr1, arrSize1);
@@ -41,8 +41,8 @@ int main(int argc, char **argv)
     {
       arr2[i] = std::rand() % 10;
     }
-    size_t maxCountIndeticEllementsArr2 = countIndenticalElements(arr2,arrSize2);
-    std::cout << "The number of indentical elements in array2: " << maxCountIndeticEllementsArr2 << "\n";
+    size_t maxCountIndeticalEllementsArr2 = countIndenticalElements(arr2, arrSize2);
+    std::cout << "The number of indentical elements in array2: " << maxCountIndeticalEllementsArr2 << "\n";
     partition(arr1, arrSize1);
     std::cout << "Modified array2: ";
     outputArray(arr2, arrSize2);

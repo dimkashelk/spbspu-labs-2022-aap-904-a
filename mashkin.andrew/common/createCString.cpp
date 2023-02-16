@@ -13,7 +13,6 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
   }
   catch (...)
   {
-    delete[] cstring;
     throw;
   }
   inp >> std::noskipws;

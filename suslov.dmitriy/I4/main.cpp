@@ -95,7 +95,7 @@ int main(int argc, char **argv)
       delete[] matrix;
       return 0;
     }
-    catch(...)
+    catch (...)
     {
       std::cerr << "=()" << "\n";
       delete[] matrix;

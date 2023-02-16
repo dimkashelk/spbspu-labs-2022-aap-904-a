@@ -1,6 +1,6 @@
 #include "sumOfModules.h"
 #include <algorithm>
-int *smoothedMatrix(int *matrix, size_t n, size_t m)
+int *smoothedMatrix(const int *matrix, size_t n, size_t m)
 {
   int *matrixSmoothed = nullptr;
   try

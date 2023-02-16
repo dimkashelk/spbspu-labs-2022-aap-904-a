@@ -1,6 +1,6 @@
 #include "reading_elements.h"
 #include <stdexcept>
-void read_el(int* matrix, size_t column, size_t line, std::ifstream& file_matrix_in)
+void readElements(int* matrix, size_t column, size_t line, std::ifstream& file_matrix_in)
 {
   for (size_t i = 0; i < column * line; i++)
   {

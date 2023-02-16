@@ -2,6 +2,17 @@
 #include <cstddef>
 #include <cstring>
 
+char* copyString(char* destination, const char* source, size_t index)
+{
+  size_t source_lenght = strlen(source);
+  for (size_t i = 0; i < source_lenght; i++)
+  {
+    destination[index + i] = source[i];
+  }
+  destination[source_lenght + index] = '\0';
+  return destination;
+}
+
 char* removeDuplicateLetters(char* destination)
 {
   size_t total_len = strlen(destination);
@@ -24,22 +35,12 @@ char* removeDuplicateLetters(char* destination)
   return destination;
 }
 
-
 char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2)
 {
   size_t str_len1 = strlen(source1);
-  size_t str_len2 = strlen(source2);
-  size_t total_len = str_len1 + str_len2;
 
-  for (size_t i = 0; i < str_len1; i++)
-  {
-    destination[i] = source1[i];
-  }
-  for (size_t j = 0; j < str_len2; j++)
-  {
-    destination[str_len1 + j] = source2[j];
-  }
-  destination[total_len] = '\0';
+  destination = copyString(destination, source1, 0);
+  destination = copyString(destination, source2, str_len1);
   destination = removeDuplicateLetters(destination);
 
   return destination;

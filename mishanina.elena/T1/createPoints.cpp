@@ -26,4 +26,5 @@ point_t* fillPoints(double *coordinates, std::size_t size)
       break;
     }
   }
+  return points;
 }

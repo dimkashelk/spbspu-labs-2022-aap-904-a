@@ -1,14 +1,14 @@
 #include <iostream>
 #include <string>
+#include <ReadString.h>
 #include "IsItARealNumber.h"
-#include "ReadNumber.h"
 
 int main()
 {
   char* number = nullptr;
   try
   {
-    number = readNumber(std::cin);
+    number = readString(std::cin);
   }
   catch (const std::exception& e)
   {

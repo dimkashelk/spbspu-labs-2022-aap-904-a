@@ -1,8 +1,7 @@
-#include "ReadNumber.h"
+#include "ReadString.h"
 #include <cstddef>
-#include <valarray>
 
-char* readNumber(std::istream& in)
+char* readString(std::istream& in)
 {
   size_t size = 0;
   size_t capacity = 4;
@@ -26,7 +25,7 @@ char* readNumber(std::istream& in)
       catch (const std::bad_alloc& e)
       {
         delete[] number;
-        throw e;
+        throw;
       }
     }
     in >> number[size];

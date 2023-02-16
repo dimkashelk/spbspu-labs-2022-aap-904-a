@@ -73,7 +73,7 @@ bool isRealNumber(char* data)
   char* currVal = data;
   if (isSign(*currVal))
   {
-    return isMantissa(++currVal, shift) && isInOrder(currVal + shift, shift) && isEnd(*(currVal + (++shift)));
+    currVal++;
   }
   return isMantissa(currVal, shift) && isInOrder(currVal + shift, shift) && isEnd(*(currVal + (++shift)));
 }

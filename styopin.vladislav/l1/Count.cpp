@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <limits>
 
-void counterSignChanges(size_t &countSignChanges, int previous_value, int current)
+void countSignChanges(size_t &countSignChanges, int previous_value, int current)
 {
   if ((previous_value > 0 && current < 0) || (previous_value < 0 && current > 0)) {
     if (countSignChanges == std::numeric_limits< size_t >::max()) {
@@ -12,7 +12,7 @@ void counterSignChanges(size_t &countSignChanges, int previous_value, int curren
   }
 }
 
-void counterMin(size_t &countMin, int previous, int current, int& checking)
+void countMin(size_t &countMin, int previous, int current, int& checking)
 {
   if (checking && previous < current && current != 0) {
     if (countMin == std::numeric_limits< size_t >::max()) {
@@ -22,7 +22,8 @@ void counterMin(size_t &countMin, int previous, int current, int& checking)
   }
   if (previous > current && previous != 0) {
     checking = 1;
-  } else {
+  }
+  else {
     checking = 0;
   }
 }

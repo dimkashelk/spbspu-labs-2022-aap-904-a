@@ -25,7 +25,6 @@ int main(int argc, char* argv[])
     std::cout << "error while read file\n";
     return 1;
   }
-  size_t size = c * r;
   std::ofstream output(argv[3]);
   if (!output.is_open())
   {
@@ -35,7 +34,7 @@ int main(int argc, char* argv[])
   if (!std::strcmp(argv[1], "1"))
   {
     int array[1000];
-    if (size > 1000)
+    if ((c * r) > 1000)
     {
       std::cout << "Error, array is large\n";
       return 1;

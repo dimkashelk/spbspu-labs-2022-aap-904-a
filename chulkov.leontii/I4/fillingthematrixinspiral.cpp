@@ -1,5 +1,5 @@
-#include <stdexcept>
 #include "fillingthematrixinspiral.h"
+#include <stdexcept>
 
 int* fillingTheMatrixInSpiral(int* matrix, size_t c, size_t r, size_t indrow, size_t indcol)
 {

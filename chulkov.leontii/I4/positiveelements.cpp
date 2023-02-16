@@ -1,5 +1,5 @@
-#include <cstddef>
 #include "positiveelements.h"
+#include <cstddef>
 
 size_t countPositiveOnlyRows(int* matrix, size_t countRows, size_t countColumns)
 {
@@ -14,10 +14,10 @@ size_t countPositiveOnlyRows(int* matrix, size_t countRows, size_t countColumns)
         negative = false;
         break;
       }
-      if (negative)
-      {
-        count++;
-      }
+    }
+    if (negative)
+    {
+      count++;
     }
   }
   return count;

@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     second_arr = fillArrayWithRandomNumbers(second_arr, line);
     std::cout << countAmountOfRightPairs(second_arr, line) << "\n";
     std::cout << isRepeatingPositiveNumbers(second_arr, line) << "\n";
+    delete [] second_arr;
   }
   else
   {
@@ -33,6 +34,7 @@ int main(int argc, char *argv[])
     delete [] second_arr;
   }
   line = 0;
+  second_arr = new int[line];
   if (argc != 2)
   {
     std::cerr << "Not correct amount of parameters" << "\n";

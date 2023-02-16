@@ -15,6 +15,7 @@ int main()
   bool correctScale = false;
   bool correctComposite = false;
   bool isAddFigure = false;
+  bool hasInvalidFigure = false;
   std::string figureName = "";
   while (std::cin)
   {
@@ -67,6 +68,7 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
+        hasInvalidFigure= true;
 //        delete coordinates;
 //        delete points;
         continue;
@@ -99,6 +101,7 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
+        hasInvalidFigure= true;
         continue;
       }
       catch (...)
@@ -127,6 +130,7 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
+        hasInvalidFigure= true;
         continue;
       }
       catch (...)
@@ -199,6 +203,10 @@ int main()
   if (!correctComposite)
   {
     std::cerr << "ERROR: invalid composite\n";
+  }
+  if (hasInvalidFigure)
+  {
+    std::cerr << "ERROR: have some wrong figure\n";
   }
   return 0;
 }

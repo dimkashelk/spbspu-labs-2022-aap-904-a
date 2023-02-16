@@ -22,8 +22,7 @@ void countMin(size_t &countMin, int previous, int current, int& checking)
   }
   if (previous > current && previous != 0) {
     checking = 1;
-  }
-  else {
+  } else {
     checking = 0;
   }
 }

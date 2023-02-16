@@ -7,18 +7,15 @@
 #include "complexquad.h"
 #include "supportFunctions.h"
 
-bool inputArray(std::istream &in, double *coords, const size_t size)
+std::istream &inputArray(std::istream &in, double *coords, const size_t size)
 {
   for (size_t i = 0; i < size; i++) {
     in >> coords[i];
-    if (!in) {
-      return false;
-    }
   }
-  return true;
+  return in;
 }
 
-void outputData(std::ostream &out, const Shape *const *shapes, const size_t size)
+std::ostream &outputData(std::ostream &out, const Shape *const *shapes, const size_t size)
 {
   double sumArea = 0.0;
   for (size_t i = 0; i < size; i++) {
@@ -37,6 +34,7 @@ void outputData(std::ostream &out, const Shape *const *shapes, const size_t size
     out << " " << leftBottomX << " " << leftBottomY << " " << rightTopX << " " << rightTopY;
   }
   out << "\n";
+  return out;
 }
 
 int main()

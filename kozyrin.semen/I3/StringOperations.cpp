@@ -1,8 +1,23 @@
 #include "StringOperations.h"
-#include <algorithm>
+#include <cctype>
 
-size_t minIndex(const int* arr, size_t size) {
-  int mn = arr[0];
+void switchCase(const char* src, char* dest)
+{
+  size_t i = 0;
+  while (src[i] != '\0') {
+    if (std::isalpha(src[i])) {
+      std::islower(src[i]) ? dest[i] = std::toupper(src[i]) : dest[i] = std::tolower(src[i]);
+    } else {
+      dest[i] = src[i];
+    }
+    i++;
+  }
+  dest[i] = '\0';
+}
+
+size_t minIndex(const size_t* arr, size_t size)
+{
+  size_t mn = arr[0];
   size_t ind = 0;
   for (size_t i = 0; i < size; ++i) {
     if (arr[i] < mn) {
@@ -13,74 +28,61 @@ size_t minIndex(const int* arr, size_t size) {
   return ind;
 }
 
-char* inputString(std::istream& stream, size_t& size)
-{
-  stream >> std::noskipws;
-  size_t capacity = 20;
-  char* str = new char[capacity];
-
-  while (str[size - 1] != '\n') {
-    if (size == capacity) {
-      capacity += 20;
-      char* temp = new char[capacity];
-      for (size_t i = 0; i < size; ++i) {
-        temp[i] = str[i];
-      }
-      delete[] str;
-      str = temp;
-    }
-    stream >> str[size];
-    size++;
-  }
-  str[size - 1] = '\0';
-  return str;
-}
-
-void switchCase(const char* src, char* dest)
-{
-  size_t i = 0;
-  while (src[i] != '\0') {
-    if (src[i] >= 65 && src[i] <= 90) {
-      dest[i] = src[i] + 32;
-    }
-    else if (src[i] >= 97 && src[i] <= 122) {
-      dest[i] = src[i] - 32;
-    }
-    else {
-      dest[i] = src[i];
-    }
-    i++;
-  }
-  dest[i] = '\0';
-}
-
 void threeMostCommon(const char* src, char* dest)
 {
-  int dict[94]{0};
-  int i = 0;
+  size_t i = 0;
+  char ind[3] = {0};
+  size_t mx[3] = {0};
 
   while (src[i] != '\0') {
-    dict[src[i] - 32]++;
+    char curr = src[i];
+    bool isUnique = true;
+    for (size_t j = 0; j < i; ++j) {
+      if (src[j] == curr) {
+        isUnique = false;
+        break;
+      }
+    }
+    if (!isUnique) {
+      i++;
+      continue;
+    }
     i++;
-  }
+    size_t j = i;
+    size_t cnt = 1;
 
-  int ind[3] = {127, 127, 127};
-  int mx[3] = {0};
+    while (src[j] != '\0') {
+      if (src[j] == curr) {
+        cnt++;
+      }
+      j++;
+    }
 
-  for (i = 0; i < 94; ++i) {
-    size_t min_ind = minIndex(mx, 3);
-    if (dict[i] > mx[min_ind]) {
-      mx[min_ind] = dict[i];
-      ind[min_ind] = i;
+    size_t mnInd = minIndex(mx, 3);
+    if (cnt > mx[mnInd]) {
+      mx[mnInd] = cnt;
+      ind[mnInd] = curr;
+      while (true) {
+        if (mnInd < 2 && curr > ind[++mnInd]) {
+          std::swap(mx[mnInd], mx[mnInd - 1]);
+          std::swap(ind[mnInd], ind[mnInd - 1]);
+        } else if (mnInd > 0 && curr < ind[--mnInd]) {
+          std::swap(mx[mnInd], mx[mnInd + 1]);
+          std::swap(ind[mnInd], ind[mnInd + 1]);
+        } else {
+          break;
+        }
+      }
     }
   }
 
-  std::sort(ind, ind + 3);
+  unsigned short shift = 0;
   for (i = 0; i < 3; ++i) {
-    if (ind[i] == 127) {
-      break;
+    if (mx[i] == 0) {
+      shift++;
+      continue;
     }
-    dest[i] = char(ind[i] + 32);
+    dest[i - shift] = ind[i];
   }
-  dest[i] = '\0';
+  dest[i - shift] = '\0';
 }

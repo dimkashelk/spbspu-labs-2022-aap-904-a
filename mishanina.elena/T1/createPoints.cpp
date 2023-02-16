@@ -1,6 +1,6 @@
 #include "createPoints.h"
 
-double* createCoordinates(std::istream& in, std::size_t size)
+double *createCoordinates(std::istream& in, std::size_t size)
 {
   double *coordinates = new double[size];
   for (std::size_t i = 0; i < size; ++i)
@@ -14,7 +14,7 @@ double* createCoordinates(std::istream& in, std::size_t size)
   return coordinates;
 }
 
-point_t* fillPoints(double *coordinates, std::size_t size)
+point_t *fillPoints(double *coordinates, std::size_t size)
 {
   point_t *points = new point_t[size];
   for (std::size_t i = 0; i < size; i++)

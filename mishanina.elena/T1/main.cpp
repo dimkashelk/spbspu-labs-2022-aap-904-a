@@ -51,7 +51,7 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        delete coordinates;
+        delete[] coordinates;
         continue;
       }
 
@@ -67,15 +67,15 @@ int main()
       {
         correctFigure = false;
         hasInvalidFigure= true;
-        delete coordinates;
-        delete points;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
-        delete coordinates;
-        delete points;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
       correctFigure = true;

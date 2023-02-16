@@ -7,7 +7,7 @@
 #include "shape.h"
 #include "printShapes.h"
 #include "isoScale.h"
-#include "createPoints.h"
+//#include "createPoints.h"
 int main()
 {
   CompositeShape compositeShape;
@@ -25,56 +25,57 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
-      //point_t A{}, B{};
-      //std::cin >> A.x >> A.y >> B.x >> B.y;
-      //if (!std::cin)
-      //{
-      //  break;
-      //}
-      std::size_t size = 4;
-      double *coordinates = nullptr;
-      try
+      point_t A{}, B{};
+      std::cin >> A.x >> A.y >> B.x >> B.y;
+      if (!std::cin)
       {
-        coordinates = createCoordinates(std::cin, size);
+        break;
       }
-      catch (...)
-      {
-        correctFigure = false;
-        delete coordinates;
-        continue;
-      }
-      point_t *points = nullptr;
-      try
-      {
-        points = fillPoints(coordinates, size / 2);
-      }
-      catch (...)
-      {
-        correctFigure = false;
-        delete coordinates;
-        delete points;
-        continue;
-      }
+//      std::size_t size = 4;
+//      double *coordinates = nullptr;
+//      try
+//      {
+//        coordinates = createCoordinates(std::cin, size);
+//      }
+//      catch (...)
+//      {
+//        correctFigure = false;
+//        delete coordinates;
+//        continue;
+//      }
+//      point_t *points = nullptr;
+//      try
+//      {
+//        points = fillPoints(coordinates, size / 2);
+//      }
+//      catch (...)
+//      {
+//        correctFigure = false;
+//        delete coordinates;
+//        delete points;
+//        continue;
+//      }
 
 
       Shape *shape = nullptr;
       try
       {
-        shape = new Rectangle(points[0], points[1]);
+//        shape = new Rectangle(points[0], points[1]);
+        shape = new Rectangle(A, B);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        delete coordinates;
-        delete points;
+//        delete coordinates;
+//        delete points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
-        delete coordinates;
-        delete points;
+//        delete coordinates;
+//        delete points;
         delete shape;
       }
       correctFigure = true;

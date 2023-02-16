@@ -14,8 +14,7 @@ int main()
   bool correctFigure = false;
   bool correctScale = false;
   bool correctComposite = false;
-  std::size_t countCorrectFigure = 0;
-  std::size_t countInvalidFigure = 0;
+  bool isAddFigure = false;
   std::string figureName = "";
   while (std::cin)
   {
@@ -55,17 +54,20 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        countInvalidFigure++;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
-      countCorrectFigure++;
       correctFigure = true;
       correctComposite = true;
+      isAddFigure = true;
     }
     else if (figureName == "PARALLELOGRAM")
     {
@@ -84,7 +86,6 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        countInvalidFigure++;
         continue;
       }
       catch (...)
@@ -92,9 +93,9 @@ int main()
         correctComposite = false;
         delete shape;
       }
-      countCorrectFigure++;
       correctFigure = true;
       correctComposite = true;
+      isAddFigure = true
     }
     else if (figureName == "TRIANGLE")
     {
@@ -113,7 +114,6 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        countInvalidFigure++;
         continue;
       }
       catch (...)
@@ -121,15 +121,16 @@ int main()
         correctComposite = false;
         delete shape;
       }
-      countCorrectFigure++;
       correctFigure = true;
       correctComposite = true;
+      isAddFigure = true;
     }
     else if (figureName == "SCALE")
     {
-      if (countCorrectFigure != 0)
+      if (!isAddFigure)
       {
-        correctFigure = true;
+        std::cerr << "no one figure not add\n";
+        return 1;
       }
       correctScale = true;
       double x = 0.0;
@@ -184,10 +185,6 @@ int main()
   if (!correctComposite)
   {
     std::cerr << "ERROR: invalid composite\n";
-  }
-  if (countInvalidFigure != 0)
-  {
-    std::cerr << "error...";
   }
   return 0;
 }

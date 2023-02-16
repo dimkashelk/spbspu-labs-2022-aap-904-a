@@ -95,7 +95,7 @@ int main()
       }
       correctFigure = true;
       correctComposite = true;
-      isAddFigure = true
+      isAddFigure = true;
     }
     else if (figureName == "TRIANGLE")
     {

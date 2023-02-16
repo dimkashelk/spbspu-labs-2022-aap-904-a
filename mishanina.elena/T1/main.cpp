@@ -127,7 +127,7 @@ int main()
       point_t pos{x, y};
       double k = 0.0;
       std::cin >> k;
-      if (!std::cin || k < 0)
+      if (!std::cin || k <= 0)
       {
         correctScale = false;
         break;

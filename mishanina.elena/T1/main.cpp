@@ -41,7 +41,6 @@ int main()
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        delete coordinates;
         continue;
       }
       point_t *points = nullptr;
@@ -53,7 +52,6 @@ int main()
       {
         correctFigure = false;
         delete coordinates;
-        delete points;
         continue;
       }
 

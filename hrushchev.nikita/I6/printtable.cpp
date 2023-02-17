@@ -13,8 +13,8 @@ void printTableRow(std::ostream& out, const double x, const size_t number_max, c
     out << std::setw(10) << std::setprecision(5) << taylor << " ";
     out << std::setw(10) << std::setprecision(5) << 1 / std::sqrt(1 - x * x) << "\n";
 }
-void printTable(std::ostream& out, const double abs_error, const double step,
-               const double x_start, const double x_end, const size_t number_max)
+void printTable(std::ostream& out,
+    const double abs_error, const double step, const double x_start, const double x_end, const size_t number_max)
 {
   for (double x = x_start; x <= x_end; x += step)
   {

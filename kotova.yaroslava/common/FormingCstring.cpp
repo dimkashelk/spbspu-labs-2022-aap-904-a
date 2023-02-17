@@ -1,4 +1,4 @@
-#include "FormingCstring.hpp"
+#include "FormingCstring.h"
 #include <istream>
 #include <cstring>
 #include <cstddef>
@@ -16,16 +16,14 @@ char* formingCstring(size_t& size, std::istream& input)
     {
       try
       {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
+        char* newstr = new char[capacity + 10];
+        cstring[capacity - 1] = '\0';
+        std::strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;
-        capacity += 20;
+        capacity += 10;
       }
-      catch (...)
+      catch (const std::exception& e)
       {
         delete[] cstring;
         throw;

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstddef>
-#include "FormingCstring.hpp"
+#include <FormingCstring.h>
 #include "digit.hpp"
 
 int main()

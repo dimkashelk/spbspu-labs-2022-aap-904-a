@@ -86,12 +86,6 @@ int main(int argc, char* argv[])
         delete[] matrix;
         return 1;
       }
-      std::ofstream file_matrix_out(argv[3]);
-      if (!file_matrix_out)
-      {
-        std::cout << "number writes with an error";
-        return 1;
-      }
       file_matrix_out << countUniqueElOfCol(matrix, column, line) << "\n";
       delete[] matrix;
     }

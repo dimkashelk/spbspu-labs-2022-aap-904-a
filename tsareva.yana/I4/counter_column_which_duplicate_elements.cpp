@@ -11,7 +11,7 @@ size_t counterColumnWhichDuplicateElements(const int * array, size_t row, size_t
     {
       for (size_t k = 0; k < row; k++)
       {
-        if ((array[column * j + i] != array[column * k +i]) && j != k)
+        if ((array[column * j + i] != array[column * k + i]) && j != k)
         {
           duplicate = false;
         }

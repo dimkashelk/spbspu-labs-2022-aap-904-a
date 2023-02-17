@@ -9,7 +9,7 @@ size_t countPositiveOnlyRows(int* matrix, size_t countRows, size_t countColumns)
     bool negative = true;
     for (size_t column = 0; column < countColumns; column++)
     {
-      if (matrix[row * column + column] < 0)
+      if (matrix[countRows * row + column] < 0)
       {
         negative = false;
         break;

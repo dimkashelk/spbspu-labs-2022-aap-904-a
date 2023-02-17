@@ -5,7 +5,6 @@
 #include <stdexcept>
 char* formingCstring(size_t& size, std::istream& input)
 {
-  size_t size = 0;
   size_t capacity = 10;
   char* cstring = new char[capacity];
   cstring[0] = '\0';

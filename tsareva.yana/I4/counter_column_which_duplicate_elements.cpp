@@ -17,7 +17,7 @@ size_t counterColumnWhichDuplicateElements(const int * array, size_t row, size_t
         }
       }
     }
-    if (duplicate == true)
+    if (duplicate)
     {
       counter_column++;
     }

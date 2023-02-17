@@ -59,7 +59,7 @@ int main(int argc, char * argv[])
         }
       }
     }
-    outputfile << counterColumnWhichDuplicateElements(arr, row, column) << "\n";
+    outputfile << countColumnWhichDuplicateElements(arr, row, column) << "\n";
     if (!outputfile)
     {
       std::cerr << "Error writing elements\n";

@@ -1,6 +1,6 @@
 #include "counter_column_which_duplicate_elements.h"
 
-size_t counterColumnWhichDuplicateElements(const int * array, size_t row, size_t column)
+size_t countColumnWhichDuplicateElements(const int * array, size_t row, size_t column)
 {
   size_t counter_column = 0;
   bool duplicate = true;

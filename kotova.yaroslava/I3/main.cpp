@@ -7,11 +7,10 @@
 int main()
 {
   size_t capacity = 10;
-  size_t size = 10;
   char* cstring = nullptr;
   try
   {
-    cstring = formingCstring(size, std::cin);
+    cstring = formingCstring(std::cin);
   }
   catch (const std::exception& e)
   {

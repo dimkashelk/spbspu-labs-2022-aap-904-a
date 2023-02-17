@@ -2,5 +2,5 @@
 #define FORMINGCSTRING_H
 #include <istream>
 #include <cstddef>
-char* formingCstring(size_t& size, std::istream& input);
+char* formingCstring(std::istream& input);
 #endif

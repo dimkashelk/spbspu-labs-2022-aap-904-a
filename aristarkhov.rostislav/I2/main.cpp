@@ -3,7 +3,6 @@
 #include "countNegativeAfterMax.h"
 #include "maxValueInterval.h"
 
-
 int main(int argc, char** argv)
 {
   if (argc != 2)
@@ -75,7 +74,7 @@ int main(int argc, char** argv)
     file >> arr3[i];
     if (!file)
     {
-      std::cerr << "Error while reading>\n";
+      std::cerr << "Error while reading\n";
       delete[] arr3;
       return 1;
     }

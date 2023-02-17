@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "DelNumbers.h"
 #include "RepLetters.h"
-#include "FormingCstring.h"
+#include <FormingCstring.h>
 
 int main()
 {

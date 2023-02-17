@@ -17,8 +17,10 @@ char* formingCstring(size_t& size, std::istream& input)
       try
       {
         char* newstr = new char[capacity + 10];
-        cstring[capacity - 1] = '\0';
-        std::strcpy(newstr, cstring);
+        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
+        {
+          *j = *i;
+        }
         delete[] cstring;
         cstring = newstr;
         capacity += 10;

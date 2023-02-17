@@ -92,6 +92,7 @@ int main(int argc, char * argv[])
     if (!outputfile)
     {
       std::cerr << "Error writing elements\n";
+      delete [] dArr;
       return 1;
     }
     delete [] dArr;

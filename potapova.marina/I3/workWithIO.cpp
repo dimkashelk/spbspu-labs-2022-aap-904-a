@@ -3,9 +3,9 @@
 char* stdinGetLine()
 {
   char* result = nullptr;
-  result = new char[capasity_block];
+  result = new char[CAPASITY_BLOCK];
   size_t result_size = 0;
-  size_t result_capasity = capasity_block;
+  size_t result_capasity = CAPASITY_BLOCK;
   char cur_char = '\0';
   std::cin >> std::noskipws;
   while (std::cin >> cur_char && cur_char != '\n')

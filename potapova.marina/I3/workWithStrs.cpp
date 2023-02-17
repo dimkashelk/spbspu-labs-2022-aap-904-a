@@ -31,7 +31,7 @@ bool pushBack(char*& str, size_t& str_size, size_t& str_capasity, const char& ne
 {
   if (str_size == str_capasity - 1)
   {
-    str_capasity += capasity_block;
+    str_capasity += CAPASITY_BLOCK;
 
     char* new_mem_block = reallocMem(str, str_capasity);
     if (new_mem_block == nullptr)
@@ -53,7 +53,7 @@ std::pair< char*, char* > strCopy(const char* str)
 
   try
   {
-    result = new char[capasity_block];
+    result = new char[CAPASITY_BLOCK];
   }
   catch (const std::bad_alloc & e)
   {
@@ -62,7 +62,7 @@ std::pair< char*, char* > strCopy(const char* str)
   }
 
   size_t result_size = 0;
-  size_t result_capasity = capasity_block;
+  size_t result_capasity = CAPASITY_BLOCK;
 
   while (*str != '\0')
   {

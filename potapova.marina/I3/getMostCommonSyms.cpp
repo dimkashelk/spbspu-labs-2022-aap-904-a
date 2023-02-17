@@ -14,7 +14,7 @@ char* getMostCommonSyms(char* dest, const char* str)
 
   std::sort(str_cpy.first, str_cpy.second);
 
-  std::pair < char, size_t > common_syms[3];
+  std::pair< char, size_t > common_syms[3];
   for (char* cur_sym = str_cpy.first; cur_sym < str_cpy.second; ++cur_sym)
   {
     size_t count_of_sym_common = 1;

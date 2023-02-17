@@ -66,12 +66,12 @@ int main(int argc, char* argv[])
         file_matrix_out << "empty file";
         return 0;
       }
-      int *matrix = nullptr;
+      int* matrix = nullptr;
       try
       {
         matrix = new int[column * line];
       }
-      catch (const std::bad_alloc &e)
+      catch (const std::bad_alloc& e)
       {
         std::cout << e.what();
         return 1;

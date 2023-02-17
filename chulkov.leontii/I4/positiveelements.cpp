@@ -1,7 +1,7 @@
 #include "positiveelements.h"
 #include <cstddef>
 
-size_t countPositiveOnlyRows(int* matrix, size_t countRows, size_t countColumns)
+size_t countPositiveOnlyRows(const int* matrix, size_t countRows, size_t countColumns)
 {
   size_t count = 0;
   for (size_t row = 0; row < countRows; row++)

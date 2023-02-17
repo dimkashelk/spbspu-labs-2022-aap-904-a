@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
     {
       std::cout << e.what() << '\n';
       delete[] newarr;
-      return 0;
+      return 2;
     }
     for (size_t i = 0; i < c; i++)
     {

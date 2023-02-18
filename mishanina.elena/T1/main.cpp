@@ -67,58 +67,82 @@ int main()
     }
     else if (figureName == "PARALLELOGRAM")
     {
-      point_t A{}, B{}, C{};
-      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-      if (!std::cin)
+      std::size_t size = 6;
+      double *coordinates = nullptr;
+      try
       {
-        break;
+        coordinates = createCoordinates(std::cin, size);
       }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        continue;
+      }
+      point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
-        shape = new Parallelogram(A, B, C);
+        shape = new Parallelogram(points[0], points[1], points[2]);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
         hasInvalidFigure= true;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
+      delete[] coordinates;
+      delete[] points;
       correctFigure = true;
       correctComposite = true;
       isAddFigure = true;
     }
     else if (figureName == "TRIANGLE")
     {
-      point_t A{}, B{}, C{};
-      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-      if (!std::cin)
+      std::size_t size = 6;
+      double *coordinates = nullptr;
+      try
       {
-        break;
+        coordinates = createCoordinates(std::cin, size);
       }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        continue;
+      }
+      point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
-        shape = new Triangle(A, B, C);
+        shape = new Triangle(points[0], points[1], points[2]);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
         hasInvalidFigure= true;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
+      delete[] coordinates;
+      delete[] points;
       correctFigure = true;
       correctComposite = true;
       isAddFigure = true;

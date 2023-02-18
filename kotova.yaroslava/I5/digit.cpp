@@ -50,6 +50,7 @@ bool isMantissa(const char* data)
 {
   return isDigit(*data) && (isMantissa(data + 1) || afterDot(data + 1));
 }
+
 bool isFloat(const char* data)
 {
   return isMantissa(data) || (isSign(*data) && isMantissa(data + 1));

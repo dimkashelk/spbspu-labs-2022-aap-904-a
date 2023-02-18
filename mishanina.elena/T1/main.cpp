@@ -46,7 +46,6 @@ int main()
       //point_t *points = nullptr;
       //try
 //      {
-      point_t *points = fillPoints(coordinates, size / 2);
 //      }
 //      catch (const std::invalid_argument &e)
 //      {
@@ -55,7 +54,7 @@ int main()
 //        continue;
 //      }
 
-
+      point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
@@ -67,15 +66,15 @@ int main()
       {
         correctFigure = false;
         hasInvalidFigure= true;
-        delete[] coordinates;
-        delete[] points;
+        delete coordinates;
+        delete points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
-        delete[] coordinates;
-        delete[] points;
+        delete coordinates;
+        delete points;
         delete shape;
       }
       correctFigure = true;

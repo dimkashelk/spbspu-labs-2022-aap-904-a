@@ -8,6 +8,7 @@ double *createCoordinates(std::istream& in, std::size_t size)
     in >> coordinates[i];
     if (!in)
     {
+      delete coordinates;
       throw std::invalid_argument("error input");
     }
   }

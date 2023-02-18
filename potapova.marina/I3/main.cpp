@@ -12,7 +12,7 @@ int main()
     return 1;
   }
 
-  char* most_common_syms = nullptr;
+  char* most_common_syms;
 
   try
   {
@@ -27,7 +27,19 @@ int main()
     return 1;
   }
 
-  std::cout << getMostCommonSyms(most_common_syms, input_str) << '\n';
+  try
+  {
+    std::cout << getMostCommonSyms(most_common_syms, input_str) << '\n';
+  }
+  catch(const std::exception& e)
+  {
+    delete[] input_str;
+    delete[] most_common_syms;
+
+    std::cerr << "Allocation error: " << e.what() << '\n';
+
+    return 1;
+  }
 
   delete[] input_str;
   delete[] most_common_syms;

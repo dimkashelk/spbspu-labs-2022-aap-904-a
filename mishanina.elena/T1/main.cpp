@@ -26,12 +26,6 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
-//      point_t A{}, B{};
-//      std::cin >> A.x >> A.y >> B.x >> B.y;
-//      if (!std::cin)
-//      {
-//        break;
-//      }
       std::size_t size = 4;
       double *coordinates = nullptr;
       try
@@ -43,40 +37,30 @@ int main()
         correctFigure = false;
         continue;
       }
-      //point_t *points = nullptr;
-      //try
-//      {
-//      }
-//      catch (const std::invalid_argument &e)
-//      {
-//        correctFigure = false;
-//        delete[] coordinates;
-//        continue;
-//      }
-
       point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
         shape = new Rectangle(points[0], points[1]);
-//        shape = new Rectangle(A, B);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
         hasInvalidFigure= true;
-        delete coordinates;
-        delete points;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
-        delete coordinates;
-        delete points;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
+      delete[] coordinates;
+      delete[] points;
       correctFigure = true;
       correctComposite = true;
       isAddFigure = true;

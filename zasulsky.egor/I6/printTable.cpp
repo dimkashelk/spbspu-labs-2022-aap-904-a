@@ -1,6 +1,7 @@
 #include "printTable.hpp"
 #include <iomanip>
 #include "sinOverX.hpp"
+#include <cmath>
 
 void printTableRow(std::ostream& out, double x, double absError, unsigned numberMax)
 {

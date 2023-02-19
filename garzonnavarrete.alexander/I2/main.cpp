@@ -37,11 +37,9 @@ int main(int argc, char *argv[])
     std::cout << countAriNum(arr2, n) << "\n";
     std::cout << countIndices(arr2, n) << "\n";
   }
-  catch (const std::runtime_error &e)
+  catch (...)
   {
-    std::cout << e.what();
-    delete[] arr2;
-    return 2;
+    std::cout << "0\n";
   }
   delete[] arr2;
   std::ifstream in(argv[1]);
@@ -73,12 +71,11 @@ int main(int argc, char *argv[])
     std::cout << countAriNum(arr, size) << "\n";
     std::cout << countIndices(arr, size) << "\n";
   }
-  catch (const std::runtime_error &e)
+  catch (...)
   {
-    std::cout << e.what();
-    delete[] arr;
-    return 2;
+    std::cout << "0\n";
   }
   delete[] arr;
   return 0;
 }
+

@@ -9,10 +9,15 @@ int main()
   constexpr double step = 0.02;
   constexpr double absError = 0.00001;
   unsigned numberMax = 3;
-  std::cin >> l >> r >> numberMax;
+  std::cin >> l >> r >> numberMax; 
   if (!std::cin)
   {
-    std::cout << "Error: Input error";
+    std::cout << "Error: Input error\n";
+    return 1;
+  }
+  if (l > r)
+  {
+    std::cout << "Error: Boundaries set incorrectly\n";
     return 1;
   }
   try

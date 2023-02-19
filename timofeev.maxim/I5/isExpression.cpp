@@ -6,7 +6,8 @@ bool isDigit(char c)
 }
 bool isLetter(char c)
 {
-  return (c == 'a') || (c == 'b') || (c == 'c') || (c == 'd') || (c == 'e') || (c == 'f') || (c == 'x') || (c == 'y') || (c == 'z');
+  return (c == 'a') || (c == 'b') || (c == 'c') || (c == 'd') || (c == 'e') || (c == 'f') || (c == 'x')
+         || (c == 'y') || (c == 'z');
 }
 bool isEnd(char c)
 {
@@ -46,7 +47,8 @@ bool Multip(const char *data)
 }
 bool isTerm(const char *data)
 {
-  return Multip(data) || (isOpenBar(*data) && isMulSign(*data) && isTerm(data + 1) && isCloseBar(*data)) || (isOpenBar(*data) && isDivSign(*data) && isTerm(data + 1) && isCloseBar(*data));
+  return Multip(data) || (isOpenBar(*data) && isMulSign(*data) && isTerm(data + 1) && isCloseBar(*data))
+         || (isOpenBar(*data) && isDivSign(*data) && isTerm(data + 1) && isCloseBar(*data));
 }
 bool isExpression(const char *data)
 {

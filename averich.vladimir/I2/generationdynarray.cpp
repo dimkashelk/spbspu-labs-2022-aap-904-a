@@ -16,15 +16,8 @@ int generationDynArray(size_t sizeOfDynArray)
     dynArray[i] = 1 + rand() % 9;
     dynArray[i] = 1 + rand() % 9 * -1;
   }
-  try
-  {
-    std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
-    sort(dynArray, sizeOfDynArray);
-  }
-  catch (const std::logic_error &e)
-  {
-    return 0;
-  }
+  std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+  sort(dynArray, sizeOfDynArray);
   delete[] dynArray;
   return 0;
 }

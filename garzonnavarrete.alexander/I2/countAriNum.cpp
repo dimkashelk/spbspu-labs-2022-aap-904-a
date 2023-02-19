@@ -12,5 +12,5 @@ double countAriNum(const int *input_array, size_t array_size){
     {
         sum += input_array[i];
     }
-    return sum / ((array_size + 1) / 2);
+    return sum / ((array_size+1)/2);
 }

@@ -17,16 +17,9 @@ int main(int argc, char* argv[])
   try
   {
     std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
-  }
-  catch (const std::logic_error& e)
-  {
-    return 1;
-  }
-  try
-  {
     sort(defaultArray, sizeOfDefaultArray);
   }
-  catch (const std::logic_error& e)
+  catch (const std::logic_error)
   {
     return 1;
   }
@@ -37,20 +30,20 @@ int main(int argc, char* argv[])
   {
     try
     {
-        generationDynArray(sizeOfDynArray);
+      generationDynArray(sizeOfDynArray);
     }
-    catch (const std::logic_error& e)
+    catch (const std::logic_error)
     {
-        return 1;
+      return 1;
     }
   }
   try
   {
     readTheArray(argv[1]);
   }
-  catch (const std::logic_error& e)
+  catch (const std::logic_error)
   {
-    return 1;
+    return 0;
   }
   return 0;
 }

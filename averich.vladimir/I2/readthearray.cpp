@@ -13,11 +13,7 @@ int readTheArray(std::string fileName)
   }
   size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
-  if (!in)
-  {
-    throw std::logic_error("Error: invalid input");
-  }
-  else if (sizeOfFileArray == 0)
+  if (sizeOfFileArray == 0)
   {
     throw std::logic_error("Error: incorrect size of file array");
   }
@@ -35,18 +31,11 @@ int readTheArray(std::string fileName)
   try
   {
     std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
-  }
-  catch (const std::logic_error& e)
-  {
-    return 1;
-  }
-  try
-  {
     sort(fileArray, sizeOfFileArray);
   }
-  catch (const std::logic_error& e)
+  catch (const std::logic_error)
   {
-    return 0;
+    return 1;
   }
   delete[] fileArray;
   return 0;

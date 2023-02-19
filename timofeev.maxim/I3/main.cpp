@@ -1,7 +1,7 @@
 #include <iostream>
-#include "inputStr.h"
 #include "removeAlphabet.h"
 #include "addNumbersFromSecondToFirst.h"
+#include <inputStr.h>
 int main()
 {
   char *str = nullptr;

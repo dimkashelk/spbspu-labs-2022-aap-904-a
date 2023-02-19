@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <limits>
 #include <stdexcept>
+#include "cstrfnc_lab3.h"
 #include "cstrfnc.h"
 
 void removeLatinVowelHelper(std::pair< char*, size_t > src)

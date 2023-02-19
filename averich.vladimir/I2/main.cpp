@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
     }
     catch (const std::logic_error &e)
     {
-      return 1;
+      return 0;
     }
   }
   try

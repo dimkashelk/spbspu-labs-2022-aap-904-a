@@ -23,15 +23,12 @@ int main(int argc, char *argv[])
   if (!inputFile)
   {
     std::cout << "Input error" << "\n";
-    inputFile.close();
     return 1;
   }
   std::ofstream outputFile(argv[3]);
   if (!outputFile.is_open())
   {
     std::cout << "Output file not open" << "\n";
-    inputFile.close();
-    outputFile.close();
     return 1;
   }
   if (std::strcmp(argv[1], "1") == 0)
@@ -40,8 +37,6 @@ int main(int argc, char *argv[])
     if (r * c > 1000)
     {
       std::cout << "Array > 1000" << "\n";
-      inputFile.close();
-      outputFile.close();
       return 1;
     }
     for (size_t i = 0; i < r * c; i++)
@@ -50,8 +45,6 @@ int main(int argc, char *argv[])
       if (!inputFile)
       {
         std::cout << "Error while input" << "\n";
-        inputFile.close();
-        outputFile.close();
         return 1;
       }
     }
@@ -59,41 +52,24 @@ int main(int argc, char *argv[])
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
-    int *dynarr = nullptr;
-    try
-    {
-      dynarr = new int[r * c];
-    }
-    catch (const std::bad_alloc &e)
-    {
-      delete [] dynarr;
-      inputFile.close();
-      outputFile.close();
-      return 1;
-    }
+    int *dynarr = new int[r * c];;
     for (size_t i = 0; i < r * c; i++)
     {
       inputFile >> dynarr[i];
       if (!inputFile)
       {
         std::cout << "Error while input" << "\n";
-        inputFile.close();
-        outputFile.close();
         delete [] dynarr;
         return 1;
       }
     }
-     outputFile << countRows(dynarr, r, c) << "\n" ;
-     delete [] dynarr;
+    outputFile << countRows(dynarr, r, c) << "\n" ;
+    delete [] dynarr;
   }
   else
   {
     std::cout << "Error" << "\n";
-    inputFile.close();
-    outputFile.close();
     return 1;
   }
-  inputFile.close();
-  outputFile.close();
   return 0;
 }

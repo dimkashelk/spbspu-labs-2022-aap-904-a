@@ -6,15 +6,7 @@
 
 char* createCString(std::istream& inp, size_t size, size_t capacity)
 {
-  char* cstring = nullptr;
-  try
-  {
-    cstring = new char[capacity];
-  }
-  catch (...)
-  {
-    throw;
-  }
+  char* cstring = new char[capacity];
   inp >> std::noskipws;
   do
   {
@@ -35,7 +27,8 @@ char* createCString(std::istream& inp, size_t size, size_t capacity)
       }
     }
     inp >> cstring[size];
-  } while (inp && cstring[size++] != '\n');
+  }
+  while (inp && cstring[size++] != '\n');
   if (size <= 1)
   {
     delete[] cstring;

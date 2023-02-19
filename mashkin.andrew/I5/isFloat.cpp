@@ -1,5 +1,4 @@
 #include "isFloat.h"
-#include <iostream>
 
 bool isMantissa(const char* str);
 bool isSign(char symb);

@@ -52,16 +52,7 @@ int main(int argc, char *argv[])
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
-    int *dynarr = nullptr;
-    try
-    {
-      dynarr = new int[r * c];
-    }
-    catch (const std::bad_alloc &e)
-    {
-      std::cerr << "Memory error" << "\n";
-      return 1;
-    }
+    int *dynarr = new int[r * c];;
     for (size_t i = 0; i < r * c; i++)
     {
       inputFile >> dynarr[i];
@@ -72,8 +63,8 @@ int main(int argc, char *argv[])
         return 1;
       }
     }
-     outputFile << countRows(dynarr, r, c) << "\n" ;
-     delete [] dynarr;
+    outputFile << countRows(dynarr, r, c) << "\n" ;
+    delete [] dynarr;
   }
   else
   {

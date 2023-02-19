@@ -7,10 +7,6 @@
 int readTheArray(std::string fileName)
 {
   std::ifstream in(fileName);
-  if (in.eof())
-  {
-    return 0;
-  }
   size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
   if (sizeOfFileArray == 0)

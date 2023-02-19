@@ -19,7 +19,11 @@ int main(int argc, char* argv[])
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
-  if (sizeOfDynArray != 0)
+  if (sizeOfDynArray == 0)
+  {
+    return 0;
+  }
+  else
   {
     generationDynArray(sizeOfDynArray);
   }

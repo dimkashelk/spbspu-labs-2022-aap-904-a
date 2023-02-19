@@ -23,6 +23,6 @@ int main()
   catch (const std::exception& err)
   {
     std::cout << err.what() << '\n';
-	  return 1;
+    return 1;
   }
 }

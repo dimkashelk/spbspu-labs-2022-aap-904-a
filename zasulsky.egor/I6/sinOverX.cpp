@@ -16,13 +16,13 @@ double zasulsky::sinOverX(double x, double absError, unsigned numberMax)
   unsigned members = 1;
   do
   {
-	  next *= -(square / (members * 2)) / (members * 2 + 1);
-	  if (std::abs(next) < absError)
-	  {
+    next *= -(square / (members * 2)) / (members * 2 + 1);
+    if (std::abs(next) < absError)
+    {
       break;
-	  }
-	  sum += next;
-	  members++;
+    }
+    sum += next;
+    members++;
   }
   while (members != numberMax);
   if ((members == numberMax) && (std::abs(next) > absError))

@@ -44,6 +44,10 @@ void Parallelogram::move(const point_t& point)
 
 void Parallelogram::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Invalid k size");
+  }
   point_t pos = getCenterParallelogram(A_, C_);
   A_ = scalePoint(A_, pos, k);
   B_ = scalePoint(B_, pos, k);

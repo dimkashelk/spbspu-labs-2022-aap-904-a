@@ -40,6 +40,10 @@ point_t getCenterTriangle(const point_t& A, const point_t& B, const point_t& C)
 
 point_t scalePoint(const point_t& point, const point_t& pos, const double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Invalid k size");
+  }
   double dx = (point.x - pos.x) * k;
   double dy = (point.y - pos.y) * k;
   point_t dpoint{ dx, dy };

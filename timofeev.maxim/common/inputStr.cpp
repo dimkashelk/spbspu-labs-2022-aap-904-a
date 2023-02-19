@@ -24,6 +24,7 @@ char *inputStr(std::istream &str, size_t &in_size)
         timestr = increaseSize(cstring, capasity, size);
         delete [] cstring;
         cstring = timestr;
+        delete [] timestr;
         capasity += 20;
       }
       catch (...)

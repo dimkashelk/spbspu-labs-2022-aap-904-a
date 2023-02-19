@@ -7,7 +7,7 @@ int generationDynArray(size_t sizeOfDynArray)
 {
   if (sizeOfDynArray == 0)
   {
-    return 1;
+    return 0;
   }
   int* dynArray = new int[sizeOfDynArray];
   std::srand(time(nullptr));
@@ -23,7 +23,7 @@ int generationDynArray(size_t sizeOfDynArray)
   }
   catch (const std::logic_error &e)
   {
-    return 1;
+    return 0;
   }
   delete[] dynArray;
   return 0;

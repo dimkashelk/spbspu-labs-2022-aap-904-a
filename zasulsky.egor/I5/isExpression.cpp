@@ -11,7 +11,7 @@ char* skipIdentifier(char* cptr)
 
 char* skipDigit(char* cptr)
 {
-  if (std::isdigit(*cptr) {
+  if (std::isdigit(*cptr)) {
     return cptr + 1;
   }
   return nullptr;

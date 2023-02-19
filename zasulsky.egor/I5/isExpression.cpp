@@ -1,4 +1,5 @@
 #include "isExpression.hpp"
+#include <cctype>
 
 char* skipIdentifier(char* cptr)
 {
@@ -10,7 +11,7 @@ char* skipIdentifier(char* cptr)
 
 char* skipDigit(char* cptr)
 {
-  if (*cptr >= '0' && *cptr <= '9') {
+  if (std::isdigit(*cptr) {
     return cptr + 1;
   }
   return nullptr;

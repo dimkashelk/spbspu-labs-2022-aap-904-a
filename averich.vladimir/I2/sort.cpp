@@ -19,4 +19,5 @@ int sort(int arr[], size_t size)
     std::cout << arr[i] << " ";
   }
   std::cout << std::endl;
+  return 0;
 }

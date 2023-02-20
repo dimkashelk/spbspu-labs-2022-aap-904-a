@@ -24,5 +24,4 @@ int main(int argc, char* argv[])
     generationDynArray(sizeOfDynArray);
   }
   readTheArray(argv[1]);
-  return 0;
 }

@@ -11,7 +11,7 @@ int readTheArray(std::string fileName)
   in >> sizeOfFileArray;
   if (sizeOfFileArray == 0)
   {
-    return 0;
+    return 1;
   }
   int *fileArray = new int[sizeOfFileArray];
   for (size_t i = 0; i < sizeOfFileArray; i++)
@@ -21,7 +21,7 @@ int readTheArray(std::string fileName)
     {
       in.close();
       delete[] fileArray;
-      return 0;
+      return 1;
     }
   }
   std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;

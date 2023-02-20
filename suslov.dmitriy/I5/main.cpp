@@ -3,9 +3,8 @@
 #include "isFloat.h"
 int main()
 {
-  size_t c = 0;
   char *arr = scanStr(c, std::cin);
-  std::cout << std::boolalpha << real(arr, c) << "\n";
+  std::cout << std::boolalpha << real(arr) << "\n";
   delete[] arr;
   return 0;
 }

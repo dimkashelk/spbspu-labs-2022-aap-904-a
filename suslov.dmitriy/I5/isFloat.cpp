@@ -1,6 +1,6 @@
 #include "isFloat.h"
 
-bool sign(char arr[], int &counter)
+bool sign(char *arr, int &counter)
 {
   if (arr[counter] == '+' || arr[counter] == '-')
   {
@@ -9,16 +9,16 @@ bool sign(char arr[], int &counter)
   }
   return false;
 }
-bool digit(char arr[], int &iterator)
+bool digit(char *arr, int &iterator)
 {
   if (arr[iterator] >= '0' and arr[iterator] <= '9')
   {
-    iterator++;
+    arr++;
     return true;
   }
   return false;
 }
-bool number(char arr[], int &iterator)
+bool number(char *arr, int &iterator)
 {
   if (digit(arr, iterator))
   {
@@ -27,26 +27,26 @@ bool number(char arr[], int &iterator)
   }
   return false;
 }
-bool exponent(char arr[], int &iterator)
+bool exponent(char *arr, int &iterator)
 {
   if (arr[iterator] == 'E')
   {
-    iterator++;
+    arr++;
     sign(arr, iterator);
     return number(arr, iterator);
   }
   return false;
 }
-bool mantissa(char arr[], int &iterator)
+bool mantissa(char *arr, int &iterator)
 {
   if (arr[iterator] == '.')
   {
-    iterator++;
+    arr++;
     return number(arr, iterator);
   }
   return false;
 }
-bool real(char arr[], int &iterator)
+bool real(char *arr, int &iterator)
 {
   sign(arr, iterator);
   if (mantissa(arr, iterator))

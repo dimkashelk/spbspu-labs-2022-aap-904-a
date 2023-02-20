@@ -26,6 +26,10 @@ int main(int argc, char* argv[])
     sort(dynArray, sizeOfDynArray);
     delete[] dynArray;
   }
+  else
+  {
+    return 0;
+  }
   size_t sizeOfFileArray = 0;
   int* array = new int[sizeOfFileArray];
   try
@@ -35,9 +39,16 @@ int main(int argc, char* argv[])
     sort(fileArray, sizeOfFileArray);
     delete[] fileArray;
   }
-  catch (std::logic_error &e)
+  catch (std::logic_error &err)
   {
-    std::cerr << e.what();
+    if (err.what() == "File with empty arrays")
+    {
+      return 0;
+    }
+  }
+  catch (std::exception &err)
+  {
+    std::cerr << err.what() << std::endl;
     return 1;
   }
   delete[] array;

@@ -14,7 +14,7 @@ bool sign(char *arr)
 }
 bool digit(char *arr)
 {
-  if (*arr >= '0' and *arr <= '9')
+  if (*arr >= '0' && *arr <= '9' || !(*arr))
   {
     return true;
   }
@@ -22,6 +22,10 @@ bool digit(char *arr)
 }
 bool number(char *arr)
 {
+  if (!(*arr))
+  {
+    return true;
+  }
   if (*arr == 'E')
   {
     return exponent(arr);

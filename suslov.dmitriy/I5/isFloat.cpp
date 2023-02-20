@@ -1,5 +1,9 @@
 #include "isFloat.h"
-
+bool sign(char *arr);
+bool digit(char *arr);
+bool number(char *arr);
+bool exponent(char *arr);
+bool mantissa(char *arr);
 bool sign(char *arr)
 {
   if (*arr == '+' || *arr == '-')
@@ -18,7 +22,11 @@ bool digit(char *arr)
 }
 bool number(char *arr)
 {
-  return digit(arr) && number(arr + 1);;
+  if (*arr == 'E')
+  {
+    return exponent(arr);
+  }
+  return digit(arr) && number(arr + 1);
 }
 bool exponent(char *arr)
 {
@@ -40,10 +48,7 @@ bool real(char *arr)
 {
   if (sign(arr))
   {
-    if (mantissa(arr))
-    {
-      return exponent(arr);
-    }
+    return mantissa(arr + 1);
   }
   return false;
 }

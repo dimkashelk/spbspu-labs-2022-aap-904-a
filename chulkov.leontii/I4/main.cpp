@@ -39,16 +39,13 @@ int main(int argc, char* argv[])
       std::cout << "Error, array is large\n";
       return 1;
     }
-    for (size_t i = 0; i < c; i++)
+    for (size_t i = 0; i < c * r; i++)
     {
-      for (size_t j = 0; j < r; j++)
+      in >> array[i];
+      if (!in)
       {
-        in >> array[c * i + j];
-        if (!in)
-        {
-          std::cout << "Error while read file\n";
-          return 1;
-        }
+        std::cout << "Error while read file\n";
+        return 1;
       }
     }
     size_t countPositiveRows = countPositiveOnlyRows(array, c, r);
@@ -80,8 +77,8 @@ int main(int argc, char* argv[])
         }
       }
     }
-    size_t indrow = 1;
-    size_t indcol = 1;
+    size_t indrow = 0;
+    size_t indcol = 0;
     try
     {
       newarr = fillingTheMatrixInSpiral(newarr, c, r, indrow, indcol);

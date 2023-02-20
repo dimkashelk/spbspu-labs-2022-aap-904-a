@@ -1,7 +1,7 @@
 #include "printTable.hpp"
 #include <iomanip>
-#include "sinOverX.hpp"
 #include <cmath>
+#include "sinOverX.hpp"
 
 void printTableRow(std::ostream& out, double x, double absError, unsigned numberMax)
 {
@@ -9,7 +9,7 @@ void printTableRow(std::ostream& out, double x, double absError, unsigned number
   double result2 = std::sin(x) / x;
   out << std::setw(5) << std::fixed << std::setprecision(2) << x << ' ';
   out << std::setw(10) << std::setprecision(5) << result1 << ' ';
-  out << std::setw(10) << std::setprecision(5) << result2;
+  out << std::setw(10) << result2;
 }
 
 void zasulsky::printTable(std::ostream& out, double l, double r, double step, double absError, unsigned numberMax)

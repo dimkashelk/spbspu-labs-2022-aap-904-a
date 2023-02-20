@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <cstddef>
-#include <cstring>
 #include "makeNewStringWithoutRepeat.h"
 #include "makeNewStringWithMissingLetters.h"
 #include "createStringFromInput.h"
@@ -32,9 +31,12 @@ int main()
   char source2[] = "abcd";
   size_t size1 = 0;
   size_t size2 = 0;
-  while (source1[size1] != '\0' || source2[size2] != '\0')
+  while (source1[size1] != '\0')
   {
     size1++;
+  }
+  while (source2[size2] != '\0')
+  {
     size2++;
   }
   size_t string_size1 = size1 + size2 + 1;

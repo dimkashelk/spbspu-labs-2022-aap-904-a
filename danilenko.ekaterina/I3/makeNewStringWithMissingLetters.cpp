@@ -3,7 +3,7 @@
 
 bool isNecessaryLetter(const char* source, char letter)
 {
-  for (size_t i = 0; source[i] != '\0'; i++)
+  for (size_t i = 0; source[i]; i++)
   {
     if (source[i] == letter)
     {

@@ -31,11 +31,11 @@ int main()
   char source2[] = "abcd";
   size_t size1 = 0;
   size_t size2 = 0;
-  while (source1[size1] != '\0')
+  while (source1[size1])
   {
     size1++;
   }
-  while (source2[size2] != '\0')
+  while (source2[size2])
   {
     size2++;
   }

@@ -5,10 +5,10 @@ char* copyElementsWithoutRepeat(char* destination, const char* source1, const ch
 {
   size_t new_element = 0;
   bool match = false;
-  for (size_t i = 0; source1[i] != '\0'; i++)
+  for (size_t i = 0; source1[i]; i++)
   {
     match = false;
-    for (size_t j = 0; source2[j] != 0; j++)
+    for (size_t j = 0; source2[j]; j++)
     {
       if (source1[i] == source2[j])
       {
@@ -29,7 +29,7 @@ char* makeNewStringWithoutRepeat(char* destination, const char* source1, const c
 {
   copyElementsWithoutRepeat(destination, source1, source2);
   size_t dest_lenght = 0;
-  for (size_t i = 0; destination[i] != '\0'; i++)
+  for (size_t i = 0; destination[i]; i++)
   {
     dest_lenght++;
   }

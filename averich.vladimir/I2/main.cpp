@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
   }
   catch (std::logic_error &e)
   {
-    std::cout << e.what();
+    std::cerr << e.what();
     return 1;
   }
   delete[] array;

@@ -1,4 +1,4 @@
-#include "counter_column_which_duplicate_elements.h"
+#include "count_column_which_duplicate_elements.h"
 
 size_t countColumnWhichDuplicateElements(const int * array, size_t row, size_t column)
 {

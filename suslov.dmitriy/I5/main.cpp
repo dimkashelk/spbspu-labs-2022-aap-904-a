@@ -1,11 +1,11 @@
 #include <iostream>
-
+#include "scanStr.h"
+#include "isFloat.h"
 int main()
 {
-  char arr[40];
-  std::cin >> arr;
-  int c = 0;
+  size_t c = 0;
+  char *arr = scanStr(c, std::cin);
   std::cout << std::boolalpha << real(arr, c) << "\n";
-  std::cout << c << "\n";
+  delete[] arr;
   return 0;
 }

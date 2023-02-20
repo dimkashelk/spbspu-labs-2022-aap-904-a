@@ -56,7 +56,6 @@ int main()
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
 
   //2
-  //size_t string_size2 = 26;
   char* destination2 = nullptr;
   try
   {

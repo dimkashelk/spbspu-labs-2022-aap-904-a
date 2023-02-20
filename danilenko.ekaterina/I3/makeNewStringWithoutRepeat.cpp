@@ -1,6 +1,5 @@
 #include "makeNewStringWithoutRepeat.h"
 #include <cstddef>
-#include <cstring>
 
 char* copyElementsWithoutRepeat(char* destination, const char* source1, const char* source2)
 {

@@ -1,5 +1,5 @@
 #include "createStringFromInput.h"
-#include <iostream>
+#include <istream>
 #include <cstddef>
 #include <stdexcept>
 #include "makeStringExtention.h"

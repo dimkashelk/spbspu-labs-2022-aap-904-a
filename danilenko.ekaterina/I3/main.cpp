@@ -30,8 +30,13 @@ int main()
 
   //1
   char source2[] = "abcd";
-  size_t size1 = strlen(source1);
-  size_t size2 = strlen(source2);
+  size_t size1 = 0;
+  size_t size2 = 0;
+  while (source1[size1] != '\0' || source2[size2] != '\0')
+  {
+    size1++;
+    size2++;
+  }
   size_t string_size1 = size1 + size2 + 1;
   char* destination1 = nullptr;
   try

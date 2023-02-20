@@ -3,11 +3,6 @@
 #include <cstddef>
 int sort(int arr[], size_t size)
 {
-  if (size == 0)
-  {
-    std::cerr << "Error";
-    return 1;
-  }
   for (size_t i = 0; i < size; i++)
   {
     for (size_t j = 0; j < size - 1 - i; j++)

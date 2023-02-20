@@ -3,11 +3,6 @@
 #include <cstddef>
 int isTriplet(int arr[], size_t size)
 {
-  if (size == 0)
-  {
-    std::cerr << "Error";
-    return 1;
-  }
   size_t i = 0;
   size_t j = 1;
   size_t k = 2;

@@ -1,10 +1,9 @@
 #ifndef GETMOSTCOMMONSYMS_H
 #define GETMOSTCOMMONSYMS_H
 
-#include <iostream>
-#include <algorithm>
+#include <cstddef>
 #include <utility>
-#include "workWithStrs.h"
+#include "bitArrayOperations.h"
 
 char* getMostCommonSyms(char* dest, const char* str);
 

@@ -4,6 +4,6 @@
 #include <iostream>
 #include "workWithStrs.h"
 
-char* stdinGetLine();
+char* getLineFromFile(std::istream& in = std::cin);
 
 #endif

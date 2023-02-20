@@ -11,6 +11,7 @@ int readTheArray(std::string fileName)
   in >> sizeOfFileArray;
   if (sizeOfFileArray == 0)
   {
+    std::cerr << "Error";
     return 1;
   }
   int *fileArray = new int[sizeOfFileArray];
@@ -19,6 +20,7 @@ int readTheArray(std::string fileName)
     in >> fileArray[i];
     if (!in)
     {
+      std::cerr << "Error";
       in.close();
       delete[] fileArray;
       return 1;

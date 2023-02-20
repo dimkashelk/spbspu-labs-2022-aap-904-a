@@ -7,6 +7,7 @@ int generationDynArray(size_t sizeOfDynArray)
 {
   if (sizeOfDynArray == 0)
   {
+    std::cerr << "Error";
     return 1;
   }
   int* dynArray = new int[sizeOfDynArray];

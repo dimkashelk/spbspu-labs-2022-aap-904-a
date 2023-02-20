@@ -1,5 +1,5 @@
 #include <iostream>
-#include <scanStr.h>
+#include "scanStr.h"
 #include "isFloat.h"
 int main()
 {

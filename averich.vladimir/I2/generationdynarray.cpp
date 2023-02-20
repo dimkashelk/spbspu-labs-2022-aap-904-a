@@ -7,7 +7,7 @@ int generationDynArray(size_t sizeOfDynArray)
 {
   if (sizeOfDynArray == 0)
   {
-    return 0;
+    return 1;
   }
   int* dynArray = new int[sizeOfDynArray];
   std::srand(time(nullptr));

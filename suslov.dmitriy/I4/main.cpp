@@ -89,7 +89,7 @@ int main(int argc, char **argv)
       int *s_matrix = counterSmoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
-        out_stream << sum(s_matrix, n);
+        out_stream << counterSum(s_matrix, n);
         delete[] s_matrix;
       }
       delete[] matrix;

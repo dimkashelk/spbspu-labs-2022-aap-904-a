@@ -5,11 +5,6 @@
 #include "istriplet.hpp"
 int generationDynArray(size_t sizeOfDynArray)
 {
-  if (sizeOfDynArray == 0)
-  {
-    std::cerr << "Error";
-    return 1;
-  }
   int* dynArray = new int[sizeOfDynArray];
   std::srand(time(nullptr));
   for (size_t i = 0; i < sizeOfDynArray; i++)

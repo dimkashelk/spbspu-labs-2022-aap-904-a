@@ -14,7 +14,7 @@ bool sign(char *arr)
 }
 bool digit(char *arr)
 {
-  if (*arr >= '0' && *arr <= '9' || !(*arr))
+  if ((*arr >= '0' && *arr <= '9') || !(*arr))
   {
     return true;
   }

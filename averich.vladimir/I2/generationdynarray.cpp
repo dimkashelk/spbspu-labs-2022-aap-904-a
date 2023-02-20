@@ -3,7 +3,7 @@
 #include <cstddef>
 #include "sort.hpp"
 #include "istriplet.hpp"
-int generationDynArray(size_t sizeOfDynArray)
+int* generationDynArray(size_t sizeOfDynArray)
 {
   int* dynArray = new int[sizeOfDynArray];
   std::srand(time(nullptr));
@@ -12,8 +12,5 @@ int generationDynArray(size_t sizeOfDynArray)
     dynArray[i] = 1 + rand() % 9;
     dynArray[i] = 1 + rand() % 9 * -1;
   }
-  std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
-  sort(dynArray, sizeOfDynArray);
-  delete[] dynArray;
-  return 0;
+  return dynArray;
 }

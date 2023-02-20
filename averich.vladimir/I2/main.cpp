@@ -21,7 +21,24 @@ int main(int argc, char* argv[])
   std::cin >> sizeOfDynArray;
   if (sizeOfDynArray > 0)
   {
-    generationDynArray(sizeOfDynArray);
+    int* dynArray = generationDynArray(sizeOfDynArray);
+    std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+    sort(dynArray, sizeOfDynArray);
+    delete[] dynArray;
   }
-  readTheArray(argv[1]);
+  size_t sizeOfFileArray = 0;
+  int* array = new int[sizeOfFileArray];
+  try
+  {
+    int* fileArray = readTheArray(argv[1], sizeOfFileArray, array);
+    std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
+    sort(fileArray, sizeOfFileArray);
+    delete[] fileArray;
+  }
+  catch (std::logic_error &e)
+  {
+    std::cout << e.what();
+    return 1;
+  }
+  delete[] array;
 }

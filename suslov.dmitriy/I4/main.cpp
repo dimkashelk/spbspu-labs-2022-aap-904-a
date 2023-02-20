@@ -86,7 +86,7 @@ int main(int argc, char **argv)
     try
     {
       scanMatrix(matrix, in_stream, n, m);
-      int *s_matrix = smoothedMatrix(matrix, n, m);
+      int *s_matrix = counterSmoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
         out_stream << sum(s_matrix, n);

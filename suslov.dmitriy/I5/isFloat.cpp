@@ -1,57 +1,49 @@
 #include "isFloat.h"
 
-bool sign(char *arr, int &counter)
+bool sign(char *arr)
 {
-  if (arr[counter] == '+' || arr[counter] == '-')
+  if (*arr == '+' || *arr == '-')
   {
-    counter++;
     return true;
   }
   return false;
 }
-bool digit(char *arr, int &iterator)
+bool digit(char *arr)
 {
-  if (arr[iterator] >= '0' and arr[iterator] <= '9')
+  if (*arr >= '0' and *arr <= '9')
   {
-    arr++;
     return true;
   }
   return false;
 }
-bool number(char *arr, int &iterator)
+bool number(char *arr)
 {
-  if (digit(arr, iterator))
+  return digit(arr) && number(arr + 1);;
+}
+bool exponent(char *arr)
+{
+  if (*arr == 'E')
   {
-    number(arr, iterator);
-    return true;
+    return sign(arr + 1) && number(arr + 2);
   }
   return false;
 }
-bool exponent(char *arr, int &iterator)
+bool mantissa(char *arr)
 {
-  if (arr[iterator] == 'E')
+  if (*arr == '.')
   {
-    arr++;
-    sign(arr, iterator);
-    return number(arr, iterator);
+    return number(arr + 1);
   }
   return false;
 }
-bool mantissa(char *arr, int &iterator)
+bool real(char *arr)
 {
-  if (arr[iterator] == '.')
+  if (sign(arr))
   {
-    arr++;
-    return number(arr, iterator);
-  }
-  return false;
-}
-bool real(char *arr, int &iterator)
-{
-  sign(arr, iterator);
-  if (mantissa(arr, iterator))
-  {
-    return exponent(arr, iterator);
+    if (mantissa(arr))
+    {
+      return exponent(arr);
+    }
   }
   return false;
 }

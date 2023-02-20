@@ -56,11 +56,11 @@ int main()
   std::cout << "New string without repeating letters from two strings: " << destination1 << "\n";
 
   //2
-  size_t string_size2 = 26;
+  //size_t string_size2 = 26;
   char* destination2 = nullptr;
   try
   {
-    destination2 = new char[string_size2 + 26];
+    destination2 = new char[26];
     destination2 = makeNewStringWithMissingLetters(destination2, source1);
   }
   catch (const std::bad_alloc& e)

@@ -1,5 +1,5 @@
 #include "IsItARealNumber.h"
-#include <iostream>
+#include <cctype>
 
 bool isSign(char c)
 {

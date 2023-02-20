@@ -1,6 +1,6 @@
 #include "sumOfModules.h"
 #include <algorithm>
-int *counterSmoothedMatrix(const int *matrix, size_t n, size_t m)
+int *countSmoothedMatrix(const int *matrix, size_t n, size_t m)
 {
   int *matrixSmoothed = nullptr;
   try
@@ -31,7 +31,7 @@ int *counterSmoothedMatrix(const int *matrix, size_t n, size_t m)
   }
   return matrixSmoothed;
 }
-int counterSum(const int *matrix, const size_t n)
+int countSum(const int *matrix, const size_t n)
 {
   int sum = 0;
   for (size_t i = 0; i < n; ++i)

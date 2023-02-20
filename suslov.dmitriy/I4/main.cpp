@@ -86,10 +86,10 @@ int main(int argc, char **argv)
     try
     {
       scanMatrix(matrix, in_stream, n, m);
-      int *s_matrix = counterSmoothedMatrix(matrix, n, m);
+      int *s_matrix = countSmoothedMatrix(matrix, n, m);
       if (s_matrix != nullptr)
       {
-        out_stream << counterSum(s_matrix, n);
+        out_stream << countSum(s_matrix, n);
         delete[] s_matrix;
       }
       delete[] matrix;

@@ -77,18 +77,7 @@ int main(int argc, char* argv[])
         }
       }
     }
-    size_t indrow = 0;
-    size_t indcol = 0;
-    try
-    {
-      newarr = fillingTheMatrixInSpiral(newarr, c, r, indrow, indcol);
-    }
-    catch (const std::invalid_argument& e)
-    {
-      std::cout << e.what() << '\n';
-      delete[] newarr;
-      return 2;
-    }
+    newarr = fillingTheMatrixInSpiral(newarr, c, r);
     for (size_t i = 0; i < c; i++)
     {
       for (size_t j = 0; j < r; j++)

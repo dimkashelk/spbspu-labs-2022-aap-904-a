@@ -1,12 +1,10 @@
 #include "fillingthematrixinspiral.h"
 #include <stdexcept>
 
-int* fillingTheMatrixInSpiral(int* matrix, size_t c, size_t r, size_t indrow, size_t indcol)
+int* fillingTheMatrixInSpiral(int* matrix, size_t c, size_t r)
 {
-  if (indrow > r || indcol > c)
-  {
-    throw std::invalid_argument("too big index");
-  }
+  size_t indrow = 0;
+  size_t indcol = 0;
   matrix[c * indrow + indcol] = 1;
   size_t val = 1;
   size_t top = 0, bottom = r - 1, left = 0, right = c - 1;

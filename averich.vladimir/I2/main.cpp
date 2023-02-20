@@ -41,10 +41,7 @@ int main(int argc, char* argv[])
   }
   catch (std::logic_error &err)
   {
-    if (err.what() == "File with empty arrays")
-    {
       return 0;
-    }
   }
   catch (std::exception &err)
   {

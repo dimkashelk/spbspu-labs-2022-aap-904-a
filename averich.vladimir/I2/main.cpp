@@ -26,6 +26,7 @@ int main(int argc, char* argv[])
   else
   {
     std::cerr << "Error";
+    return 1;
   }
   readTheArray(argv[1]);
   return 0;

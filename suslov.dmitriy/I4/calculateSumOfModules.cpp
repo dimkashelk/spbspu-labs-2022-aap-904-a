@@ -1,4 +1,4 @@
-#include "sumOfModules.h"
+#include "calculateSumOfModules.h"
 #include <algorithm>
 int *countSmoothedMatrix(const int *matrix, size_t n, size_t m)
 {

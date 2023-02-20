@@ -2,8 +2,8 @@
 #include <fstream>
 #include <cstring>
 #include "scanMatrix.h"
-#include "localMinima.h"
-#include "sumOfModules.h"
+#include "scanLocalMinima.h"
+#include "calculateSumOfModules.h"
 int main(int argc, char **argv)
 {
   if (argc < 4)

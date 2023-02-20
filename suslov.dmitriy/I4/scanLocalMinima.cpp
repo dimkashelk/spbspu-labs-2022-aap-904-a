@@ -1,4 +1,4 @@
-#include "localMinima.h"
+#include "scanLocalMinima.h"
 size_t countRowsWithZeros(const size_t n, const size_t m, const int *matrix)
 {
   size_t k = 0;

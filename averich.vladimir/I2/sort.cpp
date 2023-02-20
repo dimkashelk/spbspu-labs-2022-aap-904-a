@@ -9,7 +9,7 @@ int sort(int arr[], size_t size)
     {
       if (arr[j] > arr[j + 1])
       {
-       std::swap(arr[j], arr[j + 1]);
+        std::swap(arr[j], arr[j + 1]);
       }
     }
   }

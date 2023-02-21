@@ -7,7 +7,7 @@ int main()
   char *arr = scanStr(c, std::cin);
   if (c > 0)
   {
-    std::cout << std::boolalpha << real(arr) << "\n";
+    std::cout << std::boolalpha << realNumberChecker(arr) << "\n";
   }
   else
   {

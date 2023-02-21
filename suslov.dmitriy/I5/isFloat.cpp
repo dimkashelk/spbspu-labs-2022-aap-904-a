@@ -48,7 +48,7 @@ bool mantissa(const char *arr)
   }
   return false;
 }
-bool real(const char *arr)
+bool realNumberChecker(const char *arr)
 {
   if (sign(arr))
   {

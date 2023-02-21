@@ -2,5 +2,5 @@
 #define INCREASELINESIZE_H
 #include <cstddef>
 
-char *increaseSize(const char *cstring, size_t capasity, size_t size);
+char *increaseSize(const char *cstring, size_t &capasity, size_t &size, char *newstring);
 #endif

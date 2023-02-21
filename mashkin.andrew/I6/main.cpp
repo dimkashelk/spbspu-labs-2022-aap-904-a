@@ -9,5 +9,6 @@ int main()
   const double ABSERROR = 0.00000001;
   const double STEP = 0.1;
   std::cin >> left >> right >> numberMax;
+  printTable(std::cout, left, right, numberMax, ABSERROR, STEP);
   return 0;
 }

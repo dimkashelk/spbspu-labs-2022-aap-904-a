@@ -1,10 +1,10 @@
 #include "isFloat.h"
-bool sign(const char *arr);
-bool digit(const char *arr);
-bool number(const char *arr);
-bool exponent(const char *arr);
-bool mantissa(const char *arr);
-bool sign(const char *arr)
+bool isSign(const char *arr);
+bool isDigit(const char *arr);
+bool isNumber(const char *arr);
+bool isExponent(const char *arr);
+bool isMantissa(const char *arr);
+bool isSign(const char *arr)
 {
   if (*arr == '+' || *arr == '-')
   {
@@ -12,7 +12,7 @@ bool sign(const char *arr)
   }
   return false;
 }
-bool digit(const char *arr)
+bool isDigit(const char *arr)
 {
   if ((*arr >= '0' && *arr <= '9') || !(*arr))
   {
@@ -20,7 +20,7 @@ bool digit(const char *arr)
   }
   return false;
 }
-bool number(const char *arr)
+bool isNumber(const char *arr)
 {
   if (!(*arr))
   {
@@ -32,7 +32,7 @@ bool number(const char *arr)
   }
   return digit(arr) && number(arr + 1);
 }
-bool exponent(const char *arr)
+bool isExponent(const char *arr)
 {
   if (*arr == 'E')
   {
@@ -40,7 +40,7 @@ bool exponent(const char *arr)
   }
   return false;
 }
-bool mantissa(const char *arr)
+bool isMantissa(const char *arr)
 {
   if (*arr == '.')
   {

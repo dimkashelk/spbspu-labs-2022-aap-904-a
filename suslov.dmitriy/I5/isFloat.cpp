@@ -28,15 +28,15 @@ bool isNumber(const char *arr)
   }
   if (*arr == 'E')
   {
-    return exponent(arr);
+    return isExponent(arr);
   }
-  return digit(arr) && number(arr + 1);
+  return isDigit(arr) && isNumber(arr + 1);
 }
 bool isExponent(const char *arr)
 {
   if (*arr == 'E')
   {
-    return sign(arr + 1) && number(arr + 2);
+    return isSign(arr + 1) && isNumber(arr + 2);
   }
   return false;
 }
@@ -44,15 +44,15 @@ bool isMantissa(const char *arr)
 {
   if (*arr == '.')
   {
-    return number(arr + 1);
+    return isNumber(arr + 1);
   }
   return false;
 }
 bool isReal(const char *arr)
 {
-  if (sign(arr))
+  if (isSign(arr))
   {
-    return mantissa(arr + 1);
+    return isMantissa(arr + 1);
   }
   return false;
 }

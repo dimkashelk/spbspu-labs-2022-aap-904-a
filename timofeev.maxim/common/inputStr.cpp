@@ -7,7 +7,6 @@ char *inputStr(std::istream &str, size_t &in_size)
   const size_t max_size = std::numeric_limits< size_t >::max();
   size_t capasity = 10;
   size_t size = 0;
-  char *timestr = nullptr;
   char *cstring = new char[capasity];
   str >> std::noskipws;
   do
@@ -21,7 +20,7 @@ char *inputStr(std::istream &str, size_t &in_size)
       }
       try
       {
-        char*timestr = new char[capasity + 20];
+        char *timestr = new char[capasity + 20];
         cstring = increaseSize(cstring, capasity, size, timestr);
         capasity += 20;
       }

@@ -7,7 +7,7 @@ double divSinXOnX(double x, double absError, size_t numberMax);
 class NewMemb
 {
 public:
-  NewMemb(double x);
+  explicit NewMemb(double x);
   double operator()();
 private:
   double x;

@@ -14,7 +14,7 @@ int main()
     return 1;
   }
   size_t size = 0;
-  for(size_t i = 0; cstring[i] != '\0'; i++) {
+  for (size_t i = 0; cstring[i] != '\0'; i++) {
     size += 1;
   }
 

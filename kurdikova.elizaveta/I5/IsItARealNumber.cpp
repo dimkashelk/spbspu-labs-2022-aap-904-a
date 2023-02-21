@@ -27,54 +27,54 @@ bool isEnd(char c)
   return c == '\0';
 }
 
-bool isUnsignedInteger(char* data, size_t& shift)
+bool isUnsignedInteger(const char* data, size_t& shift)
 {
-  if (!isEnd(*data) && isDigit(*data))
+  if (!isEnd(*(data + shift)) && isDigit(*(data + shift)))
   {
-    if (isDot(*(data + 1)) || isEChar(*(data + 1)) || isEnd(*(data + 1)))
+    shift++;
+    if (isDot(*(data + shift)) || isEChar(*(data + shift)) || isEnd(*(data + shift)))
     {
       return true;
     }
-    return isUnsignedInteger(++data, ++shift);
+    return isUnsignedInteger(data, shift);
   }
   return false;
 }
 
-bool isInOrder(char* data, size_t& shift)
+bool isInOrder(const char* data, size_t& shift)
 {
-  shift += 2;
-  return isEChar(*data) && isSign(*(++data)) && isUnsignedInteger((++data), shift);
+  size_t a = 0;
+  bool result =  isEChar(*data) && isSign(*(data + 1)) && isUnsignedInteger(data + 2, a);
+  shift += a + 2;
+  return result;
 }
 
-bool isMantissa(char* data, size_t& shift)
+bool isMantissa(const char* data, size_t& shift)
 {
   bool firstNumber = isUnsignedInteger(data, shift);
-  data += shift;
   if (firstNumber)
   {
-    if (isDot(*(++data)))
+    if (isDot(*(data + shift)))
     {
-      shift += 2;
-      bool secondNumber = isUnsignedInteger(++data, shift);
-      shift++;
+      shift += 1;
+      bool secondNumber = isUnsignedInteger(data, shift);
       return secondNumber;
     }
-    else if (isEChar(*(data)))
+    else if (isEChar(*(data + shift)))
     {
-      shift++;
       return true;
     }
   }
   return false;
 }
 
-bool isRealNumber(char* data)
+bool isRealNumber(const char* data)
 {
   size_t shift = 0;
-  char* currVal = data;
+  const char* currVal = data;
   if (isSign(*currVal))
   {
     currVal++;
   }
-  return isMantissa(currVal, shift) && isInOrder(currVal + shift, shift) && isEnd(*(currVal + (++shift)));
+  return isMantissa(currVal, shift) && isInOrder(currVal + shift, shift) && isEnd(*(currVal + shift));
 }

@@ -1,4 +1,4 @@
 #ifndef ISFLOAT_H
 #define ISFLOAT_H
-bool real(char *arr);
+bool real(const char *arr);
 #endif

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstddef>
+#include "printTable.h"
 
 int main()
 {
@@ -8,7 +9,15 @@ int main()
   size_t numberMax = 0;
   const double ABSERROR = 0.00000001;
   const double STEP = 0.1;
-  std::cin >> left >> right >> numberMax;
-  printTable(std::cout, left, right, numberMax, ABSERROR, STEP);
+  try
+  {
+    std::cin >> left >> right >> numberMax;
+    printTable(std::cout, left, right, numberMax, ABSERROR, STEP);
+  }
+  catch (const std::exception& ex)
+  {
+    std::cout << ex.what() << "\n";
+    return 1;
+  }
   return 0;
 }

@@ -1,4 +1,4 @@
 #ifndef ISFLOAT_H
 #define ISFLOAT_H
-bool realNumberChecker(const char *arr);
+bool isReal(const char *arr);
 #endif

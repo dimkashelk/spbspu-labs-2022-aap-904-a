@@ -1,4 +1,13 @@
+#include <iostream>
+#include <cstddef>
+
 int main()
 {
+  double left = 0.0;
+  double right = 0.0;
+  size_t numberMax = 0;
+  const double ABSERROR = 0.00000001;
+  const double STEP = 0.1;
+  std::cin >> left >> right >> numberMax;
   return 0;
 }

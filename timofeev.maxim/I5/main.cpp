@@ -2,7 +2,6 @@
 #include <cstddef>
 #include "isExpression.h"
 #include <inputStr.h>
-
 int main()
 {
   char *str = nullptr;

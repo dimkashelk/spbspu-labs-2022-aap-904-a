@@ -16,17 +16,13 @@ char* reallocMem(char* str, const size_t& new_capasity)
 
 char* pushBack(char* str, size_t& str_size, size_t& str_capasity, const char new_char)
 {
-  char* result;
+  char* result = str;
   if (str_size == str_capasity - 1)
   {
     str_capasity += CAPACITY_BLOCK;
     result = reallocMem(str, str_capasity);
   }
-  else
-  {
-    result = str;
-  }
-  str[str_size++] = new_char;
-  str[str_size] = '\0';
+  result[str_size++] = new_char;
+  result[str_size] = '\0';
   return result;
 }

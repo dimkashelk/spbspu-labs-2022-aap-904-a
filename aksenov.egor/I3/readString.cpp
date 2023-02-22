@@ -1,10 +1,12 @@
 #include "readString.h"
 #include "extendString.h"
 #include <stdexcept>
+#include <limits>
 #include <iostream>
 char *readString(std::istream &inputStr)
 {
   size_t capacity = 10;
+  const size_t max_size = std::numeric_limits< size_t >::max();
   char *cstring = new char[capacity];
   size_t size = 0;
   inputStr >> std::noskipws;
@@ -12,6 +14,11 @@ char *readString(std::istream &inputStr)
   {
     if (size == capacity)
     {
+      if (capacity == max_size)
+      {
+        delete[] cstring;
+        throw std::runtime_error("size more than max size");
+      }
       try
       {
         char *extendedstring = extendString(cstring, size, capacity + 20);

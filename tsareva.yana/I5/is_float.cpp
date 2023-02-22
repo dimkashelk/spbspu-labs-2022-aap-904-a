@@ -20,6 +20,11 @@ bool isEndString(char c)
 {
   return (c == '\0');
 }
+
+bool continueWithE(const char * data)
+{
+  return isE(*data) && continueSign(data + 1);
+}
 bool continueDigitalSecondPart(const char * data)
 {
   return isDigit(*data) && (continueDigitalSecondPart(data + 1 ) || isEndString(*(data + 1)) );

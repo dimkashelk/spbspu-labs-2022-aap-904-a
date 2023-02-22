@@ -55,5 +55,7 @@ bool continueWithDot(const char * data)
 
 bool isFloat(const char * data)
 {
-
+  bool first_option = isSign(*data) && continueWithDigit(data + 1);
+  bool second_option = isDigit (*data) && (continueWithDigit(data + 1) || continueWithE(data + 1) || continueWithDot(data + 1));
+  return first_option || second_option;
 }

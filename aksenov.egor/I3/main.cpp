@@ -24,7 +24,7 @@ int main()
     std::cerr << e.what() << "\n";
   }
   char *strwithoutspaces = new char[size];
-  strwithoutspaces = deleteSpaces(strwithoutspaces, cstring);
+  deleteSpaces(strwithoutspaces, cstring);
   std::cout << strwithoutspaces;
   delete[] cstring;
   delete[] strwithoutspaces;

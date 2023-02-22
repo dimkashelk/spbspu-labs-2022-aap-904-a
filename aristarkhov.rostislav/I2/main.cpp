@@ -46,7 +46,7 @@ int main(int argc, char** argv)
   }
   std::cout << countNegativeAfterMax(arr2, size_arr2) << "\n";
   int max_interval_arr2 = maxValueInterval(arr2, size_arr2, start_interval, end_interval);
-  if (max_interval_arr2 != start_interval - 1) 
+  if (max_interval_arr2 != start_interval - 1)
   {
     std::cout << max_interval_arr2 << "\n";
   }

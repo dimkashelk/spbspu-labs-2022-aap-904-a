@@ -22,6 +22,8 @@ int main()
   catch (const std::bad_alloc &e)
   {
     std::cerr << e.what() << "\n";
+    delete[] cstring;
+    return 1;
   }
   try
   {

@@ -39,6 +39,6 @@ char *readString(std::istream &inputStr)
     delete[] cstring;
     throw std::invalid_argument("Invalid string");
   }
-  cstring[size -1] = '\0';
+  cstring[size - 1] = '\0';
   return cstring;
 }

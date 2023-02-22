@@ -9,6 +9,7 @@ int main()
   size_t numberMax = 0;
   const double ABSERROR = 0.00000001;
   const double STEP = 0.1;
+
   try
   {
     std::cin >> left >> right >> numberMax;

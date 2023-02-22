@@ -23,9 +23,18 @@ int main()
   {
     std::cerr << e.what() << "\n";
   }
-  char *strwithoutspaces = new char[size];
-  deleteSpaces(strwithoutspaces, cstring);
-  std::cout << strwithoutspaces;
+  try
+  {
+    char *strwithoutspaces = new char[size];
+    deleteSpaces(strwithoutspaces, cstring);
+    std::cout << strwithoutspaces;
+    delete[] strwithoutspaces;
+  }
+  catch (const std::bad_alloc &e)
+  {
+    std::cout << e.what();
+    delete[] cstring;
+    return 2;
+  }
   delete[] cstring;
-  delete[] strwithoutspaces;
 }

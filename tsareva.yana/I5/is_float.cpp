@@ -1,5 +1,12 @@
 #include "is_float.h"
 #include <iostream>
+bool continueSign(const char * data);
+bool continueWithE(const char * data);
+bool continueWithDot(const char * data);
+bool continueWithDigit(const char * data);
+bool continueDigitalSecondPart(const char * data);
+bool continueDigitalFirstPart(const char * data);
+
 bool isDigit(char c)
 {
   return std::isdigit(c);
@@ -37,17 +44,13 @@ bool continueDigitalFirstPart(const char * data)
 {
   return isDigit(*data) && (continueDigitalFirstPart(data + 1) || continueWithE(data + 1));
 }
-bool continueWithE(const char * data)
-{
-  return isE(*data) && continueSign(data + 1);
-}
-bool continueDigitalFirstPart(const char * data)
-{
-  return isDigit(*data) && (continueDigitalFirstPart(data + 1) || continueWithE(data + 1));
-}
 bool continueWithDigit(const char * data)
 {
   return isDigit(*data) && (continueWithDigit(data + 1) || continueWithDot(data + 1) || continueWithE(data + 1));
+}
+bool continueWithDot(const char * data)
+{
+  return isDot(*data) && continueDigitalFirstPart(data + 1);
 }
 
 bool isFloat(const char * data)

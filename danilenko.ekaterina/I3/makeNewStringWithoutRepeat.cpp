@@ -5,10 +5,10 @@ bool copyElementsWithoutRepeat(char* destination, const char* source1, const cha
 {
   bool match = false;
   char* d = destination;
-  for (const char* i = source1; *i; i++)
+  for (const char* i = source1; *i != '\0'; i++)
   {
     match = false;
-    for (const char* j = source2; *j; j++)
+    for (const char* j = source2; *j != '\0'; j++)
     {
       if (*i == *j)
       {

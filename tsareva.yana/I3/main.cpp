@@ -1,45 +1,23 @@
 #include <iostream>
 #include <cstddef>
 #include <cstring>
-#include "golden_ratio.h"
-#include "extend_string.h"
+#include <inputString.h>
 #include "change_register.h"
 #include "generate_new_line.h"
-
 int main()
 {
   size_t capacity_1 = 10;
-  char * str_1 = new char[capacity_1];
   size_t size_1 = 0;
-  std::cin >> std::noskipws;
-  do
+  char * str_1 = nullptr;
+  try
   {
-    if (size_1 == capacity_1)
-    {
-      try
-      {
-        size_t new_capacity = goldenRatio(capacity_1);
-        char * new_str = extendString(str_1, capacity_1, new_capacity);
-        delete [] str_1;
-        str_1 = new_str;
-        capacity_1 = new_capacity;
-      }
-      catch (...)
-      {
-        delete [] str_1;
-        return 1;
-      }
-    }
-    std::cin >> str_1[size_1];
+    str_1 = inputStr(std::cin, size_1, capacity_1);
   }
-  while (std::cin && str_1[size_1++] != '\n');
-  if (!std::cin && !size_1)
+  catch (...)
   {
-    std::cout << "error";
-    delete[] str_1;
-    return 2;
+    std::cerr << "error";
+    return 1;
   }
-  str_1[size_1 - 1] = '\0';
   const char * str_2 = "abcdefgh";
   const size_t size_2 = std::strlen(str_2);
   try

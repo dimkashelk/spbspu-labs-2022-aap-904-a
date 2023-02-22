@@ -1,4 +1,5 @@
 #include "inputString.h"
+
 char *expandString(const char *oldString, size_t oldSize, size_t delta)
 {
   char *newStr = new char[oldSize + delta];

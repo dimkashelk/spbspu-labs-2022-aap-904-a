@@ -20,6 +20,11 @@ bool isEndString(char c)
 {
   return (c == '\0');
 }
+bool continueWithDigit(const char * data)
+{
+  return isDigit(*data) && (continueWithDigit(data + 1) || continueWithDot(data + 1) || continueWithE(data + 1));
+}
+
 bool isFloat(const char * data)
 {
 

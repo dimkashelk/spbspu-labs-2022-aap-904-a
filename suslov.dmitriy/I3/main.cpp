@@ -1,4 +1,5 @@
 #include <iostream>
+#include <inputString.h>
 #include "scanStr.h"
 #include "formStringFromFirstWithoutSecond.h"
 #include "formStringFromOtherSymbols.h"

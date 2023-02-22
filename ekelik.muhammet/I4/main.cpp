@@ -2,8 +2,8 @@
 #include <fstream>
 #include <cstring>
 #include <cstddef>
+#include "findLongestSeries.h"
 #include "countRowsWithEqualSum.h"
-#include "findLongestSeriesInRow.h"
 
 int main(int argc, char** argv)
 {
@@ -73,7 +73,7 @@ int main(int argc, char** argv)
       return 1;
     }
     outFile << countRowsWithEqualSum(stMatrix, rows, cols) << "\n";
-    outFile << findLongestSeriesInRow(stMatrix, rows, cols) << "\n";
+    outFile << findLongestSeries(stMatrix, rows, cols) << "\n";
     outFile.close();
     return 0;
   }
@@ -124,9 +124,10 @@ int main(int argc, char** argv)
       std::cout << ex.what() << "\n";
       return 1;
     }
-    outFile << countRowsWithEqualSum(stMatrix, rows, cols) << "\n";
-    outFile << findLongestSeriesInRow(stMatrix, rows, cols) << "\n";
+    outFile << countRowsWithEqualSum(dynMatrix, rows, cols) << "\n";
+    outFile << findLongestSeries(dynMatrix, rows, cols) << "\n";
     outFile.close();
+    delete[] dynMatrix;
     return 0;
   }
   else

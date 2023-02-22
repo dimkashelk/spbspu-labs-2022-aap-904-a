@@ -3,4 +3,3 @@
 #include <cstddef>
 size_t removeDigits(char * destination, const char * source);
 #endif
-

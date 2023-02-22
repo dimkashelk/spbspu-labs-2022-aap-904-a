@@ -1,20 +1,19 @@
-#include <ctype.h>
-#include <limits.h>
+#include <cctype>
 #include "removeDuplicateSpaces.h"
 size_t removeDuplicateSpaces(char *destination, const char *source)
 {
   size_t size = 0;
   size_t d = 0;
-  while (isspace(source[d]))
+  while (std::isspace(source[d]))
   {
     d++;
   }
   while (source[d])
   {
-    if (isspace(source[d]))
+    if (std::isspace(source[d]))
     {
       char space_char = source[d];
-      while (isspace(source[d]))
+      while (std::isspace(source[d]))
       {
         d++;
       }
@@ -26,12 +25,12 @@ size_t removeDuplicateSpaces(char *destination, const char *source)
       destination[size] = source[d];
       size++;
     }
-      d++;
+    d++;
   }
   if (size > 0)
   {
     size--;
-    while (isspace(destination[size]))
+    while (std::isspace(destination[size]))
     {
       size--;
     }

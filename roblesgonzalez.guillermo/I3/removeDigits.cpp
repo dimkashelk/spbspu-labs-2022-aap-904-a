@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cctype>
 #include "removeDigits.h"
 size_t removeDigits(char * destination, const char * source)

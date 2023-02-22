@@ -8,17 +8,15 @@ bool isSign(const char *arr)
 {
   if (*arr == '+' || *arr == '-')
   {
-    return true;
+    return <expression>;
   }
-  return false;
 }
 bool isDigit(const char *arr)
 {
   if ((*arr >= '0' && *arr <= '9') || !(*arr))
   {
-    return true;
+    return <expression>;
   }
-  return false;
 }
 bool isNumber(const char *arr)
 {

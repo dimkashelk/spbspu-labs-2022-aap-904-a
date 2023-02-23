@@ -8,10 +8,6 @@ int* readTheArray(std::string fileName, size_t& sizeOfFileArray, int* fileArray)
 {
   std::ifstream in(fileName);
   in >> sizeOfFileArray;
-  if (sizeOfFileArray == 0)
-  {
-    throw "Invalid size of array";
-  }
   if (in.eof())
   {
       throw "Empty array";

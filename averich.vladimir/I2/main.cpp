@@ -19,18 +19,10 @@ int main(int argc, char* argv[])
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
-  if (sizeOfDynArray > 0)
-  {
-    int* dynArray = generationDynArray(sizeOfDynArray);
-    std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
-    sort(dynArray, sizeOfDynArray);
-    delete[] dynArray;
-  }
-  else if (sizeOfDynArray == 0)
-  {
-    std::cerr << "Empty dynamic array" << std::endl;
-    return 1;
-  }
+  int* dynArray = generationDynArray(sizeOfDynArray);
+  std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+  sort(dynArray, sizeOfDynArray);
+  delete[] dynArray;
   size_t sizeOfFileArray = 0;
   int* array = new int[sizeOfFileArray];
   try
@@ -46,4 +38,5 @@ int main(int argc, char* argv[])
     return 1;
   }
   delete[] array;
+  return 0;
 }

@@ -16,13 +16,20 @@ int main(int argc, char* argv[])
   int defaultArray[sizeOfDefaultArray] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
   std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
   sort(defaultArray, sizeOfDefaultArray);
+
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
+  if (sizeOfDynArray == 0)
+  {
+    std::cerr << "Empty dynamic array" << std::endl;
+    return 1;
+  }
   int* dynArray = generationDynArray(sizeOfDynArray);
   std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
   sort(dynArray, sizeOfDynArray);
   delete[] dynArray;
+
   size_t sizeOfFileArray = 0;
   int* array = new int[sizeOfFileArray];
   try
@@ -34,7 +41,7 @@ int main(int argc, char* argv[])
   }
   catch (...)
   {
-    std::cerr << "File is empty or invalid array" << std::endl;
+    std::cerr << "File is empty or array in file is empty" << std::endl;
     return 1;
   }
   delete[] array;

@@ -8,17 +8,17 @@ int* readTheArray(std::string fileName, size_t& sizeOfFileArray, int* fileArray)
 {
   std::ifstream in(fileName);
   in >> sizeOfFileArray;
-  if (in.eof())
+  if (sizeOfFileArray == 0)
   {
-      throw "Empty array";
-      in.close();
+    throw "Empty file array";
+    in.close();
   }
   for (size_t i = 0; i < sizeOfFileArray; i++)
   {
     in >> fileArray[i];
-    if (!in)
+    if (!in.eof())
     {
-      throw "The array is not equals to size of it";
+      throw "File is empty";
       in.close();
     }
   }

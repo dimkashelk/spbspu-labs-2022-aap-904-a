@@ -26,9 +26,10 @@ int main(int argc, char* argv[])
     sort(dynArray, sizeOfDynArray);
     delete[] dynArray;
   }
-  else
+  else if (sizeOfDynArray == 0)
   {
-    return 0;
+    std::cerr << "Error: incorrect size of array";
+    return 1;
   }
   size_t sizeOfFileArray = 0;
   int* array = new int[sizeOfFileArray];

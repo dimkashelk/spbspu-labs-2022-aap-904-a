@@ -6,17 +6,11 @@ bool isExponent(const char *arr);
 bool isMantissa(const char *arr);
 bool isSign(const char *arr)
 {
-  if (*arr == '+' || *arr == '-')
-  {
-    return <expression>;
-  }
+  return (*arr == '+' || *arr == '-');
 }
 bool isDigit(const char *arr)
 {
-  if ((*arr >= '0' && *arr <= '9') || !(*arr))
-  {
-    return <expression>;
-  }
+  return ((*arr >= '0' && *arr <= '9') || !(*arr));
 }
 bool isNumber(const char *arr)
 {

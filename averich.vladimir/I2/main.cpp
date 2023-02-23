@@ -28,8 +28,7 @@ int main(int argc, char* argv[])
   }
   else if (sizeOfDynArray == 0)
   {
-    std::cerr << "Error: incorrect size of array";
-    return 1;
+    return 0;
   }
   size_t sizeOfFileArray = 0;
   int* array = new int[sizeOfFileArray];
@@ -42,9 +41,15 @@ int main(int argc, char* argv[])
   }
   catch (std::logic_error &err)
   {
-      return 0;
+    std::cerr << err.what() << std::endl;
+    return 1;
   }
   catch (std::runtime_error &err)
+  {
+    std::cerr << err.what() << std::endl;
+    return 1;
+  }
+  catch (std::overflow_error& err)
   {
     std::cerr << err.what() << std::endl;
     return 1;

@@ -28,7 +28,8 @@ int main(int argc, char* argv[])
   }
   else if (sizeOfDynArray == 0)
   {
-    return 0;
+    std::cerr << "Empty dynamic array" << std::endl;
+    return 1;
   }
   size_t sizeOfFileArray = 0;
   int* array = new int[sizeOfFileArray];

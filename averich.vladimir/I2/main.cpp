@@ -39,19 +39,9 @@ int main(int argc, char* argv[])
     sort(fileArray, sizeOfFileArray);
     delete[] fileArray;
   }
-  catch (std::logic_error &err)
+  catch (...)
   {
-    std::cerr << err.what() << std::endl;
-    return 1;
-  }
-  catch (std::runtime_error &err)
-  {
-    std::cerr << err.what() << std::endl;
-    return 1;
-  }
-  catch (std::overflow_error& err)
-  {
-    std::cerr << err.what() << std::endl;
+    std::cerr << "File is empty or invalid array" << std::endl;
     return 1;
   }
   delete[] array;

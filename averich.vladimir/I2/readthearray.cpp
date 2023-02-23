@@ -10,11 +10,11 @@ int* readTheArray(std::string fileName, size_t& sizeOfFileArray, int* fileArray)
   in >> sizeOfFileArray;
   if (sizeOfFileArray == 0)
   {
-    throw std::logic_error("Invalid size of array");
+    throw "Invalid size of array";
   }
   if (in.eof())
   {
-      throw std::runtime_error("Empty array");
+      throw "Empty array";
       in.close();
   }
   for (size_t i = 0; i < sizeOfFileArray; i++)
@@ -22,7 +22,7 @@ int* readTheArray(std::string fileName, size_t& sizeOfFileArray, int* fileArray)
     in >> fileArray[i];
     if (!in)
     {
-      throw std::overflow_error("The array is not equals to size of it");
+      throw "The array is not equals to size of it";
       in.close();
     }
   }

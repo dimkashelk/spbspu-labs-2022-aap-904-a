@@ -1,4 +1,4 @@
-#include <ctype.h>
+#include <cctype>
 #include "removeLatinLetters.h"
 char* removeLatinLetters(char *destination, char *source)
 {
@@ -6,7 +6,7 @@ char* removeLatinLetters(char *destination, char *source)
   char *dst = destination;
   while (*src != '\0')
   {
-    if (isalpha(*src))
+    if (!isalpha(*src))
     {
       *dst = *src;
       dst++;

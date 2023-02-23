@@ -66,16 +66,7 @@ int main()
     delete[] cstring;
     return 1;
   }
-  try
-  {
-    std::cout << "Number of unique Latin letters in the string: " << countUniqueLatinLetters(cstring) << "\n";
-  }
-  catch (const std::exception& e)
-  {
-    std::cerr << e.what() << "\n";
-    delete[] cstring;
-    return 1;
-  }
+  std::cout << "Number of unique Latin letters in the string: " << countUniqueLatinLetters(cstring) << "\n";
   delete[] cstring;
   return 0;
 }

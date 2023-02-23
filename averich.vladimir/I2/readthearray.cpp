@@ -10,7 +10,7 @@ int* readTheArray(std::string fileName, size_t& sizeOfFileArray, int* fileArray)
   in >> sizeOfFileArray;
   if (in.eof())
   {
-    throw std::exception("Empty file");
+    throw std::runtime_error("Empty file");
   }
   if (sizeOfFileArray == 0)
   {

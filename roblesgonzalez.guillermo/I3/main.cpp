@@ -46,8 +46,7 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  char* newString = nullptr;
-  newString = removeDuplicateSpaces2(cstring);
+  char* newString = removeDuplicateSpaces2(cstring);
   removeDigits(newString, newString);
   std::cout << newString << '\n';
   if (newString != nullptr) {

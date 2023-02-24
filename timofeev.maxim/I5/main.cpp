@@ -16,5 +16,6 @@ int main()
     return 2;
   }
   std::cout << std::boolalpha << isExpression(str) << "\n";
+  delete [] str;
   return 0;
 }

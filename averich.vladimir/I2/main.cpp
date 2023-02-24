@@ -20,9 +20,9 @@ int main(int argc, char* argv[])
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
-  if (sizeOfDynArray == 0)
+  if (!std::cin)
   {
-    std::cerr << "Empty dynamic array" << std::endl;
+    std::cerr << "Dynamic array is empty" << std::endl;
     return 1;
   }
   int* dynArray = generationDynArray(sizeOfDynArray);
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
   }
   catch (...)
   {
-    std::cerr << "File is empty or array in file is empty" << std::endl;
+    std::cerr << "File or array in file is empty" << std::endl;
     return 1;
   }
   delete[] array;

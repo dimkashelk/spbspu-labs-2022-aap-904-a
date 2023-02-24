@@ -4,28 +4,19 @@
 #include <iostream>
 #include <fstream>
 #include <cstddef>
-int* readTheArray(std::string fileName, size_t& sizeOfFileArray, int* fileArray)
+int* readTheArray(std::istream &in, size_t& sizeOfFileArray, int* fileArray)
 {
-  std::ifstream in(fileName);
-  if (in.eof())
-  {
-    throw "Error";
-  }
   in >> sizeOfFileArray;
   if (!in)
   {
-    throw "Error";
-  }
-  if (sizeOfFileArray == 0)
-  {
-    throw "Error";
+    throw std::length_error("Error reading file");
   }
   for (size_t i = 0; i < sizeOfFileArray; i++)
   {
     in >> fileArray[i];
     if (!in)
     {
-      throw "Error";
+      throw std::length_error("Error reading file");
     }
   }
   return fileArray;

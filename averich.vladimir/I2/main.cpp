@@ -27,19 +27,20 @@ int main(int argc, char* argv[])
     try
     {
       std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+      sort(dynArray, sizeOfDynArray);
+      delete[] dynArray;
     }
     catch (std::length_error& e)
     {
       std::cout << e.what() << std::endl;
+      delete[] dynArray;
     }
-    sort(dynArray, sizeOfDynArray);
-    delete[] dynArray;
   }
   else
   {
     std::cout << "Error" << std::endl;
-    return 1;
     delete[] dynArray;
+    return 1;
   }
 
   if (argc != 2)

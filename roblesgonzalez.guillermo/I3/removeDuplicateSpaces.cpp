@@ -1,10 +1,9 @@
 #include <cctype>
 #include <cstring>
-#include <cstdlib>
 
 char* removeDuplicateSpaces2(const char* source)
 {
-  char* destination = static_cast< char* >(malloc(strlen(source) + 1));
+  char* destination = new char[strlen(source) + 1];
   size_t size = 0;
   size_t d = 0;
   while (std::isspace(source[d]))

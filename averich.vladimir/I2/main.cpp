@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
     {
       std::cout << e.what() << std::endl;
       delete[] dynArray;
+      return 2;
     }
   }
   else

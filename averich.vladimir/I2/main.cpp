@@ -39,7 +39,6 @@ int main(int argc, char* argv[])
     std::cout << "Error dynamic array" << std::endl;
     delete[] dynArray;
   }
-  // File array
   if (argc != 2)
   {
     std::cout << "Error: incorrect file name";
@@ -55,7 +54,7 @@ int main(int argc, char* argv[])
     return 1;
   }
   int* array = new int[sizeOfFileArray];
-  try 
+  try
   {
     int* fileArray = readTheArray(in, sizeOfFileArray, array);
     std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;

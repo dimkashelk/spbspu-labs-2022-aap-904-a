@@ -5,7 +5,7 @@ int isTriplet(int arr[], size_t size)
 {
   if (size < 3)
   {
-    throw std::length_error("Error");
+    throw std::length_error("Error triplet");
   }
   size_t i = 0;
   size_t j = 1;

@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
   if (!std::cin)
   {
     std::cout << "Error input" << std::endl;
-    return 1;
+    return 2;
   }
   int* dynArray = new int[sizeOfDynArray];
   if (sizeOfDynArray > 0)
@@ -34,14 +34,12 @@ int main(int argc, char* argv[])
     {
       std::cout << e.what() << std::endl;
       delete[] dynArray;
-      return 2;
     }
   }
   else
   {
-    std::cout << "Error" << std::endl;
+    std::cout << "Error dynamic array" << std::endl;
     delete[] dynArray;
-    return 1;
   }
 
   if (argc != 2)

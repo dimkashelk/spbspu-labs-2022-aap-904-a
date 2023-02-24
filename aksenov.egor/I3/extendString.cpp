@@ -2,12 +2,9 @@
 #include <stdexcept>
 char *extendString(char *cstring, size_t size, size_t capacity)
 {
-  if (capacity < size)
-  {
-    throw std::invalid_argument("unreal");
-  }
-  char *newstring = new char[capacity];
-  for (auto i = cstring, j = newstring; i != cstring + size; ++i, ++j)
+  char *newstring = new char[capacity + 20];
+  char *j = newstring;
+  for (const char *i = cstring; i != cstring + size; ++i, ++j)
   {
     *j = *i;
   }

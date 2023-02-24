@@ -3,10 +3,11 @@
 #include <stdexcept>
 #include <limits>
 #include <iostream>
-char *readString(std::istream &inputStr)
+char *readString(std::istream &inputStr, size_t &in_size)
 {
   size_t capacity = 10;
   const size_t max_size = std::numeric_limits< size_t >::max();
+  char *newstr = nullptr;
   char *cstring = new char[capacity];
   size_t size = 0;
   inputStr >> std::noskipws;
@@ -21,16 +22,15 @@ char *readString(std::istream &inputStr)
       }
       try
       {
-        char *extendedstring = extendString(cstring, size, capacity + 20);
+        newstr = extendString(cstring, size, capacity);
         delete[] cstring;
-        cstring = extendedstring;
-        extendedstring = nullptr;
+        cstring = newstr;
         capacity += 20;
       }
       catch (...)
       {
         delete[] cstring;
-        throw std::invalid_argument("ERROR");
+        throw std::runtime_error("ERROR");
       }
     }
     inputStr >> cstring[size];
@@ -39,13 +39,14 @@ char *readString(std::istream &inputStr)
   if (!inputStr && !size)
   {
     delete[] cstring;
-    throw std::invalid_argument("Input error");
+    throw std::runtime_error("Input error");
   }
-  if (cstring[0] == '\n' || cstring[0] == '\0')
+  in_size = size;
+  cstring[size - 1] = '\0';
+  if (cstring[0] == '\n')
   {
     delete[] cstring;
-    throw std::invalid_argument("Invalid string");
+    throw std::runtime_error("Invalid string");
   }
-  cstring[size - 1] = '\0';
   return cstring;
 }

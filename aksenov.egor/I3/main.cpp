@@ -8,12 +8,12 @@ int main()
   size_t size = 0;
   try
   {
-    cstring = readString(std::cin);
+    cstring = readString(std::cin, size);
   }
-  catch (...)
+  catch (const std::runtime_error &e)
   {
-    std::cerr << "Error\n";
-    return 2;
+    std::cout << e.what() << "\n";
+    return 1;
   }
   try
   {

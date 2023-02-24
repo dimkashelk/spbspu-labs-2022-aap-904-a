@@ -8,36 +8,37 @@
 int main(int argc, char* argv[])
 {
   int defaultArray[10] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
-  std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << std::endl;
+  std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << "\n";
   sort(defaultArray, 10);
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
   if (!std::cin)
   {
-    std::cout << "Error input" << std::endl;
+    std::cout << "Error input" << "\n";
     return 2;
   }
+  std::srand(time(nullptr));
   int* dynArray = new int[sizeOfDynArray];
   if (sizeOfDynArray > 0)
   {
-    dynArray = generationDynArray(sizeOfDynArray);
+    dynArray = generationDynArray(dynArray, sizeOfDynArray);
     try
     {
-      std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << std::endl;
+      std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << "\n";
       sort(dynArray, sizeOfDynArray);
       delete[] dynArray;
     }
     catch (std::length_error& e)
     {
-      std::cout << e.what() << std::endl;
+      std::cout << e.what() << "\n";
       delete[] dynArray;
       return 2;
     }
   }
   else
   {
-    std::cout << "Error dynamic array" << std::endl;
+    std::cout << "Error dynamic array" << "\n";
     delete[] dynArray;
   }
   if (argc != 2)
@@ -51,7 +52,7 @@ int main(int argc, char* argv[])
   in >> sizeOfFileArray;
   if (!in)
   {
-    std::cout << "Error reading file" << std::endl;
+    std::cout << "Error reading file" << "\n";
     return 1;
   }
   if (sizeOfFileArray > 0)
@@ -60,13 +61,13 @@ int main(int argc, char* argv[])
     try
     {
       int* fileArray = readTheArray(in, sizeOfFileArray, array);
-      std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
+      std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << "\n";
       sort(fileArray, sizeOfFileArray);
       delete[] fileArray;
     }
     catch (const std::length_error& e)
     {
-      std::cout << e.what() << std::endl;
+      std::cout << e.what() << "\n";
       delete[] array;
       return 2;
     }

@@ -1,10 +1,8 @@
 #include "generationdynarray.hpp"
 #include <cstddef>
 #include <iostream>
-int* generationDynArray(size_t sizeOfDynArray)
+int* generationDynArray(int* dynArray, size_t sizeOfDynArray)
 {
-  int* dynArray = new int[sizeOfDynArray];
-  std::srand(time(nullptr));
   for (size_t i = 0; i < sizeOfDynArray; i++)
   {
     dynArray[i] = 1 + rand() % 9;

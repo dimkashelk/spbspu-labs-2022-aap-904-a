@@ -1,6 +1,4 @@
 #include "readthearray.hpp"
-#include "istriplet.hpp"
-#include "sort.hpp"
 #include <iostream>
 #include <fstream>
 #include <cstddef>

@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
+
 int main()
 {
   constexpr size_t initialCapacity = 10;
@@ -45,10 +46,15 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  char* newString = removeDuplicateSpaces2(cstring);
+  char* newString = nullptr;
+  newString = removeDuplicateSpaces2(cstring);
   removeDigits(newString, newString);
   std::cout << newString << '\n';
-  delete [] cstring;
-  delete [] newString;
+  if (newString != nullptr) {
+    delete [] newString;
+  }
+  if (cstring != nullptr) {
+    delete [] cstring;
+  }
   return 0;
 }

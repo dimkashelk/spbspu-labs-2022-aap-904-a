@@ -32,6 +32,7 @@ int main(int argc, char* argv[])
     {
       std::cout << e.what() << std::endl;
       delete[] dynArray;
+      return 2;
     }
   }
   else
@@ -53,19 +54,22 @@ int main(int argc, char* argv[])
     std::cout << "Error reading file" << std::endl;
     return 1;
   }
-  int* array = new int[sizeOfFileArray];
-  try
+  if (sizeOfFileArray > 0)
   {
-    int* fileArray = readTheArray(in, sizeOfFileArray, array);
-    std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
-    sort(fileArray, sizeOfFileArray);
-    delete[] fileArray;
-  }
-  catch (const std::length_error& e)
-  {
-    std::cout << e.what() << std::endl;
-    delete[] array;
-    return 2;
+    int* array = new int[sizeOfFileArray];
+    try
+    {
+      int* fileArray = readTheArray(in, sizeOfFileArray, array);
+      std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
+      sort(fileArray, sizeOfFileArray);
+      delete[] fileArray;
+    }
+    catch (const std::length_error& e)
+    {
+      std::cout << e.what() << std::endl;
+      delete[] array;
+      return 2;
+    }
   }
   return 0;
 }

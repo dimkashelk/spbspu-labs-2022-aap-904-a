@@ -45,21 +45,10 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  char* destination = nullptr;
-  try
-  {
-    destination = new char[size];
-  }
-  catch (const std::bad_alloc& e)
-  {
-    std::cerr << e.what() << '\n';
-    delete [] cstring;
-    return 1;
-  }
-  removeDuplicateSpaces(destination, cstring);
-  removeDigits(destination, destination);
-  std::cout << destination << '\n';
+  char* newString = removeDuplicateSpaces2(cstring);
+  removeDigits(newString, newString);
+  std::cout << newString << '\n';
   delete [] cstring;
-  delete [] destination;
+  delete [] newString;
   return 0;
 }

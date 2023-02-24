@@ -8,9 +8,8 @@
 int main(int argc, char* argv[])
 {
   int defaultArray[10] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
-  std::cout << "Count of triplets: " << isTriplet(defaultArray, sizeOfDefaultArray) << " in the static array" << std::endl;
-  sort(defaultArray, sizeOfDefaultArray);
-
+  std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << std::endl;
+  sort(defaultArray, 10);
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
@@ -40,7 +39,7 @@ int main(int argc, char* argv[])
     std::cout << "Error dynamic array" << std::endl;
     delete[] dynArray;
   }
-
+  // File array
   if (argc != 2)
   {
     std::cout << "Error: incorrect file name";
@@ -50,8 +49,13 @@ int main(int argc, char* argv[])
   std::ifstream in(fileName);
   size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
+  if (!in)
+  {
+    std::cout << "Error reading file" << std::endl;
+    return 1;
+  }
   int* array = new int[sizeOfFileArray];
-  try
+  try 
   {
     int* fileArray = readTheArray(in, sizeOfFileArray, array);
     std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << std::endl;
@@ -62,8 +66,7 @@ int main(int argc, char* argv[])
   {
     std::cout << e.what() << std::endl;
     delete[] array;
-    return 1;
+    return 2;
   }
-  delete[] array;
   return 0;
 }

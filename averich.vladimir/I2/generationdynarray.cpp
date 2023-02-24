@@ -1,8 +1,6 @@
 #include "generationdynarray.hpp"
-#include <iostream>
 #include <cstddef>
-#include "sort.hpp"
-#include "istriplet.hpp"
+#include <iostream>
 int* generationDynArray(size_t sizeOfDynArray)
 {
   int* dynArray = new int[sizeOfDynArray];

@@ -1,5 +1,6 @@
 #include "is_float.h"
 #include <iostream>
+
 bool continueSign(const char * data);
 bool continueWithE(const char * data);
 bool continueWithDot(const char * data);

@@ -1,11 +1,13 @@
 #include "input_string.h"
-#include "golden_ratio.h"
-#include "extend_string.h"
-char * inputStr(std::istream & in, size_t & size, size_t & capacity)
+#include <stdexcept>
+#include <golden_ratio.h>
+#include <extend_string.h>
+
+char * inputStr(std::istream & in)
 {
-  capacity = 10;
+  size_t capacity = 10;
   char * str_1 = new char[capacity];
-  size = 0;
+  size_t size = 0;
   in >> std::noskipws;
   do
   {

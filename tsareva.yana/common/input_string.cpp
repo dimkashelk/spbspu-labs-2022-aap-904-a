@@ -1,7 +1,7 @@
-#include "inputString.h"
+#include "input_string.h"
 #include "golden_ratio.h"
 #include "extend_string.h"
-char* inputStr(std::istream &in, size_t &size, size_t &capacity)
+char * inputStr(std::istream & in, size_t & size, size_t & capacity)
 {
   capacity = 10;
   char * str_1 = new char[capacity];

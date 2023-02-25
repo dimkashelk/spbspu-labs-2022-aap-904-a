@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <cstring>
-#include <inputString.h>
+#include <input_string.h>
 #include "change_register.h"
 #include "generate_new_line.h"
 int main()

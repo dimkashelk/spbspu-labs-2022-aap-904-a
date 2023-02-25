@@ -6,18 +6,17 @@
 #include "generate_new_line.h"
 int main()
 {
-  size_t capacity_1 = 10;
-  size_t size_1 = 0;
   char * str_1 = nullptr;
   try
   {
-    str_1 = inputStr(std::cin, size_1, capacity_1);
+    str_1 = inputString(std::cin);
   }
   catch (...)
   {
     std::cerr << "error";
     return 1;
   }
+  const size_t size_1 = std::strlen(str_1);
   const char * str_2 = "abcdefgh";
   const size_t size_2 = std::strlen(str_2);
   try

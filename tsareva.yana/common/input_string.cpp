@@ -3,15 +3,15 @@
 #include <golden_ratio.h>
 #include <extend_string.h>
 
-char * inputStr(std::istream & in)
+char * inputString(std::istream & in)
 {
   size_t capacity = 10;
   char * str_1 = new char[capacity];
-  size_t size = 0;
+  size_t size_1 = 0;
   in >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size_1 == capacity)
     {
       try
       {
@@ -27,14 +27,14 @@ char * inputStr(std::istream & in)
         throw;
       }
     }
-    in >> str_1[size];
+    in >> str_1[size_1];
   }
-  while (in && str_1[size++] != '\n');
-  if (!in && !size)
+  while (in && str_1[size_1++] != '\n');
+  if (!in && !size_1)
   {
     delete[] str_1;
     throw std::runtime_error("error");
   }
-  str_1[size - 1] = '\0';
+  str_1[size_1 - 1] = '\0';
   return str_1;
 }

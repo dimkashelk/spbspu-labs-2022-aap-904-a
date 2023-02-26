@@ -17,6 +17,11 @@ int main()
     std::cerr << "\nError! Failed to read parameter 'X'\n";
     return 1;
   }
+  if (left >= right)
+  {
+    std::cerr << "\nError! Incorrect interval\n";
+    return 1;
+  }
   if (left <= 2 || right >= 3)
   {
     std::cerr << "Error! The entered interval is not included in the interval (2, 3)\n";

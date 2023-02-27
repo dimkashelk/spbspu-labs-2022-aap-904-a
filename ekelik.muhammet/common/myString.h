@@ -1,5 +1,5 @@
-#ifndef MY_STRING_H
-#define MY_STRING_H
+#ifndef MYSTRING_H
+#define MYSTRING_H
 
 #include <istream>
 #include <cstddef>

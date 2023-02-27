@@ -1,9 +1,9 @@
-#include "common_symbols.h"
+#include "commonSymbols.h"
 
 #include <cstddef>
 #include <cstring>
 
-char* find_common_symbols(char* my_common_symbols, const char* source1, size_t &symbols)
+char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
   size_t count[256] = {};
   size_t len = std::strlen(source1);
@@ -22,7 +22,7 @@ char* find_common_symbols(char* my_common_symbols, const char* source1, size_t &
     char c = i;
     for (size_t k = 0; k < count[i]; k++)
     {
-      my_common_symbols[j++] = c;
+      myCommonSymbols[j++] = c;
       if (j == 3)
       {
         break;
@@ -33,6 +33,6 @@ char* find_common_symbols(char* my_common_symbols, const char* source1, size_t &
       break;
     }
   }
-  my_common_symbols[symbols] = '\0';
-  return my_common_symbols;
+  myCommonSymbols[symbols] = '\0';
+  return myCommonSymbols;
 }

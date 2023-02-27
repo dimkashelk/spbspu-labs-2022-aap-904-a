@@ -8,7 +8,7 @@ int main()
     size_t str1_size;
     try
     {
-        input_str = getLineFromFile();
+        input_str = getLineFromFile(&str1_size);
     }
     catch (const std::bad_alloc& e)
     {

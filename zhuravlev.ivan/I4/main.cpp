@@ -44,8 +44,7 @@ int main(int argc, char* argv[])
   {
     if (!inputArraySize(n, m))
     {
-      std::cerr << "Error with input...";
-      return 1;
+      std::cout << "Error with input...";
     }
     int arr[1000];
     try
@@ -79,8 +78,7 @@ int main(int argc, char* argv[])
   {
     if (!inputArraySize(n, m))
     {
-      std::cerr << "Error with input...";
-      return 1;
+      std::cout << "Error with input...";
     }
     int* dyn_array = new int[n * m];
     for (size_t i = 0; i < n; i++)

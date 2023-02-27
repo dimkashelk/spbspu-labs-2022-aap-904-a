@@ -1,5 +1,5 @@
-#include <iostream>
 #include "isFloat.h"
+#include <iostream>
 bool isSign(const char *arr);
 bool isDigit(const char *arr);
 bool isNumber(const char *arr);
@@ -27,7 +27,7 @@ bool isNumber(const char *arr)
 }
 bool isExponent(const char *arr)
 {
-    return (*arr == 'E') && (isSign(arr + 1) && isNumber(arr + 2));
+  return (*arr == 'E') && (isSign(arr + 1) && isNumber(arr + 2));
 }
 bool isMantissa(const char *arr)
 {

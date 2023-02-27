@@ -9,20 +9,16 @@ int main()
   size_t size = 0;
   size_t capacity = 10;
 
-  char* source1 = nullptr;
-  try
+  char* source1 = makeMyString(size, capacity, std::cin);
+  if (source1[0] == '\n')
   {
-    source1 = makeMyString(size, capacity, std::cin);
-  }
-  catch (const std::bad_alloc &e)
-  {
-    std::cerr << e.what() << "\n";
     delete[] source1;
-    return 1;
+    std::cerr << "Error: empty string \n";
+    return 2;
   }
 
   // Task 5
-  char* source2 = nullptr;
+  char source2[] = "0123456789abcdefglmn";
   char* mySymbols = nullptr;
   try
   {

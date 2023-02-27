@@ -6,33 +6,32 @@
 char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
   size_t count[256] = {};
-  size_t len = std::strlen(source1);
+  size_t len = symbols;
   for (size_t i = 0; i < len; i++)
   {
     size_t index = source1[i];
     count[index]++;
   }
   size_t j = 0;
-  for (int i = 255; i >= 0; i--)
+  for (int k = 0; k < 3; k++)
   {
-    if (count[i] == 0)
+    size_t maxCount = 0;
+    char maxChar;
+    for (int i = 0; i < 256; i++)
     {
-      continue;
-    }
-    char c = i;
-    for (size_t k = 0; k < count[i]; k++)
-    {
-      myCommonSymbols[j++] = c;
-      if (j == 3)
+      if (count[i] > maxCount)
       {
-        break;
+        maxCount = count[i];
+        maxChar = i;
       }
     }
-    if (j == 3)
+    if (maxCount == 0)
     {
       break;
     }
+    myCommonSymbols[j++] = maxChar;
+    count[maxChar] = 0;
   }
-  myCommonSymbols[symbols] = '\0';
+  myCommonSymbols[j] = '\0';
   return myCommonSymbols;
 }

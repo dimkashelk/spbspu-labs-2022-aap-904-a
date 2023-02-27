@@ -1,8 +1,8 @@
 #include "removeLatinLetters.h"
 #include <cctype>
-char* removeLatinLetters(char *destination, const char *source)
+char* removeLatinLetters(char *destination,const char *source)
 {
-  char *src = source;
+  char *src = const_cast< char* >(source);
   char *dst = destination;
   while (*src != '\0')
   {

@@ -2,7 +2,7 @@
 
 char* getLineFromFile(size_t* const result_size_ptr, std::istream& in)
 {
-  char* const result = new char[CAPACITY_BLOCK];
+  char* result = new char[CAPACITY_BLOCK];
   size_t result_size = 0;
   size_t result_capasity = CAPACITY_BLOCK;
   char cur_char = '\0';

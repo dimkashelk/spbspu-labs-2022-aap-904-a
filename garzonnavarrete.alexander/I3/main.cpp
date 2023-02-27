@@ -74,7 +74,7 @@ int main()
   {
     ifs.open("input_str3.txt");
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << "Mission 3 failed: could not open file. Trying mission 12." << endl;
     goto maybe_12;
@@ -84,7 +84,7 @@ int main()
   {
     s = new char[maxn];
   }
-  catch(exception e)
+  catch(exception& e)
   {
     ifs.close();
     cout << e.what() << endl;
@@ -94,7 +94,7 @@ int main()
   {
     c = new char[maxn];
   }
-  catch(exception e)
+  catch(exception& e)
   {
     ifs.close();
     delete s;
@@ -112,7 +112,7 @@ int main()
     ofs << c;
     ofs.close();
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << e.what() << endl;
   }
@@ -124,7 +124,7 @@ int main()
   {
     ifs.open("input_str12.txt");
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << "Mission 12 failed: could not open file." << endl;
     return -1;
@@ -134,7 +134,7 @@ int main()
   {
     s = new char[maxn];
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << e.what() << endl;
     ifs.close();
@@ -144,7 +144,7 @@ int main()
   {
     s2 = new char[maxn];
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << e.what() << endl;
     delete s;
@@ -159,7 +159,7 @@ int main()
   {
     c = new char[maxn * 2];
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << e.what() << endl;
     delete s;
@@ -176,7 +176,7 @@ int main()
     ofs << c;
     ofs.close();
   }
-  catch(exception e)
+  catch(exception& e)
   {
     cout << e.what() << endl;
   }

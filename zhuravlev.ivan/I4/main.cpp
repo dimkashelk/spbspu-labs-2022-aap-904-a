@@ -42,10 +42,10 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
-    int arr[1000];
-    try
+    if (inputArraySize(n, m))
     {
-      if (inputArraySize(n, m))
+      int arr[1000];
+      try
       {
         for (size_t i = 0; i < n; ++i)
         {
@@ -66,16 +66,15 @@ int main(int argc, char* argv[])
           return 1;
         }
       }
-      else
+      catch (std::exception & e)
       {
-        std::cerr << "Smth wrong with input/n";
-        return 1;
+        std::cerr << e.what();
+        return 2;
       }
     }
-    catch (std::exception & e)
+    else
     {
-      std::cerr << e.what();
-      return 2;
+      std::cerr << "Something wrong with input...\n";
     }
   }
   if (!std::strcmp(argv[1], "2"))

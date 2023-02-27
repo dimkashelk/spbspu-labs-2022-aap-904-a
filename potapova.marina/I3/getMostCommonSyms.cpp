@@ -2,48 +2,34 @@
 
 char* getMostCommonSyms(char* dest, const char* str)
 {
-  BitArr256 charsOccur = {0, 0, 0, 0};
-  std::pair< char, size_t > common_syms[3];
-  for (const char* cur_search_sym_ptr = str;
-      *cur_search_sym_ptr != '\0';
-      ++cur_search_sym_ptr)
+  size_t counts[127];
+  for (size_t& count : counts)
   {
-    size_t count_commons_sym = 1;
-    if (!isSetBit(charsOccur, static_cast<uint8_t>(*cur_search_sym_ptr)))
+    count = 0;
+  }
+  std::pair< char, size_t > ans_syms_with_counts[3];
+  for (; *str != '\0'; ++str)
+  {
+    std::pair< char, size_t > cur_elem_with_count(*str, ++counts[*str]);
+    for (auto& ans_sym_with_count : ans_syms_with_counts)
     {
-      setBitToOne(charsOccur, static_cast<uint8_t>(*cur_search_sym_ptr));
-      for (const char* cur_sym_ptr = cur_search_sym_ptr + 1;
-          *cur_sym_ptr != '\0';
-          ++cur_sym_ptr)
+      if (cur_elem_with_count.first == ans_sym_with_count.first)
       {
-        if (*cur_search_sym_ptr == *cur_sym_ptr)
-        {
-          ++count_commons_sym;
-        }
+        break;
       }
-      for (auto& common_sym : common_syms)
+      if (cur_elem_with_count.second > ans_sym_with_count.second)
       {
-        if (count_commons_sym > common_sym.second)
-        {
-          common_sym.first = *cur_search_sym_ptr;
-          common_sym.second = count_commons_sym;
-          break;
-        }
+        std::swap(ans_sym_with_count, cur_elem_with_count);
       }
     }
   }
-  unsigned int count_valid_syms = 0;
-  auto common_sym_ptr = common_syms;
+  const std::pair< char, size_t >* ans_sym_with_count_ptr = ans_syms_with_counts;
   for (char* dest_sym_ptr = dest;
-      common_sym_ptr < common_syms + 3;
-      ++common_sym_ptr, ++dest_sym_ptr)
+    ans_sym_with_count_ptr < ans_syms_with_counts + 3;
+    ++ans_sym_with_count_ptr, ++dest_sym_ptr)
   {
-    if (common_sym_ptr->first != '\0')
-    {
-      *dest_sym_ptr = common_sym_ptr->first;
-      ++count_valid_syms;
-    }
+    *dest_sym_ptr = ans_sym_with_count_ptr->first;
   }
-  dest[count_valid_syms] = '\0';
+  dest[3] = '\0';
   return dest;
 }

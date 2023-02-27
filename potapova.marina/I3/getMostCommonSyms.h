@@ -2,8 +2,8 @@
 #define GETMOSTCOMMONSYMS_H
 
 #include <cstddef>
+#include <cstdint>
 #include <utility>
-#include "bitArrayOperations.h"
 
 char* getMostCommonSyms(char* dest, const char* str);
 

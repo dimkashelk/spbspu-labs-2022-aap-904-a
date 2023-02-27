@@ -4,11 +4,11 @@
 char* makeNewCapacityCString(char* cstring, size_t& capacity, size_t size)
 {
   char* newstring = new char[capacity + 20];
-  for (size_t i = 0; i < size; ++i)
+  for (auto i = cstring, j = newstring; i != cstring + size; ++i, ++j)
   {
-    newstring[i] = cstring[i];
+    *j = *i;
   }
-  newstring[size] = '\0';
+  capacity += 20;
   return newstring;
 }
 int main()

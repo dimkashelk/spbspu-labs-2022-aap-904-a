@@ -1,12 +1,12 @@
-#include <cctype>
 #include "removeLatinLetters.h"
-char* removeLatinLetters(char *destination, char *source)
+#include <cctype>
+char* removeLatinLetters(char *destination, const char *source)
 {
   char *src = source;
   char *dst = destination;
   while (*src != '\0')
   {
-    if (!isalpha(*src))
+    if (!std::isalpha(*src))
     {
       *dst = *src;
       dst++;

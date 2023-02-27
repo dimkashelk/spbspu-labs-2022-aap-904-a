@@ -1,12 +1,16 @@
-#include <iostream>
 #include "isFloat.h"
 bool isSign(const char *arr);
+bool isDigit(const char *arr);
 bool isNumber(const char *arr);
 bool isExponent(const char *arr);
 bool isMantissa(const char *arr);
 bool isSign(const char *arr)
 {
   return (*arr == '+' || *arr == '-');
+}
+bool isDigit(const char *arr)
+{
+  return std::isdigit(*arr) || !*arr;
 }
 bool isNumber(const char *arr)
 {
@@ -18,7 +22,7 @@ bool isNumber(const char *arr)
   {
     return isExponent(arr);
   }
-  return std::isdigit(arr) && isNumber(arr + 1);
+  return isDigit(arr) && isNumber(arr + 1);
 }
 bool isExponent(const char *arr)
 {

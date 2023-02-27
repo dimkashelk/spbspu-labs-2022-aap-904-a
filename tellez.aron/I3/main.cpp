@@ -8,8 +8,12 @@ char* makeNewCapacityCString(char* cstring, size_t& capacity, size_t size)
   {
     *j = *i;
   }
+  char* oldstring = cstring;
+  cstring = newstring;
+  newstring = nullptr;
   capacity += 20;
-  return newstring;
+  delete[] oldstring;
+  return cstring;
 }
 int main()
 {

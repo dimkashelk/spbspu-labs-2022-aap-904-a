@@ -13,13 +13,13 @@ int isTriplet(int arr[], size_t size)
   int countOfTriplet = 0;
   while (k != size)
   {
-   if (arr[i] > arr[j] && arr[j] > arr[k])
-   {
-     countOfTriplet += 1;
-   }
-   i++;
-   j++;
-   k++;
+    if (arr[i] > arr[j] && arr[j] > arr[k])
+    {
+      countOfTriplet += 1;
+    }
+    i++;
+    j++;
+    k++;
   }
   return countOfTriplet;
 }

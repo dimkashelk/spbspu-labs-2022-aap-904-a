@@ -1,4 +1,3 @@
-#include <iostream>
 #include "workWithStrs.h"
 #include "workWithIO.h"
 

@@ -1,5 +1,5 @@
 #include "is_float.h"
-#include <iostream>
+#include <cctype>
 
 bool continueSign(const char * data);
 bool continueWithE(const char * data);
@@ -14,7 +14,7 @@ bool isDigit(char c)
 }
 bool isSign(char c)
 {
-  return (c== '+' || c == '-');
+  return (c == '+' || c == '-');
 }
 bool isDot(char c)
 {

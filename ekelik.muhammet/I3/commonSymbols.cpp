@@ -5,17 +5,17 @@
 
 char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
-  int count[256] = {};
+  size_t count[256] = {};
   size_t len = symbols;
   for (size_t i = 0; i < len; i++)
   {
-    int index = source1[i];
+    size_t index = source1[i];
     count[index]++;
   }
   size_t j = 0;
   for (size_t k = 0; k < 3; k++)
   {
-    int maxCount = 0;
+    size_t maxCount = 0;
     size_t maxChar;
     for (size_t i = 0; i < 256; i++)
     {

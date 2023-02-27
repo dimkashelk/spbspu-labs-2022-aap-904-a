@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-char* findUncommonSymbols(char* mySymbols, const char* source1);
+char* findUncommonSymbols(char* mySymbols, const char* source1, const char* source2);
 
 #endif

@@ -9,16 +9,20 @@ int main()
   size_t size = 0;
   size_t capacity = 10;
 
-  char* myString = makeMyString(size, capacity, std::cin);
-
-  if (myString[0] == '\n')
+  char* source1 = nullptr;
+  try
   {
-    delete[] myString;
-    std::cerr << "Error: empty string \n";
-    return 2;
+    source1 = makeMyString(size, capacity, std::cin);
+  }
+  catch (const std::bad_alloc &e)
+  {
+    std::cerr << e.what() << "\n";
+    delete[] source1;
+    return 1;
   }
 
   // Task 5
+  char* source2 = nullptr;
   char* mySymbols = nullptr;
   try
   {
@@ -28,10 +32,10 @@ int main()
   catch (const std::bad_alloc &e)
   {
     std::cerr << "Error: \n" << e.what();
-    delete[] myString;
+    delete[] source1;
     return 1;
   }
-  findUncommonSymbols(mySymbols, myString);
+  findUncommonSymbols(mySymbols, source1, source2);
   std::cout << "Uncommon symbols: " << mySymbols << '\n';
 
   // Task 19
@@ -45,14 +49,14 @@ int main()
   catch (const std::bad_alloc &e)
   {
     std::cerr << "Error: \n" << e.what();
-    delete[] myString;
+    delete[] source1;
     delete[] mySymbols;
     return 1;
   }
-  findCommonSymbols(myCommonSymbols, myString, symbols);
+  findCommonSymbols(myCommonSymbols, source1, symbols);
   std::cout << "Common symbols: " << myCommonSymbols << '\n';
 
-  delete[] myString;
+  delete[] source1;
   delete[] mySymbols;
   delete[] myCommonSymbols;
   return 0;

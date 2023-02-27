@@ -50,9 +50,9 @@ int main()
     destination = removeLatinLetters(destination, cstring);
     if (destination[0] != '\0')
     {
-      std::cout << "Text without Latin letters: " << destination << "\n";
+      std::cout << "Text without latin letters: " << destination << "\n";
     }
-    else std::cout << "Error while removing Latin letters \n";
+    else std::cout << "Error while removing latin letters \n";
     delete[] destination;
     destination = nullptr;
   }

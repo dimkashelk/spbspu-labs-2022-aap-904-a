@@ -1,3 +1,4 @@
+#include <iostream>
 #include "isFloat.h"
 bool isSign(const char *arr);
 bool isNumber(const char *arr);

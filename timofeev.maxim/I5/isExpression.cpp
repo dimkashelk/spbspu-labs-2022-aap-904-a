@@ -46,7 +46,8 @@ bool doMultip(const char *data)
 }
 bool isTerm(const char *data)
 {
-  return doMultip(data) || (isOpenBar(*data) && isMulSign(*data) && isTerm(data + 1) && isCloseBar(*data)) || (isOpenBar(*data) && isDivSign(*data) && isTerm(data + 1) && isCloseBar(*data));
+  return doMultip(data) || (isOpenBar(*data) && isMulSign(*data) && isTerm(data + 1) && isCloseBar(*data))
+    || (isOpenBar(*data) && isDivSign(*data) && isTerm(data + 1) && isCloseBar(*data));
 }
 bool isExpression(const char *data)
 {

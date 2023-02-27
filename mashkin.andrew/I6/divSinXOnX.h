@@ -8,12 +8,11 @@ class DivisionSinXOnX
 {
 public:
   explicit DivisionSinXOnX(double x);
-  double operator()();
+  double operator()(double& res, double absError, size_t numberMax);
 private:
   double x_;
   double powX_;
   size_t factorial_;
   size_t var_;
-  short int sign_;
 };
 #endif

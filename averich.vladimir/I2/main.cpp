@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstddef>
 #include <limits>
-#include "sortOutput.hpp"
+#include "sortoutput.hpp"
 #include "istriplet.hpp"
 #include "readthearray.hpp"
 #include "generationdynarray.hpp"

@@ -1,5 +1,6 @@
 #include "workWithIO.h"
 #include "getMostCommonSyms.h"
+#include "addAllLatinLetters.h"
 
 int main()
 {

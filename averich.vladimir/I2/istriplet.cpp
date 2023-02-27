@@ -8,11 +8,11 @@ int isTriplet(int arr[], size_t size)
     throw std::length_error("Error triplet");
   }
   size_t i = 0;
-  size_t j = 1;
-  size_t k = 2;
   int countOfTriplet = 0;
-  while (k != size)
+  while (i != size)
   {
+    size_t j = 1;
+    size_t k = 2;
     if (arr[i] > arr[j] && arr[j] > arr[k])
     {
       countOfTriplet += 1;

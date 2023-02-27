@@ -66,20 +66,12 @@ int main(int argc, char* argv[])
         file_matrix_out << "empty file";
         return 0;
       }
-<<<<<<< HEAD
       int* matrix = nullptr;
-=======
-      int *matrix = nullptr;
->>>>>>> parent of 20dd5ff0 ( delete)
       try
       {
         matrix = new int[column * line];
       }
-<<<<<<< HEAD
       catch (const std::bad_alloc& e)
-=======
-      catch (const std::bad_alloc &e)
->>>>>>> parent of 20dd5ff0 ( delete)
       {
         std::cout << e.what();
         return 1;
@@ -94,15 +86,6 @@ int main(int argc, char* argv[])
         delete[] matrix;
         return 1;
       }
-<<<<<<< HEAD
-=======
-      std::ofstream file_matrix_out(argv[3]);
-      if (!file_matrix_out)
-      {
-        std::cout << "number writes with an error";
-        return 1;
-      }
->>>>>>> parent of 20dd5ff0 ( delete)
       file_matrix_out << countUniqueElOfCol(matrix, column, line) << "\n";
       delete[] matrix;
     }

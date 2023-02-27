@@ -16,7 +16,7 @@ int main()
     std::cerr << "error";
     return 1;
   }
-  const size_t size_1 = std::strlen(str_1);
+  const size_t size_1 = std::strlen(str_1) + 1;
   const char * str_2 = "abcdefgh";
   const size_t size_2 = std::strlen(str_2);
   try

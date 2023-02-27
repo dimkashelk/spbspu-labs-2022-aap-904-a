@@ -29,17 +29,7 @@ int main()
 
   //1
   char source2[] = "abcd";
-  char* ptr1 = source1;
-  char* ptr2 = source2;
-  while (*ptr1)
-  {
-    ptr1++;
-  }
-  while (*ptr2)
-  {
-    ptr2++;
-  }
-  char string_size1 = (ptr1 - source1) + (ptr2 - source2) + 1;
+  size_t string_size1 = 0;
   char* destination1 = nullptr;
   try
   {

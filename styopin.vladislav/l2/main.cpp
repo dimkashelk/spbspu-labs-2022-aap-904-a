@@ -29,6 +29,7 @@ int main(int argc, char* arr[])
   bool ans1 = isThereEqualElements(arr1, size1);
   std::cout << (ans1 ? ansTrue : ansFalse) << "\n";
 
+  std::srand(time(nullptr))
   size_t shift2 = 0;
   int* arr2 = new int[size2];
   for (size_t i = 0; i < size2; i++)

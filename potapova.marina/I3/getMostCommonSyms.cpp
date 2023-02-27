@@ -10,7 +10,7 @@ char* getMostCommonSyms(char* dest, const char* str)
   std::pair< char, size_t > ans_syms_with_counts[3];
   for (; *str != '\0'; ++str)
   {
-    std::pair< char, size_t > cur_elem_with_count(*str, ++counts[*str]);
+    std::pair< char, size_t > cur_elem_with_count(*str, ++counts[static_cast<size_t>(*str)]);
     for (auto& ans_sym_with_count : ans_syms_with_counts)
     {
       if (cur_elem_with_count.first == ans_sym_with_count.first)

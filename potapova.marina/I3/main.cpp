@@ -29,8 +29,8 @@ int main()
   char* str2;
   try
   {
-    str1 = stdinGetLine(str1_size);
-    str2 = stdinGetLine(str2_size);
+    str1 = getLineFromFile(str1_size);
+    str2 = getLineFromFile(str2_size);
   }
   catch(const std::bad_alloc& e)
   {

@@ -1,3 +1,6 @@
+#include <cstddef>
+#include <cstdint>
+#include <utility>
 #include "getMostCommonSyms.h"
 
 char* getMostCommonSyms(char* dest, const char* str)

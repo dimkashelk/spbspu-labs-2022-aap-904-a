@@ -1,3 +1,4 @@
+#include <cctype>
 #include "addAllLatinLetters.h"
 
 void checkLatinLets(bool* const letters_existence, const char* str)

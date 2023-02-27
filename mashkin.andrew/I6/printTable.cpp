@@ -25,7 +25,7 @@ void printTable(std::ostream& out, double left, double right, size_t numberMax, 
     {
       printRowInTable(out, x, absError, numberMax);
     }
-    catch (const std::exception& e)
+    catch (...)
     {
       throw;
     }
@@ -34,7 +34,7 @@ void printTable(std::ostream& out, double left, double right, size_t numberMax, 
   {
     printRowInTable(out, right, absError, numberMax);
   }
-  catch (const std::exception& e)
+  catch (...)
   {
     throw;
   }

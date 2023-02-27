@@ -7,7 +7,7 @@ double divSinXOnX(double x, double absError, size_t numberMax)
   {
     throw std::logic_error("X is more than board of values");
   }
-  NewMemb newMembOfRow(x);
+  DivisionSinXOnX newMembOfRow(x);
   double res = 0.0;
   double memb = 0.0;
   for (size_t i = 0; i < numberMax; i++)
@@ -22,20 +22,20 @@ double divSinXOnX(double x, double absError, size_t numberMax)
   throw std::logic_error("you have gone beyond the maximum number of terms");
 }
 
-NewMemb::NewMemb(double x) :
-  x(x),
-  powX(1),
-  factorial(1),
-  var(1),
-  sign(0)
+DivisionSinXOnX::DivisionSinXOnX(double x):
+  x_(x),
+  powX_(1),
+  factorial_(1),
+  var_(1),
+  sign_(0)
 {}
 
-double NewMemb::operator()()
+double DivisionSinXOnX::operator()()
 {
-  double memb = sign % 2 ? -(powX / factorial) : powX / factorial;
-  sign += 1;
-  powX *= (x * x);
-  var += 2;
-  factorial *= (var * (var - 1));
+  double memb = sign_ % 2 ? -(powX_ / factorial_) : powX_ / factorial_;
+  sign_ += 1;
+  powX_ *= (x_ * x_);
+  var_ += 2;
+  factorial_ *= (var_ * (var_ - 1));
   return memb;
 }

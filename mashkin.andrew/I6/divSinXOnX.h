@@ -4,16 +4,16 @@
 
 double divSinXOnX(double x, double absError, size_t numberMax);
 
-class NewMemb
+class DivisionSinXOnX
 {
 public:
-  explicit NewMemb(double x);
+  explicit DivisionSinXOnX(double x);
   double operator()();
 private:
-  double x;
-  double powX;
-  size_t factorial;
-  size_t var;
-  short int sign;
+  double x_;
+  double powX_;
+  size_t factorial_;
+  size_t var_;
+  short int sign_;
 };
 #endif

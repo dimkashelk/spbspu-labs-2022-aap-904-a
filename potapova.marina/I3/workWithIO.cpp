@@ -2,21 +2,12 @@
 
 char* getLineFromFile(size_t* const result_size_ptr, std::istream& in)
 {
-  char* result;
-  try
-  {
-    result = new char[CAPACITY_BLOCK];
-  }
-  catch (const std::bad_alloc& e)
-  {
-    std::cerr << "Allocation failed: " << e.what() << '\n';
-    return 1;
-  }
+  char* const result = new char[CAPACITY_BLOCK];
   size_t result_size = 0;
   size_t result_capasity = CAPACITY_BLOCK;
   char cur_char = '\0';
-  std::cin >> std::noskipws;
-  while (std::cin >> cur_char && cur_char != '\n')
+  in >> std::noskipws;
+  while (in >> cur_char && cur_char != '\n')
   {
     result = pushBack(result, result_size, result_capasity, cur_char);
   }

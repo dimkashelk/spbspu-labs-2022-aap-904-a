@@ -15,14 +15,14 @@ bool isNecessaryLetter(const char* source, char letter)
 
 char* makeNewStringWithMissingLetters(char* destination, const char* source)
 {
-  size_t new_element = 0;
+  char* new_dest = destination;
   for (char i = 'a'; i <= 'z'; i++)
   {
     if (!isNecessaryLetter(source, i))
     {
-      destination[new_element++] = i;
+      *new_dest++ = i;
     }
   }
-  destination[new_element] = '\0';
+  *new_dest = '\0';
   return destination;
 }

@@ -29,11 +29,11 @@ bool copyElementsWithoutRepeat(char* destination, const char* source1, const cha
 char* makeNewStringWithoutRepeat(char* destination, const char* source1, const char* source2)
 {
   copyElementsWithoutRepeat(destination, source1, source2);
-  size_t dest_lenght = 0;
-  for (char* i = destination; *i != '\0'; i++)
+  char* d = destination;
+  while (*d != '\0')
   {
-    dest_lenght++;
+    ++d;
   }
-  copyElementsWithoutRepeat(destination + dest_lenght, source2, source1);
+  copyElementsWithoutRepeat(d, source2, source1);
   return destination;
 }

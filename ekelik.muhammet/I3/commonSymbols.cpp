@@ -6,32 +6,50 @@
 char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
   size_t count[256] = {};
-  size_t len = symbols;
-  for (size_t i = 0; i < len; i++)
+  for (size_t i = 0; i < symbols; i++)
   {
-    size_t index = source1[i];
-    count[index]++;
+    unsigned char c = source1[i];
+    count[c]++;
   }
-  size_t j = 0;
-  for (size_t k = 0; k < 3; k++)
+
+  unsigned char maxChars[3] = {};
+  size_t maxCounts[3] = {};
+  for (size_t i = 0; i < symbols; i++)
   {
-    size_t maxCount = 0;
-    size_t maxChar;
-    for (size_t i = 0; i < 256; i++)
+    unsigned char c = source1[i];
+    size_t cnt = count[c];
+    if (cnt > maxCounts[0])
     {
-      if (count[i] > maxCount)
-      {
-        maxCount = count[i];
-        maxChar = i;
-      }
+      maxCounts[2] = maxCounts[1];
+      maxCounts[1] = maxCounts[0];
+      maxCounts[0] = cnt;
+      maxChars[2] = maxChars[1];
+      maxChars[1] = maxChars[0];
+      maxChars[0] = c;
     }
-    if (maxCount == 0)
+    else if (cnt > maxCounts[1] && c != maxChars[0])
     {
-      break;
+      maxCounts[2] = maxCounts[1];
+      maxCounts[1] = cnt;
+      maxChars[2] = maxChars[1];
+      maxChars[1] = c;
     }
-    myCommonSymbols[j++] = maxChar;
-    count[maxChar] = 0;
+    else if (cnt > maxCounts[2] && c != maxChars[0] && c != maxChars[1])
+    {
+      maxCounts[2] = cnt;
+      maxChars[2] = c;
+    }
   }
-  myCommonSymbols[j] = '\0';
+
+  size_t index = 0;
+  for (int i = 0; i < 3; i++)
+  {
+    if (maxChars[i] != 0)
+    {
+      myCommonSymbols[index++] = maxChars[i];
+    }
+  }
+  myCommonSymbols[index] = '\0';
+
   return myCommonSymbols;
 }

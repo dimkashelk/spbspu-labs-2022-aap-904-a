@@ -1,8 +1,15 @@
 #include <iostream>
 #include <cstddef>
-#include <algorithm>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
+
+void copy(char* source, char* destination, size_t count)
+{
+  for (size_t i = 0; i < count; i++)
+  {
+    destination[i] = source[i];
+  }
+}
 
 int main()
 {
@@ -21,7 +28,7 @@ int main()
       try
       {
         newString = new char[capacity + capacityIncrement];
-        std::copy(cstring, cstring + capacity, newString);
+        copy(cstring, newString, capacity);
         delete [] cstring;
         cstring = newString;
         capacity += capacityIncrement;
@@ -46,7 +53,7 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  char* newString = removeDuplicateSpaces2(cstring);
+  char* newString = removeDuplicateSpaces(cstring);
   removeDigits(newString, newString);
   std::cout << newString << '\n';
   if (newString != nullptr) {

@@ -1,43 +1,31 @@
 #include <cctype>
 #include <cstring>
-
-char* removeDuplicateSpaces2(const char* source)
+char* removeDuplicateSpaces(char* source)
 {
-  char* destination = new char[strlen(source) + 1];
   size_t size = 0;
-  size_t d = 0;
-  while (std::isspace(source[d]))
-  {
-    d++;
-  }
-  while (source[d])
+  bool prev_space = false;
+  for (size_t d = 0; source[d]; d++)
   {
     if (std::isspace(source[d]))
     {
-      char space_char = source[d];
-      while (std::isspace(source[d]))
+      if (!prev_space)
       {
-        d++;
+        source[size] = ' ';
+        size++;
+        prev_space = true;
       }
-      destination[size] = space_char;
-      size++;
     }
     else
     {
-      destination[size] = source[d];
+      source[size] = source[d];
       size++;
+      prev_space = false;
     }
-    d++;
   }
-  if (size > 0)
+  if (size > 0 && std::isspace(source[size-1]))
   {
     size--;
-    while (std::isspace(destination[size]))
-    {
-      size--;
-    }
-    size++;
   }
-  destination[size] = '\0';
-  return destination;
+  source[size] = '\0';
+  return source;
 }

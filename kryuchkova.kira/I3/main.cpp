@@ -1,17 +1,16 @@
 #include <iostream>
 #include <exception>
+#include <input_string.h>
 #include "remove_extra_spaces.h"
 #include "delete_identical_chars.h"
-#include "input_string.h"
 
 int main()
 {
-  size_t capacity = 10;
-  char *cstring_1 = new char[capacity];
-  cstring_1[0] = '\0';
   try
   {
-    cstring_1 = inputString(cstring_1, capacity);
+    std::pair< size_t, char * > cstring_pair = inputString(std::cin);
+    char *cstring_1 = cstring_pair.second;
+    size_t capacity = cstring_pair.first;
     if (cstring_1[0] == '\0')
     {
       std::cout << "empty string";
@@ -19,34 +18,15 @@ int main()
       return 1;
     }
     cstring_1[capacity - 1] = '\0';
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] cstring_1;
-    return 1;
-  }
-  char *destination = new char[capacity];
-  destination[0] = '\0';
-  try
-  {
+    char *destination = new char[capacity];
+    destination[0] = '\0';
     destination = removeExtraSpaces(destination, cstring_1);
     std::cout << destination << "\n";
     delete[] destination;
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << e.what();
-    delete[] destination;
-    delete[] cstring_1;
-    return 1;
-  }
-  size_t capacity_2 = 10;
-  char *cstring_2 = new char[capacity_2];
-  cstring_2[0] = '\0';
-  try
-  {
-    cstring_2 = inputString(cstring_2, capacity_2);
+
+    std::pair< size_t, char * > cstring_pair2 = inputString(std::cin);
+    char *cstring_2 = cstring_pair2.second;
+    size_t capacity_2 = cstring_pair2.first;
     if (capacity_2 == 0)
     {
       cstring_2[capacity_2] = '\0';
@@ -55,31 +35,17 @@ int main()
     {
       cstring_2[capacity_2 - 1] = '\0';
     }
-  }
-  catch (const std::exception& e)
-  {
-    std::cout << e.what();
-    delete[] cstring_1;
-    delete[] cstring_2;
-    delete[] destination;
-    return 1;
-  }
-
-  char *destination_2 = new char[capacity];
-  destination_2[0] = '\0';
-  try
-  {
+    char *destination_2 = new char[capacity];
+    destination_2[0] = '\0';
     destination_2 = deleteIdenticalChars(destination_2, cstring_1, cstring_2);
     std::cout << destination_2 << "\n";
+    delete[] destination_2;
     delete[] cstring_1;
     delete[] cstring_2;
-    delete[] destination_2;
   }
-  catch (const std::exception& e)
+  catch (const std::exception &e)
   {
-    delete[] cstring_1;
-    delete[] cstring_2;
-    delete[] destination_2;
+    std::cout << e.what();
     return 1;
   }
 

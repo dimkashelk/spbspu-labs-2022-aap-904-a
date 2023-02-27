@@ -154,7 +154,7 @@ int main()
   ifs.ignore(256, '\n');
   read_str(ifs, s);
   read_str(ifs, s2);
-  ifs.close();
+  ifs.close( );
   try
   {
     c = new char[maxn * 2];
@@ -185,3 +185,4 @@ int main()
   delete s2;
   return 0;
 }
+

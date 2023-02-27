@@ -9,8 +9,7 @@ char *deleteSpaces(char *destination, const char *src)
     {
       *j = *i;
       j++;
-    } else if (j != destination && *(j - 1) != ' ')
-    {
+    } else if (j != destination && *(j - 1) != ' ') {
       *j = ' ';
       j++;
     }

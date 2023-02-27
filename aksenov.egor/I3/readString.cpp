@@ -1,8 +1,8 @@
 #include "readString.h"
-#include "extendString.h"
 #include <stdexcept>
 #include <limits>
 #include <iostream>
+#include "extendString.h"
 char *readString(std::istream &inputStr, size_t &in_size)
 {
   size_t capacity = 10;
@@ -15,22 +15,25 @@ char *readString(std::istream &inputStr, size_t &in_size)
   {
     if (size == capacity)
     {
-      if (capacity == max_size)
+      if (capacity >= max_size)
       {
         delete[] cstring;
         throw std::runtime_error("size more than max size");
       }
-      try
+      else
       {
-        newstr = extendString(cstring, size, capacity);
-        delete[] cstring;
-        cstring = newstr;
-        capacity += 20;
-      }
-      catch (...)
-      {
-        delete[] cstring;
-        throw std::runtime_error("ERROR");
+        try
+        {
+          newstr = extendString(cstring, size, capacity);
+          delete[] cstring;
+          cstring = newstr;
+          capacity += 20;
+        }
+        catch (...)
+        {
+          delete[] cstring;
+          throw std::runtime_error("ERROR");
+        }
       }
     }
     inputStr >> cstring[size];
@@ -43,10 +46,5 @@ char *readString(std::istream &inputStr, size_t &in_size)
   }
   in_size = size;
   cstring[size - 1] = '\0';
-  if (cstring[0] == '\n')
-  {
-    delete[] cstring;
-    throw std::runtime_error("Invalid string");
-  }
   return cstring;
 }

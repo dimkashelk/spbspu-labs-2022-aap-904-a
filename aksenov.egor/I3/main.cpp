@@ -15,6 +15,11 @@ int main()
     std::cout << e.what() << "\n";
     return 1;
   }
+  if (cstring[0] == '\n')
+  {
+    delete[] cstring;
+    return 1;
+  }
   try
   {
     std::cout << std::boolalpha << isRepeatingElements(cstring) << "\n";

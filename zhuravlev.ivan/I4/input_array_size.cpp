@@ -6,9 +6,12 @@ bool inputArraySize(size_t nRows, size_t nColomns)
   {
     return false;
   }
-  if (nRows != nColomns)
+  else if (nRows != nColomns)
   {
     return false;
   }
-  return true;
+  else
+  {
+    return true;
+  }
 }

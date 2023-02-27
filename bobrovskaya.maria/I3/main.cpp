@@ -22,7 +22,7 @@ int main()
   char *destination= nullptr;
   try
   {
-    destination = new char[30];
+    destination = new char[100];
   }
   catch (const std::bad_alloc& e)
   {

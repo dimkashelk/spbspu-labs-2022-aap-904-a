@@ -24,7 +24,7 @@ bool isThereEqualElements(const int* arr, size_t size)
   return false;
 }
 
-void reverse(int* ms, const size_t rev)
+void reverse(int* ms, size_t rev)
 {
   for (size_t i = 0, j = rev - 1; i < (rev + 1) / 2; i++, j--)
   {
@@ -32,7 +32,7 @@ void reverse(int* ms, const size_t rev)
   }
 }
 
-int* shiftArray(int* array, const size_t size, const size_t shift)
+int* shiftArray(int* array, size_t size, size_t shift)
 {
   size_t current_shifts = 0;
   while (current_shifts++ < shift)

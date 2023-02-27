@@ -23,9 +23,8 @@ int main(int argc, char* arr[])
   int* pointer1 = shiftArray(arr1, size1, shift1);
   for (size_t i = 0; i < size1; ++i)
   {
-    std::cout << pointer1[i] << "\t";
+    std::cout << pointer1[i] << "\n";
   }
-  std::cout << "\n";
   shiftArray(arr1, size1, shift1);
   bool ans1 = isThereEqualElements(arr1, size1);
   std::cout << (ans1 ? ansTrue : ansFalse) << "\n";
@@ -39,9 +38,8 @@ int main(int argc, char* arr[])
   int* pointer2 = shiftArray(arr2, size2, shift2);
   for (size_t i = 0; i < size2; ++i)
   {
-    std::cout << pointer2[i] << "\t";
+    std::cout << pointer2[i] << "\n";
   }
-  std::cout << "\n";
   bool ans2 = isThereEqualElements(arr2, size2);
   std::cout << (ans2 ? ansTrue : ansFalse) << "\n";
   delete[] arr2;
@@ -74,9 +72,8 @@ int main(int argc, char* arr[])
   int* pointer3 = shiftArray(arr3, size3, shift3);
   for (size_t i = 0; i < size3; ++i)
   {
-    std::cout << pointer3[i] << "\t";
+    std::cout << pointer3[i] << "\n";
   }
-  std::cout << "\n";
   bool ans3 = isThereEqualElements(arr3, size3);
   std::cout << (ans3 ? ansTrue : ansFalse) << "\n";
   delete[] arr3;

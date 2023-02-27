@@ -4,8 +4,8 @@
 
 int main()
 {
-    const char* input_str;
-    size_t str1_size;
+    const char* input_str = nullptr;
+    size_t str1_size = 0;
     try
     {
         input_str = getLineFromFile(&str1_size);

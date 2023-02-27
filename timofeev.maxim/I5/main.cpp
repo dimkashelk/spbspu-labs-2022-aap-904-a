@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
-#include "isExpression.h"
 #include <inputStr.h>
+#include "isExpression.h"
 int main()
 {
   char *str = nullptr;

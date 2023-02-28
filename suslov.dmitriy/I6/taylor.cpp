@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include "taylor.h"
 double printTable(double x, double absError, int numberMax)
 {
   if (x <= -1 || x >= 1)

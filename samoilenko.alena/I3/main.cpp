@@ -2,44 +2,30 @@
 #include "latin_letters.h"
 #include "most_common_characters.h"
 #include "string_extension.h"
+#include "string_from_input.h"
 
 int main()
 {
   size_t capacity = 10;
-  char* cstring = new char[capacity];
   size_t size = 0;
+  size_t extcapacity = capacity + 20;
   const size_t newsize = 27;
   const size_t newnewsize = 4;
-  std::cin >> std::noskipws;
-  do
+  char* cstring = nullptr;
+  try
   {
-    if (size == capacity)
+    cstring = makeStringFromInput(std::cin);
+    if (size > extcapacity)
     {
-      try
-      {
-        size_t newcapacity = capacity + 10;
-        char* newstr = expandString(cstring, size, newcapacity);
-        capacity = newcapacity;
-        delete [] cstring;
-        cstring = newstr;
-      }
-      catch (const std::bad_alloc& ex)
-      {
-        delete [] cstring;
-        std::cerr << "Error..." << '\n';
-        return 1;
-      }
+      std::cerr << "Error...";
     }
-    std::cin >> cstring[size];
   }
-  while (std::cin && cstring[size++] != '\n');
-  if (size == 0 || cstring[0] == '\n')
+  catch (const std::exception &ex)
   {
-    std::cerr << "Error..." << '\n';
-    delete [] cstring;
+    delete[] cstring;
+    std::cout << ex.what() << "\n";
     return 1;
   }
-  cstring[size - 1] = '\0';
   std::cout << cstring << "\n";
   char* newstring = nullptr;
   try

@@ -1,53 +1,70 @@
 #include "most_common_characters.h"
+#include <Windows.h>
 #include <cstddef>
+#include <algorithm>
 
 char* printMostCommonCharacters(char* destination, const char* source)
 {
-  size_t ascii[129] = {0};
-  size_t i = 0;
-  while (source[i] != '\0')
+  for (size_t t = 0; t <= 3; t++)
   {
-    ascii[static_cast< size_t >(source[i])]++;
-    i++;
+    destination[t] = 0;
   }
-  size_t idx1 = 128;
-  size_t idx2 = 128;
-  size_t idx3 = 128;
-  for (i = 0; i < 128; i++)
+  byte k = 0;
+  while (k < 3)
   {
-    if (ascii[i] > ascii[idx1])
+    size_t max = 0;
+    for (byte t = 127; t > 1; t--)
     {
-      idx3 = idx2;
-      idx2 = idx1;
-      idx1 = i;
-    }
-    else if (ascii[i] > ascii[idx2])
-    {
-      idx3 = idx2;
-      idx2 = i;
-    }
-    else if (ascii[i] > ascii[idx3])
-    {
-      idx3 = i;
-    }
-  }
-  destination[0] = char(idx1);
-  destination[1] = char(idx2);
-  destination[2] = char(idx3);
-  size_t j = 0;
-  char tmp = 0;
-  for (i = 0; i < 3 - 1; i++)
-  {
-    for (j = 0; j < 3 - i -1; j++)
-    {
-      if (destination[j] > destination[j + 1])
+      size_t l = 0;
+      if ((k == 1) & (t == destination[2] - 0))
       {
-        tmp = destination[j];
-        destination[j] = destination[j + 1];
-        destination[j + 1] = tmp;
+        continue;
+      }
+      else
+      {
+        if ((k == 2) & ((t == destination[2] - 0) || (t == destination[1] - 0)))
+        {
+          continue;
+        }
+        else
+        {
+          for (size_t i = 0; i < strlen(source); i++)
+          {
+            if (t == source[i] - 0)
+            {
+              l++;
+            }
+          }
+        }
+      }
+      switch (k)
+      {
+        case 0:
+          if (l >= max)
+          {
+            destination[2] = (char) t;
+            max = l;
+          }
+          break;
+        case 1:
+          if (l >= max)
+          {
+            destination[1] = (char) t;
+            max = l;
+          }
+          break;
+        case 2:
+          if (l >= max)
+          {
+            destination[0] = (char) t;
+            max = l;
+          }
+          break;
       }
     }
+    k++;
   }
-  destination[3] = '\0';
+  std::swap(destination[0], std::min(destination[0], std::min(destination[1], destination[2])));
+  std::swap(destination[2], std::max(destination[2], std::max(destination[1], destination[0])));
   return destination;
 }

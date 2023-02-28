@@ -5,14 +5,7 @@
 
 char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
-  size_t count[256] = {};
-  for (size_t i = 0; i < symbols; i++)
-  {
-    unsigned char c = source1[i];
-    count[c]++;
-  }
-
-  unsigned char maxChars[3] = {};
+  char maxChars[3] = {};
   size_t maxCounts[3] = {};
   for (size_t i = 0; i < symbols; i++)
   {
@@ -42,7 +35,7 @@ char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbo
   }
 
   size_t index = 0;
-  for (int i = 0; i < 3; i++)
+  for (size_t i = 0; i < 3; i++)
   {
     if (maxChars[i] != 0)
     {

@@ -3,6 +3,7 @@
 #include <cstring>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
+
 void customCopy(char* dest, const char* src, size_t count)
 {
   for (size_t i = 0; i < count; ++i)
@@ -10,6 +11,7 @@ void customCopy(char* dest, const char* src, size_t count)
     dest[i] = src[i];
   }
 }
+
 int main()
 {
   constexpr size_t initialCapacity = 10;
@@ -52,10 +54,27 @@ int main()
     return 1;
   }
   cstring[size - 1] = '\0';
-  char newString[1024];
-  removeDuplicateSpaces2(cstring, newString);
+
+  // Calculate the length of the input string
+  size_t len = std::strlen(cstring);
+
+  // Allocate a dynamic character array of sufficient size
+  char* newString = new char[len + 1];
+
+  // Call the removeDuplicateSpaces2 function with the dynamic character array
+  const char* result = removeDuplicateSpaces2(cstring);
+  customCopy(newString, result, std::strlen(result) + 1);
+  delete[] result;
+
+  // Call the removeDigits function with the same dynamic character array
   removeDigits(newString, newString);
+
+  // Print the result to the console
   std::cout << newString << '\n';
+
+  // Free the memory used by the dynamic character array
+  delete[] newString;
+
   if (cstring != nullptr)
   {
     delete[] cstring;

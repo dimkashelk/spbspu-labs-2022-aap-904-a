@@ -1,6 +1,6 @@
-#include "input_array_size.h"
+#include "check_input_data.h"
 
-bool inputArraySize(size_t nRows, size_t nColomns)
+bool checkInputData(size_t nRows, size_t nColomns)
 {
   if ((nRows <= 0) || (nColomns <= 0))
   {

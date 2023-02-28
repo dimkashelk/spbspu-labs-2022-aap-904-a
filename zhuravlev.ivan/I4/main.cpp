@@ -2,7 +2,7 @@
 #include <cstddef>
 #include <fstream>
 #include <cstring>
-#include "input_array_size.h"
+#include "check_input_data.h"
 #include "number_of_rows_with_same_elements.h"
 #include "max_sum_diag.h"
 

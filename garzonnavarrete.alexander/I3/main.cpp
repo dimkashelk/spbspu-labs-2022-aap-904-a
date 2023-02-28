@@ -58,7 +58,7 @@ char* merge(char* dst, char* s1, char* s2)
     {
       i2 = -1;
     }
-  }
+    }
   } while ((i1 >= 0) || (i2 >=0));
   return dst;
 }
@@ -185,4 +185,3 @@ int main()
   delete s2;
   return 0;
 }
-

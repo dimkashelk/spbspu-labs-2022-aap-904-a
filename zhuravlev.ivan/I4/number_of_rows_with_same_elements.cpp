@@ -1,7 +1,7 @@
 #include "number_of_rows_with_same_elements.h"
 #include <cstddef>
 
-int counterOfRowsWithSameElements(int* arr, size_t nRows, size_t nColomns)
+int countOfRowsWithSameElements(int* arr, size_t nRows, size_t nColomns)
 {
   size_t cnt = 0;
   size_t cnt_elem = 0;

@@ -6,7 +6,6 @@
 #include "number_of_rows_with_same_elements.h"
 #include "max_sum_diag.h"
 
-
 int main(int argc, char* argv[])
 {
   if (argc != 4)
@@ -61,7 +60,7 @@ int main(int argc, char* argv[])
           }
         }
       }
-      outputfile << counterOfRowsWithSameElements(arr, n, m) << "\n";
+      outputfile << countOfRowsWithSameElements(arr, n, m) << "\n";
       if (!outputfile)
       {
         std::cout << "Error with writting in output file\n";

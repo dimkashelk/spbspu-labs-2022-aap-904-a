@@ -5,6 +5,7 @@
 
 char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
+  size_t count[256] = {};
   char maxChars[3] = {};
   size_t maxCounts[3] = {};
   for (size_t i = 0; i < symbols; i++)

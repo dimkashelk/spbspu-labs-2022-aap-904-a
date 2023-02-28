@@ -1,13 +1,13 @@
+#include "removeDuplicateSpaces.h"
 #include <limits>
 #include <cctype>
 #include <cstring>
-#include "removeDuplicateSpaces.h"
 const char* removeDuplicateSpaces2(const char* source)
 {
   const char* p = source;
-  while (std::isspace(*p)) ++p;  // skip initial whitespace
+  while (std::isspace(*p)) ++p;
   size_t size = 0;
-  const size_t max_size = std::numeric_limits<size_t>::max();
+  const size_t max_size = std::numeric_limits< size_t >::max();
   while (p[size] != '\0' && p[size] != '\n' && size < max_size - 1)
   {
     ++size;
@@ -19,7 +19,7 @@ const char* removeDuplicateSpaces2(const char* source)
     if (std::isspace(*p))
     {
       char space_char = *p++;
-      while (std::isspace(*p)) ++p;  // skip subsequent whitespace
+      while (std::isspace(*p)) ++p;
       destination[dest_index++] = space_char;
     }
     else

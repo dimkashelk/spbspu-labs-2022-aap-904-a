@@ -2,7 +2,6 @@
 #include <Windows.h>
 #include <cstddef>
 #include <algorithm>
-#include <iostream>
 
 char* printMostCommonCharacters(char* destination, const char* source)
 {

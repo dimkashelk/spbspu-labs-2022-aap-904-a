@@ -42,7 +42,7 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "1"))
   {
-    if (!inputArraySize(n, m))
+    if (!checkInputData(n, m))
     {
       std::cout << "Error with input...";
     }
@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "2"))
   {
-    if (!inputArraySize(n, m))
+    if (!checkInputData(n, m))
     {
       std::cout << "Error with input...";
     }

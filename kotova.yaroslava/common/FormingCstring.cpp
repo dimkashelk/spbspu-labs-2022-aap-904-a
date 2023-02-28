@@ -1,31 +1,28 @@
 #include "FormingCstring.h"
 #include <istream>
-#include <cstddef>
 #include <cstring>
+#include <cstddef>
 #include <stdexcept>
-char* formingCstring(std::istream& input)
+char* formingCstring(size_t & size, std::istream& input)
 {
-  size_t size = 0;
   size_t capacity = 10;
   char* cstring = new char[capacity];
   cstring[0] = '\0';
   input >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size + 1 == capacity)
     {
       try
       {
-        char* newstr = new char[capacity + 20];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
+        cstring[size] = '\0';
+        char* newstr = new char[capacity + 10];
+        std::strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;
-        capacity += 20;
+        capacity += 10;
       }
-      catch (...)
+      catch (const std::exception& e)
       {
         delete[] cstring;
         throw;

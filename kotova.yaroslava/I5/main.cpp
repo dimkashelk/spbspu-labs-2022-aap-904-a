@@ -5,10 +5,11 @@
 
 int main()
 {
+  size_t size = 0;
   char* cstring = nullptr;
   try
   {
-    cstring = formingCstring(std::cin);
+    cstring = formingCstring(size, std::cin);
   }
   catch (const std::exception& e)
   {

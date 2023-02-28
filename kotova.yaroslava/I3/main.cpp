@@ -1,17 +1,18 @@
 #include <iostream>
 #include <stdexcept>
+#include <FormingCstring.h>
 #include "DelNumbers.h"
 #include "RepLetters.h"
-#include <FormingCstring.h>
+
 
 int main()
 {
   size_t capacity = 10;
+  size_t size = 0;
   char* cstring = nullptr;
   try
   {
-    cstring = formingCstring(std::cin);
-    cstring[capacity - 1] = '\0';
+    cstring = formingCstring(size, std::cin);
   }
   catch (const std::exception& e)
   {

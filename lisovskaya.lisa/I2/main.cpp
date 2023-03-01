@@ -37,26 +37,30 @@ int main(int argc, char *argv[])
     return 2;
   }
   delete[] array2;
+  int size = 0;
   std::ifstream in(argv[1]);
-  size_t size = 0;
-  int *array3 = new int[size];
-  try
+  in >> size;
+  if (!in)
   {
-    array3 = readArray(in, size, array3);
-  }
-  catch (const std::length_error &e)
-  {
-    std::cout << e.what() << "\n";
+    std::cerr << "bruh" << "\n";
     return 2;
   }
+  int *array3 = new int[size];
   if (size > 0)
   {
     try
     {
+      array3 = readArray(in, size, array3);
       std::cout << counter_before_min(array3, size) << "\n";
       std::cout << findArithmeticMean(array3, size) << "\n";
     }
     catch (const std::runtime_error &e)
+    {
+      std::cout << e.what();
+      delete[] array3;
+      return 2;
+    }
+    catch (const std::length_error &e)
     {
       std::cout << e.what();
       delete[] array3;

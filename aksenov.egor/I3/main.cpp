@@ -1,7 +1,7 @@
-#include "isRepeatingElements.h"
-#include "readString.h"
-#include "deleteSpaces.h"
+#include <readString.h>
 #include <iostream>
+#include "isRepeatingElements.h"
+#include "deleteSpaces.h"
 int main()
 {
   char *cstring = nullptr;

@@ -1,24 +1,19 @@
 #include "readArray.h"
+#include <stdexcept>
 #include <iostream>
-#include <fstream>
-int *readArray(std::string fn)
+int *readArray(std::istream &in, size_t line, int *array3)
 {
-  std::ifstream in(fn);
-  size_t size = 0;
-  in >> size;
+  in >> line;
   if (!in)
   {
-   throw std::runtime_error("meh");
+    throw std::length_error("meh");
   }
-  int *array3 = new int[size];
-  for (size_t i = 0; i < size; i++)
+  for (size_t i = 0; i < line; ++i)
   {
     in >> array3[i];
     if (!in)
     {
-      std::cout << "Error again...";
-      delete[] array3;
-      throw;
+      throw std::length_error("File error");
     }
   }
   return array3;

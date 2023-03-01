@@ -1,6 +1,6 @@
 #ifndef SPBSPU_LABS_2022_APP_904_READARRAY_H
 #define SPBSPU_LABS_2022_APP_904_READARRAY_H
+#include <fstream>
 #include <cstddef>
-#include <string>
-int *readArray(std::string fn);
+int *readArray(std::istream &in, size_t line, int *array3);
 #endif

@@ -1,5 +1,5 @@
-#include <readString.h>
 #include <iostream>
+#include <readString.h>
 #include "isRepeatingElements.h"
 #include "deleteSpaces.h"
 int main()

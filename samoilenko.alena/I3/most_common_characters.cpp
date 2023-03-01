@@ -1,7 +1,7 @@
 #include "most_common_characters.h"
 #include <cstddef>
 #include <algorithm>
-#include <Windows.h>
+#include <string.h>
 
 char* printMostCommonCharacters(char* destination, const char* source)
 {

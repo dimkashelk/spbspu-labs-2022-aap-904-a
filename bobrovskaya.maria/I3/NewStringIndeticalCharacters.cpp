@@ -1,16 +1,28 @@
 #include "NewStringIndeticalCharacters.h"
 
-char* newStringIndeticalCharacters(char* destination, const char* source1, const char* source2)
+char *newStringIndeticalCharacters(char *destination,  char *source1, char *source2)
 {
-  char* result = destination;
-  for (const char* i = source1; *i != '\0'; i++)
+  char *result = destination;
+  for (char *i = source1; *i != '\0'; i++)
   {
-    for (const char* j = source2; *j != '\0'; j++)
+    for (char *j = source2; *j != '\0'; j++)
     {
+      bool exists = false;
       if (*i == *j)
       {
-        *result = *i;
-        ++result;
+        for (char *k = destination; *k != '\0'; k++)
+        {
+          if (*k == *i)
+          {
+            exists = true;
+            continue;
+          }
+        }
+        if (!exists)
+        {
+          *result = *i;
+          ++result;
+        }
       }
     }
   }

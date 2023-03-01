@@ -15,8 +15,9 @@ char* formingCstring(size_t& size, std::istream& input)
     {
       try
       {
-        char* newstr = new char[capacity + 10];
         cstring[size] = '\0';
+        char* newstr = new char[capacity + 10];
+        cstring[capacity - 1] = '\0';
         std::strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;
@@ -36,6 +37,5 @@ char* formingCstring(size_t& size, std::istream& input)
     throw std::invalid_argument("Empty string");
   }
   cstring[size - 1] = '\0';
-  capacity = size;
   return cstring;
 }

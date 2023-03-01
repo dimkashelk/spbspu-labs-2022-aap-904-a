@@ -39,23 +39,29 @@ int main(int argc, char *argv[])
   delete[] array2;
   std::ifstream in(argv[1]);
   size_t size = 0;
-  if (!in)
-  {
-    std::cout << "empty file :(";
-    return 1;
-  }
   int *array3 = new int[size];
-  array3 = readArray(in, size, array3);
   try
   {
-    std::cout << counter_before_min(array3, size) << "\n";
-    std::cout << findArithmeticMean(array3, size) << "\n";
+    array3 = readArray(in, size, array3);
   }
-  catch (const std::runtime_error &e)
+  catch (const std::length_error &e)
   {
-    std::cout << e.what();
-    delete[] array3;
+    std::cout << e.what() << "\n";
     return 2;
+  }
+  if (size > 0)
+  {
+    try
+    {
+      std::cout << counter_before_min(array3, size) << "\n";
+      std::cout << findArithmeticMean(array3, size) << "\n";
+    }
+    catch (const std::runtime_error &e)
+    {
+      std::cout << e.what();
+      delete[] array3;
+      return 2;
+    }
   }
   delete[] array3;
   return 0;

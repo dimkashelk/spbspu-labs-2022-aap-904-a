@@ -3,7 +3,6 @@
 #include <cstddef>
 
 double divSinXOnX(double x, double absError, size_t numberMax);
-
 class DivisionSinXOnX
 {
 public:

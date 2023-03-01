@@ -17,9 +17,9 @@ size_t countUniqueLatinLetters(const char *source)
   size_t latin_alphabet[26] = {0};
   while (*source != '\0')
   {
-    if (isalpha(*source))
+    if (std::isalpha(*source))
     {
-      latin_alphabet[toupper(*source) - 65] = 1;
+      latin_alphabet[std::toupper(*source) - 65] = 1;
     }
     source++;
   }

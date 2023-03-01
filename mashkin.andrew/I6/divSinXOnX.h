@@ -8,7 +8,7 @@ class DivisionSinXOnX
 {
 public:
   explicit DivisionSinXOnX(double x);
-  double operator()(double& res, double absError, size_t numberMax);
+  double operator()();
 private:
   double x_;
   double powX_;

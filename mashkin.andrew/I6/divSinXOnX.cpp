@@ -9,15 +9,17 @@ double divSinXOnX(double x, double absError, size_t numberMax)
   }
   DivisionSinXOnX newMembOfRow(x);
   double res = 0.0;
-  try
+  double memb = 0.0;
+  for (size_t i = 0; i < numberMax; i++)
   {
-    newMembOfRow(res, absError, numberMax);
+    memb = i % 2 ? -(newMembOfRow()) : newMembOfRow();
+    res += memb;
+    if (absError > memb)
+    {
+      return res;
+    }
   }
-  catch (...)
-  {
-    throw;
-  }
-  return res;
+  throw std::logic_error("you have gone beyond the maximum number of terms");
 }
 
 DivisionSinXOnX::DivisionSinXOnX(double x):
@@ -27,19 +29,11 @@ DivisionSinXOnX::DivisionSinXOnX(double x):
   var_(1)
 {}
 
-double DivisionSinXOnX::operator()(double& res, double absError, size_t numberMax)
+double DivisionSinXOnX::operator()()
 {
-  for (size_t i = 0; i < numberMax; i++)
-  {
-    double memb = i % 2 ? -(powX_ / factorial_) : powX_ / factorial_;
-    powX_ *= (x_ * x_);
-    var_ += 2;
-    factorial_ *= (var_ * (var_ - 1));
-    res += memb;
-    if (absError > memb)
-    {
-      return res;
-    }
-  }
-  throw std::logic_error("you have gone beyond the maximum number of terms");
+  double memb = powX_ / factorial_;
+  powX_ *= (x_ * x_);
+  var_ += 2;
+  factorial_ *= (var_ * (var_ - 1));
+  return memb;
 }

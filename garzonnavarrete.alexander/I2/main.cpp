@@ -78,4 +78,3 @@ int main(int argc, char *argv[])
   delete[] arr;
   return 0;
 }
-

@@ -61,10 +61,10 @@ int main(int argc, char* argv[])
   {
     int* array = new int[sizeOfFileArray];
     int* fileArray = readTheArray(in, sizeOfFileArray, array, maxSize);
-    sortOutput(fileArray, sizeOfFileArray);
     try
     {
       std::cout << "Count of triplets: " << isTriplet(fileArray, sizeOfFileArray) << " in the file array" << "\n";
+      sortOutput(fileArray, sizeOfFileArray);
       delete[] fileArray;
     }
     catch (const std::length_error& e)

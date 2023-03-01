@@ -4,7 +4,7 @@
 #include <cstddef>
 int* readTheArray(std::istream& in, size_t& sizeOfFileArray, int* fileArray, const size_t maxSize)
 {
-  if (sizeOfFileArray != maxSize)
+  if (sizeOfFileArray > maxSize)
   {
     for (size_t i = 0; i < sizeOfFileArray; i++)
     {
@@ -14,6 +14,10 @@ int* readTheArray(std::istream& in, size_t& sizeOfFileArray, int* fileArray, con
         std::cerr << ("Error reading file");
       }
     }
+  }
+  else
+  {
+    std::cerr << "Error: size of file array";
   }
   return fileArray;
 }

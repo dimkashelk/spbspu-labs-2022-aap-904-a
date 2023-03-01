@@ -1,7 +1,7 @@
 #include "most_common_characters.h"
-#include <Windows.h>
 #include <cstddef>
 #include <algorithm>
+#include <Windows.h>
 
 char* printMostCommonCharacters(char* destination, const char* source)
 {
@@ -9,11 +9,11 @@ char* printMostCommonCharacters(char* destination, const char* source)
   {
     destination[t] = 0;
   }
-  byte k = 0;
+  char k = 0;
   while (k < 3)
   {
     size_t max = 0;
-    for (byte t = 127; t > 1; t--)
+    for (char t = 127; t > 1; t--)
     {
       size_t l = 0;
       if ((k == 1) & (t == destination[2] - 0))

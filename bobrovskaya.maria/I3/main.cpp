@@ -9,7 +9,7 @@ int main()
   try
   {
     source1 = createCString(std::cin);
-    if (*source1 == '\0')
+    if (source1[0] == '\0')
     {
       delete[] source1;
       throw std::logic_error("Empty string");

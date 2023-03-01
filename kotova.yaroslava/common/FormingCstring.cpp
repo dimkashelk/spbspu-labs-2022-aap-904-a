@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstddef>
 #include <stdexcept>
-char* formingCstring(size_t & size, std::istream& input)
+char* formingCstring(size_t& size, std::istream& input)
 {
   size_t capacity = 10;
   char* cstring = new char[capacity];
@@ -11,12 +11,12 @@ char* formingCstring(size_t & size, std::istream& input)
   input >> std::noskipws;
   do
   {
-    if (size == capacity)
+    if (size + 1 == capacity)
     {
       try
       {
         char* newstr = new char[capacity + 10];
-        cstring[size - 1] = '\0';
+        cstring[size] = '\0';
         std::strcpy(newstr, cstring);
         delete[] cstring;
         cstring = newstr;

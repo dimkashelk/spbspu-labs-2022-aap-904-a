@@ -5,9 +5,8 @@
 #include "extendString.h"
 char *readString(std::istream &inputStr, size_t &in_size)
 {
+  constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
   size_t capacity = 10;
-  const size_t max_size = std::numeric_limits< size_t >::max();
-  char *newstr = nullptr;
   char *cstring = new char[capacity];
   size_t size = 0;
   inputStr >> std::noskipws;
@@ -15,25 +14,29 @@ char *readString(std::istream &inputStr, size_t &in_size)
   {
     if (size == capacity)
     {
-      if (capacity >= max_size)
+      if (capacity == max_size_t)
       {
         delete[] cstring;
-        throw std::runtime_error("size more than max size");
+        throw std::runtime_error("not enough capacity");
+      }
+      if (max_size_t - 20 <= capacity)
+      {
+        capacity = max_size_t;
       }
       else
       {
-        try
-        {
-          newstr = extendString(cstring, size, capacity);
-          delete[] cstring;
-          cstring = newstr;
-          capacity += 20;
-        }
-        catch (...)
-        {
-          delete[] cstring;
-          throw std::runtime_error("ERROR");
-        }
+        capacity += 20;
+      }
+      try
+      {
+        char *newStr = extendString(cstring, size, capacity);
+        delete[] cstring;
+        cstring = newStr;
+      }
+      catch (...)
+      {
+        delete[] cstring;
+        throw;
       }
     }
     inputStr >> cstring[size];
@@ -44,7 +47,7 @@ char *readString(std::istream &inputStr, size_t &in_size)
     delete[] cstring;
     throw std::runtime_error("Input error");
   }
-  in_size = size;
   cstring[size - 1] = '\0';
+  in_size = size;
   return cstring;
 }

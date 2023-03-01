@@ -27,6 +27,10 @@ char *createCString(std::istream& input)
     input >> source1[size];
   }
   while (input && source1[size++] != '\n');
+  if (size = 0)
+  {
+    return source1;
+  }
   source1[size - 1] = '\0';
   return source1;
 }

@@ -24,7 +24,10 @@ int main()
     {
       try
       {
-        cstring = makeNewCapacityCString(cstring, capacity, size);
+        char *newCString = makeNewCapacityCString(cstring, capacity, size);
+	delete [] cstring;
+	cstring = newCString;
+	newCString = nullptr;
       }
       catch (const std::exception& e)
       {

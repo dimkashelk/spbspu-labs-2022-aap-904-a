@@ -12,7 +12,6 @@ int main()
   try
   {
     cstring = formingCstring(size, std::cin);
-    cstring[capacity - 1] = '\0';
   }
   catch (const std::exception& e)
   {

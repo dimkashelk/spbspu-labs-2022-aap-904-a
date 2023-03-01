@@ -16,7 +16,7 @@ char *newStringIndeticalCharacters(char *destination,  char *source1, char *sour
           if (*k == *i)
           {
             exists = true;
-            continue;
+            break;
           }
         }
         if (!exists)

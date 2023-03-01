@@ -4,7 +4,6 @@
 #include "DelNumbers.h"
 #include "RepLetters.h"
 
-
 int main()
 {
   size_t capacity = 10;

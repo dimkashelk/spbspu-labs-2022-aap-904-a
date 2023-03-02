@@ -1,7 +1,7 @@
 #include "CreateCString.h"
 #include "StringExtension.h"
 
-char *createCString(std::istream& input)
+char *createCString(std::istream &input)
 {
   size_t capacity = 10;
   char *source1 = new char[capacity];
@@ -14,7 +14,7 @@ char *createCString(std::istream& input)
     {
       try
       {
-        char *newstr = stringExtension(source1, capacity, size);
+        char *newstr = stringExtension(source1,capacity, size);
         delete[] source1;
         source1 = newstr;
       }

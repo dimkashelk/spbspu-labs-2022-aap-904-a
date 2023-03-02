@@ -13,7 +13,8 @@ char* makeCSting(std::istream& in)
   {
     if (size == cap - 1)
     {
-      try {
+      try
+      {
         cstring[cap - 1] = '\0';
         char *newstr = new char[cap + 20];
         std::strcpy(newstr, cstring);
@@ -32,7 +33,9 @@ char* makeCSting(std::istream& in)
   if (size == 0)
   {
     delete[] cstring;
-  } else
+    throw std::runtime_error("Empty string");
+  }
+  else
   {
     cstring[size - 1] = '\0';
     return cstring;

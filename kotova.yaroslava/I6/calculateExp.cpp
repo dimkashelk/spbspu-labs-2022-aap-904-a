@@ -15,6 +15,7 @@ double exp(double x, double absError, unsigned numberMax)
     numerator *= x * (-1);
     denominator *= factorial;
     factorial++;
-  } while (members != numberMax || sum > absError);
+  }
+  while (members != numberMax || sum > absError);
   return result;
 }

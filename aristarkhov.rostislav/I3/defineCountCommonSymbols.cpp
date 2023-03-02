@@ -10,6 +10,5 @@ size_t defineCountCommonSymbols(const char* source, const char p)
       count++;
     }
   }
-
   return count;
 }

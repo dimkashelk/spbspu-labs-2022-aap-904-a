@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
   {
     if (!checkInputData(n, m))
     {
+      std::cout << "somthing wrong with input";
       return 1;
     }
     int arr[1000];
@@ -77,6 +78,7 @@ int main(int argc, char* argv[])
   {
     if (!checkInputData(n, m))
     {
+      std::cout << "somthing wrong with input";
       return 1;
     }
     int* dyn_array = new int[n * m];

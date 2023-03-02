@@ -1,6 +1,6 @@
 #include "counterBeforeMin.h"
 #include <stdexcept>
-size_t counter_before_min(const int *ar, size_t m)
+size_t counterBeforeMin(const int *ar, size_t m)
 {
   if (m == 0)
   {

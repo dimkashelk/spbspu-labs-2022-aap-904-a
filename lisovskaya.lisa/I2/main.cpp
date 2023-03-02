@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
   }
   std::srand(std::time(nullptr));
   int arr1[] = {2, 5, 3, 4, 6, 7, 1};
-  std::cout << counter_before_min(arr1, 7) << std::endl;
+  std::cout << counterBeforeMin(arr1, 7) << std::endl;
   std::cout << findArithmeticMean(arr1, 7) << std::endl;
   size_t n = 0;
   std::cin >> n;
@@ -25,9 +25,14 @@ int main(int argc, char *argv[])
   }
   int *array2 = new int[n];
   array2 = generateRand(array2, n);
+  if (n == 0)
+  {
+    std::cout << "0" << "\n";
+    return 0;
+  }
   try
   {
-    std::cout << counter_before_min(array2, n) << "\n";
+    std::cout << counterBeforeMin(array2, n) << "\n";
     std::cout << findArithmeticMean(array2, n) << "\n";
   }
   catch (const std::runtime_error &e)
@@ -62,7 +67,7 @@ int main(int argc, char *argv[])
     try
     {
       array3 = readArray(in, size, array3);
-      std::cout << counter_before_min(array3, size) << "\n";
+      std::cout << counterBeforeMin(array3, size) << "\n";
       std::cout << findArithmeticMean(array3, size) << "\n";
     }
     catch (const std::runtime_error &e)

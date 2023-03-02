@@ -1,5 +1,4 @@
 #include "commonSymbols.h"
-
 #include <cstddef>
 #include <cstring>
 
@@ -9,8 +8,15 @@ char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbo
   size_t maxCounts[3] = {};
   for (size_t i = 0; i < symbols; i++)
   {
-    unsigned char c = source1[i];
+    char c = source1[i];
     size_t cnt = 0;
+    for (size_t j = 0; j < symbols; j++)
+    {
+      if (source1[j] == c)
+      {
+        cnt++;
+      }
+    }
     if (cnt > maxCounts[0])
     {
       maxCounts[2] = maxCounts[1];
@@ -33,7 +39,6 @@ char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbo
       maxChars[2] = c;
     }
   }
-
   size_t index = 0;
   for (size_t i = 0; i < 3; i++)
   {

@@ -6,6 +6,7 @@ char* createCString(std::istream& inp)
 {
   size_t capacity = 10;
   size_t size = 0;
+
   char* new_source = nullptr;
   new_source = new char[capacity];
   char charInput = '\0';
@@ -19,15 +20,18 @@ char* createCString(std::istream& inp)
       char* dupStr = nullptr;
       try
       {
-        dupStr = new char[capacity];
+        dupStr = new char[capacity + 10];
       }
-      catch (...)
+      catch (const std::bad_alloc& e)
       {
         delete[] new_source;
-        throw;
+        throw e;
       }
       new_source[size] = '\0';
-      dupStr = increaseSize(new_source, capacity, size);
+      for (size_t i = 0; i < size; i++)
+      {
+        dupStr[i] = new_source[i];
+      }
       delete[] new_source;
       new_source = dupStr;
     }

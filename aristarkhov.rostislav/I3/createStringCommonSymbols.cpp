@@ -3,30 +3,17 @@
 
 char* createStringCommonSymbols(char* destination2, const char* source_1, const char* source_2)
 {
-  char* res = destination2;
-  for (const char* i = source_1; *i != '\0'; i++)
+  size_t res = 0;
+  for (size_t i = 0; source_1[i] != '\0'; i++)
   {
-    bool repetition = false;
-    for (const char* j = destination2; *j != 0; j++)
+    if (defineCountCommonSymbols(source_1 + i + 1, source_1[i]) == 0)
     {
-      if (*j == *i)
+      if (defineCountCommonSymbols(source_2, source_1[i]) > 0)
       {
-        repetition = true;
-        break;
-      }
-    }
-    if (!repetition)
-    {
-      for (const char* j = source_2; *j != '\0'; j++)
-      {
-        if (*j == *i)
-        {
-          *res = *i;
-          ++res;
-        }
+        destination2[res++] = source_1[i];
       }
     }
   }
-  *res = '\0';
+  destination2[res] = '\0';
   return destination2;
 }

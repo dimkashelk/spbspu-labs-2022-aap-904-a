@@ -5,8 +5,6 @@
 
 int main()
 {
-  size_t size = 27;
-  size_t capacity = 10;
   char* source_1 = nullptr;
   try
   {
@@ -21,9 +19,7 @@ int main()
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[capacity];
-    destination1 = deleteLatinLetters(destination1, source_1);
-    std::cout << destination1 << '\n';
+    destination1 = new char[100];
   }
   catch (const std::bad_alloc& e)
   {
@@ -31,28 +27,28 @@ int main()
     delete[] destination1;
     return 1;
   }
+  destination1 = deleteLatinLetters(destination1, source_1);
+  std::cout << destination1 << '\n';
 
   char* destination2 = nullptr;
   char source_2[] = "abcdefg";
   try
   {
-    destination2 = new char[capacity];
-    destination2 = createStringCommonSymbols(destination2, source_1, source_2);
-    std::cout << destination2 << '\n';
+    destination2 = new char[100];
   }
   catch (const std::bad_alloc& e)
   {
     std::cout << e.what() << '\n';
     delete[] source_1;
     delete[] destination2;
+    std::cout << e.what() << '\n';
     return 1;
   }
+  destination2 = createStringCommonSymbols(destination2, source_1, source_2);
+  std::cout << destination2 << '\n';
 
-  destination2[size - 1] = '\0';
-  for (size_t i = 0; i < size - 1; i++)
-  {
-    destination2[i] = '.';
-  }
-
+  delete[] source_1;
+  delete[] destination1;
+  delete[] destination2;
   return 0;
 }

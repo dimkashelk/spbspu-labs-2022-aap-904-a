@@ -15,7 +15,6 @@ int main(int argc, char* argv[])
 
   size_t rows = 0;
   size_t columns = 0;
-  size_t matrix[1000];
   std::ifstream inp_file(argv[2]);
   inp_file >> rows >> columns;
   if (!inp_file.is_open())

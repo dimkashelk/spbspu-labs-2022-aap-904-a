@@ -54,7 +54,8 @@ char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbo
   size_t index = 0;
   for (size_t i = 0; i < 3; i++)
   {
-    if (maxChars[i] != 0) {
+    if (maxChars[i] != 0)
+    {
       myCommonSymbols[index++] = maxChars[i];
     }
   }

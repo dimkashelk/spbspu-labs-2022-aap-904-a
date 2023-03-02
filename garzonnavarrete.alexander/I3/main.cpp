@@ -11,6 +11,12 @@ int main() {
   std::cout << "Enter the second string (q): " << std::endl;
   getline(std::cin, q);
 
+  if (input_str.empty() || p.empty() || q.empty())
+  {
+    std::cerr << "Error: Input strings cannot be empty" << std::endl;
+    return 1;
+  }
+
   std::string output_str = "";
   for (char c : input_str)
   {
@@ -22,7 +28,7 @@ int main() {
   std::cout << "Output string: " << output_str << std::endl;
 
   std::string combined_str = "";
-  std::string::size_type i = 0, j = 0;
+  size_t i = 0, j = 0; // use size_t instead of int for string indices
   while (i < p.length() && j < q.length())
   {
     combined_str += p[i];
@@ -41,6 +47,5 @@ int main() {
     j++;
   }
   std::cout << "Combined string: " << combined_str << std::endl;
-
   return 0;
 }

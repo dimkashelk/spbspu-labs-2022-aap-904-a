@@ -6,7 +6,7 @@ bool isDigit(const char c)
 }
 bool isLetter(const char c)
 {
-  return (c == 'a') || (c == 'b') || (c == 'c') || (c == 'd') || (c == 'e') || (c == 'f') || (c == 'x') || (c == 'y') || (c == 'z');
+  return ((c >= 'a' && c <= 'f') || (c >= 'x' && c <= 'z'));
 }
 bool isEnd(const char c)
 {

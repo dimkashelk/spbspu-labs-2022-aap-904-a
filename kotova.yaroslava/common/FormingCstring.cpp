@@ -11,7 +11,7 @@ char* formingCstring(size_t& size, std::istream& input)
   input >> std::noskipws;
   do
   {
-    if (size + 1 == capacity)
+    if (size == capacity)
     {
       try
       {

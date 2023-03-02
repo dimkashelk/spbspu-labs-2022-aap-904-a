@@ -15,27 +15,13 @@ void printRowInTable(std::ostream& out, double x, double absError, unsigned numb
 
 void printTable(std::ostream& out, double left, double right, size_t numberMax, double absError, double step)
 {
-  if (left > right)
+  if (left > right || left * left > 1 || right * right > 1)
   {
     throw std::logic_error("incorrect borders");
   }
   for (double x = left; x + step < right; x += step)
   {
-    try
-    {
-      printRowInTable(out, x, absError, numberMax);
-    }
-    catch (...)
-    {
-      throw;
-    }
+    printRowInTable(out, x, absError, numberMax);
   }
-  try
-  {
-    printRowInTable(out, right, absError, numberMax);
-  }
-  catch (...)
-  {
-    throw;
-  }
+  printRowInTable(out, right, absError, numberMax);
 }

@@ -3,10 +3,6 @@
 
 double divSinXOnX(double x, double absError, size_t numberMax)
 {
-  if (x * x > 1)
-  {
-    throw std::logic_error("X is more than board of values");
-  }
   DivisionSinXOnX newMembOfRow(x);
   double res = 0.0;
   double memb = 0.0;

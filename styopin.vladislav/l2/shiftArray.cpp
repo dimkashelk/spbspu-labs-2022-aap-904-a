@@ -1,4 +1,4 @@
-#include "ShiftArray.h"
+#include "shiftArray.h"
 #include <utility>
 
 void reverse(int* ms, size_t rev)

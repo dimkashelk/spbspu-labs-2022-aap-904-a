@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include "EqualElements.h"
-#include "ShiftArray.h"
+#include "equalElements.h"
+#include "shiftArray.h"
 
 int main(int argc, char* arr[])
 {

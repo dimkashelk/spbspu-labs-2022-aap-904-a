@@ -1,4 +1,4 @@
-#include "EqualElements.h"
+#include "equalElements.h"
 
 bool isThereEqualElements(const int* arr, size_t size)
 {

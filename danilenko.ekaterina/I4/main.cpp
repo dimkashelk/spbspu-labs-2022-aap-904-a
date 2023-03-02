@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
     std::cout << "Error. Too much data" << '\n';
     return 1;
   }
-  if (rows == 0 && columns == 0)
+  if (rows == 0 || columns == 0)
   {
     std::cout << "Error. Matrix is empty" << '\n';
     return 1;

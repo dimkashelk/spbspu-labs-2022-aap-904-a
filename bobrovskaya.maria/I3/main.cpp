@@ -35,7 +35,7 @@ int main()
     std::cerr << e.what() << '\n';
     return 1;
   }
-  destination[size2-1] = '\0';
+  destination[size2 - 1] = '\0';
   for (size_t i = 0; i < size2 - 1; i++)
   {
     destination[i] = '.';

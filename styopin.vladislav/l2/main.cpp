@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "Count.h"
+#include "equal elements and shift array.h"
 
 
 int main(int argc, char* arr[])

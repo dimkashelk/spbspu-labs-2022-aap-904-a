@@ -1,4 +1,4 @@
-#include "Count.h"
+#include "equal elements and shift array.h"
 #include <utility>
 
 bool isThereEqualElements(const int* arr, size_t size)

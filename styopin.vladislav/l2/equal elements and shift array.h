@@ -1,5 +1,5 @@
-#ifndef COUNT_H
-#define COUNT_H
+#ifndef EQUALELEMENTS_AND_SHIFTARRAY_H
+#define EQUALELEMENTS_AND_SHIFTARRAY_H
 
 bool isThereEqualElements(const int* arr, size_t size);
 

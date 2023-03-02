@@ -5,13 +5,12 @@
 
 char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
 {
-  size_t count[256] = {};
   char maxChars[3] = {};
   size_t maxCounts[3] = {};
   for (size_t i = 0; i < symbols; i++)
   {
     unsigned char c = source1[i];
-    size_t cnt = count[c];
+    size_t cnt = 0;
     if (cnt > maxCounts[0])
     {
       maxCounts[2] = maxCounts[1];

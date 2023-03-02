@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
   if (rows == 0 || columns == 0)
   {
     std::cout << "Error. Matrix is empty" << '\n';
-    return 1;
+    return 0;
   }
   if (!strcmp(argv[1], "1"))
   {

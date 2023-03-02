@@ -1,13 +1,10 @@
 #include "commonSymbols.h"
-#include <cstddef>
+#include "stringLength.h"
 #include <cstring>
 
-#include "commonSymbols.h"
-#include <cstddef>
-#include <cstring>
-
-char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols)
+char* findCommonSymbols(char* myCommonSymbols, const char* source1)
 {
+  size_t symbols = myStringLength(source1);
   char maxChars[3] = {};
   size_t maxCounts[3] = {};
   for (size_t i = 0; i < symbols; i++)

@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbols);
+char* findCommonSymbols(char* myCommonSymbols, const char* source1);
 
 #endif

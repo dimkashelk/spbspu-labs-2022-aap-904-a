@@ -1,5 +1,4 @@
 #include "createCString.h"
-#include "cString.h"
 #include <stdexcept>
 
 char* createCString(std::istream& inp)

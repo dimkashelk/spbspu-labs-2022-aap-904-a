@@ -1,4 +1,5 @@
 #include "printTable.hpp"
+#include "calculateExp.hpp"
 #include <iomanip>
 #include <cmath>
 void printRow(std::ostream& out, double x, double absError, unsigned numberMax)

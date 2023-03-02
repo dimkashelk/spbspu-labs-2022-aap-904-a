@@ -11,7 +11,7 @@ char *newStringIndeticalCharacters(char *destination,  char *source1, char *sour
       bool exists = false;
       if (*i == *j)
       {
-        for (char *k = destination; *k != '\0'; k++)
+        for (char *k = destination; *k; k++)
         {
           if (*k == *i)
           {

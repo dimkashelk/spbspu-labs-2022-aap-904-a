@@ -7,7 +7,7 @@ char* createStringCommonSymbols(char* destination2, const char* source_1, const 
   for (const char* i = source_1; *i != '\0'; i++)
   {
     bool repetition = false;
-    for (const char* j = destination2; *j; j++)
+    for (const char* j = destination2; *j != 0; j++)
     {
       if (*j == *i)
       {

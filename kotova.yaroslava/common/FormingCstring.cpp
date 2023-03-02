@@ -5,8 +5,7 @@
 #include <stdexcept>
 char* formingCstring(size_t& size, std::istream& input)
 {
-  size_t size = 0;
-  size_t capacity = 10;
+  size_t capacity = 20;
   char* cstring = new char[capacity];
   cstring[0] = '\0';
   input >> std::noskipws;
@@ -16,14 +15,13 @@ char* formingCstring(size_t& size, std::istream& input)
     {
       try
       {
-        char* newstr = new char[capacity + 10];
-        for (auto i = cstring, j = newstr; i != cstring + size; ++i, ++j)
-        {
-          *j = *i;
-        }
+        char* newstr = new char[capacity + 20];
+        cstring[capacity - 1] = '\0';
+        const char *newstring = cstring;
+        std::strcpy(newstr, newstring);
         delete[] cstring;
         cstring = newstr;
-        capacity += 10;
+        capacity += 20;
       }
       catch (const std::exception& e)
       {
@@ -38,6 +36,6 @@ char* formingCstring(size_t& size, std::istream& input)
     delete[] cstring;
     throw std::invalid_argument("Empty string");
   }
-  cstring[size] = '\0';
+  cstring[size - 1] = '\0';
   return cstring;
 }

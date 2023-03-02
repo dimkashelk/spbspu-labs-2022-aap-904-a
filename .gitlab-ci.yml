@@ -41,7 +41,6 @@ content:
     - if: '$CI_PIPELINE_SOURCE == "web"'
 
 build:
-  needs: []
   stage: build
   script:
     - '"$TEST_DIR"/build.sh'
@@ -55,10 +54,8 @@ build:
     paths:
       - out
     expire_in: 1 year
-    
 
 acceptance:
-  needs: ["build"]
   stage: test
   script:
     - 'if test -d out ; then find out -type f -exec touch {} + ; fi'

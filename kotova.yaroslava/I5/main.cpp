@@ -5,7 +5,7 @@
 
 int main()
 {
-  size_t size = 10;
+  size_t size = 0;
   char* cstring = nullptr;
   try
   {

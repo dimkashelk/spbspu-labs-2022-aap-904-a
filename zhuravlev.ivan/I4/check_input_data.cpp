@@ -2,5 +2,5 @@
 
 bool checkInputData(size_t nRows, size_t nColomns)
 {
-  return !(((nRows == 0) || (nColomns == 0)) && (nRows != nColomns));
+  return !(((nRows == 0) || (nColomns == 0)) || (nRows != nColomns));
 }

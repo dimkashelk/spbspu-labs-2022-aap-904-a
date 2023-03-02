@@ -31,6 +31,12 @@ int main()
     return 1;
   }
 
+  destination1[size - 1] = '\0';
+  for (size_t i = 0; i < size - 1; i++)
+  {
+    destination1[i] = '.';
+  }
+
   char* destination2 = nullptr;
   char source_2[] = "abcdefg";
   try

@@ -11,16 +11,19 @@ char *readString(std::istream &inputStr, size_t &in_size)
   inputStr >> std::noskipws;
   do
   {
-    try
+    if (size == capacity)
     {
-      char *newStr = extendString(cstring, size, capacity, increaseCapacity);
-      delete[] cstring;
-      cstring = newStr;
-    }
-    catch (...)
-    {
-      delete[] cstring;
-      throw;
+      try
+      {
+        char *newStr = extendString(cstring, size, capacity, increaseCapacity);
+        delete[] cstring;
+        cstring = newStr;
+      }
+      catch (...)
+      {
+        delete[] cstring;
+        throw;
+      }
     }
     inputStr >> cstring[size];
   }

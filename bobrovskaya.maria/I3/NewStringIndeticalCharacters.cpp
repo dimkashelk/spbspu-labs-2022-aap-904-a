@@ -3,7 +3,6 @@
 char *newStringIndeticalCharacters(char *destination,  char *source1, char *source2)
 {
   char *result = destination;
-  destination[99] = '\0';
   for (char *i = source1; *i != '\0'; i++)
   {
     for (char *j = source2; *j != '\0'; j++)
@@ -11,7 +10,7 @@ char *newStringIndeticalCharacters(char *destination,  char *source1, char *sour
       bool exists = false;
       if (*i == *j)
       {
-        for (char *k = destination; *k; k++)
+        for (char *k = destination; *k != '\0'; k++)
         {
           if (*k == *i)
           {

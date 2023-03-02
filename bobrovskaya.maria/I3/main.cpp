@@ -22,18 +22,23 @@ int main()
   }
   size_t countDifLett = countDifLetters(source1);
   std::cout << countDifLett << "\n";
-
+  size_t size2 = 27;
   char source2[] = "adfgvbh";
   char *destination = nullptr;
   try
   {
-    destination = new char[100];
+    destination = new char[size2];
   }
   catch(const std::bad_alloc& e)
   {
     delete[] source1;
     std::cerr << e.what() << '\n';
     return 1;
+  }
+  destination[size2-1] = '\0';
+  for (size_t i = 0; i < size2 - 1; i++)
+  {
+    destination[i] = '.';
   }
   destination = newStringIndeticalCharacters(destination, source1, source2);
   std::cout << destination << "\n";

@@ -21,4 +21,5 @@ std::istream& readTheArray(std::istream& in, size_t& sizeOfFileArray, int* fileA
     std::cout << "Error: invalid size of array" << '\n';
     return in;
   }
+  return in;
 }

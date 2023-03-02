@@ -15,7 +15,7 @@ int main()
       throw std::logic_error("Empty string");
     }
   }
-  catch (const std::exception& e)
+  catch (const std::exception &e)
   {
     std::cerr << e.what() << "\n";
     return 1;
@@ -29,7 +29,7 @@ int main()
   {
     destination = new char[size2];
   }
-  catch(const std::bad_alloc& e)
+  catch(const std::bad_alloc &e)
   {
     delete[] source1;
     std::cerr << e.what() << '\n';

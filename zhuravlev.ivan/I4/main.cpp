@@ -44,6 +44,7 @@ int main(int argc, char* argv[])
     if (!checkInputData(n, m))
     {
       std::cout << "Error with input...";
+      return 1;
     }
     int arr[1000];
     try
@@ -78,6 +79,7 @@ int main(int argc, char* argv[])
     if (!checkInputData(n, m))
     {
       std::cout << "Error with input...";
+      return 1;
     }
     int* dyn_array = new int[n * m];
     for (size_t i = 0; i < n; i++)

@@ -22,6 +22,12 @@ int main(int argc, char* argv[])
     std::cout << "Error. File not open" << '\n';
     return 1;
   }
+  std::ofstream out_file(argv[3]);
+  if (!out_file.is_open())
+  {
+    std::cout << "error output file could not be opened\n";
+    return 1;
+  }
   if (rows * columns > 1000)
   {
     std::cout << "Error. Too much data" << '\n';

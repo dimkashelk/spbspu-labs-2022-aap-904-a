@@ -28,7 +28,7 @@ int main() {
   std::cout << "Output string: " << output_str << std::endl;
 
   std::string combined_str = "";
-  size_t i = 0, j = 0; // use size_t instead of int for string indices
+  size_t i = 0, j = 0;
   while (i < p.length() && j < q.length())
   {
     combined_str += p[i];

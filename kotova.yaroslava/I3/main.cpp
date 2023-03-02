@@ -6,7 +6,7 @@
 
 int main()
 {
-  size_t capacity = 10;
+  size_t capacity = 20;
   size_t size = 0;
   char* cstring = nullptr;
   try

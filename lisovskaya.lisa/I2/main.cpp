@@ -40,12 +40,23 @@ int main(int argc, char *argv[])
   int size = 0;
   std::ifstream in(argv[1]);
   in >> size;
+  if (size == 0)
+  {
+    std::cout << "0" << "\n";
+    return 0;
+  }
   if (!in)
   {
     std::cerr << "bruh" << "\n";
     return 2;
   }
   int *array3 = new int[size];
+  if (size == 0)
+  {
+    std::cout << "0" << "\n";
+    delete[] array3;
+    return 0;
+  }
   if (size > 0)
   {
     try

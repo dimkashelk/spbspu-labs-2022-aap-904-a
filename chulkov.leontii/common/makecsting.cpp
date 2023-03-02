@@ -24,7 +24,6 @@ char* makeCSting(std::istream& in)
       catch (...)
       {
         delete[] cstring;
-        return 1;
       }
     }
     in >> cstring[size];
@@ -33,7 +32,6 @@ char* makeCSting(std::istream& in)
   if (size == 0)
   {
     delete[] cstring;
-    return 1;
   } else
   {
     cstring[size - 1] = '\0';

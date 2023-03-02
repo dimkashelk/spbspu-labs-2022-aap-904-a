@@ -2,7 +2,7 @@
 #define COUNTDIAGONALSWITHOUTZERO_H
 #include <cstddef>
 
-size_t countDiagonalsWithoutZero(int** array, size_t n);
+size_t countDiagonalsWithoutZero(int* array, size_t n);
 
 #endif
 

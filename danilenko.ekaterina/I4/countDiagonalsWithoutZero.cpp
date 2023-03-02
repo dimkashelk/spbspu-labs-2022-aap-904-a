@@ -1,6 +1,6 @@
 #include "countDiagonalsWithoutZero.h"
 
-size_t countDiagonalsWithoutZero(int** array, size_t n)
+size_t countDiagonalsWithoutZero(int* array, size_t n)
 {
   bool flag;
   int count = 0;
@@ -10,7 +10,7 @@ size_t countDiagonalsWithoutZero(int** array, size_t n)
     for (size_t i = 0; i < n && !flag; i++)
     {
       size_t j = k - i;
-      if (j < n && array[i][j] == 0)
+      if (j < n && array[i * j] == 0)
       {
         flag = true;
       }

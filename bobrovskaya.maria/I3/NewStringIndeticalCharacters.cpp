@@ -1,6 +1,6 @@
 #include "NewStringIndeticalCharacters.h"
 
-char *newStringIndeticalCharacters(char *destination,  char *source1, char *source2)
+char *newStringIndeticalCharacters(char *destination, char *source1, char *source2)
 {
   char *result = destination;
   for (char *i = source1; *i != '\0'; i++)

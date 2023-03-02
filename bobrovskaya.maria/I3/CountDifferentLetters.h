@@ -2,6 +2,6 @@
 #define I3_COUNTDIFFERENTLETTERS_H
 #include <cstddef>
 
-size_t countDifLetters(const char* source);
+size_t countDifLetters(const char *source);
 
 #endif

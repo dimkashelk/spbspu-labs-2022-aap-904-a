@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstddef>
-#include "isExpression.h"
 #include <inputStr.h>
+#include "isExpression.h"
 int main()
 {
   char *str = nullptr;
@@ -16,5 +16,6 @@ int main()
     return 2;
   }
   std::cout << std::boolalpha << isExpression(str) << "\n";
+  delete [] str;
   return 0;
 }

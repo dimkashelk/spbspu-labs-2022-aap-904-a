@@ -5,6 +5,7 @@
 
 int main()
 {
+  size_t size = 27;
   size_t capacity = 10;
   char* source_1 = nullptr;
   try

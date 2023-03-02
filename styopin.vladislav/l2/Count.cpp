@@ -1,5 +1,5 @@
 #include "Count.h"
-#include <stdexcept>
+#include <utility>
 
 bool isThereEqualElements(const int* arr, size_t size)
 {

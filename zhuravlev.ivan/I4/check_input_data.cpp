@@ -2,7 +2,7 @@
 
 bool checkInputData(size_t nRows, size_t nColomns)
 {
-  if ((nRows == 0) || (nColomns == 0))
+  if ((nRows <= 0) || (nColomns <= 0))
   {
     return false;
   }

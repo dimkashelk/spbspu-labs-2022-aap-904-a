@@ -17,7 +17,18 @@ char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbo
         cnt++;
       }
     }
-    if (cnt > maxCounts[0])
+
+    bool isDuplicate = false;
+    for (size_t k = 0; k < i; k++)
+    {
+      if (c == source1[k])
+      {
+        isDuplicate = true;
+        break;
+      }
+    }
+
+    if (!isDuplicate && cnt > maxCounts[0])
     {
       maxCounts[2] = maxCounts[1];
       maxCounts[1] = maxCounts[0];
@@ -26,24 +37,24 @@ char* findCommonSymbols(char* myCommonSymbols, const char* source1, size_t symbo
       maxChars[1] = maxChars[0];
       maxChars[0] = c;
     }
-    else if (cnt > maxCounts[1] && c != maxChars[0])
+    else if (!isDuplicate && cnt > maxCounts[1] && c != maxChars[0])
     {
       maxCounts[2] = maxCounts[1];
       maxCounts[1] = cnt;
       maxChars[2] = maxChars[1];
       maxChars[1] = c;
     }
-    else if (cnt > maxCounts[2] && c != maxChars[0] && c != maxChars[1])
+    else if (!isDuplicate && cnt > maxCounts[2] && c != maxChars[0] && c != maxChars[1])
     {
       maxCounts[2] = cnt;
       maxChars[2] = c;
     }
   }
+
   size_t index = 0;
   for (size_t i = 0; i < 3; i++)
   {
-    if (maxChars[i] != 0)
-    {
+    if (maxChars[i] != 0) {
       myCommonSymbols[index++] = maxChars[i];
     }
   }

@@ -56,13 +56,17 @@ int main(int argc, char* argv[])
     std::ofstream out_file(argv[3]);
     size_t result = countColumnsWithAscElements(matrix, rows, columns);
     out_file << "Columns: " << result << "\n";
+    if (!out_file)
+    {
+      std::cout << "Error. Number write error";
+      return 1;
+    }
   }
   else if (!strcmp(argv[1], "2"))
   {
-    int** matrix2 = new int* [rows];
+    int** matrix2 = new int* [rows * columns];
     for (size_t i = 0; i < rows; i++)
     {
-      matrix2[i] = new int[columns];
       for (size_t j = 0; j < columns; j++)
       {
         inp_file >> matrix2[i][j];
@@ -76,6 +80,11 @@ int main(int argc, char* argv[])
     }
     std::ofstream out_file(argv[3]);
     out_file << "Diagonals: " << countDiagonalsWithoutZero(matrix2, rows) << "\n";
+    if (!out_file)
+    {
+      std::cout << "Error. Number write error";
+      return 1;
+    }
     delete[] matrix2;
   }
   else

@@ -1,5 +1,9 @@
 ﻿#include <iostream>
+#include <cstddef>
 #include <fstream>
+#include <cstring>
+#include "countColumnsWithAscElements.h"
+#include "countDiagonalsWithoutZero.h"
 
 int main(int argc, char* argv[])
 {
@@ -29,19 +33,6 @@ int main(int argc, char* argv[])
     std::cout << "Error. Matrix is empty" << '\n';
     return 1;
   }
-
-  return 0;
-}
-
-/*size_t rows = 0;
-  size_t columns = 0;
-  std::ifstream in(argv[2]);
-  in >> rows >> columns;
-  if (!in)
-  {
-    std::cout << "Error1";
-    return 1;
-  }
   if (!strcmp(argv[1], "1"))
   {
     int matrix[1000];
@@ -49,41 +40,43 @@ int main(int argc, char* argv[])
     {
       for (size_t j = 0; j < columns; j++)
       {
-        in >> matrix[rows * i + j];
-        if (!in)
+        inp_file >> matrix[rows * i + j];
+        if (!inp_file)
         {
-          std::cout << "Error2";
+          std::cout << "Error. File not open";
           return 1;
         }
       }
     }
-    std::ofstream out(argv[3]);
+    std::ofstream out_file(argv[3]);
     size_t result = countColumnsWithAscElements(matrix, rows, columns);
-    out << "Columns: " << result << "\n";
+    out_file << "Columns: " << result << "\n";
   }
   else if (!strcmp(argv[1], "2"))
   {
     int** matrix2 = new int* [rows];
     for (size_t i = 0; i < rows; i++)
     {
-      matrix2[i] = new int [columns];
+      matrix2[i] = new int[columns];
       for (size_t j = 0; j < columns; j++)
       {
-        in >> matrix2[i][j];
-        if (!in)
+        inp_file >> matrix2[i][j];
+        if (!inp_file)
         {
-          std::cout << "Error3";
+          std::cout << "Error. File not open";
           delete[] matrix2;
           return 1;
         }
       }
     }
-    std::ofstream out(argv[3]);
-    out << "Diagonals: " << countDiagonalsWithoutZero(matrix2, rows) << "\n";
+    std::ofstream out_file(argv[3]);
+    out_file << "Diagonals: " << countDiagonalsWithoutZero(matrix2, rows) << "\n";
     delete[] matrix2;
   }
   else
   {
     std::cout << "No such parameter";
     return 1;
-  }*/
+  }
+  return 0;
+}

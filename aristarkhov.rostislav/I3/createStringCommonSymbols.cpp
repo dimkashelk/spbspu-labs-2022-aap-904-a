@@ -1,4 +1,5 @@
 #include "createStringCommonSymbols.h"
+#include "defineCountCommonSymbols.h"
 #include <cctype>
 
 char* createStringCommonSymbols(char* destination2, const char* source_1, const char* source_2)

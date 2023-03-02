@@ -15,8 +15,9 @@ int main()
     std::cout << e.what() << "\n";
     return 1;
   }
-  if (cstring[0] == '\n')
+  if (cstring[0] == '\0')
   {
+    std::cout << "Empty string" << "\n";
     delete[] cstring;
     return 1;
   }
@@ -34,7 +35,7 @@ int main()
   {
     char *strwithoutspaces = new char[size];
     deleteSpaces(strwithoutspaces, cstring);
-    std::cout << strwithoutspaces;
+    std::cout << strwithoutspaces << "\n";
     delete[] strwithoutspaces;
   }
   catch (const std::bad_alloc &e)

@@ -64,12 +64,12 @@ int main(int argc, char* argv[])
   }
   else if (!strcmp(argv[1], "2"))
   {
-    int** matrix2 = new int* [rows * columns];
+    int* matrix2 = new int [rows * columns];
     for (size_t i = 0; i < rows; i++)
     {
       for (size_t j = 0; j < columns; j++)
       {
-        inp_file >> matrix2[i][j];
+        inp_file >> matrix2[i * rows + j];
         if (!inp_file)
         {
           std::cout << "Error. File not open";

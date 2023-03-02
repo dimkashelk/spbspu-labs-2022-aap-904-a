@@ -6,9 +6,10 @@ int main()
 {
   char *cstring = nullptr;
   size_t size = 0;
+  const size_t increaseCapacity = 20;
   try
   {
-    cstring = readString(std::cin, size);
+    cstring = readString(std::cin, size, increaseCapacity);
   }
   catch (const std::runtime_error &e)
   {

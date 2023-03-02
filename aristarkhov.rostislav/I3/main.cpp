@@ -53,6 +53,6 @@ int main()
   {
     destination2[i] = '.';
   }
- 
+
   return 0;
 }

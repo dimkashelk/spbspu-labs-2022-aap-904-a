@@ -17,10 +17,6 @@ int main(int argc, char* argv[])
   size_t columns = 0;
   std::ifstream inp_file(argv[2]);
   inp_file >> rows >> columns;
-  if (rows == 0 || columns == 0)
-  {
-    return 0;
-  }
   if (!inp_file.is_open())
   {
     std::cout << "Error. File not open" << '\n';
@@ -57,7 +53,6 @@ int main(int argc, char* argv[])
         }
       }
     }
-    std::ofstream out_file(argv[3]);
     size_t result = countColumnsWithAscElements(matrix, rows, columns);
     out_file << "Columns: " << result << "\n";
     if (!out_file)
@@ -82,7 +77,6 @@ int main(int argc, char* argv[])
         }
       }
     }
-    std::ofstream out_file(argv[3]);
     out_file << "Diagonals: " << countDiagonalsWithoutZero(matrix2, rows) << "\n";
     if (!out_file)
     {

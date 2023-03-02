@@ -1,7 +1,7 @@
 #include "printTable.hpp"
-#include "calculateExp.hpp"
 #include <iomanip>
 #include <cmath>
+#include "calculateExp.hpp"
 void printRow(std::ostream& out, double x, double absError, unsigned numberMax)
 {
   out << std::setw(5) << x << " ";

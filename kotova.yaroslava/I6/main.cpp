@@ -1,5 +1,6 @@
 #include <iostream>
 #include "calculateExp.hpp"
+#include "printTable.hpp"
 
 int main()
 {

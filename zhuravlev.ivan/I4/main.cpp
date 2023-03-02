@@ -3,8 +3,8 @@
 #include <fstream>
 #include <cstring>
 #include "check_input_data.h"
-#include "number_of_rows_with_same_elements.h"
-#include "max_sum_diag.h"
+#include "count_rows_with_same_elements.h"
+#include "count_max_sum_diag.h"
 
 int main(int argc, char* argv[])
 {
@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
     }
     try
     {
-      outputfile << maxSumDiag(dyn_array, n, m) << "\n";
+      outputfile << countMaxSumDiag(dyn_array, n, m) << "\n";
       if (!outputfile)
       {
         std::cerr << "Error with writting in output file\n";

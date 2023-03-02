@@ -1,7 +1,7 @@
-#include "max_sum_diag.h"
+#include "count_max_sum_diag.h"
 #include <cstddef>
 
-int maxSumDiag(const int* arr, size_t nRows, size_t nColomns)
+int countMaxSumDiag(const int* arr, size_t nRows, size_t nColomns)
 {
   int max_sum = 0;
   int sum1 = 0;

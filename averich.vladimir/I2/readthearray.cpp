@@ -2,23 +2,23 @@
 #include <iostream>
 #include <fstream>
 #include <cstddef>
-int* readTheArray(std::istream& in, size_t& sizeOfFileArray, int* fileArray, const size_t maxSize)
+#include <cctype>
+std::istream& readTheArray(std::istream& in, size_t& sizeOfFileArray, int* fileArray, size_t maxSize)
 {
-  if (sizeOfFileArray > maxSize)
+  if (sizeOfFileArray < maxSize)
   {
     for (size_t i = 0; i < sizeOfFileArray; i++)
     {
       in >> fileArray[i];
-      if (!in)
+      if (in.bad())
       {
-        std::cerr << ("Error reading file");
+        return in;
       }
     }
   }
   else
   {
-    std::cerr << "Error: size of file array";
+    std::cout << "Error: invalid size of array" << '\n';
+    return in;
   }
-  return fileArray;
 }
-

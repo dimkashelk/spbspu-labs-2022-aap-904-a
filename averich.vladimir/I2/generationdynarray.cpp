@@ -1,5 +1,5 @@
 #include "generationdynarray.hpp"
-#include <iostream>
+#include <stdlib.h>
 #include <cstddef>
 int* generationDynArray(int* dynArray, size_t sizeOfDynArray)
 {

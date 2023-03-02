@@ -1,11 +1,9 @@
 #include "readString.h"
 #include <stdexcept>
-#include <limits>
 #include <iostream>
 #include "extendString.h"
 char *readString(std::istream &inputStr, size_t &in_size)
 {
-  constexpr size_t max_size_t = std::numeric_limits< size_t >::max();
   size_t increaseCapacity = 20;
   size_t capacity = 10;
   char *cstring = new char[capacity];
@@ -15,26 +13,13 @@ char *readString(std::istream &inputStr, size_t &in_size)
   {
     if (size == capacity)
     {
-      if (capacity == max_size_t)
-      {
-        delete[] cstring;
-        throw std::runtime_error("not enough capacity");
-      }
-      if (max_size_t - increaseCapacity <= capacity)
-      {
-        capacity = max_size_t;
-      }
-      else
-      {
-        capacity += increaseCapacity;
-      }
       try
       {
         char *newStr = extendString(cstring, size, capacity, increaseCapacity);
         delete[] cstring;
         cstring = newStr;
       }
-      catch (...)
+      catch (std::runtime_error &e)
       {
         delete[] cstring;
         throw;

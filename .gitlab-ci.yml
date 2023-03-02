@@ -54,6 +54,7 @@ build:
     paths:
       - out
     expire_in: 1 year
+
 acceptance:
   stage: test
   script:

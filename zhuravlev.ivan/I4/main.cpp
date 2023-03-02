@@ -75,7 +75,7 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "2"))
   {
-    if (checkInputData(n, m))
+    if (!checkInputData(n, m))
     {
       return 1;
     }

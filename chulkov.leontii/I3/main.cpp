@@ -7,10 +7,10 @@
 
 int main()
 {
-  char* csting = nullptr;
+  char* cstring = nullptr;
   try
   {
-    csting = makeCSting(std::cin);
+    cstring = makeCSting(std::cin);
   }
   catch (const std::exception& e)
   {
@@ -19,6 +19,7 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
+  const size_t size2 = 4;
   char newstr2[size2] = "azs";
   char* newstr3 = nullptr;
   const unsigned short alphabet = 100;

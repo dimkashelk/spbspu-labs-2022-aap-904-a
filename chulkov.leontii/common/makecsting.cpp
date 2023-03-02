@@ -25,7 +25,6 @@ int makeCSting(std::istream& in) {
     }
     in >> cstring[size];
   } while (in && cstring[size++] != '\n');
-  const size_t size2 = 4;
   if (size == 0) {
     delete[] cstring;
     return 1;

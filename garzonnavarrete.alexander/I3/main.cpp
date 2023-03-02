@@ -19,28 +19,28 @@ int main() {
       output_str += c;
     }
   }
-    std::cout << "Output string: " << output_str << std::endl;
+  std::cout << "Output string: " << output_str << std::endl;
 
-    std::string combined_str = "";
-    int i = 0, j = 0;
-    while (i < p.length() && j < q.length())
-    {
-      combined_str += p[i];
-      combined_str += q[j];
-      i++;
-      j++;
-    }
-    while (i < p.length())
-    {
-      combined_str += p[i];
-      i++;
-    }
-    while (j < q.length())
-    {
-      combined_str += q[j];
-      j++;
-    }
-    std::cout << "Combined string: " << combined_str << std::endl;
+  std::string combined_str = "";
+  std::string::size_type i = 0, j = 0;
+  while (i < p.length() && j < q.length())
+  {
+    combined_str += p[i];
+    combined_str += q[j];
+    i++;
+    j++;
+  }
+  while (i < p.length())
+  {
+    combined_str += p[i];
+    i++;
+  }
+  while (j < q.length())
+  {
+    combined_str += q[j];
+    j++;
+  }
+  std::cout << "Combined string: " << combined_str << std::endl;
 
-    return 0;
+  return 0;
 }

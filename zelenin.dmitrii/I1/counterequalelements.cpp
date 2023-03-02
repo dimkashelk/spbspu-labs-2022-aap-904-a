@@ -1,6 +1,6 @@
-#include "countingequalelements.h"
+#include "counterequalelements.h"
 
-void countingEqualElements(int& value, int& pred_value, int& equal_element_counter, int& max_equal_element)
+void counterEqualElements(int& value, int& pred_value, int& equal_element_counter, int& max_equal_element)
 {
   if (value == pred_value)
   {

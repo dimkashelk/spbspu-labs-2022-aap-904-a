@@ -1,6 +1,6 @@
 #include <iostream>
-#include "countingequalelements.h"
-#include "countingpythagoreanthrees.h"
+#include "counterequalelements.h"
+#include "counterpythagoreanthrees.h"
 
 int main()
 {
@@ -19,11 +19,12 @@ int main()
     std::cin >> value;
     if (std::cin)
     {
-      countingEqualElements(value, pred_value, equal_element_counter, max_equal_element);
-      countingPythagoreanThrees(value, program_launch_number, count_of_pythagorean_threes, x, y, z);
+      counterEqualElements(value, pred_value, equal_element_counter, max_equal_element);
+      counterPythagoreanThrees(value, program_launch_number, count_of_pythagorean_threes, x, y, z);
       program_launch_number += 1;
     }
-  } while (value && std::cin);
+  } 
+  while (value && std::cin);
   if (!std::cin)
   {
     std::cout << "Error...\n";

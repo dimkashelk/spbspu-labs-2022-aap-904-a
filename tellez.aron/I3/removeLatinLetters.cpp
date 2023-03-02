@@ -2,7 +2,7 @@
 #include <cctype>
 char* removeLatinLetters(char *destination, const char *source)
 {
-  char *src = const_cast< char* >(source);
+  const char *src = source;
   char *dst = destination;
   while (*src != '\0')
   {

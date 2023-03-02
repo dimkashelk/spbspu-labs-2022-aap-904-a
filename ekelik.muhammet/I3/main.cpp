@@ -49,7 +49,7 @@ int main()
     delete[] mySymbols;
     return 1;
   }
-  findCommonSymbols(myCommonSymbols, source1, symbols);
+  findCommonSymbols(myCommonSymbols, source1);
   std::cout << "Common symbols: " << myCommonSymbols << '\n';
 
   delete[] source1;

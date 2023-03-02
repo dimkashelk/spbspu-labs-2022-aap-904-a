@@ -10,7 +10,7 @@ size_t countDiagonalsWithoutZero(int** array, size_t n)
     for (size_t i = 0; i < n && !flag; i++)
     {
       size_t j = k - i;
-      if (j >= 0 && j < n && array[i][j] == 0)
+      if (j < n && array[i][j] == 0)
       {
         flag = true;
       }

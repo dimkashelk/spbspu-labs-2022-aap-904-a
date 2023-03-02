@@ -6,7 +6,7 @@ char *extendString(char *cstring, size_t size, size_t capacity, size_t increaseC
   const size_t max_size_t = std::numeric_limits< size_t >::max();
   char *newstring = new char[capacity + increaseCapacity];
   char *j = newstring;
-  if (size = capacity)
+  if (size == capacity)
   {
     if (capacity == max_size_t || max_size_t <= capacity + increaseCapacity)
     {
@@ -20,5 +20,6 @@ char *extendString(char *cstring, size_t size, size_t capacity, size_t increaseC
         *j = *i;
       }
     }
+  }
   return newstring;
 }

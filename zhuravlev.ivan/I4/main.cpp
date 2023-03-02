@@ -75,44 +75,40 @@ int main(int argc, char* argv[])
   }
   if (!std::strcmp(argv[1], "2"))
   {
-    if (checkInputData(n, m))
+    if (!checkInputData(n, m))
     {
-      int* dyn_array = new int[n * m];
-      for (size_t i = 0; i < n; i++)
+      std::cout << "somthing wrong with input";
+    }
+    int* dyn_array = new int[n * m];
+    for (size_t i = 0; i < n; i++)
+    {
+      for (size_t j = 0; j < m; j++)
       {
-        for (size_t j = 0; j < m; j++)
+        input >> dyn_array[n * i + j];
+        if (!input)
         {
-          input >> dyn_array[n * i + j];
-          if (!input)
-          {
-            std::cout << "Error with input dynamic array\n";
-            delete[] dyn_array;
-            return 1;
-          }
-        }
-      }
-      try
-      {
-        outputfile << countMaxSumDiag(dyn_array, n, m) << "\n";
-        if (!outputfile)
-        {
-          std::cerr << "Error with writting in output file\n";
+          std::cout << "Error with input dynamic array\n";
           delete[] dyn_array;
           return 1;
         }
       }
-      catch (const std::exception& e)
-      {
-        std::cerr << e.what();
-        return 2;
-      }
-      delete[] dyn_array;
     }
-    }
-    else
+    try
     {
-      std::cout << "wrong input\n";
-      return 1;
+      outputfile << countMaxSumDiag(dyn_array, n, m) << "\n";
+      if (!outputfile)
+      {
+        std::cerr << "Error with writting in output file\n";
+        delete[] dyn_array;
+        return 1;
+      }
     }
+    catch (const std::exception& e)
+    {
+      std::cerr << e.what();
+      return 2;
+    }
+      delete[] dyn_array;
+  }
   return 0;
 }

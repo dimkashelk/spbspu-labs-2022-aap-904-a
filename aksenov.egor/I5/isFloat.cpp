@@ -41,7 +41,7 @@ bool continueWithPoint(const char *expr)
 }
 bool continueWithE(const char *expr)
 {
-  return isE(*expr) && continueSecondDigitPart(expr + 1);
+  return isE(*expr) && continueWithSign(expr + 1);
 }
 bool continueFirstDigitPart(const char *expr)
 {

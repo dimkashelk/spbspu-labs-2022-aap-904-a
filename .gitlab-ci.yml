@@ -42,6 +42,7 @@ content:
 
 build:
   stage: build
+  needs: []
   script:
     - '"$TEST_DIR"/build.sh'
   rules:
@@ -56,6 +57,7 @@ build:
     expire_in: 1 year
   needs: []
 acceptance:
+  needs: [build]
   stage: test
   script:
     - 'if test -d out ; then find out -type f -exec touch {} + ; fi'

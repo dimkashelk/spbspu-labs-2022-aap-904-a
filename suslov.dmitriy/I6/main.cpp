@@ -17,6 +17,7 @@ int main()
   if (start > end)
   {
     std::cerr << "invalid range" << "\n";
+    return 2;
   }
   for (double i = start; i <= end; i += step)
   {

@@ -4,18 +4,18 @@
 int main()
 {
   size_t size = 0;
-  size_t increaseCapacity = 20;
-  char *cstr = new char[size];
+  size_t increaseCapacity = 50;
+  char *cstr = nullptr;
   try
   {
     cstr = readString(std::cin, size, increaseCapacity);
   }
-  catch (const std::runtime_error &e)
+  catch (...)
   {
-    std::cout << e.what() << "\n";
-    delete[] cstr;
-    return 1;
+    std::cerr << "ERROR" << "\n";
+    return 2;
   }
   std::cout << std::boolalpha << isFloat(cstr) << "\n";
   delete[] cstr;
+  return 0;
 }

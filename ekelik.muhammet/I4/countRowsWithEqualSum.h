@@ -1,8 +1,8 @@
-#ifndef COUNTRROWSWITHEQUALSUM_H
-#define COUNTRROWSWITHEQUALSUM_H
+#ifndef COUNT_ROWS_WITH_EQUAL_SUM_H
+#define COUNT_ROWS_WITH_EQUAL_SUM_H
 
 #include <cstddef>
 
-size_t countRowsWithEqualSum(int* matrix, size_t rows, size_t cols);
+size_t countRowsWithEqualSum(const int* matrix, size_t numRows, size_t numCols);
 
 #endif

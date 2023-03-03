@@ -1,29 +1,27 @@
 #include "findLongestSeries.h"
 
-size_t findLongestSeries(int* matrix, size_t rows, size_t cols)
+int findLongestSeries(const int* matrix, size_t numRows, size_t numCols)
 {
-  size_t maxSeriesLength = 1;
-  size_t currentSeriesLength = 1;
-  size_t maxSeriesRow = 0;
-  for (size_t i = 0; i < rows; i++)
+  int longestSeries = 1;
+  int currentSeries = 1;
+  for (size_t i = 0; i < numRows; i++)
   {
-    for (size_t j = 0; j < cols - 1; j++)
+    for (size_t j = 1; j < numCols; j++)
     {
-      if (matrix[i*cols + j] == matrix[i*cols + j + 1])
+      if (matrix[numCols * i + j] == matrix[numCols * i + j - 1])
       {
-        currentSeriesLength++;
-        if (currentSeriesLength > maxSeriesLength)
+        currentSeries++;
+        if (currentSeries > longestSeries)
         {
-          maxSeriesLength = currentSeriesLength;
-          maxSeriesRow = i;
+          longestSeries = currentSeries;
         }
       }
       else
       {
-        currentSeriesLength = 1;
+        currentSeries = 1;
       }
     }
-    currentSeriesLength = 1;
+    currentSeries = 1;
   }
-  return maxSeriesRow;
+  return longestSeries;
 }

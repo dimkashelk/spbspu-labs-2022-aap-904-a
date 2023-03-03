@@ -1,8 +1,8 @@
-#ifndef FINDLONGESTSERIES_H
-#define FINDLONGESTSERIES_H
+#ifndef FIND_LONGEST_SERIES_H
+#define FIND_LONGEST_SERIES_H
 
 #include <cstddef>
 
-size_t findLongestSeries(int* matrix, size_t rows, size_t cols);
+int findLongestSeries(const int* matrix, size_t numRows, size_t numCols);
 
 #endif

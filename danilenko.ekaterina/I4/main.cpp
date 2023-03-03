@@ -33,11 +33,7 @@ int main(int argc, char* argv[])
     std::cout << "Error. Too much data" << '\n';
     return 1;
   }
-  if (rows == 0 || columns == 0)
-  {
-    std::cout << "Error. Matrix is empty" << '\n';
-    return 0;
-  }
+
   if (!strcmp(argv[1], "1"))
   {
     int matrix[1000];

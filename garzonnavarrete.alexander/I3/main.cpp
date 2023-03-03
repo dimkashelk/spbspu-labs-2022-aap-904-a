@@ -22,7 +22,7 @@ int main() {
   getline(std::cin, q);
   q = "qwerrtyy";
 
-  if (input_str.empty() || p.empty() || q.empty())
+  if (input_str.empty() && p.empty() && q.empty())
   {
     std::cerr << "Error: Input strings cannot be empty" << std::endl;
     return 1;

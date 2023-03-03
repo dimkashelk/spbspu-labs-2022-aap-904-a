@@ -20,9 +20,8 @@ int main() {
   getline(std::cin, p);
   std::cout << "Enter the second string (q): " << std::endl;
   getline(std::cin, q);
-  q = "qwerrtyy";
 
-  if (input_str.empty() && p.empty() && q.empty())
+  if (input_str.empty() || p.empty() || q.empty())
   {
     std::cerr << "Error: Input strings cannot be empty" << std::endl;
     return 1;

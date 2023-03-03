@@ -2,7 +2,7 @@
 #include <cmath>
 #include "factorial.h"
 
-double arcCos(const x, double absError, unsigned max_member)
+double arcCos(double x, double absError, unsigned max_member)
 {
   const double pi = 3.14;
   double sum = pi / 2;

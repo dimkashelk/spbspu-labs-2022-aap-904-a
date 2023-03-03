@@ -12,5 +12,10 @@ void printRowInTable(std::ostream & out, double x, unsigned members, double absE
 
 void printTable(std::ostream & out, double left_limit, double right_limit, const double step, unsigned members, const double absError)
 {
-
+  for(double x = left_limit; x + step <= right_limit; x = x + step)
+  {
+    printRowInTable(out, x, absError, members);
+  }
+  printRowInTable(out, right_limit, absError, members);
+  out << '\n';
 }

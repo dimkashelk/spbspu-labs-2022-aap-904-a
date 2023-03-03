@@ -3,6 +3,6 @@
 
 #include <cstddef>
 
-int findLongestSeries(const int* matrix, size_t numRows, size_t numCols);
+size_t findLongestSeries(const int* matrix, size_t numRows, size_t numCols);
 
 #endif

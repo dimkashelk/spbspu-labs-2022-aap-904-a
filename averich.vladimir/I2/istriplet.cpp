@@ -7,15 +7,13 @@ int isTriplet(const int arr[], size_t size)
   {
     throw std::length_error("Error triplet");
   }
-  size_t i = 0;
   int countOfTriplet = 0;
-  while (i != size)
+  for (size_t i = 0; i != size; i++)
   {
     if (arr[i] > arr[i + 1] && arr[i + 1] > arr[i + 2])
     {
       countOfTriplet += 1;
     }
-    i++;
   }
   return countOfTriplet;
 }

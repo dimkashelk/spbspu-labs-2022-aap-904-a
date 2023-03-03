@@ -14,6 +14,10 @@ int main()
     std::cerr << "input err" << "\n";
     return 2;
   }
+  if (start > end)
+  {
+    std::cerr << "invalid range" << "\n";
+  }
   for (double i = start; i <= end; i += step)
   {
     std::cout << i << " : "

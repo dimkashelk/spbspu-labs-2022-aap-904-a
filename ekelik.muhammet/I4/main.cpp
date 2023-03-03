@@ -66,6 +66,7 @@ int main(int argc, char** argv)
       {
         inputFile.close();
         std::cout << e.what() << "\n";
+        delete[] matrix;
         return 1;
       }
     }
@@ -79,15 +80,13 @@ int main(int argc, char** argv)
     catch (const std::exception& e)
     {
       std::cout << e.what() << "\n";
+      delete[] matrix;
       return 1;
     }
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    if (!useMatrix)
-    {
-      delete[] matrix;
-    }
+    delete[] matrix;
     return 0;
   }
   catch (const std::exception& e)

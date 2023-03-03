@@ -1,6 +1,7 @@
 #include "print_table.h"
+#include <iomanip>
 
-void printRowInTable(std::ostream, double x, unsigned members, double absError)
+void printRowInTable(std::ostream & out, double x, unsigned members, double absError)
 {
 
 }

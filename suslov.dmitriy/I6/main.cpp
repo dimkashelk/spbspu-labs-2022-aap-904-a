@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "taylor.h"
+#include "printTable.h"
 int main()
 {
   const double absError = 0.01;

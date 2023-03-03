@@ -1,5 +1,5 @@
-#include <cctype>
 #include "removeDigits.h"
+#include <cctype>
 size_t removeDigits(char * destination, const char * source)
 {
   if (destination == nullptr || source == nullptr)

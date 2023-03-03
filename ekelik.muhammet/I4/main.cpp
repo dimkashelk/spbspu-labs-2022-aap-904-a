@@ -14,125 +14,126 @@ int main(int argc, char** argv)
   }
   if (!std::strcmp(argv[1], "1"))
   {
-    std::ifstream inpFile;
-    inpFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+    std::ifstream inputFile;
+    inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
     try
     {
-      inpFile.open(argv[2]);
+      inputFile.open(argv[2]);
     }
     catch (const std::exception& e)
     {
       std::cout << e.what() << "\n";
       return 1;
     }
-    int stMatrix[1000];
-    size_t rows = 0, cols = 0;
+    int staticMatrix[1000];
+    size_t numRows = 0, numCols = 0;
     try
     {
-      inpFile >> rows;
-      inpFile >> cols;
+      inputFile >> numRows;
+      inputFile >> numCols;
     }
     catch (const std::exception& e)
     {
-      inpFile.close();
+      inputFile.close();
       std::cout << e.what() << "\n";
       return 1;
     }
-    if (rows * cols > 1000)
+    if (numRows * numCols > 1000)
     {
-      inpFile.close();
-      std::cout << rows * cols << " > " << 1000 << "\n";
+      inputFile.close();
+      std::cout << numRows * numCols << " > " << 1000 << "\n";
       return 1;
     }
     try
     {
-      for (size_t i = 0; i < rows; i++)
+      for (size_t i = 0; i < numRows; i++)
       {
-        for (size_t j = 0; j < cols; j++)
+        for (size_t j = 0; j < numCols; j++)
         {
-          inpFile >> stMatrix[rows * i + j];
+          inputFile >> staticMatrix[numRows * i + j];
         }
       }
     }
     catch (const std::exception& e)
     {
-      inpFile.close();
+      inputFile.close();
       std::cout << e.what() << "\n";
       return 1;
     }
-    inpFile.close();
-    std::ofstream outFile;
-    outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
+    inputFile.close();
+    std::ofstream outputFile;
+    outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
     try
     {
-      outFile.open(argv[3]);
+      outputFile.open(argv[3]);
     }
     catch (const std::exception& e)
     {
       std::cout << e.what() << "\n";
       return 1;
     }
-    outFile << countRowsWithEqualSum(stMatrix, rows, cols) << "\n";
-    outFile << findLongestSeries(stMatrix, rows, cols) << "\n";
-    outFile.close();
+    outputFile << countRowsWithEqualSum(staticMatrix, numRows, numCols) << "\n";
+    outputFile << findLongestSeries(staticMatrix, numRows, numCols) << "\n";
+    outputFile.close();
     return 0;
   }
   else if (!std::strcmp(argv[1], "2"))
   {
-    std::ifstream inpFile;
-    inpFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+    std::ifstream inputFile;
+    inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
     try
     {
-      inpFile.open(argv[2]);
+      inputFile.open(argv[2]);
     }
     catch (const std::exception& e)
     {
       std::cout << e.what() << "\n";
       return 1;
     }
-    size_t rows = 0, cols = 0;
-    int* dynMatrix = nullptr;
+    size_t numRows = 0, numCols = 0;
+    int* dynamicMatrix = nullptr;
     try
     {
-      inpFile >> rows;
-      inpFile >> cols;
-      dynMatrix = new int[rows * cols];
-      for (size_t i = 0; i < rows; i++)
+      inputFile >> numRows;
+      inputFile >> numCols;
+      dynamicMatrix = new int[numRows * numCols];
+      for (size_t i = 0; i < numRows; i++)
       {
-        for (size_t j = 0; j < cols; j++)
+        for (size_t j = 0; j < numCols; j++)
         {
-          inpFile >> dynMatrix[rows * i + j];
+          inputFile >> dynamicMatrix[numRows * i + j];
         }
       }
     }
     catch (const std::exception& e)
     {
-      delete[] dynMatrix;
-      inpFile.close();
+      delete[] dynamicMatrix;
+      inputFile.close();
       std::cout << e.what() << "\n";
       return 1;
     }
-    inpFile.close();
-    std::ofstream outFile;
-    outFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
+    inputFile.close();
+    std::ofstream outputFile;
+    outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
     try
     {
-      outFile.open(argv[3]);
+      outputFile.open(argv[3]);
     }
     catch (const std::exception& e)
     {
+      delete[] dynamicMatrix;
       std::cout << e.what() << "\n";
       return 1;
     }
-    outFile << countRowsWithEqualSum(dynMatrix, rows, cols) << "\n";
-    outFile << findLongestSeries(dynMatrix, rows, cols) << "\n";
-    outFile.close();
-    delete[] dynMatrix;
+    outputFile << countRowsWithEqualSum(dynamicMatrix, numRows, numCols) << "\n";
+    outputFile << findLongestSeries(dynamicMatrix, numRows, numCols) << "\n";
+    outputFile.close();
+    delete[] dynamicMatrix;
     return 0;
   }
   else
   {
-    std::cout << "Incorect arg " << argv[1] << "\n";
+    std::cout << "Error!";
     return 1;
   }
 }

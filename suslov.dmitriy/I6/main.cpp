@@ -19,11 +19,19 @@ int main()
     std::cerr << "invalid range" << "\n";
     return 2;
   }
-  for (double i = start; i <= end; i += step)
+  try
   {
-    std::cout << i << " : "
-              << (1 / pow(1 + i, 3))
-              << " : " << printTable(i, absError, numberMax) << std::endl;
+    for (double i = start; i <= end; i += step)
+    {
+      std::cout << i << " : "
+                << (1 / pow(1 + i, 3))
+                << " : " << printTable(i, absError, numberMax) << "\n";
+    }
+  }
+  catch(...)
+  {
+    std::cerr << "error" << "\n";
+    return 2;
   }
   return 0;
 }

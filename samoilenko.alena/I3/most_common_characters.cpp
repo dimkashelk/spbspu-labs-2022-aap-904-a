@@ -1,70 +1,52 @@
 #include "most_common_characters.h"
 #include <cstddef>
-#include <algorithm>
-#include <string.h>
 
-char* printMostCommonCharacters(char* destination, const char* source)
+bool equate(const char* source1, const char* i, size_t lastIdx)
 {
-  for (size_t t = 0; t <= 3; t++)
+  for (const char* k = source1; lastIdx != 3; lastIdx++, k++)
   {
-    destination[t] = 0;
-  }
-  char k = 0;
-  while (k < 3)
-  {
-    size_t max = 0;
-    for (char t = 127; t > 1; t--)
+    if (*k == *i)
     {
-      size_t l = 0;
-      if ((k == 1) & (t == destination[2] - 0))
+      return true;
+    }
+  }
+  return false;
+}
+
+char* printMostCommonCharacters(size_t lastIdx, char* destination, const char* source)
+{
+  size_t arr[3]{};
+  size_t idx = 0;
+  size_t counter = 0;
+  for (const char* i = source; *i; i++)
+  {
+    idx = 0;
+    if (equate(destination, i, lastIdx))
+    {
+      counter = 0;
+      for (const char* n = source; *n; n++)
       {
-        continue;
-      }
-      else
-      {
-        if ((k == 2) & ((t == destination[2] - 0) || (t == destination[1] - 0)))
+        if (*i == *n)
         {
-          continue;
-        }
-        else
-        {
-          for (size_t i = 0; i < strlen(source); i++)
-          {
-            if (t == source[i] - 0)
-            {
-              l++;
-            }
-          }
+          counter++;
         }
       }
-      switch (k)
+      for (char* k = destination; lastIdx != 3; idx++, k++, lastIdx++)
       {
-        case 0:
-          if (l >= max)
+        if (arr[idx] < counter)
+        {
+          for (size_t m = 2 - idx; m > idx; m--)
           {
-            destination[2] = (char) t;
-            max = l;
+            k[m] = k[m - 1];
+            arr[m] = arr[m - 1];
           }
+          *k = *i;
+          arr[idx] = counter;
           break;
-        case 1:
-          if (l >= max)
-          {
-            destination[1] = (char) t;
-            max = l;
-          }
-          break;
-        case 2:
-          if (l >= max)
-          {
-            destination[0] = (char) t;
-            max = l;
-          }
-          break;
+        }
       }
     }
-    k++;
+    lastIdx = 0;
   }
-  std::swap(destination[0], std::min(destination[0], std::min(destination[1], destination[2])));
-  std::swap(destination[2], std::max(destination[2], std::max(destination[1], destination[0])));
   return destination;
 }

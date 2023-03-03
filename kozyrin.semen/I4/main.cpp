@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
     return 2;
   }
 
-  if (strcmp(argv[1], "1") == 0) {
+  if (std::strcmp(argv[1], "1") == 0) {
     return taskOne(std::cerr, fin, fout);
   } else if (strcmp(argv[1], "2") == 0) {
     return taskTwo(std::cerr, fin, fout);

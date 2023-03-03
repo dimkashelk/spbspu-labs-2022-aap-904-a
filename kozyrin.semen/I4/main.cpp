@@ -1,7 +1,7 @@
 #include <cstring>
 #include "ArrayOperations.h"
 
-int taskOne(std::ifstream& fin, std::ofstream& fout)
+int taskOne(std::ostream& errStream, std::ifstream& fin, std::ofstream& fout)
 {
   int arr[1000]{0};
   size_t rows = 0;
@@ -9,21 +9,26 @@ int taskOne(std::ifstream& fin, std::ofstream& fout)
   fin >> rows;
   fin >> cols;
 
+  if (!fin) {
+    errStream << "Error: empty file";
+    return 3;
+  }
+
   if (rows * cols > 1000) {
-    std::cerr << "Error: array too big";
-    return 1;
+    errStream << "Error: array too big";
+    return 4;
   }
 
   if (!inputArray(arr, rows * cols, fin)) {
-    std::cerr << "Error: Unexpected eof";
-    return 2;
+    errStream << "Error: Unexpected eof";
+    return 5;
   }
 
   fout << "Number of sorted rows: " << sortedRowsCount(arr, rows, cols);
   return 0;
 }
 
-int taskTwo(std::ifstream& fin, std::ofstream& fout)
+int taskTwo(std::ostream& errStream, std::ifstream& fin, std::ofstream& fout)
 {
   int* arr = nullptr;
   size_t rows = 0;
@@ -31,18 +36,23 @@ int taskTwo(std::ifstream& fin, std::ofstream& fout)
   fin >> rows;
   fin >> cols;
 
+  if (!fin) {
+    errStream << "Error: empty file";
+    return 3;
+  }
+
   try {
     arr = new int[rows * cols];
   }
   catch (const std::bad_alloc& err) {
-    std::cerr << "Error: " << err.what();
-    return 1;
+    errStream << "Error: " << err.what();
+    return 4;
   }
 
   if (!inputArray(arr, rows * cols, fin)) {
-    std::cerr << "Error: Unexpected eof";
+    errStream << "Error: Unexpected eof";
     delete[] arr;
-    return 2;
+    return 5;
   }
 
   fout << "The matrix is " << (isTriangular(arr, rows, cols) ? "indeed" : "not") << " triangular";
@@ -66,16 +76,11 @@ int main(int argc, char* argv[])
     std::cerr << "Output file could not be opened";
     return 2;
   }
-  fin.peek();
-  if (fin.eof()) {
-    std::cerr << "Input file is empty";
-    return 3;
-  }
 
-  if (strcmp(argv[1], "1\0") == 0) {
-    return taskOne(fin, fout);
-  } else if (strcmp(argv[1], "2\0") == 0) {
-    return taskTwo(fin, fout);
+  if (strcmp(argv[1], "1") == 0) {
+    return taskOne(std::cerr, fin, fout);
+  } else if (strcmp(argv[1], "2") == 0) {
+    return taskTwo(std::cerr, fin, fout);
   } else {
     std::cerr << "Incorrect task number";
     return 4;

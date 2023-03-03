@@ -4,7 +4,7 @@
 int main()
 {
   const double absError = 0.01;
-  const step = 0.1;
+  const double step = 0.1;
   unsigned numberMax = 0;
   double start = 0.0;
   double end = 0.0;

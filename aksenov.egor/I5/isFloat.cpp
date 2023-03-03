@@ -1,59 +1,59 @@
 #include "isFloat.h"
 #include <cctype>
-bool continueWithDigit(const char *symbol);
-bool continueWithSign(const char *symbol);
-bool continueWihtPoint(const char *symbol);
-bool continueWithE(const char *symbol);
-bool continueFirstDigitPart(const char *symbol);
-bool continueSecondDigitPart(const char *symbol);
-bool isDigit(char symbol)
+bool continueWithDigit(const char *expr);
+bool continueWithSign(const char *expr);
+bool continueWithPoint(const char *expr);
+bool continueWithE(const char *expr);
+bool continueFirstDigitPart(const char *expr);
+bool continueSecondDigitPart(const char *expr);
+bool isDigit(const char symbol)
 {
   return std::isdigit(symbol);
 }
-bool isSign(char symbol)
+bool isSign(const char symbol)
 {
   return (symbol == '+' || symbol == '-');
 }
-bool isPoint(char symbol)
+bool isPoint(const char symbol)
 {
   return (symbol == '.');
 }
-bool isEnd(char symbol)
+bool isEnd(const char symbol)
 {
   return (symbol == '\0');
 }
-bool isE(char symbol)
+bool isE(const char symbol)
 {
   return (symbol == 'E');
 }
 
-bool continueWithDigit(const char *symbol)
+bool continueWithDigit(const char *expr)
 {
- return isDigit(*symbol) && (continueWithDigit(symbol + 1) || continueWithE(symbol + 1) || continueWithDot(symbol + 1));
+ return isDigit(*expr) && (continueWithDigit(expr + 1) || continueWithE(expr + 1) || continueWithPoint(expr + 1));
 }
-bool continueWithSign(const char *symbol)
+bool continueWithSign(const char *expr)
 {
-  return isSign(*symbol) && continueSecondDigitPart(symbol + 1);
+  return isSign(*expr) && continueSecondDigitPart(expr + 1);
 }
-bool continueWihtPoint(const char *symbol)
+bool continueWithPoint(const char *expr)
 {
-  return isPoint(*symbol) && continueFirstDigitPart(symbol + 1);
+  return isPoint(*expr) && continueFirstDigitPart(expr + 1);
 }
-bool continueWithE(const char *symbol)
+bool continueWithE(const char *expr)
 {
-  return isE(*symbol) && continueSecondDigitPart(symbol + 1);
+  return isE(*expr) && continueSecondDigitPart(expr + 1);
 }
-bool continueFirstDigitPart(const char *symbol)
+bool continueFirstDigitPart(const char *expr)
 {
-  return isDigit(*symbol) && (continueFirstDigitPart(symbol + 1) || continueWithE(symbol + 1));
+  return isDigit(*expr) && (continueFirstDigitPart(expr + 1) || continueWithE(expr + 1));
 }
-bool continueSecondDigitPart(const char *symbol)
+bool continueSecondDigitPart(const char *expr)
 {
-  return isDigit(*symbol) && (continueSecondDigitPart(symbol + 1) || isEnd(*(symbol + 1)));
+  return isDigit(*expr) && (continueSecondDigitPart(expr + 1) || isEnd(*(expr + 1)));
 }
 bool isFloat(const char *expr)
 {
-  bool firstOption = isSign(*symbol) && continueWithDigit(symbol + 1);
-  bool secondOption = isDigit(*symbol) && (continueWithDigit(symbol + 1) || continueWithE(symbol + 1) || continueWithPoint(symbol + 1));
+  bool firstOption = isSign(*expr) && continueWithDigit(expr + 1);
+  bool secondOption = isDigit(*expr) && (continueWithDigit(expr + 1) || continueWithE(expr + 1) || continueWithPoint(expr + 1));
   return firstOption || secondOption;
 }

@@ -13,6 +13,7 @@ int main()
   catch (const std::runtime_error &e)
   {
     std::cout << e.what() << "\n";
+    delete[] cstr;
     return 1;
   }
   std::cout << std::boolalpha << isFloat(cstr) << "\n";

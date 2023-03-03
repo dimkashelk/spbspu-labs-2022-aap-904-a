@@ -1,4 +1,5 @@
 #include <iostream>
+#include "print_table.h"
 
 int main()
 {
@@ -13,5 +14,6 @@ int main()
   }
   const double step = 0.02;
   const double absError = 0.00001;
+  printTable(std::cout, left_limit, right_limit, step, members, absError);
   return 0;
 }

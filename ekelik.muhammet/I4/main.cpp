@@ -12,17 +12,20 @@ int main(int argc, char** argv)
     std::cout << "Error!";
     return 1;
   }
+
   std::ifstream inputFile;
   inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+
   try
   {
     inputFile.open(argv[2]);
     size_t numRows = 0, numCols = 0;
     int* matrix = nullptr;
     bool useMatrix = std::strcmp(argv[1], "1") == 0;
+
     if (useMatrix)
     {
-      int staticMatrix[1000];
+      static int staticMatrix[1000];
       try
       {
         inputFile >> numRows >> numCols;
@@ -32,11 +35,12 @@ int main(int argc, char** argv)
           std::cout << numRows * numCols << " > " << 1000 << "\n";
           return 1;
         }
+
         for (size_t i = 0; i < numRows; i++)
         {
           for (size_t j = 0; j < numCols; j++)
           {
-            inputFile >> staticMatrix[numRows * i + j];
+            inputFile >> staticMatrix[numCols * i + j];
           }
         }
         matrix = staticMatrix;
@@ -54,6 +58,7 @@ int main(int argc, char** argv)
       {
         inputFile >> numRows >> numCols;
         matrix = new int[numRows * numCols];
+
         for (size_t i = 0; i < numRows; i++)
         {
           for (size_t j = 0; j < numCols; j++)
@@ -70,9 +75,12 @@ int main(int argc, char** argv)
         return 1;
       }
     }
+
     inputFile.close();
+
     std::ofstream outputFile;
     outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
+
     try
     {
       outputFile.open(argv[3]);
@@ -83,10 +91,14 @@ int main(int argc, char** argv)
       delete[] matrix;
       return 1;
     }
+
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    delete[] matrix;
+    if (!useMatrix)
+    {
+      delete[] matrix;
+    }
     return 0;
   }
   catch (const std::exception& e)

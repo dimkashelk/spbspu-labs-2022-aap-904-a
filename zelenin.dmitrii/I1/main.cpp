@@ -24,7 +24,7 @@ int main()
       countPythagoreanThrees(value, program_launch_number, count_of_pythagorean_threes, x, y, z);
       program_launch_number += 1;
     }
-  } 
+  }
   while (value && std::cin);
   if (!std::cin)
   {

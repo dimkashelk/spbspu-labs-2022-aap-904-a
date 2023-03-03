@@ -1,36 +1,38 @@
 #include "removeDuplicateSpaces.h"
-#include <limits>
 #include <cctype>
-#include <cstring>
-const char* removeDuplicateSpaces2(const char* source)
+char* removeDuplicateSpaces2(char *destination, const char *source)
 {
-  const char* p = source;
-  while (std::isspace(*p)) ++p;
   size_t size = 0;
-  const size_t max_size = std::numeric_limits< size_t >::max();
-  while (p[size] != '\0' && p[size] != '\n' && size < max_size - 1)
+  size_t d = 0;
+  bool last_char_was_space = false;
+  while (std::isspace(source[d]))
   {
-    ++size;
+    d++;
   }
-  char* destination = new char[size + 1];
-  size_t dest_index = 0;
-  while (*p != '\0')
+  while (source[d])
   {
-    if (std::isspace(*p))
+    if (std::isspace(source[d]))
     {
-      char space_char = *p++;
-      while (std::isspace(*p)) ++p;
-      destination[dest_index++] = space_char;
+      if (!last_char_was_space)
+      {
+        destination[size] = ' ';
+        size++;
+      }
+      last_char_was_space = true;
+      d++;
     }
     else
     {
-      destination[dest_index++] = *p++;
+      destination[size] = source[d];
+      size++;
+      last_char_was_space = false;
+      d++;
     }
   }
-  while (dest_index > 0 && std::isspace(destination[dest_index - 1]))
+  if (size > 0 && std::isspace(destination[size - 1]))
   {
-    --dest_index;
+    size--;
   }
-  destination[dest_index] = '\0';
+  destination[size] = '\0';
   return destination;
 }

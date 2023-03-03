@@ -8,4 +8,10 @@ double arcCos(const x, double absError, unsigned max_member)
   unsigned members = 1;
   double numerator = 0.0;
   double denominator = 0.0;
+  do
+  {
+
+  }
+  while (std::fabs(next) > absError || members != max_member);
+  return sum;
 }

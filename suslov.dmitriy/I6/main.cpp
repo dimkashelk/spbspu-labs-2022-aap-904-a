@@ -3,11 +3,17 @@
 #include "taylor.h"
 int main()
 {
-  double absError = 0.01;
-  int numberMax = 150;
-  double start = -0.85,
-    end = 0.85,
-    step = 0.1;
+  const double absError = 0.01;
+  const step = 0.1;
+  unsigned numberMax = 0;
+  double start = 0.0;
+  double end = 0.0;
+  std::cin >> start >> end >> numberMax;
+  if (!std::cin)
+  {
+    std::cerr << "input err" << "\n";
+    return 2;
+  }
   for (double i = start; i <= end; i += step)
   {
     std::cout << i << " : "

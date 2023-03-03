@@ -9,6 +9,7 @@ int main()
   if (!std::cin || left_limit >= right_limit || left_limit < -1 || right_limit > 1)
   {
     std::cout << "Error... Incorrect arguments\n";
+    return 1;
   }
   const double step = 0.02;
   const double absError = 0.00001;

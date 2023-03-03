@@ -1,5 +1,5 @@
 #include "arccos.h"
-#include <math>
+#include <cmath>
 #include "factorial.h"
 
 double arCcos(const x, double absError, unsigned max_member)
@@ -15,7 +15,7 @@ double arCcos(const x, double absError, unsigned max_member)
   {
     sum -= next;
     numerator = factorial(2 * members) * std::pow(next, 2 * members + 1);
-    denominator = std::pow(4, members) * std::pow(factorial(members) * 2) * (2 * members + 1);
+    denominator = std::pow(4, members) * std::pow(factorial(members), 2) * (2 * members + 1);
     next = numerator / denominator;
     members++;
   }

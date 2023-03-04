@@ -19,7 +19,7 @@ char *readString(std::istream &inputStr, size_t &in_size, const size_t increaseC
         delete[] cstring;
         throw std::runtime_error("Size more than max");
       }
-      if (max_size - 20 <= capacity)
+      if (max_size - increaseCapacity <= capacity)
       {
         capacity = max_size;
       }

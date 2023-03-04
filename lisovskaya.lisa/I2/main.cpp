@@ -46,9 +46,9 @@ int main(int argc, char *argv[])
     std::cerr << "error reading file" << "\n";
     return 2;
   }
-  int *array3 = new int[size];
   if (size > 0)
   {
+    int *array3 = new int[size];
     try
     {
       array3 = readArray(in, size, array3);
@@ -72,6 +72,6 @@ int main(int argc, char *argv[])
   {
     return 0;
   }
-  delete[] array3;
+  delete[] array2;
   return 0;
 }

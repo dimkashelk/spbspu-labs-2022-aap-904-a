@@ -1,6 +1,6 @@
+#include "printTable.h"
 #include <stdexcept>
 #include <cmath>
-#include "printTable.h"
 double isTaylor(double x, double absError, unsigned numberMax)
 {
   if (x <= -1 || x >= 1)

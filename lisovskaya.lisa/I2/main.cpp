@@ -43,16 +43,10 @@ int main(int argc, char *argv[])
   in >> size;
   if (!in)
   {
-    std::cerr << "bruh" << "\n";
+    std::cerr << "error reading file" << "\n";
     return 2;
   }
   int *array3 = new int[size];
-  if (size == 0)
-  {
-    std::cout << "0" << "\n";
-    delete[] array3;
-    return 0;
-  }
   if (size > 0)
   {
     try
@@ -73,6 +67,10 @@ int main(int argc, char *argv[])
       delete[] array3;
       return 2;
     }
+  }
+  else
+  {
+    return 0;
   }
   delete[] array3;
   return 0;

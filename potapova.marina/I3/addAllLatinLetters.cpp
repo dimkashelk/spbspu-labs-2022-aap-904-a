@@ -31,7 +31,7 @@ char* addLatinLetsFromStr(const char* const all_latin_lets, char* all_latin_lets
 {
   for (; *str != '\0'; ++str)
   {
-    char in_lower_case = std::tolower(*str);
+    char in_lower_case = static_cast< char >(std::tolower(static_cast< int >(*str)));
     if (std::isalpha(*str) && !isInStr(all_latin_lets, in_lower_case))
     {
       *all_latin_lets_end_ptr++ = in_lower_case;

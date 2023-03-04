@@ -16,10 +16,10 @@ bool isInStr(const char* str, const char c)
 
 void strSort(char* str)
 {
-  for(char* cur_sym_ptr = str + 1; *cur_sym_ptr != '\0'; ++cur_sym_ptr)
+  for (char* cur_sym_ptr = str + 1; *cur_sym_ptr != '\0'; ++cur_sym_ptr)
   {
     char* before_sym_ptr = cur_sym_ptr - 1;
-    while(before_sym_ptr >= str && *before_sym_ptr > *(before_sym_ptr + 1))
+    while (before_sym_ptr >= str && *before_sym_ptr > *(before_sym_ptr + 1))
     {
       std::swap(*before_sym_ptr, *(before_sym_ptr + 1));
       --before_sym_ptr;

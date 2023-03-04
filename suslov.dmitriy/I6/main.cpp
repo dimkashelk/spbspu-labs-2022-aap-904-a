@@ -23,7 +23,7 @@ int main()
   {
     for (double i = start; i <= end; i += step)
     {
-      std::cout << i << " : " << (1 / pow(1 + i, 3)) << " : " << printTable(i, absError, numberMax) << "\n";
+      std::cout << i << " : " << (1 / pow(1 + i, 3)) << " : " << isTaylor(i, absError, numberMax) << "\n";
     }
   }
   catch(...)

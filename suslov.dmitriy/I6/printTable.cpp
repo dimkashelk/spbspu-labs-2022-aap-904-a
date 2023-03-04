@@ -1,7 +1,7 @@
-#include <iostream>
+#include <stdexcept>
 #include <cmath>
 #include "printTable.h"
-double printTable(double x, double absError, int numberMax)
+double isTaylor(double x, double absError, unsigned numberMax)
 {
   if (x <= -1 || x >= 1)
   {
@@ -15,7 +15,7 @@ double printTable(double x, double absError, int numberMax)
     sign *= -1;
     int con = (i + 1) * (i + 2) / 2;
     double addend = sign * con * xInPow;
-    if (abs(addend) < absError)
+    if (std::abs(addend) < absError)
     {
       flag = true;
       break;

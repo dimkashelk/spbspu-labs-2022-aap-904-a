@@ -10,7 +10,7 @@ double isTaylor(double x, double absError, unsigned numberMax)
   double sign = -1;
   double xInPow = 1, result = 0;
   bool flag = false;
-  for (int i = 0; i < numberMax; i++)
+  for (unsigned i = 0; i < numberMax; i++)
   {
     sign *= -1;
     int con = (i + 1) * (i + 2) / 2;

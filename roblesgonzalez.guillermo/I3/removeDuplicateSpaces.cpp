@@ -1,16 +1,13 @@
 #include "removeDuplicateSpaces.h"
 #include <cctype>
-
 char* removeDuplicateSpaces2(char* destination, const char* source)
 {
   size_t size = 0;
   size_t d = 0;
-
   while (std::isspace(source[d]))
   {
     d++;
   }
-
   while (source[d])
   {
     if (std::isspace(source[d]))
@@ -33,7 +30,6 @@ char* removeDuplicateSpaces2(char* destination, const char* source)
   {
     size--;
   }
-
   destination[size] = '\0';
   return destination;
 }

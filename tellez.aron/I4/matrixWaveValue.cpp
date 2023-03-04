@@ -11,8 +11,8 @@ int* assignMatrixWaveValue(int *matrix, size_t cols, size_t rows, size_t index_r
   {
     for (size_t j = 0; j < rows; j++)
     {
-      int row_diff = abs((int)i - (int)index_col + 1);
-      int col_diff = abs((int)j - (int)index_row + 1);
+      int row_diff = abs(static_cast< int >(i) - static_cast< int >(index_col) + 1);
+      int col_diff = abs(static_cast< int >(j) - static_cast< int >(index_row) + 1);
       matrix[i * rows + j] = std::max(row_diff, col_diff);
     }
   }

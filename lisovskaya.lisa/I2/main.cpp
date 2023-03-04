@@ -26,12 +26,6 @@ int main(int argc, char *argv[])
   }
   int *array2 = new int[n];
   array2 = generateRand(array2, n);
-  if (n == 0)
-  {
-    std::cerr << "Error" << "\n";
-    delete[] array2;
-    return 1;
-  }
   try
   {
     std::cout << counterBeforeMin(array2, n) << "\n";
@@ -47,11 +41,6 @@ int main(int argc, char *argv[])
   int size = 0;
   std::ifstream in(argv[1]);
   in >> size;
-  if (size == 0)
-  {
-    std::cout << "0" << "\n";
-    return 0;
-  }
   if (!in)
   {
     std::cerr << "bruh" << "\n";

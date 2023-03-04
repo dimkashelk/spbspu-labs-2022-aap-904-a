@@ -1,34 +1,39 @@
 #include <cctype>
+#include <utility>
 #include "addAllLatinLetters.h"
 
-void checkLatinLets(bool* const letters_existence, const char* str)
+bool isInStr(const char* str, const char c)
 {
   for (; *str != '\0'; ++str)
   {
-    if (std::isalpha(*str))
+    if (*str == c)
     {
-      letters_existence[std::tolower(*str) - 'a'] = true;
+      return true;
     }
   }
+  return false;
 }
-
-char* addAllLatinLets(char* dest, const char* str1, const char* str2)
+void strSort(char* str)
 {
-  bool lets_existence[('z' - 'a') + 1];
-  for (bool& let_existence : lets_existence)
+  for(char* cur_sym_ptr = str + 1; *cur_sym_ptr != '\0'; ++cur_sym_ptr)
+	{
+		char* before_sym_ptr = cur_sym_ptr - 1;
+		while(before_sym_ptr >= str && *before_sym_ptr > *(before_sym_ptr + 1))
+		{
+			std::swap(*before_sym_ptr, *(before_sym_ptr + 1));
+			--before_sym_ptr;
+		}
+	}
+}
+char* addLatinLetsFromStr(const char* const all_latin_lets, char* all_latin_lets_end_ptr, const char* str)
+{
+  for (; *str != '\0'; ++str)
   {
-    let_existence = false;
-  }
-  checkLatinLets(lets_existence, str1);
-  checkLatinLets(lets_existence, str2);
-  char* dest_end_ptr = dest;
-  for (char let = 'a'; let <= 'z'; ++let)
-  {
-    if (lets_existence[let - 'a'])
+    char in_lower_case = std::tolower(*str);
+    if (std::isalpha(*str) && !isInStr(all_latin_lets, in_lower_case))
     {
-      *dest_end_ptr++ = let;
+      *all_latin_lets_end_ptr++ = in_lower_case;
     }
   }
-  *dest_end_ptr = '\0';
-  return dest;
+  return all_latin_lets_end_ptr;
 }

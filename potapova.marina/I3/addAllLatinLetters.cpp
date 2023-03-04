@@ -39,3 +39,14 @@ char* addLatinLetsFromStr(const char* const all_latin_lets, char* all_latin_lets
   }
   return all_latin_lets_end_ptr;
 }
+
+
+char* addAllLatinLets(char* dest, const char* str1, const char* str2)
+{
+  char* destEndPtr = dest;
+  destEndPtr = addLatinLetsFromStr(dest, destEndPtr, str1);
+  destEndPtr = addLatinLetsFromStr(dest, destEndPtr, str2);
+  *destEndPtr = '\0';
+  strSort(dest);
+  return dest;
+}

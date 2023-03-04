@@ -58,16 +58,16 @@ int main(int argc, char *argv[])
     std::ofstream out(argv[3]);
     try
     {
-    int* dir = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
-    for (int *i = dir, counter = 1; counter <= static_cast< int >(columns*rows); ++i)
-    {
-      out << *i << " ";
-      if (counter % columns == 0)
+      int* dir = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
+      for (int *i = dir, counter = 1; counter <= static_cast< int >(columns*rows); ++i)
       {
-        out << "\n";
+        out << *i << " ";
+        if (counter % columns == 0)
+        {
+          out << "\n";
+        }
+        counter++;
       }
-      counter++;
-    }
     }
     catch (const std::invalid_argument &e)
     {

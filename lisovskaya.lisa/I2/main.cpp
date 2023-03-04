@@ -8,7 +8,7 @@
 #include "readArray.h"
 int main(int argc, char *argv[])
 {
-  if (argc != 2)
+  if (argc > 2)
   {
     std::cerr << "Not correct amount of parametrs" << "\n";
     return 1;

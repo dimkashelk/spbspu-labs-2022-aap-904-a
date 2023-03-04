@@ -1,31 +1,29 @@
-#include <iostream>
+#include "sequence.hpp"
 #include <limits>
 #include <stdexcept>
-#include "sequence.hpp"
 
-int main()
-{
-  const int minInt = std::numeric_limits< int >::min();
-  odintsov::LargestCounter countLargest {minInt, 0};
-  odintsov::DescendingCounter countDescending {minInt, false, 0};
-  int v = 0;
-  do {
-    std::cin >> v;
-    if (!std::cin) {
-      std::cout << "Input error\n";
-      return 1;
-    }
-    if (v == 0) {
-      break;
-    }
-    try {
-      countLargest(v);
-      countDescending(v);
-    } catch (std::overflow_error& e) {
-      std::cout << e.what() << '\n';
-      return 1;
-    }
-  } while (v != 0 && std::cin);
-  std::cout << "Largest value count: " << countLargest.n
-            << "\nDescending(both sides) value count: " << countDescending.n << '\n';
+void odintsov::incrementSafely(unsigned int& n) {
+  const unsigned int maxUInt = std::numeric_limits< unsigned int >::max();
+  if (n == maxUInt) {
+    throw std::overflow_error("Error: too many values in the input stream");
+  }
+  n++;
 }
+
+void odintsov::LargestCounter::operator()(int v) {
+  if (v > largestVal) {
+    largestVal = v;
+    n = 1;
+  } else if (v == largestVal) {
+    incrementSafely(n);
+  }
+};
+
+void odintsov::DescendingCounter::operator()(int v) {
+  bool curValDescending = (v < lastVal);
+  if (lastValDescending && curValDescending) {
+    incrementSafely(n);
+  }
+  lastVal = v;
+  lastValDescending = curValDescending;
+};

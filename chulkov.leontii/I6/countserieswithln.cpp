@@ -33,7 +33,7 @@ double countSeriesWithLn(double x, double error, unsigned c)
   {
     sum += ln();
   }
-  if (c < 0)
+  if (c == 0)
   {
     throw std::invalid_argument("Maximum number of repetitions exceeded\n");
   }

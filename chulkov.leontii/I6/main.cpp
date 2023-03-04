@@ -12,12 +12,12 @@ int main()
   std::cin >> lb >> rb >> nummax;
   if (!std::cin)
   {
-    std::cout << 'Error while writing\n';
+    std::cout << "Error while writing\n";
     return 1;
   }
   if (lb >= rb)
   {
-    std::cout << 'Error\n';
+    std::cout << "Error\n";
     return 1;
   }
   try
@@ -26,7 +26,7 @@ int main()
   }
   catch(const std::invalid_argument& e)
   {
-    std::cout << 'Error: ' << e.what() << '\n';
+    std::cout << "Error: " << e.what() << "\n";
     return 1;
   }
 }

@@ -3,7 +3,7 @@
 #include <cstring>
 #include "finder_three_same_elements.h"
 #include "finder_same_elements_in_two_string.h"
-#include </Users/ivanzhuravlev/CLionProjects/spbspu-labs-2022-aap-904-a/zhuravlev.ivan/common/makeString.h>
+#include <makeString.h>
 
 int main()
 {

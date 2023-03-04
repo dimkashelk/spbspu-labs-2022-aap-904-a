@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
   if (n == 0)
   {
     std::cout << "0" << "\n";
+    delete[] array2;
     return 0;
   }
   try

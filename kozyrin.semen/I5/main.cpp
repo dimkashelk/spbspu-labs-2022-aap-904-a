@@ -14,10 +14,10 @@ int main()
       return 1;
     }
     if (size == 1) {
-      std::cout << "Empty string";
+      std::cerr << "Empty string";
       delete[] str;
-      return 0;
+      return 2;
     }
-    std::cout << std::boolalpha << isReal(str);
+    std::cout << std::boolalpha << isReal(str) << '\n';
     delete[] str;
   };

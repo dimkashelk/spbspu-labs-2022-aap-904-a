@@ -3,6 +3,16 @@
 #include "equalElements.h"
 #include "shiftArray.h"
 
+void outputOfArray(std::ostream &out, int* pointer, size_t size)
+{
+  out << pointer[0];
+  for (size_t i = 1; i < size; ++i)
+  {
+    std::cout << "\t" << pointer[i];
+  }
+  std::cout << "\n";
+}
+
 int main(int argc, char* arr[])
 {
   if (argc != 2)
@@ -21,10 +31,7 @@ int main(int argc, char* arr[])
   std::string ansTrue = "Array has the same positive elements";
   std::string ansFalse = "Array hasn't the same positive elements";
   int* pointer1 = shiftArray(arr1, size1, shift1);
-  for (size_t i = 0; i < size1; ++i)
-  {
-    std::cout << pointer1[i] << "\n";
-  }
+  outputOfArray(std::cout, pointer1, size1);
   shiftArray(arr1, size1, shift1);
   bool ans1 = isThereEqualElements(arr1, size1);
   std::cout << (ans1 ? ansTrue : ansFalse) << "\n";
@@ -37,10 +44,7 @@ int main(int argc, char* arr[])
     arr2[i] = std::rand();
   }
   int* pointer2 = shiftArray(arr2, size2, shift2);
-  for (size_t i = 0; i < size2; ++i)
-  {
-    std::cout << pointer2[i] << "\n";
-  }
+  outputOfArray(std::cout, pointer2, size2);
   bool ans2 = isThereEqualElements(arr2, size2);
   std::cout << (ans2 ? ansTrue : ansFalse) << "\n";
   delete[] arr2;
@@ -71,10 +75,7 @@ int main(int argc, char* arr[])
     }
   }
   int* pointer3 = shiftArray(arr3, size3, shift3);
-  for (size_t i = 0; i < size3; ++i)
-  {
-    std::cout << pointer3[i] << "\n";
-  }
+  outputOfArray(std::cout, pointer3, size3);
   bool ans3 = isThereEqualElements(arr3, size3);
   std::cout << (ans3 ? ansTrue : ansFalse) << "\n";
   delete[] arr3;

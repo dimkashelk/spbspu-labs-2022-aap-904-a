@@ -1,4 +1,4 @@
-#include </Users/ivanzhuravlev/CLionProjects/spbspu-labs-2022-aap-904-a/zhuravlev.ivan/common/make_string.h>
+#include <makeString.h>
 #include <iostream>
 #include "functions.h"
 

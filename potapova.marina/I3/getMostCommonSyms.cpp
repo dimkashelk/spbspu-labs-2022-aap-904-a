@@ -6,7 +6,7 @@
 char* getMostCommonSyms(char* dest, const char* str)
 {
   std::pair< char, size_t > common_syms[3];
-    for (const char* cur_search_sym_ptr = str; *cur_search_sym_ptr != '\0'; ++cur_search_sym_ptr)
+  for (const char* cur_search_sym_ptr = str; *cur_search_sym_ptr != '\0'; ++cur_search_sym_ptr)
   {
     size_t count_commons_sym = 1;
     for (const char* cur_sym_ptr = cur_search_sym_ptr + 1; *cur_sym_ptr != '\0'; ++cur_sym_ptr)
@@ -43,4 +43,3 @@ char* getMostCommonSyms(char* dest, const char* str)
   dest[count_valid_syms] = '\0';
   return dest;
 }
-

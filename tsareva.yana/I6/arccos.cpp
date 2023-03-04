@@ -19,7 +19,7 @@ double arcCos(double x, double absError, unsigned max_member)
     next = numerator / denominator;
     members++;
   }
-  while (std::fabs(next) > absError && members != max_member);
+  while (std::fabs(next) > absError && members >= max_member);
 
   return sum;
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "printTable.h"
+#include "countExponent.h"
 int main()
 {
   const double absError = 0.01;
@@ -23,7 +23,7 @@ int main()
   {
     for (double i = start; i <= end; i += step)
     {
-      std::cout << i << " : " << (1 / pow(1 + i, 3)) << " : " << isTaylor(i, absError, numberMax) << "\n";
+      std::cout << i << " : " << (1 / pow(1 + i, 3)) << " : " << countExponent(i, absError, numberMax) << "\n";
     }
   }
   catch(...)

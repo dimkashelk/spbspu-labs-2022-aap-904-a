@@ -1,7 +1,7 @@
-#include "printTable.h"
+#include "countExponent.h"
 #include <stdexcept>
 #include <cmath>
-double isTaylor(double x, double absError, unsigned numberMax)
+double countExponent(double x, double absError, unsigned numberMax)
 {
   if (x <= -1 || x >= 1)
   {

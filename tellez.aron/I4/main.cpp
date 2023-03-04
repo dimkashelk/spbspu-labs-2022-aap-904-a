@@ -53,9 +53,11 @@ int main(int argc, char *argv[])
         return 1;
       }
     }
-    size_t index_row = 2;
+    size_t index_row = 5;
     size_t index_col = 3;
     std::ofstream out(argv[3]);
+    try
+    {
     int* dir = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
     for (int *i = dir, counter = 1; counter <= static_cast< int >(columns*rows); ++i)
     {
@@ -65,6 +67,14 @@ int main(int argc, char *argv[])
         out << "\n";
       }
       counter++;
+    }
+    }
+    catch (const std::invalid_argument &e)
+    {
+      delete[] matrix;
+      std::cout << "Error:\n";
+      std::cout << e.what();
+      return 0;
     }
     delete[] matrix;
   }

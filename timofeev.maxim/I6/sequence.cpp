@@ -15,7 +15,7 @@ double countSequence(double x, double absError, unsigned numberMax)
   do
   {
     sign *= -1;
-    next = sign * (i+2)*(i+3)/2 *x;
+    next = sign * (i + 2) * (i + 3) / 2 * x;
     x *= a;
     if (std::abs(next) < absError)
     {

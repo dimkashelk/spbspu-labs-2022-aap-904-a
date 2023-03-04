@@ -5,9 +5,9 @@
 #include <stdexcept>
 void printTable(std::ostream &out, double x, double absError, unsigned numberMax)
 {
-   out << std::setw(5) << x << " ";
-   out << std::setw(10) << std::setprecision(5) << countSequence(x, absError, numberMax) << " ";
-   out << std::setw(10) << std::setprecision(5) << (1 / pow(1 + x, 3))  << "\n";
+  out << std::setw(5) << x << " ";
+  out << std::setw(10) << std::setprecision(5) << countSequence(x, absError, numberMax) << " ";
+  out << std::setw(10) << (1 / pow(1 + x, 3))  << "\n";
 }
 void outTable(std::ostream &out, double l, double r, double s, double absError, unsigned numberMax)
 {

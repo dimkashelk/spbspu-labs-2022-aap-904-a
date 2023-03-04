@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
   if (argc != 2)
   {
     std::cerr << "Not correct amount of parametrs" << "\n";
+    return 1;
   }
   std::srand(std::time(nullptr));
   int arr1[] = {2, 5, 3, 4, 6, 7, 1};
@@ -27,9 +28,9 @@ int main(int argc, char *argv[])
   array2 = generateRand(array2, n);
   if (n == 0)
   {
-    std::cout << "0" << "\n";
+    std::cerr << "Error" << "\n";
     delete[] array2;
-    return 0;
+    return 1;
   }
   try
   {

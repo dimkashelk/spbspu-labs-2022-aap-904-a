@@ -3,10 +3,10 @@
 #include <cstdlib>
 #include <fstream>
 #include <ctime>
+#include <readingFile.h>
 #include "countAmountOfRightPairs.h"
 #include "repeatingPositiveNumbers.h"
 #include "fillArrayWithRandomNumbers.h"
-#include "readingFile.h"
 int main(int argc, char *argv[])
 {
   std::srand(std::time(nullptr));

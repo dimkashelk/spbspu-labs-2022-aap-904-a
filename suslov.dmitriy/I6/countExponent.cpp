@@ -9,7 +9,7 @@ double countExponent(double x, double absError, unsigned numberMax)
   }
   double sign = -1;
   double xInPow = 1, result = 0;
-  bool containsError = false;
+  bool termLessError = false;
   for (unsigned i = 0; i < numberMax; i++)
   {
     sign *= -1;
@@ -17,13 +17,13 @@ double countExponent(double x, double absError, unsigned numberMax)
     double addend = sign * con * xInPow;
     if (std::abs(addend) < absError)
     {
-      containsError = true;
+      termLessError = true;
       break;
     }
     result += addend;
     xInPow *= x;
   }
-  if (!containsError)
+  if (!termLessError)
   {
     throw std::invalid_argument("invalid numberMax");
   }

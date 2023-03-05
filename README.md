@@ -182,4 +182,3 @@ Accepted Labs
 | Zasulsky Egor             | ✓  | ✓  |    |    |    |    |    |    |
 | Zhuravlev Ivan            | ✓  | ✓  |    |    |    |    |    |    |
 | __Total__                 |  45|  33|  17|   9|   7|   3|   2|   0|
-

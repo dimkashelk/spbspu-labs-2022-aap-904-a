@@ -36,7 +36,7 @@ char* makeCstring(size_t& capacity, size_t& size, std::istream& input)
   if (cstring[0] == '\n' || size == 0)
   {
     delete[] cstring;
-    throw std::invalid_argument("Empty string");
+    throw;
   }
   cstring[size - 1] = '\0';
   return cstring;

@@ -16,7 +16,7 @@ char* getMostCommonSyms(char* dest, const char* str)
         ++count_commons_sym;
       }
     }
-    for (auto& common_sym : common_syms)
+    for (auto& common_sym: common_syms)
     {
       if (*cur_search_sym_ptr == common_sym.first)
       {

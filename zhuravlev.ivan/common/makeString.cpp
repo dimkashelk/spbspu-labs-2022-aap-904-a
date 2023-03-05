@@ -9,7 +9,7 @@ char* makeCstring(std::istream& input)
   size_t new_capacity = 0;
   char* cstring = new char[capacity];
   size_t size = 0;
-  cstring[0] = '\n';
+  cstring[0] = '\0';
   input >> std::noskipws;
   do
   {
@@ -38,7 +38,7 @@ char* makeCstring(std::istream& input)
   if (cstring[0] == '\n' || size == 0)
   {
     delete[] cstring;
-    throw;
+    throw std::invalid_argument("Empty string");
   }
   cstring[size - 1] = '\0';
   return cstring;

@@ -3,19 +3,16 @@
 
 bool isSign(char data)
 {
-  return ((data == '+') || (data == '-'));
+  return (data == '+') || (data == '-');
 }
-
 bool isDigit(char data)
 {
   return std::isdigit(data);
 }
-
 bool isE(char data)
 {
   return data == 'E';
 }
-
 bool isDot(char data)
 {
   return (data == '.');
@@ -26,7 +23,7 @@ bool End(const char* data)
 }
 bool ifE(const char* data)
 {
-  return(isE(*data) && ((isSign(*(data + 1)) && End(data + 2)) || (End(data + 1))));
+  return(isE(*data) && (isSign(*(data + 1)) && End(data + 2)) || End(data + 1));
 }
 bool continueWithDigitAfterDot(const char* data)
 {
@@ -34,14 +31,14 @@ bool continueWithDigitAfterDot(const char* data)
 }
 bool ifDot(const char* data)
 {
-  return (isDot(*data) && (continueWithDigitAfterDot(data + 1)));
+  return (isDot(*data) && continueWithDigitAfterDot(data + 1));
 }
 bool continueWithDigit(const char* data)
 {
-  return ((isDigit(*data) && continueWithDigit(data + 1) || (ifDot(data))));
+  return (isDigit(*data) && continueWithDigit(data + 1) || ifDot(data));
 }
 
 bool isFloat(const char* data)
 {
-  return  (continueWithDigit(data) || (isSign(*data) && (continueWithDigit((data + 1)))));
+  return  (continueWithDigit(data) || (isSign(*data) && continueWithDigit((data + 1))));
 }

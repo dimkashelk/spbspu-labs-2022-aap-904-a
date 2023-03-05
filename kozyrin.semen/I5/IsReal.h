@@ -1,6 +1,6 @@
 #ifndef ISREAL_H
 #define ISREAL_H
 
-bool isReal(char* str);
+bool isReal(const char* res);
 
 #endif

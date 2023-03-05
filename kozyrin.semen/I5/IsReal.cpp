@@ -1,31 +1,27 @@
 #include "IsReal.h"
+#include <cctype>
 
-bool isSign(char chr)
+bool isSign(const char chr)
 {
   return chr == '+' || chr == '-';
 }
 
-bool isDigit(char chr)
+bool isUInt(const char** str)
 {
-  return chr >= 48 && chr <= 57;
+  return (std::isdigit(**str) && std::isdigit(*++*str) && isUInt(str)) || std::isdigit(*(*str - 1));
 }
 
-bool isUInt(char*& str)
+bool isMantissa(const char** str)
 {
-  return (isDigit(*str) && isDigit(*++str) && isUInt(str)) || isDigit(*(str - 1));
+  return **str == '.' && isUInt(&++*str);
 }
 
-bool isMantissa(char*& str)
+bool isOrder(const char* str)
 {
-  return str[0] == '.' && isUInt(++str);
+  return *str == 'E' && ((isSign(*++str) && isUInt(&++str)) || isUInt(&str));
 }
 
-bool isOrder(char* str)
+bool isReal(const char* str)
 {
-  return *str == 'E' && ((isSign(*++str) && isUInt(++str)) || isUInt(str));
-}
-
-bool isReal(char* str)
-{
-  return (isSign(str[0]) && isMantissa(++str) && isOrder(str)) || (isMantissa(str) && isOrder(str));
+  return (isSign(str[0]) && isMantissa(&++str) && isOrder(str)) || (isMantissa(&str) && isOrder(str));
 }

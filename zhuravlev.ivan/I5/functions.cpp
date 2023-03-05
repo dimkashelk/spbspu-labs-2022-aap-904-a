@@ -20,28 +20,28 @@ bool isDot(char data)
 {
   return (data == '.');
 }
-
-bool continuesWithDigit(const char* data)
+bool End(const char* data)
 {
-  return (isDigit(*data) && continuesWithDigit(data + 1)) || isDigit(*data);
+  return (isDigit(*data) && (End(data + 1) || *(data + 1) == '\0'));
 }
-
-bool continuesWithE(const char* data)
+bool ifE(const char* data)
 {
-  return isE(*data) && ((isSign(*(data + 1)) && continuesWithDigit(data + 2)) || continuesWithDigit(data + 1));
+  return(isE(*data) && ((isSign(*(data + 1)) && End(data + 2)) || (End(data + 1))));
 }
-
-bool continuesWithDot(const char* data)
+bool continueWithDigitAfterDot(const char* data)
 {
-  return isDot(*(data)) && continuesWithDigit(data + 1);
+  return (isDigit(*data) || ifE(data + 1));
 }
-
-bool continuesWithM(const char* data)
+bool ifDot(const char* data)
 {
-  return continuesWithDigit(data) && continuesWithDot(data + 1);
+  return (isDot(*data) && (continueWithDigitAfterDot(data + 1)));
+}
+bool continueWithDigit(const char* data)
+{
+  return ((isDigit(*data) && continueWithDigit(data + 1) || (ifDot(data))));
 }
 
 bool isFloat(const char* data)
 {
-  return (continuesWithM(data) && continuesWithE(data + 1)) || (isSign(*data) && continuesWithM(data + 1) && continuesWithE(data + 2));
+  return  (continueWithDigit(data) || (isSign(*data) && (continueWithDigit((data + 1)))));
 }

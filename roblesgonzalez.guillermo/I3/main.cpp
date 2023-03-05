@@ -55,10 +55,9 @@ int main()
   cstring[size - 1] = '\0';
   size_t len = std::strlen(cstring);
   char* newString = new char[len + 1];
-  removeDuplicateSpaces2(newString, cstring); // pass newString as first argument
+  removeDuplicateSpaces2(newString, cstring);
   removeDigits(newString, newString);
   std::cout << newString << '\n';
- // delete[] result; // no longer needed
   delete[] newString;
   if (cstring != nullptr)
   {

@@ -5,7 +5,11 @@
 class TaylorSeriesWithLn
 {
   public:
-    explicit TaylorSeriesWithLn(double x) : x_(x), x0_(x), m_(0.0), n_(1)
+    explicit TaylorSeriesWithLn(double x):
+      x_(x),
+      degree_(x),
+      m_(0.0),
+      n_(1)
     {
       if (x <= 2 || x >= 3)
       {
@@ -14,13 +18,14 @@ class TaylorSeriesWithLn
     }
     double operator()()
     {
-      m_ = 2 / ((2 * n_ - 1) * pow(x_, 2 * n_ - 1));
+      m_ = 2 / ((2 * n_ - 1) * x_);
+      x_ *= degree_ * degree_;
       n_++;
       return m_;
     }
   private:
     double x_;
-    double x0_;
+    double degree_;
     double m_;
     unsigned n_;
 };

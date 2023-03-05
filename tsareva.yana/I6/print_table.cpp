@@ -10,9 +10,9 @@ void printRowInTable(std::ostream & out, double x, unsigned members, double absE
   out << std::setw(10) << std::setprecision(5) << std::acos(x) << '\n';
 }
 
-void printTable(std::ostream & out, double left_limit, double right_limit, const double step, unsigned members, const double absError)
+void printTable(std::ostream & out, double left_limit, double right_limit, double step, unsigned members, double absError)
 {
-  for(double x = left_limit; x + step <= right_limit; x = x + step)
+  for (double x = left_limit; x + step <= right_limit; x = x + step)
   {
     printRowInTable(out, x, absError, members);
   }

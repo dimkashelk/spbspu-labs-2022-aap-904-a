@@ -39,7 +39,6 @@ int main()
     std::cerr << e.what() << "\n";
     return 1;
   }
-
   delete[] cstring;
   return 0;
 }

@@ -1,24 +1,17 @@
-#include "SumofMinandMaxElements.h"
-#include <limits>
-
-size_t SumofMinandMaxElements(const int *input_array, size_t array_size)
+#include "countAscendingPairs.h"
+size_t countAscendingPairs(const int *input_array, size_t array_size)
 {
-  if (array_size == 0)
-   {
-    return 0;
-   }
-  int min = std::numeric_limits<int>::max();
-  int max = std::numeric_limits<int>::min();
-  for (size_t i = 0; i < array_size; i++)
+  if (array_size < 2)
   {
-   if (input_array[i] < min)
-   {
-    min = input_array[i];
-   }
-    if (input_array[i] > max)
+    return 0;
+  }
+  size_t count = 0;
+  for (size_t i = 1; i < array_size; i++)
+  {
+    if (input_array[i - 1] < input_array[i])
     {
-     max = input_array[i];
+      count++;
     }
   }
-   return min + max;
+  return count;
 }

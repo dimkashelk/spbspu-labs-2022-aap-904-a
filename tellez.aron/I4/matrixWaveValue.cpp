@@ -1,6 +1,6 @@
 #include "matrixWaveValue.h"
 #include <stdexcept>
-int* assignMatrixWaveValue(int* matrix, size_t cols, size_t rows, size_t index_row, size_t index_col)
+size_t* assignMatrixWaveValue(size_t* matrix, size_t cols, size_t rows, size_t index_row, size_t index_col)
 {
   if (index_row > rows || index_col > cols)
   {

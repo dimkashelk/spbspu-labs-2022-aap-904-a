@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
       std::cerr << "Matrix must be square" << '\n';
       return 1;
     }
-    int *matrix = new int[rows * columns];
+    size_t *matrix = new size_t[rows * columns];
     for (size_t i = 0; i < rows * columns; i++)
     {
       file >> matrix[i];
@@ -58,19 +58,18 @@ int main(int argc, char *argv[])
     std::ofstream out(argv[3]);
     try
     {
-      matrix = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
-      size_t counter = 0;
-      for (size_t i = 0; i < rows; ++i)
+      size_t* dir = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
+      for (size_t *i = dir, counter = 1; counter <= (columns*rows); ++i)
       {
-        for (size_t j = 0; j < columns; ++j)
+        out << *i << " ";
+        if (counter % columns == 0)
         {
-          out << *(matrix + counter) << " ";
-          ++counter;
+          out << "\n";
         }
-        out << "\n";
+        counter++;
       }
     }
-    catch (const std::invalid_argument& e)
+    catch (const std::invalid_argument &e)
     {
       delete[] matrix;
       std::cout << "Error:\n";

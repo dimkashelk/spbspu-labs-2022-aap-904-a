@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstddef>
+#include <readMatrix.h>
 #include "CountIndenticalElements.h"
 #include "SortingArrFromNegativeToPositiveVal.h"
 
@@ -68,7 +69,7 @@ int main(int argc, char **argv)
     return 0;
   }
   int* arr3 = new int[arrSize3];
-  for (size_t i = 0; i < arrSize3; i++)
+  if (readMatrixFromFile(arr3, arrSize3, readFile) == nullptr)
   {
     readFile >> arr3[i];
     if (!readFile) {

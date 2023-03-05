@@ -13,7 +13,7 @@ bool isUniqueElements(const int *matrix, size_t rows, size_t column)
   return true;
 }
 
-size_t numberRowsNoConcecutiveIndeticalElements(const int *matrix, size_t rows, size_t column)
+size_t countRowsWithoutRepeating(const int *matrix, size_t rows, size_t column)
 {
   size_t count = 0;
   for (size_t i = 0; i < rows; i++)

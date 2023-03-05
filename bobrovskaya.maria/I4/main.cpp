@@ -3,6 +3,7 @@
 #include <fstream>
 #include "countColumnsWithUniqueElements.h"
 #include "numberRowsNoConcecutiveIndeticalElements.h"
+#include <readMatrix.h>
 
 int main(int argc, char *argv[])
 {
@@ -20,6 +21,7 @@ int main(int argc, char *argv[])
     return 1;
   }
   inputFile >> rows >> column;
+  size_t size = rows * column;
   if (!inputFile)
   {
     std::cerr << "Incorrect arguments of the matrix\n";
@@ -28,14 +30,10 @@ int main(int argc, char *argv[])
   if (!std::strcmp(argv[1], "1"))
   {
     int matrix[1000];
-    for (size_t i = 0; i < rows * column; i++)
+    if (readMatrixFromFile(matrix, size, inputFile) == nullptr)
     {
-      inputFile >> matrix[i];
-      if (!inputFile)
-      {
-        std::cerr << "Error file/n";
-        return 1;
-      }
+      std::cerr << "Error file/n";
+      return 1;
     }
     std::ofstream outputFile(argv[3]);
     outputFile << countColumnsWithUniqueElements(matrix, rows, column) << "\n";
@@ -48,18 +46,14 @@ int main(int argc, char *argv[])
       return 1;
     }
     int *matrix = new int[rows * column];
-    for (size_t i = 0; i < rows * column; i++)
+    if (readMatrixFromFile(matrix, size, inputFile) == nullptr)
     {
-      inputFile >> matrix[i];
-      if (!inputFile)
-      {
-        std::cerr << "Error writing elements\n";
-        delete[] matrix;
-        return 1;
-      }
+      std::cerr << "Error writing elements\n";
+      delete[] matrix;
+      return 1;
     }
     std::ofstream outputFile(argv[3]);
-    outputFile << numberRowsNoConcecutiveIndeticalElements(matrix, rows, column) << "\n";
+    outputFile << countRowsWithoutRepeating(matrix, rows, column) << "\n";
     delete[] matrix;
   }
   else

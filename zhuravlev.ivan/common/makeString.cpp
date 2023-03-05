@@ -29,8 +29,8 @@ char* makeCstring(size_t& capacity, size_t& size, std::istream& input)
         delete[] cstring;
         throw;
       }
-      input >> cstring[size];
     }
+    input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
   if (cstring[0] == '\n' || size == 0)

@@ -9,7 +9,7 @@ int main()
   char* cstring = makeCstring(capacity, size, std::cin);
   if (cstring[0] == '\n')
   {
-    std::cout << "Empty string";
+    std::cerr << "Empty string";
     delete[] cstring;
     return 2;
   }

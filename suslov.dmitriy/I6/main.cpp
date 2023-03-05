@@ -26,7 +26,7 @@ int main()
       std::cout << i << " : " << (1 / pow(1 + i, 3)) << " : " << countExponent(i, absError, numberMax) << "\n";
     }
   }
-  catch(...)
+  catch(const std::exception &e)
   {
     std::cerr << "error" << "\n";
     return 2;

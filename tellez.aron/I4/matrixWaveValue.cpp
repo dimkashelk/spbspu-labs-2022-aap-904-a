@@ -4,7 +4,7 @@ size_t* assignMatrixWaveValue(size_t* matrix, size_t cols, size_t rows, size_t i
 {
   if (index_row > rows || index_col > cols)
   {
-    throw "First number indexes are out of bounds.";
+    throw std::invalid_argument("First number of indexes that are out");
   }
   index_row--;
   index_col--;

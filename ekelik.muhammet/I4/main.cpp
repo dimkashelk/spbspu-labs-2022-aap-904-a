@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 
     if (useMatrix)
     {
-      static int staticMatrix[1000];
+      int staticMatrix[1000];
       try
       {
         inputFile >> numRows >> numCols;

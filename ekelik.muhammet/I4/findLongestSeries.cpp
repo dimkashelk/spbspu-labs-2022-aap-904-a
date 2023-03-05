@@ -9,7 +9,7 @@ size_t findLongestSeries(const int* matrix, size_t numRows, size_t numCols)
   {
     for (size_t j = 0; j < numCols - 1; j++)
     {
-      if (matrix[i*numCols + j] == matrix[i*numCols + j + 1])
+      if (matrix[i * numCols + j] == matrix[i * numCols + j + 1])
       {
         currentSeriesLength++;
         if (currentSeriesLength > maxSeriesLength)

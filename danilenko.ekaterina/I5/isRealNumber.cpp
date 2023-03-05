@@ -34,7 +34,7 @@ bool isOrder(const char* data)
 
 bool isUnsignInteger(const char* data)
 {
-  return isDigit(*data) || (isDigit(*data) && (isUnsignInteger(data + 1) || isOrder(data + 1) || isEnd(*(data + 1))));
+  return (isDigit(*data) && isEnd(*(data + 1))) || (isDigit(*data) && (isUnsignInteger(data + 1) || isOrder(data + 1) || isEnd(*(data + 1))));
 }
 
 bool isMantissa(const char* data)

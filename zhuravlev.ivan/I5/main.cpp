@@ -17,4 +17,3 @@ int main()
   std::cout << std::boolalpha << isFloat(cstring) << "\n";
   return 0;
 }
-

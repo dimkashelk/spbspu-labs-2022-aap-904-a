@@ -1,13 +1,11 @@
 #include "removeDigits.h"
 #include <cctype>
-
 char* removeDigits(char* destination, const char* source)
 {
   if (destination == nullptr || source == nullptr)
   {
     return nullptr;
   }
-
   char* result = destination;
   while (*source != '\0')
   {
@@ -18,7 +16,6 @@ char* removeDigits(char* destination, const char* source)
     }
     source++;
   }
-
   *destination = '\0';
   return result;
 }

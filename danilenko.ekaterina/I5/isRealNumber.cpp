@@ -44,5 +44,5 @@ bool isMantissa(const char* data)
 
 bool isRealNumber(const char* data)
 {
-  return isEnd(*data) || isMantissa(data) || (isSign(*data) && isMantissa(data + 1));
+  return isMantissa(data) || (isSign(*data) && isMantissa(data + 1));
 }

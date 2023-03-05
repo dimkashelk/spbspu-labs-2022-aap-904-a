@@ -1,6 +1,5 @@
 #include "removeDuplicateSpaces.h"
 #include <cctype>
-
 char *removeDuplicateSpaces2(char *destination, const char *source)
 {
   size_t size = 0;

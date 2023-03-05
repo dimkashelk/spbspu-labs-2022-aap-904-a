@@ -35,10 +35,10 @@ char* createStringFromInput(std::istream& input)
   }
   while (input && source1[size++] != '\n');
 
-  if (size <= 1)
+  if (source1[0] == '\0' || source1[0] == '\n')
   {
     delete[] source1;
-    throw std::logic_error("Nothing was entered!\n");
+    throw std::invalid_argument("Nothing was entered!\n");
   }
   source1[size - 1] = '\0';
   return source1;

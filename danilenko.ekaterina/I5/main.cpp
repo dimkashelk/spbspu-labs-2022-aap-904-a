@@ -15,6 +15,7 @@ int main()
   catch (const std::exception& e)
   {
     std::cout << e.what() << "\n";
+    delete[] string;
     return 1;
   }
   bool result = isRealNumber(string);

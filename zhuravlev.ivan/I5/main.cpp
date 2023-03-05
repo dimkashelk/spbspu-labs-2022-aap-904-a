@@ -15,5 +15,6 @@ int main()
     return 1;
   }
   std::cout << std::boolalpha << isFloat(cstring) << "\n";
+  delete[] cstring;
   return 0;
 }

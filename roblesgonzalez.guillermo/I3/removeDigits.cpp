@@ -1,12 +1,14 @@
 #include "removeDigits.h"
 #include <cctype>
-size_t removeDigits(char * destination, const char * source)
+
+char* removeDigits(char* destination, const char* source)
 {
   if (destination == nullptr || source == nullptr)
   {
-    return -1;
+    return nullptr;
   }
-  char *result = destination;
+
+  char* result = destination;
   while (*source != '\0')
   {
     if (!std::isdigit(*source))
@@ -16,6 +18,8 @@ size_t removeDigits(char * destination, const char * source)
     }
     source++;
   }
+
   *destination = '\0';
-  return (destination - result);
+  return result;
 }
+

@@ -3,6 +3,7 @@
 #include <cstring>
 #include "removeDuplicateSpaces.h"
 #include "removeDigits.h"
+
 void customCopy(char* dest, const char* src, size_t count)
 {
   for (size_t i = 0; i < count; ++i)

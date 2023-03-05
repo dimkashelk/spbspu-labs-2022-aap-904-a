@@ -12,12 +12,14 @@ char* removeDuplicateSpaces2(char* destination, const char* source)
   {
     if (std::isspace(source[d]))
     {
-      if (d > 0 && !std::isspace(source[d - 1]))
+      char space_char = source[d];
+      while (std::isspace(source[d]))
       {
-        destination[size] = ' ';
-        size++;
+        d++;
       }
-      d++;
+      destination[size] = space_char;
+      size++;
+      d--;
     }
     else
     {

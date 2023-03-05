@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
       }
     }
     std::ofstream outputFile(argv[3]);
-    outputFile << numberRowsNoConcecutiveIndeticalElements(matrix, rows, column) << "\n";;
+    outputFile << numberRowsNoConcecutiveIndeticalElements(matrix, rows, column) << "\n";
     delete[] matrix;
   }
   else

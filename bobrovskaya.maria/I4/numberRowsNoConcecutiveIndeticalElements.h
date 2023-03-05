@@ -2,6 +2,6 @@
 #define NUMBERROWSNOCONCECUTIVEINDETICALELEMENTS_H
 #include <cstddef>
 
-int numberRowsNoConcecutiveIndeticalElements(int *matrix, size_t rows, size_t colomns);
+size_t numberRowsNoConcecutiveIndeticalElements(const int *matrix, size_t rows, size_t column);
 
 #endif

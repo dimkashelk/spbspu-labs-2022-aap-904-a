@@ -58,18 +58,19 @@ int main(int argc, char *argv[])
     std::ofstream out(argv[3]);
     try
     {
-      int* dir = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
-      for (int *i = dir, counter = 1; counter <= static_cast< int >(columns*rows); ++i)
+      matrix = assignMatrixWaveValue(matrix, rows, columns, index_row, index_col);
+      size_t counter = 0;
+      for (size_t i = 0; i < rows; ++i)
       {
-        out << *i << " ";
-        if (counter % columns == 0)
+        for (size_t j = 0; j < columns; ++j)
         {
-          out << "\n";
+          out << *(matrix + counter) << " ";
+          ++counter;
         }
-        counter++;
+        out << "\n";
       }
     }
-    catch (const std::invalid_argument &e)
+    catch (const std::invalid_argument& e)
     {
       delete[] matrix;
       std::cout << "Error:\n";

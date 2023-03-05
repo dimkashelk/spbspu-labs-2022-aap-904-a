@@ -1,20 +1,25 @@
 #include "duplicateRows.h"
-#include <unordered_set>
-#include <algorithm>
-size_t countDuplicateRows(const int* arr, const size_t m, const size_t n)
+size_t countDuplicateRows(const int* arr, size_t m, size_t n)
 {
   size_t count = 0;
-  std::unordered_set< int > elements;
-  for (size_t i = 0; i < m; i++)
+  for (size_t i = 0; i < m; ++i)
   {
-    elements.clear();
-    for (size_t j = 0; j < n; j++)
+    for (size_t j = i + 1; j < m; ++j)
     {
-      elements.insert(arr[i * m + j]);
-    }
-    if (elements.size() == n)
-    {
-      count++;
+      bool is_same = true;
+      for (size_t k = 0; k < n; ++k)
+      {
+        if (arr[i * n + k] != arr[j * n + k])
+        {
+          is_same = false;
+          break;
+        }
+      }
+      if (is_same)
+      {
+        ++count;
+        break;
+      }
     }
   }
   return count;

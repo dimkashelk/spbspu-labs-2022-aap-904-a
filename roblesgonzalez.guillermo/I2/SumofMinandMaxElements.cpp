@@ -12,7 +12,7 @@ size_t SumofMinandMaxElements(const int *input_array, size_t array_size)
   for (size_t i = 0; i < array_size; i++)
   {
    if (input_array[i] < min)
-   { 
+   {
     min = input_array[i];
    }
     if (input_array[i] > max)

@@ -34,7 +34,7 @@ char* makeCstring(std::istream& input)
       input >> cstring[size];
     }
   }
-  while (std::cin && cstring[size++] != '\n');
+  while (input && cstring[size++] != '\n');
   if (cstring[0] == '\n' || size == 0)
   {
     delete[] cstring;

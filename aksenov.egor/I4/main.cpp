@@ -64,7 +64,6 @@ int main(int argc, char *argv[])
     {
       std::cout << e.what() << "\n";
       delete[] matrix;
-      return 2;
     }
     int *smoothed_matrix = countSmoothedMatrix(matrix, r, c);
     if (smoothed_matrix != nullptr)

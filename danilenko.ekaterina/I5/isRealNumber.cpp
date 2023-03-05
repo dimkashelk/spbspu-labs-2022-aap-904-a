@@ -1,7 +1,15 @@
 #include "isRealNumber.h"
 #include <iomanip>
 
+bool isEnd(char s);
+bool isSign(char s);
+bool isDot(char s);
+bool isE(char s);
+bool isDigit(char s);
+bool isOrder(const char* data);
 bool isUnsignInteger(const char* data);
+bool isMantissa(const char* data);
+bool isRealNumber(const char* data);
 bool isEnd(char s)
 {
   return s == '\0';

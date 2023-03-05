@@ -7,7 +7,6 @@
 int main()
 {
   char* string = nullptr;
-  std::cout << "Enter string: ";
   try
   {
     string = createStringFromInput(std::cin);

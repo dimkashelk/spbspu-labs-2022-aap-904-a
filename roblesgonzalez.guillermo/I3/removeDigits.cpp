@@ -19,4 +19,3 @@ char* removeDigits(char* destination, const char* source)
   *destination = '\0';
   return result;
 }
-

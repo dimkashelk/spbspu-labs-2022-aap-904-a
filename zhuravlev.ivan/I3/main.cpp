@@ -7,8 +7,9 @@
 
 int main()
 {
-  char* cstring = makeCstring(std::cin);
-  size_t size = sizeof(cstring);
+  size_t size = 0;
+  size_t capacity = 10;
+  char* cstring = makeCstring(capacity, size, std::cin);
   size_t size_of_static = 18;
   const char* static_string = "ABCDFEabcdef135790";
   try

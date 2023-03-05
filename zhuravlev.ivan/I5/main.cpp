@@ -4,15 +4,14 @@
 
 int main()
 {
-  char* cstring = nullptr;
-  try
+  size_t size = 0;
+  size_t capacity = 10;
+  char* cstring = makeCstring(capacity, size, std::cin);
+  if (cstring[0] == '\n')
   {
-    cstring = makeCstring(std::cin);
-  }
-  catch (const std::exception& e)
-  {
-    std::cout << e.what();
-    return 1;
+    std::cout << "Empty string";
+    delete[] cstring;
+    return 2;
   }
   std::cout << std::boolalpha << isFloat(cstring) << "\n";
   delete[] cstring;

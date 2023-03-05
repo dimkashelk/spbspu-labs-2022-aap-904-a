@@ -3,13 +3,11 @@
 #include <iostream>
 #include <stdexcept>
 
-char* makeCstring(std::istream& input)
+char* makeCstring(size_t& capacity, size_t& size, std::istream& input)
 {
-  size_t capacity = 10;
-  size_t new_capacity = 0;
   char* cstring = new char[capacity];
-  size_t size = 0;
   cstring[0] = '\0';
+  size_t new_capacity = 0;
   input >> std::noskipws;
   do
   {

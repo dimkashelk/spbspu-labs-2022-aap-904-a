@@ -40,6 +40,6 @@ char* makeCstring(std::istream& input)
     delete[] cstring;
     throw std::logic_error("String is empty");
   }
-  cstring[size - 1] = '\0';
+  cstring[size] = '\0';
   return cstring;
 }

@@ -1,6 +1,6 @@
 #include "numberRowsNoConcecutiveIndeticalElements.h"
 
-bool isGrowingElements(const int *matrix, size_t rows, size_t column)
+bool isUniqueElements(const int *matrix, size_t rows, size_t column)
 {
   for (size_t i = 0; i < column - 1; i++)
   {
@@ -18,7 +18,7 @@ size_t numberRowsNoConcecutiveIndeticalElements(const int *matrix, size_t rows, 
   size_t count = 0;
   for (size_t i = 0; i < rows; i++)
   {
-    if (isGrowingElements(matrix, i, column))
+    if (isUniqueElements(matrix, i, column))
     {
       count++;
     }

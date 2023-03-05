@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include <cstddef>
 #include <stdexcept>
-#include "createStringFromInput.h"
+#include <createStringFromInput.h>
 #include "isRealNumber.h"
 
 int main()

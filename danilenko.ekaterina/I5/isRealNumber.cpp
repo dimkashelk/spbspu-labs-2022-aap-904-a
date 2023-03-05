@@ -27,7 +27,7 @@ bool isDot(char s)
 
 bool isE(char s)
 {
-  return s == 'E';
+  return s == 'E' || s == 'e';
 }
 
 bool isDigit(char s)
@@ -42,7 +42,7 @@ bool isOrder(const char* data)
 
 bool isUnsignInteger(const char* data)
 {
-  return (isDigit(*data) && isEnd(*(data + 1))) || (isDigit(*data) && (isUnsignInteger(data + 1) || isOrder(data + 1) || isEnd(*(data + 1))));
+  return (isDigit(*data) && (isUnsignInteger(data + 1) || isOrder(data + 1) || isEnd(*(data + 1)))) || (isDigit(*data) && isEnd(*(data + 1)));
 }
 
 bool isMantissa(const char* data)

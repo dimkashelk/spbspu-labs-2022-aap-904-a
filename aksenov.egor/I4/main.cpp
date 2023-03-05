@@ -2,6 +2,7 @@
 #include <fstream>
 #include <stdexcept>
 #include <cstring>
+#include <readingFile.h>
 #include "CollsWithZero.h"
 #include "calculateModulsSum.h"
 int main(int argc, char *argv[])
@@ -52,16 +53,18 @@ int main(int argc, char *argv[])
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
+    std::string fname = argv[1];
+    std::ifstream input(fname);
     int *matrix = new int [r * c];
-    for (size_t i = 0; i < r * c; i++)
+    try
     {
-      input >> matrix[i];
-      if (!input)
-      {
-        std::cout << "Input error" << "\n";
-        delete[] matrix;
-        return 1;
-      }
+      matrix = readFile(input, r * c, matrix);
+    }
+    catch (const std::length_error &e)
+    {
+      std::cout << e.what() << "\n";
+      delete[] matrix;
+      return 2;
     }
     int *smoothed_matrix = countSmoothedMatrix(matrix, r, c);
     if (smoothed_matrix != nullptr)

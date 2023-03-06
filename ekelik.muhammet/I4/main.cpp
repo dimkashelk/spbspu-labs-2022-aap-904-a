@@ -76,18 +76,10 @@ int main(int argc, char** argv)
       delete[] matrix;
       return 1;
     }
-    int rowsWithEqualSum = countRowsWithEqualSum(matrix, numRows, numCols);
-    if (rowsWithEqualSum == -1)
-    {
-      std::cerr << "Error: Invalid matrix dimensions!\n";
-      delete[] matrix;
-      return 1;
-    }
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
     delete[] matrix;
-
     return 0;
   }
   catch (const std::exception& e)

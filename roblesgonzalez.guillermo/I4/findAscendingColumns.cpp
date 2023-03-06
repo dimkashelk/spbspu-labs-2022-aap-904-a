@@ -3,32 +3,31 @@
 
 bool isGrowingCol(const int *arr, size_t col, size_t rows, size_t cols)
 {
-    size_t counter_in_col = 0;
-    for (size_t i = 0; i < rows - 1; ++i)
+  size_t counter_in_col = 0;
+  for (size_t i = 0; i < rows - 1; ++i)
+  {
+    size_t number = i * cols + col;
+    if (arr[number] < arr[number + cols])
     {
-        size_t number = i * cols + col;
-        if (arr[number] < arr[number + cols])
-        {
-            counter_in_col++;
-        }
+      counter_in_col++;
     }
-    return counter_in_col == rows - 1;
+  }
+  return counter_in_col == rows - 1;
 }
-
 size_t countGrowingCols(const void* arr, size_t rows, size_t cols)
 {
-    const int *intArr = static_cast<const int *>(arr);
-    size_t counter = 0;
-    for (size_t i = 0; i < cols; ++i)
+  const int *intArr = static_cast<const int *>(arr);
+  size_t counter = 0;
+  for (size_t i = 0; i < cols; ++i)
+  {
+    if (isGrowingCol(intArr, i, rows, cols))
     {
-        if (isGrowingCol(intArr, i, rows, cols))
-        {
-            counter++;
-        }
-        else
-        {
-            break; // stop iteration if a non-growing column is found
-        }
+      counter++;
     }
-    return counter;
+    else
+    {
+            break; // stop iteration if a non-growing column is found
+    }
+  }
+  return counter;
 }

@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
                 }
             }
             if (rows == 0 || cols == 0) {
-                throw std::invalid_argument("Error: Empty array passed to function");
+                return 0;
             }
             outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "3") == 0) {

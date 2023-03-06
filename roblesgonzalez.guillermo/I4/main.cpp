@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
                     throw std::runtime_error("Error: File read error");
                 }
             }
-            outFile << countGrowingCols(static_cast<const void*>(arr), rows, cols) << "\n";
+            outFile << countGrowingCols(static_cast<const int*>(static_cast<const void*>(arr)), rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "2") == 0) {
             double arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -43,6 +43,9 @@ int main(int argc, char* argv[]) {
                 if (!inFile) {
                     throw std::runtime_error("Error: File read error");
                 }
+            }
+            if (rows == 0 || cols == 0) {
+                throw std::invalid_argument("Error: Empty array passed to function");
             }
             outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "3") == 0) {
@@ -62,7 +65,7 @@ int main(int argc, char* argv[]) {
         }
         return 0;
     } catch (const std::exception& ex) {
-        std::cout << ex.what() << std::endl;
+        std::cerr << ex.what() << std::endl;
         return 1;
     }
 }

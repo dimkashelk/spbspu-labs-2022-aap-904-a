@@ -21,7 +21,7 @@ int main()
   {
     std::cout << "Nothing was entered!" << '\n';
     delete[] string;
-    return 1;
+    return 0;
   }
   bool result = isRealNumber(string);
   std::cout << std::boolalpha << result << '\n';

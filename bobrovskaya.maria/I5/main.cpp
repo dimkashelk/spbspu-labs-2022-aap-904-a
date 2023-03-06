@@ -7,10 +7,9 @@ int main()
  try
  {
    cstring = createCString(std::cin);
-   if (cstring == nullptr)
+   if (cstring [0] == '\0')
    {
-     std::cerr << "Error!\n";
-     return 1;
+     throw std::logic_error("Empty string");
    }
  }
  catch(const std::exception& e){

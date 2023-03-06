@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
                 }
             }
             outFile << countGrowingCols(arr, rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols); // call to the function
+            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols);
         } else if (std::strcmp(argv[1], "2") == 0) {
             double arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {

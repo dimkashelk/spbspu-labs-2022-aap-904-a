@@ -34,21 +34,21 @@ int main(int argc, char* argv[])
     {
       throw std::invalid_argument("Error: Array too large");
     }
+    int *arr = new int[rows * cols];
     if (std::strcmp(argv[1], "1") == 0)
     {
-      int arr[1000];
       for (unsigned i = 0; i < rows * cols; i++)
       {
-        if (!inFile)
-        {
-          throw std::runtime_error("Error: File read error");
-        }
+      inFile >> arr[i];
+      if (!inFile)
+      {
+        throw std::runtime_error("Error: File read error");
       }
-      outFile << countGrowingCols(arr, rows, cols) << "\n";
+     }
+     outFile << countGrowingCols(arr, rows, cols) << "\n";
     }
     else if (std::strcmp(argv[1], "2") == 0)
     {
-      double arr[1000];
       for (unsigned i = 0; i < rows * cols; i++)
       {
         inFile >> arr[i];
@@ -59,6 +59,7 @@ int main(int argc, char* argv[])
       }
       if (rows == 0 || cols == 0)
       {
+        delete[] arr;
         return 0;
       }
       outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
@@ -79,12 +80,13 @@ int main(int argc, char* argv[])
     {
       throw std::invalid_argument("Error: Invalid argument");
     }
+    delete[] arr;
     if (!outFile)
     {
       throw std::runtime_error("Error: File write error");
     }
   }
-  catch (const std::exception& ex)
+  catch (const std::exception & ex)
   {
     std::cout << ex.what() << std::endl;
     return 1;

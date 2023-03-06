@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
 {
   std::srand(std::time(nullptr));
   int arr1[] = {2, 5, 3, 4, 6, 7, 1};
-  std::cout << counterBeforeMin(arr1, 7) << std::endl;
-  std::cout << findArithmeticMean(arr1, 7) << std::endl;
+  std::cout << counterBeforeMin(arr1, 7) << "\n";
+  std::cout << findArithmeticMean(arr1, 7) << "\n";
   size_t n = 0;
   std::cin >> n;
   if (!std::cin)
@@ -57,18 +57,20 @@ int main(int argc, char *argv[])
   if (size > 0)
   {
     int *array3 = new int[size];
-    array3 = readArray(in, size, array3);
-    try
+    if (!readArray(in, line, array3))
     {
-      std::cout << counterBeforeMin(array3, size) << "\n";
-      std::cout << findArithmeticMean(array3, size) << "\n";
-      delete[] array3;
-    }
-    catch (const std::length_error &e)
-    {
-      std::cout << e.what();
-      delete[] array3;
-      return 2;
+      try
+      {
+        std::cout << counterBeforeMin(array3, size) << "\n";
+        std::cout << findArithmeticMean(array3, size) << "\n";
+        delete[] array3;
+      }
+      catch (const std::length_error &e)
+      {
+        std::cout << e.what();
+        delete[] array3;
+        return 2;
+      }
     }
   }
   else

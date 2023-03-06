@@ -4,7 +4,7 @@ size_t counterBeforeMin(const int *ar, size_t m)
 {
   if (m == 0)
   {
-    throw std::runtime_error("meeeeeh");
+    return 0;
   }
   int minimum = ar[0];
   size_t count_plus = 0;

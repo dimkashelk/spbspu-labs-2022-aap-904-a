@@ -31,7 +31,6 @@ int main(int argc, char** argv)
         {
           inputFile.close();
           std::cout << "Error: Invalid matrix dimensions!\n";
-          delete[] matrix;
           return 1;
         }
         readMatrix(inputFile, staticMatrix, numRows, numCols);

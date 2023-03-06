@@ -35,9 +35,7 @@ int main(int argc, char* argv[]) {
                     throw std::runtime_error("Error: File read error");
                 }
             }
-            outFile << countGrowingCols(arr, rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(static_cast<double *>(static_cast<void *>(const_cast<int *>(reinterpret_cast<const int *>(arr)))), rows, cols) << ' ';
-
+            outFile << countGrowingCols(static_cast<const void*>(arr), rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "2") == 0) {
             double arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -46,10 +44,7 @@ int main(int argc, char* argv[]) {
                     throw std::runtime_error("Error: File read error");
                 }
             }
-            outFile << countGrowingCols(reinterpret_cast<const int*>(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(static_cast<double *>(static_cast<void *>(const_cast<int *>(reinterpret_cast<const int *>(arr)))), rows, cols) << ' ';
-
-
+            outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "3") == 0) {
             char arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -58,9 +53,7 @@ int main(int argc, char* argv[]) {
                     throw std::runtime_error("Error: File read error");
                 }
             }
-            outFile << countGrowingCols(reinterpret_cast<const int*>(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(static_cast<double *>(static_cast<void *>(const_cast<int *>(reinterpret_cast<const int *>(arr)))), rows, cols) << ' ';
-
+            // Call any function that you want to call for the third argument
         } else {
             throw std::invalid_argument("Error: Invalid argument");
         }

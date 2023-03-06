@@ -27,7 +27,7 @@ int main(int argc, char** argv)
       try
       {
         inputFile >> numRows >> numCols;
-        if (numRows == 0 || numCols == 0 || numRows * numCols > 1000)
+        if (numRows * numCols > 1000)
         {
           inputFile.close();
           std::cout << "Error: Invalid matrix dimensions!\n";

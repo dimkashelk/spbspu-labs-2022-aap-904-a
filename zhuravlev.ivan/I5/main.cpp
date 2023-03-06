@@ -6,9 +6,10 @@ int main()
 {
   size_t size = 0;
   size_t capacity = 10;
+  char* cstring = nullptr;
   try
   {
-    char* cstring = makeCstring(capacity, size, std::cin);
+    cstring = makeCstring(capacity, size, std::cin);
   }
   catch (const std::exception& e)
   {

@@ -7,6 +7,11 @@ int main()
  try
  {
    cstring = createCString(std::cin);
+   if (cstring == nullptr)
+   {
+     std::cerr << "Error!\n";
+     return 1;
+   }
  }
  catch(const std::exception& e){
    std::cerr << e.what() << "\n";

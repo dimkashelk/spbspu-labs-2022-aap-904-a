@@ -23,7 +23,7 @@ int main()
   try
   {
     string = createStringFromInput(std::cin, string, size, capacity);
-    if (string[0] == '\n')
+    if (string != nullptr && string[0] == '\n')
     {
       std::cout << "Nothing was entered!" << '\n';
       delete[] string;

@@ -81,7 +81,7 @@ int main(int argc, char** argv)
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    if (!useMatrix)
+    if (!useMatrix && matrix != nullptr)
     {
       delete[] matrix;
     }

@@ -27,10 +27,10 @@ int main(int argc, char** argv)
       try
       {
         inputFile >> numRows >> numCols;
-        if (numRows * numCols > 1000)
+        if (numRows == 0 || numCols == 0 || numRows * numCols > 1000)
         {
           inputFile.close();
-          std::cout << numRows * numCols << " > " << 1000 << "\n";
+          std::cout << "Error: Invalid matrix dimensions!\n";
           return 1;
         }
         readMatrix(inputFile, staticMatrix, numRows, numCols);
@@ -48,9 +48,10 @@ int main(int argc, char** argv)
       try
       {
         inputFile >> numRows >> numCols;
-        if (numRows <= 0 || numCols <= 0)
+        if (numRows == 0 || numCols == 0)
         {
-          std::cout << "Error: matrix dimensions are invalid\n";
+          inputFile.close();
+          std::cout << "Error: Invalid matrix dimensions!\n";
           return 1;
         }
         matrix = new int[numRows * numCols];

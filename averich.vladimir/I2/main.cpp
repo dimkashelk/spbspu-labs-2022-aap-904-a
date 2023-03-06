@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
   int* dynArray = new int[sizeOfDynArray];
   if (sizeOfDynArray > 0)
   {
-    dynArray = generationDynArray(dynArray, sizeOfDynArray);
+    dynArray = dynArrayFilling(dynArray, sizeOfDynArray);
     try
     {
       std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << "\n";

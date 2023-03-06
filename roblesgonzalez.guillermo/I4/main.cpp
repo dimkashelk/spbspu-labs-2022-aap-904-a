@@ -1,3 +1,10 @@
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <stdexcept>
+#include "findAscendingColumns.h"
+#include "getMinSumOfDiagonal.h"
+
 int main(int argc, char* argv[]) {
     try {
         if (argc != 4) {

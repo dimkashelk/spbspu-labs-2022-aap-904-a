@@ -14,7 +14,6 @@ size_t countRowsWithEqualSum(const int* matrix, size_t numRows, size_t numCols)
 {
   size_t count = 0;
   int rowSum1, rowSum2;
-
   for (size_t i = 0; i < numRows; i++)
   {
     rowSum1 = rowSum(matrix, numCols, i);

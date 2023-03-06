@@ -40,6 +40,6 @@ bool isTerm(const char *data)
 
 bool isExpression(const char *data)
 {
-  return isEnd(*data) || isTerm(data) && isSign(*(data + 1)) && isExpression(data + 1) || isDigit(*data);
+  return isEnd(*data) || (isTerm(data) && isSign(*(data + 1)) && isExpression(data + 1)) || isDigit(*data);
 }
 

@@ -3,16 +3,19 @@
 
 double term2::operator()()
 {
-  n += 2;
-  value = value * x * x * (n - 2) / n;
+  index += 2;
+  value = value * x * x * (index - 2) / index;
   return value;
 }
 
+term2::term2(double x, double value):
+  x(x),
+  value(value)
+{}
+
 double getCustomArth(double x, double error, size_t maxNum)
 {
-  term2 getNext;
-  getNext.value = x;
-  getNext.x = x;
+  term2 getNext(x, x);
   double res = 0;
   double curr = x;
   size_t cnt = 0;
@@ -30,15 +33,18 @@ double getCustomArth(double x, double error, size_t maxNum)
 
 double term1::operator()()
 {
-  n += 2;
-  value = -value * x * x / (n - 1) / n;
+  index += 2;
+  value = -value * x * x / (index - 1) / index;
   return value;
 }
 
+term1::term1(double x):
+  x(x)
+{}
+
 double getCustomCos(double x, double error, size_t maxNum)
 {
-  term1 getNext;
-  getNext.x = x;
+  term1 getNext(x);
   double res = 0;
   double curr = 1;
   size_t cnt = 0;
@@ -54,13 +60,14 @@ double getCustomCos(double x, double error, size_t maxNum)
   return res;
 }
 
-void printRow(std::ostream& stream, double x, double res1, double res2) {
+void printRow(std::ostream& stream, double x, double res1, double res2)
+{
   stream << std::setw(5) << std::setprecision(5) << x << "  ";
-  stream << std::setw(7) << std::setprecision(5) << res1 << "  ";
-  stream << std::setw(7) << std::setprecision(5) << cos(x) << "  ";
+  stream << std::setw(7) << res1 << "  ";
+  stream << std::setw(7) << std::cos(x) << "  ";
 
-  stream << std::setw(7) << std::setprecision(5) << res2 << "  ";
-  stream << std::setw(7) << std::setprecision(5) << atanh(x) << '\n';
+  stream << std::setw(7) << res2 << "  ";
+  stream << std::setw(7) << std::atanh(x) << '\n';
 }
 
 void printTable(std::ostream& stream, double lb, double rb, double error, size_t maxNum, double step)

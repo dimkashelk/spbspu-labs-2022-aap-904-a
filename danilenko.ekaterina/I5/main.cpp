@@ -17,6 +17,12 @@ int main()
     delete[] string;
     return 1;
   }
+  if (*string == '\0' || *string == '\n')
+  {
+    std::cout << "Nothing was entered!" << '\n';
+    delete[] string;
+    return 1;
+  }
   bool result = isRealNumber(string);
   std::cout << std::boolalpha << result << '\n';
   delete[] string;

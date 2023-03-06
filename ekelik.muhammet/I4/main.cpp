@@ -13,17 +13,13 @@ int main(int argc, char** argv)
     std::cout << "Usage: " << argv[0] << " <input_mode> <input_file> <output_file>\n";
     return 1;
   }
-
   std::ifstream inputFile;
   inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
-
   try
   {
     inputFile.open(argv[2]);
-
     size_t numRows = 0, numCols = 0;
     int* matrix = nullptr;
-
     bool useMatrix = std::strcmp(argv[1], "1") == 0;
     if (useMatrix)
     {
@@ -68,12 +64,9 @@ int main(int argc, char** argv)
         return 1;
       }
     }
-
     inputFile.close();
-
     std::ofstream outputFile;
     outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
-
     try
     {
       outputFile.open(argv[3]);
@@ -84,11 +77,9 @@ int main(int argc, char** argv)
       delete[] matrix;
       return 1;
     }
-
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-
     if (!useMatrix)
     {
       delete[] matrix;

@@ -37,21 +37,17 @@ int main(int argc, char* argv[]) {
             }
             outFile << countGrowingCols(static_cast<const int*>(static_cast<const void*>(arr)), rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "2") == 0) {
-            double *arr = new double[rows * cols];
-            if (rows > 0 && cols > 0) {
-                for (unsigned i = 0; i < rows * cols; i++) {
-                    inFile >> arr[i];
-                    if (!inFile) {
-                        delete[] arr;
-                        throw std::runtime_error("Error: File read error");
-                    }
+            double arr[1000];
+            for (unsigned i = 0; i < rows * cols; i++) {
+                inFile >> arr[i];
+                if (!inFile) {
+                    throw std::runtime_error("Error: File read error");
                 }
-                outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
-                delete[] arr;
-            } else {
-                delete[] arr;
-                throw std::invalid_argument("Error: Empty array passed to function");
             }
+            if (rows == 0 || cols == 0) {
+                return 2; // Error: Empty array passed to function
+            }
+            outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "3") == 0) {
             char arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {

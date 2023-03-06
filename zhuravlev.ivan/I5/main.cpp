@@ -1,6 +1,6 @@
 #include <makeString.h>
 #include <iostream>
-#include "functions.h"
+#include "isRealNumber.h"
 
 int main()
 {

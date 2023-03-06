@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "isRealNumber.h"
 #include <iostream>
 
 bool isSign(char data)

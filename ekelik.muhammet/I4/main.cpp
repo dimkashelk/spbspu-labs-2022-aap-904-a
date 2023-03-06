@@ -21,35 +21,52 @@ int main(int argc, char** argv)
     size_t numRows = 0, numCols = 0;
     int* matrix = nullptr;
     bool useMatrix = std::strcmp(argv[1], "1") == 0;
-    try
+    if (useMatrix)
     {
-      inputFile >> numRows >> numCols;
-      if (numRows == 0 || numCols == 0 || numRows * numCols > 1000)
+      int staticMatrix[1000];
+      try
       {
-        inputFile.close();
-        std::cout << "Error: Invalid matrix dimensions!\n";
-        return 1;
-      }
-      if (useMatrix)
-      {
-        int staticMatrix[1000];
+        inputFile >> numRows >> numCols;
+        if (numRows == 0 || numCols == 0 || numRows * numCols > 1000)
+        {
+          inputFile.close();
+          std::cout << "Error: Invalid matrix dimensions!\n";
+          return 1;
+        }
         readMatrix(inputFile, staticMatrix, numRows, numCols);
         matrix = staticMatrix;
       }
-      else
+      catch (const std::exception& e)
       {
+        inputFile.close();
+        std::cout << e.what() << "\n";
+        return 1;
+      }
+    }
+    else
+    {
+      try
+      {
+        inputFile >> numRows >> numCols;
+        if (numRows == 0 || numCols == 0)
+        {
+          inputFile.close();
+          std::cout << "Error: Invalid matrix dimensions!\n";
+          return 1;
+        }
         matrix = new int[numRows * numCols];
         readMatrix(inputFile, matrix, numRows, numCols);
       }
-    }
-    catch (const std::exception& e)
-    {
-      inputFile.close();
-      std::cout << e.what() << "\n";
-      delete[] matrix;
-      return 1;
+      catch (const std::exception& e)
+      {
+        inputFile.close();
+        std::cout << e.what() << "\n";
+        delete[] matrix;
+        return 1;
+      }
     }
     inputFile.close();
+
     std::ofstream outputFile;
     outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
     try
@@ -62,13 +79,26 @@ int main(int argc, char** argv)
       delete[] matrix;
       return 1;
     }
-    outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
-    outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
+
+    try
+    {
+      outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
+      outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
+    }
+    catch (const std::exception& e)
+    {
+      std::cout << e.what() << "\n";
+      delete[] matrix;
+      outputFile.close();
+      return 1;
+    }
+
     outputFile.close();
-    if (matrix != nullptr)
+    if (!useMatrix)
     {
       delete[] matrix;
     }
+
     return 0;
   }
   catch (const std::exception& e)

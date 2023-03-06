@@ -74,14 +74,14 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& e)
     {
-      std::cout << e.what() << "\n";
+      std::cout << "Error: Failed to open output file!\n";
       delete[] matrix;
       return 1;
     }
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    if (!useMatrix && matrix != nullptr)
+    if (!useMatrix)
     {
       delete[] matrix;
     }
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what() << "\n";
+    std::cout << "Error: Failed to read input file!\n";
     return 1;
   }
 }

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cstring>
 #include <cstddef>
+#include "readMatrix.h"
 #include "findLongestSeries.h"
 #include "countRowsWithEqualSum.h"
 
@@ -9,131 +10,95 @@ int main(int argc, char** argv)
 {
   if (argc != 4)
   {
-    std::cout << "Error!";
+    std::cout << "Usage: " << argv[0] << " <input_mode> <input_file> <output_file>\n";
     return 1;
   }
-  if (!std::strcmp(argv[1], "1"))
+
+  std::ifstream inputFile;
+  inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
+
+  try
   {
-    std::ifstream inputFile;
-    inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
-    try
-    {
-      inputFile.open(argv[2]);
-    }
-    catch (const std::exception& e)
-    {
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-    int staticMatrix[1000];
+    inputFile.open(argv[2]);
+
     size_t numRows = 0, numCols = 0;
-    try
+    int* matrix = nullptr;
+
+    bool useMatrix = std::strcmp(argv[1], "1") == 0;
+    if (useMatrix)
     {
-      inputFile >> numRows;
-      inputFile >> numCols;
-    }
-    catch (const std::exception& e)
-    {
-      inputFile.close();
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-    if (numRows * numCols > 1000)
-    {
-      inputFile.close();
-      std::cout << numRows * numCols << " > " << 1000 << "\n";
-      return 1;
-    }
-    try
-    {
-      for (size_t i = 0; i < numRows; i++)
+      int staticMatrix[1000];
+      try
       {
-        for (size_t j = 0; j < numCols; j++)
+        inputFile >> numRows >> numCols;
+        if (numRows * numCols > 1000)
         {
-          inputFile >> staticMatrix[numRows * i + j];
+          inputFile.close();
+          std::cout << numRows * numCols << " > " << 1000 << "\n";
+          return 1;
         }
+        readMatrix(inputFile, staticMatrix, numRows, numCols);
+        matrix = staticMatrix;
+      }
+      catch (const std::exception& e)
+      {
+        inputFile.close();
+        std::cout << e.what() << "\n";
+        return 1;
       }
     }
-    catch (const std::exception& e)
+    else
     {
-      inputFile.close();
-      std::cout << e.what() << "\n";
-      return 1;
+      try
+      {
+        inputFile >> numRows >> numCols;
+        if (numRows <= 0 || numCols <= 0)
+        {
+          std::cout << "Error: matrix dimensions are invalid\n";
+          return 1;
+        }
+        matrix = new int[numRows * numCols];
+        readMatrix(inputFile, matrix, numRows, numCols);
+      }
+      catch (const std::exception& e)
+      {
+        inputFile.close();
+        std::cout << e.what() << "\n";
+        delete[] matrix;
+        return 1;
+      }
     }
+
     inputFile.close();
+
     std::ofstream outputFile;
     outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
+
     try
     {
       outputFile.open(argv[3]);
     }
     catch (const std::exception& e)
     {
-      std::cout << e.what() << "\n";
+      std::cout << "Error: Failed to open output file!\n";
+      delete[] matrix;
       return 1;
     }
-    outputFile << countRowsWithEqualSum(staticMatrix, numRows, numCols) << "\n";
-    outputFile << findLongestSeries(staticMatrix, numRows, numCols) << "\n";
+
+    outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
+    outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
+
+    if (!useMatrix)
+    {
+      delete[] matrix;
+    }
+
     return 0;
   }
-  else if (!std::strcmp(argv[1], "2"))
+  catch (const std::exception& e)
   {
-    std::ifstream inputFile;
-    inputFile.exceptions(std::ifstream::badbit | std::ifstream::failbit);
-    try
-    {
-      inputFile.open(argv[2]);
-    }
-    catch (const std::exception& e)
-    {
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-    size_t numRows = 0, numCols = 0;
-    int* dynamicMatrix = nullptr;
-    try
-    {
-      inputFile >> numRows;
-      inputFile >> numCols;
-      dynamicMatrix = new int[numRows * numCols];
-      for (size_t i = 0; i < numRows; i++)
-      {
-        for (size_t j = 0; j < numCols; j++)
-        {
-          inputFile >> dynamicMatrix[numRows * i + j];
-        }
-      }
-    }
-    catch (const std::exception& e)
-    {
-      delete[] dynamicMatrix;
-      inputFile.close();
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-    inputFile.close();
-    std::ofstream outputFile;
-    outputFile.exceptions(std::ofstream::badbit | std::ofstream::failbit);
-    try
-    {
-      outputFile.open(argv[3]);
-    }
-    catch (const std::exception& e)
-    {
-      delete[] dynamicMatrix;
-      std::cout << e.what() << "\n";
-      return 1;
-    }
-    outputFile << countRowsWithEqualSum(dynamicMatrix, numRows, numCols) << "\n";
-    outputFile << findLongestSeries(dynamicMatrix, numRows, numCols) << "\n";
-    outputFile.close();
-    delete[] dynamicMatrix;
-    return 0;
-  }
-  else
-  {
-    std::cout << "Error!";
+    std::cout << "Error: Failed to read input file!\n";
     return 1;
   }
 }

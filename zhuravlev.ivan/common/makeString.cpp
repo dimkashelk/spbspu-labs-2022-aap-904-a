@@ -33,9 +33,11 @@ char* makeCstring(size_t& capacity, size_t& size, std::istream& input)
     input >> cstring[size];
   }
   while (input && cstring[size++] != '\n');
-  if (cstring[0] == '\n')
+  if (cstring[0] == '\n' || size == 0)
   {
-    cstring[size - 1] = '\0';
+    delete[] cstring;
+    throw std::logic_error("Empty string");
   }
+    cstring[size - 1] = '\0';
   return cstring;
 }

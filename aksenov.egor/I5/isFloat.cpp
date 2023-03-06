@@ -54,6 +54,6 @@ bool continueSecondDigitPart(const char *expr)
 bool isFloat(const char *expr)
 {
   bool firstOption = isSign(*expr) && continueWithDigit(expr + 1);
-  bool secondOption = isDigit(*expr) && (continueWithDigit(expr + 1) || continueWithE(expr + 1) || continueWithPoint(expr + 1));
+  bool secondOption = !firstOption && (isDigit(*expr) && (continueWithDigit(expr + 1) || continueWithE(expr + 1) || continueWithPoint(expr + 1)));
   return firstOption || secondOption;
 }

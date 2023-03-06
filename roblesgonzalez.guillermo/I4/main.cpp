@@ -28,62 +28,62 @@ int main(int argc, char* argv[])
     inFile >> rows >> cols;
     if (!inFile)
     {
-      throw std::runtime_error("Error: File read error");
+        throw std::runtime_error("Error: File read error");
     }
     if (rows * cols > 1000)
     {
-      throw std::invalid_argument("Error: Array too large");
+        throw std::invalid_argument("Error: Array too large");
     }
-    int *arr = new int[rows * cols];
+    int *arr = new int[rows * cols]; // dynamically allocate memory for arr
     if (std::strcmp(argv[1], "1") == 0)
     {
-      for (unsigned i = 0; i < rows * cols; i++)
-      {
-      inFile >> arr[i];
-      if (!inFile)
-      {
-        throw std::runtime_error("Error: File read error");
-      }
-     }
-     outFile << countGrowingCols(arr, rows, cols) << "\n";
+        for (unsigned i = 0; i < rows * cols; i++)
+        {
+            if (!(inFile >> arr[i]))
+            {
+                delete[] arr; // free the memory allocated for arr
+                throw std::runtime_error("Error: File read error");
+            }
+        }
+        outFile << countGrowingCols(arr, rows, cols) << "\n";
     }
     else if (std::strcmp(argv[1], "2") == 0)
     {
-      for (unsigned i = 0; i < rows * cols; i++)
-      {
-        inFile >> arr[i];
-        if (!inFile)
+        for (unsigned i = 0; i < rows * cols; i++)
         {
-          throw std::runtime_error("Error: File read error");
+            if (!(inFile >> arr[i]))
+            {
+                delete[] arr; // free the memory allocated for arr
+                throw std::runtime_error("Error: File read error");
+            }
         }
-      }
-      if (rows == 0 || cols == 0)
-      {
-        delete[] arr;
-        return 0;
-      }
-      outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
+        if (rows == 0 || cols == 0)
+        {
+            delete[] arr; // free the memory allocated for arr
+            return 0;
+        }
+        outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
     }
     else if (std::strcmp(argv[1], "3") == 0)
     {
-      char arr[1000];
-      for (unsigned i = 0; i < rows * cols; i++)
-      {
-        inFile >> arr[i];
-        if (!inFile)
+        char arr[1000];
+        for (unsigned i = 0; i < rows * cols; i++)
         {
-          throw std::runtime_error("Error: File read error");
+            if (!(inFile >> arr[i]))
+            {
+                throw std::runtime_error("Error: File read error");
+            }
         }
-      }
     }
     else
     {
-      throw std::invalid_argument("Error: Invalid argument");
+        delete[] arr; // free the memory allocated for arr
+        throw std::invalid_argument("Error: Invalid argument");
     }
-    delete[] arr;
+    delete[] arr; // free the memory allocated for arr
     if (!outFile)
     {
-      throw std::runtime_error("Error: File write error");
+        throw std::runtime_error("Error: File write error");
     }
   }
   catch (const std::exception & ex)
@@ -93,3 +93,4 @@ int main(int argc, char* argv[])
   }
   return 0;
 }
+

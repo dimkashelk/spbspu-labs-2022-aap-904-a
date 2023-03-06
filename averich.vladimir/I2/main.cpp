@@ -5,13 +5,15 @@
 #include "sortoutput.hpp"
 #include "istriplet.hpp"
 #include "readthearray.hpp"
-#include "generationdynarray.hpp"
+#include "dynarrayfilling.hpp"
+#include "outputarray.hpp"
 int main(int argc, char* argv[])
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
   int defaultArray[10] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
   std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << "\n";
   sortOutput(defaultArray, 10);
+  outputArray(defaultArray, 10);
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
@@ -29,6 +31,7 @@ int main(int argc, char* argv[])
     {
       std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << "\n";
       sortOutput(dynArray, sizeOfDynArray);
+      outputArray(dynArray, sizeOfDynArray);
       delete[] dynArray;
     }
     catch (std::length_error& e)
@@ -59,19 +62,24 @@ int main(int argc, char* argv[])
   }
   if (sizeOfFileArray > 0)
   {
-    int* array = new int[sizeOfFileArray];
-    readTheArray(in, sizeOfFileArray, array, maxSize);
-    try
+    if (sizeOfFileArray < maxSize)
     {
-      std::cout << "Count of triplets: " << isTriplet(array, sizeOfFileArray) << " in the file array" << "\n";
-      sortOutput(array, sizeOfFileArray);
-      delete[] array;
-    }
-    catch (const std::length_error& e)
-    {
-      std::cout << e.what() << "\n";
-      delete[] array;
-      return 2;
+      int* array = new int[sizeOfFileArray];
+      readTheArray(in, sizeOfFileArray, array);
+      try
+      {
+        std::cout << "Count of triplets: " << isTriplet(array, sizeOfFileArray) << " in the file array" << "\n";
+        sortOutput(array, sizeOfFileArray);
+        outputArray(array, sizeOfFileArray);
+        std::cout << "Sort array: ";
+        delete[] array;
+      }
+      catch (const std::length_error& e)
+      {
+        std::cout << e.what() << "\n";
+        delete[] array;
+        return 2;
+      }
     }
   }
   return 0;

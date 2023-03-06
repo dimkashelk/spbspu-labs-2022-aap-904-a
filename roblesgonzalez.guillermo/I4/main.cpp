@@ -5,9 +5,11 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-int main(int argc, char* argv[]) {
-    try {
-        if (argc != 4) {
+int main(int argc, char* argv[])
+{
+  try
+  {
+      if (argc != 4) {
             throw std::invalid_argument("Error: Invalid arguments");
         }
         std::ifstream inFile(argv[2]);
@@ -56,8 +58,8 @@ int main(int argc, char* argv[]) {
                 }
             }
             outFile << countGrowingCols(reinterpret_cast< const int * >(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols);;
-        } else {
+            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols);
+} else {
             throw std::invalid_argument("Error: Invalid argument");
         }
         if (!outFile) {

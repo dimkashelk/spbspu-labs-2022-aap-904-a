@@ -19,6 +19,11 @@ int main()
     {
       throw std::length_error("Long input string");
     }
+    if (source1 == nullptr)
+    {
+      std::cout << "Nothing was entered!\n";
+      return 1;
+    }
   }
   catch (const std::exception& e)
   {
@@ -30,7 +35,7 @@ int main()
   //1
   char source2[] = "abcd";
   size_t size1 = std::strlen(source1);
-  size_t size2 = std::strlen(source1);
+  size_t size2 = std::strlen(source2);
   size_t string_size1 = size1 + size2 + 1;
   char* destination1 = nullptr;
   try

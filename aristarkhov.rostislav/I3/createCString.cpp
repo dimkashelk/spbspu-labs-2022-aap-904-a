@@ -1,7 +1,7 @@
 #include "createCString.h"
 #include <stdexcept>
 
-char* createCString(std::istream& inp)
+char* createCString(std::istream& inp, size_t& size_1)
 {
   size_t capacity = 10;
   size_t size = 0;
@@ -35,6 +35,7 @@ char* createCString(std::istream& inp)
     }
     new_source[size++] = charInput;
   }
-  new_source[size] = '\0';
+  size_1 = size;
+  new_source[size - 1] = '\0';
   return new_source;
 }

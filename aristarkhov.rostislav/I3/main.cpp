@@ -5,10 +5,11 @@
 
 int main()
 {
+  size_t size = 0;
   char* source_1 = nullptr;
   try
   {
-    source_1 = createCString(std::cin);
+    source_1 = createCString(std::cin, size);
     if (source_1[0] == '\0')
     {
       delete[] source_1;
@@ -24,7 +25,7 @@ int main()
   char* destination1 = nullptr;
   try
   {
-    destination1 = new char[100];
+    destination1 = new char[size];
   }
   catch (const std::bad_alloc& e)
   {
@@ -39,13 +40,12 @@ int main()
   char source_2[] = "abcdefg";
   try
   {
-    destination2 = new char[100];
+    destination2 = new char[size];
   }
   catch (const std::bad_alloc& e)
   {
     std::cout << e.what() << '\n';
     delete[] source_1;
-    std::cout << e.what() << '\n';
     return 1;
   }
   destination2 = createStringCommonSymbols(destination2, source_1, source_2);

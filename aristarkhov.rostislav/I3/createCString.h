@@ -2,7 +2,8 @@
 #define CREATECSTRING_H
 
 #include <istream>
+#include <cstddef>
 
-char* createCString(std::istream& inp);
+char* createCString(std::istream& inp, size_t &size);
 
 #endif

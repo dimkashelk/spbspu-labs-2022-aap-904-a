@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
       output << countSum(smoothed_matrix, r);
       delete[] smoothed_matrix;
     }
+    delete[] matrix;
   }
   else
   {

@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 {
   if (argc != 4)
   {
-    std::cout << "Usage: " << argv[0] << " <input_mode> <input_file> <output_file>\n";
+    std::cout << "Error!";
     return 1;
   }
   std::ifstream inputFile;

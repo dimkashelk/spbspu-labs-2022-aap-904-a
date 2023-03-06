@@ -5,11 +5,9 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-int main(int argc, char* argv[])
-{
-  try
-  {
-      if (argc != 4) {
+int main(int argc, char* argv[]) {
+    try {
+        if (argc != 4) {
             throw std::invalid_argument("Error: Invalid arguments");
         }
         std::ifstream inFile(argv[2]);
@@ -37,8 +35,10 @@ int main(int argc, char* argv[])
                     throw std::runtime_error("Error: File read error");
                 }
             }
-            outFile << countGrowingCols(arr, rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols);
+            outFile << countGrowingCols(reinterpret_cast<const int *>(arr), rows, cols) << ' ';
+            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double *>(arr), rows, cols) << ' ';
+
+            ; // call to the function
         } else if (std::strcmp(argv[1], "2") == 0) {
             double arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
                 }
             }
             outFile << countGrowingCols(reinterpret_cast<const int *>(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols);
+            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double *>(arr), rows, cols) << ' ';
         } else if (std::strcmp(argv[1], "3") == 0) {
             char arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -57,9 +57,9 @@ int main(int argc, char* argv[])
                     throw std::runtime_error("Error: File read error");
                 }
             }
-            outFile << countGrowingCols(reinterpret_cast< const int * >(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double*>(const_cast<int*>(static_cast<const int*>(arr))), rows, cols);
-} else {
+            outFile << countGrowingCols(reinterpret_cast<const int *>(arr), rows, cols) << ' ';
+            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double *>(arr), rows, cols) << ' ';
+        } else {
             throw std::invalid_argument("Error: Invalid argument");
         }
         if (!outFile) {

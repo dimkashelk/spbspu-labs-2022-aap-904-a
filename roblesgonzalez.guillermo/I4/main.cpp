@@ -75,7 +75,6 @@ int main(int argc, char* argv[])
           throw std::runtime_error("Error: File read error");
         }
       }
-      // Call any function that you want to call for the third argument
     }
     else
     {

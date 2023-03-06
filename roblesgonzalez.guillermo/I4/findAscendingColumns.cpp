@@ -1,5 +1,4 @@
 #include "findAscendingColumns.h"
-#include <vector>
 
 bool isGrowingCol(const int *arr, size_t col, size_t rows, size_t cols)
 {
@@ -26,7 +25,7 @@ size_t countGrowingCols(const void* arr, size_t rows, size_t cols)
     }
     else
     {
-      break; // stop iteration if a non-growing column is found
+      break;
     }
   }
   return counter;

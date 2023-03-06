@@ -1,13 +1,15 @@
 #include "outputarray.hpp"
 #include <iostream>
 #include <cstddef>
-int outputArray(int array[], size_t size)
+int outputArray(const int array[], size_t size)
 {
-  std::cout << "Sort array: ";
   for (size_t i = 0; i < size; i++)
   {
-    std::cout << array[i] << " ";
+    std::cout << array[i] << ' ';
+    if (i == size)
+    {
+      std::cout << '\n';
+    }
   }
-  std::cout << std::endl;
-  return 0;
+  return array[size];
 }

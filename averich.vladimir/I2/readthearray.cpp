@@ -8,7 +8,7 @@ std::istream& readTheArray(std::istream& in, size_t& sizeOfFileArray, int* fileA
   for (size_t i = 0; i < sizeOfFileArray; i++)
   {
     in >> fileArray[i];
-    if (in.bad())
+    if (!in)
     {
       return in;
     }

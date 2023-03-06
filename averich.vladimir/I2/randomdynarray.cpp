@@ -1,7 +1,7 @@
-#include "dynarrayfilling.hpp"
+#include "randomdynarray.hpp"
 #include <cstdlib>
 #include <cstddef>
-int* dynArrayFilling(int* dynArray, size_t sizeOfDynArray)
+int* randomDynArray(int* dynArray, size_t sizeOfDynArray)
 {
   for (size_t i = 0; i < sizeOfDynArray; i++)
   {

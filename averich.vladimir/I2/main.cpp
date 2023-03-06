@@ -5,7 +5,7 @@
 #include "sortoutput.hpp"
 #include "istriplet.hpp"
 #include "readthearray.hpp"
-#include "dynarrayfilling.hpp"
+#include "randomdynarray.hpp"
 #include "outputarray.hpp"
 int main(int argc, char* argv[])
 {
@@ -14,24 +14,26 @@ int main(int argc, char* argv[])
   std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << "\n";
   sortOutput(defaultArray, 10);
   outputArray(defaultArray, 10);
+  std::cout << '\n';
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
   std::cin >> sizeOfDynArray;
   if (!std::cin)
   {
-    std::cout << "Error input" << "\n";
+    std::cout << "Error input" << '\n';
     return 2;
   }
   std::srand(time(nullptr));
   int* dynArray = new int[sizeOfDynArray];
   if (sizeOfDynArray > 0)
   {
-    dynArray = dynArrayFilling(dynArray, sizeOfDynArray);
+    dynArray = randomDynArray(dynArray, sizeOfDynArray);
     try
     {
       std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << "\n";
-      sortOutput(dynArray, sizeOfDynArray);
-      outputArray(dynArray, sizeOfDynArray);
+      dynArray[sizeOfDynArray] = sortOutput(dynArray, sizeOfDynArray);
+      outputArray(dynArray, 10);
+      std::cout << '\n';
       delete[] dynArray;
     }
     catch (std::length_error& e)
@@ -69,9 +71,9 @@ int main(int argc, char* argv[])
       try
       {
         std::cout << "Count of triplets: " << isTriplet(array, sizeOfFileArray) << " in the file array" << "\n";
-        sortOutput(array, sizeOfFileArray);
+        array[sizeOfFileArray] = sortOutput(array, sizeOfFileArray);
         outputArray(array, sizeOfFileArray);
-        std::cout << "Sort array: ";
+        std::cout << '\n';
         delete[] array;
       }
       catch (const std::length_error& e)

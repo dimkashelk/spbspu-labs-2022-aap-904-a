@@ -1,8 +1,8 @@
 image: 'volgarenok/cxx-test:0.0.27'
 stages:
-  - sanity
   - build
   - test
+  - sanity
 
 before_script:
   - echo "Using test case timeout $TIMEOUT sec"

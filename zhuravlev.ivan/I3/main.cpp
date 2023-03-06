@@ -9,7 +9,16 @@ int main()
 {
   size_t size = 0;
   size_t capacity = 10;
-  char* cstring = makeCstring(capacity, size, std::cin);
+  char* cstring = nullptr;
+  try
+  {
+    *cstring = makeCstring(capacity, size, std::cin);
+  }
+  catch (const std::exception& e)
+  {
+    std::cerr << e.what();
+    return 1;
+  }
   size_t size_of_static = 18;
   const char* static_string = "ABCDFEabcdef135790";
   try

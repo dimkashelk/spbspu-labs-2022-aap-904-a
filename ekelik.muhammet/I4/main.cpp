@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 {
   if (argc != 4)
   {
-    std::cout << "Error!";
+    std::cerr << "Error!";
     return 1;
   }
   std::ifstream inputFile;
@@ -23,23 +23,21 @@ int main(int argc, char** argv)
     bool useMatrix = std::strcmp(argv[1], "1") == 0;
     if (useMatrix)
     {
-      int staticMatrix[1000];
       try
       {
         inputFile >> numRows >> numCols;
         if (numRows == 0 || numCols == 0 || numRows * numCols > 1000)
         {
-          inputFile.close();
-          std::cout << "Error: Invalid matrix dimensions!\n";
+          std::cerr << "Error: Invalid matrix dimensions!\n";
           return 1;
         }
-        readMatrix(inputFile, staticMatrix, numRows, numCols);
-        matrix = staticMatrix;
+        matrix = new int[numRows * numCols];
+        readMatrix(inputFile, matrix, numRows, numCols);
       }
       catch (const std::exception& e)
       {
-        inputFile.close();
-        std::cout << e.what() << "\n";
+        std::cerr << e.what() << "\n";
+        delete[] matrix;
         return 1;
       }
     }
@@ -51,7 +49,7 @@ int main(int argc, char** argv)
         if (numRows == 0 || numCols == 0)
         {
           inputFile.close();
-          std::cout << "Error: Invalid matrix dimensions!\n";
+          std::cerr << "Error: Invalid matrix dimensions!\n";
           return 1;
         }
         matrix = new int[numRows * numCols];
@@ -74,23 +72,27 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& e)
     {
-      std::cout << "Error: Failed to open output file!\n";
+      std::cerr << "Error: Failed to open output file!\n";
+      delete[] matrix;
+      return 1;
+    }
+    int rowsWithEqualSum = countRowsWithEqualSum(matrix, numRows, numCols);
+    if (rowsWithEqualSum == -1)
+    {
+      std::cerr << "Error: Invalid matrix dimensions!\n";
       delete[] matrix;
       return 1;
     }
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    if (!useMatrix && matrix != nullptr)
-    {
-      delete[] matrix;
-    }
+    delete[] matrix;
 
     return 0;
   }
   catch (const std::exception& e)
   {
-    std::cout << "Error: Failed to read input file!\n";
+    std::cerr << "Error: Failed to read input file!\n";
     return 1;
   }
 }

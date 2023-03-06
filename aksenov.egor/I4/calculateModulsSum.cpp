@@ -28,7 +28,7 @@ int *countSmoothedMatrix(const int *matrix, size_t n, size_t m)
           }
         }
       }
-      matrixSmoothed[i * n +j] = sum;
+      matrixSmoothed[i * n + j] = sum;
     }
   }
   return matrixSmoothed;

@@ -36,7 +36,8 @@ int main(int argc, char* argv[]) {
                 }
             }
             outFile << countGrowingCols(arr, rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal(reinterpret_cast<double *>(arr), rows, cols); // call to the function
+            outFile << calcMinSummSecondaryDiagonal(
+                    (double *) static_cast<const int *>(reinterpret_cast<const void *>(arr)), rows, cols); // call to the function
         } else if (std::strcmp(argv[1], "2") == 0) {
             double arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -46,7 +47,8 @@ int main(int argc, char* argv[]) {
                 }
             }
             outFile << countGrowingCols(reinterpret_cast<const int *>(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal((double *) reinterpret_cast<const int *>(arr), rows, cols); // call to the function
+            outFile << calcMinSummSecondaryDiagonal(
+                    (double *) static_cast<const int *>(reinterpret_cast<const void *>(arr)), rows, cols); // call to the function
         } else if (std::strcmp(argv[1], "3") == 0) {
             char arr[1000];
             for (unsigned i = 0; i < rows * cols; i++) {
@@ -56,7 +58,8 @@ int main(int argc, char* argv[]) {
                 }
             }
             outFile << countGrowingCols(reinterpret_cast< const int * >(arr), rows, cols) << ' ';
-            outFile << calcMinSummSecondaryDiagonal((double *) reinterpret_cast<const int *>(arr), rows, cols); // call to the function
+            outFile << calcMinSummSecondaryDiagonal(
+                    (double *) static_cast<const int *>(reinterpret_cast<const void *>(arr)), rows, cols);; // call to the function
         } else {
             throw std::invalid_argument("Error: Invalid argument");
         }

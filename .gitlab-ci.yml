@@ -1,8 +1,8 @@
 image: 'volgarenok/cxx-test:0.0.27'
 stages:
+  - sanity
   - build
   - test
-  - sanity
 
 before_script:
   - echo "Using test case timeout $TIMEOUT sec"
@@ -42,7 +42,6 @@ content:
 
 build:
   stage: build
-  needs: []
   script:
     - '"$TEST_DIR"/build.sh'
   rules:
@@ -58,7 +57,6 @@ build:
   needs: []
 acceptance:
   stage: test
-  needs: [build]
   script:
     - 'if test -d out ; then find out -type f -exec touch {} + ; fi'
     - '"$TEST_DIR"/acceptance-tests.sh'

@@ -46,23 +46,23 @@ int main(int argc, char *argv[])
     std::cerr << "Not correct amount of parametrs" << "\n";
     return 1;
   }
-  int size = 0;
+  size_t line = 0;
   std::ifstream in(argv[1]);
-  in >> size;
+  in >> line;
   if (!in)
   {
     std::cerr << "error reading file" << "\n";
     return 1;
   }
-  if (size > 0)
+  if (line > 0)
   {
-    int *array3 = new int[size];
+    int *array3 = new int[line];
     if (!readArray(in, line, array3))
     {
       try
       {
-        std::cout << counterBeforeMin(array3, size) << "\n";
-        std::cout << findArithmeticMean(array3, size) << "\n";
+        std::cout << counterBeforeMin(array3, line) << "\n";
+        std::cout << findArithmeticMean(array3, line) << "\n";
         delete[] array3;
       }
       catch (const std::length_error &e)

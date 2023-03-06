@@ -1,6 +1,6 @@
 #include "readArray.h"
 #include <iostream>
-std::istream & readArray(std::istream & in, size_t & line, int *array3);
+std::istream & readArray(std::istream & in, size_t & line, int *array3)
 {
   for (size_t i = 0; i < line; ++i)
   {

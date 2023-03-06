@@ -35,6 +35,7 @@ int main()
   }
   destination1 = deleteLatinLetters(destination1, source_1);
   std::cout << destination1 << '\n';
+  delete[] destination1;
 
   char* destination2 = nullptr;
   char source_2[] = "abcdefg";
@@ -52,7 +53,6 @@ int main()
   std::cout << destination2 << '\n';
 
   delete[] source_1;
-  delete[] destination1;
   delete[] destination2;
   return 0;
 }

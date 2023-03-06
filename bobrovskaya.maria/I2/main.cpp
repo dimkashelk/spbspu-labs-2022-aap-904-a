@@ -71,8 +71,8 @@ int main(int argc, char **argv)
   int* arr3 = new int[arrSize3];
   if (readMatrixFromFile(arr3, arrSize3, readFile) == nullptr)
   {
-    readFile >> arr3[i];
-    if (!readFile) {
+    if (!readFile)
+    {
       std::cerr << "Invalid number of array elements\n";
       delete[] arr3;
       return 1;

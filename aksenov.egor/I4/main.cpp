@@ -53,12 +53,11 @@ int main(int argc, char *argv[])
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
-    std::string fname = argv[1];
-    std::ifstream input(fname);
-    int *matrix = new int [r * c];
+    size_t dynMatrixSize = r * c;
+    int *matrix = new int [dynMatrixSize];
     try
     {
-      matrix = readFile(input, r * c, matrix);
+      matrix = readFile(input, dynMatrixSize, matrix);
     }
     catch (const std::length_error &e)
     {

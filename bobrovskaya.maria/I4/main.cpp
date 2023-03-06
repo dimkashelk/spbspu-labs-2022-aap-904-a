@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <readMatrix.h>
 #include "countColumnsWithUniqueElements.h"
 #include "numberRowsNoConcecutiveIndeticalElements.h"
-#include <readMatrix.h>
 
 int main(int argc, char *argv[])
 {

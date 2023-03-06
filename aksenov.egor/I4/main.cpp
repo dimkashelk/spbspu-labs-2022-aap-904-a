@@ -53,8 +53,8 @@ int main(int argc, char *argv[])
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
-    std::ifstream input(argv[1]);
-    size_t dynMatrixSize = r * c;
+    size_t dynMatrixSize = 0;
+    dynMatrixSize = r * c;
     int *matrix = new int [dynMatrixSize];
     try
     {
@@ -71,7 +71,6 @@ int main(int argc, char *argv[])
       output << countSum(smoothed_matrix, r);
       delete[] smoothed_matrix;
     }
-    delete[] matrix;
   }
   else
   {

@@ -36,6 +36,6 @@ char* createCString(std::istream& inp, size_t& size_1)
     new_source[size++] = charInput;
   }
   size_1 = size;
-  new_source[size - 1] = '\0';
+  new_source[size] = '\0';
   return new_source;
 }

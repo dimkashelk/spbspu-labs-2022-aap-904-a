@@ -33,7 +33,7 @@ long long calcMinSummSecondaryDiagonal(const int *arr, size_t rows, size_t cols)
     const int* intArr = (arr);
     if (rows != cols)
     {
-        throw std::invalid_argument("Matrix is not square\n");
+      throw std::invalid_argument("Matrix is not square\n");
     }
     long long max_summ = 0;
     max_summ = std::max(max_summ, calcSumOfMainDiagonal(intArr, rows, cols));

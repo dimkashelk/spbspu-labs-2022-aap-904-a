@@ -9,6 +9,14 @@ std::istream & readArray(std::istream & in, size_t & line, int *array3)
     {
       return in;
     }
+    if (in.eof())
+    {
+      return in;
+    }
+    if (in.fail())
+    {
+      return in;
+    }
   }
   return in;
 }

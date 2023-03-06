@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
   if (line > 0)
   {
     int *array3 = new int[line];
-    if (!readArray(in, line, array3))
+    if (readArray(in, line, array3))
     {
       try
       {

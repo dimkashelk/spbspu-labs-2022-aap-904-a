@@ -39,13 +39,12 @@ int main(int argc, char* argv[])
       int arr[1000];
       for (unsigned i = 0; i < rows * cols; i++)
       {
-        inFile >> arr[i];
         if (!inFile)
         {
           throw std::runtime_error("Error: File read error");
         }
       }
-      outFile << countGrowingCols(static_cast<const int*>(static_cast<const void*>(arr)), rows, cols) << "\n";
+      outFile << countGrowingCols(arr, rows, cols) << "\n";
     }
     else if (std::strcmp(argv[1], "2") == 0)
     {

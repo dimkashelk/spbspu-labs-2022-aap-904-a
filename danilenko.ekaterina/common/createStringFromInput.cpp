@@ -32,7 +32,8 @@ char* createStringFromInput(std::istream& input)
       }
     }
     input >> source1[size];
-  } while (input && source1[size++] != '\n');
+  }
+  while (input && source1[size++] != '\n');
 
   if (source1[0] == '\0' || source1[0] == '\n')
   {

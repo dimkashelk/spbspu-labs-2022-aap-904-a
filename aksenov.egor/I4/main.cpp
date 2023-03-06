@@ -20,7 +20,9 @@ int main(int argc, char *argv[])
   }
   size_t r = 0;
   size_t c = 0;
+  size_t dynMatrixSize = 0;
   input >> r >> c;
+  dynMatrixSize = r * c;
   if (!input)
   {
     std::cout << "Input error" << "\n";
@@ -35,12 +37,12 @@ int main(int argc, char *argv[])
   if (std::strcmp(argv[1], "1") == 0)
   {
     int arr[1000];
-    if (r * c > 1000)
+    if (dynMatrixSize > 1000)
     {
       std::cout << "> 1000" << "\n";
       return 1;
     }
-    for (size_t i = 0; i < r * c; i++)
+    for (size_t i = 0; i < dynMatrixSize; i++)
     {
       input >> arr[i];
       if (!input)
@@ -53,8 +55,6 @@ int main(int argc, char *argv[])
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
-    size_t dynMatrixSize = 0;
-    dynMatrixSize = r * c;
     int *matrix = new int [dynMatrixSize];
     try
     {

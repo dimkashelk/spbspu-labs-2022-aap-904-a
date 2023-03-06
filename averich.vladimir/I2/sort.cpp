@@ -1,7 +1,7 @@
-#include "sortoutput.hpp"
-#include <iostream>
+#include "sort.hpp"
 #include <cstddef>
-int sortOutput(int array[], size_t size)
+#include <algorithm>
+int sort(int array[], size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {

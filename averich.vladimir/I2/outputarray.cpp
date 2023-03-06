@@ -5,11 +5,7 @@ int outputArray(const int array[], size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
-    std::cout << array[i] << ' ';
-    if (i == size)
-    {
-      std::cout << '\n';
-    }
+    std::cout << " " << array[i];
   }
   return array[size];
 }

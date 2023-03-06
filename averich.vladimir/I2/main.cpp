@@ -2,7 +2,7 @@
 #include <fstream>
 #include <cstddef>
 #include <limits>
-#include "sortoutput.hpp"
+#include "sort.hpp"
 #include "istriplet.hpp"
 #include "readthearray.hpp"
 #include "randomdynarray.hpp"
@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
   const size_t maxSize = std::numeric_limits< size_t >::max();
   int defaultArray[10] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
   std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << "\n";
-  sortOutput(defaultArray, 10);
+  sort(defaultArray, 10);
   outputArray(defaultArray, 10);
   std::cout << '\n';
   size_t sizeOfDynArray = 0;
@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
     try
     {
       std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << "\n";
-      dynArray[sizeOfDynArray] = sortOutput(dynArray, sizeOfDynArray);
+      dynArray[sizeOfDynArray] = sort(dynArray, sizeOfDynArray);
       outputArray(dynArray, 10);
       std::cout << '\n';
       delete[] dynArray;
@@ -68,10 +68,15 @@ int main(int argc, char* argv[])
     {
       int* array = new int[sizeOfFileArray];
       readTheArray(in, sizeOfFileArray, array);
+      if (!in)
+      {
+        std::cout << "Error reading file" << "\n";
+        return 1;
+      }
       try
       {
         std::cout << "Count of triplets: " << isTriplet(array, sizeOfFileArray) << " in the file array" << "\n";
-        array[sizeOfFileArray] = sortOutput(array, sizeOfFileArray);
+        array[sizeOfFileArray] = sort(array, sizeOfFileArray);
         outputArray(array, sizeOfFileArray);
         std::cout << '\n';
         delete[] array;

@@ -74,7 +74,7 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& e)
     {
-      std::cout << "Error: Failed to open output file!\n";
+      std::cout << e.what() << "\n";
       delete[] matrix;
       return 1;
     }
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
   }
   catch (const std::exception& e)
   {
-    std::cout << "Error: Failed to read input file!\n";
+    std::cout << e.what() << "\n";
     return 1;
   }
 }

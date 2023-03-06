@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
                 }
             }
             if (rows == 0 || cols == 0) {
-                return 2; // Error: Empty array passed to function
+                throw std::invalid_argument("Error: Empty array passed to function");
             }
             outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
         } else if (std::strcmp(argv[1], "3") == 0) {
@@ -63,9 +63,9 @@ int main(int argc, char* argv[]) {
         if (!outFile) {
             throw std::runtime_error("Error: File write error");
         }
-        return 0;
     } catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
         return 1;
     }
+    return 0;
 }

@@ -1,7 +1,7 @@
 #include "getMinSumOfDiagonal.h"
 #include <stdexcept>
-long long calcMinSummSecondaryDiagonal(const void* arr, size_t rows, size_t cols) {
-    const int* intArr = static_cast<const int*>(arr);
+long long calcMinSummSecondaryDiagonal(double * arr, size_t rows, size_t cols) {
+    const int* intArr = reinterpret_cast<const int *>(static_cast<double *>(arr));
 
     if (rows != cols) {
         throw std::invalid_argument("Matrix is not square\n");

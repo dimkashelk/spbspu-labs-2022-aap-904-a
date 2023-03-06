@@ -6,38 +6,24 @@
 
 int main()
 {
-  size_t capacity = 10;
-  size_t size = 0;
   char* string = nullptr;
-
   try
   {
-    string = new char[capacity];
-  }
-  catch (const std::bad_alloc& e)
-  {
-    std::cout << e.what() << "\n";
-    return 1;
-  }
-
-  try
-  {
-    string = createStringFromInput(std::cin, string, size, capacity);
-    if (string != nullptr && string[0] == '\n')
+    string = createStringFromInput(std::cin);
+    if (string == nullptr)
     {
-      std::cout << "Nothing was entered!" << '\n';
-      delete[] string;
-      return 2;
+      std::cout << "Nothing was entered!\n";
+      return 1;
     }
-    string[capacity - 1] = '\0';
   }
-  catch (const std::bad_alloc& e)
+  catch (const std::exception& e)
   {
     std::cout << e.what() << "\n";
     delete[] string;
     return 1;
   }
-  std::cout << std::boolalpha << isRealNumber(string) << '\n';
+  bool result = isRealNumber(string);
+  std::cout << std::boolalpha << result << '\n';
   delete[] string;
   return 0;
 }

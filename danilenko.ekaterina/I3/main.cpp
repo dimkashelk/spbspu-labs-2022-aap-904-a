@@ -15,7 +15,7 @@ int main()
 
   try
   {
-    string = createStringFromInput(std::cin, string, size, capacity);
+    string = createStringFromInput(std::cin);
     if (size > new_capacity)
     {
       throw std::length_error("Long input string");

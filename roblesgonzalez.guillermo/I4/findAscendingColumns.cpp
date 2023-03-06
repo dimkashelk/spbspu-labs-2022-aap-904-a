@@ -16,7 +16,7 @@ bool isGrowingCol(const int *arr, size_t col, size_t rows, size_t cols)
 }
 size_t countGrowingCols(const void* arr, size_t rows, size_t cols)
 {
-  const int *intArr = static_cast<const int *>(arr);
+  const int *intArr = static_cast< const int *>(arr);
   size_t counter = 0;
   for (size_t i = 0; i < cols; ++i)
   {
@@ -26,7 +26,7 @@ size_t countGrowingCols(const void* arr, size_t rows, size_t cols)
     }
     else
     {
-            break; // stop iteration if a non-growing column is found
+      break; // stop iteration if a non-growing column is found
     }
   }
   return counter;

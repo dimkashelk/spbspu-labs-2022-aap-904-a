@@ -14,7 +14,7 @@ bool isEnd(const char c)
 }
 bool isSign(const char c)
 {
-  c == '+' || c == '-' || c == '*' || c == '/';
+  return c == '+' || c == '-' || c == '*' || c == '/';
 }
 bool isCloseBar(const char c)
 {

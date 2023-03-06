@@ -13,7 +13,7 @@ int main()
    delete[] cstring;
    return 1;
  }
- std::cout << std::boolalpha << isExpression(cstring) << '/n';
+ std::cout << std::boolalpha << isExpression(cstring) << '\n';
  delete[] cstring;
  return 0;
 }

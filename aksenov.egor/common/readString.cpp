@@ -13,9 +13,9 @@ char *readString(std::istream &inputStr, size_t &in_size, size_t (*p)(size_t))
   {
     if (size == capacity)
     {
-      capacity = p(capacity);
       try
       {
+        capacity = p(capacity);
         char *newStr = extendString(cstring, size, capacity);
         delete[] cstring;
         cstring = newStr;

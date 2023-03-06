@@ -3,6 +3,6 @@
 #include <cstddef>
 #include <fstream>
 
-int* readMatrixFromFile(int* matrix, const size_t size, std::ifstream& inputFile);
+int* readMatrixFromFile(const int* matrix, const size_t size, std::ifstream& inputFile);
 
 #endif

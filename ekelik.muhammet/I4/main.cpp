@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 {
   if (argc != 4)
   {
-    std::cerr << "Error!";
+    std::cout << "Error!";
     return 1;
   }
   std::ifstream inputFile;
@@ -23,21 +23,23 @@ int main(int argc, char** argv)
     bool useMatrix = std::strcmp(argv[1], "1") == 0;
     if (useMatrix)
     {
+      int staticMatrix[1000];
       try
       {
         inputFile >> numRows >> numCols;
         if (numRows == 0 || numCols == 0 || numRows * numCols > 1000)
         {
-          std::cerr << "Error: Invalid matrix dimensions!\n";
+          inputFile.close();
+          std::cout << "Error: Invalid matrix dimensions!\n";
           return 1;
         }
-        matrix = new int[numRows * numCols];
-        readMatrix(inputFile, matrix, numRows, numCols);
+        readMatrix(inputFile, staticMatrix, numRows, numCols);
+        matrix = staticMatrix;
       }
       catch (const std::exception& e)
       {
-        std::cerr << e.what() << "\n";
-        delete[] matrix;
+        inputFile.close();
+        std::cout << e.what() << "\n";
         return 1;
       }
     }
@@ -49,7 +51,7 @@ int main(int argc, char** argv)
         if (numRows == 0 || numCols == 0)
         {
           inputFile.close();
-          std::cerr << "Error: Invalid matrix dimensions!\n";
+          std::cout << "Error: Invalid matrix dimensions!\n";
           return 1;
         }
         matrix = new int[numRows * numCols];
@@ -72,19 +74,23 @@ int main(int argc, char** argv)
     }
     catch (const std::exception& e)
     {
-      std::cerr << "Error: Failed to open output file!\n";
+      std::cout << "Error: Failed to open output file!\n";
       delete[] matrix;
       return 1;
     }
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    delete[] matrix;
+    if (!useMatrix && matrix != nullptr)
+    {
+      delete[] matrix;
+    }
+
     return 0;
   }
   catch (const std::exception& e)
   {
-    std::cerr << "Error: Failed to read input file!\n";
+    std::cout << "Error: Failed to read input file!\n";
     return 1;
   }
 }

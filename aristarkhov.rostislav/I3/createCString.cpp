@@ -6,8 +6,7 @@ char* createCString(std::istream& inp)
   size_t capacity = 10;
   size_t size = 0;
 
-  char* new_source = nullptr;
-  new_source = new char[capacity];
+  char* new_source = new char[capacity];
   char charInput = '\0';
   inp >> std::noskipws;
 
@@ -24,7 +23,7 @@ char* createCString(std::istream& inp)
       catch (const std::bad_alloc& e)
       {
         delete[] new_source;
-        throw e;
+        throw;
       }
       new_source[size] = '\0';
       for (size_t i = 0; i < size; i++)
@@ -35,11 +34,6 @@ char* createCString(std::istream& inp)
       new_source = dupStr;
     }
     new_source[size++] = charInput;
-  }
-  if (size < 1)
-  {
-    delete[] new_source;
-    throw std::logic_error("Empty input");
   }
   new_source[size] = '\0';
   return new_source;

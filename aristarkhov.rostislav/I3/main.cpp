@@ -9,6 +9,11 @@ int main()
   try
   {
     source_1 = createCString(std::cin);
+    if (source_1[0] == '\0')
+    {
+      delete[] source_1;
+      throw std::logic_error("Empty input");
+    }
   }
   catch (const std::exception& e)
   {
@@ -24,7 +29,7 @@ int main()
   catch (const std::bad_alloc& e)
   {
     std::cout << e.what() << '\n';
-    delete[] destination1;
+    delete[] source_1;
     return 1;
   }
   destination1 = deleteLatinLetters(destination1, source_1);
@@ -40,7 +45,6 @@ int main()
   {
     std::cout << e.what() << '\n';
     delete[] source_1;
-    delete[] destination2;
     std::cout << e.what() << '\n';
     return 1;
   }

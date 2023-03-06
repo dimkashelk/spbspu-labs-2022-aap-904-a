@@ -1,6 +1,18 @@
 #include "createStringCommonSymbols.h"
-#include "defineCountCommonSymbols.h"
 #include <cctype>
+
+size_t defineCountCommonSymbols(const char* source, const char p)
+{
+  size_t count = 0;
+  for (size_t i = 0; source[i] != '\0'; i++)
+  {
+    if (p == source[i])
+    {
+      count++;
+    }
+  }
+  return count;
+}
 
 char* createStringCommonSymbols(char* destination2, const char* source_1, const char* source_2)
 {

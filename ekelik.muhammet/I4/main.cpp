@@ -64,9 +64,6 @@ int main(int argc, char** argv)
         delete[] matrix;
         return 1;
       }
-    }  yukarda  bulunan  asagidaki kodu silerek delete[] matrix; kodunu hersey icin ayri ayri tekrardan yaz      if (!useMatrix)
-    {
-      delete[] matrix;
     }
     inputFile.close();
     std::ofstream outputFile;
@@ -84,7 +81,7 @@ int main(int argc, char** argv)
     outputFile << countRowsWithEqualSum(matrix, numRows, numCols) << "\n";
     outputFile << findLongestSeries(matrix, numRows, numCols) << "\n";
     outputFile.close();
-    if (!useMatrix)
+    if (!useMatrix && matrix != nullptr)
     {
       delete[] matrix;
     }

@@ -1,6 +1,6 @@
 #include "readMatrix.h"
 
-int* readMatrixFromFile(const int* matrix, const size_t size, std::ifstream& inputFile)
+int* readMatrixFromFile(int* matrix, size_t size, std::ifstream& inputFile)
 {
   for (size_t i = 0; i < size; i++)
   {

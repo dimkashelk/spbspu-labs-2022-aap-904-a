@@ -6,28 +6,23 @@
 #include "getMinSumOfDiagonal.h"
 
 void readArray(int* arr, size_t rows, size_t cols, std::ifstream& inFile) {
-    std::memset(arr, 0, rows * cols * sizeof(int));
     for (size_t i = 0; i < rows * cols; i++) {
         if (!(inFile >> arr[i])) {
-            delete[] arr;
             throw std::runtime_error("Error: File read error");
         }
     }
+    delete[] arr;
 }
-
-
 int main(int argc, char* argv[]) {
     try {
         if (argc != 4) {
             throw std::invalid_argument("Error: Invalid arguments");
         }
         std::ifstream inFile(argv[2]);
-        inFile.exceptions(std::ios::failbit | std::ios::badbit);
         if (!inFile.is_open()) {
             throw std::runtime_error("Error: Input file could not be opened");
         }
         std::ofstream outFile(argv[3]);
-        outFile.exceptions(std::ios::failbit | std::ios::badbit);
         if (!outFile.is_open()) {
             throw std::runtime_error("Error: Output file could not be opened");
         }

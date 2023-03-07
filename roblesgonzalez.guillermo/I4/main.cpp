@@ -5,16 +5,15 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-int readArrayFromFile(std::ifstream& inFile, int* arr, size_t rows, size_t cols)
+void readArrayFromFile(std::ifstream& inFile, int* arr, size_t rows, size_t cols)
 {
     for (size_t i = 0; i < rows * cols; i++)
     {
         if (!(inFile >> arr[i]))
         {
-            return 0;
+            throw std::runtime_error("Error: File read error");
         }
     }
-    return 1;
 }
 int main(int argc, char * argv[])
 {
@@ -72,11 +71,11 @@ int main(int argc, char * argv[])
         {
             throw std::runtime_error("Error: File write error");
         }
+        return 0;
     }
     catch (const std::exception & ex)
     {
-        std::cout << ex.what() << std::endl;
-        return 1;
+        std::cerr << ex.what() << std::endl;
+        return 0;
     }
-    return 0;
 }

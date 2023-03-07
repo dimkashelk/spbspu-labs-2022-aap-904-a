@@ -16,11 +16,11 @@ bool isSign(const char c)
 {
   return c == '+' || c == '-' || c == '*' || c == '/';
 }
-bool isCloseBar(const char c)
+bool isCloseParenthesis(const char c)
 {
   return (c == ')');
 }
-bool isOpenBar(const char c)
+bool isOpenParenthesis(const char c)
 {
   return (c == '(');
 }
@@ -30,7 +30,7 @@ bool isUnsigned(const char *data)
 }
 bool isMultiplier(const char *data)
 {
-  return isUnsigned(data) || isIdentificator(*data) || (isOpenBar(*data) && isExpression(data + 1) && isCloseBar(*data));
+  return isUnsigned(data) || isIdentificator(*data) || (isOpenParenthesis(*data) && isExpression(data + 1) && isCloseParenthesis(*data));
 }
 
 bool isTerm(const char *data)

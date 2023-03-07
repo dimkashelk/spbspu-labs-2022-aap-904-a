@@ -12,7 +12,8 @@ int main()
      throw std::logic_error("Empty string");
    }
  }
- catch(const std::exception& e){
+ catch(const std::exception &e)
+ {
    std::cerr << e.what() << "\n";
    delete[] cstring;
    return 1;

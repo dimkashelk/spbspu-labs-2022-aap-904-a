@@ -5,17 +5,17 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-void readArrayFromFile(std::ifstream& inFile, int* arr, size_t rows, size_t cols)
+int readArrayFromFile(std::ifstream& inFile, int* arr, size_t rows, size_t cols)
 {
     for (size_t i = 0; i < rows * cols; i++)
     {
         if (!(inFile >> arr[i]))
         {
-            throw std::runtime_error("Error: File read error");
+            return 0;
         }
     }
+    return 1;
 }
-
 int main(int argc, char * argv[])
 {
     try

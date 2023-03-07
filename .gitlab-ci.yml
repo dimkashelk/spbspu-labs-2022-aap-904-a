@@ -1,4 +1,4 @@
-image: 'volgarenok/cxx-test:0.0.26'
+image: 'volgarenok/cxx-test:0.0.27'
 stages:
   - sanity
   - build
@@ -54,7 +54,7 @@ build:
     paths:
       - out
     expire_in: 1 year
-
+  needs: []
 acceptance:
   stage: test
   script:
@@ -73,3 +73,4 @@ acceptance:
       - out/*/*/acceptance.*
     expire_in: 1 year
     when: always
+  needs: ["build"]

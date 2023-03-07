@@ -134,47 +134,51 @@ Boost
 Accepted Labs
 =============
 
-| Name                      | S0 | I1 | I2 | I3 | I4 | I5 |
-|---------------------------|----|----|----|----|----|----|
-| Aksenov Egor              | ✓  |    |    |    |    |    |
-| Aristarkhov Rostislav     | ✓  | ✓  |    |    |    |    |
-| Averich Vladimir          | ✓  |    |    |    |    |    |
-| Azheganova Faina          | ✓  | ✓  |    |    |    |    |
-| Bobrovskaya Maria         | ✓  |    |    |    |    |    |
-| Chemodurov Artem          | ✓  | ✓  | ✓  |    |    |    |
-| Chervontsev Alexey        | ✓  |    |    |    |    |    |
-| Chulkov Leontii           | ✓  |    |    |    |    |    |
-| Danilenko Ekaterina       | ✓  |    |    |    |    |    |
-| Dmitriev Arseny           | ✓  | ✓  |    |    |    |    |
-| Fesenko Ivan              | ✓  | ✓  |    |    |    |    |
-| Garzonnavarrete Alexander | ✓  |    |    |    |    |    |
-| Grishin Vadim             | ✓  |    |    |    |    |    |
-| Gulkov Mikhail            | ✓  | ✓  | ✓  |    |    |    |
-| Hrushchev Nikita          | ✓  | ✓  |    |    |    |    |
-| Kasilov Vasiliy           | ✓  |    |    |    |    |    |
-| Kotova Yaroslava          | ✓  |    |    |    |    |    |
-| Kozyrin Semen             | ✓  |    |    |    |    |    |
-| Kryuchkova Kira           | ✓  | ✓  |    |    |    |    |
-| Kurdikova Elizaveta       | ✓  |    |    |    |    |    |
-| Lihanov Ilya              | ✓  |    |    |    |    |    |
-| Lisovskaya Lisa           | ✓  |    |    |    |    |    |
-| Mashkin Andrew            | ✓  |    |    |    |    |    |
-| Muhortov Victor           | ✓  |    |    |    |    |    |
-| Novikov Gordei            | ✓  |    |    |    |    |    |
-| Odintsov Kirill           | ✓  | ✓  |    |    |    |    |
-| Roblesgonzalez Guillermo  | ✓  |    |    |    |    |    |
-| Romanchuk Alexey          | ✓  |    |    |    |    |    |
-| Romanovich Artem          | ✓  | ✓  |    |    |    |    |
-| Samoilenko Alena          | ✓  |    |    |    |    |    |
-| Shelkovnikov Dmitrii      | ✓  | ✓  | ✓  |    |    |    |
-| Skarlygina Mariia         | ✓  | ✓  |    |    |    |    |
-| Suslov Dmitriy            | ✓  | ✓  |    |    |    |    |
-| Tarasenko Ksenia          | ✓  | ✓  | ✓  |    |    |    |
-| Tellez Aron               | ✓  |    |    |    |    |    |
-| Timofeev Maxim            | ✓  |    |    |    |    |    |
-| Tsareva Yana              | ✓  | ✓  | ✓  |    |    |    |
-| Turkin Nikolai            | ✓  | ✓  | ✓  |    |    |    |
-| Yergatov Adil             | ✓  |    |    |    |    |    |
-| Zasulsky Egor             | ✓  |    |    |    |    |    |
-| Zhuravlev Ivan            | ✓  |    |    |    |    |    |
-| __Total__                 |  41|  16|   6|   0|   0|   0|
+| Name                      | S0 | I1 | I2 | I3 | I4 | I5 | I6 | T1 |
+|---------------------------|----|----|----|----|----|----|----|----|
+| Aksenov Egor              | ✓  |    |    |    |    |    |    |    |
+| Aristarkhov Rostislav     | ✓  | ✓  |    |    |    |    |    |    |
+| Averich Vladimir          | ✓  |    |    |    |    |    |    |    |
+| Azheganova Faina          | ✓  | ✓  | ✓  | ✓  | ✓  |    |    |    |
+| Bobrovskaya Maria         | ✓  | ✓  |    |    |    |    |    |    |
+| Chemodurov Artem          | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  |    |
+| Chervontsev Alexey        | ✓  |    |    |    |    |    |    |    |
+| Chulkov Leontii           | ✓  | ✓  |    |    |    |    |    |    |
+| Danilenko Ekaterina       | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Dmitriev Arseny           | ✓  | ✓  | ✓  | ✓  |    |    |    |    |
+| Fesenko Ivan              | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Garzonnavarrete Alexander | ✓  | ✓  |    |    |    |    |    |    |
+| Grishin Vadim             | ✓  |    |    |    |    |    |    |    |
+| Gulkov Mikhail            | ✓  | ✓  | ✓  | ✓  |    |    |    |    |
+| Hrushchev Nikita          | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Kasilov Vasiliy           | ✓  |    |    |    |    |    |    |    |
+| Kotova Yaroslava          | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Kozyrin Semen             | ✓  | ✓  |    |    |    |    |    |    |
+| Kryuchkova Kira           | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Kurdikova Elizaveta       | ✓  | ✓  |    |    |    |    |    |    |
+| Lihanov Ilya              | ✓  |    |    |    |    |    |    |    |
+| Lisovskaya Lisa           | ✓  | ✓  |    |    |    |    |    |    |
+| Mashkin Andrew            | ✓  |    |    |    |    |    |    |    |
+| Mishanina Elena           | ✓  | ✓  |    |    |    |    |    |    |
+| Muhortov Victor           | ✓  | ✓  |    |    |    |    |    |    |
+| Novikov Gordei            | ✓  |    |    |    |    |    |    |    |
+| Odintsov Kirill           | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Potapova Marina           | ✓  |    |    |    |    |    |    |    |
+| Roblesgonzalez Guillermo  | ✓  |    |    |    |    |    |    |    |
+| Romanchuk Alexey          | ✓  | ✓  |    |    |    |    |    |    |
+| Romanovich Artem          | ✓  | ✓  | ✓  | ✓  | ✓  |    |    |    |
+| Samoilenko Alena          | ✓  | ✓  |    |    |    |    |    |    |
+| Shelkovnikov Dmitrii      | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  |    |
+| Skarlygina Mariia         | ✓  | ✓  | ✓  | ✓  | ✓  |    |    |    |
+| Styopin Vladislav         | ✓  |    |    |    |    |    |    |    |
+| Suslov Dmitriy            | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Tarasenko Ksenia          | ✓  | ✓  | ✓  | ✓  | ✓  | ✓  |    |    |
+| Tellez Aron               | ✓  | ✓  |    |    |    |    |    |    |
+| Timofeev Maxim            | ✓  | ✓  |    |    |    |    |    |    |
+| Tobbo Kirill              | ✓  | ✓  |    |    |    |    |    |    |
+| Tsareva Yana              | ✓  | ✓  | ✓  |    |    |    |    |    |
+| Turkin Nikolai            | ✓  | ✓  | ✓  | ✓  | ✓  |    |    |    |
+| Yergatov Adil             | ✓  |    |    |    |    |    |    |    |
+| Zasulsky Egor             | ✓  | ✓  |    |    |    |    |    |    |
+| Zhuravlev Ivan            | ✓  | ✓  |    |    |    |    |    |    |
+| __Total__                 |  45|  33|  17|   9|   7|   3|   2|   0|

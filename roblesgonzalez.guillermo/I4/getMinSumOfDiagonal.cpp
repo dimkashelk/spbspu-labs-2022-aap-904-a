@@ -31,6 +31,10 @@ long long calcSumOfLowerDiagonal(const int * arr, size_t rows, size_t cols)
 long long calcMinSummSecondaryDiagonal(const int * arr, size_t rows, size_t cols)
 {
   const int* intArr = (arr);
+  if (rows == 0 || cols == 0)
+  {
+    return 0;
+  }
   if (rows != cols)
   {
     throw std::invalid_argument("Matrix is not square");

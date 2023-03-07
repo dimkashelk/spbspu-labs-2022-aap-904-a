@@ -53,5 +53,7 @@ bool continueSecondDigitPart(const char *expr)
 }
 bool isFloat(const char *expr)
 {
-  return (isSign(*expr) && continueWithDigit(expr + 1)) || continueWithDigit(expr + 1);
+  bool firstOption = isSign(*expr) && continueWithDigit(expr + 1);
+  bool secondOption = firstOption || continueWithDigit(expr + 1);
+  return secondOption;
 }

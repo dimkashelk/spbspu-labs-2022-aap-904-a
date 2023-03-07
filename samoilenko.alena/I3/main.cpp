@@ -9,9 +9,9 @@ int main()
   size_t size = 0;
   size_t extcapacity = capacity + 20;
   size_t lastIdx = 0;
+  char* cstring = new char[capacity];
   const size_t newsize = 27;
   const size_t newnewsize = 4;
-  char* cstring = nullptr;
   try
   {
     cstring = makeStringFromInput(std::cin);

@@ -94,8 +94,6 @@ int main(int argc, char * argv[])
         {
             throw std::invalid_argument("Error: Invalid argument");
         }
-        inFile.close();
-        outFile.close();
 
     }
     catch (const std::exception & ex)

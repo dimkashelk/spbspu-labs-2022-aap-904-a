@@ -17,5 +17,4 @@ int main()
   }
   std::cout << std::boolalpha << isFloat(cstr) << "\n";
   delete[] cstr;
-  return 0;
 }

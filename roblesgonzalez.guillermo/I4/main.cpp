@@ -15,6 +15,7 @@ void readArrayFromFile(std::ifstream& inFile, int* arr, size_t rows, size_t cols
         }
     }
 }
+
 int main(int argc, char * argv[])
 {
     try
@@ -23,16 +24,19 @@ int main(int argc, char * argv[])
         {
             throw std::invalid_argument("Error: Invalid number of arguments");
         }
+
         std::ifstream inFile(argv[2]);
         if (!inFile.is_open())
         {
             throw std::runtime_error("Error: Input file could not be opened");
         }
+
         std::ofstream outFile(argv[3]);
         if (!outFile.is_open())
         {
             throw std::runtime_error("Error: Output file could not be opened");
         }
+
         size_t rows = 0;
         size_t cols = 0;
         inFile >> rows >> cols;
@@ -40,42 +44,46 @@ int main(int argc, char * argv[])
         {
             throw std::runtime_error("Error: File read error");
         }
+
         if (rows * cols > 1000)
         {
             throw std::invalid_argument("Error: Array too large");
         }
+
         int *arr = new int[rows * cols];
+
         if (std::strcmp(argv[1], "1") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
             outFile << countGrowingCols(arr, rows, cols) << "\n";
-            delete[] arr;
         }
         else if (std::strcmp(argv[1], "2") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
             outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
-            delete[] arr;
         }
         else if (std::strcmp(argv[1], "3") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
             // process array
-            delete[] arr;
         }
         else
         {
             throw std::invalid_argument("Error: Invalid argument");
         }
+
+        delete[] arr; // Deallocate the dynamically allocated array
+
         if (!outFile)
         {
             throw std::runtime_error("Error: File write error");
         }
-        return 0;
     }
     catch (const std::exception & ex)
     {
-        std::cerr << ex.what() << std::endl;
-        return 0;
+        std::cout << ex.what() << std::endl;
+        return 1;
     }
+
+    return 0;
 }

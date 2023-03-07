@@ -31,7 +31,7 @@ int main(int argc, char** argv)
         {
           inputFile.close();
           std::cout << "Error: Invalid matrix dimensions!\n";
-          return 1;
+          return 0;
         }
         readMatrix(inputFile, staticMatrix, numRows, numCols);
         matrix = staticMatrix;
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
         {
           inputFile.close();
           std::cout << "Error: Invalid matrix dimensions!\n";
-          return 1;
+          return 0;
         }
         matrix = new int[numRows * numCols];
         readMatrix(inputFile, matrix, numRows, numCols);

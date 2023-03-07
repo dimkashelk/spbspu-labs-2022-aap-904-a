@@ -55,15 +55,23 @@ int main(int argc, char * argv[])
         if (std::strcmp(argv[1], "1") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
-            outFile << countGrowingCols(arr, rows, cols) << "\n";
+            if(cols > 0 && rows > 0){
+                outFile << countGrowingCols(arr, rows, cols) << "\n";
+            }
             delete[] arr;
+            inFile.close();
+            outFile.close();
             return 0;
         }
         else if (std::strcmp(argv[1], "2") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
-            outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
+            if(cols > 0 && rows > 0){
+                outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
+            }
             delete[] arr;
+            inFile.close();
+            outFile.close();
             return 0;
         }
         else if (std::strcmp(argv[1], "3") == 0)
@@ -71,20 +79,21 @@ int main(int argc, char * argv[])
             readArrayFromFile(inFile, arr, rows, cols);
             // process array
             delete[] arr;
+            inFile.close();
+            outFile.close();
+            return 0;
         }
         else
         {
             throw std::invalid_argument("Error: Invalid argument");
         }
+        inFile.close();
+        outFile.close();
 
-        if (!outFile)
-        {
-            throw std::runtime_error("Error: File write error");
-        }
     }
     catch (const std::exception & ex)
     {
-        std::cout << ex.what() << std::endl;
+        std::cerr << ex.what() << std::endl;
         return 1;
     }
 

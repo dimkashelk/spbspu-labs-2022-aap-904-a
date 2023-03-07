@@ -10,7 +10,8 @@ double term2::operator()()
 
 term2::term2(double x, double value):
   x(x),
-  value(value)
+  value(value),
+  index(1)
 {}
 
 double getCustomArth(double x, double error, size_t maxNum)
@@ -39,7 +40,9 @@ double term1::operator()()
 }
 
 term1::term1(double x):
-  x(x)
+  x(x),
+  value(1),
+  index(0)
 {}
 
 double getCustomCos(double x, double error, size_t maxNum)

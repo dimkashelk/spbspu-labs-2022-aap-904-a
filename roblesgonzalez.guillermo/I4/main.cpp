@@ -5,63 +5,64 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-int main(int argc, char* argv[])
+void readArrayFromFile(std::ifstream& inFile, int * arr, size_t rows, size_t cols)
+{
+  for (size_t i = 0; i < rows * cols; i++)
+  {
+    if (!(inFile >> arr[i]))
+    {
+      throw std::runtime_error("Error: File read error");
+    }
+  }
+}
+int main(int argc, char * argv[])
 {
   try
   {
     if (argc != 4)
     {
-      throw std::invalid_argument("Error: Invalid arguments");
+      throw std::invalid_argument("Error: Invalid number of arguments");
     }
-    std::ifstream inFile(argv[2]);
-    if (!inFile.is_open())
+    std::ifstream inFile;
+    inFile.exceptions(std::ios_base::failbit);
+    try
+    {
+      inFile.open(argv[2]);
+    }
+    catch (const std::ios_base::failure & ex)
     {
       throw std::runtime_error("Error: Input file could not be opened");
     }
-    std::ofstream outFile(argv[3]);
-    if (!outFile.is_open())
+    std::ofstream outFile;
+    outFile.exceptions(std::ios_base::failbit);
+    try
+    {
+      outFile.open(argv[3]);
+    }
+    catch (const std::ios_base::failure & ex)
     {
       throw std::runtime_error("Error: Output file could not be opened");
     }
     size_t rows = 0;
     size_t cols = 0;
     inFile >> rows >> cols;
-    if (!inFile)
+    if (inFile.fail())
     {
-        throw std::runtime_error("Error: File read error");
+      throw std::runtime_error("Error: File read error");
     }
     if (rows * cols > 1000)
     {
-        throw std::invalid_argument("Error: Array too large");
+      throw std::invalid_argument("Error: Array too large");
     }
     int *arr = new int[rows * cols];
     if (std::strcmp(argv[1], "1") == 0)
     {
-      for (unsigned i = 0; i < rows * cols; i++)
-      {
-        if (!(inFile >> arr[i]))
-        {
-          delete[] arr;
-          throw std::runtime_error("Error: File read error");
-        }
-      }
+      readArrayFromFile(inFile, arr, rows, cols);
       outFile << countGrowingCols(arr, rows, cols) << "\n";
     }
     else if (std::strcmp(argv[1], "2") == 0)
     {
-      for (unsigned i = 0; i < rows * cols; i++)
-      {
-        if (!(inFile >> arr[i]))
-        {
-          delete[] arr;
-          throw std::runtime_error("Error: File read error");
-        }
-      }
-      if (rows == 0 || cols == 0)
-      {
-        delete[] arr;
-        return 0;
-      }
+      readArrayFromFile(inFile, arr, rows, cols);
       outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
     }
     else if (std::strcmp(argv[1], "3") == 0)
@@ -88,7 +89,7 @@ int main(int argc, char* argv[])
   }
   catch (const std::exception & ex)
   {
-    std::cout << ex.what() << "\n";
+    std::cout << ex.what() << std::endl;
     return 1;
   }
   return 0;

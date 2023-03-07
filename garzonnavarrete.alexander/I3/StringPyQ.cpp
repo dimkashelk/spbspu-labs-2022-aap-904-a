@@ -1,7 +1,7 @@
 #include "StringPyQ.h"
 #include <cstddef>
 
-char *sum_strings(char *arr_sum, const char *cstring_p, const char *cstring_q)
+char *getSumOfStrings(char *arr_sum, const char *cstring_p, const char *cstring_q)
 {
   size_t size_sum = 0;
   for (size_t i = 0; *cstring_p || *cstring_q; i++)

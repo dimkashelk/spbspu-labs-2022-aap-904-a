@@ -52,7 +52,7 @@ int main()
   }
   cstring[size - 1] = '\0';
   char* sum_result = new char[size * 2];
-  sum_strings(sum_result, cstring, cstring);
+  getSumOfStrings(sum_result, cstring, cstring);
   std::cout << "Sum of two strings: " << sum_result << "\n";
   delete[] sum_result;
   sum_result = nullptr;

@@ -60,23 +60,16 @@ int main(int argc, char * argv[])
         }
         else if (std::strcmp(argv[1], "3") == 0)
         {
-            char arr[1000];
-            for (unsigned i = 0; i < rows * cols; i++)
-            {
-                if (!(inFile >> arr[i]))
-                {
-                    throw std::runtime_error("Error: File read error");
-                }
-            }
+            readArrayFromFile(inFile, arr, rows, cols);
+            // process array
+            delete[] arr;
         }
         else
         {
-            delete[] arr;
             throw std::invalid_argument("Error: Invalid argument");
         }
         if (!outFile)
         {
-            delete[] arr;
             throw std::runtime_error("Error: File write error");
         }
     }

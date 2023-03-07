@@ -7,15 +7,22 @@
 
 void readArrayFromFile(std::ifstream& inFile, int* arr, size_t rows, size_t cols)
 {
-    for (size_t i = 0; i < rows * cols; i++)
+    for (size_t i = 0; i < rows; i++)
     {
-        if (!(inFile >> arr[i]))
+        for (size_t j = 0; j < cols; j++)
         {
-            throw std::runtime_error("Error: File read error");
+            if (!(inFile >> arr[i * cols + j]))
+            {
+                throw std::runtime_error("Error: File read error");
+            }
         }
     }
-}
 
+    if (inFile >> std::ws && !inFile.eof())
+    {
+        throw std::runtime_error("Error: Too much data in input file");
+    }
+}
 int main(int argc, char * argv[])
 {
     try

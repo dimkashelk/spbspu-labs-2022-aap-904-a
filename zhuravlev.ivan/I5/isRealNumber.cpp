@@ -17,13 +17,13 @@ bool isDot(char data)
 {
   return (data == '.');
 }
-bool End(const char* data)
+bool isEnd(const char* data)
 {
-  return (isDigit(*data) && (End(data + 1) || *(data + 1) == '\0'));
+  return (isDigit(*data) && (isEnd(data + 1) || *(data + 1) == '\0'));
 }
 bool ifE(const char* data)
 {
-  return (isE(*data) && ((isSign(*(data + 1)) && End(data + 2)) || End(data + 1)));
+  return (isE(*data) && ((isSign(*(data + 1)) && isEnd(data + 2)) || isEnd(data + 1)));
 }
 bool continueWithDigitAfterDot(const char* data)
 {
@@ -40,5 +40,5 @@ bool continueWithDigit(const char* data)
 
 bool isFloat(const char* data)
 {
-  return  (continueWithDigit(data) || (isSign(*data) && continueWithDigit((data + 1))));
+  return  (continueWithDigit(data) || (isSign(*data) && continueWithDigit(data + 1)));
 }

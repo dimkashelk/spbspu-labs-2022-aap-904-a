@@ -1,5 +1,4 @@
 #include "latin_letters.h"
-#include <cstddef>
 #include <cctype>
 
 char* createStringNewLatinLetters(char* destination, const char* source)
@@ -10,7 +9,7 @@ char* createStringNewLatinLetters(char* destination, const char* source)
     bool exist = false;
     for (size_t j = 0; source[j] != '\0'; j++)
     {
-      if (source[j] == i)
+      if (std::tolower(source[j]) == i)
       {
         exist = true;
         break;
@@ -21,5 +20,6 @@ char* createStringNewLatinLetters(char* destination, const char* source)
       destination[k++] = i;
     }
   }
+  destination[k] = '\0';
   return destination;
 }

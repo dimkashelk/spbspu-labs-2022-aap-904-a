@@ -5,24 +5,15 @@
 
 int main()
 {
-  size_t capacity = 10;
-  size_t size = 0;
-  size_t extcapacity = capacity + 20;
-  size_t lastIdx = 0;
-  char* cstring = new char[capacity];
+  char* cstring = nullptr;
   const size_t newsize = 27;
   const size_t newnewsize = 4;
   try
   {
     cstring = makeStringFromInput(std::cin);
-    if (size > extcapacity)
-    {
-      std::cerr << "Error...";
-    }
   }
   catch (const std::exception &ex)
   {
-    delete[] cstring;
     std::cout << ex.what() << "\n";
     return 1;
   }
@@ -34,26 +25,26 @@ int main()
   }
   catch (const std::bad_alloc& ex)
   {
-    delete [] cstring;
+    delete[] cstring;
     std::cerr << "Error..." << '\n';
     return 1;
   }
   std::cout << createStringNewLatinLetters(newstring, cstring);
   std::cout << '\n';
-  delete [] newstring;
+  delete[] newstring;
   try
   {
     newstring = new char[newnewsize];
   }
   catch (const std::bad_alloc& ex)
   {
-    delete [] cstring;
+    delete[] cstring;
     std::cerr << ex.what() << '\n';
     return 1;
   }
-  std::cout << printMostCommonCharacters(lastIdx, newstring, cstring);
+  std::cout << printMostCommonCharacters(newstring, cstring);
   std::cout << '\n';
-  delete [] newstring;
-  delete [] cstring;
+  delete[] newstring;
+  delete[] cstring;
   return 0;
 }

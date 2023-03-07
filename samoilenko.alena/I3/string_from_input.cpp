@@ -14,9 +14,9 @@ char* makeStringFromInput(std::istream& input)
     {
       try
       {
-        size_t newcapacity = capacity + 20;
-        char *newstr = expandString(source, newcapacity, size, capacity);
-        capacity = newcapacity;
+        size_t newcapacity = 20;
+        char* newstr = expandString(source, newcapacity, size, capacity);
+        capacity += newcapacity;
         delete[] source;
         source = newstr;
         newstr = nullptr;

@@ -7,6 +7,7 @@
 
 void readArray(int* arr, size_t rows, size_t cols, std::ifstream& inFile) {
     for (size_t i = 0; i < rows * cols; i++) {
+        inFile.exceptions(std::ios::failbit);
         if (!(inFile >> arr[i])) {
             delete[] arr;
             throw std::runtime_error("Error: File read error");
@@ -20,10 +21,12 @@ int main(int argc, char* argv[]) {
             throw std::invalid_argument("Error: Invalid arguments");
         }
         std::ifstream inFile(argv[2]);
+        inFile.exceptions(std::ios::failbit | std::ios::badbit);
         if (!inFile.is_open()) {
             throw std::runtime_error("Error: Input file could not be opened");
         }
         std::ofstream outFile(argv[3]);
+        outFile.exceptions(std::ios::failbit | std::ios::badbit);
         if (!outFile.is_open()) {
             throw std::runtime_error("Error: Output file could not be opened");
         }
@@ -50,6 +53,7 @@ int main(int argc, char* argv[]) {
         } else if (std::strcmp(argv[1], "3") == 0) {
             char arr[1000];
             for (size_t i = 0; i < rows * cols; i++) {
+                inFile.exceptions(std::ios::failbit);
                 if (!(inFile >> arr[i])) {
                     throw std::runtime_error("Error: File read error");
                 }

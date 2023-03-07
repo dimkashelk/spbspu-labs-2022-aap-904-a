@@ -56,23 +56,26 @@ int main(int argc, char * argv[])
         {
             readArrayFromFile(inFile, arr, rows, cols);
             outFile << countGrowingCols(arr, rows, cols) << "\n";
+            delete[] arr;
+            return 0;
         }
         else if (std::strcmp(argv[1], "2") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
             outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
+            delete[] arr;
+            return 0;
         }
         else if (std::strcmp(argv[1], "3") == 0)
         {
             readArrayFromFile(inFile, arr, rows, cols);
             // process array
+            delete[] arr;
         }
         else
         {
             throw std::invalid_argument("Error: Invalid argument");
         }
-
-        delete[] arr; // Deallocate the dynamically allocated array
 
         if (!outFile)
         {

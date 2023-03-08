@@ -1,70 +1,72 @@
 #include "realNumber.h"
 
+#include <cstddef>
 #include <cctype>
-#include <stdexcept>
 
-bool isSign(char c)
+bool myIsSign(char c)
 {
   return (c == '-' || c == '+');
 }
 
-bool isDigit(char c)
+bool myIsDigit(char c)
 {
   return std::isdigit(c);
 }
 
-bool isDot(char c)
+bool myIsDot(char c)
 {
   return (c == '.');
 }
 
-bool isEChar(char c)
+bool myIsEChar(char c)
 {
   return (c == 'e' || c == 'E');
 }
 
-bool isEnd(char c)
+bool myIsEnd(char c)
 {
   return (c == '\0');
 }
 
-bool isUnsignedInteger(const char* data, size_t& shift)
+bool myIsUnsignedInteger(const char* data, size_t& shift)
 {
-  bool result = false;
-  while (!isEnd(*(data + shift)) && isDigit(*(data + shift)))
+  while (!myIsEnd(*(data + shift)) && myIsDigit(*(data + shift)))
   {
     shift++;
-    result = true;
-  }
-  return result;
-}
-
-bool isInOrder(const char* data, size_t& shift)
-{
-  if (isEChar(*data) && isSign(*(data + 1)))
-  {
-    shift += 2;
-    return isUnsignedInteger(data + 2, shift);
+    if (myIsDot(*(data + shift)) || myIsEChar(*(data + shift)) || myIsEnd(*(data + shift)))
+    {
+      return true;
+    }
   }
   return false;
 }
 
-bool isMantissa(const char* data, size_t& shift)
+bool myIsInOrder(const char* data, size_t& shift)
 {
-  if (isUnsignedInteger(data, shift))
+  if (myIsEChar(*data) && myIsSign(*(data + 1)))
   {
-    if (isDot(*(data + shift)))
+    shift += 2;
+    return myIsUnsignedInteger(data + 2, shift);
+  }
+  return false;
+}
+
+bool myIsMantissa(const char* data, size_t& shift)
+{
+  if (myIsUnsignedInteger(data, shift))
+  {
+    if (myIsDot(*(data + shift)))
     {
       shift++;
-      if (isUnsignedInteger(data, shift))
+      if (myIsUnsignedInteger(data, shift))
       {
         return true;
       }
     }
-    else if (isEChar(*(data + shift)))
+    else if (myIsEChar(*(data + shift)))
     {
       shift++;
-      return isInOrder(data + shift, shift);
+      return myIsInOrder(data + shift, shift);
     }
     return true;
   }
@@ -76,14 +78,10 @@ bool myRealNumber(const char* data)
   size_t shift = 0;
   const char* currVal = data;
 
-  if (isSign(*currVal))
+  if (myIsSign(*currVal))
   {
     currVal++;
   }
 
-  if (!isMantissa(currVal, shift) || !isEnd(*(currVal + shift)))
-  {
-    return false;
-  }
-  return true;
+  return myIsMantissa(currVal, shift) && myIsInOrder(currVal + shift, shift) && myIsEnd(*(currVal + shift));
 }

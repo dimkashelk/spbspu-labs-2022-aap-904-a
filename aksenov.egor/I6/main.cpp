@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 #include "printTable.h"
 int main()
 {
@@ -13,6 +14,14 @@ int main()
     std::cout << "Input error" << "\n";
     return 1;
   }
-  printTable(std::cout, l, r, step, absError, numberMax);
+  try
+  {
+    printTable(std::cout, l, r, step, absError, numberMax);
+  }
+  catch (const std::exception &e)
+  {
+    std ::cout << e.what() << "\n";
+    return 1;
+  }
   return 0;
 }

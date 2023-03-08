@@ -11,8 +11,27 @@ void printTableRow(std::ostream &out, double x, double absError, size_t numberMa
 }
 void printTable(std::ostream &out, double l, double r, double step, double absError, size_t numberMax)
 {
+  if (l > r)
+  {
+    throw std::logic_error("Invalid borders");
+  }
   for (double x = r; x - step >= l; x = x - step)
   {
-    printTableRow(out << "\n", x, absError, numberMax);
+    try
+    {
+      printTableRow(out << "\n", x, absError, numberMax);
+    }
+    catch (const std::exception &e)
+    {
+      out << e.what() << "\n";
+    }
+  }
+  try
+  {
+    printTableRow(out << "\n", l, absError, numberMax);
+  }
+  catch (const std::exception &e)
+  {
+    out << e.what() << "\n";
   }
 }

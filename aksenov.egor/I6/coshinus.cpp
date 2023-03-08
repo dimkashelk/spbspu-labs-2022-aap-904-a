@@ -1,7 +1,12 @@
 #include "coshinus.h"
 #include <cmath>
+#include <stdexcept>
 double calculateCoshinus(double x, double absError, size_t numberMax)
 {
+  if ((x <= -1.0) || (x >= 1.0))
+  {
+    throw std::invalid_argument("not in range [-1;1]");
+  }
   double sum = 1.0;
   double n = 0.0;
   unsigned factorial = 1;

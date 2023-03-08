@@ -43,27 +43,33 @@ bool myIsUnsignedInteger(const char* data, size_t& shift)
 
 bool myIsInOrder(const char* data, size_t& shift)
 {
-  size_t a = 0;
-  bool result =  myIsEChar(*data) && myIsSign(*(data + 1)) && myIsUnsignedInteger(data + 2, a);
-  shift += a + 2;
-  return result;
+  if (myIsEChar(*data) && myIsSign(*(data + 1)))
+  {
+    shift += 2;
+    return myIsUnsignedInteger(data + 2, shift);
+  }
+  return false;
 }
 
 bool myIsMantissa(const char* data, size_t& shift)
 {
-  bool firstNumber = myIsUnsignedInteger(data, shift);
-  if (firstNumber)
+  if (myIsUnsignedInteger(data, shift))
   {
     if (myIsDot(*(data + shift)))
     {
-      shift += 1;
-      bool secondNumber = myIsUnsignedInteger(data, shift);
-      return secondNumber;
+      shift++;
+      if (myIsUnsignedInteger(data, shift))
+      {
+        return true;
+      }
+      return false;
     }
     else if (myIsEChar(*(data + shift)))
     {
-      return true;
+      shift++;
+      return myIsInOrder(data + shift, shift);
     }
+    return true;
   }
   return false;
 }
@@ -72,9 +78,10 @@ bool myRealNumber(const char* data)
 {
   size_t shift = 0;
   const char* currVal = data;
+
   if (myIsSign(*currVal))
   {
     currVal++;
   }
-  return myIsMantissa(currVal, shift) && myIsInOrder(currVal + shift, shift) && myIsEnd(*(currVal + shift));
+  return myIsMantissa(currVal, shift) && myIsEnd(*(currVal + shift));
 }

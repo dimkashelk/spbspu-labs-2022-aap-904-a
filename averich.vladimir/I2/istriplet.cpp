@@ -1,7 +1,7 @@
 #include "istriplet.hpp"
 #include <cstddef>
 #include <stdexcept>
-int isTriplet(const int arr[], size_t size)
+size_t isTriplet(const int arr[], size_t size)
 {
   if (size < 3)
   {

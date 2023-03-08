@@ -1,7 +1,7 @@
 #include "sort.hpp"
 #include <cstddef>
 #include <algorithm>
-int sort(int array[], size_t size)
+int* sort(int* array, size_t size)
 {
   for (size_t i = 0; i < size; i++)
   {
@@ -13,5 +13,5 @@ int sort(int array[], size_t size)
       }
     }
   }
-  return array[size];
+  return array;
 }

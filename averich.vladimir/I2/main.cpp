@@ -10,10 +10,13 @@
 int main(int argc, char* argv[])
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
+  std::string fileName = argv[1];
+  std::ifstream in(fileName);
+  size_t sizeOfFileArray = 0;
   int defaultArray[10] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };
   std::cout << "Count of triplets: " << isTriplet(defaultArray, 10) << " in the static array" << "\n";
   sort(defaultArray, 10);
-  outputArray(defaultArray, 10);
+  outputArray(std::cout, defaultArray, 10);
   std::cout << '\n';
   size_t sizeOfDynArray = 0;
   std::cout << "Enter size of dynamic array: ";
@@ -27,12 +30,12 @@ int main(int argc, char* argv[])
   int* dynArray = new int[sizeOfDynArray];
   if (sizeOfDynArray > 0)
   {
-    dynArray = randomDynArray(dynArray, sizeOfDynArray);
     try
     {
+      dynArray = randomDynArray(dynArray, sizeOfDynArray);
       std::cout << "Count of triplets: " << isTriplet(dynArray, sizeOfDynArray) << " in the dynamic array" << "\n";
-      dynArray[sizeOfDynArray] = sort(dynArray, sizeOfDynArray);
-      outputArray(dynArray, 10);
+      sort(dynArray, sizeOfDynArray);
+      outputArray(std::cout, dynArray, sizeOfDynArray);
       std::cout << '\n';
       delete[] dynArray;
     }
@@ -53,9 +56,6 @@ int main(int argc, char* argv[])
     std::cout << "Error: incorrect file name";
     return 1;
   }
-  std::string fileName = argv[1];
-  std::ifstream in(fileName);
-  size_t sizeOfFileArray = 0;
   in >> sizeOfFileArray;
   if (!in)
   {
@@ -76,8 +76,8 @@ int main(int argc, char* argv[])
       try
       {
         std::cout << "Count of triplets: " << isTriplet(array, sizeOfFileArray) << " in the file array" << "\n";
-        array[sizeOfFileArray] = sort(array, sizeOfFileArray);
-        outputArray(array, sizeOfFileArray);
+        sort(array, sizeOfFileArray);
+        outputArray(std::cout, array, sizeOfFileArray);
         std::cout << '\n';
         delete[] array;
       }

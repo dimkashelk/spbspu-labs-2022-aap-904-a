@@ -1,5 +1,5 @@
 #ifndef ISTRIPLET_HPP
 #define ISTRIPLET_HPP
 #include <cstddef>
-int isTriplet(const int arr[], size_t size);
+size_t isTriplet(const int arr[], size_t size);
 #endif

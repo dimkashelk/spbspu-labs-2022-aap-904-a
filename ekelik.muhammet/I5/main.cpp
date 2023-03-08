@@ -16,7 +16,7 @@ int main()
   {
     std::cout << e.what() << "\n";
     delete[] number;
-    return 1;
+    return 2;
   }
   std::cout << std::boolalpha << myRealNumber(number) << "\n";
   delete[] number;

@@ -81,5 +81,5 @@ bool myRealNumber(const char* data)
   {
     currVal++;
   }
-  return myIsMantissa(currVal, shift) && myIsInOrder(currVal + shift, shift) && myIsEnd(*(currVal + shift));
+  return myIsMantissa(currVal, shift) && myIsEnd(*(currVal + shift));
 }

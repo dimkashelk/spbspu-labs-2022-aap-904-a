@@ -1,20 +1,18 @@
 #include "myString.h"
 #include <myExtString.h>
-#include <cstring>
 
-char* makeMyString(size_t& size, size_t& capacity, std::istream& input)
+char* makeMyString(size_t &size, size_t &capacity, std::istream &input)
 {
   char* myString = new char[capacity];
-  myString[0] = '\0';
+  myString[0] = '\n';
 
   input >> std::noskipws;
   do
   {
-    if (size + 1 >= capacity)
+    if (size + 1 == capacity)
     {
-      capacity *= 2;
-      char* newstr = new char[capacity];
-      std::memcpy(newstr, myString, size);
+      myString[size] = '\0';
+      char* newstr = extendMyString(myString, capacity);
       delete[] myString;
       myString = newstr;
     }
@@ -22,14 +20,10 @@ char* makeMyString(size_t& size, size_t& capacity, std::istream& input)
   }
   while (input && myString[size++] != '\n');
 
-  if (myString[0] == '\n')
-  {
-    myString[0] = '\0';
-    size = 0;
-  }
-  else
+  if (myString[0] != '\n')
   {
     myString[size - 1] = '\0';
   }
+
   return myString;
 }

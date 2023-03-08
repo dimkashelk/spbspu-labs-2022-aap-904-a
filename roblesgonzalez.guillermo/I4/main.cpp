@@ -5,26 +5,25 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-void readArray(int * arr, size_t rows, size_t cols, std::ifstream& inFile)
+int readArray(int *arr, size_t rows, size_t cols, std::ifstream& inFile)
 {
   for (size_t i = 0; i < rows * cols; i++)
   {
     if (!(inFile >> arr[i])) {
       std::cout << "Error: Failed to read array element at index " << i << "\n";
-      exit(1);
+      return 1;
     }
   }
+  return 0;
 }
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
   if (argc != 4)
   {
     std::cout << "Error: Invalid arguments" << "\n";
     return 1;
   }
-
   std::ifstream inFile(argv[2]);
-
   if (!inFile)
   {
     std::cout << "Error: Failed to open input file" << "\n";
@@ -72,7 +71,7 @@ int main(int argc, char * argv[])
       if (!(inFile >> arr[i]))
       {
         std::cout << "Error: Failed to read character array element at index " << i << "\n";
-        exit(1);
+        return 1;
       }
     }
     outFile << arr << "\n";

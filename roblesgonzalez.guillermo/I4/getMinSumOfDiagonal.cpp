@@ -1,7 +1,8 @@
 #include "getMinSumOfDiagonal.h"
 #include <stdexcept>
+#include <limits>
 
-long long calcSumOfMainDiagonal(const int * arr, size_t rows, size_t cols)
+long long calcSumOfMainDiagonal(const int* arr, size_t rows, size_t cols)
 {
   long long summ = 0;
   for (size_t i = 0; i < rows; ++i)
@@ -10,7 +11,7 @@ long long calcSumOfMainDiagonal(const int * arr, size_t rows, size_t cols)
   }
   return summ;
 }
-long long calcSumOfUpperDiagonal(const int * arr, size_t rows, size_t cols)
+long long calcSumOfUpperDiagonal(const int* arr, size_t rows, size_t cols)
 {
   long long summ = 0;
   for (size_t i = 0; i < rows - 1; ++i)
@@ -19,7 +20,7 @@ long long calcSumOfUpperDiagonal(const int * arr, size_t rows, size_t cols)
   }
   return summ;
 }
-long long calcSumOfLowerDiagonal(const int * arr, size_t rows, size_t cols)
+long long calcSumOfLowerDiagonal(const int* arr, size_t rows, size_t cols)
 {
   long long summ = 0;
   for (size_t i = 0; i < rows - 1; ++i)
@@ -28,7 +29,7 @@ long long calcSumOfLowerDiagonal(const int * arr, size_t rows, size_t cols)
   }
   return summ;
 }
-long long calcMinSummSecondaryDiagonal(const int * arr, size_t rows, size_t cols)
+long long calcMinSummSecondaryDiagonal(const int* arr, size_t rows, size_t cols)
 {
   const int* intArr = (arr);
   if (rows == 0 || cols == 0)
@@ -39,7 +40,7 @@ long long calcMinSummSecondaryDiagonal(const int * arr, size_t rows, size_t cols
   {
     throw std::invalid_argument("Matrix is not square");
   }
-  long long min_summ = 0;
+  long long min_summ = std::numeric_limits< long long >::max();
   min_summ = std::min(min_summ, calcSumOfMainDiagonal(intArr, rows, cols));
   min_summ = std::min(min_summ, calcSumOfUpperDiagonal(intArr, rows, cols));
   min_summ = std::min(min_summ, calcSumOfLowerDiagonal(intArr, rows, cols));

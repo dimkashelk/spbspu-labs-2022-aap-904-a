@@ -3,65 +3,64 @@
 #include <cstddef>
 #include <cctype>
 
-bool isSigned(char c)
+bool myIsSign(char sym)
 {
-  return c == '-' || c == '+';
+  return (sym == '-' || sym == '+');
 }
 
-bool isDigit(char c)
+bool myIsDigit(char sym)
 {
-  return std::isdigit(c);
+  return std::isdigit(sym);
 }
 
-bool isDecimalPoint(char c)
+bool myIsDot(char sym)
 {
-  return c == '.';
+  return (sym == '.');
 }
 
-bool isExponentialChar(char c)
+bool myIsEChar(char sym)
 {
-  return c == 'E';
+  return (sym == 'e' || sym == 'E');
 }
 
-bool isEndOfString(char c)
+bool myIsEnd(char sym)
 {
-  return c == '\0';
+  return (sym == '\0');
 }
 
-bool isUnsignedInteger(const char* data, size_t& shift)
+bool myIsUnsignedInteger(const char* data, size_t& shift)
 {
-  if (!isEndOfString(*(data + shift)) && isDigit(*(data + shift)))
+  while (!myIsEnd(*(data + shift)) && myIsDigit(*(data + shift)))
   {
     shift++;
-    if (isDecimalPoint(*(data + shift)) || isExponentialChar(*(data + shift)) || isEndOfString(*(data + shift)))
+    if (myIsDot(*(data + shift)) || myIsEChar(*(data + shift)) || myIsEnd(*(data + shift)))
     {
       return true;
     }
-    return isUnsignedInteger(data, shift);
   }
   return false;
 }
 
-bool isExponentialNotation(const char* data, size_t& shift)
+bool myIsInOrder(const char* data, size_t& shift)
 {
   size_t a = 0;
-  bool result =  isExponentialChar(*data) && isSigned(*(data + 1)) && isUnsignedInteger(data + 2, a);
+  bool result =  myIsEChar(*data) && myIsSign(*(data + 1)) && myIsUnsignedInteger(data + 2, a);
   shift += a + 2;
   return result;
 }
 
-bool isMantissa(const char* data, size_t& shift)
+bool myIsMantissa(const char* data, size_t& shift)
 {
-  bool firstNumber = isUnsignedInteger(data, shift);
+  bool firstNumber = myIsUnsignedInteger(data, shift);
   if (firstNumber)
   {
-    if (isDecimalPoint(*(data + shift)))
+    if (myIsDot(*(data + shift)))
     {
       shift += 1;
-      bool secondNumber = isUnsignedInteger(data, shift);
+      bool secondNumber = myIsUnsignedInteger(data, shift);
       return secondNumber;
     }
-    else if (isExponentialChar(*(data + shift)))
+    else if (myIsEChar(*(data + shift)))
     {
       return true;
     }
@@ -73,9 +72,9 @@ bool myRealNumber(const char* data)
 {
   size_t shift = 0;
   const char* currVal = data;
-  if (isSigned(*currVal))
+  if (myIsSign(*currVal))
   {
     currVal++;
   }
-  return isMantissa(currVal, shift) && isExponentialNotation(currVal + shift, shift) && isEndOfString(*(currVal + shift));
+  return myIsMantissa(currVal, shift) && myIsInOrder(currVal + shift, shift) && myIsEnd(*(currVal + shift));
 }

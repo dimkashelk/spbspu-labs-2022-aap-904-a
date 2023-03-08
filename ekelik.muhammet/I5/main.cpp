@@ -11,14 +11,15 @@ int main()
   try
   {
     number = makeMyString(size, capacity, std::cin);
+    bool isRealNumber = myRealNumber(number);
+    std::cout << std::boolalpha << isRealNumber << "\n";
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what() << "\n";
+    std::cerr << "Error: " << e.what() << "\n";
     delete[] number;
     return 1;
   }
-  std::cout << std::boolalpha << myRealNumber(number) << "\n";
   delete[] number;
   return 0;
 }

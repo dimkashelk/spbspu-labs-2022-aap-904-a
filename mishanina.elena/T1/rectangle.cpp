@@ -44,6 +44,10 @@ void Rectangle::move(const double dx, const double dy)
 
 void Rectangle::scale(double k)
 {
+  if (k <= 0)
+  {
+    throw std::invalid_argument("Invalid k size");
+  }
   point_t pos = getCenterRectangle(ld_point_, ru_point_);
   ld_point_ = scalePoint(ld_point_, pos, k);
   ru_point_ = scalePoint(ru_point_, pos, k);

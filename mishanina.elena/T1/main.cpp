@@ -7,14 +7,15 @@
 #include "shape.h"
 #include "printShapes.h"
 #include "isoScale.h"
+#include "createPoints.h"
 int main()
 {
   CompositeShape compositeShape;
   bool correctFigure = false;
   bool correctScale = false;
   bool correctComposite = false;
-  std::size_t countCorrectFigure = 0;
-  std::size_t countInvalidFigure = 0;
+  bool isAddFigure = false;
+  bool hasInvalidFigure = false;
   std::string figureName = "";
   while (std::cin)
   {
@@ -25,96 +26,133 @@ int main()
     }
     if (figureName == "RECTANGLE")
     {
-      point_t A{}, B{};
-      std::cin >> A.x >> A.y >> B.x >> B.y;
-      if (!std::cin)
+      std::size_t size = 4;
+      double *coordinates = nullptr;
+      try
       {
-        break;
+        coordinates = createCoordinates(std::cin, size);
       }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        continue;
+      }
+      point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
-        shape = new Rectangle(A, B);
+        shape = new Rectangle(points[0], points[1]);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        countInvalidFigure++;
+        hasInvalidFigure= true;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
-      countCorrectFigure++;
+      delete[] coordinates;
+      delete[] points;
       correctFigure = true;
       correctComposite = true;
+      isAddFigure = true;
     }
     else if (figureName == "PARALLELOGRAM")
     {
-      point_t A{}, B{}, C{};
-      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-      if (!std::cin)
+      std::size_t size = 6;
+      double *coordinates = nullptr;
+      try
       {
-        break;
+        coordinates = createCoordinates(std::cin, size);
       }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        continue;
+      }
+      point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
-        shape = new Parallelogram(A, B, C);
+        shape = new Parallelogram(points[0], points[1], points[2]);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        countInvalidFigure++;
+        hasInvalidFigure= true;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
-      countCorrectFigure++;
+      delete[] coordinates;
+      delete[] points;
       correctFigure = true;
       correctComposite = true;
+      isAddFigure = true;
     }
     else if (figureName == "TRIANGLE")
     {
-      point_t A{}, B{}, C{};
-      std::cin >> A.x >> A.y >> B.x >> B.y >> C.x >> C.y;
-      if (!std::cin)
+      std::size_t size = 6;
+      double *coordinates = nullptr;
+      try
       {
-        break;
+        coordinates = createCoordinates(std::cin, size);
       }
+      catch (const std::invalid_argument &e)
+      {
+        correctFigure = false;
+        continue;
+      }
+      point_t *points = fillPoints(coordinates, size / 2);
       Shape *shape = nullptr;
       try
       {
-        shape = new Triangle(A, B, C);
+        shape = new Triangle(points[0], points[1], points[2]);
         compositeShape.push_back(shape);
       }
       catch (const std::invalid_argument &e)
       {
         correctFigure = false;
-        countInvalidFigure++;
+        hasInvalidFigure= true;
+        delete[] coordinates;
+        delete[] points;
         continue;
       }
       catch (...)
       {
         correctComposite = false;
+        delete[] coordinates;
+        delete[] points;
         delete shape;
       }
-      countCorrectFigure++;
+      delete[] coordinates;
+      delete[] points;
       correctFigure = true;
       correctComposite = true;
+      isAddFigure = true;
     }
     else if (figureName == "SCALE")
     {
-      if (countCorrectFigure != 0)
+      if (!isAddFigure)
       {
-        correctFigure = true;
+        std::cerr << "no one figure not add\n";
+        return 1;
       }
       correctScale = true;
       double x = 0.0;
@@ -127,7 +165,7 @@ int main()
       point_t pos{x, y};
       double k = 0.0;
       std::cin >> k;
-      if (!std::cin || k < 0)
+      if (!std::cin || k <= 0)
       {
         correctScale = false;
         break;
@@ -148,6 +186,7 @@ int main()
       }
       printShapes(std::cout, compositeShape);
       std::cout << '\n';
+      correctFigure= true;
       break;
     }
     else
@@ -170,9 +209,9 @@ int main()
   {
     std::cerr << "ERROR: invalid composite\n";
   }
-  if (countInvalidFigure != 0)
+  if (hasInvalidFigure)
   {
-    std::cerr << "error...";
+    std::cerr << "ERROR: have some wrong figure\n";
   }
   return 0;
 }

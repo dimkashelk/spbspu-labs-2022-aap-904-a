@@ -8,9 +8,9 @@ public:
   explicit term1(double x);
   double operator()();
 private:
-  double x;
-  double value;
-  size_t index;
+  double x_;
+  double value_;
+  size_t index_;
 };
 
 struct term2 {
@@ -18,9 +18,9 @@ public:
   term2(double x, double value);
   double operator()();
 private:
-  double x;
-  double value;
-  size_t index;
+  double x_;
+  double value_;
+  size_t index_;
 };
 
 double getCustomCos(double x, double error, size_t maxNum);

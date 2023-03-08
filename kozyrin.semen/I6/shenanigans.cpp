@@ -3,15 +3,15 @@
 
 double term2::operator()()
 {
-  index += 2;
-  value = value * x * x * (index - 2) / index;
-  return value;
+  index_ += 2;
+  value_ = value_ * x_ * x_ * (index_ - 2) / index_;
+  return value_;
 }
 
 term2::term2(double x, double value):
-  x(x),
-  value(value),
-  index(1)
+  x_(x),
+  value_(value),
+  index_(1)
 {}
 
 double getCustomArth(double x, double error, size_t maxNum)
@@ -34,15 +34,15 @@ double getCustomArth(double x, double error, size_t maxNum)
 
 double term1::operator()()
 {
-  index += 2;
-  value = -value * x * x / (index - 1) / index;
-  return value;
+  index_ += 2;
+  value_ = -value_ * x_ * x_ / (index_ - 1) / index_;
+  return value_;
 }
 
 term1::term1(double x):
-  x(x),
-  value(1),
-  index(0)
+  x_(x),
+  value_(1),
+  index_(0)
 {}
 
 double getCustomCos(double x, double error, size_t maxNum)

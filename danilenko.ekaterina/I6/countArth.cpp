@@ -9,7 +9,7 @@ double countArth(double x, double absError, unsigned numberMax)
   {
     throw std::invalid_argument("x does not belong to the interval (-1.0; 1.0)");
   }
-  
+
   double result = x;
   double term = x;
   double xSquared = x;

@@ -3,10 +3,6 @@
 #include <cstddef>
 #include <cctype>
 
-#include "RealNumber.h"
-#include <cstddef>
-#include <cctype>
-
 bool isSigned(char c)
 {
   return c == '-' || c == '+';

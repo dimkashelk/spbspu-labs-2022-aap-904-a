@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <stdexcept>
-#include "myString.h"
+#include <myString.h>
 #include "realNumber.h"
 
 int main()
@@ -11,8 +11,6 @@ int main()
   try
   {
     number = makeMyString(size, capacity, std::cin);
-    bool muhammetekelik = myRealNumber(number);
-    std::cout << std::boolalpha << muhammetekelik << "\n";
   }
   catch (const std::exception& e)
   {
@@ -20,6 +18,7 @@ int main()
     delete[] number;
     return 1;
   }
+  std::cout << std::boolalpha << muhammetekelik << "\n";
   delete[] number;
   return 0;
 }

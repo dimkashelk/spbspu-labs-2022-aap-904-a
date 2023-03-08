@@ -10,17 +10,16 @@ void readArray(int * arr, size_t rows, size_t cols, std::ifstream& inFile)
   for (size_t i = 0; i < rows * cols; i++)
   {
     if (!(inFile >> arr[i])) {
-      std::cout << "Error: Failed to read array element at index " << i << std::endl;
+      std::cout << "Error: Failed to read array element at index " << i << "\n";
       exit(1);
     }
   }
 }
-
 int main(int argc, char * argv[])
 {
   if (argc != 4)
   {
-    std::cout << "Error: Invalid arguments" << std::endl;
+    std::cout << "Error: Invalid arguments" << "\n";
     return 1;
   }
 
@@ -28,35 +27,28 @@ int main(int argc, char * argv[])
 
   if (!inFile)
   {
-    std::cout << "Error: Failed to open input file" << std::endl;
+    std::cout << "Error: Failed to open input file" << "\n";
     return 1;
   }
-
   std::ofstream outFile(argv[3]);
-
   if (!outFile)
   {
-    std::cout << "Error: Failed to open output file" << std::endl;
+    std::cout << "Error: Failed to open output file" << "\n";
     return 1;
   }
-
   size_t rows = 0;
   size_t cols = 0;
-
   if (!(inFile >> rows >> cols))
   {
-    std::cout << "Error: Failed to read array dimensions" << std::endl;
+    std::cout << "Error: Failed to read array dimensions" << "\n";
     return 1;
   }
-
   if (rows * cols > 1000)
   {
-    std::cout << "Error: Array too large" << std::endl;
+    std::cout << "Error: Array too large" << "\n";
     return 1;
   }
-
   int *arr = new int[rows * cols];
-
   if (std::strcmp(argv[1], "1") == 0)
   {
     readArray(arr, rows, cols, inFile);
@@ -79,7 +71,7 @@ int main(int argc, char * argv[])
     {
       if (!(inFile >> arr[i]))
       {
-        std::cout << "Error: Failed to read character array element at index " << i << std::endl;
+        std::cout << "Error: Failed to read character array element at index " << i << "\n";
         exit(1);
       }
     }
@@ -87,12 +79,10 @@ int main(int argc, char * argv[])
   }
   else
   {
-    std::cout << "Error: Invalid argument" << std::endl;
+    std::cout << "Error: Invalid argument" << "\n";
     delete[] arr;
     return 1;
   }
-
   delete[] arr;
-
   return 0;
 }

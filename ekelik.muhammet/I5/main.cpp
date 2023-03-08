@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include <stdexcept>
-#include "myString.h"
+#include <myString.h>
 #include "realNumber.h"
 
 int main()

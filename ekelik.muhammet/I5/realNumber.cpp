@@ -33,7 +33,7 @@ bool myIsUnsignedInteger(const char* data, size_t& shift)
   while (!myIsEnd(*(data + shift)) && myIsDigit(*(data + shift)))
   {
     shift++;
-    if myIsDot(*(data + shift)) || myIsEChar(*(data + shift)) || myIsEnd(*(data + shift))
+    if (myIsDot(*(data + shift)) || myIsEChar(*(data + shift)) || myIsEnd(*(data + shift)))
     {
       return true;
     }

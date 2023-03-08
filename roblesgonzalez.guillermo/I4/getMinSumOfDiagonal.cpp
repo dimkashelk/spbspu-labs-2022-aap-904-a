@@ -40,7 +40,7 @@ long long calcMinSummSecondaryDiagonal(const int* arr, size_t rows, size_t cols)
   {
     throw std::invalid_argument("Matrix is not square");
   }
-  long long min_summ = std::numeric_limits< long long >::max();
+  long long min_summ = std::numeric_limits< int >::max();
   min_summ = std::min(min_summ, calcSumOfMainDiagonal(intArr, rows, cols));
   min_summ = std::min(min_summ, calcSumOfUpperDiagonal(intArr, rows, cols));
   min_summ = std::min(min_summ, calcSumOfLowerDiagonal(intArr, rows, cols));

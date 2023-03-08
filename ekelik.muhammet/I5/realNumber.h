@@ -1,5 +1,5 @@
-#ifndef REAL_NUMBER_H
-#define REAL_NUMBER_H
+#ifndef REALNUMBER_H
+#define REALNUMBER_H
 
 #include <cstddef>
 

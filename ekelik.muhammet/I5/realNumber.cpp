@@ -1,4 +1,4 @@
-#include "real_number.h"
+#include "realNumber.h"
 #include <cctype>
 
 bool UnsignedInteger(const char* data, size_t& shift)
@@ -27,14 +27,12 @@ bool Sign(const char* data, size_t& shift)
 
 bool Mantissa(const char* data, size_t& shift)
 {
-  bool firstNumber = UnsignedInteger(data, shift);
-  if (firstNumber)
+  if (UnsignedInteger(data, shift))
   {
     if (*(data + shift) == '.')
     {
       shift++;
-      bool secondNumber = UnsignedInteger(data, shift);
-      return secondNumber;
+      return UnsignedInteger(data, shift);
     }
     else if (*(data + shift) == 'E')
     {

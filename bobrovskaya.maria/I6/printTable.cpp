@@ -15,4 +15,3 @@ void printTable(std::ostream& out, double left, double right, double step, doubl
   }
   printTableRow(out, right, absError, numberMax);
 }
-

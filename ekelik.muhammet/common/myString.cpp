@@ -1,5 +1,6 @@
 #include "myString.h"
 #include <myExtString.h>
+#include <cstring>
 
 char* makeMyString(size_t& size, size_t& capacity, std::istream& input)
 {

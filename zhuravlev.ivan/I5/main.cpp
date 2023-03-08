@@ -1,5 +1,5 @@
-#include <makeString.h>
 #include <iostream>
+#include <makeString.h>
 #include "isRealNumber.h"
 
 int main()

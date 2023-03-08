@@ -46,7 +46,7 @@ bool myIsInOrder(const char* data, size_t& shift)
   if (myIsEChar(*data) && myIsSign(*(data + 1)))
   {
     shift += 2;
-    return myIsUnsignedInteger(data + 2, shift);
+    return myIsUnsignedInteger(data + shift, shift);
   }
   return false;
 }

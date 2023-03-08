@@ -68,8 +68,6 @@ int main()
     std::cout << "Error while removing latin letters \n";
   }
   delete[] erase_result;
-  erase_result = nullptr;
-
   delete[] cstring;
   return 0;
 }

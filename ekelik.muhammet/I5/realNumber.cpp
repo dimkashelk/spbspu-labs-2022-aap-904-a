@@ -3,29 +3,29 @@
 #include <cstddef>
 #include <cctype>
 
-bool myIsSign(char c)
+bool myIsSign(char sym)
 {
-  return (c == '-' || c == '+');
+  return (sym == '-' || sym == '+');
 }
 
-bool myIsDigit(char c)
+bool myIsDigit(char sym)
 {
-  return std::isdigit(c);
+  return std::isdigit(sym);
 }
 
-bool myIsDot(char c)
+bool myIsDot(char sym)
 {
-  return (c == '.');
+  return (sym == '.');
 }
 
-bool myIsEChar(char c)
+bool myIsEChar(char sym)
 {
-  return (c == 'e' || c == 'E');
+  return (sym == 'e' || sym == 'E');
 }
 
-bool myIsEnd(char c)
+bool myIsEnd(char sym)
 {
-  return (c == '\0');
+  return (sym == '\0');
 }
 
 bool myIsUnsignedInteger(const char* data, size_t& shift)
@@ -77,11 +77,9 @@ bool myRealNumber(const char* data)
 {
   size_t shift = 0;
   const char* currVal = data;
-
   if (myIsSign(*currVal))
   {
     currVal++;
   }
-
   return myIsMantissa(currVal, shift) && myIsInOrder(currVal + shift, shift) && myIsEnd(*(currVal + shift));
 }

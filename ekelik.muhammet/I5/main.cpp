@@ -8,14 +8,14 @@ int main()
 {
   char* number = nullptr;
   size_t size = 0, capacity = 10;
-
   try
   {
     number = makeMyString(size, capacity, std::cin);
   }
   catch (const std::exception& e)
   {
-    std::cerr << e.what() << "\n";
+    std::cout << e.what() << "\n";
+    delete[] number;
     return 1;
   }
   std::cout << std::boolalpha << myRealNumber(number) << "\n";

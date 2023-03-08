@@ -41,6 +41,13 @@ int main(int argc, char *argv[])
   }
   std::string fname = argv[1];
   std::ifstream input(fname);
+  input >> line;
+  if (!input)
+  {
+    std::cout << "Error while reading file" << "\n";
+    delete[] second_arr;
+    return 2;
+  }
   try
   {
     second_arr = readFile(input, line, second_arr);

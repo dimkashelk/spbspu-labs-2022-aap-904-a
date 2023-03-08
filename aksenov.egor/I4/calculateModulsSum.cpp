@@ -1,7 +1,7 @@
 #include "calculateModulsSum.h"
-#include "getValue.h"
 #include <algorithm>
 #include <cstddef>
+#include "getValue.h"
 int *countSmoothedMatrix(const int *matrix, size_t n, size_t m)
 {
   int *matrixSmoothed = nullptr;
@@ -28,7 +28,7 @@ int *countSmoothedMatrix(const int *matrix, size_t n, size_t m)
           }
         }
       }
-      matrixSmoothed[i * n +j] = sum;
+      matrixSmoothed[i * n + j] = sum;
     }
   }
   return matrixSmoothed;

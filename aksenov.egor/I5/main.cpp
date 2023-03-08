@@ -1,14 +1,14 @@
 #include <iostream>
 #include <readString.h>
 #include "isFloat.h"
+#include "increaseCapacityMultiply2.h"
 int main()
 {
   size_t size = 0;
-  size_t increaseCapacity = 50;
   char *cstr = nullptr;
   try
   {
-    cstr = readString(std::cin, size, increaseCapacity);
+    cstr = readString(std::cin, size, increaseCapacityMultiply2);
   }
   catch (...)
   {
@@ -17,5 +17,4 @@ int main()
   }
   std::cout << std::boolalpha << isFloat(cstr) << "\n";
   delete[] cstr;
-  return 0;
 }

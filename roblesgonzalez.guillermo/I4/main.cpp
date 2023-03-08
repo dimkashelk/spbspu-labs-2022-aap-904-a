@@ -47,23 +47,33 @@ int main(int argc, char *argv[])
     std::cout << "Error: Array too large" << "\n";
     return 1;
   }
-  int *arr = new int[rows * cols];
+  int *arr = nullptr;
   if (std::strcmp(argv[1], "1") == 0)
   {
+    arr = new int[rows * cols];
     int r = readArray(arr, rows, cols, inFile);
-    if (r == 1) return 1;
+    if (r == 1) {
+      delete[] arr;
+      return 1;
+    }
     outFile << countGrowingCols(arr, rows, cols) << "\n";
+    delete[] arr;
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
+    arr = new int[rows * cols];
     int r = readArray(arr, rows, cols, inFile);
-    if (r == 1) return 1;
+    if (r == 1) {
+      delete[] arr;
+      return 1;
+    }
     if (rows == 0 || cols == 0)
     {
       delete[] arr;
       return 0;
     }
     outFile << calcMinSummSecondaryDiagonal(arr, rows, cols) << "\n";
+    delete[] arr;
   }
   else if (std::strcmp(argv[1], "3") == 0)
   {
@@ -81,9 +91,7 @@ int main(int argc, char *argv[])
   else
   {
     std::cout << "Error: Invalid argument" << "\n";
-    delete[] arr;
     return 1;
   }
-  delete[] arr;
   return 0;
 }

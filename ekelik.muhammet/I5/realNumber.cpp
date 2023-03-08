@@ -1,73 +1,70 @@
 #include "realNumber.h"
 
-#include <cstddef>
 #include <cctype>
+#include <stdexcept>
 
-bool myIsSign(char c)
+bool isSign(char c)
 {
   return (c == '-' || c == '+');
 }
 
-bool myIsDigit(char c)
+bool isDigit(char c)
 {
   return std::isdigit(c);
 }
 
-bool myIsDot(char c)
+bool isDot(char c)
 {
   return (c == '.');
 }
 
-bool myIsEChar(char c)
+bool isEChar(char c)
 {
   return (c == 'e' || c == 'E');
 }
 
-bool myIsEnd(char c)
+bool isEnd(char c)
 {
   return (c == '\0');
 }
 
-bool myIsUnsignedInteger(const char* data, size_t& shift)
+bool isUnsignedInteger(const char* data, size_t& shift)
 {
-  while (!myIsEnd(*(data + shift)) && myIsDigit(*(data + shift)))
+  bool result = false;
+  while (!isEnd(*(data + shift)) && isDigit(*(data + shift)))
   {
     shift++;
-    if (myIsDot(*(data + shift)) || myIsEChar(*(data + shift)) || myIsEnd(*(data + shift)))
-    {
-      return true;
-    }
+    result = true;
   }
-  return false;
+  return result;
 }
 
-bool myIsInOrder(const char* data, size_t& shift)
+bool isInOrder(const char* data, size_t& shift)
 {
-  if (myIsEChar(*data) && myIsSign(*(data + 1)))
+  if (isEChar(*data) && isSign(*(data + 1)))
   {
     shift += 2;
-    return myIsUnsignedInteger(data + 2, shift);
+    return isUnsignedInteger(data + 2, shift);
   }
   return false;
 }
 
-bool myIsMantissa(const char* data, size_t& shift)
+bool isMantissa(const char* data, size_t& shift)
 {
-  if (myIsUnsignedInteger(data, shift))
+  if (isUnsignedInteger(data, shift))
   {
-    if (myIsDot(*(data + shift)))
+    if (isDot(*(data + shift)))
     {
       shift++;
-      if (myIsUnsignedInteger(data, shift))
+      if (isUnsignedInteger(data, shift))
       {
         return true;
       }
-      return false;
     }
-    else if (myIsEChar(*(data + shift)))
+    else if (isEChar(*(data + shift)))
     {
       shift++;
-      return myIsInOrder(data + shift, shift);
+      return isInOrder(data + shift, shift);
     }
     return true;
   }
@@ -79,10 +76,14 @@ bool myRealNumber(const char* data)
   size_t shift = 0;
   const char* currVal = data;
 
-  if (myIsSign(*currVal))
+  if (isSign(*currVal))
   {
     currVal++;
   }
 
-  return myIsMantissa(currVal, shift) && myIsEnd(*(currVal + shift));
+  if (!isMantissa(currVal, shift) || !isEnd(*(currVal + shift)))
+  {
+    return false;
+  }
+  return true;
 }

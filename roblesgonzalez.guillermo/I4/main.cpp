@@ -50,12 +50,16 @@ int main(int argc, char *argv[])
   int *arr = new int[rows * cols];
   if (std::strcmp(argv[1], "1") == 0)
   {
-    readArray(arr, rows, cols, inFile);
+    int r = readArray(arr, rows, cols, inFile);
+    if (r == 0) continue;
+    if (r == 1) return 1;
     outFile << countGrowingCols(arr, rows, cols) << "\n";
   }
   else if (std::strcmp(argv[1], "2") == 0)
   {
-    readArray(arr, rows, cols, inFile);
+    int r = readArray(arr, rows, cols, inFile);
+    if (r == 0) continue;
+    if (r == 1) return 1;
     if (rows == 0 || cols == 0)
     {
       delete[] arr;

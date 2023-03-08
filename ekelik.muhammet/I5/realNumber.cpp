@@ -62,6 +62,7 @@ bool myIsMantissa(const char* data, size_t& shift)
       {
         return true;
       }
+      return false;
     }
     else if (myIsEChar(*(data + shift)))
     {

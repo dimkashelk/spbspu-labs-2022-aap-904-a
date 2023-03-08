@@ -10,12 +10,12 @@
 int main(int argc, char* argv[])
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
-  std::string fileName = argv[1];
   if (argc != 2)
   {
-      std::cout << "Error: incorrect file name";
-      return 1;
+    std::cout << "Error: incorrect file name";
+    return 1;
   }
+  std::string fileName = argv[1];
   std::ifstream in(fileName);
   size_t sizeOfFileArray = 0;
   int defaultArray[10] = { -5, 2, 1, 3, 2, 1, -2, 1, -3, -4 };

@@ -12,7 +12,7 @@ int main()
   char* cstring = nullptr;
   try
   {
-    *cstring = makeCstring(capacity, size, std::cin);
+    cstring = makeCstring(capacity, size, std::cin);
   }
   catch (const std::exception& e)
   {

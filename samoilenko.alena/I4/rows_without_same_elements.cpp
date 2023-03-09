@@ -1,3 +1,4 @@
+#include "rows_without_same_elements.h"
 #include <cstddef>
 
 size_t countRowsWithoutSameElements(const int* matrix, size_t row, size_t col)

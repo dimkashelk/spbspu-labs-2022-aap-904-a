@@ -1,8 +1,8 @@
 #include "printTable.h"
-#include "coshinus.h"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include "coshinus.h"
 void printTableRow(std::ostream &out, double x, double absError, size_t numberMax)
 {
   out << std::setw(5) << x << " ";
@@ -15,19 +15,12 @@ void printTable(std::ostream &out, double l, double r, double step, double absEr
   {
     throw std::logic_error("Invalid borders");
   }
-  for (double x = r; x - step >= l; x = x - step)
+  try
   {
-    try
+    for (double x = r; x - step >= l; x = x - step)
     {
       printTableRow(out << "\n", x, absError, numberMax);
     }
-    catch (const std::exception &e)
-    {
-      out << e.what() << "\n";
-    }
-  }
-  try
-  {
     printTableRow(out << "\n", l, absError, numberMax);
   }
   catch (const std::exception &e)

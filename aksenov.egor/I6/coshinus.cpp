@@ -21,7 +21,11 @@ double calculateCoshinus(double x, double absError, size_t numberMax)
       sum+= std::pow(x, 2 * n) / (2 * (factorial * n));
       n++;
     }
+    if (std::abs(n) > numberMax)
+    {
+      throw std::invalid_argument("Invalid max number");
+    }
   }
-  while (n != numberMax || n < absError);
+  while (n != numberMax);
   return sum;
 }

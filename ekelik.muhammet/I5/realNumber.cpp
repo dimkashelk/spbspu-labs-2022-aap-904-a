@@ -44,10 +44,25 @@ bool myIsUnsignedInteger(const char* data, size_t& shift)
 
 bool myIsInOrder(const char* data, size_t& shift)
 {
+  if (!myIsEChar(*data))
+  {
+    return false;
+  }
+  ++data;
+  ++shift;
+  if (!myIsSign(*data))
+  {
+    return false;
+  }
+  ++data;
+  ++shift;
   size_t a = 0;
-  bool result =  myIsEChar(*data) && myIsSign(*(data + 1)) && myIsUnsignedInteger(data + 2, a);
-  shift += a + 2;
-  return result;
+  if (!myIsUnsignedInteger(data, a))
+  {
+    return false;
+  }
+  shift += a;
+  return true;
 }
 
 bool myIsMantissa(const char* data, size_t& shift)

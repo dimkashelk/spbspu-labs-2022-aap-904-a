@@ -23,7 +23,7 @@ double countArth(double x, double absError, unsigned numberMax)
     n++;
     if (std::abs(term) > absError)
     {
-      throw std::logic_error("the required accuracy has not been achieved\n");
+      throw std::logic_error("The required accuracy has not been achieved\n");
     }
   }
   return result;

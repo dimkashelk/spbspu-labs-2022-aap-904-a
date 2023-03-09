@@ -2,8 +2,8 @@
 #include <fstream>
 #include <cstddef>
 #include <limits>
-#include <outputarray.hpp>
 #include <readthearray.hpp>
+#include "outputarray.hpp"
 #include "sort.hpp"
 #include "istriplet.hpp"
 #include "randomdynarray.hpp"

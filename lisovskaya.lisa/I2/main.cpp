@@ -6,6 +6,7 @@
 #include "findArithmeticMean.h"
 #include "generateRand.h"
 #include "readArray.h"
+
 int main(int argc, char *argv[])
 {
   std::srand(std::time(nullptr));

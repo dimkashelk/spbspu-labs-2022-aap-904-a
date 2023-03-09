@@ -76,7 +76,7 @@ bool myIsMantissa(const char* data, size_t& shift)
   }
   return false;
 }
-bool real(const char* data)
+bool realNumber(const char* data)
 {
   size_t shift = 0;
   const char* currVal = data;

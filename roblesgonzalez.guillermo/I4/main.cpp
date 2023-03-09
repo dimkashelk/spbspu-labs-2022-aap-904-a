@@ -16,7 +16,7 @@ int readArray(int* arr, size_t rows, size_t cols, std::ifstream& inFile)
   }
   return 0;
 }
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
   if (argc != 4)
   {

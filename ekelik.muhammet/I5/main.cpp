@@ -15,7 +15,7 @@ int main()
     delete[] myString;
     return 2;
   }
-  std::cout << std::boolalpha << myRealNumber(number) << "\n";
+  std::cout << std::boolalpha << myRealNumber(myString) << "\n";
   delete[] myString;
   return 0;
 }

@@ -1,6 +1,6 @@
 #ifndef REALNUMBER_H
 #define REALNUMBER_H
 
-bool myRealNumber(const char* data);
+bool realNumber(const char* data);
 
 #endif

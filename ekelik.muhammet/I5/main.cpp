@@ -6,19 +6,20 @@
 
 int main()
 {
-  size_t size = 0, capacity = 10;
   char* number = nullptr;
+  size_t size = 0, capacity = 10;
   try
   {
     number = makeMyString(size, capacity, std::cin);
+    bool mEkel1k = myRealNumber(number);
+    std::cout << std::boolalpha << mEkel1k << "\n";
   }
   catch (const std::exception& e)
   {
-    std::cout << e.what() << "\n";
+    std::cerr << "Error: " << e.what() << "\n";
     delete[] number;
     return 1;
   }
-  std::cout << std::boolalpha << myRealNumber(number) << "\n";
   delete[] number;
   return 0;
 }

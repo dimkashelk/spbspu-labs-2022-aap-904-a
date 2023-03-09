@@ -1,19 +1,17 @@
-double exponenta(double x, double absError, unsigned numberMax)
+double calculationExp(double x, double absError, unsigned numberMax)
 {
   double res = 1.0;
   unsigned members = 1;
   double sum = 0.0;
   double divicible = x * (-1);
-  unsigned factorial = 2;
   unsigned divider = 1;
   do
   {
     sum = divicible / divider;
     res += sum;
-    members ++;
+    members++;
     divicible *= x * (-1);
-    divider *= factorial;
-    factorial ++;
+    divider *= members;
   }
   while (members < numberMax || sum > absError);
   return res;

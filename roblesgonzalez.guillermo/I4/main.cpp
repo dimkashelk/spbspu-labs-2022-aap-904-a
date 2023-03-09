@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
     std::cout << "Error: Array too large" << "\n";
     return 1;
   }
-  int *arr = nullptr;
+  int* arr = nullptr;
   if (std::strcmp(argv[1], "1") == 0)
   {
     arr = new int[rows * cols];

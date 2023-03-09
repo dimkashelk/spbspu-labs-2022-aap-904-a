@@ -9,6 +9,7 @@ double calculateCoshinus(double x, double absError, size_t numberMax)
   }
   double sum = 1.0;
   double n = 0.0;
+  double next = 1.0;
   unsigned factorial = 1;
   do
   {
@@ -18,14 +19,15 @@ double calculateCoshinus(double x, double absError, size_t numberMax)
     }
     else
     {
-      sum+= std::pow(x, 2 * n) / (2 * (factorial * n));
+      next = std::pow(x, 2 * n) / (2 * (factorial * n));
+      sum+= next;
       n++;
-    }
-    if (std::abs(n) > numberMax)
-    {
-      throw std::invalid_argument("Invalid max number");
     }
   }
   while (n != numberMax);
+  if (std::abs(next) > absError)
+  {
+    throw std::invalid_argument("absError not reached");
+  }
   return sum;
 }

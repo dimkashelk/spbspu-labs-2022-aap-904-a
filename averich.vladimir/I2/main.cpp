@@ -2,11 +2,11 @@
 #include <fstream>
 #include <cstddef>
 #include <limits>
+#include <outputarray.hpp>
+#include <readthearray.hpp>
 #include "sort.hpp"
 #include "istriplet.hpp"
-#include "readthearray.hpp"
 #include "randomdynarray.hpp"
-#include "outputarray.hpp"
 int main(int argc, char* argv[])
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
       std::cout << '\n';
       delete[] dynArray;
     }
-    catch (std::length_error& e)
+    catch (const std::length_error& e)
     {
       std::cout << e.what() << "\n";
       delete[] dynArray;

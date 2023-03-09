@@ -1,6 +1,6 @@
+#include "makeString.h"
 #include <iostream>
 #include <stdexcept>
-#include "makeString.h"
 #include "string_expansion.h"
 
 char* makeCstring(size_t& capacity, size_t& size, std::istream& input)

@@ -1,9 +1,9 @@
 #include <iostream>
 #include <exception>
 #include <cstring>
+#include <makeString.h>
 #include "finder_three_same_elements.h"
 #include "finder_same_elements_in_two_string.h"
-#include <makeString.h>
 
 int main()
 {

@@ -8,19 +8,19 @@ int main(int argc, char* argv[])
 {
   if (argc != 4)
   {
-    std::cout << "File or parameters are incorrect";
+    std::cerr << "File or parameters are incorrect";
     return 1;
   }
   std::ifstream input(argv[2]);
   if (!input)
   {
-    std::cout << "Error during opening the file input.txt";
+    std::cerr << "Error during opening the file input.txt";
     return 1;
   }
   std::ofstream output(argv[3]);
   if (!output)
   {
-    std::cout << "Error during opening the file output.txt";
+    std::cerr << "Error during opening the file output.txt";
     input.close();
     output.close();
   }
@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
     int matrix[1000];
     if (rows * columns > 1000)
     {
-      std::cout << "Matrix more than 1000";
+      std::cerr << "Matrix more than 1000";
       return 1;
     }
     for (size_t i = 0; i < rows * columns; i++)
@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
       input >> matrix[i];
       if (!input)
       {
-        std::cout << "Error during input matrix";
+        std::cerr << "Error during input matrix";
         input.close();
         output.close();
         return 1;
@@ -54,11 +54,50 @@ int main(int argc, char* argv[])
     input >> rows >> columns;
     if (!input)
     {
-      std::cout << "Error during input matrix";
+      std::cerr << "Error during input matrix";
       input.close();
       output.close();
       return 1;
     }
+    int* matrix1 = nullptr;
+    try
+    {
+      matrix1 = new int[rows * columns];
+    }
+    catch (const std::bad_alloc& ex)
+    {
+      std::cerr << ex.what() << '\n';
+      input.close();
+      output.close();
+      return 1;
+    }
+    for (size_t i = 0; i < rows; i++)
+    {
+      for (size_t j = 0; j < columns; j++)
+      {
+        input >> matrix1[columns * i + j];
+        if (!input)
+        {
+          std::cerr << "Error during input matrix" << '\n';
+          delete[] matrix1;
+          input.close();
+          output.close();
+          return 1;
+        }
+      }
+    }
+    output << countColumnsWithoutNull(matrix1, rows, columns) << '\n';
+    output << countRowsWithoutSameElements(matrix1, rows, columns) << '\n';
+    delete[] matrix1;
   }
+  else
+  {
+    std::cerr << "Wrong number" << '\n';
+    input.close();
+    output.close();
+    return 1;
+  }
+  input.close();
+  output.close();
   return 0;
 }

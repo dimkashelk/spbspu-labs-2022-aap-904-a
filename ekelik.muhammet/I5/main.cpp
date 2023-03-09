@@ -18,7 +18,7 @@ int main()
     delete[] number;
     return 1;
   }
-  std::cout << std::boolalpha << isRealNumber(number) << "\n";
+  std::cout << std::boolalpha << myRealNumber(number) << "\n";
   delete[] number;
   return 0;
 }

@@ -3,81 +3,79 @@
 #include <cstddef>
 #include <cctype>
 
-bool isEnd(char s)
+
+bool myIsSign(char sym)
 {
-  return s == '\0';
+  return (sym == '-' || sym == '+');
 }
 
-bool isDigit(char s)
+bool myIsDigit(char sym)
 {
-  return std::isdigit(s);
+  return std::isdigit(sym);
 }
 
-bool isSign(char s)
+bool myIsDot(char sym)
 {
-  return s == '+' || s == '-';
+  return (sym == '.');
 }
 
-bool isDot(char s)
+bool myIsEChar(char sym)
 {
-  return s == '.';
+  return (sym == 'e' || sym == 'E');
 }
 
-bool isE(char s)
+bool myIsEnd(char sym)
 {
-  return s == 'E' || s == 'e';
+  return (sym == '\0');
 }
 
-bool isUnsignInteger(const char* data)
+bool myIsUnsignedInteger(const char* data, size_t& shift)
 {
-  if (isEnd(*data))
+  while (!myIsEnd(*(data + shift)) && myIsDigit(*(data + shift)))
   {
-    return false;
-  }
-  if (isDigit(*data))
-  {
-    return isUnsignInteger(data + 1);
-  }
-  return isEnd(*data);
-}
-
-bool isOrder(const char* data)
-{
-  if (!isE(*data))
-  {
-    return false;
-  }
-  data++;
-  if (isSign(*data))
-  {
-    data++;
-  }
-  return isUnsignInteger(data);
-}
-
-bool isMantissa(const char* data)
-{
-  if (isDot(*data))
-  {
-    return isUnsignInteger(data + 1);
-  }
-  return isUnsignInteger(data);
-}
-
-bool isRealNumber(const char* data)
-{
-  if (isSign(*data))
-  {
-    data++;
-  }
-  if (isEnd(*data))
-  {
-    return false;
-  }
-  if (isMantissa(data))
-  {
-    data++;
-    return isEnd(*data) || isOrder(data);
+    shift++;
+    if (myIsDot(*(data + shift)) || myIsEChar(*(data + shift)) || myIsEnd(*(data + shift)))
+    {
+      return true;
+    }
   }
   return false;
+}
+
+bool myIsInOrder(const char* data, size_t& shift)
+{
+  size_t a = 0;
+  bool result =  myIsEChar(*data) && myIsSign(*(data + 1)) && myIsUnsignedInteger(data + 2, a);
+  shift += a + 2;
+  return result;
+}
+
+bool myIsMantissa(const char* data, size_t& shift)
+{
+  bool firstNumber = myIsUnsignedInteger(data, shift);
+  if (firstNumber)
+  {
+    if (myIsDot(*(data + shift)))
+    {
+      shift += 1;
+      bool secondNumber = myIsUnsignedInteger(data, shift);
+      return secondNumber;
+    }
+    else if (myIsEChar(*(data + shift)))
+    {
+      return true;
+    }
+  }
+  return false;
+}
+
+bool myRealNumber(const char* data)
+{
+  size_t shift = 0;
+  const char* currVal = data;
+  if (myIsSign(*currVal))
+  {
+    currVal++;
+  }
+  return myIsMantissa(currVal, shift) && myIsInOrder(currVal + shift, shift) && myIsEnd(*(currVal + shift));
 }

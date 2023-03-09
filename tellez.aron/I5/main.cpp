@@ -27,7 +27,8 @@ int main()
       }
     }
     std::cin >> cstring[size];
-  } while (std::cin && cstring[size++] != '\n');
+  }
+  while (std::cin && cstring[size++] != '\n');
   if (cstring[0] == '\0' || cstring[0] == '\n')
   {
     std::cout << "Error while reading the string \n";
@@ -35,16 +36,8 @@ int main()
     return 2;
   }
   cstring[size - 1] = '\0';
-  char* new_cstring = nullptr;
-  try
-  {
-    new_cstring =cstring;
-  }
-  catch (const std::exception& e)
-  {
-    std::cerr << e.what() << "\n";
-    return 1;
-  }
+  char* new_cstring = cstring;
   std::cout << std::boolalpha << isExpression(new_cstring) << "\n";
   delete[] cstring;
+  return 0;
 }

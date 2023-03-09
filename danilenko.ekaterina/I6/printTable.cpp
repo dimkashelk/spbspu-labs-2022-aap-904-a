@@ -16,10 +16,21 @@ void printTable(std::ostream& out, double left, double right, size_t members, do
 {
   for (double x = left; x + step <= right; x = x + step)
   {
-    printTableRow(out << "\n", x, absError, members);
-    if (x + step >= right)
+    try
     {
-      printTableRow(out << "\n", right, absError, members);
+      printTableRow(out << "\n", x, absError, members);
     }
+    catch (const std::exception& e)
+    {
+      out << e.what() << '\n';
+    }
+  }
+  try
+  {
+    printTableRow(out << "\n", right, absError, members);
+  }
+  catch (const std::exception& e)
+  {
+    out << e.what() << '\n';
   }
 }

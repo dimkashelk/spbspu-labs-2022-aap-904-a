@@ -20,11 +20,11 @@ double countArth(double x, double absError, unsigned numberMax)
     xSquared *= x * x;
     term = xSquared / (2 * n + 1);
     result += term;
-    if (abs(term) < absError)
-    {
-      return result;
-    }
     n++;
+    if (std::abs(term) > absError)
+    {
+      throw std::logic_error("the required accuracy has not been achieved\n");
+    }
   }
   return result;
 }

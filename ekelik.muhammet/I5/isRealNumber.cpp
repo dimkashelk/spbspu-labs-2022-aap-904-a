@@ -1,5 +1,4 @@
-#include "real.h"
-
+#include "isRealNumber.h"
 #include <cstddef>
 #include <cctype>
 
@@ -76,7 +75,7 @@ bool myIsMantissa(const char* data, size_t& shift)
   }
   return false;
 }
-bool realNumber(const char* data)
+bool isRealNumber(const char* data)
 {
   size_t shift = 0;
   const char* currVal = data;

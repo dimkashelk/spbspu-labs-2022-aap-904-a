@@ -3,27 +3,22 @@
 #include <cstddef>
 #include <cctype>
 
-
 bool myIsSign(char sym)
 {
   return (sym == '-' || sym == '+');
 }
-
 bool myIsDigit(char sym)
 {
   return std::isdigit(sym);
 }
-
 bool myIsDot(char sym)
 {
   return (sym == '.');
 }
-
 bool myIsEChar(char sym)
 {
   return (sym == 'e' || sym == 'E');
 }
-
 bool myIsEnd(char sym)
 {
   return (sym == '\0');
@@ -41,7 +36,6 @@ bool myIsUnsignedInteger(const char* data, size_t& shift)
   }
   return false;
 }
-
 bool myIsInOrder(const char* data, size_t& shift)
 {
   if (!myIsEChar(*data))
@@ -64,7 +58,6 @@ bool myIsInOrder(const char* data, size_t& shift)
   shift += a;
   return true;
 }
-
 bool myIsMantissa(const char* data, size_t& shift)
 {
   bool firstNumber = myIsUnsignedInteger(data, shift);
@@ -83,7 +76,6 @@ bool myIsMantissa(const char* data, size_t& shift)
   }
   return false;
 }
-
 bool myRealNumber(const char* data)
 {
   size_t shift = 0;

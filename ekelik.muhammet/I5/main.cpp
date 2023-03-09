@@ -7,7 +7,7 @@
 int main()
 {
   char* number = nullptr;
-  size_t size = 0, capacity = 10;
+  size_t size = 0, capacity = 30;
   try
   {
     number = makeMyString(size, capacity, std::cin);

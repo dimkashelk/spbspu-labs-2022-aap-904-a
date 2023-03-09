@@ -8,7 +8,7 @@ int printColumnsWithoutNull(const int* matrix, size_t row, size_t col)
     bool qu = false;
     for (size_t j = 0; j < row; j++)
     {
-      if (matrix[j][i] != 0)
+      if (matrix[col * j + i] != 0)
       {
         qu = true;
       }
@@ -18,7 +18,7 @@ int printColumnsWithoutNull(const int* matrix, size_t row, size_t col)
         break;
       }
     }
-    if (qu == 1)
+    if (!qu)
     {
       count++;
     }

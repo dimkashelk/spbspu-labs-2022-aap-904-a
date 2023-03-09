@@ -6,8 +6,8 @@
 
 int main()
 {
+  size_t size = 0, capacity = 10;
   char* number = nullptr;
-  size_t size = 0, capacity = 300;
   try
   {
     number = makeMyString(size, capacity, std::cin);

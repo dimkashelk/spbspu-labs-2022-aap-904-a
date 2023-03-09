@@ -2,7 +2,7 @@
 #include <cstring>
 #include <stdexcept>
 #include <myString.h>
-#include "realNumber.h"
+#include "real.h"
 
 int main()
 {
@@ -15,7 +15,7 @@ int main()
     delete[] myString;
     return 2;
   }
-  std::cout << std::boolalpha << realNumber(myString) << "\n";
+  std::cout << std::boolalpha << real(myString) << "\n";
   delete[] myString;
   return 0;
 }

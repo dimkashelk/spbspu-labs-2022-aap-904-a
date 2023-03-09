@@ -54,10 +54,7 @@ build:
     paths:
       - out
     expire_in: 1 year
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 acceptance:
   stage: test
   script:
@@ -76,7 +73,3 @@ acceptance:
       - out/*/*/acceptance.*
     expire_in: 1 year
     when: always
-<<<<<<< HEAD
-  
-=======
->>>>>>> master

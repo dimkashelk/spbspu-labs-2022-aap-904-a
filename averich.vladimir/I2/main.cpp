@@ -3,8 +3,8 @@
 #include <cstddef>
 #include <limits>
 #include <readthearray.hpp>
+#include <sort.hpp>
 #include "outputarray.hpp"
-#include "sort.hpp"
 #include "istriplet.hpp"
 #include "randomdynarray.hpp"
 int main(int argc, char* argv[])

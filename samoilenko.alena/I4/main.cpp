@@ -61,17 +61,17 @@ int main(int argc, char* argv[])
   else if (!std::strcmp(argv[1], "2"))
   {
     input >> rows >> columns;
-    if ((rows * columns) == 0)
-    {
-      output << "0" << '\n';
-      return 0;
-    }
     if (!input)
     {
       std::cerr << "Error during input matrix";
       input.close();
       output.close();
       return 1;
+    }
+    if ((rows * columns) == 0)
+    {
+      output << "0" << '\n';
+      return 0;
     }
     int* matrix1 = nullptr;
     try

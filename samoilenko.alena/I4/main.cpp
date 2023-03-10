@@ -66,6 +66,13 @@ int main(int argc, char* argv[])
       output << "0" << '\n';
       return 0;
     }
+    if (!input)
+    {
+      std::cerr << "Error during input matrix";
+      input.close();
+      output.close();
+      return 1;
+    }
     int* matrix1 = nullptr;
     try
     {

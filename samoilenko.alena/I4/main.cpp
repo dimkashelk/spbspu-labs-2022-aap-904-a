@@ -59,6 +59,11 @@ int main(int argc, char* argv[])
       output.close();
       return 1;
     }
+    if ((rows * columns) == 0)
+    {
+      output << "0" << '\n';
+      return 0;
+    }
     int* matrix1 = nullptr;
     try
     {

@@ -2,5 +2,5 @@
 #define COLUMNS_WITHOUT_NULL_ELEMENTS_H
 #include <cstddef>
 
-int countColumnsWithoutNull(const int*, size_t, size_t);
+size_t countColumnsWithoutNull(const int*, size_t, size_t);
 #endif

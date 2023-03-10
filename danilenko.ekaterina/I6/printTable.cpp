@@ -12,7 +12,7 @@ void createTableRow(std::ostream& out, double x, double absError, unsigned membe
   out << std::setw(10) << std::setprecision(5) << std::atanh(x) << '\n';
 }
 
-void createTable(std::ostream& out, double x, size_t members, double absError, double step)
+void createTable(std::ostream& out, double x, size_t members, double absError)
 {
   try
   {
@@ -28,7 +28,7 @@ void printTable(std::ostream& out, double left, double right, size_t members, do
 {
   for (double x = left; x + step <= right; x = x + step)
   {
-    createTable(out << "\n", x, members, absError, step);
+    createTable(out << "\n", x, members, absError);
   }
-  createTable(out << "\n", right, members, absError, step);
+  createTable(out << "\n", right, members, absError);
 }

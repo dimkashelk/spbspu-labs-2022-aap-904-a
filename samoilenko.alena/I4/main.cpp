@@ -26,13 +26,22 @@ int main(int argc, char* argv[])
   }
   size_t rows = 0;
   size_t columns = 0;
-  input >> rows >> columns;
   if (!std::strcmp(argv[1], "1"))
   {
     int matrix[1000];
+    input >> rows >> columns;
+    if (!input)
+    {
+      std::cerr << "Error with file" << '\n';
+      input.close();
+      output.close();
+      return 1;
+    }
     if (rows * columns > 1000)
     {
       std::cerr << "Matrix more than 1000";
+      input.close();
+      output.close();
       return 1;
     }
     for (size_t i = 0; i < rows * columns; i++)
@@ -52,13 +61,6 @@ int main(int argc, char* argv[])
   else if (!std::strcmp(argv[1], "2"))
   {
     input >> rows >> columns;
-    if (!input)
-    {
-      std::cerr << "Error during input matrix";
-      input.close();
-      output.close();
-      return 1;
-    }
     if ((rows * columns) == 0)
     {
       output << "0" << '\n';

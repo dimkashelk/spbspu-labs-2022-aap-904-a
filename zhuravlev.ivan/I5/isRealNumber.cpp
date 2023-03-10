@@ -40,5 +40,5 @@ bool continueWithDigit(const char* data)
 
 bool isFloat(const char* data)
 {
-  return  (continueWithDigit(data) || (isSign(*data) && continueWithDigit(data + 1)));
+  return  (continueWithDigit(data) || isSign(*data) && continueWithDigit(data + 1));
 }

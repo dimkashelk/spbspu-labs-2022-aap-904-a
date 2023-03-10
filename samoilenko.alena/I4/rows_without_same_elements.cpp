@@ -2,7 +2,7 @@
 
 bool isNotSame(const int* matrix, size_t row, size_t col)
 {
-  for (size_t i; i < col - 1; i++)
+  for (size_t i = 0; i < col - 1; i++)
   {
     size_t dim = row * col + i;
     if (matrix[dim] != matrix[dim + 1])

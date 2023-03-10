@@ -9,8 +9,8 @@ size_t countRowsWithoutSameElements(const int* matrix, size_t row, size_t col)
     bool b = false;
     for (size_t j = 0; j < col - 1; j++)
     {
-      size_t dim = row * col + i;
-      if (matrix[dim] != matrix[dim + 1])
+      size_t dimt = row * col + i;
+      if (matrix[dimt] != matrix[dimt + 1])
       {
         b = true;
       }

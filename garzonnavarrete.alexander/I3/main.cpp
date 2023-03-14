@@ -32,7 +32,6 @@ int main()
         char* newCString = makeNewCapacityCString(cstring, capacity, size, increaseBy);
         delete[] cstring;
         cstring = newCString;
-        newCString = nullptr;
       }
       catch (const std::exception& e)
       {

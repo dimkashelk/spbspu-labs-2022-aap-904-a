@@ -1,6 +1,6 @@
 #include "rows_without_same_elements.h"
 
-bool isNotSame(const int* matrix, size_t row, size_t col)
+bool isSame(const int* matrix, size_t row, size_t col)
 {
   for (size_t i = 0; i < col - 1; i++)
   {
@@ -18,7 +18,7 @@ size_t countRowsWithoutSameElements(const int* matrix, size_t row, size_t col)
   size_t count = 0;
   for (size_t i = 0; i < row; i++)
   {
-    if(isNotSame(matrix, i, col))
+    if (isSame(matrix, i, col))
     {
       count++;
     }

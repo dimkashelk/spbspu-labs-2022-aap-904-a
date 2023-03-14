@@ -2,9 +2,14 @@
 
 bool isSame(const int* matrix, size_t row, size_t col)
 {
+  size_t size = row * col;
   for (size_t i = 0; i < col - 1; i++)
   {
     size_t dim = row * col + i;
+    if (size < dim)
+    {
+      break;
+    }
     if (matrix[dim] != matrix[dim + 1])
     {
       return true;

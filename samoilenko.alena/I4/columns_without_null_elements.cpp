@@ -2,7 +2,7 @@
 
 size_t countColumnsWithoutNull(const int* matrix, size_t row, size_t col)
 {
-  int count = 0;
+  size_t count = 0;
   for (size_t i = 0; i < col; i++)
   {
     bool colWithoutNull = false;

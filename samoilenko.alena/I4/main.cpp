@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
       std::cerr << ex.what() << '\n';
       return 1;
     }
-    if (readMatrixFromFile(matrix1, size, input) == nullptr)
+    if (readArrayFromFile(matrix1, size, input) == nullptr)
     {
       std::cerr << "Error writing elements\n";
       delete[] matrix1;

@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <stdexcept>
+#include <readArray.h>
 #include "columns_without_null_elements.h"
 #include "rows_without_same_elements.h"
-#include <readArray.h>
 
 int main(int argc, char* argv[])
 {
@@ -40,7 +41,15 @@ int main(int argc, char* argv[])
       std::cerr << "Matrix more than 1000";
       return 1;
     }
-    readArrayFromFile(matrix, size, input);
+    try
+    {
+      readArrayFromFile(matrix, size, input);
+    }
+    catch (const std::logic_error& ex)
+    {
+      std::cout << ex.what() << '\n';
+      return 1;
+    }
     output << countColumnsWithoutNull(matrix, rows, columns) << '\n';
     output << countRowsWithoutSameElements(matrix, rows, columns) << '\n';
   }

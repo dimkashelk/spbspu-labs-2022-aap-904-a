@@ -5,15 +5,15 @@ size_t countColumnsWithoutNull(const int* matrix, size_t row, size_t col)
   int count = 0;
   for (size_t i = 0; i < col; i++)
   {
-    bool colWithoutNull = false;
+    bool colWithoutNullt = false;
     for (size_t j = 0; j < row; j++)
     {
       if (matrix[col * j + i] != 0)
       {
-        colWithoutNull = true;
+        colWithoutNullt = true;
       }
     }
-    if (!colWithoutNull)
+    if (!colWithoutNullt)
     {
       count++;
     }

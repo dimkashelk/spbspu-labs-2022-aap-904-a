@@ -4,9 +4,9 @@
 #include <limits>
 #include <readthearray.hpp>
 #include "sort.hpp"
-#include "outputarray.hpp"
 #include "istriplet.hpp"
 #include "randomdynarray.hpp"
+#include "outputarray.hpp"
 int main(int argc, char* argv[])
 {
   const size_t maxSize = std::numeric_limits< size_t >::max();

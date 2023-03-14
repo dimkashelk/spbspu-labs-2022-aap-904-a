@@ -41,13 +41,9 @@ int main(int argc, char* argv[])
       std::cerr << "Matrix more than 1000";
       return 1;
     }
-    try
+    if (readArrayFromFile(matrix, size, input) == nullptr)
     {
-      readArrayFromFile(matrix, size, input);
-    }
-    catch (const std::logic_error& ex)
-    {
-      std::cout << ex.what() << '\n';
+      std::cerr << "Error file/n";
       return 1;
     }
     output << countColumnsWithoutNull(matrix, rows, columns) << '\n';
@@ -76,7 +72,12 @@ int main(int argc, char* argv[])
       std::cerr << ex.what() << '\n';
       return 1;
     }
-    readArrayFromFile(matrix1, size, input);
+    if (readMatrixFromFile(matrix1, size, input) == nullptr)
+    {
+      std::cerr << "Error writing elements\n";
+      delete[] matrix1;
+      return 1;
+    }
     output << countColumnsWithoutNull(matrix1, rows, columns) << '\n';
     output << countRowsWithoutSameElements(matrix1, rows, columns) << '\n';
     delete[] matrix1;

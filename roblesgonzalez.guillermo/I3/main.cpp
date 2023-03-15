@@ -16,7 +16,7 @@ int main()
   constexpr size_t initialCapacity = 10;
   constexpr size_t capacityIncrement = 20;
   size_t capacity = initialCapacity;
-  char* cstring = new char[capacity];
+  char *cstring = new char[capacity];
   size_t size = 0;
   std::cin >> std::noskipws;
   char inputCharacter;

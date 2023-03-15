@@ -1,7 +1,4 @@
 #include "outputarray.hpp"
-#include <iostream>
-#include <cstddef>
-#include <fstream>
 std::ostream& outputArray(std::ostream& out, int* array, size_t size)
 {
   for (size_t i = 0; i < size - 1; i++)

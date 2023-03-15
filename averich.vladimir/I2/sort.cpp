@@ -1,6 +1,4 @@
 #include "sort.hpp"
-#include <cstddef>
-#include <algorithm>
 int* sort(int* array, size_t size)
 {
   for (size_t i = 0; i < size; i++)

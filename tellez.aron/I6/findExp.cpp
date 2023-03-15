@@ -1,5 +1,6 @@
 #include "findExp.h"
 #include <cmath>
+#include <stdexcept>
 
 double exp(double x, double error, unsigned int numberMax)
 {
@@ -11,8 +12,12 @@ double exp(double x, double error, unsigned int numberMax)
   {
     term *= x / n;
     result += term;
-    termError = fabs(term / result);
+    termError = std::fabs(term / result);
     n++;
+  }
+  if (n > numberMax || termError > error || std::isnan(result))
+  {
+    throw std::runtime_error("Failed to converge to the desired accuracy");
   }
   return result;
 }

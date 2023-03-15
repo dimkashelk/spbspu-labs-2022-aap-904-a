@@ -54,7 +54,6 @@ int main()
   getSumOfStrings(sum_result, cstring, cstring);
   std::cout << "Sum of two strings: " << sum_result << "\n";
   delete[] sum_result;
-
   char* erase_result = new char[size];
   erase_result = eraseLatLet(erase_result, cstring);
   if (erase_result[0] != '\0')

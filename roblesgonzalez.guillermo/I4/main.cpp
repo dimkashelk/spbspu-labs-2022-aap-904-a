@@ -5,7 +5,7 @@
 #include "findAscendingColumns.h"
 #include "getMinSumOfDiagonal.h"
 
-int readArray(int * arr, size_t rows, size_t cols, std::ifstream & inFile)
+int readArray(int *arr, size_t rows, size_t cols, std::ifstream &inFile)
 {
   for (size_t i = 0; i < rows * cols; i++)
   {
@@ -16,7 +16,7 @@ int readArray(int * arr, size_t rows, size_t cols, std::ifstream & inFile)
   }
   return 0;
 }
-int main(int argc, char * argv[])
+int main(int argc, char *argv[])
 {
   if (argc != 4)
   {
@@ -47,7 +47,7 @@ int main(int argc, char * argv[])
     std::cout << "Error: Array too large" << "\n";
     return 1;
   }
-  int * arr = nullptr;
+  int *arr = nullptr;
   if (std::strcmp(argv[1], "1") == 0)
   {
     arr = new int[rows * cols];

@@ -1,6 +1,6 @@
 #include "findAscendingColumns.h"
 
-bool isGrowingCol(const int * arr, size_t col, size_t rows, size_t cols)
+bool isGrowingCol(const int *arr, size_t col, size_t rows, size_t cols)
 {
   for (size_t i = 0; i < rows - 1; ++i)
   {
@@ -12,9 +12,9 @@ bool isGrowingCol(const int * arr, size_t col, size_t rows, size_t cols)
   }
   return true;
 }
-size_t countGrowingCols(const int * arr, size_t rows, size_t cols)
+size_t countGrowingCols(const int *arr, size_t rows, size_t cols)
 {
-  const int * intArr = arr;
+  const int *intArr = arr;
   size_t counter = 0;
   for (size_t i = 0; i < cols; ++i)
   {

@@ -26,7 +26,6 @@ int main(int argc, char* argv[])
   }
   size_t rows = 0;
   size_t columns = 0;
-  size_t size = rows * columns;
   if (!std::strcmp(argv[1], "1"))
   {
     int matrix[1000];
@@ -41,6 +40,7 @@ int main(int argc, char* argv[])
       std::cerr << "Matrix more than 1000";
       return 1;
     }
+    size_t size = rows * columns;
     if (readArrayFromFile(matrix, size, input) == nullptr)
     {
       std::cerr << "Error file/n";
@@ -62,6 +62,7 @@ int main(int argc, char* argv[])
       output << "0" << '\n';
       return 0;
     }
+    size_t size1 = rows * columns;
     int* matrix1 = nullptr;
     try
     {
@@ -72,7 +73,7 @@ int main(int argc, char* argv[])
       std::cerr << ex.what() << '\n';
       return 1;
     }
-    if (readArrayFromFile(matrix1, size, input) == nullptr)
+    if (readArrayFromFile(matrix1, size1, input) == nullptr)
     {
       std::cerr << "Error writing elements\n";
       delete[] matrix1;

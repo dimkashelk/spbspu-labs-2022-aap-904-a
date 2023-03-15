@@ -4,7 +4,6 @@ char *removeDuplicateSpaces2(char *destination, const char *source)
 {
   size_t size = 0;
   size_t d = 0;
-  bool last_char_was_space = false;
   while (std::isspace(source[d]))
   {
     d++;
@@ -13,23 +12,23 @@ char *removeDuplicateSpaces2(char *destination, const char *source)
   {
     if (std::isspace(source[d]))
     {
-      if (!last_char_was_space)
+      char space_char = source[d];
+      while (std::isspace(source[d]))
       {
-        destination[size] = ' ';
-        size++;
+        d++;
       }
-      last_char_was_space = true;
-      d++;
+      destination[size] = space_char;
+      size++;
+      d--;
     }
     else
     {
       destination[size] = source[d];
       size++;
-      last_char_was_space = false;
-      d++;
     }
+    d++;
   }
-  if (size > 0 && std::isspace(destination[size - 1]))
+  while (size > 0 && std::isspace(destination[size - 1]))
   {
     size--;
   }
